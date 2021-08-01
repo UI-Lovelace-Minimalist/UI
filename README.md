@@ -1,13 +1,14 @@
 # My Home Assistant
 <img src="https://user-images.githubusercontent.com/12232620/127769479-a8d2a117-7c1d-49f1-a8a2-6e3d51a4672c.png" width="200"><img src="https://user-images.githubusercontent.com/12232620/127769475-01b39e04-065f-4ea4-adb0-39bc5e9aa39c.png" width="200"><img src="https://user-images.githubusercontent.com/12232620/127769477-4010a487-927f-479a-8596-2bf19a9a4299.png" width="200"><img src="https://user-images.githubusercontent.com/12232620/127769478-229d04d9-db00-4b78-b14b-dcd91f7ff463.png" width="200">
 
-**summary**
+
+
+## Table of Contents
 - [Design system](#design-system)
 - [Chips](#chips)
 - [Scene](#scene)
 - [Title](#title)
 - [Entity](#entity)
-
 
 # Design system
 ## Colors
@@ -25,6 +26,7 @@
 
 <td>
 💡 Light
+  
 ⚡ Electricity
 </td>
 </tr>
@@ -51,6 +53,7 @@
 <td>
   
 ☑️ On/off devices
+  
 🏠 Home
   
 </td>
@@ -466,10 +469,10 @@ titre:
 
 ### Anatomy
 ![Anatomy](https://user-images.githubusercontent.com/12232620/127768603-7f658c2e-c2d0-4cf4-92aa-f5e5ed22f5c5.png)
-1. **Dot** : visible when the device is unavailable. Also used on the entity **person**
-2. **Icon** : icon that represents the device
-3. **Primary line** : main information
-4. **Secondary line** : secondary information
+1. **Dot** : Visible when the device is unavailable. Also used on the entity **person**
+2. **Icon** : Icon that represents the device
+3. **Primary line** : Main information
+4. **Secondary line** : Secondary information
 5. **Optionnal part** : Possibility to display buttons to launch actions related to the device. Or display a graph to view the history of a sensor
 
 
@@ -1117,8 +1120,20 @@ ps4:
 </table>
 </details>
 
-## People
+## Person
 ![Personne](https://user-images.githubusercontent.com/12232620/127747945-77aa5db2-66fc-4995-baa9-6dd4a22e401f.png)
+
+**Dot** : 
+- At home : Blue
+- Away : Green 
+
+
+**Dot icon** :
+- At home : Home
+- Away : Walking man
+- Sleeping : Moon
+
+**Comment** : The sleep state takes over the At home or Away state to display the moon icon
 <details><summary>Code</summary>
 <table>
 <tr>
