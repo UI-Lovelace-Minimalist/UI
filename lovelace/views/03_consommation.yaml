@@ -1,0 +1,129 @@
+  - title: Consommation
+    icon: 'mdi:flash'
+    path: consommation
+    cards:
+      - cards:
+          - cards:
+              - template: bordures
+                type: 'custom:button-card'
+              - template: return_button
+                type: 'custom:button-card'
+              - template: pilule_consommation_prix
+                type: 'custom:button-card'
+              - template: bordures
+                type: 'custom:button-card'
+            type: horizontal-stack
+          - type: 'custom:button-card'
+            name: Consommation
+            template: titre
+
+          - cards:
+              - template: bordures
+                type: 'custom:button-card'
+
+              - type: 'custom:button-card'
+                template: graph
+                variables:
+                  entity: "sensor.atome_price_conso_today"
+                  color: "var(--google-blue-500)"
+                  name: "Aujourd'hui"
+                custom_fields:
+                  item1:
+                    card:
+                      icon: mdi:flash
+                  item2:
+                    card:
+                      bar_spacing: 30
+                      show:
+                        graph: bar
+                      aggregate_func: max
+                      group_by: date
+                      lower_bound: 0
+                      hours_to_show: 168
+
+              - type: 'custom:button-card'
+                template: graph
+                variables:
+                  entity: "sensor.atome_live_power"
+                  color: "var(--google-blue-500)"
+                  name: "Direct"
+                custom_fields:
+                  item2:
+                    card:
+                      show:
+                        graph: bar
+                      hours_to_show: 24
+                      # points_per_hour: 4
+                      hour24: true
+                      line_width: 1
+                      points_per_hour: 60
+                      aggregate_func: 'max'
+                      lower_bound: 0
+                      
+              - template: bordures
+                type: 'custom:button-card'
+            type: horizontal-stack
+
+          - type: 'custom:button-card'
+            name: Batterie
+            template: titre
+
+          - cards:
+              - template: bordures
+                type: 'custom:button-card'
+              - type: grid
+                columns: 2
+                square: false
+                cards:
+                  - entity: sensor.xiaomi_ouverture_fenetre_balcon_batterie
+                    name: Ouverture balcon
+                    template: 
+                      - icon_info_bg
+                      - generique
+                    type: 'custom:button-card'
+                  - entity: sensor.xiaomi_ouverture_fenetre_chambre_batterie
+                    name: Ouverture chambre
+                    template: 
+                      - icon_info_bg
+                      - generique
+                    type: 'custom:button-card'
+                  - entity: sensor.fibaro_multisensor_couloir_battery_level
+                    name: Capteur couloir
+                    template: 
+                      - icon_info_bg
+                      - generique
+                    type: 'custom:button-card'
+                  - entity: sensor.xiaomi_multisensor_salon_batterie
+                    name: Capteur chambre
+                    template: 
+                      - icon_info_bg
+                      - generique
+                    type: 'custom:button-card'
+                  - entity: sensor.fibaro_multisensor_balcon_battery_level
+                    name: Capteur balcon
+                    template: 
+                      - icon_info_bg
+                      - generique
+                    type: 'custom:button-card'
+                  - entity: sensor.ikea_variateur_salle_de_bain_power
+                    name: Variateur salle de bain
+                    template: 
+                      - icon_info_bg
+                      - generique
+                    type: 'custom:button-card'
+                  - entity: sensor.xiaomi_ouverture_fenetre_balcon_batterie
+                    name: Ouverture balcon
+                    template: 
+                      - icon_info_bg
+                      - generique
+                    type: 'custom:button-card'
+                  - entity: sensor.xiaomi_ouverture_fenetre_chambre_batterie
+                    name: Ouverture chambre
+                    template: 
+                      - icon_info_bg
+                      - generique
+                    type: 'custom:button-card'
+              - template: bordures
+                type: 'custom:button-card'
+            type: horizontal-stack
+        type: vertical-stack

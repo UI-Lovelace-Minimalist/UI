@@ -1,0 +1,348 @@
+  - title: Home
+    icon: 'mdi:home-variant'
+    path: home
+    cards:
+      - cards:
+          - cards:
+              - template: bordures
+                type: 'custom:button-card'
+              - template: pilule_temperature
+                type: 'custom:button-card'
+              - template: pilule_consommation
+                type: 'custom:button-card'
+              - template: pilule_localisation_present
+                type: 'custom:button-card'
+              - card:
+                  entity: input_boolean.invite_present
+                  template: pilule
+                  label : "😃"
+                  type: 'custom:button-card'
+                conditions:
+                - entity: input_boolean.invite_present
+                  state_not: 'off'
+                type: conditional
+              - card:
+                  entity: input_boolean.mode_vacances
+                  template: pilule
+                  label : "⛱️"
+                  type: 'custom:button-card'
+                conditions:
+                - entity: input_boolean.mode_vacances
+                  state_not: 'off'
+                type: conditional
+              - template: bordures
+                type: 'custom:button-card'
+            type: horizontal-stack
+            
+####################################################
+#                                                  #
+#                     SCENES                       #
+#                                                  #
+####################################################
+          - type: custom:state-switch
+            entity: user
+            default: default
+            states:
+              Thomas:
+                type: vertical-stack
+                cards:
+                  - type: 'custom:button-card'
+                    name: Scènes
+                    template: titre
+                  - cards:
+                      - template: bordures
+                        type: 'custom:button-card'
+                      - entity: sensor.present
+                        template: scene
+                        type: 'custom:button-card'
+                      - entity: sensor.absent
+                        template: scene
+                        type: 'custom:button-card'
+                      - entity: sensor.travail
+                        template: scene
+                        type: 'custom:button-card'
+                      - entity: sensor.nuit
+                        template: scene
+                        tap_action:
+                          action: more-info
+                          entity: input_boolean.thomas_nuit
+                        type: 'custom:button-card'
+                      - template: bordures
+                        type: 'custom:button-card'
+                    type: horizontal-stack
+
+####################################################
+#                                                  #
+#                       PS4                        #
+#                                                  #
+####################################################
+          - card:
+              cards:
+                - type: 'custom:button-card'
+                  name: Media
+                  template: titre
+                - cards:
+                    - template: bordures
+                      type: 'custom:button-card'
+                    - artwork: full-cover
+                      entity: media_player.playstation_4
+                      style: |
+                        :host {
+                          --ha-card-border-radius: 20px;
+                          --ha-card-box-shadow: var(--box-shadow);
+                          --mini-media-player-accent-color: var(--google-red-500)
+                        }
+                      type: 'custom:mini-media-player'
+                    - template: bordures
+                      type: 'custom:button-card'
+                  type: horizontal-stack
+              type: vertical-stack
+            conditions:
+              - entity: media_player.playstation_4
+                state_not: 'unknown'
+            type: conditional
+
+####################################################
+#                                                  #
+#                      MEDIA                       #
+#                                                  #
+####################################################
+          - card:
+              cards:
+                - type: 'custom:button-card'
+                  name: Media
+                  template: titre
+                - cards:
+                    - template: bordures
+                      type: 'custom:button-card'
+                      
+                      
+                    - artwork: full-cover
+                      entity: media_player.chromecast_audio_appartement
+                      style: |
+                        :host {
+                          --ha-card-border-radius: 20px;
+                          --ha-card-box-shadow: var(--box-shadow);
+                          --mini-media-player-accent-color: var(--google-red-500)
+                        }
+                      type: 'custom:mini-media-player'
+                    - template: bordures
+                      type: 'custom:button-card'
+                  type: horizontal-stack
+              type: vertical-stack
+            conditions:
+              - entity: media_player.chromecast_audio_appartement
+                state_not: 'off'
+            type: conditional
+
+####################################################
+#                                                  #
+#                     CHAMBRE                      #
+#                                                  #
+####################################################
+          - type: 'custom:button-card'
+            name: Chambre
+            label: '12 appareils'
+            template: titre
+          - cards:
+              - template: bordures
+                type: 'custom:button-card'
+              - type: grid
+                columns: 2
+                square: false
+                cards:
+                  - entity: light.principale
+                    template: 
+                      - icon_info_bg
+                      - light
+                    type: 'custom:button-card'
+
+                  - entity: light.hue_light_table
+                    name: Table
+                    template: 
+                      - icon_info_bg
+                      - light
+                    type: 'custom:button-card'
+
+                  - entity: light.hue_light_bureau
+                    name: Bureau
+                    template: 
+                      - icon_info_bg
+                      - light
+                    type: 'custom:button-card'
+
+                  - entity: switch.shelly_prise_salon
+                    name: Prise bureau
+                    template: 
+                      - icon_info_bg
+                      - prise_conso
+                    tap_action:
+                      action: more-info
+                      entity: group.prise_shelly_detail
+                    type: 'custom:button-card'
+
+                  - entity: climate.thermostat
+                    template: 
+                      - icon_info_bg
+                      - thermostat
+                    type: 'custom:button-card'
+
+                  - entity: switch.osram_prise_salon
+                    name: Prise lit
+                    template: 
+                      - icon_info_bg
+                      - prise
+                    type: 'custom:button-card'
+
+                  - type: 'custom:button-card'
+                    template: cover_buttons
+                    variables:
+                      entity: "cover.fibaro_cover_balcon"
+                      name: "Balcon"
+
+                  - type: 'custom:button-card'
+                    template: cover_buttons
+                    variables:
+                      entity: "cover.fibaro_cover_fenetre"
+                      name: "Fenêtre"
+
+                  - entity: media_player.chromecast_audio_bureau
+                    name: Enceintes
+                    template: 
+                      - icon_info_bg
+                      - media
+                    type: 'custom:button-card'
+
+                  - entity: group.fenetres_appartement
+                    name: Fenêtres
+                    tap_action:
+                      action: more-info
+                    template: 
+                      - icon_info_bg
+                      - mouvement
+                    type: 'custom:button-card'
+
+                  - entity: switch.nas
+                    name: NAS
+                    template: 
+                      - icon_info_bg
+                      - nas
+                    type: 'custom:button-card'
+
+                  - entity: media_player.playstation_4
+                    template: 
+                      - icon_info_bg
+                      - ps4
+                    type: 'custom:button-card'
+
+              - template: bordures
+                type: 'custom:button-card'
+            type: horizontal-stack
+
+####################################################
+#                                                  #
+#                     COULOIR                      #
+#                                                  #
+####################################################
+          - type: 'custom:button-card'
+            name: Couloir
+            label: '3 appareils'
+            template: titre
+          - cards:
+              - template: bordures
+                type: 'custom:button-card'
+              - type: grid
+                columns: 2
+                square: false
+                cards:
+                  - entity: light.fibaro_light_couloir
+                    name: Lumière
+                    template: 
+                      - icon_info_bg
+                      - light
+                    type: 'custom:button-card'
+                  - entity: binary_sensor.fibaro_multisensor_couloir_mouvement
+                    name: Mouvement
+                    icon: 'mdi:run'
+                    template: 
+                      - icon_info_bg
+                      - mouvement
+                    type: 'custom:button-card'
+                  - entity: switch.shelly_module_couloir
+                    name: Chauffe eau
+                    template: 
+                      - icon_info_bg
+                      - chauffe-eau
+                    tap_action:
+                      action: more-info
+                      entity: sensor.shelly_module_couloir_current_consumption
+                    type: 'custom:button-card'
+              - template: bordures
+                type: 'custom:button-card'
+            type: horizontal-stack
+            
+####################################################
+#                                                  #
+#                 SALLE DE BAIN                    #
+#                                                  #
+####################################################
+          - type: 'custom:button-card'
+            name: Salle de bain
+            label: '2 appareils'
+            template: titre
+          - cards:
+              - template: bordures
+                type: 'custom:button-card'
+              - type: grid
+                columns: 2
+                square: false
+                cards:
+                  - entity: light.hue_light_salle_de_bain
+                    name: Lumière
+                    template: 
+                      - icon_info_bg
+                      - light
+                    type: 'custom:button-card'
+                  - entity: media_player.chromecast_audio_tangent_salle_de_bain
+                    name: Enceintes
+                    template: 
+                      - icon_info_bg
+                      - media
+                    type: 'custom:button-card'
+              - template: bordures
+                type: 'custom:button-card'
+            type: horizontal-stack
+            
+####################################################
+#                                                  #
+#                     BALCON                       #
+#                                                  #
+####################################################
+          - type: 'custom:button-card'
+            name: Balcon
+            label: '2 appareils'
+            template: titre
+          - cards:
+              - template: bordures
+                type: 'custom:button-card'
+              - type: grid
+                columns: 2
+                square: false
+                cards:
+                  - entity: light.hue_light_balcon
+                    name: Lumière
+                    template: 
+                      - icon_info_bg
+                      - light
+                    type: 'custom:button-card'
+                  - entity: binary_sensor.fibaro_multisensor_balcon_mouvement
+                    name: Mouvement
+                    icon: 'mdi:run'
+                    template: 
+                      - icon_info_bg
+                      - mouvement
+                    type: 'custom:button-card'
+              - template: bordures
+                type: 'custom:button-card'
+            type: horizontal-stack
+        type: vertical-stack

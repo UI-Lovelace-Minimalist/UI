@@ -1,0 +1,105 @@
+  - title: Localisation
+    icon: 'mdi:map-marker'
+    path: localisation
+    cards:
+      - cards:
+        - cards:
+            - template: bordures
+              type: 'custom:button-card'
+            - template: return_button
+              type: 'custom:button-card'
+            - template: pilule_localisation_present
+              type: 'custom:button-card'
+            - template: pilule_localisation_absent
+              type: 'custom:button-card'
+            - template: pilule_localisation_nuit
+              type: 'custom:button-card'
+            - card:
+                entity: input_boolean.invite_present
+                template: pilule
+                label : "😃"
+                type: 'custom:button-card'
+              conditions:
+              - entity: input_boolean.invite_present
+                state_not: 'off'
+              type: conditional
+            - card:
+                entity: input_boolean.mode_vacances
+                template: pilule
+                label : "⛱️"
+                type: 'custom:button-card'
+              conditions:
+              - entity: input_boolean.mode_vacances
+                state_not: 'off'
+              type: conditional
+            - template: bordures
+              type: 'custom:button-card'
+          type: horizontal-stack
+          
+####################################################
+#                                                  #
+#                   LOCALISATION                   #
+#                                                  #
+####################################################
+
+        - type: 'custom:button-card'
+          name: Localisation
+          label: '2 personnes'
+          template: titre
+        - cards:
+            - template: bordures
+              type: 'custom:button-card'
+            - type: grid
+              columns: 2
+              square: false
+              cards:
+                - entity: input_select.localisation_thomas
+                  variables:
+                    personne: "thomas"
+                  template: 
+                    - icon_info_bg
+                    - personne-thomas
+                  name: Thomas
+                  type: 'custom:button-card'
+                - entity: input_select.localisation_milena
+                  template: 
+                    - icon_info_bg
+                    - personne-milena
+                  name: Miléna
+                  type: 'custom:button-card'
+
+            - template: bordures
+              type: 'custom:button-card'
+
+          type: horizontal-stack
+        - type: 'custom:button-card'
+          label: 'Modes'
+          template: titre
+        - cards:
+            - template: bordures
+              type: 'custom:button-card'
+            - type: grid
+              columns: 2
+              square: false
+              cards:
+                - entity: input_boolean.invite_present
+                  template: 
+                    - icon_info_bg
+                    - personne-invite
+                  type: 'custom:button-card'
+                - entity: input_boolean.mode_vacances
+                  name: "Vacances"
+                  show_last_changed: false
+                  label: >
+                    [[[return entity.state]]]
+                  template: 
+                    - icon_info_bg
+                    - mouvement
+                  type: 'custom:button-card'
+                  icon: 'mdi:white-balance-sunny'
+            - template: bordures
+              type: 'custom:button-card'
+
+          type: horizontal-stack
+        type: vertical-stack
+

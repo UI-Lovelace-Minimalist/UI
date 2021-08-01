@@ -1,0 +1,73 @@
+      card-background-color: '#FAFAFA'
+      box-shadow: '0px 2px 4px 0px rgba(0,0,0,0.16)'
+      border-radius: '20px'
+      border-color: '#EAEAEA'
+      primary-color: '#434343'
+      light-primary-color: '#fce8e6'
+      paper-item-icon-color: '#434343'
+      paper-toggle-button-checked-ink-color: '#3D5AFE'
+      paper-toggle-button-checked-button-color: '#3D5AFE'
+      paper-toggle-button-checked-bar-color: '#3D5AFE'
+      accent-color: '#ff8100'
+      switch-checked-color: '#3D5AFE'
+      #Sidebar
+      sidebar-selected-text-color: '#d93025'
+      sidebar-text-color: '#80868b'
+      sidebar-selected-icon-color: '#d93025'
+      sidebar-selected-background-color: '#fce8e6'
+      mdc-theme-secondary: 'var(-primary-color)'
+      #Slider
+      slider-color: '#d93025'
+      slider-bar-color: '#fce8e6'
+      #Background
+      secondary-background-color: '#EFEFEF'
+      primary-background-color: '#EFEFEF'
+      #Custom header
+      couleur-header: 239, 239, 239
+      # ch-background: 'rgba(var(--couleur-header),0.9)'
+      # ch-background: '#F54436'
+      couleur-elements: 33, 33, 33
+      # ch-background: 'var(-primary-color)'
+      
+      #Couleurs
+      google-red-500 : '#F54436'
+      google-green-500 : '#01C852'
+      google-yellow-500 : '#FF9101'
+      google-blue-500 : '#3D5AFE'
+      google-violet-500 : '#661FFF'
+      google-grey-500: '#BBBBBB'
+      couleur-rouge : 245, 68, 54
+      couleur-vert : 1, 200, 82
+      couleur-jaune : 255, 145, 1
+      couleur-bleu : 61, 90, 254
+      couleur-violet : 102, 31, 255
+      couleur-gris : 187, 187, 187
+      couleur-rose : 233, 30, 99
+      couleur-theme : 51,51,51
+
+      #Header
+      app-header-text-color: '#434343' #couleur des icones 
+      app-header-background-color: '#EFEFEF'
+      paper-tabs-selection-bar-color: '#434343'
+      
+
+      # Journal
+      state-icon-color: '#434343'
+      
+      
+
+      card-mod-theme: light
+      card-mod-root: |
+        ha-tabs, paper-tabs {
+         --paper-tabs-selection-bar-color: var(--app-header-text-color) !important;
+        }
+        
+      # card-mod-theme: light
+      # card-mod-root: |
+      #   app-header {
+      #     background: rgba(0,0,0,0) !important;
+      #   }
+      #   app-toolbar {
+      #     background: none !important;
+      #   }
+        

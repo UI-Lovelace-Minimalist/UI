@@ -1,0 +1,8 @@
+lovelace:
+  mode: yaml
+  resources: !include lovelace/resources/resources.yaml
+
+frontend: 
+  themes: !include configuration/themes.yaml
+
+
