@@ -6,8 +6,6 @@
     url: /hacsfiles/button-card/button-card.js
   - type: module
     url: /hacsfiles/lovelace-card-mod/card-mod.js
-#   - type: module
-#     url: /hacsfiles/custom-header/custom-header.js
   - type: module
     url: /hacsfiles/swipe-card/swipe-card.js
   - type: module
