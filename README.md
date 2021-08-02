@@ -1,17 +1,44 @@
 # My Home Assistant
+At the top of each page we find the [chips](#chips) which allow me to quickly visualize the important information of the page.
+Then [title](#title) to separate the different sections
+and [cards](#cards) to represent and interact with devices, sensors, etc …
+I used the custom component [button-card](https://github.com/custom-cards/button-card) for all these cards.
+I drew a lot of inspiration from [7ahang’s work](https://www.behance.net/gallery/88433905/Redesign-Smart-Home) that I found on Behance.
+
 <img src="https://user-images.githubusercontent.com/12232620/127769479-a8d2a117-7c1d-49f1-a8a2-6e3d51a4672c.png" width="200"><img src="https://user-images.githubusercontent.com/12232620/127769475-01b39e04-065f-4ea4-adb0-39bc5e9aa39c.png" width="200"><img src="https://user-images.githubusercontent.com/12232620/127769477-4010a487-927f-479a-8596-2bf19a9a4299.png" width="200"><img src="https://user-images.githubusercontent.com/12232620/127769478-229d04d9-db00-4b78-b14b-dcd91f7ff463.png" width="200">
 
 
 
+
 ## Table of Contents
+- [Installation](#installation)
 - [Design system](#design-system)
 - [Chips](#chips)
 - [Scene](#scene)
 - [Title](#title)
-- [Entity](#entity)
+- [Cards](#cards)
+
+# Installation
+1. Add **button_card_templates** in **ui-lovelace.yaml** file. 
+    ```yaml
+    button_card_templates: !include lovelace/button_card_templates/button_card_templates.yaml
+    ```
+4. Add **resources** in your **configuration.yaml** file. You will need at least [button-card](https://github.com/custom-cards/button-card)
+    ```yaml
+    lovelace:
+      mode: yaml
+      resources: !include lovelace/resources/resources.yaml
+    ```
+3. Add **themes** in your **configuration.yaml** file
+    ```yaml
+    frontend: 
+      themes: !include configuration/themes.yaml
+    ```
+
 
 # Design system
 ## Colors
+I tried to set up a consistency between the colors used to represent the entities
 <table>
 <tr>
 <th> Color </th>
@@ -464,7 +491,7 @@ titre:
 </table>
 </details>
 
-# Entity
+# Cards
 ![Entity](https://user-images.githubusercontent.com/12232620/127747745-a0850c61-6cc9-4a3c-9745-4af23b0e8da2.png)
 
 ### Anatomy
