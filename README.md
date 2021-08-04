@@ -38,7 +38,7 @@ I drew a lot of inspiration from [7ahang’s work](https://www.behance.net/galle
 
 # Design system
 ## Colors
-I tried to set up a consistency between the colors used to represent the entities
+I tried to set up a consistency between the colors used to represent the entities.
 <table>
 <tr>
 <th> Color </th>
@@ -1149,7 +1149,8 @@ ps4:
 
 ## Person
 ![Personne](https://user-images.githubusercontent.com/12232620/127747945-77aa5db2-66fc-4995-baa9-6dd4a22e401f.png)
-
+<details><summary>Information</summary>
+    
 **Dot** : 
 - At home : Blue
 - Away : Green 
@@ -1161,6 +1162,7 @@ ps4:
 - Sleeping : Moon
 
 **Comment** : The sleep state takes over the At home or Away state to display the moon icon
+</details>
 <details><summary>Code</summary>
 <table>
 <tr>
