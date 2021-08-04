@@ -555,7 +555,7 @@ titre:
 </table>
 </details>
 
-## Prise
+## Outlet
 ![Prise](https://user-images.githubusercontent.com/12232620/127747627-8ea582c4-a371-4e2b-9b4d-c9e2bd7246eb.png)
 <details><summary>Code</summary>
 <table>
@@ -597,7 +597,7 @@ prise_conso:
 </table>
 </details>
 
-## Mouvement
+## Movement
 ![Mouvements](https://user-images.githubusercontent.com/12232620/127746430-be6cf3ab-cfd4-436c-ab14-a80b2c80303c.png) ![Fenêtres](https://user-images.githubusercontent.com/12232620/127747588-fad35247-1a5d-4aff-843d-e2e09e8f2b91.png)
 <details><summary>Code</summary>
 <table>
@@ -634,7 +634,7 @@ mouvement:
 </details>
 
 
-## Volets
+## Cover
 ![Volets](https://user-images.githubusercontent.com/12232620/127747586-2276befd-3e13-4117-8781-c5957956f08c.png)
 <details><summary>Code</summary>
 <table>
@@ -764,7 +764,7 @@ cover_buttons:
 </details>
 
 ## Thermostat
-![Thermostat](https://user-images.githubusercontent.com/12232620/127747593-82e74a24-f5ce-4580-b444-bf419a65445c.png)
+![Thermostat](https://user-images.githubusercontent.com/12232620/128136522-637de61e-b708-4878-a8a6-cf683f5d9156.png)
 <details><summary>Code</summary>
 <table>
 <tr>
@@ -827,7 +827,7 @@ thermostat:
 </table>
 </details>
 
-## Chauffe-eau
+## Water heater
 ![Chauffe-eau](https://user-images.githubusercontent.com/12232620/127747601-cbf56d1d-faf1-448b-a2b7-4fbbb8d620f0.png)
 <details><summary>Code</summary>
 <table>
@@ -1244,3 +1244,131 @@ personne-thomas:
 </table>
 </details>
 
+## Generic
+
+![Generic](https://user-images.githubusercontent.com/12232620/128137454-69b93aee-5e63-46f7-aed5-504cd952e88a.png)
+<details><summary>Code</summary>
+<table>
+<tr>
+<th> Exemple </th>
+<th> Template </th>
+</tr>
+<tr>
+<td VALIGN=TOP>
+
+```yaml
+- entity: sensor.exemple
+  template: 
+    - icon_info_bg
+    - generique
+  type: 'custom:button-card'
+```
+
+</td>
+<td VALIGN=TOP>
+
+```yaml
+generique:
+  label: >
+      [[[return entity.state + " " + entity.attributes.unit_of_measurement]]]
+  styles:
+    icon:
+      - color: 'rgba(var(--couleur-theme),0.9)'
+    grid:
+      - grid-template-areas: '"i l" "i n"'
+      - grid-template-columns: min-content auto
+      - grid-template-rows: min-content min-content
+    label:
+      - align-self: end
+      - justify-self: start
+      - font-weight: bold
+      - font-size: 14px
+      - margin-left: 12px
+      - filter: opacity(100%)
+    name:
+      - justify-self: start
+      - align-self: start
+      - font-weight: bolder
+      - font-size: 12px
+      - filter: opacity(40%)
+      - margin-left: 12px
+```
+
+</td>
+</tr>
+</table>
+</details>
+
+## Generic + graph
+
+![Entity - graph](https://user-images.githubusercontent.com/12232620/128138257-85f62668-7277-4f54-be98-8bc97876f4be.png)
+<details><summary>Code</summary>
+<table>
+<tr>
+<th> Exemple </th>
+<th> Template </th>
+</tr>
+<tr>
+<td VALIGN=TOP>
+
+```yaml
+- type: 'custom:button-card'
+  template: graph
+  variables:
+    entity: "sensor.exemple"
+    color: "var(--google-blue-500)"
+    name: "Température"
+```
+
+</td>
+<td VALIGN=TOP>
+
+```yaml
+graph:
+  variables:
+    entity: "sensor.exemple"
+    color: "var(--google-blue-500)"
+    name: "Default name"
+  styles:
+    card:
+      - border-radius: 20px
+      - box-shadow: var(--box-shadow)
+      - padding: 0px
+    grid:
+      - grid-template-areas: '"item1" "item2"'
+      - grid-template-columns: 1fr
+      - grid-template-rows: min-content  min-content
+  custom_fields:
+    item1:
+      card:
+        entity: '[[[ return variables.entity ]]]'
+        name: '[[[ return variables.name ]]]'
+        template: 
+          - icon_info
+          - generique
+        styles:
+          card:
+            - padding: 12px
+        type: 'custom:button-card'
+    item2:
+      card:
+        type: 'custom:mini-graph-card'
+        entities:
+          - entity: '[[[ return variables.entity ]]]'
+        line_color: '[[[ return variables.color ]]]'
+        show:
+          name: false
+          icon: false
+          legend: false
+          state: false
+        style: |
+          ha-card {
+            box-shadow: none;
+            border-radius: var(--border-radius);
+          }
+```
+
+</td>
+</tr>
+</table>
+</details>
