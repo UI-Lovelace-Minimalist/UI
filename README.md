@@ -149,7 +149,7 @@ pilule:
 <details><summary>Code</summary>
 <table>
 <tr>
-<th> Exemple </th>
+<th> Example </th>
 <th> Template </th>
 </tr>
 <tr>
@@ -209,7 +209,7 @@ pilule_temperature:
 <details><summary>Code</summary>
 <table>
 <tr>
-<th> Exemple </th>
+<th> Example </th>
 <th> Template #1 </th>
 <th> Template #2 </th>
 </tr>
@@ -267,7 +267,7 @@ pilule_consommation:
 <details><summary>Code</summary>
 <table>
 <tr>
-<th> Exemple </th>
+<th> Example </th>
 <th> Template </th>
 </tr>
 <tr>
@@ -305,7 +305,7 @@ pilule_localisation_present:
 <details><summary>Code</summary>
 <table>
 <tr>
-<th> Exemple </th>
+<th> Example </th>
 <th> Template </th>
 </tr>
 <tr>
@@ -343,7 +343,7 @@ return_button:
 <details><summary>Code</summary>
 <table>
 <tr>
-<th> Exemple </th>
+<th> Example </th>
 <th> Template </th>
 </tr>
 <tr>
@@ -438,7 +438,7 @@ scene:
 <details><summary>Code</summary>
 <table>
 <tr>
-<th> Exemple </th>
+<th> Example </th>
 <th> Template </th>
 </tr>
 <tr>
@@ -509,14 +509,14 @@ titre:
 <details><summary>Code</summary>
 <table>
 <tr>
-<th> Exemple </th>
+<th> Example </th>
 <th> Template </th>
 </tr>
 <tr>
 <td VALIGN=TOP>
 
 ```yaml
-- entity: light.exemple
+- entity: light.example
   name: Lumière
   template: 
     - icon_info_bg
@@ -560,14 +560,14 @@ titre:
 <details><summary>Code</summary>
 <table>
 <tr>
-<th> Exemple </th>
+<th> Example </th>
 <th> Template </th>
 </tr>
 <tr>
 <td VALIGN=TOP>
 
 ```yaml
-- entity: switch.exemple
+- entity: switch.example
   name: Prise
   template: 
     - icon_info_bg
@@ -602,14 +602,14 @@ prise_conso:
 <details><summary>Code</summary>
 <table>
 <tr>
-<th> Exemple </th>
+<th> Example </th>
 <th> Template </th>
 </tr>
 <tr>
 <td VALIGN=TOP>
 
 ```yaml
-- entity: binary_sensor.exemple
+- entity: binary_sensor.example
   name: Mouvement
   icon: 'mdi:run'
   template: 
@@ -639,7 +639,7 @@ mouvement:
 <details><summary>Code</summary>
 <table>
 <tr>
-<th> Exemple </th>
+<th> Example </th>
 <th> Template </th>
 </tr>
 <tr>
@@ -648,7 +648,7 @@ mouvement:
 ```yaml
 - template: cover_buttons
   variables:
-    entity: "cover.exemple"
+    entity: "cover.example"
     name: "Volets"
   type: 'custom:button-card'
 ```
@@ -768,14 +768,14 @@ cover_buttons:
 <details><summary>Code</summary>
 <table>
 <tr>
-<th> Exemple </th>
+<th> Example </th>
 <th> Template </th>
 </tr>
 <tr>
 <td VALIGN=TOP>
 
 ```yaml
-- entity: climate.exemple
+- entity: climate.example
   template: 
     - icon_info_bg
     - thermostat
@@ -832,14 +832,14 @@ thermostat:
 <details><summary>Code</summary>
 <table>
 <tr>
-<th> Exemple </th>
+<th> Example </th>
 <th> Template </th>
 </tr>
 <tr>
 <td VALIGN=TOP>
 
 ```yaml
-- entity: switch.exemple
+- entity: switch.example
   name: Chauffe eau
   template: 
     - icon_info_bg
@@ -903,14 +903,14 @@ chauffe-eau:
 <details><summary>Code</summary>
 <table>
 <tr>
-<th> Exemple </th>
+<th> Example </th>
 <th> Template </th>
 </tr>
 <tr>
 <td VALIGN=TOP>
 
 ```yaml
-- entity: media_player.exemple
+- entity: media_player.example
   name: Enceintes
   template: 
     - icon_info_bg
@@ -1064,14 +1064,14 @@ media:
 <details><summary>Code</summary>
 <table>
 <tr>
-<th> Exemple </th>
+<th> Example </th>
 <th> Template </th>
 </tr>
 <tr>
 <td VALIGN=TOP>
 
 ```yaml
-- entity: media_player.exemple
+- entity: media_player.example
   template: 
     - icon_info_bg
     - ps4
@@ -1166,7 +1166,7 @@ ps4:
 <details><summary>Code</summary>
 <table>
 <tr>
-<th> Exemple </th>
+<th> Example </th>
 <th> Template </th>
 </tr>
 <tr>
@@ -1252,14 +1252,14 @@ personne-thomas:
 <details><summary>Code</summary>
 <table>
 <tr>
-<th> Exemple </th>
+<th> Example </th>
 <th> Template </th>
 </tr>
 <tr>
 <td VALIGN=TOP>
 
 ```yaml
-- entity: sensor.exemple
+- entity: sensor.example
   template: 
     - icon_info_bg
     - generique
@@ -1307,7 +1307,7 @@ generique:
 <details><summary>Code</summary>
 <table>
 <tr>
-<th> Exemple </th>
+<th> Example </th>
 <th> Template </th>
 </tr>
 <tr>
@@ -1317,7 +1317,7 @@ generique:
 - type: 'custom:button-card'
   template: graph
   variables:
-    entity: "sensor.exemple"
+    entity: "sensor.example"
     color: "var(--google-blue-500)"
     name: "Température"
 ```
@@ -1328,7 +1328,7 @@ generique:
 ```yaml
 graph:
   variables:
-    entity: "sensor.exemple"
+    entity: "sensor.example"
     color: "var(--google-blue-500)"
     name: "Default name"
   styles:
