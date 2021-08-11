@@ -1,0 +1,19 @@
+  # Journal
+  state-icon-color: 'rgb(var(--color-theme))'
+  border-radius: '20px'
+  error-color: 'var(--google-red)'
+  warning-color: 'var(--google-yellow)'
+  success-color: 'var(--google-green)'
+  info-color: 'var(--google-blue)'
+  divider-color: 'rgba(var(--color-theme),.12)'
+  accent-color: 'var(--google-yellow)'
+  card-mod-theme: mobile
+  card-mod-root: |
+    app-toolbar {
+      display: none;
+    }
+  modes:
+    light:
+      !include mobile_light.yaml
+    dark:
+      !include mobile_dark.yaml

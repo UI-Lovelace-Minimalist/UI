@@ -1,6 +1,4 @@
-dark:
-  !include themes/dark_mode.yaml
-light:
-  !include themes/light.yaml
-light_mobile:
-  !include themes/light_mobile.yaml
+desktop:
+  !include themes/desktop/desktop.yaml
+mobile:
+  !include themes/mobile/mobile.yaml
