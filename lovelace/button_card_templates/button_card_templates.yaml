@@ -5,7 +5,7 @@
 ########################################################################################################
 
   icon:
-    color: var(--google-grey-500)
+    color: var(--google-grey)
     show_icon: true
     show_name: false
     show_label: false
@@ -14,7 +14,7 @@
       notification: >
         [[[
           if (entity.state =='unavailable'){
-            return `<ha-icon icon="mdi:exclamation" style="width: 12px; height: 12px; color: white;"></ha-icon>`
+            return `<ha-icon icon="mdi:exclamation" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`
           }
         ]]]
     state:
@@ -32,7 +32,7 @@
               - line-height: 14px
               - background-color: >
                   [[[
-                    return "rgba(var(--couleur-rouge),1)";
+                    return "rgba(var(--color-red),1)";
                   ]]]
         value: unavailable
     styles:
@@ -45,9 +45,9 @@
         - grid-template-columns: min-content
         - grid-template-rows: min-content
       icon:
-        - color: 'rgba(var(--couleur-theme),0.2)'
+        - color: 'rgba(var(--color-theme),0.2)'
       img_cell:
-        - background-color: 'rgba(var(--couleur-theme),0.05)'
+        - background-color: 'rgba(var(--color-theme),0.05)'
         - border-radius: 50%
         - place-self: center
         - width: 42px
@@ -56,7 +56,7 @@
 ########################################################################################################
 
   icon_info:
-    color: var(--google-grey-500)
+    color: var(--google-grey)
     show_icon: true
     show_name: true
     show_label: true
@@ -65,7 +65,7 @@
       notification: >
         [[[
           if (entity.state =='unavailable'){
-            return `<ha-icon icon="mdi:exclamation" style="width: 12px; height: 12px; color: white;"></ha-icon>`
+            return `<ha-icon icon="mdi:exclamation" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`
           }
         ]]]
     state:
@@ -83,7 +83,7 @@
               - line-height: 14px
               - background-color: >
                   [[[
-                    return "rgba(var(--couleur-rouge),1)";
+                    return "rgba(var(--color-red),1)";
                   ]]]
         value: unavailable
     styles:
@@ -91,14 +91,15 @@
         - border-radius: 21px 8px 8px 21px 
         - box-shadow: none
         - padding: 0px
+        # - background-color: 'rgba(var(--color-theme),0)'
       grid:
         - grid-template-areas: '"i n" "i l"'
         - grid-template-columns: min-content auto
         - grid-template-rows: min-content min-content
       icon:
-        - color: 'rgba(var(--couleur-theme),0.2)'
+        - color: 'rgba(var(--color-theme),0.2)'
       img_cell:
-        - background-color: 'rgba(var(--couleur-theme),0.05)'
+        - background-color: 'rgba(var(--color-theme),0.05)'
         - border-radius: 50%
         - place-self: center
         - width: 42px
@@ -127,7 +128,7 @@
 ########################################################################################################
 
   icon_info_bg:
-    color: var(--google-grey-500)
+    color: var(--google-grey)
     show_icon: true
     show_name: true
     show_label: true
@@ -136,7 +137,7 @@
       notification: >
         [[[
           if (entity.state =='unavailable'){
-            return `<ha-icon icon="mdi:exclamation" style="width: 12px; height: 12px; color: white;"></ha-icon>`
+            return `<ha-icon icon="mdi:exclamation" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`
           }
         ]]]
     state:
@@ -154,12 +155,12 @@
               - line-height: 14px
               - background-color: >
                   [[[
-                    return "rgba(var(--couleur-rouge),1)";
+                    return "rgba(var(--color-red),1)";
                   ]]]
         value: unavailable
     styles:
       card:
-        - border-radius: 20px
+        - border-radius: var(--border-radius)
         - box-shadow: var(--box-shadow)
         - padding: 12px
       grid:
@@ -167,9 +168,9 @@
         - grid-template-columns: min-content auto
         - grid-template-rows: min-content min-content
       icon:
-        - color: 'rgba(var(--couleur-theme),0.2)'
+        - color: 'rgba(var(--color-theme),0.2)'
       img_cell:
-        - background-color: 'rgba(var(--couleur-theme),0.05)'
+        - background-color: 'rgba(var(--color-theme),0.05)'
         - border-radius: 50%
         - place-self: center
         - width: 42px
@@ -183,14 +184,14 @@
       label:
         - justify-self: start
         - align-self: start
-        - font-weight: bolder
+        - font-weight: bold
         - font-size: 12px
         - filter: opacity(40%)
         - margin-left: 12px
       state:
         - justify-self: start
         - align-self: start
-        - font-weight: bolder
+        - font-weight: bold
         - font-size: 12px
         - filter: opacity(40%)
         - margin-left: 12px
@@ -222,7 +223,6 @@
 ########################################################################################################
 
   icon_info_line:
-    color: var(--google-grey-500)
     show_icon: true
     show_name: false
     show_label: true
@@ -235,11 +235,14 @@
         - grid-template-areas: '"i l"'
         - grid-template-columns: max_content auto
         - grid-template-rows: min-content
+      icon:
+        - filter: opacity(40%)
       img_cell:
         - place-self: center
         - width: 14px
         - height: 24px
       label:
+        - padding: 2px
         - justify-self: start
         - align-self: center
         - font-weight: bolder
@@ -248,68 +251,195 @@
         - filter: opacity(40%)
 
 ########################################################################################################
+#                                                                                                      #
+#                                                CHIPS                                                 #
+#                                                                                                      #
+########################################################################################################
 
-  widget_icon:
+  chips:
     tap_action:
-      action: toggle
-    color: var(--google-grey-500)
-    show_icon: true
+      action: more-info
+    show_icon: false
     show_name: false
-    size: 20px
+    show_state: false
+    show_label: true
+    size: 80%
     styles:
+      img_cell:
+        - width: 24px
       card:
-        - box-shadow: none
-        - padding: 0px
-        - background-color: 'rgba(var(--couleur-theme),0.05)'
-        - border-radius: 14px
-        - place-self: center
-        - height: 42px
+        - border-radius: 18px
+        - box-shadow: var(--box-shadow)
+        - height: 36px
+        - width: auto
+        - padding-left: 6px
+        - padding-right: 6px
+      grid:
+        - grid-template-areas: '"l"'
+      label:
+        - justify-self: center
+        - padding: 0px 6px
+        - font-weight: bold
+        - font-size: 14px
+
+####################################################
+#                                                  #
+#                    CHIPS ICON                    #
+#                                                  #
+####################################################
+  chips_icon:
+    template: chips
+    show_icon: true
+    size: 80%
+    show_state: false
+    variables:
+      icon: "mdi:arrow-left"
+    icon: '[[[ return variables.icon ]]]'
+    styles:
+      grid:
+        - grid-template-areas: '"i l"'
+      label:
+        - justify-self: center
+        - padding: 0px 6px
+        - font-weight: bold
+        - font-size: 14px
+
+####################################################
+#                                                  #
+#                POWER CONSUMPTION                 #
+#                                                  #
+####################################################
+
+  chips_power_consumption:
+    template: chips
+    tap_action:
+      action: navigate
+      navigation_path: /lovelace/consommation
+    label: |
+      [[[
+        var price = states['sensor.atome_price_conso_today'].state;
+        return '⚡ ' +  price + '€' ;
+      ]]]
+
+  chips_power_consumption_price:
+    template: chips
+    show_icon: false
+    show_state: false
+    show_label: true
+    tap_action:
+      action: navigate
+      navigation_path: /lovelace/consommation
+    label: |
+      [[[
+        var price = states['sensor.atome_price_conso_today'].state;
+        var conso = states['sensor.atome_daily'].state;
+        return '⚡ ' +  price + '€ • ' + conso + 'kWh';
+      ]]]
+####################################################
+#                                                  #
+#                   TEMPERATURE                    #
+#                                                  #
+####################################################
+
+  chips_temperature:
+    template: chips
+    tap_action:
+        action: navigate
+        navigation_path: /lovelace/temperature
+    label: |
+      [[[
+        var inter = states['sensor.fibaro_multisensor_salon_temperature'].state;
+        var exter = states['sensor.fibaro_multisensor_balcon_temperature'].state;
+        var icon = '☀️';
+        if (states['sensor.dark_sky_icon'].state == 'clear-day'){
+          var icon = '☀️';
+        } else if(states['sensor.dark_sky_icon'].state == 'clear-night'){
+          var icon = '🌙';
+        } else if(states['sensor.dark_sky_icon'].state == 'rain'){
+          var icon = '🌧️';
+        } else if(states['sensor.dark_sky_icon'].state == 'snow'){
+          var icon = '❄️';
+        } else if(states['sensor.dark_sky_icon'].state == 'sleet'){
+          var icon = '❄️';
+        } else if(states['sensor.dark_sky_icon'].state == 'wind'){
+          var icon = '🌫️';
+        } else if(states['sensor.dark_sky_icon'].state == 'fog'){
+          var icon = '🌫️';
+        } else if(states['sensor.dark_sky_icon'].state == 'cloudy'){
+          var icon = '☁️';
+        } else if(states['sensor.dark_sky_icon'].state == 'partly-cloudy-day'){
+          var icon = '⛅️';
+        } else if(states['sensor.dark_sky_icon'].state == 'partly-cloudy-night'){
+          var icon = '⛅';
+        }
+        return icon + ' ' + exter + '° / ' +  inter + '°' ;
+      ]]]
+
+####################################################
+#                                                  #
+#                 LOCALISATION                     #
+#                                                  #
+####################################################
+
+  chips_localisation_present:
+    tap_action:
+      action: navigate
+      navigation_path: /lovelace/localisation
+    label: |
+      [[[
+        var personnes_presentes = states['sensor.people_count_present'].state;
+        return '🏠 ' +  personnes_presentes;
+      ]]]
+    template: chips
+    
+####################################################
+
+  chips_localisation_absent:
+    tap_action:
+      action: navigate
+      navigation_path: /lovelace/localisation
+    label: |
+      [[[
+        var personnes_presentes = states['sensor.people_count_absent'].state;
+        return '🚶 ' +  personnes_presentes;
+      ]]]
+    template: chips
+
+####################################################
+    
+  chips_localisation_nuit:
+    template: chips
+    tap_action:
+      action: navigate
+      navigation_path: /lovelace/localisation
+    label: |
+      [[[
+        var personnes_presentes = states['sensor.people_count_nuit'].state;
+        return '🌙 ' +  personnes_presentes;
+      ]]]
+      
+####################################################
+#                                                  #
+#                    RETURN                        #
+#                                                  #
+####################################################
+
+  chips_return:
+    template: chips
+    show_icon: true
+    icon: 'mdi:arrow-left'
+    size: 80%
+    styles:
       grid:
         - grid-template-areas: '"i"'
-      icon:
-        - color: 'rgba(var(--couleur-theme),0.9)'
-        
-####################################################
-#                                                  #
-#                    COULEUR                       #
-#                                                  #
-####################################################
-  jaune:
-    state:
-      - styles:
-          icon:
-            - color: 'rgba(var(--couleur-jaune),1)'
-          img_cell:
-            - background-color: 'rgba(var(--couleur-jaune), 0.2)'
-        value: 'on'
+    tap_action:
+      action: navigate
+      navigation_path: /lovelace/home
 
-####################################################
 
-  bleu:
-    state:
-      - styles:
-          icon:
-            - color: 'rgba(var(--couleur-bleu),1)'
-          img_cell:
-            - background-color: 'rgba(var(--couleur-bleu), 0.2)'
-        value: 'on'
-
-####################################################
-#                                                  #
-#                    BURDURES                      #
-#                                                  #
-####################################################
-
-  bordures:
-    styles:
-      card:
-        - width: 0px
-        
-
-        
 ########################################################################################################
 #                                                                                                      #
-#                                               VOLETS                                                 #
+#                                               COVER                                                  #
 #                                                                                                      #
 ########################################################################################################
 
@@ -346,13 +476,13 @@
           ]]]
         styles:
           icon:
-            - color: 'rgba(var(--couleur-bleu),1)'
+            - color: 'rgba(var(--color-blue),1)'
           img_cell:
-            - background-color: 'rgba(var(--couleur-bleu),0.2)'
+            - background-color: 'rgba(var(--color-blue),0.2)'
 
 ####################################################
 #                                                  #
-#                VOLETS AVEC BOUTONS               #
+#                   COVER BUTTONS                  #
 #                                                  #
 ####################################################
 
@@ -362,7 +492,7 @@
       name: "Default name"
     styles:
       card:
-        - border-radius: 20px
+        - border-radius: var(--border-radius)
         - box-shadow: var(--box-shadow)
         - padding: 12px
       grid:
@@ -419,7 +549,7 @@
 
 ########################################################################################################
 #                                                                                                      #
-#                                             LUMIERES                                                 #
+#                                              LIGHT                                                   #
 #                                                                                                      #
 ########################################################################################################
 
@@ -442,19 +572,75 @@
           }
       ]]]
     template: 
-      - jaune
+      - yellow
 
 ########################################################################################################
+
+  light_slider:
+    variables:
+      name: "Default name"
+    show_icon: false
+    show_name: false
+    show_label: false
+    styles:
+      card:
+        - border-radius: var(--border-radius)
+        - box-shadow: var(--box-shadow)
+        - padding: 12px
+      grid:
+        - grid-template-areas: '"item1" "item2"'
+        - grid-template-columns: 1fr
+        - grid-template-rows: min-content  min-content
+        - row-gap: 12px
+    state:
+      - operator: template
+        value: >
+          [[[
+            return entity.state == 'on'
+          ]]]
+        styles:
+          card:
+            - background-color: 'rgba(var(--color-background-yellow),var(--opacity-bg))'
+    custom_fields:
+      item1:
+        card:
+          entity: '[[[ return variables.entity ]]]'
+          name: '[[[ return variables.name ]]]'
+          template:
+            - icon_info
+            - light
+          type: 'custom:button-card'
+      item2:
+        card:
+          type: 'custom:slider-card'
+          entity: '[[[ return variables.entity ]]]'
+          radius: 14px
+          height: 42px
+          mainSliderColor: rgba(var(--color-yellow),1)
+          secondarySliderColor: rgba(var(--color-yellow),0.2)
+          mainSliderColorOff: rgba(var(--color-theme),0.05)
+          secondarySliderColorOff: rgba(var(--color-theme),0.05)
+          thumbHorizontalPadding: '0px'
+          thumbVerticalPadding: '0px'   
+          thumbWidth: 0px
+          card_mod:
+          style: |
+            ha-card {
+              border-radius: 14px;
+              box-shadow: none;
+            }
+########################################################################################################
 #                                                                                                      #
-#                                           GENERIQUE                                                  #
+#                                             GENERIC                                                  #
 #                                                                                                      #
 ########################################################################################################
-  generique:
+  
+  generic:
     label: >
         [[[return entity.state + " " + entity.attributes.unit_of_measurement]]]
     styles:
       icon:
-        - color: 'rgba(var(--couleur-theme),0.9)'
+        - color: 'rgba(var(--color-theme),0.9)'
       grid:
         - grid-template-areas: '"i l" "i n"'
         - grid-template-columns: min-content auto
@@ -476,11 +662,11 @@
 
 ########################################################################################################
 #                                                                                                      #
-#                                             PRISE                                                    #
+#                                             OUTLET                                                   #
 #                                                                                                      #
 ########################################################################################################
 
-  prise:
+  outlet:
     tap_action:
       action: more-info
     label: |-
@@ -490,76 +676,61 @@
         var etat = "Off";
       return etat ; ]]]
     template: 
-      - jaune
-
-####################################################
-
-  prise_conso:
-    hold_action:
-      action: more-info
-      entity: sensor.shelly_prise_salon_current_consumption
-    label: |-
-      [[[ if (entity.state =='on')
-         var etat = "On • " + states["sensor.shelly_prise_salon_current_consumption"].state + "W"; 
-         else
-        var etat = "Off";
-      return etat ; ]]]
-    template: prise
+      - yellow
     
 ########################################################################################################
 #                                                                                                      #
-#                                           MOUVEMENT                                                  #
+#                                       BINARY SENSOR                                                  #
 #                                                                                                      #
 ########################################################################################################
 
-  mouvement:
+  binary_sensor:
     show_last_changed: true
     template: 
-      - bleu
+      - blue
 
 ########################################################################################################
 #                                                                                                      #
-#                                         CHAUFFE EAU                                                  #
+#                                         WATER HEATER                                                 #
 #                                                                                                      #
 ########################################################################################################
 
-  chauffe-eau:
+  water_heater:
     icon: 'mdi:waves'
     tap_action:
       action: more-info
     hold_action:
       action: more-info
-      entity: switch.shelly_module_couloir
     label: >-
       [[[ 
           if (entity.state == 'off'){
             return 'Arrêt forcé';
           }else{
-            if (states["sensor.shelly_module_couloir_current_consumption"].state > 0){
-              var etat = "Chauffe • " + states["sensor.shelly_module_couloir_current_consumption"].state + "W";
+            if (states["sensor.shelly_prise_salon_conso"].state > 0){
+              var etat = "Chauffe • " + states["sensor.shelly_prise_salon_conso"].state + "W";
             }else{
               var etat = "Inactif";
             }
             return etat ;
           }
       ]]]
-    styles:
-      icon:
-        - color: |
-            [[[
-               if (states["sensor.shelly_module_couloir_current_consumption"].state > 0)
-                 return 'rgba(var(--couleur-rouge),1)'
-               else
-                 return 'rgba(var(--couleur-theme),0.2)'
-            ]]]
-      img_cell:
-        - background-color: |
-            [[[
-               if (states["sensor.shelly_module_couloir_current_consumption"].state > 0)
-                 return 'rgba(var(--couleur-rouge),0.2)'
-               else
-                 return 'rgba(var(--couleur-theme),0.05)'
-            ]]]
+    state:
+      - operator: template
+        value: >
+          [[[
+            return (states['sensor.shelly_prise_salon_conso'].state > 0)
+          ]]]
+        styles:
+          icon:
+            - color: 'rgba(var(--color-red),1)'
+          img_cell:
+            - background-color: 'rgba(var(--color-red),0.2)'
+          card:
+            - background-color: 'rgba(var(--color-background-red),var(--opacity-bg))'
+          name:
+            - color: 'rgba(var(--color-red-text),1)'
+          label:
+            - color: 'rgba(var(--color-red-text),1)'
 
 ########################################################################################################
 #                                                                                                      #
@@ -584,23 +755,23 @@
             return (entity.attributes.temperature ) + '°' + ' • ' + etat ;
           }
       ]]]
-    styles:
-      icon:
-        - color: |
-            [[[
-               if (states['light.qubino'].state == 'on')
-                 return 'rgba(var(--couleur-rouge),1)'
-               else
-                 return 'rgba(var(--couleur-theme),0.2)'
-            ]]]
-      img_cell:
-        - background-color: |
-            [[[
-               if (states['light.qubino'].state == 'on')
-                 return 'rgba(var(--couleur-rouge),0.2)'
-               else
-                 return 'rgba(var(--couleur-theme),0.05)'
-            ]]]
+    state:
+      - operator: template
+        value: >
+          [[[
+            return states['light.qubino'].state == 'on'
+          ]]]
+        styles:
+          icon:
+            - color: 'rgba(var(--color-red),1)'
+          img_cell:
+            - background-color: 'rgba(var(--color-red),0.2)'
+          card:
+            - background-color: 'rgba(var(--color-background-red),var(--opacity-bg))'
+          name:
+            - color: 'rgba(var(--color-red-text),1)'
+          label:
+            - color: 'rgba(var(--color-red-text),1)'
             
 ########################################################################################################
 #                                                                                                      #
@@ -618,7 +789,7 @@
         var etat = "Off";
       return etat ; ]]]
     template: 
-      - bleu
+      - blue
 ########################################################################################################
 #                                                                                                      #
 #                                              MEDIA                                                   #
@@ -634,7 +805,7 @@
       ]]]
     icon: |
       [[[
-          var application = states["media_player.chromecast_audio_appartement"].attributes.app_name;
+          var application = entity.attributes.app_name;
           var icon = 'mdi:speaker';
           if (application == 'Oto music'){
             var icon = 'mdi:music-circle';
@@ -648,10 +819,12 @@
           return icon ;
       ]]]
     styles:
+      label:
+        - opacity: '0.6'
       icon:
-        - color: 'rgba(var(--couleur-theme),0.2)'
+        - color: 'rgba(var(--color-theme),0.2)'
       img_cell:
-        - background-color: 'rgba(var(--couleur-theme),0.05)'
+        - background-color: 'rgba(var(--color-theme),0.05)'
       card:
         - background-blend-mode: multiply
         - background: >
@@ -684,7 +857,7 @@
             - color: white
             - filter: opacity(100%)
           img_cell:
-            - background-color: 'rgba(var(--couleur-theme),0.0)'
+            - background-color: 'rgba(var(--color-theme),0.0)'
           icon:
             - color: white
           name:
@@ -702,9 +875,9 @@
       ]]]
     styles:
       icon:
-        - color: 'rgba(var(--couleur-theme),0.2)'
+        - color: 'rgba(var(--color-theme),0.2)'
       img_cell:
-        - background-color: 'rgba(var(--couleur-theme),0.05)'
+        - background-color: 'rgba(var(--color-theme),0.05)'
     state:
       - operator: template
         value: >
@@ -727,8 +900,71 @@
                   return 'center / cover url(' + image + ')';
                 ]]]
           icon:
-            - color: 'rgba(var(--couleur-theme),0.0)'
+            - color: 'rgba(var(--color-theme),0.0)'
+            
+####################################################
 
+  media_buttons:
+    variables:
+      entity: "media_player.cuisine"
+      name: "Default name"
+    styles:
+      card:
+        - border-radius: var(--border-radius)
+        - box-shadow: var(--box-shadow)
+        - padding: 12px
+      grid:
+        - grid-template-areas: '"item1" "item2"'
+        - grid-template-columns: 1fr
+        - grid-template-rows: min-content  min-content
+        - row-gap: 12px
+    custom_fields:
+      item1:
+        card:
+          entity: '[[[ return variables.entity ]]]'
+          name: '[[[ return variables.name ]]]'
+          tap_action:
+            action: more-info
+          template:
+            - icon_info
+            - media_mini_album
+          type: 'custom:button-card'
+      item2:
+        card:
+          template: list_items
+          type: 'custom:button-card'
+          custom_fields:
+            item1:
+              card:
+                icon: 'mdi:skip-previous'
+                tap_action:
+                  action: call-service
+                  service: media_player.media_previous_track
+                  service_data:
+                    entity_id: '[[[ return variables.entity ]]]'
+                type: 'custom:button-card'
+                template: widget_icon
+            item2:
+              card:
+                icon: 'mdi:pause'
+                tap_action:
+                  action: call-service
+                  service: media_player.media_play_pause
+                  service_data:
+                    entity_id: '[[[ return variables.entity ]]]'
+                type: 'custom:button-card'
+                template: widget_icon
+            item3:
+              card:
+                icon: 'mdi:skip-next'
+                tap_action:
+                  action: call-service
+                  service: media_player.media_next_track
+                  service_data:
+                    entity_id: '[[[ return variables.entity ]]]'
+                type: 'custom:button-card'
+                template: widget_icon
+                
 ########################################################################################################
 #                                                                                                      #
 #                                          PLAYSTATION                                                 #
@@ -747,22 +983,22 @@
       ]]]
     styles:
       icon:
-        - color: 'rgba(var(--couleur-theme),0.2)'
+        - color: 'rgba(var(--color-theme),0.2)'
       img_cell:
-        - background-color: 'rgba(var(--couleur-theme),0.05)'
+        - background-color: 'rgba(var(--color-theme),0.05)'
     state:
       - value: 'idle'
         styles:
           icon:
-            - color: 'rgba(var(--couleur-bleu),1)'
+            - color: 'rgba(var(--color-blue),1)'
           img_cell:
-            - background-color: 'rgba(var(--couleur-bleu), 0.2)'
+            - background-color: 'rgba(var(--color-blue), 0.2)'
       - value: 'standby'
         styles:
           icon:
-            - color: 'rgba(var(--couleur-theme),0.2)'
+            - color: 'rgba(var(--color-theme),0.2)'
           img_cell:
-            - background-color: 'rgba(var(--couleur-theme),0.05)'
+            - background-color: 'rgba(var(--color-theme),0.05)'
       - operator: template
         value: >
           [[[
@@ -796,10 +1032,11 @@
     
 ########################################################################################################
 #                                                                                                      #
-#                                            PERSONNE                                                  #
+#                                              PERSON                                                  #
 #                                                                                                      #
 ########################################################################################################
-  personne:
+
+  person:
     tap_action:
       action: more-info
     show_label: true
@@ -807,7 +1044,7 @@
         [[[return entity.state]]]
     styles:
       icon:
-        - color: 'rgba(var(--couleur-theme),0.9)'
+        - color: 'rgba(var(--color-theme),0.9)'
       custom_fields:
         notification:
           - border-radius: 50%
@@ -826,8 +1063,10 @@
 #                                                  #
 ####################################################
 
-  personne-thomas:
-    template: personne
+  person-thomas:
+    variables:
+      person: "thomas"
+    template: person
     hold_action:
       action: more-info
       entity: input_boolean.thomas_nuit
@@ -837,21 +1076,21 @@
           - background-color: >
               [[[
                 if (states['input_select.localisation_thomas'].state == 'Present'){
-                  return "rgba(var(--couleur-bleu),1)";
+                  return "rgba(var(--color-blue),1)";
                 }else{
-                  return "rgba(var(--couleur-vert),1)";
+                  return "rgba(var(--color-green),1)";
                 }
               ]]]
     custom_fields:
       notification: >
         [[[
           if (states['input_boolean.thomas_nuit'].state == 'on'){
-            return `<ha-icon icon="mdi:power-sleep" style="width: 10px; height: 10px; color: white;"></ha-icon>`
+            return `<ha-icon icon="mdi:power-sleep" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>`
           }else{
             if (states['input_select.localisation_thomas'].state == 'Present'){
-              return `<ha-icon icon="mdi:home-variant" style="width: 10px; height: 10px; color: white;"></ha-icon>`
+              return `<ha-icon icon="mdi:home-variant" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>`
             }else{
-              return `<ha-icon icon="mdi:walk" style="width: 10px; height: 10px; color: white;"></ha-icon>`
+              return `<ha-icon icon="mdi:pine-tree" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>`
             }
           }
         ]]]
@@ -863,8 +1102,8 @@
 #                                                  #
 ####################################################
 
-  personne-milena:
-    template: personne
+  person-milena:
+    template: person
     hold_action:
       action: more-info
       entity: input_boolean.milena_nuit
@@ -874,21 +1113,21 @@
           - background-color: >
               [[[
                 if (states['input_select.localisation_milena'].state == 'Present'){
-                  return "rgba(var(--couleur-bleu),1)";
+                  return "rgba(var(--color-blue),1)";
                 }else{
-                  return "rgba(var(--couleur-vert),1)";
+                  return "rgba(var(--color-green),1)";
                 }
               ]]]
     custom_fields:
       notification: >
         [[[
           if (states['input_boolean.milena_nuit'].state == 'on'){
-            return `<ha-icon icon="mdi:power-sleep" style="width: 10px; height: 10px; color: white;"></ha-icon>`
+            return `<ha-icon icon="mdi:power-sleep" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>`
           }else{
             if (states['input_select.localisation_milena'].state == 'Present'){
-              return `<ha-icon icon="mdi:home-variant" style="width: 10px; height: 10px; color: white;"></ha-icon>`
+              return `<ha-icon icon="mdi:home-variant" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>`
             }else{
-              return `<ha-icon icon="mdi:walk" style="width: 10px; height: 10px; color: white;"></ha-icon>`
+              return `<ha-icon icon="mdi:pine-tree" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>`
             }
           }
         ]]]
@@ -899,7 +1138,7 @@
 #                                                  #
 ####################################################
 
-  personne-invite:
+  person-invite:
     tap_action:
       action: more-info
     show_label: true
@@ -913,20 +1152,20 @@
       grid:
         - grid-template-areas: '"i n" "i l"'
       icon:
-        - color: 'rgba(var(--couleur-theme),0.2)'
+        - color: 'rgba(var(--color-theme),0.2)'
       img_cell:
-        - background-color: 'rgba(var(--couleur-theme),0.05)'
+        - background-color: 'rgba(var(--color-theme),0.05)'
     custom_fields:
       notification: >
         [[[
           if (entity.state =='on'){
-            return `<ha-icon icon="mdi:home-variant" style="width: 10px; height: 10px; color: white;"></ha-icon>`
+            return `<ha-icon icon="mdi:home-variant" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>`
           }
         ]]]
     state:
       - styles:
           icon:
-            - color: 'rgba(var(--couleur-theme),0.9)'
+            - color: 'rgba(var(--color-theme),0.9)'
           custom_fields:
             notification:
               - border-radius: 50%
@@ -940,7 +1179,7 @@
               - line-height: 14px
               - background-color: >
                   [[[
-                    return "rgba(var(--couleur-bleu),1)";
+                    return "rgba(var(--color-blue),1)";
                   ]]]
         value: 'on'
         
@@ -978,10 +1217,46 @@
         }
       ]]]
     template: 
-      - bleu
+      - blue
 
 
+####################################################
+#                                                  #
+#                      COLORS                      #
+#                                                  #
+####################################################
 
+  yellow:
+    state:
+      - styles:
+          icon:
+            - color: 'rgba(var(--color-yellow),1)'
+          img_cell:
+            - background-color: 'rgba(var(--color-yellow), 0.2)'
+          card:
+            - background-color: 'rgba(var(--color-background-yellow),var(--opacity-bg))'
+          name:
+            - color: 'rgba(var(--color-yellow-text),1)'
+          label:
+            - color: 'rgba(var(--color-yellow-text),1)'
+        value: 'on'
+
+####################################################
+
+  blue:
+    state:
+      - styles:
+          icon:
+            - color: 'rgba(var(--color-blue),1)'
+          img_cell:
+            - background-color: 'rgba(var(--color-blue), 0.2)'
+          card:
+            - background-color: 'rgba(var(--color-background-blue), var(--opacity-bg))'
+          name:
+            - color: 'rgba(var(--color-blue-text),1)'
+          label:
+            - color: 'rgba(var(--color-blue-text),1)'
+        value: 'on'
 
 ####################################################
 #                                                  #
@@ -992,11 +1267,11 @@
   graph:
     variables:
       entity: "sensor.xiaomi_multisensor_salon_humidite"
-      color: "var(--google-blue-500)"
+      color: "var(--info-color)"
       name: "Default name"
     styles:
       card:
-        - border-radius: 20px
+        - border-radius: var(--border-radius)
         - box-shadow: var(--box-shadow)
         - padding: 0px
       grid:
@@ -1010,7 +1285,7 @@
           name: '[[[ return variables.name ]]]'
           template: 
             - icon_info
-            - generique
+            - generic
           styles:
             card:
               - padding: 12px
@@ -1038,7 +1313,7 @@
 #                                                  #
 ####################################################
   battery:
-    template: generique
+    template: generic
     icon: |
       [[[
           var battery = entity.state;
@@ -1069,169 +1344,48 @@
            return icon ;
       ]]]
 
-
 ########################################################################################################
 #                                                                                                      #
-#                                                PILULE                                                #
+#                                                WIDGET ICON                                           #
 #                                                                                                      #
 ########################################################################################################
 
-  pilule:
+  widget_icon:
     tap_action:
-      action: more-info
-    show_icon: false
-    show_name: false
-    show_state: false
-    show_label: true
-    size: 80%
-    styles:
-      img_cell:
-        - width: 24px
-      card:
-        - border-radius: 30px
-        - box-shadow: var(--box-shadow)
-        - height: 36px
-        - width: auto
-        - padding-left: 6px
-        - padding-right: 6px
-      grid:
-        - grid-template-areas: '"l"'
-      label:
-        - justify-self: center
-        - padding: 0px 6px
-        - font-weight: bold
-        - font-size: 14px
-
-####################################################
-#                                                  #
-#                  CONSOMMATION                    #
-#                                                  #
-####################################################
-
-  pilule_consommation:
-    template: pilule
-    tap_action:
-      action: navigate
-      navigation_path: /lovelace/consommation
-    label: |
-      [[[
-        var price = states['sensor.atome_price_conso_today'].state;
-        return '⚡ ' +  price + '€' ;
-      ]]]
-
-  pilule_consommation_prix:
-    template: pilule
-    show_icon: false
-    show_state: false
-    show_label: true
-    tap_action:
-      action: navigate
-      navigation_path: /lovelace/consommation
-    label: |
-      [[[
-        var price = states['sensor.atome_price_conso_today'].state;
-        var conso = states['sensor.atome_daily'].state;
-        return '⚡ ' +  price + '€ • ' + conso + 'kWh';
-      ]]]
-####################################################
-#                                                  #
-#                   TEMPERATURE                    #
-#                                                  #
-####################################################
-
-  pilule_temperature:
-    template: pilule
-    tap_action:
-        action: navigate
-        navigation_path: /lovelace/temperature
-    label: |
-      [[[
-        var inter = states['sensor.fibaro_multisensor_salon_temperature'].state;
-        var exter = states['sensor.xiaomi_multisensor_chambre_temperature'].state;
-        var icon = '☀️';
-        if (states['sensor.dark_sky_icon'].state == 'clear-day'){
-          var icon = '☀️';
-        } else if(states['sensor.dark_sky_icon'].state == 'clear-night'){
-          var icon = '🌙';
-        } else if(states['sensor.dark_sky_icon'].state == 'rain'){
-          var icon = '🌧️';
-        } else if(states['sensor.dark_sky_icon'].state == 'snow'){
-          var icon = '❄️';
-        } else if(states['sensor.dark_sky_icon'].state == 'sleet'){
-          var icon = '❄️';
-        } else if(states['sensor.dark_sky_icon'].state == 'wind'){
-          var icon = '🌫️';
-        } else if(states['sensor.dark_sky_icon'].state == 'fog'){
-          var icon = '🌫️';
-        } else if(states['sensor.dark_sky_icon'].state == 'cloudy'){
-          var icon = '☁️';
-        } else if(states['sensor.dark_sky_icon'].state == 'partly-cloudy-day'){
-          var icon = '⛅️';
-        } else if(states['sensor.dark_sky_icon'].state == 'partly-cloudy-night'){
-          var icon = '⛅';
-        }
-        return icon + ' ' + inter + '° / ' +  exter + '°' ;
-      ]]]
-
-####################################################
-#                                                  #
-#                 localisation                     #
-#                                                  #
-####################################################
-  pilule_localisation_present:
-    tap_action:
-      action: navigate
-      navigation_path: /lovelace/localisation
-    label: |
-      [[[
-        var personnes_presentes = states['sensor.people_count_present'].state;
-        return '🏠 ' +  personnes_presentes;
-      ]]]
-    template: pilule
-
-  pilule_localisation_absent:
-    tap_action:
-      action: navigate
-      navigation_path: /lovelace/localisation
-    label: |
-      [[[
-        var personnes_presentes = states['sensor.people_count_absent'].state;
-        return '🚶 ' +  personnes_presentes;
-      ]]]
-    template: pilule
-    
-  pilule_localisation_nuit:
-    template: pilule
-    tap_action:
-      action: navigate
-      navigation_path: /lovelace/localisation
-    label: |
-      [[[
-        var personnes_presentes = states['sensor.people_count_nuit'].state;
-        return '🌙 ' +  personnes_presentes;
-      ]]]
-      
-####################################################
-#                                                  #
-#                 BOUTON RETOUR                    #
-#                                                  #
-####################################################
-
-  return_button:
-    template: pilule
+      action: toggle
+    color: var(--google-grey)
     show_icon: true
-    icon: 'mdi:arrow-left'
-    size: 80%
+    show_name: false
+    size: 20px
     styles:
+      card:
+        - box-shadow: none
+        - padding: 0px
+        - background-color: 'rgba(var(--color-theme),0.05)'
+        - border-radius: 14px
+        - place-self: center
+        - height: 42px
       grid:
         - grid-template-areas: '"i"'
-    tap_action:
-      action: navigate
-      navigation_path: /lovelace/home
+      icon:
+        - color: 'rgba(var(--color-theme),0.9)'
+
+
+####################################################
+#                                                  #
+#                      EDGE                        #
+#                                                  #
+####################################################
+
+  edge:
+    styles:
+      card:
+        - width: 0px
+
 
 ########################################################################################################
 #                                                                                                      #
-#                                           LOCALISATION                                               #
+#                                                SCENE                                                 #
 #                                                                                                      #
 ########################################################################################################
   scene:
@@ -1241,7 +1395,7 @@
       [[[ return (entity.attributes.value )]]]
     styles:
       card:
-        - border-radius: 20px
+        - border-radius: var(--border-radius)
         - box-shadow: var(--box-shadow)
         - padding: 10px 0px 8px 0px 
       grid:
@@ -1258,147 +1412,68 @@
         - font-size: 12px
         - filter: opacity(40%)
       icon:
-        - color: |
-            [[[
-               if (states['input_select.localisation_thomas'].state == entity.attributes.friendly_name){
-                 if (states['input_select.localisation_thomas'].state == 'Present')
-                   return 'rgba(var(--couleur-bleu),1)'
-                 else if (states['input_select.localisation_thomas'].state == 'Absent')
-                   return 'rgba(var(--couleur-vert),1)'
-                 else if (states['input_select.localisation_thomas'].state == 'Nuit')
-                   return 'rgba(var(--couleur-bleu),1)'
-                 else if (states['input_select.localisation_thomas'].state == 'Travail')
-                   return 'rgba(var(--couleur-vert),1)'
-                 else if (states['input_select.localisation_thomas'].state == 'Miléna')
-                   return 'rgba(var(--couleur-vert),1)'
-                 else if (states['input_select.localisation_thomas'].state == 'Parents')
-                   return 'rgba(var(--couleur-vert),1)'
-               }else{
-                 return 'rgba(var(--couleur-theme),0.2)'
-               }
-            ]]]
+        - color: 'rgba(var(--color-theme),0.2)'
       img_cell:
-        - background-color: |
-            [[[
-               if (states['input_select.localisation_thomas'].state == entity.attributes.friendly_name){
-                 if (states['input_select.localisation_thomas'].state == 'Present')
-                   return 'rgba(var(--couleur-bleu),0.2)'
-                 else if (states['input_select.localisation_thomas'].state == 'Absent')
-                   return 'rgba(var(--couleur-vert),0.2)'
-                 else if (states['input_select.localisation_thomas'].state == 'Nuit')
-                   return 'rgba(var(--couleur-bleu),0.2)'
-                 else if (states['input_select.localisation_thomas'].state == 'Travail')
-                   return 'rgba(var(--couleur-vert),0.2)'
-                 else if (states['input_select.localisation_thomas'].state == 'Miléna')
-                   return 'rgba(var(--couleur-vert),0.2)'
-                 else if (states['input_select.localisation_thomas'].state == 'Parents')
-                   return 'rgba(var(--couleur-vert),0.2)'
-               }else{
-                 return 'rgba(var(--couleur-theme),0.05)'
-               }
-            ]]]
+        - background-color: 'rgba(var(--color-theme),0.05)'
         - border-radius: 50%
         - place-self: center
         - width: 42px
         - height: 42px
-        
-  localisation:
-    aspect_ratio: 4/5
-    tap_action:
-      action: more-info
-      entity: input_select.localisation_thomas
-    show_icon: true
-    show_name: true
-    show_state: false
-    show_label: true
-    label: |
-      [[[ return (entity.attributes.value )]]]
-    size: 20px
-    styles:
-      card:
-        - border-radius: 20px
-        - box-shadow: var(--box-shadow)
-      grid:
-        - grid-template-areas: '"i" "n" "l"'
-        - grid-template-rows: 3fr 1fr 1fr
-        - grid-template-columns: 1fr
-      icon:
-        - color: |
-            [[[
-               if (states['input_select.localisation_thomas'].state == entity.attributes.friendly_name){
-                 if (states['input_select.localisation_thomas'].state == 'Present')
-                   return 'rgba(var(--couleur-bleu),1)'
-                 else if (states['input_select.localisation_thomas'].state == 'Absent')
-                   return 'rgba(var(--couleur-vert),1)'
-                 else if (states['input_select.localisation_thomas'].state == 'Nuit')
-                   return 'rgba(var(--couleur-bleu),1)'
-                 else if (states['input_select.localisation_thomas'].state == 'Travail')
-                   return 'rgba(var(--couleur-vert),1)'
-                 else if (states['input_select.localisation_thomas'].state == 'Miléna')
-                   return 'rgba(var(--couleur-vert),1)'
-                 else if (states['input_select.localisation_thomas'].state == 'Parents')
-                   return 'rgba(var(--couleur-vert),1)'
-               }else{
-                 return 'rgba(var(--couleur-theme),0.2)'
-               }
-            ]]]
-      img_cell:
-        - background-color: |
-            [[[
-               if (states['input_select.localisation_thomas'].state == entity.attributes.friendly_name){
-                 if (states['input_select.localisation_thomas'].state == 'Present')
-                   return 'rgba(var(--couleur-bleu),0.2)'
-                 else if (states['input_select.localisation_thomas'].state == 'Absent')
-                   return 'rgba(var(--couleur-vert),0.2)'
-                 else if (states['input_select.localisation_thomas'].state == 'Nuit')
-                   return 'rgba(var(--couleur-bleu),0.2)'
-                 else if (states['input_select.localisation_thomas'].state == 'Travail')
-                   return 'rgba(var(--couleur-vert),0.2)'
-                 else if (states['input_select.localisation_thomas'].state == 'Miléna')
-                   return 'rgba(var(--couleur-vert),0.2)'
-                 else if (states['input_select.localisation_thomas'].state == 'Parents')
-                   return 'rgba(var(--couleur-vert),0.2)'
-               }else{
-                 return 'rgba(var(--couleur-theme),0.05)'
-               }
-            ]]]
-        - border-radius: 50%
-        - place-self: center
-        - width: 42px
-        - height: 42px
-      name:
-        - justify-self: center
-        - padding: 0px 10px
-        - font-weight: bold
-        - font-size: 14px
-      label:
-        - justify-self: center
-        - align-self: start
-        - padding: 0px 10px
-        - font-weight: bolder
-        - font-size: 12px
-        - filter: opacity(40%)
 
-####################################################
-#                                                  #
-#                       VIDE                       #
-#                                                  #
-####################################################
+  scene_blue:
+    variables:
+      state: "default"
+    template: 
+      - scene
+    state:
+      - operator: template
+        value: >
+          [[[
+            return states['input_select.localisation_thomas'].state == variables.state
+          ]]]
+        styles:
+          icon:
+            - color: 'rgba(var(--color-blue),1)'
+          img_cell:
+            - background-color: 'rgba(var(--color-blue), 0.2)'
+          card:
+            - background-color: 'rgba(var(--color-background-blue), var(--opacity-bg))'
+          name:
+            - color: 'rgba(var(--color-blue-text),1)'
+          label:
+            - color: 'rgba(var(--color-blue-text),1)'
+            
+  scene_green:
+    variables:
+      state: "default"
+    template: 
+      - scene
+    state:
+      - operator: template
+        value: >
+          [[[
+            return states['input_select.localisation_thomas'].state == variables.state
+          ]]]
+        styles:
+          icon:
+            - color: 'rgba(var(--color-green),1)'
+          img_cell:
+            - background-color: 'rgba(var(--color-green), 0.2)'
+          card:
+            - background-color: 'rgba(var(--color-background-green), var(--opacity-bg))'
+          name:
+            - color: 'rgba(var(--color-green-text),1)'
+          label:
+            - color: 'rgba(var(--color-green-text),1)'
 
-  vide:
-    styles:
-      card:
-        - background-color: rgba(0,0,0,0)
-        - box-shadow: none
-        - height: 0px
 
 ########################################################################################################
 #                                                                                                      #
-#                                             TITRE                                                    #
+#                                             TITLE                                                    #
 #                                                                                                      #
 ########################################################################################################
 
-  titre:
+  title:
     tap_action:
       action: none
     show_icon: false
@@ -1426,3 +1501,6 @@
         - font-weight: bold
         - font-size: '1rem'
         - opacity: '0.4'
+
+
+
