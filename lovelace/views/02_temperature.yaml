@@ -4,20 +4,20 @@
     cards:
       - cards:
           - cards:
-              - template: bordures
+              - template: edge
                 type: 'custom:button-card'
-              - template: return_button
+              - template: chips_return
                 type: 'custom:button-card'
-              - template: pilule_temperature
+              - template: chips_temperature
                 type: 'custom:button-card'
-              - template: bordures
+              - template: edge
                 type: 'custom:button-card'
             type: horizontal-stack
           - type: 'custom:button-card'
             name: Températures
-            template: titre
+            template: title
           - cards:
-              - template: bordures
+              - template: edge
                 type: 'custom:button-card'
               - type: weather-forecast
                 style: |
@@ -43,7 +43,7 @@
                     font-weight: bolder;
                     font-size: 12px !important;
                     filter: opacity(40%);
-                    color: #333333 !important;
+                    color: var(--primary-text-color) !important;
                   }
                   .temp{
                     font-size: 14px !important;
@@ -54,7 +54,7 @@
                     font-size: 12px !important;
                     font-weight: bolder;
                     filter: opacity(40%);
-                    color: #333333 !important;
+                    color: var(--primary-text-color) !important;
                   }
                   span{
                     font-size: 14px !important;
@@ -63,15 +63,19 @@
                 entity: weather.dark_sky
                 show_forecast : false
                 name: Toulouse
-              - template: bordures
+              - template: edge
                 type: 'custom:button-card'
             type: horizontal-stack
           - type: 'custom:button-card'
+            label: 'Salon'
+            template: title
+            
+          - type: 'custom:button-card'
             label: 'Intérieur'
-            template: titre
+            template: title
             
           - cards:
-              - template: bordures
+              - template: edge
                 type: 'custom:button-card'
               - type: grid
                 columns: 2
@@ -81,37 +85,37 @@
                     template: graph
                     variables:
                       entity: "sensor.fibaro_multisensor_salon_temperature"
-                      color: "var(--google-blue-500)"
+                      color: "var(--google-blue)"
                       name: "Température"
                   - type: 'custom:button-card'
                     template: graph
                     variables:
                       entity: "sensor.fibaro_multisensor_salon_luminosite"
-                      color: "var(--google-blue-500)"
+                      color: "var(--google-blue)"
                       name: "Luminosité"
                   - type: 'custom:button-card'
                     template: graph
                     variables:
-                      entity: "sensor.xiaomi_multisensor_salon_humidite"
-                      color: "var(--google-blue-500)"
+                      entity: "sensor.xiaomi_multisensor_chambre_humidite"
+                      color: "var(--google-blue)"
                       name: "Humidité"
     
                   - type: 'custom:button-card'
                     template: graph
                     variables:
-                      entity: "sensor.xiaomi_multisensor_salon_pression"
-                      color: "var(--google-blue-500)"
+                      entity: "sensor.xiaomi_multisensor_chambre_pression"
+                      color: "var(--google-blue)"
                       name: "Pression"
-              - template: bordures
+              - template: edge
                 type: 'custom:button-card'
             type: horizontal-stack
 
           - type: 'custom:button-card'
             label: 'Extérieur'
-            template: titre
-
+            template: title
+ 
           - cards:
-              - template: bordures
+              - template: edge
                 type: 'custom:button-card'
               - type: grid
                 columns: 2
@@ -121,109 +125,18 @@
                     template: graph
                     variables:
                       entity: "sensor.fibaro_multisensor_balcon_temperature"
-                      color: "var(--google-green-500)"
+                      color: "var(--google-green)"
                       name: "Température"
     
                   - type: 'custom:button-card'
                     template: graph
                     variables:
                       entity: "sensor.fibaro_multisensor_balcon_luminosite"
-                      color: "var(--google-green-500)"
+                      color: "var(--google-green)"
                       name: "Luminosité"
-              - template: bordures
+              - template: edge
                 type: 'custom:button-card'
             type: horizontal-stack
-
-          - type: 'custom:button-card'
-            name: Thermostat
-            template: titre
-          - cards:
-              - template: bordures
-                type: 'custom:button-card'
-              - type: 'custom:button-card'
-                styles:
-                  card:
-                    - border-radius: 20px
-                    - box-shadow: var(--box-shadow)
-                    - padding: 0px
-                  grid:
-                    - grid-template-areas: '"item1" "item2"'
-                    - grid-template-columns: 1fr
-                    - grid-template-rows: min-content  min-content
-                    - row-gap: 12px
-                custom_fields:
-                  item1:
-                    card:
-                      entity: sensor.fibaro_multisensor_salon_temperature
-                      name: Température
-                      template: 
-                        - icon_info
-                        - generique
-                      styles:
-                        card:
-                          - margin-left: 12px
-                          - margin-top: 12px
-                      type: 'custom:button-card'
-                  item2:
-                    card:
-                      type: 'custom:mini-graph-card'
-                      name: Appartement
-                      hours_to_show: 24
-                      points_per_hour: 60
-                      height: 150
-                      tap_action:
-                        action: more-info
-                        entity: climate.thermostat
-                      hour24: true
-                      show:
-                        name: false
-                        icon: false
-                        legend: false
-                        state: false
-                      entities:
-                        - entity: sensor.fibaro_multisensor_salon_temperature
-                          name: Intérieure
-                          show_fill: true
-                        - entity: sensor.climate_temperature_cible
-                          name: Cible
-                          show_fill: false
-                        - entity: sensor.climate_temperature_heating
-                          name: Chauffe
-                          show_fill: true
-                          show_line: false
-                          show_points: false
-                      line_color:
-                        - var(--google-blue-500)
-                        - var(--google-red-500)
-                        - var(--google-red-500)
-                      line_width: 2
-                      style: |
-                        ha-card {
-                          box-shadow: none;
-                          border-radius: var(--border-radius);
-                        }
-              - template: bordures
-                type: 'custom:button-card'
-            type: horizontal-stack
-
-          - cards:
-              - template: bordures
-                type: 'custom:button-card'
-              - entity: climate.thermostat
-                tap_action:
-                    action: more-info
-                    entity: group.thermostat_detail
-                template: 
-                  - icon_info_bg
-                  - thermostat
-                type: 'custom:button-card'
-              - entity: light.qubino
-                template: 
-                  - icon_info_bg
-                  - qubino
-                type: 'custom:button-card'
-              - template: bordures
-                type: 'custom:button-card'
-            type: horizontal-stack
+            
         type: vertical-stack
 

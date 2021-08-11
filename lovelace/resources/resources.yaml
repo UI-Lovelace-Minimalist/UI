@@ -12,5 +12,7 @@
     url: /hacsfiles/vertical-stack-in-card/vertical-stack-in-card.js
   - type: module
     url: /hacsfiles/lovelace-state-switch/state-switch.js
-    
-    
+  - type: module
+    url: /hacsfiles/lovelace-auto-entities/auto-entities.js
+  - type: module
+    url: /hacsfiles/ha-slider-card/slider-card.js
