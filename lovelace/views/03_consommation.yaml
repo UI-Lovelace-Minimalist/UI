@@ -1,105 +1,43 @@
-  - title: Localisation
-    icon: 'mdi:map-marker'
-    path: localisation
+  - title: Consommation
+    icon: 'mdi:flash'
+    path: consommation
     cards:
       - cards:
-        - cards:
-            - template: edge
-              type: 'custom:button-card'
-            - template: chips_return
-              type: 'custom:button-card'
-            - template: chips_localisation_present
-              type: 'custom:button-card'
-            - template: chips_localisation_absent
-              type: 'custom:button-card'
-            - template: chips_localisation_nuit
-              type: 'custom:button-card'
-            - card:
-                entity: input_boolean.invite_present
-                template: chips
-                label : "😃"
+          - cards:
+              - template: edge
                 type: 'custom:button-card'
-              conditions:
-              - entity: input_boolean.invite_present
-                state_not: 'off'
-              type: conditional
-            - card:
-                entity: input_boolean.mode_vacances
-                template: chips
-                label : "⛱️"
+              - template: chips_return
                 type: 'custom:button-card'
-              conditions:
-              - entity: input_boolean.mode_vacances
-                state_not: 'off'
-              type: conditional
-            - template: edge
-              type: 'custom:button-card'
-          type: horizontal-stack
-          
-####################################################
-#                                                  #
-#                   LOCALISATION                   #
-#                                                  #
-####################################################
+              - template: edge
+                type: 'custom:button-card'
+            type: horizontal-stack
 
-        - type: 'custom:button-card'
-          name: Localisation
-          label: '2 personnes'
-          template: title
-        - cards:
-            - template: edge
-              type: 'custom:button-card'
-            - type: grid
-              columns: 2
-              square: false
-              cards:
-                - entity: input_select.localisation_thomas
-                  variables:
-                    person: "thomas"
-                  template: 
-                    - icon_info_bg
-                    - person-thomas
-                  name: Thomas
-                  type: 'custom:button-card'
-                - entity: input_select.localisation_milena
-                  template: 
-                    - icon_info_bg
-                    - person-milena
-                  name: Miléna
-                  type: 'custom:button-card'
+          - type: 'custom:button-card'
+            name: Batterie
+            template: title
 
-            - template: edge
-              type: 'custom:button-card'
-
-          type: horizontal-stack
-        - type: 'custom:button-card'
-          label: 'Modes'
-          template: title
-        - cards:
-            - template: edge
-              type: 'custom:button-card'
-            - type: grid
-              columns: 2
-              square: false
-              cards:
-                - entity: input_boolean.invite_present
-                  template: 
-                    - icon_info_bg
-                    - person-invite
-                  type: 'custom:button-card'
-                - entity: input_boolean.mode_vacances
-                  name: "Vacances"
-                  show_last_changed: false
-                  label: >
-                    [[[return entity.state]]]
-                  template: 
-                    - icon_info_bg
-                    - binary_sensor
-                  type: 'custom:button-card'
-                  icon: 'mdi:white-balance-sunny'
-            - template: edge
-              type: 'custom:button-card'
-
-          type: horizontal-stack
+          - cards:
+              - template: edge
+                type: 'custom:button-card'
+              - type: 'custom:auto-entities'
+                sort:
+                  method: state
+                  numeric: true
+                card:
+                  type: grid
+                  columns: 1
+                  square: false
+                card_param: cards
+                filter:
+                  exclude: null
+                  include:
+                    - entity_id: sensor.*battery_level
+                      options:
+                        type: 'custom:button-card'
+                        template:
+                          - icon_info_bg
+                          - generic
+              - template: edge
+                type: 'custom:button-card'
+            type: horizontal-stack
         type: vertical-stack
-

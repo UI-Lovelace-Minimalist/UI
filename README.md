@@ -102,7 +102,7 @@ I tried to set up a consistency between the colors used to represent the entitie
 
 
 # Chips
-![Chips](https://user-images.githubusercontent.com/12232620/127767994-eaa8a87c-8c33-4ec2-8483-4d2189e17dd8.png)
+![Chips](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/chips.png)
 <details><summary>Code template</summary>
 <table>
 <tr>
@@ -112,7 +112,7 @@ I tried to set up a consistency between the colors used to represent the entitie
 <td VALIGN=TOP>
 
 ```yaml
-pilule:
+chips:
   tap_action:
     action: more-info
   show_icon: false
@@ -124,7 +124,7 @@ pilule:
     img_cell:
       - width: 24px
     card:
-      - border-radius: 30px
+      - border-radius: 18px
       - box-shadow: var(--box-shadow)
       - height: 36px
       - width: auto
@@ -145,7 +145,7 @@ pilule:
 </details>
 
 ## Temperature
-![Chips - Temperature](https://user-images.githubusercontent.com/12232620/127772137-7c1b6e1d-9427-4280-94fd-0a0589395040.png)
+![Chips - Temperature](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/chips_temperature.png)
 <details><summary>Code</summary>
 <table>
 <tr>
@@ -156,7 +156,7 @@ pilule:
 <td VALIGN=TOP>
 
 ```yaml
-- template: pilule_temperature
+- template: chips_temperature
   type: 'custom:button-card'
 ```
 
@@ -164,15 +164,15 @@ pilule:
 <td VALIGN=TOP>
 
 ```yaml
-pilule_temperature:
-  template: pilule
+chips_temperature:
+  template: chips
   tap_action:
       action: navigate
       navigation_path: /lovelace/temperature
   label: |
     [[[
       var inter = states['sensor.fibaro_multisensor_salon_temperature'].state;
-      var exter = states['sensor.xiaomi_multisensor_chambre_temperature'].state;
+      var exter = states['sensor.fibaro_multisensor_balcon_temperature'].state;
       var icon = '☀️';
       if (states['sensor.dark_sky_icon'].state == 'clear-day'){
         var icon = '☀️';
@@ -195,7 +195,7 @@ pilule_temperature:
       } else if(states['sensor.dark_sky_icon'].state == 'partly-cloudy-night'){
         var icon = '⛅';
       }
-      return icon + ' ' + inter + '° / ' +  exter + '°' ;
+      return icon + ' ' + exter + '° / ' +  inter + '°' ;
     ]]]
 ```
 
@@ -205,65 +205,7 @@ pilule_temperature:
 </details>
 
 ## Electric consumption
-![Chips - Consommation](https://user-images.githubusercontent.com/12232620/127772343-4aa727df-6b51-459e-b222-feb5757ce9b3.png)
-<details><summary>Code</summary>
-<table>
-<tr>
-<th> Example </th>
-<th> Template #1 </th>
-<th> Template #2 </th>
-</tr>
-<tr>
-<td VALIGN=TOP>
-
-```yaml
-- template: pilule_consommation
-  type: 'custom:button-card'
-```
-
-</td>
-<td VALIGN=TOP>
-
-```yaml
-pilule_consommation:
-    template: pilule
-    tap_action:
-      action: navigate
-      navigation_path: /lovelace/consommation
-    label: |
-      [[[
-        var price = states['sensor.atome_price_conso_today'].state;
-        return '⚡ ' +  price + '€' ;
-      ]]]
-```
-
-</td>
-<td VALIGN=TOP>
-
-```yaml
-  pilule_consommation_prix:
-    template: pilule
-    show_icon: false
-    show_state: false
-    show_label: true
-    tap_action:
-      action: navigate
-      navigation_path: /lovelace/consommation
-    label: |
-      [[[
-        var price = states['sensor.atome_price_conso_today'].state;
-        var conso = states['sensor.atome_daily'].state;
-        return '⚡ ' +  price + '€ • ' + conso + 'kWh';
-      ]]]
-```
-
-</td>
-</tr>
-</table>
-</details>
-
-## Presence counter
-![Chips - Present](https://user-images.githubusercontent.com/12232620/127772373-abfe840e-b7c1-4d76-8561-b9f7789cce92.png)
+![Chips - Consommation](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/power_consumption.png)
 <details><summary>Code</summary>
 <table>
 <tr>
@@ -274,7 +216,7 @@ pilule_consommation:
 <td VALIGN=TOP>
 
 ```yaml
-- template: pilule_localisation_present
+- template: chips_power_consumption
   type: 'custom:button-card'
 ```
 
@@ -282,16 +224,54 @@ pilule_consommation:
 <td VALIGN=TOP>
 
 ```yaml
-pilule_localisation_present:
+chips_power_consumption:
+  template: chips
   tap_action:
     action: navigate
-    navigation_path: /lovelace/localisation
+    navigation_path: /lovelace/consommation
   label: |
     [[[
-      var personnes_presentes = states['sensor.people_count_present'].state;
-      return '🏠 ' +  personnes_presentes;
+      var price = states['sensor.atome_price_conso_today'].state;
+      return '⚡ ' +  price + '€' ;
     ]]]
-  template: pilule
+```
+
+</td>
+<td VALIGN=TOP>
+</tr>
+</table>
+</details>
+
+## Presence counter
+![Chips - Present](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/chips_localisation_present.png)
+<details><summary>Code</summary>
+<table>
+<tr>
+<th> Example </th>
+<th> Template </th>
+</tr>
+<tr>
+<td VALIGN=TOP>
+
+```yaml
+- template: chips_localisation_present
+  type: 'custom:button-card'
+```
+
+</td>
+<td VALIGN=TOP>
+
+```yaml
+  chips_localisation_present:
+    tap_action:
+      action: navigate
+      navigation_path: /lovelace/localisation
+    label: |
+      [[[
+        var personnes_presentes = states['sensor.people_count_present'].state;
+        return '🏠 ' +  personnes_presentes;
+      ]]]
+    template: chips
 ```
 
 </td>
@@ -300,7 +280,7 @@ pilule_localisation_present:
 </details>
 
 ## Return button
-![Chips - return](https://user-images.githubusercontent.com/12232620/127772482-a6eed1ad-0ef2-4f87-9cfb-27ef845cf1d1.png)
+![Chips - return](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/chips_return.png)
 
 <details><summary>Code</summary>
 <table>
@@ -312,7 +292,7 @@ pilule_localisation_present:
 <td VALIGN=TOP>
 
 ```yaml
-- template: return_button
+- template: chips_return
   type: 'custom:button-card
 ```
 
@@ -320,8 +300,8 @@ pilule_localisation_present:
 <td VALIGN=TOP>
 
 ```yaml
-return_button:
-  template: pilule
+chips_return:
+  template: chips
   show_icon: true
   icon: 'mdi:arrow-left'
   size: 80%
@@ -345,13 +325,16 @@ return_button:
 <tr>
 <th> Example </th>
 <th> Template </th>
+<th> Template Blue</th>
 </tr>
 <tr>
 <td VALIGN=TOP>
 
 ```yaml
 - entity: sensor.present
-  template: scene
+  template: scene_blue
+  variables:
+    state: "Present"
   type: 'custom:button-card'
 ```
 
@@ -366,7 +349,7 @@ scene:
     [[[ return (entity.attributes.value )]]]
   styles:
     card:
-      - border-radius: 20px
+      - border-radius: var(--border-radius)
       - box-shadow: var(--box-shadow)
       - padding: 10px 0px 8px 0px 
     grid:
@@ -383,49 +366,41 @@ scene:
       - font-size: 12px
       - filter: opacity(40%)
     icon:
-      - color: |
-          [[[
-             if (states['input_select.localisation_thomas'].state == entity.attributes.friendly_name){
-               if (states['input_select.localisation_thomas'].state == 'Present')
-                 return 'rgba(var(--couleur-bleu),1)'
-               else if (states['input_select.localisation_thomas'].state == 'Absent')
-                 return 'rgba(var(--couleur-vert),1)'
-               else if (states['input_select.localisation_thomas'].state == 'Nuit')
-                 return 'rgba(var(--couleur-bleu),1)'
-               else if (states['input_select.localisation_thomas'].state == 'Travail')
-                 return 'rgba(var(--couleur-vert),1)'
-               else if (states['input_select.localisation_thomas'].state == 'Miléna')
-                 return 'rgba(var(--couleur-vert),1)'
-               else if (states['input_select.localisation_thomas'].state == 'Parents')
-                 return 'rgba(var(--couleur-vert),1)'
-             }else{
-               return 'rgba(var(--couleur-theme),0.2)'
-             }
-          ]]]
+      - color: 'rgba(var(--color-theme),0.2)'
     img_cell:
-      - background-color: |
-          [[[
-             if (states['input_select.localisation_thomas'].state == entity.attributes.friendly_name){
-               if (states['input_select.localisation_thomas'].state == 'Present')
-                 return 'rgba(var(--couleur-bleu),0.2)'
-               else if (states['input_select.localisation_thomas'].state == 'Absent')
-                 return 'rgba(var(--couleur-vert),0.2)'
-               else if (states['input_select.localisation_thomas'].state == 'Nuit')
-                 return 'rgba(var(--couleur-bleu),0.2)'
-               else if (states['input_select.localisation_thomas'].state == 'Travail')
-                 return 'rgba(var(--couleur-vert),0.2)'
-               else if (states['input_select.localisation_thomas'].state == 'Miléna')
-                 return 'rgba(var(--couleur-vert),0.2)'
-               else if (states['input_select.localisation_thomas'].state == 'Parents')
-                 return 'rgba(var(--couleur-vert),0.2)'
-             }else{
-               return 'rgba(var(--couleur-theme),0.05)'
-             }
-          ]]]
+      - background-color: 'rgba(var(--color-theme),0.05)'
       - border-radius: 50%
       - place-self: center
       - width: 42px
       - height: 42px
+```
+
+</td>
+<td VALIGN=TOP>
+
+```yaml
+scene_blue:
+  variables:
+    state: "default"
+  template: 
+    - scene
+  state:
+    - operator: template
+      value: >
+        [[[
+          return states['input_select.localisation_thomas'].state == variables.state
+        ]]]
+      styles:
+        icon:
+          - color: 'rgba(var(--color-blue),1)'
+        img_cell:
+          - background-color: 'rgba(var(--color-blue), 0.2)'
+        card:
+          - background-color: 'rgba(var(--color-background-blue), var(--opacity-bg))'
+        name:
+          - color: 'rgba(var(--color-blue-text),1)'
+        label:
+          - color: 'rgba(var(--color-blue-text),1)'
 ```
 
 </td>
@@ -434,7 +409,7 @@ scene:
 </details>
 
 # Title
-![Title](https://user-images.githubusercontent.com/12232620/127771736-5023c480-c2e5-4c6e-b530-fc5b45e92acd.png)
+![Title](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/title.png)
 <details><summary>Code</summary>
 <table>
 <tr>
@@ -445,7 +420,7 @@ scene:
 <td VALIGN=TOP>
 
 ```yaml
-- template: titre
+- template: title
   name: Title
   label: 'Subtitle'
   type: 'custom:button-card'
@@ -456,7 +431,7 @@ scene:
 <td VALIGN=TOP>
 
 ```yaml
-titre:
+title:
   tap_action:
     action: none
   show_icon: false
@@ -492,10 +467,10 @@ titre:
 </details>
 
 # Cards
-![Entity](https://user-images.githubusercontent.com/12232620/127747745-a0850c61-6cc9-4a3c-9745-4af23b0e8da2.png)
+![Cards](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/cards.png)
 
 ### Anatomy
-![Anatomy](https://user-images.githubusercontent.com/12232620/127768603-7f658c2e-c2d0-4cf4-92aa-f5e5ed22f5c5.png)
+![Anatomy](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/anatomy.png)
 1. **Dot** : Visible when the device is unavailable. Also used on the entity **person**
 2. **Icon** : Icon that represents the device
 3. **Primary line** : Main information
@@ -505,7 +480,7 @@ titre:
 
 ## Light
 
-![Light](https://user-images.githubusercontent.com/12232620/127746352-ec7090e4-7861-4e15-96f9-7199cafb725d.png) 
+![Light](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/light.png) 
 <details><summary>Code</summary>
 <table>
 <tr>
@@ -528,26 +503,26 @@ titre:
 <td VALIGN=TOP>
 
 ```yaml
-  light:
-    tap_action:
-      action: toggle
-    hold_action:
-      action: more-info
-    label: >-
-      [[[ if (entity.state !='unavailable'){
-            if (entity.state =='off'){
-              var bri = Math.round(entity.attributes.brightness / 2.55);
-              return 'Off';  
-            }else{
-              var bri = Math.round(entity.attributes.brightness / 2.55);
-              return (bri ? bri : '0') + '%'; 
-            }
+light:
+  tap_action:
+    action: toggle
+  hold_action:
+    action: more-info
+  label: >-
+    [[[ if (entity.state !='unavailable'){
+          if (entity.state =='off'){
+            var bri = Math.round(entity.attributes.brightness / 2.55);
+            return 'Off';  
           }else{
-            return "Indisponible";
+            var bri = Math.round(entity.attributes.brightness / 2.55);
+            return (bri ? bri : '0') + '%'; 
           }
-      ]]]
-    template: 
-      - jaune
+        }else{
+          return "Indisponible";
+        }
+    ]]]
+  template: 
+    - yellow
 ```
 
 </td>
@@ -556,7 +531,7 @@ titre:
 </details>
 
 ## Outlet
-![Prise](https://user-images.githubusercontent.com/12232620/127747627-8ea582c4-a371-4e2b-9b4d-c9e2bd7246eb.png)
+![Prise](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/outlet.png)
 <details><summary>Code</summary>
 <table>
 <tr>
@@ -567,11 +542,17 @@ titre:
 <td VALIGN=TOP>
 
 ```yaml
-- entity: switch.example
+- entity: switch.exemple
   name: Prise
   template: 
     - icon_info_bg
-    - prise_conso
+    - outlet
+  label: |-
+      [[[ if (entity.state =='on')
+          var etat = "On • " + states["sensor.exemple"].state + "W"; 
+          else
+        var etat = "Off";
+      return etat ; ]]]
   type: 'custom:button-card'
 ```
 
@@ -579,17 +560,17 @@ titre:
 <td VALIGN=TOP>
 
 ```yaml
-prise_conso:
-  hold_action:
-    action: more-info
-    entity: sensor.shelly_prise_salon_current_consumption
-  label: |-
-    [[[ if (entity.state =='on')
-       var etat = "On • " + states["sensor.shelly_prise_salon_current_consumption"].state + "W"; 
-       else
-      var etat = "Off";
-    return etat ; ]]]
-  template: prise
+  outlet:
+    tap_action:
+      action: more-info
+    label: |-
+      [[[ if (entity.state =='on')
+         var etat = "On";
+         else
+        var etat = "Off";
+      return etat ; ]]]
+    template: 
+      - yellow
 ```
 
 </td>
@@ -597,8 +578,8 @@ prise_conso:
 </table>
 </details>
 
-## Movement
-![Mouvements](https://user-images.githubusercontent.com/12232620/127746430-be6cf3ab-cfd4-436c-ab14-a80b2c80303c.png) ![Fenêtres](https://user-images.githubusercontent.com/12232620/127747588-fad35247-1a5d-4aff-843d-e2e09e8f2b91.png)
+## Binary sensor
+![Mouvements](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/binary_sensor-1.png) ![Fenêtres](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/binary_sensor-2.png)
 <details><summary>Code</summary>
 <table>
 <tr>
@@ -614,7 +595,7 @@ prise_conso:
   icon: 'mdi:run'
   template: 
     - icon_info_bg
-    - mouvement
+    - binary_sensor
   type: 'custom:button-card'
 ```
 
@@ -622,10 +603,10 @@ prise_conso:
 <td VALIGN=TOP>
 
 ```yaml
-mouvement:
+binary_sensor:
   show_last_changed: true
   template: 
-    - bleu
+    - blue
 ```
 
 </td>
@@ -635,7 +616,7 @@ mouvement:
 
 
 ## Cover
-![Volets](https://user-images.githubusercontent.com/12232620/127747586-2276befd-3e13-4117-8781-c5957956f08c.png)
+![Volets](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/cover_buttons.png)
 <details><summary>Code</summary>
 <table>
 <tr>
@@ -657,52 +638,13 @@ mouvement:
 <td>
 
 ```yaml
-cover:
-  tap_action:
-    action: more-info
-  icon: |
-    [[[
-        var icon = 'mdi:window-shutter';
-        if (entity.attributes.current_position == 0){
-          var icon = 'mdi:window-shutter';
-        } else
-          var icon = 'mdi:window-shutter-open';
-        return icon ;
-    ]]]
-  label: >-
-    [[[ 
-        if (entity.attributes.power_consumption != '0'){
-          return 'Mouvement';
-        }else{
-          if (entity.attributes.current_position == 0){
-            var etat = "Fermé";
-          }else{
-            var etat = "Ouvert" + ' • ' + (entity.attributes.current_position) + '%' ;
-          }
-          return etat ;
-        }
-    ]]]
-  state:
-    - operator: template
-      value: >
-        [[[
-          return entity.attributes.current_position != 0;
-        ]]]
-      styles:
-        icon:
-          - color: 'rgba(var(--couleur-bleu),1)'
-        img_cell:
-          - background-color: 'rgba(var(--couleur-bleu),0.2)'
-
-####################################################
-
 cover_buttons:
   variables:
     entity: "cover.fibaro_cover_balcon"
     name: "Default name"
   styles:
     card:
-      - border-radius: 20px
+      - border-radius: var(--border-radius)
       - box-shadow: var(--box-shadow)
       - padding: 12px
     grid:
@@ -764,7 +706,7 @@ cover_buttons:
 </details>
 
 ## Thermostat
-![Thermostat](https://user-images.githubusercontent.com/12232620/128136522-637de61e-b708-4878-a8a6-cf683f5d9156.png)
+![Thermostat](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/thermostat.png)
 <details><summary>Code</summary>
 <table>
 <tr>
@@ -803,23 +745,23 @@ thermostat:
           return (entity.attributes.temperature ) + '°' + ' • ' + etat ;
         }
     ]]]
-  styles:
-    icon:
-      - color: |
-          [[[
-             if (states['light.qubino'].state == 'on')
-               return 'rgba(var(--couleur-rouge),1)'
-             else
-               return 'rgba(var(--couleur-theme),0.2)'
-          ]]]
-    img_cell:
-      - background-color: |
-          [[[
-             if (states['light.qubino'].state == 'on')
-               return 'rgba(var(--couleur-rouge),0.2)'
-             else
-               return 'rgba(var(--couleur-theme),0.05)'
-          ]]]
+  state:
+    - operator: template
+      value: >
+        [[[
+          return states['light.qubino'].state == 'on'
+        ]]]
+      styles:
+        icon:
+          - color: 'rgba(var(--color-red),1)'
+        img_cell:
+          - background-color: 'rgba(var(--color-red),0.2)'
+        card:
+          - background-color: 'rgba(var(--color-background-red),var(--opacity-bg))'
+        name:
+          - color: 'rgba(var(--color-red-text),1)'
+        label:
+          - color: 'rgba(var(--color-red-text),1)'
 ```
 
 </td>
@@ -828,7 +770,7 @@ thermostat:
 </details>
 
 ## Water heater
-![Chauffe-eau](https://user-images.githubusercontent.com/12232620/127747601-cbf56d1d-faf1-448b-a2b7-4fbbb8d620f0.png)
+![Chauffe-eau](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/water-heater.png)
 <details><summary>Code</summary>
 <table>
 <tr>
@@ -843,10 +785,7 @@ thermostat:
   name: Chauffe eau
   template: 
     - icon_info_bg
-    - chauffe-eau
-  tap_action:
-    action: more-info
-    entity: sensor.shelly_module_couloir_current_consumption
+    - water_heater
   type: 'custom:button-card'
 ```
 
@@ -854,43 +793,42 @@ thermostat:
 <td VALIGN=TOP>
 
 ```yaml
-chauffe-eau:
+water_heater:
   icon: 'mdi:waves'
   tap_action:
     action: more-info
   hold_action:
     action: more-info
-    entity: switch.shelly_module_couloir
   label: >-
     [[[ 
         if (entity.state == 'off'){
           return 'Arrêt forcé';
         }else{
-          if (states["sensor.shelly_module_couloir_current_consumption"].state > 0){
-            var etat = "Chauffe • " + states["sensor.shelly_module_couloir_current_consumption"].state + "W";
+          if (states["sensor.shelly_prise_salon_conso"].state > 0){
+            var etat = "Chauffe • " + states["sensor.shelly_prise_salon_conso"].state + "W";
           }else{
             var etat = "Inactif";
           }
           return etat ;
         }
     ]]]
-  styles:
-    icon:
-      - color: |
-          [[[
-             if (states["sensor.shelly_module_couloir_current_consumption"].state > 0)
-               return 'rgba(var(--couleur-rouge),1)'
-             else
-               return 'rgba(var(--couleur-theme),0.2)'
-          ]]]
-    img_cell:
-      - background-color: |
-          [[[
-             if (states["sensor.shelly_module_couloir_current_consumption"].state > 0)
-               return 'rgba(var(--couleur-rouge),0.2)'
-             else
-               return 'rgba(var(--couleur-theme),0.05)'
-          ]]]
+  state:
+    - operator: template
+      value: >
+        [[[
+          return (states['sensor.shelly_prise_salon_conso'].state > 0)
+        ]]]
+      styles:
+        icon:
+          - color: 'rgba(var(--color-red),1)'
+        img_cell:
+          - background-color: 'rgba(var(--color-red),0.2)'
+        card:
+          - background-color: 'rgba(var(--color-background-red),var(--opacity-bg))'
+        name:
+          - color: 'rgba(var(--color-red-text),1)'
+        label:
+          - color: 'rgba(var(--color-red-text),1)'
 ```
 
 </td>
@@ -899,7 +837,7 @@ chauffe-eau:
 </details>
 
 ## Media player
-![Enceintes](https://user-images.githubusercontent.com/12232620/127747942-9d7ea5c4-269f-493d-b866-277c416f6e1c.png)
+![Enceintes](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/media.png)
 <details><summary>Code</summary>
 <table>
 <tr>
@@ -922,136 +860,73 @@ chauffe-eau:
 <td VALIGN=TOP>
 
 ```yaml
-media:
-  label: >-
-    [[[ if (entity.state =='off'){
-          return "Off";
-        }else{
-          return entity.state;
-        }
-    ]]]
-  icon: |
-    [[[
-        var application = states["media_player.chromecast_audio_appartement"].attributes.app_name;
-        var icon = 'mdi:speaker';
-        if (application == 'Oto music'){
-          var icon = 'mdi:music-circle';
-        } else if(application == 'Spotify'){
-          var icon = 'mdi:spotify';
-        } else if(application == 'Google Podcasts'){
-          var icon = 'mdi:google-podcast';
-        } else if(application == 'Plex'){
-          var icon = 'mdi:plex';
-        }
-        return icon ;
-    ]]]
-  styles:
-    icon:
-      - color: 'rgba(var(--couleur-theme),0.2)'
-    img_cell:
-      - background-color: 'rgba(var(--couleur-theme),0.05)'
-    card:
-      - background-blend-mode: multiply
-      - background: >
+  media:
+    label: >-
+      [[[ if (entity.state =='off'){
+            return "Off";
+          }else{
+            return entity.state;
+          }
+      ]]]
+    icon: |
+      [[[
+          var application = entity.attributes.app_name;
+          var icon = 'mdi:speaker';
+          if (application == 'Oto music'){
+            var icon = 'mdi:music-circle';
+          } else if(application == 'Spotify'){
+            var icon = 'mdi:spotify';
+          } else if(application == 'Google Podcasts'){
+            var icon = 'mdi:google-podcast';
+          } else if(application == 'Plex'){
+            var icon = 'mdi:plex';
+          }
+          return icon ;
+      ]]]
+    styles:
+      label:
+        - opacity: '0.6'
+      icon:
+        - color: 'rgba(var(--color-theme),0.2)'
+      img_cell:
+        - background-color: 'rgba(var(--color-theme),0.05)'
+      card:
+        - background-blend-mode: multiply
+        - background: >
+            [[[
+              var image = entity.attributes.entity_picture_local;
+              var bg = entity.attributes.entity_picture_local;
+              if (image == null){
+                var bg = '';
+              } else{
+                var bg = 'center / cover url(' + image + ') rgba(0, 0, 0, 0.15)';
+              }
+              return bg;
+            ]]]
+    state:
+      - operator: template
+        value: >
           [[[
-            var image = entity.attributes.entity_picture_local;
-            var bg = entity.attributes.entity_picture_local;
-            if (image == null){
-              var bg = '';
-            } else{
-              var bg = 'center / cover url(' + image + ') rgba(0, 0, 0, 0.15)';
-            }
-            return bg;
+            return entity.state !='off'
           ]]]
-  state:
-    - operator: template
-      value: >
-        [[[
-          return entity.state !='off'
-        ]]]
-      name: >
-          [[[
-            return entity.attributes.media_title;
-          ]]]
-      label: >
-          [[[
-            return entity.attributes.media_album_name;
-          ]]]
-      styles:
-        label: 
-          - color: white
-          - filter: opacity(100%)
-        img_cell:
-          - background-color: 'rgba(var(--couleur-theme),0.0)'
-        icon:
-          - color: white
-        name:
-          - color: white
-```  media:
-  label: >-
-    [[[ if (entity.state =='off'){
-          return "Off";
-        }else{
-          return entity.state;
-        }
-    ]]]
-  icon: |
-    [[[
-        var application = states["media_player.chromecast_audio_appartement"].attributes.app_name;
-        var icon = 'mdi:speaker';
-        if (application == 'Oto music'){
-          var icon = 'mdi:music-circle';
-        } else if(application == 'Spotify'){
-          var icon = 'mdi:spotify';
-        } else if(application == 'Google Podcasts'){
-          var icon = 'mdi:google-podcast';
-        } else if(application == 'Plex'){
-          var icon = 'mdi:plex';
-        }
-        return icon ;
-    ]]]
-  styles:
-    icon:
-      - color: 'rgba(var(--couleur-theme),0.2)'
-    img_cell:
-      - background-color: 'rgba(var(--couleur-theme),0.05)'
-    card:
-      - background-blend-mode: multiply
-      - background: >
-          [[[
-            var image = entity.attributes.entity_picture_local;
-            var bg = entity.attributes.entity_picture_local;
-            if (image == null){
-              var bg = '';
-            } else{
-              var bg = 'center / cover url(' + image + ') rgba(0, 0, 0, 0.15)';
-            }
-            return bg;
-          ]]]
-  state:
-    - operator: template
-      value: >
-        [[[
-          return entity.state !='off'
-        ]]]
-      name: >
-          [[[
-            return entity.attributes.media_title;
-          ]]]
-      label: >
-          [[[
-            return entity.attributes.media_album_name;
-          ]]]
-      styles:
-        label: 
-          - color: white
-          - filter: opacity(100%)
-        img_cell:
-          - background-color: 'rgba(var(--couleur-theme),0.0)'
-        icon:
-          - color: white
-        name:
-          - color: white
+        name: >
+            [[[
+              return entity.attributes.media_title;
+            ]]]
+        label: >
+            [[[
+              return entity.attributes.media_album_name;
+            ]]]
+        styles:
+          label: 
+            - color: white
+            - filter: opacity(100%)
+          img_cell:
+            - background-color: 'rgba(var(--color-theme),0.0)'
+          icon:
+            - color: white
+          name:
+            - color: white
 ```
 
 </td>
@@ -1060,7 +935,7 @@ media:
 </details>
 
 ## Playstation
-![Playstation](https://user-images.githubusercontent.com/12232620/127747943-7ed8a47e-cc39-44e2-b029-1d497d425c13.png)
+![Playstation](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/playstation.png)
 <details><summary>Code</summary>
 <table>
 <tr>
@@ -1094,22 +969,22 @@ ps4:
     ]]]
   styles:
     icon:
-      - color: 'rgba(var(--couleur-theme),0.2)'
+      - color: 'rgba(var(--color-theme),0.2)'
     img_cell:
-      - background-color: 'rgba(var(--couleur-theme),0.05)'
+      - background-color: 'rgba(var(--color-theme),0.05)'
   state:
     - value: 'idle'
       styles:
         icon:
-          - color: 'rgba(var(--couleur-bleu),1)'
+          - color: 'rgba(var(--color-blue),1)'
         img_cell:
-          - background-color: 'rgba(var(--couleur-bleu), 0.2)'
+          - background-color: 'rgba(var(--color-blue), 0.2)'
     - value: 'standby'
       styles:
         icon:
-          - color: 'rgba(var(--couleur-theme),0.2)'
+          - color: 'rgba(var(--color-theme),0.2)'
         img_cell:
-          - background-color: 'rgba(var(--couleur-theme),0.05)'
+          - background-color: 'rgba(var(--color-theme),0.05)'
     - operator: template
       value: >
         [[[
@@ -1148,7 +1023,7 @@ ps4:
 </details>
 
 ## Person
-![Personne](https://user-images.githubusercontent.com/12232620/127747945-77aa5db2-66fc-4995-baa9-6dd4a22e401f.png)
+![Personne](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/person.png)
 <details><summary>Information</summary>
     
 **Dot** : 
@@ -1187,7 +1062,7 @@ ps4:
 <td VALIGN=TOP>
 
 ```yaml
-personne:
+person:
   tap_action:
     action: more-info
   show_label: true
@@ -1195,7 +1070,7 @@ personne:
       [[[return entity.state]]]
   styles:
     icon:
-      - color: 'rgba(var(--couleur-theme),0.9)'
+      - color: 'rgba(var(--color-theme),0.9)'
     custom_fields:
       notification:
         - border-radius: 50%
@@ -1210,8 +1085,10 @@ personne:
   
 ####################################################
  
-personne-thomas:
-  template: personne
+person-thomas:
+  variables:
+    person: "thomas"
+  template: person
   hold_action:
     action: more-info
     entity: input_boolean.thomas_nuit
@@ -1221,21 +1098,21 @@ personne-thomas:
         - background-color: >
             [[[
               if (states['input_select.localisation_thomas'].state == 'Present'){
-                return "rgba(var(--couleur-bleu),1)";
+                return "rgba(var(--color-blue),1)";
               }else{
-                return "rgba(var(--couleur-vert),1)";
+                return "rgba(var(--color-green),1)";
               }
             ]]]
   custom_fields:
     notification: >
       [[[
         if (states['input_boolean.thomas_nuit'].state == 'on'){
-          return `<ha-icon icon="mdi:power-sleep" style="width: 10px; height: 10px; color: white;"></ha-icon>`
+          return `<ha-icon icon="mdi:power-sleep" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>`
         }else{
           if (states['input_select.localisation_thomas'].state == 'Present'){
-            return `<ha-icon icon="mdi:home-variant" style="width: 10px; height: 10px; color: white;"></ha-icon>`
+            return `<ha-icon icon="mdi:home-variant" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>`
           }else{
-            return `<ha-icon icon="mdi:walk" style="width: 10px; height: 10px; color: white;"></ha-icon>`
+            return `<ha-icon icon="mdi:pine-tree" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>`
           }
         }
       ]]]
@@ -1248,7 +1125,7 @@ personne-thomas:
 
 ## Generic
 
-![Generic](https://user-images.githubusercontent.com/12232620/128137454-69b93aee-5e63-46f7-aed5-504cd952e88a.png)
+![Generic](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/generic.png)
 <details><summary>Code</summary>
 <table>
 <tr>
@@ -1262,7 +1139,7 @@ personne-thomas:
 - entity: sensor.example
   template: 
     - icon_info_bg
-    - generique
+    - generic
   type: 'custom:button-card'
 ```
 
@@ -1270,12 +1147,12 @@ personne-thomas:
 <td VALIGN=TOP>
 
 ```yaml
-generique:
+generic:
   label: >
       [[[return entity.state + " " + entity.attributes.unit_of_measurement]]]
   styles:
     icon:
-      - color: 'rgba(var(--couleur-theme),0.9)'
+      - color: 'rgba(var(--color-theme),0.9)'
     grid:
       - grid-template-areas: '"i l" "i n"'
       - grid-template-columns: min-content auto
@@ -1303,7 +1180,7 @@ generique:
 
 ## Generic + graph
 
-![Entity - graph](https://user-images.githubusercontent.com/12232620/128138257-85f62668-7277-4f54-be98-8bc97876f4be.png)
+![Entity - graph](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/entity_graph.png)
 <details><summary>Code</summary>
 <table>
 <tr>
@@ -1317,8 +1194,8 @@ generique:
 - type: 'custom:button-card'
   template: graph
   variables:
-    entity: "sensor.example"
-    color: "var(--google-blue-500)"
+    entity: "sensor.exemple"
+    color: "var(--google-blue)"
     name: "Température"
 ```
 
@@ -1328,12 +1205,12 @@ generique:
 ```yaml
 graph:
   variables:
-    entity: "sensor.example"
-    color: "var(--google-blue-500)"
+    entity: "sensor.xiaomi_multisensor_salon_humidite"
+    color: "var(--info-color)"
     name: "Default name"
   styles:
     card:
-      - border-radius: 20px
+      - border-radius: var(--border-radius)
       - box-shadow: var(--box-shadow)
       - padding: 0px
     grid:
@@ -1347,7 +1224,7 @@ graph:
         name: '[[[ return variables.name ]]]'
         template: 
           - icon_info
-          - generique
+          - generic
         styles:
           card:
             - padding: 12px
