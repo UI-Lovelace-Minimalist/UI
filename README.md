@@ -530,6 +530,92 @@ light:
 </table>
 </details>
 
+## Light slider
+
+![Light-slider](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/light_slider.png) 
+<details><summary>Code</summary>
+<table>
+<tr>
+<th> Example </th>
+<th> Template </th>
+</tr>
+<tr>
+<td VALIGN=TOP>
+
+```yaml
+  - entity: light.exemple
+    template: 
+      - light_slider
+    variables:
+      entity: "light.exemple"
+      name: "Light"
+    type: 'custom:button-card'
+```
+
+</td>
+<td VALIGN=TOP>
+
+```yaml
+  light_slider:
+    variables:
+      name: "Default name"
+    show_icon: false
+    show_name: false
+    show_label: false
+    styles:
+      card:
+        - border-radius: var(--border-radius)
+        - box-shadow: var(--box-shadow)
+        - padding: 12px
+      grid:
+        - grid-template-areas: '"item1" "item2"'
+        - grid-template-columns: 1fr
+        - grid-template-rows: min-content  min-content
+        - row-gap: 12px
+    state:
+      - operator: template
+        value: >
+          [[[
+            return entity.state == 'on'
+          ]]]
+        styles:
+          card:
+            - background-color: 'rgba(var(--color-background-yellow),var(--opacity-bg))'
+    custom_fields:
+      item1:
+        card:
+          entity: '[[[ return variables.entity ]]]'
+          name: '[[[ return variables.name ]]]'
+          template:
+            - icon_info
+            - light
+          type: 'custom:button-card'
+      item2:
+        card:
+          type: 'custom:slider-card'
+          entity: '[[[ return variables.entity ]]]'
+          radius: 14px
+          height: 42px
+          mainSliderColor: rgba(var(--color-yellow),1)
+          secondarySliderColor: rgba(var(--color-yellow),0.2)
+          mainSliderColorOff: rgba(var(--color-theme),0.05)
+          secondarySliderColorOff: rgba(var(--color-theme),0.05)
+          thumbHorizontalPadding: '0px'
+          thumbVerticalPadding: '0px'   
+          thumbWidth: 0px
+          card_mod:
+          style: |
+            ha-card {
+              border-radius: 14px;
+              box-shadow: none;
+            }
+```
+
+</td>
+</tr>
+</table>
+</details>
+
 ## Outlet
 ![Prise](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/outlet.png)
 <details><summary>Code</summary>
