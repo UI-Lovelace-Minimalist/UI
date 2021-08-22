@@ -1,9 +1,4 @@
-########################################################################################################
-#                                                                                                      #
-#                                            Design System                                             #
-#                                                                                                      #
-########################################################################################################
-
+### ICONS ###
   icon:
     color: var(--google-grey)
     show_icon: true
@@ -52,8 +47,6 @@
         - place-self: center
         - width: 42px
         - height: 42px
-
-########################################################################################################
 
   icon_info:
     color: var(--google-grey)
@@ -125,8 +118,6 @@
         - filter: opacity(40%)
         - margin-left: 12px
 
-########################################################################################################
-
   icon_info_bg:
     color: var(--google-grey)
     show_icon: true
@@ -196,32 +187,6 @@
         - filter: opacity(40%)
         - margin-left: 12px
 
-########################################################################################################
-
-  list_items:
-    styles:
-      card:
-        - box-shadow: none
-        - padding: 0px
-      grid:
-        - grid-template-areas: '"item1 item2 item3"'
-        - grid-template-columns: 1fr 1fr 1fr
-        - grid-template-rows: min-content
-        - column-gap: 7px
-
-  list_items_line:
-    styles:
-      card:
-        - box-shadow: none
-        - padding: 0px
-      grid:
-        - grid-template-areas: '"item1 item2 item3"'
-        - grid-template-columns: max-content max-content max-content
-        - grid-template-rows: min-content
-        - column-gap: 8px
-
-########################################################################################################
-
   icon_info_line:
     show_icon: true
     show_name: false
@@ -250,150 +215,29 @@
         - margin-left: 0px
         - filter: opacity(40%)
 
-########################################################################################################
-#                                                                                                      #
-#                                                CHIPS                                                 #
-#                                                                                                      #
-########################################################################################################
-
-  chips:
-    tap_action:
-      action: more-info
-    show_icon: false
-    show_name: false
-    show_state: false
-    show_label: true
-    size: 80%
+  list_items:
     styles:
-      img_cell:
-        - width: 24px
       card:
-        - border-radius: 18px
-        - box-shadow: var(--box-shadow)
-        - height: 36px
-        - width: auto
-        - padding-left: 6px
-        - padding-right: 6px
+        - box-shadow: none
+        - padding: 0px
       grid:
-        - grid-template-areas: '"l"'
-      label:
-        - justify-self: center
-        - padding: 0px 6px
-        - font-weight: bold
-        - font-size: 14px
+        - grid-template-areas: '"item1 item2 item3"'
+        - grid-template-columns: 1fr 1fr 1fr
+        - grid-template-rows: min-content
+        - column-gap: 7px
 
-####################################################
-#                                                  #
-#                    CHIPS ICON                    #
-#                                                  #
-####################################################
-  chips_icon:
-    template: chips
-    show_icon: true
-    size: 80%
-    show_state: false
-    variables:
-      icon: "mdi:arrow-left"
-    icon: '[[[ return variables.icon ]]]'
+  list_items_line:
     styles:
+      card:
+        - box-shadow: none
+        - padding: 0px
       grid:
-        - grid-template-areas: '"i l"'
-      label:
-        - justify-self: center
-        - padding: 0px 6px
-        - font-weight: bold
-        - font-size: 14px
+        - grid-template-areas: '"item1 item2 item3"'
+        - grid-template-columns: max-content max-content max-content
+        - grid-template-rows: min-content
+        - column-gap: 8px
 
-####################################################
-#                                                  #
-#                POWER CONSUMPTION                 #
-#                                                  #
-####################################################
-
-  chips_power_consumption:
-    template: chips
-    tap_action:
-      action: navigate
-      navigation_path: /lovelace/consommation
-    label: |
-      [[[
-        var price = states['sensor.atome_price_conso_today'].state;
-        return '⚡ ' +  price + '€' ;
-      ]]]
-
-  chips_power_consumption_price:
-    template: chips
-    show_icon: false
-    show_state: false
-    show_label: true
-    tap_action:
-      action: navigate
-      navigation_path: /lovelace/consommation
-    label: |
-      [[[
-        var price = states['sensor.atome_price_conso_today'].state;
-        var conso = states['sensor.atome_daily'].state;
-        return '⚡ ' +  price + '€ • ' + conso + 'kWh';
-      ]]]
-####################################################
-#                                                  #
-#                   TEMPERATURE                    #
-#                                                  #
-####################################################
-
-  chips_temperature:
-    template: chips
-    tap_action:
-        action: navigate
-        navigation_path: /lovelace/temperature
-    label: |
-      [[[
-        var inter = states['sensor.fibaro_multisensor_salon_temperature'].state;
-        var exter = states['sensor.fibaro_multisensor_balcon_temperature'].state;
-        var icon = '☀️';
-        if (states['sensor.dark_sky_icon'].state == 'clear-day'){
-          var icon = '☀️';
-        } else if(states['sensor.dark_sky_icon'].state == 'clear-night'){
-          var icon = '🌙';
-        } else if(states['sensor.dark_sky_icon'].state == 'rain'){
-          var icon = '🌧️';
-        } else if(states['sensor.dark_sky_icon'].state == 'snow'){
-          var icon = '❄️';
-        } else if(states['sensor.dark_sky_icon'].state == 'sleet'){
-          var icon = '❄️';
-        } else if(states['sensor.dark_sky_icon'].state == 'wind'){
-          var icon = '🌫️';
-        } else if(states['sensor.dark_sky_icon'].state == 'fog'){
-          var icon = '🌫️';
-        } else if(states['sensor.dark_sky_icon'].state == 'cloudy'){
-          var icon = '☁️';
-        } else if(states['sensor.dark_sky_icon'].state == 'partly-cloudy-day'){
-          var icon = '⛅️';
-        } else if(states['sensor.dark_sky_icon'].state == 'partly-cloudy-night'){
-          var icon = '⛅';
-        }
-        return icon + ' ' + exter + '° / ' +  inter + '°' ;
-      ]]]
-
-####################################################
-#                                                  #
-#                 LOCALISATION                     #
-#                                                  #
-####################################################
-
-  chips_localisation_present:
-    tap_action:
-      action: navigate
-      navigation_path: /lovelace/localisation
-    label: |
-      [[[
-        var personnes_presentes = states['sensor.people_count_present'].state;
-        return '🏠 ' +  personnes_presentes;
-      ]]]
-    template: chips
-    
-####################################################
-
+### CHIPS ###
   chips_localisation_absent:
     tap_action:
       action: navigate
@@ -405,8 +249,6 @@
       ]]]
     template: chips
 
-####################################################
-    
   chips_localisation_nuit:
     template: chips
     tap_action:
@@ -417,32 +259,8 @@
         var personnes_presentes = states['sensor.people_count_nuit'].state;
         return '🌙 ' +  personnes_presentes;
       ]]]
-      
-####################################################
-#                                                  #
-#                    RETURN                        #
-#                                                  #
-####################################################
 
-  chips_return:
-    template: chips
-    show_icon: true
-    icon: 'mdi:arrow-left'
-    size: 80%
-    styles:
-      grid:
-        - grid-template-areas: '"i"'
-    tap_action:
-      action: navigate
-      navigation_path: /lovelace/home
-
-
-########################################################################################################
-#                                                                                                      #
-#                                               COVER                                                  #
-#                                                                                                      #
-########################################################################################################
-
+### COVER ###
   cover:
     tap_action:
       action: more-info
@@ -479,12 +297,6 @@
             - color: 'rgba(var(--color-blue),1)'
           img_cell:
             - background-color: 'rgba(var(--color-blue),0.2)'
-
-####################################################
-#                                                  #
-#                   COVER BUTTONS                  #
-#                                                  #
-####################################################
 
   cover_buttons:
     variables:
@@ -547,12 +359,7 @@
                 type: 'custom:button-card'
                 template: widget_icon
 
-########################################################################################################
-#                                                                                                      #
-#                                              LIGHT                                                   #
-#                                                                                                      #
-########################################################################################################
-
+### LIGHT ###
   light:
     tap_action:
       action: toggle
@@ -573,8 +380,6 @@
       ]]]
     template: 
       - yellow
-
-########################################################################################################
 
   light_slider:
     variables:
@@ -629,12 +434,8 @@
               border-radius: 14px;
               box-shadow: none;
             }
-########################################################################################################
-#                                                                                                      #
-#                                             GENERIC                                                  #
-#                                                                                                      #
-########################################################################################################
   
+### GENERIC ###
   generic:
     label: >
         [[[return entity.state + " " + entity.attributes.unit_of_measurement]]]
@@ -660,12 +461,7 @@
         - filter: opacity(40%)
         - margin-left: 12px
 
-########################################################################################################
-#                                                                                                      #
-#                                             OUTLET                                                   #
-#                                                                                                      #
-########################################################################################################
-
+### OUTLET ###
   outlet:
     tap_action:
       action: more-info
@@ -677,24 +473,14 @@
       return etat ; ]]]
     template: 
       - yellow
-    
-########################################################################################################
-#                                                                                                      #
-#                                       BINARY SENSOR                                                  #
-#                                                                                                      #
-########################################################################################################
 
-  binary_sensor:
+### BINARY SENSOR ###
+  ulm_binary_sensor:
     show_last_changed: true
     template: 
       - blue
 
-########################################################################################################
-#                                                                                                      #
-#                                         WATER HEATER                                                 #
-#                                                                                                      #
-########################################################################################################
-
+### WATER HEATER ###
   water_heater:
     icon: 'mdi:waves'
     tap_action:
@@ -732,12 +518,7 @@
           label:
             - color: 'rgba(var(--color-red-text),1)'
 
-########################################################################################################
-#                                                                                                      #
-#                                           THERMOSTAT                                                 #
-#                                                                                                      #
-########################################################################################################
-
+### THERMOSTAT ###
   thermostat:
     hold_action:
       action: more-info
@@ -772,12 +553,8 @@
             - color: 'rgba(var(--color-red-text),1)'
           label:
             - color: 'rgba(var(--color-red-text),1)'
-            
-########################################################################################################
-#                                                                                                      #
-#                                              NAS                                                     #
-#                                                                                                      #
-########################################################################################################
+
+### NAS ###
   nas:
     tap_action:
       action: more-info
@@ -790,11 +567,8 @@
       return etat ; ]]]
     template: 
       - blue
-########################################################################################################
-#                                                                                                      #
-#                                              MEDIA                                                   #
-#                                                                                                      #
-########################################################################################################
+
+### MEDIA ###
   media:
     label: >-
       [[[ if (entity.state =='off'){
@@ -862,8 +636,6 @@
             - color: white
           name:
             - color: white
-            
-####################################################
 
   media_mini_album:
     label: >-
@@ -901,8 +673,6 @@
                 ]]]
           icon:
             - color: 'rgba(var(--color-theme),0.0)'
-            
-####################################################
 
   media_buttons:
     variables:
@@ -964,13 +734,8 @@
                     entity_id: '[[[ return variables.entity ]]]'
                 type: 'custom:button-card'
                 template: widget_icon
-                
-########################################################################################################
-#                                                                                                      #
-#                                          PLAYSTATION                                                 #
-#                                                                                                      #
-########################################################################################################
   
+### PLAYSTATION ###  
   ps4:
     label: >-
       [[[ if (entity.state =='unknown'){
@@ -1029,13 +794,8 @@
                   var image = entity.attributes.entity_picture;
                   return 'center / cover url(' + image + ') rgba(0, 0, 0, 0.15)';
                 ]]]
-    
-########################################################################################################
-#                                                                                                      #
-#                                              PERSON                                                  #
-#                                                                                                      #
-########################################################################################################
 
+### PERSON ###
   person:
     tap_action:
       action: more-info
@@ -1056,12 +816,6 @@
           - border: 2px solid var(--card-background-color)
           - font-size: 12px
           - line-height: 14px
-
-####################################################
-#                                                  #
-#                     THOMAS                       #
-#                                                  #
-####################################################
 
   person-thomas:
     variables:
@@ -1095,13 +849,6 @@
           }
         ]]]
 
-
-####################################################
-#                                                  #
-#                     MILENA                       #
-#                                                  #
-####################################################
-
   person-milena:
     template: person
     hold_action:
@@ -1131,12 +878,6 @@
             }
           }
         ]]]
-        
-####################################################
-#                                                  #
-#                     INVITE                       #
-#                                                  #
-####################################################
 
   person-invite:
     tap_action:
@@ -1182,12 +923,8 @@
                     return "rgba(var(--color-blue),1)";
                   ]]]
         value: 'on'
-        
-########################################################################################################
-#                                                                                                      #
-#                                             QUBINO                                                   #
-#                                                                                                      #
-########################################################################################################
+
+### QUBINO ###        
   qubino:
     icon: 'mdi:memory'
     tap_action:
@@ -1219,13 +956,7 @@
     template: 
       - blue
 
-
-####################################################
-#                                                  #
-#                      COLORS                      #
-#                                                  #
-####################################################
-
+### COLORS ###
   yellow:
     state:
       - styles:
@@ -1240,8 +971,6 @@
           label:
             - color: 'rgba(var(--color-yellow-text),1)'
         value: 'on'
-
-####################################################
 
   blue:
     state:
@@ -1258,12 +987,7 @@
             - color: 'rgba(var(--color-blue-text),1)'
         value: 'on'
 
-####################################################
-#                                                  #
-#                     GRAPHE                       #
-#                                                  #
-####################################################
-
+### GRAPH CARD ###
   graph:
     variables:
       entity: "sensor.xiaomi_multisensor_salon_humidite"
@@ -1307,11 +1031,7 @@
               border-radius: var(--border-radius);
             }
 
-####################################################
-#                                                  #
-#                     BATTERY                      #
-#                                                  #
-####################################################
+### BATTERY ###            
   battery:
     template: generic
     icon: |
@@ -1344,12 +1064,7 @@
            return icon ;
       ]]]
 
-########################################################################################################
-#                                                                                                      #
-#                                                WIDGET ICON                                           #
-#                                                                                                      #
-########################################################################################################
-
+### WIDGET ICON ###
   widget_icon:
     tap_action:
       action: toggle
@@ -1370,24 +1085,13 @@
       icon:
         - color: 'rgba(var(--color-theme),0.9)'
 
-
-####################################################
-#                                                  #
-#                      EDGE                        #
-#                                                  #
-####################################################
-
+### EDGE ###
   edge:
     styles:
       card:
         - width: 0px
 
-
-########################################################################################################
-#                                                                                                      #
-#                                                SCENE                                                 #
-#                                                                                                      #
-########################################################################################################
+### SCENE ###        
   scene:
     size: 20px
     show_label: true
@@ -1466,13 +1170,7 @@
           label:
             - color: 'rgba(var(--color-green-text),1)'
 
-
-########################################################################################################
-#                                                                                                      #
-#                                             TITLE                                                    #
-#                                                                                                      #
-########################################################################################################
-
+### TITLE ###
   title:
     tap_action:
       action: none
@@ -1502,5 +1200,4 @@
         - font-size: '1rem'
         - opacity: '0.4'
 
-
-
+### LEGACY TEMPLATES ###

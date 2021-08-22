@@ -1,4 +1,0 @@
-desktop:
-  !include themes/desktop/desktop.yaml
-mobile:
-  !include themes/mobile/mobile.yaml
