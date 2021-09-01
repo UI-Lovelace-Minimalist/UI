@@ -1,19 +1,36 @@
 # UI-Lovelace-Minimalist  
-It's kind of hard to explain what this is, but one thing is for sure, it is very nice! Taking the exceptional work of tben as a basis, this repository is aimed to ease installation and maintainance of his wonderful work. You can use this interpretation of SmartHomeUI just like a theme in HomeAssistant. 
+It's kind of hard to explain what this is, so let's call it a "theme" (in quotation marks). But one thing is for sure, it is very nice! Taking the exceptional work of tben as a basis, this repository is aimed to ease installation and maintainance of his wonderful work. You can use this interpretation of a SmartHomeUI more or less like a theme in HomeAssistant. 
 
 <img src="https://user-images.githubusercontent.com/12232620/127769479-a8d2a117-7c1d-49f1-a8a2-6e3d51a4672c.png" width="200"> <img src="https://user-images.githubusercontent.com/12232620/127769475-01b39e04-065f-4ea4-adb0-39bc5e9aa39c.png" width="200"> <img src="https://user-images.githubusercontent.com/12232620/127769477-4010a487-927f-479a-8596-2bf19a9a4299.png" width="200"> <img src="https://user-images.githubusercontent.com/12232620/127769478-229d04d9-db00-4b78-b14b-dcd91f7ff463.png" width="200">
 
+> ### Contributions
+> This is a living project and all input is very welcome! If you configured and designed a card, that you would like to share, please feel free to do so! We are happy to include your contribution so others can use it as well!  
+
 ## Table of Contents  
+
+<details>
+<summary>Show table of contents</summary>
+
 * [Credits](#credits)
 * [Design system](#design-system)
-* [Installation](#installation)
+* [Installation and update](#installation-and-update)
 * [Chips](#chips)
 * [Title](#title)
 * [Vertical buttons](#vertical-buttons)
 * [Cards](#cards)
+  * [1-line cards](#1-line-cards)
+  * [2-line-cards](#2-line-cards)
+  * [Special cards](#special-cards)
+* [Custom cards](#custom-cards)
 * [Color scheme](#color-scheme)
 * [Icons](#icons)
 * [Notes](#notes)
+  * [Share your cards](#share-your-cards)
+  * [Legacy templates](#legacy-templates)
+  * [My-slider](#my-cards)
+* [Changing templates](#changing-templates)
+* [Internal templates](#internal-templates)
+</details>
 
 ## Credits  
 * This design was made by [tben]()
@@ -32,7 +49,7 @@ The design system consists of a few graphical buttons, that are changed dependin
 * [Cards](#cards) to represent and interact with devices, sensors, etc.
 * [Vertical buttons](#vertical-buttons) for using the cards as a button.
 
-## Installation  
+## Installation and update  
 
 <details>
 <summary>Installation with HACS</summary>
@@ -63,10 +80,10 @@ We highly recommend you use HACS to install this "theme". As you will also need 
    <td></td>
    </tr>
    <tr>
-   <td><a href="https://github.com/AnthonMS/ha-slider-card">ha-slider-card</a></td>
+   <td><a href="https://github.com/AnthonMS/my-cards">my-cards (formerly known as ha-slider-card)</a></td>
    <td>no</td>
    <td>light_slider</td>
-   <td><a href="#ha-slider-card">find the note here</a></td>
+   <td><a href="#my-cards">find the note here</a></td>
    </tr>
    <tr>
    <td><a href="https://github.com/thomasloven/lovelace-auto-entities">lovelace-auto-entities</a></td>
@@ -115,51 +132,43 @@ We highly recommend you use HACS to install this "theme". As you will also need 
 1. ...
 </details>
 
-## Chips  
-This is the general definition for our `chips`. You won't need this in your view(s). Choose a specific `chips` definition from below, like `chips_temperature`.
-
-![Chips](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/chips.png)
-
 <details>
-<summary>Template code</summary>
+<summary>Update</summary>
 
-```yaml
-chips:
-  tap_action:
-    action: more-info
-  show_icon: false
-  show_name: false
-  show_state: false
-  show_label: true
-  size: 80%
-  styles:
-    img_cell:
-      - width: 24px
-    card:
-      - border-radius: 18px
-      - box-shadow: var(--box-shadow)
-      - height: 36px
-      - width: auto
-      - padding-left: 6px
-      - padding-right: 6px
-    grid:
-      - grid-template-areas: '"l"'
-    label:
-      - justify-self: center
-      - padding: 0px 6px
-      - font-weight: bold
-      - font-size: 14px
-```
-
+If you have installed this "theme" via HACS you will be notified about an update automatically. If you had installed manually, you will need to update this "theme" for yourself. But no worries, it's an easy and straightforward process.  
+Just follow the steps you already did for installing this "theme":
+1. Download this repository as a *zip file* to your computer. You can do so by clicking the green button in the top right with the lable "CODE" and choosing "Download ZIP".
+1. Unpack the zip-file to a location of your choice on your computer.
+1. Copy the content (files **and** folders) of the folder `config` from this repository into your HomeAssistant `config` folder, overwriting the files with the downloaded (new) version.
 </details>
+
+To check, which version you have installed, you can always find the version number(s) in the seperate file [VERSION.md](./VERSION.md).  
+
+## Chips  
+
+![Chips](./screenshots/chips.png)
 
 ### Chip - temperature  
 This `chip` is to display a weather icon together with the outside and inside temperature.
 
-![Chip - temperature](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/chips_temperature.png)
+![Chip - temperature](./screenshots/chips_temperature.png)
 
 <details>
 <summary>Usage</summary>
+
+#### Example
+
+```yaml
+- type: 'custom:button-card'
+  template: chips_temperature
+  variables:
+    ulm_chip_temperature_inside: sensor.my_temperature_sensor_inside
+    ulm_chip_temperature_outside: sensor.my_temperature_sensor_outside
+    ulm_chip_temperature_weather: weather.my_weather_provider 
+  tap_action:
+    action: navigate
+    navigation_path: /lovelace/climate
+```
 
 #### Variables  
 <table>
@@ -194,21 +203,7 @@ This `chip` is to display a weather icon together with the outside and inside te
 <td>If you want to use a <i>tap_action</i> for your button, like eg. <i>more-info</i>, you can set this here with the options from <i>button-card</i> itself. If you just want to display the temperatures, you can safely leave these options out.</td>
 </tr>
 </table>
-
-#### Example
-
-```yaml
-- type: 'custom:button-card'
-  template: chips_temperature
-  variables:
-    ulm_chip_temperature_inside: sensor.my_temperature_sensor_inside
-    ulm_chip_temperature_outside: sensor.my_temperature_sensor_outside
-    ulm_chip_temperature_weather: weather.my_weather_provider 
-  tap_action:
-    action: navigate
-    navigation_path: /lovelace/climate
-```
-
+<br />
 </details>
 
 <details>
@@ -263,6 +258,19 @@ This `chip` displays just an icon.
 <details>
 <summary>Usage</summary>
 
+
+#### Example
+
+```yaml
+- type: 'custom:button-card'
+  template: chips_icon_only
+  variables:
+    ulm_chip_icon_only: '❤️'
+  tap_action:
+    action: navigate
+    navigation_path: /lovelace/bedroom
+```
+
 #### Variables  
 <table>
 <tr>
@@ -278,19 +286,7 @@ This `chip` displays just an icon.
 <td>This is the icon to show. See [icons](#icons) at the end of this page to read more about the used unicode `emojis`.</td>
 </tr>
 </table>
-
-#### Example
-
-```yaml
-- type: 'custom:button-card'
-  template: chips_icon_only
-  variables:
-    ulm_chip_icon_only: '❤️'
-  tap_action:
-    action: navigate
-    navigation_path: /lovelace/bedroom
-```
-
+<br />
 </details>
 
 <details>
@@ -318,6 +314,20 @@ This `chip` displays an icon and a label, where the label can be any state of a 
 <details>
 <summary>Usage</summary>
 
+
+#### Example
+
+```yaml
+- type: 'custom:button-card'
+  template: chips_icon_state
+  variables:
+    ulm_chip_icon_state_icon: '🛏️'
+    ulm_chip_icon_state_label: sensor.bed_occupancy
+  tap_action:
+    action: navigate
+    navigation_path: /lovelace/bedroom
+```
+
 #### Variables  
 <table>
 <tr>
@@ -339,20 +349,7 @@ This `chip` displays an icon and a label, where the label can be any state of a 
 <td></td>
 </tr>
 </table>
-
-#### Example
-
-```yaml
-- type: 'custom:button-card'
-  template: chips_icon_state
-  variables:
-    ulm_chip_icon_state_icon: '🛏️'
-    ulm_chip_icon_state_label: sensor.bed_occupancy
-  tap_action:
-    action: navigate
-    navigation_path: /lovelace/bedroom
-```
-
+<br />
 </details>
 
 <details>
@@ -387,6 +384,21 @@ This `chip` displays an icon and a two labels, where each label can be any state
 <details>
 <summary>Usage</summary>
 
+
+#### Example
+
+```yaml
+- type: 'custom:button-card'
+  template: chips_icon_double_state
+  variables:
+    ulm_chip_icon_double_state_icon: '💻'
+    ulm_chip_icon_double_state_label_1: sensor.nas_disk_used
+    ulm_chip_icon_double_state_label_2: sensor.nas_cpu_load
+  tap_action:
+    action: navigate
+    navigation_path: /lovelace/systems
+```
+
 #### Variables  
 <table>
 <tr>
@@ -420,21 +432,7 @@ This `chip` displays an icon and a two labels, where each label can be any state
 <td></td>
 </tr>
 </table>
-
-#### Example
-
-```yaml
-- type: 'custom:button-card'
-  template: chips_icon_double_state
-  variables:
-    ulm_chip_icon_double_state_icon: '💻'
-    ulm_chip_icon_double_state_label_1: sensor.nas_disk_used
-    ulm_chip_icon_double_state_label_2: sensor.nas_cpu_load
-  tap_action:
-    action: navigate
-    navigation_path: /lovelace/systems
-```
-
+<br />
 </details>
 
 <details>
@@ -464,10 +462,21 @@ chips_icon_double_state:
 ### Chip - back button  
 This is a `back-button`, primarly used if you switch between views and want a convenient way back. Set the `tap-action` to navigate back to the default view, eg. home.
 
-![Chips - return](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/chips_return.png)
+![Chips - return](./screenshots/chips_return.png)
 
 <details>
 <summary>Usage</summary>
+
+
+#### Example
+
+```yaml
+- type: 'custom:button-card'
+  template: chips_back
+  tap_action:
+    action: navigate
+    navigation_path: /ui-lovelace-minimalist/home
+```
 
 #### Variables  
 <table>
@@ -484,17 +493,7 @@ This is a `back-button`, primarly used if you switch between views and want a co
 <td>Set the navigation path to your default view, eg. <i>ui-lovelace-minimalist/home</i> or <i>lovelace</i></td>
 </tr>
 </table>
-
-#### Example
-
-```yaml
-- type: 'custom:button-card'
-  template: chips_back
-  tap_action:
-    action: navigate
-    navigation_path: /ui-lovelace-minimalist/home
-```
-
+<br />
 </details>
 
 <details>
@@ -518,10 +517,24 @@ chips_back:
 ### Chip - presence counter  
 This `chip` shows you the actual presence in your home. Shows residents and guests (guests only if one or more).
 
-![Chips - Present](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/chips_localisation_present.png)
+![Chips - Present](./screenshots/chips_localisation_present.png)
 
 <details>
 <summary>Usage</summary>
+
+
+#### Example
+
+```yaml
+- type: 'custom:button-card'
+  template: chips_presence_detection
+  variables:
+    ulm_chip_presence_counter_residents: sensor.my_residents_counter
+    ulm_chip_presence_counter_guests: sensor.my_guests_counter
+  tap_action:
+    action: navigate
+    navigation_path: /lovelace/location
+```
 
 #### Variables  
 <table>
@@ -544,20 +557,7 @@ This `chip` shows you the actual presence in your home. Shows residents and gues
 <td>This is the sensor that shows your guests counter.</td>
 </tr>
 </table>
-
-#### Example
-
-```yaml
-- type: 'custom:button-card'
-  template: chips_presence_detection
-  variables:
-    ulm_chip_presence_counter_residents: sensor.my_residents_counter
-    ulm_chip_presence_counter_guests: sensor.my_guests_counter
-  tap_action:
-    action: navigate
-    navigation_path: /lovelace/location
-```
-
+<br />
 </details>
 
 <details>
@@ -578,10 +578,25 @@ chips_presence_detection:
 ### Chip - electric consumption  
 This `chip` shows you the electric consumption from a sensor. Configurable to show power (kWh) or price (currency).
 
-![Chips - Consommation](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/power_consumption.png)
+![Chips - Consommation](./screenshots/power_consumption.png)
 
 <details>
 <summary>Usage</summary>
+
+
+#### Example
+
+```yaml
+- type: 'custom:button-card'
+  template: chips_power_consumption
+  variables:
+    ulm_chip_electric_consumption: sensor.my_electric_power_consumption
+    ulm_chip_electric_price: sensor.my_electric_power_price
+    ulm_chip_electric_currency: EUR
+  tap_action:
+    action: navigate
+    navigation_path: /lovelace/consumption
+```
 
 #### Variables  
 <table>
@@ -610,21 +625,7 @@ This `chip` shows you the electric consumption from a sensor. Configurable to sh
 <td>This is the currency you're using for your electric consumption. Should be EUR for Euro or USD for US dollars or whatever currency you choose. This text will be added after your price sensor.</td>
 </tr>
 </table>
-
-#### Example
-
-```yaml
-- type: 'custom:button-card'
-  template: chips_power_consumption
-  variables:
-    ulm_chip_electric_consumption: sensor.my_electric_power_consumption
-    ulm_chip_electric_price: sensor.my_electric_power_price
-    ulm_chip_electric_currency: EUR
-  tap_action:
-    action: navigate
-    navigation_path: /lovelace/consumption
-```
-
+<br />
 </details>
 
 <details>
@@ -650,7 +651,7 @@ chips_power_consumption:
 ## Title  
 Titles (and optionally subtitles) are used to seperate different areas in your design.
 
-![Title](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/title.png)
+![Title](./screenshots/title.png)
 
 <details>
 <summary>Usage</summary>
@@ -702,13 +703,10 @@ title:
 
 </details>
 
-<span style="color: blue">@dev All entries from here downwards are not changed yet</span><br />
-<span style="color: blue">@dev START unchanged part</span>
-
 ## Vertical buttons  
 +++
 
-![Scene](https://user-images.githubusercontent.com/12232620/127768397-24ab76fc-b037-4fc5-a2ef-45e96285cd46.gif)
+![Scene](./screenshots/scene.gif)
 
 <details>
 <summary>Usage</summary>
@@ -748,8 +746,7 @@ title:
 scene:
   size: 20px
   show_label: true
-  label: |
-    [[[ return (entity.attributes.value )]]]
+  label: "[[[ return (entity.attributes.value )]]]"
   styles:
     card:
       - border-radius: var(--border-radius)
@@ -788,10 +785,7 @@ scene_blue:
     - scene
   state:
     - operator: template
-      value: >
-        [[[
-          return states['input_select.localisation_thomas'].state == variables.state
-        ]]]
+      value: "[[[ return states['input_select.localisation_thomas'].state == variables.state ]]]"
       styles:
         icon:
           - color: 'rgba(var(--color-blue),1)'
@@ -806,265 +800,687 @@ scene_blue:
 ```
 
 ## Cards  
-![Cards](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/cards.png)
+`Cards` are the main part of this design and are widely used in very different designs and functions. With these `cards` you can set up nearly every entity in HA, showing from "state-only" over a "full blown" information graphic with various values to "controlling" your covers and climate entities.
+
+![Cards](./screenshots/cards.png)
 
 ### Anatomy  
-![Anatomy](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/anatomy.png)
-1. **Dot** : Visible when the device is unavailable. Also used on the entity **person**
-2. **Icon** : Icon that represents the device
-3. **Primary line** : Main information
-4. **Secondary line** : Secondary information
-5. **Optionnal part** : Possibility to display buttons to launch actions related to the device. Or display a graph to view the history of a sensor
+![Anatomy](./screenshots/anatomy.png)
+1. **Dot**: Visible when the device is unavailable. Also used on the entity **person**
+2. **Icon**: Icon that represents the device
+3. **Primary line**: Main information
+4. **Secondary line**: Secondary information
+5. **Optional part**: Possibility to display buttons to launch actions related to the device. Or display a graph to view the history of a sensor or you let your fantasy take the ride...
 
+In the list above #5 enhances the normal `cards` with a "second line", that is used to display other information like a graph or the controls for your covers. For this readme the `cards` are divided into three groups:
+* 1-line cards
+  These are cards for `sensor` or `binary_sensors` like *light* or *power outlets*.
+* 2-line cards
+  These are cards with a second line for informations or controls, eg. your cover controls.
+* Special cards
+  These are special cards, based on the other cards but enhanced by specific functions. Eg. a `thermostat-card` that shows the state of your thermostat and display different sensor values.
 
-### Light  
-![Light](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/light.png) 
-<details><summary>Code</summary>
-<table>
-<tr>
-<th> Example </th>
-<th> Template </th>
-</tr>
-<tr>
-<td VALIGN=TOP>
+## 1-line cards
+
+### Generic (aka sensor)
+This is the generic card to display values from a sensor, eg. to show humidity, your next waste collection date or whatever sensor value is provided.
+
+![Generic](./screenshots/generic.png)
+
+<details>
+<summary>Usage</summary>
+
+#### Example
 
 ```yaml
-- entity: light.example
-  name: Lumière
+- type: 'custom:button-card'
+  template: 
+    - card_generic
+  entity: sensor.next_waste_collection
+```
+
+#### Variables
+<table>
+<tr>
+<th>Variable</th>
+<th>Example</th>
+<th>Required</th>
+<th>Explanation</th>
+</tr>
+<tr>
+<td>entity</td>
+<td>sensor.next_waste_collection</td>
+<td>yes</td>
+<td></td>
+</tr>
+</table>
+<br />
+</details>
+
+<details>
+<summary>Template code</summary>
+
+```yaml
+card_generic:
+  template: 
+    - icon_info_bg
+  label: "[[[ return entity.state + ' ' + entity.attributes.unit_of_measurement; ]]]"
+  styles:
+    icon:
+      - color: 'rgba(var(--color-theme),0.9)'
+    grid:
+      - grid-template-areas: '"i l" "i n"'
+      - grid-template-columns: min-content auto
+      - grid-template-rows: min-content min-content
+    label:
+      - align-self: end
+      - justify-self: start
+      - font-weight: bold
+      - font-size: 14px
+      - margin-left: 12px
+      - filter: opacity(100%)
+    name:
+      - justify-self: start
+      - align-self: start
+      - font-weight: bolder
+      - font-size: 12px
+      - filter: opacity(40%)
+      - margin-left: 12px
+```
+
+</details>
+
+### Light  
+This is the `light-card`, used to toggle a light or a light group. Shows state of the light and, if available, brightness in %.
+
+![Light](./screenshots/light.png) 
+
+<details>
+<summary>Usage</summary>
+
+#### Example
+
+```yaml
+- type: 'custom:button-card'
   template: 
     - icon_info_bg
     - light
-  type: 'custom:button-card'
+  entity: light.my_livingroom_light
+  name: Livingroom Light
+  variables:
+    ulm_light_unavailable: 'Unavailable'
 ```
 
-</td>
-<td VALIGN=TOP>
+#### Variables
+<table>
+<tr>
+<th>Variables</th>
+<th>Example</th>
+<th>Required</th>
+<th>Explanation</th>
+</tr>
+<tr>
+<td>ulm_light_unavailable</td>
+<td>Unavailable</td>
+<td>no</td>
+<td>This is the actual text to show on your card, if the state of your light is "unavailable".</td>
+</tr>
+<tr>
+<td>tap_action</td>
+<td>action: toggle</td>
+<td>no</td>
+<td>The default <i>tap_action</i> is set to toggle your light. As always, you can overwrite this with your personal settings in your view template.</td>
+</tr>
+<tr>
+<td>hold_action</td>
+<td>action: more-info</td>
+<td>no</td>
+<td>The default <i>hold_action</i> is set to show the "more-info" pop-up (lovelace default), where you can eg. change the brightness or color. As always, you can overwrite this with your personal settings in your view template.</td>
+</tr>
+</table>
+<br />
+</details>
+
+<details>
+<summary>Template code</summary>
 
 ```yaml
-light:
+card_light:
+  template: 
+    - yellow
   tap_action:
     action: toggle
   hold_action:
     action: more-info
   label: >-
-    [[[ if (entity.state !='unavailable'){
-          if (entity.state =='off'){
-            var bri = Math.round(entity.attributes.brightness / 2.55);
-            return 'Off';  
-          }else{
-            var bri = Math.round(entity.attributes.brightness / 2.55);
-            return (bri ? bri : '0') + '%'; 
-          }
+    [[[ 
+      if (entity.state !='unavailable'){
+        if (entity.state =='off'){
+          var bri = Math.round(entity.attributes.brightness / 2.55);
+          return 'Off';  
         }else{
-          return "Indisponible";
+          var bri = Math.round(entity.attributes.brightness / 2.55);
+          return (bri ? bri : '0') + '%'; 
         }
+      }else{
+        return variables.ulm_light_unavailable ? variables.ulm_light_unavailable : 'Unavailable';
+      }
     ]]]
-  template: 
-    - yellow
 ```
 
-</td>
-</tr>
-</table>
 </details>
 
 ### Light slider  
-![Light-slider](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/light_slider.png) 
-<details><summary>Code</summary>
-<table>
-<tr>
-<th> Example </th>
-<th> Template </th>
-</tr>
-<tr>
-<td VALIGN=TOP>
+The `light-slider-card` controls a light or light-group with the added possibilty to control the brightness of your light with a slider.
+
+![Light-slider](./screenshots/light_slider.png) 
+
+<details>
+<summary>Usage</summary>
+
+#### Example
 
 ```yaml
-  - entity: light.exemple
-    template: 
-      - light_slider
-    variables:
-      entity: "light.exemple"
-      name: "Light"
-    type: 'custom:button-card'
+- type: 'custom:button-card'
+  template: 
+    - card_light_slider
+  entity: light.my_livingroom_light
+  name: Livingroom Light
 ```
 
-</td>
-<td VALIGN=TOP>
-
-```yaml
-  light_slider:
-    variables:
-      name: "Default name"
-    show_icon: false
-    show_name: false
-    show_label: false
-    styles:
-      card:
-        - border-radius: var(--border-radius)
-        - box-shadow: var(--box-shadow)
-        - padding: 12px
-      grid:
-        - grid-template-areas: '"item1" "item2"'
-        - grid-template-columns: 1fr
-        - grid-template-rows: min-content  min-content
-        - row-gap: 12px
-    state:
-      - operator: template
-        value: >
-          [[[
-            return entity.state == 'on'
-          ]]]
-        styles:
-          card:
-            - background-color: 'rgba(var(--color-background-yellow),var(--opacity-bg))'
-    custom_fields:
-      item1:
-        card:
-          entity: '[[[ return variables.entity ]]]'
-          name: '[[[ return variables.name ]]]'
-          template:
-            - icon_info
-            - light
-          type: 'custom:button-card'
-      item2:
-        card:
-          type: 'custom:slider-card'
-          entity: '[[[ return variables.entity ]]]'
-          radius: 14px
-          height: 42px
-          mainSliderColor: rgba(var(--color-yellow),1)
-          secondarySliderColor: rgba(var(--color-yellow),0.2)
-          mainSliderColorOff: rgba(var(--color-theme),0.05)
-          secondarySliderColorOff: rgba(var(--color-theme),0.05)
-          thumbHorizontalPadding: '0px'
-          thumbVerticalPadding: '0px'   
-          thumbWidth: 0px
-          card_mod:
-          style: |
-            ha-card {
-              border-radius: 14px;
-              box-shadow: none;
-            }
-```
-
-</td>
-</tr>
-</table>
 </details>
 
-### Outlet  
-![Prise](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/outlet.png)
-<details><summary>Code</summary>
+<details>
+<summary>Template code</summary>
+
+```yaml
+card_light_slider:
+  show_icon: false
+  show_name: false
+  show_label: false
+  styles:
+    card:
+      - border-radius: var(--border-radius)
+      - box-shadow: var(--box-shadow)
+      - padding: 12px
+    grid:
+      - grid-template-areas: '"item1" "item2"'
+      - grid-template-columns: 1fr
+      - grid-template-rows: min-content  min-content
+      - row-gap: 12px
+  state:
+    - operator: template
+      value: >
+        [[[
+          return entity.state == 'on'
+        ]]]
+      styles:
+        card:
+          - background-color: 'rgba(var(--color-background-yellow),var(--opacity-bg))'
+  custom_fields:
+    item1:
+      card:
+        type: 'custom:button-card'
+        template:
+          - icon_info
+          - light
+        entity: "[[[ return entity.entity_id ]]]"
+        name: "[[[ return entity.name ]]]"
+    item2:
+      card:
+        type: 'custom:my-slider'
+        entity: '[[[ return entity.entity_id ]]]'
+        radius: 14px
+        height: 42px
+        mainSliderColor: rgba(var(--color-yellow),1)
+        secondarySliderColor: rgba(var(--color-yellow),0.2)
+        mainSliderColorOff: rgba(var(--color-theme),0.05)
+        secondarySliderColorOff: rgba(var(--color-theme),0.05)
+        thumbHorizontalPadding: '0px'
+        thumbVerticalPadding: '0px'   
+        thumbWidth: 0px
+        card_mod:
+        style: |
+          ha-card {
+            border-radius: 14px;
+            box-shadow: none;
+          }
+```
+
+</details>
+
+### Power Outlet  
+This is the `power-outlet-card`. It shows you the state of a power outlet, and if configured, the actual power consumption of the power outlet.
+
+![Prise](./screenshots/outlet.png)
+
+<details>
+<summary>Usage</summary>
+
+#### Example
+
+```yaml
+- type: 'custom:button-card'
+  template: 
+    - card_power_outlet
+  entity: switch.power_outlet_livingroom
+  name: Power Outlet Livingroom
+  variables:
+    ulm_power_outlet_consumption_sensor: sensor.power_outlet_livingroom_consumption 
+```
+
+#### Variables
 <table>
 <tr>
-<th> Example </th>
-<th> Template </th>
+<th>Variable</th>
+<th>Example</th>
+<th>Required</th>
+<th>Explanation</th>
 </tr>
 <tr>
-<td VALIGN=TOP>
-
-```yaml
-- entity: switch.exemple
-  name: Prise
-  template: 
-    - icon_info_bg
-    - outlet
-  label: |-
-      [[[ if (entity.state =='on')
-          var etat = "On • " + states["sensor.exemple"].state + "W"; 
-          else
-        var etat = "Off";
-      return etat ; ]]]
-  type: 'custom:button-card'
-```
-
-</td>
-<td VALIGN=TOP>
-
-```yaml
-  outlet:
-    tap_action:
-      action: more-info
-    label: |-
-      [[[ if (entity.state =='on')
-         var etat = "On";
-         else
-        var etat = "Off";
-      return etat ; ]]]
-    template: 
-      - yellow
-```
-
-</td>
+<td>ulm_power_outlet_consumption_sensor</td>
+<td>sensor.power_outlet_livingroom_consumption</td>
+<td>no</td>
+<td>If you set this sensor, the `power-outlet-card` shows the energy consumption next to the state.</td>
 </tr>
 </table>
+<br />
+</details>
+
+<details>
+<summary>Template code</summary>
+
+```yaml
+card_power_outlet:
+  tap_action:
+    action: more-info
+  label: |-
+    [[[ 
+      if (entity.state =='on') && (variables.ulm_power_outlet_consumption_sensor != '' {
+        return entity.state + ' ' + variables.ulm_power_outlet_consumption_sensor + 'W';
+      } else {
+        return entity.state;
+      }
+    ]]]
+  template: 
+    - yellow
+    - icon_info_bg
+```
+
 </details>
 
 ### Binary sensor  
-![Mouvements](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/binary_sensor-1.png) ![Fenêtres](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/binary_sensor-2.png)
-<details><summary>Code</summary>
+The `binary-sensor-card` is to show the state (on/off, open/close, etc.) of a binary sensor, eg. your garage door or a window contact sensor.
+
+![Mouvements](./screenshots/binary_sensor-1.png) <br /> ![Fenêtres](./screenshots/binary_sensor-2.png)
+
+<details>
+<summary>Usage</summary>
+
+#### Example
+
+```yaml
+- type: 'custom:button-card'
+  template: 
+    - card_binary_sensor
+  entity: binary_sensor.garage_door
+  name: Garage Door
+  icon: 'mdi:garage'
+  show_last_changed: true
+```
+
+#### Variables
 <table>
 <tr>
-<th> Example </th>
-<th> Template </th>
+<th>Variable</th>
+<th>Example</th>
+<th>Required</th>
+<th>Explanation</th>
 </tr>
 <tr>
-<td VALIGN=TOP>
-
-```yaml
-- entity: binary_sensor.example
-  name: Mouvement
-  icon: 'mdi:run'
-  template: 
-    - icon_info_bg
-    - binary_sensor
-  type: 'custom:button-card'
-```
-
-</td>
-<td VALIGN=TOP>
-
-```yaml
-binary_sensor:
-  show_last_changed: true
-  template: 
-    - blue
-```
-
-</td>
+<td>entity</td>
+<td>binary_sensor.garage_door</td>
+<td>yes</td>
+<td>The <i>binary_sensor</i> to show</td>
+</tr>
+<tr>
+<td>name</td>
+<td>Garage Door</td>
+<td>no</td>
+<td>The name, if not set, the friendly name is used.</td>
+</tr>
+<tr>
+<td>icon</td>
+<td>mdi:garage</td>
+<td>no</td>
+<td>If not set, the standard icon from HA will be used.</td>
+</tr>
+<tr>
+<td>show_last_changed</td>
+<td>13 minutes ago</td>
+<td>no</td>
+<td>Set this to <i>true</i> or <i>false</i>. This is set to <i>true</i> be default and shows the `last_changed` attribute of your <i>binary_sensor</i>.</td>
 </tr>
 </table>
+<br />
 </details>
 
-
-### Cover  
-![Volets](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/cover_buttons.png)
-<details><summary>Code</summary>
-<table>
-<tr>
-<th> Example </th>
-<th> Template </th>
-</tr>
-<tr>
-<td VALIGN=TOP>
+<details>
+<summary>Template code</summary>
 
 ```yaml
-- template: cover_buttons
-  variables:
-    entity: "cover.example"
-    name: "Volets"
-  type: 'custom:button-card'
+card_binary_sensor:
+  template: 
+    - icon_info_bg
+    - blue
+  name: "[[[ return entity.name != '' ? entity.name : entity.attribute.friendly_name ]]]"
+  show_last_changed: true
 ```
 
-</td>
-<td>
+</details>
+
+### Media player  
+The `media-player-card` shows you the *app*, the *title* and the *album name* playing, if the data is available through HA. The *app* is shown via a different icon.  
+Currently there are icons for 
+* *Spotify*
+* *GooglePodcast*
+* *Plex*
+* *Soundcloud*
+* *YoutubeMusic*
+
+Unfortunately *AmazonMusic*, *AppleMusic* and *Deezer* don't have an `mdi:icon`, so the default icon (a speaker) will be presented.
+
+If you're looking for a `media-player-card-with-controls`, see a little downwards under *2-line cards*.
+
+![Enceintes](./screenshots/media.png)
+
+<details>
+<summary>Usage</summary>
+
+#### Example
 
 ```yaml
-cover_buttons:
+- type: 'custom:button-card'
+  template: 
+    - card_media_player
+  entity: media_player.livingroom_shield
+  name: Livingroom Nvidia Shield
+```
+
+#### Variables
+<table>
+<tr>
+<th>Variable</th>
+<th>Example</th>
+<th>Required</th>
+<th>Explanation</th>
+</tr>
+<tr>
+<td>entity</td>
+<td>media_player.livingroom_shield</td>
+<td>yes</td>
+<td>The entity of the media player</td>
+</tr>
+<tr>
+<td>name</td>
+<td>Livingroom Nvidia Shield</td>
+<td>no</td>
+<td>The displayed name of your media player</td>
+</tr>
+</table>
+<br />
+</details>
+
+<details>
+<summary>Template code</summary>
+
+```yaml
+card_media_player:
+  template:
+    - icon_info_bg
+  label: "[[[ return entity.state; ]]]"
+  icon: |
+    [[[
+        var app = entity.attributes.app_name;
+        var icon = 'mdi:speaker';
+        if(app == 'Spotify'){
+          var icon = 'mdi:spotify';
+        } else if(app == 'Google Podcasts'){
+          var icon = 'mdi:google-podcast';
+        } else if(app == 'Plex'){
+          var icon = 'mdi:plex';
+        } else if(app == 'Soundcloud'){
+          var icon = 'mdi:soundcloud';
+        } else if(app == 'Youtube Music'){
+          var icon = 'mdi:youtube';
+        } else if (app == 'Oto music'){
+          var icon = 'mdi:music-circle';
+        }
+        return icon ;
+    ]]]
+  styles:
+    label:
+      - opacity: '0.6'
+    icon:
+      - color: 'rgba(var(--color-theme),0.2)'
+    img_cell:
+      - background-color: 'rgba(var(--color-theme),0.05)'
+    card:
+      - background-blend-mode: multiply
+      - background: "[[[ return entity.attributes.entity_picture_local != null ? 'center / cover url(' + entity.attributes.entity_picture_local + ') rgba(0, 0, 0, 0.15)' : '' ]]]"
+  state:
+    - operator: template
+      value: "[[[ return entity.state !='off' ]]]"
+      name: "[[[ return entity.attributes.media_title; ]]]"
+      label: "[[[ return entity.attributes.media_album_name; ]]]"
+      styles:
+        label: 
+          - color: white
+          - filter: opacity(100%)
+        img_cell:
+          - background-color: 'rgba(var(--color-theme),0.0)'
+        icon:
+          - color: white
+        name:
+          - color: white
+```
+
+</details>
+
+### Media player with cover art (album picture)
+This is the second `media-player-card`, in contrast to the first one above, it shows the cover art from your media player. 
+
++++
+
+<details>
+<summary>Usage</summary>
+
+#### Example
+```yaml
+- type: 'custom:button-card'
+  template: 
+    - card_media_player_mini_album
+  entity: media_player.livingroom_shield
+```
+
+#### Variables
+<table>
+<tr>
+<th>Variable</th>
+<th>Example</th>
+<th>Required</th>
+<th>Explanation</th>
+</tr>
+<tr>
+<td>entity</td>
+<td>media_player.livingroom_shield</td>
+<td>yes</td>
+<td>The entity of the media player</td>
+</tr>
+</table>
+<br />
+</details>
+
+<details>
+<summary>Template code</summary>
+
+```yaml
+card_media_player_mini_album:
+  label: "[[[ return entity.state; ]]]"
+  styles:
+    icon:
+      - color: 'rgba(var(--color-theme),0.2)'
+    img_cell:
+      - background-color: 'rgba(var(--color-theme),0.05)'
+  state:
+    - operator: template
+      value: "[[[ return entity.state != 'off' ]]]"
+      name: "[[[ return entity.attributes.media_title; ]]]"
+      label: "[[[ return entity.attributes.media_album_name; ]]]"
+      styles:
+        img_cell:
+          - background: "[[[ return 'center / cover url(' + entity.attributes.entity_picture + ')'; ]]]"
+        icon:
+          - color: 'rgba(var(--color-theme),0.0)'
+```
+
+</details>
+
+### Battery
+The `battery-card` is a slightly enhanced `generic-card`, just to ease the use. You could always configure it from the `generic-card` yourself. 
+
+<span style="color: blue">@dev Picture missing</span>
+
+<details>
+<summary>Usage</summary>
+
+#### Example
+
+```yaml
+- type: 'custom:button-card'
+  template: 
+    - card_battery
   variables:
-    entity: "cover.fibaro_cover_balcon"
+    ulm_card_battery_attribute: battery_attribute
+  entity: sensor.livingoom_thermometer_battery
+```
+
+#### Variables
+<table>
+<tr>
+<th>Variable</th>
+<th>Example</th>
+<th>Required</th>
+<th>Explanation</th>
+</tr>
+<tr>
+<td>ulm_card_battery_attribute</td>
+<td>battery_attribute</td>
+<td>no</td>
+<td>If your entity provides the battery percent in an attribute (=not as an own sensor), fill in the <u>attributes name</u> here.<br />Eg. if you have `sensor.livingroom_thermometer` and the attribute for your battery power is `sensor.livingroom_thermometer.attributes.battery_percent`, you fill in <i>battery_percent</i> here.</td>
+</tr>
+<tr>
+<td>entity</td>
+<td>sensor.livingroom_thermometer_battery</td>
+<td>yes</td>
+<td>This is your battery entity</td>
+</tr>
+</table>
+<br />
+</details>
+
+<details>
+<summary>Template code</summary>
+
+```yaml
+card_battery:
+  template: card_generic
+  icon: |
+    [[[
+        var battery = variables.ulm_card_battery_attribute != null ? entity.attributes. + variables.ulm_card_battery_attribute : entity.state;
+        var icon = 'mdi:help-circle-outline';
+        if (battery >= 90){
+          var icon = 'mdi:battery';
+        } else if(battery >= 80){
+          var icon = 'mdi:battery-90';
+        } else if(battery >= 70){
+          var icon = 'mdi:battery-80️';
+        } else if(battery >= 60){
+          var icon = 'mdi:battery-70️';
+        } else if(battery >= 50){
+          var icon = 'mdi:battery-60️';
+        } else if(battery >= 40){
+          var icon = 'mdi:battery-50️';
+        } else if(battery >= 30){
+          var icon = 'mdi:battery-40️';
+        } else if(battery >= 20){
+          var icon = 'mdi:battery-30️';
+        } else if(battery >= 10){
+          var icon = 'mdi:battery-20️';
+        } else if(battery >= 0){
+          var icon = 'mdi:battery-10️';
+        } else if(battery == 0){
+          var icon = 'mdi:battery-outline️';
+        }
+         return icon ;
+    ]]]
+```
+
+</details>
+
+## 2-line cards
+
+### Cover  
+With the `cover-card` you have the state of your cover and on the second line UP / PAUSE / DOWN to control it. 
+
+![Volets](./screenshots/cover_buttons.png)
+
+<details>
+<summary>Usage</summary>
+
+#### Example
+
+```yaml
+- type: 'custom:button-card'
+  template: 
+    - card_cover_with_buttons
+  variables:
+    name: "Cover Livingroom Window"
+  entity: "cover.livingroom_window"
+```
+
+#### Variables
+<table>
+<tr>
+<th>Variable</th>
+<th>Example</th>
+<th>Required</th>
+<th>Explanation</th>
+</tr>
+<tr>
+<td>name</td>
+<td>Cover Livingroom Window</td>
+<td>no</td>
+<td>The name of your cover entity</td>
+</tr>
+<tr>
+<td>entity</td>
+<td>cover.livingroom_window</td>
+<td>yes</td>
+<td>The <i>entity_id</i> of your cover</td>
+</tr>
+</table>
+<br />
+</details>
+
+<details>
+<summary>Template code</summary>
+
+```yaml
+card_cover_with_buttons:
+  variables:
     name: "Default name"
+    entity: "[[[ return entity.entity_id ]]]"
   styles:
     card:
       - border-radius: var(--border-radius)
@@ -1078,7 +1494,7 @@ cover_buttons:
   custom_fields:
     item1:
       card:
-        entity: '[[[ return variables.entity ]]]'
+        entity: '[[[ return entity.entity_id ]]]'
         name: '[[[ return variables.name ]]]'
         tap_action:
           action: more-info
@@ -1098,7 +1514,7 @@ cover_buttons:
                 action: call-service
                 service: cover.close_cover
                 service_data:
-                  entity_id: '[[[ return variables.entity ]]]'
+                  entity_id: '[[[ return entity.entity_id ]]]'
               type: 'custom:button-card'
               template: widget_icon
           item2:
@@ -1108,7 +1524,7 @@ cover_buttons:
                 action: call-service
                 service: cover.stop_cover
                 service_data:
-                  entity_id: '[[[ return variables.entity ]]]'
+                  entity_id: '[[[ return entity.entity_id ]]]'
               type: 'custom:button-card'
               template: widget_icon
           item3:
@@ -1118,269 +1534,257 @@ cover_buttons:
                 action: call-service
                 service: cover.open_cover
                 service_data:
+                  entity_id: '[[[ return entity.entity_id ]]]'
+              type: 'custom:button-card'
+              template: widget_icon
+```
+
+</details>
+
+### Graph  
+The `graph-card` shows an entity with the actual state and a *min-graph-card* integrated. This can be used for a thermostat to show the actual temperature and the history.
+
+![Entity - graph](./screenshots/entity_graph.png)
+
+<details>
+<summary>Usage</summary>
+
+#### Example
+
+```yaml
+- type: 'custom:button-card'
+  template: 
+    - card_graph
+  variables:
+    color: "var(--google-blue)"
+    name: Temperature Livingroom
+  entity: sensor.livingroom_temperature
+```
+
+#### Variables
+<table>
+<tr>
+<th>Variable</th>
+<th>Example</th>
+<th>Required</th>
+<th>Explanation</th>
+</tr>
+<tr>
+<td>color</td>
+<td>var(--google-blue)</td>
+<td>no</td>
+<td>This is to adjust your color value. Use a CSS varible from HA or set a color value (eg. #FFFFFF)</td>
+</tr>
+<tr>
+<td>name</td>
+<td>Temperature Livingroom</td>
+<td>no</td>
+<td>The name of your sensor</td>
+</tr>
+<tr>
+<td>entity</td>
+<td>sensor.livingroom_temperature</td>
+<td>yes</td>
+<td>Your <i>entity_id</i> for the temperature sensor</td>
+</tr>
+</table>
+<br />
+</details>
+
+<details>
+<summary>Template code</summary>
+
+```yaml
+card_graph:
+  variables:
+    color: "var(--info-color)"
+    name: "Default name"
+  styles:
+    card:
+      - border-radius: var(--border-radius)
+      - box-shadow: var(--box-shadow)
+      - padding: 0px
+    grid:
+      - grid-template-areas: '"item1" "item2"'
+      - grid-template-columns: 1fr
+      - grid-template-rows: min-content  min-content
+  custom_fields:
+    item1:
+      card:
+        entity: '[[[ return entity.entity_id ]]]'
+        name: '[[[ return variables.name ]]]'
+        template: 
+          - icon_info
+          - card_generic
+        styles:
+          card:
+            - padding: 12px
+        type: 'custom:button-card'
+    item2:
+      card:
+        type: 'custom:mini-graph-card'
+        entities:
+          - entity: '[[[ return entity.entity_id ]]]'
+        line_color: '[[[ return variables.color ]]]'
+        show:
+          name: false
+          icon: false
+          legend: false
+          state: false
+        style: |
+          ha-card {
+            box-shadow: none;
+            border-radius: var(--border-radius);
+          }
+```
+
+</details>
+
+### Media player with controls
++++
+
++++
+
+<details>
+<summary>Usage</summary>
+
+#### Example
+```yaml
+- type: 'custom:button-card'
+  template: 
+    - card_media_player_with_controls
+  entity: media_player.livingroom_shield
+```
+
+#### Variables
+<table>
+<tr>
+<th>Variable</th>
+<th>Example</th>
+<th>Required</th>
+<th>Explanation</th>
+</tr>
+<tr>
+<td>entity</td>
+<td>media_player.livingroom_shield</td>
+<td>yes</td>
+<td>The entity of the media player</td>
+</tr>
+</table>
+<br />
+</details>
+
+<details>
+<summary>Template code</summary>
+
+```yaml
+card_media_player_with_controls:
+  variables:
+    name: "Default name"
+  styles:
+    card:
+      - border-radius: var(--border-radius)
+      - box-shadow: var(--box-shadow)
+      - padding: 12px
+    grid:
+      - grid-template-areas: '"item1" "item2"'
+      - grid-template-columns: 1fr
+      - grid-template-rows: min-content  min-content
+      - row-gap: 12px
+  custom_fields:
+    item1:
+      card:
+        entity: '[[[ return entity.entity_id ]]]'
+        name: '[[[ return variables.name ]]]'
+        tap_action:
+          action: more-info
+        template:
+          - icon_info
+          - card_media_player_mini_album
+        type: 'custom:button-card'
+    item2:
+      card:
+        template: list_items
+        type: 'custom:button-card'
+        custom_fields:
+          item1:
+            card:
+              icon: 'mdi:skip-previous'
+              tap_action:
+                action: call-service
+                service: media_player.media_previous_track
+                service_data:
+                  entity_id: '[[[ return variables.entity ]]]'
+              type: 'custom:button-card'
+              template: widget_icon
+          item2:
+            card:
+              icon: 'mdi:pause'
+              tap_action:
+                action: call-service
+                service: media_player.media_play_pause
+                service_data:
+                  entity_id: '[[[ return variables.entity ]]]'
+              type: 'custom:button-card'
+              template: widget_icon
+          item3:
+            card:
+              icon: 'mdi:skip-next'
+              tap_action:
+                action: call-service
+                service: media_player.media_next_track
+                service_data:
                   entity_id: '[[[ return variables.entity ]]]'
               type: 'custom:button-card'
               template: widget_icon
 ```
 
-</td>
-</tr>
-</table>
 </details>
 
-### Thermostat  
-![Thermostat](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/thermostat.png)
-<details><summary>Code</summary>
-<table>
-<tr>
-<th> Example </th>
-<th> Template </th>
-</tr>
-<tr>
-<td VALIGN=TOP>
-
-```yaml
-- entity: climate.example
-  template: 
-    - icon_info_bg
-    - thermostat
-  type: 'custom:button-card'
-```
-
-</td>
-<td VALIGN=TOP>
-
-```yaml
-thermostat:
-  hold_action:
-    action: more-info
-    entity: input_boolean.radiateur_arret_force
-  label: >-
-    [[[ 
-        if (entity.state =='off'){
-          return 'Off' ;
-        }else{
-          if (states['light.qubino'].state == 'on'){
-            var etat = "Chauffe";
-          }else{
-            var etat = "Inactif";
-          }
-          return (entity.attributes.temperature ) + '°' + ' • ' + etat ;
-        }
-    ]]]
-  state:
-    - operator: template
-      value: >
-        [[[
-          return states['light.qubino'].state == 'on'
-        ]]]
-      styles:
-        icon:
-          - color: 'rgba(var(--color-red),1)'
-        img_cell:
-          - background-color: 'rgba(var(--color-red),0.2)'
-        card:
-          - background-color: 'rgba(var(--color-background-red),var(--opacity-bg))'
-        name:
-          - color: 'rgba(var(--color-red-text),1)'
-        label:
-          - color: 'rgba(var(--color-red-text),1)'
-```
-
-</td>
-</tr>
-</table>
-</details>
-
-### Water heater  
-![Chauffe-eau](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/water-heater.png)
-<details><summary>Code</summary>
-<table>
-<tr>
-<th> Example </th>
-<th> Template </th>
-</tr>
-<tr>
-<td VALIGN=TOP>
-
-```yaml
-- entity: switch.example
-  name: Chauffe eau
-  template: 
-    - icon_info_bg
-    - water_heater
-  type: 'custom:button-card'
-```
-
-</td>
-<td VALIGN=TOP>
-
-```yaml
-water_heater:
-  icon: 'mdi:waves'
-  tap_action:
-    action: more-info
-  hold_action:
-    action: more-info
-  label: >-
-    [[[ 
-        if (entity.state == 'off'){
-          return 'Arrêt forcé';
-        }else{
-          if (states["sensor.shelly_prise_salon_conso"].state > 0){
-            var etat = "Chauffe • " + states["sensor.shelly_prise_salon_conso"].state + "W";
-          }else{
-            var etat = "Inactif";
-          }
-          return etat ;
-        }
-    ]]]
-  state:
-    - operator: template
-      value: >
-        [[[
-          return (states['sensor.shelly_prise_salon_conso'].state > 0)
-        ]]]
-      styles:
-        icon:
-          - color: 'rgba(var(--color-red),1)'
-        img_cell:
-          - background-color: 'rgba(var(--color-red),0.2)'
-        card:
-          - background-color: 'rgba(var(--color-background-red),var(--opacity-bg))'
-        name:
-          - color: 'rgba(var(--color-red-text),1)'
-        label:
-          - color: 'rgba(var(--color-red-text),1)'
-```
-
-</td>
-</tr>
-</table>
-</details>
-
-### Media player  
-![Enceintes](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/media.png)
-<details><summary>Code</summary>
-<table>
-<tr>
-<th> Example </th>
-<th> Template </th>
-</tr>
-<tr>
-<td VALIGN=TOP>
-
-```yaml
-- entity: media_player.example
-  name: Enceintes
-  template: 
-    - icon_info_bg
-    - media
-  type: 'custom:button-card'
-```
-
-</td>
-<td VALIGN=TOP>
-
-```yaml
-  media:
-    label: >-
-      [[[ if (entity.state =='off'){
-            return "Off";
-          }else{
-            return entity.state;
-          }
-      ]]]
-    icon: |
-      [[[
-          var application = entity.attributes.app_name;
-          var icon = 'mdi:speaker';
-          if (application == 'Oto music'){
-            var icon = 'mdi:music-circle';
-          } else if(application == 'Spotify'){
-            var icon = 'mdi:spotify';
-          } else if(application == 'Google Podcasts'){
-            var icon = 'mdi:google-podcast';
-          } else if(application == 'Plex'){
-            var icon = 'mdi:plex';
-          }
-          return icon ;
-      ]]]
-    styles:
-      label:
-        - opacity: '0.6'
-      icon:
-        - color: 'rgba(var(--color-theme),0.2)'
-      img_cell:
-        - background-color: 'rgba(var(--color-theme),0.05)'
-      card:
-        - background-blend-mode: multiply
-        - background: >
-            [[[
-              var image = entity.attributes.entity_picture_local;
-              var bg = entity.attributes.entity_picture_local;
-              if (image == null){
-                var bg = '';
-              } else{
-                var bg = 'center / cover url(' + image + ') rgba(0, 0, 0, 0.15)';
-              }
-              return bg;
-            ]]]
-    state:
-      - operator: template
-        value: >
-          [[[
-            return entity.state !='off'
-          ]]]
-        name: >
-            [[[
-              return entity.attributes.media_title;
-            ]]]
-        label: >
-            [[[
-              return entity.attributes.media_album_name;
-            ]]]
-        styles:
-          label: 
-            - color: white
-            - filter: opacity(100%)
-          img_cell:
-            - background-color: 'rgba(var(--color-theme),0.0)'
-          icon:
-            - color: white
-          name:
-            - color: white
-```
-
-</td>
-</tr>
-</table>
-</details>
+## Special cards
+`Special cards` are cards, that are designed mostly for one specific need in an installation specific way. If you want to use these cards, you need to adapt them to your installation, eg. with these cards you may need to setup other things in HA to get them working correctly. If you have problems using them, feel free to ask for support in the corresponding forum thread [here](#). 
 
 ### Playstation  
-![Playstation](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/playstation.png)
-<details><summary>Code</summary>
-<table>
-<tr>
-<th> Example </th>
-<th> Template </th>
-</tr>
-<tr>
-<td VALIGN=TOP>
+
+![Playstation](./screenshots/playstation.png)
+
+<details>
+<summary>Usage</summary>
+
+#### Example
 
 ```yaml
 - entity: media_player.example
   template: 
-    - icon_info_bg
-    - ps4
+    - card_ps4
   type: 'custom:button-card'
 ```
 
-</td>
-<td VALIGN=TOP>
+#### Variables
+<table>
+<tr>
+<th>Variable</th>
+<th>Example</th>
+<th>Required</th>
+<th>Explanation</th>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<br />
+</details>
+
+<details>
+<summary>Template code</summary>
 
 ```yaml
-ps4:
+card_ps4:
+  template:
+    - icon_info_bg
   label: >-
     [[[ if (entity.state =='unknown'){
           return "Off";
@@ -1440,151 +1844,392 @@ ps4:
               ]]]
 ```
 
-</td>
-</tr>
-</table>
 </details>
 
-### Person  
-![Personne](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/person.png)
-<details><summary>Information</summary>
-    
-**Dot** : 
-- At home : Blue
-- Away : Green 
+### NAS
++++
 
+@dev Picture missing
 
-**Dot icon** :
-- At home : Home
-- Away : Walking man
-- Sleeping : Moon
+<details>
+<summary>Usage</summary>
 
-**Comment** : The sleep state takes over the At home or Away state to display the moon icon
-</details>
-<details><summary>Code</summary>
-<table>
-<tr>
-<th> Example </th>
-<th> Template </th>
-</tr>
-<tr>
-<td VALIGN=TOP>
+#### Example
 
 ```yaml
-- entity: input_select.localisation_thomas
-  variables:
-    personne: "thomas"
-  template: 
-    - icon_info_bg
-    - personne-thomas
-  name: Thomas
-  type: 'custom:button-card'
+...
 ```
 
-</td>
-<td VALIGN=TOP>
+#### Variables
+<table>
+<tr>
+<th>Variable</th>
+<th>Example</th>
+<th>Required</th>
+<th>Explanation</th>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<br />
+</details>
+
+<details>
+<summary>Template code</summary>
 
 ```yaml
-person:
+nas:
   tap_action:
     action: more-info
   show_label: true
-  label: >
-      [[[return entity.state]]]
-  styles:
-    icon:
-      - color: 'rgba(var(--color-theme),0.9)'
-    custom_fields:
-      notification:
-        - border-radius: 50%
-        - position: absolute
-        - left: 38px
-        - top: 8px
-        - height: 16px
-        - width: 16px
-        - border: 2px solid var(--card-background-color)
-        - font-size: 12px
-        - line-height: 14px
- 
-person-thomas:
-  variables:
-    person: "thomas"
-  template: person
-  hold_action:
+  label: |-
+    [[[ if (entity.state =='on')
+       var etat = states["sensor.nas_volume_1_used_space"].state + "/3.5To"; 
+       else
+      var etat = "Off";
+    return etat ; ]]]
+  template: 
+    - blue
+```
+
+</details>
+
+## Custom cards  
+This "theme" is designed with an open structure in mind, that's why it is possible to add custom cards without much hassle. If you have a card you would like to share, please follow these steps:
+
+<details>
+<summary>How to develop custom cards and share them</summary>
+
+* Develop your custom card by adding some specific style descriptions with your own naming. For example call your template definition <i>your_name_card_my_super_card</i>. 
+* You can use all `templates`, that are available through the repository. 
+* Please don't use other custom code, eg. from other <i>custom</i> cards.
+* Refer to [changing templates](#changing-templates) to see how and where to store your definitons.
+* To share the card with the community, leave us a note in an issue or in the forum support thread.
+
+> We are currently planning to support the automatic upload of custom cards through a repository (as a merge request). If you're interested, please send us a short note. Until this function is implemented, please share it via the above mentioned ways. Thank you!
+
+</details>
+
+## Color scheme  
+I tried to set up a consistency between the colors used to represent the entities.
+|Color|Type|
+|---|---|
+|<span style="height: 30px; width: 30px; border-radius: 50%; display: inline-block; background-color: #FF9101;"></span>|💡 Light<br />⚡ Electricity|
+|<span style="height: 30px; width: 30px; border-radius: 50%; display: inline-block; background-color: #F54436;"></span>|🔥 Heating|
+|<span style="height: 30px; width: 30px; border-radius: 50%; display: inline-block; background-color: #3D5AFE;"></span>|☑️ On/off devices<br />🏠 Home|
+|<span style="height: 30px; width: 30px; border-radius: 50%; display: inline-block; background-color: #01C852;"></span>|🌲 Exterior|
+
+## Icons  
+For the `chips`, this "theme" uses the standard *unicode emojis*. The main reason is, they are multi-color whereas the `mdi-icons` that HomeAssistant uses are one color only. 
+> These emojis are *only used* on the `chips`, all *other cards or buttons* use the standard `mdi-icons`!
+
+Overview over standard *unicode emojis*:  
+* [https://emojipedia.org](https://emojipedia.org) or  
+* [https://github.com/ikatyang/emoji-cheat-sheet](https://github.com/ikatyang/emoji-cheat-sheet)  
+
+Overview Home Assistant *mdi-icons*: 
+* [https://materialdesignicons.com/](https://materialdesignicons.com/) 
+
+Using emojis is easy:
+* Go to one of the Github pages above
+* Select the emoji you want and copy it ("CTRL + C" or right-click "copy" / at <i>emojipedia.org</i> you already find a "copy" button)
+* Go to your view and paste the icon
+
+> There are a lot of emojis on these pages, so we suggest you use the built-in search at <i>emojipedia</i> or the browser integrated search by pressing "CTRL + F" and type in your query like "heart". 
+
+## Notes  
+* <a name="share-your-cards"></a><u>Share your cards</u>  
+  You configured a great card for your setup? Share it with the community! We are always happy to show off your card here in this readme, to allow others to use it as well. Please open an issue or make a post in the support thread [here](). Of course your name will be added with your contribution (if you want)!    
+* <a name="legacy-templates"></a><u>Legacy templates</u>  
+  As this is a major re-write of the originally created templates, we tried to leave legacy templates in place, so you can easily adjust your code over time. These legacy templates work by using the *old* naming and forwarding these to the *new* functions, that have a new name. Eg. if you previously used `chips_return` for your **back** button, the new code works with **back** button. You can still use your code, as we forward this to the new style like this:
+
+  ```yaml
+  chips_return:
+    template: chips_back
+  ```
+
+* <a name="my-cards"></a><u>my-cards (formerly known as ha-slider-card)</u>  
+  The `custom_component` *ha-slider-card* was recently renamed to *my-cards* from the author. With this update the card is now usable without an internet connection, as the files from *unpkg.com* are now compiled into the `custom_component` and don't need to be loaded from an external server. This is a great update and you should use the new version. This "theme" is already changed to use the new version. 
+
+## Changing templates
+This "theme" is build with the idea to make its use easy. But there are cases (actually a lot of them), where you want to change settings in the template to fit it to your needs.  
+
+To make your life easy and to asure the next update will not brake anything, we recommend the following way to change settings.
+
+<details>
+  <summary>See how this works</summary>
+
+* Look for a chip or card, that looks like the one you want to newly create.
+* Open the pull-down named <i>Template code</i> under that chip/card.  
+* Go to your `config` folder of HA, go to the folder `minimalist_templates` and add a new file. 
+* <b>IMPORTANT!</b>  
+  Name the file to your liking (preferably describing your chip/card), <b>but you must add the prefix <i>custom_</i></b> to the file name. Otherwise the file will not be correctly included!  
+  Example: <i>custom_chip_temperature.yaml</i>
+* Now copy the <i>Template code</i> and add it to your newly created file.
+
+  ```yaml
+  chips_temperature:
+    template: chips
+    label: |
+      [[[
+        var icon = '🌡️';
+        if (states[variables.ulm_chip_temperature_weather].state == 'clear-night'){
+          var icon = '🌙';
+
+          [...]
+
+        }
+        return icon + ' ' + states[variables.ulm_chip_temperature_outside].state + '° / ' + states[variables.ulm_chip_temperature_inside].state + '°' ;
+      ]]]
+  ```
+
+* Change the name of your chip/card, but leave at least the used <i>template</i> in place. 
+  ```yaml
+  paddy_chips_temperature: # <- change name
+    template: chips # <- leave this in place
+    # from here down you can change/delete everything
+    label: |
+      [[[
+        var icon = '🌡️';
+        if (states[variables.ulm_chip_temperature_weather].state == 'clear-night'){
+          var icon = '🌙';
+
+          [...]
+
+        }
+        return icon + ' ' + states[variables.ulm_chip_temperature_outside].state + '° / ' + states[variables.ulm_chip_temperature_inside].state + '°' ;
+      ]]]
+  ```
+* You can now overwrite basically every setting that is pre-configured. See the documentation of [button-card](https://github.com/custom-cards/button-card) to look up all the settings, you can configure.  
+  > <u>Note</u>  
+    The configuration that you set in your own file, overwrites the configuration set by this theme. Eg. if you set `label` in your file, the settings from `label` in this "themes" file will be overwritten. But as long as you follow this readme, these settings are reversible. Just delete the content of your file and start new. 
+* Safe the file and reload your lovelace configuration via the three-dot menu in the upper right corner of your lovelace view pressing `Reload resources`.
+* You can now use your newly created template for your chip/card.
+</details>
+
+## Internal Templates
+This "theme" is working with a lot of templates (in *button_card_templates.yaml*) that inherit settings from other templates. This is to shorten the code, avoid duplication and make the use easier.
+
+> <b>This section is only for documenting purposes. You won't need these templates directly in your view(s)!</b>
+
+### Chips
+
+<details>
+<summary>Template name: <i>chips</i></summary>
+
+```yaml
+chips:
+  tap_action:
     action: more-info
-    entity: input_boolean.thomas_nuit
+  show_icon: false
+  show_name: false
+  show_state: false
+  show_label: true
+  size: 80%
   styles:
-    custom_fields:
-      notification:
-        - background-color: >
-            [[[
-              if (states['input_select.localisation_thomas'].state == 'Present'){
-                return "rgba(var(--color-blue),1)";
-              }else{
-                return "rgba(var(--color-green),1)";
-              }
-            ]]]
+    img_cell:
+      - width: 24px
+    card:
+      - border-radius: 18px
+      - box-shadow: var(--box-shadow)
+      - height: 36px
+      - width: auto
+      - padding-left: 6px
+      - padding-right: 6px
+    grid:
+      - grid-template-areas: '"l"'
+    label:
+      - justify-self: center
+      - padding: 0px 6px
+      - font-weight: bold
+      - font-size: 14px
+```
+
+</details>
+
+<details>
+<summary>Template name: <i>cover</i></summary>
+
+```yaml
+cover:
+  tap_action:
+    action: more-info
+  icon: |
+    [[[
+        var icon = 'mdi:window-shutter';
+        if (entity.attributes.current_position == 0){
+          var icon = 'mdi:window-shutter';
+        } else
+          var icon = 'mdi:window-shutter-open';
+        return icon ;
+    ]]]
+  label: >-
+    [[[ 
+        if (entity.attributes.power_consumption != '0'){
+          return 'Mouvement';
+        }else{
+          if (entity.attributes.current_position == 0){
+            var etat = "Fermé";
+          }else{
+            var etat = "Ouvert" + ' • ' + (entity.attributes.current_position) + '%' ;
+          }
+          return etat ;
+        }
+    ]]]
+  state:
+    - operator: template
+      value: >
+        [[[
+          return entity.attributes.current_position != 0;
+        ]]]
+      styles:
+        icon:
+          - color: 'rgba(var(--color-blue),1)'
+        img_cell:
+          - background-color: 'rgba(var(--color-blue),0.2)'
+```
+
+</details>
+
+<details>
+<summary>Template name: <i>edge</i></summary>
+
+```yaml
+edge:
+  styles:
+    card:
+      - width: 0px
+```
+
+</details>
+
+<details>
+<summary>Template name: <i>icon</i></summary>
+
+```yaml
+icon:
+  color: var(--google-grey)
+  show_icon: true
+  show_name: false
+  show_label: false
+  size: 20px
   custom_fields:
     notification: >
       [[[
-        if (states['input_boolean.thomas_nuit'].state == 'on'){
-          return `<ha-icon icon="mdi:power-sleep" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>`
-        }else{
-          if (states['input_select.localisation_thomas'].state == 'Present'){
-            return `<ha-icon icon="mdi:home-variant" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>`
-          }else{
-            return `<ha-icon icon="mdi:pine-tree" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>`
-          }
+        if (entity.state =='unavailable'){
+          return `<ha-icon icon="mdi:exclamation" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`
         }
       ]]]
+  state:
+    - styles:
+        custom_fields:
+          notification:
+            - border-radius: 50%
+            - position: absolute
+            - left: 24px
+            - top: -2px
+            - height: 16px
+            - width: 16px
+            - border: 2px solid var(--card-background-color)
+            - font-size: 12px
+            - line-height: 14px
+            - background-color: >
+                [[[
+                  return "rgba(var(--color-red),1)";
+                ]]]
+      value: unavailable
+  styles:
+    card:
+      - border-radius: 21px
+      - box-shadow: none
+      - padding: 0px
+    grid:
+      - grid-template-areas: '"i"'
+      - grid-template-columns: min-content
+      - grid-template-rows: min-content
+    icon:
+      - color: 'rgba(var(--color-theme),0.2)'
+    img_cell:
+      - background-color: 'rgba(var(--color-theme),0.05)'
+      - border-radius: 50%
+      - place-self: center
+      - width: 42px
+      - height: 42px
 ```
 
-</td>
-</tr>
-</table>
 </details>
 
-### Generic  
-![Generic](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/generic.png)
-<details><summary>Code</summary>
-<table>
-<tr>
-<th> Example </th>
-<th> Template </th>
-</tr>
-<tr>
-<td VALIGN=TOP>
+<details>
+<summary>Template name: <i>icon_info</i></summary>
 
 ```yaml
-- entity: sensor.example
-  template: 
-    - icon_info_bg
-    - generic
-  type: 'custom:button-card'
-```
-
-</td>
-<td VALIGN=TOP>
-
-```yaml
-generic:
-  label: >
-      [[[return entity.state + " " + entity.attributes.unit_of_measurement]]]
+icon_info:
+  color: var(--google-grey)
+  show_icon: true
+  show_name: true
+  show_label: true
+  size: 20px
+  custom_fields:
+    notification: >
+      [[[
+        if (entity.state =='unavailable'){
+          return `<ha-icon icon="mdi:exclamation" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`
+        }
+      ]]]
+  state:
+    - styles:
+        custom_fields:
+          notification:
+            - border-radius: 50%
+            - position: absolute
+            - left: 24px
+            - top: -2px
+            - height: 16px
+            - width: 16px
+            - border: 2px solid var(--card-background-color)
+            - font-size: 12px
+            - line-height: 14px
+            - background-color: >
+                [[[
+                  return "rgba(var(--color-red),1)";
+                ]]]
+      value: unavailable
   styles:
-    icon:
-      - color: 'rgba(var(--color-theme),0.9)'
+    card:
+      - border-radius: 21px 8px 8px 21px 
+      - box-shadow: none
+      - padding: 0px
+      # - background-color: 'rgba(var(--color-theme),0)'
     grid:
-      - grid-template-areas: '"i l" "i n"'
+      - grid-template-areas: '"i n" "i l"'
       - grid-template-columns: min-content auto
       - grid-template-rows: min-content min-content
-    label:
+    icon:
+      - color: 'rgba(var(--color-theme),0.2)'
+    img_cell:
+      - background-color: 'rgba(var(--color-theme),0.05)'
+      - border-radius: 50%
+      - place-self: center
+      - width: 42px
+      - height: 42px
+    name:
       - align-self: end
       - justify-self: start
       - font-weight: bold
       - font-size: 14px
       - margin-left: 12px
-      - filter: opacity(100%)
-    name:
+    label:
+      - justify-self: start
+      - align-self: start
+      - font-weight: bolder
+      - font-size: 12px
+      - filter: opacity(40%)
+      - margin-left: 12px
+    state:
       - justify-self: start
       - align-self: start
       - font-weight: bolder
@@ -1593,113 +2238,178 @@ generic:
       - margin-left: 12px
 ```
 
-</td>
-</tr>
-</table>
 </details>
 
-### Generic + graph  
-![Entity - graph](https://raw.githubusercontent.com/TBens/lovelace-ui-minimalist/main/screenshots/entity_graph.png)
-<details><summary>Code</summary>
-<table>
-<tr>
-<th> Example </th>
-<th> Template </th>
-</tr>
-<tr>
-<td VALIGN=TOP>
+<details>
+<summary>Template name: <i>icon_info_bg</i></summary>
 
 ```yaml
-- type: 'custom:button-card'
-  template: graph
-  variables:
-    entity: "sensor.exemple"
-    color: "var(--google-blue)"
-    name: "Température"
-```
-
-</td>
-<td VALIGN=TOP>
-
-```yaml
-graph:
-  variables:
-    entity: "sensor.xiaomi_multisensor_salon_humidite"
-    color: "var(--info-color)"
-    name: "Default name"
+icon_info_bg:
+  color: var(--google-grey)
+  show_icon: true
+  show_name: true
+  show_label: true
+  size: 20px
+  custom_fields:
+    notification: >
+      [[[
+        if (entity.state =='unavailable'){
+          return `<ha-icon icon="mdi:exclamation" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`
+        }
+      ]]]
+  state:
+    - styles:
+        custom_fields:
+          notification:
+            - border-radius: 50%
+            - position: absolute
+            - left: 38px
+            - top: 8px
+            - height: 16px
+            - width: 16px
+            - border: 2px solid var(--card-background-color)
+            - font-size: 12px
+            - line-height: 14px
+            - background-color: >
+                [[[
+                  return "rgba(var(--color-red),1)";
+                ]]]
+      value: unavailable
   styles:
     card:
       - border-radius: var(--border-radius)
       - box-shadow: var(--box-shadow)
-      - padding: 0px
+      - padding: 12px
     grid:
-      - grid-template-areas: '"item1" "item2"'
-      - grid-template-columns: 1fr
-      - grid-template-rows: min-content  min-content
-  custom_fields:
-    item1:
-      card:
-        entity: '[[[ return variables.entity ]]]'
-        name: '[[[ return variables.name ]]]'
-        template: 
-          - icon_info
-          - generic
-        styles:
-          card:
-            - padding: 12px
-        type: 'custom:button-card'
-    item2:
-      card:
-        type: 'custom:mini-graph-card'
-        entities:
-          - entity: '[[[ return variables.entity ]]]'
-        line_color: '[[[ return variables.color ]]]'
-        show:
-          name: false
-          icon: false
-          legend: false
-          state: false
-        style: |
-          ha-card {
-            box-shadow: none;
-            border-radius: var(--border-radius);
-          }
+      - grid-template-areas: '"i n" "i l"'
+      - grid-template-columns: min-content auto
+      - grid-template-rows: min-content min-content
+    icon:
+      - color: 'rgba(var(--color-theme),0.2)'
+    img_cell:
+      - background-color: 'rgba(var(--color-theme),0.05)'
+      - border-radius: 50%
+      - place-self: center
+      - width: 42px
+      - height: 42px
+    name:
+      - align-self: end
+      - justify-self: start
+      - font-weight: bold
+      - font-size: 14px
+      - margin-left: 12px
+    label:
+      - justify-self: start
+      - align-self: start
+      - font-weight: bold
+      - font-size: 12px
+      - filter: opacity(40%)
+      - margin-left: 12px
+    state:
+      - justify-self: start
+      - align-self: start
+      - font-weight: bold
+      - font-size: 12px
+      - filter: opacity(40%)
+      - margin-left: 12px
 ```
 
-</td>
-</tr>
-</table>
 </details>
 
-<span style="color: blue">@dev END unchanged part</span>
+<details>
+<summary>Template name: <i>icon_info_line</i></summary>
 
-## Color scheme  
-I tried to set up a consistency between the colors used to represent the entities.
-|Color|Type|
-|---|---|
-|![Orange](https://user-images.githubusercontent.com/12232620/127771417-73385ee2-8c31-47a4-8438-472826184ea1.png)|💡 Light<br />⚡ Electricity|
-|![Red](https://user-images.githubusercontent.com/12232620/127771470-38b1eba2-fc8a-41a8-a1fa-5fa249619af6.png)|🔥 Heating|
-|![Blue](https://user-images.githubusercontent.com/12232620/127771485-615cf15e-d7fe-4528-8ccb-db3c307c3428.png)|☑️ On/off devices<br />🏠 Home|
-|![Green](https://user-images.githubusercontent.com/12232620/127771492-1abcd92b-8261-45e6-bdfb-d7987dcb6c76.png)|🌲 Exterior|
+```yaml
+icon_info_line:
+  show_icon: true
+  show_name: false
+  show_label: true
+  size: 100%
+  styles:
+    card:
+      - box-shadow: none
+      - padding: 0px
+    grid:
+      - grid-template-areas: '"i l"'
+      - grid-template-columns: max_content auto
+      - grid-template-rows: min-content
+    icon:
+      - filter: opacity(40%)
+    img_cell:
+      - place-self: center
+      - width: 14px
+      - height: 24px
+    label:
+      - padding: 2px
+      - justify-self: start
+      - align-self: center
+      - font-weight: bolder
+      - font-size: 12px
+      - margin-left: 0px
+      - filter: opacity(40%)
+```
 
-## Icons  
-This "theme" uses, in contrast to HomeAssistant, the standard unicode emojis for the `chips`. The main reason is, they are multi-color whereas the `mdi-icons` that HomeAssistant uses are one color only. These emojis are *only used on the `chips`, all other cards or buttons use the standard `mdi-icons`*, which you can find here: [https://materialdesignicons.com/](https://materialdesignicons.com/) 
+</details>
 
-Using emojis is easy:
-* Go to this Github page, where you find a complete list of all unicode emojis: [https://github.com/ikatyang/emoji-cheat-sheet](https://github.com/ikatyang/emoji-cheat-sheet)
-* Select the emoji you want and copy it ("CTRL + C" or right-click "copy")
-* Go to your view and paste the icon
+<details>
+<summary>Template name: <i>list_items</i></summary>
 
-> There are a lot of emojis on that page, so we suggest you use the browser integrated search by pressing "CTRL + F" and type in your query like "heart". 
+```yaml
+list_items:
+  styles:
+    card:
+      - box-shadow: none
+      - padding: 0px
+    grid:
+      - grid-template-areas: '"item1 item2 item3"'
+      - grid-template-columns: 1fr 1fr 1fr
+      - grid-template-rows: min-content
+      - column-gap: 7px
+```
 
-## Notes  
-* <a name="legacy-templates"></a>Legacy templates  
-  As this is a major re-write of the originally created templates, we tried to leave legacy templates in place, so you can easily adjust your code over time. These legacy templates work by using the *old* naming and forwarding these to the *new* functions, that have a new name. Eg. if you previously used `chips_back` for your **back** button, the new code works with **return** button. You can still use your code, as we forward this to the new style like this:
+</details>
 
-  ```yaml
-  chips_return:
-    template: chips_back
-  ```
+<details>
+<summary>Template name: <i>list_items_line</i></summary>
 
-* <a name="ha-slider-card"></a>ha-slider-card  
-If you want to use `ha-slider-card`, please take note, that this card **only** functions, if you are connected to the internet! This card loads a few files from `unpkg.com`. If you want to stay local only, you can't use this card. 
+```yaml
+list_items_line:
+  styles:
+    card:
+      - box-shadow: none
+      - padding: 0px
+    grid:
+      - grid-template-areas: '"item1 item2 item3"'
+      - grid-template-columns: max-content max-content max-content
+      - grid-template-rows: min-content
+      - column-gap: 8px
+```
+
+</details>
+
+<details>
+<summary>Template name: <i>widget_icon</i></summary>
+
+```yaml
+widget_icon:
+  tap_action:
+    action: toggle
+  color: var(--google-grey)
+  show_icon: true
+  show_name: false
+  size: 20px
+  styles:
+    card:
+      - box-shadow: none
+      - padding: 0px
+      - background-color: 'rgba(var(--color-theme),0.05)'
+      - border-radius: 14px
+      - place-self: center
+      - height: 42px
+    grid:
+      - grid-template-areas: '"i"'
+    icon:
+      - color: 'rgba(var(--color-theme),0.9)'
+```
+
+</details>

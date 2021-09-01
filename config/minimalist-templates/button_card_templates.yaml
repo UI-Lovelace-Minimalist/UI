@@ -1,1203 +1,1081 @@
-### ICONS ###
-  icon:
-    color: var(--google-grey)
-    show_icon: true
-    show_name: false
-    show_label: false
-    size: 20px
-    custom_fields:
-      notification: >
-        [[[
-          if (entity.state =='unavailable'){
-            return `<ha-icon icon="mdi:exclamation" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`
-          }
-        ]]]
-    state:
-      - styles:
-          custom_fields:
-            notification:
-              - border-radius: 50%
-              - position: absolute
-              - left: 24px
-              - top: -2px
-              - height: 16px
-              - width: 16px
-              - border: 2px solid var(--card-background-color)
-              - font-size: 12px
-              - line-height: 14px
-              - background-color: >
-                  [[[
-                    return "rgba(var(--color-red),1)";
-                  ]]]
-        value: unavailable
-    styles:
-      card:
-        - border-radius: 21px
-        - box-shadow: none
-        - padding: 0px
-      grid:
-        - grid-template-areas: '"i"'
-        - grid-template-columns: min-content
-        - grid-template-rows: min-content
-      icon:
-        - color: 'rgba(var(--color-theme),0.2)'
-      img_cell:
-        - background-color: 'rgba(var(--color-theme),0.05)'
-        - border-radius: 50%
-        - place-self: center
-        - width: 42px
-        - height: 42px
-
-  icon_info:
-    color: var(--google-grey)
-    show_icon: true
-    show_name: true
-    show_label: true
-    size: 20px
-    custom_fields:
-      notification: >
-        [[[
-          if (entity.state =='unavailable'){
-            return `<ha-icon icon="mdi:exclamation" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`
-          }
-        ]]]
-    state:
-      - styles:
-          custom_fields:
-            notification:
-              - border-radius: 50%
-              - position: absolute
-              - left: 24px
-              - top: -2px
-              - height: 16px
-              - width: 16px
-              - border: 2px solid var(--card-background-color)
-              - font-size: 12px
-              - line-height: 14px
-              - background-color: >
-                  [[[
-                    return "rgba(var(--color-red),1)";
-                  ]]]
-        value: unavailable
-    styles:
-      card:
-        - border-radius: 21px 8px 8px 21px 
-        - box-shadow: none
-        - padding: 0px
-        # - background-color: 'rgba(var(--color-theme),0)'
-      grid:
-        - grid-template-areas: '"i n" "i l"'
-        - grid-template-columns: min-content auto
-        - grid-template-rows: min-content min-content
-      icon:
-        - color: 'rgba(var(--color-theme),0.2)'
-      img_cell:
-        - background-color: 'rgba(var(--color-theme),0.05)'
-        - border-radius: 50%
-        - place-self: center
-        - width: 42px
-        - height: 42px
-      name:
-        - align-self: end
-        - justify-self: start
-        - font-weight: bold
-        - font-size: 14px
-        - margin-left: 12px
-      label:
-        - justify-self: start
-        - align-self: start
-        - font-weight: bolder
-        - font-size: 12px
-        - filter: opacity(40%)
-        - margin-left: 12px
-      state:
-        - justify-self: start
-        - align-self: start
-        - font-weight: bolder
-        - font-size: 12px
-        - filter: opacity(40%)
-        - margin-left: 12px
-
-  icon_info_bg:
-    color: var(--google-grey)
-    show_icon: true
-    show_name: true
-    show_label: true
-    size: 20px
-    custom_fields:
-      notification: >
-        [[[
-          if (entity.state =='unavailable'){
-            return `<ha-icon icon="mdi:exclamation" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`
-          }
-        ]]]
-    state:
-      - styles:
-          custom_fields:
-            notification:
-              - border-radius: 50%
-              - position: absolute
-              - left: 38px
-              - top: 8px
-              - height: 16px
-              - width: 16px
-              - border: 2px solid var(--card-background-color)
-              - font-size: 12px
-              - line-height: 14px
-              - background-color: >
-                  [[[
-                    return "rgba(var(--color-red),1)";
-                  ]]]
-        value: unavailable
-    styles:
-      card:
-        - border-radius: var(--border-radius)
-        - box-shadow: var(--box-shadow)
-        - padding: 12px
-      grid:
-        - grid-template-areas: '"i n" "i l"'
-        - grid-template-columns: min-content auto
-        - grid-template-rows: min-content min-content
-      icon:
-        - color: 'rgba(var(--color-theme),0.2)'
-      img_cell:
-        - background-color: 'rgba(var(--color-theme),0.05)'
-        - border-radius: 50%
-        - place-self: center
-        - width: 42px
-        - height: 42px
-      name:
-        - align-self: end
-        - justify-self: start
-        - font-weight: bold
-        - font-size: 14px
-        - margin-left: 12px
-      label:
-        - justify-self: start
-        - align-self: start
-        - font-weight: bold
-        - font-size: 12px
-        - filter: opacity(40%)
-        - margin-left: 12px
-      state:
-        - justify-self: start
-        - align-self: start
-        - font-weight: bold
-        - font-size: 12px
-        - filter: opacity(40%)
-        - margin-left: 12px
-
-  icon_info_line:
-    show_icon: true
-    show_name: false
-    show_label: true
-    size: 100%
-    styles:
-      card:
-        - box-shadow: none
-        - padding: 0px
-      grid:
-        - grid-template-areas: '"i l"'
-        - grid-template-columns: max_content auto
-        - grid-template-rows: min-content
-      icon:
-        - filter: opacity(40%)
-      img_cell:
-        - place-self: center
-        - width: 14px
-        - height: 24px
-      label:
-        - padding: 2px
-        - justify-self: start
-        - align-self: center
-        - font-weight: bolder
-        - font-size: 12px
-        - margin-left: 0px
-        - filter: opacity(40%)
-
-  list_items:
-    styles:
-      card:
-        - box-shadow: none
-        - padding: 0px
-      grid:
-        - grid-template-areas: '"item1 item2 item3"'
-        - grid-template-columns: 1fr 1fr 1fr
-        - grid-template-rows: min-content
-        - column-gap: 7px
-
-  list_items_line:
-    styles:
-      card:
-        - box-shadow: none
-        - padding: 0px
-      grid:
-        - grid-template-areas: '"item1 item2 item3"'
-        - grid-template-columns: max-content max-content max-content
-        - grid-template-rows: min-content
-        - column-gap: 8px
-
 ### CHIPS ###
-  chips_localisation_absent:
-    tap_action:
-      action: navigate
-      navigation_path: /lovelace/localisation
-    label: |
-      [[[
-        var personnes_presentes = states['sensor.people_count_absent'].state;
-        return '🚶 ' +  personnes_presentes;
-      ]]]
-    template: chips
+chips_temperature:
+  template: chips
+  triggers_update: 
+    - [[[ variables.ulm_chip_temperature_weather ]]]
+    - [[[ variables.ulm_chip_temperature_outside ]]]
+    - [[[ variables.ulm_chip_temperature_inside ]]]
+  label: |
+    [[[
+      var icon = '🌡️';
+      if (states[variables.ulm_chip_temperature_weather].state == 'clear-night'){
+        var icon = '🌙';
+      } else if(states[variables.ulm_chip_temperature_weather].state == 'cloudy'){
+        var icon = '☁️';
+      } else if(states[variables.ulm_chip_temperature_weather].state == 'exceptional'){
+        var icon = '🌞';
+      } else if(states[variables.ulm_chip_temperature_weather].state == 'fog'){
+        var icon = '🌫️';
+      } else if(states[variables.ulm_chip_temperature_weather].state == 'hail'){
+        var icon = '⛈️';
+      } else if(states[variables.ulm_chip_temperature_weather].state == 'lightning'){
+        var icon = '⚡';
+      } else if(states[variables.ulm_chip_temperature_weather].state == 'lightning-rainy'){
+        var icon = '⛈️';
+      } else if(states[variables.ulm_chip_temperature_weather].state == 'partlycloudy'){
+        var icon = '⛅';
+      } else if(states[variables.ulm_chip_temperature_weather].state == 'pouring'){
+        var icon = '🌧️';
+      } else if(states[variables.ulm_chip_temperature_weather].state == 'rainy'){
+        var icon = '💧';
+      } else if(states[variables.ulm_chip_temperature_weather].state == 'snowy'){
+        var icon = '❄️';
+      } else if(states[variables.ulm_chip_temperature_weather].state == 'snowy-rainy'){
+        var icon = '🌨️';
+      } else if(states[variables.ulm_chip_temperature_weather].state == 'sunny'){
+        var icon = '☀️';
+      } else if(states[variables.ulm_chip_temperature_weather].state == 'windy'){
+        var icon = '🌪️';
+      }
+      return icon + ' ' + states[variables.ulm_chip_temperature_outside].state + '° / ' + states[variables.ulm_chip_temperature_inside].state + '°' ;
+    ]]]
 
-  chips_localisation_nuit:
-    template: chips
-    tap_action:
-      action: navigate
-      navigation_path: /lovelace/localisation
-    label: |
-      [[[
-        var personnes_presentes = states['sensor.people_count_nuit'].state;
-        return '🌙 ' +  personnes_presentes;
-      ]]]
+chips_icon_only:
+  template: chips
+  show_icon: true
+  variables:
+    icon: '❔'
+  icon: "[[[ return variables.ulm_chip_icon_state_icon ? variables.ulm_chip_icon_state_icon : variables.icon ]]]"
+  styles:
+    grid:
+      - grid-template-areas: '"i"'
 
-### COVER ###
-  cover:
-    tap_action:
-      action: more-info
-    icon: |
-      [[[
-          var icon = 'mdi:window-shutter';
-          if (entity.attributes.current_position == 0){
-            var icon = 'mdi:window-shutter';
-          } else
-            var icon = 'mdi:window-shutter-open';
-          return icon ;
-      ]]]
-    label: >-
-      [[[ 
-          if (entity.attributes.power_consumption != '0'){
-            return 'Mouvement';
-          }else{
-            if (entity.attributes.current_position == 0){
-              var etat = "Fermé";
-            }else{
-              var etat = "Ouvert" + ' • ' + (entity.attributes.current_position) + '%' ;
-            }
-            return etat ;
-          }
-      ]]]
-    state:
-      - operator: template
-        value: >
-          [[[
-            return entity.attributes.current_position != 0;
-          ]]]
-        styles:
-          icon:
-            - color: 'rgba(var(--color-blue),1)'
-          img_cell:
-            - background-color: 'rgba(var(--color-blue),0.2)'
+chips_icon_state:
+  template: chips
+  show_icon: true
+  show_label: true
+  variables:
+    icon: "❔"
+  icon: "[[[ return variables.ulm_chip_icon_state_icon ? variables.ulm_chip_icon_state_icon : variables.icon ]]]"
+  label: "[[[ return variables.ulm_chip_icon_state_label ? states[variables.ulm_chip_icon_state_label].state : '' ]]]"
+  styles:
+    grid:
+      - grid-template-areas: '"i l"'
+    label:
+      - justify-self: center
+      - padding: 0px 6px
+      - font-weight: bold
+      - font-size: 14px
 
-  cover_buttons:
-    variables:
-      entity: "cover.fibaro_cover_balcon"
-      name: "Default name"
-    styles:
-      card:
-        - border-radius: var(--border-radius)
-        - box-shadow: var(--box-shadow)
-        - padding: 12px
-      grid:
-        - grid-template-areas: '"item1" "item2"'
-        - grid-template-columns: 1fr
-        - grid-template-rows: min-content  min-content
-        - row-gap: 12px
-    custom_fields:
-      item1:
-        card:
-          entity: '[[[ return variables.entity ]]]'
-          name: '[[[ return variables.name ]]]'
-          tap_action:
-            action: more-info
-          template:
-            - icon_info
-            - cover
-          type: 'custom:button-card'
-      item2:
-        card:
-          template: list_items
-          type: 'custom:button-card'
-          custom_fields:
-            item1:
-              card:
-                icon: 'mdi:arrow-down'
-                tap_action:
-                  action: call-service
-                  service: cover.close_cover
-                  service_data:
-                    entity_id: '[[[ return variables.entity ]]]'
-                type: 'custom:button-card'
-                template: widget_icon
-            item2:
-              card:
-                icon: 'mdi:pause'
-                tap_action:
-                  action: call-service
-                  service: cover.stop_cover
-                  service_data:
-                    entity_id: '[[[ return variables.entity ]]]'
-                type: 'custom:button-card'
-                template: widget_icon
-            item3:
-              card:
-                icon: 'mdi:arrow-up'
-                tap_action:
-                  action: call-service
-                  service: cover.open_cover
-                  service_data:
-                    entity_id: '[[[ return variables.entity ]]]'
-                type: 'custom:button-card'
-                template: widget_icon
+chips_icon_double_state:
+  template: chips
+  show_icon: true
+  show_label: true
+  variables:
+    icon: "❔"
+  icon: "[[[ return variables.ulm_chip_icon_double_state_icon ? variables.ulm_chip_icon_double_state_icon : variables.icon ]]]"
+  label: "[[[ return variables.ulm_chip_icon_double_state_label_1 ? states[variables.ulm_chip_icon_double_state_label_1].state + states[variables.ulm_chip_icon_double_state_label_2].state : '' ]]]"
+  styles:
+    grid:
+      - grid-template-areas: '"i l"'
+    label:
+      - justify-self: center
+      - padding: 0px 6px
+      - font-weight: bold
+      - font-size: 14px
+      
+chips_back:
+  template: chips
+  show_icon: true
+  icon: 'mdi:arrow-left'
+  styles:
+    grid:
+      - grid-template-areas: '"i"'
+  tap_action:
+    action: navigate
+    navigation_path: /lovelace
 
-### LIGHT ###
-  light:
-    tap_action:
-      action: toggle
-    hold_action:
-      action: more-info
-    label: >-
-      [[[ if (entity.state !='unavailable'){
-            if (entity.state =='off'){
-              var bri = Math.round(entity.attributes.brightness / 2.55);
-              return 'Off';  
-            }else{
-              var bri = Math.round(entity.attributes.brightness / 2.55);
-              return (bri ? bri : '0') + '%'; 
-            }
-          }else{
-            return "Indisponible";
-          }
-      ]]]
-    template: 
-      - yellow
+chips_presence_detection:
+  template: chips
+  label: |
+    [[[
+      var guests = states[variables.ulm_chip_presence_counter_guests].state ? ' / ' + states[variables.ulm_chip_presence_counter_guests].state : '';
+      return '🏠 ' +  states[variables.ulm_chip_presence_counter_residents].state + guests;
+    ]]]
 
-  light_slider:
-    variables:
-      name: "Default name"
-    show_icon: false
-    show_name: false
-    show_label: false
-    styles:
-      card:
-        - border-radius: var(--border-radius)
-        - box-shadow: var(--box-shadow)
-        - padding: 12px
-      grid:
-        - grid-template-areas: '"item1" "item2"'
-        - grid-template-columns: 1fr
-        - grid-template-rows: min-content  min-content
-        - row-gap: 12px
-    state:
-      - operator: template
-        value: >
-          [[[
-            return entity.state == 'on'
-          ]]]
-        styles:
-          card:
-            - background-color: 'rgba(var(--color-background-yellow),var(--opacity-bg))'
-    custom_fields:
-      item1:
-        card:
-          entity: '[[[ return variables.entity ]]]'
-          name: '[[[ return variables.name ]]]'
-          template:
-            - icon_info
-            - light
-          type: 'custom:button-card'
-      item2:
-        card:
-          type: 'custom:slider-card'
-          entity: '[[[ return variables.entity ]]]'
-          radius: 14px
-          height: 42px
-          mainSliderColor: rgba(var(--color-yellow),1)
-          secondarySliderColor: rgba(var(--color-yellow),0.2)
-          mainSliderColorOff: rgba(var(--color-theme),0.05)
-          secondarySliderColorOff: rgba(var(--color-theme),0.05)
-          thumbHorizontalPadding: '0px'
-          thumbVerticalPadding: '0px'   
-          thumbWidth: 0px
-          card_mod:
-          style: |
-            ha-card {
-              border-radius: 14px;
-              box-shadow: none;
-            }
-  
-### GENERIC ###
-  generic:
-    label: >
-        [[[return entity.state + " " + entity.attributes.unit_of_measurement]]]
-    styles:
-      icon:
-        - color: 'rgba(var(--color-theme),0.9)'
-      grid:
-        - grid-template-areas: '"i l" "i n"'
-        - grid-template-columns: min-content auto
-        - grid-template-rows: min-content min-content
-      label:
-        - align-self: end
-        - justify-self: start
-        - font-weight: bold
-        - font-size: 14px
-        - margin-left: 12px
-        - filter: opacity(100%)
-      name:
-        - justify-self: start
-        - align-self: start
-        - font-weight: bolder
-        - font-size: 12px
-        - filter: opacity(40%)
-        - margin-left: 12px
+chips_power_consumption:
+  template: chips
+  label: |
+    [[[
+      var amount = variables.ulm_chip_electric_price != '' ? true : false
 
-### OUTLET ###
-  outlet:
-    tap_action:
-      action: more-info
-    label: |-
-      [[[ if (entity.state =='on')
-         var etat = "On";
-         else
-        var etat = "Off";
-      return etat ; ]]]
-    template: 
-      - yellow
-
-### BINARY SENSOR ###
-  ulm_binary_sensor:
-    show_last_changed: true
-    template: 
-      - blue
-
-### WATER HEATER ###
-  water_heater:
-    icon: 'mdi:waves'
-    tap_action:
-      action: more-info
-    hold_action:
-      action: more-info
-    label: >-
-      [[[ 
-          if (entity.state == 'off'){
-            return 'Arrêt forcé';
-          }else{
-            if (states["sensor.shelly_prise_salon_conso"].state > 0){
-              var etat = "Chauffe • " + states["sensor.shelly_prise_salon_conso"].state + "W";
-            }else{
-              var etat = "Inactif";
-            }
-            return etat ;
-          }
-      ]]]
-    state:
-      - operator: template
-        value: >
-          [[[
-            return (states['sensor.shelly_prise_salon_conso'].state > 0)
-          ]]]
-        styles:
-          icon:
-            - color: 'rgba(var(--color-red),1)'
-          img_cell:
-            - background-color: 'rgba(var(--color-red),0.2)'
-          card:
-            - background-color: 'rgba(var(--color-background-red),var(--opacity-bg))'
-          name:
-            - color: 'rgba(var(--color-red-text),1)'
-          label:
-            - color: 'rgba(var(--color-red-text),1)'
-
-### THERMOSTAT ###
-  thermostat:
-    hold_action:
-      action: more-info
-      entity: input_boolean.radiateur_arret_force
-    label: >-
-      [[[ 
-          if (entity.state =='off'){
-            return 'Off' ;
-          }else{
-            if (states['light.qubino'].state == 'on'){
-              var etat = "Chauffe";
-            }else{
-              var etat = "Inactif";
-            }
-            return (entity.attributes.temperature ) + '°' + ' • ' + etat ;
-          }
-      ]]]
-    state:
-      - operator: template
-        value: >
-          [[[
-            return states['light.qubino'].state == 'on'
-          ]]]
-        styles:
-          icon:
-            - color: 'rgba(var(--color-red),1)'
-          img_cell:
-            - background-color: 'rgba(var(--color-red),0.2)'
-          card:
-            - background-color: 'rgba(var(--color-background-red),var(--opacity-bg))'
-          name:
-            - color: 'rgba(var(--color-red-text),1)'
-          label:
-            - color: 'rgba(var(--color-red-text),1)'
-
-### NAS ###
-  nas:
-    tap_action:
-      action: more-info
-    show_label: true
-    label: |-
-      [[[ if (entity.state =='on')
-         var etat = states["sensor.nas_volume_1_used_space"].state + "/3.5To"; 
-         else
-        var etat = "Off";
-      return etat ; ]]]
-    template: 
-      - blue
-
-### MEDIA ###
-  media:
-    label: >-
-      [[[ if (entity.state =='off'){
-            return "Off";
-          }else{
-            return entity.state;
-          }
-      ]]]
-    icon: |
-      [[[
-          var application = entity.attributes.app_name;
-          var icon = 'mdi:speaker';
-          if (application == 'Oto music'){
-            var icon = 'mdi:music-circle';
-          } else if(application == 'Spotify'){
-            var icon = 'mdi:spotify';
-          } else if(application == 'Google Podcasts'){
-            var icon = 'mdi:google-podcast';
-          } else if(application == 'Plex'){
-            var icon = 'mdi:plex';
-          }
-          return icon ;
-      ]]]
-    styles:
-      label:
-        - opacity: '0.6'
-      icon:
-        - color: 'rgba(var(--color-theme),0.2)'
-      img_cell:
-        - background-color: 'rgba(var(--color-theme),0.05)'
-      card:
-        - background-blend-mode: multiply
-        - background: >
-            [[[
-              var image = entity.attributes.entity_picture_local;
-              var bg = entity.attributes.entity_picture_local;
-              if (image == null){
-                var bg = '';
-              } else{
-                var bg = 'center / cover url(' + image + ') rgba(0, 0, 0, 0.15)';
-              }
-              return bg;
-            ]]]
-    state:
-      - operator: template
-        value: >
-          [[[
-            return entity.state !='off'
-          ]]]
-        name: >
-            [[[
-              return entity.attributes.media_title;
-            ]]]
-        label: >
-            [[[
-              return entity.attributes.media_album_name;
-            ]]]
-        styles:
-          label: 
-            - color: white
-            - filter: opacity(100%)
-          img_cell:
-            - background-color: 'rgba(var(--color-theme),0.0)'
-          icon:
-            - color: white
-          name:
-            - color: white
-
-  media_mini_album:
-    label: >-
-      [[[ if (entity.state =='off'){
-            return "Off";
-          }else{
-            return entity.state;
-          }
-      ]]]
-    styles:
-      icon:
-        - color: 'rgba(var(--color-theme),0.2)'
-      img_cell:
-        - background-color: 'rgba(var(--color-theme),0.05)'
-    state:
-      - operator: template
-        value: >
-          [[[
-            return entity.state !='off'
-          ]]]
-        name: >
-            [[[
-              return entity.attributes.media_title;
-            ]]]
-        label: >
-            [[[
-              return entity.attributes.media_album_name;
-            ]]]
-        styles:
-          img_cell:
-            - background: >
-                [[[
-                  var image = entity.attributes.entity_picture;
-                  return 'center / cover url(' + image + ')';
-                ]]]
-          icon:
-            - color: 'rgba(var(--color-theme),0.0)'
-
-  media_buttons:
-    variables:
-      entity: "media_player.cuisine"
-      name: "Default name"
-    styles:
-      card:
-        - border-radius: var(--border-radius)
-        - box-shadow: var(--box-shadow)
-        - padding: 12px
-      grid:
-        - grid-template-areas: '"item1" "item2"'
-        - grid-template-columns: 1fr
-        - grid-template-rows: min-content  min-content
-        - row-gap: 12px
-    custom_fields:
-      item1:
-        card:
-          entity: '[[[ return variables.entity ]]]'
-          name: '[[[ return variables.name ]]]'
-          tap_action:
-            action: more-info
-          template:
-            - icon_info
-            - media_mini_album
-          type: 'custom:button-card'
-      item2:
-        card:
-          template: list_items
-          type: 'custom:button-card'
-          custom_fields:
-            item1:
-              card:
-                icon: 'mdi:skip-previous'
-                tap_action:
-                  action: call-service
-                  service: media_player.media_previous_track
-                  service_data:
-                    entity_id: '[[[ return variables.entity ]]]'
-                type: 'custom:button-card'
-                template: widget_icon
-            item2:
-              card:
-                icon: 'mdi:pause'
-                tap_action:
-                  action: call-service
-                  service: media_player.media_play_pause
-                  service_data:
-                    entity_id: '[[[ return variables.entity ]]]'
-                type: 'custom:button-card'
-                template: widget_icon
-            item3:
-              card:
-                icon: 'mdi:skip-next'
-                tap_action:
-                  action: call-service
-                  service: media_player.media_next_track
-                  service_data:
-                    entity_id: '[[[ return variables.entity ]]]'
-                type: 'custom:button-card'
-                template: widget_icon
-  
-### PLAYSTATION ###  
-  ps4:
-    label: >-
-      [[[ if (entity.state =='unknown'){
-            return "Off";
-          }else if (entity.state =='standby'){
-            return "En veille";
-          }else{
-            return "On";
-          }
-      ]]]
-    styles:
-      icon:
-        - color: 'rgba(var(--color-theme),0.2)'
-      img_cell:
-        - background-color: 'rgba(var(--color-theme),0.05)'
-    state:
-      - value: 'idle'
-        styles:
-          icon:
-            - color: 'rgba(var(--color-blue),1)'
-          img_cell:
-            - background-color: 'rgba(var(--color-blue), 0.2)'
-      - value: 'standby'
-        styles:
-          icon:
-            - color: 'rgba(var(--color-theme),0.2)'
-          img_cell:
-            - background-color: 'rgba(var(--color-theme),0.05)'
-      - operator: template
-        value: >
-          [[[
-            return entity.state !='unknown' 
-          ]]]
-        name: >
-            [[[
-              return entity.attributes.media_title;
-            ]]]
-        label: >
-            [[[
-              return entity.attributes.friendly_name;
-            ]]]
-        styles:
-          label: 
-            - color: white
-            - filter: opacity(100%)
-          img_cell:
-            - background-color: 'none'
-          icon:
-            - color: white
-          name:
-            - color: white
-          card:
-            - background-blend-mode: multiply
-            - background: >
-                [[[
-                  var image = entity.attributes.entity_picture;
-                  return 'center / cover url(' + image + ') rgba(0, 0, 0, 0.15)';
-                ]]]
-
-### PERSON ###
-  person:
-    tap_action:
-      action: more-info
-    show_label: true
-    label: >
-        [[[return entity.state]]]
-    styles:
-      icon:
-        - color: 'rgba(var(--color-theme),0.9)'
-      custom_fields:
-        notification:
-          - border-radius: 50%
-          - position: absolute
-          - left: 38px
-          - top: 8px
-          - height: 16px
-          - width: 16px
-          - border: 2px solid var(--card-background-color)
-          - font-size: 12px
-          - line-height: 14px
-
-  person-thomas:
-    variables:
-      person: "thomas"
-    template: person
-    hold_action:
-      action: more-info
-      entity: input_boolean.thomas_nuit
-    styles:
-      custom_fields:
-        notification:
-          - background-color: >
-              [[[
-                if (states['input_select.localisation_thomas'].state == 'Present'){
-                  return "rgba(var(--color-blue),1)";
-                }else{
-                  return "rgba(var(--color-green),1)";
-                }
-              ]]]
-    custom_fields:
-      notification: >
-        [[[
-          if (states['input_boolean.thomas_nuit'].state == 'on'){
-            return `<ha-icon icon="mdi:power-sleep" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>`
-          }else{
-            if (states['input_select.localisation_thomas'].state == 'Present'){
-              return `<ha-icon icon="mdi:home-variant" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>`
-            }else{
-              return `<ha-icon icon="mdi:pine-tree" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>`
-            }
-          }
-        ]]]
-
-  person-milena:
-    template: person
-    hold_action:
-      action: more-info
-      entity: input_boolean.milena_nuit
-    styles:
-      custom_fields:
-        notification:
-          - background-color: >
-              [[[
-                if (states['input_select.localisation_milena'].state == 'Present'){
-                  return "rgba(var(--color-blue),1)";
-                }else{
-                  return "rgba(var(--color-green),1)";
-                }
-              ]]]
-    custom_fields:
-      notification: >
-        [[[
-          if (states['input_boolean.milena_nuit'].state == 'on'){
-            return `<ha-icon icon="mdi:power-sleep" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>`
-          }else{
-            if (states['input_select.localisation_milena'].state == 'Present'){
-              return `<ha-icon icon="mdi:home-variant" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>`
-            }else{
-              return `<ha-icon icon="mdi:pine-tree" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>`
-            }
-          }
-        ]]]
-
-  person-invite:
-    tap_action:
-      action: more-info
-    show_label: true
-    label: |-
-      [[[ if (entity.state =='on')
-         var etat = "Present"; 
-         else
-        var etat = "Désactivé";
-      return etat ; ]]]
-    styles:
-      grid:
-        - grid-template-areas: '"i n" "i l"'
-      icon:
-        - color: 'rgba(var(--color-theme),0.2)'
-      img_cell:
-        - background-color: 'rgba(var(--color-theme),0.05)'
-    custom_fields:
-      notification: >
-        [[[
-          if (entity.state =='on'){
-            return `<ha-icon icon="mdi:home-variant" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>`
-          }
-        ]]]
-    state:
-      - styles:
-          icon:
-            - color: 'rgba(var(--color-theme),0.9)'
-          custom_fields:
-            notification:
-              - border-radius: 50%
-              - position: absolute
-              - left: 38px
-              - top: 6px
-              - height: 16px
-              - width: 16px
-              - border: 2px solid var(--card-background-color)
-              - font-size: 12px
-              - line-height: 14px
-              - background-color: >
-                  [[[
-                    return "rgba(var(--color-blue),1)";
-                  ]]]
-        value: 'on'
-
-### QUBINO ###        
-  qubino:
-    icon: 'mdi:memory'
-    tap_action:
-      action: more-info
-      entity: input_select.ordres_fil_pilote
-    label: >-
-      [[[ if (entity.state !='unavailable'){
-            var bri = Math.round(entity.attributes.brightness / 2.55);
-            var bri = (bri ? bri : '0')
-            var consigne = 'Inconnue';
-          if (bri >= 51){
-            var consigne = 'Confort';
-          } else if(bri < 51 && bri >= 41){
-            var consigne = 'Confort -1°C';
-          } else if(bri < 41 && bri >= 31){
-            var consigne = 'Confort -2°C️';
-          } else if(bri < 31 && bri >= 21){
-            var consigne = 'Eco️';
-          } else if(bri < 21 && bri >= 11){
-            var consigne = 'Hors Gel️';
-          } else if(bri < 11 && bri >= 0){
-            var consigne = 'Arrêt️';
-          }
-          return consigne + ' • ' + bri;  
-        }else{
-          return "Indisponible";
-        }
-      ]]]
-    template: 
-      - blue
-
-### COLORS ###
-  yellow:
-    state:
-      - styles:
-          icon:
-            - color: 'rgba(var(--color-yellow),1)'
-          img_cell:
-            - background-color: 'rgba(var(--color-yellow), 0.2)'
-          card:
-            - background-color: 'rgba(var(--color-background-yellow),var(--opacity-bg))'
-          name:
-            - color: 'rgba(var(--color-yellow-text),1)'
-          label:
-            - color: 'rgba(var(--color-yellow-text),1)'
-        value: 'on'
-
-  blue:
-    state:
-      - styles:
-          icon:
-            - color: 'rgba(var(--color-blue),1)'
-          img_cell:
-            - background-color: 'rgba(var(--color-blue), 0.2)'
-          card:
-            - background-color: 'rgba(var(--color-background-blue), var(--opacity-bg))'
-          name:
-            - color: 'rgba(var(--color-blue-text),1)'
-          label:
-            - color: 'rgba(var(--color-blue-text),1)'
-        value: 'on'
-
-### GRAPH CARD ###
-  graph:
-    variables:
-      entity: "sensor.xiaomi_multisensor_salon_humidite"
-      color: "var(--info-color)"
-      name: "Default name"
-    styles:
-      card:
-        - border-radius: var(--border-radius)
-        - box-shadow: var(--box-shadow)
-        - padding: 0px
-      grid:
-        - grid-template-areas: '"item1" "item2"'
-        - grid-template-columns: 1fr
-        - grid-template-rows: min-content  min-content
-    custom_fields:
-      item1:
-        card:
-          entity: '[[[ return variables.entity ]]]'
-          name: '[[[ return variables.name ]]]'
-          template: 
-            - icon_info
-            - generic
-          styles:
-            card:
-              - padding: 12px
-          type: 'custom:button-card'
-      item2:
-        card:
-          type: 'custom:mini-graph-card'
-          entities:
-            - entity: '[[[ return variables.entity ]]]'
-          line_color: '[[[ return variables.color ]]]'
-          show:
-            name: false
-            icon: false
-            legend: false
-            state: false
-          style: |
-            ha-card {
-              box-shadow: none;
-              border-radius: var(--border-radius);
-            }
-
-### BATTERY ###            
-  battery:
-    template: generic
-    icon: |
-      [[[
-          var battery = entity.state;
-          var icon = 'mdi:help-circle-outline';
-          if (battery >= 90){
-            var icon = 'mdi:battery';
-          } else if(battery < 90 && battery >= 80){
-            var icon = 'mdi:battery-90';
-          } else if(battery < 80 && battery >= 70){
-            var icon = 'mdi:battery-80️';
-          } else if(battery < 70 && battery >= 60){
-            var icon = 'mdi:battery-70️';
-          } else if(battery < 60 && battery >= 50){
-            var icon = 'mdi:battery-60️';
-          } else if(battery < 50 && battery >= 40){
-            var icon = 'mdi:battery-50️';
-          } else if(battery < 40 && battery >= 30){
-            var icon = 'mdi:battery-40️';
-          } else if(battery < 30 && battery >= 20){
-            var icon = 'mdi:battery-30️';
-          } else if(battery < 20 && battery >= 10){
-            var icon = 'mdi:battery-20️';
-          } else if(battery < 10 && battery >= 0){
-            var icon = 'mdi:battery-10️';
-          } else if(battery == 0){
-            var icon = 'mdi:battery-outline️';
-          }
-           return icon ;
-      ]]]
-
-### WIDGET ICON ###
-  widget_icon:
-    tap_action:
-      action: toggle
-    color: var(--google-grey)
-    show_icon: true
-    show_name: false
-    size: 20px
-    styles:
-      card:
-        - box-shadow: none
-        - padding: 0px
-        - background-color: 'rgba(var(--color-theme),0.05)'
-        - border-radius: 14px
-        - place-self: center
-        - height: 42px
-      grid:
-        - grid-template-areas: '"i"'
-      icon:
-        - color: 'rgba(var(--color-theme),0.9)'
-
-### EDGE ###
-  edge:
-    styles:
-      card:
-        - width: 0px
-
-### SCENE ###        
-  scene:
-    size: 20px
-    show_label: true
-    label: |
-      [[[ return (entity.attributes.value )]]]
-    styles:
-      card:
-        - border-radius: var(--border-radius)
-        - box-shadow: var(--box-shadow)
-        - padding: 10px 0px 8px 0px 
-      grid:
-        - grid-template-areas: '"i" "n" "l"'
-      name:
-        - margin-top: 10px
-        - justify-self: center
-        - font-weight: bold
-        - font-size: 14px
-      label:
-        - justify-self: center
-        - align-self: start
-        - font-weight: bolder
-        - font-size: 12px
-        - filter: opacity(40%)
-      icon:
-        - color: 'rgba(var(--color-theme),0.2)'
-      img_cell:
-        - background-color: 'rgba(var(--color-theme),0.05)'
-        - border-radius: 50%
-        - place-self: center
-        - width: 42px
-        - height: 42px
-
-  scene_blue:
-    variables:
-      state: "default"
-    template: 
-      - scene
-    state:
-      - operator: template
-        value: >
-          [[[
-            return states['input_select.localisation_thomas'].state == variables.state
-          ]]]
-        styles:
-          icon:
-            - color: 'rgba(var(--color-blue),1)'
-          img_cell:
-            - background-color: 'rgba(var(--color-blue), 0.2)'
-          card:
-            - background-color: 'rgba(var(--color-background-blue), var(--opacity-bg))'
-          name:
-            - color: 'rgba(var(--color-blue-text),1)'
-          label:
-            - color: 'rgba(var(--color-blue-text),1)'
-            
-  scene_green:
-    variables:
-      state: "default"
-    template: 
-      - scene
-    state:
-      - operator: template
-        value: >
-          [[[
-            return states['input_select.localisation_thomas'].state == variables.state
-          ]]]
-        styles:
-          icon:
-            - color: 'rgba(var(--color-green),1)'
-          img_cell:
-            - background-color: 'rgba(var(--color-green), 0.2)'
-          card:
-            - background-color: 'rgba(var(--color-background-green), var(--opacity-bg))'
-          name:
-            - color: 'rgba(var(--color-green-text),1)'
-          label:
-            - color: 'rgba(var(--color-green-text),1)'
+      if (amount){
+        return '⚡ ' +  states[variables.ulm_chip_electric_price].state + variables.ulm_chip_electric_currency;
+      } else {
+        return '⚡ ' +  states[variables.ulm_chip_electric_consumption].state;
+      }
+    ]]]
 
 ### TITLE ###
-  title:
-    tap_action:
-      action: none
-    show_icon: false
-    show_label: true
-    show_name: true
-    styles:
-      card:
-        - background-color: rgba(0,0,0,0)
-        - box-shadow: none
-        - height: auto
-        - width: auto
-        - margin-top: 12px
-        - margin-left: 24px
-        - margin-bottom: 0px
-      grid:
-        - grid-template-areas: '"n" "l"'
-        - grid-template-columns: 1fr
-        - grid-template-rows: min-content min-content
-      name:
-        - justify-self: start
-        - font-weight: bold
-        - font-size: '1.5rem'
-      label:
-        - justify-self: start
-        - font-weight: bold
-        - font-size: '1rem'
-        - opacity: '0.4'
+title:
+  tap_action:
+    action: none
+  show_icon: false
+  show_label: true
+  show_name: true
+  styles:
+    card:
+      - background-color: rgba(0,0,0,0)
+      - box-shadow: none
+      - height: auto
+      - width: auto
+      - margin-top: 12px
+      - margin-left: 24px
+      - margin-bottom: 0px
+    grid:
+      - grid-template-areas: '"n" "l"'
+      - grid-template-columns: 1fr
+      - grid-template-rows: min-content min-content
+    name:
+      - justify-self: start
+      - font-weight: bold
+      - font-size: '1.5rem'
+    label:
+      - justify-self: start
+      - font-weight: bold
+      - font-size: '1rem'
+      - opacity: '0.4'
 
+### CARDS ###
+card_generic:
+  template: 
+    - icon_info_bg
+  label: "[[[ return entity.state + ' ' + entity.attributes.unit_of_measurement; ]]]"
+  styles:
+    icon:
+      - color: 'rgba(var(--color-theme),0.9)'
+    grid:
+      - grid-template-areas: '"i l" "i n"'
+      - grid-template-columns: min-content auto
+      - grid-template-rows: min-content min-content
+    label:
+      - align-self: end
+      - justify-self: start
+      - font-weight: bold
+      - font-size: 14px
+      - margin-left: 12px
+      - filter: opacity(100%)
+    name:
+      - justify-self: start
+      - align-self: start
+      - font-weight: bolder
+      - font-size: 12px
+      - filter: opacity(40%)
+      - margin-left: 12px
+
+card_light:
+  template: 
+    - yellow
+  tap_action:
+    action: toggle
+  hold_action:
+    action: more-info
+  label: >-
+    [[[ if (entity.state !='unavailable'){
+          if (entity.state =='off'){
+            var bri = Math.round(entity.attributes.brightness / 2.55);
+            return 'Off';  
+          } else {
+            var bri = Math.round(entity.attributes.brightness / 2.55);
+            return (bri ? bri : '0') + '%'; 
+          }
+        } else {
+          return variables.ulm_light_unavailable ? variables.ulm_light_unavailable : 'Unavailable';
+        }
+    ]]]
+
+card_light_slider:
+  show_icon: false
+  show_name: false
+  show_label: false
+  styles:
+    card:
+      - border-radius: var(--border-radius)
+      - box-shadow: var(--box-shadow)
+      - padding: 12px
+    grid:
+      - grid-template-areas: '"item1" "item2"'
+      - grid-template-columns: 1fr
+      - grid-template-rows: min-content  min-content
+      - row-gap: 12px
+  state:
+    - operator: template
+      value: >
+        [[[
+          return entity.state == 'on'
+        ]]]
+      styles:
+        card:
+          - background-color: 'rgba(var(--color-background-yellow),var(--opacity-bg))'
+  custom_fields:
+    item1:
+      card:
+        type: 'custom:button-card'
+        template:
+          - icon_info
+          - light
+        entity: '[[[ return entity.entity_id ]]]'
+        name: '[[[ return entity.name ]]]'
+    item2:
+      card:
+        type: 'custom:my-slider'
+        entity: '[[[ return entity.entity_id ]]]'
+        radius: 14px
+        height: 42px
+        mainSliderColor: rgba(var(--color-yellow),1)
+        secondarySliderColor: rgba(var(--color-yellow),0.2)
+        mainSliderColorOff: rgba(var(--color-theme),0.05)
+        secondarySliderColorOff: rgba(var(--color-theme),0.05)
+        thumbHorizontalPadding: '0px'
+        thumbVerticalPadding: '0px'   
+        thumbWidth: 0px
+        card_mod:
+        style: |
+          ha-card {
+            border-radius: 14px;
+            box-shadow: none;
+          }
+
+card_power_outlet:
+  tap_action:
+    action: more-info
+  template: 
+    - yellow
+    - icon_info_bg
+  label: |-
+    [[[ 
+      if (entity.state =='on') && (variables.ulm_power_outlet_consumption_sensor != '' {
+        return entity.label + ' ' + variables.ulm_power_outlet_consumption_sensor + 'W';
+      } else {
+        return entity.label;
+      }
+    ]]]
+
+card_binary_sensor:
+  template: 
+    - icon_info_bg
+    - blue
+  name: "[[[ return entity.name != '' ? entity.name : entity.attribute.friendly_name ]]]"
+  show_last_changed: true
+
+card_media_player:
+  template:
+    - icon_info_bg
+  label: "[[[ return entity.state; ]]]"
+  icon: |
+    [[[
+        var app = entity.attributes.app_name;
+        var icon = 'mdi:speaker';
+        if(app == 'Spotify'){
+          var icon = 'mdi:spotify';
+        } else if(app == 'Google Podcasts'){
+          var icon = 'mdi:google-podcast';
+        } else if(app == 'Plex'){
+          var icon = 'mdi:plex';
+        } else if(app == 'Soundcloud'){
+          var icon = 'mdi:soundcloud';
+        } else if(app == 'Youtube Music'){
+          var icon = 'mdi:youtube';
+        } else if (app == 'Oto music'){
+          var icon = 'mdi:music-circle';
+        }
+        return icon;
+    ]]]
+  styles:
+    label:
+      - opacity: '0.6'
+    icon:
+      - color: 'rgba(var(--color-theme),0.2)'
+    img_cell:
+      - background-color: 'rgba(var(--color-theme),0.05)'
+    card:
+      - background-blend-mode: multiply
+      - background: "[[[ return states[entity.entity_id].attributes.entity_picture_local != null ? 'center / cover url(' + states[entity.entity_id].attributes.entity_picture_local + ') rgba(0, 0, 0, 0.15)' : '' ]]]"
+  state:
+    - operator: template
+      value: "[[[ return entity.state != 'off' ]]]"
+      name: "[[[ return states[entity.entity_id].attributes.media_title; ]]]"
+      label: "[[[ return states[entity.entity_id].attributes.media_album_name; ]]]"
+      styles:
+        label: 
+          - color: white
+          - filter: opacity(100%)
+        img_cell:
+          - background-color: 'rgba(var(--color-theme),0.0)'
+        icon:
+          - color: white
+        name:
+          - color: white
+
+card_media_player_mini_album:
+  label: "[[[ return entity.state; ]]]"
+  styles:
+    icon:
+      - color: 'rgba(var(--color-theme),0.2)'
+    img_cell:
+      - background-color: 'rgba(var(--color-theme),0.05)'
+  state:
+    - operator: template
+      value: "[[[ return entity.state != 'off' ]]]"
+      name: "[[[ return entity.attributes.media_title; ]]]"
+      label: "[[[ return entity.attributes.media_album_name; ]]]"
+      styles:
+        img_cell:
+          - background: "[[[ return 'center / cover url(' + entity.attributes.entity_picture + ')'; ]]]"
+        icon:
+          - color: 'rgba(var(--color-theme),0.0)'
+
+card_battery:
+  template: card_generic
+  icon: |
+    [[[
+        var battery = variables.ulm_card_battery_attribute != null ? states[entity.entity_id].attributes. + variables.ulm_card_battery_attribute : entity.state;
+        var icon = 'mdi:help-circle-outline';
+        if (battery >= 90){
+          var icon = 'mdi:battery';
+        } else if(battery >= 80){
+          var icon = 'mdi:battery-90';
+        } else if(battery >= 70){
+          var icon = 'mdi:battery-80️';
+        } else if(battery >= 60){
+          var icon = 'mdi:battery-70️';
+        } else if(battery >= 50){
+          var icon = 'mdi:battery-60️';
+        } else if(battery >= 40){
+          var icon = 'mdi:battery-50️';
+        } else if(battery >= 30){
+          var icon = 'mdi:battery-40️';
+        } else if(battery >= 20){
+          var icon = 'mdi:battery-30️';
+        } else if(battery >= 10){
+          var icon = 'mdi:battery-20️';
+        } else if(battery >= 0){
+          var icon = 'mdi:battery-10️';
+        } else if(battery == 0){
+          var icon = 'mdi:battery-outline️';
+        }
+         return icon;
+    ]]]
+
+### 2-LINE CARDS ###
+card_cover_with_buttons:
+  styles:
+    card:
+      - border-radius: var(--border-radius)
+      - box-shadow: var(--box-shadow)
+      - padding: 12px
+    grid:
+      - grid-template-areas: '"item1" "item2"'
+      - grid-template-columns: 1fr
+      - grid-template-rows: min-content  min-content
+      - row-gap: 12px
+  custom_fields:
+    item1:
+      card:
+        type: 'custom:button-card'
+        template:
+          - icon_info
+          - cover
+        entity: '[[[ return entity.entity_id ]]]'
+        name: '[[[ return variables.name ]]]'
+        tap_action:
+          action: more-info
+    item2:
+      card:
+        type: 'custom:button-card'
+        template: list_items
+        custom_fields:
+          item1:
+            card:
+              icon: 'mdi:arrow-down'
+              tap_action:
+                action: call-service
+                service: cover.close_cover
+                service_data:
+                  entity_id: '[[[ return entity.entity_id ]]]'
+              type: 'custom:button-card'
+              template: widget_icon
+          item2:
+            card:
+              icon: 'mdi:pause'
+              tap_action:
+                action: call-service
+                service: cover.stop_cover
+                service_data:
+                  entity_id: '[[[ return entity.entity_id ]]]'
+              type: 'custom:button-card'
+              template: widget_icon
+          item3:
+            card:
+              icon: 'mdi:arrow-up'
+              tap_action:
+                action: call-service
+                service: cover.open_cover
+                service_data:
+                  entity_id: '[[[ return entity.entity_id ]]]'
+              type: 'custom:button-card'
+              template: widget_icon
+
+card_graph:
+  variables:
+    color: "var(--info-color)"
+    name: "Default name"
+  styles:
+    card:
+      - border-radius: var(--border-radius)
+      - box-shadow: var(--box-shadow)
+      - padding: 0px
+    grid:
+      - grid-template-areas: '"item1" "item2"'
+      - grid-template-columns: 1fr
+      - grid-template-rows: min-content  min-content
+  custom_fields:
+    item1:
+      card:
+        entity: '[[[ return entity.entity_id ]]]'
+        name: '[[[ return variables.name ]]]'
+        template: 
+          - icon_info
+          - card_generic
+        styles:
+          card:
+            - padding: 12px
+        type: 'custom:button-card'
+    item2:
+      card:
+        type: 'custom:mini-graph-card'
+        entities:
+          - entity: '[[[ return entity.entity_id ]]]'
+        line_color: '[[[ return variables.color ]]]'
+        show:
+          name: false
+          icon: false
+          legend: false
+          state: false
+        style: |
+          ha-card {
+            box-shadow: none;
+            border-radius: var(--border-radius);
+          }
+
+card_media_player_with_controls:
+  variables:
+    name: "Default name"
+  styles:
+    card:
+      - border-radius: var(--border-radius)
+      - box-shadow: var(--box-shadow)
+      - padding: 12px
+    grid:
+      - grid-template-areas: '"item1" "item2"'
+      - grid-template-columns: 1fr
+      - grid-template-rows: min-content  min-content
+      - row-gap: 12px
+  custom_fields:
+    item1:
+      card:
+        entity: '[[[ return entity.entity_id ]]]'
+        name: '[[[ return variables.name ]]]'
+        tap_action:
+          action: more-info
+        template:
+          - icon_info
+          - card_media_player_mini_album
+        type: 'custom:button-card'
+    item2:
+      card:
+        template: list_items
+        type: 'custom:button-card'
+        custom_fields:
+          item1:
+            card:
+              icon: 'mdi:skip-previous'
+              tap_action:
+                action: call-service
+                service: media_player.media_previous_track
+                service_data:
+                  entity_id: '[[[ return variables.entity ]]]'
+              type: 'custom:button-card'
+              template: widget_icon
+          item2:
+            card:
+              icon: 'mdi:pause'
+              tap_action:
+                action: call-service
+                service: media_player.media_play_pause
+                service_data:
+                  entity_id: '[[[ return variables.entity ]]]'
+              type: 'custom:button-card'
+              template: widget_icon
+          item3:
+            card:
+              icon: 'mdi:skip-next'
+              tap_action:
+                action: call-service
+                service: media_player.media_next_track
+                service_data:
+                  entity_id: '[[[ return variables.entity ]]]'
+              type: 'custom:button-card'
+              template: widget_icon
+
+### SPECIAL CARDS ###
+card_ps4:
+  template:
+    - icon_info_bg
+  label: >-
+    [[[ if (entity.state =='unknown'){
+          return "Off";
+        }else if (entity.state =='standby'){
+          return "En veille";
+        }else{
+          return "On";
+        }
+    ]]]
+  styles:
+    icon:
+      - color: 'rgba(var(--color-theme),0.2)'
+    img_cell:
+      - background-color: 'rgba(var(--color-theme),0.05)'
+  state:
+    - value: 'idle'
+      styles:
+        icon:
+          - color: 'rgba(var(--color-blue),1)'
+        img_cell:
+          - background-color: 'rgba(var(--color-blue), 0.2)'
+    - value: 'standby'
+      styles:
+        icon:
+          - color: 'rgba(var(--color-theme),0.2)'
+        img_cell:
+          - background-color: 'rgba(var(--color-theme),0.05)'
+    - operator: template
+      value: >
+        [[[
+          return entity.state !='unknown' 
+        ]]]
+      name: >
+          [[[
+            return entity.attributes.media_title;
+          ]]]
+      label: >
+          [[[
+            return entity.attributes.friendly_name;
+          ]]]
+      styles:
+        label: 
+          - color: white
+          - filter: opacity(100%)
+        img_cell:
+          - background-color: 'none'
+        icon:
+          - color: white
+        name:
+          - color: white
+        card:
+          - background-blend-mode: multiply
+          - background: >
+              [[[
+                var image = entity.attributes.entity_picture;
+                return 'center / cover url(' + image + ') rgba(0, 0, 0, 0.15)';
+              ]]]
+
+nas:
+  tap_action:
+    action: more-info
+  show_label: true
+  label: |-
+    [[[ if (entity.state =='on')
+       var etat = states["sensor.nas_volume_1_used_space"].state + "/3.5To"; 
+       else
+      var etat = "Off";
+    return etat ; ]]]
+  template: 
+    - blue
+
+### COLORS ###
+yellow:
+  state:
+    - styles:
+        icon:
+          - color: 'rgba(var(--color-yellow),1)'
+        img_cell:
+          - background-color: 'rgba(var(--color-yellow), 0.2)'
+        card:
+          - background-color: 'rgba(var(--color-background-yellow),var(--opacity-bg))'
+        name:
+          - color: 'rgba(var(--color-yellow-text),1)'
+        label:
+          - color: 'rgba(var(--color-yellow-text),1)'
+      value: 'on'
+
+blue:
+  state:
+    - styles:
+        icon:
+          - color: 'rgba(var(--color-blue),1)'
+        img_cell:
+          - background-color: 'rgba(var(--color-blue), 0.2)'
+        card:
+          - background-color: 'rgba(var(--color-background-blue), var(--opacity-bg))'
+        name:
+          - color: 'rgba(var(--color-blue-text),1)'
+        label:
+          - color: 'rgba(var(--color-blue-text),1)'
+      value: 'on'
+
+### INTERNAL TEMPLATES ###
+### CHIPS ###
+chips:
+  tap_action:
+    action: more-info
+  show_icon: false
+  show_name: false
+  show_state: false
+  show_label: true
+  size: 80%
+  styles:
+    img_cell:
+      - width: 24px
+    card:
+      - border-radius: 18px
+      - box-shadow: var(--box-shadow)
+      - height: 36px
+      - width: auto
+      - padding-left: 6px
+      - padding-right: 6px
+    grid:
+      - grid-template-areas: '"l"'
+    label:
+      - justify-self: center
+      - padding: 0px 6px
+      - font-weight: bold
+      - font-size: 14px
+
+### CARDS ###
+cover:
+  tap_action:
+    action: more-info
+  icon: |
+    [[[
+        var icon = 'mdi:window-shutter';
+        if (states[entity.entity_id].attributes.current_position == 0){
+          var icon = 'mdi:window-shutter';
+        } else
+          var icon = 'mdi:window-shutter-open';
+        return icon ;
+    ]]]
+  label: >-
+    [[[ 
+        if (states[entity.entity_id].attributes.power_consumption != '0'){
+          return 'Mouvement';
+        }else{
+          if (states[entity.entity_id].attributes.current_position == 0){
+            var etat = "Fermé";
+          }else{
+            var etat = "Ouvert" + ' • ' + (states[entity.entity_id].attributes.current_position) + '%' ;
+          }
+          return etat ;
+        }
+    ]]]
+  state:
+    - operator: template
+      value: >
+        [[[
+          return states[entity.entity_id].attributes.current_position != 0;
+        ]]]
+      styles:
+        icon:
+          - color: 'rgba(var(--color-blue),1)'
+        img_cell:
+          - background-color: 'rgba(var(--color-blue),0.2)'
+
+### EDGE ###
+edge:
+  styles:
+    card:
+      - width: 0px
+
+### ICONS ###
+icon:
+  color: var(--google-grey)
+  show_icon: true
+  show_name: false
+  show_label: false
+  size: 20px
+  custom_fields:
+    notification: >
+      [[[
+        if (entity.state =='unavailable'){
+          return `<ha-icon icon="mdi:exclamation" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`
+        }
+      ]]]
+  state:
+    - styles:
+        custom_fields:
+          notification:
+            - border-radius: 50%
+            - position: absolute
+            - left: 24px
+            - top: -2px
+            - height: 16px
+            - width: 16px
+            - border: 2px solid var(--card-background-color)
+            - font-size: 12px
+            - line-height: 14px
+            - background-color: >
+                [[[
+                  return "rgba(var(--color-red),1)";
+                ]]]
+      value: unavailable
+  styles:
+    card:
+      - border-radius: 21px
+      - box-shadow: none
+      - padding: 0px
+    grid:
+      - grid-template-areas: '"i"'
+      - grid-template-columns: min-content
+      - grid-template-rows: min-content
+    icon:
+      - color: 'rgba(var(--color-theme),0.2)'
+    img_cell:
+      - background-color: 'rgba(var(--color-theme),0.05)'
+      - border-radius: 50%
+      - place-self: center
+      - width: 42px
+      - height: 42px
+
+icon_info:
+  color: var(--google-grey)
+  show_icon: true
+  show_name: true
+  show_label: true
+  size: 20px
+  custom_fields:
+    notification: >
+      [[[
+        if (entity.state =='unavailable'){
+          return `<ha-icon icon="mdi:exclamation" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`
+        }
+      ]]]
+  state:
+    - styles:
+        custom_fields:
+          notification:
+            - border-radius: 50%
+            - position: absolute
+            - left: 24px
+            - top: -2px
+            - height: 16px
+            - width: 16px
+            - border: 2px solid var(--card-background-color)
+            - font-size: 12px
+            - line-height: 14px
+            - background-color: >
+                [[[
+                  return "rgba(var(--color-red),1)";
+                ]]]
+      value: unavailable
+  styles:
+    card:
+      - border-radius: 21px 8px 8px 21px 
+      - box-shadow: none
+      - padding: 0px
+      # - background-color: 'rgba(var(--color-theme),0)'
+    grid:
+      - grid-template-areas: '"i n" "i l"'
+      - grid-template-columns: min-content auto
+      - grid-template-rows: min-content min-content
+    icon:
+      - color: 'rgba(var(--color-theme),0.2)'
+    img_cell:
+      - background-color: 'rgba(var(--color-theme),0.05)'
+      - border-radius: 50%
+      - place-self: center
+      - width: 42px
+      - height: 42px
+    name:
+      - align-self: end
+      - justify-self: start
+      - font-weight: bold
+      - font-size: 14px
+      - margin-left: 12px
+    label:
+      - justify-self: start
+      - align-self: start
+      - font-weight: bolder
+      - font-size: 12px
+      - filter: opacity(40%)
+      - margin-left: 12px
+    state:
+      - justify-self: start
+      - align-self: start
+      - font-weight: bolder
+      - font-size: 12px
+      - filter: opacity(40%)
+      - margin-left: 12px
+
+icon_info_bg:
+  color: var(--google-grey)
+  show_icon: true
+  show_name: true
+  show_label: true
+  size: 20px
+  custom_fields:
+    notification: >
+      [[[
+        if (entity.state =='unavailable'){
+          return `<ha-icon icon="mdi:exclamation" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`
+        }
+      ]]]
+  state:
+    - styles:
+        custom_fields:
+          notification:
+            - border-radius: 50%
+            - position: absolute
+            - left: 38px
+            - top: 8px
+            - height: 16px
+            - width: 16px
+            - border: 2px solid var(--card-background-color)
+            - font-size: 12px
+            - line-height: 14px
+            - background-color: >
+                [[[
+                  return "rgba(var(--color-red),1)";
+                ]]]
+      value: unavailable
+  styles:
+    card:
+      - border-radius: var(--border-radius)
+      - box-shadow: var(--box-shadow)
+      - padding: 12px
+    grid:
+      - grid-template-areas: '"i n" "i l"'
+      - grid-template-columns: min-content auto
+      - grid-template-rows: min-content min-content
+    icon:
+      - color: 'rgba(var(--color-theme),0.2)'
+    img_cell:
+      - background-color: 'rgba(var(--color-theme),0.05)'
+      - border-radius: 50%
+      - place-self: center
+      - width: 42px
+      - height: 42px
+    name:
+      - align-self: end
+      - justify-self: start
+      - font-weight: bold
+      - font-size: 14px
+      - margin-left: 12px
+    label:
+      - justify-self: start
+      - align-self: start
+      - font-weight: bold
+      - font-size: 12px
+      - filter: opacity(40%)
+      - margin-left: 12px
+    state:
+      - justify-self: start
+      - align-self: start
+      - font-weight: bold
+      - font-size: 12px
+      - filter: opacity(40%)
+      - margin-left: 12px
+
+icon_info_line:
+  show_icon: true
+  show_name: false
+  show_label: true
+  size: 100%
+  styles:
+    card:
+      - box-shadow: none
+      - padding: 0px
+    grid:
+      - grid-template-areas: '"i l"'
+      - grid-template-columns: max_content auto
+      - grid-template-rows: min-content
+    icon:
+      - filter: opacity(40%)
+    img_cell:
+      - place-self: center
+      - width: 14px
+      - height: 24px
+    label:
+      - padding: 2px
+      - justify-self: start
+      - align-self: center
+      - font-weight: bolder
+      - font-size: 12px
+      - margin-left: 0px
+      - filter: opacity(40%)
+
+list_items:
+  styles:
+    card:
+      - box-shadow: none
+      - padding: 0px
+    grid:
+      - grid-template-areas: '"item1 item2 item3"'
+      - grid-template-columns: 1fr 1fr 1fr
+      - grid-template-rows: min-content
+      - column-gap: 7px
+
+list_items_line:
+  styles:
+    card:
+      - box-shadow: none
+      - padding: 0px
+    grid:
+      - grid-template-areas: '"item1 item2 item3"'
+      - grid-template-columns: max-content max-content max-content
+      - grid-template-rows: min-content
+      - column-gap: 8px
+
+widget_icon:
+  tap_action:
+    action: toggle
+  color: var(--google-grey)
+  show_icon: true
+  show_name: false
+  size: 20px
+  styles:
+    card:
+      - box-shadow: none
+      - padding: 0px
+      - background-color: 'rgba(var(--color-theme),0.05)'
+      - border-radius: 14px
+      - place-self: center
+      - height: 42px
+    grid:
+      - grid-template-areas: '"i"'
+    icon:
+      - color: 'rgba(var(--color-theme),0.9)'
+    
 ### LEGACY TEMPLATES ###
+###### CHIPS ###
+chips_icon:
+  template: chips_icon_state
+chips_return:
+  template: chips_back
+chips_localisation_present:
+  template: chips_presence_detection
+
+###### CARDS ###
+generic:
+  template: card_generic
+light:
+  template: card_light
+light_slider:
+  template: card_light_slider
+binary_sensor:
+  template: card_binary_sensor
+outlet:
+  template: card_power_outlet
+thermostat:
+  template: card_thermostat
+cover_buttons:
+  template: card_cover_with_buttons
+graph:
+  template: card_graph
+media:
+  template: card_media_player
+battery:
+  template: card_battery
+media_mini_album:
+  template: card_media_player_mini_album
+media_buttons:
+  template: card_media_player_with_controls
+
+### TESTING AREA ###
+### SCENE ###        
+scene:
+  size: 20px
+  show_label: true
+  label: |
+    [[[ return (entity.attributes.value )]]]
+  styles:
+    card:
+      - border-radius: var(--border-radius)
+      - box-shadow: var(--box-shadow)
+      - padding: 10px 0px 8px 0px 
+    grid:
+      - grid-template-areas: '"i" "n" "l"'
+    name:
+      - margin-top: 10px
+      - justify-self: center
+      - font-weight: bold
+      - font-size: 14px
+    label:
+      - justify-self: center
+      - align-self: start
+      - font-weight: bolder
+      - font-size: 12px
+      - filter: opacity(40%)
+    icon:
+      - color: 'rgba(var(--color-theme),0.2)'
+    img_cell:
+      - background-color: 'rgba(var(--color-theme),0.05)'
+      - border-radius: 50%
+      - place-self: center
+      - width: 42px
+      - height: 42px
+      
+scene_blue:
+  variables:
+    state: "default"
+  template: 
+    - scene
+  state:
+    - operator: template
+      value: >
+        [[[
+          return states['input_select.localisation_thomas'].state == variables.state
+        ]]]
+      styles:
+        icon:
+          - color: 'rgba(var(--color-blue),1)'
+        img_cell:
+          - background-color: 'rgba(var(--color-blue), 0.2)'
+        card:
+          - background-color: 'rgba(var(--color-background-blue), var(--opacity-bg))'
+        name:
+          - color: 'rgba(var(--color-blue-text),1)'
+        label:
+          - color: 'rgba(var(--color-blue-text),1)'
+          
+scene_green:
+  variables:
+    state: "default"
+  template: 
+    - scene
+  state:
+    - operator: template
+      value: >
+        [[[
+          return states['input_select.localisation_thomas'].state == variables.state
+        ]]]
+      styles:
+        icon:
+          - color: 'rgba(var(--color-green),1)'
+        img_cell:
+          - background-color: 'rgba(var(--color-green), 0.2)'
+        card:
+          - background-color: 'rgba(var(--color-background-green), var(--opacity-bg))'
+        name:
+          - color: 'rgba(var(--color-green-text),1)'
+        label:
+          - color: 'rgba(var(--color-green-text),1)'
