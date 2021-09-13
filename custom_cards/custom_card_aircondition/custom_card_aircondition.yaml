@@ -1,0 +1,196 @@
+list_items_favorite:
+  styles:
+    card:
+      - box-shadow: none
+      - padding: 0px
+    grid:
+      - grid-template-areas: '"item1 item1 item2"'
+      - grid-template-columns: 1fr 1fr 1fr
+      - grid-template-rows: min-content
+      - column-gap: 7px
+
+widget_temperature:
+  tap_action:
+    action: toggle
+  color: var(--google-grey-500)
+  show_icon: false
+  show_name: false
+  show_label: true
+  size: 20px
+  label: |-
+    [[[
+        var temperature = entity.attributes.temperature;
+        if (temperature == null) {
+          var temperature = '-';
+        }
+        return temperature + '°C'
+    ]]]
+  styles:
+    card:
+      - box-shadow: none
+      - padding: 0px
+      - background-color: 'rgba(var(--couleur-theme),0)'
+      - border-radius: 14px
+      - place-self: center
+      - height: 42px
+    grid:
+      - grid-template-areas: '"l"'
+    label:
+      - color: 'rgb(var(--color-theme),0.9)'  
+
+########################################################################################################
+#                                                                                                      #
+#                                               AIRCO                                                  #
+#                                                                                                      #
+########################################################################################################
+card_aircondition:
+  tap_action:
+    action: more-info
+  icon: |
+    [[[
+        if (entity.state =='dry') {
+          return 'mdi:water';
+        } else if (entity.state =='heat') {
+          return 'mdi:radiator';
+        } else if (entity.state =='cool') {
+          return 'mdi:snowflake';
+        } else if (entity.state =='fan_only') {
+          return 'mdi:fan';
+        }
+        return 'mdi:air-conditioner';
+    ]]]
+  label: >-
+    [[[
+        if (entity.state =='off') {
+          return "Off";
+        } else if (entity.state =='dry') {
+          return "Dry";
+        } else if (entity.state =='heat') {
+          return "Heat";
+        } else if (entity.state =='heat_cool') {
+          return "Auto";
+        } else if (entity.state =='cool') {
+          return "Cool";
+        } else if (entity.state =='fan_only') {
+          return "Fan";
+        }
+        return entity.state;
+    ]]]
+  state:
+    - operator: template
+      value: >
+        [[[
+          return entity.state != 'off';
+        ]]]
+      styles:
+        icon:
+          - color: 'rgba(var(--color-blue),1)'
+        img_cell:
+          - background-color: 'rgba(var(--color-blue),0.2)'
+
+####################################################
+#                                                  #
+#                AIRCO WITH BOUTONS                #
+#                                                  #
+####################################################
+card_aircondition_with_buttons:
+  variables:
+    entity: "climate.example"
+    name: ""
+  styles:
+    card:
+      - border-radius: var(--border-radius)
+      - box-shadow: var(--box-shadow)
+      - padding: 12px
+    grid:
+      - grid-template-areas: '"item1" "item2"'
+      - grid-template-columns: 1fr
+      - grid-template-rows: min-content  min-content
+      - row-gap: 12px
+  custom_fields:
+    item1:
+      card:
+        template: list_items_favorite
+        type: custom:button-card
+        custom_fields:
+          item1:
+            card:
+              entity: '[[[ return variables.entity ]]]'
+              name: >
+                [[[
+                    if (variables.name == null) {
+                      return variables.entity;
+                    }
+                    return variables.name;
+                ]]]
+              tap_action:
+                action: more-info
+              template:
+                - icon_info
+                - card_aircondition
+              type: 'custom:button-card'
+          item2:
+            card:
+              type: horizontal-stack
+              cards:
+                - type: conditional
+                  conditions:
+                    - entity: '[[[ return variables.entity ]]]'
+                      state: 'off'
+                  card:
+                    icon: mdi:power
+                    tap_action:
+                      action: call-service
+                      service: climate.set_hvac_mode
+                      service_data:
+                        entity_id: '[[[ return variables.entity ]]]'
+                        hvac_mode: 'cool'
+                    type: custom:button-card
+                    template: widget_icon
+                - type: conditional
+                  conditions:
+                    - entity: '[[[ return variables.entity ]]]'
+                      state_not: 'off'
+                  card:
+                    icon: mdi:power-off
+                    tap_action:
+                      action: call-service
+                      service: climate.set_hvac_mode
+                      service_data:
+                        entity_id: '[[[ return variables.entity ]]]'
+                        hvac_mode: 'off'
+                    type: custom:button-card
+                    template: widget_icon
+    item2:
+      card:
+        template: list_items
+        type: 'custom:button-card'
+        custom_fields:
+          item1:
+            card:
+              icon: 'mdi:minus'
+              tap_action:
+                action: call-service
+                service: script.decrease_climate_temperature
+                service_data:
+                  entity_id: '[[[ return variables.entity ]]]'
+              type: 'custom:button-card'
+              template: widget_icon
+          item2:
+            card:
+              icon: 'mdi:temperature-celsius'
+              tap_action:
+                action: none
+              type: 'custom:button-card'
+              template: widget_temperature
+              entity: '[[[ return variables.entity ]]]'
+          item3:
+            card:
+              icon: 'mdi:plus'
+              tap_action:
+                action: call-service
+                service: script.increment_climate_temperature
+                service_data:
+                  entity_id: '[[[ return variables.entity ]]]'
+              type: 'custom:button-card'
+              template: widget_icon
