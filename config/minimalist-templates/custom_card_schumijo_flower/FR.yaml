@@ -1,0 +1,4 @@
+ulm_language_variables:
+  variables:
+    ulm_problem: "Problème"
+    ulm_correct: "Correct"
