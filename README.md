@@ -1353,7 +1353,7 @@ card_binary_sensor:
 </details>
 
 ### Media player  
-The `media-player-card` shows you the *app*, the *title* and the *album name* playing, if the data is available through HA. The *app* is shown via a different icon.  
+The `card_media_player` shows you the *app*, the *title* and the *album name* playing, if the data is available through HA. The *app* is shown via a different icon.  
 
 ![Enceintes](./screenshots/media.png)
 
@@ -1410,31 +1410,141 @@ If you're looking for a `media-player-card-with-controls`, see a little downward
 card_media_player:
   template:
     - icon_info_bg
+    - ulm_language_variables
   icon: |
     [[[
-        var app = entity.attributes.app_name;
         var icon = 'mdi:speaker';
-        if(app == 'Spotify'){
-          var icon = 'mdi:spotify';
-        } else if(app == 'Google Podcasts'){
-          var icon = 'mdi:google-podcast';
-        } else if(app == 'Plex'){
-          var icon = 'mdi:plex';
-        } else if(app == 'Soundcloud'){
-          var icon = 'mdi:soundcloud';
-        } else if(app == 'Youtube Music'){
-          var icon = 'mdi:youtube';
-        } else if (app == 'Oto music'){
-          var icon = 'mdi:music-circle';
+        if(entity.attributes.app_name){
+          var app = entity.attributes.app_name.toLowerCase();
+          if(app == 'spotify'){
+            var icon = 'mdi:spotify';
+          } else if(app == 'google podcasts'){
+            var icon = 'mdi:google-podcast';
+          } else if(app == 'plex'){
+            var icon = 'mdi:plex';
+          } else if(app == 'soundcloud'){
+            var icon = 'mdi:soundcloud';
+          } else if(app == 'youtube music'){
+            var icon = 'mdi:youtube';
+          } else if (app == 'oto music'){
+            var icon = 'mdi:music-circle';
+          }
         }
         return icon;
     ]]]
-  label: "[[[ return entity.state; ]]]"
+  label: |
+    [[[ 
+        if (entity.state == 'off'){
+          return variables.ulm_off;
+        } else {
+          return variables.ulm_on;
+        }
+    ]]]
   state:
     - operator: template
       value: "[[[ return entity.state != 'off' ]]]"
       name: "[[[ return states[entity.entity_id].attributes.media_title; ]]]"
-      label: "[[[ return states[entity.entity_id].attributes.media_album_name; ]]]"
+      label: |
+        [[[ 
+            var label = variables.ulm_on;
+            if(states[entity.entity_id].attributes.media_album_name){
+              var label = states[entity.entity_id].attributes.media_album_name;
+            }
+            return label;
+        ]]]
+```
+
+</details>
+
+### Media player with cover art (album picture)
+This is the second `media-player-card`, in contrast to the first one above, it shows the cover art from your media player. 
+
+@dev PICTURE MISSING
+
+<details>
+<summary>Usage</summary>
+
+#### Example
+```yaml
+- type: 'custom:button-card'
+  template: card_media_player_with_control
+  entity: media_player.livingroom_shield
+  name: Livingroom Nvidia Shield
+```
+
+#### Variables
+<table>
+<tr>
+<th>Variable</th>
+<th>Example</th>
+<th>Required</th>
+<th>Explanation</th>
+</tr>
+<tr>
+<td>entity</td>
+<td>media_player.livingroom_shield</td>
+<td>yes</td>
+<td>The entity of the media player</td>
+</tr>
+<tr>
+<td>name</td>
+<td>Livingroom Nvidia Shield</td>
+<td>no</td>
+<td>The displayed name of your media player</td>
+</tr>
+</table>
+<br />
+</details>
+
+<details>
+<summary>Template code</summary>
+
+```yaml
+card_media_player_with_control:
+  template:
+    - icon_info_bg
+    - ulm_language_variables
+  icon: |
+    [[[
+        var icon = 'mdi:speaker';
+        if(entity.attributes.app_name){
+          var app = entity.attributes.app_name.toLowerCase();
+          if(app == 'spotify'){
+            var icon = 'mdi:spotify';
+          } else if(app == 'google podcasts'){
+            var icon = 'mdi:google-podcast';
+          } else if(app == 'plex'){
+            var icon = 'mdi:plex';
+          } else if(app == 'soundcloud'){
+            var icon = 'mdi:soundcloud';
+          } else if(app == 'youtube music'){
+            var icon = 'mdi:youtube';
+          } else if (app == 'oto music'){
+            var icon = 'mdi:music-circle';
+          }
+        }
+        return icon;
+    ]]]
+  label: |
+    [[[ 
+        if (entity.state == 'off'){
+          return variables.ulm_off;
+        } else {
+          return variables.ulm_on;
+        }
+    ]]]
+  state:
+    - operator: template
+      value: "[[[ return entity.state != 'off' ]]]"
+      name: "[[[ return states[entity.entity_id].attributes.media_title; ]]]"
+      label: |
+        [[[ 
+            var label = variables.ulm_on;
+            if(states[entity.entity_id].attributes.media_album_name){
+              var label = states[entity.entity_id].attributes.media_album_name;
+            }
+            return label;
+        ]]]
       styles:
         label: 
           - color: white
@@ -1454,65 +1564,7 @@ card_media_player:
       - background-color: 'rgba(var(--color-theme),0.05)'
     card:
       - background-blend-mode: multiply
-      - background: "[[[ return states[entity.entity_id].attributes.entity_picture_local != null ? 'center / cover url(' + states[entity.entity_id].attributes.entity_picture_local + ') rgba(0, 0, 0, 0.15)' : '' ]]]"
-```
-
-</details>
-
-### Media player with cover art (album picture)
-This is the second `media-player-card`, in contrast to the first one above, it shows the cover art from your media player. 
-
-@dev PICTURE MISSING
-
-<details>
-<summary>Usage</summary>
-
-#### Example
-```yaml
-- type: 'custom:button-card'
-  template: card_media_player_mini_album
-  entity: media_player.livingroom_shield
-```
-
-#### Variables
-<table>
-<tr>
-<th>Variable</th>
-<th>Example</th>
-<th>Required</th>
-<th>Explanation</th>
-</tr>
-<tr>
-<td>entity</td>
-<td>media_player.livingroom_shield</td>
-<td>yes</td>
-<td>The entity of the media player</td>
-</tr>
-</table>
-<br />
-</details>
-
-<details>
-<summary>Template code</summary>
-
-```yaml
-card_media_player_mini_album:
-  label: "[[[ return entity.state; ]]]"
-  state:
-    - operator: template
-      value: "[[[ return entity.state != 'off' ]]]"
-      name: "[[[ return entity.attributes.media_title; ]]]"
-      label: "[[[ return entity.attributes.media_album_name; ]]]"
-      styles:
-        img_cell:
-          - background: "[[[ return 'center / cover url(' + entity.attributes.entity_picture + ')'; ]]]"
-        icon:
-          - color: 'rgba(var(--color-theme),0.0)'
-  styles:
-    icon:
-      - color: 'rgba(var(--color-theme),0.2)'
-    img_cell:
-      - background-color: 'rgba(var(--color-theme),0.05)'
+      - background: "[[[ return states[entity.entity_id].attributes.entity_picture != null ? 'center / cover url(' + states[entity.entity_id].attributes.entity_picture + ') rgba(0, 0, 0, 0.15)' : '' ]]]"
 ```
 
 </details>
@@ -1811,7 +1863,8 @@ card_graph:
 </details>
 
 ### Media player with controls
-@dev DESCRIPTION MISSING  
+With the `card_media_player_with_controls` you have the state of your media_player and on the second line PREVIOUS / PLAY-PAUSE / NEXT to control it. 
+
 @dev PICTURE MISSING  
 
 <details>
@@ -1821,7 +1874,9 @@ card_graph:
 ```yaml
 - type: 'custom:button-card'
   template: card_media_player_with_controls
-  entity: media_player.livingroom_shield
+  variables:
+    ulm_card_media_player_with_controls_name: Living room Media Player
+    ulm_card_media_player_with_controls_entity: media_player.livingroom_shield
 ```
 
 #### Variables
@@ -1833,7 +1888,13 @@ card_graph:
 <th>Explanation</th>
 </tr>
 <tr>
-<td>entity</td>
+<td>ulm_card_media_player_with_controls_name</td>
+<td>Living room Media Player</td>
+<td>no</td>
+<td>The name of the media player (only displayed when off)</td>
+</tr>
+<tr>
+<td>ulm_card_media_player_with_controls_entity</td>
 <td>media_player.livingroom_shield</td>
 <td>yes</td>
 <td>The entity of the media player</td>
@@ -1848,7 +1909,7 @@ card_graph:
 ```yaml
 card_media_player_with_controls:
   variables:
-    name: "Default name"
+    ulm_card_media_player_with_controls_name: "No name set"
   styles:
     grid:
       - grid-template-areas: '"item1" "item2"'
@@ -1864,17 +1925,21 @@ card_media_player_with_controls:
       card:
         type: 'custom:button-card'
         template:
-          - icon_info
-          - card_media_player_mini_album
+          - ulm_language_variables
+          - card_media_player
         tap_action:
           action: more-info
-        entity: '[[[ return entity.entity_id ]]]'
-        name: '[[[ return variables.name ]]]'
+        entity: '[[[ return variables.ulm_card_media_player_with_controls_entity ]]]'
+        name: '[[[ return variables.ulm_card_media_player_with_controls_name ]]]'
+        styles:
+          card:
+            - box-shadow: none
+            - padding: 0px
     item2:
       card:
         type: 'custom:button-card'
         template: list_items
-        custom_fields:
+        custom_fields:          
           item1:
             card:
               type: 'custom:button-card'
@@ -1883,18 +1948,24 @@ card_media_player_with_controls:
                 action: call-service
                 service: media_player.media_previous_track
                 service_data:
-                  entity_id: '[[[ return variables.entity ]]]'
+                  entity_id: '[[[ return variables.ulm_card_media_player_with_controls_entity ]]]'
               icon: 'mdi:skip-previous'
           item2:
             card:
               type: 'custom:button-card'
               template: widget_icon
+              entity: '[[[ return variables.ulm_card_media_player_with_controls_entity ]]]'
               tap_action:
                 action: call-service
                 service: media_player.media_play_pause
                 service_data:
-                  entity_id: '[[[ return variables.entity ]]]'
+                  entity_id: '[[[ return variables.ulm_card_media_player_with_controls_entity ]]]'
               icon: 'mdi:pause'
+              state:
+                - value: paused
+                  icon: 'mdi:play'
+                - value: 'off'
+                  icon: 'mdi:play'
           item3:
             card:
               type: 'custom:button-card'
@@ -1903,7 +1974,7 @@ card_media_player_with_controls:
                 action: call-service
                 service: media_player.media_next_track
                 service_data:
-                  entity_id: '[[[ return variables.entity ]]]'
+                  entity_id: '[[[ return variables.ulm_card_media_player_with_controls_entity ]]]'
               icon: 'mdi:skip-next'
 ```
 

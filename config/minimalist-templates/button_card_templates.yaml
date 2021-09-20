@@ -461,7 +461,7 @@ card_media_player:
             return label;
         ]]]
 
-card_media_player_mini_album:
+card_media_player_with_control:
   template:
     - icon_info_bg
     - ulm_language_variables
@@ -1120,7 +1120,7 @@ media:
 battery:
   template: card_battery
 media_mini_album:
-  template: card_media_player_mini_album
+  template: card_media_player_with_cover
 media_buttons:
   template: card_media_player_with_controls
 ### CUSTOM CARDS ###
