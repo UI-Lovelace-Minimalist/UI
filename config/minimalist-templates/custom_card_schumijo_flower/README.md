@@ -5,8 +5,11 @@ This is the `card_flower`, used to display a plant entity. Shows state of the pl
 
 ![Generic](./flower.png)
 
-<details>
-<summary>Usage</summary>
+## Prerequisites  
+
+Need [lovelace-flower-card](https://github.com/thomasloven/lovelace-flower-card)
+
+## Usage  
 
 #### Example
 
@@ -46,8 +49,8 @@ This is the `card_flower`, used to display a plant entity. Shows state of the pl
 <td>The species of your plant</td>
 </tr>
 </table>
-<br />
-</details>
+
+## Code  
 
 <details>
 <summary>Template code</summary>
