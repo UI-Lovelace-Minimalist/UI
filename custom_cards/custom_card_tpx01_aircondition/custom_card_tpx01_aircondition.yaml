@@ -1,49 +1,7 @@
-list_items_favorite:
-  styles:
-    card:
-      - box-shadow: none
-      - padding: 0px
-    grid:
-      - grid-template-areas: '"item1 item1 item2"'
-      - grid-template-columns: 1fr 1fr 1fr
-      - grid-template-rows: min-content
-      - column-gap: 7px
-
-widget_temperature:
-  tap_action:
-    action: toggle
-  color: var(--google-grey-500)
-  show_icon: false
-  show_name: false
-  show_label: true
-  size: 20px
-  label: |-
-    [[[
-        var temperature = entity.attributes.temperature;
-        if (temperature == null) {
-          var temperature = '-';
-        }
-        return temperature + '°C'
-    ]]]
-  styles:
-    card:
-      - box-shadow: none
-      - padding: 0px
-      - background-color: 'rgba(var(--couleur-theme),0)'
-      - border-radius: 14px
-      - place-self: center
-      - height: 42px
-    grid:
-      - grid-template-areas: '"l"'
-    label:
-      - color: 'rgb(var(--color-theme),0.9)'  
-
-########################################################################################################
-#                                                                                                      #
-#                                               AIRCO                                                  #
-#                                                                                                      #
-########################################################################################################
-card_aircondition:
+custom_card_tpx01_aircondition:
+  template:
+    - ulm_language_variables
+    - custom_card_tpx01_aircondition_language_variables
   tap_action:
     action: more-info
   icon: |
@@ -62,17 +20,17 @@ card_aircondition:
   label: >-
     [[[
         if (entity.state =='off') {
-          return "Off";
+          return variables.ulm_off;
         } else if (entity.state =='dry') {
-          return "Dry";
+          return variables.custom_card_tpx01_aircondition_dry;
         } else if (entity.state =='heat') {
-          return "Heat";
+          return variables.custom_card_tpx01_aircondition_heat;
         } else if (entity.state =='heat_cool') {
-          return "Auto";
+          return variables.custom_card_tpx01_aircondition_heat_cool;
         } else if (entity.state =='cool') {
-          return "Cool";
+          return variables.custom_card_tpx01_aircondition_cool;
         } else if (entity.state =='fan_only') {
-          return "Fan";
+          return variables.custom_card_tpx01_aircondition_fan_only;
         }
         return entity.state;
     ]]]
@@ -88,34 +46,33 @@ card_aircondition:
         img_cell:
           - background-color: 'rgba(var(--color-blue),0.2)'
 
-####################################################
-#                                                  #
-#                AIRCO WITH BOUTONS                #
-#                                                  #
-####################################################
-card_aircondition_with_buttons:
+custom_card_tpx01_aircondition_with_buttons:
   variables:
-    entity: "climate.example"
-    name: ""
+    name: null
   styles:
-    card:
-      - border-radius: var(--border-radius)
-      - box-shadow: var(--box-shadow)
-      - padding: 12px
     grid:
       - grid-template-areas: '"item1" "item2"'
       - grid-template-columns: 1fr
       - grid-template-rows: min-content  min-content
       - row-gap: 12px
+    card:
+      - border-radius: var(--border-radius)
+      - box-shadow: var(--box-shadow)
+      - padding: 12px
   custom_fields:
     item1:
       card:
-        template: list_items_favorite
         type: custom:button-card
+        template: list_items_favorite
         custom_fields:
           item1:
             card:
-              entity: '[[[ return variables.entity ]]]'
+              type: 'custom:button-card'
+              template:
+                - icon_info
+                - custom_card_tpx01_aircondition
+              tap_action:
+                action: more-info
               name: >
                 [[[
                     if (variables.name == null) {
@@ -123,12 +80,7 @@ card_aircondition_with_buttons:
                     }
                     return variables.name;
                 ]]]
-              tap_action:
-                action: more-info
-              template:
-                - icon_info
-                - card_aircondition
-              type: 'custom:button-card'
+              entity: '[[[ return variables.entity ]]]'
           item2:
             card:
               type: horizontal-stack
@@ -138,59 +90,99 @@ card_aircondition_with_buttons:
                     - entity: '[[[ return variables.entity ]]]'
                       state: 'off'
                   card:
-                    icon: mdi:power
+                    type: custom:button-card
+                    template: widget_icon
                     tap_action:
                       action: call-service
                       service: climate.set_hvac_mode
                       service_data:
                         entity_id: '[[[ return variables.entity ]]]'
                         hvac_mode: 'cool'
-                    type: custom:button-card
-                    template: widget_icon
+                    icon: mdi:power
                 - type: conditional
                   conditions:
                     - entity: '[[[ return variables.entity ]]]'
                       state_not: 'off'
                   card:
-                    icon: mdi:power-off
+                    type: custom:button-card
+                    template: widget_icon
                     tap_action:
                       action: call-service
                       service: climate.set_hvac_mode
                       service_data:
                         entity_id: '[[[ return variables.entity ]]]'
                         hvac_mode: 'off'
-                    type: custom:button-card
-                    template: widget_icon
+                    icon: mdi:power-off
     item2:
       card:
-        template: list_items
         type: 'custom:button-card'
+        template: list_items
         custom_fields:
           item1:
             card:
-              icon: 'mdi:minus'
+              type: 'custom:button-card'
+              template: widget_icon
               tap_action:
                 action: call-service
                 service: script.decrease_climate_temperature
                 service_data:
                   entity_id: '[[[ return variables.entity ]]]'
-              type: 'custom:button-card'
-              template: widget_icon
+              icon: 'mdi:minus'
           item2:
             card:
-              icon: 'mdi:temperature-celsius'
-              tap_action:
-                action: none
               type: 'custom:button-card'
               template: widget_temperature
+              tap_action:
+                action: none
               entity: '[[[ return variables.entity ]]]'
+              icon: 'mdi:temperature-celsius'
           item3:
             card:
-              icon: 'mdi:plus'
+              type: 'custom:button-card'
+              template: widget_icon
               tap_action:
                 action: call-service
                 service: script.increment_climate_temperature
                 service_data:
                   entity_id: '[[[ return variables.entity ]]]'
-              type: 'custom:button-card'
-              template: widget_icon
+              icon: 'mdi:plus'
+
+list_items_favorite:
+  styles:
+    grid:
+      - grid-template-areas: '"item1 item1 item2"'
+      - grid-template-columns: 1fr 1fr 1fr
+      - grid-template-rows: min-content
+      - column-gap: 7px
+    card:
+      - box-shadow: none
+      - padding: 0px
+
+widget_temperature:
+  tap_action:
+    action: toggle
+  color: var(--google-grey-500)
+  show_icon: false
+  show_name: false
+  show_label: true
+  size: 20px
+  label: |-
+    [[[
+        var temperature = entity.attributes.temperature;
+        if (temperature == null) {
+          var temperature = '-';
+        }
+        return temperature + '°C'
+    ]]]
+  styles:
+    label:
+      - color: 'rgb(var(--color-theme),0.9)'
+    grid:
+      - grid-template-areas: '"l"'
+    card:
+      - box-shadow: none
+      - padding: 0px
+      - background-color: 'rgba(var(--couleur-theme),0)'
+      - border-radius: 14px
+      - place-self: center
+      - height: 42px
