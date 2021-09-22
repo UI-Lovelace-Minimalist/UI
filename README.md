@@ -11,6 +11,7 @@ It's kind of hard to explain what this is, so let's call it a "theme" (in quotat
 <details>
 <summary>Show table of contents</summary>
 
+#### This page
 * [Credits](#credits)
 * [Design system](#design-system)
 * [Installation and update](#installation-and-update)
@@ -31,14 +32,16 @@ It's kind of hard to explain what this is, so let's call it a "theme" (in quotat
 * [Internal templates](#internal-templates)
 * [Notes](#notes)
   * [My-slider](#my-cards)
-* Seperate pages in this repository:
-  * [Examples](examples.md)
-  * [FAQ](faq.md)
-  * [Developing custom-cards](custom-cards.md)
+
+#### Seperate pages in this repository
+* [Examples](examples.md)
+* [FAQ](faq.md)
+* [Developing custom-cards](custom-cards.md)
+* [Changelog](CHANGELOG.md)
 </details>
 
 ## Credits  
-* This design was made by [tben]()
+* This design was made by [tben](https://community.home-assistant.io/u/tben/summary)
 * A lot of inspiration is taken from [7ahang’s work](https://www.behance.net/gallery/88433905/Redesign-Smart-Home) found on Behance.
 * Contributions from others in the HomeAssistant forum thread, you can find it [here](https://community.home-assistant.io/t/lovelace-ui-minimalist/322687).
 * The technical part is realised mostly by taking advantage of the great work RomRaider did with his [button-card](https://github.com/custom-cards/button-card).
@@ -51,8 +54,8 @@ The design system consists of a few graphical buttons, that are changed dependin
 
 * [Chips](#chips) At the top of each page we find the chips, which allow to quickly visualize important information.
 * [Title](#title) to separate the different sections.
-* [Cards](#cards) to represent and interact with devices, sensors, etc.
 * [Vertical buttons](#vertical-buttons) for using the cards as a button.
+* [Cards](#cards) to represent and interact with devices, sensors, etc.
 
 ## Installation and update  
 
@@ -153,28 +156,31 @@ We are planning to release this "theme" with HACS, but for now we can only offer
         1. Safe and close the file  
         1. Reload your lovelace configuration via the three dot menu in the upper right corner  
 1. If you want to use more than one theme (in general, not only this one), it is highly recommended to use the "HACS way" of doing so.  
+    
     > If you want to have more than one theme installed, this is the **only** way to go.  
-      1. Open `config.yaml` and add this under the section `frontend`:  
-          ```
-          frontend:
-            themes: !include_dir_merge_named themes
-          ```
-      1. Restart Home Assistant
-      1. Enable the theme in your user profile (bottom left in Home Assistant), this "theme" offers two versions, `minimalist-desktop` and `minimalist-mobile`. Both themes support light and dark mode, they are just different in the way they place your cards (desktop is for a wider screen)  
-1. Start setting up your new `button-cards`  
+    
+    * Open `config.yaml` and add this under the section `frontend` (if not already there, create it), so it looks like this:  
+        ```
+        frontend:
+          themes: !include_dir_merge_named themes
+        ```
+    * If you have followed the instructions from this readme, you should already have a folder called `themes` with two new themes (=folders) inside, namely `minimalist-desktop` and `minimalist-mobile`.
+    * Restart Home Assistant
+    * Enable the theme in your user profile (bottom left in Home Assistant), this "theme" offers two versions, `minimalist-desktop` and `minimalist-mobile`. Both themes support light and dark mode, they are just different in the way they place your cards (desktop is for a wider screen)  
+1. Start setting up your new design  
 </details>
 
 <details>
-<summary>Update</summary>
+<summary><a name="update"></a>Update</summary>
 
 Updating is a straightforwarded process. Just follow the steps you already did for installing this "theme":  
 1. Download this repository as a *zip file* to your computer. You can do so by clicking the green button in the top right with the lable "CODE" and choosing "Download ZIP".
 1. Unpack the zip-file to a location of your choice on your computer.
 1. Copy the content (files **and** folders) of the folder `config` from this repository into your HomeAssistant `config` folder, overwriting the files with the downloaded (new) version.
 1. If you're using *language specific settings*, remember to also copy the language file!
-1. If you use `custom-cards` and followed the instuctions to install them, everything is fine, they will not be overwritten or otherwise changed.  
+1. If you use `custom-cards` and followed the instructions to install them, everything is fine, they will not be overwritten or otherwise changed.  
 
-To check, which version you have installed, you can always find the version number(s) in the seperate file [CHANGELOG.md](CHANGELOG.md).  
+To check, which version you have installed, you can always find the version number(s) in the seperate file [changelog](CHANGELOG.md).  
 </details>
 
 <details>
@@ -182,7 +188,21 @@ To check, which version you have installed, you can always find the version numb
 
 If you are using this "theme" in another language than english, you might want to have your states in your language. Unfortunately it is sometimes not possible to use the already translated strings from Home Assistant, so we found a simple solution for this. 
 
-In the repository you can find a folder called `languages`. Inside this folder you find files for each supported language. Copy your language file into the folder `minimalist-templates` (that's the folder where `button_card_templates.yaml` lives). If you want other than the provided strings, please change/add them in the copied file. 
+* In the repository you can find a folder called `languages`, inside this folder you find files for each supported language.  
+* Copy your language file into the folder `minimalist-templates` (that's the folder where `button_card_templates.yaml` lives).  
+* Delete all other language files but the one you just copied over!  
+* There must be **only ONE** language file present, otherwise your language strings get messed up. 
+
+This should look like this:
+
+```
+  └── minimalist-templates/
+     └── button_card_templates.yaml
+     └── EN.yaml # or DE.yaml, FR.yaml, IT.yaml
+  ```
+
+If you want other than the provided strings, please change/add them in the copied file.  
+
 </details>
 
 ## Examples and FAQ
@@ -378,7 +398,7 @@ This `chip` displays an icon and a label, where the label can be any state of a 
   template: chips_icon_state
   variables:
     ulm_chip_icon_state_icon: '🛏️'
-    ulm_chip_icon_state_label: sensor.bed_occupancy
+    ulm_chip_icon_state_entity: sensor.bed_occupancy
   tap_action:
     action: navigate
     navigation_path: /lovelace/bedroom
@@ -399,7 +419,7 @@ This `chip` displays an icon and a label, where the label can be any state of a 
 <td>This is the icon to show. See [icons](#icons) at the end of this page to read more about the used unicode `emojis`.</td>
 </tr>
 <tr>
-<td>ulm_chip_icon_state_label</td>
+<td>ulm_chip_icon_state_entity</td>
 <td>sensor.bed_occupancy</td>
 <td>yes</td>
 <td></td>
@@ -422,10 +442,12 @@ chips_icon_state:
   template: chips
   variables:
     icon: "❔"
+  triggers_update:
+    - "[[[ variables.ulm_chip_icon_state_entity ]]]"
   show_icon: true
   show_label: true
   icon: "[[[ return variables.ulm_chip_icon_state_icon ? variables.ulm_chip_icon_state_icon : variables.icon ]]]"
-  label: "[[[ return variables.ulm_chip_icon_state_label ? states[variables.ulm_chip_icon_state_label].state : '' ]]]"
+  label: "[[[ return variables.ulm_chip_icon_state_entity ? states[variables.ulm_chip_icon_state_entity].state : '' ]]]"
   styles:
     label:
       - justify-self: center
@@ -454,8 +476,8 @@ This `chip` displays an icon and a two labels, where each label can be any state
   template: chips_icon_double_state
   variables:
     ulm_chip_icon_double_state_icon: '💻'
-    ulm_chip_icon_double_state_label_1: sensor.nas_disk_used
-    ulm_chip_icon_double_state_label_2: sensor.nas_cpu_load
+    ulm_chip_icon_double_state_entity_1: sensor.nas_disk_used
+    ulm_chip_icon_double_state_entity_2: sensor.nas_cpu_load
   tap_action:
     action: navigate
     navigation_path: /lovelace/systems
@@ -476,13 +498,13 @@ This `chip` displays an icon and a two labels, where each label can be any state
 <td>This is the icon to show. See [icons](#icons) at the end of this page to read more about the used unicode `emojis`.</td>
 </tr>
 <tr>
-<td>ulm_chip_icon_double_state_label_1</td>
+<td>ulm_chip_icon_double_state_entity_1</td>
 <td>sensor.nas_disk_used</td>
 <td>yes</td>
 <td></td>
 </tr>
 <tr>
-<td>ulm_chip_icon_double_state_label_2</td>
+<td>ulm_chip_icon_double_state_entity_2</td>
 <td>sensor.nas_cpu_load</td>
 <td>yes</td>
 <td></td>
@@ -505,10 +527,13 @@ chips_icon_double_state:
   template: chips
   variables:
     icon: "❔"
+  triggers_update:
+    - "[[[ variables.ulm_chip_icon_state_entity_1 ]]]"
+    - "[[[ variables.ulm_chip_icon_state_entity_2 ]]]"
   show_icon: true
   show_label: true
   icon: "[[[ return variables.ulm_chip_icon_double_state_icon ? variables.ulm_chip_icon_double_state_icon : variables.icon ]]]"
-  label: "[[[ return variables.ulm_chip_icon_double_state_label_1 ? states[variables.ulm_chip_icon_double_state_label_1].state + states[variables.ulm_chip_icon_double_state_label_2].state : '' ]]]"
+  label: "[[[ return variables.ulm_chip_icon_double_state_entity_1 ? states[variables.ulm_chip_icon_double_state_entity_1].state + states[variables.ulm_chip_icon_double_state_entity_2].state : '' ]]]"
   styles:
     label:
       - justify-self: center
@@ -634,6 +659,9 @@ This `chip` shows you the actual presence in your home. Shows residents and gues
 ```yaml
 chips_presence_detection:
   template: chips
+  triggers_update:
+    - "[[[ variables.ulm_chip_presence_counter_residents ]]]"
+    - "[[[ variables.ulm_chip_presence_counter_guests ]]]"
   label: |
     [[[
       var guests = states[variables.ulm_chip_presence_counter_guests].state ? ' / ' + states[variables.ulm_chip_presence_counter_guests].state : '';
@@ -701,6 +729,8 @@ This `chip` shows you the electric consumption from a sensor. Configurable to sh
 ```yaml
 chips_power_consumption:
   template: chips
+  triggers_update:
+    - "[[[ variables.ulm_chip_electric_consumption ]]]"
   label: |
     [[[
       var amount = variables.ulm_chip_electric_price != '' ? true : false
@@ -1162,9 +1192,26 @@ The `light-slider-card` controls a light or light-group with the added possibilt
 - type: 'custom:button-card'
   template: card_light_slider
   entity: light.my_livingroom_light
-  name: Livingroom Light
+  variables:
+    ulm_card_light_slider_name: Livingroom Light
 ```
 
+#### Variables
+<table>
+<tr>
+<th>Variables</th>
+<th>Example</th>
+<th>Required</th>
+<th>Explanation</th>
+</tr>
+<tr>
+<td>ulm_card_light_slider_name</td>
+<td>Livingroom light</td>
+<td>no</td>
+<td>If you want to set a specific name, eg. because your friendly name is too long for the card, this is the place to fill it in. If this is not set, the friendly name will be used.</td>
+</tr>
+</table>
+<br />
 </details>
 
 <details>
@@ -1172,15 +1219,14 @@ The `light-slider-card` controls a light or light-group with the added possibilt
 
 ```yaml
 card_light_slider:
+  variables:
+    ulm_card_light_slider_name: "[[[ return entity.attributes.friendly_name ]]]"
   show_icon: false
   show_name: false
   show_label: false
   state:
     - operator: template
-      value: >
-        [[[
-          return entity.state == 'on'
-        ]]]
+      value: "[[[ return entity.state == 'on' ]]]"
       styles:
         card:
           - background-color: 'rgba(var(--color-background-yellow),var(--opacity-bg))'
@@ -1201,8 +1247,13 @@ card_light_slider:
         template:
           - icon_info
           - light
-        entity: '[[[ return entity.entity_id ]]]'
-        name: '[[[ return entity.name ]]]'
+        entity: "[[[ return entity.entity_id ]]]"
+        name: "[[[ return variables.ulm_card_light_slider_name ]]]"
+        styles:
+          card:
+            - box-shadow: none
+            - border-radius: var(--border-radius) var(--border-radius) 0px 0px
+            - padding: 0px
     item2:
       card:
         type: 'custom:my-slider'
@@ -1352,8 +1403,68 @@ card_binary_sensor:
 
 </details>
 
+### Input boolean  
+The `input-boolean-card` is to switch an `input_boolean` on or off.
+
+![Mouvements](./screenshots/binary_sensor-1.png) <br /> ![Fenêtres](./screenshots/binary_sensor-2.png)
+
+<details>
+<summary>Usage</summary>
+
+#### Example
+
+```yaml
+- type: 'custom:button-card'
+  template: card_input_boolean
+  entity: input_boolean.guest_mode
+```
+
+#### Variables
+<table>
+<tr>
+<th>Variable</th>
+<th>Example</th>
+<th>Required</th>
+<th>Explanation</th>
+</tr>
+<tr>
+<td>entity</td>
+<td>input_boolean.guest_mode</td>
+<td>yes</td>
+<td>The <i>input_boolean</i> to switch</td>
+</tr>
+</table>
+<br />
+</details>
+
+<details>
+<summary>Template code</summary>
+
+```yaml
+card_input_boolean:
+  template: 
+    - icon_info_bg
+    - ulm_language_variables
+    - blue
+  name: "[[[ return entity.name != '' ? entity.name : entity.attribute.friendly_name ]]]"
+  label: >
+    [[[
+      if (entity.state != 'unavailable'){
+        if (entity.state == 'on'){
+          return variables.ulm_on;
+        } else {
+          return variables.ulm_off;
+        }
+      } else {
+        return variable.ulm_unavailable;
+      }
+    ]]]
+```
+
+</details>
+
 ### Media player  
-The `card_media_player` shows you the *app*, the *title* and the *album name* playing, if the data is available through HA. The *app* is shown via a different icon.  
+The `media-player-card` shows you the *app*, the *title* and the *album name* playing, if the data is available through HA. The *app* is shown via a different icon.  
 
 ![Enceintes](./screenshots/media.png)
 
@@ -1410,141 +1521,31 @@ If you're looking for a `media-player-card-with-controls`, see a little downward
 card_media_player:
   template:
     - icon_info_bg
-    - ulm_language_variables
   icon: |
     [[[
+        var app = entity.attributes.app_name;
         var icon = 'mdi:speaker';
-        if(entity.attributes.app_name){
-          var app = entity.attributes.app_name.toLowerCase();
-          if(app == 'spotify'){
-            var icon = 'mdi:spotify';
-          } else if(app == 'google podcasts'){
-            var icon = 'mdi:google-podcast';
-          } else if(app == 'plex'){
-            var icon = 'mdi:plex';
-          } else if(app == 'soundcloud'){
-            var icon = 'mdi:soundcloud';
-          } else if(app == 'youtube music'){
-            var icon = 'mdi:youtube';
-          } else if (app == 'oto music'){
-            var icon = 'mdi:music-circle';
-          }
+        if(app == 'Spotify'){
+          var icon = 'mdi:spotify';
+        } else if(app == 'Google Podcasts'){
+          var icon = 'mdi:google-podcast';
+        } else if(app == 'Plex'){
+          var icon = 'mdi:plex';
+        } else if(app == 'Soundcloud'){
+          var icon = 'mdi:soundcloud';
+        } else if(app == 'Youtube Music'){
+          var icon = 'mdi:youtube';
+        } else if (app == 'Oto music'){
+          var icon = 'mdi:music-circle';
         }
         return icon;
     ]]]
-  label: |
-    [[[ 
-        if (entity.state == 'off'){
-          return variables.ulm_off;
-        } else {
-          return variables.ulm_on;
-        }
-    ]]]
+  label: "[[[ return entity.state; ]]]"
   state:
     - operator: template
       value: "[[[ return entity.state != 'off' ]]]"
       name: "[[[ return states[entity.entity_id].attributes.media_title; ]]]"
-      label: |
-        [[[ 
-            var label = variables.ulm_on;
-            if(states[entity.entity_id].attributes.media_album_name){
-              var label = states[entity.entity_id].attributes.media_album_name;
-            }
-            return label;
-        ]]]
-```
-
-</details>
-
-### Media player with cover art (album picture)
-This is the second `media-player-card`, in contrast to the first one above, it shows the cover art from your media player. 
-
-@dev PICTURE MISSING
-
-<details>
-<summary>Usage</summary>
-
-#### Example
-```yaml
-- type: 'custom:button-card'
-  template: card_media_player_with_control
-  entity: media_player.livingroom_shield
-  name: Livingroom Nvidia Shield
-```
-
-#### Variables
-<table>
-<tr>
-<th>Variable</th>
-<th>Example</th>
-<th>Required</th>
-<th>Explanation</th>
-</tr>
-<tr>
-<td>entity</td>
-<td>media_player.livingroom_shield</td>
-<td>yes</td>
-<td>The entity of the media player</td>
-</tr>
-<tr>
-<td>name</td>
-<td>Livingroom Nvidia Shield</td>
-<td>no</td>
-<td>The displayed name of your media player</td>
-</tr>
-</table>
-<br />
-</details>
-
-<details>
-<summary>Template code</summary>
-
-```yaml
-card_media_player_with_control:
-  template:
-    - icon_info_bg
-    - ulm_language_variables
-  icon: |
-    [[[
-        var icon = 'mdi:speaker';
-        if(entity.attributes.app_name){
-          var app = entity.attributes.app_name.toLowerCase();
-          if(app == 'spotify'){
-            var icon = 'mdi:spotify';
-          } else if(app == 'google podcasts'){
-            var icon = 'mdi:google-podcast';
-          } else if(app == 'plex'){
-            var icon = 'mdi:plex';
-          } else if(app == 'soundcloud'){
-            var icon = 'mdi:soundcloud';
-          } else if(app == 'youtube music'){
-            var icon = 'mdi:youtube';
-          } else if (app == 'oto music'){
-            var icon = 'mdi:music-circle';
-          }
-        }
-        return icon;
-    ]]]
-  label: |
-    [[[ 
-        if (entity.state == 'off'){
-          return variables.ulm_off;
-        } else {
-          return variables.ulm_on;
-        }
-    ]]]
-  state:
-    - operator: template
-      value: "[[[ return entity.state != 'off' ]]]"
-      name: "[[[ return states[entity.entity_id].attributes.media_title; ]]]"
-      label: |
-        [[[ 
-            var label = variables.ulm_on;
-            if(states[entity.entity_id].attributes.media_album_name){
-              var label = states[entity.entity_id].attributes.media_album_name;
-            }
-            return label;
-        ]]]
+      label: "[[[ return states[entity.entity_id].attributes.media_album_name; ]]]"
       styles:
         label: 
           - color: white
@@ -1564,7 +1565,65 @@ card_media_player_with_control:
       - background-color: 'rgba(var(--color-theme),0.05)'
     card:
       - background-blend-mode: multiply
-      - background: "[[[ return states[entity.entity_id].attributes.entity_picture != null ? 'center / cover url(' + states[entity.entity_id].attributes.entity_picture + ') rgba(0, 0, 0, 0.15)' : '' ]]]"
+      - background: "[[[ return states[entity.entity_id].attributes.entity_picture_local != null ? 'center / cover url(' + states[entity.entity_id].attributes.entity_picture_local + ') rgba(0, 0, 0, 0.15)' : '' ]]]"
+```
+
+</details>
+
+### Media player with cover art (album picture)
+This is the second `media-player-card`, in contrast to the first one above, it shows the cover art from your media player. 
+
+@dev PICTURE MISSING
+
+<details>
+<summary>Usage</summary>
+
+#### Example
+```yaml
+- type: 'custom:button-card'
+  template: card_media_player_mini_album
+  entity: media_player.livingroom_shield
+```
+
+#### Variables
+<table>
+<tr>
+<th>Variable</th>
+<th>Example</th>
+<th>Required</th>
+<th>Explanation</th>
+</tr>
+<tr>
+<td>entity</td>
+<td>media_player.livingroom_shield</td>
+<td>yes</td>
+<td>The entity of the media player</td>
+</tr>
+</table>
+<br />
+</details>
+
+<details>
+<summary>Template code</summary>
+
+```yaml
+card_media_player_mini_album:
+  label: "[[[ return entity.state; ]]]"
+  state:
+    - operator: template
+      value: "[[[ return entity.state != 'off' ]]]"
+      name: "[[[ return entity.attributes.media_title; ]]]"
+      label: "[[[ return entity.attributes.media_album_name; ]]]"
+      styles:
+        img_cell:
+          - background: "[[[ return 'center / cover url(' + entity.attributes.entity_picture + ')'; ]]]"
+        icon:
+          - color: 'rgba(var(--color-theme),0.0)'
+  styles:
+    icon:
+      - color: 'rgba(var(--color-theme),0.2)'
+    img_cell:
+      - background-color: 'rgba(var(--color-theme),0.05)'
 ```
 
 </details>
@@ -1701,7 +1760,9 @@ With the `cover-card` you have the state of your cover and on the second line UP
 ```yaml
 card_cover_with_buttons:
   variables:
-    ulm_card_cover_with_buttons_name: "No name set"
+    ulm_card_cover_with_buttons_name: "n/a"
+  triggers_update:
+    - "[[[ variables.ulm_card_cover_with_buttons_entity ]]]"
   styles:
     grid:
       - grid-template-areas: '"item1" "item2"'
@@ -1775,12 +1836,11 @@ The `graph-card` shows an entity with the actual state and a *min-graph-card* in
 
 ```yaml
 - type: 'custom:button-card'
-  template: 
-    - card_graph
+  template: card_graph
   variables:
-    color: "var(--google-blue)"
-    name: Temperature Livingroom
-  entity: sensor.livingroom_temperature
+    ulm_card_graph_color: "var(--google-blue)"
+    ulm_card_graph_name: Temperature Livingroom
+    ulm_card_graph_entity: sensor.livingroom_temperature
 ```
 
 #### Variables
@@ -1792,19 +1852,19 @@ The `graph-card` shows an entity with the actual state and a *min-graph-card* in
 <th>Explanation</th>
 </tr>
 <tr>
-<td>color</td>
+<td>ulm_card_graph_color</td>
 <td>var(--google-blue)</td>
 <td>no</td>
 <td>This is to adjust your color value. Use a CSS varible from HA or set a color value (eg. #FFFFFF)</td>
 </tr>
 <tr>
-<td>name</td>
+<td>ulm_card_graph_name</td>
 <td>Temperature Livingroom</td>
 <td>no</td>
 <td>The name of your sensor</td>
 </tr>
 <tr>
-<td>entity</td>
+<td>ulm_card_graph_entity</td>
 <td>sensor.livingroom_temperature</td>
 <td>yes</td>
 <td>Your <i>entity_id</i> for the temperature sensor</td>
@@ -1819,8 +1879,10 @@ The `graph-card` shows an entity with the actual state and a *min-graph-card* in
 ```yaml
 card_graph:
   variables:
-    color: "var(--info-color)"
-    name: "Default name"
+    ulm_card_graph_color: "var(--info-color)"
+    ulm_card_graph_name: "n/a"
+  triggers_update:
+    - "[[[ variables.ulm_card_graph_entity ]]]"
   styles:
     grid:
       - grid-template-areas: '"item1" "item2"'
@@ -1836,18 +1898,20 @@ card_graph:
         type: 'custom:button-card'
         template: 
           - icon_info
-          #- card_generic_swap
+          - card_generic
         styles:
           card:
+            - box-shadow: none
+            - border-radius: var(--border-radius) var(--border-radius) 0px 0px
             - padding: 12px
-        entity: '[[[ return variables.entity ]]]'
-        name: '[[[ return variables.name ]]]'
+        entity: '[[[ return variables.ulm_card_graph_entity ]]]'
+        name: '[[[ return variables.ulm_card_graph_name ]]]'
     item2:
       card:
         type: 'custom:mini-graph-card'
         entities:
-          - entity: '[[[ return variables.entity ]]]'
-        line_color: '[[[ return variables.color ]]]'
+          - entity: '[[[ return variables.ulm_card_graph_entity ]]]'
+        line_color: '[[[ return variables.ulm_card_graph_color ]]]'
         show:
           name: false
           icon: false
@@ -1863,8 +1927,7 @@ card_graph:
 </details>
 
 ### Media player with controls
-With the `card_media_player_with_controls` you have the state of your media_player and on the second line PREVIOUS / PLAY-PAUSE / NEXT to control it. 
-
+@dev DESCRIPTION MISSING  
 @dev PICTURE MISSING  
 
 <details>
@@ -1873,10 +1936,11 @@ With the `card_media_player_with_controls` you have the state of your media_play
 #### Example
 ```yaml
 - type: 'custom:button-card'
-  template: card_media_player_with_controls
+  template: 
+    - card_media_player_with_controls
   variables:
-    ulm_card_media_player_with_controls_name: Living room Media Player
     ulm_card_media_player_with_controls_entity: media_player.livingroom_shield
+    ulm_card_media_player_with_controls_name: "Livingroom Shield"
 ```
 
 #### Variables
@@ -1888,16 +1952,16 @@ With the `card_media_player_with_controls` you have the state of your media_play
 <th>Explanation</th>
 </tr>
 <tr>
-<td>ulm_card_media_player_with_controls_name</td>
-<td>Living room Media Player</td>
-<td>no</td>
-<td>The name of the media player (only displayed when off)</td>
-</tr>
-<tr>
 <td>ulm_card_media_player_with_controls_entity</td>
 <td>media_player.livingroom_shield</td>
 <td>yes</td>
 <td>The entity of the media player</td>
+</tr>
+<tr>
+<td>ulm_card_media_player_with_controls_name</td>
+<td>Livingroom Shield</td>
+<td>no</td>
+<td>The name of the media player</td>
 </tr>
 </table>
 <br />
@@ -1909,7 +1973,9 @@ With the `card_media_player_with_controls` you have the state of your media_play
 ```yaml
 card_media_player_with_controls:
   variables:
-    ulm_card_media_player_with_controls_name: "No name set"
+    name: "n/a"
+  triggers_update:
+    - "[[[ ulm_card_media_player_with_controls_entity ]]]"
   styles:
     grid:
       - grid-template-areas: '"item1" "item2"'
@@ -1925,21 +1991,17 @@ card_media_player_with_controls:
       card:
         type: 'custom:button-card'
         template:
-          - ulm_language_variables
-          - card_media_player
+          - icon_info
+          - card_media_player_mini_album
         tap_action:
           action: more-info
         entity: '[[[ return variables.ulm_card_media_player_with_controls_entity ]]]'
         name: '[[[ return variables.ulm_card_media_player_with_controls_name ]]]'
-        styles:
-          card:
-            - box-shadow: none
-            - padding: 0px
     item2:
       card:
         type: 'custom:button-card'
         template: list_items
-        custom_fields:          
+        custom_fields:
           item1:
             card:
               type: 'custom:button-card'
@@ -1954,18 +2016,12 @@ card_media_player_with_controls:
             card:
               type: 'custom:button-card'
               template: widget_icon
-              entity: '[[[ return variables.ulm_card_media_player_with_controls_entity ]]]'
               tap_action:
                 action: call-service
                 service: media_player.media_play_pause
                 service_data:
                   entity_id: '[[[ return variables.ulm_card_media_player_with_controls_entity ]]]'
               icon: 'mdi:pause'
-              state:
-                - value: paused
-                  icon: 'mdi:play'
-                - value: 'off'
-                  icon: 'mdi:play'
           item3:
             card:
               type: 'custom:button-card'
@@ -1974,7 +2030,7 @@ card_media_player_with_controls:
                 action: call-service
                 service: media_player.media_next_track
                 service_data:
-                  entity_id: '[[[ return variables.ulm_card_media_player_with_controls_entity ]]]'
+                  entity_id: '[[[ return entity.ulm_card_media_player_with_controls_entity ]]]'
               icon: 'mdi:skip-next'
 ```
 
@@ -1985,7 +2041,25 @@ card_media_player_with_controls:
 `Special cards` are cards, that are designed mostly for one specific need in an installation specific way. If you want to use these cards, you need to adapt them to your installation, eg. with these cards you may need to setup other things in HA to get them working correctly. If you have problems using them, feel free to ask for support in the corresponding forum thread [here](https://community.home-assistant.io/t/lovelace-ui-minimalist/322687).  
 
 ### Custom cards  
-This "theme" is designed with an open structure in mind, that's why it is possible to add `custom-cards` without much hassle. If you want to develop and share your card with the community, please [see this page](custom-cards.md) to get further information.  
+This "theme" is designed with an open structure in mind, that's why it is possible to add `custom-cards` without much hassle. A few `custom-cards` are readily available through the folder `custom-cards` in your download. The installation of these is easy and straightforward.
+
+* Copy the folder of the `custom-card` you want to use and paste it in the folder `minimalist-templates`. This should give you this structure:
+  
+  ```
+  └── minimalist-templates/
+     └── button_card_templates.yaml
+     └── EN.yaml
+     └── custom_card_paddy0174_temperature/
+        └── custom_card_paddy0174_temperature.yaml
+        └── readme.md
+        └── languages/
+           └── EN.yaml
+  ```
+  
+* Check, if the folder `languages` is available. This is only the case, if the `custom-card` needs specific language variables.  
+  If this folder is present, you need to take care, that **only ONE** language file is used by **deleting all but one**. If more than one language file is present, the language strings will possibly get messed up and you may find a mix between all provided languages. 
+
+> If you want to develop and share your card with the community, please [see this page](custom-cards.md) to get further information.  
 
 ### <a name="list-special-custom-cards"></a>List of special and custom cards (in alphabetical order)  
 <table>
@@ -1997,31 +2071,49 @@ This "theme" is designed with an open structure in mind, that's why it is possib
 </tr>
 <tr>
 <td>AirCondition card</td>
-<td><a href="custom_cards/custom_card_aircondition/readme.md">More information</a></td>
+<td><a href="custom_cards/custom_card_tpx01_aircondition/readme.md">more information</a></td>
 <td>2-line card to control your air condition.</td>
-<td></td>
+<td>tpx01</td>
+</tr>
+<tr>
+<td>DWD pollen card</td>
+<td><a href="custom_cards/custom_card_paddy_dwd_pollen/readme.md">more information</a></td>
+<td>Card to show the DWD pollen warning</td>
+<td>paddy0174</td>
 </tr>
 <tr>
 <td>NAS card</td>
-<td><a href="custom_cards/custom_card_nas/readme.md">More information</a></td>
+<td><a href="custom_cards/custom_card_nas/readme.md">more information</a></td>
 <td>A card to show values from your NAS.</td>
 <td></td>
 </tr>
 <tr>
 <td>Playstation card</td>
-<td><a href="custom_cards/custom_card_playstation/readme.md">More information</a></td>
+<td><a href="custom_cards/custom_card_playstation/readme.md">more information</a></td>
 <td>Card to show...</td>
 <td></td>
+</tr>
+<tr>
+<td>Waste collection card</td>
+<td><a href="custom_cards/custom_card_paddy_waste_collection/readme.md">more information</a></td>
+<td>Card to show the next waste collection date</td>
+<td>paddy0174</td>
+</tr>
+<tr>
+<td>Welcome card</td>
+<td><a href="custom_cards/custom_card_paddy_welcome/readme.md">more information</a></td>
+<td>Card to show a welcome message and optionally weather data, the current date or a news block.</td>
+<td>paddy0174</td>
 </tr>
 </table>
 
 ## Color scheme  
-|Color|Type|
-|---|---|
-|<span style="height: 30px; width: 30px; border-radius: 50%; display: inline-block; background-color: #FF9101;"></span>|💡 Light<br />⚡ Electricity|
-|<span style="height: 30px; width: 30px; border-radius: 50%; display: inline-block; background-color: #F54436;"></span>|🔥 Heating|
-|<span style="height: 30px; width: 30px; border-radius: 50%; display: inline-block; background-color: #3D5AFE;"></span>|☑️ On/off devices<br />🏠 Home|
-|<span style="height: 30px; width: 30px; border-radius: 50%; display: inline-block; background-color: #01C852;"></span>|🌲 Exterior|
+|Type|Color|Hex|RGB|
+|---|---|---|---|
+|💡 Light<br />⚡ Electricity|<span style="height: 30px; width: 30px; border-radius: 50%; display: inline-block; background-color: #FF9101;"></span>|#FF9101|rgb(255,145,1)|
+|🔥 Heating|<span style="height: 30px; width: 30px; border-radius: 50%; display: inline-block; background-color: #F54436;"></span>|#F54436|rgb(245,6,54)|
+|☑️ On/off devices<br />🏠 Home|<span style="height: 30px; width: 30px; border-radius: 50%; display: inline-block; background-color: #3D5AFE;"></span>|#3D5AFE|rgb(61,90,254)|
+|🌲 Exterior|<span style="height: 30px; width: 30px; border-radius: 50%; display: inline-block; background-color: #01C852;"></span>|#01C852|rgb(1,200,82)|
 
 ## Icons  
 For the `chips`, this "theme" uses the standard *unicode emojis*. The main reason is, they are multi-color whereas the `mdi-icons` that HomeAssistant uses are one color only. 
@@ -2189,13 +2281,19 @@ chips:
   tap_action:
     action: more-info
   show_icon: false
+  show_label: true
   show_name: false
   show_state: false
-  show_label: true
-  size: 80%
   styles:
+    label:
+      - justify-self: center
+      - padding: 0px 6px
+      - font-weight: bold
+      - font-size: 14px
     img_cell:
       - width: 24px
+    grid:
+      - grid-template-areas: '"l"'
     card:
       - border-radius: 18px
       - box-shadow: var(--box-shadow)
@@ -2203,13 +2301,7 @@ chips:
       - width: auto
       - padding-left: 6px
       - padding-right: 6px
-    grid:
-      - grid-template-areas: '"l"'
-    label:
-      - justify-self: center
-      - padding: 0px 6px
-      - font-weight: bold
-      - font-size: 14px
+  size: 80%
 ```
 
 </details>
@@ -2233,9 +2325,9 @@ cover:
   label: >-
     [[[ 
         if (states[entity.entity_id].attributes.current_position == 0){
-          return variables.cover_close;
+          return variables.ulm_closed;
         } else {
-          return variables.cover_open + ' • ' + (states[entity.entity_id].attributes.current_position) + '%' ;
+          return variables.ulm_open + ' • ' + (states[entity.entity_id].attributes.current_position) + '%' ;
         }
     ]]]
   state:
@@ -2269,16 +2361,8 @@ edge:
 icon:
   color: var(--google-grey)
   show_icon: true
-  show_name: false
   show_label: false
-  size: 20px
-  custom_fields:
-    notification: >
-      [[[
-        if (entity.state =='unavailable'){
-          return `<ha-icon icon="mdi:exclamation" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`
-        }
-      ]]]
+  show_name: false
   state:
     - styles:
         custom_fields:
@@ -2298,14 +2382,6 @@ icon:
                 ]]]
       value: unavailable
   styles:
-    card:
-      - border-radius: 21px
-      - box-shadow: none
-      - padding: 0px
-    grid:
-      - grid-template-areas: '"i"'
-      - grid-template-columns: min-content
-      - grid-template-rows: min-content
     icon:
       - color: 'rgba(var(--color-theme),0.2)'
     img_cell:
@@ -2314,6 +2390,22 @@ icon:
       - place-self: center
       - width: 42px
       - height: 42px
+    grid:
+      - grid-template-areas: '"i"'
+      - grid-template-columns: min-content
+      - grid-template-rows: min-content
+    card:
+      - border-radius: 21px
+      - box-shadow: none
+      - padding: 0px
+  custom_fields:
+    notification: >
+      [[[
+        if (entity.state =='unavailable'){
+          return `<ha-icon icon="mdi:exclamation" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`
+        }
+      ]]]
+  size: 20px
 ```
 
 </details>
@@ -2325,16 +2417,8 @@ icon:
 icon_info:
   color: var(--google-grey)
   show_icon: true
-  show_name: true
   show_label: true
-  size: 20px
-  custom_fields:
-    notification: >
-      [[[
-        if (entity.state =='unavailable'){
-          return `<ha-icon icon="mdi:exclamation" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`
-        }
-      ]]]
+  show_name: true
   state:
     - styles:
         custom_fields:
@@ -2354,35 +2438,20 @@ icon_info:
                 ]]]
       value: unavailable
   styles:
-    card:
-      - border-radius: 21px 8px 8px 21px 
-      - box-shadow: none
-      - padding: 0px
-      # - background-color: 'rgba(var(--color-theme),0)'
-    grid:
-      - grid-template-areas: '"i n" "i l"'
-      - grid-template-columns: min-content auto
-      - grid-template-rows: min-content min-content
     icon:
       - color: 'rgba(var(--color-theme),0.2)'
-    img_cell:
-      - background-color: 'rgba(var(--color-theme),0.05)'
-      - border-radius: 50%
-      - place-self: center
-      - width: 42px
-      - height: 42px
-    name:
-      - align-self: end
-      - justify-self: start
-      - font-weight: bold
-      - font-size: 14px
-      - margin-left: 12px
     label:
       - justify-self: start
       - align-self: start
       - font-weight: bolder
       - font-size: 12px
       - filter: opacity(40%)
+      - margin-left: 12px
+    name:
+      - align-self: end
+      - justify-self: start
+      - font-weight: bold
+      - font-size: 14px
       - margin-left: 12px
     state:
       - justify-self: start
@@ -2391,6 +2460,29 @@ icon_info:
       - font-size: 12px
       - filter: opacity(40%)
       - margin-left: 12px
+    img_cell:
+      - background-color: 'rgba(var(--color-theme),0.05)'
+      - border-radius: 50%
+      - place-self: center
+      - width: 42px
+      - height: 42px
+    grid:
+      - grid-template-areas: '"i n" "i l"'
+      - grid-template-columns: min-content auto
+      - grid-template-rows: min-content min-content
+    card:
+      - border-radius: 21px 8px 8px 21px 
+      - box-shadow: none
+      - padding: 0px
+      # - background-color: 'rgba(var(--color-theme),0)'
+  custom_fields:
+    notification: >
+      [[[
+        if (entity.state =='unavailable'){
+          return `<ha-icon icon="mdi:exclamation" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`
+        }
+      ]]]
+  size: 20px
 ```
 
 </details>
@@ -2402,16 +2494,8 @@ icon_info:
 icon_info_bg:
   color: var(--google-grey)
   show_icon: true
-  show_name: true
   show_label: true
-  size: 20px
-  custom_fields:
-    notification: >
-      [[[
-        if (entity.state =='unavailable'){
-          return `<ha-icon icon="mdi:exclamation" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`
-        }
-      ]]]
+  show_name: true
   state:
     - styles:
         custom_fields:
@@ -2431,34 +2515,20 @@ icon_info_bg:
                 ]]]
       value: unavailable
   styles:
-    card:
-      - border-radius: var(--border-radius)
-      - box-shadow: var(--box-shadow)
-      - padding: 12px
-    grid:
-      - grid-template-areas: '"i n" "i l"'
-      - grid-template-columns: min-content auto
-      - grid-template-rows: min-content min-content
     icon:
       - color: 'rgba(var(--color-theme),0.2)'
-    img_cell:
-      - background-color: 'rgba(var(--color-theme),0.05)'
-      - border-radius: 50%
-      - place-self: center
-      - width: 42px
-      - height: 42px
-    name:
-      - align-self: end
-      - justify-self: start
-      - font-weight: bold
-      - font-size: 14px
-      - margin-left: 12px
     label:
       - justify-self: start
       - align-self: start
       - font-weight: bold
       - font-size: 12px
       - filter: opacity(40%)
+      - margin-left: 12px
+    name:
+      - align-self: end
+      - justify-self: start
+      - font-weight: bold
+      - font-size: 14px
       - margin-left: 12px
     state:
       - justify-self: start
@@ -2467,6 +2537,28 @@ icon_info_bg:
       - font-size: 12px
       - filter: opacity(40%)
       - margin-left: 12px
+    img_cell:
+      - background-color: 'rgba(var(--color-theme),0.05)'
+      - border-radius: 50%
+      - place-self: center
+      - width: 42px
+      - height: 42px
+    grid:
+      - grid-template-areas: '"i n" "i l"'
+      - grid-template-columns: min-content auto
+      - grid-template-rows: min-content min-content
+    card:
+      - border-radius: var(--border-radius)
+      - box-shadow: var(--box-shadow)
+      - padding: 12px
+  custom_fields:
+    notification: >
+      [[[
+        if (entity.state =='unavailable'){
+          return `<ha-icon icon="mdi:exclamation" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`
+        }
+      ]]]
+  size: 20px
 ```
 
 </details>
@@ -2477,23 +2569,11 @@ icon_info_bg:
 ```yaml
 icon_info_line:
   show_icon: true
-  show_name: false
   show_label: true
-  size: 100%
+  show_name: false
   styles:
-    card:
-      - box-shadow: none
-      - padding: 0px
-    grid:
-      - grid-template-areas: '"i l"'
-      - grid-template-columns: max_content auto
-      - grid-template-rows: min-content
     icon:
       - filter: opacity(40%)
-    img_cell:
-      - place-self: center
-      - width: 14px
-      - height: 24px
     label:
       - padding: 2px
       - justify-self: start
@@ -2502,6 +2582,18 @@ icon_info_line:
       - font-size: 12px
       - margin-left: 0px
       - filter: opacity(40%)
+    img_cell:
+      - place-self: center
+      - width: 14px
+      - height: 24px
+    grid:
+      - grid-template-areas: '"i l"'
+      - grid-template-columns: max_content auto
+      - grid-template-rows: min-content
+    card:
+      - box-shadow: none
+      - padding: 0px
+  size: 100%
 ```
 
 </details>
@@ -2512,14 +2604,14 @@ icon_info_line:
 ```yaml
 list_items:
   styles:
-    card:
-      - box-shadow: none
-      - padding: 0px
     grid:
       - grid-template-areas: '"item1 item2 item3"'
       - grid-template-columns: 1fr 1fr 1fr
       - grid-template-rows: min-content
       - column-gap: 7px
+    card:
+      - box-shadow: none
+      - padding: 0px
 ```
 
 </details>
@@ -2530,14 +2622,14 @@ list_items:
 ```yaml
 list_items_line:
   styles:
-    card:
-      - box-shadow: none
-      - padding: 0px
     grid:
       - grid-template-areas: '"item1 item2 item3"'
       - grid-template-columns: max-content max-content max-content
       - grid-template-rows: min-content
       - column-gap: 8px
+    card:
+      - box-shadow: none
+      - padding: 0px
 ```
 
 </details>
@@ -2549,11 +2641,11 @@ list_items_line:
 widget_icon:
   tap_action:
     action: toggle
-  color: var(--google-grey)
   show_icon: true
   show_name: false
-  size: 20px
   styles:
+    grid:
+      - grid-template-areas: '"i"'
     card:
       - box-shadow: none
       - padding: 0px
@@ -2561,10 +2653,10 @@ widget_icon:
       - border-radius: 14px
       - place-self: center
       - height: 42px
-    grid:
-      - grid-template-areas: '"i"'
     icon:
       - color: 'rgba(var(--color-theme),0.9)'
+  size: 20px
+  color: var(--google-grey)
 ```
 
 </details>

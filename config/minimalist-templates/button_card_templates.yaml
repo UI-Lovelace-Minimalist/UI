@@ -66,10 +66,12 @@ chips_icon_state:
   template: chips
   variables:
     icon: "❔"
+  triggers_update:
+    - "[[[ variables.ulm_chip_icon_state_entity ]]]"
   show_icon: true
   show_label: true
   icon: "[[[ return variables.ulm_chip_icon_state_icon ? variables.ulm_chip_icon_state_icon : variables.icon ]]]"
-  label: "[[[ return variables.ulm_chip_icon_state_label ? states[variables.ulm_chip_icon_state_label].state : '' ]]]"
+  label: "[[[ return variables.ulm_chip_icon_state_entity ? states[variables.ulm_chip_icon_state_entity].state : '' ]]]"
   styles:
     label:
       - justify-self: center
@@ -83,10 +85,13 @@ chips_icon_double_state:
   template: chips
   variables:
     icon: "❔"
+  triggers_update:
+    - "[[[ variables.ulm_chip_icon_state_entity_1 ]]]"
+    - "[[[ variables.ulm_chip_icon_state_entity_2 ]]]"
   show_icon: true
   show_label: true
   icon: "[[[ return variables.ulm_chip_icon_double_state_icon ? variables.ulm_chip_icon_double_state_icon : variables.icon ]]]"
-  label: "[[[ return variables.ulm_chip_icon_double_state_label_1 ? states[variables.ulm_chip_icon_double_state_label_1].state + states[variables.ulm_chip_icon_double_state_label_2].state : '' ]]]"
+  label: "[[[ return variables.ulm_chip_icon_double_state_entity_1 ? states[variables.ulm_chip_icon_double_state_entity_1].state + states[variables.ulm_chip_icon_double_state_entity_2].state : '' ]]]"
   styles:
     label:
       - justify-self: center
@@ -100,7 +105,7 @@ chips_back:
   template: chips
   tap_action:
     action: navigate
-    navigation_path: /lovelace
+    navigation_path: "[[[ return variables.ulm_chips_back_path; ]]]"
   show_icon: true
   icon: 'mdi:arrow-left'
   styles:
@@ -109,6 +114,9 @@ chips_back:
 
 chips_presence_detection:
   template: chips
+  triggers_update:
+    - "[[[ variables.ulm_chip_presence_counter_residents ]]]"
+    - "[[[ variables.ulm_chip_presence_counter_guests ]]]"
   label: |
     [[[
       var guests = states[variables.ulm_chip_presence_counter_guests].state ? ' / ' + states[variables.ulm_chip_presence_counter_guests].state : '';
@@ -117,6 +125,8 @@ chips_presence_detection:
 
 chips_power_consumption:
   template: chips
+  triggers_update:
+    - "[[[ variables.ulm_chip_electric_consumption ]]]"
   label: |
     [[[
       var amount = variables.ulm_chip_electric_price != '' ? true : false
@@ -332,11 +342,35 @@ card_light:
   label: >-
     [[[ if (entity.state !='unavailable'){
           if (entity.state =='off'){
-            var bri = Math.round(entity.attributes.brightness / 2.55);
             return variables.ulm_off;  
-          } else {
-            var bri = Math.round(entity.attributes.brightness / 2.55);
-            return (bri ? bri : '0') + '%'; 
+          } else if (entity.state == 'on'){
+            if (entity.attributes.brightness != null){
+              var bri = Math.round(entity.attributes.brightness / 2.55);
+              return (bri ? bri : '0') + '%';
+            } else {
+              return variables.ulm_on
+            } 
+          }
+        } else {
+          return variables.ulm_unavailable;
+        }
+    ]]]
+
+card_light_group:
+  template: 
+    - icon_info_bg
+    - yellow
+    - ulm_language_variables
+  tap_action:
+    action: toggle
+  hold_action:
+    action: more-info
+  label: >-
+    [[[ if (entity.state !='unavailable'){
+          if (entity.state =='off'){
+            return variables.ulm_off;  
+          } else if (entity.state == 'on') {
+            return variables.ulm_on;
           }
         } else {
           return variables.ulm_unavailable;
@@ -344,15 +378,14 @@ card_light:
     ]]]
 
 card_light_slider:
+  variables:
+    ulm_card_light_slider_name: "[[[ return entity.attributes.friendly_name ]]]"
   show_icon: false
   show_name: false
   show_label: false
   state:
     - operator: template
-      value: >
-        [[[
-          return entity.state == 'on'
-        ]]]
+      value: "[[[ return entity.state == 'on' ]]]"
       styles:
         card:
           - background-color: 'rgba(var(--color-background-yellow),var(--opacity-bg))'
@@ -373,8 +406,13 @@ card_light_slider:
         template:
           - icon_info
           - light
-        entity: '[[[ return entity.entity_id ]]]'
-        name: '[[[ return entity.name ]]]'
+        entity: "[[[ return entity.entity_id ]]]"
+        name: "[[[ return variables.ulm_card_light_slider_name ]]]"
+        styles:
+          card:
+            - box-shadow: none
+            - border-radius: var(--border-radius) var(--border-radius) 0px 0px
+            - padding: 0px
     item2:
       card:
         type: 'custom:my-slider'
@@ -415,97 +453,53 @@ card_binary_sensor:
   name: "[[[ return entity.name != '' ? entity.name : entity.attribute.friendly_name ]]]"
   show_last_changed: true
 
+card_input_boolean:
+  template: 
+    - icon_info_bg
+    - ulm_language_variables
+    - blue
+  name: "[[[ return entity.name != '' ? entity.name : entity.attribute.friendly_name ]]]"
+  label: >
+    [[[
+      if (entity.state != 'unavailable'){
+        if (entity.state == 'on'){
+          return variables.ulm_on;
+        } else {
+          return variables.ulm_off;
+        }
+      } else {
+        return variable.ulm_unavailable;
+      }
+    ]]]
+
 card_media_player:
   template:
     - icon_info_bg
-    - ulm_language_variables
   icon: |
     [[[
+        var app = entity.attributes.app_name;
         var icon = 'mdi:speaker';
-        if(entity.attributes.app_name){
-          var app = entity.attributes.app_name.toLowerCase();
-          if(app == 'spotify'){
-            var icon = 'mdi:spotify';
-          } else if(app == 'google podcasts'){
-            var icon = 'mdi:google-podcast';
-          } else if(app == 'plex'){
-            var icon = 'mdi:plex';
-          } else if(app == 'soundcloud'){
-            var icon = 'mdi:soundcloud';
-          } else if(app == 'youtube music'){
-            var icon = 'mdi:youtube';
-          } else if (app == 'oto music'){
-            var icon = 'mdi:music-circle';
-          }
+        if(app == 'Spotify'){
+          var icon = 'mdi:spotify';
+        } else if(app == 'Google Podcasts'){
+          var icon = 'mdi:google-podcast';
+        } else if(app == 'Plex'){
+          var icon = 'mdi:plex';
+        } else if(app == 'Soundcloud'){
+          var icon = 'mdi:soundcloud';
+        } else if(app == 'Youtube Music'){
+          var icon = 'mdi:youtube';
+        } else if (app == 'Oto music'){
+          var icon = 'mdi:music-circle';
         }
         return icon;
     ]]]
-  label: |
-    [[[ 
-        if (entity.state == 'off'){
-          return variables.ulm_off;
-        } else {
-          return variables.ulm_on;
-        }
-    ]]]
+  label: "[[[ return entity.state; ]]]"
   state:
     - operator: template
       value: "[[[ return entity.state != 'off' ]]]"
       name: "[[[ return states[entity.entity_id].attributes.media_title; ]]]"
-      label: |
-        [[[ 
-            var label = variables.ulm_on;
-            if(states[entity.entity_id].attributes.media_album_name){
-              var label = states[entity.entity_id].attributes.media_album_name;
-            }
-            return label;
-        ]]]
-
-card_media_player_with_control:
-  template:
-    - icon_info_bg
-    - ulm_language_variables
-  icon: |
-    [[[
-        var icon = 'mdi:speaker';
-        if(entity.attributes.app_name){
-          var app = entity.attributes.app_name.toLowerCase();
-          if(app == 'spotify'){
-            var icon = 'mdi:spotify';
-          } else if(app == 'google podcasts'){
-            var icon = 'mdi:google-podcast';
-          } else if(app == 'plex'){
-            var icon = 'mdi:plex';
-          } else if(app == 'soundcloud'){
-            var icon = 'mdi:soundcloud';
-          } else if(app == 'youtube music'){
-            var icon = 'mdi:youtube';
-          } else if (app == 'oto music'){
-            var icon = 'mdi:music-circle';
-          }
-        }
-        return icon;
-    ]]]
-  label: |
-    [[[ 
-        if (entity.state == 'off'){
-          return variables.ulm_off;
-        } else {
-          return variables.ulm_on;
-        }
-    ]]]
-  state:
-    - operator: template
-      value: "[[[ return entity.state != 'off' ]]]"
-      name: "[[[ return states[entity.entity_id].attributes.media_title; ]]]"
-      label: |
-        [[[ 
-            var label = variables.ulm_on;
-            if(states[entity.entity_id].attributes.media_album_name){
-              var label = states[entity.entity_id].attributes.media_album_name;
-            }
-            return label;
-        ]]]
+      label: "[[[ return states[entity.entity_id].attributes.media_album_name; ]]]"
       styles:
         label: 
           - color: white
@@ -525,7 +519,25 @@ card_media_player_with_control:
       - background-color: 'rgba(var(--color-theme),0.05)'
     card:
       - background-blend-mode: multiply
-      - background: "[[[ return states[entity.entity_id].attributes.entity_picture != null ? 'center / cover url(' + states[entity.entity_id].attributes.entity_picture + ') rgba(0, 0, 0, 0.15)' : '' ]]]"
+      - background: "[[[ return states[entity.entity_id].attributes.entity_picture_local != null ? 'center / cover url(' + states[entity.entity_id].attributes.entity_picture_local + ') rgba(0, 0, 0, 0.15)' : '' ]]]"
+
+card_media_player_mini_album:
+  label: "[[[ return entity.state; ]]]"
+  state:
+    - operator: template
+      value: "[[[ return entity.state != 'off' ]]]"
+      name: "[[[ return entity.attributes.media_title; ]]]"
+      label: "[[[ return entity.attributes.media_album_name; ]]]"
+      styles:
+        img_cell:
+          - background: "[[[ return 'center / cover url(' + entity.attributes.entity_picture + ')'; ]]]"
+        icon:
+          - color: 'rgba(var(--color-theme),0.0)'
+  styles:
+    icon:
+      - color: 'rgba(var(--color-theme),0.2)'
+    img_cell:
+      - background-color: 'rgba(var(--color-theme),0.05)'
 
 card_battery:
   template: card_generic
@@ -562,7 +574,9 @@ card_battery:
 ### 2-LINE CARDS ###
 card_cover_with_buttons:
   variables:
-    ulm_card_cover_with_buttons_name: "No name set"
+    ulm_card_cover_with_buttons_name: "n/a"
+  triggers_update:
+    - "[[[ variables.ulm_card_cover_with_buttons_entity ]]]"
   styles:
     grid:
       - grid-template-areas: '"item1" "item2"'
@@ -623,8 +637,10 @@ card_cover_with_buttons:
 
 card_graph:
   variables:
-    color: "var(--info-color)"
-    name: "Default name"
+    ulm_card_graph_color: "var(--info-color)"
+    ulm_card_graph_name: "n/a"
+  triggers_update:
+    - "[[[ variables.ulm_card_graph_entity ]]]"
   styles:
     grid:
       - grid-template-areas: '"item1" "item2"'
@@ -640,18 +656,20 @@ card_graph:
         type: 'custom:button-card'
         template: 
           - icon_info
-          #- card_generic_swap
+          - card_generic
         styles:
           card:
+            - box-shadow: none
+            - border-radius: var(--border-radius) var(--border-radius) 0px 0px
             - padding: 12px
-        entity: '[[[ return variables.entity ]]]'
-        name: '[[[ return variables.name ]]]'
+        entity: '[[[ return variables.ulm_card_graph_entity ]]]'
+        name: '[[[ return variables.ulm_card_graph_name ]]]'
     item2:
       card:
         type: 'custom:mini-graph-card'
         entities:
-          - entity: '[[[ return variables.entity ]]]'
-        line_color: '[[[ return variables.color ]]]'
+          - entity: '[[[ return variables.ulm_card_graph_entity ]]]'
+        line_color: '[[[ return variables.ulm_card_graph_color ]]]'
         show:
           name: false
           icon: false
@@ -665,7 +683,9 @@ card_graph:
 
 card_media_player_with_controls:
   variables:
-    ulm_card_media_player_with_controls_name: "No name set"
+    name: "n/a"
+  triggers_update:
+    - "[[[ ulm_card_media_player_with_controls_entity ]]]"
   styles:
     grid:
       - grid-template-areas: '"item1" "item2"'
@@ -681,21 +701,17 @@ card_media_player_with_controls:
       card:
         type: 'custom:button-card'
         template:
-          - ulm_language_variables
-          - card_media_player
+          - icon_info
+          - card_media_player_mini_album
         tap_action:
           action: more-info
         entity: '[[[ return variables.ulm_card_media_player_with_controls_entity ]]]'
         name: '[[[ return variables.ulm_card_media_player_with_controls_name ]]]'
-        styles:
-          card:
-            - box-shadow: none
-            - padding: 0px
     item2:
       card:
         type: 'custom:button-card'
         template: list_items
-        custom_fields:          
+        custom_fields:
           item1:
             card:
               type: 'custom:button-card'
@@ -710,18 +726,12 @@ card_media_player_with_controls:
             card:
               type: 'custom:button-card'
               template: widget_icon
-              entity: '[[[ return variables.ulm_card_media_player_with_controls_entity ]]]'
               tap_action:
                 action: call-service
                 service: media_player.media_play_pause
                 service_data:
                   entity_id: '[[[ return variables.ulm_card_media_player_with_controls_entity ]]]'
               icon: 'mdi:pause'
-              state:
-                - value: paused
-                  icon: 'mdi:play'
-                - value: 'off'
-                  icon: 'mdi:play'
           item3:
             card:
               type: 'custom:button-card'
@@ -730,11 +740,25 @@ card_media_player_with_controls:
                 action: call-service
                 service: media_player.media_next_track
                 service_data:
-                  entity_id: '[[[ return variables.ulm_card_media_player_with_controls_entity ]]]'
+                  entity_id: '[[[ return entity.ulm_card_media_player_with_controls_entity ]]]'
               icon: 'mdi:skip-next'
 
 ### INTERNAL TEMPLATES ###
-### CHIPS ###
+blue:
+  state:
+    - styles:
+        icon:
+          - color: 'rgba(var(--color-blue),1)'
+        label:
+          - color: 'rgba(var(--color-blue-text),1)'
+        name:
+          - color: 'rgba(var(--color-blue-text),1)'
+        img_cell:
+          - background-color: 'rgba(var(--color-blue), 0.2)'
+        card:
+          - background-color: 'rgba(var(--color-background-blue), var(--opacity-bg))'
+      value: 'on'
+
 chips:
   tap_action:
     action: more-info
@@ -761,7 +785,6 @@ chips:
       - padding-right: 6px
   size: 80%
 
-### CARDS ###
 cover:
   tap_action:
     action: more-info
@@ -791,13 +814,11 @@ cover:
         img_cell:
           - background-color: 'rgba(var(--color-blue),0.2)'
 
-### EDGE ###
 edge:
   styles:
     card:
       - width: 0px
 
-### ICONS ###
 icon:
   color: var(--google-grey)
   show_icon: true
@@ -1056,7 +1077,6 @@ widget_icon:
   size: 20px
   color: var(--google-grey)
 
-### COLORS ###
 yellow:
   state:
     - styles:
@@ -1070,21 +1090,6 @@ yellow:
           - background-color: 'rgba(var(--color-yellow), 0.2)'
         card:
           - background-color: 'rgba(var(--color-background-yellow),var(--opacity-bg))'
-      value: 'on'
-
-blue:
-  state:
-    - styles:
-        icon:
-          - color: 'rgba(var(--color-blue),1)'
-        label:
-          - color: 'rgba(var(--color-blue-text),1)'
-        name:
-          - color: 'rgba(var(--color-blue-text),1)'
-        img_cell:
-          - background-color: 'rgba(var(--color-blue), 0.2)'
-        card:
-          - background-color: 'rgba(var(--color-background-blue), var(--opacity-bg))'
       value: 'on'
 
 ### LEGACY TEMPLATES ###
@@ -1120,7 +1125,7 @@ media:
 battery:
   template: card_battery
 media_mini_album:
-  template: card_media_player_with_cover
+  template: card_media_player_mini_album
 media_buttons:
   template: card_media_player_with_controls
 ### CUSTOM CARDS ###
