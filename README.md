@@ -1022,7 +1022,7 @@ card_generic:
 ### Generic swapped 
 This is the same as the `generic-card`, but with *name* and *state* swapped.
 
-![Generic](./screenshots/generic.png)
+![Generic](./screenshots/generic_swap.png)
 
 @dev WRONG PICTURE
 
