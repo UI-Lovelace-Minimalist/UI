@@ -91,7 +91,7 @@ chips_icon_double_state:
   show_icon: true
   show_label: true
   icon: "[[[ return variables.ulm_chip_icon_double_state_icon ? variables.ulm_chip_icon_double_state_icon : variables.icon ]]]"
-  label: "[[[ return variables.ulm_chip_icon_double_state_entity_1 ? states[variables.ulm_chip_icon_double_state_entity_1].state + states[variables.ulm_chip_icon_double_state_entity_2].state : '' ]]]"
+  label: "[[[ return variables.ulm_chip_icon_double_state_entity_1 ? states[variables.ulm_chip_icon_double_state_entity_1].state + ' • ' + states[variables.ulm_chip_icon_double_state_entity_2].state : '' ]]]"
   styles:
     label:
       - justify-self: center
