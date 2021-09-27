@@ -1024,8 +1024,6 @@ This is the same as the `generic-card`, but with *name* and *state* swapped.
 
 ![Generic](./screenshots/generic_swap.png)
 
-@dev WRONG PICTURE
-
 <details>
 <summary>Usage</summary>
 
