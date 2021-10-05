@@ -1,4 +1,4 @@
-# Custom-card DWD Pollen
+# Custom-card "DWD Pollen"
 This is a `custom-card` to show the pollen count, taken from the DWD pollen service via a rest sensor.  
 
 ## Credits
@@ -21,19 +21,7 @@ Initial release
 ```
 
 ## Requirements
-This card needs the following to function correctly:
-<table>
-<tr>
-<th>Component / card</th>
-<th>required</th>
-<th>Link</th>
-</tr>
-<tr>
-<td>n/a</td>
-<td></td>
-<td></td>
-</tr>
-</table>
+n/a
 
 ## Template code
 
@@ -63,27 +51,32 @@ custom_card_paddy_dwd_pollen:
     - value: '6'
       styles:
         img_cell:
-          - background-color: 'rgba(190,0,33,0.35)'
+          - background-color: 'rgba(190,0,33,1)'
     - value: '5'
       styles:
         img_cell:
-          - background-color: 'rgba(240,56,26,0.35)'
+          - background-color: 'rgba(240,56,26,1)'
     - value: '4'
       styles:
         img_cell:
-          - background-color: 'rgba(254,154,36,0.35)'
+          - background-color: 'rgba(254,154,36,1)'
     - value: '3'
       styles:
         img_cell:
-          - background-color: 'rgba(254,197,77,0.35)'
+          - background-color: 'rgba(254,197,77,1)'
     - value: '2'
       styles:
         img_cell:
-          - background-color: 'rgba(254,228,156,0.35)'
+          - background-color: 'rgba(254,228,156,1)'
     - value: '1'
       styles:
         img_cell:
-          - background-color: 'rgba(219,250,200,0.35)'
+          - background-color: 'rgba(219,250,200,1)'
+    - value: '0'
+      styles:
+        icon:
+          - color: 'rgba(var(--color-theme),0.2)'
+
 ```
 
 ## HomeAssistant
@@ -124,4 +117,4 @@ sensor:
 ```
 
 ## Notes
-* As this card is mainly for the DWD pollen sensor, that is based in Germany and shows only german data, the only available language is "German". 
+* As this card is mainly for the DWD pollen sensor, that is based in Germany and shows only german data, the only available language is "German". If you want another language added, please leave a message in the support thread.

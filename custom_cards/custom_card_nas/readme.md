@@ -1,23 +1,32 @@
-### NAS  
-The `nas-card` shows you a specific sensor value from your NAS, eg. the disk space used.  
+# Custom-card "NAS"
+The `card-nas` shows you a specific sensor value from your NAS, eg. the disk space used.  
 
-![NAS]()
+## Credits
+Author: tben - 2021  
+Version: 1.0.0  
 
-#### Example
+## Changelog
+<details>
+<summary>1.0.0</summary>
+Initial release
+</details>
+
+## Usage
 
 ```yaml
-- type: horizontal-stack
-  cards:
-    - type: 'custom:button-card'
-      template: 
-        - custom_card_nas
-      variables:
-        ulm_custom_card_nas_sensor: sensor.pinas_disk_use
-        ulm_custom_card_nas_text: "HDD used"
-        ulm_custom_cad_nas_unit: %
+- type: 'custom:button-card'
+  template: 
+    - custom_card_nas
+  variables:
+    ulm_custom_card_nas_sensor: sensor.pinas_disk_use
+    ulm_custom_card_nas_text: "HDD used"
+    ulm_custom_cad_nas_unit: %
 ```
 
-#### Variables
+## Requirements
+n/a
+
+## Variables
 <table>
 <tr>
 <th>Variable</th>
@@ -45,7 +54,7 @@ The `nas-card` shows you a specific sensor value from your NAS, eg. the disk spa
 </tr>
 </table>
 
-#### Template code
+## Template code
 
 ```yaml
 custom_card_nas:
@@ -64,3 +73,4 @@ custom_card_nas:
       return state; 
     ]]]
 ```
+

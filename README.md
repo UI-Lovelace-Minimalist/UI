@@ -31,11 +31,10 @@ It's kind of hard to explain what this is, so let's call it a "theme" (in quotat
 * [Legacy templates](#legacy-templates)
 * [Internal templates](#internal-templates)
 * [Notes](#notes)
-  * [My-slider](#my-cards)
 
 #### Seperate pages in this repository
 * [Examples](examples.md)
-* [FAQ](faq.md)
+* [FAQ](faq.md) (not ready yet!)
 * [Developing custom-cards](custom-cards.md)
 * [Changelog](CHANGELOG.md)
 </details>
@@ -52,13 +51,12 @@ This system is depending on two things, namely using a theme and make extensive 
 
 The design system consists of a few graphical buttons, that are changed depending on their use.
 
-* [Chips](#chips) At the top of each page we find the chips, which allow to quickly visualize important information.
-* [Title](#title) to separate the different sections.
-* [Vertical buttons](#vertical-buttons) for using the cards as a button.
-* [Cards](#cards) to represent and interact with devices, sensors, etc.
+* [Chips](#chips) : At the top of each page we find the chips, which allow to quickly visualize important information.
+* [Title](#title) : To separate the different sections.
+* [Vertical buttons](#vertical-buttons) : For using the cards as a button.
+* [Cards](#cards) : To represent and interact with devices, sensors, etc.
 
 ## Installation and update  
-
 <details>
 <summary>Installation with HACS</summary>
 
@@ -100,43 +98,16 @@ We are planning to release this "theme" with HACS, but for now we can only offer
    <td></td>
    </tr>
    <tr>
+   <td><a href="https://github.com/kalkih/mini-media-player">mini-media-player</a></td>
+   <td>no</td>
+   <td>card_media_player</td>
+   <td></td>
+   </tr>
+   <tr>
    <td><a href="https://github.com/AnthonMS/my-cards">my-cards (formerly known as ha-slider-card)</a></td>
    <td>no</td>
    <td>card_light_slider</td>
    <td><a href="#my-cards">find the note here</a></td>
-   </tr>
-   <tr>
-   <td colspan="4"><b><i>Not used, but recommended</i></b></td>
-   </tr>
-   <tr>
-   <td><a href="https://github.com/thomasloven/lovelace-auto-entities">lovelace-auto-entities</a></td>
-   <td>no</td>
-   <td></td>
-   <td></td>
-   </tr>
-   <tr>
-   <td><a href="https://github.com/thomasloven/lovelace-state-switch">lovelace-state-switch</a></td>
-   <td>no</td>
-   <td></td>
-   <td></td>
-   </tr>
-   <tr>
-   <td><a href="https://github.com/kalkih/mini-media-player">mini-media-player</a></td>
-   <td>no</td>
-   <td></td>
-   <td></td>
-   </tr>
-   <tr>
-   <td><a href="https://github.com/bramkragten/swipe-card">swipe-card</a></td>
-   <td>no</td>
-   <td></td>
-   <td></td>
-   </tr>
-   <tr>
-   <td><a href="https://github.com/ofekashery/vertical-stack-in-card">vertical-stack-in-card</a></td>
-   <td>no</td>
-   <td></td>
-   <td></td>
    </tr>
    </table>  
 
@@ -168,6 +139,9 @@ We are planning to release this "theme" with HACS, but for now we can only offer
     * Restart Home Assistant
     * Enable the theme in your user profile (bottom left in Home Assistant), this "theme" offers two versions, `minimalist-desktop` and `minimalist-mobile`. Both themes support light and dark mode, they are just different in the way they place your cards (desktop is for a wider screen)  
 1. Start setting up your new design  
+
+> If you need more in depth instructions for installing this "theme", please have a look at our [examples page](examples.md#example-1).  
+
 </details>
 
 <details>
@@ -208,7 +182,7 @@ If you want other than the provided strings, please change/add them in the copie
 ## Examples and FAQ
 To show the use of this "theme", we have two seperate pages set up. You can find them here:
 * [Examples](examples.md)
-* [FAQ](faq.md)  
+* [FAQ](faq.md) (not ready yet!) 
 
 ## Chips  
 
@@ -646,7 +620,7 @@ This `chip` shows you the actual presence in your home. Shows residents and gues
 <tr>
 <td>tap_action</td>
 <td>see example code above</td>
-<td>yes</td>
+<td>no</td>
 <td>Set the navigation path to your default view, eg. <i>ui-lovelace-minimalist/home</i> or <i>lovelace</i></td>
 </tr>
 </table>
@@ -810,6 +784,14 @@ Vertical buttons are just another style of buttons, mainly you can display an ic
 <details>
 <summary>Usage</summary>
 
+#### Example
+
+```yaml
+- type: 'custom:button-card'
+  template: vertical_buttons
+  entity: sensor.present
+```
+
 #### Variables  
 <table>
 <tr>
@@ -825,15 +807,6 @@ Vertical buttons are just another style of buttons, mainly you can display an ic
 <td></td>
 </tr>
 </table>
-
-#### Example
-
-```yaml
-- type: 'custom:button-card'
-  template: vertical_buttons
-  entity: sensor.present
-  
-```
 
 </details>
 
@@ -935,8 +908,6 @@ In the list above #5 enhances the normal `cards` with a "second line", that is u
 
 ### Generic (aka sensor)
 This is the `generic-card` to display values from a sensor, eg. to show humidity, your next waste collection date or whatever sensor value is provided.
-
-![Generic](./screenshots/generic.png)
 
 <details>
 <summary>Usage</summary>
@@ -1119,7 +1090,6 @@ This is the `light-card`, used to toggle a light or a light group. Shows state o
 - type: 'custom:button-card'
   template: card_light
   entity: light.my_livingroom_light
-  name: Livingroom Light
 ```
 
 #### Variables
@@ -1160,17 +1130,21 @@ card_light:
   hold_action:
     action: more-info
   label: >-
-    [[[ if (entity.state !='unavailable'){
-          if (entity.state =='off'){
+    [[[ 
+      if (entity.state !='unavailable'){
+        if (entity.state =='off'){
+          return variables.ulm_off;  
+        } else if (entity.state == 'on'){
+          if (entity.attributes.brightness != null){
             var bri = Math.round(entity.attributes.brightness / 2.55);
-            return variables.ulm_off;  
+            return (bri ? bri : '0') + '%';
           } else {
-            var bri = Math.round(entity.attributes.brightness / 2.55);
-            return (bri ? bri : '0') + '%'; 
-          }
-        } else {
-          return variables.ulm_unavailable;
+            return variables.ulm_on
+          } 
         }
+      } else {
+        return variables.ulm_unavailable;
+      }
     ]]]
 ```
 
@@ -1346,8 +1320,6 @@ The `binary-sensor-card` is to show the state (on/off, open/close, etc.) of a bi
 - type: 'custom:button-card'
   template: card_binary_sensor
   entity: binary_sensor.garage_door
-  name: Garage Door
-  icon: 'mdi:garage'
   show_last_changed: true
 ```
 
@@ -1364,18 +1336,6 @@ The `binary-sensor-card` is to show the state (on/off, open/close, etc.) of a bi
 <td>binary_sensor.garage_door</td>
 <td>yes</td>
 <td>The <i>binary_sensor</i> to show</td>
-</tr>
-<tr>
-<td>name</td>
-<td>Garage Door</td>
-<td>no</td>
-<td>The name, if not set, the friendly name is used.</td>
-</tr>
-<tr>
-<td>icon</td>
-<td>mdi:garage</td>
-<td>no</td>
-<td>If not set, the standard icon from HA will be used.</td>
 </tr>
 <tr>
 <td>show_last_changed</td>
@@ -1461,8 +1421,88 @@ card_input_boolean:
 
 </details>
 
+### Navigate  
+The `card_navigate` is for navigating inside your HA dashboard(s).
+
+<details>
+<summary>Usage</summary>
+
+#### Example
+
+```yaml
+- type: custom:button-card
+  template: card_navigate
+  variables:
+    ulm_card_navigate_path: /ui-lovelace-minimalist/media
+    ulm_card_navigate_title: Media
+    ulm_card_navigate_icon: mdi:television 
+```
+
+#### Variables
+<table>
+<tr>
+<th>Variable</th>
+<th>Example</th>
+<th>Required</th>
+<th>Explanation</th>
+</tr>
+<tr>
+<td>ulm_card_navigate_path</td>
+<td>/ui-lovelace-minimalist/media</td>
+<td>yes</td>
+<td>The path to your lovelace dashboard</td>
+</tr>
+<tr>
+<td>ulm_card_navigate_title</td>
+<td>Media</td>
+<td>yes</td>
+<td>Title to show for the link</td>
+</tr>
+<tr>
+<td>ulm_card_navigate_icon</td>
+<td>mdi:television</td>
+<td>yes</td>
+<td>Icon to show</td>
+</tr>
+</table>
+<br />
+</details>
+
+<details>
+<summary>Template code</summary>
+
+```yaml
+card_navigate:
+  template: 
+    - icon_only
+    - blue_no_state
+  tap_action:
+    action: navigate
+    navigation_path: "[[[ return variables.ulm_card_navigate_path; ]]]"
+  label: "[[[ return variables.ulm_card_navigate_title; ]]]"
+  icon: "[[[ return variables.ulm_card_navigate_icon; ]]]"
+  styles:
+    icon:
+      - color: 'rgba(var(--color-blue),0.7)'
+    label:
+      - align-self: center
+      - justify-self: start
+      - font-weight: bold
+      - font-size: 14px
+      - margin-left: 12px
+      - filter: opacity(100%)
+    img_cell:
+      - background-color: 'rgba(var(--color-blue), 0.2)'
+    grid:
+      - grid-template-areas: '"i l"'
+      - grid-template-columns: min-content min-content
+      - grid-template-rows: min-content
+```
+
+</details>
+
 ### Media player  
-The `media-player-card` shows you the *app*, the *title* and the *album name* playing, if the data is available through HA. The *app* is shown via a different icon.  
+The `card_media_player` shows you the *app*, the *title* and the *album name* playing, if the data is available through HA. The *app* is shown via a different icon.  
 
 ![Enceintes](./screenshots/media.png)
 
@@ -1475,7 +1515,7 @@ Currently there are icons for
 
 Unfortunately *AmazonMusic*, *AppleMusic* and *Deezer* don't have an `mdi:icon`, so the default icon (a speaker) will be presented.
 
-If you're looking for a `media-player-card-with-controls`, see a little downwards under *2-line cards*.
+If you're looking for a `card_media_player_with_controls`, see a little downwards under *2-line cards*.
 <details>
 <summary>Usage</summary>
 
@@ -1519,31 +1559,140 @@ If you're looking for a `media-player-card-with-controls`, see a little downward
 card_media_player:
   template:
     - icon_info_bg
+    - ulm_language_variables
   icon: |
     [[[
-        var app = entity.attributes.app_name;
-        var icon = 'mdi:speaker';
-        if(app == 'Spotify'){
+      if(entity.attributes.app_name){
+        var app = entity.attributes.app_name.toLowerCase();
+        if(app == 'spotify'){
           var icon = 'mdi:spotify';
-        } else if(app == 'Google Podcasts'){
+        } else if(app == 'google podcasts'){
           var icon = 'mdi:google-podcast';
-        } else if(app == 'Plex'){
+        } else if(app == 'plex'){
           var icon = 'mdi:plex';
-        } else if(app == 'Soundcloud'){
+        } else if(app == 'soundcloud'){
           var icon = 'mdi:soundcloud';
-        } else if(app == 'Youtube Music'){
+        } else if(app == 'youtube music'){
           var icon = 'mdi:youtube';
-        } else if (app == 'Oto music'){
+        } else if (app == 'oto music'){
           var icon = 'mdi:music-circle';
         }
-        return icon;
+      }
+      return icon;
     ]]]
-  label: "[[[ return entity.state; ]]]"
+  label: |
+    [[[ 
+        if (entity.state == 'off'){
+          return variables.ulm_off;
+        } else {
+          return variables.ulm_on;
+        }
+    ]]]
   state:
     - operator: template
       value: "[[[ return entity.state != 'off' ]]]"
       name: "[[[ return states[entity.entity_id].attributes.media_title; ]]]"
-      label: "[[[ return states[entity.entity_id].attributes.media_album_name; ]]]"
+      label: |
+        [[[ 
+          var label = variables.ulm_on;
+          if(states[entity.entity_id].attributes.media_album_name){
+            var label = states[entity.entity_id].attributes.media_album_name;
+          }
+          return label;
+        ]]]
+```
+
+</details>
+
+### Media player with cover art (album picture)
+This is the second `media-player-card`, in contrast to the first one above, it shows the cover art from your media player. 
+
+@dev PICTURE MISSING
+
+<details>
+<summary>Usage</summary>
+
+#### Example
+```yaml
+- type: 'custom:button-card'
+  template: card_media_player_with_control
+  entity: media_player.livingroom_shield
+  name: Livingroom Nvidia Shield
+```
+
+#### Variables
+<table>
+<tr>
+<th>Variable</th>
+<th>Example</th>
+<th>Required</th>
+<th>Explanation</th>
+</tr>
+<tr>
+<td>entity</td>
+<td>media_player.livingroom_shield</td>
+<td>yes</td>
+<td>The entity of the media player</td>
+</tr>
+<tr>
+<td>name</td>
+<td>Livingroom Nvidia Shield</td>
+<td>no</td>
+<td>The displayed name of your media player</td>
+</tr>
+</table>
+<br />
+</details>
+
+<details>
+<summary>Template code</summary>
+
+```yaml
+card_media_player_with_control:
+  template:
+    - icon_info_bg
+    - ulm_language_variables
+  icon: |
+    [[[
+        var icon = 'mdi:speaker';
+        if(entity.attributes.app_name){
+          var app = entity.attributes.app_name.toLowerCase();
+          if(app == 'spotify'){
+            var icon = 'mdi:spotify';
+          } else if(app == 'google podcasts'){
+            var icon = 'mdi:google-podcast';
+          } else if(app == 'plex'){
+            var icon = 'mdi:plex';
+          } else if(app == 'soundcloud'){
+            var icon = 'mdi:soundcloud';
+          } else if(app == 'youtube music'){
+            var icon = 'mdi:youtube';
+          } else if (app == 'oto music'){
+            var icon = 'mdi:music-circle';
+          }
+        }
+        return icon;
+    ]]]
+  label: |
+    [[[ 
+        if (entity.state == 'off'){
+          return variables.ulm_off;
+        } else {
+          return variables.ulm_on;
+        }
+    ]]]
+  state:
+    - operator: template
+      value: "[[[ return entity.state != 'off' ]]]"
+      name: "[[[ return states[entity.entity_id].attributes.media_title; ]]]"
+      label: |
+        [[[ 
+            var label = variables.ulm_on;
+            if(states[entity.entity_id].attributes.media_album_name){
+              var label = states[entity.entity_id].attributes.media_album_name;
+            }
+            return label;
+        ]]]
       styles:
         label: 
           - color: white
@@ -1563,65 +1712,7 @@ card_media_player:
       - background-color: 'rgba(var(--color-theme),0.05)'
     card:
       - background-blend-mode: multiply
-      - background: "[[[ return states[entity.entity_id].attributes.entity_picture_local != null ? 'center / cover url(' + states[entity.entity_id].attributes.entity_picture_local + ') rgba(0, 0, 0, 0.15)' : '' ]]]"
-```
-
-</details>
-
-### Media player with cover art (album picture)
-This is the second `media-player-card`, in contrast to the first one above, it shows the cover art from your media player. 
-
-@dev PICTURE MISSING
-
-<details>
-<summary>Usage</summary>
-
-#### Example
-```yaml
-- type: 'custom:button-card'
-  template: card_media_player_mini_album
-  entity: media_player.livingroom_shield
-```
-
-#### Variables
-<table>
-<tr>
-<th>Variable</th>
-<th>Example</th>
-<th>Required</th>
-<th>Explanation</th>
-</tr>
-<tr>
-<td>entity</td>
-<td>media_player.livingroom_shield</td>
-<td>yes</td>
-<td>The entity of the media player</td>
-</tr>
-</table>
-<br />
-</details>
-
-<details>
-<summary>Template code</summary>
-
-```yaml
-card_media_player_mini_album:
-  label: "[[[ return entity.state; ]]]"
-  state:
-    - operator: template
-      value: "[[[ return entity.state != 'off' ]]]"
-      name: "[[[ return entity.attributes.media_title; ]]]"
-      label: "[[[ return entity.attributes.media_album_name; ]]]"
-      styles:
-        img_cell:
-          - background: "[[[ return 'center / cover url(' + entity.attributes.entity_picture + ')'; ]]]"
-        icon:
-          - color: 'rgba(var(--color-theme),0.0)'
-  styles:
-    icon:
-      - color: 'rgba(var(--color-theme),0.2)'
-    img_cell:
-      - background-color: 'rgba(var(--color-theme),0.05)'
+      - background: "[[[ return states[entity.entity_id].attributes.entity_picture != null ? 'center / cover url(' + states[entity.entity_id].attributes.entity_picture + ') rgba(0, 0, 0, 0.15)' : '' ]]]"
 ```
 
 </details>
@@ -1629,7 +1720,7 @@ card_media_player_mini_album:
 ### Battery
 The `battery-card` is a slightly enhanced `generic-card`, just to ease the use. You could always configure it from the `generic-card` yourself. 
 
-@dev PICTURE MISSING
+![Battery](./screenshots/generic.png)
 
 <details>
 <summary>Usage</summary>
@@ -1703,6 +1794,154 @@ card_battery:
         }
          return icon;
     ]]]
+```
+
+</details>
+
+### Person
+The `card_person` shows if a person is `home` or `not_home`. If you have setup other [zones](https://www.home-assistant.io/integrations/zone/), it will show these as well.
+
+![Person](./screenshots/person.png)
+
+<details><summary>Information</summary>
+    
+**Dot** : 
+- At home : Blue
+- Away : Green 
+
+**Dot icon** :
+- `home` : Home
+- `not_home` : Home minus
+- if an icon is configured for your [zone](https://www.home-assistant.io/integrations/zone/), it will be used
+
+</details>
+
+<details>
+<summary>Usage</summary>
+
+#### Example
+
+```yaml
+- type: 'custom:button-card'
+  template: card_person
+  variables:
+    ulm_card_person_entity: person.username
+    ulm_card_person_use_entity_picture: true
+    ulm_card_person_zone1: work
+    ulm_card_person_zone2: school
+```
+
+#### Variables
+<table>
+<tr>
+<th>Variable</th>
+<th>Example</th>
+<th>Required</th>
+<th>Explanation</th>
+</tr>
+<tr>
+<td>ulm_card_person_entity</td>
+<td>person.username</td>
+<td>yes</td>
+<td>The person entity to show</td>
+</tr>
+<tr>
+<td>ulm_card_person_use_entity_picture</td>
+<td>true</td>
+<td>no</td>
+<td>If you set this to true, the card shows the entity picture from your user, otherwise (set to false) shows the icon. Default is false.</td>
+</tr>
+<tr>
+<td>ulm_card_person_zone1</td>
+<td>work</td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td>ulm_card_person_zone2</td>
+<td>school</td>
+<td>no</td>
+<td></td>
+</tr>
+</table>
+<br />
+</details>
+
+<details>
+<summary>Template code</summary>
+
+```yaml
+card_person:
+  template: icon_info_bg
+  variables:
+    ulm_card_person_use_entity_picture: false
+    ulm_card_person_zone1: ''
+    ulm_card_person_zone2: ''
+  tap_action:
+    action: more-info
+  show_label: true
+  show_name: true
+  label: "[[[ return states[variables.ulm_card_person_entity].state ]]]"
+  name: "[[[ return states[variables.ulm_card_person_entity].attributes.friendly_name ]]]"
+  entity: "[[[ return variables.ulm_card_person_entity; ]]]"
+  icon: 'mdi:account'
+  show_entity_picture: "[[[ return variables.ulm_card_person_use_entity_picture ]]]"
+  entity_picture: "[[[ return variables.ulm_card_person_use_entity_picture != false ? states[variables.ulm_card_person_entity].attributes.entity_picture : null ]]]"
+  styles:
+    icon:
+      - color: 'rgba(var(--color-theme),0.9)'
+      - width: >
+          [[[ 
+            if (variables.ulm_card_person_use_entity_picture != true){
+              return '20px';
+            } else {
+              return '42px';
+            }
+          ]]]
+      - place-self: >
+          [[[ 
+            if (variables.ulm_card_person_use_entity_picture != true){
+              return 'center';
+            } else {
+              return 'stretch stretch';
+            }
+          ]]]
+    custom_fields:
+      notification:
+        - border-radius: 50%
+        - position: absolute
+        - left: 38px
+        - top: 8px
+        - height: 16px
+        - width: 16px
+        - border: 2px solid var(--card-background-color)
+        - font-size: 12px
+        - line-height: 14px
+        - background-color: >
+            [[[
+              if (states[variables.ulm_card_person_entity].state != 'home'){
+                return "rgba(var(--color-green),1)";
+              } else {
+                return "rgba(var(--color-blue),1)";
+              }
+            ]]]
+  custom_fields:
+    notification: >
+      [[[
+        if (states[variables.ulm_card_person_entity].state != 'home'){
+          if (states[variables.ulm_card_person_entity].state == variables.ulm_card_person_zone1){
+            var icon = states[variables.ulm_card_person_zone1].attributes.icon != null ? states[variables.ulm_card_person_zone1].attributes.icon : 'mdi:help-circle'
+            return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+          } else if (states[variables.ulm_card_person_entity].state == variables.ulm_card_person_zone2){
+            var icon = states[variables.ulm_card_person_zone2].attributes.icon != null ? states[variables.ulm_card_person_zone2].attributes.icon : 'mdi:help-circle'
+            return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+          } else {
+            return '<ha-icon icon="mdi:home-minus" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+          }
+        } else {
+          return '<ha-icon icon="mdi:home-variant" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+        }
+      ]]]
 ```
 
 </details>
@@ -1925,7 +2164,8 @@ card_graph:
 </details>
 
 ### Media player with controls
-@dev DESCRIPTION MISSING  
+With the `card_media_player_with_controls` you have the state of your media_player and on the second line PREVIOUS / PLAY-PAUSE / NEXT to control it.
+
 @dev PICTURE MISSING  
 
 <details>
@@ -1937,8 +2177,8 @@ card_graph:
   template: 
     - card_media_player_with_controls
   variables:
-    ulm_card_media_player_with_controls_entity: media_player.livingroom_shield
     ulm_card_media_player_with_controls_name: "Livingroom Shield"
+    ulm_card_media_player_with_controls_entity: media_player.livingroom_shield
 ```
 
 #### Variables
@@ -1957,9 +2197,9 @@ card_graph:
 </tr>
 <tr>
 <td>ulm_card_media_player_with_controls_name</td>
-<td>Livingroom Shield</td>
+<td>Living room Media Player</td>
 <td>no</td>
-<td>The name of the media player</td>
+<td>The name of the media player (only displayed when off)</td>
 </tr>
 </table>
 <br />
@@ -1971,7 +2211,7 @@ card_graph:
 ```yaml
 card_media_player_with_controls:
   variables:
-    name: "n/a"
+    ulm_card_media_player_with_controls_name: "No name set"
   triggers_update:
     - "[[[ ulm_card_media_player_with_controls_entity ]]]"
   styles:
@@ -1989,12 +2229,16 @@ card_media_player_with_controls:
       card:
         type: 'custom:button-card'
         template:
-          - icon_info
-          - card_media_player_mini_album
+          - ulm_language_variables
+          - card_media_player
         tap_action:
           action: more-info
         entity: '[[[ return variables.ulm_card_media_player_with_controls_entity ]]]'
         name: '[[[ return variables.ulm_card_media_player_with_controls_name ]]]'
+        styles:
+          card:
+            - box-shadow: none
+            - padding: 0px
     item2:
       card:
         type: 'custom:button-card'
@@ -2014,12 +2258,18 @@ card_media_player_with_controls:
             card:
               type: 'custom:button-card'
               template: widget_icon
+              entity: '[[[ return variables.ulm_card_media_player_with_controls_entity ]]]'
               tap_action:
                 action: call-service
                 service: media_player.media_play_pause
                 service_data:
                   entity_id: '[[[ return variables.ulm_card_media_player_with_controls_entity ]]]'
               icon: 'mdi:pause'
+              state:
+                - value: paused
+                  icon: 'mdi:play'
+                - value: 'off'
+                  icon: 'mdi:play'
           item3:
             card:
               type: 'custom:button-card'
@@ -2078,6 +2328,12 @@ This "theme" is designed with an open structure in mind, that's why it is possib
 <td><a href="custom_cards/custom_card_paddy_dwd_pollen/readme.md">more information</a></td>
 <td>Card to show the DWD pollen warning</td>
 <td>paddy0174</td>
+</tr>
+<tr>
+<td>Flower card</td>
+<td><a href="custom_cards/custom_card_schumijo_flower/readme.md">more information</a></td>
+<td>Card to show a plant status</td>
+<td>schumijo</td>
 </tr>
 <tr>
 <td>NAS card</td>

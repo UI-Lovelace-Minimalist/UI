@@ -2,7 +2,8 @@ custom_card_paddy_waste_collection:
   template:
     - card_generic_swap
   state:
-    - value: 'HEUTE'
+    - operator: template
+      value: "[[[ return states[entity.entity_id].attributes.daysTo == 0; ]]]"
       styles:
         img_cell:
           - background-color: 'rgba(var(--color-red),0.5)'
@@ -23,7 +24,8 @@ custom_card_paddy_waste_collection:
                 [[[
                   return "rgba(var(--color-red),1)";
                 ]]]
-    - value: 'MORGEN'
+    - operator: template
+      value: "[[[ return states[entity.entity_id].attributes.daysTo == 1; ]]]"
       styles:
         img_cell:
           - background-color: 'rgba(var(--color-red),0.05)'
@@ -64,7 +66,7 @@ custom_card_paddy_waste_collection:
   custom_fields:
     notification: >
       [[[
-        if (entity.state == 'unavailable' || entity.state == 'HEUTE' || entity.state == 'MORGEN'){
+        if (entity.state == 'unavailable' || states[entity.entity_id].attributes.daysTo == 0 || states[entity.entity_id].attributes.daysTo == 1){
           return `<ha-icon icon="mdi:exclamation" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`
         }
       ]]]

@@ -1,4 +1,4 @@
-# Custom-card Welcome
+# Custom-card "Welcome"
 This is a `custom-card` to show a welcome message to the user. It comes in four different versions:  
 
 * welcome message (*custom_card_paddy_welcome*)
@@ -49,12 +49,12 @@ This card needs the following to function correctly:
 </tr>
 <tr>
 <td><a href="https://www.home-assistant.io/integrations/#search/weather">a weather integration/provider</a></td>
-<td>for <i>welcome-card-with-weather</i></td>
+<td>only for <i>welcome-card-with-weather</i></td>
 <td>See setup instructions for a HA weather integration</td>
 </tr>
 <tr>
-<td><a href="">home-feed-card</a></td>
-<td>for <i>welcome-card-with-news</td>
+<td><a href="https://github.com/gadgetchnnel/lovelace-home-feed-card">home-feed-card</a></td>
+<td>only for <i>welcome-card-with-news</i></td>
 <td></td>
 </tr>
 </table>
@@ -62,7 +62,7 @@ This card needs the following to function correctly:
 ## Template code
 
 ```yaml
-ccustom_card_paddy_welcome:
+custom_card_paddy_welcome:
   show_icon: false
   show_name: false
   show_label: false
@@ -102,6 +102,7 @@ ccustom_card_paddy_welcome:
             box-shadow: none;
             font-size: 30px;
             text-align: left;
+            cursor: default;
           }
 
 custom_card_paddy_welcome_with_date:
@@ -217,6 +218,7 @@ custom_card_paddy_welcome_with_weather:
             box-shadow: none;
             font-size: 30px;
             text-align: left;
+            cursor: default;
           }
     item2:
       card:
@@ -225,9 +227,36 @@ custom_card_paddy_welcome_with_weather:
         show_forecast: false
         card_mod:
         style: |
-          ha-card {
+          ha-card.type-weather-forecast {
             border-radius: 14px;
             box-shadow: none;
+          }
+          ha-card.type-weather-forecast .state {
+            text-align: left;
+            font-size: 14px;
+            font-weight: bolder;
+          }
+          ha-card.type-weather-forecast .name {
+            text-align: left;
+            font-size: 14px;
+          }
+          ha-card.type-weather-forecast .temp-attribute {
+            text-align: right;
+          }
+          ha-card.type-weather-forecast .temp {
+            text-align: right;
+            font-size: medium;
+            font-weight: bolder;
+            margin-right: 16px;
+          }
+          ha-card.type-weather-forecast .temp span {
+            text-align: right;
+            font-size: medium;
+            font-weight: bolder;
+          }
+          ha-card.type-weather-forecast .attribute {
+            text-align: right;
+            font-size: smaller;
           }
 
 custom_card_paddy_welcome_with_news:
@@ -236,9 +265,9 @@ custom_card_paddy_welcome_with_news:
   show_label: false
   styles:
     grid:
-      - grid-template-areas: '"item1" "item2" "item3"'
+      - grid-template-areas: '"item1" "item2"'
       - grid-template-columns: 1fr
-      - grid-template-rows: min-content min-content min-content
+      - grid-template-rows: min-content min-content
       - row-gap: 12px
     card:
       - border-radius: var(--border-radius)
@@ -270,49 +299,40 @@ custom_card_paddy_welcome_with_news:
             box-shadow: none;
             font-size: 30px;
             text-align: left;
+            cursor: default;
           }
     item2:
-      card:
-        type: markdown
-        content: >
-          Anderer Text
-        card_mod:
-        style: |
-          ha-card {
-            border-radius: 14px;
-            box-shadow: none;
-            text-align: left;
-          }
-    item3:
       card:
         type: 'custom:home-feed-card'
         card_id: main_feed
         show_empty: false
         more_info_on_tap: true
-        state_color: true
+        state_color: false
         compact_mode: true
-        max_item_count: 6
+        max_item_count: 3
         show_icons: true 
         entities:
           - entity: input_datetime.alarm_clock_pat
-            content_template: "{{display_name}} {{state}}"
+            content_template: "<b>{{display_name}}</b><br />{{state}}"
           - entity: input_datetime.alarm_clock_steffi
-            content_template: "{{display_name}} {{state}}"
+            content_template: "<b>{{display_name}}</b><br />{{state}}"
           - entity: input_datetime.alarm_clock_ha
-            content_template: "{{display_name}} {{state}}"
+            content_template: "<b>{{display_name}}</b><br />{{state}}"
           - entity: sensor.waste_collection_bio
-            content_template: "{{display_name}} {{state}}"
+            content_template: "<b>{{display_name}}</b><br />{{state}}"
           - entity: sensor.waste_collection_paper
-            content_template: "{{display_name}} {{state}}"
+            content_template: "<b>{{display_name}}</b><br />{{state}}"
           - entity: sensor.waste_collection_plastic
-            content_template: "{{display_name}} {{state}}"
+            content_template: "<b>{{display_name}}</b><br />{{state}}"
           - entity: sensor.waste_collection_waste
-            content_template: "{{display_name}} {{state}}"
+            content_template: "<b>{{display_name}}</b><br />{{state}}"
         card_mod:
         style: |
           ha-card {
             border-radius: 14px;
             box-shadow: none;
+            font-size: 14px;
+            text-align: left;
           }
 ```
 

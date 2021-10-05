@@ -1,5 +1,8 @@
 ### Playstation  
 
+> NOTE
+> This card is under review and is not ready to use!
+
 ![Playstation](./screenshots/playstation.png)
 
 <details>
@@ -8,10 +11,9 @@
 #### Example
 
 ```yaml
-- entity: media_player.example
-  template: 
-    - card_ps4
-  type: 'custom:button-card'
+- type: 'custom:button-card'
+  template: card_ps4
+  entity: media_player.example
 ```
 
 #### Variables

@@ -340,41 +340,21 @@ card_light:
   hold_action:
     action: more-info
   label: >-
-    [[[ if (entity.state !='unavailable'){
-          if (entity.state =='off'){
-            return variables.ulm_off;  
-          } else if (entity.state == 'on'){
-            if (entity.attributes.brightness != null){
-              var bri = Math.round(entity.attributes.brightness / 2.55);
-              return (bri ? bri : '0') + '%';
-            } else {
-              return variables.ulm_on
-            } 
-          }
-        } else {
-          return variables.ulm_unavailable;
+    [[[ 
+      if (entity.state !='unavailable'){
+        if (entity.state =='off'){
+          return variables.ulm_off;  
+        } else if (entity.state == 'on'){
+          if (entity.attributes.brightness != null){
+            var bri = Math.round(entity.attributes.brightness / 2.55);
+            return (bri ? bri : '0') + '%';
+          } else {
+            return variables.ulm_on
+          } 
         }
-    ]]]
-
-card_light_group:
-  template: 
-    - icon_info_bg
-    - yellow
-    - ulm_language_variables
-  tap_action:
-    action: toggle
-  hold_action:
-    action: more-info
-  label: >-
-    [[[ if (entity.state !='unavailable'){
-          if (entity.state =='off'){
-            return variables.ulm_off;  
-          } else if (entity.state == 'on') {
-            return variables.ulm_on;
-          }
-        } else {
-          return variables.ulm_unavailable;
-        }
+      } else {
+        return variables.ulm_unavailable;
+      }
     ]]]
 
 card_light_slider:
@@ -468,38 +448,126 @@ card_input_boolean:
           return variables.ulm_off;
         }
       } else {
-        return variable.ulm_unavailable;
+        return variables.ulm_unavailable;
       }
     ]]]
+
+card_navigate:
+  template: 
+    - icon_only
+    - blue_no_state
+  tap_action:
+    action: navigate
+    navigation_path: "[[[ return variables.ulm_card_navigate_path; ]]]"
+  label: "[[[ return variables.ulm_card_navigate_title; ]]]"
+  icon: "[[[ return variables.ulm_card_navigate_icon; ]]]"
+  styles:
+    icon:
+      - color: 'rgba(var(--color-blue),0.7)'
+    label:
+      - align-self: center
+      - justify-self: start
+      - font-weight: bold
+      - font-size: 14px
+      - margin-left: 12px
+      - filter: opacity(100%)
+    img_cell:
+      - background-color: 'rgba(var(--color-blue), 0.2)'
+    grid:
+      - grid-template-areas: '"i l"'
+      - grid-template-columns: min-content min-content
+      - grid-template-rows: min-content
 
 card_media_player:
   template:
     - icon_info_bg
+    - ulm_language_variables
   icon: |
     [[[
-        var app = entity.attributes.app_name;
-        var icon = 'mdi:speaker';
-        if(app == 'Spotify'){
+      if(entity.attributes.app_name){
+        var app = entity.attributes.app_name.toLowerCase();
+        if(app == 'spotify'){
           var icon = 'mdi:spotify';
-        } else if(app == 'Google Podcasts'){
+        } else if(app == 'google podcasts'){
           var icon = 'mdi:google-podcast';
-        } else if(app == 'Plex'){
+        } else if(app == 'plex'){
           var icon = 'mdi:plex';
-        } else if(app == 'Soundcloud'){
+        } else if(app == 'soundcloud'){
           var icon = 'mdi:soundcloud';
-        } else if(app == 'Youtube Music'){
+        } else if(app == 'youtube music'){
           var icon = 'mdi:youtube';
-        } else if (app == 'Oto music'){
+        } else if (app == 'oto music'){
           var icon = 'mdi:music-circle';
         }
-        return icon;
+      }
+      return icon;
     ]]]
-  label: "[[[ return entity.state; ]]]"
+  label: |
+    [[[ 
+        if (entity.state == 'off'){
+          return variables.ulm_off;
+        } else {
+          return variables.ulm_on;
+        }
+    ]]]
   state:
     - operator: template
       value: "[[[ return entity.state != 'off' ]]]"
       name: "[[[ return states[entity.entity_id].attributes.media_title; ]]]"
-      label: "[[[ return states[entity.entity_id].attributes.media_album_name; ]]]"
+      label: |
+        [[[ 
+          var label = variables.ulm_on;
+          if(states[entity.entity_id].attributes.media_album_name){
+            var label = states[entity.entity_id].attributes.media_album_name;
+          }
+          return label;
+        ]]]
+
+card_media_player_with_control:
+  template:
+    - icon_info_bg
+    - ulm_language_variables
+  icon: |
+    [[[
+        var icon = 'mdi:speaker';
+        if(entity.attributes.app_name){
+          var app = entity.attributes.app_name.toLowerCase();
+          if(app == 'spotify'){
+            var icon = 'mdi:spotify';
+          } else if(app == 'google podcasts'){
+            var icon = 'mdi:google-podcast';
+          } else if(app == 'plex'){
+            var icon = 'mdi:plex';
+          } else if(app == 'soundcloud'){
+            var icon = 'mdi:soundcloud';
+          } else if(app == 'youtube music'){
+            var icon = 'mdi:youtube';
+          } else if (app == 'oto music'){
+            var icon = 'mdi:music-circle';
+          }
+        }
+        return icon;
+    ]]]
+  label: |
+    [[[ 
+        if (entity.state == 'off'){
+          return variables.ulm_off;
+        } else {
+          return variables.ulm_on;
+        }
+    ]]]
+  state:
+    - operator: template
+      value: "[[[ return entity.state != 'off' ]]]"
+      name: "[[[ return states[entity.entity_id].attributes.media_title; ]]]"
+      label: |
+        [[[ 
+            var label = variables.ulm_on;
+            if(states[entity.entity_id].attributes.media_album_name){
+              var label = states[entity.entity_id].attributes.media_album_name;
+            }
+            return label;
+        ]]]
       styles:
         label: 
           - color: white
@@ -519,25 +587,7 @@ card_media_player:
       - background-color: 'rgba(var(--color-theme),0.05)'
     card:
       - background-blend-mode: multiply
-      - background: "[[[ return states[entity.entity_id].attributes.entity_picture_local != null ? 'center / cover url(' + states[entity.entity_id].attributes.entity_picture_local + ') rgba(0, 0, 0, 0.15)' : '' ]]]"
-
-card_media_player_mini_album:
-  label: "[[[ return entity.state; ]]]"
-  state:
-    - operator: template
-      value: "[[[ return entity.state != 'off' ]]]"
-      name: "[[[ return entity.attributes.media_title; ]]]"
-      label: "[[[ return entity.attributes.media_album_name; ]]]"
-      styles:
-        img_cell:
-          - background: "[[[ return 'center / cover url(' + entity.attributes.entity_picture + ')'; ]]]"
-        icon:
-          - color: 'rgba(var(--color-theme),0.0)'
-  styles:
-    icon:
-      - color: 'rgba(var(--color-theme),0.2)'
-    img_cell:
-      - background-color: 'rgba(var(--color-theme),0.05)'
+      - background: "[[[ return states[entity.entity_id].attributes.entity_picture != null ? 'center / cover url(' + states[entity.entity_id].attributes.entity_picture + ') rgba(0, 0, 0, 0.15)' : '' ]]]"
 
 card_battery:
   template: card_generic
@@ -570,6 +620,78 @@ card_battery:
         }
          return icon;
     ]]]
+
+card_person:
+  template: icon_info_bg
+  variables:
+    ulm_card_person_use_entity_picture: false
+    ulm_card_person_zone1: ''
+    ulm_card_person_zone2: ''
+  tap_action:
+    action: more-info
+  show_label: true
+  show_name: true
+  label: "[[[ return states[variables.ulm_card_person_entity].state ]]]"
+  name: "[[[ return states[variables.ulm_card_person_entity].attributes.friendly_name ]]]"
+  entity: "[[[ return variables.ulm_card_person_entity; ]]]"
+  icon: 'mdi:account'
+  show_entity_picture: "[[[ return variables.ulm_card_person_use_entity_picture ]]]"
+  entity_picture: "[[[ return variables.ulm_card_person_use_entity_picture != false ? states[variables.ulm_card_person_entity].attributes.entity_picture : null ]]]"
+  styles:
+    icon:
+      - color: 'rgba(var(--color-theme),0.9)'
+      - width: >
+          [[[ 
+            if (variables.ulm_card_person_use_entity_picture != true){
+              return '20px';
+            } else {
+              return '42px';
+            }
+          ]]]
+      - place-self: >
+          [[[ 
+            if (variables.ulm_card_person_use_entity_picture != true){
+              return 'center';
+            } else {
+              return 'stretch stretch';
+            }
+          ]]]
+    custom_fields:
+      notification:
+        - border-radius: 50%
+        - position: absolute
+        - left: 38px
+        - top: 8px
+        - height: 16px
+        - width: 16px
+        - border: 2px solid var(--card-background-color)
+        - font-size: 12px
+        - line-height: 14px
+        - background-color: >
+            [[[
+              if (states[variables.ulm_card_person_entity].state != 'home'){
+                return "rgba(var(--color-green),1)";
+              } else {
+                return "rgba(var(--color-blue),1)";
+              }
+            ]]]
+  custom_fields:
+    notification: >
+      [[[
+        if (states[variables.ulm_card_person_entity].state != 'home'){
+          if (states[variables.ulm_card_person_entity].state == variables.ulm_card_person_zone1){
+            var icon = states[variables.ulm_card_person_zone1].attributes.icon != null ? states[variables.ulm_card_person_zone1].attributes.icon : 'mdi:help-circle'
+            return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+          } else if (states[variables.ulm_card_person_entity].state == variables.ulm_card_person_zone2){
+            var icon = states[variables.ulm_card_person_zone2].attributes.icon != null ? states[variables.ulm_card_person_zone2].attributes.icon : 'mdi:help-circle'
+            return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+          } else {
+            return '<ha-icon icon="mdi:home-minus" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+          }
+        } else {
+          return '<ha-icon icon="mdi:home-variant" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+        }
+      ]]]
 
 ### 2-LINE CARDS ###
 card_cover_with_buttons:
@@ -683,7 +805,7 @@ card_graph:
 
 card_media_player_with_controls:
   variables:
-    name: "n/a"
+    ulm_card_media_player_with_controls_name: "No name set"
   triggers_update:
     - "[[[ ulm_card_media_player_with_controls_entity ]]]"
   styles:
@@ -701,12 +823,16 @@ card_media_player_with_controls:
       card:
         type: 'custom:button-card'
         template:
-          - icon_info
-          - card_media_player_mini_album
+          - ulm_language_variables
+          - card_media_player
         tap_action:
           action: more-info
         entity: '[[[ return variables.ulm_card_media_player_with_controls_entity ]]]'
         name: '[[[ return variables.ulm_card_media_player_with_controls_name ]]]'
+        styles:
+          card:
+            - box-shadow: none
+            - padding: 0px
     item2:
       card:
         type: 'custom:button-card'
@@ -726,12 +852,18 @@ card_media_player_with_controls:
             card:
               type: 'custom:button-card'
               template: widget_icon
+              entity: '[[[ return variables.ulm_card_media_player_with_controls_entity ]]]'
               tap_action:
                 action: call-service
                 service: media_player.media_play_pause
                 service_data:
                   entity_id: '[[[ return variables.ulm_card_media_player_with_controls_entity ]]]'
               icon: 'mdi:pause'
+              state:
+                - value: paused
+                  icon: 'mdi:play'
+                - value: 'off'
+                  icon: 'mdi:play'
           item3:
             card:
               type: 'custom:button-card'
@@ -758,6 +890,19 @@ blue:
         card:
           - background-color: 'rgba(var(--color-background-blue), var(--opacity-bg))'
       value: 'on'
+
+blue_no_state:
+  styles:
+    icon:
+      - color: 'rgba(var(--color-blue),1)'
+    label:
+      - color: 'rgba(var(--color-blue-text),1)'
+    name:
+      - color: 'rgba(var(--color-blue-text),1)'
+    img_cell:
+      - background-color: 'rgba(var(--color-blue), 0.2)'
+    card:
+      - background-color: 'rgba(var(--color-background-blue), var(--opacity-bg))'
 
 chips:
   tap_action:
@@ -866,6 +1011,37 @@ icon:
           return `<ha-icon icon="mdi:exclamation" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`
         }
       ]]]
+  size: 20px
+
+icon_only:
+  color: var(--google-grey)
+  show_icon: true
+  show_label: true
+  show_name: false
+  styles:
+    icon:
+      - color: 'rgba(var(--color-theme),0.2)'
+    label:
+      - justify-self: start
+      - align-self: start
+      - font-weight: bold
+      - font-size: 12px
+      - filter: opacity(40%)
+      - margin-left: 12px
+    img_cell:
+      - background-color: 'rgba(var(--color-theme),0.05)'
+      - border-radius: 50%
+      - place-self: center
+      - width: 42px
+      - height: 42px
+    grid:
+      - grid-template-areas: '"i l"'
+      - grid-template-columns: min-content auto
+      - grid-template-rows: min-content
+    card:
+      - border-radius: var(--border-radius)
+      - box-shadow: var(--box-shadow)
+      - padding: 12px
   size: 20px
 
 icon_info:
@@ -1125,7 +1301,7 @@ media:
 battery:
   template: card_battery
 media_mini_album:
-  template: card_media_player_mini_album
+  template: card_media_player_with_cover
 media_buttons:
   template: card_media_player_with_controls
 ### CUSTOM CARDS ###
