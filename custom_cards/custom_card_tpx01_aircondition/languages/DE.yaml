@@ -1,0 +1,7 @@
+custom_card_tpx01_aircondition_language_variables:
+  variables:
+    custom_card_tpx01_aircondition_dry: 'entfeuchten'
+    custom_card_tpx01_aircondition_heat: 'heizen'
+    custom_card_tpx01_aircondition_heat_cool: 'automatisch'
+    custom_card_tpx01_aircondition_cool: 'kühlen'
+    custom_card_tpx01_aircondition_fan_only: 'ventilator'
