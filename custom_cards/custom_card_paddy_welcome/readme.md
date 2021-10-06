@@ -2,6 +2,7 @@
 This is a `custom-card` to show a welcome message to the user. It comes in four different versions:  
 
 * welcome message (*custom_card_paddy_welcome*)
+* welcome message + date (*custom_card_paddy_welcome_with_date*)
 * welcome message + weather-forecast (*custom_card_paddy_welcome_with_weather*)
 * welcome message + news (*custom_card_paddy_welcome_with_news*) [based on home-feed-card]
 
@@ -16,6 +17,22 @@ Version: 1.0.0
 <summary>1.0.0</summary>
 Initial release
 </details>
+
+## Usage
+
+```yaml
+- type: custom:button-card
+  template: custom_card_paddy_welcome
+
+- type: custom:button-card
+  template: custom_card_paddy_welcome_with_date
+
+- type: custom:button-card
+  template: custom_card_paddy_welcome_with_weather
+
+- type: custom:button-card
+  template: custom_card_paddy_welcome_with_news
+```
 
 ## Requirements
 This card needs the following to function correctly:
@@ -42,135 +59,10 @@ This card needs the following to function correctly:
 </tr>
 </table>
 
-## Installation  
-* Copy the folder `custom_card_paddy_welcome` from your download `custom_cards` to `config/minimalist-templates`
-* Go to the folder `config/minimalist-templates/custom_card_paddy_welcome/languages` and delete all but the one language file you want to use. For english, delete all but `EN.yaml`, for german delete all but `DE.yaml`.
-
-In the end it should look like this:
-
-```yaml
-config
-  └── minimalist-templates
-     └── custom_card_paddy_welcome
-        └── languages
-           └── EN.yaml 
-        └── custom_card_paddy_welcome.yaml
-        └── readme.md
-     └── button_card_templates.yaml
-     └── EN.yaml
-```
-
-## Usage
-
-```yaml
-- type: custom:button-card
-  template: custom_card_paddy_welcome
-  variables:
-    ulm_custom_card_paddy_welcome_time: sensor.time
-
-- type: custom:button-card
-  template: custom_card_paddy_welcome_with_weather
-  variables:
-    ulm_custom_card_paddy_welcome_time: sensor.time
-    ulm_custom_card_paddy_welcome_weather_provider: weather.accu_weather
-
-- type: custom:button-card
-  template: custom_card_paddy_welcome_with_news
-  variables:
-    ulm_custom_card_paddy_welcome_time: sensor.time
-    ulm_custom_card_paddy_welcome_news_entities:
-      - entity: sensor.waste_collection_paper
-        content_template: "<b>{{display_name}}</b><br>{{state}}"
-      - entity: sensor.waste_collection_waste
-        content_template: "<b>{{display_name}}</b><br>{{state}}"
-```
-
-## Variables
-<table>
-<tr>
-<th>Card type</th>
-<th>Variable</th>
-<th>Example</th>
-<th>Required</th>
-<th>Explanation</th>
-</tr>
-<tr>
-<td>all</td>
-<td>ulm_custom_card_paddy_welcome_time</td>
-<td>sensor.time</td>
-<td>yes</td>
-<td>This is your Home Assistant sensor.time</td>
-</tr>
-<tr>
-<td>_welcome_with_weather</td>
-<td>ulm_custom_card_paddy_welcome_weather_provider</td>
-<td>weather.accu_weather</td>
-<td>yes</td>
-<td>This is your weather provider</td>
-</tr>
-<tr>
-<td>_welcome_with_news</td>
-<td>ulm_custom_card_paddy_welcome_news_entities</td>
-<td>entity: sensor.waste_collection_paper<br>content_template: "&lt;b&gt;{{display_name}}&lt;/b&gt;&lt;br&gt;{{state}}"</td>
-<td>yes</td>
-<td>A <strong>list</strong> of your entities to show in the news feed, see the note underneath.</td>
-</tr>
-</table>
-
-> #### Note _welcome_with_news  
-> This card is based on [home-feed-card](https://github.com/gadgetchnnel/lovelace-home-feed-card) and needs a little different configuration in the variables.  
-> To allow almost all entites from HomeAssistant to show in the news, you're able to set all options that `home-feed-card` provides. This makes it necessary, that you set these entities in a list. Let me show you an example:
-> 
-> ```yaml
-> # normally you do this
-> variables:
->   ulm_variable: your_variable_entity
-> 
-> # here you need to do a list
-> variables:
->   ulm_variable:
->     - your_variable_entity_1
->     - your_variable_entity_2
-> 
-> # to use an option from home-feed-card
-> variables:
->   ulm_variable:
->     - entity: your_variable_entity_1
->       content_template: "<b>{{ display_name }}</b><br>{{ state }}"
->     - your_variable_entity_2
-> ```
-> 
-> You can find all available options and their description [here](https://github.com/gadgetchnnel/lovelace-home-feed-card#entity-object).  
-> 
-> I recommend to use a `content_template` to format the output for every news item, eg. like this:
->  
-> ```yaml
-> content_template: "<b>{{ display_name }}</b><br />{{ state }}"
-> ```
-
-## Example
-
-```yaml
-- type: custom:button-card
-  template: custom_card_paddy_welcome_with_news
-  variables:
-    ulm_custom_card_paddy_welcome_news_entities: 
-      - entity: input_datetime.alarm_clock 
-        content_template: "<b>{{display_name}}</b><br />{{state}}"
-      - entity: sensor.waste_collection_bio
-        content_template: "<b>{{display_name}}</b><br />{{state}}"
-      - entity: sensor.waste_collection_paper
-        content_template: "<b>{{display_name}}</b><br />{{state}}"
-      - entity: sensor.waste_collection_plastic
-        content_template: "<b>{{display_name}}</b><br />{{state}}"
-```
-
 ## Template code
 
 ```yaml
 custom_card_paddy_welcome:
-  template:
-    - ulm_custom_card_paddy_welcome_language_variables
   show_icon: false
   show_name: false
   show_label: false
@@ -189,22 +81,20 @@ custom_card_paddy_welcome:
       card:
         type: markdown
         content: >
-          [[[
-            let time = variables.ulm_custom_card_paddy_welcome_time;
-            let welcome = '';
+          {% set time = now() | as_timestamp | timestamp_custom("%H:%M") %}
+          {% set welcome = '' %}
+          {% if (time > '18:00') %}
+          {% set welcome = 'Guten Abend' %}
+          {% elif (time > '12:00') %}
+          {% set welcome = 'Guten Tag' %}
+          {% elif (time > '04:00') %}
+          {% set welcome = 'Guten Morgen' %}
+          {% else %}
+          {% set welcome = 'Hallo' %}
+          {% endif %}
 
-            if (time > '18:00'){
-              welcome = variables.ulm_custom_card_paddy_welcome_evening; 
-            } else if (time > '12:00'){
-              welcome = variables.ulm_custom_card_paddy_welcome_afternoon;
-            } else if (time > '05:00'){
-              welcome = variables.ulm_custom_card_paddy_welcome_morning;
-            } else {
-              welcome = variables.ulm_custom_card_paddy_welcome_hello;
-            }
-
-            return welcome + ',<br>' + user.name + '!';
-          ]]]
+          {{ welcome }},<br />
+          {{ user }}!
         card_mod:
         style: |
           ha-card {
@@ -215,9 +105,7 @@ custom_card_paddy_welcome:
             cursor: default;
           }
 
-custom_card_paddy_welcome_with_weather:
-  template:
-    - ulm_custom_card_paddy_welcome_language_variables
+custom_card_paddy_welcome_with_date:
   show_icon: false
   show_name: false
   show_label: false
@@ -236,22 +124,93 @@ custom_card_paddy_welcome_with_weather:
       card:
         type: markdown
         content: >
-          [[[
-            let time = variables.ulm_custom_card_paddy_welcome_time;
-            let welcome = '';
+          {% set time = now() | as_timestamp | timestamp_custom("%H:%M") %}
+          {% set welcome = '' %}
+          {% if (time > '18:00') %}
+          {% set welcome = 'Guten Abend' %}
+          {% elif (time > '12:00') %}
+          {% set welcome = 'Guten Tag' %}
+          {% elif (time > '04:00') %}
+          {% set welcome = 'Guten Morgen' %}
+          {% else %}
+          {% set welcome = 'Hallo' %}
+          {% endif %}
 
-            if (time > '18:00'){
-              welcome = variables.ulm_custom_card_paddy_welcome_evening; 
-            } else if (time > '12:00'){
-              welcome = variables.ulm_custom_card_paddy_welcome_afternoon;
-            } else if (time > '05:00'){
-              welcome = variables.ulm_custom_card_paddy_welcome_morning;
-            } else {
-              welcome = variables.ulm_custom_card_paddy_welcome_hello;
-            }
+          {{ welcome }},<br />
+          {{ user }}!
+        card_mod:
+        style: |
+          ha-card {
+            border-radius: 14px;
+            box-shadow: none;
+            font-size: 30px;
+            text-align: left;
+          }
+    item2:
+      card:
+        type: markdown
+        content: >
+          {% set date = now() | as_timestamp | timestamp_custom("%d.%m.%Y") %}
+          {% set friendly_day = '' %}
+          {% set dayofweek = now().weekday() %}
+          {% if (dayofweek == 1) %}
+          {% set friendly_day = 'Montag' %}
+          {% elif (dayofweek == 2) %}
+          {% set friendly_day = 'Dienstag' %}
+          {% elif (dayofweek == 3) %}
+          {% set friendly_day = 'Mittwoch' %}
+          {% elif (dayofweek == 4) %}
+          {% set friendly_day = 'Donnerstag' %}
+          {% elif (dayofweek == 5) %}
+          {% set friendly_day = 'Freitag' %}
+          {% elif (dayofweek == 6) %}
+          {% set friendly_day = 'Samstag' %}
+          {% elif (dayofweek == 0) %}
+          {% set friendly_day = 'Sonntag' %}
+          {% endif %}
+          
+          Heute ist {{ friendly_day }}, der {{ date }}
+        card_mod:
+        style: |
+          ha-card {
+            border-radius: 14px;
+            box-shadow: none;
+            text-align: left;
+          }
 
-            return welcome + ',<br>' + user.name + '!';
-          ]]]
+custom_card_paddy_welcome_with_weather:
+  show_icon: false
+  show_name: false
+  show_label: false
+  styles:
+    grid:
+      - grid-template-areas: '"item1" "item2"'
+      - grid-template-columns: 1fr
+      - grid-template-rows: min-content min-content
+      - row-gap: 12px
+    card:
+      - border-radius: var(--border-radius)
+      - box-shadow: var(--box-shadow)
+      - padding: 12px
+  custom_fields:
+    item1:
+      card:
+        type: markdown
+        content: >
+          {% set time = now() | as_timestamp | timestamp_custom("%H:%M") %}
+          {% set welcome = '' %}
+          {% if (time > '18:00') %}
+            {% set welcome = 'Guten Abend' %}
+          {% elif (time > '12:00') %}
+            {% set welcome = 'Guten Tag' %}
+          {% elif (time > '04:00') %}
+            {% set welcome = 'Guten Morgen' %}
+          {% else %}
+            {% set welcome = 'Hallo' %}
+          {% endif %}
+
+          {{ welcome }},<br />
+          {{ user }}!
         card_mod:
         style: |
           ha-card {
@@ -264,7 +223,7 @@ custom_card_paddy_welcome_with_weather:
     item2:
       card:
         type: weather-forecast
-        entity: "[[[ return variables.ulm_custom_card_paddy_welcome_weather_provider; ]]]"
+        entity: weather.accu_weather
         show_forecast: false
         card_mod:
         style: |
@@ -301,8 +260,6 @@ custom_card_paddy_welcome_with_weather:
           }
 
 custom_card_paddy_welcome_with_news:
-  template:
-    - ulm_custom_card_paddy_welcome_language_variables
   show_icon: false
   show_name: false
   show_label: false
@@ -321,22 +278,20 @@ custom_card_paddy_welcome_with_news:
       card:
         type: markdown
         content: >
-          [[[
-            let time = variables.ulm_custom_card_paddy_welcome_time;
-            let welcome = '';
+          {% set time = now() | as_timestamp | timestamp_custom("%H:%M") %}
+          {% set welcome = '' %}
+          {% if (time > '18:00') %}
+            {% set welcome = 'Guten Abend' %}
+          {% elif (time > '12:00') %}
+            {% set welcome = 'Guten Tag' %}
+          {% elif (time > '04:00') %}
+            {% set welcome = 'Guten Morgen' %}
+          {% else %}
+            {% set welcome = 'Hallo' %}
+          {% endif %}
 
-            if (time > '18:00'){
-              welcome = variables.ulm_custom_card_paddy_welcome_evening; 
-            } else if (time > '12:00'){
-              welcome = variables.ulm_custom_card_paddy_welcome_afternoon;
-            } else if (time > '05:00'){
-              welcome = variables.ulm_custom_card_paddy_welcome_morning;
-            } else {
-              welcome = variables.ulm_custom_card_paddy_welcome_hello;
-            }
-
-            return welcome + ',<br>' + user.name + '!';
-          ]]]
+          {{ welcome }},<br />
+          {{ user }}!
         card_mod:
         style: |
           ha-card {
@@ -356,10 +311,21 @@ custom_card_paddy_welcome_with_news:
         compact_mode: true
         max_item_count: 3
         show_icons: true 
-        entities: >
-          [[[
-            return variables.ulm_custom_card_paddy_welcome_news_entities;
-          ]]]
+        entities:
+          - entity: input_datetime.alarm_clock_pat
+            content_template: "<b>{{display_name}}</b><br />{{state}}"
+          - entity: input_datetime.alarm_clock_steffi
+            content_template: "<b>{{display_name}}</b><br />{{state}}"
+          - entity: input_datetime.alarm_clock_ha
+            content_template: "<b>{{display_name}}</b><br />{{state}}"
+          - entity: sensor.waste_collection_bio
+            content_template: "<b>{{display_name}}</b><br />{{state}}"
+          - entity: sensor.waste_collection_paper
+            content_template: "<b>{{display_name}}</b><br />{{state}}"
+          - entity: sensor.waste_collection_plastic
+            content_template: "<b>{{display_name}}</b><br />{{state}}"
+          - entity: sensor.waste_collection_waste
+            content_template: "<b>{{display_name}}</b><br />{{state}}"
         card_mod:
         style: |
           ha-card {
@@ -370,7 +336,7 @@ custom_card_paddy_welcome_with_news:
           }
 ```
 
-## Custom configuration Example
+## Example
 Here is one example, on how you can extend this (actually every) card. In the end we have the welcome card extended by four buttons to have something like a header with a navigation. 
 
 ```yaml
