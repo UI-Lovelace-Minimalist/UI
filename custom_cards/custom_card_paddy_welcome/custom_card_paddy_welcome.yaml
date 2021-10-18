@@ -1,4 +1,6 @@
 custom_card_paddy_welcome:
+  template:
+    - ulm_custom_card_paddy_welcome_language_variables
   show_icon: false
   show_name: false
   show_label: false
@@ -17,20 +19,22 @@ custom_card_paddy_welcome:
       card:
         type: markdown
         content: >
-          {% set time = now() | as_timestamp | timestamp_custom("%H:%M") %}
-          {% set welcome = '' %}
-          {% if (time > '18:00') %}
-          {% set welcome = 'Guten Abend' %}
-          {% elif (time > '12:00') %}
-          {% set welcome = 'Guten Tag' %}
-          {% elif (time > '04:00') %}
-          {% set welcome = 'Guten Morgen' %}
-          {% else %}
-          {% set welcome = 'Hallo' %}
-          {% endif %}
+          [[[
+            let time = states[variables.ulm_custom_card_paddy_welcome_time].state;
+            let welcome = '';
 
-          {{ welcome }},<br />
-          {{ user }}!
+            if (time > '18:00'){
+              welcome = variables.ulm_custom_card_paddy_welcome_evening; 
+            } else if (time > '12:00'){
+              welcome = variables.ulm_custom_card_paddy_welcome_afternoon;
+            } else if (time > '05:00'){
+              welcome = variables.ulm_custom_card_paddy_welcome_morning;
+            } else {
+              welcome = variables.ulm_custom_card_paddy_welcome_hello;
+            }
+
+            return welcome + ',<br>' + user.name + '!';
+          ]]]
         card_mod:
         style: |
           ha-card {
@@ -41,80 +45,9 @@ custom_card_paddy_welcome:
             cursor: default;
           }
 
-custom_card_paddy_welcome_with_date:
-  show_icon: false
-  show_name: false
-  show_label: false
-  styles:
-    grid:
-      - grid-template-areas: '"item1" "item2"'
-      - grid-template-columns: 1fr
-      - grid-template-rows: min-content min-content
-      - row-gap: 12px
-    card:
-      - border-radius: var(--border-radius)
-      - box-shadow: var(--box-shadow)
-      - padding: 12px
-  custom_fields:
-    item1:
-      card:
-        type: markdown
-        content: >
-          {% set time = now() | as_timestamp | timestamp_custom("%H:%M") %}
-          {% set welcome = '' %}
-          {% if (time > '18:00') %}
-          {% set welcome = 'Guten Abend' %}
-          {% elif (time > '12:00') %}
-          {% set welcome = 'Guten Tag' %}
-          {% elif (time > '04:00') %}
-          {% set welcome = 'Guten Morgen' %}
-          {% else %}
-          {% set welcome = 'Hallo' %}
-          {% endif %}
-
-          {{ welcome }},<br />
-          {{ user }}!
-        card_mod:
-        style: |
-          ha-card {
-            border-radius: 14px;
-            box-shadow: none;
-            font-size: 30px;
-            text-align: left;
-          }
-    item2:
-      card:
-        type: markdown
-        content: >
-          {% set date = now() | as_timestamp | timestamp_custom("%d.%m.%Y") %}
-          {% set friendly_day = '' %}
-          {% set dayofweek = now().weekday() %}
-          {% if (dayofweek == 1) %}
-          {% set friendly_day = 'Montag' %}
-          {% elif (dayofweek == 2) %}
-          {% set friendly_day = 'Dienstag' %}
-          {% elif (dayofweek == 3) %}
-          {% set friendly_day = 'Mittwoch' %}
-          {% elif (dayofweek == 4) %}
-          {% set friendly_day = 'Donnerstag' %}
-          {% elif (dayofweek == 5) %}
-          {% set friendly_day = 'Freitag' %}
-          {% elif (dayofweek == 6) %}
-          {% set friendly_day = 'Samstag' %}
-          {% elif (dayofweek == 0) %}
-          {% set friendly_day = 'Sonntag' %}
-          {% endif %}
-          
-          Heute ist {{ friendly_day }}, der {{ date }}
-        card_mod:
-        style: |
-          ha-card {
-            border-radius: 14px;
-            box-shadow: none;
-            text-align: left;
-          }
-
 custom_card_paddy_welcome_with_weather:
+  template:
+    - ulm_custom_card_paddy_welcome_language_variables
   show_icon: false
   show_name: false
   show_label: false
@@ -133,20 +66,22 @@ custom_card_paddy_welcome_with_weather:
       card:
         type: markdown
         content: >
-          {% set time = now() | as_timestamp | timestamp_custom("%H:%M") %}
-          {% set welcome = '' %}
-          {% if (time > '18:00') %}
-            {% set welcome = 'Guten Abend' %}
-          {% elif (time > '12:00') %}
-            {% set welcome = 'Guten Tag' %}
-          {% elif (time > '04:00') %}
-            {% set welcome = 'Guten Morgen' %}
-          {% else %}
-            {% set welcome = 'Hallo' %}
-          {% endif %}
+          [[[
+            let time = states[variables.ulm_custom_card_paddy_welcome_time].state;
+            let welcome = '';
 
-          {{ welcome }},<br />
-          {{ user }}!
+            if (time > '18:00'){
+              welcome = variables.ulm_custom_card_paddy_welcome_evening; 
+            } else if (time > '12:00'){
+              welcome = variables.ulm_custom_card_paddy_welcome_afternoon;
+            } else if (time > '05:00'){
+              welcome = variables.ulm_custom_card_paddy_welcome_morning;
+            } else {
+              welcome = variables.ulm_custom_card_paddy_welcome_hello;
+            }
+
+            return welcome + ',<br>' + user.name + '!';
+          ]]]
         card_mod:
         style: |
           ha-card {
@@ -159,7 +94,7 @@ custom_card_paddy_welcome_with_weather:
     item2:
       card:
         type: weather-forecast
-        entity: weather.accu_weather
+        entity: "[[[ return variables.ulm_custom_card_paddy_welcome_weather_provider; ]]]"
         show_forecast: false
         card_mod:
         style: |
@@ -196,6 +131,8 @@ custom_card_paddy_welcome_with_weather:
           }
 
 custom_card_paddy_welcome_with_news:
+  template:
+    - ulm_custom_card_paddy_welcome_language_variables
   show_icon: false
   show_name: false
   show_label: false
@@ -214,20 +151,22 @@ custom_card_paddy_welcome_with_news:
       card:
         type: markdown
         content: >
-          {% set time = now() | as_timestamp | timestamp_custom("%H:%M") %}
-          {% set welcome = '' %}
-          {% if (time > '18:00') %}
-            {% set welcome = 'Guten Abend' %}
-          {% elif (time > '12:00') %}
-            {% set welcome = 'Guten Tag' %}
-          {% elif (time > '04:00') %}
-            {% set welcome = 'Guten Morgen' %}
-          {% else %}
-            {% set welcome = 'Hallo' %}
-          {% endif %}
+          [[[
+            let time = states[variables.ulm_custom_card_paddy_welcome_time].state;
+            let welcome = '';
 
-          {{ welcome }},<br />
-          {{ user }}!
+            if (time > '18:00'){
+              welcome = variables.ulm_custom_card_paddy_welcome_evening; 
+            } else if (time > '12:00'){
+              welcome = variables.ulm_custom_card_paddy_welcome_afternoon;
+            } else if (time > '05:00'){
+              welcome = variables.ulm_custom_card_paddy_welcome_morning;
+            } else {
+              welcome = variables.ulm_custom_card_paddy_welcome_hello;
+            }
+
+            return welcome + ',<br>' + user.name + '!';
+          ]]]
         card_mod:
         style: |
           ha-card {
@@ -247,21 +186,10 @@ custom_card_paddy_welcome_with_news:
         compact_mode: true
         max_item_count: 3
         show_icons: true 
-        entities:
-          - entity: input_datetime.alarm_clock_pat
-            content_template: "<b>{{display_name}}</b><br />{{state}}"
-          - entity: input_datetime.alarm_clock_steffi
-            content_template: "<b>{{display_name}}</b><br />{{state}}"
-          - entity: input_datetime.alarm_clock_ha
-            content_template: "<b>{{display_name}}</b><br />{{state}}"
-          - entity: sensor.waste_collection_bio
-            content_template: "<b>{{display_name}}</b><br />{{state}}"
-          - entity: sensor.waste_collection_paper
-            content_template: "<b>{{display_name}}</b><br />{{state}}"
-          - entity: sensor.waste_collection_plastic
-            content_template: "<b>{{display_name}}</b><br />{{state}}"
-          - entity: sensor.waste_collection_waste
-            content_template: "<b>{{display_name}}</b><br />{{state}}"
+        entities: >
+          [[[
+            return variables.ulm_custom_card_paddy_welcome_news_entities;
+          ]]]
         card_mod:
         style: |
           ha-card {
