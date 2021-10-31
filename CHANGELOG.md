@@ -1,7 +1,24 @@
 # UI-Lovelace-Minimalist CHANGELOG  
 
+## Version 1.0.0-beta.5
+### Fixed  
+* Fixed some links and typos in readme.md
+* Fixed `chip_icon_only`
+
+### Changed
+* Changed name for language variables for schumijos flower card
+* Changed link(s) in readme.md for wiki
+* Changed readme route people to the wiki
+* Changed `card_battery`
+
+### Added
+* Added `card_light_slider_collapse` and `card_light_slider_horizontal` (code, readme and wiki)
+* Undocumented `card_script` - fully integrated in the next release
+
+### Removed  
+* Removed images that are n longer used (now in the wiki)
+
 ## Version 1.0.0-beta.4
-To be released
 ### Fixed
 * Fixed `custom_card_paddy_welcome` (fix #8)
 * Fixed `examples.md` with wrong path to `button_card_templates.yaml`
@@ -31,15 +48,15 @@ To be released
 
 
 ## Version 1.0.0-beta.2  
-### Added  
-* Added a few custom-cards (custom_card_paddy_welcome, custom_card_paddy_waste_collection, custom_card_tpx01_air_condition)  
-
 ### Fixed  
 * Fix some typos in `readme.md`  
 * Fix some typos in `custom-cards.md`  
 * Fix `box-shadow` in `card_graph`  
 * Fix `chip_icon_state`  
 * Fix `chips_icon_double_state`  
+
+### Added  
+* Added a few custom-cards (custom_card_paddy_welcome, custom_card_paddy_waste_collection, custom_card_tpx01_air_condition)  
 
 
 ## Version 1.0.0-beta.1  
