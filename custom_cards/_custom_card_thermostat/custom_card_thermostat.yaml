@@ -1,0 +1,36 @@
+card_thermostat:
+  template:  
+    - icon_info_bg
+  hold_action:
+    action: more-info
+    entity: input_boolean.radiateur_arret_force
+  label: >-
+    [[[ 
+        if (entity.state =='off'){
+          return 'Off' ;
+        }else{
+          if (states['light.qubino'].state == 'on'){
+            var etat = "Chauffe";
+          }else{
+            var etat = "Inactif";
+          }
+          return (entity.attributes.temperature ) + '°' + ' • ' + etat ;
+        }
+    ]]]
+  state:
+    - operator: template
+      value: >
+        [[[
+          return states['light.qubino'].state == 'on'
+        ]]]
+      styles:
+        icon:
+          - color: 'rgba(var(--color-red),1)'
+        img_cell:
+          - background-color: 'rgba(var(--color-red),0.2)'
+        card:
+          - background-color: 'rgba(var(--color-background-red),var(--opacity-bg))'
+        name:
+          - color: 'rgba(var(--color-red-text),1)'
+        label:
+          - color: 'rgba(var(--color-red-text),1)'

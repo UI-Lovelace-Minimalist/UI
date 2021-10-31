@@ -1,4 +1,0 @@
-button_card_templates: !include lovelace/button_card_templates/button_card_templates.yaml
-title: 'Home'
-views: !include_dir_merge_list lovelace/views/
-

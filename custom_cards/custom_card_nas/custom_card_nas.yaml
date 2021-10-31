@@ -1,0 +1,15 @@
+custom_card_nas:
+  tap_action:
+    action: more-info
+  template: 
+    - blue
+  show_label: true
+  label: |-
+    [[[ 
+      if (states[variables.ulm_custom_card_nas_sensor].state == 'on'){
+        var state = variables.ulm_custom_card_nas_text + states[variables.ulm_custom_card_nas_sensor].state + variables.ulm_custom_card_nas_unit; 
+      } else {
+        var state = "Off";
+      }
+      return state; 
+    ]]]
