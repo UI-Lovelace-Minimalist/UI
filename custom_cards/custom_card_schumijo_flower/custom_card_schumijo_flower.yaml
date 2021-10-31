@@ -11,7 +11,7 @@ list_1_item:
 
 flower:
   template:
-    - ulm_language_variables
+    - ulm_custom_card_schumijo_flower_language_variables
   tap_action:
     action: more-info
   icon: |
@@ -25,9 +25,9 @@ flower:
   label: >-
     [[[ 
         if (entity.state == 'problem'){
-          return variables.ulm_problem;
+          return variables.ulm_custom_card_schumijo_flower_problem;
         }else{
-          return variables.ulm_correct;
+          return variables.ulm_custom_card_schumijo_flower_correct;
         }
     ]]]
   state:

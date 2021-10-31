@@ -44,7 +44,7 @@ chip_icon_only:
   variables:
     icon: '❔'
   show_icon: true
-  icon: "[[[ return variables.ulm_chip_icon_state_icon ? variables.ulm_chip_icon_state_icon : variables.icon ]]]"
+  icon: "[[[ return variables.ulm_chip_icon_only ? variables.ulm_chip_icon_only : variables.icon ]]]"
   styles:
     grid:
       - grid-template-areas: '"i"'
@@ -341,6 +341,61 @@ card_light_slider:
     - operator: template
       value: "[[[ return entity.state == 'on' ]]]"
       styles:
+        card:
+          - background-color: 'rgba(var(--color-background-yellow),var(--opacity-bg))'
+  styles:
+    grid:
+      - grid-template-areas: '"item1" "item2"'
+      - grid-template-columns: 1fr
+      - grid-template-rows: min-content min-content
+      - row-gap: 12px
+    card:
+      - border-radius: var(--border-radius)
+      - box-shadow: var(--box-shadow)
+      - padding: 12px
+  custom_fields:
+    item1:
+      card:
+        type: 'custom:button-card'
+        template:
+          - icon_info
+          - light
+        entity: "[[[ return entity.entity_id ]]]"
+        name: "[[[ return variables.ulm_card_light_slider_name ]]]"
+        styles:
+          card:
+            - box-shadow: none
+            - border-radius: var(--border-radius) var(--border-radius) 0px 0px
+            - padding: 0px
+    item2:
+      card:
+        type: 'custom:my-slider'
+        entity: '[[[ return entity.entity_id ]]]'
+        radius: 14px
+        height: 42px
+        mainSliderColor: rgba(var(--color-yellow),1)
+        secondarySliderColor: rgba(var(--color-yellow),0.2)
+        mainSliderColorOff: rgba(var(--color-theme),0.05)
+        secondarySliderColorOff: rgba(var(--color-theme),0.05)
+        thumbHorizontalPadding: '0px'
+        thumbVerticalPadding: '0px'   
+        thumbWidth: 0px
+        card_mod:
+        style: |
+          ha-card {
+            border-radius: 14px;
+            box-shadow: none;
+          }
+card_light_slider_collapse:
+  variables:
+    ulm_card_light_slider_collapse_name: "[[[ return entity.attributes.friendly_name ]]]"
+  show_icon: false
+  show_name: false
+  show_label: false
+  state:
+    - operator: template
+      value: "[[[ return entity.state == 'on' ]]]"
+      styles:
         grid:
           - row-gap: 12px
         card:
@@ -392,6 +447,60 @@ card_light_slider:
               border-radius: 14px;
               box-shadow: none;
             }
+card_light_slider_horizontal:
+  variables:
+    ulm_card_light_slider_horizontal_name: "[[[ return entity.attributes.friendly_name ]]]"
+  show_icon: false
+  show_name: false
+  show_label: false
+  state:
+    - operator: template
+      value: "[[[ return entity.state == 'on' ]]]"
+      styles:
+        card:
+          - background-color: 'rgba(var(--color-background-yellow),var(--opacity-bg))'
+  styles:
+    grid:
+      - grid-template-areas: '"item1 item2"'
+      - grid-template-columns: 1fr 1fr
+      - grid-template-rows: 1fr
+    card:
+      - border-radius: var(--border-radius)
+      - box-shadow: var(--box-shadow)
+      - padding: 12px
+  custom_fields:
+    item1:
+      card:
+        type: 'custom:button-card'
+        template:
+          - icon_info
+          - light
+        entity: "[[[ return entity.entity_id ]]]"
+        name: "[[[ return variables.ulm_card_light_slider_name ]]]"
+        styles:
+          card:
+            - box-shadow: none
+            - border-radius: var(--border-radius) var(--border-radius) 0px 0px
+            - padding: 0px
+    item2:
+      card:
+        type: 'custom:my-slider'
+        entity: '[[[ return entity.entity_id ]]]'
+        radius: 14px
+        height: 42px
+        mainSliderColor: rgba(var(--color-yellow),1)
+        secondarySliderColor: rgba(var(--color-yellow),0.2)
+        mainSliderColorOff: rgba(var(--color-theme),0.05)
+        secondarySliderColorOff: rgba(var(--color-theme),0.05)
+        thumbHorizontalPadding: '0px'
+        thumbVerticalPadding: '0px'   
+        thumbWidth: 0px
+        card_mod:
+        style: |
+          ha-card {
+            border-radius: 14px;
+            box-shadow: none;
+          }
 card_power_outlet:
   template: 
     - yellow
@@ -408,14 +517,19 @@ card_binary_sensor:
   template: 
     - icon_info_bg
     - blue
-  name: "[[[ return entity.name != '' ? entity.name : entity.attribute.friendly_name ]]]"
+  name: "[[[ return entity.attributes.friendly_name != '' ? entity.attributes.friendly_name : entity.entity_id ]]]"
+  show_last_changed: true
+card_binary_sensor_alert:
+  template: 
+    - icon_info_alert
+  name: "[[[ return entity.attributes.friendly_name != '' ? entity.attributes.friendly_name : entity.entity_id ]]]"
   show_last_changed: true
 card_input_boolean:
   template: 
     - icon_info_bg
     - ulm_language_variables
     - blue
-  name: "[[[ return entity.name != '' ? entity.name : entity.attribute.friendly_name ]]]"
+  name: "[[[ return entity.attributes.friendly_name != '' ? entity.attributes.friendly_name : entity.entity_id ]]]"
   label: >
     [[[
       if (entity.state != 'unavailable'){
@@ -563,36 +677,73 @@ card_media_player_with_control:
       - background-blend-mode: multiply
       - background: "[[[ return states[entity.entity_id].attributes.entity_picture != null ? 'center / cover url(' + states[entity.entity_id].attributes.entity_picture + ') rgba(0, 0, 0, 0.15)' : '' ]]]"
 card_battery:
-  template: card_generic
+  template: 
+    - icon_info_bg
+  tap_action:
+    action: more-info
   icon: |
     [[[
-        var battery = variables.ulm_card_battery_attribute != null ? states[entity.entity_id].attributes. + variables.ulm_card_battery_attribute : entity.state;
         var icon = 'mdi:help-circle-outline';
-        if (battery >= 90){
-          var icon = 'mdi:battery';
-        } else if(battery >= 80){
-          var icon = 'mdi:battery-90';
-        } else if(battery >= 70){
-          var icon = 'mdi:battery-80️';
-        } else if(battery >= 60){
-          var icon = 'mdi:battery-70️';
-        } else if(battery >= 50){
-          var icon = 'mdi:battery-60️';
-        } else if(battery >= 40){
-          var icon = 'mdi:battery-50️';
-        } else if(battery >= 30){
-          var icon = 'mdi:battery-40️';
-        } else if(battery >= 20){
-          var icon = 'mdi:battery-30️';
-        } else if(battery >= 10){
-          var icon = 'mdi:battery-20️';
-        } else if(battery >= 0){
-          var icon = 'mdi:battery-10️';
-        } else if(battery == 0){
-          var icon = 'mdi:battery-outline️';
+        var battery = '';
+
+        if (variables.ulm_card_battery_attribute != null){
+          battery = states[entity.entity_id].attributes[variables.ulm_card_battery_attribute]
+        } else {
+          battery = states[entity.entity_id].state
         }
-         return icon;
+
+        if (battery == 100){
+          icon = 'mdi:battery'
+        } else if (battery >= 90){
+          icon = 'mdi:battery-90'
+        } else if (battery >= 80){
+          icon = 'mdi:battery-80'
+        } else if (battery >= 70){
+          icon = 'mdi:battery-70'
+        } else if (battery >= 60){
+          icon = 'mdi:battery-60'
+        } else if (battery >= 50){
+          icon = 'mdi:battery-50'
+        } else if (battery >= 40){
+          icon = 'mdi:battery-40'
+        } else if (battery >= 30){
+          icon = 'mdi:battery-30'
+        } else if (battery >= 20){
+          icon = 'mdi:battery-20'
+        } else if (battery >= 10){
+          icon = 'mdi:battery-10'
+        } else {
+          icon = 'mdi:battery-outline'
+        }
+
+        return icon;
     ]]]
+  label: "[[[ return states[entity.entity_id].state + '%' ]]]"
+  name: |
+    [[[ 
+      return states[entity.entity_id].attributes.friendly_name; 
+    ]]]
+  styles:
+    icon:
+      - color: 'rgba(var(--color-theme),0.9)'
+    label:
+      - align-self: end
+      - justify-self: start
+      - font-weight: bold
+      - font-size: 14px
+      - margin-left: 12px
+      - filter: opacity(100%)
+    name:
+      - justify-self: start
+      - align-self: start
+      - font-weight: bolder
+      - font-size: 12px
+      - filter: opacity(40%)
+      - margin-left: 12px
+    grid:
+      - grid-template-areas: '"i l" "i n"'
+      - grid-template-columns: min-content auto
+      - grid-template-rows: min-content min-content
 card_person:
   template: icon_info_bg
   variables:
@@ -664,6 +815,27 @@ card_person:
           return '<ha-icon icon="mdi:home-variant" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
         }
       ]]]
+card_script:
+  template: 
+    - icon_only
+  label: "[[[ return variables.ulm_card_script_title; ]]]"
+  icon: "[[[ return variables.ulm_card_script_icon; ]]]"
+  styles:
+    icon:
+      - color: 'rgba(var(--color-blue),0.7)'
+    label:
+      - align-self: center
+      - justify-self: start
+      - font-weight: bold
+      - font-size: 14px
+      - margin-left: 12px
+      - filter: opacity(100%)
+    img_cell:
+      - background-color: 'rgba(var(--color-blue), 0.2)'
+    grid:
+      - grid-template-areas: '"i l"'
+      - grid-template-columns: min-content min-content
+      - grid-template-rows: min-content
 ### 2-LINE CARDS ###
 card_cover_with_buttons:
   variables:
@@ -1080,7 +1252,8 @@ icon_info_bg:
   show_label: true
   show_name: true
   state:
-    - styles:
+    - value: 'unavailable'
+      styles:
         custom_fields:
           notification:
             - border-radius: 50%
@@ -1096,7 +1269,6 @@ icon_info_bg:
                 [[[
                   return "rgba(var(--color-red),1)";
                 ]]]
-      value: unavailable
   styles:
     icon:
       - color: 'rgba(var(--color-theme),0.2)'
@@ -1138,6 +1310,85 @@ icon_info_bg:
     notification: >
       [[[
         if (entity.state =='unavailable'){
+          return `<ha-icon icon="mdi:exclamation" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`
+        }
+      ]]]
+  size: 20px
+icon_info_alert:
+  color: var(--google-grey)
+  show_icon: true
+  show_label: true
+  show_name: true
+  state:
+    - operator: template
+      value: "[[[ if (entity.state == 'unavailable' || entity.state == 'on'){ return true; } ]]]"
+      styles:
+        icon:
+          - color: 'rgba(var(--color-blue),1)'
+        label:
+          - color: 'rgba(var(--color-blue-text),1)'
+        name:
+          - color: 'rgba(var(--color-blue-text),1)'
+        img_cell:
+          - background-color: 'rgba(var(--color-blue), 0.2)'
+        card:
+          - background-color: 'rgba(var(--color-background-blue), var(--opacity-bg))'
+        custom_fields:
+          notification:
+            - border-radius: 50%
+            - position: absolute
+            - left: 38px
+            - top: 8px
+            - height: 16px
+            - width: 16px
+            - border: 2px solid var(--card-background-color)
+            - font-size: 12px
+            - line-height: 14px
+            - background-color: >
+                [[[
+                  return "rgba(var(--color-red),1)";
+                ]]]
+  styles:
+    icon:
+      - color: 'rgba(var(--color-theme),0.2)'
+    label:
+      - justify-self: start
+      - align-self: start
+      - font-weight: bold
+      - font-size: 12px
+      - filter: opacity(40%)
+      - margin-left: 12px
+    name:
+      - align-self: end
+      - justify-self: start
+      - font-weight: bold
+      - font-size: 14px
+      - margin-left: 12px
+    state:
+      - justify-self: start
+      - align-self: start
+      - font-weight: bold
+      - font-size: 12px
+      - filter: opacity(40%)
+      - margin-left: 12px
+    img_cell:
+      - background-color: 'rgba(var(--color-theme),0.05)'
+      - border-radius: 50%
+      - place-self: center
+      - width: 42px
+      - height: 42px
+    grid:
+      - grid-template-areas: '"i n" "i l"'
+      - grid-template-columns: min-content auto
+      - grid-template-rows: min-content min-content
+    card:
+      - border-radius: var(--border-radius)
+      - box-shadow: var(--box-shadow)
+      - padding: 12px
+  custom_fields:
+    notification: >
+      [[[
+        if (entity.state =='unavailable' || entity.state == 'on'){
           return `<ha-icon icon="mdi:exclamation" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`
         }
       ]]]
