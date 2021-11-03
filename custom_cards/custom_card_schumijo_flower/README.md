@@ -1,17 +1,24 @@
-# Custom flower card
-
-### Flower
-This is the `card_flower`, used to display a plant entity. Shows state of the plant and attributes.
+# Custom-card "Flower"
+This is a `custom-card` to display a plant entity. Shows state of the plant and attributes.  
 
 ![Generic](./flower.png)
 
-## Prerequisites  
+## Credits
+Author: schumijo - 2021  
+Version: 1.1.0  
 
-Need [lovelace-flower-card](https://github.com/thomasloven/lovelace-flower-card)
+## Changelog
+<details>
+<summary>1.0.0</summary>
+Initial release
+</details>
+<details>
+<summary>1.1.0</summary>
+Fix language files for beta5
+Updated README
+</details>
 
-## Usage  
-
-#### Example
+## Usage
 
 ```yaml
 - type: 'custom:button-card'
@@ -21,7 +28,6 @@ Need [lovelace-flower-card](https://github.com/thomasloven/lovelace-flower-card)
     ulm_card_flower_name: Bonsai Ficus
     ulm_card_flower_species: "ficus retusa"
 ```
-
 #### Variables
 <table>
 <tr>
@@ -50,10 +56,11 @@ Need [lovelace-flower-card](https://github.com/thomasloven/lovelace-flower-card)
 </tr>
 </table>
 
-## Code  
+## Requirements 
 
-<details>
-<summary>Template code</summary>
+Need [lovelace-flower-card](https://github.com/thomasloven/lovelace-flower-card)
+
+## Template code
 
 ```yaml
 list_1_item:
@@ -156,7 +163,4 @@ card_flower:
                   .attribute ha-icon {
                       margin-right: 0px !important;
                   }
-
 ```
-
-</details>
