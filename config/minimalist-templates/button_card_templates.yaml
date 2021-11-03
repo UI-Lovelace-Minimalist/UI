@@ -417,7 +417,7 @@ card_light_slider_collapse:
           - icon_info
           - light
         entity: "[[[ return entity.entity_id ]]]"
-        name: "[[[ return variables.ulm_card_light_slider_name ]]]"
+        name: "[[[ return variables.ulm_card_light_slider_collapse_name ]]]"
         styles:
           card:
             - box-shadow: none
