@@ -502,15 +502,24 @@ card_light_slider_horizontal:
             box-shadow: none;
           }
 card_power_outlet:
-  template: 
+  template:
+    - icon_info_bg
     - yellow
-    - icon_info_bg 
+    - ulm_language_variables
+  variables:
+    ulm_card_power_outlet_consumption_sensor:
   label: |-
-    [[[ 
-      if (entity.state =='on') && (variables.ulm_card_power_outlet_consumption_sensor != '' {
-        return entity.label + ' ' + variables.ulm_card_power_outlet_consumption_sensor + 'W';
+    [[[
+      if (entity.state === "on" && variables.ulm_card_power_outlet_consumption_sensor !== null) {
+        return variables.ulm_on + " • " + states[variables.ulm_card_power_outlet_consumption_sensor].state + "W";
+      } else if (entity.state === "on") {
+        return variables.ulm_on;
+      } else if (entity.state === "off") {
+        return variables.ulm_off;
+      } else if (entity.state === "unavailable") {
+        return variables.ulm_unavailable;
       } else {
-        return entity.label;
+        return entity.state;
       }
     ]]]
 card_binary_sensor:
