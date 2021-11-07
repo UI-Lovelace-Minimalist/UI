@@ -106,7 +106,9 @@ chip_presence_detection:
       return '🏠 ' +  states[variables.ulm_chip_presence_counter_residents].state + guests;
     ]]]
 chip_power_consumption:
-  template: chips
+  template: 
+    - chips
+    - ulm_language_variables
   triggers_update:
     - "[[[ variables.ulm_chip_electric_consumption ]]]"
   label: |
@@ -417,7 +419,7 @@ card_light_slider_collapse:
           - icon_info
           - light
         entity: "[[[ return entity.entity_id ]]]"
-        name: "[[[ return variables.ulm_card_light_slider_name ]]]"
+        name: "[[[ return variables.ulm_card_light_slider_collapse_name ]]]"
         styles:
           card:
             - box-shadow: none
@@ -476,7 +478,7 @@ card_light_slider_horizontal:
           - icon_info
           - light
         entity: "[[[ return entity.entity_id ]]]"
-        name: "[[[ return variables.ulm_card_light_slider_name ]]]"
+        name: "[[[ return variables.ulm_card_light_slider_horizontal_name ]]]"
         styles:
           card:
             - box-shadow: none
@@ -573,6 +575,7 @@ card_media_player:
     - ulm_language_variables
   icon: |
     [[[
+      var icon = 'mdi:speaker';
       if(entity.attributes.app_name){
         var app = entity.attributes.app_name.toLowerCase();
         if(app == 'spotify'){
@@ -1072,29 +1075,45 @@ cover:
     action: more-info
   icon: |
     [[[
-        var icon = 'mdi:window-shutter';
-        if (states[entity.entity_id].attributes.current_position == 0){
-          var icon = 'mdi:window-shutter';
-        } else
-          var icon = 'mdi:window-shutter-open';
+        var icon = 'mdi:help-circle';
+        if (typeof states[entity.entity_id].attributes.current_position === 'undefined'){
+          if (states[entity.entity_id].state == 'closed'){
+            var icon = 'mdi:window-shutter';
+          } else
+            var icon = 'mdi:window-shutter-open';
+        } else {
+          if (states[entity.entity_id].attributes.current_position == 0){
+            var icon = 'mdi:window-shutter';
+          } else
+            var icon = 'mdi:window-shutter-open';
+        }
         return icon ;
     ]]]
   label: >-
-    [[[ 
-        if (states[entity.entity_id].attributes.current_position == 0){
-          return variables.ulm_closed;
+    [[[
+        var icon = 'mdi:help-circle';
+        if (typeof states[entity.entity_id].attributes.current_position === 'undefined'){
+          if (states[entity.entity_id].state == 'closed'){
+            return variables.ulm_closed;
+          } else
+            return variables.ulm_open;
         } else {
-          return variables.ulm_open + ' • ' + (states[entity.entity_id].attributes.current_position) + '%' ;
+          if (states[entity.entity_id].attributes.current_position == 0){
+            return variables.ulm_closed;
+          } else {
+            return variables.ulm_open + ' • ' + (states[entity.entity_id].attributes.current_position) + '%' ;
+          }
         }
+        return icon ;
     ]]]
   state:
     - operator: template
       value: "[[[ return states[entity.entity_id].attributes.current_position != 0; ]]]"
       styles:
         icon:
-          - color: 'rgba(var(--color-blue),1)'
+          - color: "rgba(var(--color-blue),1)"
         img_cell:
-          - background-color: 'rgba(var(--color-blue),0.2)'
+          - background-color: "rgba(var(--color-blue),0.2)"
 edge:
   styles:
     card:
