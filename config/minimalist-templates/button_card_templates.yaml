@@ -106,7 +106,9 @@ chip_presence_detection:
       return '🏠 ' +  states[variables.ulm_chip_presence_counter_residents].state + guests;
     ]]]
 chip_power_consumption:
-  template: chips
+  template: 
+    - chips
+    - ulm_language_variables
   triggers_update:
     - "[[[ variables.ulm_chip_electric_consumption ]]]"
   label: |
