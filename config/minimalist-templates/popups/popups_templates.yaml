@@ -1,0 +1,470 @@
+### LAYOUT ###
+popup_4_items:
+  styles:
+    grid:
+      - grid-template-areas: '"item1" "item2" "item3" "item4"'
+      - grid-template-columns: 1fr
+      - grid-template-rows: min-content min-content min-content min-content
+    card:
+      - background: var(--primary-background-color)
+      - box-shadow: none
+      - padding: 4%
+
+popup_list_items:
+  template: list_items
+  styles:
+    card:
+      - padding-top: 30px
+      - background: none
+### BUTTONS ###
+popup_button:
+  color: var(--primary-color)
+  show_icon: true
+  show_name: true
+  styles:
+    grid:
+      - grid-template-areas: '"i" "n"'
+      - grid-template-columns: auto
+      - grid-template-rows: min-content min-content
+    card:
+      - background: none
+      - box-shadow: none
+    icon:
+      - color: var(--primary-color)
+    img_cell:
+      - background-color: var(--card-background-color)
+      - border-radius: 50%
+      - place-self: center
+      - width: 42px
+      - height: 42px
+      - box-shadow: var(--ha-card-box-shadow)
+    name:
+      - justify-self: center
+      - font-weight: bold
+      - font-size: 14px
+      - margin-top: 12px
+
+popup_header:
+  template: popup_button
+  show_name: true
+  show_label: true
+  styles:
+    grid:
+      - grid-template-areas: '"i" "n" "l"'
+      - grid-template-columns: auto
+      - grid-template-rows: min-content min-content min-content
+    label:
+      - justify-self: center
+      - font-weight: bold
+      - font-size: 12px
+      - filter: opacity(40%)
+    card:
+      - padding-bottom: 30px
+    icon:
+      - color: var(--color-theme)
+
+popup_button_back:
+  template:
+    - popup_button
+    - ulm_popups_language_variables
+  icon: "mdi:arrow-left"
+  name: "[[[ return variables.ulm_popups_back ]]]"
+  styles:
+    name:
+      - text-transform: uppercase
+      - color: rgba(var(--color-theme),0.5)
+    img_cell:
+      - background: none
+      - box-shadow: none
+      - border: 1px solid rgba(var(--color-theme),0.25)
+  tap_action:
+    action: fire-dom-event
+    browser_mod:
+      command: close_popup
+
+popup_button_power:
+  template:
+    - popup_button
+    - ulm_popups_language_variables
+  icon: "mdi:power"
+  name: "[[[ return variables.ulm_popups_toggle ]]]"
+  styles:
+    name:
+      - text-transform: uppercase
+      - color: rgba(var(--color-theme),0.5)
+    icon:
+      - color: var(--card-background-color)
+    img_cell:
+      - background-color: var(--primary-color)
+      - box-shadow: none
+  tap_action:
+    action: toggle
+
+### POPUPS ###
+popup_power_outlet:
+  variables:
+    ulm_popup_power_outlet_graph_color: "var(--info-color)"
+  hold_action:
+    action: fire-dom-event
+    browser_mod:
+      command: popup
+      hide_header: true
+      card:
+        type: custom:button-card
+        template: popup_4_items
+        custom_fields:
+          item1:
+            card:
+              type: custom:button-card
+              template:
+                - popup_header
+                - ulm_language_variables
+              triggers_update:
+                - "[[[ return entity.entity_id ]]]"
+              entity: "[[[ return entity.entity_id ]]]"
+              label: |-
+                [[[ 
+                  if (entity.state =='on') {
+                    return variables.ulm_on;
+                  } else {
+                    return variables.ulm_off;
+                  }
+                ]]]
+          item2:
+            card:
+              type: grid
+              columns: 2
+              square: false
+              cards:
+                - type: "custom:button-card"
+                  entity: "[[[ return variables.ulm_popup_power_outlet_sensor1 ]]]"
+                  label: >
+                    [[[ return states[variables.ulm_popup_power_outlet_sensor1].state + states[variables.ulm_popup_power_outlet_sensor1].attributes.unit_of_measurement ]]]
+                  template:
+                    - icon_info_bg
+                  styles:
+                    icon:
+                      - color: "var(--color-theme)"
+                - type: "custom:button-card"
+                  entity: "[[[ return variables.ulm_popup_power_outlet_sensor2 ]]]"
+                  label: >
+                    [[[ return states[variables.ulm_popup_power_outlet_sensor2].state + states[variables.ulm_popup_power_outlet_sensor2].attributes.unit_of_measurement ]]]
+                  template:
+                    - icon_info_bg
+                  styles:
+                    icon:
+                      - color: "var(--color-theme)"
+          item3:
+            card:
+              type: vertical-stack
+              cards:
+                - type: entities
+                  entities:
+                    - type: section
+                      label: Statistiques
+                  card_mod:
+                    style: |
+                      ha-card{
+                        background: none !important;
+                        box-shadow: none !important;
+                        margin-bottom: -25px !important;
+                        text-align: start !important;
+                      }
+                - type: "custom:mini-graph-card"
+                  entities:
+                    - entity: "[[[ return variables.ulm_popup_power_outlet_graph_sensor ]]]"
+                  line_color: "[[[ return variables.ulm_popup_power_outlet_graph_color ]]]"
+                  height: 200
+                  hours_to_show: 168
+                  show:
+                    name: false
+                    icon: false
+                    legend: false
+                    state: false
+                  style: |
+                    ha-card {
+                      box-shadow: none !important;
+                      border-radius: var(--border-radius) !important;
+                      margin-bottom: 150px !important;
+                    }
+          item4:
+            card:
+              type: custom:button-card
+              template: popup_list_items
+              custom_fields:
+                item1:
+                  card:
+                    type: "custom:button-card"
+                    template: popup_button_back
+                item2:
+                  card:
+                    type: "custom:button-card"
+                    template: popup_button_power
+                    entity: "[[[ return entity.entity_id ]]]"
+                    triggers_update:
+                      - "[[[ return entity.entity_id ]]]"
+
+popup_light:
+  hold_action:
+    action: fire-dom-event
+    browser_mod:
+      command: popup
+      hide_header: true
+      card:
+        type: custom:button-card
+        template: popup_4_items
+        custom_fields:
+          item1:
+            card:
+              type: custom:button-card
+              template:
+                - popup_header
+                - ulm_language_variables
+              triggers_update:
+                - "[[[ return entity.entity_id ]]]"
+              entity: "[[[ return entity.entity_id ]]]"
+              show_label: none
+          item2:
+            card:
+              type: custom:state-switch
+              entity: hash
+              default: color
+              transition: flip
+              transition_time: 300
+              states:
+                brightness:
+                  type: custom:button-card
+                  styles:
+                    grid:
+                      - grid-template-areas: '"item1"'
+                      - grid-template-columns: 1fr
+                      - grid-template-rows: min-content
+                    card:
+                      - background: none
+                      - box-shadow: none
+                      - padding: 4%
+                    custom_fields:
+                      item2:
+                        - background-color: blue
+                        - border-radius: 12px
+                        - position: absolute
+                        - left: 64%
+                        - top: >
+                            [[[
+                              var bri = states[entity.entity_id].attributes.brightness;
+                              return Math.round(bri ? (80-(72*bri/256)) : '80') + '%';
+                            ]]]
+                        - height: 25px
+                        - width: 45px
+                        - font-size: 11px
+                        - line-height: 25px
+                        - color: white
+                  custom_fields:
+                    item1:
+                      card:
+                        type: "custom:slider-card"
+                        entity: "[[[ return entity.entity_id ]]]"
+                        radius: 20px
+                        rotate: 270
+                        containerHeight: 320px
+                        width: 250px
+                        height: 100px
+                        top: 100px
+                        left: 17%
+                        thumbHorizontalPadding: 0px
+                        thumbWidth: 0px
+                        mainSliderColor: rgba(var(--color-theme),0.1)
+                        mainSliderColorOff: rgba(var(--color-theme),0.1)
+                        secondarySliderColor: var(--color-theme)
+                        secondarySliderColorOff: var(--color-theme)
+                        card_mod:
+                          style: |
+                            ha-card {
+                              background: none !important;
+                              box-shadow: none !important;
+                            }
+                            .off {
+                              border: 1px solid rgba(var(--color-theme),0.3) !important;
+                            }
+                            .on {
+                              border: 1px solid rgba(var(--color-theme),0.3) !important;
+                            }
+                    item2: >
+                      [[[
+                        var bri = states[entity.entity_id].attributes.brightness;
+                        return Math.round(bri ? (bri/256*100) : '0') + '%';
+                      ]]]
+                #####
+                color:
+                  type: custom:light-entity-card
+                  entity: "[[[ return entity.entity_id ]]]"
+                  persist_features: true
+                  brightness: false
+                  color_temp: false
+                  white_value: false
+                  hide_header: true
+                  effects_list: false
+                  card_mod:
+                    style:
+                      ".control":
+                        $: |
+                          #interactionLayer{ z-index: 1; filter: opacity(0.6);}
+                          #backgroundLayer{
+                            filter: blur(20px);
+                          }
+                      .: |
+                        ha-card {
+                          background: none !important;
+                          box-shadow: none !important;
+                          padding: 10px 0 10px 0 !important;
+                        }
+          item3:
+            card:
+              type: custom:button-card
+              template: popup_list_items
+              custom_fields:
+                item1:
+                  card:
+                    icon: "mdi:lightbulb-on"
+                    name: Luminosité
+                    type: "custom:button-card"
+                    template: popup_button
+                    tap_action:
+                      action: navigate
+                      navigation_path: "#brightness"
+                    state:
+                      - operator: template
+                        value: >
+                          [[[ return new URL(window.location.href).hash !== '#color' ]]]
+                        styles:
+                          icon:
+                            - color: "rgba(var(--color-blue),1)"
+                          img_cell:
+                            - background-color: "rgba(var(--color-blue), 0.2)"
+                item2:
+                  card:
+                    icon: "mdi:palette"
+                    name: Couleur
+                    type: "custom:button-card"
+                    template: popup_button
+                    tap_action:
+                      action: navigate
+                      navigation_path: "#color"
+                    state:
+                      - operator: template
+                        value: >
+                          [[[ return new URL(window.location.href).hash === '#color' ]]]
+                        styles:
+                          icon:
+                            - color: "rgba(var(--color-blue),1)"
+                          img_cell:
+                            - background-color: "rgba(var(--color-blue), 0.2)"
+          item4:
+            card:
+              type: custom:button-card
+              template: popup_list_items
+              custom_fields:
+                item1:
+                  card:
+                    type: "custom:button-card"
+                    template: popup_button_back
+                item2:
+                  card:
+                    type: "custom:button-card"
+                    template: popup_button_power
+                    entity: "[[[ return entity.entity_id ]]]"
+                    triggers_update:
+                      - "[[[ return entity.entity_id ]]]"
+
+########################################
+popup_jojo:
+  tap_action:
+    action: fire-dom-event
+    browser_mod:
+      command: popup
+      hide_header: true
+      card:
+        type: custom:button-card
+        template: popup_4_items
+        custom_fields:
+          item1:
+            card:
+              type: custom:button-card
+              template: popup_header
+              icon: "[[[ return variables.ulm_popup_header_icon ]]]"
+              name: "[[[ return variables.ulm_popup_header_title ]]]"
+              label: "[[[ return variables.ulm_popup_header_label ]]]"
+          item2:
+            card:
+              type: grid
+              columns: 2
+              square: false
+              cards:
+                - type: "custom:button-card"
+                  entity: "[[[ return variables.ulm_entity1 ]]]"
+                  label: >
+                    [[[ return states[variables.ulm_entity1].state + states[variables.ulm_entity1].attributes.unit_of_measurement ]]]
+                  name: "[[[ return variables.ulm_entity1_name ]]]"
+                  icon: "[[[ return variables.ulm_entity1_icon ]]]"
+                  template:
+                    - icon_info_bg
+                  styles:
+                    icon:
+                      - color: "var(--color-theme)"
+                - type: "custom:button-card"
+                  entity: "[[[ return variables.ulm_entity2 ]]]"
+                  label: >
+                    [[[ return states[variables.ulm_entity2].state + states[variables.ulm_entity2].attributes.unit_of_measurement ]]]
+                  name: "[[[ return variables.ulm_entity2_name ]]]"
+                  icon: "[[[ return variables.ulm_entity2_icon ]]]"
+                  template:
+                    - icon_info_bg
+                  styles:
+                    icon:
+                      - color: "var(--color-theme)"
+          item3:
+            card:
+              type: vertical-stack
+              cards:
+                - type: entities
+                  entities:
+                    - type: section
+                      label: Statistiques
+                  card_mod:
+                    style: |
+                      ha-card{
+                        background: none !important;
+                        box-shadow: none !important;
+                        margin-bottom: -25px !important;
+                        text-align: start !important;
+                      }
+                - type: custom:apexcharts-card
+                  graph_span: 7d
+                  all_series_config:
+                    stroke_width: 3
+                    type: area
+                    opacity: 0.2
+                  series:
+                    - entity: "[[[ return variables.ulm_entity1 ]]]"
+                      color: blue
+                      fill_raw: last
+                  card_mod:
+                    style: |
+                      ha-card{
+                        background: none !important;
+                        box-shadow: none !important;
+                      }
+                      .wrapper{
+                        background: var(--card-background-color) !important;
+                        border-radius: 20px !important;
+                        box-shadow: var(--box-shadow) !important;
+                      }
+          item4:
+            card:
+              type: custom:button-card
+              template: popup_list_items
+              custom_fields:
+                item2:
+                  card:
+                    type: "custom:button-card"
+                    template: popup_button_back
