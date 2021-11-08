@@ -41,50 +41,51 @@ chip_temperature:
     ]]]
 chip_icon_only:
   template: chips
-  variables:
-    icon: '❔'
-  show_icon: true
-  icon: "[[[ return variables.ulm_chip_icon_only ? variables.ulm_chip_icon_only : variables.icon ]]]"
-  styles:
-    grid:
-      - grid-template-areas: '"i"'
+  label: |
+    [[[
+      var icon = '❔';
+      if (variables.ulm_chip_icon_only){
+        var icon = variables.ulm_chip_icon_only;
+      } 
+      return icon;
+    ]]]
 chip_icon_state:
   template: chips
-  variables:
-    icon: "❔"
   triggers_update:
     - "[[[ variables.ulm_chip_icon_state_entity ]]]"
-  show_icon: true
-  show_label: true
-  icon: "[[[ return variables.ulm_chip_icon_state_icon ? variables.ulm_chip_icon_state_icon : variables.icon ]]]"
-  label: "[[[ return variables.ulm_chip_icon_state_entity ? states[variables.ulm_chip_icon_state_entity].state : '' ]]]"
-  styles:
-    label:
-      - justify-self: center
-      - padding: 0px 6px
-      - font-weight: bold
-      - font-size: 14px
-    grid:
-      - grid-template-areas: '"i l"'
+  label: |
+    [[[
+      var icon = '❔';
+      if (variables.ulm_chip_icon_state_icon){
+        var icon = variables.ulm_chip_icon_state_icon;
+      } 
+      var state = '';
+      if (states[variables.ulm_chip_icon_state_entity].state){
+        var state = states[variables.ulm_chip_icon_state_entity].state;
+      } 
+      return icon + ' ' + state;
+    ]]]
 chip_icon_double_state:
   template: chips
-  variables:
-    icon: "❔"
   triggers_update:
-    - "[[[ variables.ulm_chip_icon_state_entity_1 ]]]"
-    - "[[[ variables.ulm_chip_icon_state_entity_2 ]]]"
-  show_icon: true
-  show_label: true
-  icon: "[[[ return variables.ulm_chip_icon_double_state_icon ? variables.ulm_chip_icon_double_state_icon : variables.icon ]]]"
-  label: "[[[ return variables.ulm_chip_icon_double_state_entity_1 ? states[variables.ulm_chip_icon_double_state_entity_1].state + ' • ' + states[variables.ulm_chip_icon_double_state_entity_2].state : '' ]]]"
-  styles:
-    label:
-      - justify-self: center
-      - padding: 0px 6px
-      - font-weight: bold
-      - font-size: 14px
-    grid:
-      - grid-template-areas: '"i l"'
+    - "[[[ variables.ulm_chip_icon_double_state_entity_1 ]]]"
+    - "[[[ variables.ulm_chip_icon_double_state_entity_2 ]]]"
+  label: |
+    [[[
+      var icon = '❔';
+      if (variables.ulm_chip_icon_double_state_icon){
+        var icon = variables.ulm_chip_icon_double_state_icon;
+      } 
+      var state1 = '';
+      if (states[variables.ulm_chip_icon_double_state_entity_1].state){
+        var state1 = states[variables.ulm_chip_icon_double_state_entity_1].state;
+      } 
+      var state2 = '';
+      if (states[variables.ulm_chip_icon_double_state_entity_2].state){
+        var state2 = states[variables.ulm_chip_icon_double_state_entity_2].state;
+      } 
+      return icon + ' ' + state1 + ' • ' + state2;
+    ]]]
 chip_back:
   template: chips
   tap_action:
@@ -106,7 +107,9 @@ chip_presence_detection:
       return '🏠 ' +  states[variables.ulm_chip_presence_counter_residents].state + guests;
     ]]]
 chip_power_consumption:
-  template: chips
+  template: 
+    - chips
+    - ulm_language_variables
   triggers_update:
     - "[[[ variables.ulm_chip_electric_consumption ]]]"
   label: |
@@ -119,6 +122,16 @@ chip_power_consumption:
         return '⚡ ' +  states[variables.ulm_chip_electric_consumption].state;
       }
     ]]]
+chip_navigate:
+  template: chips
+  tap_action:
+    action: navigate
+    navigation_path: "[[[ return variables.ulm_chip_navigate_path; ]]]"
+  show_icon: true
+  icon: "[[[ return variables.ulm_chip_navigate_icon; ]]]"
+  styles:
+    grid:
+      - grid-template-areas: '"i"'
 ### TITLE ###
 card_title:
   tap_action:
@@ -332,6 +345,8 @@ card_light:
       }
     ]]]
 card_light_slider:
+  template: 
+    - ulm_language_variables
   variables:
     ulm_card_light_slider_name: "[[[ return entity.attributes.friendly_name ]]]"
   show_icon: false
@@ -359,13 +374,30 @@ card_light_slider:
         type: 'custom:button-card'
         template:
           - icon_info
-          - light
+          - yellow_slider
         entity: "[[[ return entity.entity_id ]]]"
+        label: >-
+          [[[  
+            if (entity.state !='unavailable'){
+              if (entity.state =='off'){
+                return variables.ulm_off;  
+              } else if (entity.state == 'on'){
+                if (entity.attributes.brightness != null){
+                  var bri = Math.round(entity.attributes.brightness / 2.55);
+                  return (bri ? bri : '0') + '%';
+                } else {
+                  return variables.ulm_on
+                } 
+              }
+            } else {
+              return variables.ulm_unavailable;
+            }
+          ]]]
         name: "[[[ return variables.ulm_card_light_slider_name ]]]"
         styles:
           card:
             - box-shadow: none
-            - border-radius: var(--border-radius) var(--border-radius) 0px 0px
+            - border-radius: var(--border-radius) var(--border-radius) var(--border-radius) var(--border-radius)
             - padding: 0px
     item2:
       card:
@@ -387,6 +419,8 @@ card_light_slider:
             box-shadow: none;
           }
 card_light_slider_collapse:
+  template: 
+    - ulm_language_variables
   variables:
     ulm_card_light_slider_collapse_name: "[[[ return entity.attributes.friendly_name ]]]"
   show_icon: false
@@ -396,10 +430,10 @@ card_light_slider_collapse:
     - operator: template
       value: "[[[ return entity.state == 'on' ]]]"
       styles:
-        grid:
-          - row-gap: 12px
         card:
           - background-color: 'rgba(var(--color-background-yellow),var(--opacity-bg))'
+        grid:
+          - row-gap: 12px
   styles:
     grid:
       - grid-template-areas: '"item1" "item2"'
@@ -415,13 +449,30 @@ card_light_slider_collapse:
         type: 'custom:button-card'
         template:
           - icon_info
-          - light
+          - yellow_slider
         entity: "[[[ return entity.entity_id ]]]"
-        name: "[[[ return variables.ulm_card_light_slider_name ]]]"
+        label: >-
+          [[[  
+            if (entity.state !='unavailable'){
+              if (entity.state =='off'){
+                return variables.ulm_off;  
+              } else if (entity.state == 'on'){
+                if (entity.attributes.brightness != null){
+                  var bri = Math.round(entity.attributes.brightness / 2.55);
+                  return (bri ? bri : '0') + '%';
+                } else {
+                  return variables.ulm_on
+                } 
+              }
+            } else {
+              return variables.ulm_unavailable;
+            }
+          ]]]
+        name: "[[[ return variables.ulm_card_light_slider_collapse_name ]]]"
         styles:
           card:
             - box-shadow: none
-            - border-radius: var(--border-radius) var(--border-radius) 0px 0px
+            - border-radius: var(--border-radius) var(--border-radius) var(--border-radius) var(--border-radius)
             - padding: 0px
     item2:
       card:
@@ -448,6 +499,8 @@ card_light_slider_collapse:
               box-shadow: none;
             }
 card_light_slider_horizontal:
+  template: 
+    - ulm_language_variables
   variables:
     ulm_card_light_slider_horizontal_name: "[[[ return entity.attributes.friendly_name ]]]"
   show_icon: false
@@ -474,13 +527,30 @@ card_light_slider_horizontal:
         type: 'custom:button-card'
         template:
           - icon_info
-          - light
+          - yellow_slider
         entity: "[[[ return entity.entity_id ]]]"
-        name: "[[[ return variables.ulm_card_light_slider_name ]]]"
+        label: >-
+          [[[  
+            if (entity.state !='unavailable'){
+              if (entity.state =='off'){
+                return variables.ulm_off;  
+              } else if (entity.state == 'on'){
+                if (entity.attributes.brightness != null){
+                  var bri = Math.round(entity.attributes.brightness / 2.55);
+                  return (bri ? bri : '0') + '%';
+                } else {
+                  return variables.ulm_on
+                } 
+              }
+            } else {
+              return variables.ulm_unavailable;
+            }
+          ]]]
+        name: "[[[ return variables.ulm_card_light_slider_horizontal_name ]]]"
         styles:
           card:
             - box-shadow: none
-            - border-radius: var(--border-radius) var(--border-radius) 0px 0px
+            - border-radius: var(--border-radius) var(--border-radius) var(--border-radius) var(--border-radius)
             - padding: 0px
     item2:
       card:
@@ -502,15 +572,24 @@ card_light_slider_horizontal:
             box-shadow: none;
           }
 card_power_outlet:
-  template: 
+  template:
+    - icon_info_bg
     - yellow
-    - icon_info_bg 
+    - ulm_language_variables
+  variables:
+    ulm_card_power_outlet_consumption_sensor:
   label: |-
-    [[[ 
-      if (entity.state =='on') && (variables.ulm_card_power_outlet_consumption_sensor != '' {
-        return entity.label + ' ' + variables.ulm_card_power_outlet_consumption_sensor + 'W';
+    [[[
+      if (entity.state === "on" && variables.ulm_card_power_outlet_consumption_sensor !== null) {
+        return variables.ulm_on + " • " + states[variables.ulm_card_power_outlet_consumption_sensor].state + "W";
+      } else if (entity.state === "on") {
+        return variables.ulm_on;
+      } else if (entity.state === "off") {
+        return variables.ulm_off;
+      } else if (entity.state === "unavailable") {
+        return variables.ulm_unavailable;
       } else {
-        return entity.label;
+        return entity.state;
       }
     ]]]
 card_binary_sensor:
@@ -573,6 +652,7 @@ card_media_player:
     - ulm_language_variables
   icon: |
     [[[
+      var icon = 'mdi:speaker';
       if(entity.attributes.app_name){
         var app = entity.attributes.app_name.toLowerCase();
         if(app == 'spotify'){
@@ -677,51 +757,55 @@ card_media_player_with_control:
       - background-blend-mode: multiply
       - background: "[[[ return states[entity.entity_id].attributes.entity_picture != null ? 'center / cover url(' + states[entity.entity_id].attributes.entity_picture + ') rgba(0, 0, 0, 0.15)' : '' ]]]"
 card_battery:
-  template: 
+  template:
     - icon_info_bg
   tap_action:
     action: more-info
+  variables:
+    ulm_card_battery_attribute:
   icon: |
     [[[
-        var icon = 'mdi:help-circle-outline';
-        var battery = '';
+      var icon = "mdi:help-circle-outline";
+      var battery = variables.ulm_card_battery_attribute !== null
+        ? states[entity.entity_id].attributes[variables.ulm_card_battery_attribute]
+        : states[entity.entity_id].state;
 
-        if (variables.ulm_card_battery_attribute != null){
-          battery = states[entity.entity_id].attributes[variables.ulm_card_battery_attribute]
-        } else {
-          battery = states[entity.entity_id].state
-        }
+      if (battery == 100) {
+        icon = "mdi:battery";
+      } else if (battery >= 90) {
+        icon = "mdi:battery-90";
+      } else if (battery >= 80) {
+        icon = "mdi:battery-80";
+      } else if (battery >= 70) {
+        icon = "mdi:battery-70";
+      } else if (battery >= 60) {
+        icon = "mdi:battery-60";
+      } else if (battery >= 50) {
+        icon = "mdi:battery-50";
+      } else if (battery >= 40) {
+        icon = "mdi:battery-40";
+      } else if (battery >= 30) {
+        icon = "mdi:battery-30";
+      } else if (battery >= 20) {
+        icon = "mdi:battery-20";
+      } else if (battery >= 10) {
+        icon = "mdi:battery-10";
+      } else {
+        icon = "mdi:battery-outline";
+      }
 
-        if (battery == 100){
-          icon = 'mdi:battery'
-        } else if (battery >= 90){
-          icon = 'mdi:battery-90'
-        } else if (battery >= 80){
-          icon = 'mdi:battery-80'
-        } else if (battery >= 70){
-          icon = 'mdi:battery-70'
-        } else if (battery >= 60){
-          icon = 'mdi:battery-60'
-        } else if (battery >= 50){
-          icon = 'mdi:battery-50'
-        } else if (battery >= 40){
-          icon = 'mdi:battery-40'
-        } else if (battery >= 30){
-          icon = 'mdi:battery-30'
-        } else if (battery >= 20){
-          icon = 'mdi:battery-20'
-        } else if (battery >= 10){
-          icon = 'mdi:battery-10'
-        } else {
-          icon = 'mdi:battery-outline'
-        }
-
-        return icon;
+      return icon;
     ]]]
-  label: "[[[ return states[entity.entity_id].state + '%' ]]]"
+  label: |
+    [[[
+      var battery = variables.ulm_card_battery_attribute !== null
+        ? states[entity.entity_id].attributes[variables.ulm_card_battery_attribute]
+        : states[entity.entity_id].state;
+      return battery + "%";
+    ]]]
   name: |
-    [[[ 
-      return states[entity.entity_id].attributes.friendly_name; 
+    [[[
+      return states[entity.entity_id].attributes.friendly_name;
     ]]]
   styles:
     icon:
@@ -1072,29 +1156,45 @@ cover:
     action: more-info
   icon: |
     [[[
-        var icon = 'mdi:window-shutter';
-        if (states[entity.entity_id].attributes.current_position == 0){
-          var icon = 'mdi:window-shutter';
-        } else
-          var icon = 'mdi:window-shutter-open';
+        var icon = 'mdi:help-circle';
+        if (typeof states[entity.entity_id].attributes.current_position === 'undefined'){
+          if (states[entity.entity_id].state == 'closed'){
+            var icon = 'mdi:window-shutter';
+          } else
+            var icon = 'mdi:window-shutter-open';
+        } else {
+          if (states[entity.entity_id].attributes.current_position == 0){
+            var icon = 'mdi:window-shutter';
+          } else
+            var icon = 'mdi:window-shutter-open';
+        }
         return icon ;
     ]]]
   label: >-
-    [[[ 
-        if (states[entity.entity_id].attributes.current_position == 0){
-          return variables.ulm_closed;
+    [[[
+        var icon = 'mdi:help-circle';
+        if (typeof states[entity.entity_id].attributes.current_position === 'undefined'){
+          if (states[entity.entity_id].state == 'closed'){
+            return variables.ulm_closed;
+          } else
+            return variables.ulm_open;
         } else {
-          return variables.ulm_open + ' • ' + (states[entity.entity_id].attributes.current_position) + '%' ;
+          if (states[entity.entity_id].attributes.current_position == 0){
+            return variables.ulm_closed;
+          } else {
+            return variables.ulm_open + ' • ' + (states[entity.entity_id].attributes.current_position) + '%' ;
+          }
         }
+        return icon ;
     ]]]
   state:
     - operator: template
       value: "[[[ return states[entity.entity_id].attributes.current_position != 0; ]]]"
       styles:
         icon:
-          - color: 'rgba(var(--color-blue),1)'
+          - color: "rgba(var(--color-blue),1)"
         img_cell:
-          - background-color: 'rgba(var(--color-blue),0.2)'
+          - background-color: "rgba(var(--color-blue),0.2)"
 edge:
   styles:
     card:
@@ -1472,6 +1572,20 @@ yellow:
           - background-color: 'rgba(var(--color-yellow), 0.2)'
         card:
           - background-color: 'rgba(var(--color-background-yellow),var(--opacity-bg))'
+      value: 'on'
+yellow_slider:
+  state:
+    - styles:
+        icon:
+          - color: 'rgba(var(--color-yellow),1)'
+        label:
+          - color: 'rgba(var(--color-yellow-text),1)'
+        name:
+          - color: 'rgba(var(--color-yellow-text),1)'
+        img_cell:
+          - background-color: 'rgba(var(--color-yellow), 0.2)'
+        card:
+          - background-color: 'rgba(0,0,0,0)'
       value: 'on'
 ### LEGACY TEMPLATES ###
 ###### CHIPS ###
