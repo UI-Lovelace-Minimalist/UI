@@ -883,7 +883,7 @@ card_cover_with_buttons:
     item2:
       card:
         type: 'custom:button-card'
-        template: list_items
+        template: list_3_items
         custom_fields:
           item1:
             card:
@@ -993,7 +993,7 @@ card_media_player_with_controls:
     item2:
       card:
         type: 'custom:button-card'
-        template: list_items
+        template: list_3_items
         custom_fields:
           item1:
             card:
@@ -1452,11 +1452,51 @@ icon_info_line:
       - box-shadow: none
       - padding: 0px
   size: 100%
-list_items:
+list_2_items:
+  styles:
+    grid:
+      - grid-template-areas: '"item1 item2"'
+      - grid-template-columns: 1fr 1fr
+      - grid-template-rows: min-content
+      - column-gap: 7px
+    card:
+      - box-shadow: none
+      - padding: 0px
+list_3_items:
   styles:
     grid:
       - grid-template-areas: '"item1 item2 item3"'
       - grid-template-columns: 1fr 1fr 1fr
+      - grid-template-rows: min-content
+      - column-gap: 7px
+    card:
+      - box-shadow: none
+      - padding: 0px
+list_4_items:
+  styles:
+    grid:
+      - grid-template-areas: '"item1 item2 item3 item4"'
+      - grid-template-columns: 1fr 1fr 1fr 1fr
+      - grid-template-rows: min-content
+      - column-gap: 7px
+    card:
+      - box-shadow: none
+      - padding: 0px
+list_one_third_items:
+  styles:
+    grid:
+      - grid-template-areas: '"item1 item2"'
+      - grid-template-columns: 2fr 1fr
+      - grid-template-rows: min-content
+      - column-gap: 7px
+    card:
+      - box-shadow: none
+      - padding: 0px
+list_two_third_items:
+  styles:
+    grid:
+      - grid-template-areas: '"item1 item2"'
+      - grid-template-columns: 1fr 2fr
       - grid-template-rows: min-content
       - column-gap: 7px
     card:
@@ -1567,3 +1607,6 @@ scene_blue:
   template: vertical_buttons_blue
 scene_green:
   template: vertical_buttons_green
+### ITEMS ###
+list_items:
+  template: list_3_items
