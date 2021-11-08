@@ -41,7 +41,6 @@ chip_temperature:
     ]]]
 chip_icon_only:
   template: chips
-  icon: "[[[ return variables.ulm_chip_icon_only ? variables.ulm_chip_icon_only : variables.icon ]]]"
   label: |
     [[[
       var icon = '❔';
@@ -69,8 +68,8 @@ chip_icon_state:
 chip_icon_double_state:
   template: chips
   triggers_update:
-    - "[[[ variables.ulm_chip_icon_state_entity_1 ]]]"
-    - "[[[ variables.ulm_chip_icon_state_entity_2 ]]]"
+    - "[[[ variables.ulm_chip_icon_double_state_entity_1 ]]]"
+    - "[[[ variables.ulm_chip_icon_double_state_entity_2 ]]]"
   label: |
     [[[
       var icon = '❔';
@@ -79,11 +78,11 @@ chip_icon_double_state:
       } 
       var state1 = '';
       if (states[variables.ulm_chip_icon_double_state_entity_1].state){
-        var state = states[variables.ulm_chip_icon_double_state_entity_1].state;
+        var state1 = states[variables.ulm_chip_icon_double_state_entity_1].state;
       } 
       var state2 = '';
       if (states[variables.ulm_chip_icon_double_state_entity_2].state){
-        var state = states[variables.ulm_chip_icon_double_state_entity_2].state;
+        var state2 = states[variables.ulm_chip_icon_double_state_entity_2].state;
       } 
       return icon + ' ' + state1 + ' • ' + state2;
     ]]]
