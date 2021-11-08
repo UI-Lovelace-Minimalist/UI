@@ -41,50 +41,51 @@ chip_temperature:
     ]]]
 chip_icon_only:
   template: chips
-  variables:
-    icon: '❔'
-  show_icon: true
-  icon: "[[[ return variables.ulm_chip_icon_only ? variables.ulm_chip_icon_only : variables.icon ]]]"
-  styles:
-    grid:
-      - grid-template-areas: '"i"'
+  label: |
+    [[[
+      var icon = '❔';
+      if (variables.ulm_chip_icon_only){
+        var icon = variables.ulm_chip_icon_only;
+      } 
+      return icon;
+    ]]]
 chip_icon_state:
   template: chips
-  variables:
-    icon: "❔"
   triggers_update:
     - "[[[ variables.ulm_chip_icon_state_entity ]]]"
-  show_icon: true
-  show_label: true
-  icon: "[[[ return variables.ulm_chip_icon_state_icon ? variables.ulm_chip_icon_state_icon : variables.icon ]]]"
-  label: "[[[ return variables.ulm_chip_icon_state_entity ? states[variables.ulm_chip_icon_state_entity].state : '' ]]]"
-  styles:
-    label:
-      - justify-self: center
-      - padding: 0px 6px
-      - font-weight: bold
-      - font-size: 14px
-    grid:
-      - grid-template-areas: '"i l"'
+  label: |
+    [[[
+      var icon = '❔';
+      if (variables.ulm_chip_icon_state_icon){
+        var icon = variables.ulm_chip_icon_state_icon;
+      } 
+      var state = '';
+      if (states[variables.ulm_chip_icon_state_entity].state){
+        var state = states[variables.ulm_chip_icon_state_entity].state;
+      } 
+      return icon + ' ' + state;
+    ]]]
 chip_icon_double_state:
   template: chips
-  variables:
-    icon: "❔"
   triggers_update:
-    - "[[[ variables.ulm_chip_icon_state_entity_1 ]]]"
-    - "[[[ variables.ulm_chip_icon_state_entity_2 ]]]"
-  show_icon: true
-  show_label: true
-  icon: "[[[ return variables.ulm_chip_icon_double_state_icon ? variables.ulm_chip_icon_double_state_icon : variables.icon ]]]"
-  label: "[[[ return variables.ulm_chip_icon_double_state_entity_1 ? states[variables.ulm_chip_icon_double_state_entity_1].state + ' • ' + states[variables.ulm_chip_icon_double_state_entity_2].state : '' ]]]"
-  styles:
-    label:
-      - justify-self: center
-      - padding: 0px 6px
-      - font-weight: bold
-      - font-size: 14px
-    grid:
-      - grid-template-areas: '"i l"'
+    - "[[[ variables.ulm_chip_icon_double_state_entity_1 ]]]"
+    - "[[[ variables.ulm_chip_icon_double_state_entity_2 ]]]"
+  label: |
+    [[[
+      var icon = '❔';
+      if (variables.ulm_chip_icon_double_state_icon){
+        var icon = variables.ulm_chip_icon_double_state_icon;
+      } 
+      var state1 = '';
+      if (states[variables.ulm_chip_icon_double_state_entity_1].state){
+        var state1 = states[variables.ulm_chip_icon_double_state_entity_1].state;
+      } 
+      var state2 = '';
+      if (states[variables.ulm_chip_icon_double_state_entity_2].state){
+        var state2 = states[variables.ulm_chip_icon_double_state_entity_2].state;
+      } 
+      return icon + ' ' + state1 + ' • ' + state2;
+    ]]]
 chip_back:
   template: chips
   tap_action:
