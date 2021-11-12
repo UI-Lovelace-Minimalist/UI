@@ -347,6 +347,7 @@ card_light_slider:
     - ulm_language_variables
   variables:
     ulm_card_light_slider_name: "[[[ return entity.attributes.friendly_name ]]]"
+    ulm_popup_template: popup_default
   show_icon: false
   show_name: false
   show_label: false
@@ -373,8 +374,7 @@ card_light_slider:
         template:
           - icon_info
           - yellow_slider
-        variables:
-          ulm_popup_template: "[[[ return (variables.ulm_popup_template ? variables.ulm_popup_template : null ]]]"
+          - "[[[ return variables.ulm_popup_template ]]]"
         entity: "[[[ return entity.entity_id ]]]"
         label: >-
           [[[  
@@ -423,7 +423,7 @@ card_light_slider_collapse:
     - ulm_language_variables
   variables:
     ulm_card_light_slider_collapse_name: "[[[ return entity.attributes.friendly_name ]]]"
-    ulm_popup_card: popup_default
+    ulm_popup_template: popup_default
   show_icon: false
   show_name: false
   show_label: false
@@ -451,7 +451,7 @@ card_light_slider_collapse:
         template:
           - icon_info
           - yellow_slider
-          - "[[[ return variables.ulm_popup_card ]]]"
+          - "[[[ return variables.ulm_popup_template ]]]"
         entity: "[[[ return entity.entity_id ]]]"
         label: >-
           [[[  
@@ -1671,7 +1671,7 @@ card_1_line_4_actions_select_vacuum_fan_speed:
       - column-gap: 7px
       - justify-items: center
     img_cell:
-      - justify-items: center  
+      - justify-items: center
   custom_fields:
     item1:
       card:
@@ -1745,111 +1745,3 @@ card_1_line_4_actions_select_vacuum_fan_speed:
             - background-color: transparent
             - width: 42px
             - border-radius: 50%
-
-                  
-card_1_line_4_actions_select_vacuum_fan_speed_2:
-  show_name: false
-  show_icon: false
-  styles:
-    card:
-      - border-radius: 20px
-      - box-shadow: none
-      - padding: 12px
-      - background: transparent
-    grid:
-      - grid-template-areas: '"4items"'
-      - grid-template-columns: 1fr
-      - grid-template-rows: min-content
-  custom_fields:
-    4items:
-      card:      
-        type: custom:button-card
-        styles:
-          card:
-            - box-shadow: none
-            - padding: 0px
-            - border-radius: 21px
-            - pointer-events: none
-            - background-color: rgba(var(--color-theme),0.1)
-            - justify-items: center
-          grid:
-            - grid-template-areas: '"item1 item2 item3 item4"'
-            - grid-template-columns: 1fr 1fr 1fr 1fr
-            - grid-template-rows: min-content
-            - column-gap: 7px
-            - justify-items: center
-          img_cell:
-            - justify-items: center  
-        custom_fields:
-          item1:
-            card:
-              type: custom:button-card
-              template: widget_icon
-              entity: "[[[ return entity.entity_id ]]]"
-              icon: mdi:weather-sunny
-              state:
-                - styles:
-                    card:
-                      - background-color: "var(--card-background-color)"
-                      - box-shadow: var( --ha-card-box-shadow)
-                      - transform: scale(0.95)
-                  value: "heat"
-              styles:
-                card:
-                  - background-color: transparent
-                  - width: 42px
-                  - border-radius: 50%
-          item2:
-            card:
-              type: custom:button-card
-              template: widget_icon
-              entity: "[[[ return entity.entity_id ]]]"
-              icon: mdi:snowflake
-              state:
-                - styles:
-                    card:
-                      - background-color: "var(--card-background-color)"
-                      - box-shadow: var( --ha-card-box-shadow)
-                      - transform: scale(0.95)
-                  value: "cool"
-              styles:
-                card:
-                  - background-color: transparent
-                  - width: 42px
-                  - border-radius: 50%
-          item3:
-            card:
-              type: custom:button-card
-              template: widget_icon
-              entity: "[[[ return entity.entity_id ]]]"
-              icon: mdi:weather-windy
-              state:
-                - styles:
-                    card:
-                      - background-color: "var(--card-background-color)"
-                      - box-shadow: var( --ha-card-box-shadow)
-                      - transform: scale(0.95)
-                  value: "fan_only"
-              styles:
-                card:
-                  - background-color: transparent
-                  - width: 42px
-                  - border-radius: 50%
-          item4:
-            card:
-              type: custom:button-card
-              template: widget_icon
-              entity: "[[[ return entity.entity_id ]]]"
-              icon: mdi:water
-              state:
-                - styles:
-                    card:
-                      - background-color: "var(--card-background-color)"
-                      - box-shadow: var( --ha-card-box-shadow)
-                      - transform: scale(0.95)
-                  value: "dry"
-              styles:
-                card:
-                  - background-color: transparent
-                  - width: 42px
-                  - border-radius: 50%

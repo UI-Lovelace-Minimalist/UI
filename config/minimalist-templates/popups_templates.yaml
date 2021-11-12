@@ -113,99 +113,6 @@ popup_button_power:
     action: toggle
 
 ### POPUPS ###
-popup_2_entities_graph:
-  hold_action:
-    action: fire-dom-event
-    browser_mod:
-      command: popup
-      hide_header: true
-      card:
-        type: custom:button-card
-        template: popup_4_items
-        styles:
-          grid:
-            - grid-template-rows: 16vh 10vh 55vh 15vh
-        custom_fields:
-          item1:
-            card:
-              type: custom:button-card
-              template:
-                - popup_header
-                - ulm_language_variables
-              triggers_update: all
-              entity: "[[[ return entity.entity_id ]]]"
-              label: |-
-                [[[ 
-                  if (entity.state =='on') {
-                    return variables.ulm_on;
-                  } else {
-                    return variables.ulm_off;
-                  }
-                ]]]
-          item2:
-            card:
-              type: grid
-              columns: 2
-              square: false
-              cards:
-                - type: "custom:button-card"
-                  entity: "[[[ return variables.ulm_popup_2_entities_graph_sensor1 ]]]"
-                  label: >
-                    [[[ return states[variables.ulm_popup_2_entities_graph_sensor1].state + states[variables.ulm_popup_2_entities_graph_sensor1].attributes.unit_of_measurement ]]]
-                  template:
-                    - icon_info_bg
-                  styles:
-                    icon:
-                      - color: "var(--color-theme)"
-                - type: "custom:button-card"
-                  entity: "[[[ return variables.ulm_popup_2_entities_graph_sensor2 ]]]"
-                  label: >
-                    [[[ return states[variables.ulm_popup_2_entities_graph_sensor2].state + states[variables.ulm_popup_2_entities_graph_sensor2].attributes.unit_of_measurement ]]]
-                  template:
-                    - icon_info_bg
-                  styles:
-                    icon:
-                      - color: "var(--color-theme)"
-          item3:
-            card:
-              type: vertical-stack
-              cards:
-                - type: entities
-                  entities:
-                    - type: section
-                  card_mod:
-                    style: |
-                      ha-card{
-                        background: none !important;
-                        box-shadow: none !important;
-                        margin-bottom: -25px !important;
-                        text-align: start !important;
-                      }
-                - type: "custom:button-card"
-                  name: "[[[ return variables.ulm_popups_statistics ]]]"
-                  template: popup_subtitle
-                - type: "custom:mini-graph-card"
-                  entities:
-                    - entity: "[[[ return variables.ulm_popup_2_entities_graph_sensor ]]]"
-                  line_color: var(--info-color)
-                  height: 200
-                  hours_to_show: 168
-                  show:
-                    name: false
-                    icon: false
-                    legend: false
-                    state: false
-                  style: |
-                    ha-card {
-                      box-shadow: none !important;
-                      border-radius: var(--border-radius) !important;
-                      margin-bottom: 150px !important;
-                    }
-          item4:
-            card:
-              type: custom:button-card
-              template: popup_button_back
-
 popup_power_outlet:
   hold_action:
     action: fire-dom-event
@@ -351,22 +258,22 @@ popup_light:
                       - background: none
                       - box-shadow: none
                       - padding: 4%
-                    custom_fields:
-                      item2:
-                        - background-color: blue
-                        - border-radius: 12px
-                        - position: absolute
-                        - left: 64%
-                        - top: >
-                            [[[
-                              var bri = states[entity.entity_id].attributes.brightness;
-                              return Math.round(bri ? (80-(72*bri/256)) : '80') + '%';
-                            ]]]
-                        - height: 25px
-                        - width: 45px
-                        - font-size: 11px
-                        - line-height: 25px
-                        - color: white
+                    # custom_fields:
+                    #   item2:
+                    #     - background-color: blue
+                    #     - border-radius: 12px
+                    #     - position: absolute
+                    #     - left: 64%
+                    #     - top: >
+                    #         [[[
+                    #           var bri = states[entity.entity_id].attributes.brightness;
+                    #           return Math.round(bri ? (80-(72*bri/256)) : '80') + '%';
+                    #         ]]]
+                    #     - height: 25px
+                    #     - width: 45px
+                    #     - font-size: 11px
+                    #     - line-height: 25px
+                    #     - color: white
                   custom_fields:
                     item1:
                       card:
@@ -397,11 +304,11 @@ popup_light:
                             .on {
                               border: 1px solid rgba(var(--color-theme),0.3) !important;
                             }
-                    item2: >
-                      [[[
-                        var bri = states[entity.entity_id].attributes.brightness;
-                        return Math.round(bri ? (bri/256*100) : '0') + '%';
-                      ]]]
+                    # item2: >
+                    #   [[[
+                    #     var bri = states[entity.entity_id].attributes.brightness;
+                    #     return Math.round(bri ? (bri/256*100) : '0') + '%';
+                    #   ]]]
                 #####
                 color:
                   type: custom:light-entity-card
