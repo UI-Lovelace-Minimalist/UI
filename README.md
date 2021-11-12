@@ -87,6 +87,7 @@ Take a look here: [https://ui-lovelace-minimalist.netlify.app/](https://ui-lovel
   * [Title](#title)  
   * [Vertical buttons](#vertical-buttons)  
   * [Cards](#cards)   
+  * [Popups](#popups)  
   * [Language specific buttons](#language-specific-buttons)  
   * [Custom cards](#custom-cards)  
   * [Extend the "theme"](#extend-with-your-own-code)
@@ -142,17 +143,24 @@ In the list above #5 enhances the normal `cards` with a "second line", that is u
 * 2-line cards: These are cards with a second line for informations or controls, eg. your `cover controls`.
 * Custom cards: These are special cards, that you can install, only if needed. These cards are mostly developed and contributed to the repository. Eg. an `aircondition-card` that shows the state of your aircondition and buttons to control it.  
 
+### Popups   
+`Popups` are an optionnal art of this design and are based on browser-mod integration. With these `popups`you can overwrite the default more-info window.
+
+![Popups](./screenshots/popup_outlet.png) ![Popups](./screenshots/popup_light.png)
+
 ### Language specific buttons  
 Sometimes the language specific strings from Home Assistant aren't available for your button, so we added the possibility to use language specific strings over the template system.   
 
-### Custom cards  
-This "theme" is designed with an open structure in mind, that's why it is possible to add `custom-cards` without much hassle. A few `custom-cards` are readily available through the folder `custom-cards` in the repository.  
-`Custom-cards` are `cards`, that don't fit everywhere and therefor are not part of the standard installation, but can be easily added, if needed. Take an air-condition card. Not everybody has an air-condition. So why include this `card` as a default? And that's why we did a structure and system for `custom-cards`. Easily added, but only when needed!  
-And the best thing is: everybody can develop a cool `card` and can (not have to) share it afterwards with the community (hint, hint, the support thread is [here](https://community.home-assistant.io/t/lovelace-ui-minimalist/322687)).  
+### Custom cards and popups 
+This "theme" is designed with an open structure in mind, that's why it is possible to add `custom-cards` and `custom-popups` without much hassle. A few custom components are readily available through the folder `custom-cards` and `custom-popups` in the repository.  
+custom components don't fit everywhere and therefor are not part of the standard installation, but can be easily added, if needed. Take an air-condition card. Not everybody has an air-condition. So why include this `card` as a default? And that's why we did a structure and system for `custom-cards`. Easily added, but only when needed!  
+And the best thing is: everybody can develop a cool `card` or `popup and can (not have to) share it afterwards with the community (hint, hint, the support thread is [here](https://community.home-assistant.io/t/lovelace-ui-minimalist/322687)).  
 
-See a complete list of already included `custom-cards` in our [wiki](https://ui-lovelace-minimalist.netlify.app/usage/template_list). 
+See a complete list of already included `custom-cards` and `custom-popups` in our [wiki](https://ui-lovelace-minimalist.netlify.app/usage/template_list). 
 
 Find informations on how to develop a `custom-card` [here](https://ui-lovelace-minimalist.netlify.app/development/custom_card).  
+
+Find informations on how to develop a `custom-popup` [here](https://ui-lovelace-minimalist.netlify.app/development/custom_popup).  
 
 ### Extend with your own code  
 As we tried to be as modular as possible (and useful), it is easy to enhance or extend the code, we provide with your own definitions. That means for you, you can inherit every template to enhance it only with functions, you really want. No need to copy full blocks of code - just inherit and enhance only where changes are needed.  

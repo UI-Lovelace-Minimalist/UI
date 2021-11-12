@@ -132,8 +132,7 @@ popup_2_entities_graph:
               template:
                 - popup_header
                 - ulm_language_variables
-              triggers_update:
-                - "[[[ return entity.entity_id ]]]"
+              triggers_update: all
               entity: "[[[ return entity.entity_id ]]]"
               label: |-
                 [[[ 
@@ -226,8 +225,7 @@ popup_power_outlet:
               template:
                 - popup_header
                 - ulm_language_variables
-              triggers_update:
-                - "[[[ return entity.entity_id ]]]"
+              triggers_update: all
               entity: "[[[ return entity.entity_id ]]]"
               label: |-
                 [[[ 
@@ -310,8 +308,7 @@ popup_power_outlet:
                     type: "custom:button-card"
                     template: popup_button_power
                     entity: "[[[ return entity.entity_id ]]]"
-                    triggers_update:
-                      - "[[[ return entity.entity_id ]]]"
+                    triggers_update: all
 
 popup_light:
   hold_action:
@@ -332,8 +329,7 @@ popup_light:
               template:
                 - popup_header
                 - ulm_language_variables
-              triggers_update:
-                - "[[[ return entity.entity_id ]]]"
+              triggers_update: all
               entity: "[[[ return entity.entity_id ]]]"
               show_label: none
           item2:
@@ -485,162 +481,4 @@ popup_light:
                     type: "custom:button-card"
                     template: popup_button_power
                     entity: "[[[ return entity.entity_id ]]]"
-                    triggers_update:
-                      - "[[[ return entity.entity_id ]]]"
-
-popup_aircondition:
-  hold_action:
-    action: fire-dom-event
-    browser_mod:
-      command: popup
-      hide_header: true
-      card:
-        type: custom:button-card
-        template: popup_4_items
-        styles:
-          grid:
-            - grid-template-rows: 16vh 50vh 15vh 15vh
-        custom_fields:
-          item1:
-            card:
-              type: custom:button-card
-              template:
-                - popup_header
-                - ulm_language_variables
-              triggers_update:
-                - "[[[ return entity.entity_id ]]]"
-              entity: "[[[ return entity.entity_id ]]]"
-              label: "[[[
-                var temp = states[entity.entity_id].attributes.current_temperature;
-                return 'Température ' + temp + '°C'
-                ]]]"
-          item2:
-            card:
-              type: thermostat
-              entity: "[[[ return entity.entity_id ]]]"
-              card_mod:
-                style: |
-                  ha-card {
-                    background: none !important;
-                    box-shadow: none !important;
-                    padding: 0 0 20px 0 !important;
-                  }
-                  .more-info {
-                    display:none;
-                  }
-                  #info {
-                    display:none;
-                  }
-          item3:
-            card:
-              type: "custom:button-card"
-              template: card_1_line_4_actions_select_vacuum_fan_speed
-              entity: climate.hvac
-          item4:
-            card:
-              type: custom:button-card
-              template: popup_list_items
-              custom_fields:
-                item1:
-                  card:
-                    type: "custom:button-card"
-                    template: popup_button_back
-                item2:
-                  card:
-                    type: "custom:button-card"
-                    template: popup_button_power
-                    entity: "[[[ return entity.entity_id ]]]"
-                    triggers_update:
-                      - "[[[ return entity.entity_id ]]]"
-########################################
-popup_jojo:
-  tap_action:
-    action: fire-dom-event
-    browser_mod:
-      command: popup
-      hide_header: true
-      card:
-        type: custom:button-card
-        template: popup_4_items
-        custom_fields:
-          item1:
-            card:
-              type: custom:button-card
-              template: popup_header
-              icon: "[[[ return variables.ulm_popup_header_icon ]]]"
-              name: "[[[ return variables.ulm_popup_header_title ]]]"
-              label: "[[[ return variables.ulm_popup_header_label ]]]"
-          item2:
-            card:
-              type: grid
-              columns: 2
-              square: false
-              cards:
-                - type: "custom:button-card"
-                  entity: "[[[ return variables.ulm_entity1 ]]]"
-                  label: >
-                    [[[ return states[variables.ulm_entity1].state + states[variables.ulm_entity1].attributes.unit_of_measurement ]]]
-                  name: "[[[ return variables.ulm_entity1_name ]]]"
-                  icon: "[[[ return variables.ulm_entity1_icon ]]]"
-                  template:
-                    - icon_info_bg
-                  styles:
-                    icon:
-                      - color: "var(--color-theme)"
-                - type: "custom:button-card"
-                  entity: "[[[ return variables.ulm_entity2 ]]]"
-                  label: >
-                    [[[ return states[variables.ulm_entity2].state + states[variables.ulm_entity2].attributes.unit_of_measurement ]]]
-                  name: "[[[ return variables.ulm_entity2_name ]]]"
-                  icon: "[[[ return variables.ulm_entity2_icon ]]]"
-                  template:
-                    - icon_info_bg
-                  styles:
-                    icon:
-                      - color: "var(--color-theme)"
-          item3:
-            card:
-              type: vertical-stack
-              cards:
-                - type: entities
-                  entities:
-                    - type: section
-                      label: Statistiques
-                  card_mod:
-                    style: |
-                      ha-card{
-                        background: none !important;
-                        box-shadow: none !important;
-                        margin-bottom: -25px !important;
-                        text-align: start !important;
-                      }
-                - type: custom:apexcharts-card
-                  graph_span: 7d
-                  all_series_config:
-                    stroke_width: 3
-                    type: area
-                    opacity: 0.2
-                  series:
-                    - entity: "[[[ return variables.ulm_entity1 ]]]"
-                      color: blue
-                      fill_raw: last
-                  card_mod:
-                    style: |
-                      ha-card{
-                        background: none !important;
-                        box-shadow: none !important;
-                      }
-                      .wrapper{
-                        background: var(--card-background-color) !important;
-                        border-radius: 20px !important;
-                        box-shadow: var(--box-shadow) !important;
-                      }
-          item4:
-            card:
-              type: custom:button-card
-              template: popup_list_items
-              custom_fields:
-                item2:
-                  card:
-                    type: "custom:button-card"
-                    template: popup_button_back
+                    triggers_update: all
