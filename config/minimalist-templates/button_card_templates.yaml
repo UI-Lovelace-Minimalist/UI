@@ -86,6 +86,28 @@ chip_icon_double_state:
       } 
       return icon + ' ' + state1 + ' • ' + state2;
     ]]]
+chip_mdi_icon_only:
+  template: chips
+  tap_action:
+    action: more-info
+    entity: "[[[ return variables.ulm_chip_mdi_icon_only_entity ]]]"
+  show_icon: true
+  icon: "[[[ return variables.ulm_chip_mdi_icon_only_icon ]]]"
+  styles:
+    grid:
+      - grid-template-areas: '"i"'
+chip_mdi_icon_state:
+  template: chips
+  tap_action:
+    action: more-info
+    entity: "[[[ return variables.ulm_chip_mdi_icon_state_entity ]]]"
+  triggers_update: all
+  show_icon: true
+  icon: "[[[ return variables.ulm_chip_mdi_icon_state_icon ]]]"
+  label: "[[[ return states[variables.ulm_chip_mdi_icon_state_entity].state ]]]"
+  styles:
+    grid:
+      - grid-template-areas: '"i l"'
 chip_back:
   template: chips
   tap_action:
