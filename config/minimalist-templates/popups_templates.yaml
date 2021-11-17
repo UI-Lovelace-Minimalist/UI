@@ -12,12 +12,20 @@ popup_4_items:
       - background: var(--primary-background-color)
       - box-shadow: none
       - padding: 4%
+    custom_fields:
+      item1:
+        - align-self: start
+      item2:
+        - align-self: start
+      item3:
+        - align-self: start
+      item4:
+        - align-self: end
 
 popup_list_items:
   template: list_items
   styles:
     card:
-      - padding-top: 30px
       - background: none
 
 popup_subtitle:
@@ -70,8 +78,6 @@ popup_header:
       - font-weight: bold
       - font-size: 12px
       - filter: opacity(40%)
-    card:
-      - padding-bottom: 30px
     icon:
       - color: var(--color-theme)
 
@@ -112,6 +118,29 @@ popup_button_power:
   tap_action:
     action: toggle
 
+popup_button_airconditionner:
+  template: widget_icon
+  variables:
+    ulm_popup_button_airconditionner_state: "off"
+  styles:
+    card:
+      - background-color: transparent
+      - width: 42px
+      - border-radius: 50%
+  state:
+    - styles:
+        card:
+          - background-color: "var(--card-background-color)"
+          - box-shadow: var( --ha-card-box-shadow)
+          - transform: scale(0.95)
+      value: "[[[ return variables.ulm_popup_button_airconditionner_state ]]]"
+  tap_action:
+    action: call-service
+    service: climate.set_hvac_mode
+    service_data:
+      entity_id: climate.hvac
+      hvac_mode: "[[[ return variables.ulm_popup_button_airconditionner_state ]]]"
+
 ### POPUPS ###
 popup_power_outlet:
   hold_action:
@@ -122,9 +151,12 @@ popup_power_outlet:
       card:
         type: custom:button-card
         template: popup_4_items
-        styles:
-          grid:
-            - grid-template-rows: 16vh 10vh 55vh 15vh
+        extra_styles: |
+          @media (max-width: 800px) {
+            #container {
+                grid-template-rows: 16vh 10vh 55vh 15vh !important;
+            }
+          }
         custom_fields:
           item1:
             card:
@@ -132,7 +164,6 @@ popup_power_outlet:
               template:
                 - popup_header
                 - ulm_language_variables
-              triggers_update: all
               entity: "[[[ return entity.entity_id ]]]"
               label: |-
                 [[[ 
@@ -199,7 +230,7 @@ popup_power_outlet:
                     ha-card {
                       box-shadow: none !important;
                       border-radius: var(--border-radius) !important;
-                      margin-bottom: 150px !important;
+                      /* margin-bottom: 150px !important; */
                     }
           item4:
             card:
@@ -225,9 +256,12 @@ popup_light:
       card:
         type: custom:button-card
         template: popup_4_items
-        styles:
-          grid:
-            - grid-template-rows: 16vh 50vh 15vh 15vh
+        extra_styles: |
+          @media (max-width: 800px) {
+            #container {
+                grid-template-rows: 16vh 50vh 15vh 15vh !important;
+            }
+          }
         custom_fields:
           item1:
             card:
@@ -235,7 +269,6 @@ popup_light:
               template:
                 - popup_header
                 - ulm_language_variables
-              triggers_update: all
               entity: "[[[ return entity.entity_id ]]]"
               show_label: none
           item2:
@@ -373,6 +406,115 @@ popup_light:
                             - color: "rgba(var(--color-blue),1)"
                           img_cell:
                             - background-color: "rgba(var(--color-blue), 0.2)"
+          item4:
+            card:
+              type: custom:button-card
+              template: popup_list_items
+              custom_fields:
+                item1:
+                  card:
+                    type: "custom:button-card"
+                    template: popup_button_back
+                item2:
+                  card:
+                    type: "custom:button-card"
+                    template: popup_button_power
+                    entity: "[[[ return entity.entity_id ]]]"
+
+popup_aircondition:
+  hold_action:
+    action: fire-dom-event
+    browser_mod:
+      command: popup
+      hide_header: true
+      card:
+        type: custom:button-card
+        template: popup_4_items
+        extra_styles: |
+          @media (max-width: 800px) {
+            #container {
+                grid-template-rows: 16vh 50vh 15vh 15vh !important;
+            }
+          }
+        custom_fields:
+          item1:
+            card:
+              type: custom:button-card
+              template:
+                - popup_header
+                - ulm_language_variables
+              entity: "[[[ return entity.entity_id ]]]"
+              label: "[[[
+                var temp = states[entity.entity_id].attributes.current_temperature;
+                return variables.ulm_popups_temperature + ' ' + temp + variables.ulm_popups_temperature_unit;
+                ]]]"
+          item2:
+            card:
+              type: thermostat
+              entity: "[[[ return entity.entity_id ]]]"
+              card_mod:
+                style: |
+                  ha-card {
+                    background: none !important;
+                    box-shadow: none !important;
+                    padding: 0 0 20px 0 !important;
+                  }
+                  .more-info {
+                    display:none;
+                  }
+                  #info {
+                    display:none;
+                  }
+                  .type-thermostat {
+                    --mode-color: rgb(var(--color-blue)) !important;
+                  }
+          item3:
+            card:
+              type: custom:button-card
+              styles:
+                card:
+                  - box-shadow: none
+                  - padding: 0px
+                  - border-radius: 21px
+                  - background-color: rgba(var(--color-theme),0.1)
+                grid:
+                  - grid-template-areas: '"item1 item2 item3 item4"'
+                  - grid-template-columns: 1fr 1fr 1fr 1fr
+                  - grid-template-rows: min-content
+                  - justify-items: center
+              custom_fields:
+                item1:
+                  card:
+                    type: custom:button-card
+                    template: popup_button_airconditionner
+                    variables:
+                      ulm_popup_button_airconditionner_state: heat
+                    entity: "[[[ return entity.entity_id ]]]"
+                    icon: mdi:weather-sunny
+                item2:
+                  card:
+                    type: custom:button-card
+                    template: popup_button_airconditionner
+                    variables:
+                      ulm_popup_button_airconditionner_state: cool
+                    entity: "[[[ return entity.entity_id ]]]"
+                    icon: mdi:snowflake
+                item3:
+                  card:
+                    type: custom:button-card
+                    template: popup_button_airconditionner
+                    variables:
+                      ulm_popup_button_airconditionner_state: fan_only
+                    entity: "[[[ return entity.entity_id ]]]"
+                    icon: mdi:weather-windy
+                item4:
+                  card:
+                    type: custom:button-card
+                    template: popup_button_airconditionner
+                    variables:
+                      ulm_popup_button_airconditionner_state: dry
+                    entity: "[[[ return entity.entity_id ]]]"
+                    icon: mdi:water
           item4:
             card:
               type: custom:button-card
