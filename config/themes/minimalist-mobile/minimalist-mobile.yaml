@@ -37,15 +37,19 @@ minimalist-mobile:
       color-background-blue : 250, 250, 250
       color-background-green : 250, 250, 250
       color-background-red : 250, 250, 250
+      color-background-pink : 250, 250, 250
+      color-background-purple : 250, 250, 250
       color-yellow-text: 'var(--primary-text-color)'
       color-blue-text: 'var(--primary-text-color)'
       color-green-text: 'var(--primary-text-color)'
       color-red-text: 'var(--primary-text-color)'
+      color-pink-text: 'var(--primary-text-color)'
+      color-purple-text: 'var(--primary-text-color)'
       opacity-bg: '1'
       #background and sidebar
       card-background-color: '#FAFAFA'
       primary-background-color: '#EFEFEF'
-      secondary-background-color: '#EFEFEF' 
+      secondary-background-color: '#EFEFEF'
       #header
       app-header-text-color: 'var(--primary-text-color)'
       app-header-background-color: 'var(--primary-background-color)'
@@ -87,17 +91,21 @@ minimalist-mobile:
       color-background-blue : 'var(--color-blue)'
       color-background-green : 'var(--color-green)'
       color-background-red : 'var(--color-red)'
+      color-background-pink : 'var(--color-pink)'
+      color-background-purple : 'var(--color-purple)'
       color-yellow-text: 'var(--color-yellow)'
       color-blue-text: 'var(--color-blue)'
       color-green-text: 'var(--color-green)'
       color-red-text: 'var(--color-red)'
+      color-pink-text: 'var(--color-pink)'
+      color-purple-text: 'var(--color-purple)'
       opacity-bg: '0.1'
       #floating button text color
       mdc-theme-on-secondary: 'var(--card-background-color)'
       #background and sidebar
       card-background-color: '#1D1D1D'
       primary-background-color: '#121212'
-      secondary-background-color: '#121212' 
+      secondary-background-color: '#121212'
       #header
       app-header-text-color: 'var(--primary-text-color)'
       app-header-background-color: 'var(--primary-background-color)'
