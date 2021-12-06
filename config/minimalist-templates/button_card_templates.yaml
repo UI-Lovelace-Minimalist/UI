@@ -161,11 +161,11 @@ card_title:
       - font-weight: bold
       - font-size: '1rem'
       - opacity: '0.4'
-### VERTICAL BUTTONS (fka SCENES) ###        
+### VERTICAL BUTTONS (fka SCENES) ###
 vertical_buttons:
   show_label: true
   label: "[[[ return (entity.attributes.value )]]]"
-  styles: 
+  styles:
     icon:
       - color: 'rgba(var(--color-theme),0.2)'
     label:
@@ -192,43 +192,38 @@ vertical_buttons:
       - box-shadow: var(--box-shadow)
       - padding: 10px 0px 8px 0px
   size: 20px
-vertical_buttons_blue:
+
+vertical_buttons_custom_state:
   template: vertical_buttons
   variables:
-    state: "default"
+    state: 'default'
+    color: 'blue'  # blue, red, green, yellow, purple, pink
+  show_last_changed: false
+  name: '[[[ return variables.state ]]]'
+  styles:
+    name:
+      - text-transform: capitalize
   state:
     - operator: template
-      value: "[[[ return states['input_select.localisation_thomas'].state == variables.state ]]]"
+      value: '[[[ return entity.state == variables.state ]]]'
       styles:
         icon:
-          - color: 'rgba(var(--color-blue),1)'
+          - color: '[[[ return `rgba(var(--color-${variables.color}), 1)`; ]]]'
         label:
-          - color: 'rgba(var(--color-blue-text),1)'
+          - color: '[[[ return `rgba(var(--color-${variables.color}-text), 1)`; ]]]'
         name:
-          - color: 'rgba(var(--color-blue-text),1)'
+          - color: '[[[ return `rgba(var(--color-${variables.color}-text), 1)`; ]]]'
         img_cell:
-          - background-color: 'rgba(var(--color-blue), 0.2)'
+          - background-color: '[[[ return `rgba(var(--color-${variables.color}), 0.2)`; ]]]'
         card:
-          - background-color: 'rgba(var(--color-background-blue), var(--opacity-bg))'
-vertical_buttons_green:
-  variables:
-    state: "default"
-  template: 
-    - vertical_buttons
-  state:
-    - operator: template
-      value: "[[[ return states['input_select.localisation_thomas'].state == variables.state ]]]"
-      styles:
-        icon:
-          - color: 'rgba(var(--color-green),1)'
-        label:
-          - color: 'rgba(var(--color-green-text),1)'
-        name:
-          - color: 'rgba(var(--color-green-text),1)'
-        img_cell:
-          - background-color: 'rgba(var(--color-green), 0.2)'
-        card:
-          - background-color: 'rgba(var(--color-background-green), var(--opacity-bg))'
+          - background-color: '[[[ return `rgba(var(--color-background-${variables.color}), var(--opacity-bg))`; ]]]'
+  tap_action:
+    action: call-service
+    service: input_select.select_option
+    service_data:
+      entity_id: '[[[ return entity.entity_id ]]]'
+      option: '[[[ return variables.state ]]]'
+
 ### CARDS ###
 card_generic:
   template: 
@@ -1642,10 +1637,3 @@ media_buttons:
   variables:
     ulm_card_media_player_with_controls_entity: "[[[ return variables.entity ]]]"
     ulm_card_media_player_with_controls_name: "[[[ return variables.name ]]]"
-### SCENES ###
-scene:
-  template: vertical_buttons
-scene_blue:
-  template: vertical_buttons_blue
-scene_green:
-  template: vertical_buttons_green
