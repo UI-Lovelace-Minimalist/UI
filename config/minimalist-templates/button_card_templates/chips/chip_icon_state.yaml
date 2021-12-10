@@ -1,0 +1,17 @@
+### Chip Icon State ###
+chip_icon_state:
+  template: chips
+  triggers_update:
+    - "[[[ variables.ulm_chip_icon_state_entity ]]]"
+  label: |
+    [[[
+      var icon = '❔';
+      if (variables.ulm_chip_icon_state_icon){
+        var icon = variables.ulm_chip_icon_state_icon;
+      } 
+      var state = '';
+      if (states[variables.ulm_chip_icon_state_entity].state){
+        var state = states[variables.ulm_chip_icon_state_entity].state;
+      } 
+      return icon + ' ' + state;
+    ]]]

@@ -1,0 +1,22 @@
+### Chip Icon Double State ###
+chip_icon_double_state:
+  template: chips
+  triggers_update:
+    - "[[[ variables.ulm_chip_icon_double_state_entity_1 ]]]"
+    - "[[[ variables.ulm_chip_icon_double_state_entity_2 ]]]"
+  label: |
+    [[[
+      var icon = '❔';
+      if (variables.ulm_chip_icon_double_state_icon){
+        var icon = variables.ulm_chip_icon_double_state_icon;
+      } 
+      var state1 = '';
+      if (states[variables.ulm_chip_icon_double_state_entity_1].state){
+        var state1 = states[variables.ulm_chip_icon_double_state_entity_1].state;
+      } 
+      var state2 = '';
+      if (states[variables.ulm_chip_icon_double_state_entity_2].state){
+        var state2 = states[variables.ulm_chip_icon_double_state_entity_2].state;
+      } 
+      return icon + ' ' + state1 + ' • ' + state2;
+    ]]]
