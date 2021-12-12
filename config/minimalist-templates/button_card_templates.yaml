@@ -1,7 +1,7 @@
 ### CHIPS ###
 chip_temperature:
   template: chips
-  triggers_update: 
+  triggers_update:
     - "[[[ variables.ulm_chip_temperature_weather ]]]"
     - "[[[ variables.ulm_chip_temperature_outside ]]]"
     - "[[[ variables.ulm_chip_temperature_inside ]]]"
@@ -37,7 +37,15 @@ chip_temperature:
       } else if(states[variables.ulm_chip_temperature_weather].state == 'windy'){
         var icon = '🌪️';
       }
-      return icon + ' ' + states[variables.ulm_chip_temperature_outside].state + '° / ' + states[variables.ulm_chip_temperature_inside].state + '°' ;
+      function convertTemperature(temp) {
+        if (parseFloat(temp) == temp && Math.floor(temp) != temp) {
+            return parseFloat(temp).toFixed(1);
+        }
+        return temp;
+      }
+      var outside_temp = states[variables.ulm_chip_temperature_outside].state;
+      var inside_temp = states[variables.ulm_chip_temperature_inside].state;
+      return icon + ' ' + convertTemperature(outside_temp) + '° / ' + convertTemperature(inside_temp) + '°' ;
     ]]]
 chip_icon_only:
   template: chips
@@ -46,7 +54,7 @@ chip_icon_only:
       var icon = '❔';
       if (variables.ulm_chip_icon_only){
         var icon = variables.ulm_chip_icon_only;
-      } 
+      }
       return icon;
     ]]]
 chip_icon_state:
@@ -58,11 +66,11 @@ chip_icon_state:
       var icon = '❔';
       if (variables.ulm_chip_icon_state_icon){
         var icon = variables.ulm_chip_icon_state_icon;
-      } 
+      }
       var state = '';
       if (states[variables.ulm_chip_icon_state_entity].state){
         var state = states[variables.ulm_chip_icon_state_entity].state;
-      } 
+      }
       return icon + ' ' + state;
     ]]]
 chip_icon_double_state:
@@ -75,15 +83,15 @@ chip_icon_double_state:
       var icon = '❔';
       if (variables.ulm_chip_icon_double_state_icon){
         var icon = variables.ulm_chip_icon_double_state_icon;
-      } 
+      }
       var state1 = '';
       if (states[variables.ulm_chip_icon_double_state_entity_1].state){
         var state1 = states[variables.ulm_chip_icon_double_state_entity_1].state;
-      } 
+      }
       var state2 = '';
       if (states[variables.ulm_chip_icon_double_state_entity_2].state){
         var state2 = states[variables.ulm_chip_icon_double_state_entity_2].state;
-      } 
+      }
       return icon + ' ' + state1 + ' • ' + state2;
     ]]]
 chip_back:
@@ -107,7 +115,7 @@ chip_presence_detection:
       return '🏠 ' +  states[variables.ulm_chip_presence_counter_residents].state + guests;
     ]]]
 chip_power_consumption:
-  template: 
+  template:
     - chips
     - ulm_language_variables
   triggers_update:
@@ -161,11 +169,11 @@ card_title:
       - font-weight: bold
       - font-size: '1rem'
       - opacity: '0.4'
-### VERTICAL BUTTONS (fka SCENES) ###        
+### VERTICAL BUTTONS (fka SCENES) ###
 vertical_buttons:
   show_label: true
   label: "[[[ return (entity.attributes.value )]]]"
-  styles: 
+  styles:
     icon:
       - color: 'rgba(var(--color-theme),0.2)'
     label:
@@ -213,7 +221,7 @@ vertical_buttons_blue:
 vertical_buttons_green:
   variables:
     state: "default"
-  template: 
+  template:
     - vertical_buttons
   state:
     - operator: template
@@ -231,7 +239,7 @@ vertical_buttons_green:
           - background-color: 'rgba(var(--color-background-green), var(--opacity-bg))'
 ### CARDS ###
 card_generic:
-  template: 
+  template:
     - icon_info_bg
     - ulm_language_variables
   label: >
@@ -275,7 +283,7 @@ card_generic:
       - grid-template-columns: min-content auto
       - grid-template-rows: min-content min-content
 card_generic_swap:
-  template: 
+  template:
     - icon_info_bg
     - ulm_language_variables
   label: >
@@ -319,7 +327,7 @@ card_generic_swap:
       - grid-template-columns: min-content auto
       - grid-template-rows: min-content min-content
 card_light:
-  template: 
+  template:
     - icon_info_bg
     - yellow
     - ulm_language_variables
@@ -328,24 +336,24 @@ card_light:
   hold_action:
     action: more-info
   label: >-
-    [[[ 
+    [[[
       if (entity.state !='unavailable'){
         if (entity.state =='off'){
-          return variables.ulm_off;  
+          return variables.ulm_off;
         } else if (entity.state == 'on'){
           if (entity.attributes.brightness != null){
             var bri = Math.round(entity.attributes.brightness / 2.55);
             return (bri ? bri : '0') + '%';
           } else {
             return variables.ulm_on
-          } 
+          }
         }
       } else {
         return variables.ulm_unavailable;
       }
     ]]]
 card_light_slider:
-  template: 
+  template:
     - ulm_language_variables
   variables:
     ulm_card_light_slider_name: "[[[ return entity.attributes.friendly_name ]]]"
@@ -377,17 +385,17 @@ card_light_slider:
           - yellow_slider
         entity: "[[[ return entity.entity_id ]]]"
         label: >-
-          [[[  
+          [[[
             if (entity.state !='unavailable'){
               if (entity.state =='off'){
-                return variables.ulm_off;  
+                return variables.ulm_off;
               } else if (entity.state == 'on'){
                 if (entity.attributes.brightness != null){
                   var bri = Math.round(entity.attributes.brightness / 2.55);
                   return (bri ? bri : '0') + '%';
                 } else {
                   return variables.ulm_on
-                } 
+                }
               }
             } else {
               return variables.ulm_unavailable;
@@ -410,7 +418,7 @@ card_light_slider:
         mainSliderColorOff: rgba(var(--color-theme),0.05)
         secondarySliderColorOff: rgba(var(--color-theme),0.05)
         thumbHorizontalPadding: '0px'
-        thumbVerticalPadding: '0px'   
+        thumbVerticalPadding: '0px'
         thumbWidth: 0px
         card_mod:
         style: |
@@ -419,7 +427,7 @@ card_light_slider:
             box-shadow: none;
           }
 card_light_slider_collapse:
-  template: 
+  template:
     - ulm_language_variables
   variables:
     ulm_card_light_slider_collapse_name: "[[[ return entity.attributes.friendly_name ]]]"
@@ -452,17 +460,17 @@ card_light_slider_collapse:
           - yellow_slider
         entity: "[[[ return entity.entity_id ]]]"
         label: >-
-          [[[  
+          [[[
             if (entity.state !='unavailable'){
               if (entity.state =='off'){
-                return variables.ulm_off;  
+                return variables.ulm_off;
               } else if (entity.state == 'on'){
                 if (entity.attributes.brightness != null){
                   var bri = Math.round(entity.attributes.brightness / 2.55);
                   return (bri ? bri : '0') + '%';
                 } else {
                   return variables.ulm_on
-                } 
+                }
               }
             } else {
               return variables.ulm_unavailable;
@@ -490,7 +498,7 @@ card_light_slider_collapse:
           mainSliderColorOff: rgba(var(--color-theme),0.05)
           secondarySliderColorOff: rgba(var(--color-theme),0.05)
           thumbHorizontalPadding: '0px'
-          thumbVerticalPadding: '0px'   
+          thumbVerticalPadding: '0px'
           thumbWidth: 0px
           card_mod:
           style: |
@@ -499,7 +507,7 @@ card_light_slider_collapse:
               box-shadow: none;
             }
 card_light_slider_horizontal:
-  template: 
+  template:
     - ulm_language_variables
   variables:
     ulm_card_light_slider_horizontal_name: "[[[ return entity.attributes.friendly_name ]]]"
@@ -530,17 +538,17 @@ card_light_slider_horizontal:
           - yellow_slider
         entity: "[[[ return entity.entity_id ]]]"
         label: >-
-          [[[  
+          [[[
             if (entity.state !='unavailable'){
               if (entity.state =='off'){
-                return variables.ulm_off;  
+                return variables.ulm_off;
               } else if (entity.state == 'on'){
                 if (entity.attributes.brightness != null){
                   var bri = Math.round(entity.attributes.brightness / 2.55);
                   return (bri ? bri : '0') + '%';
                 } else {
                   return variables.ulm_on
-                } 
+                }
               }
             } else {
               return variables.ulm_unavailable;
@@ -563,7 +571,7 @@ card_light_slider_horizontal:
         mainSliderColorOff: rgba(var(--color-theme),0.05)
         secondarySliderColorOff: rgba(var(--color-theme),0.05)
         thumbHorizontalPadding: '0px'
-        thumbVerticalPadding: '0px'   
+        thumbVerticalPadding: '0px'
         thumbWidth: 0px
         card_mod:
         style: |
@@ -593,18 +601,18 @@ card_power_outlet:
       }
     ]]]
 card_binary_sensor:
-  template: 
+  template:
     - icon_info_bg
     - blue
   name: "[[[ return entity.attributes.friendly_name != '' ? entity.attributes.friendly_name : entity.entity_id ]]]"
   show_last_changed: true
 card_binary_sensor_alert:
-  template: 
+  template:
     - icon_info_alert
   name: "[[[ return entity.attributes.friendly_name != '' ? entity.attributes.friendly_name : entity.entity_id ]]]"
   show_last_changed: true
 card_input_boolean:
-  template: 
+  template:
     - icon_info_bg
     - ulm_language_variables
     - blue
@@ -622,7 +630,7 @@ card_input_boolean:
       }
     ]]]
 card_navigate:
-  template: 
+  template:
     - icon_only
     - blue_no_state
   tap_action:
@@ -672,7 +680,7 @@ card_media_player:
       return icon;
     ]]]
   label: |
-    [[[ 
+    [[[
         if (entity.state == 'off'){
           return variables.ulm_off;
         } else {
@@ -684,7 +692,7 @@ card_media_player:
       value: "[[[ return entity.state != 'off' ]]]"
       name: "[[[ return states[entity.entity_id].attributes.media_title; ]]]"
       label: |
-        [[[ 
+        [[[
           var label = variables.ulm_on;
           if(states[entity.entity_id].attributes.media_album_name){
             var label = states[entity.entity_id].attributes.media_album_name;
@@ -717,7 +725,7 @@ card_media_player_with_control:
         return icon;
     ]]]
   label: |
-    [[[ 
+    [[[
         if (entity.state == 'off'){
           return variables.ulm_off;
         } else {
@@ -729,7 +737,7 @@ card_media_player_with_control:
       value: "[[[ return entity.state != 'off' ]]]"
       name: "[[[ return states[entity.entity_id].attributes.media_title; ]]]"
       label: |
-        [[[ 
+        [[[
             var label = variables.ulm_on;
             if(states[entity.entity_id].attributes.media_album_name){
               var label = states[entity.entity_id].attributes.media_album_name;
@@ -737,7 +745,7 @@ card_media_player_with_control:
             return label;
         ]]]
       styles:
-        label: 
+        label:
           - color: white
           - filter: opacity(100%)
         img_cell:
@@ -848,7 +856,7 @@ card_person:
     icon:
       - color: 'rgba(var(--color-theme),0.9)'
       - width: >
-          [[[ 
+          [[[
             if (variables.ulm_card_person_use_entity_picture != true){
               return '20px';
             } else {
@@ -856,7 +864,7 @@ card_person:
             }
           ]]]
       - place-self: >
-          [[[ 
+          [[[
             if (variables.ulm_card_person_use_entity_picture != true){
               return 'center';
             } else {
@@ -900,7 +908,7 @@ card_person:
         }
       ]]]
 card_script:
-  template: 
+  template:
     - icon_only
   label: "[[[ return variables.ulm_card_script_title; ]]]"
   icon: "[[[ return variables.ulm_card_script_icon; ]]]"
@@ -1002,7 +1010,7 @@ card_graph:
     item1:
       card:
         type: 'custom:button-card'
-        template: 
+        template:
           - icon_info
           - card_generic
         styles:
@@ -1334,7 +1342,7 @@ icon_info:
       - grid-template-columns: min-content auto
       - grid-template-rows: min-content min-content
     card:
-      - border-radius: 21px 8px 8px 21px 
+      - border-radius: 21px 8px 8px 21px
       - box-shadow: none
       - padding: 0px
       # - background-color: 'rgba(var(--color-theme),0)'
@@ -1621,7 +1629,7 @@ outlet:
 cover_buttons:
   template: card_cover_with_buttons
   variables:
-    ulm_card_cover_with_buttons_name: 
+    ulm_card_cover_with_buttons_name:
     ulm_card_cover_with_buttons_entity:
 graph:
   template: card_graph
