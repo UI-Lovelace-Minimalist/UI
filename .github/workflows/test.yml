@@ -23,10 +23,9 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/jacoco-merge@v1
+      - uses: cprudhom/jacoco-merge@v1
         with:
           exec-file: > 
-            mod1/target/jacoco.exec
-            mod2/target/jacoco.exec
+            UI/config/minimalist-templates/button_card_templates/2-line_cards/card_cover_with_buttons.yaml
           dest-file:
-            target/jacoco.exec
+            UI/config/minimalist-templates
