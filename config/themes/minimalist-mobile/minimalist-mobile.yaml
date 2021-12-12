@@ -8,11 +8,11 @@ minimalist-mobile:
   info-color: 'var(--google-blue)'
   divider-color: 'rgba(var(--color-theme),.12)'
   accent-color: 'var(--google-yellow)'
-  card-mod-theme: mobile
+  card-mod-theme: minimalist-mobile
   card-mod-root: |
     app-toolbar {
       display: none;
-    }
+    } 
   modes:
     light:
       #text
