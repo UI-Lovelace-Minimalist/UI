@@ -836,6 +836,7 @@ card_person:
     ulm_card_person_zone2: ''
   tap_action:
     action: more-info
+    entity: "[[[ return variables.ulm_card_person_entity; ]]]"
   show_label: true
   show_name: true
   label: "[[[ return states[variables.ulm_card_person_entity].state ]]]"
