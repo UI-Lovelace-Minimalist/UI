@@ -1,10 +1,7 @@
 ### CHIPS ###
 chip_temperature:
   template: chips
-  triggers_update: 
-    - "[[[ variables.ulm_chip_temperature_weather ]]]"
-    - "[[[ variables.ulm_chip_temperature_outside ]]]"
-    - "[[[ variables.ulm_chip_temperature_inside ]]]"
+  triggers_update: all
   label: |
     [[[
       var icon = '🌡️';
@@ -51,8 +48,7 @@ chip_icon_only:
     ]]]
 chip_icon_state:
   template: chips
-  triggers_update:
-    - "[[[ variables.ulm_chip_icon_state_entity ]]]"
+  triggers_update: all
   label: |
     [[[
       var icon = '❔';
@@ -67,9 +63,7 @@ chip_icon_state:
     ]]]
 chip_icon_double_state:
   template: chips
-  triggers_update:
-    - "[[[ variables.ulm_chip_icon_double_state_entity_1 ]]]"
-    - "[[[ variables.ulm_chip_icon_double_state_entity_2 ]]]"
+  triggers_update: all
   label: |
     [[[
       var icon = '❔';
@@ -110,8 +104,7 @@ chip_power_consumption:
   template: 
     - chips
     - ulm_language_variables
-  triggers_update:
-    - "[[[ variables.ulm_chip_electric_consumption ]]]"
+  triggers_update: all
   label: |
     [[[
       var amount = variables.ulm_chip_electric_price != '' ? true : false
@@ -836,6 +829,7 @@ card_person:
     ulm_card_person_zone2: ''
   tap_action:
     action: more-info
+    entity: "[[[ return variables.ulm_card_person_entity; ]]]"
   show_label: true
   show_name: true
   label: "[[[ return states[variables.ulm_card_person_entity].state ]]]"
@@ -924,8 +918,7 @@ card_script:
 card_cover_with_buttons:
   variables:
     ulm_card_cover_with_buttons_name: "n/a"
-  triggers_update:
-    - "[[[ variables.ulm_card_cover_with_buttons_entity ]]]"
+  triggers_update: all
   styles:
     grid:
       - grid-template-areas: '"item1" "item2"'
@@ -987,8 +980,7 @@ card_graph:
   variables:
     ulm_card_graph_color: "var(--info-color)"
     ulm_card_graph_name: "n/a"
-  triggers_update:
-    - "[[[ variables.ulm_card_graph_entity ]]]"
+  triggers_update: all
   styles:
     grid:
       - grid-template-areas: '"item1" "item2"'
@@ -1031,8 +1023,7 @@ card_graph:
 card_media_player_with_controls:
   variables:
     ulm_card_media_player_with_controls_name: "No name set"
-  triggers_update:
-    - "[[[ ulm_card_media_player_with_controls_entity ]]]"
+  triggers_update: all
   styles:
     grid:
       - grid-template-areas: '"item1" "item2"'
