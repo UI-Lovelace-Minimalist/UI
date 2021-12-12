@@ -1088,7 +1088,7 @@ card_media_player_with_controls:
                 action: call-service
                 service: media_player.media_next_track
                 service_data:
-                  entity_id: '[[[ return entity.ulm_card_media_player_with_controls_entity ]]]'
+                  entity_id: '[[[ return variables.ulm_card_media_player_with_controls_entity ]]]'
               icon: 'mdi:skip-next'
 ### INTERNAL TEMPLATES ###
 blue:
