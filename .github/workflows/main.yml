@@ -1,0 +1,6 @@
+uses: actions/jacoco-merge@v1
+with:
+  exec-file: > 
+    /config/minimalist-templates/button_card_templates/2-line_cards/card_cover_with_buttons.yaml
+  dest-file:
+    /config/
