@@ -1,10 +1,7 @@
 ### CHIPS ###
 chip_temperature:
   template: chips
-  triggers_update: 
-    - "[[[ variables.ulm_chip_temperature_weather ]]]"
-    - "[[[ variables.ulm_chip_temperature_outside ]]]"
-    - "[[[ variables.ulm_chip_temperature_inside ]]]"
+  triggers_update: all
   label: |
     [[[
       var icon = '🌡️';
@@ -51,8 +48,7 @@ chip_icon_only:
     ]]]
 chip_icon_state:
   template: chips
-  triggers_update:
-    - "[[[ variables.ulm_chip_icon_state_entity ]]]"
+  triggers_update: all
   label: |
     [[[
       var icon = '❔';
@@ -67,9 +63,7 @@ chip_icon_state:
     ]]]
 chip_icon_double_state:
   template: chips
-  triggers_update:
-    - "[[[ variables.ulm_chip_icon_double_state_entity_1 ]]]"
-    - "[[[ variables.ulm_chip_icon_double_state_entity_2 ]]]"
+  triggers_update: all
   label: |
     [[[
       var icon = '❔';
@@ -86,6 +80,28 @@ chip_icon_double_state:
       } 
       return icon + ' ' + state1 + ' • ' + state2;
     ]]]
+chip_mdi_icon_only:
+  template: chips
+  tap_action:
+    action: more-info
+    entity: "[[[ return variables.ulm_chip_mdi_icon_only_entity ]]]"
+  show_icon: true
+  icon: "[[[ return variables.ulm_chip_mdi_icon_only_icon ]]]"
+  styles:
+    grid:
+      - grid-template-areas: '"i"'
+chip_mdi_icon_state:
+  template: chips
+  tap_action:
+    action: more-info
+    entity: "[[[ return variables.ulm_chip_mdi_icon_state_entity ]]]"
+  triggers_update: all
+  show_icon: true
+  icon: "[[[ return variables.ulm_chip_mdi_icon_state_icon ]]]"
+  label: "[[[ return states[variables.ulm_chip_mdi_icon_state_entity].state ]]]"
+  styles:
+    grid:
+      - grid-template-areas: '"i l"'
 chip_back:
   template: chips
   tap_action:
@@ -110,8 +126,7 @@ chip_power_consumption:
   template: 
     - chips
     - ulm_language_variables
-  triggers_update:
-    - "[[[ variables.ulm_chip_electric_consumption ]]]"
+  triggers_update: all
   label: |
     [[[
       var amount = variables.ulm_chip_electric_price != '' ? true : false
@@ -132,6 +147,67 @@ chip_navigate:
   styles:
     grid:
       - grid-template-areas: '"i"'
+chips_icon_label:
+  show_icon: true
+  show_name: false
+  show_label: true
+  size: 100%
+  styles:
+    card:
+      - box-shadow: var(--box-shadow)
+      - padding-top: 6px
+      - padding-button: 6px
+      - padding-left: 12px
+      - padding-right: 6px
+    grid:
+      - grid-template-areas: '"i l"'
+      - grid-template-columns: max_content auto
+      - grid-template-rows: min-content
+    img_cell:
+      - place-self: center
+      - width: 14px
+      - height: 24px
+    label:
+      - justify-self: center
+      - font-weight: bold
+      - font-size: 12px
+      - margin-left: 0px
+chips_alarm:
+  template:
+    - chips
+    - chips_icon_label   
+  label: |
+    [[[
+      var alarm_label = 'unknown';
+      if (entity.state == 'armed_home'){
+        var alarm_label = 'Armed';
+      } else if(entity.state == 'disarmed'){
+        var alarm_label = 'Disarmed';
+      }
+      return alarm_label;
+    ]]]
+  icon: |
+    [[[
+      var alarm_icon = 'mdi:shield-outline';
+      if (entity.state == 'armed_home'){
+        var alarm_icon = 'mdi:shield-lock';
+      } else if(entity.state == 'disarmed'){
+        var alarm_icon = 'mdi:shield';
+      }
+      return alarm_icon;
+    ]]]
+  styles:
+    icon:
+      - color: |
+          [[[
+            var alarm_color = 'yellow';
+            if (entity.state == 'armed_home'){
+              var alarm_color = 'red';
+            } else if(entity.state == 'disarmed'){
+              var alarm_color = 'green';
+            }
+            return alarm_color;
+          ]]]
 ### TITLE ###
 card_title:
   tap_action:
@@ -836,6 +912,7 @@ card_person:
     ulm_card_person_zone2: ''
   tap_action:
     action: more-info
+    entity: "[[[ return variables.ulm_card_person_entity; ]]]"
   show_label: true
   show_name: true
   label: "[[[ return states[variables.ulm_card_person_entity].state ]]]"
@@ -924,8 +1001,7 @@ card_script:
 card_cover_with_buttons:
   variables:
     ulm_card_cover_with_buttons_name: "n/a"
-  triggers_update:
-    - "[[[ variables.ulm_card_cover_with_buttons_entity ]]]"
+  triggers_update: all
   styles:
     grid:
       - grid-template-areas: '"item1" "item2"'
@@ -951,7 +1027,7 @@ card_cover_with_buttons:
     item2:
       card:
         type: 'custom:button-card'
-        template: list_items
+        template: list_3_items
         custom_fields:
           item1:
             card:
@@ -987,8 +1063,7 @@ card_graph:
   variables:
     ulm_card_graph_color: "var(--info-color)"
     ulm_card_graph_name: "n/a"
-  triggers_update:
-    - "[[[ variables.ulm_card_graph_entity ]]]"
+  triggers_update: all
   styles:
     grid:
       - grid-template-areas: '"item1" "item2"'
@@ -1031,8 +1106,7 @@ card_graph:
 card_media_player_with_controls:
   variables:
     ulm_card_media_player_with_controls_name: "No name set"
-  triggers_update:
-    - "[[[ variables.ulm_card_media_player_with_controls_entity ]]]"
+  triggers_update: all
   styles:
     grid:
       - grid-template-areas: '"item1" "item2"'
@@ -1061,7 +1135,7 @@ card_media_player_with_controls:
     item2:
       card:
         type: 'custom:button-card'
-        template: list_items
+        template: list_3_items
         custom_fields:
           item1:
             card:
@@ -1520,11 +1594,51 @@ icon_info_line:
       - box-shadow: none
       - padding: 0px
   size: 100%
-list_items:
+list_2_items:
+  styles:
+    grid:
+      - grid-template-areas: '"item1 item2"'
+      - grid-template-columns: 1fr 1fr
+      - grid-template-rows: min-content
+      - column-gap: 7px
+    card:
+      - box-shadow: none
+      - padding: 0px
+list_3_items:
   styles:
     grid:
       - grid-template-areas: '"item1 item2 item3"'
       - grid-template-columns: 1fr 1fr 1fr
+      - grid-template-rows: min-content
+      - column-gap: 7px
+    card:
+      - box-shadow: none
+      - padding: 0px
+list_4_items:
+  styles:
+    grid:
+      - grid-template-areas: '"item1 item2 item3 item4"'
+      - grid-template-columns: 1fr 1fr 1fr 1fr
+      - grid-template-rows: min-content
+      - column-gap: 7px
+    card:
+      - box-shadow: none
+      - padding: 0px
+list_one_third_items:
+  styles:
+    grid:
+      - grid-template-areas: '"item1 item2"'
+      - grid-template-columns: 2fr 1fr
+      - grid-template-rows: min-content
+      - column-gap: 7px
+    card:
+      - box-shadow: none
+      - padding: 0px
+list_two_third_items:
+  styles:
+    grid:
+      - grid-template-areas: '"item1 item2"'
+      - grid-template-columns: 1fr 2fr
       - grid-template-rows: min-content
       - column-gap: 7px
     card:
@@ -1649,3 +1763,6 @@ scene_blue:
   template: vertical_buttons_blue
 scene_green:
   template: vertical_buttons_green
+### ITEMS ###
+list_items:
+  template: list_3_items
