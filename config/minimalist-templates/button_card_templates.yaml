@@ -147,6 +147,67 @@ chip_navigate:
   styles:
     grid:
       - grid-template-areas: '"i"'
+chips_icon_label:
+  show_icon: true
+  show_name: false
+  show_label: true
+  size: 100%
+  styles:
+    card:
+      - box-shadow: var(--box-shadow)
+      - padding-top: 6px
+      - padding-button: 6px
+      - padding-left: 12px
+      - padding-right: 6px
+    grid:
+      - grid-template-areas: '"i l"'
+      - grid-template-columns: max_content auto
+      - grid-template-rows: min-content
+    img_cell:
+      - place-self: center
+      - width: 14px
+      - height: 24px
+    label:
+      - justify-self: center
+      - font-weight: bold
+      - font-size: 12px
+      - margin-left: 0px
+chips_alarm:
+  template:
+    - chips
+    - chips_icon_label   
+  label: |
+    [[[
+      var alarm_label = 'unknown';
+      if (entity.state == 'armed_home'){
+        var alarm_label = 'Armed';
+      } else if(entity.state == 'disarmed'){
+        var alarm_label = 'Disarmed';
+      }
+      return alarm_label;
+    ]]]
+  icon: |
+    [[[
+      var alarm_icon = 'mdi:shield-outline';
+      if (entity.state == 'armed_home'){
+        var alarm_icon = 'mdi:shield-lock';
+      } else if(entity.state == 'disarmed'){
+        var alarm_icon = 'mdi:shield';
+      }
+      return alarm_icon;
+    ]]]
+  styles:
+    icon:
+      - color: |
+          [[[
+            var alarm_color = 'yellow';
+            if (entity.state == 'armed_home'){
+              var alarm_color = 'red';
+            } else if(entity.state == 'disarmed'){
+              var alarm_color = 'green';
+            }
+            return alarm_color;
+          ]]]
 ### TITLE ###
 card_title:
   tap_action:
