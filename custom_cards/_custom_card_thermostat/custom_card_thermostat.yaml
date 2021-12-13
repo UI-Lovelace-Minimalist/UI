@@ -1,11 +1,13 @@
+---
+
 card_thermostat:
-  template:  
+  template:
     - icon_info_bg
   hold_action:
     action: more-info
     entity: input_boolean.radiateur_arret_force
   label: >-
-    [[[ 
+    [[[
         if (entity.state =='off'){
           return 'Off' ;
         }else{

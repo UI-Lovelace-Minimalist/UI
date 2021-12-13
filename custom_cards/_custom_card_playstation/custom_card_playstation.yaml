@@ -1,3 +1,5 @@
+---
+
 card_ps4:
   template:
     - icon_info_bg
@@ -33,7 +35,7 @@ card_ps4:
       name: "[[[ return entity.attributes.media_title; ]]]"
       label: "[[[ return entity.attributes.friendly_name; ]]]"
       styles:
-        label: 
+        label:
           - color: white
           - filter: opacity(100%)
         img_cell:

@@ -1,3 +1,5 @@
+---
+
 name: Draft a release note
 
 on:
@@ -14,4 +16,3 @@ jobs:
         uses: release-drafter/release-drafter@v5.15.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          

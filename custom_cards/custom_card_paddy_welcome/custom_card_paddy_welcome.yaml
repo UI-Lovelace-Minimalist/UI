@@ -1,3 +1,5 @@
+---
+
 custom_card_paddy_welcome:
   template:
     - ulm_custom_card_paddy_welcome_language_variables
@@ -24,7 +26,7 @@ custom_card_paddy_welcome:
             let welcome = '';
 
             if (time > '18:00'){
-              welcome = variables.ulm_custom_card_paddy_welcome_evening; 
+              welcome = variables.ulm_custom_card_paddy_welcome_evening;
             } else if (time > '12:00'){
               welcome = variables.ulm_custom_card_paddy_welcome_afternoon;
             } else if (time > '05:00'){
@@ -71,7 +73,7 @@ custom_card_paddy_welcome_with_weather:
             let welcome = '';
 
             if (time > '18:00'){
-              welcome = variables.ulm_custom_card_paddy_welcome_evening; 
+              welcome = variables.ulm_custom_card_paddy_welcome_evening;
             } else if (time > '12:00'){
               welcome = variables.ulm_custom_card_paddy_welcome_afternoon;
             } else if (time > '05:00'){
@@ -156,7 +158,7 @@ custom_card_paddy_welcome_with_news:
             let welcome = '';
 
             if (time > '18:00'){
-              welcome = variables.ulm_custom_card_paddy_welcome_evening; 
+              welcome = variables.ulm_custom_card_paddy_welcome_evening;
             } else if (time > '12:00'){
               welcome = variables.ulm_custom_card_paddy_welcome_afternoon;
             } else if (time > '05:00'){
@@ -185,7 +187,7 @@ custom_card_paddy_welcome_with_news:
         state_color: false
         compact_mode: true
         max_item_count: 3
-        show_icons: true 
+        show_icons: true
         entities: >
           [[[
             return variables.ulm_custom_card_paddy_welcome_news_entities;

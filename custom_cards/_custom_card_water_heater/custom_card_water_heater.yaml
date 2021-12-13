@@ -1,3 +1,5 @@
+---
+
 card_water_heater:
   icon: 'mdi:waves'
   tap_action:
@@ -5,7 +7,7 @@ card_water_heater:
   hold_action:
     action: more-info
   label: >-
-    [[[ 
+    [[[
         if (entity.state == 'off'){
           return 'Arrêt forcé';
         }else{

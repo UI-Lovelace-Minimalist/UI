@@ -1,3 +1,5 @@
+---
+
 card_qubino:
   icon: 'mdi:memory'
   tap_action:
@@ -21,10 +23,10 @@ card_qubino:
         } else if(bri < 11 && bri >= 0){
           var consigne = 'Arrêt️';
         }
-        return consigne + ' • ' + bri;  
+        return consigne + ' • ' + bri;
       }else{
         return "Indisponible";
       }
     ]]]
-  template: 
+  template:
     - blue
