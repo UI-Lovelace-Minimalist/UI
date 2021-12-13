@@ -1,0 +1,17 @@
+name: Yaml Lint
+on: [push, pull_request]
+jobs:
+  yamllint:
+    name: yamllint
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⤵️ Check out code from GitHub
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Install yamllint
+        run: pip install yamllint
+      - name: 🚀 Run yamllint
+        uses: yamllint .
