@@ -2,9 +2,10 @@
 
 name-template: v$RESOLVED_VERSION 🌈
 tag-template: v$RESOLVED_VERSION
+change-template: '- #$NUMBER $TITLE @$AUTHOR'
 sort-direction: ascending
 categories:
-    - title: ⚠ Breaking changes
+    - title: ⚠️ Breaking changes
       label: breaking change
     - title: 🚀 Features
       labels:
@@ -21,7 +22,26 @@ categories:
       label: translation
     - title: 📄 Documentation
       label: documentation
-change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
-change-title-escapes: \<*_&
-template: |-
+version-resolver:
+    major:
+        labels:
+            - major
+    minor:
+        labels:
+            - minor
+    patch:
+        labels:
+            - patch
+    default: patch
+template: |
+    ## Changes
     $CHANGES
+    ## ⭐️ Thank you so much for helping out to keep this UI awesome!
+    $CONTRIBUTORS
+autolabeler:
+    - label: bug
+      branch:
+          - /fix\/.+/
+    - label: enhancement
+      branch:
+          - /feature\/.+/
