@@ -1,7 +1,8 @@
+---
 custom_card_paddy_dwd_pollen:
   template:
-    - card_generic_swap
-    - custom_card_paddy_dwd_pollen_language_variables
+    - "card_generic_swap"
+    - "custom_card_paddy_dwd_pollen_language_variables"
   label: >
     [[[
       if (entity.state == "6"){
@@ -20,31 +21,31 @@ custom_card_paddy_dwd_pollen:
       return variables.custom_card_paddy_dwd_pollen_none;
     ]]]
   state:
-    - value: '6'
+    - value: "6"
       styles:
         img_cell:
-          - background-color: 'rgba(190,0,33,1)'
-    - value: '5'
+          - background-color: "rgba(190,0,33,1)"
+    - value: "5"
       styles:
         img_cell:
-          - background-color: 'rgba(240,56,26,1)'
-    - value: '4'
+          - background-color: "rgba(240,56,26,1)"
+    - value: "4"
       styles:
         img_cell:
-          - background-color: 'rgba(254,154,36,1)'
-    - value: '3'
+          - background-color: "rgba(254,154,36,1)"
+    - value: "3"
       styles:
         img_cell:
-          - background-color: 'rgba(254,197,77,1)'
-    - value: '2'
+          - background-color: "rgba(254,197,77,1)"
+    - value: "2"
       styles:
         img_cell:
-          - background-color: 'rgba(254,228,156,1)'
-    - value: '1'
+          - background-color: "rgba(254,228,156,1)"
+    - value: "1"
       styles:
         img_cell:
-          - background-color: 'rgba(219,250,200,1)'
-    - value: '0'
+          - background-color: "rgba(219,250,200,1)"
+    - value: "0"
       styles:
         icon:
-          - color: 'rgba(var(--color-theme),0.2)'
+          - color: "rgba(var(--color-theme),0.2)"

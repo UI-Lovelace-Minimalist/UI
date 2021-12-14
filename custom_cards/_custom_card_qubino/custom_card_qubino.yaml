@@ -1,8 +1,9 @@
+---
 card_qubino:
-  icon: 'mdi:memory'
+  icon: "mdi:memory"
   tap_action:
-    action: more-info
-    entity: input_select.ordres_fil_pilote
+    action: "more-info"
+    entity: "input_select.ordres_fil_pilote"
   label: >-
     [[[ if (entity.state !='unavailable'){
           var bri = Math.round(entity.attributes.brightness / 2.55);
@@ -21,10 +22,10 @@ card_qubino:
         } else if(bri < 11 && bri >= 0){
           var consigne = 'Arrêt️';
         }
-        return consigne + ' • ' + bri;  
+        return consigne + ' • ' + bri;
       }else{
         return "Indisponible";
       }
     ]]]
-  template: 
-    - blue
+  template:
+    - "blue"

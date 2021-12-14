@@ -1,0 +1,21 @@
+---
+name: "Format Code"
+
+on:
+  pull_request:
+  push:
+    branches: ["main", "dev"]
+
+jobs:
+  pre-commit:
+    name: "Format Code"
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "⤵️ Check out code from GitHub"
+        uses: "actions/checkout@v2"
+      - name: "⚙️ Set up Python"
+        uses: "actions/setup-python@v2"
+        with:
+          python-version: 3.8
+      - name: "\U0001F680 Run pre-commit"
+        uses: "pre-commit/action@v2.0.3"
