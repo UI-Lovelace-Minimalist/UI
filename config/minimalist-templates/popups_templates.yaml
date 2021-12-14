@@ -492,7 +492,7 @@ popup_light:
                             - display: none
                       - operator: template
                         value: >
-                          [[[ return new URL(window.location.href).hash !== '#brightness' ]]]
+                          [[[ return new URL(window.location.href).hash === '#brightness' ]]]
                         styles:
                           icon:
                             - color: "rgba(var(--color-blue),1)"
@@ -524,7 +524,7 @@ popup_light:
                             - display: none
                       - operator: template
                         value: >
-                          [[[ return new URL(window.location.href).hash !== '#color' ]]]
+                          [[[ return new URL(window.location.href).hash === '#color' ]]]
                         styles:
                           icon:
                             - color: "rgba(var(--color-blue),1)"
@@ -553,7 +553,7 @@ popup_light:
                             - display: none
                       - operator: template
                         value: >
-                          [[[ return new URL(window.location.href).hash !== '#color_temp' ]]]
+                          [[[ return new URL(window.location.href).hash === '#color_temp' ]]]
                         styles:
                           icon:
                             - color: "rgba(var(--color-blue),1)"
