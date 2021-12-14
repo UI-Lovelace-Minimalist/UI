@@ -12,7 +12,7 @@ categories:
   - title: "⚙️ Code enhancements"
     labels:
       - "enhancement"
-  - title: "\U0001F6A8 Bug Fixes"
+  - title: "Bug Fixes"
     labels:
       - "fix"
       - "bugfix"
