@@ -1,12 +1,12 @@
 ---
 
 ulm_language_variables:
-  variables:
-    ulm_on: "An"
-    ulm_off: "Aus"
-    ulm_open: "Offen"
-    ulm_closed: "Geschlossen"
-    ulm_unavailable: "Nicht verfügbar"
-    ulm_standby: "Standby"
-    ulm_idle: "Im Leerlauf"
-    ulm_currency: "€"
+    variables:
+        ulm_on: An
+        ulm_off: Aus
+        ulm_open: Offen
+        ulm_closed: Geschlossen
+        ulm_unavailable: Nicht verfügbar
+        ulm_standby: Standby
+        ulm_idle: Im Leerlauf
+        ulm_currency: €
