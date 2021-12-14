@@ -1,0 +1,86 @@
+card_light_icon_info:
+  template:
+    - list_items_light
+    - ulm_language_variables
+  variables:
+    ulm_card_light_name: "[[[ return entity.attributes.friendly_name ]]]"
+    ulm_card_light_icon: 
+  show_icon: false
+  show_name: false
+  show_label: false
+  state:
+    - operator: template
+      value: "[[[ return entity.state == 'on' ]]]"
+      styles:
+        card:
+          - background-color: 'rgba(var(--color-background-yellow),var(--opacity-bg))'
+  styles:
+    grid:
+      - grid-template-columns: min-content auto
+      - column-gap: 0px
+    card:
+      - border-radius: var(--border-radius)
+      - box-shadow: var(--box-shadow)
+      - padding: 12px
+  tap_action:
+    action: toggle
+  hold_action:
+    action: more-info
+  custom_fields:
+    item1:
+      card:
+        type: custom:button-card
+        entity: '[[[ return entity.entity_id ]]]'
+        template: 
+          - icon
+          - yellow
+        icon: >
+          [[[
+            var icon = 'mdi:lightbulb';
+              if (variables.ulm_card_light_icon != null){
+                var icon = variables.ulm_card_light_icon;
+              } 
+              else{
+                return icon ;
+              } 
+            return icon ;
+          ]]]
+        tap_action:
+          action: more-info
+    item2:
+      card:
+        type: custom:button-card
+        entity: '[[[ return entity.entity_id ]]]'
+        template: 
+          - icon_info
+        show_icon: false
+        label: >-
+          [[[
+            if (entity.state !='unavailable'){
+              if (entity.state =='off'){
+                return variables.ulm_off;
+              } else if (entity.state == 'on'){
+                if (entity.attributes.brightness != null){
+                  var bri = Math.round(entity.attributes.brightness / 2.55);
+                  return (bri ? bri : '0') + '%';
+                } else {
+                  return variables.ulm_on
+                }
+              }
+            } else {
+              return variables.ulm_unavailable;
+            }
+          ]]]
+        styles:
+          card:
+            - box-shadow: none
+            - border-radius: var(--border-radius) var(--border-radius) var(--border-radius) var(--border-radius)
+            - padding: 0px
+            - background-color: 'rgba(0,0,0,0)'
+        state:
+          - styles:
+              label:
+                - color: 'rgba(var(--color-yellow-text),1)'
+              name:
+                - color: 'rgba(var(--color-yellow-text),1)'
+            value: 'on'
