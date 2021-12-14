@@ -1,47 +1,46 @@
 ---
-
-name-template: v$RESOLVED_VERSION 🌈
-tag-template: v$RESOLVED_VERSION
-change-template: '- #$NUMBER $TITLE @$AUTHOR'
-sort-direction: ascending
+name-template: "v$RESOLVED_VERSION \U0001F308"
+tag-template: "v$RESOLVED_VERSION"
+change-template: "- #$NUMBER $TITLE @$AUTHOR"
+sort-direction: "ascending"
 categories:
-    - title: ⚠️ Breaking changes
-      label: breaking change
-    - title: 🚀 Features
-      labels:
-          - feature
-    - title: 🔧 Code enhancements
-      labels:
-          - enhancement
-    - title: 🐛 Bug Fixes
-      labels:
-          - fix
-          - bugfix
-          - bug
-    - title: 🈵 Translations
-      label: translation
-    - title: 📄 Documentation
-      label: documentation
+  - title: "⚠️ Breaking changes"
+    label: "breaking change"
+  - title: "\U0001F680 Features"
+    labels:
+      - "feature"
+  - title: "\U0001F527 Code enhancements"
+    labels:
+      - "enhancement"
+  - title: "\U0001F41B Bug Fixes"
+    labels:
+      - "fix"
+      - "bugfix"
+      - "bug"
+  - title: "\U0001F235 Translations"
+    label: "translation"
+  - title: "\U0001F4C4 Documentation"
+    label: "documentation"
 version-resolver:
-    major:
-        labels:
-            - major
-    minor:
-        labels:
-            - minor
-    patch:
-        labels:
-            - patch
-    default: patch
+  major:
+    labels:
+      - "major"
+  minor:
+    labels:
+      - "minor"
+  patch:
+    labels:
+      - "patch"
+  default: "patch"
 template: |
-    ## Changes
-    $CHANGES
-    ## ⭐️ Thank you so much for helping out to keep this UI awesome!
-    $CONTRIBUTORS
+  ## Changes
+  $CHANGES
+  ## ⭐️ Thank you so much for helping out to keep this UI awesome!
+  $CONTRIBUTORS
 autolabeler:
-    - label: bug
-      branch:
-          - /fix\/.+/
-    - label: enhancement
-      branch:
-          - /feature\/.+/
+  - label: "bug"
+    branch:
+      - "/fix/.+/"
+  - label: "enhancement"
+    branch:
+      - "/feature/.+/"

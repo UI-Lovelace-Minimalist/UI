@@ -1,12 +1,11 @@
 ---
-
 ulm_language_variables:
-    variables:
-        ulm_on: aan
-        ulm_off: uit
-        ulm_open: open
-        ulm_closed: gesloten
-        ulm_unavailable: niet beschikbaar
-        ulm_standby: stand-by
-        ulm_idle: inactief
-        ulm_currency: €
+  variables:
+    ulm_on: "aan"
+    ulm_off: "uit"
+    ulm_open: "open"
+    ulm_closed: "gesloten"
+    ulm_unavailable: "niet beschikbaar"
+    ulm_standby: "stand-by"
+    ulm_idle: "inactief"
+    ulm_currency: "€"
