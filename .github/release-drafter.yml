@@ -1,25 +1,25 @@
 ---
-name-template: "v$RESOLVED_VERSION"
+name-template: "v$RESOLVED_VERSION \U0001F3F3️‍\U0001F308"
 tag-template: "v$RESOLVED_VERSION"
 change-template: "- #$NUMBER $TITLE @$AUTHOR"
 sort-direction: "ascending"
 categories:
   - title: "⚠️ Breaking changes"
     label: "breaking change"
-  - title: "Features"
+  - title: "\U0001F680 Features"
     labels:
       - "feature"
   - title: "⚙️ Code enhancements"
     labels:
       - "enhancement"
-  - title: "Bug Fixes"
+  - title: "\U0001F692 Bug Fixes"
     labels:
       - "fix"
       - "bugfix"
       - "bug"
   - title: "㊗️ Translations"
     label: "translation"
-  - title: "Documentation"
+  - title: "\U0001F4C4 Documentation"
     label: "documentation"
 version-resolver:
   major:
