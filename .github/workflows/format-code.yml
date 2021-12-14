@@ -18,10 +18,5 @@ jobs:
               uses: actions/setup-python@v2
               with:
                   python-version: 3.8
-            - name: ⚙️ Cache
-              uses: actions/cache@v2
-              with:
-                  path: ~/.cache/pip
-                  key: pip-format
             - name: 🚀 Run pre-commit
               uses: pre-commit/action@v2.0.3
