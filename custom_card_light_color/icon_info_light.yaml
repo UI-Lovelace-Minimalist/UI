@@ -69,5 +69,5 @@ icon_info_light:
           card:
             - box-shadow: none
             - border-radius: var(--border-radius) var(--border-radius) var(--border-radius) var(--border-radius)
-            - padding: 0px
+            - padding: 6px
             - background-color: 'rgba(0,0,0,0)'
