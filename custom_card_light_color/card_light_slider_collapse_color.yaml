@@ -36,6 +36,8 @@ card_light_slider_collapse_color:
       - border-radius: var(--border-radius)
       - box-shadow: var(--box-shadow)
       - padding: 12px
+  tap_action:
+    action: toggle
   custom_fields:
     item1:
       card:
