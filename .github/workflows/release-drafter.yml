@@ -3,8 +3,7 @@ name: "Draft a release note"
 
 on:
   push:
-    branches:
-      - "main"
+    branches: ["main", "dev"]
 
 jobs:
   draft_release:
