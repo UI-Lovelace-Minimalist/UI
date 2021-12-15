@@ -302,7 +302,7 @@ icon_info_light:
             var icon = 'mdi:lightbulb';
               if (variables.ulm_card_light_icon != null){
                 var icon = variables.ulm_card_light_icon;
-              } 
+              }
               else{
                 return icon ;
               }
