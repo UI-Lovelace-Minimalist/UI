@@ -43,7 +43,7 @@ card_light_icon_info:
               }
               else{
                 return icon ;
-              } 
+              }
             return icon ;
           ]]]
         tap_action:
