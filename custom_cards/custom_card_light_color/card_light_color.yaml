@@ -5,7 +5,7 @@ card_light_color:
     - "ulm_language_variables"
   variables:
     ulm_card_light_name: "[[[ return entity.attributes.friendly_name ]]]"
-    ulm_card_light_icon: 
+    ulm_card_light_icon:
   show_icon: false
   show_name: false
   show_label: false
@@ -23,7 +23,7 @@ card_light_color:
                   }
                   else{
                     return 'rgba(var(--color-yellow),0.1)'
-                  } 
+                  }
                 }else if (states['sun.sun'].state == "above_horizon")
                   return 'rgba(var(--color-background-yellow),var(--opacity-bg))';
               ]]]
@@ -40,7 +40,7 @@ card_light_slider_color:
     - "ulm_language_variables"
   variables:
     ulm_card_light_slider_name: "[[[ return entity.attributes.friendly_name ]]]"
-    ulm_card_light_icon: 
+    ulm_card_light_icon:
   show_icon: false
   show_name: false
   show_label: false
@@ -58,7 +58,7 @@ card_light_slider_color:
                   }
                   else{
                     return 'rgba(var(--color-yellow),0.1)'
-                  } 
+                  }
                 }else if (states['sun.sun'].state == "above_horizon")
                   return 'rgba(var(--color-background-yellow),var(--opacity-bg))';
               ]]]
@@ -86,31 +86,31 @@ card_light_slider_color:
           - "icon_info_light"
           - "auto_color"
     item2:
-      card: 
+      card:
         type: "custom:my-slider"
         entity: "[[[ return entity.entity_id ]]]"
         radius: "14px"
         height: "42px"
         mainSliderColor: >
-            [[[ 
-                var color = entity.attributes.rgb_color;
-                if (color){
-                   return 'rgba(' + entity.attributes.rgb_color + ',1)'
-                }
-                else{
-                  return 'rgba(var(--color-yellow),1)'
-                } 
-            ]]]
+          [[[
+              var color = entity.attributes.rgb_color;
+              if (color){
+                 return 'rgba(' + entity.attributes.rgb_color + ',1)'
+              }
+              else{
+                return 'rgba(var(--color-yellow),1)'
+              }
+          ]]]
         secondarySliderColor: >
-            [[[ 
-                var color = entity.attributes.rgb_color;
-                if (color){
-                   return 'rgba(' + entity.attributes.rgb_color + ',0.2)';
-                }
-                else{
-                  return 'rgba(var(--color-yellow),0.2)';
-                } 
-            ]]]
+          [[[
+              var color = entity.attributes.rgb_color;
+              if (color){
+                 return 'rgba(' + entity.attributes.rgb_color + ',0.2)';
+              }
+              else{
+                return 'rgba(var(--color-yellow),0.2)';
+              }
+          ]]]
         mainSliderColorOff: "rgba(var(--color-theme),0.05)"
         secondarySliderColorOff: "rgba(var(--color-theme),0.05)"
         thumbHorizontalPadding: "0px"
@@ -124,11 +124,11 @@ card_light_slider_color:
           }
 ### slider collapse card
 card_light_slider_collapse_color:
-  template: 
+  template:
     - "ulm_language_variables"
   variables:
     ulm_card_light_name: "[[[ return entity.attributes.friendly_name ]]]"
-    ulm_card_light_icon: 
+    ulm_card_light_icon:
   show_icon: false
   show_name: false
   show_label: false
@@ -146,7 +146,7 @@ card_light_slider_collapse_color:
                   }
                   else{
                     return 'rgba(var(--color-yellow),0.1)'
-                  } 
+                  }
                 }else if (states['sun.sun'].state == "above_horizon")
                   return 'rgba(var(--color-background-yellow),var(--opacity-bg))';
               ]]]
@@ -175,7 +175,7 @@ card_light_slider_collapse_color:
           - "icon_info_light"
           - "auto_color"
     item2:
-      card: 
+      card:
         type: "conditional"
         conditions:
           - entity: "[[[ return entity.entity_id ]]]"
@@ -186,29 +186,29 @@ card_light_slider_collapse_color:
           radius: "14px"
           height: "42px"
           mainSliderColor: >
-              [[[ 
-                  var color = entity.attributes.rgb_color;
-                  if (color){
-                     return 'rgba(' + entity.attributes.rgb_color + ',1)'
-                  }
-                  else{
-                    return 'rgba(var(--color-yellow),1)'
-                  } 
-              ]]]
+            [[[
+                var color = entity.attributes.rgb_color;
+                if (color){
+                   return 'rgba(' + entity.attributes.rgb_color + ',1)'
+                }
+                else{
+                  return 'rgba(var(--color-yellow),1)'
+                }
+            ]]]
           secondarySliderColor: >
-              [[[ 
-                  var color = entity.attributes.rgb_color;
-                  if (color){
-                     return 'rgba(' + entity.attributes.rgb_color + ',0.2)';
-                  }
-                  else{
-                    return 'rgba(var(--color-yellow),0.2)';
-                  } 
-              ]]]
+            [[[
+                var color = entity.attributes.rgb_color;
+                if (color){
+                   return 'rgba(' + entity.attributes.rgb_color + ',0.2)';
+                }
+                else{
+                  return 'rgba(var(--color-yellow),0.2)';
+                }
+            ]]]
           mainSliderColorOff: "rgba(var(--color-theme),0.05)"
           secondarySliderColorOff: "rgba(var(--color-theme),0.05)"
           thumbHorizontalPadding: "0px"
-          thumbVerticalPadding: "0px"   
+          thumbVerticalPadding: "0px"
           thumbWidth: "0px"
           card_mod:
           style: |
@@ -223,16 +223,16 @@ auto_color:
       styles:
         icon:
           - color: >
-              [[[ 
+              [[[
                   var color = entity.attributes.rgb_color;
                   if (color != null){
                      return 'rgba(' + entity.attributes.rgb_color + ',1)';
                   }
                   else{
                     return 'rgba(var(--color-yellow),1)';
-                  } 
+                  }
               ]]]
-        label: 
+        label:
           - color: >
               [[[
                 var color = entity.attributes.rgb_color;
@@ -245,7 +245,7 @@ auto_color:
                 }else if (states['sun.sun'].state == "above_horizon")
                   return 'rgba(var(--color-yellow-text),1)';
               ]]]
-        name: 
+        name:
           - color: >
               [[[
                 var color = entity.attributes.rgb_color;
@@ -260,14 +260,14 @@ auto_color:
               ]]]
         img_cell:
           - background-color: >
-              [[[ 
+              [[[
                   var color = entity.attributes.rgb_color;
                   if (color != null){
                      return 'rgba(' + entity.attributes.rgb_color + ',0.2)';
                   }
                   else{
                     return 'rgba(var(--color-yellow),0.2)';
-                  } 
+                  }
               ]]]
 icon_info_light:
   template:
@@ -294,7 +294,7 @@ icon_info_light:
       card:
         type: "custom:button-card"
         entity: "[[[ return entity.entity_id ]]]"
-        template: 
+        template:
           - "icon"
           - "auto_color"
         icon: >
@@ -305,7 +305,7 @@ icon_info_light:
               } 
               else{
                 return icon ;
-              } 
+              }
             return icon ;
           ]]]
         tap_action:
@@ -314,7 +314,7 @@ icon_info_light:
       card:
         type: "custom:button-card"
         entity: "[[[ return entity.entity_id ]]]"
-        template: 
+        template:
           - "icon_info"
           - "auto_color"
         show_icon: false
