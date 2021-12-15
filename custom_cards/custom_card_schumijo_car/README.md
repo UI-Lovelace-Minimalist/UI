@@ -215,7 +215,7 @@ custom_card_schumijo_car:
               entity: "[[[ return variables.ulm_card_schumijo_car_energy_level ]]]"
               state_display: >
                 [[[
-                  return Math.round(Number(entity.state)).toFixed(0);
+                  return parseFloat(states[variables.ulm_card_schumijo_car_energy_level].state).toFixed(0);
                 ]]]
               name: "[[[ return states[variables.ulm_card_schumijo_car_energy_level].attributes.unit_of_measurement + ' ' + variables.ulm_custom_card_schumijo_car_energy_level\
                 \ ]]]"
@@ -226,10 +226,11 @@ custom_card_schumijo_car:
               entity: "[[[ return variables.ulm_card_schumijo_car_range ]]]"
               state_display: >
                 [[[
-                  return Math.round(Number(entity.state)).toFixed(0);
+                  return parseFloat(states[variables.ulm_card_schumijo_car_range].state).toFixed(0);
                 ]]]
               name: "[[[ return states[variables.ulm_card_schumijo_car_range].attributes.unit_of_measurement + ' ' + variables.ulm_custom_card_schumijo_car_range\
                 \ ]]]"
+
 
 
 ```
