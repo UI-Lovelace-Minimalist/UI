@@ -1,7 +1,8 @@
+---
 card_light_icon_info:
   template:
-    - list_items_light
-    - ulm_language_variables
+    - "list_items_light"
+    - "ulm_language_variables"
   variables:
     ulm_card_light_name: "[[[ return entity.attributes.friendly_name ]]]"
     ulm_card_light_icon: 
@@ -9,31 +10,31 @@ card_light_icon_info:
   show_name: false
   show_label: false
   state:
-    - operator: template
+    - operator: "template"
       value: "[[[ return entity.state == 'on' ]]]"
       styles:
         card:
-          - background-color: 'rgba(var(--color-background-yellow),var(--opacity-bg))'
+          - background-color: "rgba(var(--color-background-yellow),var(--opacity-bg))"
   styles:
     grid:
-      - grid-template-columns: min-content auto
-      - column-gap: 0px
+      - grid-template-columns: "min-content auto"
+      - column-gap: "0px"
     card:
-      - border-radius: var(--border-radius)
-      - box-shadow: var(--box-shadow)
-      - padding: 12px
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
   tap_action:
-    action: toggle
+    action: "toggle"
   hold_action:
-    action: more-info
+    action: "more-info"
   custom_fields:
     item1:
       card:
-        type: custom:button-card
-        entity: '[[[ return entity.entity_id ]]]'
+        type: "custom:button-card"
+        entity: "[[[ return entity.entity_id ]]]"
         template: 
-          - icon
-          - yellow
+          - "icon"
+          - "yellow"
         icon: >
           [[[
             var icon = 'mdi:lightbulb';
@@ -46,13 +47,13 @@ card_light_icon_info:
             return icon ;
           ]]]
         tap_action:
-          action: more-info
+          action: " more-info"
     item2:
       card:
-        type: custom:button-card
-        entity: '[[[ return entity.entity_id ]]]'
+        type: "custom:button-card"
+        entity: "[[[ return entity.entity_id ]]]"
         template: 
-          - icon_info
+          - "icon_info"
         show_icon: false
         label: >-
           [[[
@@ -73,26 +74,25 @@ card_light_icon_info:
           ]]]
         styles:
           card:
-            - box-shadow: none
-            - border-radius: var(--border-radius) var(--border-radius) var(--border-radius) var(--border-radius)
-            - padding: 0px
-            - background-color: 'rgba(0,0,0,0)'
+            - box-shadow: "none"
+            - border-radius: "var(--border-radius) var(--border-radius) var(--border-radius) var(--border-radius)"
+            - padding: "0px"
+            - background-color: "rgba(0,0,0,0)"
         state:
           - styles:
               label:
-                - color: 'rgba(var(--color-yellow-text),1)'
+                - color: "rgba(var(--color-yellow-text),1)"
               name:
-                - color: 'rgba(var(--color-yellow-text),1)'
-            value: 'on'
-
+                - color: "rgba(var(--color-yellow-text),1)"
+            value: "on"
 ### internal templates
 list_items_light:
-    styles:
-      card:
-        - box-shadow: none
-        - padding: 0px
-      grid:
-        - grid-template-areas: '"item1 item2"'
-        - grid-template-columns: 2fr 1fr
-        - grid-template-rows: min-content
-        - column-gap: 7px
+  styles:
+    card:
+      - box-shadow: "none"
+      - padding: "0px"
+    grid:
+      - grid-template-areas: '"item1 item2"'
+      - grid-template-columns: "2fr 1fr"
+      - grid-template-rows: "min-content"
+      - column-gap: "7px"
