@@ -254,7 +254,7 @@ icon_info_card:
             return icon ;
           ]]]
         tap_action:
-          action: more-info
+          action: "more-info"
     item2:
       card:
         type: "custom:button-card"
