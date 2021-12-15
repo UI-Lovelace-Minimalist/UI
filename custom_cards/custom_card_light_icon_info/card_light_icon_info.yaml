@@ -5,7 +5,7 @@ card_light_icon_info:
     - "ulm_language_variables"
   variables:
     ulm_card_light_name: "[[[ return entity.attributes.friendly_name ]]]"
-    ulm_card_light_icon: 
+    ulm_card_light_icon:
   show_icon: false
   show_name: false
   show_label: false
@@ -32,7 +32,7 @@ card_light_icon_info:
       card:
         type: "custom:button-card"
         entity: "[[[ return entity.entity_id ]]]"
-        template: 
+        template:
           - "icon"
           - "yellow"
         icon: >
@@ -40,10 +40,10 @@ card_light_icon_info:
             var icon = 'mdi:lightbulb';
               if (variables.ulm_card_light_icon != null){
                 var icon = variables.ulm_card_light_icon;
-              } 
+              }
               else{
                 return icon ;
-              } 
+              }
             return icon ;
           ]]]
         tap_action:
@@ -52,7 +52,7 @@ card_light_icon_info:
       card:
         type: "custom:button-card"
         entity: "[[[ return entity.entity_id ]]]"
-        template: 
+        template:
           - "icon_info"
         show_icon: false
         label: >-
