@@ -92,7 +92,7 @@ list_items_light:
       - box-shadow: "none"
       - padding: "0px"
     grid:
-      - grid-template-areas: '"item1 item2"'
+      - grid-template-areas: "'item1 item2'"
       - grid-template-columns: "2fr 1fr"
       - grid-template-rows: "min-content"
       - column-gap: "7px"
