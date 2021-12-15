@@ -1,11 +1,11 @@
 # Custom-card "Flower"
-This is a `custom-card` to display a plant entity. Shows state of the plant and attributes.  
+This is a `custom-card` to display a plant entity. Shows state of the plant and attributes.
 
 ![Generic](./flower.png)
 
 ## Credits
-Author: schumijo - 2021  
-Version: 1.1.0  
+Author: schumijo - 2021
+Version: 1.1.0
 
 ## Changelog
 <details>
@@ -56,7 +56,7 @@ Updated README
 </tr>
 </table>
 
-## Requirements 
+## Requirements
 
 Need [lovelace-flower-card](https://github.com/thomasloven/lovelace-flower-card)
 
@@ -88,7 +88,7 @@ flower:
         return icon ;
     ]]]
   label: >-
-    [[[ 
+    [[[
         if (entity.state == 'problem'){
           return variables.ulm_custom_card_schumijo_flower_problem;
         }else{

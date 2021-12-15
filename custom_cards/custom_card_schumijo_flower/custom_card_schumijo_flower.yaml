@@ -1,19 +1,20 @@
+---
 list_1_item:
   styles:
     card:
-      - box-shadow: none
-      - padding: 0px
+      - box-shadow: "none"
+      - padding: "0px"
     grid:
-      - grid-template-areas: '"item1"'
-      - grid-template-columns: 1fr
-      - grid-template-rows: min-content
-      - column-gap: 7px
+      - grid-template-areas: "'item1'"
+      - grid-template-columns: "1fr"
+      - grid-template-rows: "min-content"
+      - column-gap: "7px"
 
 flower:
   template:
-    - ulm_custom_card_schumijo_flower_language_variables
+    - "ulm_custom_card_schumijo_flower_language_variables"
   tap_action:
-    action: more-info
+    action: "more-info"
   icon: |
     [[[
         var icon = 'mdi:flower';
@@ -23,7 +24,7 @@ flower:
         return icon ;
     ]]]
   label: >-
-    [[[ 
+    [[[
         if (entity.state == 'problem'){
           return variables.ulm_custom_card_schumijo_flower_problem;
         }else{
@@ -31,7 +32,7 @@ flower:
         }
     ]]]
   state:
-    - operator: template
+    - operator: "template"
       value: >
         [[[
           return entity.state != 'on';
@@ -47,33 +48,33 @@ card_flower:
     ulm_card_flower_name: "No name set"
   styles:
     card:
-      - border-radius: 20px
-      - box-shadow: var(--box-shadow)
-      - padding: 12px
+      - border-radius: "20px"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
     grid:
-      - grid-template-areas: '"item1" "item2"'
-      - grid-template-columns: 1fr
-      - grid-template-rows: min-content  min-content
-      - row-gap: 6px
+      - grid-template-areas: "'item1' 'item2'"
+      - grid-template-columns: "1fr"
+      - grid-template-rows: "min-content  min-content"
+      - row-gap: "6px"
   custom_fields:
     item1:
       card:
         entity: "[[[ return variables.ulm_card_flower_entity ]]]"
         name: "[[[ return variables.ulm_card_flower_name ]]]"
         tap_action:
-          action: more-info
+          action: "more-info"
         template:
-          - icon_info
-          - flower
+          - "icon_info"
+          - "flower"
         type: "custom:button-card"
     item2:
       card:
-        template: list_1_item
+        template: "list_1_item"
         type: "custom:button-card"
         custom_fields:
           item1:
             card:
-              type: custom:flower-card
+              type: "custom:flower-card"
               entity: "[[[ return variables.ulm_card_flower_entity ]]]"
               species: "[[[ return variables.ulm_card_flower_species ]]]"
               card_mod:

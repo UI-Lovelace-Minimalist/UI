@@ -2,8 +2,8 @@
 This is a `custom-card` to show the next waste collection date. It uses the data from the `custom_component` "Waste Collection Framework".
 
 ## Credits
-Author: Paddy0174 - 2021  
-Version: 1.0.0  
+Author: Paddy0174 - 2021
+Version: 1.0.0
 
 ## Changelog
 <details>
@@ -15,7 +15,7 @@ Initial release
 
 ```yaml
 - type: custom:button-card
-  template: 
+  template:
     - custom_card_paddy_waste_collection
   entity: sensor.waste_collection_paper
 ```
@@ -129,7 +129,7 @@ custom_card_paddy_waste_collection:
 ```
 
 ## HomeAssistant
-This is my `sensor` setup in HA. I do the change from "days" to "friendly days" in my template sensor. 
+This is my `sensor` setup in HA. I do the change from "days" to "friendly days" in my template sensor.
 
 > #### Note
 > * Don't forget to set `add_days_to` in your `sensor` config

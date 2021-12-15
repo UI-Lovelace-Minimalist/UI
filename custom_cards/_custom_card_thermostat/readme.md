@@ -1,15 +1,15 @@
-# Custom-card "Thermostat"  
+# Custom-card "Thermostat"
 
 > NOTE
 > This card is under review and is not ready to use!
 
-The `thermostat-card` is used to switch a climate entity on/off and show the temperature from a (different) `sensor`.  
+The `thermostat-card` is used to switch a climate entity on/off and show the temperature from a (different) `sensor`.
 
 ![Thermostat](./screenshots/thermostat.png)
 
 ## Credits
-Author: tben - 2021  
-Version: 1.0.0  
+Author: tben - 2021
+Version: 1.0.0
 
 ## Changelog
 <details>
@@ -51,13 +51,13 @@ n/a
 
 ```yaml
 card_thermostat:
-  template:  
+  template:
     - icon_info_bg
   hold_action:
     action: more-info
     entity: input_boolean.radiateur_arret_force
   label: >-
-    [[[ 
+    [[[
         if (entity.state =='off'){
           return 'Off' ;
         }else{

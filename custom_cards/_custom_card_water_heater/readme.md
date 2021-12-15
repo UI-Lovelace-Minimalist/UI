@@ -4,8 +4,8 @@
 > This card is under review and is not ready to use!
 
 ## Credits
-Author: tben - 2021  
-Version: 1.0.0  
+Author: tben - 2021
+Version: 1.0.0
 
 ## Changelog
 <details>
