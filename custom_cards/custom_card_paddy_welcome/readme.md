@@ -1,5 +1,5 @@
 # Custom-card "Welcome"
-This is a `custom-card` to show a welcome message to the user. It comes in four different versions:  
+This is a `custom-card` to show a welcome message to the user. It comes in four different versions:
 
 * welcome message (*custom_card_paddy_welcome*)
 * welcome message + weather-forecast (*custom_card_paddy_welcome_with_weather*)
@@ -8,8 +8,8 @@ This is a `custom-card` to show a welcome message to the user. It comes in four 
 The card shows a time based message (good morning/afternoon/evening/hello) to the logged-in user with username. The second part of the card varies depending on what version you choose. *Note, that you have different requirements depending on the version!*
 
 ## Credits
-Author: Paddy0174 - 2021  
-Version: 1.0.0  
+Author: Paddy0174 - 2021
+Version: 1.0.0
 
 ## Changelog
 <details>
@@ -42,7 +42,7 @@ This card needs the following to function correctly:
 </tr>
 </table>
 
-## Installation  
+## Installation
 * Copy the folder `custom_card_paddy_welcome` from your download `custom_cards` to `config/minimalist-templates`
 * Go to the folder `config/minimalist-templates/custom_card_paddy_welcome/languages` and delete all but the one language file you want to use. For english, delete all but `EN.yaml`, for german delete all but `DE.yaml`.
 
@@ -53,7 +53,7 @@ config
   └── minimalist-templates
      └── custom_card_paddy_welcome
         └── languages
-           └── EN.yaml 
+           └── EN.yaml
         └── custom_card_paddy_welcome.yaml
         └── readme.md
      └── button_card_templates.yaml
@@ -117,21 +117,21 @@ config
 </tr>
 </table>
 
-> #### Note _welcome_with_news  
-> This card is based on [home-feed-card](https://github.com/gadgetchnnel/lovelace-home-feed-card) and needs a little different configuration in the variables.  
+> #### Note _welcome_with_news
+> This card is based on [home-feed-card](https://github.com/gadgetchnnel/lovelace-home-feed-card) and needs a little different configuration in the variables.
 > To allow almost all entites from HomeAssistant to show in the news, you're able to set all options that `home-feed-card` provides. This makes it necessary, that you set these entities in a list. Let me show you an example:
-> 
+>
 > ```yaml
 > # normally you do this
 > variables:
 >   ulm_variable: your_variable_entity
-> 
+>
 > # here you need to do a list
 > variables:
 >   ulm_variable:
 >     - your_variable_entity_1
 >     - your_variable_entity_2
-> 
+>
 > # to use an option from home-feed-card
 > variables:
 >   ulm_variable:
@@ -139,11 +139,11 @@ config
 >       content_template: "<b>{{ display_name }}</b><br>{{ state }}"
 >     - your_variable_entity_2
 > ```
-> 
-> You can find all available options and their description [here](https://github.com/gadgetchnnel/lovelace-home-feed-card#entity-object).  
-> 
+>
+> You can find all available options and their description [here](https://github.com/gadgetchnnel/lovelace-home-feed-card#entity-object).
+>
 > I recommend to use a `content_template` to format the output for every news item, eg. like this:
->  
+>
 > ```yaml
 > content_template: "<b>{{ display_name }}</b><br />{{ state }}"
 > ```
@@ -154,8 +154,8 @@ config
 - type: custom:button-card
   template: custom_card_paddy_welcome_with_news
   variables:
-    ulm_custom_card_paddy_welcome_news_entities: 
-      - entity: input_datetime.alarm_clock 
+    ulm_custom_card_paddy_welcome_news_entities:
+      - entity: input_datetime.alarm_clock
         content_template: "<b>{{display_name}}</b><br />{{state}}"
       - entity: sensor.waste_collection_bio
         content_template: "<b>{{display_name}}</b><br />{{state}}"
@@ -194,7 +194,7 @@ custom_card_paddy_welcome:
             let welcome = '';
 
             if (time > '18:00'){
-              welcome = variables.ulm_custom_card_paddy_welcome_evening; 
+              welcome = variables.ulm_custom_card_paddy_welcome_evening;
             } else if (time > '12:00'){
               welcome = variables.ulm_custom_card_paddy_welcome_afternoon;
             } else if (time > '05:00'){
@@ -241,7 +241,7 @@ custom_card_paddy_welcome_with_weather:
             let welcome = '';
 
             if (time > '18:00'){
-              welcome = variables.ulm_custom_card_paddy_welcome_evening; 
+              welcome = variables.ulm_custom_card_paddy_welcome_evening;
             } else if (time > '12:00'){
               welcome = variables.ulm_custom_card_paddy_welcome_afternoon;
             } else if (time > '05:00'){
@@ -326,7 +326,7 @@ custom_card_paddy_welcome_with_news:
             let welcome = '';
 
             if (time > '18:00'){
-              welcome = variables.ulm_custom_card_paddy_welcome_evening; 
+              welcome = variables.ulm_custom_card_paddy_welcome_evening;
             } else if (time > '12:00'){
               welcome = variables.ulm_custom_card_paddy_welcome_afternoon;
             } else if (time > '05:00'){
@@ -355,7 +355,7 @@ custom_card_paddy_welcome_with_news:
         state_color: false
         compact_mode: true
         max_item_count: 3
-        show_icons: true 
+        show_icons: true
         entities: >
           [[[
             return variables.ulm_custom_card_paddy_welcome_news_entities;
@@ -371,7 +371,7 @@ custom_card_paddy_welcome_with_news:
 ```
 
 ## Custom configuration Example
-Here is one example, on how you can extend this (actually every) card. In the end we have the welcome card extended by four buttons to have something like a header with a navigation. 
+Here is one example, on how you can extend this (actually every) card. In the end we have the welcome card extended by four buttons to have something like a header with a navigation.
 
 ```yaml
 - type: horizontal-stack
@@ -427,8 +427,7 @@ Here is one example, on how you can extend this (actually every) card. In the en
                   name: Air Conditioning
                   label: Livingroom
                 - type: custom:button-card
-                  template: edge          
+                  template: edge
       - type: custom:button-card
         template: edge
 ```
-

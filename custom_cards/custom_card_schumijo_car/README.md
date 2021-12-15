@@ -6,8 +6,8 @@ This is a `custom-card` to informations about your car.
 _NB : This card has only been tested with Audi Connect integration but should work with some others._
 
 ## Credits
-Author: schumijo - 2021  
-Version: 1.0.0  
+Author: schumijo - 2021
+Version: 1.0.0
 
 ## Changelog
 <details>

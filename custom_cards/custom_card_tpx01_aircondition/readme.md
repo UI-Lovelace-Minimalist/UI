@@ -2,8 +2,8 @@
 The `custom_card_tpx01_aircondition` shows data from your air condition and gives you the possibility to control it.
 
 ## Credits
-Author: tpx01 - 2021  
-Version: 1.0.0  
+Author: tpx01 - 2021
+Version: 1.0.0
 
 ## Changelog
 <details>

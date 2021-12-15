@@ -1,9 +1,10 @@
+---
 custom_card_tpx01_aircondition:
   template:
-    - ulm_language_variables
-    - custom_card_tpx01_aircondition_language_variables
+    - "ulm_language_variables"
+    - "custom_card_tpx01_aircondition_language_variables"
   tap_action:
-    action: more-info
+    action: "more-info"
   icon: |
     [[[
         if (entity.state =='dry') {
@@ -35,44 +36,44 @@ custom_card_tpx01_aircondition:
         return entity.state;
     ]]]
   state:
-    - operator: template
+    - operator: "template"
       value: >
         [[[
           return entity.state != 'off';
         ]]]
       styles:
         icon:
-          - color: 'rgba(var(--color-blue),1)'
+          - color: "rgba(var(--color-blue),1)"
         img_cell:
-          - background-color: 'rgba(var(--color-blue),0.2)'
+          - background-color: "rgba(var(--color-blue),0.2)"
 
 custom_card_tpx01_aircondition_with_buttons:
   variables:
-    name: null
+    name:
   styles:
     grid:
-      - grid-template-areas: '"item1" "item2"'
-      - grid-template-columns: 1fr
-      - grid-template-rows: min-content  min-content
-      - row-gap: 12px
+      - grid-template-areas: "item1 item2"
+      - grid-template-columns: "1fr"
+      - grid-template-rows: "min-content min-content"
+      - row-gap: "12px"
     card:
-      - border-radius: var(--border-radius)
-      - box-shadow: var(--box-shadow)
-      - padding: 12px
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
   custom_fields:
     item1:
       card:
-        type: custom:button-card
-        template: list_items_favorite
+        type: "custom:button-card"
+        template: "list_items_favorite"
         custom_fields:
           item1:
             card:
-              type: 'custom:button-card'
+              type: "custom:button-card"
               template:
-                - icon_info
-                - custom_card_tpx01_aircondition
+                - "icon_info"
+                - "custom_card_tpx01_aircondition"
               tap_action:
-                action: more-info
+                action: "more-info"
               name: >
                 [[[
                     if (variables.name == null) {
@@ -80,92 +81,92 @@ custom_card_tpx01_aircondition_with_buttons:
                     }
                     return variables.name;
                 ]]]
-              entity: '[[[ return variables.entity ]]]'
+              entity: "[[[ return variables.entity ]]]"
           item2:
             card:
-              type: horizontal-stack
+              type: "horizontal-stack"
               cards:
-                - type: conditional
+                - type: "conditional"
                   conditions:
-                    - entity: '[[[ return variables.entity ]]]'
-                      state: 'off'
+                    - entity: "[[[ return variables.entity ]]]"
+                      state: "off"
                   card:
-                    type: custom:button-card
-                    template: widget_icon
+                    type: "custom:button-card"
+                    template: "widget_icon"
                     tap_action:
-                      action: call-service
-                      service: climate.set_hvac_mode
+                      action: "call-service"
+                      service: "climate.set_hvac_mode"
                       service_data:
-                        entity_id: '[[[ return variables.entity ]]]'
-                        hvac_mode: 'cool'
-                    icon: mdi:power
-                - type: conditional
+                        entity_id: "[[[ return variables.entity ]]]"
+                        hvac_mode: "cool"
+                    icon: "mdi:power"
+                - type: "conditional"
                   conditions:
-                    - entity: '[[[ return variables.entity ]]]'
-                      state_not: 'off'
+                    - entity: "[[[ return variables.entity ]]]"
+                      state_not: "off"
                   card:
-                    type: custom:button-card
-                    template: widget_icon
+                    type: "custom:button-card"
+                    template: "widget_icon"
                     tap_action:
-                      action: call-service
-                      service: climate.set_hvac_mode
+                      action: "call-service"
+                      service: "climate.set_hvac_mode"
                       service_data:
-                        entity_id: '[[[ return variables.entity ]]]'
-                        hvac_mode: 'off'
-                    icon: mdi:power-off
+                        entity_id: "[[[ return variables.entity ]]]"
+                        hvac_mode: "off"
+                    icon: "mdi:power-off"
     item2:
       card:
-        type: 'custom:button-card'
-        template: list_items
+        type: "custom:button-card"
+        template: "list_items"
         custom_fields:
           item1:
             card:
-              type: 'custom:button-card'
-              template: widget_icon
+              type: "custom:button-card"
+              template: "widget_icon"
               tap_action:
-                action: call-service
-                service: script.decrease_climate_temperature
+                action: "call-service"
+                service: "script.decrease_climate_temperature"
                 service_data:
-                  entity_id: '[[[ return variables.entity ]]]'
-              icon: 'mdi:minus'
+                  entity_id: "[[[ return variables.entity ]]]"
+              icon: "mdi:minus"
           item2:
             card:
-              type: 'custom:button-card'
-              template: widget_temperature
+              type: "custom:button-card"
+              template: "widget_temperature"
               tap_action:
-                action: none
-              entity: '[[[ return variables.entity ]]]'
-              icon: 'mdi:temperature-celsius'
+                action: "none"
+              entity: "[[[ return variables.entity ]]]"
+              icon: "mdi:temperature-celsius"
           item3:
             card:
-              type: 'custom:button-card'
-              template: widget_icon
+              type: "custom:button-card"
+              template: "widget_icon"
               tap_action:
-                action: call-service
-                service: script.increment_climate_temperature
+                action: "call-service"
+                service: "script.increment_climate_temperature"
                 service_data:
-                  entity_id: '[[[ return variables.entity ]]]'
-              icon: 'mdi:plus'
+                  entity_id: "[[[ return variables.entity ]]]"
+              icon: "mdi:plus"
 
 list_items_favorite:
   styles:
     grid:
-      - grid-template-areas: '"item1 item1 item2"'
-      - grid-template-columns: 1fr 1fr 1fr
-      - grid-template-rows: min-content
-      - column-gap: 7px
+      - grid-template-areas: "item1 item1 item2"
+      - grid-template-columns: "1fr 1fr 1fr"
+      - grid-template-rows: "min-content"
+      - column-gap: "7px"
     card:
-      - box-shadow: none
-      - padding: 0px
+      - box-shadow: "none"
+      - padding: "0px"
 
 widget_temperature:
   tap_action:
-    action: toggle
-  color: var(--google-grey-500)
+    action: "toggle"
+  color: "var(--google-grey-500)"
   show_icon: false
   show_name: false
   show_label: true
-  size: 20px
+  size: "20px"
   label: |-
     [[[
         var temperature = entity.attributes.temperature;
@@ -176,13 +177,13 @@ widget_temperature:
     ]]]
   styles:
     label:
-      - color: 'rgb(var(--color-theme),0.9)'
+      - color: "rgb(var(--color-theme),0.9)"
     grid:
-      - grid-template-areas: '"l"'
+      - grid-template-areas: "l"
     card:
-      - box-shadow: none
-      - padding: 0px
-      - background-color: 'rgba(var(--couleur-theme),0)'
-      - border-radius: 14px
-      - place-self: center
-      - height: 42px
+      - box-shadow: "none"
+      - padding: "0px"
+      - background-color: "rgba(var(--couleur-theme),0)"
+      - border-radius: "14px"
+      - place-self: "center"
+      - height: "42px"

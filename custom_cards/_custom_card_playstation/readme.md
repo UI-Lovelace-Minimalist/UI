@@ -1,4 +1,4 @@
-### Playstation  
+### Playstation
 
 > NOTE
 > This card is under review and is not ready to use!
@@ -71,7 +71,7 @@ card_ps4:
     - operator: template
       value: >
         [[[
-          return entity.state !='unknown' 
+          return entity.state !='unknown'
         ]]]
       name: >
           [[[
@@ -82,7 +82,7 @@ card_ps4:
             return entity.attributes.friendly_name;
           ]]]
       styles:
-        label: 
+        label:
           - color: white
           - filter: opacity(100%)
         img_cell:
