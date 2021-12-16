@@ -23,3 +23,4 @@ repos:
     hooks:
       - id: "yamlfmt"
         args: ["--mapping", "2", "--sequence", "4", "--offset", "2", "--preserve-quotes"]
+        exclude: ".github/release-drafter.yml"
