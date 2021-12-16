@@ -928,27 +928,23 @@ card_battery:
     icon:
       - color: >
           [[[
+              // --color-theme as default
               var color = 'rgba(var(--color-theme),0.9)';
               var battery_level = variables.ulm_card_battery_attribute !== null
               ? states[entity.entity_id].attributes[variables.ulm_card_battery_attribute]
               : states[entity.entity_id].state;
 
-              // battery_level<battery_level_danger and battery_level_warning not set
-              color = variables.ulm_card_battery_battery_level_danger !== null 
-                      && variables.ulm_card_battery_battery_level_danger>=battery_level
-                      && variables.ulm_card_battery_battery_level_warning == null? 
-                      variables.ulm_card_battery_color_battery_level_danger: variables.ulm_card_battery_color_battery_level_ok   
-
-              // battery_level<battery_level_warning
-              color = variables.ulm_card_battery_battery_level_warning !== null 
-                      && variables.ulm_card_battery_battery_level_warning>=battery_level? 
-                      variables.ulm_card_battery_color_battery_level_warning: variables.ulm_card_battery_color_battery_level_ok
-
-              // battery_level<battery_level_danger
-              color = variables.ulm_card_battery_battery_level_danger !== null 
-                      && variables.ulm_card_battery_battery_level_danger>=battery_level? 
-                      variables.ulm_card_battery_color_battery_level_danger: color
-
+              // color based on battery_level
+              if(variables.ulm_card_battery_battery_level_danger !== null 
+              || variables.ulm_card_battery_battery_level_warning !== null ) { 
+                color = variables.ulm_card_battery_color_battery_level_ok ;
+                if(variables.ulm_card_battery_battery_level_warning>=battery_level) {
+                  color = variables.ulm_card_battery_color_battery_level_warning
+                }
+                if(variables.ulm_card_battery_battery_level_danger>=battery_level) {
+                  color = variables.ulm_card_battery_color_battery_level_danger
+                }
+              }
             return color;
           ]]] 
     label:
