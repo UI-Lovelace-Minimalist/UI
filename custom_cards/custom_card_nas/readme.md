@@ -1,9 +1,9 @@
 # Custom-card "NAS"
-The `card-nas` shows you a specific sensor value from your NAS, eg. the disk space used.  
+The `card-nas` shows you a specific sensor value from your NAS, eg. the disk space used.
 
 ## Credits
-Author: tben - 2021  
-Version: 1.0.0  
+Author: tben - 2021
+Version: 1.0.0
 
 ## Changelog
 <details>
@@ -15,7 +15,7 @@ Initial release
 
 ```yaml
 - type: 'custom:button-card'
-  template: 
+  template:
     - custom_card_nas
   variables:
     ulm_custom_card_nas_sensor: sensor.pinas_disk_use
@@ -60,17 +60,16 @@ n/a
 custom_card_nas:
   tap_action:
     action: more-info
-  template: 
+  template:
     - blue
   show_label: true
   label: |-
-    [[[ 
+    [[[
       if (entity.state == 'on'){
-        var state = variables.ulm_custom_card_nas_text + states[variables.ulm_custom_card_nas_sensor].state + variables.ulm_custom_card_nas_unit; 
+        var state = variables.ulm_custom_card_nas_text + states[variables.ulm_custom_card_nas_sensor].state + variables.ulm_custom_card_nas_unit;
       } else {
         var state = "Off";
       }
-      return state; 
+      return state;
     ]]]
 ```
-
