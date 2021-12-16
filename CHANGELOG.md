@@ -1,4 +1,40 @@
 # UI-Lovelace-Minimalist CHANGELOG
+## Version 1.0.0-beta.7
+
+Hi guys, it took a while, but here once again a new release. Yippie!!
+Unfortunately, @Paddy0174  hasn't been active on Github or the forum for over a month now. We have been trying to reach him via private messages. However, without success. At this point, no matter where you are, love to @Paddy0174 🧡. We all hope you are doing well!
+
+Since all the bug reports and pull requests have piled up, @TBens  has kindly granted some contributors the rights to manage the github repos. Please bear with us if things don't run smoothly at the beginning. We still have to learn how to manage a github repo ourselves.
+
+Unfortunately, @TBens has not been able to give us permissions to the wiki page, or its repository, which is why it is not yet as up-to-date as this release. So you should have a close look at this release message and the corresponding commits to avoid misunderstandings.
+We are also trying to get permissions for the wiki page to bring it up to date as soon as possible.
+
+But now, without further ado, to the new release. We hope you enjoy it and thanks to all contributors!
+
+### ⚠️ Breaking Changes
+
+@saxel has done an excellent job of reworking the Vertical buttons custom state.
+However, a few old habits had to be cut off, concerning the specification of the variables for the colors of the `vertical_buttons`.
+If any of you have used this before, you should take a look at @saxel's pull request to get a better understanding of the new configuration:
+https://github.com/UI-Lovelace-Minimalist/UI/pull/66
+
+### 🔧 Code enhancements
+
+- Add some list\_items templates @schumijo (#31)
+- Add custom card custom\_card\_saxel\_fan @saxel (#34)
+- NL support and Typofix @basbruss (#37)
+- Add custom single icon chip card @CM000n (#38)
+- Add custom card custom\_card\_schumijo\_car @schumijo (#39)
+- Round temperature when the temperature has decimal points @bavo (#46)
+- Add Alarm Chip to availabe templates @tombo12354 (#50)
+- Create SE.yaml @EmilZackrisson (#53)
+- Vertical buttons custom state @saxel (#66)
+- Add release drafter @CM000n (#72)
+- Transfer of the work status so far fromPaddy0174 dev @CM000n (#69)
+
+### 🐛 Bug Fixes
+
+- Fix card\_media\_player\_with\_controls variables access. @matrixx567 (#62)
 
 ## Version 1.0.0-beta.6
 ### Fixed
