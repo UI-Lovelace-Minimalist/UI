@@ -5,6 +5,10 @@ It's kind of hard to explain what this is, so let's call it a "theme" (in quotat
 
 > ### Contributions
 > This is a living project and all input is very welcome! If you configured and designed a card, that you would like to share, please feel free to do so! We are happy to include your contribution so others can use it as well!
+Your developments should always start from "dev" as the base branch. Due to the many contributions, it cannot be guaranteed that the "main" branch with the last published version contains all current changes.
+This project uses pre-commit for consistent and clean code. If possible, please make sure that you also use pre-commit for local development before creating a pull request.
+
+
 
 ## Wiki for documentation
 We have setup an extensive Wiki for our documentation. It is more comfortable for you to read and for us to handle, than this file and gives our documentation the right framework to grow.
