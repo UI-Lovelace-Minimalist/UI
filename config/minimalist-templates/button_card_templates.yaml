@@ -288,7 +288,8 @@ vertical_buttons_custom_state:
   template: "vertical_buttons"
   variables:
     state: "default"
-    color: "blue" # blue, red, green, yellow, purple, pink
+    # blue, red, green, yellow, purple, pink
+    color: "blue"
   show_last_changed: false
   name: "[[[ return variables.state ]]]"
   styles:
