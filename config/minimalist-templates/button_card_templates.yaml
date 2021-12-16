@@ -1006,15 +1006,15 @@ card_script:
     img_cell:
       - background-color: "rgba(var(--color-blue), 0.2)"
     grid:
-      - grid-template-areas: '"i l"'
-      - grid-template-columns: min-content min-content
-      - grid-template-rows: min-content
+      - grid-template-areas: "'i l'"
+      - grid-template-columns: "min-content min-content"
+      - grid-template-rows: "min-content"
 card_thermostat:
   template:
-    - icon_info_bg
-    - ulm_language_variables
+    - "icon_info_bg"
+    - "ulm_language_variables"
   hold_action:
-    action: more-info
+    action: "more-info"
   label: >-
     [[[ 
         if (entity.state =='off'){
@@ -1032,9 +1032,9 @@ card_thermostat:
           return etat ;
         }
     ]]]
-  icon: mdi:thermometer
+  icon: "mdi:thermometer"
   state:
-    - operator: template
+    - operator: "template"
       value: >
         [[[
           return entity.state == 'heat'
