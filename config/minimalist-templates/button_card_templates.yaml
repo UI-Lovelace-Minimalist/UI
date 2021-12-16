@@ -1016,7 +1016,7 @@ card_thermostat:
   hold_action:
     action: "more-info"
   label: >-
-    [[[ 
+    [[[
         if (entity.state =='off'){
           var etat = variables.ulm_off ;
         }else if (entity.state == 'heat'){
