@@ -1,15 +1,15 @@
 # Custom-card "Light Card Icon Info"
-This is a `custom-card` to add additionall function to the `light_card`. It comes in three different versions:  
+This is a `custom-card` to add additionall function to the `light_card`. It comes in three different versions:
 
 * Light card with icon as info button (*card_light_icon_info*)
 * Light card with icon as info button + brigthness slider (*card_light_slider_icon_info*)
-* Light card with icon as info button + auto collapse brigthness slider (*card_light_slider_collapse_icon_info*) 
+* Light card with icon as info button + auto collapse brigthness slider (*card_light_slider_collapse_icon_info*)
 
-The icon is changeable for each MDI-icon. And the icon functions as button to show more-info. 
+The icon is changeable for each MDI-icon. And the icon functions as button to show more-info.
 
 ## Credits
-Author: basbruss - 2021  
-Version: 1.0.0  
+Author: basbruss - 2021
+Version: 1.0.0
 
 ## Changelog
 <details>
@@ -38,7 +38,7 @@ This card needs the following to function correctly:
 </tr>
 </table>
 
-## Installation  
+## Installation
 * Copy the folder `custom_card_light_icon_info` from your download `custom_cards` to `config/minimalist-templates`
 
 In the end it should look like this:
