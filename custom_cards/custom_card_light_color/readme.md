@@ -5,7 +5,7 @@ This is a `custom-card` to add additionall function to the `light_card`. It come
 * Color chaning light card with icon as info button + brigthness slider (*card_light_slider_color*)
 * Color chaning light card with icon as info button + auto collapse brigthness slider (*card_light_slider_collapse_color*)
 
-The card shows you the color of the light. The icon is changeable for each MDI-icon. And the icon functions as button to show more-info. 
+The card shows you the color of the light. The icon is changeable for each MDI-icon. And the icon functions as button to show more-info.
 
 ## Credits
 Author: basbruss - 2021
@@ -227,7 +227,7 @@ auto_color:
                     return 'rgba(var(--color-yellow),1)';
                   }
               ]]]
-        name: 
+        name:
           - color: >
               [[[
                   var color = entity.attributes.rgb_color;
