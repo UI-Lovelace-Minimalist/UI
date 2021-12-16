@@ -102,4 +102,3 @@ config
 <td>This is your icon for the light</td>
 </tr>
 </table>
-
