@@ -1,0 +1,10 @@
+ulm_language_variables:
+  variables:
+    ulm_on: "på"
+    ulm_off: "av"
+    ulm_open: "öppen"
+    ulm_closed: "stängd"
+    ulm_unavailable: "ej tillämpbar"
+    ulm_standby: "standby"
+    ulm_idle: "idle"
+    ulm_currency: "kr"
