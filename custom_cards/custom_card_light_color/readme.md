@@ -34,7 +34,6 @@ This card needs the following to function correctly:
 <td>attribute: rgb_color</td>
 <td>optional</td>
 <td>Needed for color function. <i>otherwise it uses the default theme function</i></td>
-<td></td>
 </tr>
 </table>
 
