@@ -341,4 +341,5 @@ icon_info_light:
             - box-shadow: "none"
             - border-radius: "var(--border-radius) var(--border-radius) var(--border-radius) var(--border-radius)"
             - padding: "6px"
+            - margin-left: "-7px"
             - background-color: "rgba(0,0,0,0)"
