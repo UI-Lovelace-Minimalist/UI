@@ -1,15 +1,15 @@
 # Custom-card "Color Light Card"
-This is a `custom-card` to add additionall function to the `light_card`. It comes in three different versions:  
+This is a `custom-card` to add additionall function to the `light_card`. It comes in three different versions:
 
 * Color chaning light card with icon as info button (*card_light_color*)
 * Color chaning light card with icon as info button + brigthness slider (*card_light_slider_color*)
-* Color chaning light card with icon as info button + auto collapse brigthness slider (*card_light_slider_collapse_color*) 
+* Color chaning light card with icon as info button + auto collapse brigthness slider (*card_light_slider_collapse_color*)
 
 The card shows you the color of the light. The icon is changeable for each MDI-icon. And the icon functions as button to show more-info. 
 
 ## Credits
-Author: basbruss - 2021  
-Version: 1.0.0  
+Author: basbruss - 2021
+Version: 1.0.0
 
 ## Changelog
 <details>
@@ -38,7 +38,7 @@ This card needs the following to function correctly:
 </tr>
 </table>
 
-## Installation  
+## Installation
 * Copy the folder `custom_card_light_color` from your download `custom_cards` to `config/minimalist-templates`
 
 In the end it should look like this:
@@ -115,16 +115,16 @@ auto_color:
       styles:
         icon:
           - color: >
-              [[[ 
+              [[[
                   var color = entity.attributes.rgb_color;
                   if (color != null){
                      return 'rgba(' + entity.attributes.rgb_color + ',1)';
                   }
                   else{
                     return 'rgba(var(--color-yellow),1)';
-                  } 
+                  }
               ]]]
-        label: 
+        label:
           - color: >
               [[[
                 var color = entity.attributes.rgb_color;
@@ -137,7 +137,7 @@ auto_color:
                 }else if (states['sun.sun'].state == "above_horizon")
                   return 'rgba(var(--color-yellow-text),1)';
               ]]]
-        name: 
+        name:
           - color: >
               [[[
                 var color = entity.attributes.rgb_color;
@@ -152,14 +152,14 @@ auto_color:
               ]]]
         img_cell:
           - background-color: >
-              [[[ 
+              [[[
                   var color = entity.attributes.rgb_color;
                   if (color != null){
                      return 'rgba(' + entity.attributes.rgb_color + ',0.2)';
                   }
                   else{
                     return 'rgba(var(--color-yellow),0.2)';
-                  } 
+                  }
               ]]]
 ```
 
@@ -172,29 +172,29 @@ auto_color:
       styles:
         icon:
           - color: >
-              [[[ 
+              [[[
                   var color = entity.attributes.rgb_color;
                   if (color != null){
                      return 'rgba(' + entity.attributes.rgb_color + ',1)';
                   }
                   else{
                     return 'rgba(var(--color-yellow),1)';
-                  } 
+                  }
               ]]]
-        label: 
+        label:
           - color: "rgba(var(--color-yellow-text),1)"
         name:
           - color: "rgba(var(--color-yellow-text),1)"
         img_cell:
           - background-color: >
-              [[[ 
+              [[[
                   var color = entity.attributes.rgb_color;
                   if (color != null){
                      return 'rgba(' + entity.attributes.rgb_color + ',0.2)';
                   }
                   else{
                     return 'rgba(var(--color-yellow),0.2)';
-                  } 
+                  }
               ]]]
 ```
 
@@ -207,46 +207,46 @@ auto_color:
       styles:
         icon:
           - color: >
-              [[[ 
+              [[[
                   var color = entity.attributes.rgb_color;
                   if (color != null){
                      return 'rgba(' + entity.attributes.rgb_color + ',1)';
                   }
                   else{
                     return 'rgba(var(--color-yellow),1)';
-                  } 
+                  }
               ]]]
-        label: 
+        label:
           - color: >
-              [[[ 
+              [[[
                   var color = entity.attributes.rgb_color;
                   if (color != null){
                      return 'rgba(' + entity.attributes.rgb_color + ',1)';
                   }
                   else{
                     return 'rgba(var(--color-yellow),1)';
-                  } 
+                  }
               ]]]
         name: 
           - color: >
-              [[[ 
+              [[[
                   var color = entity.attributes.rgb_color;
                   if (color != null){
                      return 'rgba(' + entity.attributes.rgb_color + ',1)';
                   }
                   else{
                     return 'rgba(var(--color-yellow),1)';
-                  } 
+                  }
               ]]]
         img_cell:
           - background-color: >
-              [[[ 
+              [[[
                   var color = entity.attributes.rgb_color;
                   if (color != null){
                      return 'rgba(' + entity.attributes.rgb_color + ',0.2)';
                   }
                   else{
                     return 'rgba(var(--color-yellow),0.2)';
-                  } 
+                  }
               ]]]
 ```
