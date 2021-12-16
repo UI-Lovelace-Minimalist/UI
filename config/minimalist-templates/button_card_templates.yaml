@@ -849,6 +849,7 @@ card_battery:
     ulm_card_battery_color_battery_level_danger: 'var(--google-red)'
     ulm_card_battery_color_battery_level_warning: 'var(--google-yellow)'
     ulm_card_battery_color_battery_level_ok: 'var(--google-green)'
+  triggers_update: "all"
   icon: |
     [[[
       var icon = "mdi:help-circle-outline";
