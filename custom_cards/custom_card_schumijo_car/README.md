@@ -70,45 +70,46 @@ Initial release
 ## Template code
 
 ```yaml
+---
 widget_icon_state:
   tap_action:
-    action: none
-  layout: icon_state
+    action: "none"
+  layout: "icon_state"
   show_state: true
   show_units: false
   styles:
     grid:
-      - grid-template-areas: '"i s" "n n"'
-      - grid-template-columns: 45% 55%
+      - grid-template-areas: "'i s' 'n n'"
+      - grid-template-columns: "45% 55%"
     card:
-      - box-shadow: none
-      - padding: 0px
+      - box-shadow: "none"
+      - padding: "0px"
       - background-color: "rgba(var(--color-theme),0.05)"
-      - border-radius: 14px
-      - place-self: center
-      - height: 42px
+      - border-radius: "14px"
+      - place-self: "center"
+      - height: "42px"
     name:
-      - font-weight: bold
-      - font-size: 10px
-      - filter: opacity(40%)
-      - margin-bottom: 2px
+      - font-weight: "bold"
+      - font-size: "10px"
+      - filter: "opacity(40%)"
+      - margin-bottom: "2px"
     state:
-      - justify-self: start
-      - margin-left: 5px
-      - font-size: 18px
+      - justify-self: "start"
+      - margin-left: "5px"
+      - font-size: "18px"
       - font-weight: 600
     icon:
       - color: "rgba(var(--color-theme),0.9)"
     img_cell:
-      - justify-content: right
-  size: 20px
-  color: var(--google-grey)
+      - justify-content: "right"
+  size: "20px"
+  color: "var(--google-grey)"
 
 car:
   template:
-    - icon_info
+    - "icon_info"
   tap_action:
-    action: more-info
+    action: "more-info"
   show_name: true
   show_last_changed: true
   name: "[[[ return variables.ulm_card_schumijo_car_name ]]]"
@@ -117,19 +118,19 @@ car:
   styles:
     icon:
       - color: "rgba(var(--color-theme),0.9)"
-      - width: 20px
-      - place-self: center
+      - width: "20px"
+      - place-self: "center"
     custom_fields:
       tracker:
-        - border-radius: 50%
-        - position: absolute
-        - left: 30px
-        - top: -2px
-        - height: 16px
-        - width: 16px
-        - border: 2px solid var(--card-background-color)
-        - font-size: 12px
-        - line-height: 14px
+        - border-radius: "50%"
+        - position: "absolute"
+        - left: "30px"
+        - top: "-2px"
+        - height: "16px"
+        - width: "16px"
+        - border: "2px solid var(--card-background-color)"
+        - font-size: "12px"
+        - line-height: "14px"
         - background-color: >
             [[[
               if (states[variables.ulm_card_schumijo_car_tracker].state != 'home'){
@@ -139,15 +140,15 @@ car:
               }
             ]]]
       lock:
-        - border-radius: 50%
-        - position: absolute
-        - left: 30px
-        - top: 24px
-        - height: 16px
-        - width: 16px
-        - border: 2px solid var(--card-background-color)
-        - font-size: 12px
-        - line-height: 14px
+        - border-radius: "50%"
+        - position: "absolute"
+        - left: "30px"
+        - top: "24px"
+        - height: "16px"
+        - width: "16px"
+        - border: "2px solid var(--card-background-color)"
+        - font-size: "12px"
+        - line-height: "14px"
         - background-color: >
             [[[
               if (states[variables.ulm_card_schumijo_car_lock].state != 'locked'){
@@ -176,7 +177,7 @@ car:
 
 custom_card_schumijo_car:
   template:
-    - ulm_custom_card_schumijo_car_language_variables
+    - "ulm_custom_card_schumijo_car_language_variables"
   variables:
     ulm_card_schumijo_car_name: "n/a"
   show_icon: false
@@ -184,19 +185,19 @@ custom_card_schumijo_car:
   show_label: false
   styles:
     grid:
-      - grid-template-areas: '"item1" "item2"'
-      - grid-template-columns: 1fr
-      - grid-template-rows: min-content min-content
-      - row-gap: 12px
+      - grid-template-areas: "'item1' 'item2'"
+      - grid-template-columns: "1fr"
+      - grid-template-rows: "min-content min-content"
+      - row-gap: "12px"
     card:
-      - border-radius: var(--border-radius)
-      - box-shadow: var(--box-shadow)
-      - padding: 12px
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
   custom_fields:
     item1:
       card:
         type: "custom:button-card"
-        template: car
+        template: "car"
         entity: "[[[ return variables.ulm_card_schumijo_car_tracker ]]]"
         variables:
           ulm_card_schumijo_car_tracker: "[[[ return variables.ulm_card_schumijo_car_tracker ]]]"
@@ -204,20 +205,32 @@ custom_card_schumijo_car:
           ulm_card_schumijo_car_lock: "[[[ return variables.ulm_card_schumijo_car_lock ]]]"
     item2:
       card:
-        template: list_2_items
+        template: "list_2_items"
         type: "custom:button-card"
         custom_fields:
           item1:
             card:
               type: "custom:button-card"
-              template: widget_icon_state
+              template: "widget_icon_state"
               entity: "[[[ return variables.ulm_card_schumijo_car_energy_level ]]]"
-              name: "[[[ return states[variables.ulm_card_schumijo_car_energy_level].attributes.unit_of_measurement + ' ' + variables.ulm_custom_card_schumijo_car_energy_level ]]]"
+              state_display: >
+                [[[
+                  return parseFloat(states[variables.ulm_card_schumijo_car_energy_level].state).toFixed(0);
+                ]]]
+              name: "[[[ return states[variables.ulm_card_schumijo_car_energy_level].attributes.unit_of_measurement + ' ' + variables.ulm_custom_card_schumijo_car_energy_level\
+                \ ]]]"
           item2:
             card:
               type: "custom:button-card"
-              template: widget_icon_state
+              template: "widget_icon_state"
               entity: "[[[ return variables.ulm_card_schumijo_car_range ]]]"
-              name: "[[[ return states[variables.ulm_card_schumijo_car_range].attributes.unit_of_measurement + ' ' + variables.ulm_custom_card_schumijo_car_range ]]]"
+              state_display: >
+                [[[
+                  return parseFloat(states[variables.ulm_card_schumijo_car_range].state).toFixed(0);
+                ]]]
+              name: "[[[ return states[variables.ulm_card_schumijo_car_range].attributes.unit_of_measurement + ' ' + variables.ulm_custom_card_schumijo_car_range\
+                \ ]]]"
+
+
 
 ```
