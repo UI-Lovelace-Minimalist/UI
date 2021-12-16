@@ -841,8 +841,7 @@ card_media_player_with_control:
       - background-color: "rgba(var(--color-theme),0.05)"
     card:
       - background-blend-mode: "multiply"
-      - background:
-          "[[[ return states[entity.entity_id].attributes.entity_picture != null ? 'center / cover url(' + states[entity.entity_id].attributes.entity_picture\
+      - background: "[[[ return states[entity.entity_id].attributes.entity_picture != null ? 'center / cover url(' + states[entity.entity_id].attributes.entity_picture\
           \ + ') rgba(0, 0, 0, 0.15)' : '' ]]]"
 card_battery:
   template:
@@ -982,8 +981,7 @@ card_person:
   entity: "[[[ return variables.ulm_card_person_entity; ]]]"
   icon: "mdi:face-man"
   show_entity_picture: "[[[ return variables.ulm_card_person_use_entity_picture ]]]"
-  entity_picture:
-    "[[[ return variables.ulm_card_person_use_entity_picture != false ? states[variables.ulm_card_person_entity].attributes.entity_picture\
+  entity_picture: "[[[ return variables.ulm_card_person_use_entity_picture != false ? states[variables.ulm_card_person_entity].attributes.entity_picture\
     \ : null ]]]"
   styles:
     icon:
