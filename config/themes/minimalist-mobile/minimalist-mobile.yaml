@@ -53,7 +53,7 @@ minimalist-mobile:
       color-red-text: "var(--primary-text-color)"
       color-pink-text: "var(--primary-text-color)"
       color-purple-text: "var(--primary-text-color)"
-      opacity-bg: "1"
+      opacity-bg: "0.1"
       # background and sidebar
       card-background-color: "#FAFAFA"
       primary-background-color: "#EFEFEF"
