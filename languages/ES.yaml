@@ -1,3 +1,4 @@
+---
 ulm_language_variables:
   variables:
     ulm_on: "Encendido"
@@ -8,3 +9,5 @@ ulm_language_variables:
     ulm_standby: "En reposo"
     ulm_idle: "Inactivo"
     ulm_currency: "€"
+    ulm_heat: "Caliente"
+    ulm_cool: "Enfriar"
