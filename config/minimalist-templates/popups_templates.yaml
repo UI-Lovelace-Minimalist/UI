@@ -21,6 +21,7 @@ popup_4_items:
         - align-self: start
       item4:
         - align-self: end
+        - margin-top: 25px
 
 popup_list_items:
   template: list_items
@@ -118,6 +119,15 @@ popup_button_power:
   tap_action:
     action: toggle
 
+popup_button_selected:
+  tap_action:
+    action: none
+  styles:
+    icon:
+      - color: "rgba(var(--color-blue),1)"
+    img_cell:
+      - background-color: "rgba(var(--color-blue), 0.2)"
+
 popup_button_airconditionner:
   template: widget_icon
   variables:
@@ -141,111 +151,276 @@ popup_button_airconditionner:
       entity_id: climate.hvac
       hvac_mode: "[[[ return variables.ulm_popup_button_airconditionner_state ]]]"
 
+### ITEMS ###
+popup_item4_back_toggle:
+  template: popup_list_items
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        template: popup_button_back
+    item2:
+      card:
+        type: "custom:button-card"
+        template: popup_button_power
+        entity: "[[[ return variables.popup_item4_back_toggle_entity ]]]"
+
 ### POPUPS ###
 popup_power_outlet:
   hold_action:
     action: fire-dom-event
     browser_mod:
       command: popup
+      large: true
       hide_header: true
       card:
         type: custom:button-card
-        template: popup_4_items
-        extra_styles: |
-          @media (max-width: 800px) {
-            #container {
-                grid-template-rows: 16vh 10vh 55vh 15vh !important;
+        template: popup_power_outlet_stats
+        variables:
+          ulm_popup_power_outlet_entity: "[[[ return entity.entity_id ]]]"
+          ulm_popup_power_outlet_sensor1: "[[[ return variables.ulm_popup_power_outlet_sensor1 ]]]"
+          ulm_popup_power_outlet_sensor2: "[[[ return variables.ulm_popup_power_outlet_sensor2 ]]]"
+          ulm_popup_power_outlet_graph_sensor: "[[[ return variables.ulm_popup_power_outlet_graph_sensor ]]]"
+
+popup_power_outlet_stats:
+  styles:
+    grid:
+      - grid-template-areas: '"header header" "content1 content1" "content2 content3" "footer footer"'
+      - grid-template-rows: 16vh 12vh 44vh 14vh
+      - grid-template-columns: 1fr 1fr
+    card:
+      - background: var(--primary-background-color)
+      - box-shadow: none
+      - padding: 4%
+    custom_fields:
+      header:
+        - align-self: start
+      content1:
+        - align-self: start
+      content2:
+        - align-self: start
+        - margin-right: 15px
+      content3:
+        - align-self: start
+        - margin-left: 15px
+      buttons:
+        - display: none
+      footer:
+        - align-self: end
+        - margin-top: 25px
+  extra_styles: |
+    @media (max-width: 800px) {
+      #container {
+        grid-template-areas: "header" "content1" "content2" "buttons" "footer" !important;
+        grid-template-rows: 16vh 12vh 40vh 14vh 14vh !important;
+        grid-template-columns: 1fr !important;
+      }
+      #buttons {
+        display: block !important;
+        align-self: start !important;
+      }
+      #content2 {
+        margin-right: 0px;
+      }
+      #content3 {
+        display: none;
+      }
+    }
+  custom_fields:
+    header:
+      card:
+        type: custom:button-card
+        template:
+          - popup_header
+          - ulm_language_variables
+        entity: "[[[ return variables.ulm_popup_power_outlet_entity ]]]"
+        label: |-
+          [[[
+            if (states[variables.ulm_popup_power_outlet_entity].state =='on') {
+              return variables.ulm_on;
+            } else {
+              return variables.ulm_off;
             }
-          }
+          ]]]
+    content1:
+      card:
+        type: grid
+        columns: 2
+        square: false
+        cards:
+          - type: "custom:button-card"
+            entity: "[[[ return variables.ulm_popup_power_outlet_sensor1 ]]]"
+            label: >
+              [[[ return states[variables.ulm_popup_power_outlet_sensor1].state + states[variables.ulm_popup_power_outlet_sensor1].attributes.unit_of_measurement ]]]
+            template:
+              - icon_info_bg
+            styles:
+              icon:
+                - color: "var(--color-theme)"
+          - type: "custom:button-card"
+            entity: "[[[ return variables.ulm_popup_power_outlet_sensor2 ]]]"
+            label: >
+              [[[ return states[variables.ulm_popup_power_outlet_sensor2].state + states[variables.ulm_popup_power_outlet_sensor2].attributes.unit_of_measurement ]]]
+            template:
+              - icon_info_bg
+            styles:
+              icon:
+                - color: "var(--color-theme)"
+    content2:
+      card:
+        type: "custom:mini-graph-card"
+        entities:
+          - entity: "[[[ return variables.ulm_popup_power_outlet_graph_sensor ]]]"
+        line_color: var(--info-color)
+        height: 276
+        hours_to_show: 168
+        show:
+          name: false
+          icon: false
+          legend: false
+          state: false
+        card_mod:
+          style: |
+            ha-card {
+              box-shadow: none !important;
+              border-radius: var(--border-radius) !important;
+              margin-bottom: 37px !important;
+            }
+    buttons:
+      card:
+        type: custom:button-card
+        template: list_2_items
+        styles:
+          card:
+            - background: none
         custom_fields:
           item1:
             card:
-              type: custom:button-card
+              icon: "mdi:chart-line"
+              name: Statistiques
+              type: "custom:button-card"
               template:
-                - popup_header
-                - ulm_language_variables
-              entity: "[[[ return entity.entity_id ]]]"
-              label: |-
-                [[[ 
-                  if (entity.state =='on') {
-                    return variables.ulm_on;
-                  } else {
-                    return variables.ulm_off;
-                  }
-                ]]]
+                - popup_button
+                - popup_button_selected
           item2:
             card:
-              type: grid
-              columns: 2
-              square: false
-              cards:
-                - type: "custom:button-card"
-                  entity: "[[[ return variables.ulm_popup_power_outlet_sensor1 ]]]"
-                  label: >
-                    [[[ return states[variables.ulm_popup_power_outlet_sensor1].state + states[variables.ulm_popup_power_outlet_sensor1].attributes.unit_of_measurement ]]]
-                  template:
-                    - icon_info_bg
-                  styles:
-                    icon:
-                      - color: "var(--color-theme)"
-                - type: "custom:button-card"
-                  entity: "[[[ return variables.ulm_popup_power_outlet_sensor2 ]]]"
-                  label: >
-                    [[[ return states[variables.ulm_popup_power_outlet_sensor2].state + states[variables.ulm_popup_power_outlet_sensor2].attributes.unit_of_measurement ]]]
-                  template:
-                    - icon_info_bg
-                  styles:
-                    icon:
-                      - color: "var(--color-theme)"
-          item3:
-            card:
-              type: vertical-stack
-              cards:
-                - type: entities
-                  entities:
-                    - type: section
-                  card_mod:
-                    style: |
-                      ha-card{
-                        background: none !important;
-                        box-shadow: none !important;
-                        margin-bottom: -25px !important;
-                        text-align: start !important;
-                      }
-                - type: "custom:button-card"
-                  name: "[[[ return variables.ulm_popups_statistics ]]]"
-                  template: popup_subtitle
-                - type: "custom:mini-graph-card"
-                  entities:
-                    - entity: "[[[ return variables.ulm_popup_power_outlet_graph_sensor ]]]"
-                  line_color: var(--info-color)
-                  height: 200
-                  hours_to_show: 168
-                  show:
-                    name: false
-                    icon: false
-                    legend: false
-                    state: false
-                  style: |
-                    ha-card {
-                      box-shadow: none !important;
-                      border-radius: var(--border-radius) !important;
-                      /* margin-bottom: 150px !important; */
-                    }
-          item4:
-            card:
-              type: custom:button-card
-              template: popup_list_items
-              custom_fields:
-                item1:
+              icon: "mdi:history"
+              name: Historique
+              type: "custom:button-card"
+              template: popup_button
+              tap_action:
+                action: fire-dom-event
+                browser_mod:
+                  command: popup
+                  hide_header: true
                   card:
-                    type: "custom:button-card"
-                    template: popup_button_back
-                item2:
+                    type: custom:button-card
+                    template: popup_power_outlet_history
+                    variables:
+                      ulm_popup_power_outlet_entity: "[[[ return variables.ulm_popup_power_outlet_entity ]]]"
+                      ulm_popup_power_outlet_sensor1: "[[[ return variables.ulm_popup_power_outlet_sensor1 ]]]"
+                      ulm_popup_power_outlet_sensor2: "[[[ return variables.ulm_popup_power_outlet_sensor2 ]]]"
+                      ulm_popup_power_outlet_graph_sensor: "[[[ return variables.ulm_popup_power_outlet_graph_sensor ]]]"
+    footer:
+      card:
+        type: custom:button-card
+        template: popup_list_items
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template: popup_button_back
+          item2:
+            card:
+              type: "custom:button-card"
+              template: popup_button_power
+              entity: "[[[ return variables.ulm_popup_power_outlet_entity ]]]"
+    content3:
+      card:
+        type: logbook
+        entities:
+          - "[[[ return variables.ulm_popup_power_outlet_entity ]]]"
+        card_mod:
+          style: |
+            ha-card {
+              box-shadow: none !important;
+              background: none !important;
+              height: 257px !important;
+            }
+            ha-logbook {
+              height: 242px !important;
+            }
+            state-badge {
+              background: red !important;
+            }
+
+popup_power_outlet_history:
+  template: popup_power_outlet_stats
+  styles:
+    grid:
+      - grid-template-areas: '"header" "content1" "content3" "buttons" "footer"'
+      - grid-template-rows: 16vh 12vh 40vh 14vh 14vh;
+      - grid-template-columns: 1fr
+    custom_fields:
+      content2:
+        - display: none
+      content3:
+        - display: block
+        - align-self: start
+        - margin-left: 0px
+  extra_styles: |
+    @media (max-width: 800px) {
+      #container {
+        grid-template-areas: "header" "content1" "content3" "buttons" "footer" !important;
+        grid-template-rows: 16vh 12vh 40vh 14vh 14vh !important;
+        grid-template-columns: 1fr !important;
+      }
+      #buttons {
+        display: block !important;
+        align-self: start !important;
+      }
+      #content2 {
+        display: none;
+      }
+      #content3 {
+        margin-left: 0px;
+      }
+  custom_fields:
+    buttons:
+      card:
+        type: custom:button-card
+        template: list_2_items
+        styles:
+          card:
+            - background: none
+        custom_fields:
+          item1:
+            card:
+              icon: "mdi:chart-line"
+              name: Statistiques
+              type: "custom:button-card"
+              template: popup_button
+              tap_action:
+                action: fire-dom-event
+                browser_mod:
+                  command: popup
+                  hide_header: true
                   card:
-                    type: "custom:button-card"
-                    template: popup_button_power
-                    entity: "[[[ return entity.entity_id ]]]"
+                    type: custom:button-card
+                    template: popup_power_outlet_stats
+                    variables:
+                      ulm_popup_power_outlet_entity: "[[[ return variables.ulm_popup_power_outlet_entity ]]]"
+                      ulm_popup_power_outlet_sensor1: "[[[ return variables.ulm_popup_power_outlet_sensor1 ]]]"
+                      ulm_popup_power_outlet_sensor2: "[[[ return variables.ulm_popup_power_outlet_sensor2 ]]]"
+                      ulm_popup_power_outlet_graph_sensor: "[[[ return variables.ulm_popup_power_outlet_graph_sensor ]]]"
+          item2:
+            card:
+              icon: "mdi:history"
+              name: Historique
+              type: "custom:button-card"
+              template:
+                - popup_button
+                - popup_button_selected
 
 popup_light:
   hold_action:
@@ -356,14 +531,14 @@ popup_light:
                   hide_header: true
                   effects_list: false
                   smooth_color_wheel: true
-                  child_card: true 
+                  child_card: true
                   card_mod:
                     style: |
-                        ha-card {
-                          background: none !important;
-                          box-shadow: none !important;
-                          padding: 10px 0 10px 0 !important;
-                        }
+                      ha-card {
+                        background: none !important;
+                        box-shadow: none !important;
+                        padding: 10px 0 10px 0 !important;
+                      }
                 color_temp:
                   type: custom:button-card
                   styles:
@@ -384,7 +559,7 @@ popup_light:
                         minSet: "[[[ return entity.attributes.min_mireds ]]]"
                         maxBar: "[[[ return entity.attributes.max_mireds ]]]"
                         maxSet: "[[[ return entity.attributes.max_mireds ]]]"
-                        function: 'Warmth'
+                        function: "Warmth"
                         radius: 20px
                         rotate: 270
                         containerHeight: 320px
@@ -393,7 +568,7 @@ popup_light:
                         thumbHorizontalPadding: 0px
                         thumbWidth: 2%
                         thumbHeight: 85px
-                        thumbColor: '#000'
+                        thumbColor: "#000"
                         mainSliderColor: rgba(255, 255, 255, 0)
                         mainSliderColorOff: rgba(255, 255, 255, 0)
                         card_mod:
@@ -429,7 +604,7 @@ popup_light:
                       [[[
                             var areas = [];
                             var brightness_modes = ["brightness", "hs", "color_temp", "rgb", "rgbw"];
-                            var color_modes = ["hs", "rgb", "rgbw"];
+                            var color_modes = ["hs", "rgb", "rgbw", "xy"];
                             var color_temp_modes = ["color_temp"];
                             if (entity.attributes.supported_color_modes.some(r => brightness_modes.includes(r))) {
                                 areas.push("item1");
@@ -446,7 +621,7 @@ popup_light:
                       [[[
                             var columns = [];
                             var brightness_modes = ["brightness", "hs", "color_temp", "rgb", "rgbw"];
-                            var color_modes = ["hs", "rgb", "rgbw"];
+                            var color_modes = ["hs", "rgb", "rgbw", "xy"];
                             var color_temp_modes = ["color_temp"];
                             if (entity.attributes.supported_color_modes.some(r => brightness_modes.includes(r))) {
                                 columns.push("1fr");
@@ -481,7 +656,7 @@ popup_light:
                       img_cell:
                         - background-color: "rgba(255, 255, 255, 1)"
                     state:
-                      - operator: template 
+                      - operator: template
                         value: >
                           [[[ 
                             var brightness_modes = ["brightness", "hs", "color_temp", "rgb", "rgbw"];
@@ -513,10 +688,10 @@ popup_light:
                       img_cell:
                         - background-color: "rgba(255, 255, 255, 1)"
                     state:
-                      - operator: template 
+                      - operator: template
                         value: >
                           [[[ 
-                            var color_modes = ["hs", "rgb", "rgbw"];
+                            var color_modes = ["hs", "rgb", "rgbw", "xy"];
                             return !entity.attributes.supported_color_modes.some(r => color_modes.includes(r));
                           ]]]
                         styles:
@@ -545,7 +720,7 @@ popup_light:
                       img_cell:
                         - background-color: "rgba(255, 255, 255, 1)"
                     state:
-                      - operator: template 
+                      - operator: template
                         value: >
                           [[[ return !entity.attributes.supported_color_modes.includes("color_temp"); ]]]
                         styles:
