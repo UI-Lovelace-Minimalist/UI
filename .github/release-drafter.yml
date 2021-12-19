@@ -1,25 +1,48 @@
-name-template: "v$RESOLVED_VERSION 🌈"
+---
+name-template: "v$RESOLVED_VERSION 🏳️‍🌈"
 tag-template: "v$RESOLVED_VERSION"
-sort-direction: ascending
+change-template: "- #$NUMBER $TITLE @$AUTHOR"
+sort-direction: "ascending"
 categories:
-  - title: "⚠ Breaking changes"
+  - title: "⚠️ Breaking changes"
     label: "breaking change"
   - title: "🚀 Features"
     labels:
       - "feature"
-  - title: "🔧 Code enhancements"
+  - title: "⚙️ Code enhancements"
     labels:
       - "enhancement"
-  - title: "🐛 Bug Fixes"
+  - title: "🐞 Bug Fixes"
     labels:
       - "fix"
       - "bugfix"
       - "bug"
-  - title: "🈵 Translations"
+  - title: "㊗️ Translations"
     label: "translation"
   - title: "📄 Documentation"
     label: "documentation"
-change-template: "- $TITLE @$AUTHOR (#$NUMBER)"
-change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add ` to disable code blocks.
+version-resolver:
+  major:
+    labels:
+      - "major"
+  minor:
+    labels:
+      - "minor"
+  patch:
+    labels:
+      - "patch"
+  default: "patch"
 template: |
+  ## Changes
+
   $CHANGES
+
+  ## ❤️ Thank you so much for helping out to keep this UI awesome
+  $CONTRIBUTORS
+autolabeler:
+  - label: "bug"
+    branch:
+      - "/fix/.+/"
+  - label: "enhancement"
+    branch:
+      - "/feature/.+/"

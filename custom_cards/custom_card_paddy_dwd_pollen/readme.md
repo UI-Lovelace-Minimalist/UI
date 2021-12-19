@@ -1,9 +1,9 @@
 # Custom-card "DWD Pollen"
-This is a `custom-card` to show the pollen count, taken from the DWD pollen service via a rest sensor.  
+This is a `custom-card` to show the pollen count, taken from the DWD pollen service via a rest sensor.
 
 ## Credits
-Author: Paddy0174 - 2021  
-Version: 1.0.0  
+Author: Paddy0174 - 2021
+Version: 1.0.0
 
 ## Changelog
 <details>
@@ -15,7 +15,7 @@ Initial release
 
 ```yaml
 - type: custom:button-card
-  template: 
+  template:
   	- custom_card_paddy_dwd_pollen
   entity: sensor.dwd_pollenbelastung_birke
 ```

@@ -1,0 +1,13 @@
+---
+ulm_language_variables:
+  variables:
+    ulm_on: "Encendido"
+    ulm_off: "Apagado"
+    ulm_open: "Abierto"
+    ulm_closed: "Cerrado"
+    ulm_unavailable: "No disponible"
+    ulm_standby: "En reposo"
+    ulm_idle: "Inactivo"
+    ulm_currency: "€"
+    ulm_heat: "Caliente"
+    ulm_cool: "Enfriar"
