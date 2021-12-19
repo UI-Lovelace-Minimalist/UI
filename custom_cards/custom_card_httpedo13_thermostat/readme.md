@@ -3,9 +3,9 @@ The `custom_card_httpedo13_thermostat` shows data from your thermostat and gives
 
 ## Credits
 Author: httpedo13 - 2021
-Version: 1.0.0  
+Version: 1.0.0
 
-* This design was made by [tpx01's](https://github.com/httpedo13/UI/tree/main/custom_cards/custom_card_tpx01_aircondition)
+This design was made by [tpx01's](https://github.com/httpedo13/UI/tree/main/custom_cards/custom_card_tpx01_aircondition)
 
 ## Changelog
 <details>
@@ -69,5 +69,3 @@ Entity climate with only heat mode
 <td>The name to show</td>
 </tr>
 </table>
-
-

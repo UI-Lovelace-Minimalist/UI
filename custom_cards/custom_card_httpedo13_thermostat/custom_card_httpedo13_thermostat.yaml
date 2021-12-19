@@ -8,7 +8,7 @@ custom_card_httpedo13_thermostat:
     [[[
         if (entity.attributes.hvac_action == 'heating') {
           return "mdi:radiator";
-        } 
+        }
         return "mdi:radiator-off";
     ]]]
   label: >-
@@ -42,9 +42,9 @@ custom_card_httpedo13_thermostat:
           - color: |
               [[[
                 if (entity.attributes.hvac_action == 'heating'){
-                  return 'var(--card-background-color)';
+                  return "var(--card-background-color)";
                 }
-                return 'rgba(var(--color-theme),0.9)';
+                return "rgba(var(--color-theme),0.9)";
               ]]]
         icon:
           - color: "rgba(var(--color-red),1)"
@@ -64,7 +64,7 @@ custom_card_httpedo13_thermostat:
                 }
                 return 'var(--card-background-color)';
               ]]]
-          
+
 custom_card_httpedo13_thermostat_with_buttons:
   triggers_update: all
   styles:
@@ -197,8 +197,6 @@ custom_card_httpedo13_thermostat_with_buttons:
 
 
 custom_card_httpedo13_thermostat_with_buttons_collapse:
-  variables:
-    name: null
   triggers_update: all
   styles:
     grid:
