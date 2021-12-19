@@ -1,12 +1,12 @@
 # UI-Lovelace-Minimalist CHANGELOG
 
 ## Version 1.0.0-beta.8
-# 🚀 Features
+### 🚀 Features
 
 - More-info function light card and Custom auto-color light cards @basbruss (#80)
 - improved "card\_battery" card  @vncnt-dev (#89)
 
-# 🔧 Code enhancements
+### 🔧 Code enhancements
 
 - Add yaml linter and pre-commit hook to GitHub actions @CM000n (#74)
 - Add unit on chip @schumijo (#78)
@@ -16,30 +16,20 @@
 - Make guest counter optional on chip\_presence\_detection @CM000n (#99)
 - Fix guest presence counter @checkerschaf (#103)
 
-# 🐛 Bug Fixes
+### 🐛 Bug Fixes
 
 - Flower card language error @schumijo (#76)
 - Fix custom zones on person card @CM000n (#87)
 - Set opacity-bg to 0.1 in light themes @CM000n (#102)
 
-# 🈵 Translations
+### 🈵 Translations
 
 - Create SE.yaml @KaherdinTristan (#90)
 - Fix german translation an clean some code @CM000n (#91)
 - Add Spanish translations @jmoransalama (#93)
 
+
 ## Version 1.0.0-beta.7
-
-Hi guys, it took a while, but here once again a new release. Yippie!!
-Unfortunately, @Paddy0174  hasn't been active on Github or the forum for over a month now. We have been trying to reach him via private messages. However, without success. At this point, no matter where you are, love to @Paddy0174 🧡. We all hope you are doing well!
-
-Since all the bug reports and pull requests have piled up, @TBens  has kindly granted some contributors the rights to manage the github repos. Please bear with us if things don't run smoothly at the beginning. We still have to learn how to manage a github repo ourselves.
-
-Unfortunately, @TBens has not been able to give us permissions to the wiki page, or its repository, which is why it is not yet as up-to-date as this release. So you should have a close look at this release message and the corresponding commits to avoid misunderstandings.
-We are also trying to get permissions for the wiki page to bring it up to date as soon as possible.
-
-But now, without further ado, to the new release. We hope you enjoy it and thanks to all contributors!
-
 ### ⚠️ Breaking Changes
 
 @saxel has done an excellent job of reworking the Vertical buttons custom state.
