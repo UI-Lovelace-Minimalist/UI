@@ -1,9 +1,11 @@
 # Custom-card "Thermostat"
-The `custom_card_httpedo13_thermostat` shows data from your thermostat and gives you the possibility to control it. Thanks to @tpx01's air-condition custom card!
+The `custom_card_httpedo13_thermostat` shows data from your thermostat and gives you the possibility to control it. Thanks to [tpx01's](https://github.com/httpedo13/UI/tree/main/custom_cards/custom_card_tpx01_aircondition) air-condition custom card!
 
 ## Credits
 Author: httpedo13 - 2021
 Version: 1.0.0  
+
+* This design was made by [tpx01's](https://github.com/httpedo13/UI/tree/main/custom_cards/custom_card_tpx01_aircondition)
 
 ## Changelog
 <details>
