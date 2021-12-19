@@ -7,18 +7,18 @@ custom_card_httpedo13_thermostat:
   icon: |
     [[[
         if (entity.attributes.hvac_action == 'heating') {
-          return 'mdi:radiator';
+          return "mdi:radiator";
         } 
-        return 'mdi:radiator-off';
+        return "mdi:radiator-off";
     ]]]
   label: >-
     [[[
         if (entity.state =='off') {
-          return variables.custom_card_httpedo13_thermostat_off;
+          return "variables.custom_card_httpedo13_thermostat_off";
         } else if (entity.state =='heat') {
-          return variables.custom_card_httpedo13_thermostat_on;
+          return "variables.custom_card_httpedo13_thermostat_on";
         } else if (entity.attributes.hvac_action == 'heating') {
-          return variables.custom_card_httpedo13_thermostat_heating;
+          return "variables.custom_card_httpedo13_thermostat_heating";
         }
         return entity.state;
     ]]]
@@ -33,9 +33,9 @@ custom_card_httpedo13_thermostat:
           - color: |
               [[[
                 if (entity.attributes.hvac_action == 'heating'){
-                  return 'var(--card-background-color)';
+                  return "var(--card-background-color)";
                 }
-                return 'rgba(var(--color-theme),0.9)';
+                return "rgba(var(--color-theme),0.9)";
               ]]]
         name:
           - font-weight: bold
@@ -66,8 +66,6 @@ custom_card_httpedo13_thermostat:
               ]]]
           
 custom_card_httpedo13_thermostat_with_buttons:
-  variables:
-    name: null
   triggers_update: all
   styles:
     grid:
@@ -105,14 +103,14 @@ custom_card_httpedo13_thermostat_with_buttons:
         type: custom:button-card
         template: list_items_favorite
         styles:
-            card:
-              - background-color: |
-                  [[[
-                    if (states[variables.entity].attributes.hvac_action == 'heating'){
-                      return '#ff8100';
-                    }
-                    return 'var(--card-background-color)';
-                  ]]]
+          card:
+            - background-color: |
+                [[[
+                  if (states[variables.entity].attributes.hvac_action == 'heating'){
+                    return '#ff8100';
+                  }
+                  return 'var(--card-background-color)';
+                ]]]
         custom_fields:
           item1:
             card:
@@ -146,7 +144,7 @@ custom_card_httpedo13_thermostat_with_buttons:
               type: "custom:button-card"
               template: widget_current_temperature
               tap_action:
-                  action: toggle
+                action: toggle
               entity: '[[[ return variables.entity ]]]'
               icon: "mdi:temperature-celsius"
     item2:
@@ -238,14 +236,14 @@ custom_card_httpedo13_thermostat_with_buttons_collapse:
         type: custom:button-card
         template: list_items_favorite
         styles:
-            card:
-              - background-color: |
-                  [[[
-                    if (states[variables.entity].attributes.hvac_action == 'heating'){
-                      return '#ff8100';
-                    }
-                    return 'var(--card-background-color)';
-                  ]]]
+          card:
+            - background-color: |
+                [[[
+                  if (states[variables.entity].attributes.hvac_action == 'heating'){
+                    return '#ff8100';
+                  }
+                  return 'var(--card-background-color)';
+                ]]]
         custom_fields:
           item1:
             card:
@@ -279,7 +277,7 @@ custom_card_httpedo13_thermostat_with_buttons_collapse:
               type: "custom:button-card"
               template: widget_current_temperature
               tap_action:
-                  action: toggle
+                action: toggle
               entity: '[[[ return variables.entity ]]]'
               icon: "mdi:temperature-celsius"
     item2:
@@ -450,3 +448,4 @@ list_items_favorite:
     card:
       - box-shadow: none
       - padding: 0px
+
