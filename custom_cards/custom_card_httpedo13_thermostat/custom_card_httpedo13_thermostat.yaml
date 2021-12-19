@@ -14,11 +14,11 @@ custom_card_httpedo13_thermostat:
   label: >-
     [[[
         if (entity.state =='off') {
-          return "variables.custom_card_httpedo13_thermostat_off";
+          return variables.custom_card_httpedo13_thermostat_off;
         } else if (entity.state =='heat') {
-          return "variables.custom_card_httpedo13_thermostat_on";
+          return variables.custom_card_httpedo13_thermostat_on;
         } else if (entity.attributes.hvac_action == 'heating') {
-          return "variables.custom_card_httpedo13_thermostat_heating";
+          return variables.custom_card_httpedo13_thermostat_heating;
         }
         return entity.state;
     ]]]
