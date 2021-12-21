@@ -204,3 +204,4 @@ custom_card_mpse_printer:
                     }
                 animation:
                     state: 'off'
+                    

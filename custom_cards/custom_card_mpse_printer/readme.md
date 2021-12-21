@@ -5,7 +5,7 @@ The `custom_card_mpse_printer` is used to display the status of a printer and th
 ![Printer](./custom_printer.png)
 
 ## Credits
-Author: mpse (clemalex)
+Author: mpse (based on clemalex post)
 Version: 0.1.0  
 
 ## Changelog
