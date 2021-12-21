@@ -88,21 +88,39 @@ card_light_colorpick:
           entity: "[[[ return entity.entity_id ]]]"
           justify: "around"
           colors:
-            - rgb_color: [255,255,255]
+            - rgb_color:
+                - "255"
+                - "255"
+                - "255"
               icon_color: "rgba(255, 255, 255, 0.8)"
               transition: "[[[ return variables.ulm_card_light_colorpick_transition; ]]]"
-            - rgb_color: [245,68,54]
+            - rgb_color: 
+                - "245"
+                - "68"
+                - "54"
               icon_color: "[[[ return `rgba(var(--color-red), 0.8)`; ]]]"
               transition: "[[[ return variables.ulm_card_light_colorpick_transition; ]]]"
-            - rgb_color: [51,102,204]
+            - rgb_color:
+                - "51"
+                - "102"
+                - "204"
               icon_color: "rgba(51, 102, 204, 0.8)"
               transition: "[[[ return variables.ulm_card_light_colorpick_transition; ]]]"
-            - rgb_color: [51,204,51]
+            - rgb_color:
+                - "51"
+                - "204"
+                - "51"
               icon_color: "rgba(51, 204, 51, 0.8)"
               transition: "[[[ return variables.ulm_card_light_colorpick_transition; ]]]"
-            - rgb_color: [255,0,255]
+            - rgb_color:
+                - "255"
+                - "0"
+                - "255"
               icon_color: "rgba(255, 0, 255, 0.8)"
               transition: "[[[ return variables.ulm_card_light_colorpick_transition; ]]]"
-            - rgb_color: [0,255,255]
+            - rgb_color:
+                - "0"
+                - "255"
+                - "255"
               icon_color: "rgba(0, 255, 255, 0.8)"
               transition: "[[[ return variables.ulm_card_light_colorpick_transition; ]]]"
