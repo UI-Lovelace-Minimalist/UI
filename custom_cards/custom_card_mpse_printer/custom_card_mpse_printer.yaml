@@ -1,39 +1,40 @@
+---
 custom_card_mpse_printer:
-  type: custom:button-card
+  type: "custom:button-card"
   show_icon: false
   show_name: false
   show_label: false
   styles:
     card:
-      - border-radius: 20px
-      - box-shadow: var(--box-shadow)
-      - padding: 0px
+      - border-radius: "20px"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "0px"
     grid:
-      - grid-template-areas: '"item1" "item2" "item3" "item4" "item5"'
-      - grid-template-columns: 1fr
-      - grid-template-rows: min-content
+      - grid-template-areas: "'item1' 'item2' 'item3' 'item4' 'item5'"
+      - grid-template-columns: "1fr"
+      - grid-template-rows: "min-content"
   custom_fields:
     item1:
       card:
         entity: "[[[ return entity.entity_id ]]]"
         name: "[[[ return variables.ulm_card_printer_name ]]]"
         template:
-          - icon_info
+          - "icon_info"
         styles:
           card:
-            - padding: 12px
-        type: custom:button-card
+            - padding: "12px"
+        type: "custom:button-card"
     item2:
       card:
-        type: custom:bar-card
-        height: 20px
+        type: "custom:bar-card"
+        height: "20px"
         positions:
           name: off
-          value: inside
+          value: "inside"
           icon: off
           indicator: off
           minmax: off
-        color: black
+        color: "black"
         entities:
           - entity: "[[[ return variables.ulm_card_printer_black_name ]]]"
         style: |
@@ -66,18 +67,18 @@ custom_card_mpse_printer:
             padding: 0 16px;
           }
         animation:
-          state: 'off'
+          state: "off"
     item3:
       card:
-        type: custom:bar-card
-        height: 20px
+        type: "custom:bar-card"
+        height: "20px"
         positions:
           name: off
-          value: inside
+          value: "inside"
           icon: off
           indicator: off
           minmax: off
-        color: rgb(250,179,0)
+        color: "rgb(250,179,0)"
         entities:
           - entity: "[[[ return variables.ulm_card_printer_yellow_name ]]]"
         style: |
@@ -90,7 +91,7 @@ custom_card_mpse_printer:
             bar-card-name{
             width: 2rem;
             margin-right: 40px !important;
-          } 
+          }
           bar-card-value{
             width: 2rem;
             margin-left: 40px !important;
@@ -110,18 +111,18 @@ custom_card_mpse_printer:
             padding: 0 16px;
           }
         animation:
-          state: 'off'
+          state: "off"
     item4:
       card:
-        type: custom:bar-card
-        height: 20px
+        type: "custom:bar-card"
+        height: "20px"
         positions:
           name: off
-          value: inside
+          value: "inside"
           icon: off
           indicator: off
           minmax: off
-        color: rgb(248,75,122)
+        color: "rgb(248,75,122)"
         entities:
           - entity: "[[[ return variables.ulm_card_printer_magenta_name ]]]"
         style: |
@@ -154,18 +155,18 @@ custom_card_mpse_printer:
             padding: 0 16px;
           }
         animation:
-          state: 'off'
+          state: "off"
     item5:
       card:
-        type: custom:bar-card
-        height: 20px
+        type: "custom:bar-card"
+        height: "20px"
         positions:
           name: off
-          value: inside
+          value: "inside"
           icon: off
           indicator: off
           minmax: off
-        color: rgb(66,126,222)
+        color: "rgb(66,126,222)"
         entities:
           - entity: "[[[ return variables.ulm_card_printer_cyan_name ]]]"
         style: |
@@ -198,4 +199,4 @@ custom_card_mpse_printer:
             padding: 0 16px 16px 16px;
           }
         animation:
-          state: 'off'
+          state: "off"
