@@ -1,0 +1,7 @@
+---
+ulm_custom_card_paddy_welcome_language_variables:
+  variables:
+    ulm_custom_card_paddy_welcome_morning: "Buongiorno"
+    ulm_custom_card_paddy_welcome_afternoon: "Buon pomeriggio"
+    ulm_custom_card_paddy_welcome_evening: "Buonasera"
+    ulm_custom_card_paddy_welcome_hello: "Ciao"
