@@ -1,0 +1,7 @@
+custom_card_mlittle408_thermostat_language_variables:
+  variables:
+    custom_card_mlittle408_thermostat_dry: 'entfeuchten'
+    custom_card_mlittle408_thermostat_heat: 'heizen'
+    custom_card_mlittle408_thermostat_heat_cool: 'automatisch'
+    custom_card_mlittle408_thermostat_cool: 'kühlen'
+    custom_card_mlittle408_thermostat_fan_only: 'ventilator'

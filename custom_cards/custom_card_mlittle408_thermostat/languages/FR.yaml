@@ -1,0 +1,7 @@
+custom_card_mlittle408_thermostat_language_variables:
+  variables:
+    custom_card_mlittle408_thermostat_dry: 'déshumidifier'
+    custom_card_mlittle408_thermostat_heat: 'chaleur'
+    custom_card_mlittle408_thermostat_heat_cool: 'auto'
+    custom_card_mlittle408_thermostat_cool: 'frais'
+    custom_card_mlittle408_thermostat_fan_only: 'fan seulement'
