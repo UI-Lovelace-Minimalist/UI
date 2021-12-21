@@ -4,8 +4,6 @@ name: "Format Code"
 on:
   pull_request:
     branches: ["main", "dev"]
-  push:
-    branches: ["main", "dev"]
 
 jobs:
   pre-commit:
