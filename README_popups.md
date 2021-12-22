@@ -58,21 +58,6 @@ This popup is displayed using ``hold_action`` and it is compatible with the foll
 
 To enable this popup, you need to add the ``popup_power_outlet`` template on your card. And also the previously explained variables.
 
-<table style="border-collapse: collapse;">
-<tr>
-<th style="width: 25%;">Cards</th>
-<th style="width: 25%;">Action</th>
-</tr>
-<tr>
-  <td style="vertical-align: top;">
-    <p>card_power_outlet</p>
-  </td>
-  <td style="vertical-align: top;">
-    <p>hold_action</p>
-  </td>
-</tr>
-</table>
-
 For exemple :
 ```yaml
 - type: "custom:button-card"
@@ -89,3 +74,23 @@ For exemple :
 ```
 
 ## Light popup
+
+<img src="./screenshots/popup_light_phone.png" height="400"> <img src="./screenshots/popup_light_tablet.png" height="400">
+
+### Card compatibility
+
+This popup is displayed using ``hold_action`` and it is compatible with the following cards/chips :
+* card_light
+
+### How to use
+
+To enable this popup, you need to add the ``popup_light`` template on your card.
+
+For exemple :
+```yaml
+- type: "custom:button-card"
+  template:
+    - card_light
+    - popup_light
+  entity: light.cuisine
+```
