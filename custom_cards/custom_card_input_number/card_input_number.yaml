@@ -60,12 +60,12 @@ card_input_number:
                 service_data:
                   entity_id: "[[[ return variables.ulm_card_input_number_entity ]]]"
               icon: "mdi:arrow-up"
----
+
 input_number:
   tap_action:
     action: "more-info"
   show_last_changed: true
----
+
 widget_text:
   tap_action:
     action: "toggle"
