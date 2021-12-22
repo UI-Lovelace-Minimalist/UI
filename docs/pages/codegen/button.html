@@ -1,0 +1,134 @@
+---
+layout: codegen_page
+title: Button
+permalink: codegen/:basename
+nav_order: 4
+parent: CodeGenerator
+custom_css: codegen
+---
+
+<script src="/assets/js/codegen-buttons.js"></script>
+<script type="text/javascript">
+  jQuery(document).ready(function($){
+    $('select[name=buttons]').ready(function (){
+      {% for template in site.templates -%}
+      {% if template.internal == false -%}
+      $('#div_{{ template.name }}').css({"display": "block"});
+      $('#div_{{ template.name }}').hide();
+      {% endif -%}
+      {% endfor -%}
+    });
+
+    $('select[name=buttons]').change(function () {
+      {% for template in site.templates -%}
+      {% if template.internal == false -%}
+      $('#div_{{ template.name }}').hide();
+      {% endif -%}
+      {% endfor -%}
+          
+      $("select[name=buttons] option:selected").each(function () {
+        var value = $(this).val();
+
+        {% for template in site.templates -%}
+        {% if template.internal == false -%}
+        if (value == '{{ template.name }}'){
+          $('#div_{{ template.name }}').show();
+        }
+        {% endif -%}
+        {% endfor -%}
+      });
+    }); 
+
+  });
+</script>
+<style>
+  {% for template in site.templates -%}
+  {% if template.internal == false -%}
+  #div_{{ template.name }} {
+    display: none;
+  }
+  {% endif -%}
+  {% endfor -%}
+  input[type=text] {
+    width: 75%;
+  }
+</style>
+<h1>CodeGenerator for button(s)</h1>
+<p>With this generator you can configure a button and get the complete code for your "view" file.</p>
+<details>
+  <summary>Show instructions</summary>
+  <ul>
+    <li>Choose the button, you want to generate</li>
+    <li>If variables or entries need to be set, the form shows these after you choose</li>
+    <li>Fill in the data from Home Assistant as described</li>
+    <li>Click "Generate button code"</li>
+    <li>Copy the generated code and paste it in your edit window in Home Assistant</li>
+  </ul>
+
+  Note: If you don't want to fill in the data, just click "Generate button code" after choosing a button type. The generator shows the code without filled in data. This generator works locally in your browser, no data is send anywhere! 
+</details>
+<p class="text-small text-grey-dk-100 mb-0">Note: This generator is in beta state, so there may be issues! Thanks for understanding!</p>
+<form name="minimalist-generator-buttons" id="minimalist-generator-buttons" method="post" action="">
+  <fieldset>
+    <legend style="text-transform: uppercase;">Mode</legend>
+    <p style="margin-top: 0px; margin-bottom: 2px;">Which mode are you using?</p>
+    <input type="radio" name="mode" id="yaml_mode" value="yaml" disabled> <label for="yaml_mode">Yaml-mode (temp. disabled)</label>
+    <input type="radio" name="mode" id="ui_mode" value="ui" checked="checked"> <label for="ui_mode">UI-mode</label><br>
+  </fieldset>
+  <fieldset>
+    <legend style="text-transform: uppercase;">Button</legend>
+    <p style="margin-top: 0px; margin-bottom: 2px;">Choose a button to configure, the "basic" button.</p>
+    <select name="buttons" id="buttons">
+      <option value="-1">Choose a button</option>
+      <optgroup label="Chips">
+        {% for template in site.templates -%}
+        {% if template.internal == false -%}
+        {% if template.category == 'chip' -%}
+        <option value="{{ template.name }}">{{ template.title }}</option>
+        {% endif -%}
+        {% endif -%}
+        {% endfor -%}
+      </optgroup>
+      <optgroup label="Title">
+        {% for template in site.templates -%}
+        {% if template.internal == false -%}
+        {% if template.category == 'title' -%}
+        <option value="{{ template.name }}">{{ template.title }}</option>
+        {% endif -%}
+        {% endif -%}
+        {% endfor -%}
+      </optgroup>
+      <optgroup label="Cards">
+        {% for template in site.templates -%}
+        {% if template.internal == false -%}
+        {% if template.category == 'card' -%}
+        <option value="{{ template.name }}">{{ template.title }}</option>
+        {% endif -%}
+        {% endif -%}
+        {% endfor -%}
+      </optgroup>
+    </select>
+  </fieldset>
+  {% for template in site.templates -%}
+  {% if template.internal == false -%}
+  <div id="div_{{ template.name }}">
+    <fieldset>
+      <legend style="text-transform: uppercase;">Variables / entries</legend>
+      <p style="margin-top: 0px; margin-bottom: 2px;">Fill in at least the required fields with <i>your</i> data from Home Assistant.</p>
+      {% for variable in template.variables -%}
+      <label for="{{ template.name | remove: '_' }}_{{ variable.name | remove: '_' }}">{% if variable.type == 'entry' -%}Entry: {% else %}Variable: {% endif -%}<i>{{ variable.name }}</i> {% if variable.required == true -%}(required){% endif -%}</label><br><input type="text" id="{{ template.name | remove: '_' }}_{{ variable.name | remove: '_' }}" name="{{ template.name | remove: '_' }}_{{ variable.name | remove: '_' }}" {% if variable.required == true -%}required{% endif -%} minlength="4" placeholder="eg. {{ variable.example }}"> {% if variable.explanation != nil and variable.explanation != '' -%}<div class="tooltip">&nbsp;&quest;&nbsp;<span class="tooltiptext">{{ variable.explanation }}</span></div>{% endif -%}<br>
+      {% endfor -%}
+    </fieldset>
+  </div>
+  {% endif -%}
+  {% endfor -%}
+  <fieldset>
+    <legend style="text-transform: uppercase;">Generate</legend>
+    <input type="button" name="submit" value="Generate button code" onclick="generateButtonCode()">
+  </fieldset>
+  <fieldset>
+    <legend style="text-transform: uppercase;">Your example code</legend>
+    <p style="margin-top: 0px; margin-bottom: 2px;">This is your generated code to paste into your config.</p>
+    <textarea id="generated_code" name="generated_code" rows="18" cols="60" style="width: 100%;"></textarea>
+  </fieldset>
+</form>

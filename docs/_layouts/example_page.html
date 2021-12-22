@@ -1,0 +1,14 @@
+---
+layout: page
+---
+<div>
+  <h1>{{ page.title }}</h1>
+  <div>Level: {{ page.level }} | Author: {{ page.author }} </div>
+  <div class="tl_dr" style="border-left: 3px solid {{ site.ulm_color_purple }}; margin-left: 10px; padding-left: 10px;">
+    <h3>TL;DR</h3>
+    <p>{{ page.tl_dr }}</p>
+  </div>
+  <div>
+    {{ content }}
+  </div>
+</div>

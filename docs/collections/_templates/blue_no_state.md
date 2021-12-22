@@ -1,0 +1,17 @@
+---
+name: blue_no_state
+internal: true
+code: |-
+  blue_no_state:
+    styles:
+      icon:
+        - color: 'rgba(var(--color-blue),1)'
+      label:
+        - color: 'rgba(var(--color-blue-text),1)'
+      name:
+        - color: 'rgba(var(--color-blue-text),1)'
+      img_cell:
+        - background-color: 'rgba(var(--color-blue), 0.2)'
+      card:
+        - background-color: 'rgba(var(--color-background-blue), var(--opacity-bg))'
+---

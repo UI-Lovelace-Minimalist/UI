@@ -1,0 +1,64 @@
+# Site settings
+title: UI-Lovelace-Minimalist
+email: ''
+description: >-
+  UI-Lovelace-Minimalist is kind of a "theme" for Home Assistant
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+github_username:  'UI-Lovelace-Minimalist'
+
+
+# Build settings
+theme: "just-the-docs"
+#plugins:
+#  - jekyll-feed
+
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+#  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+#   - node_modules/
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/
+
+
+# UI-Lovelace-Minimalist
+markdown: kramdown
+kramdown:
+   syntax_highlighter_opts:
+      disable : true
+
+collections_dir: collections
+collections:
+  templates:
+  languages:
+  custom_cards:
+  examples:
+    output: true
+    permalink: /usage/examples/:path/
+
+remote_theme: pmarsceill/just-the-docs
+
+aux_links:
+  'Find us on GitHub&nbsp;&nbsp;<img src="/assets/images/github.svg" style="opacity: 0.5">':
+    - "//github.com/UI-Lovelace-Minimalist/UI"
+aux_links_new_tab: false
+
+heading_anchors: true
+
+logo: "/assets/images/minimalist_ha_logo.png"
+
+ulm_color_purple: '#7253ED' # card 
+ulm_color_blue: '#2C84FA' # title and entry
+ulm_color_green: '#11B584' # vertical
+ulm_color_yellow: '#FFEB82' # chip
+ulm_color_orange: '#FF9101' # variable
+ulm_color_light_grey: '#F5F6FA' # tooltip font color
+ulm_color_dark_grey: '#5C5962' # tooltip bg
+ulm_color_ulm_blue: '#3D5AFE' # minimalist blue
+
+ulm_version: 1.0.0-beta.6

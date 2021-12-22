@@ -1,0 +1,68 @@
+---
+layout: codegen_page
+title: Installation
+permalink: codegen/:basename
+nav_order: 2
+parent: CodeGenerator
+custom_css: codegen
+---
+
+<script src="/assets/js/codegen-install.js"></script>
+<h1>CodeGenerator for installation (UI-mode)</h1>
+<p>Here you can generate the code you need to <strong>install</strong> this "theme" via `UI`-mode.</p>
+<p>It bundles all necessary template data, language variables and custom-cards into one single block, so you can copy & paste it into your raw-config-editor.</p>
+<details>
+  <summary>Show instructions</summary>
+  <ol>
+    <li>Select the language you want to use</li>
+    <li>Select the custom-cards you want to install</li>
+    <li>Select example data, if you want to have some example code added</li>
+    <li>Click "Generate template code"</li>
+    <li>The code will be generated and shows up in the textarea underneath the generate button</li>
+    <li>Copy this code and paste it in your raw-config-editor</li>
+    <li>See <a href="/installation/ui-mode">these instructions</a>, if you don't know where to paste this.</li>
+  </ol>
+</details>
+<p class="text-small text-grey-dk-100 mb-0">Note: This generator is in beta state, so there may be issues! Thanks for understanding!</p>
+
+<form name="minimalist-generator-install-test" method="post" action="">
+  <fieldset>
+    <legend style="text-transform: uppercase;">Main template file</legend>
+    <p style="margin-top: 0px; margin-bottom: 2px;">This is the main template file from UI-Lovelace-Minimalist. <i>This must be selected.</i></p>
+    <input type="checkbox" name="main_template" id="main_template" value="main_template" checked="checked" disabled> <label for="main_template">UI-Lovelace-Minimalist main template file</label><br>
+  </fieldset>
+  <fieldset>
+    <legend style="text-transform: uppercase;">Language</legend>
+    <p style="margin-top: 0px; margin-bottom: 2px;">Select the language you want to use in your templates</p>
+    <input type="radio" name="language" id="language_en" value="en" checked="checked"> <label for="language_en">English</label><br>
+    <input type="radio" name="language" id="language_de" value="de"> <label for="language_de">German</label><br>
+    <input type="radio" name="language" id="language_fr" value="fr"> <label for="language_fr">French</label><br>
+    <p class="text-small text-grey-dk-100 mb-0">Note: If your selected custom-cards offer language variables, they will be used automatically.</p>
+  </fieldset>
+  <fieldset>
+    <legend style="text-transform: uppercase;">Custom-cards</legend>
+    <p style="margin-top: 0px; margin-bottom: 2px;">Select the custom-cards you want to include</p>
+    {% for card in site.custom_cards -%}
+    {% for variant in card.variants -%}
+    {% if variant.name != nil -%}
+    <input type="checkbox" name="{{ variant.name }}" id="{{ variant.name }}" value="{{ variant.name }}"> <label for="{{ variant.name }}">{{ variant.title }}</label><br>
+    {% else -%}
+    <input type="checkbox" name="{{ card.name }}" id="{{ card.name }}" value="{{ card.name }}"> <label for="{{ card.name }}">{{ card.title }}</label><br>
+    {% endif -%}
+    {% endfor -%}
+    {% endfor -%}
+  </fieldset>
+  <fieldset>
+    <legend style="text-transform: uppercase;">Example data</legend>
+    <input type="checkbox" name="example" id="example" value="example"> <label for="example">Add some example data to the code</label>
+  </fieldset>
+  <fieldset>
+    <legend style="text-transform: uppercase;">Generate</legend>
+    <input type="button" name="submit" value="Generate template code" onclick="generateInstallCode()"> <input type="reset" name="reset" value="Reset">
+  </fieldset>
+  <fieldset>
+    <legend style="text-transform: uppercase;">Your template code</legend>
+    <p style="margin-top: 0px; margin-bottom: 2px;">This is your generated code to paste into your config. See <a href="/installation/ui-mode">these instructions</a> for more details.</p>
+    <textarea id="generated_code" name="generated_code" rows="18" cols="60" style="width: 100%;"></textarea>
+  </fieldset>
+</form>

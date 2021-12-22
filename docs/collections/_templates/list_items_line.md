@@ -1,0 +1,15 @@
+---
+name: list_items_line
+internal: true
+code: |-
+  list_items_line:
+    styles:
+      grid:
+        - grid-template-areas: '"item1 item2 item3"'
+        - grid-template-columns: max-content max-content max-content
+        - grid-template-rows: min-content
+        - column-gap: 8px
+      card:
+        - box-shadow: none
+        - padding: 0px
+---

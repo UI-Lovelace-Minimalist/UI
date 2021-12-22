@@ -1,0 +1,58 @@
+---
+layout: codegen_page
+title: Example
+permalink: codegen/:basename
+nav_order: 3
+parent: CodeGenerator
+custom_css: codegen
+---
+
+<script src="/assets/js/codegen-examples.js"></script>
+<h1>CodeGenerator for example code</h1>
+<p class="text-big text-grey-dk-100 mb-0"><strong>works for both Yaml- and UI-mode</strong></p>
+<p>Here you can generate example code to see some of the possibilities this "theme" offers.</p>
+<p>Select what you want to try out and click "Generate example code".</p>
+<p><u>What this tool is:</u><br>This tool combines different options, to show the general scaffold to get the "theme" running. It shows the indentation and gives you examples to work with.</p>
+<p><u>What this tool isn't:</u><br>This tool is not designed to give you a ready to use, working installation. You need to adapt the example code to your needs and wishes.</p>
+<p class="text-small text-grey-dk-100 mb-0">Note: This generator is in beta state, so there may be issues! Thanks for understanding!</p>
+<form name="minimalist-generator-examples" method="post" action="">
+  <fieldset>
+    <legend style="text-transform: uppercase;">Mode</legend>
+    <p style="margin-top: 0px; margin-bottom: 2px;">Which mode are you using?</p>
+    <input type="radio" name="mode" id="yaml_mode" value="yaml" checked="checked"> <label for="yaml_mode">Yaml-mode</label>
+    <input type="radio" name="mode" id="ui_mode" value="ui"> <label for="ui_mode">UI-mode</label><br>
+  </fieldset>
+  <fieldset>
+    <legend style="text-transform: uppercase;">Chips</legend>
+    <p style="margin-top: 0px; margin-bottom: 2px;">Choose the chips, you want to use.</p>
+    {% for template in site.templates -%}
+    {% if template.category == 'chip' -%}
+    <input type="checkbox" id="{{ template.name }}" name="{{ template.name }}" value="{{ template.name }}"> <label for="{{ template.name }}">{{ template.title }}</label> {% if template.explanation != nil and template.explanation != '' -%}<div class="tooltip">&nbsp;&quest;&nbsp;<span class="tooltiptext">{{ template.explanation }}</span></div>{% endif -%}<br>
+    {% endif %}
+    {% endfor -%}
+  </fieldset>
+  <fieldset>
+    <legend style="text-transform: uppercase;">Title</legend>
+    <p style="margin-top: 0px; margin-bottom: 2px;">Would you like to set some titles?</p>
+    <input type="checkbox" id="card_title" name="card_title" value="card_title"> <label for="card_title">Yes, set a title.</label>
+  </fieldset>
+  <fieldset>
+    <legend style="text-transform: uppercase;">Cards</legend>
+    <p style="margin-top: 0px; margin-bottom: 2px;">Select the cards you want to use.</p>
+    {% for template in site.templates -%}
+    {% if template.category == 'card' and template.name != 'card_title' -%}
+    <input type="checkbox" id="{{ template.name }}" name="{{ template.name }}" value="{{ template.name }}"> <label for="{{ template.name }}">{{ template.title }}</label> {% if template.explanation != nil and template.explanation != '' -%}<div class="tooltip">&nbsp;&quest;&nbsp;<span class="tooltiptext">{{ template.explanation }}</span></div>{% endif -%}<br>
+    {% endif -%}
+    {% endfor -%}
+  </fieldset>
+  <fieldset>
+    <legend style="text-transform: uppercase;">Generate</legend>
+    <input type="button" name="submit" value="Generate example code" onclick="generateExampleCode()"> <input type="reset" name="reset" value="Reset">
+  </fieldset>
+  <fieldset>
+    <legend style="text-transform: uppercase;">Your example code</legend>
+    <p style="margin-top: 0px; margin-bottom: 2px;">This is your generated code to paste into your config.<br>
+    <span class="text-big text-grey-dk-100 mb-0"><strong>Remember to change all necessary entries and variables!</strong></span></p>
+    <textarea id="generated_code" name="generated_code" rows="18" cols="60" style="width: 100%;"></textarea>
+  </fieldset>
+</form>
