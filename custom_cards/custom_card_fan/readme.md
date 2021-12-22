@@ -100,5 +100,4 @@ card_fan:
         return variables.ulm_unavailable;
       }
     ]]]
-
 ```

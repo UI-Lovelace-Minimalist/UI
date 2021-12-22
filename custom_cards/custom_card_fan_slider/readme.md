@@ -167,5 +167,4 @@ widget_text:
       - color: "rgba(var(--color-theme),0.9)"
   size: "20px"
   color: "var(--google-grey)"
-
 ```
