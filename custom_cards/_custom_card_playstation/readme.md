@@ -3,7 +3,7 @@
 > NOTE
 > This card is under review and is not ready to use!
 
-![Playstation](./screenshots/playstation.png)
+![Playstation](../../screenshots/playstation.png)
 
 <details>
 <summary>Usage</summary>
