@@ -66,7 +66,9 @@ popup_button:
       - margin-top: 12px
 
 popup_header:
-  template: popup_button
+  template:
+    - popup_button
+    - ulm_language_variables
   show_name: true
   show_label: true
   styles:
@@ -81,6 +83,14 @@ popup_header:
       - filter: opacity(40%)
     icon:
       - color: var(--color-theme)
+  label: |-
+    [[[
+      if (entity.state == 'on') {
+        return variables.ulm_on;
+      } else {
+        return variables.ulm_off;
+      }
+    ]]]
 
 popup_button_back:
   template:
@@ -127,6 +137,14 @@ popup_button_selected:
       - color: "rgba(var(--color-blue),1)"
     img_cell:
       - background-color: "rgba(var(--color-blue), 0.2)"
+
+popup_button_stats:
+  template: ulm_language_variables
+  name: "[[[ return variables.ulm_popups_statistics ]]]"
+
+popup_button_history:
+  template: ulm_language_variables
+  name: "[[[ return variables.ulm_popups_history ]]]"
 
 popup_button_airconditionner:
   template: widget_icon
@@ -230,18 +248,8 @@ popup_power_outlet_stats:
     header:
       card:
         type: custom:button-card
-        template:
-          - popup_header
-          - ulm_language_variables
+        template: popup_header
         entity: "[[[ return variables.ulm_popup_power_outlet_entity ]]]"
-        label: |-
-          [[[
-            if (states[variables.ulm_popup_power_outlet_entity].state =='on') {
-              return variables.ulm_on;
-            } else {
-              return variables.ulm_off;
-            }
-          ]]]
     content1:
       card:
         type: grid
@@ -307,17 +315,18 @@ popup_power_outlet_stats:
           item1:
             card:
               icon: "mdi:chart-line"
-              name: Statistiques
               type: "custom:button-card"
               template:
                 - popup_button
                 - popup_button_selected
+                - popup_button_stats
           item2:
             card:
               icon: "mdi:history"
-              name: Historique
               type: "custom:button-card"
-              template: popup_button
+              template:
+                - popup_button
+                - popup_button_history
               tap_action:
                 action: fire-dom-event
                 browser_mod:
@@ -407,9 +416,10 @@ popup_power_outlet_history:
           item1:
             card:
               icon: "mdi:chart-line"
-              name: Statistiques
               type: "custom:button-card"
-              template: popup_button
+              template:
+                - popup_button
+                - popup_button_stats
               tap_action:
                 action: fire-dom-event
                 browser_mod:
@@ -426,11 +436,11 @@ popup_power_outlet_history:
           item2:
             card:
               icon: "mdi:history"
-              name: Historique
               type: "custom:button-card"
               template:
                 - popup_button
                 - popup_button_selected
+                - popup_button_history
 
 popup_light:
   hold_action:
