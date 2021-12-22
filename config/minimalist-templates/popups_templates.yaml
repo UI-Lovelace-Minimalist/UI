@@ -1,0 +1,869 @@
+popup_default:
+  hold_action:
+    action: more-info
+
+### LAYOUT ###
+popup_4_items:
+  styles:
+    grid:
+      - grid-template-areas: '"item1" "item2" "item3" "item4"'
+      - grid-template-columns: 1fr
+    card:
+      - background: var(--primary-background-color)
+      - box-shadow: none
+      - padding: 4%
+    custom_fields:
+      item1:
+        - align-self: start
+      item2:
+        - align-self: start
+      item3:
+        - align-self: start
+      item4:
+        - align-self: end
+        - margin-top: 25px
+
+popup_list_items:
+  template: list_items
+  styles:
+    card:
+      - background: none
+
+popup_subtitle:
+  template: title
+  styles:
+    card:
+      - margin-left: 20px
+    name:
+      - font-weight: 500
+      - font-size: 1.2rem
+### BUTTONS ###
+popup_button:
+  color: var(--primary-color)
+  show_icon: true
+  show_name: true
+  styles:
+    grid:
+      - grid-template-areas: '"i" "n"'
+      - grid-template-columns: auto
+      - grid-template-rows: min-content min-content
+    card:
+      - background: none
+      - box-shadow: none
+    icon:
+      - color: var(--primary-color)
+    img_cell:
+      - background-color: var(--card-background-color)
+      - border-radius: 50%
+      - place-self: center
+      - width: 42px
+      - height: 42px
+      - box-shadow: var(--ha-card-box-shadow)
+    name:
+      - justify-self: center
+      - font-weight: bold
+      - font-size: 14px
+      - margin-top: 12px
+
+popup_header:
+  template: popup_button
+  show_name: true
+  show_label: true
+  styles:
+    grid:
+      - grid-template-areas: '"i" "n" "l"'
+      - grid-template-columns: auto
+      - grid-template-rows: min-content min-content min-content
+    label:
+      - justify-self: center
+      - font-weight: bold
+      - font-size: 12px
+      - filter: opacity(40%)
+    icon:
+      - color: var(--color-theme)
+
+popup_button_back:
+  template:
+    - popup_button
+    - ulm_language_variables
+  icon: "mdi:arrow-left"
+  name: "[[[ return variables.ulm_popups_back ]]]"
+  styles:
+    name:
+      - text-transform: uppercase
+      - color: rgba(var(--color-theme),0.5)
+    img_cell:
+      - background: none
+      - box-shadow: none
+      - border: 1px solid rgba(var(--color-theme),0.25)
+  tap_action:
+    action: fire-dom-event
+    browser_mod:
+      command: close_popup
+
+popup_button_power:
+  template:
+    - popup_button
+    - ulm_language_variables
+  icon: "mdi:power"
+  name: "[[[ return variables.ulm_popups_toggle ]]]"
+  styles:
+    name:
+      - text-transform: uppercase
+      - color: rgba(var(--color-theme),0.5)
+    icon:
+      - color: var(--card-background-color)
+    img_cell:
+      - background-color: var(--primary-color)
+      - box-shadow: none
+  tap_action:
+    action: toggle
+
+popup_button_selected:
+  tap_action:
+    action: none
+  styles:
+    icon:
+      - color: "rgba(var(--color-blue),1)"
+    img_cell:
+      - background-color: "rgba(var(--color-blue), 0.2)"
+
+popup_button_airconditionner:
+  template: widget_icon
+  variables:
+    ulm_popup_button_airconditionner_state: "off"
+  styles:
+    card:
+      - background-color: transparent
+      - width: 42px
+      - border-radius: 50%
+  state:
+    - styles:
+        card:
+          - background-color: "var(--card-background-color)"
+          - box-shadow: var( --ha-card-box-shadow)
+          - transform: scale(0.95)
+      value: "[[[ return variables.ulm_popup_button_airconditionner_state ]]]"
+  tap_action:
+    action: call-service
+    service: climate.set_hvac_mode
+    service_data:
+      entity_id: climate.hvac
+      hvac_mode: "[[[ return variables.ulm_popup_button_airconditionner_state ]]]"
+
+### ITEMS ###
+popup_item4_back_toggle:
+  template: popup_list_items
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        template: popup_button_back
+    item2:
+      card:
+        type: "custom:button-card"
+        template: popup_button_power
+        entity: "[[[ return variables.popup_item4_back_toggle_entity ]]]"
+
+### POPUPS ###
+popup_power_outlet:
+  hold_action:
+    action: fire-dom-event
+    browser_mod:
+      command: popup
+      large: true
+      hide_header: true
+      card:
+        type: custom:button-card
+        template: popup_power_outlet_stats
+        variables:
+          ulm_popup_power_outlet_entity: "[[[ return entity.entity_id ]]]"
+          ulm_popup_power_outlet_sensor1: "[[[ return variables.ulm_popup_power_outlet_sensor1 ]]]"
+          ulm_popup_power_outlet_sensor2: "[[[ return variables.ulm_popup_power_outlet_sensor2 ]]]"
+          ulm_popup_power_outlet_graph_sensor: "[[[ return variables.ulm_popup_power_outlet_graph_sensor ]]]"
+
+popup_power_outlet_stats:
+  styles:
+    grid:
+      - grid-template-areas: '"header header" "content1 content1" "content2 content3" "footer footer"'
+      - grid-template-rows: 16vh 12vh 44vh 14vh
+      - grid-template-columns: 1fr 1fr
+    card:
+      - background: var(--primary-background-color)
+      - box-shadow: none
+      - padding: 4%
+    custom_fields:
+      header:
+        - align-self: start
+      content1:
+        - align-self: start
+      content2:
+        - align-self: start
+        - margin-right: 15px
+      content3:
+        - align-self: start
+        - margin-left: 15px
+      buttons:
+        - display: none
+      footer:
+        - align-self: end
+        - margin-top: 25px
+  extra_styles: |
+    @media (max-width: 800px) {
+      #container {
+        grid-template-areas: "header" "content1" "content2" "buttons" "footer" !important;
+        grid-template-rows: 16vh 12vh 40vh 14vh 14vh !important;
+        grid-template-columns: 1fr !important;
+      }
+      #buttons {
+        display: block !important;
+        align-self: start !important;
+      }
+      #content2 {
+        margin-right: 0px;
+      }
+      #content3 {
+        display: none;
+      }
+    }
+  custom_fields:
+    header:
+      card:
+        type: custom:button-card
+        template:
+          - popup_header
+          - ulm_language_variables
+        entity: "[[[ return variables.ulm_popup_power_outlet_entity ]]]"
+        label: |-
+          [[[
+            if (states[variables.ulm_popup_power_outlet_entity].state =='on') {
+              return variables.ulm_on;
+            } else {
+              return variables.ulm_off;
+            }
+          ]]]
+    content1:
+      card:
+        type: grid
+        columns: 2
+        square: false
+        cards:
+          - type: "custom:button-card"
+            entity: "[[[ return variables.ulm_popup_power_outlet_sensor1 ]]]"
+            label: >
+              [[[ return states[variables.ulm_popup_power_outlet_sensor1].state + states[variables.ulm_popup_power_outlet_sensor1].attributes.unit_of_measurement ]]]
+            template:
+              - icon_info_bg
+            styles:
+              card:
+                - max-width: 300px
+              icon:
+                - color: "var(--color-theme)"
+            extra_styles: |
+              @media (min-width: 800px) {
+                ha-card {
+                  margin-left: calc(100% - 300px) !important;
+                }
+              }
+          - type: "custom:button-card"
+            entity: "[[[ return variables.ulm_popup_power_outlet_sensor2 ]]]"
+            label: >
+              [[[ return states[variables.ulm_popup_power_outlet_sensor2].state + states[variables.ulm_popup_power_outlet_sensor2].attributes.unit_of_measurement ]]]
+            template:
+              - icon_info_bg
+            styles:
+              card:
+                - max-width: 300px
+              icon:
+                - color: "var(--color-theme)"
+    content2:
+      card:
+        type: "custom:mini-graph-card"
+        entities:
+          - entity: "[[[ return variables.ulm_popup_power_outlet_graph_sensor ]]]"
+        line_color: var(--info-color)
+        height: 276
+        hours_to_show: 168
+        show:
+          name: false
+          icon: false
+          legend: false
+          state: false
+        card_mod:
+          style: |
+            ha-card {
+              box-shadow: none !important;
+              border-radius: var(--border-radius) !important;
+              margin-bottom: 37px !important;
+            }
+    buttons:
+      card:
+        type: custom:button-card
+        template: list_2_items
+        styles:
+          card:
+            - background: none
+        custom_fields:
+          item1:
+            card:
+              icon: "mdi:chart-line"
+              name: Statistiques
+              type: "custom:button-card"
+              template:
+                - popup_button
+                - popup_button_selected
+          item2:
+            card:
+              icon: "mdi:history"
+              name: Historique
+              type: "custom:button-card"
+              template: popup_button
+              tap_action:
+                action: fire-dom-event
+                browser_mod:
+                  command: popup
+                  hide_header: true
+                  card:
+                    type: custom:button-card
+                    template: popup_power_outlet_history
+                    variables:
+                      ulm_popup_power_outlet_entity: "[[[ return variables.ulm_popup_power_outlet_entity ]]]"
+                      ulm_popup_power_outlet_sensor1: "[[[ return variables.ulm_popup_power_outlet_sensor1 ]]]"
+                      ulm_popup_power_outlet_sensor2: "[[[ return variables.ulm_popup_power_outlet_sensor2 ]]]"
+                      ulm_popup_power_outlet_graph_sensor: "[[[ return variables.ulm_popup_power_outlet_graph_sensor ]]]"
+    footer:
+      card:
+        type: custom:button-card
+        template: popup_list_items
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template: popup_button_back
+          item2:
+            card:
+              type: "custom:button-card"
+              template: popup_button_power
+              entity: "[[[ return variables.ulm_popup_power_outlet_entity ]]]"
+    content3:
+      card:
+        type: logbook
+        entities:
+          - "[[[ return variables.ulm_popup_power_outlet_entity ]]]"
+        card_mod:
+          style: |
+            ha-card {
+              box-shadow: none !important;
+              background: none !important;
+              height: 257px !important;
+            }
+            ha-logbook {
+              height: 242px !important;
+            }
+            state-badge {
+              background: red !important;
+            }
+
+popup_power_outlet_history:
+  template: popup_power_outlet_stats
+  styles:
+    grid:
+      - grid-template-areas: '"header" "content1" "content3" "buttons" "footer"'
+      - grid-template-rows: 16vh 12vh 40vh 14vh 14vh;
+      - grid-template-columns: 1fr
+    custom_fields:
+      content2:
+        - display: none
+      content3:
+        - display: block
+        - align-self: start
+        - margin-left: 0px
+  extra_styles: |
+    @media (max-width: 800px) {
+      #container {
+        grid-template-areas: "header" "content1" "content3" "buttons" "footer" !important;
+        grid-template-rows: 16vh 12vh 40vh 14vh 14vh !important;
+        grid-template-columns: 1fr !important;
+      }
+      #buttons {
+        display: block !important;
+        align-self: start !important;
+      }
+      #content2 {
+        display: none;
+      }
+      #content3 {
+        margin-left: 0px;
+      }
+  custom_fields:
+    buttons:
+      card:
+        type: custom:button-card
+        template: list_2_items
+        styles:
+          card:
+            - background: none
+        custom_fields:
+          item1:
+            card:
+              icon: "mdi:chart-line"
+              name: Statistiques
+              type: "custom:button-card"
+              template: popup_button
+              tap_action:
+                action: fire-dom-event
+                browser_mod:
+                  command: popup
+                  hide_header: true
+                  card:
+                    type: custom:button-card
+                    template: popup_power_outlet_stats
+                    variables:
+                      ulm_popup_power_outlet_entity: "[[[ return variables.ulm_popup_power_outlet_entity ]]]"
+                      ulm_popup_power_outlet_sensor1: "[[[ return variables.ulm_popup_power_outlet_sensor1 ]]]"
+                      ulm_popup_power_outlet_sensor2: "[[[ return variables.ulm_popup_power_outlet_sensor2 ]]]"
+                      ulm_popup_power_outlet_graph_sensor: "[[[ return variables.ulm_popup_power_outlet_graph_sensor ]]]"
+          item2:
+            card:
+              icon: "mdi:history"
+              name: Historique
+              type: "custom:button-card"
+              template:
+                - popup_button
+                - popup_button_selected
+
+popup_light:
+  hold_action:
+    action: fire-dom-event
+    browser_mod:
+      command: popup
+      hide_header: true
+      card:
+        type: custom:button-card
+        template: popup_4_items
+        extra_styles: |
+          @media (max-width: 800px) {
+            #container {
+                grid-template-rows: 16vh 50vh 15vh 15vh !important;
+            }
+          }
+        custom_fields:
+          item1:
+            card:
+              type: custom:button-card
+              template:
+                - popup_header
+                - ulm_language_variables
+              entity: "[[[ return entity.entity_id ]]]"
+              show_label: none
+          item2:
+            card:
+              type: custom:state-switch
+              entity: hash
+              default: color
+              transition: flip
+              transition_time: 300
+              states:
+                brightness:
+                  type: custom:button-card
+                  styles:
+                    grid:
+                      - grid-template-areas: '"item1"'
+                      - grid-template-columns: 1fr
+                      - grid-template-rows: min-content
+                    card:
+                      - background: none
+                      - box-shadow: none
+                      - padding: 4%
+                    # custom_fields:
+                    #   item2:
+                    #     - background-color: blue
+                    #     - border-radius: 12px
+                    #     - position: absolute
+                    #     - left: 64%
+                    #     - top: >
+                    #         [[[
+                    #           var bri = states[entity.entity_id].attributes.brightness;
+                    #           return Math.round(bri ? (80-(72*bri/256)) : '80') + '%';
+                    #         ]]]
+                    #     - height: 25px
+                    #     - width: 45px
+                    #     - font-size: 11px
+                    #     - line-height: 25px
+                    #     - color: white
+                  custom_fields:
+                    item1:
+                      card:
+                        type: "custom:slider-card"
+                        entity: "[[[ return entity.entity_id ]]]"
+                        radius: 20px
+                        rotate: 270
+                        containerHeight: 320px
+                        width: 250px
+                        height: 100px
+                        top: 100px
+                        left: 17%
+                        thumbHorizontalPadding: 0px
+                        thumbWidth: 0px
+                        mainSliderColor: rgba(var(--color-theme),0.1)
+                        mainSliderColorOff: rgba(var(--color-theme),0.1)
+                        secondarySliderColor: var(--color-theme)
+                        secondarySliderColorOff: var(--color-theme)
+                        card_mod:
+                          style: |
+                            ha-card {
+                              background: none !important;
+                              box-shadow: none !important;
+                            }
+                            .slider-container input[type="range"] {
+                              position: revert !important;
+                              border: 1px solid rgba(var(--color-theme),0.3) !important;
+                            }
+                            .slider-container {
+                              display: flex;
+                              justify-content: center;
+                              align-items: center;
+                            }
+
+                    # item2: >
+                    #   [[[
+                    #     var bri = states[entity.entity_id].attributes.brightness;
+                    #     return Math.round(bri ? (bri/256*100) : '0') + '%';
+                    #   ]]]
+                #####
+                color:
+                  type: custom:light-entity-card
+                  entity: "[[[ return entity.entity_id ]]]"
+                  persist_features: true
+                  brightness: false
+                  color_temp: false
+                  white_value: false
+                  hide_header: true
+                  effects_list: false
+                  smooth_color_wheel: true
+                  child_card: true
+                  card_mod:
+                    style: |
+                      ha-card {
+                        background: none !important;
+                        box-shadow: none !important;
+                        padding: 10px 0 10px 0 !important;
+                      }
+                color_temp:
+                  type: custom:button-card
+                  styles:
+                    grid:
+                      - grid-template-areas: '"item1"'
+                      - grid-template-columns: 1fr
+                      - grid-template-rows: min-content
+                    card:
+                      - background: none
+                      - box-shadow: none
+                      - padding: 4%
+                  custom_fields:
+                    item1:
+                      card:
+                        type: "custom:my-slider"
+                        entity: "[[[ return entity.entity_id ]]]"
+                        minBar: "[[[ return entity.attributes.min_mireds ]]]"
+                        minSet: "[[[ return entity.attributes.min_mireds ]]]"
+                        maxBar: "[[[ return entity.attributes.max_mireds ]]]"
+                        maxSet: "[[[ return entity.attributes.max_mireds ]]]"
+                        function: "Warmth"
+                        radius: 20px
+                        rotate: 270
+                        containerHeight: 320px
+                        width: 250px
+                        height: 100px
+                        thumbHorizontalPadding: 0px
+                        thumbWidth: 2%
+                        thumbHeight: 85px
+                        thumbColor: "#000"
+                        mainSliderColor: rgba(255, 255, 255, 0)
+                        mainSliderColorOff: rgba(255, 255, 255, 0)
+                        card_mod:
+                          style: |
+                            ha-card {
+                              background: none !important;
+                              box-shadow: none !important;
+                            }
+                            .slider-container input[type="range"] {
+                              position: revert !important;
+                              border: 1px solid rgba(208, 208, 208, 1) !important;
+                              background: linear-gradient(90deg, #c9f2fc, #fff, #f3db6d);
+                              --thumb-top: 1px !important;
+                            }
+                            .slider-container input[type="range"]::-webkit-slider-thumb {
+                              margin-top: 7px;
+                              background-color: rgba(1, 1, 1, 0);
+                            }
+                            .slider-container input[type="range"]::-moz-range-thumb {
+                              background-color: rgba(1, 1, 1, 0);
+                            }
+                            .slider-container {
+                              display: flex;
+                              justify-content: center;
+                              align-items: center;
+                            }
+          item3:
+            card:
+              type: custom:button-card
+              styles:
+                grid:
+                  - grid-template-areas: >
+                      [[[
+                            var areas = [];
+                            var brightness_modes = ["brightness", "hs", "color_temp", "rgb", "rgbw"];
+                            var color_modes = ["hs", "rgb", "rgbw", "xy"];
+                            var color_temp_modes = ["color_temp"];
+                            if (entity.attributes.supported_color_modes.some(r => brightness_modes.includes(r))) {
+                                areas.push("item1");
+                            }
+                            if (entity.attributes.supported_color_modes.some(r => color_modes.includes(r))) {
+                                areas.push("item2");
+                            }
+                            if (entity.attributes.supported_color_modes.some(r => color_temp_modes.includes(r))) {
+                                areas.push("item3");
+                            }
+                            return "\"" + areas.join(" ") + "\"";
+                      ]]]
+                  - grid-template-columns: >
+                      [[[
+                            var columns = [];
+                            var brightness_modes = ["brightness", "hs", "color_temp", "rgb", "rgbw"];
+                            var color_modes = ["hs", "rgb", "rgbw", "xy"];
+                            var color_temp_modes = ["color_temp"];
+                            if (entity.attributes.supported_color_modes.some(r => brightness_modes.includes(r))) {
+                                columns.push("1fr");
+                            }
+                            if (entity.attributes.supported_color_modes.some(r => color_modes.includes(r))) {
+                                columns.push("1fr");
+                            }
+                            if (entity.attributes.supported_color_modes.some(r => color_temp_modes.includes(r))) {
+                                columns.push("1fr");
+                            }
+                            return columns.join(" ");
+                      ]]]
+                  - grid-template-rows: min-content
+                  - column-gap: 0px
+                card:
+                  - background: none
+                  - box-shadow: none
+                  - padding: 0px
+              custom_fields:
+                item1:
+                  card:
+                    icon: "mdi:lightbulb-on"
+                    name: Helderheid
+                    type: "custom:button-card"
+                    template: popup_button
+                    tap_action:
+                      action: navigate
+                      navigation_path: "#brightness"
+                    styles:
+                      icon:
+                        - color: "rgba(0, 0, 0, 1)"
+                      img_cell:
+                        - background-color: "rgba(255, 255, 255, 1)"
+                    state:
+                      - operator: template
+                        value: >
+                          [[[ 
+                            var brightness_modes = ["brightness", "hs", "color_temp", "rgb", "rgbw"];
+                            return !entity.attributes.supported_color_modes.some(r => brightness_modes.includes(r));
+                          ]]]
+                        styles:
+                          card:
+                            - display: none
+                      - operator: template
+                        value: >
+                          [[[ return new URL(window.location.href).hash === '#brightness' ]]]
+                        styles:
+                          icon:
+                            - color: "rgba(var(--color-blue),1)"
+                          img_cell:
+                            - background-color: "rgba(var(--color-blue), 0.2)"
+                item2:
+                  card:
+                    icon: "mdi:palette"
+                    name: Kleur
+                    type: "custom:button-card"
+                    template: popup_button
+                    tap_action:
+                      action: navigate
+                      navigation_path: "#color"
+                    styles:
+                      icon:
+                        - color: "rgba(0, 0, 0, 1)"
+                      img_cell:
+                        - background-color: "rgba(255, 255, 255, 1)"
+                    state:
+                      - operator: template
+                        value: >
+                          [[[ 
+                            var color_modes = ["hs", "rgb", "rgbw", "xy"];
+                            return !entity.attributes.supported_color_modes.some(r => color_modes.includes(r));
+                          ]]]
+                        styles:
+                          card:
+                            - display: none
+                      - operator: template
+                        value: >
+                          [[[ return new URL(window.location.href).hash === '#color' ]]]
+                        styles:
+                          icon:
+                            - color: "rgba(var(--color-blue),1)"
+                          img_cell:
+                            - background-color: "rgba(var(--color-blue), 0.2)"
+                item3:
+                  card:
+                    icon: "mdi:sun-thermometer-outline"
+                    name: Temperatuur
+                    type: "custom:button-card"
+                    template: popup_button
+                    tap_action:
+                      action: navigate
+                      navigation_path: "#color_temp"
+                    styles:
+                      icon:
+                        - color: "rgba(0, 0, 0, 1)"
+                      img_cell:
+                        - background-color: "rgba(255, 255, 255, 1)"
+                    state:
+                      - operator: template
+                        value: >
+                          [[[ return !entity.attributes.supported_color_modes.includes("color_temp"); ]]]
+                        styles:
+                          card:
+                            - display: none
+                      - operator: template
+                        value: >
+                          [[[ return new URL(window.location.href).hash === '#color_temp' ]]]
+                        styles:
+                          icon:
+                            - color: "rgba(var(--color-blue),1)"
+                          img_cell:
+                            - background-color: "rgba(var(--color-blue), 0.2)"
+          item4:
+            card:
+              type: custom:button-card
+              template: popup_list_items
+              custom_fields:
+                item1:
+                  card:
+                    type: "custom:button-card"
+                    template: popup_button_back
+                item2:
+                  card:
+                    type: "custom:button-card"
+                    template: popup_button_power
+                    entity: "[[[ return entity.entity_id ]]]"
+
+popup_aircondition:
+  hold_action:
+    action: fire-dom-event
+    browser_mod:
+      command: popup
+      hide_header: true
+      card:
+        type: custom:button-card
+        template: popup_4_items
+        extra_styles: |
+          @media (max-width: 800px) {
+            #container {
+                grid-template-rows: 16vh 50vh 15vh 15vh !important;
+            }
+          }
+        custom_fields:
+          item1:
+            card:
+              type: custom:button-card
+              template:
+                - popup_header
+                - ulm_language_variables
+              entity: "[[[ return entity.entity_id ]]]"
+              label: "[[[
+                var temp = states[entity.entity_id].attributes.current_temperature;
+                return variables.ulm_popups_temperature + ' ' + temp + variables.ulm_popups_temperature_unit;
+                ]]]"
+          item2:
+            card:
+              type: thermostat
+              entity: "[[[ return entity.entity_id ]]]"
+              card_mod:
+                style: |
+                  ha-card {
+                    background: none !important;
+                    box-shadow: none !important;
+                    padding: 0 0 20px 0 !important;
+                  }
+                  .more-info {
+                    display:none;
+                  }
+                  #info {
+                    display:none;
+                  }
+                  .type-thermostat {
+                    --mode-color: rgb(var(--color-blue)) !important;
+                  }
+          item3:
+            card:
+              type: custom:button-card
+              styles:
+                card:
+                  - box-shadow: none
+                  - padding: 0px
+                  - border-radius: 21px
+                  - background-color: rgba(var(--color-theme),0.1)
+                grid:
+                  - grid-template-areas: '"item1 item2 item3 item4"'
+                  - grid-template-columns: 1fr 1fr 1fr 1fr
+                  - grid-template-rows: min-content
+                  - justify-items: center
+              custom_fields:
+                item1:
+                  card:
+                    type: custom:button-card
+                    template: popup_button_airconditionner
+                    variables:
+                      ulm_popup_button_airconditionner_state: heat
+                    entity: "[[[ return entity.entity_id ]]]"
+                    icon: mdi:weather-sunny
+                item2:
+                  card:
+                    type: custom:button-card
+                    template: popup_button_airconditionner
+                    variables:
+                      ulm_popup_button_airconditionner_state: cool
+                    entity: "[[[ return entity.entity_id ]]]"
+                    icon: mdi:snowflake
+                item3:
+                  card:
+                    type: custom:button-card
+                    template: popup_button_airconditionner
+                    variables:
+                      ulm_popup_button_airconditionner_state: fan_only
+                    entity: "[[[ return entity.entity_id ]]]"
+                    icon: mdi:weather-windy
+                item4:
+                  card:
+                    type: custom:button-card
+                    template: popup_button_airconditionner
+                    variables:
+                      ulm_popup_button_airconditionner_state: dry
+                    entity: "[[[ return entity.entity_id ]]]"
+                    icon: mdi:water
+          item4:
+            card:
+              type: custom:button-card
+              template: popup_list_items
+              custom_fields:
+                item1:
+                  card:
+                    type: "custom:button-card"
+                    template: popup_button_back
+                item2:
+                  card:
+                    type: "custom:button-card"
+                    template: popup_button_power
+                    entity: "[[[ return entity.entity_id ]]]"
