@@ -73,9 +73,9 @@ card_fan:
   variables:
     ulm_card_fan_slider_temp_attribute: "temp"
     ulm_card_fan_slider_hum_attribute: "hum"
-    always_show_attributes: true 
+    always_show_attributes: true
   label: >-
-    [[[  
+    [[[
       if (entity.state !='unavailable'){
         if (entity.state == 'off'){
           if (variables.always_show_attributes == true){
@@ -84,8 +84,8 @@ card_fan:
             return variables.ulm_off + ' • ' + (temp ? temp : '0') + '°C' + ' • ' + (hum ? hum : '0') + '%';
           } else {
             return variables.ulm_off
-          } 
-          
+          }
+
         } else if (entity.state == 'on'){
           if (entity.attributes.percentage != null){
             var per = entity.attributes.percentage;
@@ -94,7 +94,7 @@ card_fan:
             return (per ? per : '0') + '%' + ' • ' + (temp ? temp : '0') + '°C' + ' • ' + (hum ? hum : '0') + '%';
           } else {
             return variables.ulm_on
-          } 
+          }
         }
       } else {
         return variables.ulm_unavailable;

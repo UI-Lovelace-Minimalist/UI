@@ -35,7 +35,7 @@ card_fan_slider:
           - "yellow_slider"
         entity: "[[[ return entity.entity_id ]]]"
         label: >-
-          [[[  
+          [[[
             if (entity.state !='unavailable'){
               if (entity.state == 'off'){
                 if (variables.always_show_attributes == true){
@@ -45,7 +45,7 @@ card_fan_slider:
                 } else {
                   return variables.ulm_off
                 }
-                
+
               } else if (entity.state == 'on'){
                 if (entity.attributes.percentage != null){
                   var per = entity.attributes.percentage;
