@@ -1,4 +1,3 @@
----
 popup_default:
   hold_action:
     action: more-info
@@ -219,6 +218,7 @@ popup_power_outlet_stats:
       - grid-template-areas: '"header header" "content1 content1" "content2 content3" "footer footer"'
       - grid-template-rows: 16vh 12vh 44vh 14vh
       - grid-template-columns: 1fr 1fr
+      - column-gap: 30px
     card:
       - background: var(--primary-background-color)
       - box-shadow: none
@@ -230,10 +230,8 @@ popup_power_outlet_stats:
         - align-self: start
       content2:
         - align-self: start
-        - margin-right: 15px
       content3:
         - align-self: start
-        - margin-left: 15px
       buttons:
         - display: none
       footer:
@@ -249,9 +247,6 @@ popup_power_outlet_stats:
       #buttons {
         display: block !important;
         align-self: start !important;
-      }
-      #content2 {
-        margin-right: 0px;
       }
       #content3 {
         display: none;
@@ -399,7 +394,6 @@ popup_power_outlet_history:
       content3:
         - display: block
         - align-self: start
-        - margin-left: 0px
   extra_styles: |
     @media (max-width: 800px) {
       #container {
@@ -413,9 +407,6 @@ popup_power_outlet_history:
       }
       #content2 {
         display: none;
-      }
-      #content3 {
-        margin-left: 0px;
       }
   custom_fields:
     buttons:
@@ -471,9 +462,52 @@ popup_light:
 popup_light_brightness:
   styles:
     grid:
-      - grid-template-areas: '"header header header" "content1 content2 content3" "footer footer footer"'
+      - grid-template-areas: >
+          [[[
+                var headers = [];
+                var contents = [];
+                var footers = [];
+                var brightness_modes = ["brightness", "hs", "color_temp", "rgb", "rgbw"];
+                var color_temp_modes = ["color_temp"];
+                var color_modes = ["hs", "rgb", "rgbw", "xy"];
+                if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => brightness_modes.includes(r))) {
+                    headers.push("header");
+                    contents.push("content1");
+                    footers.push("footer");
+                }
+                if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => color_temp_modes.includes(r))) {
+                    headers.push("header");
+                    contents.push("content2");
+                    footers.push("footer");
+                }
+                if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => color_modes.includes(r))) {
+                    headers.push("header");
+                    contents.push("content3");
+                    footers.push("footer");
+                }
+                return "\"" + headers.join(" ") + "\" " + "\"" + contents.join(" ") + "\" " + "\"" + footers.join(" ") + "\"";
+          ]]]
+      # - grid-template-areas: '"header header header" "content1 content2 content3" "footer footer footer"'
       - grid-template-rows: 16vh 56vh 14vh
-      - grid-template-columns: 1fr 1fr 2fr
+      - grid-template-columns: >
+          [[[
+                var columns = [];
+                var brightness_modes = ["brightness", "hs", "color_temp", "rgb", "rgbw"];
+                var color_temp_modes = ["color_temp"];
+                var color_modes = ["hs", "rgb", "rgbw", "xy"];
+                if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => brightness_modes.includes(r))) {
+                    columns.push("1fr");
+                }
+                if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => color_temp_modes.includes(r))) {
+                    columns.push("1fr");
+                }
+                if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => color_modes.includes(r))) {
+                    columns.push("2fr");
+                }
+                return columns.join(" ");
+          ]]]
+      # - grid-template-columns: 1fr 1fr 2fr
+      - column-gap: 30px
     card:
       - background: var(--primary-background-color)
       - box-shadow: none
@@ -483,14 +517,34 @@ popup_light_brightness:
         - align-self: start
       content1:
         - align-self: center
-        - margin-right: 15px
+        - display: >
+            [[[
+                  var brightness_modes = ["brightness", "hs", "color_temp", "rgb", "rgbw"];
+                  if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => brightness_modes.includes(r))) {
+                      return "block";
+                  }
+                  return "none";
+            ]]]
       content2:
         - align-self: center
-        - margin-left: 15px
-        - margin-right: 15px
+        - display: >
+            [[[
+                  var color_temp_modes = ["color_temp"];
+                  if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => color_temp_modes.includes(r))) {
+                      return "block";
+                  }
+                  return "none";
+            ]]]
       content3:
         - align-self: center
-        - margin-left: 15px
+        - display: >
+            [[[
+                  var color_modes = ["hs", "rgb", "rgbw", "xy"];
+                  if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => color_modes.includes(r))) {
+                      return "block";
+                  }
+                  return "none";
+            ]]]
       buttons:
         - display: none
       footer:
@@ -507,14 +561,11 @@ popup_light_brightness:
         display: block !important;
         align-self: start !important;
       }
-      #content1 {
-        margin-right: 0px;
-      }
       #content2 {
-        display: none;
+        display: none !important;
       }
       #content3 {
-        display: none;
+        display: none !important;
       }
     }
   custom_fields:
@@ -606,6 +657,41 @@ popup_light_brightness:
         styles:
           card:
             - background: none
+          grid:
+            - grid-template-areas: >
+                [[[
+                      var areas = [];
+                      var brightness_modes = ["brightness", "hs", "color_temp", "rgb", "rgbw"];
+                      var color_temp_modes = ["color_temp"];
+                      var color_modes = ["hs", "rgb", "rgbw", "xy"];
+                      if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => brightness_modes.includes(r))) {
+                          areas.push("item1");
+                      }
+                      if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => color_temp_modes.includes(r))) {
+                          areas.push("item2");
+                      }
+                      if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => color_modes.includes(r))) {
+                          areas.push("item3");
+                      }
+                      return "\"" + areas.join(" ") + "\"";
+                ]]]      
+            - grid-template-columns: >
+                [[[
+                      var columns = [];
+                      var brightness_modes = ["brightness", "hs", "color_temp", "rgb", "rgbw"];
+                      var color_temp_modes = ["color_temp"];
+                      var color_modes = ["hs", "rgb", "rgbw", "xy"];
+                      if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => brightness_modes.includes(r))) {
+                          columns.push("1fr");
+                      }
+                      if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => color_temp_modes.includes(r))) {
+                          columns.push("1fr");
+                      }
+                      if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => color_modes.includes(r))) {
+                          columns.push("1fr");
+                      }
+                      return columns.join(" ");
+                ]]]       
         custom_fields:
           item1:
             card:
@@ -622,6 +708,16 @@ popup_light_brightness:
               template:
                 - popup_button
                 - popup_button_color_temp
+              styles:
+                card:
+                  - display: >
+                      [[[
+                            var color_temp_modes = ["color_temp"];
+                            if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => color_temp_modes.includes(r))) {
+                                return "block";
+                            }
+                            return "none";
+                      ]]]
               tap_action:
                 action: fire-dom-event
                 browser_mod:
@@ -639,6 +735,16 @@ popup_light_brightness:
               template:
                 - popup_button
                 - popup_button_color
+              styles:
+                card:
+                  - display: >
+                      [[[
+                            var color_modes = ["hs", "rgb", "rgbw", "xy"];
+                            if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => color_modes.includes(r))) {
+                                return "block";
+                            }
+                            return "none";
+                      ]]]
               tap_action:
                 action: fire-dom-event
                 browser_mod:
@@ -696,8 +802,6 @@ popup_light_color_temp:
       content2:
         - display: block
         - align-self: center
-        - margin-left: 0px
-        - margin-right: 0px
       content3:
         - display: none
   extra_styles: |
@@ -713,10 +817,6 @@ popup_light_color_temp:
       }
       #content1 {
         display: none;
-      }
-      #content2 {
-        margin-left: 0px;
-        margin-right: 0px;
       }
       #content3 {
         display: none;
@@ -788,7 +888,6 @@ popup_light_color:
       content3:
         - display: block
         - align-self: center
-        - margin-left: 0px
   extra_styles: |
     @media (max-width: 800px) {
       #container {
@@ -805,9 +904,6 @@ popup_light_color:
       }
       #content2 {
         display: none;
-      }
-      #content3 {
-        margin-left: 0px;
       }
   custom_fields:
     buttons:
