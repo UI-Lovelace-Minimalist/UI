@@ -18,7 +18,7 @@ card_fan_slider:
           - background-color: "rgba(var(--color-background-yellow),var(--opacity-bg))"
   styles:
     grid:
-      - grid-template-areas: '"item1" "item2"'
+      - grid-template-areas: "'item1' 'item2'"
       - grid-template-columns: "1fr"
       - grid-template-rows: "min-content min-content"
       - row-gap: "12px"
@@ -44,7 +44,7 @@ card_fan_slider:
                   return variables.ulm_off + ' • ' + (temp ? temp : '0') + '°C' + ' • ' + (hum ? hum : '0') + '%';
                 } else {
                   return variables.ulm_off
-                } 
+                }
                 
               } else if (entity.state == 'on'){
                 if (entity.attributes.percentage != null){
@@ -54,7 +54,7 @@ card_fan_slider:
                   return (per ? per : '0') + '%' + ' • ' + (temp ? temp : '0') + '°C' + ' • ' + (hum ? hum : '0') + '%';
                 } else {
                   return variables.ulm_on
-                } 
+                }
               }
             } else {
               return variables.ulm_unavailable;
