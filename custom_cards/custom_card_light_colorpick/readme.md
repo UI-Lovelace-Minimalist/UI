@@ -84,3 +84,5 @@ config
 <td>This is the color change transition in seconds</td>
 </tr>
 </table>
+
+```
