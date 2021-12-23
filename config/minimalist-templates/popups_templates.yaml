@@ -1,3 +1,4 @@
+---
 popup_default:
   hold_action:
     action: more-info
@@ -267,7 +268,8 @@ popup_power_outlet_stats:
           - type: "custom:button-card"
             entity: "[[[ return variables.ulm_popup_power_outlet_sensor1 ]]]"
             label: >
-              [[[ return states[variables.ulm_popup_power_outlet_sensor1].state + states[variables.ulm_popup_power_outlet_sensor1].attributes.unit_of_measurement ]]]
+              [[[ return states[variables.ulm_popup_power_outlet_sensor1].state + states[variables.ulm_popup_power_outlet_sensor1].attributes.unit_of_measurement
+              ]]]
             template:
               - icon_info_bg
             styles:
@@ -284,7 +286,8 @@ popup_power_outlet_stats:
           - type: "custom:button-card"
             entity: "[[[ return variables.ulm_popup_power_outlet_sensor2 ]]]"
             label: >
-              [[[ return states[variables.ulm_popup_power_outlet_sensor2].state + states[variables.ulm_popup_power_outlet_sensor2].attributes.unit_of_measurement ]]]
+              [[[ return states[variables.ulm_popup_power_outlet_sensor2].state + states[variables.ulm_popup_power_outlet_sensor2].attributes.unit_of_measurement
+              ]]]
             template:
               - icon_info_bg
             styles:
@@ -1307,10 +1310,8 @@ popup_aircondition:
                 - popup_header
                 - ulm_language_variables
               entity: "[[[ return entity.entity_id ]]]"
-              label: "[[[
-                var temp = states[entity.entity_id].attributes.current_temperature;
-                return variables.ulm_popups_temperature + ' ' + temp + variables.ulm_popups_temperature_unit;
-                ]]]"
+              label: "[[[ var temp = states[entity.entity_id].attributes.current_temperature; return variables.ulm_popups_temperature + ' ' + temp + variables.ulm_popups_temperature_unit;\
+                \ ]]]"
           item2:
             card:
               type: thermostat
