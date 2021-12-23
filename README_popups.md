@@ -1,5 +1,5 @@
 # UI-Lovelace-Minimalist popups
-The basis for all these popups is `button-card` that allows for a great and individual styling. These popups are "responsive". That means the layout automatically fit the size of the screen. 
+The basis for all these popups is `button-card` that allows for a great and individual styling. These popups are "responsive". That means the layout automatically fit the size of the screen.
 
 ## Table of Content
 

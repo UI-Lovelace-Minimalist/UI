@@ -674,7 +674,7 @@ popup_light_brightness:
                           areas.push("item3");
                       }
                       return "\"" + areas.join(" ") + "\"";
-                ]]]      
+                ]]]
             - grid-template-columns: >
                 [[[
                       var columns = [];
@@ -691,7 +691,7 @@ popup_light_brightness:
                           columns.push("1fr");
                       }
                       return columns.join(" ");
-                ]]]       
+                ]]]
         custom_fields:
           item1:
             card:
@@ -1193,7 +1193,7 @@ popup_light_old:
                     state:
                       - operator: template
                         value: >
-                          [[[ 
+                          [[[
                             var brightness_modes = ["brightness", "hs", "color_temp", "rgb", "rgbw"];
                             return !entity.attributes.supported_color_modes.some(r => brightness_modes.includes(r));
                           ]]]
@@ -1225,7 +1225,7 @@ popup_light_old:
                     state:
                       - operator: template
                         value: >
-                          [[[ 
+                          [[[
                             var color_modes = ["hs", "rgb", "rgbw", "xy"];
                             return !entity.attributes.supported_color_modes.some(r => color_modes.includes(r));
                           ]]]
