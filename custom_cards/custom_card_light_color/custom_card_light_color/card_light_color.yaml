@@ -28,7 +28,7 @@ card_light_horizontal_color:
   variables:
     ulm_card_light_name: "[[[ return entity.attributes.friendly_name ]]]"
     ulm_card_light_icon:
-    ulm_card_light_mode: 
+    ulm_card_light_mode:
   show_icon: false
   show_name: false
   show_label: false
@@ -102,7 +102,7 @@ card_light_slider_color:
   variables:
     ulm_card_light_slider_name: "[[[ return entity.attributes.friendly_name ]]]"
     ulm_card_light_icon:
-    ulm_card_light_mode: 
+    ulm_card_light_mode:
   show_icon: false
   show_name: false
   show_label: false
@@ -175,7 +175,7 @@ card_light_slider_collapse_color:
   variables:
     ulm_card_light_name: "[[[ return entity.attributes.friendly_name ]]]"
     ulm_card_light_icon:
-    ulm_card_light_mode: 
+    ulm_card_light_mode:
   show_icon: false
   show_name: false
   show_label: false
@@ -343,8 +343,8 @@ icon_info_light:
         name: "[[[ return variables.ulm_card_light_name ]]]"
         state:
           - value: "on"
-            styles: 
-              label: 
+            styles:
+              label:
                 - color: >
                     [[[
                       var mode = variables.ulm_card_light_mode
@@ -358,7 +358,7 @@ icon_info_light:
                             }
                         } else if (mode == 'light'){
                           return 'rgba(var(--color-yellow-text),1)';
-                        } 
+                        }
                       } else {
                         if (states['sun.sun'].state == "below_horizon"){
                           if (color){
@@ -385,7 +385,7 @@ icon_info_light:
                             }
                         } else if (mode == 'light'){
                           return 'rgba(var(--color-yellow-text),1)';
-                        } 
+                        }
                       } else {
                         if (states['sun.sun'].state == "below_horizon"){
                           if (color){
@@ -428,7 +428,7 @@ background_color:
       value: "[[[ return entity.state == 'on' ]]]"
       styles:
         card:
-          - background-color:  >
+          - background-color: >
               [[[
                 var mode = variables.ulm_card_light_mode;
                 var color = entity.attributes.rgb_color;
@@ -441,7 +441,7 @@ background_color:
                       }
                   } else if (mode == 'light'){
                     return 'rgba(var(--color-background-yellow),var(--opacity-bg))';
-                  } 
+                  }
                 } else {
                   if (states['sun.sun'].state == "below_horizon"){
                     if (color){
