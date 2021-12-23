@@ -135,5 +135,3 @@ The default for all cards include is auto switching. You can use only dark or li
 <td>Specify your theme mode. (light or dark) <br>Leave empty when using auto switching</td>
 </tr>
 </table>
-
-
