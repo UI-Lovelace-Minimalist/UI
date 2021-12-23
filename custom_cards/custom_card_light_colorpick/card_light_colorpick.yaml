@@ -4,7 +4,7 @@ card_light_colorpick:
     - "ulm_language_variables"
   variables:
     ulm_card_light_colorpick_name: "[[[ return entity.attributes.friendly_name ]]]"
-    ulm_card_light_colorpick_transition: "1"
+    ulm_card_light_colorpick_transition: 1
   show_icon: false
   show_name: false
   show_label: false
@@ -89,38 +89,38 @@ card_light_colorpick:
           justify: "around"
           colors:
             - rgb_color:
-                - "255"
-                - "255"
-                - "255"
+                - 255
+                - 255
+                - 255
               icon_color: "rgba(255, 255, 255, 0.8)"
               transition: "[[[ return variables.ulm_card_light_colorpick_transition; ]]]"
-            - rgb_color: 
-                - "245"
-                - "68"
-                - "54"
-              icon_color: "[[[ return `rgba(var(--color-red), 0.8)`; ]]]"
+            - rgb_color:
+                - 245
+                - 68
+                - 54
+              icon_color: "rgba(245, 68, 54, 0.8)"
               transition: "[[[ return variables.ulm_card_light_colorpick_transition; ]]]"
             - rgb_color:
-                - "51"
-                - "102"
-                - "204"
+                - 51
+                - 102
+                - 204
               icon_color: "rgba(51, 102, 204, 0.8)"
               transition: "[[[ return variables.ulm_card_light_colorpick_transition; ]]]"
             - rgb_color:
-                - "51"
-                - "204"
-                - "51"
+                - 51
+                - 204
+                - 51
               icon_color: "rgba(51, 204, 51, 0.8)"
               transition: "[[[ return variables.ulm_card_light_colorpick_transition; ]]]"
             - rgb_color:
-                - "255"
-                - "0"
-                - "255"
+                - 255
+                - 0
+                - 255
               icon_color: "rgba(255, 0, 255, 0.8)"
               transition: "[[[ return variables.ulm_card_light_colorpick_transition; ]]]"
             - rgb_color:
-                - "0"
-                - "255"
-                - "255"
+                - 0
+                - 255
+                - 255
               icon_color: "rgba(0, 255, 255, 0.8)"
               transition: "[[[ return variables.ulm_card_light_colorpick_transition; ]]]"

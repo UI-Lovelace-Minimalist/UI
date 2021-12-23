@@ -1,7 +1,7 @@
 # Custom-card "Colorpicker Light Card"
-This is a `custom-card` to add additional function to the `light_card`. 
+This is a `custom-card` to add additional function to the `light_card`.
 
-The card uses a slider as well as six conditional icons to pick the color of the light. 
+The card uses a slider as well as six conditional icons to pick the color of the light.
 
 ## Credits
 Author: 13robin37 - 2021
