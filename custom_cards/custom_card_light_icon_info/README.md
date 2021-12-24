@@ -1,8 +1,7 @@
 # Custom-card "Light Card Icon Info"
-This is a `custom-card` to add additionall function to the `light_card`. It comes in four different versions:
+This is a `custom-card` to add additionall function to the `light_card`. It comes in three different versions:
 
 * Light card with icon as info button (*card_light_icon_info*)
-* Horizontal light card with icon as info button (*card_light_horizontal_icon_info*)
 * Light card with icon as info button + brigthness slider (*card_light_slider_icon_info*)
 * Light card with icon as info button + auto collapse brigthness slider (*card_light_slider_collapse_icon_info*)
 
@@ -10,20 +9,12 @@ The icon is changeable for each MDI-icon. And the icon functions as button to sh
 
 ## Credits
 Author: basbruss - 2021
-Version: 1.0.1
+Version: 1.0.0
 
 ## Changelog
 <details>
 <summary>1.0.0</summary>
 Initial release
-</details>
-<details>
-<summary>1.0.1</summary>
-Bug fix background color `card_light_color`<br>
-Bug fix template not found <br>
-Add <i>card_light_horizontal_color</i> and <i>card_light_horizontal_icon_info</i><br>
-Add variable to specify theme mode (no need for changing templates anymore)<br>
-Code cleanup
 </details>
 
 ## Requirements
@@ -57,7 +48,7 @@ config
   └── minimalist-templates
      └── custom_card_light_icon_info
         └── custom_card_light_icon_info.yaml
-        └── readme.md
+        └── README.md
      └── button_card_templates.yaml
      └── EN.yaml
 ```
@@ -68,13 +59,6 @@ config
 - type: custom:button-card
   template: card_light_icon_info
   entity: light.your_light #Or switch.your_switch
-  variables:
-    ulm_card_light_name: Light
-    ulm_card_light_icon: mdi:ceiling-light
-
-- type: custom:button-card
-  template: card_light_horizontal_icon_info
-  entity: light.your_light
   variables:
     ulm_card_light_name: Light
     ulm_card_light_icon: mdi:ceiling-light
