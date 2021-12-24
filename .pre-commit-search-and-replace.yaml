@@ -1,0 +1,4 @@
+---
+- search: "readme.md"
+  insensitive: true
+  replacement: "README.md"
