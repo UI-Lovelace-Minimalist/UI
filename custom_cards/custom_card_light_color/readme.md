@@ -1,20 +1,35 @@
 # Custom-card "Color Light Card"
-This is a `custom-card` to add additionall function to the `light_card`. It comes in three different versions:
+This is a `custom-card` to add additionall function to the `light_card`. It comes in four different versions:
 
-* Color chaning light card with icon as info button (*card_light_color*)
-* Color chaning light card with icon as info button + brigthness slider (*card_light_slider_color*)
-* Color chaning light card with icon as info button + auto collapse brigthness slider (*card_light_slider_collapse_color*)
+* Color changing light card with icon as info button (*card_light_color*)
+* Horizontal color changing light card with icon as info button  (*card_light_horizontal_color*)
+* Color changing light card with icon as info button + brigthness slider (*card_light_slider_color*)
+* Color changing light card with icon as info button + auto collapse brigthness slider (*card_light_slider_collapse_color*)
 
 The card shows you the color of the light. The icon is changeable for each MDI-icon. And the icon functions as button to show more-info.
 
+![Light](./screenshots/light.png)
+![Light_slider](./screenshots/light_slider.png)
+![Light_horizontal](./screenshots/light_horizontal.png)
+![Dark](./screenshots/dark.png)
+![Dark_slider](./screenshots/dark_slider.png)
+![Dark_horizontal](./screenshots/dark_horizontal.png)
 ## Credits
 Author: basbruss - 2021
-Version: 1.0.0
+Version: 1.0.1
 
 ## Changelog
 <details>
 <summary>1.0.0</summary>
 Initial release
+</details>
+<details>
+<summary>1.0.1</summary>
+Bug fix background color `card_light_color`<br>
+Bug fix template not found <br>
+Add <i>card_light_horizontal_color</i> and <i>card_light_horizontal_icon_info</i><br>
+Add variable to specify theme mode (no need for changing templates anymore)<br>
+Code celanup
 </details>
 
 ## Requirements
@@ -60,22 +75,35 @@ config
   entity: light.your_light
   variables:
     ulm_card_light_name: Light
-    ulm_card_light_icon: mdi:ceiling-light
+    ulm_card_light_icon: mdi:ceiling-light #leave empty for standard icon
+    ulm_card_light_mode: dark # define light or dark theme-mode, leave empty if you use auto
+
+- type: custom:button-card
+  template: card_light_horizontal_color
+  entity: light.your_light
+  variables:
+    ulm_card_light_name: Light
+    ulm_card_light_icon: mdi:ceiling-light #leave empty for standard icon
+    ulm_card_light_mode: dark # define light or dark theme-mode, leave empty if you use auto
 
 - type: custom:button-card
   template: card_light_slider_color
   entity: light.your_light
   variables:
     ulm_card_light_name: Light
-    ulm_card_light_icon: mdi:ceiling-light
+    ulm_card_light_icon: mdi:ceiling-light #leave empty for standard icon
+    ulm_card_light_mode: dark # define light or dark theme-mode, leave empty if you use auto
 
 - type: custom:button-card
   template: card_light_slider_collapse_color
   entity: light.your_light
   variables:
     ulm_card_light_name: Light
-    ulm_card_light_icon: mdi:ceiling-light
+    ulm_card_light_icon: mdi:ceiling-light #leave empty for standard icon
+    ulm_card_light_mode: dark # define light or dark theme-mode, leave empty if you use auto
 ```
+## Dark/Light Mode support (*new function*)
+The default for all cards include is auto switching. You can use only dark or light mode if you specify the `ulm_card_light_mode` variable.
 
 ## Variables
 <table>
@@ -100,152 +128,10 @@ config
 <td>no</td>
 <td>This is your icon for the light</td>
 </tr>
+<td>all</td>
+<td>ulm_card_light_mode</td>
+<td>dark</td>
+<td>no</td>
+<td>Specify your theme mode. (light or dark) <br>Leave empty when using auto switching</td>
+</tr>
 </table>
-
-## Important Note
-This card works best if you use auto light/dark mode. As Home Assistant doesn't provide a way to determine in which theme mode it is.
-<br>*When only using light or dark mode as theme mode* it's recommended to change the following template in `card_light_color.yaml`:
-
-```yaml
-### internal templates
-auto_color:
-  state:
-    - value: "on"
-      styles:
-        icon:
-          - color: >
-              [[[
-                  var color = entity.attributes.rgb_color;
-                  if (color != null){
-                     return 'rgba(' + entity.attributes.rgb_color + ',1)';
-                  }
-                  else{
-                    return 'rgba(var(--color-yellow),1)';
-                  }
-              ]]]
-        label:
-          - color: >
-              [[[
-                var color = entity.attributes.rgb_color;
-                if (states['sun.sun'].state == "below_horizon"){
-                  if (color != null){
-                         return 'rgba(' + entity.attributes.rgb_color + ',1)';
-                  }else{
-                    return 'rgba(var(--color-yellow),1)';
-                  }
-                }else if (states['sun.sun'].state == "above_horizon")
-                  return 'rgba(var(--color-yellow-text),1)';
-              ]]]
-        name:
-          - color: >
-              [[[
-                var color = entity.attributes.rgb_color;
-                if (states['sun.sun'].state == "below_horizon"){
-                  if (color != null){
-                         return 'rgba(' + entity.attributes.rgb_color + ',1)';
-                  }else{
-                    return 'rgba(var(--color-yellow),1)';
-                  }
-                }else if (states['sun.sun'].state == "above_horizon")
-                  return 'rgba(var(--color-yellow-text),1)';
-              ]]]
-        img_cell:
-          - background-color: >
-              [[[
-                  var color = entity.attributes.rgb_color;
-                  if (color != null){
-                     return 'rgba(' + entity.attributes.rgb_color + ',0.2)';
-                  }
-                  else{
-                    return 'rgba(var(--color-yellow),0.2)';
-                  }
-              ]]]
-```
-
-For only light mode usage to:
-```yaml
-### internal templates
-auto_color:
-  state:
-    - value: "on"
-      styles:
-        icon:
-          - color: >
-              [[[
-                  var color = entity.attributes.rgb_color;
-                  if (color != null){
-                     return 'rgba(' + entity.attributes.rgb_color + ',1)';
-                  }
-                  else{
-                    return 'rgba(var(--color-yellow),1)';
-                  }
-              ]]]
-        label:
-          - color: "rgba(var(--color-yellow-text),1)"
-        name:
-          - color: "rgba(var(--color-yellow-text),1)"
-        img_cell:
-          - background-color: >
-              [[[
-                  var color = entity.attributes.rgb_color;
-                  if (color != null){
-                     return 'rgba(' + entity.attributes.rgb_color + ',0.2)';
-                  }
-                  else{
-                    return 'rgba(var(--color-yellow),0.2)';
-                  }
-              ]]]
-```
-
-And for only dark mode usage to:
-```yaml
-### internal templates
-auto_color:
-  state:
-    - value: "on"
-      styles:
-        icon:
-          - color: >
-              [[[
-                  var color = entity.attributes.rgb_color;
-                  if (color != null){
-                     return 'rgba(' + entity.attributes.rgb_color + ',1)';
-                  }
-                  else{
-                    return 'rgba(var(--color-yellow),1)';
-                  }
-              ]]]
-        label:
-          - color: >
-              [[[
-                  var color = entity.attributes.rgb_color;
-                  if (color != null){
-                     return 'rgba(' + entity.attributes.rgb_color + ',1)';
-                  }
-                  else{
-                    return 'rgba(var(--color-yellow),1)';
-                  }
-              ]]]
-        name:
-          - color: >
-              [[[
-                  var color = entity.attributes.rgb_color;
-                  if (color != null){
-                     return 'rgba(' + entity.attributes.rgb_color + ',1)';
-                  }
-                  else{
-                    return 'rgba(var(--color-yellow),1)';
-                  }
-              ]]]
-        img_cell:
-          - background-color: >
-              [[[
-                  var color = entity.attributes.rgb_color;
-                  if (color != null){
-                     return 'rgba(' + entity.attributes.rgb_color + ',0.2)';
-                  }
-                  else{
-                    return 'rgba(var(--color-yellow),0.2)';
-                  }
-              ]]]
-```
