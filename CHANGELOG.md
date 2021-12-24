@@ -1,5 +1,38 @@
 # UI-Lovelace-Minimalist CHANGELOG
 
+## Version 1.0.0-beta.9
+### 🚀 Features
+
+- #121 Custom-card "Device Tracker (Online or Offline ?) @vncnt-dev
+- #111 Thermostat card  @httpedo13
+- #117 Custom printer card with toner status @mp-se
+- #127 Custom Input Number Card @sildehoop
+- #133 Added wifi signal card @mp-se
+- #116 Additional custom light card @13robin37
+
+### ⚙️ Code enhancements
+
+- #114 Make card_person zones optional and more robust @checkerschaf
+- #140 New release light cards @basbruss
+
+### 🐞 Bug Fixes
+
+- #112 Revert Set opacity-bg to 0.1 @CM000n
+- #113 Fix non colored chips on edge and chrome @CM000n
+- #140 New release light cards @basbruss
+
+### ㊗️ Translations
+
+- #124 IT Language for Welcome card.yaml @httpedo13
+
+### 📄 Documentation
+
+- #135 Restructure images in custom cards folder + fix broken links @bavo
+
+### ❤️ Thank you so much for helping out to keep this UI awesome
+@13robin37, @CM000n, @basbruss, @bavo, @checkerschaf, @httpedo13, @mp-se, @sildehoop, @vncnt-dev
+
+
 ## Version 1.0.0-beta.8
 ### 🚀 Features
 
