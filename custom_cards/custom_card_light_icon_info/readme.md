@@ -48,7 +48,7 @@ config
   └── minimalist-templates
      └── custom_card_light_icon_info
         └── custom_card_light_icon_info.yaml
-        └── readme.md
+        └── README.md
      └── button_card_templates.yaml
      └── EN.yaml
 ```

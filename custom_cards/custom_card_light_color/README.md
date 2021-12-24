@@ -47,7 +47,7 @@ config
   └── minimalist-templates
      └── custom_card_light_color
         └── custom_card_light_color.yaml
-        └── readme.md
+        └── README.md
      └── button_card_templates.yaml
      └── EN.yaml
 ```

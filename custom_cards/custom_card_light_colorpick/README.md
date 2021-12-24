@@ -43,7 +43,7 @@ config
   └── minimalist-templates
      └── custom_card_light_colorpick
         └── custom_card_light_colorpick.yaml
-        └── readme.md
+        └── README.md
      └── button_card_templates.yaml
      └── EN.yaml
 ```
