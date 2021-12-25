@@ -1,0 +1,10 @@
+---
+- search: "readme.md"
+  insensitive: true
+  replacement: "README.md"
+- search: "changelog.md"
+  insensitive: true
+  replacement: "CHANGELOG.md"
+- search: "license.md"
+  insensitive: true
+  replacement: "LICENSE.md"

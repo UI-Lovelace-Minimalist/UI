@@ -111,12 +111,12 @@ https://github.com/UI-Lovelace-Minimalist/UI/pull/66
 
 ## Version 1.0.0-beta.5
 ### Fixed
-* Fixed some links and typos in readme.md
+* Fixed some links and typos in README.md
 * Fixed `chip_icon_only`
 
 ### Changed
 * Changed name for language variables for schumijos flower card
-* Changed link(s) in readme.md for wiki
+* Changed link(s) in README.md for wiki
 * Changed readme route people to the wiki
 * Changed `card_battery`
 
@@ -135,12 +135,12 @@ https://github.com/UI-Lovelace-Minimalist/UI/pull/66
 
 ### Changed
 * Changed all template names that start with `chips_` to `chip_` **breaking change**
-* Changed `readme.md` to reflect the new wiki (fix #5)
+* Changed `README.md` to reflect the new wiki (fix #5)
 * Changed `card_light_slider` to remove slider while state=off
 * Changed icon on `card_person` from mdi:account to mdi:face-man
 
 ### Added
-* Added `readme.md` template to `custom-cards.md`
+* Added `README.md` template to `custom-cards.md`
 * Added author to `light_slider_card`
 
 
@@ -159,7 +159,7 @@ https://github.com/UI-Lovelace-Minimalist/UI/pull/66
 
 ## Version 1.0.0-beta.2
 ### Fixed
-* Fix some typos in `readme.md`
+* Fix some typos in `README.md`
 * Fix some typos in `custom-cards.md`
 * Fix `box-shadow` in `card_graph`
 * Fix `chip_icon_state`
