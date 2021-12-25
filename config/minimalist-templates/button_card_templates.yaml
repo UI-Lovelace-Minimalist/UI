@@ -6,33 +6,34 @@ chip_temperature:
   label: |
     [[[
       var icon = "🌡️";
-      if (states[variables.ulm_chip_temperature_weather].state == "clear-night"){
+      var weather_state = states[variables.ulm_chip_temperature_weather].state;
+      if (weather_state == "clear-night"){
         var icon = "🌙";
-      } else if(states[variables.ulm_chip_temperature_weather].state == "cloudy"){
+      } else if(weather_state == "cloudy"){
         var icon = "☁️";
-      } else if(states[variables.ulm_chip_temperature_weather].state == "exceptional"){
+      } else if(weather_state == "exceptional"){
         var icon = "🌞";
-      } else if(states[variables.ulm_chip_temperature_weather].state == "fog"){
+      } else if(weather_state == "fog"){
         var icon = "🌫️";
-      } else if(states[variables.ulm_chip_temperature_weather].state == "hail"){
+      } else if(weather_state == "hail"){
         var icon = "⛈️";
-      } else if(states[variables.ulm_chip_temperature_weather].state == "lightning"){
+      } else if(weather_state == "lightning"){
         var icon = "⚡";
-      } else if(states[variables.ulm_chip_temperature_weather].state == "lightning-rainy"){
+      } else if(weather_state == "lightning-rainy"){
         var icon = "⛈️";
-      } else if(states[variables.ulm_chip_temperature_weather].state == "partlycloudy"){
+      } else if(weather_state == "partlycloudy"){
         var icon = "⛅";
-      } else if(states[variables.ulm_chip_temperature_weather].state == "pouring"){
+      } else if(weather_state == "pouring"){
         var icon = "🌧️";
-      } else if(states[variables.ulm_chip_temperature_weather].state == "rainy"){
+      } else if(weather_state == "rainy"){
         var icon = "💧";
-      } else if(states[variables.ulm_chip_temperature_weather].state == "snowy"){
+      } else if(weather_state == "snowy"){
         var icon = "❄️";
-      } else if(states[variables.ulm_chip_temperature_weather].state == "snowy-rainy"){
+      } else if(weather_state == "snowy-rainy"){
         var icon = "🌨️";
-      } else if(states[variables.ulm_chip_temperature_weather].state == "sunny"){
+      } else if(weather_state == "sunny"){
         var icon = "☀️";
-      } else if(states[variables.ulm_chip_temperature_weather].state == "windy"){
+      } else if(weather_state == "windy"){
         var icon = "🌪️";
       }
       function convertTemperature(temp) {
