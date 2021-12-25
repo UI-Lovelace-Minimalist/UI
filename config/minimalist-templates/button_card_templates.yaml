@@ -1213,6 +1213,7 @@ card_graph:
 card_media_player_with_controls:
   variables:
     ulm_card_media_player_with_controls_name: "No name set"
+    ulm_card_media_player_with_controls_entity:
   triggers_update: "all"
   styles:
     grid:
