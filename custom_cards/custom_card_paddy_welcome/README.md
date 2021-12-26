@@ -55,7 +55,7 @@ config
         └── languages
            └── EN.yaml
         └── custom_card_paddy_welcome.yaml
-        └── readme.md
+        └── README.md
      └── button_card_templates.yaml
      └── EN.yaml
 ```

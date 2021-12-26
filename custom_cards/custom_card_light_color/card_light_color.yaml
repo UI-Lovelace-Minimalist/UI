@@ -3,65 +3,109 @@ card_light_color:
   template:
     - "icon_info_light"
     - "ulm_language_variables"
+    - "background_color"
   variables:
     ulm_card_light_name: "[[[ return entity.attributes.friendly_name ]]]"
     ulm_card_light_icon:
+    ulm_card_light_mode:
   show_icon: false
   show_name: false
   show_label: false
-  state:
-    - operator: "template"
-      value: "[[[ return entity.state == 'on' ]]]"
-      styles:
-        card:
-          - background-color: >
-              [[[
-                if (states['sun.sun'].state == "below_horizon"){
-                  var color = entity.attributes.rgb_color;
-                  if (color){
-                     return 'rgba(' + entity.attributes.rgb_color + ',0.1)'
-                  }
-                  else{
-                    return 'rgba(var(--color-yellow),0.1)'
-                  }
-                }else if (states['sun.sun'].state == "above_horizon")
-                  return 'rgba(var(--color-background-yellow),var(--opacity-bg))';
-              ]]]
   styles:
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
+      - background-color:
+  tap_action:
+    action: "toggle"
+### horizontal slider
+card_light_horizontal_color:
+  template:
+    - "list_items_light"
+    - "ulm_language_variables"
+    - "background_color"
+  variables:
+    ulm_card_light_name: "[[[ return entity.attributes.friendly_name ]]]"
+    ulm_card_light_icon:
+    ulm_card_light_mode:
+  show_icon: false
+  show_name: false
+  show_label: false
+  styles:
+    grid:
+      - grid-template-columns: "auto auto"
+      - column-gap: "0px"
+      - grid-template-columns: "1fr 2fr"
     card:
       - border-radius: "var(--border-radius)"
       - box-shadow: "var(--box-shadow)"
       - padding: "12px"
   tap_action:
     action: "toggle"
+  hold_action:
+    action: "more-info"
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        entity: "[[[ return entity.entity_id ]]]"
+        template:
+          - "icon_info_light"
+          - "auto_color"
+        variables:
+          ulm_card_light_name: "[[[ return variables.ulm_card_light_name ]]]"
+          ulm_card_light_icon: "[[[ return variables.ulm_card_light_icon ]]]"
+          ulm_card_light_mode: "[[[ return variables.ulm_card_light_mode ]]]"
+    item2:
+      card:
+        type: "custom:my-slider"
+        entity: "[[[ return entity.entity_id ]]]"
+        radius: "14px"
+        height: "42px"
+        mainSliderColor: >
+          [[[
+              var color = entity.attributes.rgb_color;
+              if (color){
+                 return 'rgba(' + color + ',1)'
+              }
+              else{
+                return 'rgba(var(--color-yellow),1)'
+              }
+          ]]]
+        secondarySliderColor: >
+          [[[
+              var color = entity.attributes.rgb_color;
+              if (color){
+                 return 'rgba(' + color + ',0.2)';
+              }
+              else{
+                return 'rgba(var(--color-yellow),0.2)';
+              }
+          ]]]
+        mainSliderColorOff: "rgba(var(--color-theme),0.05)"
+        secondarySliderColorOff: "rgba(var(--color-theme),0.05)"
+        thumbHorizontalPadding: "0px"
+        thumbVerticalPadding: "0px"
+        thumbWidth: "0px"
+        card_mod:
+        style: |
+          ha-card {
+            border-radius: 14px;
+            box-shadow: none;
+          }
 ### slider card
 card_light_slider_color:
   template:
     - "ulm_language_variables"
+    - "background_color"
   variables:
     ulm_card_light_slider_name: "[[[ return entity.attributes.friendly_name ]]]"
     ulm_card_light_icon:
+    ulm_card_light_mode:
   show_icon: false
   show_name: false
   show_label: false
-  state:
-    - operator: "template"
-      value: "[[[ return entity.state == 'on' ]]]"
-      styles:
-        card:
-          - background-color: >
-              [[[
-                if (states['sun.sun'].state == "below_horizon"){
-                  var color = entity.attributes.rgb_color;
-                  if (color){
-                     return 'rgba(' + entity.attributes.rgb_color + ',0.1)'
-                  }
-                  else{
-                    return 'rgba(var(--color-yellow),0.1)'
-                  }
-                }else if (states['sun.sun'].state == "above_horizon")
-                  return 'rgba(var(--color-background-yellow),var(--opacity-bg))';
-              ]]]
   styles:
     grid:
       - grid-template-areas: "'item1' 'item2'"
@@ -82,6 +126,7 @@ card_light_slider_color:
         variables:
           ulm_card_light_name: "[[[ return variables.ulm_card_light_name ]]]"
           ulm_card_light_icon: "[[[ return variables.ulm_card_light_icon ]]]"
+          ulm_card_light_mode: "[[[ return variables.ulm_card_light_mode ]]]"
         template:
           - "icon_info_light"
           - "auto_color"
@@ -95,7 +140,7 @@ card_light_slider_color:
           [[[
               var color = entity.attributes.rgb_color;
               if (color){
-                 return 'rgba(' + entity.attributes.rgb_color + ',1)'
+                 return 'rgba(' + color + ',1)'
               }
               else{
                 return 'rgba(var(--color-yellow),1)'
@@ -105,7 +150,7 @@ card_light_slider_color:
           [[[
               var color = entity.attributes.rgb_color;
               if (color){
-                 return 'rgba(' + entity.attributes.rgb_color + ',0.2)';
+                 return 'rgba(' + color + ',0.2)';
               }
               else{
                 return 'rgba(var(--color-yellow),0.2)';
@@ -126,32 +171,14 @@ card_light_slider_color:
 card_light_slider_collapse_color:
   template:
     - "ulm_language_variables"
+    - "background_color"
   variables:
     ulm_card_light_name: "[[[ return entity.attributes.friendly_name ]]]"
     ulm_card_light_icon:
+    ulm_card_light_mode:
   show_icon: false
   show_name: false
   show_label: false
-  state:
-    - operator: "template"
-      value: "[[[ return entity.state == 'on' ]]]"
-      styles:
-        card:
-          - background-color: >
-              [[[
-                if (states['sun.sun'].state == "below_horizon"){
-                  var color = entity.attributes.rgb_color;
-                  if (color){
-                     return 'rgba(' + entity.attributes.rgb_color + ',0.1)'
-                  }
-                  else{
-                    return 'rgba(var(--color-yellow),0.1)'
-                  }
-                }else if (states['sun.sun'].state == "above_horizon")
-                  return 'rgba(var(--color-background-yellow),var(--opacity-bg))';
-              ]]]
-        grid:
-          - row-gap: "12px"
   styles:
     grid:
       - grid-template-areas: "'item1' 'item2'"
@@ -171,6 +198,7 @@ card_light_slider_collapse_color:
         variables:
           ulm_card_light_name: "[[[ return variables.ulm_card_light_name ]]]"
           ulm_card_light_icon: "[[[ return variables.ulm_card_light_icon ]]]"
+          ulm_card_light_mode: "[[[ return variables.ulm_card_light_mode ]]]"
         template:
           - "icon_info_light"
           - "auto_color"
@@ -189,7 +217,7 @@ card_light_slider_collapse_color:
             [[[
                 var color = entity.attributes.rgb_color;
                 if (color){
-                   return 'rgba(' + entity.attributes.rgb_color + ',1)'
+                   return 'rgba(' + color + ',1)'
                 }
                 else{
                   return 'rgba(var(--color-yellow),1)'
@@ -199,7 +227,7 @@ card_light_slider_collapse_color:
             [[[
                 var color = entity.attributes.rgb_color;
                 if (color){
-                   return 'rgba(' + entity.attributes.rgb_color + ',0.2)';
+                   return 'rgba(' + color + ',0.2)';
                 }
                 else{
                   return 'rgba(var(--color-yellow),0.2)';
@@ -215,6 +243,7 @@ card_light_slider_collapse_color:
             ha-card {
               border-radius: 14px;
               box-shadow: none;
+              margin-top: 12px;
             }
 ### internal templates
 auto_color:
@@ -226,44 +255,18 @@ auto_color:
               [[[
                   var color = entity.attributes.rgb_color;
                   if (color != null){
-                     return 'rgba(' + entity.attributes.rgb_color + ',1)';
+                     return 'rgba(' + color + ',1)';
                   }
                   else{
                     return 'rgba(var(--color-yellow),1)';
                   }
-              ]]]
-        label:
-          - color: >
-              [[[
-                var color = entity.attributes.rgb_color;
-                if (states['sun.sun'].state == "below_horizon"){
-                  if (color != null){
-                         return 'rgba(' + entity.attributes.rgb_color + ',1)';
-                  }else{
-                    return 'rgba(var(--color-yellow),1)';
-                  }
-                }else if (states['sun.sun'].state == "above_horizon")
-                  return 'rgba(var(--color-yellow-text),1)';
-              ]]]
-        name:
-          - color: >
-              [[[
-                var color = entity.attributes.rgb_color;
-                if (states['sun.sun'].state == "below_horizon"){
-                  if (color != null){
-                         return 'rgba(' + entity.attributes.rgb_color + ',1)';
-                  }else{
-                    return 'rgba(var(--color-yellow),1)';
-                  }
-                }else if (states['sun.sun'].state == "above_horizon")
-                  return 'rgba(var(--color-yellow-text),1)';
               ]]]
         img_cell:
           - background-color: >
               [[[
                   var color = entity.attributes.rgb_color;
                   if (color != null){
-                     return 'rgba(' + entity.attributes.rgb_color + ',0.2)';
+                     return 'rgba(' + color + ',0.2)';
                   }
                   else{
                     return 'rgba(var(--color-yellow),0.2)';
@@ -271,11 +274,12 @@ auto_color:
               ]]]
 icon_info_light:
   template:
-    - "list_items_light"
+    - "list_items_light_color"
     - "ulm_language_variables"
   variables:
     ulm_card_light_name: "[[[ return variables.ulm_card_light_name ]]]"
     ulm_card_light_icon: "[[[ return variables.ulm_card_light_icon ]]]"
+    ulm_card_light_mode: "[[[ return variables.ulm_card_light_mode]]]"
   show_icon: false
   show_name: false
   show_label: false
@@ -316,7 +320,8 @@ icon_info_light:
         entity: "[[[ return entity.entity_id ]]]"
         template:
           - "icon_info"
-          - "auto_color"
+        variables:
+          ulm_card_light_mode: "[[[ return variables.ulm_card_light_mode]]]"
         show_icon: false
         label: >-
           [[[
@@ -336,6 +341,63 @@ icon_info_light:
             }
           ]]]
         name: "[[[ return variables.ulm_card_light_name ]]]"
+        state:
+          - value: "on"
+            styles:
+              label:
+                - color: >
+                    [[[
+                      var mode = variables.ulm_card_light_mode
+                      var color = entity.attributes.rgb_color;
+                      if (mode != null){
+                        if (mode == 'dark'){
+                            if (color){
+                              return 'rgba(' + color + ',1)'
+                            } else{
+                              return 'rgba(var(--color-yellow-text),1)'
+                            }
+                        } else if (mode == 'light'){
+                          return 'rgba(var(--color-yellow-text),1)';
+                        }
+                      } else {
+                        if (states['sun.sun'].state == "below_horizon"){
+                          if (color){
+                            return 'rgba(' + color + ',1)'
+                          } else{
+                            return 'rgba(var(--color-yellow-text),1)'
+                          }
+                        } else if (states['sun.sun'].state == "above_horizon"){
+                          return 'rgba(var(--color-yellow-text),1)';
+                        }
+                      }
+                    ]]]
+              name:
+                - color: >
+                    [[[
+                      var mode = variables.ulm_card_light_mode;
+                      var color = entity.attributes.rgb_color;
+                      if (mode != null){
+                        if (mode == 'dark'){
+                            if (color){
+                              return 'rgba(' + color + ',1)'
+                            } else{
+                              return 'rgba(var(--color-yellow-text),1)'
+                            }
+                        } else if (mode == 'light'){
+                          return 'rgba(var(--color-yellow-text),1)';
+                        }
+                      } else {
+                        if (states['sun.sun'].state == "below_horizon"){
+                          if (color){
+                            return 'rgba(' + color + ',1)'
+                          } else{
+                            return 'rgba(var(--color-yellow-text),1)'
+                          }
+                        } else if (states['sun.sun'].state == "above_horizon"){
+                          return 'rgba(var(--color-yellow-text),1)';
+                        }
+                      }
+                    ]]]
         styles:
           card:
             - box-shadow: "none"
@@ -343,3 +405,52 @@ icon_info_light:
             - padding: "6px"
             - margin-left: "-7px"
             - background-color: "rgba(0,0,0,0)"
+        custom_fields:
+        notification: >
+          [[[
+            if (entity.state ==".."){
+              return `<ha-icon icon="mdi:exclamation" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`
+            }
+          ]]]
+list_items_light_color:
+  styles:
+    card:
+      - box-shadow: "none"
+      - padding: "0px"
+    grid:
+      - grid-template-areas: "'item1 item2'"
+      - grid-template-columns: "2fr 1fr"
+      - grid-template-rows: "min-content"
+      - column-gap: "7px"
+background_color:
+  state:
+    - operator: "template"
+      value: "[[[ return entity.state == 'on' ]]]"
+      styles:
+        card:
+          - background-color: >
+              [[[
+                var mode = variables.ulm_card_light_mode;
+                var color = entity.attributes.rgb_color;
+                if (mode != null){
+                  if (mode == 'dark'){
+                      if (color){
+                        return 'rgba(' + color + ',0.1)'
+                      } else{
+                        return 'rgba(var(--color-yellow),0.1)'
+                      }
+                  } else if (mode == 'light'){
+                    return 'rgba(var(--color-background-yellow),var(--opacity-bg))';
+                  }
+                } else {
+                  if (states['sun.sun'].state == "below_horizon"){
+                    if (color){
+                      return 'rgba(' + color + ',0.1)'
+                    } else{
+                      return 'rgba(var(--color-yellow),0.1)'
+                    }
+                  } else if (states['sun.sun'].state == "above_horizon"){
+                    return 'rgba(var(--color-background-yellow),var(--opacity-bg))';
+                  }
+                }
+              ]]]
