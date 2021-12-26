@@ -993,7 +993,7 @@ card_person:
       - color: "rgba(var(--color-theme),0.9)"
       - width: >
           [[[
-            if (variables.ulm_card_person_use_entity_picture != true){
+            if (variables.ulm_card_person_use_entity_picture !== true){
               return "20px";
             } else {
               return "42px";
@@ -1001,7 +1001,7 @@ card_person:
           ]]]
       - place-self: >
           [[[
-            if (variables.ulm_card_person_use_entity_picture != true){
+            if (variables.ulm_card_person_use_entity_picture !== true){
               return "center";
             } else {
               return "stretch stretch";
@@ -1020,7 +1020,7 @@ card_person:
         - line-height: "14px"
         - background-color: >
             [[[
-              if (states[variables.ulm_card_person_entity].state != 'home'){
+              if (states[variables.ulm_card_person_entity].state !== 'home') {
                 return "rgba(var(--color-green),1)";
               } else {
                 return "rgba(var(--color-blue),1)";
@@ -1029,12 +1029,12 @@ card_person:
   custom_fields:
     notification: >
       [[[
-        if (states[variables.ulm_card_person_entity].state != 'home'){
-          if (states[variables.ulm_card_person_entity].state == states[variables.ulm_card_person_zone1].attributes.friendly_name){
-            var icon = states[variables.ulm_card_person_zone1].attributes.icon != null ? states[variables.ulm_card_person_zone1].attributes.icon : 'mdi:help-circle'
+        if (states[variables.ulm_card_person_entity].state !== 'home') {
+          if (states[variables.ulm_card_person_entity].state === states[variables.ulm_card_person_zone1]?.attributes?.friendly_name) {
+            var icon = states[variables.ulm_card_person_zone1].attributes.icon !== null ? states[variables.ulm_card_person_zone1].attributes.icon : 'mdi:help-circle'
             return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
-          } else if (states[variables.ulm_card_person_entity].state == states[variables.ulm_card_person_zone2].attributes.friendly_name){
-            var icon = states[variables.ulm_card_person_zone2].attributes.icon != null ? states[variables.ulm_card_person_zone2].attributes.icon : 'mdi:help-circle'
+          } else if (states[variables.ulm_card_person_entity].state === states[variables.ulm_card_person_zone2]?.attributes?.friendly_name) {
+            var icon = states[variables.ulm_card_person_zone2].attributes.icon !== null ? states[variables.ulm_card_person_zone2].attributes.icon : 'mdi:help-circle'
             return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
           } else {
             return '<ha-icon icon="mdi:home-minus" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
@@ -1319,7 +1319,7 @@ chips:
     label:
       - justify-self: "center"
       - padding: "0px 6px"
-      - font-weight: "bold"
+      - font-weight: 500
       - font-size: "14px"
     img_cell:
       - width: "24px"

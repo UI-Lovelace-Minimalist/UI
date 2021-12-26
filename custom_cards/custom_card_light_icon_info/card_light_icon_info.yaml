@@ -86,6 +86,66 @@ card_light_icon_info:
               name:
                 - color: "rgba(var(--color-yellow-text),1)"
             value: "on"
+### horizontal slider
+card_light_horizontal_icon_info:
+  template:
+    - "list_items_light"
+    - "ulm_language_variables"
+  variables:
+    ulm_card_light_name: "[[[ return entity.attributes.friendly_name ]]]"
+    ulm_card_light_icon:
+  show_icon: false
+  show_name: false
+  show_label: false
+  state:
+    - operator: "template"
+      value: "[[[ return entity.state == 'on' ]]]"
+      styles:
+        card:
+          - background-color: "rgba(var(--color-background-yellow),var(--opacity-bg))"
+  styles:
+    grid:
+      - grid-template-columns: "auto auto"
+      - column-gap: "0px"
+      - grid-template-columns: "1fr 2fr"
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
+  tap_action:
+    action: "toggle"
+  hold_action:
+    action: "more-info"
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        entity: "[[[ return entity.entity_id ]]]"
+        template:
+          - "icon_info_card"
+        variables:
+          ulm_card_light_name: "[[[ return variables.ulm_card_light_name ]]]"
+          ulm_card_light_icon: "[[[ return variables.ulm_card_light_icon ]]]"
+    item2:
+      card:
+        type: "custom:my-slider"
+        entity: "[[[ return entity.entity_id ]]]"
+        radius: "14px"
+        height: "42px"
+        mainSliderColor: "rgba(var(--color-yellow),1)"
+        secondarySliderColor: "rgba(var(--color-yellow),0.2)"
+        mainSliderColorOff: "rgba(var(--color-theme),0.05)"
+        secondarySliderColorOff: "rgba(var(--color-theme),0.05)"
+        thumbHorizontalPadding: "0px"
+        thumbVerticalPadding: "0px"
+        thumbWidth: "0px"
+        card_mod:
+        style: |
+          ha-card {
+            border-radius: 14px;
+            box-shadow: none;
+          }
+### slider card
 card_light_slider_icon_info:
   template:
     - "ulm_language_variables"

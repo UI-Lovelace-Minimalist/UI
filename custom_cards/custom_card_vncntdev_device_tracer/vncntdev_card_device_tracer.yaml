@@ -1,0 +1,38 @@
+---
+custom_card_vncntdev_device_tracker:
+  template: "card_generic"
+  variables:
+    custom_card_vncntdev_device_tracker_name:
+    custom_card_vncntdev_device_tracker_status_as_name: false
+    custom_card_vncntdev_device_tracker_icon: "mdi:server"
+    custom_card_vncntdev_device_tracker_color_online: "var(--google-green)"
+    custom_card_vncntdev_device_tracker_color_offline: "var(--google-red)"
+  icon: "[[[return variables.custom_card_vncntdev_device_tracker_icon]]]"
+  label: |
+    [[[
+        if (variables.custom_card_vncntdev_device_tracker_status_as_name) {
+          return variables.custom_card_vncntdev_device_tracker_name !== null?
+          variables.custom_card_vncntdev_device_tracker_name:
+          entity.attributes.friendly_name;
+        } else {
+          return entity.state == "not_home" ? "Offline" : "Online";
+        }
+    ]]]
+  name: |
+    [[[
+        if (!variables.custom_card_vncntdev_device_tracker_status_as_name) {
+          return variables.custom_card_vncntdev_device_tracker_name !== null?
+          variables.custom_card_vncntdev_device_tracker_name:
+          entity.attributes.friendly_name;
+        } else {
+          return entity.state == "not_home" ? "Offline" : "Online";
+        }
+    ]]]
+  styles:
+    icon:
+      - color: >
+          [[[
+              return entity.state == 'not_home'?
+              variables.custom_card_vncntdev_device_tracker_color_offline:
+              variables.custom_card_vncntdev_device_tracker_color_online;
+          ]]]
