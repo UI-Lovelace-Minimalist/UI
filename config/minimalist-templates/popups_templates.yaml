@@ -490,6 +490,7 @@ popup_light_brightness:
                     footers.push("footer");
                 }
                 return "\"" + headers.join(" ") + "\" " + "\"" + contents.join(" ") + "\" " + "\"" + footers.join(" ") + "\"";
+                return "\"" + "header ".repeat(contents.length) + "\" " + "\"" + contents.join(" ") + "\" " + "\"" + "footer ".repeat(contents.length) + "\"";
           ]]]
       # - grid-template-areas: '"header header header" "content1 content2 content3" "footer footer footer"'
       - grid-template-rows: "16vh 56vh 14vh"
