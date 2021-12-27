@@ -776,6 +776,7 @@ popup_light_brightness:
         hide_header: true
         effects_list: false
         smooth_color_wheel: true
+        consolidate_entities: true
         child_card: true
         card_mod:
           style: |
