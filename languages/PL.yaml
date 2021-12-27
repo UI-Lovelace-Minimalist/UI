@@ -1,0 +1,13 @@
+---
+ulm_language_variables:
+  variables:
+    ulm_on: "włączone"
+    ulm_off: "wyłączone"
+    ulm_open: "otwarte"
+    ulm_closed: "zamknięte"
+    ulm_unavailable: "niedostępne"
+    ulm_standby: "czuwanie"
+    ulm_idle: "bezczynne"
+    ulm_currency: "PLN"
+    ulm_heat: "Grzanie"
+    ulm_cool: "Chłodzenie"
