@@ -572,7 +572,7 @@ popup_light_brightness:
         entity: "[[[ return variables.ulm_popup_light_entity ]]]"
     content1:
       card:
-        type: "custom:slider-card"
+        type: "custom:my-slider"
         entity: "[[[ return variables.ulm_popup_light_entity ]]]"
         radius: "20px"
         rotate: 270
