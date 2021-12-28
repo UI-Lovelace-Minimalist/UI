@@ -572,7 +572,7 @@ popup_light_brightness:
         entity: "[[[ return variables.ulm_popup_light_entity ]]]"
     content1:
       card:
-        type: "custom:slider-card"
+        type: "custom:my-slider"
         entity: "[[[ return variables.ulm_popup_light_entity ]]]"
         radius: "20px"
         rotate: 270
@@ -776,6 +776,7 @@ popup_light_brightness:
         hide_header: true
         effects_list: false
         smooth_color_wheel: true
+        consolidate_entities: true
         child_card: true
         card_mod:
           style: |
