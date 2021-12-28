@@ -196,17 +196,17 @@ chips_alarm:
     - "chips_icon_label"
   label: |
     [[[
-      var alarm_label = variables.ulm_on;
+      var alarm_label = variables.ulm_unknown;
       if (entity.state == "armed_home"){
-        var alarm_label = "Armed home";
+        var alarm_label = variables.ulm_alarm_armed_home;
       } else if(entity.state == "armed_away"){
-        var alarm_label = "Armed away";
+        var alarm_label = variables.ulm_alarm_armed_away;
       } else if(entity.state == "disarmed"){
-        var alarm_label = "Disarmed";
+        var alarm_label = variables.ulm_alarm_disarmed;
       } else if(entity.state == "arming"){
-        var alarm_label = "Arming";
+        var alarm_label = variables.ulm_alarm_arming;
       } else if(entity.state == "triggered"){
-        var alarm_label = "Triggered";
+        var alarm_label = variables.ulm_alarm_triggered;
       }
       return alarm_label;
     ]]]
