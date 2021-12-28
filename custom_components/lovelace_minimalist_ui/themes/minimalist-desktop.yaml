@@ -1,4 +1,3 @@
----
 minimalist-desktop:
   # Journal
   state-icon-color: "rgb(var(--color-theme))"

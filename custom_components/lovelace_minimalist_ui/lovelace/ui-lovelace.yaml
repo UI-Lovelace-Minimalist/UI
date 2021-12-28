@@ -1,5 +1,11 @@
+button_card_templates: !include_dir_merge_named ../templates/
+
 title: Lovelace Minimalist UI
 views:
   - cards:
-      - type: custom:card
+      - type: custom:button-card
         enitity: sun.sun
+      - type: custom:button-card
+        template: custom_card_paddy_welcome
+        variables:
+          ulm_custom_card_paddy_welcome_time: sensor.time

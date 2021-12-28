@@ -1,4 +1,3 @@
----
 minimalist-mobile:
   # Journal
   state-icon-color: "rgb(var(--color-theme))"

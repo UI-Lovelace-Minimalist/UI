@@ -1,1 +1,11 @@
+
+custom_components/*
 /lovelace-minimalist-ui
+
+
+!/.vscode
+!/custom_components/lovelace_minimalist_ui
+!/custom_components/lovelace_minimalist_ui/*
+
+
+__pycache__
