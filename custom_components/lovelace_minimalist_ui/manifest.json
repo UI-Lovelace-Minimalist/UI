@@ -12,5 +12,6 @@
   "codeowners": [
     "@stokkie90"
   ],
-  "requirements": []
+  "requirements": [],
+  "version": "0.0.0"
 }
