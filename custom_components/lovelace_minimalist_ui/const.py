@@ -3,7 +3,7 @@
 NAME = "Lovelace Minimalist UI"
 DOMAIN = "lovelace_minimalist_ui"
 DOMAIN_DATA = f"{DOMAIN}_data"
-VERSION = "0.0.0"
+VERSION = "0.0.1"
 
 ATTRIBUTION = "Data provided by http://jsonplaceholder.typicode.com/"
 ISSUE_URL = "https://github.com/stokkie90/lovelace-minimalist-ui/issues"
