@@ -3,8 +3,14 @@
   "name": "Lovelace Minimalist UI",
   "documentation": "https://github.com/stokkie90/lovelace-minimalist-ui",
   "issue_tracker": "https://github.com/stokkie90/lovelace-minimalist-ui/issues",
-  "dependencies": [],
+  "dependencies": [
+    "lovelace",
+    "http",
+    "frontend"
+  ],
   "config_flow": true,
-  "codeowners": ["@stokkie90"],
+  "codeowners": [
+    "@stokkie90"
+  ],
   "requirements": []
 }

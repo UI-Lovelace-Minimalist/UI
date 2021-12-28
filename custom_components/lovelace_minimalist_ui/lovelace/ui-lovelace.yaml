@@ -1,0 +1,5 @@
+title: Lovelace Minimalist UI
+views:
+  - cards:
+      - type: custom:card
+        enitity: sun.sun
