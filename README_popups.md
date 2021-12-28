@@ -17,6 +17,11 @@ The basis for all these popups is `button-card` that allows for a great and indi
 ## Credits
 * Designed by schumijo and bavo (special thanks to him for his help on this development)).
 
+## Requirements
+* Minimalist UI 
+* Broswer_mod 
+* Light entity card
+
 ## Power outlet popup
 
 <img src="./screenshots/popup_power_phone.png" height="400"> <img src="./screenshots/popup_power_tablet.png" height="400">
