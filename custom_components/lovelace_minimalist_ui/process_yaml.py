@@ -62,7 +62,7 @@ def process_yaml(hass, config_entry):
 
         # Load Themes
         themes = OrderedDict()
-        for fname in loader._find_files(hass.config.path("custom_components/{}/lovelace/themes".format(DOMAIN)), "*.yaml"):
+        for fname in loader._find_files(hass.config.path("custom_components/{}/lovelace/themefiles".format(DOMAIN)), "*.yaml"):
             loaded_yaml = load_yamll(fname)
             if isinstance(loaded_yaml, dict):
                 themes.update(loaded_yaml)
