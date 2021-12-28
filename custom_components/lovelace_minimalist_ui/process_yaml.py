@@ -60,12 +60,25 @@ def process_yaml(hass, config_entry):
         #TODO: Copy translation to config dir or something and use that.
         translations = load_yamll(hass.config.path("custom_components/{}/lovelace/translations/{}.yaml".format(DOMAIN, language)))
 
+        # Copy chosen language file over to config dir
+        shutil.copy2(
+            hass.config.path("custom_components/{}/lovelace/translations/{}.yaml".format(DOMAIN, language)),
+            hass.config.path("{}/language.yaml".format(DOMAIN))
+        )
+
         # Load Themes
         themes = OrderedDict()
         for fname in loader._find_files(hass.config.path("custom_components/{}/lovelace/themefiles".format(DOMAIN)), "*.yaml"):
             loaded_yaml = load_yamll(fname)
             if isinstance(loaded_yaml, dict):
                 themes.update(loaded_yaml)
+                theme_name = next(iter(loaded_yaml))
+
+                os.makedirs(hass.config.path(f"themes/{theme_name}"), exist_ok=True)
+                shutil.copy2(
+                    fname,
+                    hass.config.path(f"themes/{theme_name}/{theme_name}.yaml")
+                )
 
         if "theme" in config_entry.options:
             config_theme = config_entry.options["theme"]

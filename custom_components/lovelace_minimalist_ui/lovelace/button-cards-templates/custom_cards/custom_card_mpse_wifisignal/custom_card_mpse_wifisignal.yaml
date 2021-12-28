@@ -1,0 +1,52 @@
+---
+custom_card_mpse_wifisignal:
+  template:
+    - "icon_info_bg"
+  tap_action:
+    action: "more-info"
+  icon: |
+    [[[
+      var icon = "mdi:wifi-strength-off";
+      var signal = states[entity.entity_id].state;
+
+      if (signal >= -50) {
+        icon = "mdi:wifi-strength-4";
+      } else if (signal >= -60) {
+        icon = "mdi:wifi-strength-3";
+      } else if (signal >= -70) {
+        icon = "mdi:wifi-strength-2";
+      } else if (signal >= -80) {
+        icon = "mdi:wifi-strength-1";
+      }
+
+      return icon;
+    ]]]
+  label: |
+    [[[
+      return states[entity.entity_id].attributes.friendly_name;
+    ]]]
+  name: |
+    [[[
+      return entity.state + " dBm";
+    ]]]
+  styles:
+    icon:
+      - color: "rgba(var(--color-theme),0.9)"
+    label:
+      - align-self: "end"
+      - justify-self: "start"
+      - font-weight: "bold"
+      - font-size: "14px"
+      - margin-left: "12px"
+      - filter: "opacity(100%)"
+    name:
+      - justify-self: "start"
+      - align-self: "start"
+      - font-weight: "bolder"
+      - font-size: "12px"
+      - filter: "opacity(40%)"
+      - margin-left: "12px"
+    grid:
+      - grid-template-areas: "'i l' 'i n'"
+      - grid-template-columns: "min-content auto"
+      - grid-template-rows: "min-content min-content"

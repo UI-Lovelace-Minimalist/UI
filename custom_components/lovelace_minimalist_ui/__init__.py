@@ -7,6 +7,7 @@ from homeassistant.components import frontend
 
 from .const import DOMAIN, NAME, STARTUP_MESSAGE
 from .load_dashboard import load_dashboard
+from .load_plugins import load_plugins
 from .process_yaml import process_yaml
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
@@ -14,6 +15,9 @@ _LOGGER: logging.Logger = logging.getLogger(__package__)
 
 async def async_setup(hass: HomeAssistant, config: Config):
     """Set up this integration using YAML is not supported."""
+
+    load_plugins(hass, DOMAIN)
+
     return True
 
 async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry):

@@ -1,11 +1,12 @@
-button_card_templates: !include_dir_merge_named ../templates/
+button_card_templates:
+  !include_dir_merge_named button-cards-templates/
+  # !include /config/lovelace_minimalist_ui/language.yaml
+  # !include_dir_merge_named /config/lovelace_minimalist_ui/cards
 
 title: Lovelace Minimalist UI
+# theme: minimalist-desktop
+theme: ios-dark-mode
 views:
   - cards:
       - type: custom:button-card
-        enitity: sun.sun
-      - type: custom:button-card
-        template: custom_card_paddy_welcome
-        variables:
-          ulm_custom_card_paddy_welcome_time: sensor.time
+        entity: sensor.time

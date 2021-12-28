@@ -1,0 +1,51 @@
+---
+custom_card_paddy_dwd_pollen:
+  template:
+    - "card_generic_swap"
+    - "custom_card_paddy_dwd_pollen_language_variables"
+  label: >
+    [[[
+      if (entity.state == "6"){
+        return variables.custom_card_paddy_dwd_pollen_6;
+      } else if (entity.state == "5"){
+        return variables.custom_card_paddy_dwd_pollen_5;
+      } else if (entity.state == "4"){
+        return variables.custom_card_paddy_dwd_pollen_4;
+      } else if (entity.state == "3"){
+        return variables.custom_card_paddy_dwd_pollen_3;
+      } else if (entity.state == "2"){
+        return variables.custom_card_paddy_dwd_pollen_2;
+      } else if (entity.state == "1"){
+        return variables.custom_card_paddy_dwd_pollen_1;
+      }
+      return variables.custom_card_paddy_dwd_pollen_none;
+    ]]]
+  state:
+    - value: "6"
+      styles:
+        img_cell:
+          - background-color: "rgba(190,0,33,1)"
+    - value: "5"
+      styles:
+        img_cell:
+          - background-color: "rgba(240,56,26,1)"
+    - value: "4"
+      styles:
+        img_cell:
+          - background-color: "rgba(254,154,36,1)"
+    - value: "3"
+      styles:
+        img_cell:
+          - background-color: "rgba(254,197,77,1)"
+    - value: "2"
+      styles:
+        img_cell:
+          - background-color: "rgba(254,228,156,1)"
+    - value: "1"
+      styles:
+        img_cell:
+          - background-color: "rgba(219,250,200,1)"
+    - value: "0"
+      styles:
+        icon:
+          - color: "rgba(var(--color-theme),0.2)"
