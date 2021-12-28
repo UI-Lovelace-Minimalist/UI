@@ -4,7 +4,6 @@ import os
 import json
 from collections import OrderedDict
 import shutil
-from custom_components import lovelace_minimalist_ui
 
 from homeassistant.util.yaml import Secrets, loader
 from homeassistant.exceptions import HomeAssistantError
@@ -59,11 +58,11 @@ def process_yaml(hass, config_entry):
             language = "EN"
 
         #TODO: Copy translation to config dir or something and use that.
-        translations = load_yamll(hass.config.path("custom_components/{}/translations/{}.yaml".format(DOMAIN, language)))
+        translations = load_yamll(hass.config.path("custom_components/{}/lovelace/translations/{}.yaml".format(DOMAIN, language)))
 
         # Load Themes
         themes = OrderedDict()
-        for fname in loader._find_files(hass.config.path("custom_components/{}/themes".format(DOMAIN)), "*.yaml"):
+        for fname in loader._find_files(hass.config.path("custom_components/{}/lovelace/themes".format(DOMAIN)), "*.yaml"):
             loaded_yaml = load_yamll(fname)
             if isinstance(loaded_yaml, dict):
                 themes.update(loaded_yaml)

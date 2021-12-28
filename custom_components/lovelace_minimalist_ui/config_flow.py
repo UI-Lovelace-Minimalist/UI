@@ -50,7 +50,7 @@ class LovelaceMinimalistUiEditFlow(config_entries.OptionsFlow):
             vol.Optional(SIDEPANEL_TITLE, default=self.config_entry.options.get("sidepanel_title", NAME)): str,
             vol.Optional(SIDEPANEL_ICON, default=self.config_entry.options.get("sidepanel_icon", "mdi:flower")): str,
             vol.Optional(THEME, default=self.config_entry.options.get("theme", "minimalist-desktop")): vol.In(THEME_OPTIONS),
-            vol.Optional(CUSTOMIZE_PATH, default=self.config_entry.options.get("customize_path", "customize.yaml")): str,
+            # vol.Optional(CUSTOMIZE_PATH, default=self.config_entry.options.get("customize_path", "customize.yaml")): str,
         }
 
         return self.async_show_form(
