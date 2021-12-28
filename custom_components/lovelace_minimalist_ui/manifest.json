@@ -1,0 +1,10 @@
+{
+  "domain": "lovelace_minimalist_ui",
+  "name": "Lovelace Minimalist UI",
+  "documentation": "https://github.com/stokkie90/lovelace-minimalist-ui",
+  "issue_tracker": "https://github.com/stokkie90/lovelace-minimalist-ui/issues",
+  "dependencies": [],
+  "config_flow": true,
+  "codeowners": ["@stokkie90"],
+  "requirements": []
+}
