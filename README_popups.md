@@ -19,12 +19,15 @@ The basis for all these popups is `button-card` that allows for a great and indi
 
 ## Requirements
 * Minimalist UI 
-* Broswer_mod 
-* Light entity card
+* button-card (download for HACS)
+* Browser_mod (download for HACS)
 
 ## Power outlet popup
 
 <img src="./screenshots/popup_power_phone.png" height="400"> <img src="./screenshots/popup_power_tablet.png" height="400">
+
+## Requirements
+* mini-graph-card (download for HACS)
 
 ### Card compatibility
 
@@ -81,6 +84,10 @@ For exemple :
 ## Light popup
 
 <img src="./screenshots/popup_light_phone.png" height="400"> <img src="./screenshots/popup_light_tablet.png" height="400">
+
+## Requirements
+* My Cards Bundle aka slider-card (download for HACS)
+* Light Entity Card (download for HACS)
 
 ### Card compatibility
 
