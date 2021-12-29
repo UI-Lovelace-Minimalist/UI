@@ -18,7 +18,7 @@ The basis for all these popups is `button-card` that allows for a great and indi
 * Designed by schumijo and bavo (special thanks to him for his help on this development)).
 
 ## Requirements
-* Minimalist UI 
+* Minimalist UI
 * button-card (download for HACS)
 * Browser_mod (download for HACS)
 
