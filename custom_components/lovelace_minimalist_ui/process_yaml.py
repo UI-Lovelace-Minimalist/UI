@@ -17,12 +17,12 @@ lovelace_minimalist_ui_global = {}
 
 LANGUAGES = {
     "English": "EN",
-    "German": "DE",
+    "German":  "DE",
     "Spanish": "ES",
-    "French": "FR",
+    "French":  "FR",
     "Italian": "IT",
     "Swedish": "SE",
-    "Dutch": "NL"
+    "Dutch":   "NL"
 }
 
 def load_yamll(fname, secrets = None, args={}):
@@ -41,12 +41,16 @@ def process_yaml(hass, config_entry):
     _LOGGER.warning('Start of function to process all yaml files!')
 
     # Create config dir
-    os.makedirs(hass.config.path("{}/configs".format(DOMAIN)), exist_ok=True)
+    os.makedirs(hass.config.path(f"{DOMAIN}/configs"), exist_ok=True)
+    os.makedirs(hass.config.path(f"{DOMAIN}/cards"), exist_ok=True)
 
-    if os.path.exists(hass.config.path("{}/configs".format(DOMAIN))):
+    if os.path.exists(hass.config.path(f"{DOMAIN}/configs")):
+        # Create combined cards dir
+        combined_cards_dir = hass.config.path(f"custom_components/{DOMAIN}/__minimalist_ui__")
+        os.makedirs(combined_cards_dir, exist_ok=True)
 
         # Main config
-        for fname in loader._find_files(hass.config.path("{}/configs".format(DOMAIN)), "*.yaml"):
+        for fname in loader._find_files(hass.config.path(f"{DOMAIN}/configs"), "*.yaml"):
             loaded_yaml = load_yamll(fname)
             if isinstance(loaded_yaml, dict):
                 lovelace_minimalist_ui_config.update(loaded_yaml)
@@ -57,18 +61,39 @@ def process_yaml(hass, config_entry):
         else:
             language = "EN"
 
-        #TODO: Copy translation to config dir or something and use that.
-        translations = load_yamll(hass.config.path("custom_components/{}/lovelace/translations/{}.yaml".format(DOMAIN, language)))
+        # Non needed yet
+        # translations = load_yamll(hass.config.path(f"custom_components/{DOMAIN}/lovelace/translations/{language}.yaml"))
 
         # Copy chosen language file over to config dir
         shutil.copy2(
-            hass.config.path("custom_components/{}/lovelace/translations/{}.yaml".format(DOMAIN, language)),
-            hass.config.path("{}/language.yaml".format(DOMAIN))
+            hass.config.path(f"custom_components/{DOMAIN}/lovelace/translations/{language}.yaml"),
+            hass.config.path(f"{combined_cards_dir}/{language}.yaml")
         )
+        # Copy over cards from integration
+        shutil.copytree(
+            hass.config.path(f"custom_components/{DOMAIN}/lovelace/button-cards-templates"),
+            hass.config.path(f"{combined_cards_dir}/button-cards-templates"),
+            dirs_exist_ok=True
+        )
+        # Soft link custom cards directory
+        # if not os.path.exists(f"{combined_cards_dir}/custom-cards-templates"):
+        #     os.symlink(
+        #         hass.config.path(f"{DOMAIN}/cards"),
+        #         f"{combined_cards_dir}/custom-cards-templates",
+        #     )
+        shutil.copytree(
+            hass.config.path(f"{DOMAIN}/cards"),
+            hass.config.path(f"{combined_cards_dir}/button-cards-templates"),
+            dirs_exist_ok=True
+        )
+        # shutil.copy2(
+        #     hass.config.path(f"{DOMAIN}/cards"),
+        #     hass.config.path(f"{combined_cards_dir}/button-cards-templates")
+        # )
 
         # Load Themes
         themes = OrderedDict()
-        for fname in loader._find_files(hass.config.path("custom_components/{}/lovelace/themefiles".format(DOMAIN)), "*.yaml"):
+        for fname in loader._find_files(hass.config.path(f"custom_components/{DOMAIN}/lovelace/themefiles"), "*.yaml"):
             loaded_yaml = load_yamll(fname)
             if isinstance(loaded_yaml, dict):
                 themes.update(loaded_yaml)
@@ -85,7 +110,7 @@ def process_yaml(hass, config_entry):
         else:
             config_theme = "minimalist-desktop"
 
-        if os.path.exists(hass.config.path("custom_components/{}/.installed".format(DOMAIN))):
+        if os.path.exists(hass.config.path(f"custom_components/{DOMAIN}/.installed")):
             installed = "true"
         else:
             installed = "false"
@@ -112,7 +137,7 @@ def process_yaml(hass, config_entry):
     async def handle_installed(call):
         _LOGGER.debug("Handle installed for Lovelace Minimalist UI")
 
-        path = hass.config.path("custom_components/{}/.installed".format(DOMAIN))
+        path = hass.config.path(f"custom_components/{DOMAIN}/.installed")
 
         if not os.path.exists(path):
             _LOGGER.debug("Create .installed file")
@@ -123,18 +148,19 @@ def process_yaml(hass, config_entry):
     hass.services.async_register(DOMAIN, "installed", handle_installed)
 
 def reload_configuration(hass):
-    if os.path.exists(hass.config.path("{}/configs".format(DOMAIN))):
-        # Main config
-        config_new = OrderedDict
-        for fname in loader._find_files(hass.config.path("{}/configs/".format(DOMAIN)), "*.yaml"):
-            loaded_yaml = load_yamll(fname)
-            if isinstance(loaded_yaml, dict):
-                config_new.update(loaded_yaml)
+    if os.path.exists(hass.config.path(f"{DOMAIN}/configs")):
+        # # Main config
+        # # No config generated yet at the start of process_yaml()
+        # config_new = OrderedDict
+        # for fname in loader._find_files(hass.config.path(f"{DOMAIN}/configs/"), "*.yaml"):
+        #     loaded_yaml = load_yamll(fname)
+        #     if isinstance(loaded_yaml, dict):
+        #         config_new.update(loaded_yaml)
 
-        lovelace_minimalist_ui_config.update(config_new)
+        # lovelace_minimalist_ui_config.update(config_new)
 
 
-        if os.path.exists(hass.config.path("custom_components/{}/.installed".format(DOMAIN))):
+        if os.path.exists(hass.config.path(f"custom_components/{DOMAIN}/.installed")):
             installed = "true"
         else:
             installed = "false"
