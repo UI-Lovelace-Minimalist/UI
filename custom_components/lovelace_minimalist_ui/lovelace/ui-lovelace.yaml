@@ -5,16 +5,8 @@ button_card_templates:
   !include_dir_merge_named ../__minimalist_ui__/button-cards-templates/
 
 title: Lovelace Minimalist UI
-# theme: minimalist-desktop
-theme: ios-dark-mode
+theme: minimalist-desktop
 views:
   - cards:
       - type: custom:button-card
-        entity: sensor.time
-      - type: custom:button-card
-        template: chip_right
-      - type: "custom:button-card"
-        template:
-          - card_light
-          - popup_light
-        entity: light.virtual_light_1
+        entity: sun.sun

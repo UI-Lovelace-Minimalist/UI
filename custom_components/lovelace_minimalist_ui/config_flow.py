@@ -12,7 +12,13 @@ _LOGGER: logging.Logger = logging.getLogger(__package__)
 # Configuration:
 LANGUAGE = "language"
 LANGUAGES = [
-    "English"
+    "English",
+    "German",
+    "Spanish",
+    "French",
+    "Italian",
+    "Swedish",
+    "Dutch""
 ]
 
 CONF_INCLUDE_OTHER_CARDS = "include_other_cards"
