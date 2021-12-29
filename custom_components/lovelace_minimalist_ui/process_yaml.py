@@ -130,17 +130,17 @@ def process_yaml(hass, config_entry):
         # Copy chosen language file over to config dir
         shutil.copy2(
             hass.config.path(f"custom_components/{DOMAIN}/lovelace/translations/{language}.yaml"),
-            hass.config.path(f"{combined_cards_dir}/button-cards-templates")
+            hass.config.path(f"{combined_cards_dir}/{language}.yaml")
         )
         # Copy over cards from integration
         shutil.copytree(
             hass.config.path(f"custom_components/{DOMAIN}/lovelace/button-cards-templates"),
-            hass.config.path(f"{combined_cards_dir}/button-cards-templates"),
+            hass.config.path(f"{combined_cards_dir}"),
             dirs_exist_ok=True
         )
         shutil.copytree(
             hass.config.path(f"{DOMAIN}/cards"),
-            hass.config.path(f"{combined_cards_dir}/button-cards-templates"),
+            hass.config.path(f"{combined_cards_dir}/custom_cards"),
             dirs_exist_ok=True
         )
 
