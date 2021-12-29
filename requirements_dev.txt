@@ -1,2 +1,5 @@
 homeassistant
 jinja2
+pre-commit
+reorder-python-imports
+flake8
