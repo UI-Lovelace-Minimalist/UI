@@ -29,3 +29,28 @@ repos:
     rev: "v1.0.5"
     hooks:
       - id: "search-and-replace"
+
+  - repo: local
+    hooks:
+      - id: black
+        name: black
+        entry: black
+        language: system
+        types: [python]
+        require_serial: true
+      - id: flake8
+        name: flake8
+        entry: flake8
+        language: system
+        types: [python]
+        require_serial: true
+      - id: reorder-python-imports
+        name: Reorder python imports
+        entry: reorder-python-imports
+        language: system
+        types: [python]
+        args: [--application-directories=custom_components]
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v2.2.1
+    hooks:
+      - id: prettier

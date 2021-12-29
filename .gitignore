@@ -8,13 +8,9 @@ lovelace_minimalist_ui/
 custom_components/lovelace_minimalist_ui/__pycache__
 custom_components/lovelace_minimalist_ui/.installed
 
-
-.vscode
-.devcontainer
 __pycache__
 pythonenv*
 .python-version
 .coverage
 venv
 .venv
-node_modules/
