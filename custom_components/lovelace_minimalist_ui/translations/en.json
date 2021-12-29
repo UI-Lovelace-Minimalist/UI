@@ -1,0 +1,36 @@
+{
+    "title": "Lovelace Minimalist UI",
+    "config": {
+        "step": {
+            "init": {
+                "title": "Lovelace Minimalist UI Settings",
+                "description": "",
+                "data": {
+                    "language": "Language",
+                    "sidepanel_icon": "Side panel icon",
+                    "sidepanel_title": "Side panel title",
+                    "theme": "Theme",
+                    "include_other_cards": "Include Cards it Depends on?"
+                }
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "Only a single configuration of Lovelace Minimalist UI is allowed."
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "title": "Lovelace Minimalist UI Settings",
+                "description": "",
+                "data": {
+                    "language": "Language",
+                    "sidepanel_icon": "Side panel icon",
+                    "sidepanel_title": "Side panel title",
+                    "theme": "Theme",
+                    "include_other_cards": "Include Cards it Depends on?"
+                }
+            }
+        }
+    }
+}

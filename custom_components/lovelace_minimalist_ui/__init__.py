@@ -23,21 +23,24 @@ async def async_setup(hass: HomeAssistant, config: Config):
 async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry):
     _LOGGER.warning("async_setup_entry")
 
-    # _LOGGER.error(print(hass.data["hass_customize"]))
-    # for test in hass.data["hass_customize"].items():
-    #     _LOGGER.warning(test)
-    # for i in config_entry.options.items():
-    #     _LOGGER.warning(str(i))
+    if not DOMAIN in hass.data:
+        hass.data[DOMAIN] = {}
 
-    # """Set up this integration using UI."""
-    # if hass.data.get(DOMAIN) is None:
-    #     hass.data.setdefault(DOMAIN, {})
-    #     _LOGGER.info(STARTUP_MESSAGE)
+    _LOGGER.debug(config_entry.options)
+    if config_entry.options:
+        data = config_entry.options.copy()
+    else:
+        if DOMAIN in hass.data:
+            data = hass.data[DOMAIN]
+        else:
+            data = {}
+            await hass.config_entries.async_remove(config_entry.entry_id)
+
+    _LOGGER.debug(hass.data[DOMAIN])
 
     process_yaml(hass, config_entry)
 
     load_dashboard(hass, config_entry)
-
 
     config_entry.add_update_listener(_update_listener)
 
@@ -45,6 +48,11 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry):
 
 async def async_remove_entry(hass: HomeAssistant, config_entry: ConfigEntry):
     _LOGGER.warning("{} is now uninstalled".format(NAME))
+
+    #TODO cleanup:
+    #  - themes
+    #  - blueprints
+
 
     frontend.async_remove_panel(hass, "lovelace-minimalist-ui")
 
