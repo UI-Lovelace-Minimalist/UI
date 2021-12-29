@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/main.js',
+  entry: './src/index.js',
   mode: 'production',
   output: {
     filename: 'lovelace-minimalist-ui.js',

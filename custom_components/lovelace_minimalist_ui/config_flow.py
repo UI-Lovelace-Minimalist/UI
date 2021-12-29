@@ -18,12 +18,12 @@ SIDEPANEL_TITLE = "sidepanel_title"
 SIDEPANEL_ICON = "sidepanel_icon"
 THEME = "theme"
 THEME_OPTIONS = [
-    "minimalist-mobile",
-    "minimalist-desktop",
+    "minimalist-mobile-light",
+    "minimalist-mobile-dark",
+    "minimalist-desktop-light",
+    "minimalist-desktop-dark",
     "HA selected theme"
 ]
-
-CUSTOMIZE_PATH = "customize_path"
 
 @config_entries.HANDLERS.register(DOMAIN)
 class LovelaceMinimalistUiConfigFlow(config_entries.ConfigFlow):
@@ -49,8 +49,8 @@ class LovelaceMinimalistUiEditFlow(config_entries.OptionsFlow):
             vol.Optional(LANGUAGE, default=self.config_entry.options.get("language", "English")): vol.In(LANGUAGES),
             vol.Optional(SIDEPANEL_TITLE, default=self.config_entry.options.get("sidepanel_title", NAME)): str,
             vol.Optional(SIDEPANEL_ICON, default=self.config_entry.options.get("sidepanel_icon", "mdi:flower")): str,
-            vol.Optional(THEME, default=self.config_entry.options.get("theme", "minimalist-desktop")): vol.In(THEME_OPTIONS),
-            # vol.Optional(CUSTOMIZE_PATH, default=self.config_entry.options.get("customize_path", "customize.yaml")): str,
+            # Not working yet
+            # vol.Optional(THEME, default=self.config_entry.options.get("theme", "minimalist-desktop-dark")): vol.In(THEME_OPTIONS),
         }
 
         return self.async_show_form(

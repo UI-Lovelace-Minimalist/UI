@@ -1,3 +1,6 @@
+lovelace_minimalist_ui:
+  !include plugins/lovelace_minimalist_ui.yaml
+
 button_card_templates:
   !include_dir_merge_named ../__minimalist_ui__/
 

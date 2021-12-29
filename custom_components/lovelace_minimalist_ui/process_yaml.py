@@ -2,8 +2,10 @@ import logging
 import yaml
 import os
 import json
+import io
 from collections import OrderedDict
 import shutil
+import jinja2
 
 from homeassistant.util.yaml import Secrets, loader
 from homeassistant.exceptions import HomeAssistantError
@@ -11,6 +13,14 @@ from homeassistant.exceptions import HomeAssistantError
 from .const import DOMAIN, VERSION
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
+
+
+def fromjson(value):
+    return json.loads(value)
+
+jinja = jinja2.Environment(loader=jinja2.FileSystemLoader("/"))
+
+jinja.filters['fromjson'] = fromjson
 
 lovelace_minimalist_ui_config = {}
 lovelace_minimalist_ui_global = {}
@@ -27,14 +37,67 @@ LANGUAGES = {
 
 def load_yamll(fname, secrets = None, args={}):
     try:
-        with open(fname, encoding="utf-8") as config_file:
-            return loader.yaml.load(config_file, Loader=lambda stream: loader.SafeLineLoader(stream, secrets)) or OrderedDict()
+        process_yaml = False
+        with open(fname, encoding="utf-8") as f:
+            if f.readline().lower().startswith(("# lovelace_minimalist_ui")):
+                process_yaml = True
+        if process_yaml:
+            _LOGGER.warning("PARSING JINJA TEMPLATE")
+            stream = io.StringIO(jinja.get_template(fname).render({
+                **args,
+                "_lmu_config": lovelace_minimalist_ui_config,
+                "_lmu_global": lovelace_minimalist_ui_global,
+            }))
+            stream.name = fname
+            return loader.yaml.load(stream, Loader=lambda _stream: loader.SafeLineLoader(_stream, secrets)) or OrderedDict()
+        else:
+            with open(fname, encoding="utf-8") as config_file:
+                return loader.yaml.load(config_file, Loader=lambda stream: loader.SafeLineLoader(stream, secrets)) or OrderedDict()
     except loader.yaml.YAMLError as exc:
         _LOGGER.error(str(exc))
         raise HomeAssistantError(exc)
     except UnicodeDecodeError as exc:
         _LOGGER.error("Unable to read file %s: %s", fname, exc)
         raise HomeAssistantError(exc)
+
+def _include_yaml(ldr, node):
+    args = {}
+    if isinstance(node.value, str):
+        fn = node.value
+    else:
+        fn, args, *_ = ldr.construct_sequence(node)
+    fname = os.path.abspath(os.path.join(os.path.dirname(ldr.name), fn))
+    try:
+        return loader._add_reference(load_yamll(fname, ldr.secrets, args=args), ldr, node)
+    except FileNotFoundError as exc:
+        _LOGGER.error("Unable to include file %s: %s", fname, exc);
+        raise HomeAssistantError(exc)
+
+loader.load_yaml = load_yamll
+loader.SafeLineLoader.add_constructor("!include", _include_yaml)
+
+
+def compose_node(self, parent, index):
+    if self.check_event(yaml.events.AliasEvent):
+        event = self.get_event()
+        anchor = event.anchor
+        if anchor not in self.anchors:
+            raise yaml.composer.ComposerError(None, None, "found undefined alias %r"
+                    % anchor, event.start_mark)
+        return self.anchors[anchor]
+    event = self.peek_event()
+    anchor = event.anchor
+    self.descend_resolver(parent, index)
+    if self.check_event(yaml.events.ScalarEvent):
+        node = self.compose_scalar_node(anchor)
+    elif self.check_event(yaml.events.SequenceStartEvent):
+        node = self.compose_sequence_node(anchor)
+    elif self.check_event(yaml.events.MappingStartEvent):
+        node = self.compose_mapping_node(anchor)
+    self.ascend_resolver()
+    return node
+
+yaml.composer.Composer.compose_node = compose_node
 
 def process_yaml(hass, config_entry):
 
@@ -149,15 +212,16 @@ def process_yaml(hass, config_entry):
 
 def reload_configuration(hass):
     if os.path.exists(hass.config.path(f"{DOMAIN}/configs")):
-        # # Main config
-        # # No config generated yet at the start of process_yaml()
-        # config_new = OrderedDict
-        # for fname in loader._find_files(hass.config.path(f"{DOMAIN}/configs/"), "*.yaml"):
-        #     loaded_yaml = load_yamll(fname)
-        #     if isinstance(loaded_yaml, dict):
-        #         config_new.update(loaded_yaml)
+        # Main config
+        # No config generated yet at the start of process_yaml()
+        config_new = OrderedDict()
+        for fname in loader._find_files(hass.config.path(f"{DOMAIN}/configs/"), "*.yaml"):
+            _LOGGER.warning(f"Loading file: {fname}")
+            loaded_yaml = load_yamll(fname)
+            if isinstance(loaded_yaml, dict):
+                config_new.update(loaded_yaml)
 
-        # lovelace_minimalist_ui_config.update(config_new)
+        lovelace_minimalist_ui_config.update(config_new)
 
 
         if os.path.exists(hass.config.path(f"custom_components/{DOMAIN}/.installed")):

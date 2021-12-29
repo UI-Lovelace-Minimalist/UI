@@ -17,3 +17,4 @@ pythonenv*
 .coverage
 venv
 .venv
+node_modules/
