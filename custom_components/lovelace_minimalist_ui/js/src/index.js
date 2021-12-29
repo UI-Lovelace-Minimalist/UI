@@ -4,6 +4,7 @@ import {
   getLovelace
 } from 'custom-card-helpers';
 import { fireEvent } from "card-tools/src/event";
+import './initialize';
 
 // window.mobileAndTabletCheck = function () {
 //   let check = false;
@@ -37,7 +38,6 @@ class LovelaceMinimalistUi {
   }
 
   constructor() {
-    console.log("LOVELACE-MINIMALIST-UI")
     this._connect();
 
     window.setTimeout(this._getConfig.bind(this), 500);
@@ -64,7 +64,7 @@ class LovelaceMinimalistUi {
         if (lovelace.config.lovelace_minimalist_ui) {
           // this.set_theme(lovelace.config.lovelace_minimalist_ui);
 
-          //console.log(lovelace.config.lovelace_minimalist_ui);
+          // console.log(lovelace.config.lovelace_minimalist_ui);
         }
       }
     }
