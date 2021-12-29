@@ -13,3 +13,8 @@ views:
         entity: sensor.time
       - type: custom:button-card
         template: chip_right
+      - type: "custom:button-card"
+        template:
+          - card_light
+          - popup_light
+        entity: light.virtual_light_1

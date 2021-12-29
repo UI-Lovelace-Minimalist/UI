@@ -16,8 +16,10 @@ def load_plugins(hass, name):
     add_extra_js_url(hass, "/lovelace_minimalist_ui/cards/lovelace-card-mod/card-mod.js")
     add_extra_js_url(hass, "/lovelace_minimalist_ui/cards/lovelace-card-mod/rollup.config.js")
     add_extra_js_url(hass, "/lovelace_minimalist_ui/cards/mini-graph-card/mini-graph-card-bundle.js")
-    add_extra_js_url(hass, "/lovelace_minimalist_ui/cards/mini-media-card/mini-media-player-bundle.js")
-    add_extra_js_url(hass, "/lovelace_minimalist_ui/cards/slider-button-card/slider-button-card.js")
+    add_extra_js_url(hass, "/lovelace_minimalist_ui/cards/mini-media-player/mini-media-player-bundle.js")
+    # https://github.com/AnthonMS/my-cards/blob/989034979aa885efb7ee8ae2ff05c46f7748b05c/dist/my-cards.js
+    add_extra_js_url(hass, "/lovelace_minimalist_ui/cards/my-cards-slider-card/my-cards.js")
+    add_extra_js_url(hass, "/lovelace_minimalist_ui/cards/light-entity-card/light-entity-card.js")
 
     # Cards by Lovelace Minimalist UI
 

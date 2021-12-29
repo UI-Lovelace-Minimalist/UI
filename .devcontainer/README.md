@@ -28,10 +28,7 @@ wget -O - https://get.hacs.xyz | bash -
 - add hacs integration
 - add lovelace-minimalist-ui integration
 - go to hacs
-    - add frontend repos:
-        - button-card
-        - card-mod
-        - mini-graph-card
-        - mini-media-player
-        - slider-button-card
+    - add integration repos:
+        - browser_mod
+        - virtual components
 - Restart home assitant to make sure everything is locaded

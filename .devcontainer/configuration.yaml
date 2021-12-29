@@ -9,9 +9,32 @@ lovelace:
 sensor:
   - platform: time_date
 
+virtual:
+browser_mod:
+
 logger:
   default: info
   logs:
     custom_components.lovelace_minimalist_ui: debug
 # If you need to debug uncommment the line below (doc: https://www.home-assistant.io/integrations/debugpy/)
 # debugpy:
+
+
+light:
+  - platform: virtual
+    name: 'Light 1'
+    support_color: true
+    support_color_temp: true
+    support_white_value: true
+
+  - platform: virtual
+    name: 'Light 2'
+    support_color: true
+    support_color_temp: true
+    support_white_value: true
+
+  - platform: virtual
+    name: 'Light 3'
+    support_color: true
+    support_color_temp: true
+    support_white_value: true
