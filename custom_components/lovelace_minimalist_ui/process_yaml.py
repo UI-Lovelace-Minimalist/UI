@@ -109,7 +109,7 @@ def process_yaml(hass, config_entry):
 
     if os.path.exists(hass.config.path(f"{DOMAIN}/configs")):
         # Create combined cards dir
-        combined_cards_dir = hass.config.path(f"custom_components/{DOMAIN}/__minimalist_ui__")
+        combined_cards_dir = hass.config.path(f"custom_components/{DOMAIN}/__minimalist_ui__/button-cards-templates")
         os.makedirs(combined_cards_dir, exist_ok=True)
 
         # Main config
@@ -138,21 +138,11 @@ def process_yaml(hass, config_entry):
             hass.config.path(f"{combined_cards_dir}/button-cards-templates"),
             dirs_exist_ok=True
         )
-        # Soft link custom cards directory
-        # if not os.path.exists(f"{combined_cards_dir}/custom-cards-templates"):
-        #     os.symlink(
-        #         hass.config.path(f"{DOMAIN}/cards"),
-        #         f"{combined_cards_dir}/custom-cards-templates",
-        #     )
         shutil.copytree(
             hass.config.path(f"{DOMAIN}/cards"),
             hass.config.path(f"{combined_cards_dir}/button-cards-templates"),
             dirs_exist_ok=True
         )
-        # shutil.copy2(
-        #     hass.config.path(f"{DOMAIN}/cards"),
-        #     hass.config.path(f"{combined_cards_dir}/button-cards-templates")
-        # )
 
         # Load Themes
         themes = OrderedDict()
