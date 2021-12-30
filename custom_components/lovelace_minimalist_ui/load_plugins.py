@@ -16,20 +16,20 @@ def load_plugins(hass, name):
     if DOMAIN in hass.data:
         if hass.data[DOMAIN].include_other_cards:
             # # Cards by others
-            add_extra_js_url(hass, "/lovelace_minimalist_ui/cards/button-card/button-card.js")
-            add_extra_js_url(hass, "/lovelace_minimalist_ui/cards/lovelace-card-mod/card-mod.js")
-            add_extra_js_url(hass, "/lovelace_minimalist_ui/cards/lovelace-card-mod/rollup.config.js")
-            add_extra_js_url(hass, "/lovelace_minimalist_ui/cards/mini-graph-card/mini-graph-card-bundle.js")
-            add_extra_js_url(hass, "/lovelace_minimalist_ui/cards/mini-media-player/mini-media-player-bundle.js")
+            add_extra_js_url(hass, "/lovelace_minimalist_ui/card_resources/button-card/button-card.js")
+            add_extra_js_url(hass, "/lovelace_minimalist_ui/card_resources/lovelace-card-mod/card-mod.js")
+            add_extra_js_url(hass, "/lovelace_minimalist_ui/card_resources/lovelace-card-mod/rollup.config.js")
+            add_extra_js_url(hass, "/lovelace_minimalist_ui/card_resources/mini-graph-card/mini-graph-card-bundle.js")
+            add_extra_js_url(hass, "/lovelace_minimalist_ui/card_resources/mini-media-player/mini-media-player-bundle.js")
             # https://github.com/AnthonMS/my-cards/blob/989034979aa885efb7ee8ae2ff05c46f7748b05c/dist/my-cards.js
-            add_extra_js_url(hass, "/lovelace_minimalist_ui/cards/my-cards-slider-card/my-cards.js")
-            add_extra_js_url(hass, "/lovelace_minimalist_ui/cards/light-entity-card/light-entity-card.js")
+            add_extra_js_url(hass, "/lovelace_minimalist_ui/card_resources/my-cards-slider-card/my-cards.js")
+            add_extra_js_url(hass, "/lovelace_minimalist_ui/card_resources/light-entity-card/light-entity-card.js")
 
     # Cards by Lovelace Minimalist UI
 
     # Register
     hass.http.register_static_path("/lovelace_minimalist_ui/js", hass.config.path(f"custom_components/{name}/js"), True)
-    hass.http.register_static_path("/lovelace_minimalist_ui/cards", hass.config.path(f"custom_components/{name}/cards"), True)
+    hass.http.register_static_path("/lovelace_minimalist_ui/card_resources", hass.config.path(f"custom_components/{name}/card_resources"), True)
 
     for fname in loader._find_files(hass.config.path(f"custom_components/{name}/blueprints"), "*.yaml"):
         _LOGGER.debug(f"Copy: {fname}")

@@ -1,11 +1,12 @@
 // See https://aka.ms/vscode-remote/devcontainer.json for format details.
 {
-  "image": "ludeeus/container:integration-debian",
+  "image": "ghcr.io/ludeeus/devcontainer/integration:latest",
   "name": "Lovelace Minimalist UI integration development",
   "context": "..",
   "appPort": [
     "9123:8123"
   ],
+  // "postCreateCommand": "pip install -r requirements_dev.txt",
   "postCreateCommand": "container install",
   "extensions": [
     "ms-python.python",
@@ -20,7 +21,7 @@
     "files.eol": "\n",
     "editor.tabSize": 4,
     "terminal.integrated.shell.linux": "/bin/bash",
-    "python.pythonPath": "/usr/local/python/bin/python",
+    "python.pythonPath": "/usr/bin/python",
     "python.analysis.autoSearchPaths": false,
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
@@ -40,7 +41,8 @@
     },
     "terminal.integrated.defaultProfile.linux": "zsh",
     "files.associations": {
-      "*.yaml": "yaml"
+      "*.yaml": "yaml",
+      "*.yml": "yaml"
     },
     "yaml.customTags": [
       "!input scalar",

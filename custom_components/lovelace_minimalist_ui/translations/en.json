@@ -2,7 +2,7 @@
     "title": "Lovelace Minimalist UI",
     "config": {
         "step": {
-            "init": {
+            "user": {
                 "title": "Lovelace Minimalist UI Settings",
                 "description": "",
                 "data": {
@@ -10,17 +10,18 @@
                     "sidepanel_icon": "Side panel icon",
                     "sidepanel_title": "Side panel title",
                     "theme": "Theme",
-                    "include_other_cards": "Include Cards it Depends on?"
+                    "include_other_cards": "Include custom card resources it's depending on."
                 }
             }
         },
         "abort": {
-            "single_instance_allowed": "Only a single configuration of Lovelace Minimalist UI is allowed."
+            "single_instance_allowed": "Only a single configuration of Lovelace Minimalist UI is allowed.",
+            "not_setup": "Lovelace Minimalist UI is not setup."
         }
     },
     "options": {
         "step": {
-            "init": {
+            "user": {
                 "title": "Lovelace Minimalist UI Settings",
                 "description": "",
                 "data": {
@@ -28,9 +29,13 @@
                     "sidepanel_icon": "Side panel icon",
                     "sidepanel_title": "Side panel title",
                     "theme": "Theme",
-                    "include_other_cards": "Include Cards it Depends on?"
+                    "include_other_cards": "Include custom card resources it's depending on."
                 }
             }
+        },
+        "abort": {
+            "single_instance_allowed": "Only a single configuration of Lovelace Minimalist UI is allowed.",
+            "not_setup": "Lovelace Minimalist UI is not setup."
         }
     }
 }

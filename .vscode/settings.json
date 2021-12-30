@@ -1,8 +1,9 @@
 {
   "python.linting.pylintEnabled": true,
   "python.linting.enabled": true,
-  "python.pythonPath": "venv/bin/python",
+  "python.pythonPath": "/usr/bin/python",
   "files.associations": {
-    "*.yaml": "yaml"
+    "*.yaml": "yaml",
+    "*.yml": "yaml"
   }
 }

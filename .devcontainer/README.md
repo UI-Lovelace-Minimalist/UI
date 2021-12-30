@@ -59,37 +59,40 @@ with the existing debugging configuration `Python: Attach Local`.
 
 For more information, look at [the Remote Python Debugger integration documentation](https://www.home-assistant.io/integrations/debugpy/).
 
+### Test out this component
 
+First we need to install some dependencies to get a basic Home Assistant instance working.
+
+**Prerequisites**
 
 ```bash
-# Open folder in container
-code .
-
-# Could ask to reopen in container, Click yes
+# start terminal in contianer
+# install pre-commit
+pre-commit install
 ```
 
+#### Install HACS
+
+> Make sure running Task / Container is stopped
+
 ```bash
-container# container install
+# Install deps
+apt update; apt install unzip
 
-container# container set-version
-# enter: 2021.12.6
-
-container# container start
-
-# Install some deps
-apt update
-apt install unzip
-# install hacs
+# Install Hacs
 wget -O - https://get.hacs.xyz | bash -
 ```
 
+#### Add Integrations
+- Run task: `Run Home Assistant on port 9123` described in [Tasks](#tasks)
 - Head to: http://localhost:9123
     - create user
-- restart home assistant to relaod integrations
-- add hacs integration
-- add lovelace-minimalist-ui integration
-- go to hacs
-    - add integration repos:
-        - browser_mod
-        - virtual components
+- Add HACS integration
+- Go to HACS
+  - Wait until Hacs is finished starting up.
+  - Install `browser_mod` and optionally `Virtual Components`.
+- Add lovelace-minimalist-ui integration.
+- To get the best experience with the themes that come with the integration:
+  - Go to Configuration -> Blueprints
+    - Create an automation from `System Set Default Theme`, and select what theme you want. And after restart it will be set.
 - Restart home assitant to make sure everything is locaded

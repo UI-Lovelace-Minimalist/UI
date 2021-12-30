@@ -148,7 +148,7 @@ def process_yaml(hass, config_entry):
 
     # Create config dir
     os.makedirs(hass.config.path(f"{DOMAIN}/configs"), exist_ok=True)
-    os.makedirs(hass.config.path(f"{DOMAIN}/cards"), exist_ok=True)
+    os.makedirs(hass.config.path(f"{DOMAIN}/custom_cards"), exist_ok=True)
 
     if os.path.exists(hass.config.path(f"{DOMAIN}/configs")):
         # Create combined cards dir
@@ -179,7 +179,7 @@ def process_yaml(hass, config_entry):
             hass.config.path(
                 f"custom_components/{DOMAIN}/lovelace/translations/{language}.yaml"
             ),
-            hass.config.path(f"{combined_cards_dir}/{language}.yaml"),
+            hass.config.path(f"{combined_cards_dir}/language.yaml"),
         )
         # Copy over cards from integration
         shutil.copytree(
@@ -190,7 +190,7 @@ def process_yaml(hass, config_entry):
             dirs_exist_ok=True,
         )
         shutil.copytree(
-            hass.config.path(f"{DOMAIN}/cards"),
+            hass.config.path(f"{DOMAIN}/custom_cards"),
             hass.config.path(f"{combined_cards_dir}/custom_cards"),
             dirs_exist_ok=True,
         )

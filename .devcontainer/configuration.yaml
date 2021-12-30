@@ -3,14 +3,14 @@ default_config:
 frontend:
   themes: !include_dir_merge_named themes
 
-lovelace:
-  mode: storage
+# For some reason default_config is not picking it up.
+automation ui: !include automations.yaml
 
-sensor:
-  - platform: time_date
+# lovelace:
+#   mode: storage
 
-virtual:
-browser_mod:
+# sensor:
+#   - platform: time_date
 
 logger:
   default: info
@@ -19,22 +19,29 @@ logger:
 # If you need to debug uncommment the line below (doc: https://www.home-assistant.io/integrations/debugpy/)
 # debugpy:
 
+#
+# Uncomment part below after installing dependencies
+#
+# # Requirement for popups, install browser mod with hacs
+# browser_mod:
 
+# # Install virtual integration with hacs
+# virtual:
 # light:
 #   - platform: virtual
-#     name: 'Light 1'
+#     name: "Light 1"
 #     support_color: true
 #     support_color_temp: true
 #     support_white_value: true
 
 #   - platform: virtual
-#     name: 'Light 2'
+#     name: "Light 2"
 #     support_color: true
 #     support_color_temp: true
 #     support_white_value: true
 
 #   - platform: virtual
-#     name: 'Light 3'
+#     name: "Light 3"
 #     support_color: true
 #     support_color_temp: true
 #     support_white_value: true
