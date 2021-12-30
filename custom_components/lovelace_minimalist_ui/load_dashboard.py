@@ -4,7 +4,6 @@ import logging
 from homeassistant.core import HomeAssistant
 from homeassistant.components.lovelace.dashboard import LovelaceYAML
 from homeassistant.components.lovelace import _register_panel
-from homeassistant.components.automation import
 
 from .base import LmuBase
 from .const import DOMAIN, NAME, DEFAULT_SIDEPANEL_ICON, DEFAULT_SIDEPANEL_TITLE
