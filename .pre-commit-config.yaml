@@ -1,32 +1,46 @@
 repos:
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.3.0
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v2.29.1
     hooks:
-      - id: check-added-large-files
-      - id: check-yaml
-      - id: end-of-file-fixer
-      - id: trailing-whitespace
-  - repo: local
+      - id: pyupgrade
+        args: [--py39-plus]
+
+  - repo: https://github.com/psf/black
+    rev: 21.12b0
     hooks:
       - id: black
-        name: black
-        entry: black
-        language: system
-        types: [python]
-        require_serial: true
-      - id: flake8
-        name: flake8
-        entry: flake8
-        language: system
-        types: [python]
-        require_serial: true
-      - id: reorder-python-imports
-        name: Reorder python imports
-        entry: reorder-python-imports
-        language: system
-        types: [python]
-        args: [--application-directories=custom_components]
-  - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v2.2.1
+        args:
+          - --safe
+          - --quiet
+        <<: &python-files-with-tests
+          files: ^((custom_components|tests)/.+)?[^/]+\.py$
+  - repo: https://github.com/PyCQA/flake8
+    rev: 4.0.1
     hooks:
-      - id: prettier
+      - id: flake8
+        additional_dependencies:
+          - flake8-docstrings==1.6.0
+          - pydocstyle==6.1.1
+        <<: &python-files
+          files: ^(custom_components/.+)?[^/]+\.py$
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.7.1
+    hooks:
+      - id: bandit
+        args:
+          - --quiet
+          - --format=custom
+          - --configfile=bandit.yaml
+        <<: *python-files-with-tests
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.1.0
+    hooks:
+      - id: check-executables-have-shebangs
+      - id: check-merge-conflict
+      - id: detect-private-key
+      # - id: no-commit-to-branch
+      - id: requirements-txt-fixer
+      - id: end-of-file-fixer
+      - id: "mixed-line-ending"
+      - id: "check-yaml"
+        args: ["--unsafe"]
