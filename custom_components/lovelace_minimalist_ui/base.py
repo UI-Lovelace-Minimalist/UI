@@ -5,6 +5,14 @@ import asyncio
 from dataclasses import asdict, dataclass, field
 from typing import Any
 
+from .const import (
+    DEFAULT_SIDEPANEL_ICON,
+    DEFAULT_SIDEPANEL_TITLE,
+    DEFAULT_INCLUDE_OTHER_CARDS,
+    DEFAULT_LANGUAGE,
+    DEFAULT_THEME_PATH,
+    DEFAULT_THEME
+)
 from .enums import (
     ConfigurationType
 )
@@ -17,11 +25,14 @@ class LmuConfiguration:
     config: dict[str, Any] = field(default_factory=dict)
     config_entry: dict[str, str] = field(default_factory=dict)
     config_type: ConfigurationType | None = None
-    sidepanel_icon: str = "hacs:hacs"
-    sidepanel_title: str = "HACS"
-    theme_path: str = "themes/"
-    theme: bool = False
+    sidepanel_icon: str = DEFAULT_SIDEPANEL_ICON
+    sidepanel_title: str = DEFAULT_SIDEPANEL_TITLE
+    theme_path: str = DEFAULT_THEME_PATH
+    theme: str = DEFAULT_THEME
     plugin_path: str = "www/community/"
+    include_other_cards: bool = DEFAULT_INCLUDE_OTHER_CARDS
+    language: str = DEFAULT_LANGUAGE
+
 
 
     def to_json(self) -> str:

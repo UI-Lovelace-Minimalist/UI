@@ -43,7 +43,7 @@ async def async_initialize_integration(
     if config_entry is not None:
         if config_entry.source == SOURCE_IMPORT:
             # not sure about this one
-            hass.async_create_task(hass.config_entries.async_remove(config_entry.entyr_id))
+            hass.async_create_task(hass.config_entries.async_remove(config_entry.entry_id))
             return False
 
         lmu.configuration.update_from_dict(
@@ -54,15 +54,15 @@ async def async_initialize_integration(
                 **config_entry.options,
             }
         )
-
     _LOGGER.debug("Configuration type: %s", lmu.configuration.config_type)
+
+    process_yaml(hass=hass, lmu=lmu)
+
+    load_plugins(hass=hass, lmu=lmu)
+
+    load_dashboard(hass=hass, lmu=lmu)
+
     return True
-    # Process  yaml
-    # Load plugins
-    # Load dashboards
-
-
-
 
 async def async_setup(hass: HomeAssistant, config: Config):
     """Set up this integration using UI."""
@@ -79,30 +79,6 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> b
     return await async_initialize_integration(hass=hass, config_entry=config_entry)
 
 
-
-    # if not DOMAIN in hass.data:
-    #     hass.data[DOMAIN] = {}
-
-    # _LOGGER.debug(config_entry.options)
-    # if config_entry.options:
-    #     data = config_entry.options.copy()
-    # else:
-    #     if DOMAIN in hass.data:
-    #         data = hass.data[DOMAIN]
-    #     else:
-    #         data = {}
-    #         await hass.config_entries.async_remove(config_entry.entry_id)
-
-    # _LOGGER.debug(hass.data[DOMAIN])
-
-    # process_yaml(hass, config_entry)
-
-    # load_dashboard(hass, config_entry)
-
-    # config_entry.add_update_listener(_update_listener)
-
-    # return True
-
 async def async_remove_entry(hass: HomeAssistant, config_entry: ConfigEntry):
     """Remove Integration"""
     _LOGGER.debug("{} is now uninstalled".format(NAME))
@@ -116,12 +92,3 @@ async def async_reload_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> 
     _LOGGER.debug('Reload the config entry')
 
     await async_setup_entry(hass, config_entry)
-
-    # process_yaml(hass, config_entry)
-
-    # hass.bus.async_fire("lovelace_minimalist_ui_reload")
-
-    # #register_modules(hass, config_entry.options)
-    # #load_dashboard(hass, config_entry)
-
-    # return True

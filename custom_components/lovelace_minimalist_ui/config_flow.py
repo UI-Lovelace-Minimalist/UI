@@ -1,4 +1,5 @@
 import logging
+from homeassistant.components.frontend import DEFAULT_THEME_COLOR
 
 import voluptuous as vol
 from homeassistant import config_entries
@@ -17,20 +18,24 @@ from .const import (
     CONF_SIDEPANEL_ICON,
     CONF_SIDEPANEL_TITLE,
     CONF_INCLUDE_OTHER_CARDS,
-    # CONF_THEME_OPTIONS,
-    # CONF_THEME,
+    CONF_THEME_OPTIONS,
+    CONF_THEME,
+    CONF_THEME_PATH,
     DEFAULT_LANGUAGE,
     DEFAULT_NAME,
     DEFAULT_SIDEPANEL_ICON,
     DEFAULT_SIDEPANEL_TITLE,
     DEFAULT_INCLUDE_OTHER_CARDS,
-    # DEFAULT_THEME
+    DEFAULT_THEME,
+    DEFAULT_THEME_PATH
 )
 
-_LOGGER: logging.Logger = logging.getLogger(__package__)
+_LOGGER: logging.Logger = logging.getLogger(__name__)
 
 def lmu_config_option_schema(options: dict = {}) -> dict:
     """Return a schema for LMU configuration options."""
+
+    # Also update base.py LmuConfiguration
     return {
         vol.Optional(
             CONF_LANGUAGE, default=options.get(CONF_LANGUAGE, DEFAULT_LANGUAGE)
@@ -42,6 +47,13 @@ def lmu_config_option_schema(options: dict = {}) -> dict:
         vol.Optional(
             CONF_SIDEPANEL_ICON,
             default=options.get(CONF_SIDEPANEL_ICON, DEFAULT_SIDEPANEL_ICON),
+        ): str,
+        vol.Optional(
+            CONF_THEME, default=options.get(CONF_THEME, DEFAULT_THEME)
+        ): vol.In(CONF_THEME_OPTIONS),
+        vol.Optional(
+            CONF_THEME_PATH,
+            default=options.get(CONF_THEME_PATH, DEFAULT_THEME_PATH),
         ): str,
         vol.Optional(
             CONF_INCLUDE_OTHER_CARDS,
@@ -69,7 +81,7 @@ class LmuFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
             return self.async_abort(reason="single_instance_allowed")
 
         if user_input:
-            return self.async_create_entry(title=NAME, data={})
+            return self.async_create_entry(title=NAME, data=user_input)
 
         ## Initial form
         return await self._show_config_form(user_input)
@@ -80,6 +92,7 @@ class LmuFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
 
         if not user_input:
             user_input = {}
+
 
         schema = lmu_config_option_schema(user_input)
 
@@ -107,7 +120,7 @@ class LmuOptionFlowHandler(config_entries.OptionsFlow):
         """Handle a flow initilized by the user."""
         lmu : LmuBase = self.hass.data.get(DOMAIN)
         if user_input is not None:
-            return self.async_create_entry(title="", data=user_input)
+            return self.async_create_entry(title=NAME, data=user_input)
 
         if lmu is None or lmu.configuration is None:
             return self.async_abort(reason="not_setup")

@@ -4,16 +4,20 @@ import logging
 import os
 import shutil
 from collections import OrderedDict
+from homeassistant.core import HomeAssistant
 
 import jinja2
 import yaml
 from homeassistant.exceptions import HomeAssistantError
 from homeassistant.util.yaml import loader
 
+from custom_components.lovelace_minimalist_ui.base import LmuBase
+
+from .base import LmuBase
 from .const import DOMAIN
 from .const import VERSION
 
-_LOGGER: logging.Logger = logging.getLogger(__package__)
+_LOGGER: logging.Logger = logging.getLogger(__name__)
 
 
 def fromjson(value):
@@ -36,7 +40,6 @@ LANGUAGES = {
     "Swedish": "SE",
     "Dutch": "NL",
 }
-
 
 def load_yamll(fname, secrets=None, args={}):
     try:
@@ -124,25 +127,25 @@ def compose_node(self, parent, index):
 
 yaml.composer.Composer.compose_node = compose_node
 
-
-def process_yaml(hass, config_entry):
+#TODO: Maybe move all of this to .base.py so functions can be called
+def process_yaml(hass: HomeAssistant, lmu: LmuBase):
     _LOGGER.debug("Checking dependencies")
     if not os.path.exists(hass.config.path("custom_components/browser_mod")):
         _LOGGER.error('HACS Integration repo "browser mod" is not installed!')
 
-    if "include_other_cards" in config_entry.options:
-        if not config_entry.options["include_other_cards"]:
-            depenceny_resource_paths = [
-                "button-card",
-                "light-entity-card",
-                "lovelace-card-mod",
-                "mini-graph-card",
-                "mini-media-player",
-                "my-cards",
-            ]
-            for p in depenceny_resource_paths:
-                if not os.path.exists(hass.config.path(f"www/community/{p}")):
-                    _LOGGER.error(f'HACS Frontend repo "{p}" is not installed!')
+
+    if not lmu.configuration.include_other_cards:
+        depenceny_resource_paths = [
+            "button-card",
+            "light-entity-card",
+            "lovelace-card-mod",
+            "mini-graph-card",
+            "mini-media-player",
+            "my-cards",
+        ]
+        for p in depenceny_resource_paths:
+            if not os.path.exists(hass.config.path(f"www/community/{p}")):
+                _LOGGER.error(f'HACS Frontend repo "{p}" is not installed, See Integration Configuration.')
 
     _LOGGER.warning("Start of function to process all yaml files!")
 
@@ -166,10 +169,7 @@ def process_yaml(hass, config_entry):
                 lovelace_minimalist_ui_config.update(loaded_yaml)
 
         # Translations
-        if "language" in config_entry.options:
-            language = LANGUAGES[config_entry.options["language"]]
-        else:
-            language = "EN"
+        language = LANGUAGES[lmu.configuration.language]
 
         # Non needed yet
         # translations = load_yamll(hass.config.path(f"custom_components/{DOMAIN}/lovelace/translations/{language}.yaml"))
@@ -211,10 +211,7 @@ def process_yaml(hass, config_entry):
                     fname, hass.config.path(f"themes/{theme_name}/{theme_name}.yaml")
                 )
 
-        if "theme" in config_entry.options:
-            config_theme = config_entry.options["theme"]
-        else:
-            config_theme = "minimalist-desktop"
+        theme = lmu.configuration.theme
 
         if os.path.exists(hass.config.path(f"custom_components/{DOMAIN}/.installed")):
             installed = "true"
@@ -224,7 +221,7 @@ def process_yaml(hass, config_entry):
         lovelace_minimalist_ui_global.update(
             [
                 ("version", VERSION),
-                ("theme", config_theme),
+                ("theme", lmu.configuration.theme),
                 ("themes", json.dumps(themes)),
                 ("installed", installed),
             ]

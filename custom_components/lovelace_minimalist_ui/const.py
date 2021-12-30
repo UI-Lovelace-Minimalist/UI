@@ -14,11 +14,10 @@ CONF_LANGUAGES = ["English", "German", "Spanish", "French", "Italian", "Swedish"
 CONF_SIDEPANEL_TITLE = "sidepanel_title"
 CONF_SIDEPANEL_ICON = "sidepanel_icon"
 CONF_THEME = "theme"
+CONF_THEME_PATH = "theme_path"
 CONF_THEME_OPTIONS = [
-    "minimalist-mobile-light",
-    "minimalist-mobile-dark",
-    "minimalist-desktop-light",
-    "minimalist-desktop-dark",
+    "minimalist-mobile",
+    "minimalist-desktop",
     "HA selected theme",
 ]
 CONF_INCLUDE_OTHER_CARDS = "include_other_cards"
@@ -29,6 +28,7 @@ DEFAULT_LANGUAGE = "English"
 DEFAULT_SIDEPANEL_TITLE = NAME
 DEFAULT_SIDEPANEL_ICON = "mdi:flower"
 DEFAULT_THEME = "minimalist-desktop"
+DEFAULT_THEME_PATH = "themes/"
 DEFAULT_INCLUDE_OTHER_CARDS = False
 
 STARTUP_MESSAGE = f"""
