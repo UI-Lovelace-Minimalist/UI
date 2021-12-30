@@ -1,0 +1,6 @@
+---
+ulm_custom_card_schumijo_car_language_variables:
+  variables:
+    ulm_custom_card_schumijo_car_default_name: "O meu carro"
+    ulm_custom_card_schumijo_car_range: "Alcance"
+    ulm_custom_card_schumijo_car_energy_level: "Nível de energia"
