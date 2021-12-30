@@ -166,6 +166,7 @@ chip_navigate:
     grid:
       - grid-template-areas: "'i'"
 chips_icon_label:
+  template: "chips"
   show_icon: true
   show_name: false
   show_label: true
