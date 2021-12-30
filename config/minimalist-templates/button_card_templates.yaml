@@ -930,25 +930,23 @@ card_battery:
     ]]]
   styles:
     icon:
-      - color: >
+      - color: |
           [[[
-              // --color-theme as default
-              var color = 'rgba(var(--color-theme),0.9)';
-              var battery_level = variables.ulm_card_battery_attribute !== null
-              ? states[entity.entity_id].attributes[variables.ulm_card_battery_attribute]
-              : states[entity.entity_id].state;
+            var color = "rgba(var(--color-theme),0.9)";
+            var battery_level = variables.ulm_card_battery_attribute !== null
+                                  ? states[entity.entity_id].attributes[variables.ulm_card_battery_attribute]
+                                  : states[entity.entity_id].state;
 
-              // color based on battery_level
-              if(variables.ulm_card_battery_battery_level_danger !== null
-              || variables.ulm_card_battery_battery_level_warning !== null ) {
-                color = variables.ulm_card_battery_color_battery_level_ok ;
-                if(variables.ulm_card_battery_battery_level_warning>=battery_level) {
-                  color = variables.ulm_card_battery_color_battery_level_warning
-                }
-                if(variables.ulm_card_battery_battery_level_danger>=battery_level) {
-                  color = variables.ulm_card_battery_color_battery_level_danger
-                }
+            // color based on battery_level
+            if (battery_level !== "unavailable" && (variables.ulm_card_battery_battery_level_danger !== null || variables.ulm_card_battery_battery_level_warning !== null)) {
+              if (battery_level <= variables.ulm_card_battery_battery_level_danger) {
+                color = variables.ulm_card_battery_color_battery_level_danger;
+              } else if (battery_level <= variables.ulm_card_battery_battery_level_warning) {
+                color = variables.ulm_card_battery_color_battery_level_warning;
+              } else {
+                color = variables.ulm_card_battery_color_battery_level_ok;
               }
+            }
             return color;
           ]]]
     label:
