@@ -495,8 +495,20 @@ card_light_slider:
         entity: "[[[ return entity.entity_id ]]]"
         radius: "14px"
         height: "42px"
-        mainSliderColor: "rgba(var(--color-yellow),1)"
-        secondarySliderColor: "rgba(var(--color-yellow),0.2)"
+        mainSliderColor: >-
+          [[[
+            if (entity.state == "unavailable"){
+              return "rgba(var(--color-grey),1)";
+            }
+            return "rgba(var(--color-yellow),1)";
+          ]]]
+        secondarySliderColor: >-
+          [[[
+            if (entity.state == "unavailable"){
+              return "rgba(var(--color-grey),0.2)";
+            }
+            return "rgba(var(--color-yellow),0.2)";
+          ]]]
         mainSliderColorOff: "rgba(var(--color-theme),0.05)"
         secondarySliderColorOff: "rgba(var(--color-theme),0.05)"
         thumbHorizontalPadding: "0px"
@@ -648,8 +660,20 @@ card_light_slider_horizontal:
         entity: "[[[ return entity.entity_id ]]]"
         radius: "14px"
         height: "42px"
-        mainSliderColor: "rgba(var(--color-yellow),1)"
-        secondarySliderColor: "rgba(var(--color-yellow),0.2)"
+        mainSliderColor: >-
+          [[[
+            if (entity.state == "unavailable"){
+              return "rgba(var(--color-grey),1)";
+            }
+            return "rgba(var(--color-yellow),1)";
+          ]]]
+        secondarySliderColor: >-
+          [[[
+            if (entity.state == "unavailable"){
+              return "rgba(var(--color-grey),0.2)";
+            }
+            return "rgba(var(--color-yellow),0.2)";
+          ]]]
         mainSliderColorOff: "rgba(var(--color-theme),0.05)"
         secondarySliderColorOff: "rgba(var(--color-theme),0.05)"
         thumbHorizontalPadding: "0px"
