@@ -166,6 +166,7 @@ chip_navigate:
     grid:
       - grid-template-areas: "'i'"
 chips_icon_label:
+  template: "chips"
   show_icon: true
   show_name: false
   show_label: true
@@ -191,9 +192,7 @@ chips_icon_label:
       - font-size: "12px"
       - margin-left: "0px"
 chips_alarm:
-  template:
-    - "chips"
-    - "chips_icon_label"
+  template: "chips_icon_label"
   label: |
     [[[
       var alarm_label = "unknown";
