@@ -32,7 +32,13 @@ The basis for all these popups is `button-card` that allows for a great and indi
 ### Card compatibility
 
 This popup is displayed using ``hold_action`` and it is compatible with the following cards/chips :
+* card_generic
+* card_generic_swap
+* card_binary_sensor
+* card_binary_sensor_alert
 * card_power_outlet
+* card_input_boolean
+* card_battery
 
 ### Variables
 <table>
