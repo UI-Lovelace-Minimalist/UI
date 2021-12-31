@@ -483,7 +483,6 @@ popup_light_brightness:
                 }
                 return "\"" + "header ".repeat(contents.length) + "\" " + "\"" + contents.join(" ") + "\" " + "\"" + "footer ".repeat(contents.length) + "\"";
           ]]]
-      # - grid-template-areas: '"header header header" "content1 content2 content3" "footer footer footer"'
       - grid-template-rows: "16vh 56vh 14vh"
       - grid-template-columns: >
           [[[
@@ -502,7 +501,6 @@ popup_light_brightness:
                 }
                 return columns.join(" ");
           ]]]
-      # - grid-template-columns: 1fr 1fr 2fr
       - column-gap: "30px"
     card:
       - background: "var(--primary-background-color)"
