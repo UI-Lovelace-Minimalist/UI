@@ -1242,7 +1242,6 @@ popup_media_player_volume:
         custom_fields:
           item1:
             card:
-              icon: "mdi:chart-line"
               type: "custom:button-card"
               template:
                 - "popup_button"
