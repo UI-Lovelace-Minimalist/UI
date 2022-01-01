@@ -196,6 +196,7 @@ chips_alarm:
   template:
     - "chips"
     - "chips_icon_label"
+    - "ulm_language_variables"
   label: |
     [[[
       var alarm_label = variables.ulm_unknown;
