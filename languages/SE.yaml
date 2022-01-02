@@ -11,6 +11,8 @@ ulm_language_variables:
     ulm_currency: "kr"
     ulm_heat: "Värme"
     ulm_cool: "Cool"
+    ulm_person_state_home: "Home"
+    ulm_person_state_away: "Away"
     ulm_popups_back: "Tillbaka"
     ulm_popups_toggle: "Toogle"
     ulm_popups_statistics: "Statistik"

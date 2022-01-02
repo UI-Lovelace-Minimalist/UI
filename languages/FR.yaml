@@ -11,6 +11,8 @@ ulm_language_variables:
     ulm_currency: "€"
     ulm_heat: "Chauffe"
     ulm_cool: "Frais"
+    ulm_person_state_home: "Présent"
+    ulm_person_state_away: "Absent"
     ulm_popups_back: "Retour"
     ulm_popups_toggle: "Basculer"
     ulm_popups_statistics: "Statistiques"
