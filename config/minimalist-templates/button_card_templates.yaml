@@ -6,33 +6,34 @@ chip_temperature:
   label: |
     [[[
       var icon = "🌡️";
-      if (states[variables.ulm_chip_temperature_weather].state == "clear-night"){
+      var weather_state = states[variables.ulm_chip_temperature_weather].state;
+      if (weather_state == "clear-night"){
         var icon = "🌙";
-      } else if(states[variables.ulm_chip_temperature_weather].state == "cloudy"){
+      } else if(weather_state == "cloudy"){
         var icon = "☁️";
-      } else if(states[variables.ulm_chip_temperature_weather].state == "exceptional"){
+      } else if(weather_state == "exceptional"){
         var icon = "🌞";
-      } else if(states[variables.ulm_chip_temperature_weather].state == "fog"){
+      } else if(weather_state == "fog"){
         var icon = "🌫️";
-      } else if(states[variables.ulm_chip_temperature_weather].state == "hail"){
+      } else if(weather_state == "hail"){
         var icon = "⛈️";
-      } else if(states[variables.ulm_chip_temperature_weather].state == "lightning"){
+      } else if(weather_state == "lightning"){
         var icon = "⚡";
-      } else if(states[variables.ulm_chip_temperature_weather].state == "lightning-rainy"){
+      } else if(weather_state == "lightning-rainy"){
         var icon = "⛈️";
-      } else if(states[variables.ulm_chip_temperature_weather].state == "partlycloudy"){
+      } else if(weather_state == "partlycloudy"){
         var icon = "⛅";
-      } else if(states[variables.ulm_chip_temperature_weather].state == "pouring"){
+      } else if(weather_state == "pouring"){
         var icon = "🌧️";
-      } else if(states[variables.ulm_chip_temperature_weather].state == "rainy"){
+      } else if(weather_state == "rainy"){
         var icon = "💧";
-      } else if(states[variables.ulm_chip_temperature_weather].state == "snowy"){
+      } else if(weather_state == "snowy"){
         var icon = "❄️";
-      } else if(states[variables.ulm_chip_temperature_weather].state == "snowy-rainy"){
+      } else if(weather_state == "snowy-rainy"){
         var icon = "🌨️";
-      } else if(states[variables.ulm_chip_temperature_weather].state == "sunny"){
+      } else if(weather_state == "sunny"){
         var icon = "☀️";
-      } else if(states[variables.ulm_chip_temperature_weather].state == "windy"){
+      } else if(weather_state == "windy"){
         var icon = "🌪️";
       }
       function convertTemperature(temp) {
@@ -166,6 +167,7 @@ chip_navigate:
     grid:
       - grid-template-areas: "'i'"
 chips_icon_label:
+  template: "chips"
   show_icon: true
   show_name: false
   show_label: true
@@ -194,13 +196,20 @@ chips_alarm:
   template:
     - "chips"
     - "chips_icon_label"
+    - "ulm_language_variables"
   label: |
     [[[
-      var alarm_label = "unknown";
+      var alarm_label = variables.ulm_unknown;
       if (entity.state == "armed_home"){
-        var alarm_label = "Armed";
+        var alarm_label = variables.ulm_alarm_armed_home;
+      } else if(entity.state == "armed_away"){
+        var alarm_label = variables.ulm_alarm_armed_away;
       } else if(entity.state == "disarmed"){
-        var alarm_label = "Disarmed";
+        var alarm_label = variables.ulm_alarm_disarmed;
+      } else if(entity.state == "arming"){
+        var alarm_label = variables.ulm_alarm_arming;
+      } else if(entity.state == "triggered"){
+        var alarm_label = variables.ulm_alarm_triggered;
       }
       return alarm_label;
     ]]]
@@ -208,9 +217,15 @@ chips_alarm:
     [[[
       var alarm_icon = "mdi:shield-outline";
       if (entity.state == "armed_home"){
+        var alarm_icon = "mdi:shield-home";
+      } else if(entity.state == "armed_away"){
         var alarm_icon = "mdi:shield-lock";
       } else if(entity.state == "disarmed"){
+        var alarm_icon = "mdi:shield-off";
+      } else if(entity.state == "arming"){
         var alarm_icon = "mdi:shield";
+      } else if(entity.state == "triggered"){
+        var alarm_icon = "mdi:shield-alert";
       }
       return alarm_icon;
     ]]]
@@ -221,8 +236,14 @@ chips_alarm:
             var alarm_color = "yellow";
             if (entity.state == "armed_home"){
               var alarm_color = "red";
+            } else if(entity.state == "armed_away"){
+              var alarm_color = "red";
             } else if(entity.state == "disarmed"){
               var alarm_color = "green";
+            } else if(entity.state == "arming"){
+              var alarm_color = "orange";
+            } else if(entity.state == "triggered"){
+              var alarm_color = "red";
             }
             return alarm_color;
           ]]]
@@ -930,25 +951,23 @@ card_battery:
     ]]]
   styles:
     icon:
-      - color: >
+      - color: |
           [[[
-              // --color-theme as default
-              var color = 'rgba(var(--color-theme),0.9)';
-              var battery_level = variables.ulm_card_battery_attribute !== null
-              ? states[entity.entity_id].attributes[variables.ulm_card_battery_attribute]
-              : states[entity.entity_id].state;
+            var color = "rgba(var(--color-theme),0.9)";
+            var battery_level = variables.ulm_card_battery_attribute !== null
+                                  ? states[entity.entity_id].attributes[variables.ulm_card_battery_attribute]
+                                  : states[entity.entity_id].state;
 
-              // color based on battery_level
-              if(variables.ulm_card_battery_battery_level_danger !== null
-              || variables.ulm_card_battery_battery_level_warning !== null ) {
-                color = variables.ulm_card_battery_color_battery_level_ok ;
-                if(variables.ulm_card_battery_battery_level_warning>=battery_level) {
-                  color = variables.ulm_card_battery_color_battery_level_warning
-                }
-                if(variables.ulm_card_battery_battery_level_danger>=battery_level) {
-                  color = variables.ulm_card_battery_color_battery_level_danger
-                }
+            // color based on battery_level
+            if (battery_level !== "unavailable" && (variables.ulm_card_battery_battery_level_danger !== null || variables.ulm_card_battery_battery_level_warning !== null)) {
+              if (battery_level <= variables.ulm_card_battery_battery_level_danger) {
+                color = variables.ulm_card_battery_color_battery_level_danger;
+              } else if (battery_level <= variables.ulm_card_battery_battery_level_warning) {
+                color = variables.ulm_card_battery_color_battery_level_warning;
+              } else {
+                color = variables.ulm_card_battery_color_battery_level_ok;
               }
+            }
             return color;
           ]]]
     label:
@@ -1213,6 +1232,7 @@ card_graph:
 card_media_player_with_controls:
   variables:
     ulm_card_media_player_with_controls_name: "No name set"
+    ulm_card_media_player_with_controls_entity:
   triggers_update: "all"
   styles:
     grid:
