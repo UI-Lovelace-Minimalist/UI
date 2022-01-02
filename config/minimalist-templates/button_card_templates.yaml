@@ -194,7 +194,6 @@ chips_icon_label:
       - margin-left: "0px"
 chips_alarm:
   template:
-    - "chips"
     - "chips_icon_label"
     - "ulm_language_variables"
   label: |
