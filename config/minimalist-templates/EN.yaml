@@ -24,4 +24,5 @@ ulm_language_variables:
     ulm_alarm_disarmed: "Disarmed"
     ulm_alarm_arming: "Arming"
     ulm_alarm_triggered: "TRIGGERED"
+    ulm_playing: "Playing"
     ulm_paused: "Paused"
