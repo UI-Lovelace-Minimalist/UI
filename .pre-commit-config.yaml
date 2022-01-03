@@ -1,31 +1,52 @@
----
 repos:
-  - repo: "https://github.com/pre-commit/pre-commit-hooks"
-    rev: "v4.0.1"
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v2.29.1
     hooks:
-      - id: "no-commit-to-branch"
-        args: ["--branch", "main"]
-      - id: "check-merge-conflict"
-      - id: "trailing-whitespace"
-      - id: "mixed-line-ending"
-      - id: "end-of-file-fixer"
+      - id: pyupgrade
+        args: [--py39-plus]
+
+  - repo: https://github.com/psf/black
+    rev: 21.12b0
+    hooks:
+      - id: black
+        args:
+          - --safe
+          - --quiet
+        <<: &python-files-with-tests
+          files: ^((custom_components|tests)/.+)?[^/]+\.py$
+  - repo: https://github.com/PyCQA/flake8
+    rev: 4.0.1
+    hooks:
+      - id: flake8
+        additional_dependencies:
+          - flake8-docstrings==1.6.0
+          - pydocstyle==6.1.1
+        <<: &python-files
+          files: ^(custom_components/.+)?[^/]+\.py$
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.7.1
+    hooks:
+      - id: bandit
+        args:
+          - --quiet
+          - --format=custom
+          - --configfile=bandit.yaml
+        <<: *python-files-with-tests
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.1.0
+    hooks:
+      - id: check-executables-have-shebangs
+        stages: [manual]
+      - id: check-json
+        stages: [manual]
+      - id: check-merge-conflict
+      - id: detect-private-key
+      # - id: no-commit-to-branch
+      - id: requirements-txt-fixer
+        stages: [manual]
+      - id: mixed-line-ending
+        stages: [manual]
+        args:
+          - --fix=lf
       - id: "check-yaml"
         args: ["--unsafe"]
-
-  - repo: "https://github.com/adrienverge/yamllint.git"
-    rev: "v1.26.3"
-    hooks:
-      - id: "yamllint"
-        args: ["--format", "parsable", "--strict"]
-
-  - repo: "https://github.com/jumanjihouse/pre-commit-hook-yamlfmt"
-    rev: "0.1.0"
-    hooks:
-      - id: "yamlfmt"
-        args: ["--mapping", "2", "--sequence", "4", "--offset", "2", "--preserve-quotes"]
-        exclude: ".*"
-
-  - repo: "https://github.com/mattlqx/pre-commit-search-and-replace"
-    rev: "v1.0.5"
-    hooks:
-      - id: "search-and-replace"
