@@ -1,9 +1,7 @@
 {
-  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
     {
-      // Example of attaching to local debug server
       "name": "Python: Attach Local",
       "type": "python",
       "request": "attach",
@@ -17,7 +15,6 @@
       ]
     },
     {
-      // Example of attaching to my production server
       "name": "Python: Attach Remote",
       "type": "python",
       "request": "attach",

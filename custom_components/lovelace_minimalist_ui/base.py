@@ -1,21 +1,18 @@
 """Base Lovelace Minimalist UI class."""
 from __future__ import annotations
 
-import asyncio
 from dataclasses import asdict, dataclass, field
 from typing import Any
 
 from .const import (
-    DEFAULT_SIDEPANEL_ICON,
-    DEFAULT_SIDEPANEL_TITLE,
     DEFAULT_INCLUDE_OTHER_CARDS,
     DEFAULT_LANGUAGE,
+    DEFAULT_SIDEPANEL_ICON,
+    DEFAULT_SIDEPANEL_TITLE,
+    DEFAULT_THEME,
     DEFAULT_THEME_PATH,
-    DEFAULT_THEME
 )
-from .enums import (
-    ConfigurationType
-)
+from .enums import ConfigurationType
 
 
 @dataclass
@@ -32,8 +29,6 @@ class LmuConfiguration:
     plugin_path: str = "www/community/"
     include_other_cards: bool = DEFAULT_INCLUDE_OTHER_CARDS
     language: str = DEFAULT_LANGUAGE
-
-
 
     def to_json(self) -> str:
         """Return a json string."""

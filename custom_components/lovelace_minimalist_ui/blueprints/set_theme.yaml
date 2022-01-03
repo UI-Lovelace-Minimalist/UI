@@ -1,38 +1,39 @@
+---
 blueprint:
-  name: System Set Default Theme
+  name: "System Set Default Theme"
   description: >-
     Set the default themes on start.
-  domain: automation
+  domain: "automation"
   input:
     theme:
-      name: Which Theme
-      description: Which theme would you like to set as default on reload / start-up?
+      name: "Which Theme"
+      description: "Which theme would you like to set as default on reload / start-up?"
       selector:
         select:
           options:
-            - minimalist-desktop
-            - minimalist-mobile
+            - "minimalist-desktop"
+            - "minimalist-mobile"
 
     mode:
-      name: Which Mode should it be default in
-      description: Default in Dark or Light mode?
+      name: "Which Mode should it be default in"
+      description: "Default in Dark or Light mode?"
       selector:
         select:
           options:
-            - light
-            - dark
-    # based on sun can be added later
+            # based on sun can be added later
+            - "light"
+            - "dark"
 
-mode: single
+mode: "single"
 
 trigger:
-  - platform: homeassistant
-    event: start
-  - platform: event
-    event_type: automation_reload
+  - platform: "homeassistant"
+    event: "start"
+  - platform: "event"
+    event_type: "automation_reload"
 
 action:
-  - service: frontend.set_theme
+  - service: "frontend.set_theme"
     data:
-      name: !input theme
-      mode: !input mode
+      name: !input "theme"
+      mode: !input "mode"

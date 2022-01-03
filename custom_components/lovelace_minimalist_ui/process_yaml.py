@@ -1,23 +1,20 @@
 from __future__ import annotations
 
+from collections import OrderedDict
 import io
 import json
 import logging
 import os
 import shutil
-from collections import OrderedDict
-from homeassistant.core import HomeAssistant
 
-import jinja2
-import yaml
+from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import HomeAssistantError
 from homeassistant.util.yaml import loader
-
-from custom_components.lovelace_minimalist_ui.base import LmuBase
+import jinja2
+import yaml
 
 from .base import LmuBase
-from .const import DOMAIN
-from .const import VERSION
+from .const import DOMAIN, VERSION
 
 _LOGGER: logging.Logger = logging.getLogger(__name__)
 
@@ -42,6 +39,7 @@ LANGUAGES = {
     "Swedish": "SE",
     "Dutch": "NL",
 }
+
 
 def load_yamll(fname, secrets=None, args={}):
     try:
@@ -129,12 +127,12 @@ def compose_node(self, parent, index):
 
 yaml.composer.Composer.compose_node = compose_node
 
-#TODO: Maybe move all of this to .base.py so functions can be called
+
+# TODO: Maybe move all of this to .base.py so functions can be called
 def process_yaml(hass: HomeAssistant, lmu: LmuBase):
     _LOGGER.debug("Checking dependencies")
     if not os.path.exists(hass.config.path("custom_components/browser_mod")):
         _LOGGER.error('HACS Integration repo "browser mod" is not installed!')
-
 
     if not lmu.configuration.include_other_cards:
         depenceny_resource_paths = [
@@ -147,7 +145,9 @@ def process_yaml(hass: HomeAssistant, lmu: LmuBase):
         ]
         for p in depenceny_resource_paths:
             if not os.path.exists(hass.config.path(f"www/community/{p}")):
-                _LOGGER.error(f'HACS Frontend repo "{p}" is not installed, See Integration Configuration.')
+                _LOGGER.error(
+                    f'HACS Frontend repo "{p}" is not installed, See Integration Configuration.'
+                )
 
     _LOGGER.warning("Start of function to process all yaml files!")
 
@@ -212,8 +212,6 @@ def process_yaml(hass: HomeAssistant, lmu: LmuBase):
                 shutil.copy2(
                     fname, hass.config.path(f"themes/{theme_name}/{theme_name}.yaml")
                 )
-
-        theme = lmu.configuration.theme
 
         if os.path.exists(hass.config.path(f"custom_components/{DOMAIN}/.installed")):
             installed = "true"

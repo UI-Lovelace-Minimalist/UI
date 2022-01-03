@@ -1,4 +1,3 @@
-// See https://aka.ms/vscode-remote/devcontainer.json for format details.
 {
   "image": "ghcr.io/ludeeus/devcontainer/integration:latest",
   "name": "Lovelace Minimalist UI integration development",
@@ -6,7 +5,6 @@
   "appPort": [
     "9123:8123"
   ],
-  // "postCreateCommand": "pip install -r requirements_dev.txt",
   "postCreateCommand": "container install",
   "extensions": [
     "ms-python.python",
