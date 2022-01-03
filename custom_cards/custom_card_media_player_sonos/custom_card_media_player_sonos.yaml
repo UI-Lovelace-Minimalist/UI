@@ -20,7 +20,7 @@ card_media_player_sonos:
         if (entity.state == 'unavailable'){
           return variables.ulm_unavailable;
         } else {
-        return (entity.attributes.source ? entity.attributes.source : variables.ulm_playing) 
+        return (entity.attributes.source ? entity.attributes.source : variables.ulm_playing)
             + ' • ' +  ( Math.round(entity.attributes.volume_level / 0.01)) + '%' ;
         }
     ]]]
