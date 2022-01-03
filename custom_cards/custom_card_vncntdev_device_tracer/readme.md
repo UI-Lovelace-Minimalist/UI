@@ -1,10 +1,9 @@
 # Custom-card "Device Tracker (Online or Offline ?)"
 
-This card indicated whether a given device is online or offline using the Home Assistant device_tracker 
-or the WoL-integration.
+This card indicated whether a given device is online or offline using the Home Assistant device_tracker or the WoL-integration.
 
 ![Preview](./preview.jpg)
-<br> Turn on you device with WoL: <br> 
+<br> Turn on you device with WoL: <br>
 ![WoL Preview](./preview-WoL.jpg)
 
 ## Credits
