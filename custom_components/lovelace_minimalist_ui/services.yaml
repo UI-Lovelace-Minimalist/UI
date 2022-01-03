@@ -1,0 +1,7 @@
+---
+reload:
+  description: "Reload dashboard configuration for Lovelace Minimalist UI"
+
+
+installed:
+  description: "Change the installed key in global config for Lovelace Minimalist UI"

@@ -1,16 +1,24 @@
 ---
 repos:
-  - repo: "https://github.com/pre-commit/pre-commit-hooks"
-    rev: "v4.0.1"
+  - repo: "https://github.com/pre-commit/mirrors-isort"
+    rev: "v5.10.1"
     hooks:
-      - id: "no-commit-to-branch"
-        args: ["--branch", "main"]
-      - id: "check-merge-conflict"
-      - id: "trailing-whitespace"
-      - id: "mixed-line-ending"
-      - id: "end-of-file-fixer"
-      - id: "check-yaml"
-        args: ["--unsafe"]
+      - id: "isort"
+
+  - repo: "https://github.com/psf/black"
+    rev: "21.12b0"
+    hooks:
+      - id: "black"
+
+  - repo: "https://github.com/PatrikHlobil/Eliminate-Newlines-After-Function-Definition.git"
+    rev: "1.2"
+    hooks:
+      - id: "eliminate_newlines"
+
+  - repo: "https://github.com/PyCQA/flake8"
+    rev: "4.0.1"
+    hooks:
+      - id: "flake8"
 
   - repo: "https://github.com/adrienverge/yamllint.git"
     rev: "v1.26.3"
@@ -29,3 +37,17 @@ repos:
     rev: "v1.0.5"
     hooks:
       - id: "search-and-replace"
+
+  - repo: "https://github.com/pre-commit/pre-commit-hooks"
+    rev: "v4.1.0"
+    hooks:
+      # - id: "no-commit-to-branch"
+      - id: "check-merge-conflict"
+      - id: "check-json"
+      - id: "check-yaml"
+        args: ["--unsafe"]
+      - id: "debug-statements"
+      - id: "end-of-file-fixer"
+      - id: "trailing-whitespace"
+      - id: "mixed-line-ending"
+      - id: "requirements-txt-fixer"
