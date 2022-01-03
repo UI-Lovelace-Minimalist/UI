@@ -1012,7 +1012,9 @@ card_battery:
       - grid-template-columns: "min-content auto"
       - grid-template-rows: "min-content min-content"
 card_person:
-  template: "icon_info_bg"
+  template:
+    - "icon_info_bg"
+    - "ulm_language_variables"
   variables:
     ulm_card_person_use_entity_picture: false
     ulm_card_person_zone1: ""
@@ -1022,7 +1024,11 @@ card_person:
     entity: "[[[ return variables.ulm_card_person_entity; ]]]"
   show_label: true
   show_name: true
-  label: "[[[ return states[variables.ulm_card_person_entity].state ]]]"
+  label: >
+    [[[
+      let state = states[variables.ulm_card_person_entity].state;
+      return variables["ulm_person_state_" + state] ? variables["ulm_person_state_" + state] : state;
+    ]]]
   name: "[[[ return states[variables.ulm_card_person_entity].attributes.friendly_name ]]]"
   entity: "[[[ return variables.ulm_card_person_entity; ]]]"
   icon: "mdi:face-man"
