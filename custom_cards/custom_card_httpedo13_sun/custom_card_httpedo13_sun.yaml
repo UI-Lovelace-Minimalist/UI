@@ -4,7 +4,7 @@ custom_card_httpedo13_sun:
   show_name: false
   show_label: false
   tap-action:
-    action: none
+    action: "none"
   styles:
     grid:
       - grid-template-areas: "'item1'"
@@ -17,7 +17,7 @@ custom_card_httpedo13_sun:
   custom_fields:
     item1:
       card:
-        type: 'custom:sun-card'
+        type: "custom:sun-card"
         darkMode: "[[[ return variables.darkMode; ]]]"
         language: "[[[ return variables.language; ]]]"
         showAzimuth: "[[[ return variables.showAzimuth; ]]]"
