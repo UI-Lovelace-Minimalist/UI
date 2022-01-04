@@ -26,10 +26,10 @@ card_scenes:
     color_bg_5: "gray"
   styles:
     grid:
-      - grid-template-areas: '"item1 item2 item3 item4 item5"'
-      - grid-template-columns: 1fr 1fr 1fr 1fr 1fr
+      - grid-template-areas: "'item1 item2 item3 item4 item5'"
+      - grid-template-columns: "1fr 1fr 1fr 1fr 1fr"
       - grid-template-rows: "min-content"
-      - justify-items: center
+      - justify-items: "center"
       - column-gap: "auto"
     card:
       - border-radius: "var(--border-radius)"
