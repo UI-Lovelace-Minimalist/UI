@@ -57,5 +57,3 @@ The same sun card config.
 | title         | `string`             | Card title                           | Doesn't display a title by default                  |         |
 
 (<sup>1</sup>) Supported languages: `da`, `de`, `en`, `es`, `et`, `fi`, `fr`, `hu`, `it`, `nl`, `pl`, `pt-BR`, `ru`, `sl`, `sv`
-
-
