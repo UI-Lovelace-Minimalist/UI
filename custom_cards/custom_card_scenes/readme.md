@@ -4,7 +4,7 @@ The `card_scenes` you can control a input_number entity
 ![Scenes Card](./screenshots/card_scenes.png)
 
 ## Credits
-Author: sildehoop - 2021
+Author: sildehoop - 2022
 Version: 1.0.0
 
 ## Changelog
