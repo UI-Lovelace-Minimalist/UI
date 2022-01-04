@@ -827,59 +827,7 @@ card_media_player:
         ]]]
 card_media_player_with_control:
   template:
-    - "icon_info_bg"
-    - "ulm_language_variables"
-  icon: |
-    [[[
-        var icon = "mdi:speaker";
-        if(entity.attributes.app_name){
-          var app = entity.attributes.app_name.toLowerCase();
-          if(app == "spotify"){
-            var icon = "mdi:spotify";
-          } else if(app == "google podcasts"){
-            var icon = "mdi:google-podcast";
-          } else if(app == "plex"){
-            var icon = "mdi:plex";
-          } else if(app == "soundcloud"){
-            var icon = "mdi:soundcloud";
-          } else if(app == "youtube music"){
-            var icon = "mdi:youtube";
-          } else if (app == "oto music"){
-            var icon = "mdi:music-circle";
-          }
-        }
-        return icon;
-    ]]]
-  label: |
-    [[[
-        if (entity.state == "off"){
-          return variables.ulm_off;
-        } else {
-          return variables.ulm_on;
-        }
-    ]]]
-  state:
-    - operator: "template"
-      value: "[[[ return entity.state != 'off' ]]]"
-      name: "[[[ return states[entity.entity_id].attributes.media_title; ]]]"
-      label: |
-        [[[
-            var label = variables.ulm_on;
-            if(states[entity.entity_id].attributes.media_album_name){
-              var label = states[entity.entity_id].attributes.media_album_name;
-            }
-            return label;
-        ]]]
-      styles:
-        label:
-          - color: "white"
-          - filter: "opacity(100%)"
-        img_cell:
-          - background-color: "rgba(var(--color-theme),0.0)"
-        icon:
-          - color: "white"
-        name:
-          - color: "white"
+    - "card_media_player"
   styles:
     label:
       - opacity: "0.6"
@@ -891,6 +839,77 @@ card_media_player_with_control:
       - background-blend-mode: "multiply"
       - background: "[[[ return states[entity.entity_id].attributes.entity_picture != null ? 'center / cover url(' + states[entity.entity_id].attributes.entity_picture\
           \ + ') rgba(0, 0, 0, 0.15)' : '' ]]]"
+card_media_player_with_controls:
+  variables:
+    ulm_card_media_player_with_controls_name: "No name set"
+    ulm_card_media_player_with_controls_entity:
+  triggers_update: "all"
+  styles:
+    grid:
+      - grid-template-areas: "'item1' 'item2'"
+      - grid-template-columns: "1fr"
+      - grid-template-rows: "min-content  min-content"
+      - row-gap: "12px"
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        template:
+          - "ulm_language_variables"
+          - "card_media_player"
+        tap_action:
+          action: "more-info"
+        entity: "[[[ return variables.ulm_card_media_player_with_controls_entity ]]]"
+        name: "[[[ return variables.ulm_card_media_player_with_controls_name ]]]"
+        styles:
+          card:
+            - box-shadow: "none"
+            - padding: "0px"
+    item2:
+      card:
+        type: "custom:button-card"
+        template: "list_3_items"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              tap_action:
+                action: "call-service"
+                service: "media_player.media_previous_track"
+                service_data:
+                  entity_id: "[[[ return variables.ulm_card_media_player_with_controls_entity ]]]"
+              icon: "mdi:skip-previous"
+          item2:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              entity: "[[[ return variables.ulm_card_media_player_with_controls_entity ]]]"
+              tap_action:
+                action: "call-service"
+                service: "media_player.media_play_pause"
+                service_data:
+                  entity_id: "[[[ return variables.ulm_card_media_player_with_controls_entity ]]]"
+              icon: "mdi:pause"
+              state:
+                - value: "paused"
+                  icon: "mdi:play"
+                - value: "off"
+                  icon: "mdi:play"
+          item3:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              tap_action:
+                action: "call-service"
+                service: "media_player.media_next_track"
+                service_data:
+                  entity_id: "[[[ return variables.ulm_card_media_player_with_controls_entity ]]]"
+              icon: "mdi:skip-next"
 card_battery:
   template:
     - "icon_info_bg"
@@ -1252,77 +1271,6 @@ card_graph:
             box-shadow: none;
             border-radius: var(--border-radius);
           }
-card_media_player_with_controls:
-  variables:
-    ulm_card_media_player_with_controls_name: "No name set"
-    ulm_card_media_player_with_controls_entity:
-  triggers_update: "all"
-  styles:
-    grid:
-      - grid-template-areas: "'item1' 'item2'"
-      - grid-template-columns: "1fr"
-      - grid-template-rows: "min-content  min-content"
-      - row-gap: "12px"
-    card:
-      - border-radius: "var(--border-radius)"
-      - box-shadow: "var(--box-shadow)"
-      - padding: "12px"
-  custom_fields:
-    item1:
-      card:
-        type: "custom:button-card"
-        template:
-          - "ulm_language_variables"
-          - "card_media_player"
-        tap_action:
-          action: "more-info"
-        entity: "[[[ return variables.ulm_card_media_player_with_controls_entity ]]]"
-        name: "[[[ return variables.ulm_card_media_player_with_controls_name ]]]"
-        styles:
-          card:
-            - box-shadow: "none"
-            - padding: "0px"
-    item2:
-      card:
-        type: "custom:button-card"
-        template: "list_3_items"
-        custom_fields:
-          item1:
-            card:
-              type: "custom:button-card"
-              template: "widget_icon"
-              tap_action:
-                action: "call-service"
-                service: "media_player.media_previous_track"
-                service_data:
-                  entity_id: "[[[ return variables.ulm_card_media_player_with_controls_entity ]]]"
-              icon: "mdi:skip-previous"
-          item2:
-            card:
-              type: "custom:button-card"
-              template: "widget_icon"
-              entity: "[[[ return variables.ulm_card_media_player_with_controls_entity ]]]"
-              tap_action:
-                action: "call-service"
-                service: "media_player.media_play_pause"
-                service_data:
-                  entity_id: "[[[ return variables.ulm_card_media_player_with_controls_entity ]]]"
-              icon: "mdi:pause"
-              state:
-                - value: "paused"
-                  icon: "mdi:play"
-                - value: "off"
-                  icon: "mdi:play"
-          item3:
-            card:
-              type: "custom:button-card"
-              template: "widget_icon"
-              tap_action:
-                action: "call-service"
-                service: "media_player.media_next_track"
-                service_data:
-                  entity_id: "[[[ return variables.ulm_card_media_player_with_controls_entity ]]]"
-              icon: "mdi:skip-next"
 ### INTERNAL TEMPLATES ###
 blue:
   state:
