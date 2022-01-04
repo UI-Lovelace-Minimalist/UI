@@ -5,8 +5,6 @@ The `custom_card_httpedo13_sun` adapt `sun card` for minimalist ui.
 Author: httpedo13 - 2021
 Version: 1.0.0
 
-This design was made by [tpx01's](https://github.com/httpedo13/UI/tree/main/custom_cards/custom_card_tpx01_aircondition)
-
 ## Changelog
 <details>
 <summary>1.0.0</summary>
