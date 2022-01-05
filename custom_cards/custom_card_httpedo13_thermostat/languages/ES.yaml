@@ -1,0 +1,6 @@
+---
+custom_card_httpedo13_thermostat_language_variables:
+  variables:
+    custom_card_httpedo13_thermostat_off: "apagado"
+    custom_card_httpedo13_thermostat_on: "encendido"
+    custom_card_httpedo13_thermostat_heating: "calentando"
