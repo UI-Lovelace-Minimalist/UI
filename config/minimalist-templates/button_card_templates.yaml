@@ -1216,7 +1216,7 @@ card_graph:
     ulm_card_graph_name2: "n/a"
     ulm_card_graph_entity2: ""
     ulm_card_graph_hours: 24
-    ulm_card_graph_type: fill
+    ulm_card_graph_type: "fill"
   triggers_update: "all"
   styles:
     grid:
