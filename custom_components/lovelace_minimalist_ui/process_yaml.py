@@ -43,6 +43,7 @@ LANGUAGES = {
     "Dutch": "NL",
 }
 
+
 def load_yamll(fname, secrets=None, args={}):
     try:
         process_yaml = False
@@ -129,12 +130,11 @@ def compose_node(self, parent, index):
 
 yaml.composer.Composer.compose_node = compose_node
 
-#TODO: Maybe move all of this to .base.py so functions can be called
+# TODO: Maybe move all of this to .base.py so functions can be called
 def process_yaml(hass: HomeAssistant, lmu: LmuBase):
     _LOGGER.debug("Checking dependencies")
     if not os.path.exists(hass.config.path("custom_components/browser_mod")):
         _LOGGER.error('HACS Integration repo "browser mod" is not installed!')
-
 
     if not lmu.configuration.include_other_cards:
         depenceny_resource_paths = [
@@ -147,7 +147,9 @@ def process_yaml(hass: HomeAssistant, lmu: LmuBase):
         ]
         for p in depenceny_resource_paths:
             if not os.path.exists(hass.config.path(f"www/community/{p}")):
-                _LOGGER.error(f'HACS Frontend repo "{p}" is not installed, See Integration Configuration.')
+                _LOGGER.error(
+                    f'HACS Frontend repo "{p}" is not installed, See Integration Configuration.'
+                )
 
     _LOGGER.warning("Start of function to process all yaml files!")
 
