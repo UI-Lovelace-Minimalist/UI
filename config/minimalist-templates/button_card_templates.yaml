@@ -279,8 +279,20 @@ card_title:
 ### VERTICAL BUTTONS (fka SCENES) ###
 card_vertical_button:
   variables:
-    ulm_card_vertical_button_color: "blue"
-    ulm_card_vertical_button_state: "on"
+    ulm_card_vertical_button_color: |
+      [[[
+        if(typeof variables !== 'undefined' ) // This code is for backwards compatibility
+          if(typeof variables.color !== 'undefined')
+            return variables.color;
+         return "blue";
+      ]]]
+    ulm_card_vertical_button_state: |
+      [[[
+        if(typeof variables !== 'undefined' ) // This code is for backwards compatibility
+          if(typeof variables.color !== 'undefined')
+            return variables.state;
+         return "on";
+      ]]]
   show_label: true
   label: ""
   name: |
@@ -361,14 +373,6 @@ vertical_buttons:
 
 vertical_buttons_custom_state:
   template: "card_vertical_button"
-  variables:
-    ulm_card_vertical_button_color: |
-      [[[
-        if(typeof variables.color !== "undefined")
-          return variables.color;
-        return "blue";
-      ]]
-    ulm_card_vertical_button_state: "[[[ return variables.state ]]]"
 
 ### CARDS ###
 card_generic:
