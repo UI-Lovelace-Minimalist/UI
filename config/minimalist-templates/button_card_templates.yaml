@@ -275,6 +275,7 @@ card_title:
       - font-weight: "bold"
       - font-size: "1rem"
       - opacity: "0.4"
+
 ### VERTICAL BUTTONS (fka SCENES) ###
 card_vertical_button:
   variables:
@@ -283,10 +284,10 @@ card_vertical_button:
   show_label: true
   label: ""
   name: |
-    [[[ 
-      if( entity.entity_id.startsWith("input_select.") ) 
+    [[[
+      if( entity.entity_id.startsWith("input_select.") )
         return variables.ulm_card_vertical_button_state;
-      else if( entity.entity_id.startsWith("input_boolean.") ) 
+      else if( entity.entity_id.startsWith("input_boolean.") )
         return "";
       return entity.state;
     ]]]
@@ -320,7 +321,7 @@ card_vertical_button:
   state:
     - operator: "template"
       value: |
-        [[[ 
+        [[[
           return entity.state == variables.ulm_card_vertical_button_state;
         ]]]
       styles:
@@ -337,20 +338,20 @@ card_vertical_button:
   tap_action:
     action: "call-service"
     service: |
-      [[[ 
-        if( entity.entity_id.startsWith("input_select.") ) 
+      [[[
+        if( entity.entity_id.startsWith("input_select.") )
           return "input_select.select_option";
-        if( entity.entity_id.startsWith("input_boolean.") ) 
+        if( entity.entity_id.startsWith("input_boolean.") )
           return "input_boolean.toggle";
-        // If we need to support other entities we can add these options here.... 
+        // If we need to support other entities we can add these options here.
         return "";
       ]]]
     service_data: |
       [[[
         var obj;
-        if( entity.entity_id.startsWith("input_select.") ) 
+        if( entity.entity_id.startsWith("input_select.") )
           obj = { entity_id: entity.entity_id, option: variables.ulm_card_vertical_button_state };
-        else 
+        else
           obj = { entity_id: entity.entity_id };
         return obj;
       ]]]
@@ -362,7 +363,7 @@ vertical_buttons_custom_state:
   template: "card_vertical_button"
   variables:
     ulm_card_vertical_button_color: |
-      [[[ 
+      [[[
         if(typeof variables.color !== "undefined")
           return variables.color;
         return "blue";
