@@ -1,8 +1,10 @@
 # Custom-card "Device Tracker (Online or Offline ?)"
 
-This card indicated whether a given device is online or offline using the Home Assistant device_tracker feature.
+This card indicated whether a given device is online or offline using the Home Assistant device_tracker or the WoL-integration.
 
 ![Preview](./preview.jpg)
+<br> Turn on you device with WoL: <br>
+![WoL Preview](./preview-WoL.jpg)
 
 ## Credits
 
@@ -10,6 +12,10 @@ Author: vncnt.dev - 2021
 Version: 1.0.0
 
 ## Changelog
+<details>
+<summary>1.1.0</summary>
+Support WoL
+</details>
 
 <details>
 <summary>1.0.0</summary>
@@ -21,7 +27,7 @@ Initial release
 ```yaml
 - type: "custom:button-card"
   template: "custom_card_vncntdev_device_tracker"
-  entity: device_tracker.pc
+  entity: switch.pc
   variables:
     custom_card_vncntdev_device_tracker_icon: mdi:desktop-mac
     custom_card_vncntdev_device_tracker_name: "PC"
@@ -37,6 +43,9 @@ Initial release
 ## Requirements
 
 Setup [the device tracker integration](https://www.home-assistant.io/integrations/device_tracker/)
+
+if you want to use WoL:
+Setup [WoL integration](https://www.home-assistant.io/integrations/wake_on_lan/)
 
 ## Variables
 
@@ -100,6 +109,8 @@ custom_card_vncntdev_device_tracker:
     custom_card_vncntdev_device_tracker_icon: "mdi:server"
     custom_card_vncntdev_device_tracker_color_online: "var(--google-green)"
     custom_card_vncntdev_device_tracker_color_offline: "var(--google-red)"
+  tap_action:
+    action: "more-info"
   icon: "[[[return variables.custom_card_vncntdev_device_tracker_icon]]]"
   label: |
     [[[
@@ -108,7 +119,7 @@ custom_card_vncntdev_device_tracker:
           variables.custom_card_vncntdev_device_tracker_name:
           entity.attributes.friendly_name;
         } else {
-          return entity.state == "not_home" ? "Offline" : "Online";
+          return (entity.state == "not_home" || entity.state == "off") ? "Offline" : "Online";
         }
     ]]]
   name: |
@@ -118,14 +129,14 @@ custom_card_vncntdev_device_tracker:
           variables.custom_card_vncntdev_device_tracker_name:
           entity.attributes.friendly_name;
         } else {
-          return entity.state == "not_home" ? "Offline" : "Online";
+          return (entity.state == "not_home" || entity.state == "off") ? "Offline" : "Online";
         }
     ]]]
   styles:
     icon:
       - color: >
           [[[
-              return entity.state == 'not_home'?
+              return (entity.state == "not_home" || entity.state == "off") ?
               variables.custom_card_vncntdev_device_tracker_color_offline:
               variables.custom_card_vncntdev_device_tracker_color_online;
           ]]]
