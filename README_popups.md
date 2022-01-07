@@ -8,10 +8,8 @@ The basis for all these popups is `button-card` that allows for a great and indi
 
 * [Credits](#credits)
 * [Power outlet popup](#power-outlet-popup)
-  * [Card compatibility](#card-compatibility)
-  * [Variables](#variables)
-  * [How to use](#how-to-use)
 * [Light popup](#light-popup)
+* [Media player popup](#media-player-popup)
 </details>
 
 ## Credits
@@ -111,4 +109,26 @@ For exemple :
     - card_light
     - popup_light
   entity: light.cuisine
+```
+
+## Media Player popup
+
+<img src="./screenshots/popup_media_phone.png" height="400"> <img src="./screenshots/popup_media_tablet.png" height="400">
+
+### Card compatibility
+
+This popup is displayed using ``hold_action`` and it is compatible with the following cards/chips :
+* card_media_player
+
+### How to use
+
+To enable this popup, you need to add the ``popup_media_player`` template on your card.
+
+For exemple :
+```yaml
+- type: "custom:button-card"
+  template:
+    - card_media_player
+    - popup_media_player
+  entity: media_player.lounge_room
 ```
