@@ -232,17 +232,17 @@ chips_alarm:
     icon:
       - color: |
           [[[
-            var alarm_color = "yellow";
+            var alarm_color = "var(--google-yellow)";
             if (entity.state == "armed_home"){
-              var alarm_color = "red";
+              var alarm_color = "var(--google-red)";
             } else if(entity.state == "armed_away"){
-              var alarm_color = "red";
+              var alarm_color = "var(--google-red)";
             } else if(entity.state == "disarmed"){
-              var alarm_color = "green";
+              var alarm_color = "var(--google-green)";
             } else if(entity.state == "arming"){
-              var alarm_color = "orange";
+              var alarm_color = "var(--google-yellow)";
             } else if(entity.state == "triggered"){
-              var alarm_color = "red";
+              var alarm_color = "var(--google-red)";
             }
             return alarm_color;
           ]]]
