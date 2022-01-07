@@ -153,7 +153,7 @@ chip_power_consumption:
       if (amount){
         return "⚡ " +  states[variables.ulm_chip_electric_price].state + variables.ulm_currency;
       } else {
-        return "⚡ " +  states[variables.ulm_chip_electric_consumption].state;
+        return "⚡ " +  states[variables.ulm_chip_electric_consumption].state + states[variables.ulm_chip_electric_consumption].attributes.unit_of_measurement;
       }
     ]]]
 chip_navigate:
