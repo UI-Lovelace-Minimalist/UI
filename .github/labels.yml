@@ -24,7 +24,7 @@
 - name: ":sparkles: enhancement"
   color: "0054ca"
   description: ""
-- name: ":bulb: feature request"
+- name: ":bulb: feature"
   color: "0e8a16"
   description: ""
 - name: ":mega: feedback"
