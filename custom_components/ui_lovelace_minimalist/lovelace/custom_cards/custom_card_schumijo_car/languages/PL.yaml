@@ -1,0 +1,6 @@
+---
+ulm_custom_card_schumijo_car_language_variables:
+  variables:
+    ulm_custom_card_schumijo_car_default_name: "Mój samochód"
+    ulm_custom_card_schumijo_car_range: "Zasięg"
+    ulm_custom_card_schumijo_car_energy_level: "Poziom baterii"

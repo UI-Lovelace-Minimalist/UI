@@ -2,7 +2,7 @@
 name: Feature request
 about: Suggest an idea for a new function to this project
 title: ''
-labels: feature
+labels: ':bulb: feature'
 assignees: ''
 
 ---
