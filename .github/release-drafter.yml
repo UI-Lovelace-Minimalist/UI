@@ -6,21 +6,16 @@ sort-direction: "ascending"
 categories:
   - title: "⚠️ Breaking changes"
     label: "breaking change"
-  - title: "🚀 Features"
-    labels:
-      - "feature"
-  - title: "⚙️ Code enhancements"
-    labels:
-      - "enhancement"
-  - title: "🐞 Bug Fixes"
-    labels:
-      - "fix"
-      - "bugfix"
-      - "bug"
-  - title: "㊗️ Translations"
-    label: "translation"
-  - title: "📄 Documentation"
-    label: "documentation"
+  - title: "💡 Features"
+    label: ":bulb: feature"
+  - title: "✨ Code enhancements"
+    label: ":sparkles: enhancement"
+  - title: "🐛 Bug Fixes"
+    label: ":bug: bug"
+  - title: "💬 Translations"
+    label: ":speech_balloon: translation"
+  - title: "📝 Documentation"
+    label: ":memo: documentation"
 version-resolver:
   major:
     labels:
@@ -40,9 +35,9 @@ template: |
   ## ❤️ Thank you so much for helping out to keep this UI awesome
   $CONTRIBUTORS
 autolabeler:
-  - label: "bug"
+  - label: ":bug: bug"
     branch:
       - "/fix/.+/"
-  - label: "enhancement"
+  - label: ":bulb: feature"
     branch:
       - "/feature/.+/"
