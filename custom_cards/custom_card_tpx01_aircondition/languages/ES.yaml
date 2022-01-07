@@ -1,0 +1,8 @@
+---
+custom_card_tpx01_aircondition_language_variables:
+  variables:
+    custom_card_tpx01_aircondition_dry: "seco"
+    custom_card_tpx01_aircondition_heat: "calor"
+    custom_card_tpx01_aircondition_heat_cool: "automático"
+    custom_card_tpx01_aircondition_cool: "frio"
+    custom_card_tpx01_aircondition_fan_only: "ventilador"
