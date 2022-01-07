@@ -137,4 +137,3 @@ window.lovelace_minimalist_ui = window.lovelace_minimalist_ui || new LovelaceMin
 //   window.lovelace_minimalist_ui = window.lovelace_minimalist_ui || new LovelaceMinimalistUi();
 
 // });
-

@@ -1,66 +1,62 @@
 ---
-# Labels names are important as they are used by Release Drafter to decide
-# regarding where to record them in changelog or if to skip them.
-#
-# The repository labels will be automatically configured using this file and
 # the GitHub Action https://github.com/marketplace/actions/github-labeler.
-- name: breaking
-  description: Breaking Changes
-  color: bfd4f2
-- name: bug
-  description: Something isn't working
-  color: d73a4a
-- name: build
-  description: Build System and Dependencies
-  color: bfdadc
-- name: ci
-  description: Continuous Integration
-  color: 4a97d6
-- name: dependencies
-  description: Pull requests that update a dependency file
-  color: 0366d6
-- name: documentation
-  description: Improvements or additions to documentation
-  color: 0075ca
-- name: duplicate
-  description: This issue or pull request already exists
-  color: cfd3d7
-- name: enhancement
-  description: New feature or request
-  color: a2eeef
-- name: github_actions
-  description: Pull requests that update Github_actions code
-  color: "000000"
-- name: good first issue
-  description: Good for newcomers
-  color: 7057ff
-- name: help wanted
-  description: Extra attention is needed
-  color: 008672
-- name: invalid
-  description: This doesn't seem right
-  color: e4e669
-- name: performance
-  description: Performance
-  color: "016175"
-- name: python
-  description: Pull requests that update Python code
-  color: 2b67c6
-- name: question
-  description: Further information is requested
-  color: d876e3
-- name: refactoring
-  description: Refactoring
-  color: ef67c4
-- name: removal
-  description: Removals and Deprecations
-  color: 9ae7ea
-- name: style
-  description: Style
-  color: c120e5
-- name: testing
-  description: Testing
-  color: b1fc6f
-- name: wontfix
-  description: This will not be worked on
-  color: ffffff
+- name: ":bell: automerge"
+  color: "8f4fbc"
+  description: ""
+- name: ":robot: bot"
+  color: "69cde9"
+  description: ""
+- name: ":bug: bug"
+  color: "b60205"
+  description: ""
+- name: ":game_die: dependencies"
+  color: "0366d6"
+  description: ""
+- name: ":memo: documentation"
+  color: "c5def5"
+  description: ""
+- name: ":busts_in_silhouette: duplicate"
+  color: "cccccc"
+  description: ""
+- name: ":sparkles: enhancement"
+  color: "0054ca"
+  description: ""
+- name: ":bulb: feature request"
+  color: "0e8a16"
+  description: ""
+- name: ":mega: feedback"
+  color: "03a9f4"
+  description: ""
+- name: ":rocket: future maybe"
+  color: "fef2c0"
+  description: ""
+- name: ":hatching_chick: good first issue"
+  color: "7057ff"
+  description: ""
+- name: ":pray: help wanted"
+  color: "4caf50"
+  description: ""
+- name: ":no_entry_sign: invalid"
+  color: "e6e6e6"
+  description: ""
+- name: ":mag: investigate"
+  color: "e6625b"
+  description: ""
+- name: ":thinking: needs more info"
+  color: "795548"
+  description: ""
+- name: ":pushpin: pinned"
+  color: "28008e"
+  description: ""
+- name: ":question: question"
+  color: "3f51b5"
+  description: ""
+- name: ":skull: stale"
+  color: "237da0"
+  description: ""
+- name: ":eyes: upstream"
+  color: "fbca04"
+  description: ""
+- name: ":coffin: wontfix"
+  color: "ffffff"
+  description: ""

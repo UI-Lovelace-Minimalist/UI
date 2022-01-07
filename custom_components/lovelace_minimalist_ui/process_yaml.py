@@ -1,23 +1,20 @@
 from __future__ import annotations
 
+from collections import OrderedDict
 import io
 import json
 import logging
 import os
 import shutil
-from collections import OrderedDict
-from homeassistant.core import HomeAssistant
 
-import jinja2
-import yaml
+from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import HomeAssistantError
 from homeassistant.util.yaml import loader
-
-from custom_components.lovelace_minimalist_ui.base import LmuBase
+import jinja2
+import yaml
 
 from .base import LmuBase
-from .const import DOMAIN
-from .const import VERSION
+from .const import DOMAIN, VERSION
 
 _LOGGER: logging.Logger = logging.getLogger(__name__)
 
@@ -214,8 +211,6 @@ def process_yaml(hass: HomeAssistant, lmu: LmuBase):
                 shutil.copy2(
                     fname, hass.config.path(f"themes/{theme_name}/{theme_name}.yaml")
                 )
-
-        theme = lmu.configuration.theme
 
         if os.path.exists(hass.config.path(f"custom_components/{DOMAIN}/.installed")):
             installed = "true"

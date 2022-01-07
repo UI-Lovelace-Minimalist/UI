@@ -22,7 +22,6 @@ Initial release
   variables:
     ulm_card_input_number_name: "YOUR_NAME"
     ulm_card_input_number_entity: "input_number.YOUR_INPUT_NUMBER"
-  show_last_changed: true
 ```
 
 ## Requirements

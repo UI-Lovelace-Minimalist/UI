@@ -1,5 +1,70 @@
 # UI-Lovelace-Minimalist CHANGELOG
 
+## Version 1.0.0-beta.11
+
+
+### 🚀 Features
+
+- #154 New custom cards and update of existing ones @mp-se
+
+### ⚙️ Code enhancements
+
+- #149 Update button_card_templates.yaml @13robin37
+- #170 armed_away state for alarm chip @denes44
+
+### 🐞 Bug Fixes
+
+- #155 Update card_light_icon_info.yaml @basbruss
+- #156 Fix custom_card_saxel blue style card @saxel
+- #153 Fix battery_card icon color when state is unavailable @saxel
+- #146 fix Card "card_media_player_with_controls" (missing  variable "ulm_card_media_player_with_controls_entity") @vncnt-dev
+- #183 Light Slider unavailable color @schumijo
+- #182 Update chips_icon_label to use base chips template @schumijo
+
+### ㊗️ Translations
+
+- #163 Add Polish translations for cards @desty2k
+- #176 Portuguese Translation @kaphwor
+- #181 Missing variables in new language files @denes44
+- #184 Update ES.yaml @revin34
+
+### 📄 Documentation
+
+- #169 Update README_popups.md @KaherdinTristan
+- #173 Update README_popups.md @schumijo
+
+### ❤️ Thank you so much for helping out to keep this UI awesome
+@13robin37, @CM000n, @KaherdinTristan, @basbruss, @denes44, @desty2k, @kaphwor, @mp-se, @revin34, @saxel, @schumijo and @vncnt-dev
+
+## Version 1.0.0-beta.10-hotfix
+
+### What's Changed
+* Add discord channel badge by @CM000n in https://github.com/UI-Lovelace-Minimalist/UI/pull/159
+* Add discord channel badge by @CM000n in https://github.com/UI-Lovelace-Minimalist/UI/pull/160
+* Use new slider from AnthonMS for popup card by @bavo in https://github.com/UI-Lovelace-Minimalist/UI/pull/162
+* Hotfix popup card by @schumijo in https://github.com/UI-Lovelace-Minimalist/UI/pull/164
+
+
+**Full Changelog**: https://github.com/UI-Lovelace-Minimalist/UI/compare/v1.0.0-beta.10...v1.0.0-beta.10-hotfix
+
+## Version 1.0.0-beta.10
+
+### What's Changed
+* Fix lowercase readme files by @CM000n in https://github.com/UI-Lovelace-Minimalist/UI/pull/142
+* Automatically detect lowercase README.md files by @CM000n in https://github.com/UI-Lovelace-Minimalist/UI/pull/145
+* Hotfix: Fix folder structure for basbruss light cards by @basbruss in https://github.com/UI-Lovelace-Minimalist/UI/pull/144
+* Hotfix for folder structure on basbruss light cards by @CM000n in https://github.com/UI-Lovelace-Minimalist/UI/pull/150
+* Implementation of popup cards by @schumijo in https://github.com/UI-Lovelace-Minimalist/UI/pull/132
+* First release of popup cards by @schumijo in https://github.com/UI-Lovelace-Minimalist/UI/pull/157
+
+### 📄 Documentation
+* Specific readme for popups is available [here](https://github.com/UI-Lovelace-Minimalist/UI/blob/main/README_popups.md)
+
+**Full Changelog**: https://github.com/UI-Lovelace-Minimalist/UI/compare/v1.0.0-beta.9...v1.0.0-beta.10
+
+#### ❤️ Special thanks to @bavo for his help on creating these popups
+#### ❤️ And @CM000n for his hard work on this project.
+
 ## Version 1.0.0-beta.9
 ### 🚀 Features
 

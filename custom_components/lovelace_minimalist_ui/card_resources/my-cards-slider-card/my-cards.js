@@ -318,9 +318,9 @@ found at http://polymer.github.io/PATENTS.txt
     `}};s([it({attribute:!1})],te.prototype,"hass",void 0),s([ot()],te.prototype,"_config",void 0),s([ot()],te.prototype,"_toggle",void 0),s([ot()],te.prototype,"_helpers",void 0),te=s([et("boilerplate-card-editor")],te),console.info(`%c  ---- MY-SLIDER ---- \n%c  ${r("common.version")} 2.0.3    `,"color: orange; font-weight: bold; background: black","color: white; font-weight: bold; background: green"),window.customCards=window.customCards||[],window.customCards.push({type:"my-slider",name:"Slider Card",description:"Custom Slider Card for Lovelace."});let ee=class extends dt{static async getConfigElement(){return document.createElement("boilerplate-card-editor")}static getStubConfig(){return{}}static get properties(){return{hass:{},config:{},active:{}}}setConfig(t){if(!t.entity)throw new Error("You need to define entity");if(!(t.entity.includes("input_number.")||t.entity.includes("light.")||t.entity.includes("media_player.")||t.entity.includes("cover.")||t.entity.includes("fan.")||t.entity.includes("switch.")||t.entity.includes("lock.")))throw new Error("Entity has to be a light, input_number, media_player, cover or a fan.");this.config=Object.assign({name:"MySlider",disabled_scroll:!1},t)}shouldUpdate(t){return!!this.config&&Lt(this,t,!1)}render(){var t,e=JSON.parse(JSON.stringify(this.config));const n=this.config.entity?this.config.entity:"ERROR: NO ENTITY ID",i=(null===(t=this.config.entity)||void 0===t||t.split(".")[1],this.hass.states[""+n]);var o=e.step?e.step:"1";n.includes("input_number.")&&(o=e.step?e.step:i.attributes.step);var r=e.minBar?e.minBar:0,s=e.maxBar?e.maxBar:100,a=e.minSet?e.minSet:0,l=e.maxSet?e.maxSet:100,c=e.width?e.width:"100%",d=e.height?e.height:"50px",u=e.radius?e.radius:"4px",h=e.top?e.top:"0px",p=e.bottom?e.bottom:"0px",m=e.right?e.right:"0px",g=e.left?e.left:"0px",f=e.rotate?e.rotate:"0",v=e.containerHeight?e.containerHeight:d;"0"!=f&&(f+="deg");var y=e.mainSliderColor?e.mainSliderColor:"var(--accent-color)",_=e.secondarySliderColor?e.secondarySliderColor:"#4d4d4d",b=e.mainSliderColorOff?e.mainSliderColorOff:"#636363",w=e.secondarySliderColorOff?e.secondarySliderColorOff:"#4d4d4d",S=e.border?e.border:"0",$=e.thumbWidth?e.thumbWidth:"25px",x=e.thumbHeight?e.thumbHeight:"80px",C=e.thumbColor?e.thumbColor:"#FFFFFF",k=e.thumbColorOff?e.thumbColorOff:"#969696",T=e.thumbHorizontalPadding?e.thumbHorizontalPadding:"10px",P=e.thumbVerticalPadding?e.thumbVerticalPadding:"20px",N=e.thumpTop?e.thumpTop:"calc((var(--slider-width) - var(--thumb-height)) / 2)",E=e.thumbBorderRight?e.thumbBorderRight:"var(--thumb-horizontal-padding) solid var(--slider-main-color)",M=e.thumbBorderLeft?e.thumbBorderLeft:"var(--thumb-horizontal-padding) solid var(--slider-main-color)",A=e.thumbBorderTop?e.thumbBorderTop:"var(--thumb-vertical-padding) solid var(--slider-main-color)",O=e.thumbBorderBotton?e.thumbBorderBotton:"var(--thumb-vertical-padding) solid var(--slider-main-color)",D=`\n\t\t\t--slider-width: ${c};\n\t\t\t--slider-width-inverse: -${c};\n\t\t\t--slider-height: ${d};\n\t\t\t--slider-main-color: ${"off"===i.state||"locked"===i.state||null==i.state?"var(--slider-main-color-off)":"var(--slider-main-color-on)"};\n\t\t\t--slider-main-color-on: ${y};\n\t\t\t--slider-main-color-off: ${b};\n\t\t\t--slider-secondary-color: ${"off"===i.state||"locked"===i.state||null==i.state?"var(--slider-secondary-color-off)":"var(--slider-secondary-color-on)"};\n\t\t\t--slider-secondary-color-on: ${_};\n\t\t\t--slider-secondary-color-off: ${w};\n\t\t\t--slider-radius: ${u};\n\t\t\t--border: ${S};\n\t\t\t\n\t\t\t--thumb-width: ${$};\n\t\t\t--thumb-height: ${x};\n\t\t\t--thumb-color: ${"off"===i.state||null==i.state?"var(--thumb-color-off)":"var(--thumb-color-on)"};\n\t\t\t--thumb-color-on: ${C};\n\t\t\t--thumb-color-off: ${k};\n\t\t\t--thumb-horizontal-padding: ${T};\n\t\t\t--thumb-vertical-padding: ${P};\n\n\t\t\t--rotate: ${f};\n\t\t\t--top: ${h};\n\t\t\t--bottom: ${p};\n\t\t\t--right: ${m};\n\t\t\t--left: ${g};\n\t\t\t--container-height: ${v};\n\t\t\t--thumb-top: ${N};\n\t\t\t--thumb-border-right: ${E};\n\t\t\t--thumb-border-left: ${M};\n\t\t\t--thumb-border-top: ${A};\n\t\t\t--thumb-border-bottom: ${O};\n\t\t`;const V=t=>{n.includes("light.")?"Warmth"==e.function?this._setWarmth(i,t.target,a,l):this._setBrightness(i,t.target,a,l):n.includes("input_number.")?this._setInputNumber(i,t.target,a,l):n.includes("media_player.")?this._setMediaVolume(i,t.target,a,l):n.includes("cover.")?this._setCover(i,t.target,a,l):n.includes("fan.")?this._setFan(i,t.target,a,l):n.includes("switch.")?this._setSwitch(i,t.target,a,l,r,s):n.includes("lock.")&&this._setLock(i,t.target,a,l,r,s)},H=t=>{e.intermediate&&V(t)},R=t=>{e.intermediate||V(t)},Y=()=>{this.config.disabled_scroll=!this.config.disabled_scroll,this.config.disabled_scroll?Gt(window):Kt(window)};if(n.includes("light."))return"Warmth"==e.function?B`
 					<ha-card>
 						<div class="slider-container" style="${D}">
-							<input name="foo" type="range" class="${i.state}" style="${D}" 
-								min="${i.attributes.min_mireds}" max="${i.attributes.max_mireds}" 
-								step="${o}" .value="${"off"===i.state?0:i.attributes.color_temp}" 
+							<input name="foo" type="range" class="${i.state}" style="${D}"
+								min="${i.attributes.min_mireds}" max="${i.attributes.max_mireds}"
+								step="${o}" .value="${"off"===i.state?0:i.attributes.color_temp}"
 								@input=${H} @change=${R}
 								@touchstart=${e.toggle_scroll?Y:null}
 								@touchend=${e.toggle_scroll?Y:null} >
@@ -329,8 +329,8 @@ found at http://polymer.github.io/PATENTS.txt
 				`:B`
 					<ha-card>
 						<div class="slider-container" style="${D}">
-							<input name="foo" type="range" class="${i.state}" style="${D}" 
-								step="${o}" .value="${"off"===i.state?0:Math.round(i.attributes.brightness/2.56)}" 
+							<input name="foo" type="range" class="${i.state}" style="${D}"
+								step="${o}" .value="${"off"===i.state?0:Math.round(i.attributes.brightness/2.56)}"
 								@input=${H} @change=${R}
 								@touchstart=${e.toggle_scroll?Y:null}
 								@touchend=${e.toggle_scroll?Y:null} >
@@ -339,9 +339,9 @@ found at http://polymer.github.io/PATENTS.txt
 				`;if(n.includes("input_number."))return B`
 				<ha-card>
 					<div class="slider-container" style="${D}">
-						<input name="foo" type="range" class="${i.state}" style="${D}" 
-							min="${i.attributes.min}" max="${i.attributes.max}" 
-							step="${o}" .value="${i.state}" 
+						<input name="foo" type="range" class="${i.state}" style="${D}"
+							min="${i.attributes.min}" max="${i.attributes.max}"
+							step="${o}" .value="${i.state}"
 							@input=${H} @change=${R}
 							@touchstart=${e.toggle_scroll?Y:null}
 							@touchend=${e.toggle_scroll?Y:null} >
@@ -350,8 +350,8 @@ found at http://polymer.github.io/PATENTS.txt
 			`;if(n.includes("media_player.")){var L=0;if(null!=i.attributes.volume_level)L=Number(100*i.attributes.volume_level);return B`
 				<ha-card>
 					<div class="slider-container" style="${D}">
-						<input name="foo" type="range" class="${i.state}" style="${D}" 
-							min="${r}" max="${s}" step="${o}" .value="${L}" 
+						<input name="foo" type="range" class="${i.state}" style="${D}"
+							min="${r}" max="${s}" step="${o}" .value="${L}"
 							@input=${H} @change=${R}
 							@touchstart=${e.toggle_scroll?Y:null}
 							@touchend=${e.toggle_scroll?Y:null} >
@@ -360,9 +360,9 @@ found at http://polymer.github.io/PATENTS.txt
 			`}return n.includes("cover.")?B`
 				<ha-card>
 					<div class="slider-container" style="${D}">
-						<input name="foo" type="range" class="${i.state}" style="${D}" 
-							min="${r}" max="${s}" step="${o}" 
-							.value="${i.attributes.current_position}" 
+						<input name="foo" type="range" class="${i.state}" style="${D}"
+							min="${r}" max="${s}" step="${o}"
+							.value="${i.attributes.current_position}"
 							@input=${H} @change=${R}
 							@touchstart=${e.toggle_scroll?Y:null}
 							@touchend=${e.toggle_scroll?Y:null} >
@@ -371,9 +371,9 @@ found at http://polymer.github.io/PATENTS.txt
 			`:n.includes("fan.")?B`
 				<ha-card>
 					<div class="slider-container" style="${D}">
-						<input name="foo" type="range" class="${i.state}" style="${D}" 
-							min="${r}" max="${s}" step="${o}" 
-							.value="${i.attributes.percentage}" 
+						<input name="foo" type="range" class="${i.state}" style="${D}"
+							min="${r}" max="${s}" step="${o}"
+							.value="${i.attributes.percentage}"
 							@input=${H} @change=${R}
 							@touchstart=${e.toggle_scroll?Y:null}
 							@touchend=${e.toggle_scroll?Y:null} >
@@ -382,8 +382,8 @@ found at http://polymer.github.io/PATENTS.txt
 			`:n.includes("switch.")||n.includes("lock.")?B`
 				<ha-card>
 					<div class="slider-container" style="${D}">
-						<input name="foo" type="range" class="${i.state}" style="${D}" 
-							min="${r}" max="${s}" step="${o}" .value="${r}" 
+						<input name="foo" type="range" class="${i.state}" style="${D}"
+							min="${r}" max="${s}" step="${o}" .value="${r}"
 							@input=${H} @change=${R}
 							@touchstart=${e.toggle_scroll?Y:null}
 							@touchend=${e.toggle_scroll?Y:null} >
@@ -396,7 +396,7 @@ found at http://polymer.github.io/PATENTS.txt
 				overflow: hidden;
 				border-radius: var(--slider-radius);
 			}
-	  
+
 			.slider-container input[type="range"] {
 				outline: 0;
 				border: var(--border);
@@ -419,14 +419,14 @@ found at http://polymer.github.io/PATENTS.txt
 				-ms-transform: rotate(var(--rotate));
 				transform: rotate(var(--rotate));
 			}
-	  
+
 			.slider-container input[type="range"]::-webkit-slider-runnable-track {
 				height: var(--slider-height);
 				-webkit-appearance: none;
 				color: var(--slider-main-color);
 				transition: box-shadow 0.2s ease-in-out;
 			}
-	  
+
 			.slider-container input[type="range"]::-webkit-slider-thumb {
 				width: var(--thumb-width);
 				height: var(--thumb-height);
@@ -435,19 +435,19 @@ found at http://polymer.github.io/PATENTS.txt
 				border-radius: 0;
 				transition: box-shadow 0.2s ease-in-out;
 				position: relative;
-	  
+
 				box-shadow: -3500px 0 0 3500px var(--slider-main-color), inset 0 0 0 25px var(--thumb-color);
-	  
+
 				top: var(--thumb-top);
 				border-right: var(--thumb-border-right);
 				border-left: var(--thumb-border-left);
 				border-top: var(--thumb-border-top);
 				border-bottom: var(--thumb-border-bottom);
 			}
-	  
+
 			.slider-container input[type=range]::-moz-range-thumb {
 			  width: calc(var(--thumb-width) / 4);
-			  height: calc(var(--thumb-height) / 2); 
+			  height: calc(var(--thumb-height) / 2);
 			  box-shadow: -3500px 10px 0 3500px var(--slider-main-color), inset 0 0 0 25px var(--thumb-color);
 			  top: var(--thumb-top);
 			  cursor: ew-resize;
@@ -460,11 +460,11 @@ found at http://polymer.github.io/PATENTS.txt
 			  border-top: var(--thumb-border-top);
 			  border-bottom: var(--thumb-border-bottom);
 			}
-	  
+
 			.slider-container input[type="range"]::-webkit-slider-thumb:hover {
 				cursor: default;
 			}
-	  
+
 			.slider-container input[type="range"]:hover {
 			  cursor: default;
 			}
@@ -493,13 +493,13 @@ const ne=new WeakMap,ie=w(t=>e=>{if(!(e instanceof O))throw new Error("unsafeHTM
 
 					<div class="button-container">
 						<div class="button">
-							<ha-icon class="icon" icon="mdi:cog-outline" style="" 
+							<ha-icon class="icon" icon="mdi:cog-outline" style=""
 								@action=${t=>{this._handleDynamicButton(t,{toggle:this.config.scroll_disabled}),s()}}
 								.actionHandler=${pe({hasHold:!1,hasDoubleClick:!1})} />
 						</div>
 						${n.map((t,e)=>B`
 									<div class="button">
-										<ha-icon class="icon" key="${e}" icon="${t.button.icon}" style="" 
+										<ha-icon class="icon" key="${e}" icon="${t.button.icon}" style=""
 											@action=${e=>this._handleDynamicButton(e,t.button)}
 											.actionHandler=${pe({hasHold:Yt(t.hold_action),hasDoubleClick:Yt(t.double_tap_action)})} />
 									</div>
@@ -511,16 +511,16 @@ const ne=new WeakMap,ie=w(t=>e=>{if(!(e instanceof O))throw new Error("unsafeHTM
 			.footer-container {
 				display: flex;
 			}
-			
+
 			.text-container {
-				
+
 			}
 			.text-container p {
 				border: inherit;
 				margin: 0;
 				padding: 0;
 			}
-			
+
 			.button-container {
 				flex-grow: 1;
 				padding-right: 20px;

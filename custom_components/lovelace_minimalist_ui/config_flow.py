@@ -1,38 +1,35 @@
 from __future__ import annotations
 
 import logging
-from homeassistant.components.frontend import DEFAULT_THEME_COLOR
 
-import voluptuous as vol
 from homeassistant import config_entries
 from homeassistant.core import callback
-from homeassistant.helpers import config_validation as cv
+import voluptuous as vol
 
 from custom_components.lovelace_minimalist_ui.enums import ConfigurationType
 
 from .base import LmuBase
 from .const import (
-    DEFAULT_INCLUDE_OTHER_CARDS,
-    NAME,
-    DOMAIN,
+    CONF_INCLUDE_OTHER_CARDS,
     CONF_LANGUAGE,
     CONF_LANGUAGES,
     CONF_SIDEPANEL_ICON,
     CONF_SIDEPANEL_TITLE,
-    CONF_INCLUDE_OTHER_CARDS,
-    CONF_THEME_OPTIONS,
     CONF_THEME,
+    CONF_THEME_OPTIONS,
     CONF_THEME_PATH,
+    DEFAULT_INCLUDE_OTHER_CARDS,
     DEFAULT_LANGUAGE,
-    DEFAULT_NAME,
     DEFAULT_SIDEPANEL_ICON,
     DEFAULT_SIDEPANEL_TITLE,
-    DEFAULT_INCLUDE_OTHER_CARDS,
     DEFAULT_THEME,
-    DEFAULT_THEME_PATH
+    DEFAULT_THEME_PATH,
+    DOMAIN,
+    NAME,
 )
 
 _LOGGER: logging.Logger = logging.getLogger(__name__)
+
 
 def lmu_config_option_schema(options: dict = {}) -> dict:
     """Return a schema for LMU configuration options."""
@@ -59,11 +56,10 @@ def lmu_config_option_schema(options: dict = {}) -> dict:
         ): str,
         vol.Optional(
             CONF_INCLUDE_OTHER_CARDS,
-            default=options.get(
-                CONF_INCLUDE_OTHER_CARDS, DEFAULT_INCLUDE_OTHER_CARDS
-            ),
+            default=options.get(CONF_INCLUDE_OTHER_CARDS, DEFAULT_INCLUDE_OTHER_CARDS),
         ): bool,
     }
+
 
 class LmuFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
     """Config flow for Lovelace Minimalist UI."""
@@ -85,9 +81,8 @@ class LmuFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         if user_input:
             return self.async_create_entry(title=NAME, data=user_input)
 
-        ## Initial form
+        # Initial form
         return await self._show_config_form(user_input)
-
 
     async def _show_config_form(self, user_input):
         """Show the configuration form to edit options."""
@@ -95,11 +90,9 @@ class LmuFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         if not user_input:
             user_input = {}
 
-
         schema = lmu_config_option_schema(user_input)
 
         return self.async_show_form(step_id="user", data_schema=vol.Schema(schema))
-
 
     @staticmethod
     @callback
@@ -120,7 +113,7 @@ class LmuOptionFlowHandler(config_entries.OptionsFlow):
 
     async def async_step_user(self, user_input=None):
         """Handle a flow initilized by the user."""
-        lmu : LmuBase = self.hass.data.get(DOMAIN)
+        lmu: LmuBase = self.hass.data.get(DOMAIN)
         if user_input is not None:
             return self.async_create_entry(title=NAME, data=user_input)
 
@@ -133,4 +126,3 @@ class LmuOptionFlowHandler(config_entries.OptionsFlow):
             schema = lmu_config_option_schema(self.config_entry.options)
 
         return self.async_show_form(step_id="user", data_schema=vol.Schema(schema))
-

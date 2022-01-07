@@ -1,14 +1,18 @@
 # Custom-card "WiFi Signal"
 
-The `custom_card_mpse_wifisignal` is used to display the status of a wifi signal (dBm).
+The `custom_card_mpse_wifisignal` is used to display the status of a wifi signal (dBm). Icon changes based on signal strenght.
 
 ![WiFi Signal](./custom_wifisignal.png)
 
 ## Credits
 Author: mpse
-Version: 0.1.0
+Version: 0.2.0
 
 ## Changelog
+<details>
+<summary>0.2.0</summary>
+Cleanup and updated documentation.
+</details>
 <details>
 <summary>0.1.0</summary>
 Initial release.
@@ -33,15 +37,37 @@ No special cards needed.
 <th>Explanation</th>
 </tr>
 <tr>
-<td>entity</td>
-<td>sensor.wifi_julgran</td>
-<td>yes</td>
-<td>Name of wifi signal sesnsor</td>
+<td>None</td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 </table>
 
 ## Template code
 
 ```yaml
-... see custom card.
+---
+custom_card_mpse_wifisignal:
+  template:
+    - "icon_info_bg"
+  icon: |
+    [[[
+      var icon = "mdi:wifi-strength-off";
+      var signal = states[entity.entity_id].state;
+      if (signal >= -50) {
+        icon = "mdi:wifi-strength-4";
+      } else if (signal >= -60) {
+        icon = "mdi:wifi-strength-3";
+      } else if (signal >= -70) {
+        icon = "mdi:wifi-strength-2";
+      } else if (signal >= -80) {
+        icon = "mdi:wifi-strength-1";
+      }
+      return icon;
+    ]]]
+  label: |
+    [[[
+      return entity.state + " dBm";
+    ]]]
 ```

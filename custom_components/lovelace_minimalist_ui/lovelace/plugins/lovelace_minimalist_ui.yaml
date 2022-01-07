@@ -1,9 +1,8 @@
+---
 # lovelace_minimalist_ui
-
 version: "{{ _lmu_global.version }}"
 theme: "{{ _lmu_global.theme }}"
-themes: '{{ _lmu_global.themes }}'
-
+themes: "{{ _lmu_global.themes }}"
 
 # test dynamic loading
 test: "{{ _lmu_config.test }}"

@@ -1,21 +1,22 @@
+---
 default_config:
 
 frontend:
-  themes: !include_dir_merge_named themes
+  themes: !include_dir_merge_named "themes"
 
 # For some reason default_config is not picking it up.
-automation ui: !include automations.yaml
+automation ui: !include "automations.yaml"
 
 # lovelace:
-#   mode: storage
+#   mode: "storage"
 
 # sensor:
-#   - platform: time_date
+#   - platform: "time_date"
 
 logger:
-  default: info
+  default: "info"
   logs:
-    custom_components.lovelace_minimalist_ui: debug
+    custom_components.lovelace_minimalist_ui: "debug"
 # If you need to debug uncommment the line below (doc: https://www.home-assistant.io/integrations/debugpy/)
 # debugpy:
 
@@ -28,19 +29,19 @@ logger:
 # # Install virtual integration with hacs
 # virtual:
 # light:
-#   - platform: virtual
+#   - platform: "virtual"
 #     name: "Light 1"
 #     support_color: true
 #     support_color_temp: true
 #     support_white_value: true
 
-#   - platform: virtual
+#   - platform: "virtual"
 #     name: "Light 2"
 #     support_color: true
 #     support_color_temp: true
 #     support_white_value: true
 
-#   - platform: virtual
+#   - platform: "virtual"
 #     name: "Light 3"
 #     support_color: true
 #     support_color_temp: true
