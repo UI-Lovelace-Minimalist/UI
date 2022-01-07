@@ -75,7 +75,7 @@ minimalist-mobile:
       # switch
       switch-checked-color: "var(--google-blue)"
       # media player
-      mini-media-player-accent-color: "var(--google-red)"
+      mini-media-player-accent-color: "var(--google-blue)"
     dark:
       # text
       primary-text-color: "#DDDDDD"
