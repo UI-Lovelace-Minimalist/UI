@@ -1,3 +1,5 @@
+"""Adds Config Flow to UI Lovelace Minimalist Integration."""
+
 from __future__ import annotations
 
 import logging
@@ -6,9 +8,7 @@ from homeassistant import config_entries
 from homeassistant.core import callback
 import voluptuous as vol
 
-from custom_components.lovelace_minimalist_ui.enums import ConfigurationType
-
-from .base import LmuBase
+from .base import UlmBase
 from .const import (
     CONF_INCLUDE_OTHER_CARDS,
     CONF_LANGUAGE,
@@ -27,14 +27,15 @@ from .const import (
     DOMAIN,
     NAME,
 )
+from .enums import ConfigurationType
 
 _LOGGER: logging.Logger = logging.getLogger(__name__)
 
 
-def lmu_config_option_schema(options: dict = {}) -> dict:
-    """Return a schema for LMU configuration options."""
+def ulm_config_option_schema(options: dict = {}) -> dict:
+    """Return a schema for ULM configuration options."""
 
-    # Also update base.py LmuConfiguration
+    # Also update base.py UlmConfiguration
     return {
         vol.Optional(
             CONF_LANGUAGE, default=options.get(CONF_LANGUAGE, DEFAULT_LANGUAGE)
@@ -61,8 +62,8 @@ def lmu_config_option_schema(options: dict = {}) -> dict:
     }
 
 
-class LmuFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
-    """Config flow for Lovelace Minimalist UI."""
+class UlmFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
+    """Config flow for UI Lovelace Minimalist."""
 
     VERSION = 1
 
@@ -90,21 +91,22 @@ class LmuFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         if not user_input:
             user_input = {}
 
-        schema = lmu_config_option_schema(user_input)
+        schema = ulm_config_option_schema(user_input)
 
         return self.async_show_form(step_id="user", data_schema=vol.Schema(schema))
 
     @staticmethod
     @callback
     def async_get_options_flow(config_entry):
-        """LMU config flow options hanlder."""
-        return LmuOptionFlowHandler(config_entry)
+        """ULM config flow options hanlder."""
+        return UlmOptionFlowHandler(config_entry)
 
 
-class LmuOptionFlowHandler(config_entries.OptionsFlow):
-    """LMU config flow option handler."""
+class UlmOptionFlowHandler(config_entries.OptionsFlow):
+    """ULM config flow option handler."""
 
     def __init__(self, config_entry):
+        """Initialize."""
         self.config_entry = config_entry
 
     async def async_step_init(self, _user_input=None):
@@ -113,16 +115,16 @@ class LmuOptionFlowHandler(config_entries.OptionsFlow):
 
     async def async_step_user(self, user_input=None):
         """Handle a flow initilized by the user."""
-        lmu: LmuBase = self.hass.data.get(DOMAIN)
+        ulm: UlmBase = self.hass.data.get(DOMAIN)
         if user_input is not None:
             return self.async_create_entry(title=NAME, data=user_input)
 
-        if lmu is None or lmu.configuration is None:
+        if ulm is None or ulm.configuration is None:
             return self.async_abort(reason="not_setup")
 
-        if lmu.configuration.config_type == ConfigurationType.YAML:
+        if ulm.configuration.config_type == ConfigurationType.YAML:
             schema = {vol.Optional("not_in_use", default=""): str}
         else:
-            schema = lmu_config_option_schema(self.config_entry.options)
+            schema = ulm_config_option_schema(self.config_entry.options)
 
         return self.async_show_form(step_id="user", data_schema=vol.Schema(schema))

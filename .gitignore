@@ -1,12 +1,12 @@
 
 custom_components/*
-/lovelace-minimalist-ui
-lovelace_minimalist_ui/
+/ui_lovelace-minimalist
+ui_lovelace_minimalist/
 /themes/
 
-!custom_components/lovelace_minimalist_ui
-custom_components/lovelace_minimalist_ui/__pycache__
-custom_components/lovelace_minimalist_ui/.installed
+!custom_components/ui_lovelace_minimalist
+custom_components/ui_lovelace_minimalist/__pycache__
+custom_components/ui_lovelace_minimalist/.installed
 
 __pycache__
 pythonenv*

@@ -1,8 +1,8 @@
 {
-    "name": "lovelace-minimalist-ui",
+    "name": "ui-lovelace-minimalist",
     "private": true,
     "version": "0.0.1",
-    "description": "lovelace-minimalist-ui",
+    "description": "ui-lovelace-minimalist",
     "scripts": {
         "build": "webpack",
         "watch": "webpack --watch --mode=development",

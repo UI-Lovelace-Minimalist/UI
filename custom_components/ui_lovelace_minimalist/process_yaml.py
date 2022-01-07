@@ -1,3 +1,6 @@
+"""Process Yaml and Config for UI Lovelace Minimalist Integration."""
+
+
 from __future__ import annotations
 
 from collections import OrderedDict
@@ -13,22 +16,24 @@ from homeassistant.util.yaml import loader
 import jinja2
 import yaml
 
-from .base import LmuBase
+from .base import UlmBase
 from .const import DOMAIN, VERSION
 
 _LOGGER: logging.Logger = logging.getLogger(__name__)
 
 
 def fromjson(value):
+    """From Json Jinja2 Filter."""
+
     return json.loads(value)
 
 
-jinja = jinja2.Environment(loader=jinja2.FileSystemLoader("/"))
+jinja = jinja2.Environment(loader=jinja2.FileSystemLoader("/"), autoescape=True)
 
 jinja.filters["fromjson"] = fromjson
 
-lovelace_minimalist_ui_config = {}
-lovelace_minimalist_ui_global = {}
+ui_lovelace_minimalist_config = {}
+ui_lovelace_minimalist_global = {}
 
 LANGUAGES = {
     "English": "EN",
@@ -42,10 +47,11 @@ LANGUAGES = {
 
 
 def load_yamll(fname, secrets=None, args={}):
+    """Load YAML."""
     try:
         process_yaml = False
         with open(fname, encoding="utf-8") as f:
-            if f.readline().lower().startswith(("# lovelace_minimalist_ui")):
+            if f.readline().lower().startswith("# ui_lovelace_minimalist"):
                 process_yaml = True
         if process_yaml:
             _LOGGER.warning("PARSING JINJA TEMPLATE")
@@ -53,14 +59,14 @@ def load_yamll(fname, secrets=None, args={}):
                 jinja.get_template(fname).render(
                     {
                         **args,
-                        "_lmu_config": lovelace_minimalist_ui_config,
-                        "_lmu_global": lovelace_minimalist_ui_global,
+                        "_ulm_config": ui_lovelace_minimalist_config,
+                        "_ulm_global": ui_lovelace_minimalist_global,
                     }
                 )
             )
             stream.name = fname
             return (
-                loader.yaml.load(
+                loader.yaml.safe_load(
                     stream,
                     Loader=lambda _stream: loader.SafeLineLoader(_stream, secrets),
                 )
@@ -69,7 +75,7 @@ def load_yamll(fname, secrets=None, args={}):
         else:
             with open(fname, encoding="utf-8") as config_file:
                 return (
-                    loader.yaml.load(
+                    loader.yaml.safe_load(
                         config_file,
                         Loader=lambda stream: loader.SafeLineLoader(stream, secrets),
                     )
@@ -84,6 +90,7 @@ def load_yamll(fname, secrets=None, args={}):
 
 
 def _include_yaml(ldr, node):
+    """Include Yaml."""
     args = {}
     if isinstance(node.value, str):
         fn = node.value
@@ -104,6 +111,7 @@ loader.SafeLineLoader.add_constructor("!include", _include_yaml)
 
 
 def compose_node(self, parent, index):
+    """Compose Node."""
     if self.check_event(yaml.events.AliasEvent):
         event = self.get_event()
         anchor = event.anchor
@@ -127,13 +135,15 @@ def compose_node(self, parent, index):
 
 yaml.composer.Composer.compose_node = compose_node
 
+
 # TODO: Maybe move all of this to .base.py so functions can be called
-def process_yaml(hass: HomeAssistant, lmu: LmuBase):
+def process_yaml(hass: HomeAssistant, ulm: UlmBase):
+    """Process Yaml."""
     _LOGGER.debug("Checking dependencies")
     if not os.path.exists(hass.config.path("custom_components/browser_mod")):
         _LOGGER.error('HACS Integration repo "browser mod" is not installed!')
 
-    if not lmu.configuration.include_other_cards:
+    if not ulm.configuration.include_other_cards:
         depenceny_resource_paths = [
             "button-card",
             "light-entity-card",
@@ -157,7 +167,7 @@ def process_yaml(hass: HomeAssistant, lmu: LmuBase):
     if os.path.exists(hass.config.path(f"{DOMAIN}/configs")):
         # Create combined cards dir
         combined_cards_dir = hass.config.path(
-            f"custom_components/{DOMAIN}/__minimalist_ui__/button-cards-templates"
+            f"custom_components/{DOMAIN}/__ui_minimalist__/button-cards-templates"
         )
         os.makedirs(combined_cards_dir, exist_ok=True)
 
@@ -167,10 +177,10 @@ def process_yaml(hass: HomeAssistant, lmu: LmuBase):
         ):
             loaded_yaml = load_yamll(fname)
             if isinstance(loaded_yaml, dict):
-                lovelace_minimalist_ui_config.update(loaded_yaml)
+                ui_lovelace_minimalist_config.update(loaded_yaml)
 
         # Translations
-        language = LANGUAGES[lmu.configuration.language]
+        language = LANGUAGES[ulm.configuration.language]
 
         # Non needed yet
         # translations = load_yamll(hass.config.path(f"custom_components/{DOMAIN}/lovelace/translations/{language}.yaml"))
@@ -217,27 +227,27 @@ def process_yaml(hass: HomeAssistant, lmu: LmuBase):
         else:
             installed = "false"
 
-        lovelace_minimalist_ui_global.update(
+        ui_lovelace_minimalist_global.update(
             [
                 ("version", VERSION),
-                ("theme", lmu.configuration.theme),
+                ("theme", ulm.configuration.theme),
                 ("themes", json.dumps(themes)),
                 ("installed", installed),
             ]
         )
 
-        hass.bus.async_fire("lovelace_minimalist_ui_reload")
+        hass.bus.async_fire("ui_lovelace_minimalist_reload")
 
     async def handle_reload(call):
-        _LOGGER.debug("Reload Lovelace Minimalist UI Configuration")
+        _LOGGER.debug("Reload UI Lovelace Minimalist Configuration")
 
         reload_configuration(hass)
 
-    # Register servcie lovelace_minimalist_ui.reload
+    # Register servcie ui_lovelace_minimalist.reload
     hass.services.async_register(DOMAIN, "reload", handle_reload)
 
     async def handle_installed(call):
-        _LOGGER.debug("Handle installed for Lovelace Minimalist UI")
+        _LOGGER.debug("Handle installed for UI Lovelace Minimalist")
 
         path = hass.config.path(f"custom_components/{DOMAIN}/.installed")
 
@@ -251,6 +261,7 @@ def process_yaml(hass: HomeAssistant, lmu: LmuBase):
 
 
 def reload_configuration(hass):
+    """Reload Configuration."""
     if os.path.exists(hass.config.path(f"{DOMAIN}/configs")):
         # Main config
         # No config generated yet at the start of process_yaml()
@@ -263,17 +274,17 @@ def reload_configuration(hass):
             if isinstance(loaded_yaml, dict):
                 config_new.update(loaded_yaml)
 
-        lovelace_minimalist_ui_config.update(config_new)
+        ui_lovelace_minimalist_config.update(config_new)
 
         if os.path.exists(hass.config.path(f"custom_components/{DOMAIN}/.installed")):
             installed = "true"
         else:
             installed = "false"
 
-        lovelace_minimalist_ui_global.update(
+        ui_lovelace_minimalist_global.update(
             [
                 ("installed", installed),
             ]
         )
 
-    hass.bus.async_fire("lovelace_minimalist_ui_reload")
+    hass.bus.async_fire("ui_lovelace_minimalist_reload")

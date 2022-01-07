@@ -61,10 +61,10 @@ class LovelaceMinimalistUi {
     // console.info(lovelace);
     if (lovelace) {
       if (lovelace.config) {
-        if (lovelace.config.lovelace_minimalist_ui) {
-          // this.set_theme(lovelace.config.lovelace_minimalist_ui);
+        if (lovelace.config.ui_lovelace_minimalist) {
+          // this.set_theme(lovelace.config.ui_lovelace_minimalist);
 
-          // console.log(lovelace.config.lovelace_minimalist_ui);
+          // console.log(lovelace.config.ui_lovelace_minimalist);
         }
       }
     }
@@ -74,8 +74,8 @@ class LovelaceMinimalistUi {
   //   // Only applying after refresh when on the dashbaord. but after moving to ohter pages. setting is gone, For now solved with Blueprint
   //   const root = this.getRoot();
 
-  //   if (!root.getAttribute("data-lovelace-minimalist-ui-theme")) {
-  //     root.setAttribute("data-lovelace-minimalist-ui-theme", true);
+  //   if (!root.getAttribute("data-ui-lovelace-minimalist-theme")) {
+  //     root.setAttribute("data-ui-lovelace-minimalist-theme", true);
 
   //     //See if user has set default HA theme or Lovelace Minimalist Theme
   //     if (config.theme !== "HA selected theme") {
@@ -114,7 +114,7 @@ class LovelaceMinimalistUi {
 
   connect(conn) {
     this.conn = conn
-    conn.subscribeEvents(() => this._reload(), "lovelace_minimalist_ui_reload");
+    conn.subscribeEvents(() => this._reload(), "ui_lovelace_minimalist_reload");
   }
 
   _reload() {
@@ -130,10 +130,10 @@ class LovelaceMinimalistUi {
   }
 }
 
-window.lovelace_minimalist_ui = window.lovelace_minimalist_ui || new LovelaceMinimalistUi();
+window.ui_lovelace_minimalist = window.ui_lovelace_minimalist || new LovelaceMinimalistUi();
 
 // const bases = [customElements.whenDefined('hui-masonry-view'), customElements.whenDefined('hc-lovelace')];
 // Promise.race(bases).then(() => {
-//   window.lovelace_minimalist_ui = window.lovelace_minimalist_ui || new LovelaceMinimalistUi();
+//   window.ui_lovelace_minimalist = window.ui_lovelace_minimalist || new LovelaceMinimalistUi();
 
 // });

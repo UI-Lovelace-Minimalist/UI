@@ -1,12 +1,12 @@
-"""Constants for Lovelace Minimalist UI."""
+"""Constants for UI Lovelace Minimalist."""
 # Base component constants
-NAME = "Lovelace Minimalist UI"
-DOMAIN = "lovelace_minimalist_ui"
+NAME = "UI Lovelace Minimalist"
+DOMAIN = "ui_lovelace_minimalist"
 DOMAIN_DATA = f"{DOMAIN}_data"
 VERSION = "0.0.1"
 
 ATTRIBUTION = "Data provided by http://jsonplaceholder.typicode.com/"
-ISSUE_URL = "https://github.com/stokkie90/lovelace-minimalist-ui/issues"
+ISSUE_URL = "https://github.com/stokkie90/ui-lovelace-minimalist/issues"
 
 
 CONF_LANGUAGE = "language"

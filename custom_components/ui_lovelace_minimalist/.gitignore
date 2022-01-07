@@ -1,5 +1,5 @@
 # Folder used for combining card templates
 #   - from HACS
-#   - from /config/lovelace_minimalist_ui/cards
+#   - from /config/ui_lovelace_minimalist/cards
 #   - Setting correct language file
-__minimalist_ui__/
+__ui_minimalist__/

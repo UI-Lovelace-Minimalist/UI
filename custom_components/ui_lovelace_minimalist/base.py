@@ -1,4 +1,4 @@
-"""Base Lovelace Minimalist UI class."""
+"""Base UI Lovelace Minimalist class."""
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass, field
@@ -16,8 +16,8 @@ from .enums import ConfigurationType
 
 
 @dataclass
-class LmuConfiguration:
-    """LmuConfiguration class."""
+class UlmConfiguration:
+    """UlmConfiguration class."""
 
     config: dict[str, Any] = field(default_factory=dict)
     config_entry: dict[str, str] = field(default_factory=dict)
@@ -43,7 +43,7 @@ class LmuConfiguration:
             self.__setattr__(key, data[key])
 
 
-class LmuBase:
-    """Base Lovelace Minimalist UI."""
+class UlmBase:
+    """Base UI Lovelace Minimalist."""
 
-    configuration = LmuConfiguration()
+    configuration = UlmConfiguration()
