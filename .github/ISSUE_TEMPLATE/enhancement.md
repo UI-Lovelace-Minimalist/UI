@@ -2,7 +2,7 @@
 name: Enhancement
 about: 'Suggest an idea what we can do better '
 title: ''
-labels: enhancement
+labels: ':sparkles: enhancement'
 assignees: ''
 
 ---
