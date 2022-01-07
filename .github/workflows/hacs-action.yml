@@ -1,0 +1,18 @@
+---
+name: "HACS Action"
+
+on:
+  pull_request:
+    branches: ["main", "dev"]
+
+jobs:
+  pre-commit:
+    name: "HACS Action"
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "⤵️ Check out code from GitHub"
+        uses: "actions/checkout@v2"
+      - name: "\U0001F680 Run HACS Action"
+        uses: "hacs/action@main"
+        with:
+          category: "integration"
