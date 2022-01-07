@@ -8,8 +8,8 @@ In the container you will have a dedicated Home Assistant core instance running 
 
 - [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 - Docker
-  -  For Linux, macOS, or Windows 10 Pro/Enterprise/Education use the [current release version of Docker](https://docs.docker.com/install/)
-  -  Windows 10 Home requires [WSL 2](https://docs.microsoft.com/windows/wsl/wsl2-install) and the current Edge version of Docker Desktop (see instructions [here](https://docs.docker.com/docker-for-windows/wsl-tech-preview/)). This can also be used for Windows Pro/Enterprise/Education.
+  - For Linux, macOS, or Windows 10 Pro/Enterprise/Education use the [current release version of Docker](https://docs.docker.com/install/)
+  - Windows 10 Home requires [WSL 2](https://docs.microsoft.com/windows/wsl/wsl2-install) and the current Edge version of Docker Desktop (see instructions [here](https://docs.docker.com/docker-for-windows/wsl-tech-preview/)). This can also be used for Windows Pro/Enterprise/Education.
 - [Visual Studio code](https://code.visualstudio.com/)
 - [Remote - Containers (VSC Extension)][extension-link]
 
@@ -35,12 +35,12 @@ When a task is currently running (like `Run Home Assistant on port 9123` for the
 
 The available tasks are:
 
-Task | Description
--- | --
-Run Home Assistant on port 9123 | Launch Home Assistant with your custom component code and the configuration defined in `.devcontainer/configuration.yaml`.
-Run Home Assistant configuration against /config | Check the configuration.
-Upgrade Home Assistant to latest dev | Upgrade the Home Assistant core version in the container to the latest version of the `dev` branch.
-Install a specific version of Home Assistant | Install a specific version of Home Assistant core in the container.
+| Task                                             | Description                                                                                                                |
+| ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
+| Run Home Assistant on port 9123                  | Launch Home Assistant with your custom component code and the configuration defined in `.devcontainer/configuration.yaml`. |
+| Run Home Assistant configuration against /config | Check the configuration.                                                                                                   |
+| Upgrade Home Assistant to latest dev             | Upgrade the Home Assistant core version in the container to the latest version of the `dev` branch.                        |
+| Install a specific version of Home Assistant     | Install a specific version of Home Assistant core in the container.                                                        |
 
 ### Step by Step debugging
 
@@ -69,6 +69,14 @@ First we need to install some dependencies to get a basic Home Assistant instanc
 # start terminal in contianer
 # install pre-commit
 pre-commit install
+
+# Configure git in devcontainer
+git config user.name "John Doe"
+git cofnig user.email "john_doe@gmail.com"
+
+# Deps for pre-commit
+sudo apt update
+sudo apt install ruby
 ```
 
 #### Install HACS
@@ -84,9 +92,10 @@ wget -O - https://get.hacs.xyz | bash -
 ```
 
 #### Add Integrations
+
 - Run task: `Run Home Assistant on port 9123` described in [Tasks](#tasks)
 - Head to: http://localhost:9123
-    - create user
+  - create user
 - Add HACS integration
 - Go to HACS
   - Wait until Hacs is finished starting up.

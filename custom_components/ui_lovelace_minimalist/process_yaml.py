@@ -65,22 +65,10 @@ def load_yamll(fname, secrets=None, args={}):
                 )
             )
             stream.name = fname
-            return (
-                loader.yaml.safe_load(
-                    stream,
-                    Loader=lambda _stream: loader.SafeLineLoader(_stream, secrets),
-                )
-                or OrderedDict()
-            )
+            return loader.yaml.safe_load(stream) or OrderedDict()
         else:
             with open(fname, encoding="utf-8") as config_file:
-                return (
-                    loader.yaml.safe_load(
-                        config_file,
-                        Loader=lambda stream: loader.SafeLineLoader(stream, secrets),
-                    )
-                    or OrderedDict()
-                )
+                return loader.yaml.safe_load(config_file) or OrderedDict()
     except loader.yaml.YAMLError as exc:
         _LOGGER.error(str(exc))
         raise HomeAssistantError(exc)
