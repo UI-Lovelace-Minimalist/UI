@@ -1,0 +1,16 @@
+
+custom_components/*
+/ui_lovelace-minimalist
+ui_lovelace_minimalist/
+/themes/
+
+!custom_components/ui_lovelace_minimalist
+custom_components/ui_lovelace_minimalist/__pycache__
+custom_components/ui_lovelace_minimalist/.installed
+
+__pycache__
+pythonenv*
+.python-version
+.coverage
+venv
+.venv

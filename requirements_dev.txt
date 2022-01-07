@@ -1,0 +1,5 @@
+# homeassistant
+jinja2
+pre-commit
+# Causing some wierd Typguard error in devcontainer(typing-extensions-3.7.4.3)
+# typing-extensions>=4.0.0
