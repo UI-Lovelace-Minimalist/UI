@@ -13,5 +13,6 @@
     "@stokkie90"
   ],
   "requirements": [],
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "iot_class": "calculated"
 }
