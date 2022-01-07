@@ -15,4 +15,4 @@ jobs:
       - name: "\U0001F680 Run Labeler"
         uses: "crazy-max/ghaction-github-labeler@v3.1.1"
         with:
-          skip-delete: true
+          skip-delete: false
