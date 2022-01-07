@@ -77,3 +77,8 @@ repos:
           - "--fix=lf"
       - id: "check-yaml"
         args: ["--unsafe"]
+      - id: "debug-statements"
+      - id: "end-of-file-fixer"
+      - id: "trailing-whitespace"
+      - id: "mixed-line-ending"
+      - id: "requirements-txt-fixer"

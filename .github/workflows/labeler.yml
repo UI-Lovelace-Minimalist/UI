@@ -1,21 +1,18 @@
-name: Manage labels
+---
+name: "Manage labels"
 
 on:
   push:
-    branches:
-      - main
-      - master
-      - dev
+    branches: ["main", "dev"]
 
 jobs:
   labeler:
-    name: Labeler
-    runs-on: ubuntu-latest
+    name: "Labeler"
+    runs-on: "ubuntu-latest"
     steps:
-      - name: Check out the repository
-        uses: actions/checkout@v2.3.4
-
-      - name: Run Labeler
-        uses: crazy-max/ghaction-github-labeler@v3.1.1
+      - name: "⤵️ Check out code from GitHub"
+        uses: "actions/checkout@v2"
+      - name: "\U0001F680 Run Labeler"
+        uses: "crazy-max/ghaction-github-labeler@v3.1.1"
         with:
           skip-delete: true
