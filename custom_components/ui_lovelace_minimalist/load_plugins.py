@@ -1,3 +1,5 @@
+"""Load Plugins for UI Lovelace Minimalist Integration."""
+
 from __future__ import annotations
 
 import logging
@@ -17,7 +19,7 @@ _LOGGER: logging.Logger = logging.getLogger(__name__)
 
 
 def load_plugins(hass: HomeAssistant, ulm: UlmBase):
-    """Load Plugins"""
+    """Load Plugins."""
 
     add_extra_js_url(hass, "/ui_lovelace_minimalist/js/ui-lovelace-minimalist.js")
 

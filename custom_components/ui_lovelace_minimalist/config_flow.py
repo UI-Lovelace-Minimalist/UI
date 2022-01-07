@@ -1,3 +1,5 @@
+"""Adds Config Flow to UI Lovelace Minimalist Integration."""
+
 from __future__ import annotations
 
 import logging
@@ -6,7 +8,6 @@ from homeassistant import config_entries
 from homeassistant.core import callback
 import voluptuous as vol
 
-from .enums import ConfigurationType
 from .base import UlmBase
 from .const import (
     CONF_INCLUDE_OTHER_CARDS,
@@ -26,6 +27,7 @@ from .const import (
     DOMAIN,
     NAME,
 )
+from .enums import ConfigurationType
 
 _LOGGER: logging.Logger = logging.getLogger(__name__)
 
@@ -104,6 +106,7 @@ class UlmOptionFlowHandler(config_entries.OptionsFlow):
     """ULM config flow option handler."""
 
     def __init__(self, config_entry):
+        """Initialize."""
         self.config_entry = config_entry
 
     async def async_step_init(self, _user_input=None):

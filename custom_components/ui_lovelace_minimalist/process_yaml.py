@@ -1,3 +1,6 @@
+"""Process Yaml and Config for UI Lovelace Minimalist Integration."""
+
+
 from __future__ import annotations
 
 from collections import OrderedDict
@@ -20,10 +23,12 @@ _LOGGER: logging.Logger = logging.getLogger(__name__)
 
 
 def fromjson(value):
+    """From Json Jinja2 Filter."""
+
     return json.loads(value)
 
 
-jinja = jinja2.Environment(loader=jinja2.FileSystemLoader("/"))
+jinja = jinja2.Environment(loader=jinja2.FileSystemLoader("/"), autoescape=True)
 
 jinja.filters["fromjson"] = fromjson
 
@@ -42,10 +47,11 @@ LANGUAGES = {
 
 
 def load_yamll(fname, secrets=None, args={}):
+    """Load YAML."""
     try:
         process_yaml = False
         with open(fname, encoding="utf-8") as f:
-            if f.readline().lower().startswith(("# ui_lovelace_minimalist")):
+            if f.readline().lower().startswith("# ui_lovelace_minimalist"):
                 process_yaml = True
         if process_yaml:
             _LOGGER.warning("PARSING JINJA TEMPLATE")
@@ -60,7 +66,7 @@ def load_yamll(fname, secrets=None, args={}):
             )
             stream.name = fname
             return (
-                loader.yaml.load(
+                loader.yaml.safe_load(
                     stream,
                     Loader=lambda _stream: loader.SafeLineLoader(_stream, secrets),
                 )
@@ -69,7 +75,7 @@ def load_yamll(fname, secrets=None, args={}):
         else:
             with open(fname, encoding="utf-8") as config_file:
                 return (
-                    loader.yaml.load(
+                    loader.yaml.safe_load(
                         config_file,
                         Loader=lambda stream: loader.SafeLineLoader(stream, secrets),
                     )
@@ -84,6 +90,7 @@ def load_yamll(fname, secrets=None, args={}):
 
 
 def _include_yaml(ldr, node):
+    """Include Yaml."""
     args = {}
     if isinstance(node.value, str):
         fn = node.value
@@ -104,6 +111,7 @@ loader.SafeLineLoader.add_constructor("!include", _include_yaml)
 
 
 def compose_node(self, parent, index):
+    """Compose Node."""
     if self.check_event(yaml.events.AliasEvent):
         event = self.get_event()
         anchor = event.anchor
@@ -127,8 +135,10 @@ def compose_node(self, parent, index):
 
 yaml.composer.Composer.compose_node = compose_node
 
+
 # TODO: Maybe move all of this to .base.py so functions can be called
 def process_yaml(hass: HomeAssistant, ulm: UlmBase):
+    """Process Yaml."""
     _LOGGER.debug("Checking dependencies")
     if not os.path.exists(hass.config.path("custom_components/browser_mod")):
         _LOGGER.error('HACS Integration repo "browser mod" is not installed!')
@@ -251,6 +261,7 @@ def process_yaml(hass: HomeAssistant, ulm: UlmBase):
 
 
 def reload_configuration(hass):
+    """Reload Configuration."""
     if os.path.exists(hass.config.path(f"{DOMAIN}/configs")):
         # Main config
         # No config generated yet at the start of process_yaml()

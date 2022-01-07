@@ -1,3 +1,4 @@
+"""Custom Integration to setup UI Lovelace Minimalist."""
 from __future__ import annotations
 
 import logging
@@ -7,9 +8,9 @@ from homeassistant.components import frontend
 from homeassistant.config_entries import SOURCE_IMPORT, ConfigEntry
 from homeassistant.core import Config, HomeAssistant
 
-from .enums import ConfigurationType
 from .base import UlmBase
 from .const import DOMAIN, NAME
+from .enums import ConfigurationType
 from .load_dashboard import load_dashboard
 from .load_plugins import load_plugins
 from .process_yaml import process_yaml
@@ -23,7 +24,7 @@ async def async_initialize_integration(
     config_entry: ConfigEntry | None = None,
     config: dict[str, Any] | None = None,
 ) -> bool:
-    """Initialize the integration"""
+    """Initialize the integration."""
     hass.data[DOMAIN] = ulm = UlmBase()
 
     if config is not None:
@@ -83,8 +84,8 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> b
 
 
 async def async_remove_entry(hass: HomeAssistant, config_entry: ConfigEntry):
-    """Remove Integration"""
-    _LOGGER.debug("{} is now uninstalled".format(NAME))
+    """Remove Integration."""
+    _LOGGER.debug(f"{NAME} is now uninstalled")
 
     # TODO cleanup:
     #  - themes
@@ -93,6 +94,7 @@ async def async_remove_entry(hass: HomeAssistant, config_entry: ConfigEntry):
 
 
 async def async_reload_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> None:
+    """Reload Integration."""
     _LOGGER.debug("Reload the config entry")
 
     await async_setup_entry(hass, config_entry)

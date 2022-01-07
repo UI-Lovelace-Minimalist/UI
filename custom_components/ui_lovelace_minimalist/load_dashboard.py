@@ -1,3 +1,5 @@
+"""Load Dashboards for UI Lovelace Minimalist Integration."""
+
 from __future__ import annotations
 
 import logging
@@ -12,6 +14,7 @@ _LOGGER: logging.Logger = logging.getLogger(__name__)
 
 
 def load_dashboard(hass: HomeAssistant, ulm: UlmBase):
+    """Load Dashboards."""
 
     dashboard_url = "ui-lovelace-minimalist"
     dashboard_config = {
