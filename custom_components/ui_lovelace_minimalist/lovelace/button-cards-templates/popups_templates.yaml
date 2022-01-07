@@ -978,7 +978,7 @@ popup_media_player:
 popup_media_player_infos:
   styles:
     grid:
-      - grid-template-areas: '"header header" "content1 content2" "footer footer"'
+      - grid-template-areas: "'header header' 'content1 content2' 'footer footer'"
       - grid-template-rows: "16vh 56vh 14vh"
       - grid-template-columns: "1fr 1fr"
       - column-gap: "30px"
@@ -991,11 +991,11 @@ popup_media_player_infos:
         - align-self: "start"
       content1:
         - align-self: "center"
-        - background-color: var(--card-background-color)
-        - border-radius: var(--border-radius)
-        - box-shadow: var(--box-shadow)
-        - width: 100%
-        - max-width: 400px
+        - background-color: "var(--card-background-color)"
+        - border-radius: "var(--border-radius)"
+        - box-shadow: "var(--box-shadow)"
+        - width: "100%"
+        - max-width: "400px"
         - justify-self: "center"
       content2:
         - align-self: "center"
@@ -1032,29 +1032,29 @@ popup_media_player_infos:
           grid:
             - grid-template-areas: "'picture' 'media' 'control'"
           card:
-            - background: none
-            - box-shadow: none
-            - padding: 4%
+            - background: "none"
+            - box-shadow: "none"
+            - padding: "4%"
           custom_fields:
             picture:
-              - margin-left: auto
-              - margin-right: auto
-              - background: none
-              - box-shadow: none
+              - margin-left: "auto"
+              - margin-right: "auto"
+              - background: "none"
+              - box-shadow: "none"
             media:
-              - background: none
-              - box-shadow: none
-              - width: calc(100vw - 60px)
-              - max-width: 370px
+              - background: "none"
+              - box-shadow: "none"
+              - width: "calc(100vw - 60px)"
+              - max-width: "370px"
             control:
-              - background: none
-              - box-shadow: none
+              - background: "none"
+              - box-shadow: "none"
         custom_fields:
           picture:
             card:
-              type: custom:mini-media-player
+              type: "custom:mini-media-player"
               entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
-              artwork: full-cover
+              artwork: "full-cover"
               hide:
                 name: true
                 icon: true
@@ -1072,7 +1072,7 @@ popup_media_player_infos:
                   }
           media:
             card:
-              type: custom:mini-media-player
+              type: "custom:mini-media-player"
               entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
               hide:
                 runtime: false
@@ -1105,7 +1105,7 @@ popup_media_player_infos:
                   }
           control:
             card:
-              type: custom:mini-media-player
+              type: "custom:mini-media-player"
               entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
               hide:
                 icon: true
