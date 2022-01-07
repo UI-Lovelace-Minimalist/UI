@@ -1,5 +1,5 @@
 ---
-name: "Format Code"
+name: "Check Code Quality"
 
 on:
   pull_request:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   pre-commit:
-    name: "Format Code"
+    name: "Check Code Quality"
     runs-on: "ubuntu-latest"
     steps:
       - name: "⤵️ Check out code from GitHub"
