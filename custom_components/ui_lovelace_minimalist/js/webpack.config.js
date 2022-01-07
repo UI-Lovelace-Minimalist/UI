@@ -4,7 +4,7 @@ module.exports = {
   entry: './src/index.js',
   mode: 'production',
   output: {
-    filename: 'lovelace-minimalist-ui.js',
+    filename: 'ui-lovelace-minimalist.js',
     path: path.resolve(__dirname)
   }
 };

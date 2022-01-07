@@ -6,19 +6,19 @@ from homeassistant.components.lovelace import _register_panel
 from homeassistant.components.lovelace.dashboard import LovelaceYAML
 from homeassistant.core import HomeAssistant
 
-from .base import LmuBase
+from .base import UlmBase
 
 _LOGGER: logging.Logger = logging.getLogger(__name__)
 
 
-def load_dashboard(hass: HomeAssistant, lmu: LmuBase):
+def load_dashboard(hass: HomeAssistant, ulm: UlmBase):
 
-    dashboard_url = "lovelace-minimalist-ui"
+    dashboard_url = "ui-lovelace-minimalist"
     dashboard_config = {
         "mode": "yaml",
-        "icon": lmu.configuration.sidepanel_icon,
-        "title": lmu.configuration.sidepanel_title,
-        "filename": "custom_components/lovelace_minimalist_ui/lovelace/ui-lovelace.yaml",
+        "icon": ulm.configuration.sidepanel_icon,
+        "title": ulm.configuration.sidepanel_title,
+        "filename": "custom_components/ui_lovelace_minimalist/lovelace/ui-lovelace.yaml",
         "show_in_sidebar": True,
         "require_admin": False,
     }

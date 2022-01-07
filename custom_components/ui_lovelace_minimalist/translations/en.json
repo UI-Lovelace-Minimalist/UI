@@ -1,9 +1,9 @@
 {
-    "title": "Lovelace Minimalist UI",
+    "title": "UI Lovelace Minimalist",
     "config": {
         "step": {
             "user": {
-                "title": "Lovelace Minimalist UI Settings",
+                "title": "UI Lovelace Minimalist Settings",
                 "description": "",
                 "data": {
                     "language": "Language",
@@ -15,14 +15,14 @@
             }
         },
         "abort": {
-            "single_instance_allowed": "Only a single configuration of Lovelace Minimalist UI is allowed.",
-            "not_setup": "Lovelace Minimalist UI is not setup."
+            "single_instance_allowed": "Only a single configuration of UI Lovelace Minimalist is allowed.",
+            "not_setup": "UI Lovelace Minimalist is not setup."
         }
     },
     "options": {
         "step": {
             "user": {
-                "title": "Lovelace Minimalist UI Settings",
+                "title": "UI Lovelace Minimalist Settings",
                 "description": "",
                 "data": {
                     "language": "Language",
@@ -34,8 +34,8 @@
             }
         },
         "abort": {
-            "single_instance_allowed": "Only a single configuration of Lovelace Minimalist UI is allowed.",
-            "not_setup": "Lovelace Minimalist UI is not setup."
+            "single_instance_allowed": "Only a single configuration of UI Lovelace Minimalist is allowed.",
+            "not_setup": "UI Lovelace Minimalist is not setup."
         }
     }
 }
