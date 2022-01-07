@@ -1044,6 +1044,8 @@ popup_media_player_infos:
             media:
               - background: none
               - box-shadow: none
+              - width: calc(100vw - 60px)
+              - max-width: 370px
             control:
               - background: none
               - box-shadow: none
@@ -1060,6 +1062,7 @@ popup_media_player_infos:
                 volume: true
                 progress: true
                 controls: true
+                source: true
                 power: true
               card_mod:
                 style: |
@@ -1108,24 +1111,22 @@ popup_media_player_infos:
                 icon: true
                 name: true
                 info: true
-                power: true
-                source: true
                 volume: true
+                power: true
                 progress: true
-                # shuffle: false
-                # repeat: false
+                source: true
               card_mod:
                 style: |
                   ha-card {
                     background: none !important;
                     box-shadow: none !important;
+                    width: 50% !important;
+                    margin-left: auto !important;
+                    margin-right: auto !important;
                   }
                   .mmp__bg{
                     background: none !important;
                   }
-                  # ha-dialog>div.content>button-card$#content1>button-card$#control>mini-media-player$ha-card>div.mmp-player>div.mmp-player__core.flex>mmp-powerstrip$mmp-media-controls$div {
-                  #   display: block !important;
-                  # }
     buttons:
       card:
         type: "custom:button-card"
