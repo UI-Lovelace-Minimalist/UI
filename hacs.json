@@ -1,6 +1,5 @@
 {
-  "name": "Lovelace Minimalist UI",
-  "hacs": "1.6.0",
-  "render_readme": true,
+  "name": "UI Lovelace Minimalist",
+  "render_readme": false,
   "homeassistant": "2021.5.0"
 }
