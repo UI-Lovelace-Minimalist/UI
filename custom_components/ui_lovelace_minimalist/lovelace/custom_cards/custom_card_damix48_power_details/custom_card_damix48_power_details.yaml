@@ -68,7 +68,7 @@ custom_card_damix48_power_details:
           icon: false
           legend: false
           state: true
-        align_state: center
+        align_state: "center"
         height: "[[[ return variables.ulm_card_power_details_height ]]]"
         style: |
           ha-card {
