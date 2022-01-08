@@ -1,3 +1,4 @@
+---
 ### Card Binary Sensor Alert ###
 card_binary_sensor_alert:
   template:
