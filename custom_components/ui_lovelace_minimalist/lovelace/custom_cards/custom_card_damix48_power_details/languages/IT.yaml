@@ -1,0 +1,7 @@
+---
+ulm_custom_card_damix48_power_details_language_variables:
+  variables:
+    ulm_custom_card_damix48_power_details_hour: "ora"
+    ulm_custom_card_damix48_power_details_hours: "ore"
+    ulm_custom_card_damix48_power_details_in_the_last: "Nell'ultima"
+    ulm_custom_card_damix48_power_details_in_the_lasts: "Nelle ultime"
