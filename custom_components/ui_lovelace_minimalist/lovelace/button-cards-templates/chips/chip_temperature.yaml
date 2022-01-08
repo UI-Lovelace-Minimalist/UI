@@ -1,3 +1,4 @@
+---
 ### Chip Temperature ###
 chip_temperature:
   template: "chips"

@@ -1,3 +1,4 @@
+---
 ### Chip Presence Detection ###
 chip_presence_detection:
   template: "chips"
