@@ -1,8 +1,8 @@
 {
   "domain": "ui_lovelace_minimalist",
   "name": "UI Lovelace Minimalist",
-  "documentation": "https://github.com/stokkie90/ui-lovelace-minimalist",
-  "issue_tracker": "https://github.com/stokkie90/ui-lovelace-minimalist/issues",
+  "documentation": "https://github.com/UI-Lovelace-Minimalist/UI",
+  "issue_tracker": "https://github.com/UI-Lovelace-Minimalist/UI/issues",
   "dependencies": [
     "lovelace",
     "http",
