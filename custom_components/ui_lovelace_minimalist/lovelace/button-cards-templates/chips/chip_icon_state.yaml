@@ -1,17 +1,19 @@
 ### Chip Icon State ###
 chip_icon_state:
-  template: chips
-  triggers_update:
-    - "[[[ variables.ulm_chip_icon_state_entity ]]]"
+  template: "chips"
+  triggers_update: "all"
   label: |
     [[[
-      var icon = '❔';
+      var icon = "❔";
       if (variables.ulm_chip_icon_state_icon){
         var icon = variables.ulm_chip_icon_state_icon;
-      } 
-      var state = '';
+      }
+      var state = "";
       if (states[variables.ulm_chip_icon_state_entity].state){
         var state = states[variables.ulm_chip_icon_state_entity].state;
-      } 
-      return icon + ' ' + state;
+        if (states[variables.ulm_chip_icon_state_entity].attributes.unit_of_measurement){
+          state += states[variables.ulm_chip_icon_state_entity].attributes.unit_of_measurement;
+        }
+      }
+      return icon + " " + state;
     ]]]
