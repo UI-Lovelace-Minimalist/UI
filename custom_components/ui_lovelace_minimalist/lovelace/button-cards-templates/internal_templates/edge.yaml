@@ -2,4 +2,4 @@
 edge:
   styles:
     card:
-      - width: 0px
+      - width: "0px"

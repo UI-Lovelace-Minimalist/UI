@@ -1,28 +1,28 @@
 ### Cover ###
 cover:
   tap_action:
-    action: more-info
+    action: "more-info"
   icon: |
     [[[
-        var icon = 'mdi:help-circle';
-        if (typeof states[entity.entity_id].attributes.current_position === 'undefined'){
-          if (states[entity.entity_id].state == 'closed'){
-            var icon = 'mdi:window-shutter';
+        var icon = "mdi:help-circle";
+        if (typeof states[entity.entity_id].attributes.current_position === "undefined"){
+          if (states[entity.entity_id].state == "closed"){
+            var icon = "mdi:window-shutter";
           } else
-            var icon = 'mdi:window-shutter-open';
+            var icon = "mdi:window-shutter-open";
         } else {
           if (states[entity.entity_id].attributes.current_position == 0){
-            var icon = 'mdi:window-shutter';
+            var icon = "mdi:window-shutter";
           } else
-            var icon = 'mdi:window-shutter-open';
+            var icon = "mdi:window-shutter-open";
         }
         return icon ;
     ]]]
   label: >-
     [[[
-        var icon = 'mdi:help-circle';
-        if (typeof states[entity.entity_id].attributes.current_position === 'undefined'){
-          if (states[entity.entity_id].state == 'closed'){
+        var icon = "mdi:help-circle";
+        if (typeof states[entity.entity_id].attributes.current_position === "undefined"){
+          if (states[entity.entity_id].state == "closed"){
             return variables.ulm_closed;
           } else
             return variables.ulm_open;
@@ -30,13 +30,13 @@ cover:
           if (states[entity.entity_id].attributes.current_position == 0){
             return variables.ulm_closed;
           } else {
-            return variables.ulm_open + ' • ' + (states[entity.entity_id].attributes.current_position) + '%' ;
+            return variables.ulm_open + " • " + (states[entity.entity_id].attributes.current_position) + "%" ;
           }
         }
         return icon ;
     ]]]
   state:
-    - operator: template
+    - operator: "template"
       value: "[[[ return states[entity.entity_id].attributes.current_position != 0; ]]]"
       styles:
         icon:
