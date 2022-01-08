@@ -1,9 +1,0 @@
-### Scenes ###
-scene:
-  template: vertical_buttons
-
-scene_blue:
-  template: vertical_buttons_blue
-
-scene_green:
-  template: vertical_buttons_green
