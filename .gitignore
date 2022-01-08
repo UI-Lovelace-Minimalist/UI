@@ -5,6 +5,7 @@ ui_lovelace_minimalist/
 /themes/
 
 !custom_components/ui_lovelace_minimalist
+!custom_components/__init__.py
 custom_components/ui_lovelace_minimalist/__pycache__
 custom_components/ui_lovelace_minimalist/.installed
 
