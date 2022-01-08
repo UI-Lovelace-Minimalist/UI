@@ -1,14 +1,14 @@
 ### Card Input Boolean ###
 card_input_boolean:
-  template: 
-    - icon_info_bg
-    - ulm_language_variables
-    - blue
+  template:
+    - "icon_info_bg"
+    - "ulm_language_variables"
+    - "blue"
   name: "[[[ return entity.attributes.friendly_name != '' ? entity.attributes.friendly_name : entity.entity_id ]]]"
   label: >
     [[[
-      if (entity.state != 'unavailable'){
-        if (entity.state == 'on'){
+      if (entity.state != "unavailable"){
+        if (entity.state == "on"){
           return variables.ulm_on;
         } else {
           return variables.ulm_off;

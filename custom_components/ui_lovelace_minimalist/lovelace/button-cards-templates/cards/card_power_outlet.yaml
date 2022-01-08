@@ -1,9 +1,9 @@
 ### Card Power Outlet ###
 card_power_outlet:
   template:
-    - icon_info_bg
-    - yellow
-    - ulm_language_variables
+    - "icon_info_bg"
+    - "yellow"
+    - "ulm_language_variables"
   variables:
     ulm_card_power_outlet_consumption_sensor:
   label: |-
