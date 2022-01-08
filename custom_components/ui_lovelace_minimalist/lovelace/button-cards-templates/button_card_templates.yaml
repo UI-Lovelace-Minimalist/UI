@@ -242,7 +242,7 @@ chips_alarm:
             } else if(entity.state == "arming"){
               var alarm_color = "var(--google-yellow)";
             } else if(entity.state == "triggered"){
-              var alarm_color = ""var(--google-red)";
+              var alarm_color = "var(--google-red)";
             }
             return alarm_color;
           ]]]
