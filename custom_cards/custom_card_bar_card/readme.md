@@ -5,8 +5,8 @@ This is a `custom-card` to display a percentage value as a bar.
 ![Screenshot](screenshot_bar_card.png)
 
 ## Credits
-Author: rphlwnk - 2021  
-Version: 1.0.0  
+Author: rphlwnk - 2021
+Version: 1.0.0
 
 ## Changelog
 <details>
