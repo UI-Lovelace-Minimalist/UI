@@ -1,0 +1,28 @@
+---
+### Card Light ###
+card_light:
+  template:
+    - "icon_info_bg"
+    - "yellow"
+    - "ulm_language_variables"
+  tap_action:
+    action: "toggle"
+  hold_action:
+    action: "more-info"
+  label: >-
+    [[[
+      if (entity.state !="unavailable"){
+        if (entity.state =="off"){
+          return variables.ulm_off;
+        } else if (entity.state == "on"){
+          if (entity.attributes.brightness != null){
+            var bri = Math.round(entity.attributes.brightness / 2.55);
+            return (bri ? bri : "0") + "%";
+          } else {
+            return variables.ulm_on
+          }
+        }
+      } else {
+        return variables.ulm_unavailable;
+      }
+    ]]]

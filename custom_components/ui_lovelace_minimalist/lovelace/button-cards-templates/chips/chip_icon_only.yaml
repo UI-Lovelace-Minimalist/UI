@@ -1,0 +1,12 @@
+---
+### Chip Icon Only ###
+chip_icon_only:
+  template: "chips"
+  label: |
+    [[[
+      var icon = "❔";
+      if (variables.ulm_chip_icon_only){
+        var icon = variables.ulm_chip_icon_only;
+      }
+      return icon;
+    ]]]

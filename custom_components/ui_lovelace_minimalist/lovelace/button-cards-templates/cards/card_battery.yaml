@@ -1,0 +1,122 @@
+---
+### Card Battery ###
+card_battery:
+  template:
+    - "icon_info_bg"
+  tap_action:
+    action: "more-info"
+  variables:
+    ulm_card_battery_attribute:
+    ulm_card_battery_battery_state_entity_id:
+    ulm_card_battery_charger_type_entity_id:
+    ulm_card_battery_battery_level_danger:
+    ulm_card_battery_battery_level_warning:
+    ulm_card_battery_color_battery_level_danger: "var(--google-red)"
+    ulm_card_battery_color_battery_level_warning: "var(--google-yellow)"
+    ulm_card_battery_color_battery_level_ok: "var(--google-green)"
+  triggers_update: "all"
+  icon: |
+    [[[
+      var icon = "mdi:help-circle-outline";
+      //get battery level
+      var battery_level = variables.ulm_card_battery_attribute !== null
+        ? states[entity.entity_id].attributes[variables.ulm_card_battery_attribute]
+        : states[entity.entity_id].state;
+
+      // generate icon-infix
+      var infix;
+      if(variables.ulm_card_battery_charger_type_entity_id == null) {
+        // is charging?
+        infix = variables.ulm_card_battery_battery_state_entity_id !== null
+                && states[variables.ulm_card_battery_battery_state_entity_id].state =="charging"
+                ? "-charging" : ""
+      } else {
+        // is charging/ is charging wireless?
+        switch (states[variables.ulm_card_battery_charger_type_entity_id].state) {
+          case "wireless":
+            infix = "-charging-wireless";
+            break;
+          case "ac":
+            infix = "-charging";
+            break;
+          default:
+            infix = "";
+        }
+      }
+
+      if (battery_level == 100) {
+        icon = "mdi:battery";
+      } else if (battery_level >= 90) {
+        icon = "mdi:battery"+infix+"-90";
+      } else if (battery_level >= 80) {
+        icon = "mdi:battery"+infix+"-80";
+      } else if (battery_level >= 70) {
+        icon = "mdi:battery"+infix+"-70";
+      } else if (battery_level >= 60) {
+        icon = "mdi:battery"+infix+"-60";
+      } else if (battery_level >= 50) {
+        icon = "mdi:battery"+infix+"-50";
+      } else if (battery_level >= 40) {
+        icon = "mdi:battery"+infix+"-40";
+      } else if (battery_level >= 30) {
+        icon = "mdi:battery"+infix+"-30";
+      } else if (battery_level >= 20) {
+        icon = "mdi:battery"+infix+"-20";
+      } else if (battery_level >= 10) {
+        icon = "mdi:battery"+infix+"-10";
+      } else {
+        icon = "mdi:battery"+infix+"-outline";
+      }
+
+      return icon;
+    ]]]
+  label: |
+    [[[
+      var battery_level = variables.ulm_card_battery_attribute !== null
+        ? states[entity.entity_id].attributes[variables.ulm_card_battery_attribute]
+        : states[entity.entity_id].state;
+      return battery_level + "%";
+    ]]]
+  name: |
+    [[[
+      return states[entity.entity_id].attributes.friendly_name;
+    ]]]
+  styles:
+    icon:
+      - color: |
+          [[[
+            var color = "rgba(var(--color-theme),0.9)";
+            var battery_level = variables.ulm_card_battery_attribute !== null
+                                  ? states[entity.entity_id].attributes[variables.ulm_card_battery_attribute]
+                                  : states[entity.entity_id].state;
+
+            // color based on battery_level
+            if (battery_level !== "unavailable" && (variables.ulm_card_battery_battery_level_danger !== null || variables.ulm_card_battery_battery_level_warning !== null)) {
+              if (battery_level <= variables.ulm_card_battery_battery_level_danger) {
+                color = variables.ulm_card_battery_color_battery_level_danger;
+              } else if (battery_level <= variables.ulm_card_battery_battery_level_warning) {
+                color = variables.ulm_card_battery_color_battery_level_warning;
+              } else {
+                color = variables.ulm_card_battery_color_battery_level_ok;
+              }
+            }
+            return color;
+          ]]]
+    label:
+      - align-self: "end"
+      - justify-self: "start"
+      - font-weight: "bold"
+      - font-size: "14px"
+      - margin-left: "12px"
+      - filter: "opacity(100%)"
+    name:
+      - justify-self: "start"
+      - align-self: "start"
+      - font-weight: "bolder"
+      - font-size: "12px"
+      - filter: "opacity(40%)"
+      - margin-left: "12px"
+    grid:
+      - grid-template-areas: "'i l' 'i n'"
+      - grid-template-columns: "min-content auto"
+      - grid-template-rows: "min-content min-content"

@@ -1,0 +1,23 @@
+---
+### Card Script ###
+card_script:
+  template:
+    - "icon_only"
+  label: "[[[ return variables.ulm_card_script_title; ]]]"
+  icon: "[[[ return variables.ulm_card_script_icon; ]]]"
+  styles:
+    icon:
+      - color: "rgba(var(--color-blue),0.7)"
+    label:
+      - align-self: "center"
+      - justify-self: "start"
+      - font-weight: "bold"
+      - font-size: "14px"
+      - margin-left: "12px"
+      - filter: "opacity(100%)"
+    img_cell:
+      - background-color: "rgba(var(--color-blue), 0.2)"
+    grid:
+      - grid-template-areas: "'i l'"
+      - grid-template-columns: "min-content min-content"
+      - grid-template-rows: "min-content"

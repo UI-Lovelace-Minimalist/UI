@@ -1,0 +1,27 @@
+---
+### Card Navigate ###
+card_navigate:
+  template:
+    - "icon_only"
+    - "blue_no_state"
+  tap_action:
+    action: "navigate"
+    navigation_path: "[[[ return variables.ulm_card_navigate_path; ]]]"
+  label: "[[[ return variables.ulm_card_navigate_title; ]]]"
+  icon: "[[[ return variables.ulm_card_navigate_icon; ]]]"
+  styles:
+    icon:
+      - color: "rgba(var(--color-blue),0.7)"
+    label:
+      - align-self: "center"
+      - justify-self: "start"
+      - font-weight: "bold"
+      - font-size: "14px"
+      - margin-left: "12px"
+      - filter: "opacity(100%)"
+    img_cell:
+      - background-color: "rgba(var(--color-blue), 0.2)"
+    grid:
+      - grid-template-areas: "'i l'"
+      - grid-template-columns: "min-content min-content"
+      - grid-template-rows: "min-content"

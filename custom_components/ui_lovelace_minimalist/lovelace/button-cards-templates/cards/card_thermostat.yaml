@@ -1,0 +1,43 @@
+---
+### Card Thermostat ###
+card_thermostat:
+  template:
+    - "icon_info_bg"
+    - "ulm_language_variables"
+  hold_action:
+    action: "more-info"
+  label: >-
+    [[[
+        if (entity.state =='off'){
+          var etat = variables.ulm_off ;
+        }else if (entity.state == 'heat'){
+          var etat = variables.ulm_heat ;
+        }else if (entity.state == 'cool'){
+          var etat = variables.ulm_cool ;
+        }else{
+          var etat = variables.ulm_idle;
+        }
+        if(entity.attributes.temperature){
+          return (entity.attributes.temperature ) + '°' + ' • ' + etat ;
+        }else{
+          return etat ;
+        }
+    ]]]
+  icon: "mdi:thermometer"
+  state:
+    - operator: "template"
+      value: >
+        [[[
+          return entity.state == 'heat'
+        ]]]
+      styles:
+        icon:
+          - color: "rgba(var(--color-red),1)"
+        img_cell:
+          - background-color: "rgba(var(--color-red),0.2)"
+        card:
+          - background-color: "rgba(var(--color-background-red),var(--opacity-bg))"
+        name:
+          - color: "rgba(var(--color-red-text),1)"
+        label:
+          - color: "rgba(var(--color-red-text),1)"

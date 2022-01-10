@@ -1,0 +1,67 @@
+---
+### Card Graph ###
+card_graph:
+  variables:
+    ulm_card_graph_color: "var(--info-color)"
+    ulm_card_graph_name: "n/a"
+    ulm_card_graph_color2: "var(--info-color)"
+    ulm_card_graph_name2: "n/a"
+    ulm_card_graph_entity2: ""
+    ulm_card_graph_hours: 24
+    ulm_card_graph_type: "fill"
+  triggers_update: "all"
+  styles:
+    grid:
+      - grid-template-areas: "'item1' 'item2'"
+      - grid-template-columns: "1fr"
+      - grid-template-rows: "min-content  min-content"
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "0px"
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        template:
+          - "icon_info"
+          - "card_generic"
+        styles:
+          card:
+            - box-shadow: "none"
+            - border-radius: "var(--border-radius) var(--border-radius) 0px 0px"
+            - padding: "12px"
+        entity: "[[[ return variables.ulm_card_graph_entity ]]]"
+        name: "[[[ return variables.ulm_card_graph_name ]]]"
+    item2:
+      card:
+        type: "custom:mini-graph-card"
+        entities: >
+          [[[
+            var ent = [];
+            ent.push(variables.ulm_card_graph_entity);
+            if(variables.ulm_card_graph_entity2 != "")
+              ent.push(variables.ulm_card_graph_entity2);
+            return ent;
+          ]]]
+        line_color: >
+          [[[
+            var col = [];
+            col.push(variables.ulm_card_graph_color);
+            if(variables.ulm_card_graph_color2 != "")
+              col.push(variables.ulm_card_graph_color2);
+            return col;
+          ]]]
+        show:
+          name: false
+          icon: false
+          legend: false
+          state: false
+          graph: "[[[ return variables.ulm_card_graph_type=='fill'?'line':variables.ulm_card_graph_type; ]]]"
+          fill: "[[[ return variables.ulm_card_graph_type=='fill'?true:false; ]]]"
+        hours_to_show: "[[[ return variables.ulm_card_graph_hours; ]]]"
+        style: |
+          ha-card {
+            box-shadow: none;
+            border-radius: var(--border-radius);
+          }

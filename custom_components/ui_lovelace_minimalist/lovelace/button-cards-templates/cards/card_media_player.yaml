@@ -1,0 +1,47 @@
+---
+### Card Media Player ###
+card_media_player:
+  template:
+    - "icon_info_bg"
+    - "ulm_language_variables"
+  icon: |
+    [[[
+      var icon = "mdi:speaker";
+      if(entity.attributes.app_name){
+        var app = entity.attributes.app_name.toLowerCase();
+        if(app == "spotify"){
+          var icon = "mdi:spotify";
+        } else if(app == "google podcasts"){
+          var icon = "mdi:google-podcast";
+        } else if(app == "plex"){
+          var icon = "mdi:plex";
+        } else if(app == "soundcloud"){
+          var icon = "mdi:soundcloud";
+        } else if(app == "youtube music"){
+          var icon = "mdi:youtube";
+        } else if (app == "oto music"){
+          var icon = "mdi:music-circle";
+        }
+      }
+      return icon;
+    ]]]
+  label: |
+    [[[
+        if (entity.state == "off"){
+          return variables.ulm_off;
+        } else {
+          return variables.ulm_on;
+        }
+    ]]]
+  state:
+    - operator: "template"
+      value: "[[[ return entity.state != 'off' ]]]"
+      name: "[[[ return states[entity.entity_id].attributes.media_title; ]]]"
+      label: |
+        [[[
+          var label = variables.ulm_on;
+          if(states[entity.entity_id].attributes.media_album_name){
+            var label = states[entity.entity_id].attributes.media_album_name;
+          }
+          return label;
+        ]]]
