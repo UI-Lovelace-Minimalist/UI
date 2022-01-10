@@ -67,6 +67,7 @@ First we need to install some dependencies to get a basic Home Assistant instanc
 
 ```bash
 # start terminal in contianer
+pip install -r requirements_dev.txt
 # install pre-commit
 pre-commit install
 
