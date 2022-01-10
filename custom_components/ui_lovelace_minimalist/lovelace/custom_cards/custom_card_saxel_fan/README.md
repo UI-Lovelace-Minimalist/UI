@@ -7,10 +7,10 @@ This is a _custom card_ to control a fan. It allows you to turn on/off the fan, 
 | custom_card_saxel_fan_blue | Card is theme based when the fan is __OFF__, Blue when the fan is __ON__ |
 
 #### Light theme
-![Light theme](./light_theme.png)
+![Light theme](../../../../../assets/screenshots/custom_fan_light_theme.png)
 
 #### Dark theme
-![Dark theme](./dark_theme.png)
+![Dark theme](../../../../../assets/screenshots/custom_fan_dark_theme.png)
 
 ## Credits
 Author: saxel - 2021

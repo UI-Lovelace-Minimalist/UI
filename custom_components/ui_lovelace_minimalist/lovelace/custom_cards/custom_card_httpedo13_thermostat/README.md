@@ -14,15 +14,15 @@ Initial release
 </details>
 
 ## Images
-<img width="563" alt="white_collapse" src="https://user-images.githubusercontent.com/40502451/146683325-b23e829d-e058-4079-8809-d7d30cd783b7.png">
+![thermostat_white_collapse](../../../../../assets/screenshots/thermostat_white_collapse.png)
 
-<img width="563" alt="white" src="https://user-images.githubusercontent.com/40502451/146683349-f68a25d9-1d3b-4953-98d3-eea95bfee8e7.png">
+![thermostat_white](../../../../../assets/screenshots/thermostat_white.png)
 
-<img width="563" alt="white_with_heating_ui" src="https://user-images.githubusercontent.com/40502451/146683359-0625fe65-9bac-4725-b931-2c82a432e6fc.png">
+![thermostat_white_with_heating_ui](../../../../../assets/screenshots/thermostat_white_with_heating_ui.png)
 
-<img width="563" alt="dark" src="https://user-images.githubusercontent.com/40502451/146683366-fee88c38-3475-4df1-861c-3495a369b5c1.png">
+![thermostat_dark](../../../../../assets/screenshots/thermostat_dark.png)
 
-<img width="563" alt="dark_with_heating_ui" src="https://user-images.githubusercontent.com/40502451/146683373-9654de81-ce3c-44ca-959d-fab1ac2df141.png">
+![thermostat_dark_with_heating_ui](../../../../../assets/screenshots/thermostat_dark_with_heating_ui.png)
 
 
 ## Usage
