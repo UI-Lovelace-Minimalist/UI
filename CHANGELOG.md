@@ -30,8 +30,8 @@
 
 ### 📄 Documentation
 
-- #169 Update README_popups.md @KaherdinTristan
-- #173 Update README_popups.md @schumijo
+- #169 Update README_POPUPS.md @KaherdinTristan
+- #173 Update README_POPUPS.md @schumijo
 
 ### ❤️ Thank you so much for helping out to keep this UI awesome
 @13robin37, @CM000n, @KaherdinTristan, @basbruss, @denes44, @desty2k, @kaphwor, @mp-se, @revin34, @saxel, @schumijo and @vncnt-dev
@@ -58,7 +58,7 @@
 * First release of popup cards by @schumijo in https://github.com/UI-Lovelace-Minimalist/UI/pull/157
 
 ### 📄 Documentation
-* Specific readme for popups is available [here](https://github.com/UI-Lovelace-Minimalist/UI/blob/main/README_popups.md)
+* Specific readme for popups is available [here](https://github.com/UI-Lovelace-Minimalist/UI/blob/main/ups.md)
 
 **Full Changelog**: https://github.com/UI-Lovelace-Minimalist/UI/compare/v1.0.0-beta.9...v1.0.0-beta.10
 

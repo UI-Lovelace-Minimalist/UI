@@ -196,7 +196,7 @@ We provide a list of all legacy templates we support [here](https://ui-lovelace-
 And if you had installed one of the previous versions, we made a short write-up, on how you can move to the new format and be able to use this theme in the future with all it's features and without worrying about updates. Take a look [here](https://ui-lovelace-minimalist.netlify.app/installation/update#previous-version).
 
 ## Popups
-Readme is available [here](README_popups.md).
+Readme is available [here](README_POPUPS.md).
 
 <br>
 <br>
