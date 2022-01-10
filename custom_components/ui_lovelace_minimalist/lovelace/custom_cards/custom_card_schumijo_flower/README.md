@@ -1,7 +1,7 @@
 # Custom-card "Flower"
 This is a `custom-card` to display a plant entity. Shows state of the plant and attributes.
 
-![Generic](../../screenshots/flower.png)
+![Generic](./assets/screenshots/flower.png)
 
 ## Credits
 Author: schumijo - 2021
