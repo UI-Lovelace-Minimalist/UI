@@ -1,0 +1,65 @@
+---
+popup_power_outlet_history:
+  template: "popup_power_outlet_stats"
+  styles:
+    grid:
+      - grid-template-areas: "'header' 'content1' 'content3' 'buttons' 'footer'"
+      - grid-template-rows: "16vh 12vh 40vh 14vh 14vh;"
+      - grid-template-columns: "1fr"
+    custom_fields:
+      content2:
+        - display: "none"
+      content3:
+        - display: "block"
+        - align-self: "start"
+  extra_styles: |
+    @media (max-width: 800px) {
+      #container {
+        grid-template-areas: "header" "content1" "content3" "buttons" "footer" !important;
+        grid-template-rows: 16vh 12vh 40vh 14vh 14vh !important;
+        grid-template-columns: 1fr !important;
+      }
+      #buttons {
+        display: block !important;
+        align-self: start !important;
+      }
+      #content2 {
+        display: none;
+      }
+  custom_fields:
+    buttons:
+      card:
+        type: "custom:button-card"
+        template: "list_2_items"
+        styles:
+          card:
+            - background: "none"
+        custom_fields:
+          item1:
+            card:
+              icon: "mdi:chart-line"
+              type: "custom:button-card"
+              template:
+                - "popup_button"
+                - "popup_button_stats"
+              tap_action:
+                action: "fire-dom-event"
+                browser_mod:
+                  command: "popup"
+                  hide_header: true
+                  card:
+                    type: "custom:button-card"
+                    template: "popup_power_outlet_stats"
+                    variables:
+                      ulm_popup_power_outlet_entity: "[[[ return variables.ulm_popup_power_outlet_entity ]]]"
+                      ulm_popup_power_outlet_sensor1: "[[[ return variables.ulm_popup_power_outlet_sensor1 ]]]"
+                      ulm_popup_power_outlet_sensor2: "[[[ return variables.ulm_popup_power_outlet_sensor2 ]]]"
+                      ulm_popup_power_outlet_graph_sensor: "[[[ return variables.ulm_popup_power_outlet_graph_sensor ]]]"
+          item2:
+            card:
+              icon: "mdi:history"
+              type: "custom:button-card"
+              template:
+                - "popup_button"
+                - "popup_button_selected"
+                - "popup_button_history"
