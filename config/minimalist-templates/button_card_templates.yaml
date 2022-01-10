@@ -44,7 +44,7 @@ chip_temperature:
       }
       var outside_temp = states[variables.ulm_chip_temperature_outside].state;
       var inside_temp = states[variables.ulm_chip_temperature_inside].state;
-      return "<span style='font-weight:500;'>" + icon + "</span>" + " " + convertTemperature(outside_temp) + "° / " + convertTemperature(inside_temp) + "°" ;
+      return icon + " " + convertTemperature(outside_temp) + "° / " + convertTemperature(inside_temp) + "°" ;
     ]]]
 chip_icon_only:
   template: "chips"
