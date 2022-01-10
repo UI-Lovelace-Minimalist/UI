@@ -3,7 +3,7 @@
 # UI-Lovelace-Minimalist
 It's kind of hard to explain what this is, so let's call it a "theme" (in quotation marks). But one thing is for sure, it is very nice! Taking the exceptional work of tben as a basis, this repository is aimed to ease installation and maintainance of his wonderful work. You can use this interpretation of a SmartHomeUI more or less like a theme in HomeAssistant.
 
-<img src="./screenshots/example_home.png" width="200"> <img src="./screenshots/example_temperature.png" width="200"> <img src="./screenshots/example_consumption.png" width="200"> <img src="./screenshots/example_localisation.png" width="200">
+<img src="./assets/screenshots/example_home.png" width="200"> <img src="./assets/screenshots/example_temperature.png" width="200"> <img src="./assets/screenshots/example_consumption.png" width="200"> <img src="./assets/screenshots/example_localisation.png" width="200">
 
 > ### Contributions
 > This is a living project and all input is very welcome! If you configured and designed a card, that you would like to share, please feel free to do so! We are happy to include your contribution so others can use it as well!
@@ -118,25 +118,25 @@ All this is only possible, because we are able to use the templating function fr
 ### Chips
 At the top of each page you can find the `chips`, which allow to quickly visualize important information.
 
-![Chips](./screenshots/chips.png)
+![Chips](./assets/screenshots/chips.png)
 
 ### Title
 `Titles` are used to separate the different sections. Kind of a divider.
 
-![Title](./screenshots/title.png)
+![Title](./assets/screenshots/title.png)
 
 ### Vertical buttons
 `Vertical buttons` show the information vertically aligned. These find their use eg. as navigation or scene buttons.
 
-![Title](./screenshots/scene.gif)
+![Title](./assets/screenshots/scene.gif)
 
 ### Cards
 `Cards` are the main part of this design and are widely used in very different designs and functions. With these `cards` you can set up nearly every entity in HA, showing from "state-only" over a "full blown" information graphic with various values to "controlling" your covers and climate entities.
 
-![Cards](./screenshots/cards.png)
+![Cards](./assets/screenshots/cards.png)
 
 #### Anatomy of cards
-![Anatomy](./screenshots/anatomy.png)
+![Anatomy](./assets/screenshots/anatomy.png)
 1. **Dot**: Visible when the device is unavailable. Also used on the entity **person**
 2. **Icon**: Icon that represents the device
 3. **Primary line**: Main information
