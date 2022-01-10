@@ -1,7 +1,7 @@
 # Custom-card "Scenes Card"
 The `card_scenes` you can control a input_number entity
 
-![Scenes Card](./screenshots/card_scenes.png)
+![Scenes Card](./assets/screenshots/card_scenes.png)
 
 ## Credits
 Author: sildehoop - 2021

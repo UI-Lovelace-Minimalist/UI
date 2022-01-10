@@ -8,12 +8,12 @@ This is a `custom-card` to add additionall function to the `light_card`. It come
 
 The card shows you the color of the light. The icon is changeable for each MDI-icon. And the icon functions as button to show more-info.
 
-![Light](./screenshots/light.png)
-![Light_slider](./screenshots/light_slider.png)
-![Light_horizontal](./screenshots/light_horizontal.png)
-![Dark](./screenshots/dark.png)
-![Dark_slider](./screenshots/dark_slider.png)
-![Dark_horizontal](./screenshots/dark_horizontal.png)
+![Light](../../../../../assets/screenshots/light_light.png)
+![Light_slider](../../../../../assets/screenshots/light_light_slider.png)
+![Light_horizontal](../../../../../assets/screenshots/light_light_horizontal.png)
+![Dark](../../../../../assets/screenshots/light_dark.png)
+![Dark_slider](../../../../../assets/screenshots/light_dark_slider.png)
+![Dark_horizontal](../../../../../assets/screenshots/light_dark_horizontal.png)
 ## Credits
 Author: basbruss - 2021
 Version: 1.0.1

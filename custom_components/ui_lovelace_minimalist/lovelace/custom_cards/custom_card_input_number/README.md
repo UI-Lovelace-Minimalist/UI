@@ -1,7 +1,7 @@
 # Custom-card "NAS"
 The `card_input_number` you can control a input_number entity
 
-![Input Number Card](./screenshots/card_input_number.png)
+![Input Number Card](./assets/screenshots/card_input_number.png)
 
 ## Credits
 Author: sildehoop - 2021
