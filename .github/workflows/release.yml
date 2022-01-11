@@ -1,0 +1,22 @@
+---
+name: "Release"
+
+on:
+  release:
+    types: ["published"]
+
+jobs:
+  release_zip_file:
+    name: "Prepare release asset"
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Check out repository"
+        uses: "actions/checkout@v2"
+
+      - name: "Get version"
+        id: "version"
+        uses: "home-assistant/actions/helpers/version@master"
+
+      - name: "Set manifest version number"
+        run: |
+          python3 ${{ github.workspace }}/.github/update_hacs_manifest.py --version ${{ steps.version.outputs.version }}
