@@ -11,7 +11,7 @@ chips:
     label:
       - justify-self: "center"
       - padding: "0px 6px"
-      - font-weight: 500
+      - font-weight: "bold"
       - font-size: "14px"
     img_cell:
       - width: "24px"
