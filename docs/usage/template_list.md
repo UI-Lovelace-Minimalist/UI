@@ -31,7 +31,7 @@ This is the in-depth list of our “usage” templates.
 
 <td width="50%">The `battery-card` is a slightly enhanced `generic-card`, just to ease the use. You could always configure it from the `generic-card` yourself.</td>
 
-<td width="50%">[![](/assets/images/card_battery.png)](/assets/images/card_battery.png)</td>
+<td width="50%">[![](./assets/images/card_battery.png)](./assets/images/card_battery.png)</td>
 
 </tr>
 
@@ -235,7 +235,7 @@ This is the in-depth list of our “usage” templates.
 
 <td width="50%">The `binary-sensor-card` is to show the state (on/off, open/close, etc.) of a binary sensor, eg. your garage door or a window contact sensor.</td>
 
-<td width="50%">[![](/assets/images/card_binary_sensor.png)](/assets/images/card_binary_sensor.png)</td>
+<td width="50%">[![](./assets/images/card_binary_sensor.png)](./assets/images/card_binary_sensor.png)</td>
 
 </tr>
 
@@ -441,7 +441,7 @@ This is the in-depth list of our “usage” templates.
 
 <td width="50%">The `binary-sensor-card` is to show the state (on/off, open/close, etc.) of a binary sensor, eg. your garage door or a window contact sensor. This card shows an alert if the state is on/open or unavailable.</td>
 
-<td width="50%">[![](/assets/images/card_binary_sensor_alert.png)](/assets/images/card_binary_sensor_alert.png)</td>
+<td width="50%">[![](./assets/images/card_binary_sensor_alert.png)](./assets/images/card_binary_sensor_alert.png)</td>
 
 </tr>
 
@@ -647,7 +647,7 @@ This is the in-depth list of our “usage” templates.
 
 <td width="50%">With the `cover-card` you have the state of your cover and on the second line UP / PAUSE / DOWN to control it.</td>
 
-<td width="50%">[![](/assets/images/card_cover_with_buttons.png)](/assets/images/card_cover_with_buttons.png)</td>
+<td width="50%">[![](./assets/images/card_cover_with_buttons.png)](./assets/images/card_cover_with_buttons.png)</td>
 
 </tr>
 
@@ -853,7 +853,7 @@ This is the in-depth list of our “usage” templates.
 
 <td width="50%">This is the `generic-card` to display values from a sensor, eg. to show humidity, your next waste collection date or whatever sensor value is provided.</td>
 
-<td width="50%">[![](/assets/images/card_generic.png)](/assets/images/card_generic.png)</td>
+<td width="50%">[![](./assets/images/card_generic.png)](./assets/images/card_generic.png)</td>
 
 </tr>
 
@@ -1027,7 +1027,7 @@ This is the in-depth list of our “usage” templates.
 
 <td width="50%">This is a `generic-card` with swapped label and name.</td>
 
-<td width="50%">[![](/assets/images/card_generic_swap.png)](/assets/images/card_generic_swap.png)</td>
+<td width="50%">[![](./assets/images/card_generic_swap.png)](./assets/images/card_generic_swap.png)</td>
 
 </tr>
 
@@ -1201,7 +1201,7 @@ This is the in-depth list of our “usage” templates.
 
 <td width="50%">The `card_graph` shows an entity with the actual state and a *min-graph-card* integrated. This can be used for a thermostat to show the actual temperature and the history."</td>
 
-<td width="50%">[![](/assets/images/card_graph.png)](/assets/images/card_graph.png)</td>
+<td width="50%">[![](./assets/images/card_graph.png)](./assets/images/card_graph.png)</td>
 
 </tr>
 
@@ -1433,7 +1433,7 @@ This is the in-depth list of our “usage” templates.
 
 <td width="50%">The `input-boolean-card` is to switch an `input_boolean` on or off.</td>
 
-<td width="50%">[![](/assets/images/card_input_boolean.png)](/assets/images/card_input_boolean.png)</td>
+<td width="50%">[![](./assets/images/card_input_boolean.png)](./assets/images/card_input_boolean.png)</td>
 
 </tr>
 
@@ -1607,7 +1607,7 @@ This is the in-depth list of our “usage” templates.
 
 <td width="50%">This is the `light-card`, used to toggle a light or a light group. Shows state of the light and, if available, brightness in %. In the picture on the right in row Nr1</td>
 
-<td width="50%">[![](/assets/images/card_light_combi.png)](/assets/images/card_light_combi.png)</td>
+<td width="50%">[![](./assets/images/card_light_combi.png)](./assets/images/card_light_combi.png)</td>
 
 </tr>
 
@@ -1781,7 +1781,7 @@ This is the in-depth list of our “usage” templates.
 
 <td width="50%">The `light-slider-card` controls a light with the added possibilty to control the brightness of your light with a slider. See row Nr2 in the picture on the right.</td>
 
-<td width="50%">[![](/assets/images/card_light_combi.png)](/assets/images/card_light_combi.png)</td>
+<td width="50%">[![](./assets/images/card_light_combi.png)](./assets/images/card_light_combi.png)</td>
 
 </tr>
 
@@ -1985,7 +1985,7 @@ This is the in-depth list of our “usage” templates.
 
 <td width="50%">The `light-slider-card (collapse)` is an enhanced version of the `light-slider-card`, that only shows the slider, if the light is on. In the picture on the right, the 'off'-state is like row Nr1, the 'on'-state like row Nr2</td>
 
-<td width="50%">[![](/assets/images/card_light_combi.png)](/assets/images/card_light_combi.png)</td>
+<td width="50%">[![](./assets/images/card_light_combi.png)](./assets/images/card_light_combi.png)</td>
 
 </tr>
 
@@ -2189,7 +2189,7 @@ This is the in-depth list of our “usage” templates.
 
 <td width="50%">The `light-slider-card (horizontal)` is an enhanced version of the `light-slider-card`, that shows the slider on the right of the button, making it a 1-line-card. See the picture on the right row Nr3</td>
 
-<td width="50%">[![](/assets/images/card_light_combi.png)](/assets/images/card_light_combi.png)</td>
+<td width="50%">[![](./assets/images/card_light_combi.png)](./assets/images/card_light_combi.png)</td>
 
 </tr>
 
@@ -2393,7 +2393,7 @@ This is the in-depth list of our “usage” templates.
 
 <td width="50%">The `card_media_player` shows you the *app*, the *title* and the *album name* playing, if the data is available through HA. The *app* is shown via a different icon.</td>
 
-<td width="50%">[![](/assets/images/media.png)](/assets/images/media.png)</td>
+<td width="50%">[![](./assets/images/media.png)](./assets/images/media.png)</td>
 
 </tr>
 
@@ -3037,7 +3037,7 @@ Unfortunately _AmazonMusic_, _AppleMusic_ and _Deezer_ don't have an `mdi:icon`,
 
 <td width="50%">The `card_navigate` is for navigating inside your HA dashboard(s).</td>
 
-<td width="50%">[![](/assets/images/card_navigate.png)](/assets/images/card_navigate.png)</td>
+<td width="50%">[![](./assets/images/card_navigate.png)](./assets/images/card_navigate.png)</td>
 
 </tr>
 
@@ -3269,7 +3269,7 @@ Unfortunately _AmazonMusic_, _AppleMusic_ and _Deezer_ don't have an `mdi:icon`,
 
 <td width="50%">The `card_person` shows if a person is `home` or `not_home`. If you have setup other [zones](https://www.home-assistant.io/integrations/zone/), it will show these as well.</td>
 
-<td width="50%">[![](/assets/images/person.png)](/assets/images/person.png)</td>
+<td width="50%">[![](./assets/images/person.png)](./assets/images/person.png)</td>
 
 </tr>
 
@@ -3556,7 +3556,7 @@ Unfortunately _AmazonMusic_, _AppleMusic_ and _Deezer_ don't have an `mdi:icon`,
 
 <td width="50%">This is the `power-outlet-card`. It shows you the state of a power outlet, and if configured, the actual power consumption of the power outlet.</td>
 
-<td width="50%">[![](/assets/images/outlet.png)](/assets/images/outlet.png)</td>
+<td width="50%">[![](./assets/images/outlet.png)](./assets/images/outlet.png)</td>
 
 </tr>
 
@@ -3788,7 +3788,7 @@ Unfortunately _AmazonMusic_, _AppleMusic_ and _Deezer_ don't have an `mdi:icon`,
 
 <td width="50%">This card starts/runs a script. You can configure icon and text.</td>
 
-<td width="50%">[![](/assets/images/card_script.png)](/assets/images/card_script.png)</td>
+<td width="50%">[![](./assets/images/card_script.png)](./assets/images/card_script.png)</td>
 
 </tr>
 
@@ -4080,7 +4080,7 @@ Unfortunately _AmazonMusic_, _AppleMusic_ and _Deezer_ don't have an `mdi:icon`,
 
 <td width="50%">Titles (and optionally subtitles) are used to seperate different areas in your design. You can use only a title, only a subtitle or both at once.</td>
 
-<td width="50%">[![](/assets/images/card_title.png)](/assets/images/card_title.png)</td>
+<td width="50%">[![](./assets/images/card_title.png)](./assets/images/card_title.png)</td>
 
 </tr>
 
@@ -4282,7 +4282,7 @@ Unfortunately _AmazonMusic_, _AppleMusic_ and _Deezer_ don't have an `mdi:icon`,
 
 <td width="50%">This is a `back-button`, primarly used if you switch between views and want a convenient way back.</td>
 
-<td width="50%">[![](/assets/images/chip_return.png)](/assets/images/chip_return.png)</td>
+<td width="50%">[![](./assets/images/chip_return.png)](./assets/images/chip_return.png)</td>
 
 </tr>
 
@@ -5070,7 +5070,7 @@ Unfortunately _AmazonMusic_, _AppleMusic_ and _Deezer_ don't have an `mdi:icon`,
 
 <td width="50%">This `chip` shows you the electric consumption from a sensor. Configurable to show power (kWh) or price (currency).</td>
 
-<td width="50%">[![](/assets/images/power_consumption.png)](/assets/images/power_consumption.png)</td>
+<td width="50%">[![](./assets/images/power_consumption.png)](./assets/images/power_consumption.png)</td>
 
 </tr>
 
@@ -5274,7 +5274,7 @@ Unfortunately _AmazonMusic_, _AppleMusic_ and _Deezer_ don't have an `mdi:icon`,
 
 <td width="50%">This `chip` shows you the actual presence in your home. Shows residents and guests (guests only if one or more).</td>
 
-<td width="50%">[![](/assets/images/chip_localisation_present.png)](/assets/images/chip_localisation_present.png)</td>
+<td width="50%">[![](./assets/images/chip_localisation_present.png)](./assets/images/chip_localisation_present.png)</td>
 
 </tr>
 
@@ -5478,7 +5478,7 @@ Unfortunately _AmazonMusic_, _AppleMusic_ and _Deezer_ don't have an `mdi:icon`,
 
 <td width="50%">This `chip` is to display a weather icon together with the outside and inside temperature.</td>
 
-<td width="50%">[![](/assets/images/chip_temperature.png)](/assets/images/chip_temperature.png)</td>
+<td width="50%">[![](./assets/images/chip_temperature.png)](./assets/images/chip_temperature.png)</td>
 
 </tr>
 
