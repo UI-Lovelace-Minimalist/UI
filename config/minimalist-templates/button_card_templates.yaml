@@ -279,20 +279,8 @@ card_title:
 ### VERTICAL BUTTONS (fka SCENES) ###
 card_vertical_button:
   variables:
-    ulm_card_vertical_button_color: |
-      [[[
-        if(typeof variables !== 'undefined' ) // This code is for backwards compatibility
-          if(typeof variables.color !== 'undefined')
-            return variables.color;
-         return "blue";
-      ]]]
-    ulm_card_vertical_button_state: |
-      [[[
-        if(typeof variables !== 'undefined' ) // This code is for backwards compatibility
-          if(typeof variables.color !== 'undefined')
-            return variables.state;
-         return "on";
-      ]]]
+    ulm_card_vertical_button_color: "blue"
+    ulm_card_vertical_button_state: "on"
   show_label: true
   label: ""
   name: |
@@ -355,6 +343,10 @@ card_vertical_button:
           return "input_select.select_option";
         if( entity.entity_id.startsWith("input_boolean.") )
           return "input_boolean.toggle";
+        if( entity.entity_id.startsWith("switch.") )
+          return "switch.toggle";
+        if( entity.entity_id.startsWith("light.") )
+          return "light.toggle";
         // If we need to support other entities we can add these options here.
         return "";
       ]]]
@@ -369,10 +361,67 @@ card_vertical_button:
       ]]]
 
 vertical_buttons:
-  template: "card_vertical_button"
+  show_label: true
+  label: "[[[ return (entity.attributes.value )]]]"
+  styles:
+    icon:
+      - color: "rgba(var(--color-theme),0.2)"
+    label:
+      - justify-self: "center"
+      - align-self: "start"
+      - font-weight: "bolder"
+      - font-size: "12px"
+      - filter: "opacity(40%)"
+    name:
+      - margin-top: "10px"
+      - justify-self: "center"
+      - font-weight: "bold"
+      - font-size: "14px"
+    img_cell:
+      - background-color: "rgba(var(--color-theme),0.05)"
+      - border-radius: "50%"
+      - place-self: "center"
+      - width: "42px"
+      - height: "42px"
+    grid:
+      - grid-template-areas: "'i' 'n' 'l'"
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "10px 0px 8px 0px"
+  size: "20px"
 
 vertical_buttons_custom_state:
-  template: "card_vertical_button"
+  template: "vertical_buttons"
+  variables:
+    state: "default"
+    # blue, red, green, yellow, purple, pink
+    color: "blue"
+  show_last_changed: false
+  name: "[[[ return variables.state ]]]"
+  styles:
+    name:
+      - text-transform: "capitalize"
+  state:
+    - operator: "template"
+      value: "[[[ return entity.state == variables.state ]]]"
+      styles:
+        icon:
+          - color: "[[[ return `rgba(var(--color-${variables.color}), 1)`; ]]]"
+        label:
+          - color: "[[[ return `rgba(var(--color-${variables.color}-text), 1)`; ]]]"
+        name:
+          - color: "[[[ return `rgba(var(--color-${variables.color}-text), 1)`; ]]]"
+        img_cell:
+          - background-color: "[[[ return `rgba(var(--color-${variables.color}), 0.2)`; ]]]"
+        card:
+          - background-color: "[[[ return `rgba(var(--color-background-${variables.color}), var(--opacity-bg))`; ]]]"
+  tap_action:
+    action: "call-service"
+    service: "input_select.select_option"
+    service_data:
+      entity_id: "[[[ return entity.entity_id ]]]"
+      option: "[[[ return variables.state ]]]"
 
 ### CARDS ###
 card_generic:
