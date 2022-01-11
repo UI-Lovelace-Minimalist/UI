@@ -1,4 +1,4 @@
 title: "UI-Lovelace-Minimalist"
 remote_theme: pmarsceill/just-the-docs
 
-exclude: ["custom_components/", "custom_popups/",]
+exclude: ["custom_components/", "custom_popups/", "CHANGELOG.md", "info.md", "LICENSE.md", "README.md", "README_POPUPS.md" ]
