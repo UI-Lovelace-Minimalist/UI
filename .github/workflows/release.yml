@@ -6,7 +6,7 @@ on:
     types: ["published"]
 
 jobs:
-  release_zip_file:
+  update_hacs_manifest:
     name: "Prepare release asset"
     runs-on: "ubuntu-latest"
     steps:
