@@ -140,8 +140,7 @@ This is a list of available `custom-cards`, included in the actual version of th
 <tr>
 <td>I use the following `rest` and `template` sensors in HA:
 
-```yaml
-
+  ```yaml
     sensor:
       - platform: rest
         scan_interval: 3600
@@ -173,7 +172,7 @@ This is a list of available `custom-cards`, included in the actual version of th
               tomorrow: >-
                 {% set dwd_state = state_attr('sensor.dwd_pollenbelastung', 'Birke')['tomorrow'] %}
                 {% if dwd_state == "3" %}6{% elif dwd_state == "2-3"%}5{% elif dwd_state == "2"%}4{% elif dwd_state == "1-2"%}3{% elif dwd_state == "1"%}2{% elif dwd_state == "0-1"%}1{% else %}0{% endif %}
-```
+  ```
 </td>
 </tr>
 </tbody>

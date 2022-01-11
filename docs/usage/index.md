@@ -898,19 +898,12 @@ Each of these “events” can be configured to use a specific `action`. These `
 
 <td>
 
-<div class="code-toolbar">
-
+```yaml
     xxx_action:
       action: more-info # to show the more-info popup  
       entity: your_entity # show more-info popup for this entity
+```
 
-<div class="toolbar">
-
-<div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div>
-
-</div>
-
-</div>
 
 </td>
 
@@ -922,18 +915,10 @@ Each of these “events” can be configured to use a specific `action`. These `
 
 <td>
 
-<div class="code-toolbar">
-
+```yaml
     xxx_action:
       action: toggle # toggles the entity of the card
-
-<div class="toolbar">
-
-<div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div>
-
-</div>
-
-</div>
+```
 
 </td>
 
@@ -945,20 +930,12 @@ Each of these “events” can be configured to use a specific `action`. These `
 
 <td>
 
-<div class="code-toolbar">
-
+```yaml
     xxx_action:
       action: call-service # to call a service from HA  
       service: service.service_arg  # the service
       service_data: # additional data, eg. an entity_id
-
-<div class="toolbar">
-
-<div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div>
-
-</div>
-
-</div>
+```
 
 </td>
 
@@ -970,18 +947,10 @@ Each of these “events” can be configured to use a specific `action`. These `
 
 <td>
 
-<div class="code-toolbar">
-
+```yaml
     xxx_action:
       action: none # explicitly set to do nothing
-
-<div class="toolbar">
-
-<div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div>
-
-</div>
-
-</div>
+```
 
 </td>
 
@@ -993,19 +962,11 @@ Each of these “events” can be configured to use a specific `action`. These `
 
 <td>
 
-<div class="code-toolbar">
-
+```yaml
     xxx_action:
       action: navigate  
       navigation_path: /ui-lovelace/home # the path to navigate to
-
-<div class="toolbar">
-
-<div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div>
-
-</div>
-
-</div>
+```
 
 </td>
 
@@ -1017,19 +978,11 @@ Each of these “events” can be configured to use a specific `action`. These `
 
 <td>
 
-<div class="code-toolbar">
-
+```yaml
     xxx_action:
       action: url  
       url_path: https://homeassistant.io
-
-<div class="toolbar">
-
-<div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div>
-
-</div>
-
-</div>
+```
 
 </td>
 
