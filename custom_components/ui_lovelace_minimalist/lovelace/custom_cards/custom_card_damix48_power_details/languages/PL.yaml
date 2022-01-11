@@ -1,0 +1,7 @@
+---
+ulm_custom_card_damix48_power_details_language_variables:
+  variables:
+    ulm_custom_card_damix48_power_details_hour: "godziny"
+    ulm_custom_card_damix48_power_details_hours: "godzin"
+    ulm_custom_card_damix48_power_details_in_the_last: "W ciągu ostatniej"
+    ulm_custom_card_damix48_power_details_in_the_lasts: "W ciągu ostatnich"
