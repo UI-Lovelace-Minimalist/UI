@@ -389,24 +389,6 @@ This is a list of available `custom-cards`, included in the actual version of th
 *   Don't forget to set `add_days_to` in your `sensor` config
 *   "HEUTE" is german for today or aujourd'hui | "MORGEN" is german for tomorrow or demain
 
-```yaml
-
-    sensor:
-      - platform: waste_collection_schedule
-        name: waste_collection_paper
-        details_format: upcoming
-        add_days_to: true # this line is important
-        value_template:  >-
-          {% if value.daysTo == 0 %}
-          HEUTE
-          {% elif value.daysTo == 1 %}
-          MORGEN
-          {% else %}
-          in {{value.daysTo}} Tagen
-          {% endif %}
-        types:
-          - Papiertonne
-```
 </td>
 </tr>
 </tbody>
