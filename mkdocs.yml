@@ -5,7 +5,7 @@ site_url: https://test.example.com
 # Repository
 repo_url: https://github.com/UI-Lovelace-Minimalist/UI
 repo_name: UI-Lovelace-Minimalist/UI
-edit_url: edit/main/docs/docs
+edit_url: edit/main/docs
 
 theme:
   name: material
@@ -50,7 +50,9 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.inlinehilite
-  - pymdownx.snippets
+  - pymdownx.snippets:
+      base_path: [".", "custom_components/ui_lovelace_minimalist"]
+      check_paths: true
   - pymdownx.critic
   - pymdownx.caret
   - pymdownx.keys
