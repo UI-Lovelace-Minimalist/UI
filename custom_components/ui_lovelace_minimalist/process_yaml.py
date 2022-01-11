@@ -167,7 +167,7 @@ def process_yaml(hass: HomeAssistant, ulm: UlmBase):
     if os.path.exists(hass.config.path(f"{DOMAIN}/configs")):
         # Create combined cards dir
         combined_cards_dir = hass.config.path(
-            f"custom_components/{DOMAIN}/__ui_minimalist__/button_cards_templates"
+            f"custom_components/{DOMAIN}/__ui_minimalist__/ulm_templates"
         )
         os.makedirs(combined_cards_dir, exist_ok=True)
 
@@ -194,9 +194,7 @@ def process_yaml(hass: HomeAssistant, ulm: UlmBase):
         )
         # Copy over cards from integration
         shutil.copytree(
-            hass.config.path(
-                f"custom_components/{DOMAIN}/lovelace/button_cards_templates"
-            ),
+            hass.config.path(f"custom_components/{DOMAIN}/lovelace/ulm_templates"),
             hass.config.path(f"{combined_cards_dir}"),
             dirs_exist_ok=True,
         )

@@ -1,0 +1,20 @@
+---
+popup_4_items:
+  styles:
+    grid:
+      - grid-template-areas: "'item1' 'item2' 'item3' 'item4'"
+      - grid-template-columns: "1fr"
+    card:
+      - background: "var(--primary-background-color)"
+      - box-shadow: "none"
+      - padding: "4%"
+    custom_fields:
+      item1:
+        - align-self: "start"
+      item2:
+        - align-self: "start"
+      item3:
+        - align-self: "start"
+      item4:
+        - align-self: "end"
+        - margin-top: "25px"
