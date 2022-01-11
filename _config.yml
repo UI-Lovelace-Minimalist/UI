@@ -1,0 +1,4 @@
+title: "UI-Lovelace-Minimalist"
+remote_theme: pmarsceill/just-the-docs
+# Include pages into processing
+include: ["docs"]
