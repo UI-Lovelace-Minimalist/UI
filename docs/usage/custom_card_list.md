@@ -235,7 +235,7 @@ This is a list of available `custom-cards`, included in the actual version of th
 </tr>
 <tr>
 <td width="50%">This is the `card_flower`, used to display a plant entity. Shows state of the plant and attributes.</td>
-<td width="50%">[![](./assets/images/flower.png)](./assets/images/flower.png)</td>
+<td width="50%"><img src="../../assets/images/flower.png"></td>
 </tr>
 <tr>
 <td colspan="2"><details><summary>"View" code</summary>  
@@ -376,7 +376,7 @@ This is a list of available `custom-cards`, included in the actual version of th
 </tr>
 <tr>
 <td width="50%">The `custom_card_paddy_waste_collection` shows you a button for the next waste collection date. On the day of collection and the day before, the icon and text will be red, to alert you.</td>
-<td width="50%">[![](./assets/images/custom_card_paddy_waste_collection.png)](./assets/images/custom_card_paddy_waste_collection.png)</td>
+<td width="50%"><img src="../../assets/images/custom_card_paddy_waste_collection.png"></td>
 </tr>
 <tr>
 <td colspan="2"><details><summary>Additional information</summary>  

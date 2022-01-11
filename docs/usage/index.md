@@ -19,29 +19,29 @@ Using this “theme” is not difficult, but you need to know a few basics, so y
 
 At the top of each page we find the chips, which allow to quickly visualize important information.
 
-![Chips](./assets/images/chips.png)
+![Chips](../../assets/images/chips.png)
 
 ### [](#title)Title
 
 Titles are used to separate the different sections. Kind of a divider…
 
-![Title](./assets/images/title.png)
+![Title](../../assets/images/title.png)
 
 ### [](#vertical-buttons)Vertical buttons
 
 For using the cards as a button.
 
-![Title](./assets/images/scene.gif)
+![Title](../../assets/images/scene.gif)
 
 ### [](#cards)Cards
 
 `Cards` are the main part of this design and are widely used in very different designs and functions. With these `cards` you can set up nearly every entity in HA, showing from “state-only” over a “full blown” information graphic with various values to “controlling” your covers and climate entities.
 
-![Cards](./assets/images/cards.png)
+![Cards](../../assets/images/cards.png)
 
 #### [](#anatomy-of-cards)Anatomy of cards
 
-![Anatomy](./assets/images/anatomy.png)
+![Anatomy](../../assets/images/anatomy.png)
 
 1.  **Dot**: Visible when the device is unavailable. Also used on the entity **person**
 2.  **Icon**: Icon that represents the device
