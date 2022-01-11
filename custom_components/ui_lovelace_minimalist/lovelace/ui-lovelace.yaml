@@ -1,7 +1,7 @@
 ---
 ui_lovelace_minimalist: !include "plugins/ui_lovelace_minimalist.yaml"
 
-button_card_templates: !include_dir_merge_named "../__ui_minimalist__/button_cards_templates/"
+button_card_templates: !include_dir_merge_named "../__ui_minimalist__/ulm_templates/"
 
 title: "UI Lovelace Minimalist"
 theme: "minimalist-desktop"

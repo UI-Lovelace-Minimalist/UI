@@ -1,0 +1,16 @@
+---
+popup_power_outlet:
+  hold_action:
+    action: "fire-dom-event"
+    browser_mod:
+      command: "popup"
+      large: true
+      hide_header: true
+      card:
+        type: "custom:button-card"
+        template: "popup_power_outlet_stats"
+        variables:
+          ulm_popup_power_outlet_entity: "[[[ return entity.entity_id ]]]"
+          ulm_popup_power_outlet_sensor1: "[[[ return variables.ulm_popup_power_outlet_sensor1 ]]]"
+          ulm_popup_power_outlet_sensor2: "[[[ return variables.ulm_popup_power_outlet_sensor2 ]]]"
+          ulm_popup_power_outlet_graph_sensor: "[[[ return variables.ulm_popup_power_outlet_graph_sensor ]]]"

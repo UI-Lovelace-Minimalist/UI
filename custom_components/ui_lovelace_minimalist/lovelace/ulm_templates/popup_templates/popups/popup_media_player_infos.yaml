@@ -1,0 +1,230 @@
+---
+popup_media_player_infos:
+  styles:
+    grid:
+      - grid-template-areas: "'header header' 'content1 content2' 'footer footer'"
+      - grid-template-rows: "16vh 56vh 14vh"
+      - grid-template-columns: "1fr 1fr"
+      - column-gap: "30px"
+    card:
+      - background: "var(--primary-background-color)"
+      - box-shadow: "none"
+      - padding: "4%"
+    custom_fields:
+      header:
+        - align-self: "start"
+      content1:
+        - align-self: "center"
+        - background-color: "var(--card-background-color)"
+        - border-radius: "var(--border-radius)"
+        - box-shadow: "var(--box-shadow)"
+        - width: "100%"
+        - max-width: "400px"
+        - justify-self: "center"
+      content2:
+        - align-self: "center"
+      buttons:
+        - display: "none"
+      footer:
+        - align-self: "end"
+        - margin-top: "25px"
+  extra_styles: |
+    @media (max-width: 800px) {
+      #container {
+        grid-template-areas: "header" "content1" "buttons" "footer" !important;
+        grid-template-rows: 16vh 52vh 14vh 14vh !important;
+        grid-template-columns: 1fr !important;
+      }
+      #buttons {
+        display: block !important;
+        align-self: start !important;
+      }
+      #content2 {
+        display: none;
+      }
+    }
+  custom_fields:
+    header:
+      card:
+        type: "custom:button-card"
+        template: "popup_header"
+        entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
+    content1:
+      card:
+        type: "custom:button-card"
+        styles:
+          grid:
+            - grid-template-areas: "'picture' 'media' 'control'"
+          card:
+            - background: "none"
+            - box-shadow: "none"
+            - padding: "4%"
+          custom_fields:
+            picture:
+              - margin-left: "auto"
+              - margin-right: "auto"
+              - background: "none"
+              - box-shadow: "none"
+            media:
+              - background: "none"
+              - box-shadow: "none"
+              - width: "calc(100vw - 60px)"
+              - max-width: "370px"
+            control:
+              - background: "none"
+              - box-shadow: "none"
+        custom_fields:
+          picture:
+            card:
+              type: "custom:mini-media-player"
+              entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
+              artwork: "full-cover"
+              hide:
+                name: true
+                icon: true
+                info: true
+                volume: true
+                progress: true
+                controls: true
+                source: true
+                power: true
+              card_mod:
+                style: |
+                  ha-card{
+                    width: 25vh !important;
+                    height: 25vh !important;
+                  }
+          media:
+            card:
+              type: "custom:mini-media-player"
+              entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
+              hide:
+                runtime: false
+                icon: true
+                volume: true
+                controls: true
+                source: true
+                power: true
+                name: true
+              card_mod:
+                style: |
+                  ha-card {
+                    background: none !important;
+                    box-shadow: none !important;
+                  }
+                  .mmp__bg{
+                    background: none !important;
+                  }
+                  .entity__info{
+                    width: 100% !important;
+                    text-align: center !important;
+                  }
+                  .entity__info__media {
+                    font-weight: bold !important;
+                    font-size: 14px !important;
+                    color: var(--primary-text-color) !important;
+                  }
+                  :host {
+                    --paper-progress-active-color: blue !important;
+                  }
+          control:
+            card:
+              type: "custom:mini-media-player"
+              entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
+              hide:
+                icon: true
+                name: true
+                info: true
+                volume: true
+                power: true
+                progress: true
+                source: true
+              card_mod:
+                style: |
+                  ha-card {
+                    background: none !important;
+                    box-shadow: none !important;
+                    width: 50% !important;
+                    margin-left: auto !important;
+                    margin-right: auto !important;
+                  }
+                  .mmp__bg{
+                    background: none !important;
+                  }
+    buttons:
+      card:
+        type: "custom:button-card"
+        template: "list_2_items"
+        styles:
+          card:
+            - background: "none"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template:
+                - "popup_button"
+                - "popup_button_selected"
+                - "popup_button_playing"
+          item2:
+            card:
+              type: "custom:button-card"
+              template:
+                - "popup_button"
+                - "popup_button_volume"
+              tap_action:
+                action: "fire-dom-event"
+                browser_mod:
+                  command: "popup"
+                  hide_header: true
+                  card:
+                    type: "custom:button-card"
+                    template: "popup_media_player_volume"
+                    variables:
+                      ulm_popup_media_player_entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
+    footer:
+      card:
+        type: "custom:button-card"
+        template: "popup_list_items"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template: "popup_button_back"
+          item2:
+            card:
+              type: "custom:button-card"
+              template: "popup_button_power"
+              entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
+    content2:
+      card:
+        type: "custom:slider-card"
+        entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
+        radius: "20px"
+        rotate: 270
+        containerHeight: "320px"
+        width: "250px"
+        height: "100px"
+        top: "100px"
+        left: "17%"
+        thumbHorizontalPadding: "0px"
+        thumbWidth: "0px"
+        mainSliderColor: "rgba(var(--color-theme),0.1)"
+        mainSliderColorOff: "rgba(var(--color-theme),0.1)"
+        secondarySliderColor: "var(--color-theme)"
+        secondarySliderColorOff: "var(--color-theme)"
+        card_mod:
+          style: |
+            ha-card {
+              background: none !important;
+              box-shadow: none !important;
+            }
+            .slider-container input[type="range"] {
+              position: revert !important;
+              border: 1px solid rgba(var(--color-theme),0.3) !important;
+            }
+            .slider-container {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }

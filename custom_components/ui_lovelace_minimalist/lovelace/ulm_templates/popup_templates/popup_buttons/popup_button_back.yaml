@@ -1,0 +1,19 @@
+---
+popup_button_back:
+  template:
+    - "popup_button"
+    - "ulm_language_variables"
+  icon: "mdi:arrow-left"
+  name: "[[[ return variables.ulm_popups_back ]]]"
+  styles:
+    name:
+      - text-transform: "uppercase"
+      - color: "rgba(var(--color-theme),0.5)"
+    img_cell:
+      - background: "none"
+      - box-shadow: "none"
+      - border: "1px solid rgba(var(--color-theme),0.25)"
+  tap_action:
+    action: "fire-dom-event"
+    browser_mod:
+      command: "close_popup"
