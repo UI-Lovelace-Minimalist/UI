@@ -2,7 +2,7 @@
 
 The `custom_card_damix48_power_details` is an extension of the standard graph card and can show a detailed graphs of power consumption. If hover (or tap in mobile) the points of the line show the average power in that time interval.
 
-![Power details](../../../../../assets/screenshots/custom_power_details.png)
+![Power details](../../docs/assets/img/custom_power_details.png)
 
 ## Credits
 

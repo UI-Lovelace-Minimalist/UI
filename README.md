@@ -4,7 +4,7 @@
 
 It's kind of hard to explain what this is, so let's call it a "theme" (in quotation marks). But one thing is for sure, it is very nice! Taking the exceptional work of tben as a basis, this repository is aimed to ease installation and maintainance of his wonderful work. You can use this interpretation of a SmartHomeUI more or less like a theme in HomeAssistant.
 
-<img src="./docs/assets/screenshots/example_home.png" width="200"> <img src="./docs/assets/screenshots/example_temperature.png" width="200"> <img src="./docs/assets/screenshots/example_consumption.png" width="200"> <img src="./docs/assets/screenshots/example_localisation.png" width="200">
+<img src="./docs/assets/img/example_home.png" width="200"> <img src="./docs/assets/img/example_temperature.png" width="200"> <img src="./docs/assets/img/example_consumption.png" width="200"> <img src="./docs/assets/img/example_localisation.png" width="200">
 
 > ### Contributions
 
@@ -123,29 +123,29 @@ All this is only possible, because we are able to use the templating function fr
 
 At the top of each page you can find the `chips`, which allow to quickly visualize important information.
 
-![Chips](./docs/assets/screenshots/chips.png)
+![Chips](./docs/assets/img/chips.png)
 
 ### Title
 
 `Titles` are used to separate the different sections. Kind of a divider.
 
-![Title](./docs/assets/screenshots/title.png)
+![Title](./docs/assets/img/title.png)
 
 ### Vertical buttons
 
 `Vertical buttons` show the information vertically aligned. These find their use eg. as navigation or scene buttons.
 
-![Title](./docs/assets/screenshots/scene.gif)
+![Title](./docs/assets/img/scene.gif)
 
 ### Cards
 
 `Cards` are the main part of this design and are widely used in very different designs and functions. With these `cards` you can set up nearly every entity in HA, showing from "state-only" over a "full blown" information graphic with various values to "controlling" your covers and climate entities.
 
-![Cards](./docs/assets/screenshots/cards.png)
+![Cards](./docs/assets/img/cards.png)
 
 #### Anatomy of cards
 
-![Anatomy](./docs/assets/screenshots/anatomy.png)
+![Anatomy](./docs/assets/img/anatomy.png)
 
 1. **Dot**: Visible when the device is unavailable. Also used on the entity **person**
 2. **Icon**: Icon that represents the device

@@ -2,7 +2,7 @@
 
 This is a `custom-card` to display a plant entity. Shows state of the plant and attributes.
 
-![Generic](../../../../../assets/screenshots/flower.png)
+![Generic](../../docs/assets/img/flower.png)
 
 ## Credits
 

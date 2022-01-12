@@ -2,7 +2,7 @@
 
 The `custom_card_mpse_dual_graph` is an extension of the standard graph card and can show 2 graphs in the same card. I wanted to show both upload/download speed in the same image. The variable names follow the same standard as the base card to make it easier to change.
 
-![Dual Graph](../../../../../assets/screenshots/custom_dual_graph.png)
+![Dual Graph](../../docs/assets/img/custom_dual_graph.png)
 
 ## Credits
 

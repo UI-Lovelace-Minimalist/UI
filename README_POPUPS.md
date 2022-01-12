@@ -26,7 +26,7 @@ The basis for all these popups is `button-card` that allows for a great and indi
 
 ### Power outlet popup
 
-<img src="./assets/screenshots/popup_power_phone.png" height="400"> <img src="./assets/screenshots/popup_power_tablet.png" height="400">
+<img src="./assets/img/popup_power_phone.png" height="400"> <img src="./assets/img/popup_power_tablet.png" height="400">
 
 #### Requirements
 
@@ -95,7 +95,7 @@ For exemple :
 
 ### Light popup
 
-<img src="./assets/screenshots/popup_light_phone.png" height="400"> <img src="./assets/screenshots/popup_light_tablet.png" height="400">
+<img src="./assets/img/popup_light_phone.png" height="400"> <img src="./assets/img/popup_light_tablet.png" height="400">
 
 #### Requirements
 
@@ -124,7 +124,7 @@ For exemple :
 
 ### Media Player popup
 
-<img src="./assets/screenshots/popup_media_phone.png" height="400"> <img src="./assets/screenshots/popup_media_tablet.png" height="400">
+<img src="./assets/img/popup_media_phone.png" height="400"> <img src="./assets/img/popup_media_tablet.png" height="400">
 
 #### Card compatibility
 

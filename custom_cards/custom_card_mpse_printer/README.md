@@ -2,7 +2,7 @@
 
 The `custom_card_mpse_printer` is used to display the status of a printer and the toner.
 
-![Printer](../../../../../assets/screenshots/custom_printer.png)
+![Printer](../../docs/assets/img/custom_printer.png)
 
 ## Credits
 

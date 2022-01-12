@@ -2,7 +2,7 @@
 
 The `card_input_number` you can control a input_number entity
 
-![Input Number Card](./assets/screenshots/card_input_number.png)
+![Input Number Card](./assets/img/card_input_number.png)
 
 ## Credits
 

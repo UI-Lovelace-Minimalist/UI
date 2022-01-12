@@ -9,11 +9,11 @@ This is a _custom card_ to control a fan. It allows you to turn on/off the fan, 
 
 #### Light theme
 
-![Light theme](../../../../../assets/screenshots/custom_fan_light_theme.png)
+![Light theme](../../docs/assets/img/custom_fan_light_theme.png)
 
 #### Dark theme
 
-![Dark theme](../../../../../assets/screenshots/custom_fan_dark_theme.png)
+![Dark theme](../../docs/assets/img/custom_fan_dark_theme.png)
 
 ## Credits
 
