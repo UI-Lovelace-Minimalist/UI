@@ -49,14 +49,14 @@ Images, including screenshots, can help a reader better understand a concept. Ho
 
 #### Save the image
 
-- Place images in a separate directory named `img/` in the same directory where the `.md` document that you're working on is located.
+- Place all images in the central asset directory in the docs root named `assets/img/`.
 - Consider using PNG images instead of JPEG.
 - Compress GIFs with https://ezgif.com/optimize or similar tool.
 - Images should be used (only when necessary) to illustrate the description of a process, not to replace it.
 
 #### Add the image link to content
 
-The Markdown code for including an image in a document is `![Image description which will be teh alt tag](img/document_image_title.png)`
+The Markdown code for including an image in a document is `![Image description which will be teh alt tag](../../assets/img/example.png)`
 
 ### Admonitions / Call-outs
 
