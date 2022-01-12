@@ -62,7 +62,6 @@ config
   variables:
     ulm_card_light_slider_horizontal_colors_name: Ceiling light
     ulm_card_light_slider_horizontal_colors_transition: 1
-
 ```
 
 ## Variables
@@ -90,5 +89,3 @@ config
 <td>This is the color change transition in seconds</td>
 </tr>
 </table>
-
-```
