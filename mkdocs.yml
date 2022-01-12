@@ -1,0 +1,73 @@
+# Project information
+site_name: UI Lovelace Minimalist
+site_url: https://test.example.com
+
+# Repository
+repo_url: https://github.com/UI-Lovelace-Minimalist/UI
+repo_name: UI-Lovelace-Minimalist/UI
+edit_url: edit/main/docs
+
+theme:
+  name: material
+  language: en # default 
+  logo:  ../assets/logos/Minimalist UI Logo - Icon.png
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: red
+      accent: red
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.indexes
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.annotate
+    - content.tabs.link
+
+# extra_css:
+# extra_javascript:
+
+markdown_extensions:
+  - meta
+  - pymdownx.superfences
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji 
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - admonition
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.snippets:
+      base_path: [".", "custom_components/ui_lovelace_minimalist"]
+      check_paths: true
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.tilde
+  - tables
+  - footnotes
+  - attr_list
+  - md_in_html
+  - def_list
+  - toc:
+      permalink: true
+
+# extra:
+#   social:
+#     - icon: 
+
+plugins:
+  - search

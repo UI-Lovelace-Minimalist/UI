@@ -1,3 +1,5 @@
+mkdocs-material
+
 # homeassistant
 jinja2
 pre-commit
