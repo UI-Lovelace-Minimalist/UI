@@ -45,9 +45,6 @@ theme:
     - "content.code.annotate"
     - "content.tabs.link"
 
-# extra_css:
-# extra_javascript:
-
 markdown_extensions:
   - "meta"
   - "pymdownx.superfences"
@@ -72,9 +69,8 @@ markdown_extensions:
   - toc:
       permalink: true
 
-# extra:
-#   social:
-#     - icon:
+extra:
+  generator: false
 
 plugins:
   - "search"
