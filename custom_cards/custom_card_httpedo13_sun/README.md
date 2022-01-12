@@ -33,7 +33,7 @@ This card uses:
 
 
 ## Images
-![Generic](../../../../../assets/screenshots/sun-card.png)
+![Generic](../assets/screenshots/sun-card.png)
 
 ## Usage
 

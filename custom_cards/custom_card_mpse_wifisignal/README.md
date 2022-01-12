@@ -2,7 +2,7 @@
 
 The `custom_card_mpse_wifisignal` is used to display the status of a wifi signal (dBm). Icon changes based on signal strenght.
 
-![WiFi Signal](../../../../../assets/screenshots/custom_wifisignal.png)
+![WiFi Signal](../assets/screenshots/custom_wifisignal.png)
 
 ## Credits
 Author: mpse

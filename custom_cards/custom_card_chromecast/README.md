@@ -3,7 +3,7 @@
 > NOTE
 > This card is under review and is not ready to use!
 
-![Sonos](../../../../../assets/screenshots/chromecast.png)
+![Sonos](../assets/screenshots/chromecast.png)
 
 <details>
 <summary>Usage</summary>

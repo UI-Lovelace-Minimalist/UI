@@ -2,9 +2,9 @@
 
 This card indicated whether a given device is online or offline using the Home Assistant device_tracker or the WoL-integration.
 
-![Preview](../../../../../assets/screenshots/custom_device_tracer.jpg)
+![Preview](../assets/screenshots/custom_device_tracer.jpg)
 <br> Turn on you device with WoL: <br>
-![WoL Preview](../../../../../assets/screenshots/custom_device_tracer_wol.jpg)
+![WoL Preview](../assets/screenshots/custom_device_tracer_wol.jpg)
 
 ## Credits
 
