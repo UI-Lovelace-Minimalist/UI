@@ -2,10 +2,10 @@
 
 This is a `custom-card` to add additionall function to the `light_card`. It comes in four different versions:
 
-* Light card with icon as info button (*card_light_icon_info*)
-* Horizontal light card with icon as info button (*card_light_horizontal_icon_info*)
-* Light card with icon as info button + brigthness slider (*card_light_slider_icon_info*)
-* Light card with icon as info button + auto collapse brigthness slider (*card_light_slider_collapse_icon_info*)
+- Light card with icon as info button (*card_light_icon_info*)
+- Horizontal light card with icon as info button (*card_light_horizontal_icon_info*)
+- Light card with icon as info button + brigthness slider (*card_light_slider_icon_info*)
+- Light card with icon as info button + auto collapse brigthness slider (*card_light_slider_collapse_icon_info*)
 
 The icon is changeable for each MDI-icon. And the icon functions as button to show more-info.
 
@@ -53,7 +53,7 @@ This card needs the following to function correctly:
 
 ## Installation
 
-* Copy the folder `custom_card_light_icon_info` from your download `custom_cards` to `config/minimalist-templates`
+- Copy the folder `custom_card_light_icon_info` from your download `custom_cards` to `config/minimalist-templates`
 
 In the end it should look like this:
 

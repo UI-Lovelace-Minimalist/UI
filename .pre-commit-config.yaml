@@ -28,7 +28,7 @@ repos:
     rev: v0.30.0
     hooks:
     - id: markdownlint
-      args: ["--fix", "--config"]
+      args: ["--fix"]
 
   - repo: "https://github.com/jumanjihouse/pre-commit-hook-yamlfmt"
     rev: "0.1.0"
