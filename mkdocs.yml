@@ -8,6 +8,12 @@ repo_url: "https://github.com/UI-Lovelace-Minimalist/UI"
 repo_name: "UI-Lovelace-Minimalist/UI"
 edit_url: "edit/dev/docs"
 
+nav:
+  - "index.md"
+  - "setup/index.md"
+  - "usage/index.md"
+  - "docs-style-guide.md"
+
 extra_css:
   - "stylesheets/extra.css"
 

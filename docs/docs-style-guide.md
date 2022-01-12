@@ -1,5 +1,5 @@
 ---
-title: Style Guide
+title: Docs Style Guide
 ---
 
 ## Documentation Style Guide
