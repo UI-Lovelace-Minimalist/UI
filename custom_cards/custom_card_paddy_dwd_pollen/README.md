@@ -123,4 +123,4 @@ sensor:
 
 ## Notes
 
-* As this card is mainly for the DWD pollen sensor, that is based in Germany and shows only german data, the only available language is "German". If you want another language added, please leave a message in the support thread.
+- As this card is mainly for the DWD pollen sensor, that is based in Germany and shows only german data, the only available language is "German". If you want another language added, please leave a message in the support thread.

@@ -7,22 +7,22 @@ The basis for all these popups is `button-card` that allows for a great and indi
 <details>
 <summary>Show table of content</summary>
 
-* [Credits](#credits)
-* [Power outlet popup](#power-outlet-popup)
-* [Light popup](#light-popup)
-* [Media player popup](#media-player-popup)
+- [Credits](#credits)
+- [Power outlet popup](#power-outlet-popup)
+- [Light popup](#light-popup)
+- [Media player popup](#media-player-popup)
 
 </details>
 
 ## Credits
 
-* Designed by schumijo and bavo (special thanks to him for his help on this development)).
+- Designed by schumijo and bavo (special thanks to him for his help on this development)).
 
 ## Requirements
 
-* Minimalist UI
-* button-card (download for HACS)
-* Browser_mod (download for HACS)
+- Minimalist UI
+- button-card (download for HACS)
+- Browser_mod (download for HACS)
 
 ## Power outlet popup
 
@@ -30,19 +30,19 @@ The basis for all these popups is `button-card` that allows for a great and indi
 
 ## Requirements
 
-* mini-graph-card (download for HACS)
+- mini-graph-card (download for HACS)
 
 ### Card compatibility
 
 This popup is displayed using ``hold_action`` and it is compatible with the following cards/chips :
 
-* card_generic
-* card_generic_swap
-* card_binary_sensor
-* card_binary_sensor_alert
-* card_power_outlet
-* card_input_boolean
-* card_battery
+- card_generic
+- card_generic_swap
+- card_binary_sensor
+- card_binary_sensor_alert
+- card_power_outlet
+- card_input_boolean
+- card_battery
 
 ### Variables
 
@@ -99,14 +99,14 @@ For exemple :
 
 ## Requirements
 
-* My Cards Bundle aka slider-card (download for HACS)
-* Light Entity Card (download for HACS)
+- My Cards Bundle aka slider-card (download for HACS)
+- Light Entity Card (download for HACS)
 
 ### Card compatibility
 
 This popup is displayed using ``hold_action`` and it is compatible with the following cards/chips :
 
-* card_light
+- card_light
 
 ### How to use
 
@@ -130,7 +130,7 @@ For exemple :
 
 This popup is displayed using ``hold_action`` and it is compatible with the following cards/chips :
 
-* card_media_player
+- card_media_player
 
 ### How to use
 

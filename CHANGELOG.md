@@ -16,7 +16,7 @@
 - #155 Update card_light_icon_info.yaml @basbruss
 - #156 Fix custom_card_saxel blue style card @saxel
 - #153 Fix battery_card icon color when state is unavailable @saxel
-- #146 fix Card "card_media_player_with_controls" 
+- #146 fix Card "card_media_player_with_controls"
   (missing  variable "ulm_card_media_player_with_controls_entity") @vncnt-dev
 - #183 Light Slider unavailable color @schumijo
 - #182 Update chips_icon_label to use base chips template @schumijo
@@ -35,7 +35,8 @@
 
 ### ❤️ Thank you so much for helping out to keep this UI awesome
 
-@13robin37, @CM000n, @KaherdinTristan, @basbruss, @denes44, @desty2k, @kaphwor, @mp-se, @revin34, @saxel, @schumijo and @vncnt-dev
+@13robin37, @CM000n, @KaherdinTristan, @basbruss, @denes44, @desty2k, @kaphwor,
+@mp-se, @revin34, @saxel, @schumijo and @vncnt-dev
 
 ## Version 1.0.0-beta.10-hotfix
 

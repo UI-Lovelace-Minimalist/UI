@@ -139,9 +139,9 @@ This is my `sensor` setup in HA. I do the change from "days" to "friendly days" 
 
 > #### Note
 >
-> * Don't forget to set `add_days_to` in your `sensor` config
-> * "HEUTE" is german for today or aujourd'hui
-> * "MORGEN" is german for tomorrow or demain
+> - Don't forget to set `add_days_to` in your `sensor` config
+> - "HEUTE" is german for today or aujourd'hui
+> - "MORGEN" is german for tomorrow or demain
 
 ```yaml
 sensor:

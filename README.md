@@ -88,31 +88,31 @@ Take a look here: [https://ui-lovelace-minimalist.netlify.app/](https://ui-lovel
 <details>
 <summary>Show table of content</summary>
 
-* [Credits](#credits)
-* [This "theme" introduced](#this-theme-introduced)
-  * [Chips](#chips)
-  * [Title](#title)
-  * [Vertical buttons](#vertical-buttons)
-  * [Cards](#cards)
-  * [Language specific buttons](#language-specific-buttons)
-  * [Custom cards](#custom-cards)
-  * [Extend the "theme"](#extend-with-your-own-code)
-* [Installation and update](#installation-and-update)
-* [List of templates](#list-of-templates)
-* [List of custom-cards](#custom-cards)
-* [Legacy templates](#legacy-templates)
+- [Credits](#credits)
+- [This "theme" introduced](#this-theme-introduced)
+    - [Chips](#chips)
+    - [Title](#title)
+    - [Vertical buttons](#vertical-buttons)
+    - [Cards](#cards)
+    - [Language specific buttons](#language-specific-buttons)
+    - [Custom cards](#custom-cards)
+    - [Extend the "theme"](#extend-with-your-own-code)
+- [Installation and update](#installation-and-update)
+- [List of templates](#list-of-templates)
+- [List of custom-cards](#custom-cards)
+- [Legacy templates](#legacy-templates)
 
 </details>
 
 ## Credits
 
-* This design was made by [tben](https://community.home-assistant.io/u/tben/summary)
-* A lot of inspiration is taken from [7ahang’s work](https://www.behance.net/gallery/88433905/Redesign-Smart-Home) found on Behance.
-* Contributions from others in the HomeAssistant forum thread, you can find it [here](https://community.home-assistant.io/t/lovelace-ui-minimalist/322687).
-* The technical part is realised mostly by taking advantage of the great work RomRaider did with his [button-card](https://github.com/custom-cards/button-card).
-* Code refactor, cleanup and maintainance schumijo and paddy0174.
-* Wiki by paddy0174.
-* Special thanks to clemalex and schumijo for contributing their cards to the main repository.
+- This design was made by [tben](https://community.home-assistant.io/u/tben/summary)
+- A lot of inspiration is taken from [7ahang’s work](https://www.behance.net/gallery/88433905/Redesign-Smart-Home) found on Behance.
+- Contributions from others in the HomeAssistant forum thread, you can find it [here](https://community.home-assistant.io/t/lovelace-ui-minimalist/322687).
+- The technical part is realised mostly by taking advantage of the great work RomRaider did with his [button-card](https://github.com/custom-cards/button-card).
+- Code refactor, cleanup and maintainance schumijo and paddy0174.
+- Wiki by paddy0174.
+- Special thanks to clemalex and schumijo for contributing their cards to the main repository.
 
 ## This "theme" introduced
 
@@ -155,9 +155,9 @@ At the top of each page you can find the `chips`, which allow to quickly visuali
 
 In the list above #5 enhances the normal `cards` with a "second line", that is used to display other information like a graph or the controls for your covers. For this readme the `cards` are divided into three groups:
 
-* 1-line cards: These are cards for `sensor` or `binary_sensors` like *light* or *power outlets*.
-* 2-line cards: These are cards with a second line for informations or controls, eg. your `cover controls`.
-* Custom cards: These are special cards, that you can install, only if needed. These cards are mostly developed and contributed to the repository. Eg. an `aircondition-card` that shows the state of your aircondition and buttons to control it.
+- 1-line cards: These are cards for `sensor` or `binary_sensors` like *light* or *power outlets*.
+- 2-line cards: These are cards with a second line for informations or controls, eg. your `cover controls`.
+- Custom cards: These are special cards, that you can install, only if needed. These cards are mostly developed and contributed to the repository. Eg. an `aircondition-card` that shows the state of your aircondition and buttons to control it.
 
 ### Language specific buttons
 
@@ -189,11 +189,11 @@ At the moment there are two methods of installing this "theme", one for `yaml`-m
 
 We can offer you in-depth instructions for installation, as well as for future updates or from a previous version. Check our WIKI for more info:
 
-* [Instructions for installation in `yaml`-mode](https://ui-lovelace-minimalist.netlify.app/installation/yaml-mode)
-* [Instructions for installation in `UI`-mode](https://ui-lovelace-minimalist.netlify.app/installation/ui-mode)
-* [Update in `yaml`mode](https://ui-lovelace-minimalist.netlify.app/installation/update#yaml-mode)
-* [Update in `UI`-mode](https://ui-lovelace-minimalist.netlify.app/installation/update#ui-mode)
-* [Update from previous version](https://ui-lovelace-minimalist.netlify.app/installation/update#previous-version)
+- [Instructions for installation in `yaml`-mode](https://ui-lovelace-minimalist.netlify.app/installation/yaml-mode)
+- [Instructions for installation in `UI`-mode](https://ui-lovelace-minimalist.netlify.app/installation/ui-mode)
+- [Update in `yaml`mode](https://ui-lovelace-minimalist.netlify.app/installation/update#yaml-mode)
+- [Update in `UI`-mode](https://ui-lovelace-minimalist.netlify.app/installation/update#ui-mode)
+- [Update from previous version](https://ui-lovelace-minimalist.netlify.app/installation/update#previous-version)
 
 TL;DR
 Download and copy content of `config` folder to HA `config` folder. Set link to include `button_card_templates`, install `lovelace-cards`, use example code to get started.

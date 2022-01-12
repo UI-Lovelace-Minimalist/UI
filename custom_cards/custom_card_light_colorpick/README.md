@@ -39,7 +39,7 @@ This card needs the following to function correctly:
 
 ## Installation
 
-* Copy the folder `custom_card_light_colorpick` from your download `custom_cards` to `config/minimalist-templates`
+- Copy the folder `custom_card_light_colorpick` from your download `custom_cards` to `config/minimalist-templates`
 
 In the end it should look like this:
 

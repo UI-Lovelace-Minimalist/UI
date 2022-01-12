@@ -2,10 +2,10 @@
 
 This is a `custom-card` to add additionall function to the `light_card`. It comes in four different versions:
 
-* Color changing light card with icon as info button (*card_light_color*)
-* Horizontal color changing light card with icon as info button  (*card_light_horizontal_color*)
-* Color changing light card with icon as info button + brigthness slider (*card_light_slider_color*)
-* Color changing light card with icon as info button + auto collapse brigthness slider (*card_light_slider_collapse_color*)
+- Color changing light card with icon as info button (*card_light_color*)
+- Horizontal color changing light card with icon as info button  (*card_light_horizontal_color*)
+- Color changing light card with icon as info button + brigthness slider (*card_light_slider_color*)
+- Color changing light card with icon as info button + auto collapse brigthness slider (*card_light_slider_collapse_color*)
 
 The card shows you the color of the light. The icon is changeable for each MDI-icon. And the icon functions as button to show more-info.
 
@@ -59,7 +59,7 @@ This card needs the following to function correctly:
 
 ## Installation
 
-* Copy the folder `custom_card_light_color` from your download `custom_cards` to `config/minimalist-templates`
+- Copy the folder `custom_card_light_color` from your download `custom_cards` to `config/minimalist-templates`
 
 In the end it should look like this:
 
