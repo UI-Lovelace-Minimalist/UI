@@ -49,7 +49,7 @@ Images, including screenshots, can help a reader better understand a concept. Ho
 
 #### Save the image
 
-- Place all images in the central asset directory in the docs root named `assets/img/`.
+- Place all images in the central asset directory named `assets/img/` inside the docs root folder.
 - Consider using PNG images instead of JPEG.
 - Compress GIFs with https://ezgif.com/optimize or similar tool.
 - Images should be used (only when necessary) to illustrate the description of a process, not to replace it.
