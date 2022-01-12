@@ -1,5 +1,7 @@
 # Docs
 
+## Style Guide
+
 ## Developing
 
 Run local:

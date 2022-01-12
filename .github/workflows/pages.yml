@@ -2,7 +2,7 @@
 name: "Pages"
 
 on:
-  pull_request:
+  push:
     # TODO: Remove 'dev' branch after testing
     branches: ["main", "dev"]
 
