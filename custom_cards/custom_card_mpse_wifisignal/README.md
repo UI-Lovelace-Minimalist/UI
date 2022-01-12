@@ -5,10 +5,12 @@ The `custom_card_mpse_wifisignal` is used to display the status of a wifi signal
 ![WiFi Signal](../../../../../assets/screenshots/custom_wifisignal.png)
 
 ## Credits
+
 Author: mpse
 Version: 0.2.0
 
 ## Changelog
+
 <details>
 <summary>0.2.0</summary>
 Cleanup and updated documentation.
@@ -27,8 +29,11 @@ Initial release.
 ```
 
 ## Requirements
+
 No special cards needed.
+
 ## Variables
+
 <table>
 <tr>
 <th>Variable</th>

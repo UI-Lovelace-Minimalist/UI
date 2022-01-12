@@ -95,7 +95,7 @@ wget -O - https://get.hacs.xyz | bash -
 #### Add Integrations
 
 - Run task: `Run Home Assistant on port 9123` described in [Tasks](#tasks)
-- Head to: http://localhost:9123
+- Head to: <http://localhost:9123>
   - create user
 - Add HACS integration
 - Go to HACS

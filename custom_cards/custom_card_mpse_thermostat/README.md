@@ -7,10 +7,12 @@ The buttons are used to lower/raise the set temperature which is displayed betwe
 ![Thermostat](../../../../../assets/screenshots/custom_thermostat.png)
 
 ## Credits
+
 Author: mpse
 Version: 0.1.0
 
 ## Changelog
+
 <details>
 <summary>0.1.0</summary>
 Initial release inspired from various posts on home assistant forum.
@@ -27,6 +29,7 @@ Initial release inspired from various posts on home assistant forum.
 ## Requirements
 
 ## Variables
+
 <table>
 <tr>
 <th>Variable</th>

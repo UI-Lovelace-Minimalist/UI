@@ -1,13 +1,16 @@
 # Custom-card "NAS"
+
 The `card_input_number` you can control a input_number entity
 
 ![Input Number Card](./assets/screenshots/card_input_number.png)
 
 ## Credits
+
 Author: sildehoop - 2021
 Version: 1.0.0
 
 ## Changelog
+
 <details>
 <summary>1.0.0</summary>
 Initial release
@@ -25,9 +28,11 @@ Initial release
 ```
 
 ## Requirements
+
 n/a
 
 ## Variables
+
 <table>
 <tr>
 <th>Variable</th>

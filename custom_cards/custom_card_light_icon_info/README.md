@@ -1,4 +1,5 @@
 # Custom-card "Light Card Icon Info"
+
 This is a `custom-card` to add additionall function to the `light_card`. It comes in four different versions:
 
 * Light card with icon as info button (*card_light_icon_info*)
@@ -9,10 +10,12 @@ This is a `custom-card` to add additionall function to the `light_card`. It come
 The icon is changeable for each MDI-icon. And the icon functions as button to show more-info.
 
 ## Credits
+
 Author: basbruss - 2021
 Version: 1.0.1
 
 ## Changelog
+
 <details>
 <summary>1.0.0</summary>
 Initial release
@@ -27,6 +30,7 @@ Code cleanup
 </details>
 
 ## Requirements
+
 This card needs the following to function correctly:
 <table>
 <tr>
@@ -48,6 +52,7 @@ This card needs the following to function correctly:
 </table>
 
 ## Installation
+
 * Copy the folder `custom_card_light_icon_info` from your download `custom_cards` to `config/minimalist-templates`
 
 In the end it should look like this:
@@ -95,6 +100,7 @@ config
 ```
 
 ## Variables
+
 <table>
 <tr>
 <th>Card type</th>

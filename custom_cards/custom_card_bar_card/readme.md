@@ -1,20 +1,24 @@
 
 # Custom-card "Bar Card"
+
 This is a `custom-card` to display a percentage value as a bar.
 
 ![Screenshot](../../../../../assets/screenshots/screenshot_bar_card.png)
 
 ## Credits
+
 Author: rphlwnk - 2021
 Version: 1.0.0
 
 ## Changelog
+
 <details>
 <summary>1.0.0</summary>
 Initial release
 </details>
 
 ## Requirements
+
 This card needs the following to function correctly:
 
 [Custom Card 'Bar-Card'](https://github.com/custom-cards/bar-card)
@@ -33,7 +37,9 @@ This card needs the following to function correctly:
     ulm_custom_card_bar_card_min: 10
     ulm_custom_card_bar_card_max: 20
 ```
+
 ## Variables
+
 <table>
 <tr>
 <th>Variable</th>

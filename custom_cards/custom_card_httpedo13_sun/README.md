@@ -1,17 +1,21 @@
 # Custom-card "Sun"
+
 The `custom_card_httpedo13_sun` adapt `sun card` for minimalist ui.
 
 ## Credits
+
 Author: httpedo13 - 2021
 Version: 1.0.0
 
 ## Changelog
+
 <details>
 <summary>1.0.0</summary>
 Initial release
 </details>
 
 ## Requirements
+
 This card uses:
 <table>
 <tr>
@@ -31,8 +35,8 @@ This card uses:
 </tr>
 </table>
 
-
 ## Images
+
 ![Generic](../../../../../assets/screenshots/sun-card.png)
 
 ## Usage
@@ -45,6 +49,7 @@ This card uses:
 ```
 
 ## Variables
+
 The same sun card config.
 
 | Name          | Accepted values      | Description                          | Default                                             |

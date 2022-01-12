@@ -12,6 +12,7 @@ Author: vncnt.dev - 2021
 Version: 1.0.0
 
 ## Changelog
+
 <details>
 <summary>1.1.0</summary>
 Support WoL

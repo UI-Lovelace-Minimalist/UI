@@ -1,15 +1,15 @@
 {%- if version_installed == "dev" %}
 
-## You are running dev!
+## You are running dev
 
 This is **only** intended for development!
 
-{%- elif (version_installed.split(".")[0] | int) < 0 %}
+{%- elif [version_installed.split("."](0) | int) < 0 %}
 
-# Breaking changes!
+# Breaking changes
 
 Read the release notes!
-https://github.com/UI-Lovelace-Minimalist/UI/releases/tag/0.0.0
+<https://github.com/UI-Lovelace-Minimalist/UI/releases/tag/0.0.0>
 {% endif %}
 
 # UI-Lovelace-Minimalist

@@ -1,4 +1,5 @@
 # Custom-card "Color Light Card"
+
 This is a `custom-card` to add additionall function to the `light_card`. It comes in four different versions:
 
 * Color changing light card with icon as info button (*card_light_color*)
@@ -14,11 +15,14 @@ The card shows you the color of the light. The icon is changeable for each MDI-i
 ![Dark](../../../../../assets/screenshots/light_dark.png)
 ![Dark_slider](../../../../../assets/screenshots/light_dark_slider.png)
 ![Dark_horizontal](../../../../../assets/screenshots/light_dark_horizontal.png)
+
 ## Credits
+
 Author: basbruss - 2021
 Version: 1.0.1
 
 ## Changelog
+
 <details>
 <summary>1.0.0</summary>
 Initial release
@@ -33,6 +37,7 @@ Code celanup
 </details>
 
 ## Requirements
+
 This card needs the following to function correctly:
 <table>
 <tr>
@@ -53,6 +58,7 @@ This card needs the following to function correctly:
 </table>
 
 ## Installation
+
 * Copy the folder `custom_card_light_color` from your download `custom_cards` to `config/minimalist-templates`
 
 In the end it should look like this:
@@ -102,10 +108,13 @@ config
     ulm_card_light_icon: mdi:ceiling-light #leave empty for standard icon
     ulm_card_light_mode: dark # define light or dark theme-mode, leave empty if you use auto
 ```
+
 ## Dark/Light Mode support (*new function*)
+
 The default for all cards include is auto switching. You can use only dark or light mode if you specify the `ulm_card_light_mode` variable.
 
 ## Variables
+
 <table>
 <tr>
 <th>Card type</th>

@@ -15,6 +15,7 @@
 ```
 
 #### Variables
+
 <table>
 <tr>
 <th>Variable</th>

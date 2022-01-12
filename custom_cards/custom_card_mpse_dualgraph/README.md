@@ -5,10 +5,12 @@ The `custom_card_mpse_dual_graph` is an extension of the standard graph card and
 ![Dual Graph](../../../../../assets/screenshots/custom_dual_graph.png)
 
 ## Credits
+
 Author: mpse
 Version: 0.1.0
 
 ## Changelog
+
 <details>
 <summary>0.1.0</summary>
 Initial release.
@@ -30,6 +32,7 @@ Initial release.
 ## Requirements
 
 ## Variables
+
 <table>
 <tr>
 <th>Variable</th>

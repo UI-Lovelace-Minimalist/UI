@@ -1,4 +1,5 @@
 # Custom-card "Car"
+
 This is a `custom-card` to informations about your car.
 
 ![Generic](../../../../../assets/screenshots/car.png)
@@ -6,10 +7,12 @@ This is a `custom-card` to informations about your car.
 _NB : This card has only been tested with Audi Connect integration but should work with some others._
 
 ## Credits
+
 Author: schumijo - 2021
 Version: 1.0.0
 
 ## Changelog
+
 <details>
 <summary>1.0.0</summary>
 Initial release
@@ -27,7 +30,9 @@ Initial release
     ulm_card_schumijo_car_energy_level: sensor.audi_q3_tank_level
     ulm_card_schumijo_car_range: sensor.audi_q3_range
 ```
+
 #### Variables
+
 <table>
 <tr>
 <th>Variable</th>

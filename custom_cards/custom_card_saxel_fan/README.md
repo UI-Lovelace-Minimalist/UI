@@ -1,4 +1,5 @@
 # Custom-card "Fan"
+
 This is a _custom card_ to control a fan. It allows you to turn on/off the fan, adjusting the fan speed with a slider, and turn on/off oscillation. Two styles are available:
 
 | Template                   | Description                                                              |
@@ -7,22 +8,27 @@ This is a _custom card_ to control a fan. It allows you to turn on/off the fan, 
 | custom_card_saxel_fan_blue | Card is theme based when the fan is __OFF__, Blue when the fan is __ON__ |
 
 #### Light theme
+
 ![Light theme](../../../../../assets/screenshots/custom_fan_light_theme.png)
 
 #### Dark theme
+
 ![Dark theme](../../../../../assets/screenshots/custom_fan_dark_theme.png)
 
 ## Credits
+
 Author: saxel - 2021
 Version: 1.0.0
 
 ## Changelog
+
 <details>
   <summary>1.0.0</summary>
   Initial release
 </details>
 
 ## Requirements
+
 This card needs the following to function correctly:
 <table>
   <tr>
@@ -43,11 +49,13 @@ This card needs the following to function correctly:
 </table>
 
 ## Installation
+
 Copy the folder `custom_card_saxel_fan` to `config/minimalist-templates/`
 
 ## Usage
 
 #### Standard
+
 ```yaml
 - type: custom:button-card
   template: custom_card_saxel_fan_blue
@@ -59,6 +67,7 @@ Copy the folder `custom_card_saxel_fan` to `config/minimalist-templates/`
 ```
 
 #### Blue
+
 ```yaml
 - type: custom:button-card
   template: custom_card_saxel_fan
@@ -70,6 +79,7 @@ Copy the folder `custom_card_saxel_fan` to `config/minimalist-templates/`
 ```
 
 ## Variables
+
 <table>
   <tr>
     <th>Variable</th>

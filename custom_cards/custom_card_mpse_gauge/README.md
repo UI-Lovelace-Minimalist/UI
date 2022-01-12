@@ -5,10 +5,12 @@ The `custom_card_mpse_gauge` is used present a value in form of a gauge. The car
 ![Printer](../../../../../assets/screenshots/custom_gauge.png)
 
 ## Credits
+
 Author: mpse
 Version: 0.1.0
 
 ## Changelog
+
 <details>
 Initial release.
 </details>
@@ -25,8 +27,11 @@ Initial release.
 ```
 
 ## Requirements
-Uses this card: https://github.com/custom-cards/dual-gauge-card which can be installed via HACS.
+
+Uses this card: <https://github.com/custom-cards/dual-gauge-card> which can be installed via HACS.
+
 ## Variables
+
 <table>
 <tr>
 <th>Variable</th>

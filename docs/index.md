@@ -5,7 +5,7 @@ hide:
 title: Welcome
 ---
 
-# Welcome to the UI-Lovelace-Minimalist wiki!
+# Welcome to the UI-Lovelace-Minimalist wiki
 
 External file test
 

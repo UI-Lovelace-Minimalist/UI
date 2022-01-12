@@ -5,10 +5,12 @@ The `custom_card_damix48_power_details` is an extension of the standard graph ca
 ![Power details](../../../../../assets/screenshots/custom_power_details.png)
 
 ## Credits
+
 Author: Damix48
 Version: 0.1.0
 
 ## Changelog
+
 <details>
 <summary>0.1.0</summary>
 Initial release.
@@ -34,9 +36,11 @@ Initial release.
 ```
 
 ## Requirements
+
 Need [mini-graph-card](https://github.com/kalkih/mini-graph-card)
 
 ## Variables
+
 <table>
 <tr>
 <th>Variable</th>
