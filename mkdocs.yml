@@ -8,25 +8,25 @@ repo_url: "https://github.com/UI-Lovelace-Minimalist/UI"
 repo_name: "UI-Lovelace-Minimalist/UI"
 edit_url: "edit/dev/docs"
 
+extra_css:
+  - "stylesheets/extra.css"
+
 theme:
   name: "material"
   language: "en"
   logo: "assets/logos/Minimalist UI Logo - Icon.png"
+  favicon: "assets/logos/favicon/favicon-32x32.png"
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: "default"
-      primary: "indigo"
-      accent: "indigo"
       toggle:
-        icon: "material/toggle-switch-off-outline"
-        name: "Switch to dark mode"
+        icon: "material/weather-night"
+        name: "Dark mode"
     - media: "(prefers-color-scheme: dark)"
       scheme: "slate"
-      primary: "red"
-      accent: "red"
       toggle:
-        icon: "material/toggle-switch"
-        name: "Switch to light mode"
+        icon: "material/weather-sunny"
+        name: "Light mode"
   features:
     - "navigation.instant"
     - "navigation.tracking"
