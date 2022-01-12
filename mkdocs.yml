@@ -6,12 +6,12 @@ site_url: "https://test.example.com"
 # Repository
 repo_url: "https://github.com/UI-Lovelace-Minimalist/UI"
 repo_name: "UI-Lovelace-Minimalist/UI"
-edit_url: "edit/main/docs"
+edit_url: "edit/dev/docs"
 
 theme:
   name: "material"
   language: "en"
-  logo: "./docs/assets/logos/Minimalist UI Logo - Icon.png"
+  logo: "assets/logos/Minimalist UI Logo - Icon.png"
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: "default"
