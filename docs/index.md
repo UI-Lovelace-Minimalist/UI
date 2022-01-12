@@ -1,5 +1,5 @@
 ---
-hide: 
+hide:
   - navigation
   - toc
 title: Welcome
