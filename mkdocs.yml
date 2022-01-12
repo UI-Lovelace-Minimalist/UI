@@ -14,7 +14,7 @@ extra_css:
 theme:
   name: "material"
   language: "en"
-  logo: "assets/logos/Minimalist UI Logo - Icon.png"
+  logo: "assets/logos/Minimalist UI Logo.svg"
   favicon: "assets/logos/favicon/favicon-32x32.png"
   palette:
     - media: "(prefers-color-scheme: light)"
