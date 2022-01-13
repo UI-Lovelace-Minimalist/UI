@@ -16,8 +16,6 @@ nav:
   - Usage:
       - Cards:
           - card_light: "usage/cards/card_light.md"
-      - Chips:
-      - Popups:
   - Development:
       - Docs Style Guide: "development/docs_style_guide.md"
 
