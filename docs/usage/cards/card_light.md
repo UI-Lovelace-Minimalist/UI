@@ -5,7 +5,7 @@ title: card_light
 
 ## Description
 
-![Image title](../../assets/img/card_light_combi.png){ width="180" }
+![Image title](../../assets/img/card_light_combi.png){ width="300" }
 
 This documentation refers to the new "All in one" light card.
 This card merges the following one :
