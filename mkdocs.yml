@@ -45,8 +45,8 @@ theme:
   features:
     - "navigation.instant"
     - "navigation.tracking"
-    - "navigation.tabs"
     - "navigation.indexes"
+    - "navigation.sections"
     - "navigation.top"
     - "search.suggest"
     - "search.highlight"
@@ -80,6 +80,3 @@ markdown_extensions:
 
 plugins:
   - "search"
-
-extra:
-  generator: false
