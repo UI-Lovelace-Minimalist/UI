@@ -8,23 +8,15 @@ repo_url: "https://github.com/UI-Lovelace-Minimalist/UI"
 repo_name: "UI-Lovelace-Minimalist/UI"
 edit_url: "edit/dev/docs"
 
+# https://pythonrepo.com/repo/lukasgeiter-mkdocs-awesome-pages-plugin-python-documentation
 nav:
   - Home: "index.md"
-  - Setup:
-      - "setup/index.md"
-      - Installation: "setup/install.md"
-      - Configuration: "setup/configuration.md"
-  - Usage:
-      - "usage/index.md"
-      - Cards:
-          - "usage/cards/index.md"
-          - Light: "usage/cards/light.md"
-  - Development:
-      - "development/index.md"
-      - Docs Style Guide: "development/docs_style_guide.md"
+  - "... | setup/**/*.md"
+  - "... | usage/**/*.md"
+  - "... | development/**/*.md"
 
 extra_css:
-  - "stylesheets/extra.css"
+  - "assets/stylesheets/extra.css"
 
 theme:
   name: "material"
@@ -46,6 +38,7 @@ theme:
     - "navigation.instant"
     - "navigation.tracking"
     - "navigation.top"
+    - "navigation.indexes"
     - "toc.integrate"
     - "search.suggest"
     - "search.highlight"
@@ -79,3 +72,4 @@ markdown_extensions:
 
 plugins:
   - "search"
+  - "awesome-pages"
