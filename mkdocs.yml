@@ -1,7 +1,7 @@
 ---
 # Project information
 site_name: "UI Lovelace Minimalist"
-site_url: "https://test.example.com"
+site_url: "https://ui-lovelace-minimalist.github.io/UI/"
 
 # Repository
 repo_url: "https://github.com/UI-Lovelace-Minimalist/UI"
@@ -46,7 +46,6 @@ theme:
     - "navigation.instant"
     - "navigation.tracking"
     - "navigation.indexes"
-    - "navigation.sections"
     - "navigation.top"
     - "search.suggest"
     - "search.highlight"
