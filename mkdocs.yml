@@ -10,17 +10,13 @@ edit_url: "edit/dev/docs"
 
 nav:
   - Home: "index.md"
-  - Setup:
-      - "setup/index.md"
+  - Setup: "setup/index.md"
       - Installation: "setup/install.md"
       - Configuration: "setup/configuration.md"
-  - Usage:
-      - "usage/index.md"
-      - Cards:
-          - "usage/cards/index.md"
+  - Usage: "usage/index.md"
+      - Cards: "usage/cards/index.md"
           - Light: "usage/cards/light.md"
-  - Development:
-      - "development/index.md"
+  - Development: "development/index.md"
       - Docs Style Guide: "development/docs_style_guide.md"
 
 extra_css:
