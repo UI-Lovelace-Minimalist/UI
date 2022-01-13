@@ -27,7 +27,8 @@ extra_css:
 theme:
   name: "material"
   language: "en"
-  font: "Comfortaa"
+  font:
+    text: "Comfortaa"
   logo: "assets/logos/website_logo.png"
   favicon: "assets/logos/favicon/favicon-32x32.png"
   palette:
