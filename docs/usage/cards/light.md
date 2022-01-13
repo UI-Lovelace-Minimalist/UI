@@ -1,6 +1,7 @@
 ---
 title: Lights
 ---
+<!-- markdownlint-disable MD046 -->
 
 ## Light card
 
@@ -8,18 +9,20 @@ title: Lights
 
 This documentation refers to the new "All in one" light card.
 This card merges the following one :
+
 - legacy ```card_light``` (the old one)
 - legacy ```card_light_slider```
 - legacy ```card_light_slider_collapse```
 - legacy ```card_light_slider_horizontal```
-- custom ```card_light_color``` by basbruss 
-- custom ```card_light_horizontal_color``` by basbruss 
-- custom ```card_light_slider_color``` by basbruss 
-- custom ```card_light_slider_collapse_color``` by basbruss 
+- custom ```card_light_color``` by basbruss
+- custom ```card_light_horizontal_color``` by basbruss
+- custom ```card_light_slider_color``` by basbruss
+- custom ```card_light_slider_collapse_color``` by basbruss
 
 !!! warning
 
-    This card has backward compatibilty with older template except custom names and icons. It means variables like `ulm_card_XXX_name` and `ulm_card_XXX_icon` must be replaced by `ulm_card_light_name` and `ulm_card_light_icon`.
+    This card has backward compatibilty with older template except custom names and icons. It means variables like
+    `ulm_card_XXX_name` and `ulm_card_XXX_icon` must be replaced by `ulm_card_light_name` and `ulm_card_light_icon`.
 
 |Variable/Entity|Default|Required|Notes|Requirement|
 |--------|-------|--------|-----|-----------|
@@ -46,8 +49,8 @@ This card merges the following one :
     ulm_card_light_slider_aio_force_background_color: true
 ```
 
-## Code
+??? note "Template Code"
 
-```yaml title="card_light.yaml"
---8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_light.yaml"
-```
+    ```yaml title="card_light.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_light.yaml"
+    ```

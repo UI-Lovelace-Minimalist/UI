@@ -23,7 +23,7 @@ card_light:
           - background-color: >
               [[[
                   var color = entity.attributes.rgb_color;
-                  if (variables.ulm_card_light_enable_background_color == true){  
+                  if (variables.ulm_card_light_enable_background_color == true){
                     if(variables.ulm_card_light_force_background_color == true){
                       if (color){
                         return 'rgba(' + color + ',0.1)'
@@ -165,7 +165,7 @@ card_light:
                   - color: >-
                       [[[
                           var color = entity.attributes.rgb_color;
-                          if (variables.ulm_card_light_enable_background_color == true){  
+                          if (variables.ulm_card_light_enable_background_color == true){
                             if(variables.ulm_card_light_force_background_color == true){
                               if (color){
                                 return 'rgba(' + color + ',1)'
@@ -188,7 +188,7 @@ card_light:
                   - color: >-
                       [[[
                           var color = entity.attributes.rgb_color;
-                          if (variables.ulm_card_light_enable_background_color == true){  
+                          if (variables.ulm_card_light_enable_background_color == true){
                             if(variables.ulm_card_light_force_background_color == true){
                               if (color){
                                 return 'rgba(' + color + ',1)'
