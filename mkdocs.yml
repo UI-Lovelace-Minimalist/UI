@@ -9,10 +9,19 @@ repo_name: "UI-Lovelace-Minimalist/UI"
 edit_url: "edit/dev/docs"
 
 nav:
-  - "index.md"
-  - "setup/index.md"
-  - "usage/index.md"
-  - "docs-style-guide.md"
+  - Home: "index.md"
+  - Setup: 
+    - "setup/index.md"
+    - Installation: "setup/install.md"
+    - Configuration: "setup/configuration.md"
+  - Usage: 
+    - "usage/index.md"
+    - Cards: 
+      - "usage/cards/index.md"
+      - Light: "usage/cards/light.md"
+  - Development: 
+    - "development/index.md"
+    - Docs Style Guide: "development/docs_style_guide.md"
 
 extra_css:
   - "stylesheets/extra.css"
@@ -69,8 +78,8 @@ markdown_extensions:
   - toc:
       permalink: true
 
-extra:
-  generator: false
-
 plugins:
   - "search"
+
+extra:
+  generator: false
