@@ -3,7 +3,7 @@ title: Lights
 ---
 <!-- markdownlint-disable MD046 -->
 
-## Light card
+## card_light
 
 ![Image title](../../assets/img/card_light_combi.png)
 
