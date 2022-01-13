@@ -45,8 +45,8 @@ theme:
   features:
     - "navigation.instant"
     - "navigation.tracking"
-    - "navigation.indexes"
     - "navigation.top"
+    - "toc.integrate"
     - "search.suggest"
     - "search.highlight"
     - "search.share"
