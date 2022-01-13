@@ -4,6 +4,7 @@ hide:
   - toc
 ---
 <!-- markdownlint-disable MD046 -->
+# Welcome to the UI-Lovelace-Minimalist wiki
 
 !!! danger "Under construction!"
 
@@ -11,8 +12,6 @@ hide:
     This is currently under construction!
     The contents are therefore to be enjoyed with caution
     and can still change at any time.
-
-# Welcome to the UI-Lovelace-Minimalist wiki
 
 This wiki is intended to help you install and use the wonderful “theme” UI-Lovelace-Minimalist created by tben. Feel free to look around and get a deeper insight into the internal functions and tricks, this “theme” is using. Use them to your own likings, and if you develop something, that others must see, feel free to post it to this wiki or in the thread at the Home Assistant forum, which you can find [here](https://community.home-assistant.io/t/lovelace-ui-minimalist/322687?u=paddy0174).
 
