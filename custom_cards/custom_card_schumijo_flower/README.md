@@ -1,13 +1,20 @@
 # Custom-card "Flower"
+
 This is a `custom-card` to display a plant entity. Shows state of the plant and attributes.
 
+<<<<<<< HEAD:custom_cards/custom_card_schumijo_flower/README.md
 ![Generic](../assets/screenshots/flower.png)
+=======
+![Generic](../../docs/assets/img/flower.png)
+>>>>>>> dev:custom_components/ui_lovelace_minimalist/lovelace/custom_cards/custom_card_schumijo_flower/README.md
 
 ## Credits
+
 Author: schumijo - 2021
 Version: 1.1.0
 
 ## Changelog
+
 <details>
 <summary>1.0.0</summary>
 Initial release
@@ -28,7 +35,9 @@ Updated README
     ulm_card_flower_name: Bonsai Ficus
     ulm_card_flower_species: "ficus retusa"
 ```
+
 #### Variables
+
 <table>
 <tr>
 <th>Variable</th>

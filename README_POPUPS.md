@@ -1,4 +1,5 @@
 # UI-Lovelace-Minimalist popups
+
 The basis for all these popups is `button-card` that allows for a great and individual styling. These popups are "responsive". That means the layout automatically fit the size of the screen.
 
 ## Table of Content
@@ -6,39 +7,45 @@ The basis for all these popups is `button-card` that allows for a great and indi
 <details>
 <summary>Show table of content</summary>
 
-* [Credits](#credits)
-* [Power outlet popup](#power-outlet-popup)
-* [Light popup](#light-popup)
-* [Media player popup](#media-player-popup)
+- [Credits](#credits)
+- [Power outlet popup](#power-outlet-popup)
+- [Light popup](#light-popup)
+- [Media player popup](#media-player-popup)
+
 </details>
 
 ## Credits
-* Designed by schumijo and bavo (special thanks to him for his help on this development)).
 
-## Requirements
-* Minimalist UI
-* button-card (download for HACS)
-* Browser_mod (download for HACS)
+- Designed by schumijo and bavo (special thanks to him for his help on this development)).
 
-## Power outlet popup
+## Basic Requirements
 
-<img src="./assets/screenshots/popup_power_phone.png" height="400"> <img src="./assets/screenshots/popup_power_tablet.png" height="400">
+- Minimalist UI
+- button-card (download for HACS)
+- Browser_mod (download for HACS)
 
-## Requirements
-* mini-graph-card (download for HACS)
+### Power outlet popup
 
-### Card compatibility
+<img src="./assets/img/popup_power_phone.png" height="400"> <img src="./assets/img/popup_power_tablet.png" height="400">
+
+#### Requirements
+
+- mini-graph-card (download for HACS)
+
+##### Card compatibility
 
 This popup is displayed using ``hold_action`` and it is compatible with the following cards/chips :
-* card_generic
-* card_generic_swap
-* card_binary_sensor
-* card_binary_sensor_alert
-* card_power_outlet
-* card_input_boolean
-* card_battery
 
-### Variables
+- card_generic
+- card_generic_swap
+- card_binary_sensor
+- card_binary_sensor_alert
+- card_power_outlet
+- card_input_boolean
+- card_battery
+
+##### Variables
+
 <table>
   <tr>
     <th>Variable</th>
@@ -66,11 +73,12 @@ This popup is displayed using ``hold_action`` and it is compatible with the foll
   </tr>
 </table>
 
-### How to use
+##### How to use
 
 To enable this popup, you need to add the ``popup_power_outlet`` template on your card. And also the previously explained variables.
 
 For exemple :
+
 ```yaml
 - type: "custom:button-card"
   template:
@@ -85,24 +93,27 @@ For exemple :
   name: Prise téléphone
 ```
 
-## Light popup
+### Light popup
 
-<img src="./assets/screenshots/popup_light_phone.png" height="400"> <img src="./assets/screenshots/popup_light_tablet.png" height="400">
+<img src="./assets/img/popup_light_phone.png" height="400"> <img src="./assets/img/popup_light_tablet.png" height="400">
 
-## Requirements
-* My Cards Bundle aka slider-card (download for HACS)
-* Light Entity Card (download for HACS)
+#### Requirements
 
-### Card compatibility
+- My Cards Bundle aka slider-card (download for HACS)
+- Light Entity Card (download for HACS)
+
+##### Card compatibility
 
 This popup is displayed using ``hold_action`` and it is compatible with the following cards/chips :
-* card_light
 
-### How to use
+- card_light
+
+##### How to use
 
 To enable this popup, you need to add the ``popup_light`` template on your card.
 
 For exemple :
+
 ```yaml
 - type: "custom:button-card"
   template:
@@ -111,20 +122,22 @@ For exemple :
   entity: light.cuisine
 ```
 
-## Media Player popup
+### Media Player popup
 
-<img src="./assets/screenshots/popup_media_phone.png" height="400"> <img src="./assets/screenshots/popup_media_tablet.png" height="400">
+<img src="./assets/img/popup_media_phone.png" height="400"> <img src="./assets/img/popup_media_tablet.png" height="400">
 
-### Card compatibility
+#### Card compatibility
 
 This popup is displayed using ``hold_action`` and it is compatible with the following cards/chips :
-* card_media_player
 
-### How to use
+- card_media_player
+
+#### How to use
 
 To enable this popup, you need to add the ``popup_media_player`` template on your card.
 
 For exemple :
+
 ```yaml
 - type: "custom:button-card"
   template:

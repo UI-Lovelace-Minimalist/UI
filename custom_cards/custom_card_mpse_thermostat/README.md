@@ -4,13 +4,19 @@ The `custom_card_mpse_thermostat` is used to display temperature and control a s
 
 The buttons are used to lower/raise the set temperature which is displayed between the arrows. It uses the defined steps configured on the thermostat (In my case I use esphome to control the frigde). The current temperature is shown in the grey label. The card uses the standard language parameters.
 
+<<<<<<< HEAD:custom_cards/custom_card_mpse_thermostat/README.md
 ![Thermostat](../assets/screenshots/custom_thermostat.png)
+=======
+![Thermostat](../../docs/assets/img/custom_thermostat.png)
+>>>>>>> dev:custom_components/ui_lovelace_minimalist/lovelace/custom_cards/custom_card_mpse_thermostat/README.md
 
 ## Credits
+
 Author: mpse
 Version: 0.1.0
 
 ## Changelog
+
 <details>
 <summary>0.1.0</summary>
 Initial release inspired from various posts on home assistant forum.
@@ -27,6 +33,7 @@ Initial release inspired from various posts on home assistant forum.
 ## Requirements
 
 ## Variables
+
 <table>
 <tr>
 <th>Variable</th>

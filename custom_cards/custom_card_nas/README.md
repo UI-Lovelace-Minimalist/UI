@@ -1,11 +1,14 @@
 # Custom-card "NAS"
+
 The `card-nas` shows you a specific sensor value from your NAS, eg. the disk space used.
 
 ## Credits
+
 Author: tben - 2021
 Version: 1.0.0
 
 ## Changelog
+
 <details>
 <summary>1.0.0</summary>
 Initial release
@@ -24,9 +27,11 @@ Initial release
 ```
 
 ## Requirements
+
 n/a
 
 ## Variables
+
 <table>
 <tr>
 <th>Variable</th>

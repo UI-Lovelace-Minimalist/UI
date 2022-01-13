@@ -1,11 +1,14 @@
 # Custom-card "AirCondition"
+
 The `custom_card_tpx01_aircondition` shows data from your air condition and gives you the possibility to control it.
 
 ## Credits
+
 Author: tpx01 - 2021
 Version: 1.0.0
 
 ## Changelog
+
 <details>
 <summary>1.0.0</summary>
 Initial release
@@ -17,14 +20,16 @@ Initial release
 - type: custom:button-card
   template: custom_card_tpx01_aircondition_with_buttons
   variables:
-  	entity: climate.livingroom
-  	name: A/C Livingroom
+   entity: climate.livingroom
+   name: A/C Livingroom
 ```
 
 ## Requirements
+
 n/a
 
 ## Variables
+
 <table>
 <tr>
 <th>Variable</th>

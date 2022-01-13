@@ -2,9 +2,15 @@
 
 This card indicated whether a given device is online or offline using the Home Assistant device_tracker or the WoL-integration.
 
+<<<<<<< HEAD:custom_cards/custom_card_vncntdev_device_tracer/README.md
 ![Preview](../assets/screenshots/custom_device_tracer.jpg)
 <br> Turn on you device with WoL: <br>
 ![WoL Preview](../assets/screenshots/custom_device_tracer_wol.jpg)
+=======
+![Preview](../../docs/assets/img/custom_device_tracer.jpg)
+<br> Turn on you device with WoL: <br>
+![WoL Preview](../../docs/assets/img/custom_device_tracer_wol.jpg)
+>>>>>>> dev:custom_components/ui_lovelace_minimalist/lovelace/custom_cards/custom_card_vncntdev_device_tracer/README.md
 
 ## Credits
 
@@ -12,6 +18,7 @@ Author: vncnt.dev - 2021
 Version: 1.0.0
 
 ## Changelog
+
 <details>
 <summary>1.1.0</summary>
 Support WoL

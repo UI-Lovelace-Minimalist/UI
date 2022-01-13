@@ -1,14 +1,18 @@
-### Media player: sonos
+# Media player: sonos
 
 > NOTE
 > This card is under review and is not ready to use!
 
+<<<<<<< HEAD:custom_cards/custom_card_chromecast/README.md
 ![Sonos](../assets/screenshots/chromecast.png)
+=======
+![Sonos](../../docs/assets/img/chromecast.png)
+>>>>>>> dev:custom_components/ui_lovelace_minimalist/lovelace/custom_cards/custom_card_chromecast/README.md
 
 <details>
 <summary>Usage</summary>
 
-#### Example
+## Example
 
 ```yaml
 - type: 'custom:button-card'
@@ -18,7 +22,8 @@
     ulm_card_media_player_with_controls_entity: media_player.my_chromecast
 ```
 
-#### Variables
+## Variables
+
 <table>
 <tr>
 <th>Variable</th>

@@ -2,13 +2,19 @@
 
 The `custom_card_mpse_wifisignal` is used to display the status of a wifi signal (dBm). Icon changes based on signal strenght.
 
+<<<<<<< HEAD:custom_cards/custom_card_mpse_wifisignal/README.md
 ![WiFi Signal](../assets/screenshots/custom_wifisignal.png)
+=======
+![WiFi Signal](../../docs/assets/img/custom_wifisignal.png)
+>>>>>>> dev:custom_components/ui_lovelace_minimalist/lovelace/custom_cards/custom_card_mpse_wifisignal/README.md
 
 ## Credits
+
 Author: mpse
 Version: 0.2.0
 
 ## Changelog
+
 <details>
 <summary>0.2.0</summary>
 Cleanup and updated documentation.
@@ -27,8 +33,11 @@ Initial release.
 ```
 
 ## Requirements
+
 No special cards needed.
+
 ## Variables
+
 <table>
 <tr>
 <th>Variable</th>

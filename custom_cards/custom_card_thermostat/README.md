@@ -5,12 +5,13 @@
 
 The `thermostat-card` is used to switch a climate entity on/off and show the temperature from a (different) `sensor`.
 
-
 ## Credits
+
 Author: tben - 2021
 Version: 1.0.0
 
 ## Changelog
+
 <details>
 <summary>1.0.0</summary>
 Initial release
@@ -28,9 +29,11 @@ Initial release
 ```
 
 ## Requirements
+
 n/a
 
 ## Variables
+
 <table>
 <tr>
 <th>Variable</th>

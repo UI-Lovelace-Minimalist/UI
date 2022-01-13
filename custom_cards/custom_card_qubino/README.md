@@ -4,10 +4,12 @@
 > This card is under review and is not ready to use!
 
 ## Credits
+
 Author: tben - 2021
 Version: 1.0.0
 
 ## Changelog
+
 <details>
 <summary>1.0.0</summary>
 Initial release
@@ -19,6 +21,7 @@ Initial release
 ```
 
 ## Requirements
+
 This card needs the following to function correctly:
 <table>
 <tr>
@@ -33,6 +36,7 @@ This card needs the following to function correctly:
 </table>
 
 ## Variables
+
 <table>
 <tr>
 <th>Variable</th>
@@ -54,13 +58,16 @@ This card needs the following to function correctly:
 ```
 
 ## HomeAssistant
+
 ...
 
 ## Example
+
 ...
 
 ```yaml
 ```
 
 ## Note
+
 ...

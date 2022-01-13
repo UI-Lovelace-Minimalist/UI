@@ -1,11 +1,14 @@
 # Custom-card "DWD Pollen"
+
 This is a `custom-card` to show the pollen count, taken from the DWD pollen service via a rest sensor.
 
 ## Credits
+
 Author: Paddy0174 - 2021
 Version: 1.0.0
 
 ## Changelog
+
 <details>
 <summary>1.0.0</summary>
 Initial release
@@ -16,11 +19,12 @@ Initial release
 ```yaml
 - type: custom:button-card
   template:
-  	- custom_card_paddy_dwd_pollen
+   - custom_card_paddy_dwd_pollen
   entity: sensor.dwd_pollenbelastung_birke
 ```
 
 ## Requirements
+
 n/a
 
 ## Template code
@@ -80,6 +84,7 @@ custom_card_paddy_dwd_pollen:
 ```
 
 ## HomeAssistant
+
 I use the following `rest` and `template` sensors in HA:
 
 ```yaml
@@ -117,4 +122,5 @@ sensor:
 ```
 
 ## Notes
-* As this card is mainly for the DWD pollen sensor, that is based in Germany and shows only german data, the only available language is "German". If you want another language added, please leave a message in the support thread.
+
+- As this card is mainly for the DWD pollen sensor, that is based in Germany and shows only german data, the only available language is "German". If you want another language added, please leave a message in the support thread.

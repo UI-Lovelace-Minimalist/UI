@@ -2,13 +2,19 @@
 
 The `custom_card_mpse_printer` is used to display the status of a printer and the toner.
 
+<<<<<<< HEAD:custom_cards/custom_card_mpse_printer/README.md
 ![Printer](../assets/screenshots/custom_printer.png)
+=======
+![Printer](../../docs/assets/img/custom_printer.png)
+>>>>>>> dev:custom_components/ui_lovelace_minimalist/lovelace/custom_cards/custom_card_mpse_printer/README.md
 
 ## Credits
+
 Author: mpse (based on clemalex post)
 Version: 0.3.0
 
 ## Changelog
+
 <details>
 <summary>0.3.0</summary>
 Updated documention.
@@ -40,10 +46,13 @@ Initial release adapted from a post on home assistant forum by user clemalex.
 ```
 
 ## Requirements
-Uses this card: https://github.com/custom-cards/bar-card
-Tested with the IPP Integration from Home Assistant: https://www.home-assistant.io/integrations/ipp
+
+Uses this card: <https://github.com/custom-cards/bar-card>
+Tested with the IPP Integration from Home Assistant: <https://www.home-assistant.io/integrations/ipp>
 On my printer i cannot get any state update, it always reports idle. I wanted to highlight the button when the printer is active.
+
 ## Variables
+
 <table>
 <tr>
 <th>Variable</th>

@@ -1,23 +1,27 @@
 # Custom-card "Welcome"
+
 This is a `custom-card` to show a welcome message to the user. It comes in four different versions:
 
-* welcome message (*custom_card_paddy_welcome*)
-* welcome message + weather-forecast (*custom_card_paddy_welcome_with_weather*)
-* welcome message + news (*custom_card_paddy_welcome_with_news*) [based on home-feed-card]
+- welcome message (*custom_card_paddy_welcome*)
+- welcome message + weather-forecast (*custom_card_paddy_welcome_with_weather*)
+- welcome message + news (*custom_card_paddy_welcome_with_news*) [based on home-feed-card]
 
 The card shows a time based message (good morning/afternoon/evening/hello) to the logged-in user with username. The second part of the card varies depending on what version you choose. *Note, that you have different requirements depending on the version!*
 
 ## Credits
+
 Author: Paddy0174 - 2021
 Version: 1.0.0
 
 ## Changelog
+
 <details>
 <summary>1.0.0</summary>
 Initial release
 </details>
 
 ## Requirements
+
 This card needs the following to function correctly:
 <table>
 <tr>
@@ -43,8 +47,9 @@ This card needs the following to function correctly:
 </table>
 
 ## Installation
-* Copy the folder `custom_card_paddy_welcome` from your download `custom_cards` to `config/minimalist-templates`
-* Go to the folder `config/minimalist-templates/custom_card_paddy_welcome/languages` and delete all but the one language file you want to use. For english, delete all but `EN.yaml`, for german delete all but `DE.yaml`.
+
+- Copy the folder `custom_card_paddy_welcome` from your download `custom_cards` to `config/minimalist-templates`
+- Go to the folder `config/minimalist-templates/custom_card_paddy_welcome/languages` and delete all but the one language file you want to use. For english, delete all but `EN.yaml`, for german delete all but `DE.yaml`.
 
 In the end it should look like this:
 
@@ -86,6 +91,7 @@ config
 ```
 
 ## Variables
+
 <table>
 <tr>
 <th>Card type</th>
@@ -118,6 +124,7 @@ config
 </table>
 
 > #### Note _welcome_with_news
+
 > This card is based on [home-feed-card](https://github.com/gadgetchnnel/lovelace-home-feed-card) and needs a little different configuration in the variables.
 > To allow almost all entites from HomeAssistant to show in the news, you're able to set all options that `home-feed-card` provides. This makes it necessary, that you set these entities in a list. Let me show you an example:
 >
@@ -371,6 +378,7 @@ custom_card_paddy_welcome_with_news:
 ```
 
 ## Custom configuration Example
+
 Here is one example, on how you can extend this (actually every) card. In the end we have the welcome card extended by four buttons to have something like a header with a navigation.
 
 ```yaml

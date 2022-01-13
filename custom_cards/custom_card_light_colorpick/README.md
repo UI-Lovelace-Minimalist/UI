@@ -1,19 +1,23 @@
 # Custom-card "Colorpicker Light Card"
+
 This is a `custom-card` to add additional function to the `light_card`.
 
 The card uses a slider as well as six conditional icons to pick the color of the light.
 
 ## Credits
+
 Author: 13robin37 - 2021
 Version: 1.0.0
 
 ## Changelog
+
 <details>
 <summary>1.0.0</summary>
 Initial release
 </details>
 
 ## Requirements
+
 This card needs the following to function correctly:
 <table>
 <tr>
@@ -34,7 +38,8 @@ This card needs the following to function correctly:
 </table>
 
 ## Installation
-* Copy the folder `custom_card_light_colorpick` from your download `custom_cards` to `config/minimalist-templates`
+
+- Copy the folder `custom_card_light_colorpick` from your download `custom_cards` to `config/minimalist-templates`
 
 In the end it should look like this:
 
@@ -57,10 +62,10 @@ config
   variables:
     ulm_card_light_slider_horizontal_colors_name: Ceiling light
     ulm_card_light_slider_horizontal_colors_transition: 1
-
 ```
 
 ## Variables
+
 <table>
 <tr>
 <th>Card type</th>
@@ -84,5 +89,3 @@ config
 <td>This is the color change transition in seconds</td>
 </tr>
 </table>
-
-```

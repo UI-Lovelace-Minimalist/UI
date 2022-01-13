@@ -8,8 +8,8 @@ In the container you will have a dedicated Home Assistant core instance running 
 
 - [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 - Docker
-  - For Linux, macOS, or Windows 10 Pro/Enterprise/Education use the [current release version of Docker](https://docs.docker.com/install/)
-  - Windows 10 Home requires [WSL 2](https://docs.microsoft.com/windows/wsl/wsl2-install) and the current Edge version of Docker Desktop (see instructions [here](https://docs.docker.com/docker-for-windows/wsl-tech-preview/)). This can also be used for Windows Pro/Enterprise/Education.
+    - For Linux, macOS, or Windows 10 Pro/Enterprise/Education use the [current release version of Docker](https://docs.docker.com/install/)
+    - Windows 10 Home requires [WSL 2](https://docs.microsoft.com/windows/wsl/wsl2-install) and the current Edge version of Docker Desktop (see instructions [here](https://docs.docker.com/docker-for-windows/wsl-tech-preview/)). This can also be used for Windows Pro/Enterprise/Education.
 - [Visual Studio code](https://code.visualstudio.com/)
 - [Remote - Containers (VSC Extension)][extension-link]
 
@@ -95,14 +95,14 @@ wget -O - https://get.hacs.xyz | bash -
 #### Add Integrations
 
 - Run task: `Run Home Assistant on port 9123` described in [Tasks](#tasks)
-- Head to: http://localhost:9123
-  - create user
+- Head to: <http://localhost:9123>
+    - create user
 - Add HACS integration
 - Go to HACS
-  - Wait until Hacs is finished starting up.
-  - Install `browser_mod` and optionally `Virtual Components`.
+    - Wait until Hacs is finished starting up.
+    - Install `browser_mod` and optionally `Virtual Components`.
 - Add lovelace-minimalist-ui integration.
 - To get the best experience with the themes that come with the integration:
-  - Go to Configuration -> Blueprints
-    - Create an automation from `System Set Default Theme`, and select what theme you want. And after restart it will be set.
+    - Go to Configuration -> Blueprints
+        - Create an automation from `System Set Default Theme`, and select what theme you want. And after restart it will be set.
 - Restart home assitant to make sure everything is locaded

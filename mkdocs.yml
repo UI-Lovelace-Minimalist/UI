@@ -1,0 +1,81 @@
+---
+# Project information
+site_name: "UI Lovelace Minimalist"
+site_url: "https://ui-lovelace-minimalist.github.io/UI/"
+
+# Repository
+repo_url: "https://github.com/UI-Lovelace-Minimalist/UI"
+repo_name: "UI-Lovelace-Minimalist/UI"
+edit_url: "edit/dev/docs"
+
+nav:
+  - Home: "index.md"
+  - Setup:
+      - "setup/index.md"
+      - Installation: "setup/install.md"
+      - Configuration: "setup/configuration.md"
+  - Usage:
+      - "usage/index.md"
+      - Cards:
+          - "usage/cards/index.md"
+          - Light: "usage/cards/light.md"
+  - Development:
+      - "development/index.md"
+      - Docs Style Guide: "development/docs_style_guide.md"
+
+extra_css:
+  - "stylesheets/extra.css"
+
+theme:
+  name: "material"
+  language: "en"
+  logo: "assets/logos/website_logo.png"
+  favicon: "assets/logos/favicon/favicon-32x32.png"
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: "default"
+      toggle:
+        icon: "material/weather-night"
+        name: "Dark mode"
+    - media: "(prefers-color-scheme: dark)"
+      scheme: "slate"
+      toggle:
+        icon: "material/weather-sunny"
+        name: "Light mode"
+  features:
+    - "navigation.instant"
+    - "navigation.tracking"
+    - "navigation.top"
+    - "toc.integrate"
+    - "search.suggest"
+    - "search.highlight"
+    - "search.share"
+    - "content.code.annotate"
+    - "content.tabs.link"
+
+markdown_extensions:
+  - "meta"
+  - "pymdownx.superfences"
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - "admonition"
+  - "pymdownx.details"
+  - "pymdownx.inlinehilite"
+  - pymdownx.snippets:
+      base_path: [".", "custom_components/ui_lovelace_minimalist"]
+      check_paths: true
+  - "pymdownx.critic"
+  - "pymdownx.caret"
+  - "pymdownx.keys"
+  - "pymdownx.tilde"
+  - "tables"
+  - "footnotes"
+  - "attr_list"
+  - "md_in_html"
+  - "def_list"
+  - toc:
+      permalink: true
+
+plugins:
+  - "search"

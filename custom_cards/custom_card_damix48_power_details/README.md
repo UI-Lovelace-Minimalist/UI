@@ -2,13 +2,19 @@
 
 The `custom_card_damix48_power_details` is an extension of the standard graph card and can show a detailed graphs of power consumption. If hover (or tap in mobile) the points of the line show the average power in that time interval.
 
+<<<<<<< HEAD:custom_cards/custom_card_damix48_power_details/README.md
 ![Power details](../assets/screenshots/custom_power_details.png)
+=======
+![Power details](../../docs/assets/img/custom_power_details.png)
+>>>>>>> dev:custom_components/ui_lovelace_minimalist/lovelace/custom_cards/custom_card_damix48_power_details/README.md
 
 ## Credits
+
 Author: Damix48
 Version: 0.1.0
 
 ## Changelog
+
 <details>
 <summary>0.1.0</summary>
 Initial release.
@@ -34,9 +40,11 @@ Initial release.
 ```
 
 ## Requirements
+
 Need [mini-graph-card](https://github.com/kalkih/mini-graph-card)
 
 ## Variables
+
 <table>
 <tr>
 <th>Variable</th>

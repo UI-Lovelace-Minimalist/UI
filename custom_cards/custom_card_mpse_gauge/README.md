@@ -2,13 +2,19 @@
 
 The `custom_card_mpse_gauge` is used present a value in form of a gauge. The card can handle two gauges so it would be easy to adapt the card to that if required. I prefered the minimal look.
 
+<<<<<<< HEAD:custom_cards/custom_card_mpse_gauge/README.md
 ![Printer](../assets/screenshots/custom_gauge.png)
+=======
+![Printer](../../docs/assets/img/custom_gauge.png)
+>>>>>>> dev:custom_components/ui_lovelace_minimalist/lovelace/custom_cards/custom_card_mpse_gauge/README.md
 
 ## Credits
+
 Author: mpse
 Version: 0.1.0
 
 ## Changelog
+
 <details>
 Initial release.
 </details>
@@ -25,8 +31,11 @@ Initial release.
 ```
 
 ## Requirements
-Uses this card: https://github.com/custom-cards/dual-gauge-card which can be installed via HACS.
+
+Uses this card: <https://github.com/custom-cards/dual-gauge-card> which can be installed via HACS.
+
 ## Variables
+
 <table>
 <tr>
 <th>Variable</th>

@@ -1,13 +1,20 @@
 # Custom-card "Scenes Card"
+
 The `card_scenes` you can control a input_number entity
 
+<<<<<<< HEAD:custom_cards/custom_card_scenes/README.md
 ![Scenes Card](../assets/screenshots/card_scenes.png)
+=======
+![Scenes Card](../../docs/assets/img/card_scenes.png)
+>>>>>>> dev:custom_components/ui_lovelace_minimalist/lovelace/custom_cards/custom_card_scenes/README.md
 
 ## Credits
+
 Author: sildehoop - 2021
 Version: 1.0.0
 
 ## Changelog
+
 <details>
 <summary>1.0.0</summary>
 Initial release
@@ -48,9 +55,11 @@ Initial release
 ```
 
 ## Requirements
+
 n/a
 
 ## Variables
+
 <table>
 <tr>
 <th>Variable</th>
@@ -89,7 +98,6 @@ n/a
 <td>The color of the icon background to show</td>
 </tr>
 </table>
-
 
 ## Template code
 

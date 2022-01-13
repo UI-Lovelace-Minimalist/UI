@@ -1,11 +1,14 @@
 # Custom-card "Waste collection"
+
 This is a `custom-card` to show the next waste collection date. It uses the data from the `custom_component` "Waste Collection Framework".
 
 ## Credits
+
 Author: Paddy0174 - 2021
 Version: 1.0.0
 
 ## Changelog
+
 <details>
 <summary>1.0.0</summary>
 Initial release
@@ -21,6 +24,7 @@ Initial release
 ```
 
 ## Requirements
+
 This card needs the following to function correctly:
 <table>
 <tr>
@@ -36,6 +40,7 @@ This card needs the following to function correctly:
 </table>
 
 ## Variables
+
 <table>
 <tr>
 <th>Variable</th>
@@ -129,12 +134,14 @@ custom_card_paddy_waste_collection:
 ```
 
 ## HomeAssistant
+
 This is my `sensor` setup in HA. I do the change from "days" to "friendly days" in my template sensor.
 
 > #### Note
-> * Don't forget to set `add_days_to` in your `sensor` config
-> * "HEUTE" is german for today or aujourd'hui
-> * "MORGEN" is german for tomorrow or demain
+>
+> - Don't forget to set `add_days_to` in your `sensor` config
+> - "HEUTE" is german for today or aujourd'hui
+> - "MORGEN" is german for tomorrow or demain
 
 ```yaml
 sensor:
@@ -155,4 +162,5 @@ sensor:
 ```
 
 ## Notes
+
 n/a
