@@ -1,7 +1,7 @@
 ---
+title: Welcome to the UI-Lovelace-Minimalist wiki!
 hide:
   - toc
-title: Welcome to the UI-Lovelace-Minimalist wiki!
 ---
 <!-- markdownlint-disable MD046 -->
 
