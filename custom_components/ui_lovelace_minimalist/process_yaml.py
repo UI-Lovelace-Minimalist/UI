@@ -198,7 +198,7 @@ def process_yaml(hass: HomeAssistant, ulm: UlmBase):
             hass.config.path(f"{combined_cards_dir}"),
             dirs_exist_ok=True,
         )
-        # Copy over cards from user
+        # Copy over manually installed custom_cards from user
         shutil.copytree(
             hass.config.path(f"{DOMAIN}/custom_cards"),
             hass.config.path(f"{combined_cards_dir}/custom_cards"),
