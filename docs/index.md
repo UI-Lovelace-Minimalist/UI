@@ -3,10 +3,14 @@ hide:
   - toc
 title: Welcome to the UI-Lovelace-Minimalist wiki!
 ---
+<!-- markdownlint-disable MD046 -->
 
-# TODO
+!!! danger "Under construction!"
 
-- Needs updating
+    Hello dear UI Lovelace Minimalist fan. Nice that you found our new wiki.
+    This is currently under construction!
+    The contents are therefore to be enjoyed with caution
+    and can still change at any time.
 
 # Welcome to the UI-Lovelace-Minimalist wiki
 
