@@ -1,9 +1,9 @@
 ---
-title: Lights
+title: card_light
 ---
 <!-- markdownlint-disable MD046 -->
 
-## card_light
+## Description
 
 ![Image title](../../assets/img/card_light_combi.png)
 
@@ -22,18 +22,20 @@ This card merges the following one :
 !!! warning
     This card has backward compatibilty with older template except custom names and icons. It means variables like `ulm_card_XXX_name` and `ulm_card_XXX_icon` must be replaced by `ulm_card_light_name` and `ulm_card_light_icon`.
 
-|Variable/Entity|Default|Required|Notes|Requirement|
-|--------|-------|--------|-----|-----------|
-|entity| | :white_check_mark: | Your HA entity | |
-|ulm_card_light_name| `friendly_name` | :red_circle: | Customize name | |
-|ulm_card_light_icon| `mdi:lightbulb` | :red_circle: | Customize icon | |
-|ulm_card_light_enable_slider| `false` | :red_circle: | Enable slider | |
-|ulm_card_light_enable_collapse| `false` | :red_circle: | Collapse slider when off | Need `ulm_card_light_enable_slider: true` |
-|ulm_card_light_enable_horizontal| `false` | :red_circle: | Enable horizontal card | |
-|ulm_card_light_enable_horizontal_wide| `false` | :red_circle: | Wider slider | Need `ulm_card_light_enable_horizontal: true` |
-|ulm_card_light_enable_color| `false` | :red_circle: | Enable icon and label light color | |
-|ulm_card_light_enable_background_color| `false` | :red_circle: | Enable background light color in dark theme| |
-|ulm_card_light_force_background_color| `false` | :red_circle: | Force background light color even in light theme | Need `ulm_card_light_enable_background_color: true` |
+## Variables
+
+| Variable/Entity                        | Default         | Required         | Notes          | Requirement |
+|----------------------------------------|-----------------|------------------|----------------|-------------|
+| entity                                 |                 | :material-check: | Your HA entity |             |
+| ulm_card_light_name                    | `friendly_name` | :material-close: | Customize name |             |
+| ulm_card_light_icon                    | `mdi:lightbulb` | :material-close: | Customize icon |             |
+| ulm_card_light_enable_slider           | `false`         | :material-close: | Enable slider  |             |
+| ulm_card_light_enable_collapse         | `false`         | :material-close: | Collapse slider when off | Need `ulm_card_light_enable_slider: true` |
+| ulm_card_light_enable_horizontal       | `false`         | :material-close: | Enable horizontal card | |
+| ulm_card_light_enable_horizontal_wide  | `false`         | :material-close: | Wider slider | Need `ulm_card_light_enable_horizontal: true` |
+| ulm_card_light_enable_color            | `false`         | :material-close: | Enable icon and label light color | |
+| ulm_card_light_enable_background_color | `false`         | :material-close: | Enable background light color in dark theme| |
+| ulm_card_light_force_background_color  | `false`         | :material-close: | Force background light color even in light theme | Need `ulm_card_light_enable_background_color: true` |
 
 ## Usage
 
