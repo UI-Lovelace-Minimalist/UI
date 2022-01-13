@@ -2,11 +2,7 @@
 
 The `custom_card_mpse_printer` is used to display the status of a printer and the toner.
 
-<<<<<<< HEAD:custom_cards/custom_card_mpse_printer/README.md
-![Printer](../assets/screenshots/custom_printer.png)
-=======
 ![Printer](../../docs/assets/img/custom_printer.png)
->>>>>>> dev:custom_components/ui_lovelace_minimalist/lovelace/custom_cards/custom_card_mpse_printer/README.md
 
 ## Credits
 

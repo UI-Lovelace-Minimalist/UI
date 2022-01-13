@@ -2,11 +2,7 @@
 
 This is a `custom-card` to informations about your car.
 
-<<<<<<< HEAD:custom_cards/custom_card_schumijo_car/README.md
-![Generic](../assets/screenshots/car.png)
-=======
 ![Generic](../../docs/assets/img/car.png)
->>>>>>> dev:custom_components/ui_lovelace_minimalist/lovelace/custom_cards/custom_card_schumijo_car/README.md
 
 _NB : This card has only been tested with Audi Connect integration but should work with some others._
 

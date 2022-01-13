@@ -3,11 +3,7 @@
 > NOTE
 > This card is under review and is not ready to use!
 
-<<<<<<< HEAD:custom_cards/custom_card_media_player_sonos/README.md
-![Sonos](../assets/screenshots/media_player_sonos.png)
-=======
 ![Sonos](../../docs/assets/img/media_player_sonos.png)
->>>>>>> dev:custom_components/ui_lovelace_minimalist/lovelace/custom_cards/custom_card_media_player_sonos/README.md
 
 <details>
 <summary>Usage</summary>

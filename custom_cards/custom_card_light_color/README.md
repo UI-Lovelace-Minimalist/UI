@@ -9,14 +9,6 @@ This is a `custom-card` to add additionall function to the `light_card`. It come
 
 The card shows you the color of the light. The icon is changeable for each MDI-icon. And the icon functions as button to show more-info.
 
-<<<<<<< HEAD:custom_cards/custom_card_light_color/README.md
-![Light](../assets/screenshots/light_light.png)
-![Light_slider](../assets/screenshots/light_light_slider.png)
-![Light_horizontal](../assets/screenshots/light_light_horizontal.png)
-![Dark](../assets/screenshots/light_dark.png)
-![Dark_slider](../assets/screenshots/light_dark_slider.png)
-![Dark_horizontal](../assets/screenshots/light_dark_horizontal.png)
-=======
 ![Light](../../docs/assets/img/light_light.png)
 ![Light_slider](../../docs/assets/img/light_light_slider.png)
 ![Light_horizontal](../../docs/assets/img/light_light_horizontal.png)
@@ -24,7 +16,6 @@ The card shows you the color of the light. The icon is changeable for each MDI-i
 ![Dark_slider](../../docs/assets/img/light_dark_slider.png)
 ![Dark_horizontal](../../docs/assets/img/light_dark_horizontal.png)
 
->>>>>>> dev:custom_components/ui_lovelace_minimalist/lovelace/custom_cards/custom_card_light_color/README.md
 ## Credits
 
 Author: basbruss - 2021

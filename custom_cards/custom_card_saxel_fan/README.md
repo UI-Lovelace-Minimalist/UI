@@ -8,19 +8,12 @@ This is a _custom card_ to control a fan. It allows you to turn on/off the fan, 
 | custom_card_saxel_fan_blue | Card is theme based when the fan is __OFF__, Blue when the fan is __ON__ |
 
 #### Light theme
-<<<<<<< HEAD:custom_cards/custom_card_saxel_fan/README.md
-![Light theme](../assets/screenshots/custom_fan_light_theme.png)
-
-#### Dark theme
-![Dark theme](../assets/screenshots/custom_fan_dark_theme.png)
-=======
 
 ![Light theme](../../docs/assets/img/custom_fan_light_theme.png)
 
 #### Dark theme
 
 ![Dark theme](../../docs/assets/img/custom_fan_dark_theme.png)
->>>>>>> dev:custom_components/ui_lovelace_minimalist/lovelace/custom_cards/custom_card_saxel_fan/README.md
 
 ## Credits
 

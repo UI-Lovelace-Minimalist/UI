@@ -36,12 +36,8 @@ This card uses:
 </table>
 
 ## Images
-<<<<<<< HEAD:custom_cards/custom_card_httpedo13_sun/README.md
-![Generic](../assets/screenshots/sun-card.png)
-=======
 
 ![Generic](../../docs/assets/img/sun-card.png)
->>>>>>> dev:custom_components/ui_lovelace_minimalist/lovelace/custom_cards/custom_card_httpedo13_sun/README.md
 
 ## Usage
 

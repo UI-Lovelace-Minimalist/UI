@@ -3,11 +3,7 @@
 > NOTE
 > This card is under review and is not ready to use!
 
-<<<<<<< HEAD:custom_cards/custom_card_chromecast/README.md
-![Sonos](../assets/screenshots/chromecast.png)
-=======
 ![Sonos](../../docs/assets/img/chromecast.png)
->>>>>>> dev:custom_components/ui_lovelace_minimalist/lovelace/custom_cards/custom_card_chromecast/README.md
 
 <details>
 <summary>Usage</summary>

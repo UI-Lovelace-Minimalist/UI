@@ -17,17 +17,6 @@ Initial release
 </details>
 
 ## Images
-<<<<<<< HEAD:custom_cards/custom_card_httpedo13_thermostat/README.md
-![thermostat_white_collapse](../assets/screenshots/thermostat_white_collapse.png)
-
-![thermostat_white](../assets/screenshots/thermostat_white.png)
-
-![thermostat_white_with_heating_ui](../assets/screenshots/thermostat_white_with_heating_ui.png)
-
-![thermostat_dark](../assets/screenshots/thermostat_dark.png)
-
-![thermostat_dark_with_heating_ui](../assets/screenshots/thermostat_dark_with_heating_ui.png)
-=======
 
 ![thermostat_white_collapse](../../docs/assets/img/thermostat_white_collapse.png)
 
@@ -36,7 +25,6 @@ Initial release
 ![thermostat_white_with_heating_ui](../../docs/assets/img/thermostat_white_with_heating_ui.png)
 
 ![thermostat_dark](../../docs/assets/img/thermostat_dark.png)
->>>>>>> dev:custom_components/ui_lovelace_minimalist/lovelace/custom_cards/custom_card_httpedo13_thermostat/README.md
 
 ![thermostat_dark_with_heating_ui](../../docs/assets/img/thermostat_dark_with_heating_ui.png)
 

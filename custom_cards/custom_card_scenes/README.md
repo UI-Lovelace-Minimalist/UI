@@ -2,11 +2,7 @@
 
 The `card_scenes` you can control a input_number entity
 
-<<<<<<< HEAD:custom_cards/custom_card_scenes/README.md
-![Scenes Card](../assets/screenshots/card_scenes.png)
-=======
 ![Scenes Card](../../docs/assets/img/card_scenes.png)
->>>>>>> dev:custom_components/ui_lovelace_minimalist/lovelace/custom_cards/custom_card_scenes/README.md
 
 ## Credits
 

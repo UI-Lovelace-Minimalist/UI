@@ -2,11 +2,7 @@
 
 The `custom_card_mpse_gauge` is used present a value in form of a gauge. The card can handle two gauges so it would be easy to adapt the card to that if required. I prefered the minimal look.
 
-<<<<<<< HEAD:custom_cards/custom_card_mpse_gauge/README.md
-![Printer](../assets/screenshots/custom_gauge.png)
-=======
 ![Printer](../../docs/assets/img/custom_gauge.png)
->>>>>>> dev:custom_components/ui_lovelace_minimalist/lovelace/custom_cards/custom_card_mpse_gauge/README.md
 
 ## Credits
 
