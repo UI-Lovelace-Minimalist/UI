@@ -17,9 +17,7 @@ nav:
       - Cards:
           - card_light: "usage/cards/card_light.md"
       - Chips:
-          - Example: "usage/chips/._example.md"
       - Popups:
-          - Example: "usage/popups/._example.md"
   - Development:
       - Docs Style Guide: "development/docs_style_guide.md"
 
@@ -29,6 +27,7 @@ extra_css:
 theme:
   name: "material"
   language: "en"
+  font: "Comfortaa"
   logo: "assets/logos/website_logo.png"
   favicon: "assets/logos/favicon/favicon-32x32.png"
   palette:
