@@ -13,10 +13,10 @@ This card merges the following one :
 - legacy `card_light_slider`
 - legacy `card_light_slider_collapse`
 - legacy `card_light_slider_horizontal`
-- custom `card_light_color` by basbruss 
-- custom `card_light_horizontal_color` by basbruss 
-- custom `card_light_slider_color` by basbruss 
-- custom `card_light_slider_collapse_color` by basbruss 
+- custom `card_light_color` by basbruss
+- custom `card_light_horizontal_color` by basbruss
+- custom `card_light_slider_color` by basbruss
+- custom `card_light_slider_collapse_color` by basbruss
 
 !!! warning
     This card has backward compatibilty with older template except custom names and icons. It means variables like `ulm_card_XXX_name` and `ulm_card_XXX_icon` must be replaced by `ulm_card_light_name` and `ulm_card_light_icon`.
