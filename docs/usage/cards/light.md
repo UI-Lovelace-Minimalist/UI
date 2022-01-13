@@ -1,6 +1,7 @@
 ---
 title: Lights
 ---
+<!-- markdownlint-disable MD046 -->
 
 ## Light card
 
@@ -46,8 +47,8 @@ This card merges the following one :
     ulm_card_light_slider_aio_force_background_color: true
 ```
 
-## Code
+??? note "Template Code"
 
-```yaml title="card_light.yaml"
---8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_light.yaml"
-```
+    ```yaml title="card_light.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_light.yaml"
+    ```
