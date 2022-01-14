@@ -1,8 +1,8 @@
 ---
-### chips_alarm ###
-chips_alarm:
+### chip_alarm ###
+chip_alarm:
   template:
-    - "chips_icon_label"
+    - "chip_icon_label"
     - "ulm_language_variables"
   label: |
     [[[
