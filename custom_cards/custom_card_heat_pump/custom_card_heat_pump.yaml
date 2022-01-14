@@ -192,19 +192,19 @@ custom_card_heat_pump:
                   hvac_mode: "heat"
             styles:
               icon:
-                 - color: | #"rgba(var(--color-red),1)"
+                 - color: | 
                       [[[
-                        var color = 'rgba(var(--color-theme), 0.2)';
-                        if (climate.aire_acondicionado.state == "heat"){
-                          var color = 'rgba(var(--color-red), 0.2)';
+                        var color = 'rgba(var(--color-theme), 1)';
+                        if (entity.state == "heat"){
+                          var color = 'rgba(var(--color-red), 1)';
                         } 
                         return color;
                       ]]] 
               img_cell:
-                 - background-color: | #"rgba(var(--color-red),0.2)"
+                 - background-color: | 
                       [[[
-                        var bc_color = 'rgba(var(--color-theme), 0.2)';
-                        if (climate.aire_acondicionado.state == "heat"){
+                        var bc_color = 'rgba(var(--card-background-color), 0.2)';
+                        if (entity.state == "heat"){
                           var bc_color = 'rgba(var(--color-red), 0.2)';
                         } 
                         return bc_color;
@@ -220,9 +220,23 @@ custom_card_heat_pump:
                   hvac_mode: "cool"
             styles:
               icon:
-                 - color: "rgba(var(--color-blue),1)"
+                 - color: | 
+                      [[[
+                        var color = 'rgba(var(--color-theme), 1)';
+                        if (entity.state == "cool"){
+                          var color = 'rgba(var(--color-blue), 1)';
+                        } 
+                        return color;
+                      ]]] 
               img_cell:
-                 - background-color: "rgba(var(--color-blue),0.2)"
+                 - background-color: | 
+                      [[[
+                        var bc_color = 'rgba(var(--card-background-color), 0.2)';
+                        if (entity.state == "cool"){
+                          var bc_color = 'rgba(var(--color-blue), 0.2)';
+                        } 
+                        return bc_color;
+                      ]]] 
           - type: "custom:button-card"
             template: "widget_icon_juve"
             icon: "mdi:sync"
@@ -234,9 +248,23 @@ custom_card_heat_pump:
                   hvac_mode: "heat_cool"
             styles:
               icon:
-                 - color: "rgba(var(--color, 0, 255, 89),1)"
+                 - color: | 
+                      [[[
+                        var color = 'rgba(var(--color-theme), 1)';
+                        if (entity.state == "heat_cool"){
+                          var color = 'rgba(var(--color, 0, 255, 89), 1)';
+                        } 
+                        return color;
+                      ]]] 
               img_cell:
-                 - background-color: "rgba(var(--color, 0, 255, 89),0.2)"
+                 - background-color: | 
+                      [[[
+                        var bc_color = 'rgba(var(--card-background-color), 0.2)';
+                        if (entity.state == "heat_cool"){
+                          var bc_color = 'rgba(var(--color, 0, 255, 89), 0.2)';
+                        } 
+                        return bc_color;
+                      ]]] 
           - type: "custom:button-card"
             template: "widget_icon_juve"
             icon: "mdi:water"
@@ -248,9 +276,23 @@ custom_card_heat_pump:
                   hvac_mode: "dry"
             styles:
               icon:
-                 - color: "rgba(var(--color, 255, 165, 0),1)"
+                 - color: | 
+                      [[[
+                        var color = 'rgba(var(--color-theme), 1)';
+                        if (entity.state == "dry"){
+                          var color = 'rgba(var(--color, 255, 165, 0), 1)';
+                        } 
+                        return color;
+                      ]]] 
               img_cell:
-                 - background-color: "rgba(var(--color, 255, 165, 0),0.2)"
+                 - background-color: | 
+                      [[[
+                        var bc_color = 'rgba(var(--card-background-color), 0.2)';
+                        if (entity.state == "dry"){
+                          var bc_color = 'rgba(var(--color, 255, 165, 0), 0.2)';
+                        } 
+                        return bc_color;
+                      ]]] 
           - type: "custom:button-card"
             template: "widget_icon_juve"
             icon: "mdi:fan"
@@ -262,9 +304,24 @@ custom_card_heat_pump:
                   hvac_mode: "fan_only"
             styles:
               icon:
-                 - color: "rgba(var(--color, 195, 0, 255),1)"
+                 - color: | 
+                      [[[
+                        var color = 'rgba(var(--color-theme), 1)';
+                        if (entity.state == "fan_only"){
+                          var color = 'rgba(var(--color, 195, 0, 255), 1)';
+                        } 
+                        return color;
+                      ]]] 
               img_cell:
-                 - background-color: "rgba(var(--color, 195, 0, 255),0.2)"
+                 - background-color: |
+                      [[[
+                        var bc_color = 'rgba(var(--card-background-color), 0.2)';
+                        if (entity.state == "fan_only"){
+                          var bc_color = 'rgba(var(--color, 195, 0, 255), 0.2)';
+                        } 
+                        return bc_color;
+                      ]]] 
+
 
 widget_icon_juve:
   tap_action:
