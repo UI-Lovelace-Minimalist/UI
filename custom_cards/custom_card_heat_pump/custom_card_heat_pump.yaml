@@ -4,6 +4,7 @@ custom_card_heat_pump:
   template:
     - "icon_info_bg"
     - "ulm_language_variables"
+    - "custom_card_heat_pump_language_variables"
   hold_action:
     action: "more-info"
   styles:
