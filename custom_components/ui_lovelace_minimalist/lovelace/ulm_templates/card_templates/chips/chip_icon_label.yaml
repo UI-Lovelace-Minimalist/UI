@@ -1,6 +1,6 @@
 ---
 ## Chips Icon Label ###
-chips_icon_label:
+chip_icon_label:
   template: "chips"
   show_icon: true
   show_name: false
