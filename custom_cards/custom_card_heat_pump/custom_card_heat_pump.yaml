@@ -55,15 +55,15 @@ custom_card_heat_pump:
             var icon = "mdi:thermostat";
             var state = entity.state;
             if (state =='dry') {
-              return 'mdi:water';
+              return "mdi:water";
             } else if (state =='heat') {
-              return 'mdi:fire';
+              return "mdi:fire";
             } else if (state =='cool') {
-              return 'mdi:snowflake';
+              return "mdi:snowflake";
             } else if (state =='fan_only') {
-              return 'mdi:fan';
+              return "mdi:fan";
             } else if (state =='heat_cool') {
-              return 'mdi:sync';
+              return "mdi:sync";
             }
             return icon;
           ]]]
@@ -75,12 +75,6 @@ custom_card_heat_pump:
                 - color: "rgba(var(--color, 255, 165, 0),1)"
               img_cell:
                 - background-color: "rgba(var(--color, 255, 165, 0),0.2)"
-              # card:
-              #   - background-color: "rgba(var(--color, 255, 165, 0),var(--opacity-bg))"
-              # # name:
-              #   - color: "rgba(var(--color, 0, 255, 195),1)"
-              # label:
-              #   - color: "rgba(var(--color, 0, 255, 195),1)"
           - operator: "template"
             value: "[[[return entity.state == 'cool']]]"
             styles:
@@ -88,12 +82,6 @@ custom_card_heat_pump:
                 - color: "rgba(var(--color-blue),1)"
               img_cell:
                 - background-color: "rgba(var(--color-blue),0.2)"
-              # card:
-              #   - background-color: "rgba(var(--color-background-blue),var(--opacity-bg))"
-              # # name:
-              #   - color: "rgba(var(--color-blue-text),1)"
-              # label:
-              #   - color: "rgba(var(--color-blue-text),1)"
           - operator: "template"
             value: "[[[return entity.state == 'heat']]]"
             styles:
@@ -101,12 +89,6 @@ custom_card_heat_pump:
                 - color: "rgba(var(--color-red),1)"
               img_cell:
                 - background-color: "rgba(var(--color-red),0.2)"
-              # card:
-              # - background-color: "rgba(var(--color-background-red),var(--opacity-bg))"
-              # name:
-              #   - color: "rgba(var(--color-red-text),1)"
-              # label:
-              #   - color: "rgba(var(--color-red-text),1)"
           - operator: "template"
             value: "[[[return entity.state == 'fan_only']]]"
             styles:
@@ -114,12 +96,6 @@ custom_card_heat_pump:
                 - color: "rgba(var(--color, 195, 0, 255),1)"
               img_cell:
                 - background-color: "rgba(var(--color, 195, 0, 255),0.2)"
-              # card:
-              #   - background-color: "rgba(var(--color, 153, 153, 153),var(--opacity-bg))"
-              # # name:
-              #   - color: "rgba(var(--color-red-text),1)"
-              # label:
-              #   - color: "rgba(var(--color-red-text),1)"
           - operator: "template"
             value: "[[[return entity.state == 'heat_cool']]]"
             styles:
@@ -127,12 +103,6 @@ custom_card_heat_pump:
                 - color: "rgba(var(--color-green),1)"
               img_cell:
                 - background-color: "rgba(var(--color-green),0.2)"
-              # card:
-              #   - background-color: "rgba(var(--color, 0, 255, 89),var(--opacity-bg))"
-              # name:
-              #   - color: "rgba(var(--color-red-text),1)"
-              # label:
-              #   - color: "rgba(var(--color-red-text),1)"
     item2:
       card:
         type: "custom:button-card"
@@ -343,6 +313,5 @@ widget_icon_juve:
     icon:
       - color: "rgba(var(--color-theme),0.9)"
   size: "20px"
-  #color: "var(--google-grey)"
 
 
