@@ -49,3 +49,39 @@ media_buttons:
   variables:
     ulm_card_media_player_with_controls_entity: "[[[ return variables.entity ]]]"
     ulm_card_media_player_with_controls_name: "[[[ return variables.name ]]]"
+
+### NEW CARD_LIGHT ALL IN ONE ###
+card_light_slider:
+  template: "card_light"
+  variables:
+    ulm_card_light_enable_slider: true
+card_light_slider_collapse:
+  template: "card_light"
+  variables:
+    ulm_card_light_enable_collapse: true
+    ulm_card_light_enable_slider: true
+card_light_slider_horizontal:
+  template: "card_light"
+  variables:
+    ulm_card_light_enable_slider: true
+    ulm_card_light_enable_horizontal: true
+card_light_color:
+  template: "card_light"
+  variables:
+    ulm_card_light_enable_color: false
+card_light_horizontal_color:
+  template: "card_light"
+  variables:
+    ulm_card_light_enable_horizontal: true
+    ulm_card_light_enable_color: false
+card_light_slider_color:
+  template: "card_light"
+  variables:
+    ulm_card_light_enable_slider: true
+    ulm_card_light_enable_color: false
+card_light_slider_collapse_color:
+  template: "card_light"
+  variables:
+    ulm_card_light_enable_collapse: true
+    ulm_card_light_enable_slider: true
+    ulm_card_light_enable_color: false

@@ -11,7 +11,10 @@ edit_uri: "edit/dev/docs"
 # https://pythonrepo.com/repo/lukasgeiter-mkdocs-awesome-pages-plugin-python-documentation
 nav:
   - Home: "index.md"
-  - "... | setup/**/*.md"
+  # - "... | setup/**/*.md"
+  - Setup:
+    - Installation: setup/installation.md 
+    - Configuration: setup/configuration.md
   - "... | usage/**/*.md"
   - "... | development/**/*.md"
 
@@ -21,6 +24,8 @@ extra_css:
 theme:
   name: "material"
   language: "en"
+  font:
+    text: "Comfortaa"
   logo: "assets/logos/website_logo.png"
   favicon: "assets/logos/favicon/favicon-32x32.png"
   palette:
