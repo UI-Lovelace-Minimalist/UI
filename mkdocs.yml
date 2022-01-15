@@ -14,10 +14,8 @@ nav:
   - Setup:
       - Installation: "setup/installation.md"
       - Configuration: "setup/configuration.md"
-  - Usage:
-      - "... | usage/**/*.md"
-  - Development:
-      - "... | development/**/*.md"
+  - "... | usage/**/*.md"
+  - "... | development/**/*.md"
 
 extra_css:
   - "assets/stylesheets/extra.css"
