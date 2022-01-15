@@ -68,8 +68,8 @@ markdown_extensions:
   - "pymdownx.tilde"
   - pymdownx.magiclink:
       repo_url_shorthand: true
-      user: UI-Lovelace-Minimalist
-      repo: UI
+      user: "UI-Lovelace-Minimalist"
+      repo: "UI"
   - "tables"
   - "footnotes"
   - "attr_list"
