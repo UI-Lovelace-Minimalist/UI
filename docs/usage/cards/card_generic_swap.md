@@ -5,7 +5,7 @@ title: card_generic_swap
 
 ## Description
 
-![example-image](../../assets/img/card_example.png){ width="500" }
+![example-image](../../assets/img/card_generic_swap.png){ width="500" }
 
 Card description should be here.
 

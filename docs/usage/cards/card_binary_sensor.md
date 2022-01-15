@@ -5,7 +5,7 @@ title: card_binary_sensor
 
 ## Description
 
-![example-image](../../assets/img/card_example.png){ width="500" }
+![example-image](../../assets/img/card_binary_sensor.png){ width="500" }
 
 Card description should be here.
 
