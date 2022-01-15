@@ -5,7 +5,7 @@ title: card_power_outlet
 
 ## Description
 
-![example-image](../../assets/img/card_example.png){ width="500" }
+![example-image](../../assets/img/card_power_outlet.png){ width="500" }
 
 Card description should be here.
 
