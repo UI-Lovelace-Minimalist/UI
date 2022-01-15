@@ -1,5 +1,5 @@
 ---
-title: Card Name
+title: card_power_outlet
 ---
 <!-- markdownlint-disable MD046 -->
 

@@ -1,5 +1,5 @@
 ---
-title: Popup Name
+title: popup_media_player
 ---
 <!-- markdownlint-disable MD046 -->
 

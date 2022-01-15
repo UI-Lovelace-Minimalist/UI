@@ -1,5 +1,5 @@
 ---
-title: Card Name
+title: card_weather
 ---
 <!-- markdownlint-disable MD046 -->
 

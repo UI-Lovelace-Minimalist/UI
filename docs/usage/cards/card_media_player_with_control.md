@@ -1,5 +1,5 @@
 ---
-title: Card Name
+title: card_media_player_with_control
 ---
 <!-- markdownlint-disable MD046 -->
 

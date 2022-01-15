@@ -1,5 +1,5 @@
 ---
-title: Card Name
+title: card_binary_sensor_alert
 ---
 <!-- markdownlint-disable MD046 -->
 

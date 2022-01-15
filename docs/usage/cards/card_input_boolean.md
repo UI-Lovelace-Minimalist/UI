@@ -1,5 +1,5 @@
 ---
-title: Card Name
+title: card_input_boolean
 ---
 <!-- markdownlint-disable MD046 -->
 

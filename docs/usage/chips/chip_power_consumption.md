@@ -1,5 +1,5 @@
 ---
-title: Chip Name
+title: chip_power_consumption
 ---
 <!-- markdownlint-disable MD046 -->
 

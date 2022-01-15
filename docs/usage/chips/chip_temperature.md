@@ -1,5 +1,5 @@
 ---
-title: Chip Name
+title: chip_temperature
 ---
 <!-- markdownlint-disable MD046 -->
 

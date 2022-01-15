@@ -1,5 +1,5 @@
 ---
-title: Card Name
+title: card_title
 ---
 <!-- markdownlint-disable MD046 -->
 

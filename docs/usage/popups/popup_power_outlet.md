@@ -1,5 +1,5 @@
 ---
-title: Popup Name
+title: popup_power_outlet
 ---
 <!-- markdownlint-disable MD046 -->
 

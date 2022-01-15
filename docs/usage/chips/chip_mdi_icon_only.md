@@ -1,5 +1,5 @@
 ---
-title: Chip Name
+title: chip_mdi_icon_only
 ---
 <!-- markdownlint-disable MD046 -->
 

@@ -1,5 +1,5 @@
 ---
-title: Card Name
+title: card_cover_with_buttons
 ---
 <!-- markdownlint-disable MD046 -->
 

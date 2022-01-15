@@ -1,5 +1,5 @@
 ---
-title: Card Name
+title: card_generic_swap
 ---
 <!-- markdownlint-disable MD046 -->
 

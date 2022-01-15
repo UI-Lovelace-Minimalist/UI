@@ -1,5 +1,5 @@
 ---
-title: Chip Name
+title: chip_alarm
 ---
 <!-- markdownlint-disable MD046 -->
 

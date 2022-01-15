@@ -1,5 +1,5 @@
 ---
-title: Card Name
+title: card_battery
 ---
 <!-- markdownlint-disable MD046 -->
 

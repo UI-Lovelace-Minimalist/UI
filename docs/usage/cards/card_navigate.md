@@ -1,5 +1,5 @@
 ---
-title: Card Name
+title: card_navigate
 ---
 <!-- markdownlint-disable MD046 -->
 

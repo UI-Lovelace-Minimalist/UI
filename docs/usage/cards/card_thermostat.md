@@ -1,5 +1,5 @@
 ---
-title: Card Name
+title: card_thermostat
 ---
 <!-- markdownlint-disable MD046 -->
 

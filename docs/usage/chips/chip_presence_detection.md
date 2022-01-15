@@ -1,5 +1,5 @@
 ---
-title: Chip Name
+title: chip_presence_detection
 ---
 <!-- markdownlint-disable MD046 -->
 
