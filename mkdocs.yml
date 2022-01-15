@@ -67,6 +67,10 @@ markdown_extensions:
   - "pymdownx.caret"
   - "pymdownx.keys"
   - "pymdownx.tilde"
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: UI-Lovelace-Minimalist
+      repo: UI
   - "tables"
   - "footnotes"
   - "attr_list"
