@@ -6,21 +6,19 @@ site_url: "https://ui-lovelace-minimalist.github.io/UI/"
 # Repository
 repo_url: "https://github.com/UI-Lovelace-Minimalist/UI"
 repo_name: "UI-Lovelace-Minimalist/UI"
-edit_url: "edit/dev/docs"
+edit_uri: "edit/dev/docs"
 
+# https://pythonrepo.com/repo/lukasgeiter-mkdocs-awesome-pages-plugin-python-documentation
 nav:
   - Home: "index.md"
   - Setup:
-      - Installation: "setup/install.md"
+      - Installation: "setup/installation.md"
       - Configuration: "setup/configuration.md"
-  - Usage:
-      - Cards:
-          - card_light: "usage/cards/card_light.md"
-  - Development:
-      - Docs Style Guide: "development/docs_style_guide.md"
+  - "... | usage/**/*.md"
+  - "... | development/**/*.md"
 
 extra_css:
-  - "stylesheets/extra.css"
+  - "assets/stylesheets/extra.css"
 
 theme:
   name: "material"
@@ -44,6 +42,7 @@ theme:
     - "navigation.instant"
     - "navigation.tracking"
     - "navigation.top"
+    - "navigation.indexes"
     - "toc.integrate"
     - "search.suggest"
     - "search.highlight"
@@ -67,6 +66,10 @@ markdown_extensions:
   - "pymdownx.caret"
   - "pymdownx.keys"
   - "pymdownx.tilde"
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: "UI-Lovelace-Minimalist"
+      repo: "UI"
   - "tables"
   - "footnotes"
   - "attr_list"
@@ -77,3 +80,4 @@ markdown_extensions:
 
 plugins:
   - "search"
+  - "awesome-pages"
