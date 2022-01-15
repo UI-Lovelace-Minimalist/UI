@@ -41,6 +41,8 @@ Open your Home Assistant instance and start setting up "UI Lovelace Minimalist".
 
 Now you can configure the Integration, you can do this also after it's installed! 
 
+![hacs_integration_config](../../assets/img/setup/hacs_integration_config.png)
+
 - Language: Will set the language for the Integration.
 - Side panel title: Will set the title for the Lovelace Dashboard in the Sidebar.
 - Side panel icon: Which icon to put in front of the Title. 
