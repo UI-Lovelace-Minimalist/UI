@@ -1,3 +1,4 @@
+---
 custom_card_heat_pump:
   show_name: false
   show_icon: false
@@ -11,7 +12,7 @@ custom_card_heat_pump:
     grid:
       - grid-template-areas: "'item1' 'item2' 'item3'"
       - grid-template-columns: "1fr"
-      - grid-template-rows: "min-content  min-content min-content" 
+      - grid-template-rows: "min-content  min-content min-content"
       - row-gap: "12px"
     card:
       - border-radius: "var(--border-radius)"
@@ -101,7 +102,7 @@ custom_card_heat_pump:
               img_cell:
                 - background-color: "rgba(var(--color-red),0.2)"
               # card:
-                # - background-color: "rgba(var(--color-background-red),var(--opacity-bg))"
+              # - background-color: "rgba(var(--color-background-red),var(--opacity-bg))"
               # name:
               #   - color: "rgba(var(--color-red-text),1)"
               # label:
@@ -123,9 +124,9 @@ custom_card_heat_pump:
             value: "[[[return entity.state == 'heat_cool']]]"
             styles:
               icon:
-                - color: "rgba(var(--color, 0, 255, 89),1)"
+                - color: "rgba(var(--color-green),1)"
               img_cell:
-                - background-color: "rgba(var(--color, 0, 255, 89),0.2)"
+                - background-color: "rgba(var(--color-green),0.2)"
               # card:
               #   - background-color: "rgba(var(--color, 0, 255, 89),var(--opacity-bg))"
               # name:
@@ -168,7 +169,7 @@ custom_card_heat_pump:
                 service: "climate.set_temperature"
                 service_data:
                   entity_id: "[[[ return entity.entity_id ]]]"
-                  temperature: "[[[ return entity.attributes.temperature + entity.attributes.target_temp_step ]]]" 
+                  temperature: "[[[ return entity.attributes.temperature + entity.attributes.target_temp_step ]]]"
     item3:
       card:
         type: "horizontal-stack"
@@ -180,8 +181,8 @@ custom_card_heat_pump:
               action: "call-service"
               service: "climate.set_hvac_mode"
               service_data:
-                  entity_id: "[[[ return entity.entity_id ]]]"
-                  hvac_mode: "off"
+                entity_id: "[[[ return entity.entity_id ]]]"
+                hvac_mode: "off"
           - type: "custom:button-card"
             template: "widget_icon_juve"
             icon: "mdi:fire"
@@ -189,27 +190,27 @@ custom_card_heat_pump:
               action: "call-service"
               service: "climate.set_hvac_mode"
               service_data:
-                  entity_id: "[[[ return entity.entity_id ]]]"
-                  hvac_mode: "heat"
+                entity_id: "[[[ return entity.entity_id ]]]"
+                hvac_mode: "heat"
             styles:
               icon:
-                 - color: | 
-                      [[[
-                        var color = 'rgba(var(--color-theme), 1)';
-                        if (entity.state == "heat"){
-                          var color = 'rgba(var(--color-red), 1)';
-                        } 
-                        return color;
-                      ]]] 
-              img_cell:
-                 - background-color: | 
-                      [[[
-                        var bc_color = 'rgba(var(--card-background-color), 0.2)';
-                        if (entity.state == "heat"){
-                          var bc_color = 'rgba(var(--color-red), 0.2)';
-                        } 
-                        return bc_color;
-                      ]]] 
+                - color: |
+                    [[[
+                      var color = 'rgba(var(--color-theme), 1)';
+                      if (entity.state == "heat"){
+                        var color = 'rgba(var(--color-red), 1)';
+                      } 
+                      return color;
+                    ]]]
+              card:
+                - background-color: |
+                    [[[
+                      var bc_color = 'rgba(var(--color-theme),0.05)';
+                      if (entity.state == "heat"){
+                        var bc_color = 'rgba(var(--color-red), 0.2)';
+                      } 
+                      return bc_color;
+                    ]]]
           - type: "custom:button-card"
             template: "widget_icon_juve"
             icon: "mdi:snowflake"
@@ -217,27 +218,27 @@ custom_card_heat_pump:
               action: "call-service"
               service: "climate.set_hvac_mode"
               service_data:
-                  entity_id: "[[[ return entity.entity_id ]]]"
-                  hvac_mode: "cool"
+                entity_id: "[[[ return entity.entity_id ]]]"
+                hvac_mode: "cool"
             styles:
               icon:
-                 - color: | 
-                      [[[
-                        var color = 'rgba(var(--color-theme), 1)';
-                        if (entity.state == "cool"){
-                          var color = 'rgba(var(--color-blue), 1)';
-                        } 
-                        return color;
-                      ]]] 
-              img_cell:
-                 - background-color: | 
-                      [[[
-                        var bc_color = 'rgba(var(--card-background-color), 0.2)';
-                        if (entity.state == "cool"){
-                          var bc_color = 'rgba(var(--color-blue), 0.2)';
-                        } 
-                        return bc_color;
-                      ]]] 
+                - color: |
+                    [[[
+                      var color = 'rgba(var(--color-theme), 1)';
+                      if (entity.state == "cool"){
+                        var color = 'rgba(var(--color-blue), 1)';
+                      } 
+                      return color;
+                    ]]]
+              card:
+                - background-color: |
+                    [[[
+                      var bc_color = 'rgba(var(--color-theme),0.05)';
+                      if (entity.state == "cool"){
+                        var bc_color = 'rgba(var(--color-blue), 0.2)';
+                      } 
+                      return bc_color;
+                    ]]]
           - type: "custom:button-card"
             template: "widget_icon_juve"
             icon: "mdi:sync"
@@ -245,27 +246,27 @@ custom_card_heat_pump:
               action: "call-service"
               service: "climate.set_hvac_mode"
               service_data:
-                  entity_id: "[[[ return entity.entity_id ]]]"
-                  hvac_mode: "heat_cool"
+                entity_id: "[[[ return entity.entity_id ]]]"
+                hvac_mode: "heat_cool"
             styles:
               icon:
-                 - color: | 
-                      [[[
-                        var color = 'rgba(var(--color-theme), 1)';
-                        if (entity.state == "heat_cool"){
-                          var color = 'rgba(var(--color, 0, 255, 89), 1)';
-                        } 
-                        return color;
-                      ]]] 
-              img_cell:
-                 - background-color: | 
-                      [[[
-                        var bc_color = 'rgba(var(--card-background-color), 0.2)';
-                        if (entity.state == "heat_cool"){
-                          var bc_color = 'rgba(var(--color, 0, 255, 89), 0.2)';
-                        } 
-                        return bc_color;
-                      ]]] 
+                - color: |
+                    [[[
+                      var color = 'rgba(var(--color-theme), 1)';
+                      if (entity.state == "heat_cool"){
+                        var color = 'rgba(var(--color-green), 1)';
+                      } 
+                      return color;
+                    ]]]
+              card:
+                - background-color: |
+                    [[[
+                      var bc_color = 'rgba(var(--color-theme),0.05)';
+                      if (entity.state == "heat_cool"){
+                        var bc_color = 'rgba(var(--color-green), 0.2)';
+                      } 
+                      return bc_color;
+                    ]]]
           - type: "custom:button-card"
             template: "widget_icon_juve"
             icon: "mdi:water"
@@ -273,27 +274,27 @@ custom_card_heat_pump:
               action: "call-service"
               service: "climate.set_hvac_mode"
               service_data:
-                  entity_id: "[[[ return entity.entity_id ]]]"
-                  hvac_mode: "dry"
+                entity_id: "[[[ return entity.entity_id ]]]"
+                hvac_mode: "dry"
             styles:
               icon:
-                 - color: | 
-                      [[[
-                        var color = 'rgba(var(--color-theme), 1)';
-                        if (entity.state == "dry"){
-                          var color = 'rgba(var(--color, 255, 165, 0), 1)';
-                        } 
-                        return color;
-                      ]]] 
-              img_cell:
-                 - background-color: | 
-                      [[[
-                        var bc_color = 'rgba(var(--card-background-color), 0.2)';
-                        if (entity.state == "dry"){
-                          var bc_color = 'rgba(var(--color, 255, 165, 0), 0.2)';
-                        } 
-                        return bc_color;
-                      ]]] 
+                - color: |
+                    [[[
+                      var color = 'rgba(var(--color-theme), 1)';
+                      if (entity.state == "dry"){
+                        var color = 'rgba(var(--color, 255, 165, 0), 1)';
+                      } 
+                      return color;
+                    ]]]
+              card:
+                - background-color: |
+                    [[[
+                      var bc_color = 'rgba(var(--color-theme),0.05)';
+                      if (entity.state == "dry"){
+                        var bc_color = 'rgba(var(--color, 255, 165, 0), 0.2)';
+                      } 
+                      return bc_color;
+                    ]]]
           - type: "custom:button-card"
             template: "widget_icon_juve"
             icon: "mdi:fan"
@@ -301,28 +302,27 @@ custom_card_heat_pump:
               action: "call-service"
               service: "climate.set_hvac_mode"
               service_data:
-                  entity_id: "[[[ return entity.entity_id ]]]"
-                  hvac_mode: "fan_only"
+                entity_id: "[[[ return entity.entity_id ]]]"
+                hvac_mode: "fan_only"
             styles:
               icon:
-                 - color: | 
-                      [[[
-                        var color = 'rgba(var(--color-theme), 1)';
-                        if (entity.state == "fan_only"){
-                          var color = 'rgba(var(--color, 195, 0, 255), 1)';
-                        } 
-                        return color;
-                      ]]] 
-              img_cell:
-                 - background-color: |
-                      [[[
-                        var bc_color = 'rgba(var(--card-background-color), 0.2)';
-                        if (entity.state == "fan_only"){
-                          var bc_color = 'rgba(var(--color, 195, 0, 255), 0.2)';
-                        } 
-                        return bc_color;
-                      ]]] 
-
+                - color: |
+                    [[[
+                      var color = 'rgba(var(--color-theme), 1)';
+                      if (entity.state == "fan_only"){
+                        var color = 'rgba(var(--color, 195, 0, 255), 1)';
+                      } 
+                      return color;
+                    ]]]
+              card:
+                - background-color: |
+                    [[[
+                      var bc_color = 'rgba(var(--color-theme),0.05)';
+                      if (entity.state == "fan_only"){
+                        var bc_color = 'rgba(var(--color, 195, 0, 255), 0.2)';
+                      } 
+                      return bc_color;
+                    ]]]
 
 widget_icon_juve:
   tap_action:
@@ -344,3 +344,5 @@ widget_icon_juve:
       - color: "rgba(var(--color-theme),0.9)"
   size: "20px"
   #color: "var(--google-grey)"
+
+
