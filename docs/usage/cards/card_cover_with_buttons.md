@@ -5,7 +5,7 @@ title: card_cover_with_buttons
 
 ## Description
 
-![example-image](../../assets/img/card_cover_with_buttons.png){ width="500" }
+![example-image](../../assets/img/card_cover_buttons.png){ width="500" }
 
 Card description should be here.
 
