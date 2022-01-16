@@ -12,7 +12,7 @@ Initial release
 </details>
 
 ## Images
-![Heat_pump](https://github.com/juvenalandres/UI/blob/juvenalandres-dev/custom_cards/custom_card_heat_pump/Heat_pump.PNG)
+![Heat_pump](https://github.com/juvenalandres/UI/blob/juvenalandres-dev/custom_cards/custom_card_heat_pump/Heat_pump.PNG?raw=true)
 
 ![Heat_pump_gif](https://github.com/juvenalandres/UI/blob/juvenalandres-dev/custom_cards/custom_card_heat_pump/heat_pump.gif?raw=true)
 
