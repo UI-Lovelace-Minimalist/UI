@@ -169,7 +169,7 @@ custom_card_heat_pump:
                       var color = 'rgba(var(--color-theme), 1)';
                       if (entity.state == "heat"){
                         var color = 'rgba(var(--color-red), 1)';
-                      } 
+                      }
                       return color;
                     ]]]
               card:
@@ -178,7 +178,7 @@ custom_card_heat_pump:
                       var bc_color = 'rgba(var(--color-theme),0.05)';
                       if (entity.state == "heat"){
                         var bc_color = 'rgba(var(--color-red), 0.2)';
-                      } 
+                      }
                       return bc_color;
                     ]]]
           - type: "custom:button-card"
@@ -197,7 +197,7 @@ custom_card_heat_pump:
                       var color = 'rgba(var(--color-theme), 1)';
                       if (entity.state == "cool"){
                         var color = 'rgba(var(--color-blue), 1)';
-                      } 
+                      }
                       return color;
                     ]]]
               card:
@@ -206,7 +206,7 @@ custom_card_heat_pump:
                       var bc_color = 'rgba(var(--color-theme),0.05)';
                       if (entity.state == "cool"){
                         var bc_color = 'rgba(var(--color-blue), 0.2)';
-                      } 
+                      }
                       return bc_color;
                     ]]]
           - type: "custom:button-card"
@@ -225,7 +225,7 @@ custom_card_heat_pump:
                       var color = 'rgba(var(--color-theme), 1)';
                       if (entity.state == "heat_cool"){
                         var color = 'rgba(var(--color-green), 1)';
-                      } 
+                      }
                       return color;
                     ]]]
               card:
@@ -234,7 +234,7 @@ custom_card_heat_pump:
                       var bc_color = 'rgba(var(--color-theme),0.05)';
                       if (entity.state == "heat_cool"){
                         var bc_color = 'rgba(var(--color-green), 0.2)';
-                      } 
+                      }
                       return bc_color;
                     ]]]
           - type: "custom:button-card"
@@ -253,7 +253,7 @@ custom_card_heat_pump:
                       var color = 'rgba(var(--color-theme), 1)';
                       if (entity.state == "dry"){
                         var color = 'rgba(var(--color, 255, 165, 0), 1)';
-                      } 
+                      }
                       return color;
                     ]]]
               card:
@@ -262,7 +262,7 @@ custom_card_heat_pump:
                       var bc_color = 'rgba(var(--color-theme),0.05)';
                       if (entity.state == "dry"){
                         var bc_color = 'rgba(var(--color, 255, 165, 0), 0.2)';
-                      } 
+                      }
                       return bc_color;
                     ]]]
           - type: "custom:button-card"
@@ -281,7 +281,7 @@ custom_card_heat_pump:
                       var color = 'rgba(var(--color-theme), 1)';
                       if (entity.state == "fan_only"){
                         var color = 'rgba(var(--color, 195, 0, 255), 1)';
-                      } 
+                      }
                       return color;
                     ]]]
               card:
@@ -290,10 +290,9 @@ custom_card_heat_pump:
                       var bc_color = 'rgba(var(--color-theme),0.05)';
                       if (entity.state == "fan_only"){
                         var bc_color = 'rgba(var(--color, 195, 0, 255), 0.2)';
-                      } 
+                      }
                       return bc_color;
                     ]]]
-
 widget_icon_juve:
   tap_action:
     action: "toggle"
@@ -313,5 +312,3 @@ widget_icon_juve:
     icon:
       - color: "rgba(var(--color-theme),0.9)"
   size: "20px"
-
-
