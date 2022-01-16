@@ -825,7 +825,7 @@ card_media_player:
           }
           return label;
         ]]]
-card_media_player_with_control:
+card_media_player_art:
   template:
     - "icon_info_bg"
     - "ulm_language_variables"
@@ -1147,9 +1147,9 @@ card_thermostat:
         label:
           - color: "rgba(var(--color-red-text),1)"
 ### 2-LINE CARDS ###
-card_cover_with_buttons:
+card_cover_buttons:
   variables:
-    ulm_card_cover_with_buttons_name: "n/a"
+    ulm_card_cover_buttons_name: "n/a"
   triggers_update: "all"
   styles:
     grid:
@@ -1172,7 +1172,7 @@ card_cover_with_buttons:
         tap_action:
           action: "more-info"
         entity: "[[[ return variables.ulm_card_cover_with_buttons_entity ]]]"
-        name: "[[[ return variables.ulm_card_cover_with_buttons_name ]]]"
+        name: "[[[ return variables.ulm_card_cover_buttons_name ]]]"
     item2:
       card:
         type: "custom:button-card"
@@ -1186,7 +1186,7 @@ card_cover_with_buttons:
                 action: "call-service"
                 service: "cover.close_cover"
                 service_data:
-                  entity_id: "[[[ return variables.ulm_card_cover_with_buttons_entity ]]]"
+                  entity_id: "[[[ return variables.ulm_card_cover_buttons_entity ]]]"
               icon: "mdi:arrow-down"
           item2:
             card:
@@ -1196,7 +1196,7 @@ card_cover_with_buttons:
                 action: "call-service"
                 service: "cover.stop_cover"
                 service_data:
-                  entity_id: "[[[ return variables.ulm_card_cover_with_buttons_entity ]]]"
+                  entity_id: "[[[ return variables.ulm_card_cover_buttons_entity ]]]"
               icon: "mdi:pause"
           item3:
             card:
@@ -1206,7 +1206,7 @@ card_cover_with_buttons:
                 action: "call-service"
                 service: "cover.open_cover"
                 service_data:
-                  entity_id: "[[[ return variables.ulm_card_cover_with_buttons_entity ]]]"
+                  entity_id: "[[[ return variables.ulm_card_cover_buttons_entity ]]]"
               icon: "mdi:arrow-up"
 card_graph:
   variables:
@@ -1252,7 +1252,7 @@ card_graph:
             box-shadow: none;
             border-radius: var(--border-radius);
           }
-card_media_player_with_controls:
+card_media_player_controls:
   variables:
     ulm_card_media_player_with_controls_name: "No name set"
     ulm_card_media_player_with_controls_entity:
@@ -1276,8 +1276,8 @@ card_media_player_with_controls:
           - "card_media_player"
         tap_action:
           action: "more-info"
-        entity: "[[[ return variables.ulm_card_media_player_with_controls_entity ]]]"
-        name: "[[[ return variables.ulm_card_media_player_with_controls_name ]]]"
+        entity: "[[[ return variables.ulm_card_media_player_controls_entity ]]]"
+        name: "[[[ return variables.ulm_card_media_player_controls_name ]]]"
         styles:
           card:
             - box-shadow: "none"
@@ -1295,18 +1295,18 @@ card_media_player_with_controls:
                 action: "call-service"
                 service: "media_player.media_previous_track"
                 service_data:
-                  entity_id: "[[[ return variables.ulm_card_media_player_with_controls_entity ]]]"
+                  entity_id: "[[[ return variables.ulm_card_media_player_controls_entity ]]]"
               icon: "mdi:skip-previous"
           item2:
             card:
               type: "custom:button-card"
               template: "widget_icon"
-              entity: "[[[ return variables.ulm_card_media_player_with_controls_entity ]]]"
+              entity: "[[[ return variables.ulm_card_media_player_controls_entity ]]]"
               tap_action:
                 action: "call-service"
                 service: "media_player.media_play_pause"
                 service_data:
-                  entity_id: "[[[ return variables.ulm_card_media_player_with_controls_entity ]]]"
+                  entity_id: "[[[ return variables.ulm_card_media_player_controls_entity ]]]"
               icon: "mdi:pause"
               state:
                 - value: "paused"
@@ -1321,7 +1321,7 @@ card_media_player_with_controls:
                 action: "call-service"
                 service: "media_player.media_next_track"
                 service_data:
-                  entity_id: "[[[ return variables.ulm_card_media_player_with_controls_entity ]]]"
+                  entity_id: "[[[ return variables.ulm_card_media_player_controls_entity ]]]"
               icon: "mdi:skip-next"
 ### INTERNAL TEMPLATES ###
 blue:
@@ -1883,10 +1883,10 @@ outlet:
 # thermostat:
 # template: card_thermostat
 cover_buttons:
-  template: "card_cover_with_buttons"
+  template: "card_cover_buttons"
   variables:
-    ulm_card_cover_with_buttons_name:
-    ulm_card_cover_with_buttons_entity:
+    ulm_card_cover_buttons_name:
+    ulm_card_cover_buttons_entity:
 graph:
   template: "card_graph"
   variables:
@@ -1902,10 +1902,18 @@ battery:
 media_mini_album:
   template: "card_media_player_with_cover"
 media_buttons:
-  template: "card_media_player_with_controls"
+  template: "card_media_player_controls"
   variables:
-    ulm_card_media_player_with_controls_entity: "[[[ return variables.entity ]]]"
-    ulm_card_media_player_with_controls_name: "[[[ return variables.name ]]]"
+    ulm_card_media_player_controls_entity: "[[[ return variables.entity ]]]"
+    ulm_card_media_player_controls_name: "[[[ return variables.name ]]]"
+card_cover_with_buttons:
+  template: "card_cover_buttons"
+card_media_player_with_control:
+  template: "card_media_player_art"
+card_media_player_with_controls:
+  template: "card_media_player_controls"
+
+
 ### ITEMS ###
 list_items:
   template: "list_3_items"
