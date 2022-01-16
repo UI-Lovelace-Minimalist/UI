@@ -5,7 +5,7 @@ title: card_title
 
 ## Description
 
-![example-image](../../assets/img/card_example.png){ width="500" }
+![example-image](../../assets/img/card_title.png){ width="500" }
 
 Card description should be here.
 
