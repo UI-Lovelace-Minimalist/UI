@@ -5,10 +5,10 @@ title: card_light
 
 ## Description
 
-![Image title](../../assets/img/card_light.png){ width="500" }
-![Image title](../../assets/img/card_light_slider.png){ width="500" }
-![Image title](../../assets/img/card_light_slider_horizontal.png){ width="500" }
-![Image title](../../assets/img/card_light_slider_collapse.png){ width="500" }
+![Image title](../../assets/img/ulm_cards/card_light.png){ width="500" }
+![Image title](../../assets/img/ulm_cards/card_light_slider.png){ width="500" }
+![Image title](../../assets/img/ulm_cards/card_light_slider_horizontal.png){ width="500" }
+![Image title](../../assets/img/ulm_cards/card_light_slider_collapse.png){ width="500" }
 
 This documentation refers to the new "All in one" light card.
 This card merges the following one :
