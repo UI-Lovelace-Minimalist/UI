@@ -56,6 +56,9 @@ async def async_initialize_integration(
                 **config_entry.options,
             }
         )
+    _LOGGER.debug(config)
+    _LOGGER.debug(config_entry)
+    _LOGGER.debug(ulm.configuration)
     _LOGGER.debug("Configuration type: %s", ulm.configuration.config_type)
 
     process_yaml(hass=hass, ulm=ulm)

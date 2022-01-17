@@ -54,7 +54,7 @@ def load_yamll(fname, secrets=None, args={}):
             if f.readline().lower().startswith("# ui_lovelace_minimalist"):
                 process_yaml = True
         if process_yaml:
-            _LOGGER.warning("PARSING JINJA TEMPLATE")
+            _LOGGER.debug(f"Parsing jira template: {fname}")
             stream = io.StringIO(
                 jinja.get_template(fname).render(
                     {
@@ -151,6 +151,7 @@ def process_yaml(hass: HomeAssistant, ulm: UlmBase):
             "mini-graph-card",
             "mini-media-player",
             "my-cards",
+            "simple-weather-card",
         ]
         for p in depenceny_resource_paths:
             if not os.path.exists(hass.config.path(f"www/community/{p}")):
@@ -163,6 +164,18 @@ def process_yaml(hass: HomeAssistant, ulm: UlmBase):
     # Create config dir
     os.makedirs(hass.config.path(f"{DOMAIN}/configs"), exist_ok=True)
     os.makedirs(hass.config.path(f"{DOMAIN}/custom_cards"), exist_ok=True)
+    # Future use
+    os.makedirs(hass.config.path(f"{DOMAIN}/addons"), exist_ok=True)
+
+    for fname in os.listdir(
+        hass.config.path(f"custom_components/{DOMAIN}/installation/")
+    ):
+        if not os.path.isfile(hass.config.path(f"{DOMAIN}/configs/{fname}")):
+            _LOGGER.debug(f"COPY: {fname}")
+            shutil.copy2(
+                hass.config.path(f"custom_components/{DOMAIN}/installation/{fname}"),
+                hass.config.path(f"{DOMAIN}/configs"),
+            )
 
     if os.path.exists(hass.config.path(f"{DOMAIN}/configs")):
         # Create combined cards dir
@@ -230,7 +243,7 @@ def process_yaml(hass: HomeAssistant, ulm: UlmBase):
             [
                 ("version", VERSION),
                 ("theme", ulm.configuration.theme),
-                ("themes", json.dumps(themes)),
+                # ("themes", json.dumps(themes)),
                 ("installed", installed),
             ]
         )

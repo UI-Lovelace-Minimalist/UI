@@ -15,3 +15,8 @@ touch /config/automations.yaml
 sudo apt update; apt install -y ruby
 
 pre-commit install
+
+
+# Custom Cards & Modules
+curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
+apt-get install -y nodejs

@@ -12,7 +12,7 @@ import './initialize';
 //   return check;
 // };
 
-class LovelaceMinimalistUi {
+class UILovelaceMinimalist {
   sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
@@ -130,10 +130,102 @@ class LovelaceMinimalistUi {
   }
 }
 
-window.ui_lovelace_minimalist = window.ui_lovelace_minimalist || new LovelaceMinimalistUi();
+window.ui_lovelace_minimalist = window.ui_lovelace_minimalist || new UILovelaceMinimalist();
 
-// const bases = [customElements.whenDefined('hui-masonry-view'), customElements.whenDefined('hc-lovelace')];
-// Promise.race(bases).then(() => {
-//   window.ui_lovelace_minimalist = window.ui_lovelace_minimalist || new LovelaceMinimalistUi();
+const bases = [customElements.whenDefined('hui-masonry-view'), customElements.whenDefined('hc-lovelace')];
+Promise.race(bases).then(() => {
+  window.ui_lovelace_minimalist = window.ui_lovelace_minimalist || new UILovelaceMinimalist();
 
-// });
+  const LitElement = customElements.get('hui-masonry-view')
+    ? Object.getPrototypeOf(customElements.get('hui-masonry-view'))
+    : Object.getPrototypeOf(customElements.get('hc-lovelace'));
+
+  const html = LitElement.prototype.html;
+
+  const css = LitElement.prototype.css;
+
+  class UILovelaceMinimalistLayout extends LitElement {
+    setConfig(_config) { }
+
+    static get properties() {
+      return {
+        cards: { type: Array, attribute: false }
+      };
+    }
+    lovelace() {
+      var root = document.querySelector("hc-main");
+      if (root) {
+        var ll = root._lovelaceConfig;
+        ll.current_view = root._lovelacePath;
+        return ll;
+      }
+
+      root = document.querySelector("home-assistant");
+      root = root && root.shadowRoot;
+      root = root && root.querySelector("home-assistant-main");
+      root = root && root.shadowRoot;
+      root = root && root.querySelector("app-drawer-layout partial-panel-resolver");
+      root = root && root.shadowRoot || root;
+      root = root && root.querySelector("ha-panel-lovelace")
+      root = root && root.shadowRoot;
+      root = root && root.querySelector("hui-root")
+      if (root) {
+        var ll = root.lovelace
+        ll.current_view = root.___curView;
+        return ll;
+      }
+
+      return null;
+    }
+
+    static get styles() {
+      return [
+        css`
+        #ui_lovelace_minimalist {
+          max-width: 1465px;
+          padding-bottom: 50px;
+          margin: 0 auto;
+          font-family: "Open Sans", sans-serif !important;
+        }
+        ha-fab {
+          font-size: 18px;
+          border: 2px solid #4591B8;
+          padding: 5px;
+          margin-bottom: 50px;
+        }
+        `
+      ]
+    }
+
+    clicked() {
+      if (lovelace().mode !== "yaml") return;
+      lovelace().setEditMode(!lovelace().editMode);
+      this.requestUpdate();
+    }
+
+    _addCard() {
+      console.log('test');
+      //fireEvent(this, "ll-create-card");
+      this.dispatchEvent(new CustomEvent("ll-create-card"));
+    }
+
+    async updated() {
+      //console.log('updated');
+    }
+
+    render() {
+      if (!this.cards) {
+        return html``;
+      }
+      return html`
+        <div id="ui_lovelace_minimalist">
+          ${this.cards.map((card) => html`${card}`)}
+
+        </div>
+      `;
+    }
+  }
+  if (!customElements.get("ui-lovelace-minimalist")) {
+    customElements.define("ui-lovelace-minimalist", UILovelaceMinimalistLayout);
+  }
+});
