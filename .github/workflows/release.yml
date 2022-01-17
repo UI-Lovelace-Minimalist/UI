@@ -20,3 +20,17 @@ jobs:
       - name: "Set manifest version number"
         run: |
           python3 ${{ github.workspace }}/.github/update_hacs_manifest.py --version ${{ steps.version.outputs.version }}
+
+      - name: "Create zip"
+        run: |
+          cd custom_components/ui_lovelace_minimalist
+          zip ui_lovelace_minimalist.zip -r ./
+
+      - name: "Upload zip to release"
+        uses: "svenstaro/upload-release-action@v1-release"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          file: "./custom_components/ui_lovelace_minimalist/ui_lovelace_minimalist.zip"
+          asset_name: "ui_lovelace_minimalist.zip"
+          tag: "${{ github.ref }}"
+          overwrite: true
