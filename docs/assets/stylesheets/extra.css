@@ -4,7 +4,7 @@
     --md-primary-fg-color--dark:        hsla(212, 33%, 32%, 1);
     --md-accent-fg-color:               hsla(183, 56%, 52%, 1);
     --md-accent-fg-color--transparent:  hsla(183, 56%, 52%, 0.1);
-  }
+    }
 
 pre { color: white !important; }
 
