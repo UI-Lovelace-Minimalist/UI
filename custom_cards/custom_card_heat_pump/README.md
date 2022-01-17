@@ -20,7 +20,6 @@ Initial release
 
 ![Heat_pump_gif](https://github.com/juvenalandres/UI/blob/juvenalandres-dev/custom_cards/custom_card_heat_pump/heat_pump.gif?raw=true)
 
-
 ## Usage
 
 ```yaml
@@ -28,7 +27,6 @@ Initial release
   template: custom_card_heat_pump
   entity: climate.heat_pump
 ```
-
 
 ## Requirements
 
