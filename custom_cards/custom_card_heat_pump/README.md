@@ -1,24 +1,27 @@
 # Custom-card "Heat Pump"
+
 The `custom_card_heat_pump` allows you to control your HVAC system and all its modes. This card is inspired by  [Simple Thermostat Card](https://github.com/nervetattoo/simple-thermostat).
 
 ## Credits
+
 Author: Kam - 2022
 Version: 1.0.0
 
 ## Changelog
+
 <details>
 <summary>1.0.0</summary>
 Initial release
 </details>
 
 ## Images
+
 ![Heat_pump](https://github.com/juvenalandres/UI/blob/juvenalandres-dev/custom_cards/custom_card_heat_pump/Heat_pump.PNG?raw=true)
 
 ![Heat_pump_gif](https://github.com/juvenalandres/UI/blob/juvenalandres-dev/custom_cards/custom_card_heat_pump/heat_pump.gif?raw=true)
 
 
 ## Usage
-
 
 ```yaml
 - type: custom:button-card
@@ -28,12 +31,12 @@ Initial release
 
 
 ## Requirements
+
 Entity climate with only heat mode
 
 ## Modification
 
 If your entity does not have all the available options in the `hvac component`, modify (delete or comment out) the following part to match your setup. Each button corresponds to a mode of the `hvac component`.
-
 
 ```yaml
 item3:
@@ -100,6 +103,7 @@ item3:
                 hvac_mode: "fan_only"
             ...
 ```
+
 ## Code template
 
 ```yaml
