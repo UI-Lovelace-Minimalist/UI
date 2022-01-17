@@ -16,7 +16,7 @@ automation ui: !include "automations.yaml"
 logger:
   default: "info"
   logs:
-    custom_components.lovelace_minimalist_ui: "debug"
+    custom_components.ui_lovelace_minimalist: "debug"
 # If you need to debug uncommment the line below (doc: https://www.home-assistant.io/integrations/debugpy/)
 # debugpy:
 
