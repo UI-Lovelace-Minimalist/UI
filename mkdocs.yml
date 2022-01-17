@@ -77,6 +77,11 @@ markdown_extensions:
   - "def_list"
   - toc:
       permalink: true
+  - codehilite:
+      guess_lang: false
+      use_pygments: true
+      noclasses: true
+      pygments_style: "monokai"
 
 plugins:
   - "search"
