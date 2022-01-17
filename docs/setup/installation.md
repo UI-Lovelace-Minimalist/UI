@@ -37,7 +37,7 @@ To find this Integration on HACS we first need to add the UI Lovelace Minimalist
 7. Now we need to restart home-assistant under [![Open your Home Assistant instance and show your server controls.](https://my.home-assistant.io/badges/server_controls.svg)](https://my.home-assistant.io/redirect/server_controls/)
 8. Wait until Home assistant is restarted and Continue to [Install Integration](#install-integration)
 
-### Install Integrations
+### Install Integration
 
 Open your Home Assistant instance and start setting up "UI Lovelace Minimalist". Or you can use the My Home Assistant Button bellow.
 
@@ -89,4 +89,4 @@ Unpack the file and move the folder it contains called `ui_lovelace_minimalist` 
 `/config/custom_components/`
 
 If this folder does not exist in your configuration directory, create it.
-Then you can follow the step ["Install Integrations"](https://ui-lovelace-minimalist.github.io/UI/setup/installation/#install-integrations) from the HACS installation.
+Then you can follow the step ["Install Integration"](https://ui-lovelace-minimalist.github.io/UI/setup/installation/#install-integration) from the HACS installation.
