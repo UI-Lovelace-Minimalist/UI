@@ -5,7 +5,7 @@ title: card_media_player_with_control
 
 ## Description
 
-![example-image](../../assets/img/card_media_player_with_control.png){ width="500" }
+![example-image](../../assets/img/card_media_player_art.png){ width="500" }
 
 Card description should be here.
 
