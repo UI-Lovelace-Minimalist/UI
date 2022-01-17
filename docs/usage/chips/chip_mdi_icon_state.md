@@ -5,7 +5,7 @@ title: chip_mdi_icon_state
 
 ## Description
 
-![example-image](../../assets/img/card_example.png){ width="500" }
+![example-image](../../assets/img/ulm_chips/chip_example.png){ width="500" }
 
 Chip description should be here.
 

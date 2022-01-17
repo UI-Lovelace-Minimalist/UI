@@ -5,7 +5,7 @@ title: card_person
 
 ## Description
 
-![example-image](../../assets/img/card_person.png){ width="500" }
+![example-image](../../assets/img/ulm_cards/card_person.png){ width="500" }
 
 Card description should be here.
 

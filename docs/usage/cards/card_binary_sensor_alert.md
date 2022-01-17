@@ -5,7 +5,7 @@ title: card_binary_sensor_alert
 
 ## Description
 
-![example-image](../../assets/img/card_binary_sensor_alert.png){ width="500" }
+![example-image](../../assets/img/ulm_cards/card_binary_sensor_alert.png){ width="500" }
 
 Card description should be here.
 

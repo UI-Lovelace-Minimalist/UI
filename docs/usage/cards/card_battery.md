@@ -5,7 +5,7 @@ title: card_battery
 
 ## Description
 
-![example-image](../../assets/img/card_battery.png){ width="500" }
+![example-image](../../assets/img/ulm_cards/card_battery.png){ width="500" }
 
 Card description should be here.
 

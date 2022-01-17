@@ -5,7 +5,7 @@ title: card_vertical_button
 
 ## Description
 
-![example-image](../../assets/img/card_example.png){ width="500" }
+![example-image](../../assets/img/ulm_cards/card_example.png){ width="500" }
 
 Card description should be here.
 
