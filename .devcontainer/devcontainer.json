@@ -3,9 +3,10 @@
   "name": "Lovelace Minimalist UI integration development",
   "context": "..",
   "appPort": [
-    "9123:8123"
+    "9123:8123",
+    "8000:8000"
   ],
-  "postCreateCommand": "container install",
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
   "extensions": [
     "ms-python.python",
     "ms-python.vscode-pylance",

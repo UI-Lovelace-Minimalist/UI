@@ -41,6 +41,7 @@ The available tasks are:
 | Run Home Assistant configuration against /config | Check the configuration.                                                                                                   |
 | Upgrade Home Assistant to latest dev             | Upgrade the Home Assistant core version in the container to the latest version of the `dev` branch.                        |
 | Install a specific version of Home Assistant     | Install a specific version of Home Assistant core in the container.                                                        |
+| Serve Documentation on port 8000     | Serve MKDocs on port 8000 to review your changes               |
 
 ### Step by Step debugging
 
