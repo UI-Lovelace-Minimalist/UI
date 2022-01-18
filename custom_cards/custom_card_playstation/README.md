@@ -1,3 +1,8 @@
+---
+title: card_ps4
+---
+<!-- markdownlint-disable MD046 -->
+
 ### Playstation
 
 > NOTE

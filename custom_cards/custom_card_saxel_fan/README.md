@@ -1,3 +1,8 @@
+---
+title: custom_card_saxel_fan_blue
+---
+<!-- markdownlint-disable MD046 -->
+
 # Custom-card "Fan"
 
 This is a _custom card_ to control a fan. It allows you to turn on/off the fan, adjusting the fan speed with a slider, and turn on/off oscillation. Two styles are available:

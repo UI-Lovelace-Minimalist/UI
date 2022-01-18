@@ -1,3 +1,8 @@
+---
+title: custom_card_paddy_welcome
+---
+<!-- markdownlint-disable MD046 -->
+
 # Custom-card "Welcome"
 
 This is a `custom-card` to show a welcome message to the user. It comes in four different versions:

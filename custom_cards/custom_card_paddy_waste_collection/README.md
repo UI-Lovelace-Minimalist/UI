@@ -1,3 +1,8 @@
+---
+title: custom_card_paddy_waste_collection
+---
+<!-- markdownlint-disable MD046 -->
+
 # Custom-card "Waste collection"
 
 This is a `custom-card` to show the next waste collection date. It uses the data from the `custom_component` "Waste Collection Framework".

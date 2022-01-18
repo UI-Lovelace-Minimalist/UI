@@ -1,3 +1,8 @@
+---
+title: card_light_colorpick
+---
+<!-- markdownlint-disable MD046 -->
+
 # Custom-card "Colorpicker Light Card"
 
 This is a `custom-card` to add additional function to the `light_card`.

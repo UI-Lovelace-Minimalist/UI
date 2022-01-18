@@ -1,3 +1,8 @@
+---
+title: card_qubino
+---
+<!-- markdownlint-disable MD046 -->
+
 # Custom-card "Qubino"
 
 > NOTE

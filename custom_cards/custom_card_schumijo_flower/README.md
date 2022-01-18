@@ -1,3 +1,8 @@
+---
+title: card_flower
+---
+<!-- markdownlint-disable MD046 -->
+
 # Custom-card "Flower"
 
 This is a `custom-card` to display a plant entity. Shows state of the plant and attributes.

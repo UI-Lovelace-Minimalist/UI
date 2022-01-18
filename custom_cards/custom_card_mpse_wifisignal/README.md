@@ -1,3 +1,8 @@
+---
+title: custom_card_mpse_wifisignal
+---
+<!-- markdownlint-disable MD046 -->
+
 # Custom-card "WiFi Signal"
 
 The `custom_card_mpse_wifisignal` is used to display the status of a wifi signal (dBm). Icon changes based on signal strenght.

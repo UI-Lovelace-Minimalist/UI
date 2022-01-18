@@ -1,3 +1,8 @@
+---
+title: custom_card_paddy_dwd_pollen
+---
+<!-- markdownlint-disable MD046 -->
+
 # Custom-card "DWD Pollen"
 
 This is a `custom-card` to show the pollen count, taken from the DWD pollen service via a rest sensor.

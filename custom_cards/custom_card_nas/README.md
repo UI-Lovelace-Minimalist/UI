@@ -1,3 +1,8 @@
+---
+title: custom_card_nas
+---
+<!-- markdownlint-disable MD046 -->
+
 # Custom-card "NAS"
 
 The `card-nas` shows you a specific sensor value from your NAS, eg. the disk space used.

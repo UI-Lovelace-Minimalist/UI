@@ -1,3 +1,8 @@
+---
+title: card_thermostat
+---
+<!-- markdownlint-disable MD046 -->
+
 # Custom-card "Thermostat"
 
 > NOTE

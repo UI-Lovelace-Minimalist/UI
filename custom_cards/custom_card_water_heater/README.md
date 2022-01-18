@@ -1,3 +1,8 @@
+---
+title: card_water_heater
+---
+<!-- markdownlint-disable MD046 -->
+
 # Custom-card "Water heater"
 
 > NOTE

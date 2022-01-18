@@ -1,3 +1,8 @@
+---
+title: custom_card_tpx01_aircondition_with_buttons
+---
+<!-- markdownlint-disable MD046 -->
+
 # Custom-card "AirCondition"
 
 The `custom_card_tpx01_aircondition` shows data from your air condition and gives you the possibility to control it.

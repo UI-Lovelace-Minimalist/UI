@@ -1,3 +1,8 @@
+---
+title: card_input_number
+---
+<!-- markdownlint-disable MD046 -->
+
 # Custom-card "NAS"
 
 The `card_input_number` you can control a input_number entity
