@@ -1,0 +1,31 @@
+---
+name: "Automatic custom_cards docs"
+
+on:
+  push:
+    # TODO: Remove 'dev' branch after testing
+    branches: ["main", "dev"]
+    paths: ["custom_cards/*/README.md"]
+
+jobs:
+  docit:
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: "actions/checkout@v2"
+      - name: "Copy and rename README.md files"
+        run: |
+          find ./custom_cards/ -type f -name "README.md" | while read fname; do
+            dirname=`dirname "$fname"`
+            foldername=`basename "$dirname"`
+            filename=`basename "$fname"`
+            newname=`echo "$dirname" | sed -e "s/ /_/g"`
+            cp "${dirname}/$filename" "./docs/usage/custom_cards/${foldername}.md"
+          done
+      - name: "Commit files"
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git pull -p
+          git add --all
+          git commit -a -m "Add changes for automatically custom_cards docs"
+      - name: "Push changes"
