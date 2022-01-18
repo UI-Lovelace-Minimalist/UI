@@ -16,7 +16,7 @@ jobs:
       - name: "Remove Files"
         uses: "JesseTG/rm@v1.0.2"
         with:
-          path: "/docs/usage/custom_cards/*"
+          path: "./docs/usage/custom_cards/*"
       - name: "Copy and rename README.md files"
         run: |
           find ./custom_cards/ -type f -name "README.md" | while read fname; do
