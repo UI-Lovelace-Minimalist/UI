@@ -3,8 +3,7 @@ name: "Automatic custom_cards docs"
 
 on:
   push:
-    # TODO: Remove 'dev' branch after testing
-    branches: ["main", "dev"]
+    branches: ["dev"]
     paths: ["custom_cards/*/README.md"]
 
 jobs:
