@@ -12,7 +12,7 @@ jobs:
   docit:
     runs-on: "ubuntu-latest"
     steps:
-      - uses: "actions/checkout@master"
+      - uses: "actions/checkout@v2"
       - name: "Copy and rename README.md files"
         run: |
           find ./custom_cards/ -type f -name "README.md" | while read fname; do
