@@ -11,16 +11,18 @@ The `card_media_player` shows you the *app*, the *title* and the *album name* pl
 
 ## Variables
 
-| Variable | Default | Required         | Notes             |
+ Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
-| name     |         | :material-check: |                   |
-|background| `true`  | :material-close: | Enable background |
+| entity     |         | :material-check: | The media-player entity |
+| name |      | :material-check: | Name to display for your media-player |
 
 ## Usage
 
 ```yaml
-- type: "custom:button-card"
-  template: example
+- type: 'custom:button-card'
+  template: card_media_player
+  entity: media_player.livingroom_shield
+  name: Livingroom Nvidia Shield
 ```
 
 ??? note "Template Code"

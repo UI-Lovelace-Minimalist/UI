@@ -13,14 +13,18 @@ With the `cover-card` you have the state of your cover and on the second line UP
 
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
-| name     |         | :material-check: |                   |
-|background| `true`  | :material-close: | Enable background |
+| ulm_card_cover_with_buttons_entity     |         | :material-check: | The entity_id of your cover |
+| ulm_card_cover_with_buttons_name |         | :material-close: | The name of your cover entity |
 
 ## Usage
 
 ```yaml
-- type: "custom:button-card"
-  template: example
+- type: 'custom:button-card'
+  template:
+    - card_cover_with_buttons
+  variables:
+    ulm_card_cover_with_buttons_name: "Cover Livingroom Window"
+    ulm_card_cover_with_buttons_entity: "cover.livingroom_window"
 ```
 
 ??? note "Template Code"

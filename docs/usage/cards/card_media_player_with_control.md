@@ -13,14 +13,16 @@ This is the second `media-player-card`, in contrast to the first one above, it s
 
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
-| name     |         | :material-check: |                   |
-|background| `true`  | :material-close: | Enable background |
+| entity     |         | :material-check: | The media-player entity |
+| name |  | :material-check: | Name to display for your media-player |
 
 ## Usage
 
 ```yaml
-- type: "custom:button-card"
-  template: example
+- type: 'custom:button-card'
+  template: card_media_player_with_control
+  entity: media_player.livingroom_shield
+  name: Livingroom Nvidia Shield
 ```
 
 ??? note "Template Code"

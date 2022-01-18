@@ -13,14 +13,18 @@ The `binary-sensor-card` is to show the state (on/off, open/close, etc.) of a bi
 
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
-| name     |         | :material-check: |                   |
-|background| `true`  | :material-close: | Enable background |
+| entity     |         | :material-check: |                   |
+| show_last_changed |   | :material-close: | `true` or `false` |
 
 ## Usage
 
 ```yaml
-- type: "custom:button-card"
-  template: example
+- type: 'custom:button-card'
+  template: card_binary_sensor_alert
+  variables:
+    - ulm_card_binary_sensor_alert: true
+  entity: binary_sensor.garage_door
+  show_last_changed: true
 ```
 
 ??? note "Template Code"

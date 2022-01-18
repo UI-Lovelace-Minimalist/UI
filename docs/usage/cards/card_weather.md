@@ -7,20 +7,21 @@ title: card_weather
 
 ![example-image](../../assets/img/ulm_cards/card_example.png){ width="500" }
 
-Card description should be here.
+This is a card based on simple-weather-card to show your weather.
+[simple-weather-card](https://github.com/kalkih/simple-weather-card) lovelace ressources must be installed for this one!
 
 ## Variables
 
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
-| name     |         | :material-check: |                   |
-|background| `true`  | :material-close: | Enable background |
+| entity     |         | :material-check: | your weather entity |
 
 ## Usage
 
 ```yaml
-- type: "custom:button-card"
-  template: example
+- type: 'custom:button-card'
+  template: card_weather
+  entity: weather.my_local_weather
 ```
 
 ??? note "Template Code"

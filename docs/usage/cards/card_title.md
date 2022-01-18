@@ -13,14 +13,16 @@ Titles (and optionally subtitles) are used to seperate different areas in your d
 
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
-| name     |         | :material-check: |                   |
-|background| `true`  | :material-close: | Enable background |
+| name     |         | :material-check: | This is a main title (either title or subtitle is required) |
+|label|   | :material-check: | This is a subtitle (either title or subtitle is required) |
 
 ## Usage
 
 ```yaml
-- type: "custom:button-card"
-  template: example
+- type: 'custom:button-card'
+  template: card_title
+  name: My Title
+  label: 'Subtitle'
 ```
 
 ??? note "Template Code"

@@ -13,14 +13,25 @@ This card starts/runs a script. You can configure icon and text.
 
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
-| name     |         | :material-check: |                   |
-|background| `true`  | :material-close: | Enable background |
+| ulm_card_script_title     |         | :material-check: | Name to show for the script. |
+|ulm_card_script_icon|   | :material-check: | Icon to show for the script. |
+|tap_action_action|   | :material-check: | Only call-service is allowed here. |
+|tap_action_service|   | :material-check: | Let the script run by turning it on. |
+|tap_action_service_data|   | :material-check: | This is the service_data needed by your script. That can be an entity_id and/or some variables. |
 
 ## Usage
 
 ```yaml
-- type: "custom:button-card"
-  template: example
+- type: 'custom:button-card'
+  template: card_script
+  variables:
+    ulm_card_script_title: Romantic lights
+    ulm_card_script_icon: 'mdi:candle'
+  tap_action:
+    action: call-service
+    service: script.turn_on
+    service_data:
+      entity_id: script.romantic_livingroom_lights
 ```
 
 ??? note "Template Code"

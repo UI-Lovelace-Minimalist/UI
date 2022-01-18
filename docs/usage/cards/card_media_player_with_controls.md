@@ -13,14 +13,18 @@ With the `card_media_player_with_controls` you have the state of your media_play
 
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
-| name     |         | :material-check: |                   |
-|background| `true`  | :material-close: | Enable background |
+| ulm_card_media_player_with_controls_entity     |         | :material-check: | The media-player entity |
+| ulm_card_media_player_with_controls_name |      | :material-check: | Name to display for your media-player |
 
 ## Usage
 
 ```yaml
-- type: "custom:button-card"
-  template: example
+- type: 'custom:button-card'
+  template:
+    - card_media_player_with_controls
+  variables:
+    ulm_card_media_player_with_controls_name: "Livingroom Shield"
+    ulm_card_media_player_with_controls_entity: media_player.livingroom_shield
 ```
 
 ??? note "Template Code"

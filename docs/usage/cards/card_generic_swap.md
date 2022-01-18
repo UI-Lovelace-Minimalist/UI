@@ -13,14 +13,14 @@ This is a `generic-card` with swapped label and name.
 
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
-| name     |         | :material-check: |                   |
-|background| `true`  | :material-close: | Enable background |
+| entity     |         | :material-check: |                   |
 
 ## Usage
 
 ```yaml
-- type: "custom:button-card"
-  template: example
+- type: 'custom:button-card'
+  template: card_generic_swap
+  entity: sensor.next_waste_collection
 ```
 
 ??? note "Template Code"

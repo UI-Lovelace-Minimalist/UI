@@ -14,6 +14,7 @@ The thermostat-card is used to switch a climate entity on/off and show the tempe
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
 | entity   |         | :material-check: |                   |
+| ulm_card_thermostat_sensor   |         | :material-check: | Sensor for displaying the temperature |
 
 ## Usage
 

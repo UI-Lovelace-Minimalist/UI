@@ -13,14 +13,14 @@ The `input-boolean-card` is to switch an `input_boolean` on or off.
 
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
-| name     |         | :material-check: |                   |
-|background| `true`  | :material-close: | Enable background |
+| entity     |         | :material-check: |                   |
 
 ## Usage
 
 ```yaml
-- type: "custom:button-card"
-  template: example
+- type: 'custom:button-card'
+  template: card_input_boolean
+  entity: input_boolean.guest_mode
 ```
 
 ??? note "Template Code"

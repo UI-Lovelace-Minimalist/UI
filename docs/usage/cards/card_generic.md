@@ -13,14 +13,14 @@ This is the `generic-card` to display values from a sensor, eg. to show humidity
 
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
-| name     |         | :material-check: |                   |
-|background| `true`  | :material-close: | Enable background |
+| entity     |         | :material-check: |                   |
 
 ## Usage
 
 ```yaml
-- type: "custom:button-card"
-  template: example
+- type: 'custom:button-card'
+  template: card_generic
+  entity: sensor.next_waste_collection
 ```
 
 ??? note "Template Code"
