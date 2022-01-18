@@ -15,6 +15,7 @@ jobs:
       - uses: "actions/checkout@v2"
       - name: "Copy and rename README.md files"
         run: |
+          rm -rf "./docs/usage/custom_cards/*"
           find ./custom_cards/ -type f -name "README.md" | while read fname; do
             dirname=`dirname "$fname"`
             foldername=`basename "$dirname"`
