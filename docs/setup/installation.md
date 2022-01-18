@@ -53,12 +53,15 @@ Now you can configure the Integration, you can do this also after it's installed
 - Theme: Select the desktop or mobile theme.
 - Theme path: Make sure this is set to the same path as is configured in your `configuration.yaml` (default: `/themes`)
 - Include Custom Cards: This will make sure almost all dependency cards are included and configured for you.
-    - button-card
-    - card-mod
-    - mini-graph-card
-    - mini-media-player
-    - my-cards-slider-card
-    - light-entity-card
+
+| Included lovelace resources                                             |
+|-------------------------------------------------------------------------|
+| [`button-card`](https://github.com/custom-cards/button-card)            |
+| [`lovelace-card-mod`](https://github.com/thomasloven/lovelace-card-mod) |
+| [`mini-graph-card`](https://github.com/kalkih/mini-graph-card)          |
+| [`mini-media-player`](https://github.com/kalkih/mini-media-player)      |
+| [`my-cards-slider-card`](https://github.com/AnthonMS/my-cards)          |
+| [`light-entity-card`](https://github.com/ljmerza/light-entity-card)     |
 
 Hit submit and in the Sidebar a new entry should appear.
 
@@ -72,14 +75,15 @@ If you can't or don't like to use HACS, you still have the possibility to use th
 
 In order to function correctly, the UI Lovelace Mininmalist "Theme" requires some additional integrations and lovelace resources. While we can install most of these for you during the installation via HACS, you will also have to install and configuring them manually in advance for a manual installation.
 
-| Required Integrations and lovelace resources                           |
+| Required Integrations and lovelace resources                            |
 |-------------------------------------------------------------------------|
 | [`browser-mod`](https://github.com/thomasloven/hass-browser_mod)        |
 | [`button-card`](https://github.com/custom-cards/button-card)            |
 | [`lovelace-card-mod`](https://github.com/thomasloven/lovelace-card-mod) |
 | [`mini-graph-card`](https://github.com/kalkih/mini-graph-card)          |
 | [`mini-media-player`](https://github.com/kalkih/mini-media-player)      |
-| [`my-cards`](https://github.com/AnthonMS/my-cards)                      |
+| [`my-cards-slider-card`](https://github.com/AnthonMS/my-cards)          |
+| [`light-entity-card`](https://github.com/ljmerza/light-entity-card)     |
 
 You can install most of them also via HACS or manually.
 
