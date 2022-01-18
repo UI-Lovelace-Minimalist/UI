@@ -1,0 +1,32 @@
+---
+name: "Copy custom_cards docs"
+
+on:
+  push:
+    # TODO: Remove 'dev' branch after testing
+    branches: ["main", "dev"]
+    paths: "custom_cards/*/README.md"
+
+jobs:
+  docit:
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: "actions/checkout@master"
+      - name: "Copy and rename README.md files"
+        run: |
+          find ./custom_cards/ -type f -name "README.md" | while read fname; do
+            dirname=`dirname "$fname"`
+            foldername=`basename "$dirname"`
+            filename=`basename "$fname"`
+            newname=`echo "$dirname" | sed -e "s/ /_/g"`
+            cp "${dirname}/$filename" "./docs/usage/custom_cards/${foldername}.md"
+          done
+      - name: "Commit files"
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -m "Add changes" -a
+      - name: "Push changes"
+        uses: "ad-m/github-push-action@master"
+        with:
+          github_token: "${{ secrets.GITHUB_TOKEN }}"
