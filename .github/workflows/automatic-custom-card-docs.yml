@@ -29,3 +29,7 @@ jobs:
           git add --all
           git commit -a -m "Add changes for automatically custom_cards docs"
       - name: "Push changes"
+        uses: "ad-m/github-push-action@master"
+        with:
+          github_token: "${{ secrets.GITHUB_TOKEN }}"
+          branch: "${{ github.ref }}"
