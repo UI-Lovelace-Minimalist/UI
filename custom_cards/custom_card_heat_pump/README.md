@@ -1,3 +1,8 @@
+---
+title: custom_card_heat_pump
+---
+<!-- markdownlint-disable MD046 -->
+
 # Custom-card "Heat Pump"
 
 The `custom_card_heat_pump` allows you to control your HVAC system and all its modes. This card is inspired by  [Simple Thermostat Card](https://github.com/nervetattoo/simple-thermostat).
