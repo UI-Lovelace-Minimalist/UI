@@ -13,9 +13,12 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - uses: "actions/checkout@v2"
+      - name: "Remove File"s
+        uses: "JesseTG/rm@v1.0.2"
+        with:
+          path: "/docs/usage/custom_cards/*"
       - name: "Copy and rename README.md files"
         run: |
-          rm -rf "./docs/usage/custom_cards/*"
           find ./custom_cards/ -type f -name "README.md" | while read fname; do
             dirname=`dirname "$fname"`
             foldername=`basename "$dirname"`
