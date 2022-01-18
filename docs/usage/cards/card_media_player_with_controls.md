@@ -1,5 +1,5 @@
 ---
-title: card_media_player_with_control
+title: card_media_player_with_controls
 ---
 <!-- markdownlint-disable MD046 -->
 
@@ -25,4 +25,6 @@ With the `card_media_player_with_controls` you have the state of your media_play
 
 ??? note "Template Code"
 
-        Internal Link to Template Code here
+    ```yaml title="card_light.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_media_player_with_controls.yaml"
+    ```

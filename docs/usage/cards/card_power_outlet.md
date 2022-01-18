@@ -25,4 +25,6 @@ This is the `power-outlet-card`. It shows you the state of a power outlet, and i
 
 ??? note "Template Code"
 
-        Internal Link to Template Code here
+    ```yaml title="card_light.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_power_outlet.yaml"
+    ```

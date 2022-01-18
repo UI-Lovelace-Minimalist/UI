@@ -25,4 +25,6 @@ The `card_navigate` is for navigating inside your HA dashboard(s).
 
 ??? note "Template Code"
 
-        Internal Link to Template Code here
+    ```yaml title="card_light.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_navigate.yaml"
+    ```

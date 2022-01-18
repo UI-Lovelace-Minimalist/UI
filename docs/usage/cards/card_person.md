@@ -25,4 +25,6 @@ The `card_person` shows if a person is `home` or `not_home`. If you have setup o
 
 ??? note "Template Code"
 
-        Internal Link to Template Code here
+    ```yaml title="card_light.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_person.yaml"
+    ```
