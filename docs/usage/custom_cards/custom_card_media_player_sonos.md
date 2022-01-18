@@ -8,7 +8,7 @@ title: card_media_player_sonos_with_controls
 > NOTE
 > This card is under review and is not ready to use!
 
-![Sonos](../../docs/assets/img/media_player_sonos.png)
+![Sonos](../docs/assets/img/media_player_sonos.png)
 
 <details>
 <summary>Usage</summary>
