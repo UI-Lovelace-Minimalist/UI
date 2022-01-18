@@ -1,3 +1,8 @@
+---
+title: card_media_player_chromecast_with_controls
+---
+<!-- markdownlint-disable MD046 -->
+
 # Media player: sonos
 
 > NOTE
