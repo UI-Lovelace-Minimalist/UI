@@ -5,7 +5,7 @@ on:
   push:
     # TODO: Remove 'dev' branch after testing
     branches: ["main", "dev"]
-    paths: ["docs/**"]
+    paths: ["docs/**", "mkdocs.yml"]
 
 jobs:
   deploy:
