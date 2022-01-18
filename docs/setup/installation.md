@@ -71,14 +71,17 @@ If you can't or don't like to use HACS, you still have the possibility to use th
 ### Prerequisites
 
 In order to function correctly, the UI Lovelace Mininmalist "Theme" requires some additional integrations and lovelace resources. While we can install most of these for you during the installation via HACS, you will also have to install and configuring them manually in advance for a manual installation.
-    - [`browser-mod`](https://github.com/thomasloven/hass-browser_mod)
-    - [`button-card`](https://github.com/custom-cards/button-card)
-    - [`lovelace-card-mod`](https://github.com/thomasloven/lovelace-card-mod)
-    - [`mini-graph-card`](https://github.com/kalkih/mini-graph-card)
-    - [`mini-media-player`](https://github.com/kalkih/mini-media-player)
-    - [`my-cards`](https://github.com/AnthonMS/my-cards)
 
-You can isntall most of them also via HACS or manually.
+| Required Integrations and lovelace resources                           |
+|-------------------------------------------------------------------------|
+| [`browser-mod`](https://github.com/thomasloven/hass-browser_mod)        |
+| [`button-card`](https://github.com/custom-cards/button-card)            |
+| [`lovelace-card-mod`](https://github.com/thomasloven/lovelace-card-mod) |
+| [`mini-graph-card`](https://github.com/kalkih/mini-graph-card)          |
+| [`mini-media-player`](https://github.com/kalkih/mini-media-player)      |
+| [`my-cards`](https://github.com/AnthonMS/my-cards)                      |
+
+You can install most of them also via HACS or manually.
 
 ### Download Release File
 
