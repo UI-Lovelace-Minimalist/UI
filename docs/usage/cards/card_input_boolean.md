@@ -7,7 +7,7 @@ title: card_input_boolean
 
 ![example-image](../../assets/img/ulm_cards/card_input_boolean.png){ width="500" }
 
-Card description should be here.
+The `input-boolean-card` is to switch an `input_boolean` on or off.
 
 ## Variables
 

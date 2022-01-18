@@ -7,7 +7,7 @@ title: card_power_outlet
 
 ![example-image](../../assets/img/ulm_cards/card_power_outlet.png){ width="500" }
 
-Card description should be here.
+This is the `power-outlet-card`. It shows you the state of a power outlet, and if configured, the actual power consumption of the power outlet.
 
 ## Variables
 

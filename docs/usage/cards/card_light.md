@@ -10,6 +10,8 @@ title: card_light
 ![Image title](../../assets/img/ulm_cards/card_light_slider_horizontal.png){ width="500" }
 ![Image title](../../assets/img/ulm_cards/card_light_slider_collapse.png){ width="500" }
 
+This is the `light-card`, used to toggle a light or a light group. Shows state of the light and, if available, brightness in %.
+
 This documentation refers to the new "All in one" light card.
 This card merges the following one :
 

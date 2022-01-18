@@ -7,7 +7,7 @@ title: card_cover_with_buttons
 
 ![example-image](../../assets/img/ulm_cards/card_cover_buttons.png){ width="500" }
 
-Card description should be here.
+With the `cover-card` you have the state of your cover and on the second line UP / PAUSE / DOWN to control it.
 
 ## Variables
 

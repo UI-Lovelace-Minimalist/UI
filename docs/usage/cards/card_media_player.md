@@ -7,7 +7,7 @@ title: card_media_player
 
 ![example-image](../../assets/img/ulm_cards/card_media_player.png){ width="500" }
 
-Card description should be here.
+The `card_media_player` shows you the *app*, the *title* and the *album name* playing, if the data is available through HA. The *app* is shown via a different icon.
 
 ## Variables
 

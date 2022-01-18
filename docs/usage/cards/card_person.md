@@ -7,7 +7,7 @@ title: card_person
 
 ![example-image](../../assets/img/ulm_cards/card_person.png){ width="500" }
 
-Card description should be here.
+The `card_person` shows if a person is `home` or `not_home`. If you have setup other zones, it will show these as well.
 
 ## Variables
 

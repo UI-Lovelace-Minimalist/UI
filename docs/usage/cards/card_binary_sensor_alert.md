@@ -7,7 +7,7 @@ title: card_binary_sensor_alert
 
 ![example-image](../../assets/img/ulm_cards/card_binary_sensor_alert.png){ width="500" }
 
-Card description should be here.
+The `binary-sensor-card` is to show the state (on/off, open/close, etc.) of a binary sensor, eg. your garage door or a window contact sensor. This card shows an alert if the state is on/open or unavailable.
 
 ## Variables
 

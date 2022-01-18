@@ -7,7 +7,7 @@ title: card_navigate
 
 ![example-image](../../assets/img/ulm_cards/card_navigate.png){ width="500" }
 
-Card description should be here.
+The `card_navigate` is for navigating inside your HA dashboard(s).
 
 ## Variables
 

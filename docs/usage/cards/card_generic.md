@@ -7,7 +7,7 @@ title: card_generic
 
 ![example-image](../../assets/img/ulm_cards/card_generic.png){ width="500" }
 
-Card description should be here.
+This is the `generic-card` to display values from a sensor, eg. to show humidity, your next waste collection date or whatever sensor value is provided.
 
 ## Variables
 

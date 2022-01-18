@@ -7,7 +7,7 @@ title: card_generic_swap
 
 ![example-image](../../assets/img/ulm_cards/card_generic_swap.png){ width="500" }
 
-Card description should be here.
+This is a `generic-card` with swapped label and name.
 
 ## Variables
 

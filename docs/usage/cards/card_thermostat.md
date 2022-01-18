@@ -7,20 +7,23 @@ title: card_thermostat
 
 ![example-image](../../assets/img/ulm_cards/card_thermostat.png){ width="500" }
 
-Card description should be here.
+The thermostat-card is used to switch a climate entity on/off and show the temperature from a (different) sensor.
 
 ## Variables
 
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
-| name     |         | :material-check: |                   |
-|background| `true`  | :material-close: | Enable background |
+| entity   |         | :material-check: |                   |
 
 ## Usage
 
 ```yaml
-- type: "custom:button-card"
-  template: example
+- type: 'custom:button-card'
+  template:
+    - card_thermostat
+  variables:
+    ulm_card_thermostat_sensor: sensor.livingroom_temperature
+  entity: climate.livingroom
 ```
 
 ??? note "Template Code"

@@ -7,7 +7,7 @@ title: card_script
 
 ![example-image](../../assets/img/ulm_cards/card_script.png){ width="500" }
 
-Card description should be here.
+This card starts/runs a script. You can configure icon and text.
 
 ## Variables
 

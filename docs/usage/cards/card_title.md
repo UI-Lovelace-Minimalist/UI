@@ -7,7 +7,7 @@ title: card_title
 
 ![example-image](../../assets/img/ulm_cards/card_title.png){ width="500" }
 
-Card description should be here.
+Titles (and optionally subtitles) are used to seperate different areas in your design. You can use only a title, only a subtitle or both at once.
 
 ## Variables
 
