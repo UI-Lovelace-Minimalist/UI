@@ -1,3 +1,7 @@
+---
+title: custom_card_bar_card
+---
+<!-- markdownlint-disable MD046 -->
 
 # Custom-card "Bar Card"
 
