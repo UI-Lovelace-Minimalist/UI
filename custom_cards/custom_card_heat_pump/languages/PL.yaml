@@ -1,0 +1,9 @@
+---
+custom_card_heat_pump_language_variables:
+  variables:
+    custom_card_heat_pump_off: "Wyłączone"
+    custom_card_heat_pump_dry: "Osuszanie"
+    custom_card_heat_pump_heat: "Grzanie"
+    custom_card_heat_pump_heat_cool: "Automatycznie"
+    custom_card_heat_pump_cool: "Chłodzenie"
+    custom_card_heat_pump_fan_only: "Tylko wentylator"
