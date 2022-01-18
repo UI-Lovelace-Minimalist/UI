@@ -13,7 +13,7 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - uses: "actions/checkout@v2"
-      - name: "Remove File"s
+      - name: "Remove Files"
         uses: "JesseTG/rm@v1.0.2"
         with:
           path: "/docs/usage/custom_cards/*"
