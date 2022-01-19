@@ -11,6 +11,8 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - uses: "actions/checkout@v2"
+        with:
+          fetch-depth: 0
       - name: "Copy and rename README.md files"
         run: |
           find ./custom_cards/ -type f -name "README.md" | while read fname; do
@@ -20,6 +22,13 @@ jobs:
             newname=`echo "$dirname" | sed -e "s/ /_/g"`
             cp "${dirname}/$filename" "./docs/usage/custom_cards/${foldername}.md"
           done
+      - name: "Find and replace asset paths"
+        uses: "jacobtomlinson/gha-find-replace@v2"
+        with:
+          find: "../../docs/assets/img"
+          replace: "../../assets/img"
+          include: "docs/usage/custom_cards/**"
+          regex: true
       - name: "Commit files"
         run: |
           git config --local user.email "action@github.com"
@@ -27,13 +36,6 @@ jobs:
           git pull -p
           git add --all
           git commit -a -m "Add changes for automatically custom_cards docs"
-      - name: "Find and Replace"
-        uses: "jacobtomlinson/gha-find-replace@v2"
-        with:
-          find: "../../docs/assets/img"
-          replace: "../../assets/img"
-          include: "docs/usage/custom_cards/**"
-          regex: true
       - name: "Push changes"
         uses: "ad-m/github-push-action@master"
         with:

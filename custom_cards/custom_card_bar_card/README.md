@@ -18,7 +18,7 @@ Version: 1.0.0
 
 <details>
 <summary>1.0.0</summary>
-Initial release.
+Initial release
 </details>
 
 ## Requirements
