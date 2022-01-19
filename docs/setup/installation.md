@@ -8,7 +8,7 @@ hide:
 
 Open your Home Assistant instance and start setting up "UI Lovelace Minimalist". Or you can use the My Home Assistant Button bellow.
 
-[![Open your Home Assistant instance and start setting up a new integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=ui_lovelace_minimalist){ height="350" }
+[![Open your Home Assistant instance and start setting up a new integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=ui_lovelace_minimalist){ height="250" }
 
 Now you can configure the Integration, you can do this also after it's installed!
 
