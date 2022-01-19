@@ -67,3 +67,24 @@ Admonitions, also known as call-outs, are an excellent choice for including side
 ### Code Blocks
 
 Code blocks and examples are an essential part of technical project documentation. ULM Docs provides different ways to set up syntax highlighting for code blocks. For a more advanced usage of Code Blocks like adding Annations, Line Numbers, Highlighting, Embedding external files see the [Code Blocks page on mkdocs-material](https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#usage).
+
+## Developing
+
+Run local:
+
+```bash
+pip install -r requirements.txt
+
+mkdocs serve
+
+# or
+mkdocs serve --dirtyreload
+```
+
+## Markdown linting
+
+Can be done automatically by running pre-commit
+
+```bash
+pre-commit run markdownlint
+```
