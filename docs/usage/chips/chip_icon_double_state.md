@@ -31,5 +31,5 @@ Chip description should be here.
 ??? note "Template Code"
 
     ```yaml title="card_light.yaml"
-    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/chips/chip_icon_dauble_state.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/chips/chip_icon_double_state.yaml"
     ```
