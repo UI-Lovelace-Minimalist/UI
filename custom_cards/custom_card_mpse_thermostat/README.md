@@ -9,7 +9,7 @@ The `custom_card_mpse_thermostat` is used to display temperature and control a s
 
 The buttons are used to lower/raise the set temperature which is displayed between the arrows. It uses the defined steps configured on the thermostat (In my case I use esphome to control the frigde). The current temperature is shown in the grey label. The card uses the standard language parameters.
 
-![Thermostat](../docs/assets/img/custom_thermostat.png)
+![Thermostat](../../docs/assets/img/custom_thermostat.png)
 
 ## Credits
 

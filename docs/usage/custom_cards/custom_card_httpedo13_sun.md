@@ -42,7 +42,7 @@ This card uses:
 
 ## Images
 
-![Generic](../docs/assets/img/sun-card.png)
+![Generic](../../docs/assets/img/sun-card.png)
 
 ## Usage
 

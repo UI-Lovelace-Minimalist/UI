@@ -7,7 +7,7 @@ title: custom_card_schumijo_car
 
 This is a `custom-card` to informations about your car.
 
-![Generic](../docs/assets/img/car.png)
+![Generic](../../docs/assets/img/car.png)
 
 _NB : This card has only been tested with Audi Connect integration but should work with some others._
 
