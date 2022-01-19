@@ -27,6 +27,13 @@ jobs:
           git pull -p
           git add --all
           git commit -a -m "Add changes for automatically custom_cards docs"
+      - name: "Find and Replace"
+        uses: "jacobtomlinson/gha-find-replace@v2"
+        with:
+          find: "../../docs/assets/img"
+          replace: "../../assets/img"
+          include: "docs/usage/custom_cards/**"
+          regex: true
       - name: "Push changes"
         uses: "ad-m/github-push-action@master"
         with:
