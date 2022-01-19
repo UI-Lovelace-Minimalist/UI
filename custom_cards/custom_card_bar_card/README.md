@@ -7,7 +7,7 @@ title: custom_card_bar_card
 
 This is a `custom-card` to display a percentage value as a bar.
 
-![Screenshot](./docs/assets/img/screenshot_bar_card.png)
+![Screenshot](/docs/assets/img/screenshot_bar_card.png)
 
 ## Credits
 
