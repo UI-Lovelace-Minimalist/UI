@@ -1,5 +1,5 @@
 ---
-title:
+title: card_battery
 hide:
   - toc
 ---
