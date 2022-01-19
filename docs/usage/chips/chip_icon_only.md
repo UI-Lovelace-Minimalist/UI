@@ -7,20 +7,21 @@ title: chip_icon_only
 
 ![example-image](../../assets/img/ulm_chips/chip_example.png){ width="500" }
 
-Chip description should be here.
+This `chip` displays just an icon.
 
 ## Variables
 
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
-| name     |         | :material-check: |                   |
-|background| `true`  | :material-close: | Enable background |
+| ulm_chip_icon_only     |         | :material-close: | This is the icon to show. See icons to read more about the used unicode `emojis`.  |
 
 ## Usage
 
 ```yaml
-- type: "custom:button-card"
-  template: example
+- type: 'custom:button-card'
+  template: chip_icon_only
+  variables:
+    ulm_chip_icon_only: '❤️'
 ```
 
 ??? note "Template Code"

@@ -7,22 +7,24 @@ title: chip_alarm
 
 ![example-image](../../assets/img/ulm_chips/chip_example.png){ width="500" }
 
-Chip description should be here.
+Alarm chip that displays alarm armed and disarmed state with colored icon.
 
 ## Variables
 
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
-| name     |         | :material-check: |                   |
-|background| `true`  | :material-close: | Enable background |
+| entity   |         | :material-check: | entity of your alarm_control_panel   |
 
 ## Usage
 
 ```yaml
-- type: "custom:button-card"
-  template: example
+- type: 'custom:button-card'
+  template: chip_alarm
+  entity: alarm_control_panel.alarm
 ```
 
 ??? note "Template Code"
 
-        Internal Link to Template Code here
+    ```yaml title="card_light.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/chips/chip_alarm.yaml"
+    ```
