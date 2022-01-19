@@ -70,4 +70,4 @@ Unpack the file and move the folder it contains called `ui_lovelace_minimalist` 
 `/config/custom_components/`
 
 If this folder does not exist in your configuration directory, create it.
-Then you can follow the step ["Install Integration"](https://ui-lovelace-minimalist.github.io/UI/setup/installation/#install-integration).
+Then you have to restart your Home Assistant and can follow the step ["Install Integration"](https://ui-lovelace-minimalist.github.io/UI/setup/installation/#install-integration).
