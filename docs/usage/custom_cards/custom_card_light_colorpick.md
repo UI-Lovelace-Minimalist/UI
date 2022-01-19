@@ -1,5 +1,7 @@
 ---
 title: card_light_colorpick
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

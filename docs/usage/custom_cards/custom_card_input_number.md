@@ -1,5 +1,7 @@
 ---
 title: card_input_number
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

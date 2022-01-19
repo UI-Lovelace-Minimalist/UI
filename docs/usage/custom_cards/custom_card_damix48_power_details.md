@@ -1,5 +1,7 @@
 ---
 title: custom_card_damix48_power_details
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

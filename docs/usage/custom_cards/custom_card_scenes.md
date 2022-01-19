@@ -1,5 +1,7 @@
 ---
 title: card_scenes
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

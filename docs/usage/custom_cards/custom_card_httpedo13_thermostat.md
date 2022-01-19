@@ -1,5 +1,7 @@
 ---
 title: custom_card_httpedo13_thermostat_with_buttons
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

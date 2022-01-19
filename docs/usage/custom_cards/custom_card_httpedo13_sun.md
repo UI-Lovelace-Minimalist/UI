@@ -1,5 +1,7 @@
 ---
 title: custom_card_httpedo13_sun
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

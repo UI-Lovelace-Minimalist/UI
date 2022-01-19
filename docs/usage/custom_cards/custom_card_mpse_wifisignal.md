@@ -1,5 +1,7 @@
 ---
 title: custom_card_mpse_wifisignal
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 
