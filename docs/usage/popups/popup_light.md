@@ -1,5 +1,7 @@
 ---
 title: popup_light
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

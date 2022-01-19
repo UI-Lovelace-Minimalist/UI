@@ -1,5 +1,7 @@
 ---
 title: card_media_player_with_control
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

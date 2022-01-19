@@ -1,5 +1,7 @@
 ---
 title: chip_presence_detection
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

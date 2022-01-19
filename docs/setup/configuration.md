@@ -1,5 +1,7 @@
 ---
 title: Configuration
+hide:
+  - toc
 ---
 
 ## Add theme to your Lovelace

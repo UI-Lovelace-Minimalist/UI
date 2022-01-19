@@ -1,5 +1,7 @@
 ---
 title: chip_alarm
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

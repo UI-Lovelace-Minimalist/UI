@@ -1,5 +1,7 @@
 ---
 title: chip_mdi_icon_only
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

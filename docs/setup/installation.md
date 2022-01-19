@@ -1,5 +1,7 @@
 ---
 title: Installation
+hide:
+  - toc
 ---
 
 Before get started on anything, make sure you have created a backup of your home assistant configuration.

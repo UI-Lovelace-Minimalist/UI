@@ -1,5 +1,7 @@
 ---
 title: custom_card_schumijo_car
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

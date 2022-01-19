@@ -1,5 +1,7 @@
 ---
 title: custom_card_heat_pump
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

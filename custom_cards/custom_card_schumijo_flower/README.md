@@ -1,5 +1,7 @@
 ---
 title: card_flower
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

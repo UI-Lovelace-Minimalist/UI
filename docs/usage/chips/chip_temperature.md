@@ -1,5 +1,7 @@
 ---
 title: chip_temperature
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

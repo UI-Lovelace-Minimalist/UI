@@ -1,5 +1,7 @@
 ---
 title: custom_card_paddy_waste_collection
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

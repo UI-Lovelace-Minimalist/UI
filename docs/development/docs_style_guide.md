@@ -1,5 +1,7 @@
 ---
 title: Docs Style Guide
+hide:
+  - toc
 ---
 
 ## Documentation Style Guide

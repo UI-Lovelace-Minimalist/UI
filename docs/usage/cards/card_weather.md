@@ -1,5 +1,7 @@
 ---
 title: card_weather
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

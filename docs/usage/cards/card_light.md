@@ -1,5 +1,7 @@
 ---
 title: card_light
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

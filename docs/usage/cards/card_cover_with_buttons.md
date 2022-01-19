@@ -1,5 +1,7 @@
 ---
 title: card_cover_with_buttons
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

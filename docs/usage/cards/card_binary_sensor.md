@@ -1,5 +1,7 @@
 ---
 title: card_binary_sensor
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

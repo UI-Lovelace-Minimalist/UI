@@ -1,5 +1,7 @@
 ---
 title: card_input_boolean
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

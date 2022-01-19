@@ -1,5 +1,7 @@
 ---
 title: custom_card_bar_card
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

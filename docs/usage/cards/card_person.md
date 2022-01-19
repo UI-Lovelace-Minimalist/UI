@@ -1,5 +1,7 @@
 ---
 title: card_person
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

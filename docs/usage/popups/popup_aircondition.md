@@ -1,5 +1,7 @@
 ---
 title: popup_aircondition
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

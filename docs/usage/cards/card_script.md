@@ -1,5 +1,7 @@
 ---
 title: card_script
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

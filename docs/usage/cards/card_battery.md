@@ -1,5 +1,7 @@
 ---
-title: card_battery
+title:
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

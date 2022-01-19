@@ -1,5 +1,7 @@
 ---
 title: card_power_outlet
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

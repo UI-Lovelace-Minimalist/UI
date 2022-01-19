@@ -43,7 +43,6 @@ theme:
     - "navigation.tracking"
     - "navigation.top"
     - "navigation.indexes"
-    - "toc.integrate"
     - "search.suggest"
     - "search.highlight"
     - "search.share"

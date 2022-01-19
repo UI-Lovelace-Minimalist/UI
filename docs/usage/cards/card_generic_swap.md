@@ -1,5 +1,7 @@
 ---
 title: card_generic_swap
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

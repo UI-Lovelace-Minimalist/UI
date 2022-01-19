@@ -1,5 +1,7 @@
 ---
 title: card_thermostat
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

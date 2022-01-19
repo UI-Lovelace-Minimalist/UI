@@ -1,5 +1,7 @@
 ---
 title: chip_icon_label
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

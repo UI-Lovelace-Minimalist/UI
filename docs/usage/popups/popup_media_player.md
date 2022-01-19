@@ -1,5 +1,7 @@
 ---
 title: popup_media_player
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

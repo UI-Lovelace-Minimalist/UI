@@ -1,5 +1,7 @@
 ---
 title: card_qubino
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

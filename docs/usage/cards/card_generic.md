@@ -1,5 +1,7 @@
 ---
 title: card_generic
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

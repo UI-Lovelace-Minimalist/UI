@@ -1,5 +1,7 @@
 ---
 title: card_graph
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

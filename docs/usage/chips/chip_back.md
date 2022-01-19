@@ -1,5 +1,7 @@
 ---
 title: chip_back
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 ## Description

@@ -1,5 +1,7 @@
 ---
 title: chip_navigate
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

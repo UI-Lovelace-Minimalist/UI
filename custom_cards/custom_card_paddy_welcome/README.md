@@ -1,5 +1,7 @@
 ---
 title: custom_card_paddy_welcome
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

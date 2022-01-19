@@ -1,5 +1,7 @@
 ---
 title: card_vertical_button
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

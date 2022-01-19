@@ -1,5 +1,7 @@
 ---
 title: chip_icon_state
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

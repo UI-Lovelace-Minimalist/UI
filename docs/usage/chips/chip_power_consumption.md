@@ -1,5 +1,7 @@
 ---
 title: chip_power_consumption
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 
