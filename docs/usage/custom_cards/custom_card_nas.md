@@ -1,5 +1,7 @@
 ---
 title: custom_card_nas
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

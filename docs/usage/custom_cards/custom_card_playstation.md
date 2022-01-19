@@ -1,5 +1,7 @@
 ---
 title: card_ps4
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

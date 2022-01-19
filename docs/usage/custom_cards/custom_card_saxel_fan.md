@@ -1,5 +1,7 @@
 ---
 title: custom_card_saxel_fan_blue
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

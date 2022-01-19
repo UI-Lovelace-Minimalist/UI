@@ -1,5 +1,7 @@
 ---
 title: card_water_heater
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 

@@ -1,5 +1,7 @@
 ---
 title: custom_card_tpx01_aircondition_with_buttons
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 
