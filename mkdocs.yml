@@ -12,6 +12,7 @@ edit_uri: "edit/dev/docs"
 nav:
   - Home: "index.md"
   - Setup:
+      - Download: "setup/download.md"
       - Installation: "setup/installation.md"
       - Configuration: "setup/configuration.md"
   - "... | usage/**/*.md"
