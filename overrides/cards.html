@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% for p in pages %}
+{% if "usage/cards" in p.url %}
+{{ p }}
+{% endif %}
+{% endfor %}
+{% endblock content %}

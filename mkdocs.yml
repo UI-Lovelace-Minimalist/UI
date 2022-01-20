@@ -22,6 +22,7 @@ extra_css:
 
 theme:
   name: "material"
+  custom_dir: "overrides"
   language: "en"
   font:
     text: "Comfortaa"
