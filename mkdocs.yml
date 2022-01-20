@@ -48,7 +48,6 @@ theme:
     - "navigation.top"
     - "navigation.tabs"
     - "navigation.indexes"
-#     - "toc.integrate"
     - "search.suggest"
     - "search.highlight"
     - "search.share"
