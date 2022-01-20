@@ -6,24 +6,6 @@
     --md-accent-fg-color--transparent:  hsla(183, 56%, 52%, 0.1);
 }
 
-@media only screen and (min-width: 76.25em) {
-    .mat-toolbar__inner {
-        max-width: none;
-      }
-    .md-main__inner {
-      max-width: none;
-    }
-    .md-sidebar--primary {
-      left: 0;
-    }
-    .md-sidebar--secondary {
-      right: 0;
-      margin-left: 0;
-      -webkit-transform: none;
-      transform: none;
-    }
-  }
-
 pre { color: white !important; }
 
 .md-clipboard:before {
