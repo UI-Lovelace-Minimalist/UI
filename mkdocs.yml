@@ -17,8 +17,9 @@ nav:
       - Configuration: "setup/configuration.md"
   - "... | usage/**/*.md"
   - Development:
-      - Custom-Cards: "development/custom_cards.md"
+      - Card Style Guide: "development/card_style_guide.md"
       - Docs Style Guide: "development/docs_style_guide.md"
+      - Custom-Cards: "development/custom_cards.md"
 
 extra_css:
   - "assets/stylesheets/extra.css"

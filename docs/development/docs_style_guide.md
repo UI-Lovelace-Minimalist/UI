@@ -18,12 +18,12 @@ Include any media types/sources if the content is relevant to readers. You can f
 
 ### Structure
 
-|Directory | Contents |
-|----------|----------|
-|`docs/index.md`| Home Page.|
-|`docs/assets`| Can contain images/javascript/stylesheets. |
-|`docs/setup`| Guides on how to setup the  UI Lovelace Minimalist. |
-|`docs/usage`| Guides on how to use UI Lovelace Minimalist. |
+| Directory     | Contents                                            |
+|---------------|-----------------------------------------------------|
+|`docs/index.md`| Home Page.                                          |
+|`docs/assets`  | Can contain images/javascript/stylesheets.          |
+|`docs/setup`   | Guides on how to setup the  UI Lovelace Minimalist. |
+|`docs/usage`   | Guides on how to use UI Lovelace Minimalist.        |
 
 #### Work with directories and files
 
