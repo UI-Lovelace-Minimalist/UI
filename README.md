@@ -17,16 +17,14 @@ This project uses pre-commit for consistent and clean code. If possible, please 
 We have setup an extensive Wiki for our documentation. It is more comfortable for you to read and for us to handle, than this file and gives our documentation the right framework to grow.
 Take a look here: [https://ui-lovelace-minimalist.github.io/UI/](https://ui-lovelace-minimalist.github.io/UI/)
 
-<details>
 <summary>Table of content from the WIKI</summary>
 <br>
 
 <table>
 <tr>
-<th style="width: 25%;">Installation and update</th>
-<th style="width: 25%;">Usage</th>
-<th style="width: 25%;">Development</th>
-<th style="width: 25%;">CodeGenerators</th>
+<th style="width: 33%;">Setup</th>
+<th style="width: 33%;">Usage</th>
+<th style="width: 33%;">Development</th>
 </tr>
 <tr>
   <td style="vertical-align: top;">
@@ -38,60 +36,31 @@ Take a look here: [https://ui-lovelace-minimalist.github.io/UI/](https://ui-love
   <td style="vertical-align: top;">
     <p>This is our developer corner</p>
   </td>
-  <td style="vertical-align: top;">
-    <p>Generate some code</p>
-  </td>
 <tr>
 <td style="vertical-align: top;">
   <p>
-    <a href="https://ui-lovelace-minimalist.netlify.app/installation">Installation</a><br>
-    <a href="https://ui-lovelace-minimalist.netlify.app/installation/yaml-mode">&raquo;&nbsp;Yaml-mode</a><br>
-    <a href="https://ui-lovelace-minimalist.netlify.app/installation/ui-mode">&raquo;&nbsp;UI-mode</a><br>
-    <a href="https://ui-lovelace-minimalist.netlify.app/installation/update">&raquo;&nbsp;Update</a><br>
-    <a href="https://ui-lovelace-minimalist.netlify.app/installation/custom_cards">&raquo;&nbsp;Custom-cards</a>
-    <a href="https://ui-lovelace-minimalist.netlify.app/installation/Uninstall">&raquo;&nbsp;Uninstall</a>
+    <a href="https://ui-lovelace-minimalist.github.io/UI/setup/download/">&raquo;&nbsp;Download</a><br>
+    <a href="https://ui-lovelace-minimalist.github.io/UI/setup/installation/">&raquo;&nbsp;Installation</a><br>
+    <a href="https://ui-lovelace-minimalist.github.io/UI/setup/configuration/">&raquo;&nbsp;Configuration</a><br>
   </p>
 </td>
 <td style="vertical-align: top;">
   <p>
-    <a href="https://ui-lovelace-minimalist.netlify.app/usage">Usage</a><br>
-    <a href="https://ui-lovelace-minimalist.netlify.app/usage/template_list">&raquo;&nbsp;Template list (use)</a><br>
-    <a href="https://ui-lovelace-minimalist.netlify.app/usage/custom_card_list">&raquo;&nbsp;Custom-cards list</a><br>
-    <a href="https://ui-lovelace-minimalist.netlify.app/usage/first_page">&raquo;&nbsp;First page</a><br>
-    <a href="https://ui-lovelace-minimalist.netlify.app/usage/changing_template">&raquo;&nbsp;Changing a template</a><br>
-    <a href="https://ui-lovelace-minimalist.netlify.app/usage/examples">&raquo;&nbsp;Examples</a>
+    <a href="https://ui-lovelace-minimalist.github.io/UI/usage/cards/card_battery/">&raquo;&nbsp;Cards</a><br>
+    <a href="https://ui-lovelace-minimalist.github.io/UI/usage/chips/chip_alarm/">&raquo;&nbsp;Chips</a><br>
+    <a href="https://ui-lovelace-minimalist.github.io/UI/usage/popups/popup_aircondition/">&raquo;&nbsp;Popups</a><br>
+    <a href="https://ui-lovelace-minimalist.github.io/UI/usage/custom_cards/custom_card_bar_card/">&raquo;&nbsp;Custom-Cards</a><br>
   </p>
 </td>
 <td style="vertical-align: top;">
   <p>
-    <a href="https://ui-lovelace-minimalist.netlify.app/development">Development</a><br>
-    <a href="https://ui-lovelace-minimalist.netlify.app/development/custom_card">&raquo;&nbsp;Custom-card</a><br>
-    <a href="https://ui-lovelace-minimalist.netlify.app/development/list_templates">&raquo;&nbsp;Template list (dev)</a><br>
-    <a href="https://ui-lovelace-minimalist.netlify.app/development/legacy_templates">&raquo;&nbsp;Legacy templates</a><br>
-    <a href="https://ui-lovelace-minimalist.netlify.app/development/boilerplate">&raquo;&nbsp;Boilerplate</a>
-  </p>
-</td>
-<td style="vertical-align: top;">
-  <p>
-    <a href="https://ui-lovelace-minimalist.netlify.app/codegen">CodeGenerators</a><br>
-    <a href="https://ui-lovelace-minimalist.netlify.app/codegen/installation">&raquo;&nbsp;Installation</a><br>
-    <a href="https://ui-lovelace-minimalist.netlify.app/codegen/example">&raquo;&nbsp;Example</a><br>
-    <a href="https://ui-lovelace-minimalist.netlify.app/codegen/button">&raquo;&nbsp;Button</a>
+    <a href="https://ui-lovelace-minimalist.github.io/UI/development/card_style_guide/">&raquo;&nbsp;Card Style Guide</a><br>
+    <a href="https://ui-lovelace-minimalist.github.io/UI/development/docs_style_guide/">&raquo;&nbsp;Docs Style Guide</a><br>
+    <a href="https://ui-lovelace-minimalist.github.io/UI/development/custom_cards/">&raquo;&nbsp;Custom-Cards</a><br>
   </p>
 </td>
 </tr>
 </table>
-</details>
-
-## Credits
-
-- This design was made by [tben](https://community.home-assistant.io/u/tben/summary)
-- A lot of inspiration is taken from [7ahang’s work](https://www.behance.net/gallery/88433905/Redesign-Smart-Home) found on Behance.
-- Contributions from others in the HomeAssistant forum thread, you can find it [here](https://community.home-assistant.io/t/lovelace-ui-minimalist/322687).
-- The technical part is realised mostly by taking advantage of the great work RomRaider did with his [button-card](https://github.com/custom-cards/button-card).
-- Code refactor, cleanup and maintainance schumijo and paddy0174.
-- Wiki by paddy0174.
-- Special thanks to clemalex and schumijo for contributing their cards to the main repository.
 
 ## Installation and update
 
@@ -108,3 +77,13 @@ The actual version of this "theme" has 20 different cards, seven chips and other
 ## Custom cards
 
 The same goes for our `custom_cards`. As the number grows, the list would be to big for this readme, so we provide you with an overview page with pictures, code examples and additional informations. [Find the list here](https://ui-lovelace-minimalist.github.io/UI/usage/custom_cards/custom_card_bar_card/).
+
+## Credits
+
+- This design was made by [tben](https://community.home-assistant.io/u/tben/summary)
+- A lot of inspiration is taken from [7ahang’s work](https://www.behance.net/gallery/88433905/Redesign-Smart-Home) found on Behance.
+- Contributions from others in the HomeAssistant forum thread, you can find it [here](https://community.home-assistant.io/t/lovelace-ui-minimalist/322687).
+- The technical part is realised mostly by taking advantage of the great work RomRaider did with his [button-card](https://github.com/custom-cards/button-card).
+- Code refactor, cleanup and maintainance schumijo and paddy0174.
+- Wiki by paddy0174.
+- Special thanks to clemalex and schumijo for contributing their cards to the main repository.
