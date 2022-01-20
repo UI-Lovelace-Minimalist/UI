@@ -2,9 +2,13 @@
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-cd $SCRIPT_DIR/..
+# cd $SCRIPT_DIR/..
 
 container install
+
+container start &
+sleep 10
+kill $!
 
 pip install -r $SCRIPT_DIR/../requirements_dev.txt
 
@@ -22,7 +26,7 @@ curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
 apt-get install -y nodejs
 
 
-cd tmp
+cd /tmp
 # Install dependency modules
 ## Browser mod
 wget https://github.com/thomasloven/hass-browser_mod/archive/refs/tags/1.5.1.tar.gz -O browser_mod.tar.gz
@@ -31,8 +35,5 @@ mv hass-browser_mod*/custom_components/browser_mod /config/custom_components/bro
 
 ## virtual
 wget https://github.com/twrecked/hass-virtual/archive/refs/tags/v0.7.5.tar.gz -O virtual.tar.gz
-tar -xvf virtual.tar.gz */custom_components
+tar -xvf virtual.tar.gz
 mv hass-virtual*/custom_components/virtual /config/custom_components/virtual
-
-# back to workspace dir
-cd $SCRIPT_DIR../
