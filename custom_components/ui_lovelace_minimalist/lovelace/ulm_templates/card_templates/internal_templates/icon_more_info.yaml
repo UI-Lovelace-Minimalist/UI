@@ -5,7 +5,7 @@ icon_more_info:
   show_name: false
   show_label: false
   template:
-    - list_2_items
+    - "list_2_items"
   styles:
     grid:
       - grid-template-columns: "min-content auto"
@@ -23,7 +23,7 @@ icon_more_info:
           - "icon"
         styles:
           card:
-            - overflow: visible
+            - overflow: "visible"
         tap_action:
           action: "more-info"
     item2:
