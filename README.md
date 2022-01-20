@@ -15,7 +15,7 @@ This project uses pre-commit for consistent and clean code. If possible, please 
 ## Wiki for documentation
 
 We have setup an extensive Wiki for our documentation. It is more comfortable for you to read and for us to handle, than this file and gives our documentation the right framework to grow.
-Take a look here: [https://ui-lovelace-minimalist.netlify.app/](https://ui-lovelace-minimalist.netlify.app/)
+Take a look here: [https://ui-lovelace-minimalist.github.io/UI/](https://ui-lovelace-minimalist.github.io/UI/)
 
 <details>
 <summary>Show table of content from the WIKI</summary>
