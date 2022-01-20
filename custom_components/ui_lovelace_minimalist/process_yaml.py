@@ -159,7 +159,7 @@ def process_yaml(hass: HomeAssistant, ulm: UlmBase):
                     f'HACS Frontend repo "{p}" is not installed, See Integration Configuration.'
                 )
 
-    _LOGGER.warning("Start of function to process all yaml files!")
+    _LOGGER.info("Start of function to process all yaml files!")
 
     # Create config dir
     os.makedirs(hass.config.path(f"{DOMAIN}/configs"), exist_ok=True)
