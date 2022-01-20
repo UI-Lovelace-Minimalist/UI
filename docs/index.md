@@ -2,6 +2,7 @@
 title: Welcome to the UI-Lovelace-Minimalist wiki!
 hide:
   - toc
+  - navigation
 ---
 <!-- markdownlint-disable MD046 -->
 # Welcome to the UI-Lovelace-Minimalist wiki
