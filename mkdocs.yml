@@ -16,7 +16,9 @@ nav:
       - Installation: "setup/installation.md"
       - Configuration: "setup/configuration.md"
   - "... | usage/**/*.md"
-  - "... | development/**/*.md"
+  - Development:
+      - Custom-Cards: "development/custom_cards.md"
+      - Docs_Style_Guide: "development/docs_style_guide.md"
 
 extra_css:
   - "assets/stylesheets/extra.css"
