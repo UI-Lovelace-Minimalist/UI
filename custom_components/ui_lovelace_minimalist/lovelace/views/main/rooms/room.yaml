@@ -1,0 +1,18 @@
+# ui_lovelace_minimalist
+
+# Loop through all the rooms in the room section
+
+{% for room in _ulm_config.rooms %}
+- title: {{ room["name"] }}
+  path: room_{{ room["name"]|lower|replace("'", "_")|replace(" ","_") }}
+  type: custom:ui-lovelace-minimalist
+  visible: true
+  cards:
+    - type: vertical-stack
+      cards:
+        # HEADER CARD (TODO)
+        - type: markdown
+          content: >
+            {{ room }}
+
+{% endfor %}

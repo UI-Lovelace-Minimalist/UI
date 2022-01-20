@@ -1,0 +1,63 @@
+# ui_lovelace_minimalist
+
+- title: Home
+  icon: 'mdi:home'
+  path: home
+  type: custom:ui-lovelace-minimalist
+  cards:
+    {% if _ulm_global.installed and _ulm_global.installed == 'false' %}
+    - type: vertical-stack
+      cards:
+        - type: markdown
+          content: >
+            ## UI Lovelace Minimalist Dashboard
+
+            Welcome,
+
+            Thanks you for installing UI Lovelace Minimalist
+
+            blaat...
+        - type: horizontal-stack
+          cards:
+            - type: custom:button-card
+              template: card_title
+              name: Continue and load dashboard
+              icon: mdi:chevron-right
+              styles:
+                card:
+                  - padding: 8px
+              tap_action:
+                action: call-service
+                service: ui_lovelace_minimalist.installed
+    {% else %}
+
+    - type: markdown
+      content: >
+        {{ _ulm_config }}
+    # START HOMEPAGE HEADER
+    - type: custom:ulm-flexbox-card
+      css: |
+        padding: 0px;
+        background-color: var(--app-header-background-color2);
+        color: var(--app-header-text-color, white);
+        border-radius: 0;
+        overflow: hidden;
+      padding: true
+      cards:
+        - type: custom:ulm-flexbox-card
+          item_classes: 'col-xs-12 col-sm-6 col-md-5 col-lg-4'
+          cards:
+            {% if _ulm_config.global['weather'] %}
+            - type: weather-forecast
+              item_classes: 'col-xs-6 d-block d-sm-none'
+              entity: {{ _ulm_config.global['weather'] }}
+              show_forecast: true
+            {% endif %}
+
+    # START HOMEPAGE CONTENT
+
+    # Start of Rooms
+
+
+
+    {% endif %}

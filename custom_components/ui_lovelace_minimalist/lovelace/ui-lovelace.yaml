@@ -1,11 +1,11 @@
 ---
+# Load all settings for UI Lovelace Minimalist
 ui_lovelace_minimalist: !include "plugins/ui_lovelace_minimalist.yaml"
 
+# Button Card Templates folder (https://github.com/custom-cards/button-card#Configuration-Templates)
 button_card_templates: !include_dir_merge_named "../__ui_minimalist__/ulm_templates/"
 
 title: "UI Lovelace Minimalist"
 theme: "minimalist-desktop"
-views:
-  - cards:
-      - type: "custom:button-card"
-        entity: "sun.sun"
+background: var(--background-image)
+views: !include_dir_merge_list views/

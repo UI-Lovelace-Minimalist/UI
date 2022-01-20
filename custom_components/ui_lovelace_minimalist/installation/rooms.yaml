@@ -1,0 +1,20 @@
+# https://ui-lovelace-minimalist.github.io/UI/setup/configuration#rooms
+
+rooms:
+  # - name: Livingroom
+  #   icon: mdi:sofa
+  #   light: light.livingroom # light entity or light group
+  #   temperature: sensor.livingroom_temperature
+  #   climate: climate.livingroom
+  #   humidity: sensor.livingroom_humidity
+  #   media_player: media_player.livingroom_tv
+  #   more_entities:
+  #     entities:
+  #       - entity: sensor.livingroom_motion_battery_level
+  #   addons:
+  #     - name: test addon
+  #       icon: mdi:puzzle
+  #       path: "ui_lovelace_minimalist/addons/rooms/livingroom/page.yaml"
+  #       button_path: "ui_lovelace_minimalist/addons/rooms/livingroom/test.yaml"
+  #       data:
+  #         ulm_enable_toggle: true
