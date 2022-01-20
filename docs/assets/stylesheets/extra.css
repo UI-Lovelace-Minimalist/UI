@@ -7,6 +7,9 @@
 }
 
 @media only screen and (min-width: 76.25em) {
+    .mat-toolbar__inner {
+        max-width: none;
+      }
     .md-main__inner {
       max-width: none;
     }
