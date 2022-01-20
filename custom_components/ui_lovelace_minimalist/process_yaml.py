@@ -54,7 +54,7 @@ def load_yamll(fname, secrets=None, args={}):
             if f.readline().lower().startswith("# ui_lovelace_minimalist"):
                 process_yaml = True
         if process_yaml:
-            _LOGGER.warning("PARSING JINJA TEMPLATE")
+            _LOGGER.debug("PARSING JINJA TEMPLATE")
             stream = io.StringIO(
                 jinja.get_template(fname).render(
                     {
@@ -158,7 +158,7 @@ def process_yaml(hass: HomeAssistant, ulm: UlmBase):
                     f'HACS Frontend repo "{p}" is not installed, See Integration Configuration.'
                 )
 
-    _LOGGER.warning("Start of function to process all yaml files!")
+    _LOGGER.info("Start of function to process all yaml files!")
 
     # Create config dir
     os.makedirs(hass.config.path(f"{DOMAIN}/configs"), exist_ok=True)

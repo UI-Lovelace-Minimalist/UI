@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import logging
 
+from homeassistant.components.frontend import async_remove_panel
 from homeassistant.components.lovelace import _register_panel
 from homeassistant.components.lovelace.dashboard import LovelaceYAML
 from homeassistant.core import HomeAssistant
@@ -28,8 +29,11 @@ def load_dashboard(hass: HomeAssistant, ulm: UlmBase):
 
     # Optoinal override can be done with config_flow?
     # if not dashboard_url in hass.data["lovelace"]["dashboards"]:
-    hass.data["lovelace"]["dashboards"][dashboard_url] = LovelaceYAML(
-        hass, dashboard_url, dashboard_config
-    )
+    if ulm.configuration.sidepanel_enabled:
+        hass.data["lovelace"]["dashboards"][dashboard_url] = LovelaceYAML(
+            hass, dashboard_url, dashboard_config
+        )
 
-    _register_panel(hass, dashboard_url, "yaml", dashboard_config, True)
+        _register_panel(hass, dashboard_url, "yaml", dashboard_config, True)
+    else:
+        async_remove_panel(hass, "ui-lovelace-minimalist")
