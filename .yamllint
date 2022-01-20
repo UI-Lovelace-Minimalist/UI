@@ -32,7 +32,7 @@ rules:
   new-lines: "enable"
   octal-values: "disable"
   quoted-strings:
-    quote-type: "any"
+    quote-type: "double"
     required: true
   trailing-spaces: "enable"
   truthy:
