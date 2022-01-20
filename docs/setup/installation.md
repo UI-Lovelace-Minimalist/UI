@@ -44,6 +44,7 @@ Now you can configure the Integration, you can do this also after it's installed
 ![hacs_integration_config](../../assets/img/setup/hacs_integration_config.png)
 
 - Language: Will set the language for the Integration.
+- Side panel enabled: If you want to add an Entry in the Side Panel for the auto generated Dashboard. (Still under heavy development!)
 - Side panel title: Will set the title for the Lovelace Dashboard in the Sidebar.
 - Side panel icon: Which icon to put in front of the Title.
 - Theme: Select the desktop or mobile theme.
