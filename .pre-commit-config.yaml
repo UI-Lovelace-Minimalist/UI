@@ -23,7 +23,8 @@ repos:
         exclude: |
             (?x)^(
                 custom_components/ui_lovelace_minimalist/installation/.*\.yaml|
-                custom_components/ui_lovelace_minimalist/lovelace/.*\.yaml
+                custom_components/ui_lovelace_minimalist/lovelace/.*\.yaml|
+                data/.*\.yaml
             )$
       - id: "detect-private-key"
       - id: "no-commit-to-branch"
@@ -43,7 +44,8 @@ repos:
             (?x)^(
                 .pre-commit-config.yaml|
                 custom_components/ui_lovelace_minimalist/installation/.*\.yaml|
-                custom_components/ui_lovelace_minimalist/lovelace/.*\.yaml
+                custom_components/ui_lovelace_minimalist/lovelace/.*\.yaml|
+                data/.*\.yaml
             )$
 
   - repo: https://github.com/igorshubovych/markdownlint-cli

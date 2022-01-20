@@ -2,6 +2,7 @@
 # git+git://github.com/home-assistant/home-assistant.git@dev
 jinja2
 mkdocs-awesome-pages-plugin
+mkdocs-macros-plugin
 mkdocs-material
 pre-commit
 

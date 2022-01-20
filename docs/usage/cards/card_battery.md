@@ -1,7 +1,5 @@
 ---
 title: card_battery
-hide:
-  - navigation
 ---
 <!-- markdownlint-disable MD046 -->
 
