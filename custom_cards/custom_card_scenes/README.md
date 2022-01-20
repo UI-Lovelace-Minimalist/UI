@@ -14,9 +14,14 @@ The `card_scenes` you can control a input_number entity
 ## Credits
 
 Author: sildehoop - 2021
-Version: 1.0.0
+Version: 1.1.0
 
 ## Changelog
+
+<details>
+<summary>1.1.0</summary>
+Added dark_mode: option
+</details>
 
 <details>
 <summary>1.0.0</summary>
@@ -71,6 +76,11 @@ n/a
 <th>Explanation</th>
 </tr>
 <tr>
+<td>dark_mode</td>
+<td>true</td>
+<td>no</td>
+<td>If you use dark mode (this will show a box shadow)</td>
+</tr>
 <td>entity_</td>
 <td>scene.evening_light</td>
 <td>yes</td>
@@ -106,11 +116,13 @@ n/a
 
 ```yaml
 ---
+---
 card_scenes:
   show_icon: false
   show_name: false
   show_label: false
   variables:
+    dark_mode: false
     icon_1: "mdi:help-circle-outline"
     icon_2: "mdi:help-circle-outline"
     icon_3: "mdi:help-circle-outline"
@@ -151,6 +163,7 @@ card_scenes:
         icon: "[[[ return variables.icon_1 ]]]"
         name: "[[[ return variables.name_1 ]]]"
         variables:
+          dark_mode: "[[[ return variables.dark_mode ]]]"
           color_icon: "[[[ return variables.color_icon_1 ]]]"
           color_bg: "[[[ return variables.color_bg_1 ]]]"
         tap_action:
@@ -166,6 +179,7 @@ card_scenes:
         icon: "[[[ return variables.icon_2 ]]]"
         name: "[[[ return variables.name_2 ]]]"
         variables:
+          dark_mode: "[[[ return variables.dark_mode ]]]"
           color_icon: "[[[ return variables.color_icon_2 ]]]"
           color_bg: "[[[ return variables.color_bg_2 ]]]"
         tap_action:
@@ -181,6 +195,7 @@ card_scenes:
         icon: "[[[ return variables.icon_3 ]]]"
         name: "[[[ return variables.name_3 ]]]"
         variables:
+          dark_mode: "[[[ return variables.dark_mode ]]]"
           color_icon: "[[[ return variables.color_icon_3 ]]]"
           color_bg: "[[[ return variables.color_bg_3 ]]]"
         tap_action:
@@ -196,6 +211,7 @@ card_scenes:
         icon: "[[[ return variables.icon_4 ]]]"
         name: "[[[ return variables.name_4 ]]]"
         variables:
+          dark_mode: "[[[ return variables.dark_mode ]]]"
           color_icon: "[[[ return variables.color_icon_4 ]]]"
           color_bg: "[[[ return variables.color_bg_4 ]]]"
         tap_action:
@@ -211,6 +227,7 @@ card_scenes:
         icon: "[[[ return variables.icon_5 ]]]"
         name: "[[[ return variables.name_5 ]]]"
         variables:
+          dark_mode: "[[[ return variables.dark_mode ]]]"
           color_icon: "[[[ return variables.color_icon_5 ]]]"
           color_bg: "[[[ return variables.color_bg_5 ]]]"
         tap_action:
@@ -224,6 +241,7 @@ card_scenes_pill:
   show_label: false
   show_name: true
   variables:
+    dark_mode: false
     color_icon: "gray"
     color_bg: "gray"
   styles:
@@ -237,7 +255,14 @@ card_scenes_pill:
     card:
       - box-shadow: "none"
       - padding: "5px"
-      - box-shadow: "var(--box-shadow)"
+      - box-shadow: >
+          [[[
+            if ([variables.dark_mode] == "true"){
+              return "0px 2px 4px 0px rgba(0,0,0,0.80)";
+            } else {
+              return "var(--box-shadow)";
+            }
+          ]]]
       - border-radius: "50px"
       - place-self: "center"
       - width: "52px"
