@@ -44,7 +44,6 @@ card_scenes:
         icon: "[[[ return variables.icon_1 ]]]"
         name: "[[[ return variables.name_1 ]]]"
         variables:
-          dark_mode: "[[[ return variables.dark_mode ]]]"
           color_icon: "[[[ return variables.color_icon_1 ]]]"
           color_bg: "[[[ return variables.color_bg_1 ]]]"
         tap_action:
@@ -60,7 +59,6 @@ card_scenes:
         icon: "[[[ return variables.icon_2 ]]]"
         name: "[[[ return variables.name_2 ]]]"
         variables:
-          dark_mode: "[[[ return variables.dark_mode ]]]"
           color_icon: "[[[ return variables.color_icon_2 ]]]"
           color_bg: "[[[ return variables.color_bg_2 ]]]"
         tap_action:
@@ -76,7 +74,6 @@ card_scenes:
         icon: "[[[ return variables.icon_3 ]]]"
         name: "[[[ return variables.name_3 ]]]"
         variables:
-          dark_mode: "[[[ return variables.dark_mode ]]]"
           color_icon: "[[[ return variables.color_icon_3 ]]]"
           color_bg: "[[[ return variables.color_bg_3 ]]]"
         tap_action:
@@ -92,7 +89,6 @@ card_scenes:
         icon: "[[[ return variables.icon_4 ]]]"
         name: "[[[ return variables.name_4 ]]]"
         variables:
-          dark_mode: "[[[ return variables.dark_mode ]]]"
           color_icon: "[[[ return variables.color_icon_4 ]]]"
           color_bg: "[[[ return variables.color_bg_4 ]]]"
         tap_action:
@@ -108,7 +104,6 @@ card_scenes:
         icon: "[[[ return variables.icon_5 ]]]"
         name: "[[[ return variables.name_5 ]]]"
         variables:
-          dark_mode: "[[[ return variables.dark_mode ]]]"
           color_icon: "[[[ return variables.color_icon_5 ]]]"
           color_bg: "[[[ return variables.color_bg_5 ]]]"
         tap_action:
