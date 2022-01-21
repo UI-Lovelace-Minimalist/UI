@@ -23,18 +23,17 @@ nav:
 
 extra_css:
   - "assets/stylesheets/extra.css"
-  - "assets/stylesheets/monokai.css"
 
 theme:
   name: "material"
   language: "en"
-  font:
-    text: "Roboto"
+  font: false
   logo: "assets/logos/website_logo.png"
   favicon: "assets/logos/favicon/favicon-32x32.png"
+  custom_dir: "docs/assets/overrides"
   palette:
     - media: "(prefers-color-scheme: light)"
-      scheme: "default"
+      primary: "white"
       toggle:
         icon: "material/weather-night"
         name: "Dark mode"
@@ -82,7 +81,6 @@ markdown_extensions:
   - "def_list"
   - toc:
       permalink: true
-  - "codehilite"
 
 plugins:
   - "search"
