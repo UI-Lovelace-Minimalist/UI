@@ -14,10 +14,14 @@ The `card_scenes` you can control a input_number entity
 ## Credits
 
 Author: sildehoop - 2021
-Version: 1.0.0
+Version: 1.1.0
 
 ## Changelog
 
+<details>
+<summary>1.1.0</summary>
+Auto dark mode box shadow
+</details>
 <details>
 <summary>1.0.0</summary>
 Initial release
@@ -237,7 +241,14 @@ card_scenes_pill:
     card:
       - box-shadow: "none"
       - padding: "5px"
-      - box-shadow: "var(--box-shadow)"
+      - box-shadow: >
+          [[[
+            if (hass.themes.darkMode){
+              return "0px 2px 4px 0px rgba(0,0,0,0.80)";
+            } else {
+              return "var(--box-shadow)";
+            }
+          ]]]
       - border-radius: "50px"
       - place-self: "center"
       - width: "52px"
