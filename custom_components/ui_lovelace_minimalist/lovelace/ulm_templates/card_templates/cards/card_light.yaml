@@ -12,9 +12,29 @@ card_light:
     ulm_card_light_enable_horizontal_wide: false
     ulm_card_light_enable_color: false
     ulm_card_light_force_background_color: false
+    ulm_card_light_enable_popup: false
   show_icon: false
   show_name: false
   show_label: false
+  hold_action:
+    action: >
+      [[[
+          if (variables.ulm_card_light_enable_popup){
+            return 'fire-dom-event'
+          }
+          else{
+            return 'more-info'
+          }
+      ]]]
+    browser_mod:
+      command: "popup"
+      large: true
+      hide_header: true
+      card:
+        type: "custom:button-card"
+        template: "popup_light_brightness"
+        variables:
+          ulm_popup_light_entity: "[[[ return entity.entity_id ]]]"
   state:
     - value: "on"
       styles:
@@ -100,6 +120,25 @@ card_light:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
               icon: "[[[ return variables.ulm_card_light_icon ]]]"
+              hold_action:
+                action: >
+                  [[[
+                      if (variables.ulm_card_light_enable_popup){
+                        return 'fire-dom-event'
+                      }
+                      else{
+                        return 'more-info'
+                      }
+                  ]]]
+                browser_mod:
+                  command: "popup"
+                  large: true
+                  hide_header: true
+                  card:
+                    type: "custom:button-card"
+                    template: "popup_light_brightness"
+                    variables:
+                      ulm_popup_light_entity: "[[[ return entity.entity_id ]]]"
               styles:
                 icon:
                   - color: >
@@ -134,6 +173,25 @@ card_light:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
               name: "[[[ return variables.ulm_card_light_name ]]]"
+              hold_action:
+                action: >
+                  [[[
+                      if (variables.ulm_card_light_enable_popup){
+                        return 'fire-dom-event'
+                      }
+                      else{
+                        return 'more-info'
+                      }
+                  ]]]
+                browser_mod:
+                  command: "popup"
+                  large: true
+                  hide_header: true
+                  card:
+                    type: "custom:button-card"
+                    template: "popup_light_brightness"
+                    variables:
+                      ulm_popup_light_entity: "[[[ return entity.entity_id ]]]"
               label: >-
                 [[[
                   if (entity.state !="unavailable"){
