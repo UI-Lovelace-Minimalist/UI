@@ -17,7 +17,7 @@ Now you can configure the Integration, you can do this also after it's installed
 - Language: Will set the language for the Integration.
 - Side panel title: Will set the title for the Lovelace Dashboard in the Sidebar.
 - Side panel icon: Which icon to put in front of the Title.
-- Theme: Select the desktop or mobile theme.
+- Theme: Choose a theme of your choice (Note: Both themes will be installed anyway and can be customized later if needed.)
 - Theme path: Make sure this is set to the same path as is configured in your `configuration.yaml` (default: `/themes`)
 - Include Custom Cards: This will make sure almost all dependency cards are included and configured for you.
 
