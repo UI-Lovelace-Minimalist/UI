@@ -47,9 +47,13 @@ Example on how the directory tree could look is:
 
 ```yaml
 config
-├── ui_lovelace_minimalist
+└── ui_lovelace_minimalist
     ├── config
-    ├── custom_cards
-        ├── custom_card_1.yaml
-        ├── custom_card_2.yaml
+    └── custom_cards
+        ├── custom_card_1
+        |   ├── custom_card_1.yaml
+        |   └── EN.yaml
+        └── custom_card_2
+            ├── custom_card_2.yaml
+            └── EN.yaml
 ```
