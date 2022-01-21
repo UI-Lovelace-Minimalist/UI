@@ -4,7 +4,6 @@ card_scenes:
   show_name: false
   show_label: false
   variables:
-    dark_mode: false
     icon_1: "mdi:help-circle-outline"
     icon_2: "mdi:help-circle-outline"
     icon_3: "mdi:help-circle-outline"
@@ -123,7 +122,6 @@ card_scenes_pill:
   show_label: false
   show_name: true
   variables:
-    dark_mode: false
     color_icon: "gray"
     color_bg: "gray"
   styles:
