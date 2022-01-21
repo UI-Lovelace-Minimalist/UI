@@ -19,7 +19,7 @@ hide:
 
 This popup is displayed using ``hold_action`` and it is compatible with the following cards/chips :
 
-- card_light 
+- card_light
 
 ##### How to use
 
