@@ -160,53 +160,55 @@ card_light:
                     return variables.ulm_unavailable;
                   }
                 ]]]
-              styles:
-                name:
-                  - color: >-
-                      [[[
-                          var color = entity.attributes.rgb_color;
-                          if (variables.ulm_card_light_enable_background_color == true){
-                            if(variables.ulm_card_light_force_background_color == true){
-                              if (color){
-                                return 'rgba(' + color + ',1)'
-                              } else {
-                                return 'rgba(var(--color-yellow-text),1)'
-                              }
-                            } else {
-                              if (states['sun.sun'].state == "below_horizon"){
-                                if (color){
-                                  return 'rgba(' + color + ',1)'
+              state:
+                - value: "on"
+                  styles:
+                    name:
+                      - color: >-
+                          [[[
+                              var color = entity.attributes.rgb_color;
+                              if (variables.ulm_card_light_enable_background_color == true){
+                                if(variables.ulm_card_light_force_background_color == true){
+                                  if (color){
+                                    return 'rgba(' + color + ',1)'
+                                  } else {
+                                    return 'rgba(var(--color-yellow-text),1)'
+                                  }
                                 } else {
-                                  return 'rgba(var(--color-yellow-text),1)'
+                                  if (states['sun.sun'].state == "below_horizon"){
+                                    if (color){
+                                      return 'rgba(' + color + ',1)'
+                                    } else {
+                                      return 'rgba(var(--color-yellow-text),1)'
+                                    }
+                                  }
                                 }
                               }
-                            }
-                          }
-                          return 'rgba(var(--color-yellow-text),1)'
-                      ]]]
-                label:
-                  - color: >-
-                      [[[
-                          var color = entity.attributes.rgb_color;
-                          if (variables.ulm_card_light_enable_background_color == true){
-                            if(variables.ulm_card_light_force_background_color == true){
-                              if (color){
-                                return 'rgba(' + color + ',1)'
-                              } else {
-                                return 'rgba(var(--color-yellow-text),1)'
-                              }
-                            } else {
-                              if (states['sun.sun'].state == "below_horizon"){
-                                if (color){
-                                  return 'rgba(' + color + ',1)'
+                              return 'rgba(var(--color-yellow-text),1)'
+                          ]]]
+                    label:
+                      - color: >-
+                          [[[
+                              var color = entity.attributes.rgb_color;
+                              if (variables.ulm_card_light_enable_background_color == true){
+                                if(variables.ulm_card_light_force_background_color == true){
+                                  if (color){
+                                    return 'rgba(' + color + ',1)'
+                                  } else {
+                                    return 'rgba(var(--color-yellow-text),1)'
+                                  }
                                 } else {
-                                  return 'rgba(var(--color-yellow-text),1)'
+                                  if (states['sun.sun'].state == "below_horizon"){
+                                    if (color){
+                                      return 'rgba(' + color + ',1)'
+                                    } else {
+                                      return 'rgba(var(--color-yellow-text),1)'
+                                    }
+                                  }
                                 }
                               }
-                            }
-                          }
-                          return 'rgba(var(--color-yellow-text),1)'
-                      ]]]
+                              return 'rgba(var(--color-yellow-text),1)'
+                          ]]]
     item2:
       card:
         type: "custom:my-slider"
