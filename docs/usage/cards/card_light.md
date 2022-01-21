@@ -54,9 +54,9 @@ This card merges the following one :
   template: card_light
   entity: light.allee
   variables:
-    ulm_card_light_slider_aio_enable_slider: true
-    ulm_card_light_slider_aio_enable_background_color: true
-    ulm_card_light_slider_aio_force_background_color: true
+    ulm_card_light_slider_enable_slider: true
+    ulm_card_light_slider_enable_color: true
+    ulm_card_light_slider_force_background_color: true
 ```
 
 ??? note "Template Code"
