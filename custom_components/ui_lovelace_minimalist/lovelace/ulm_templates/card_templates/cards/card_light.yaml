@@ -11,7 +11,6 @@ card_light:
     ulm_card_light_enable_horizontal: false
     ulm_card_light_enable_horizontal_wide: false
     ulm_card_light_enable_color: false
-    ulm_card_light_enable_background_color: false
     ulm_card_light_force_background_color: false
   show_icon: false
   show_name: false
@@ -20,23 +19,15 @@ card_light:
     - value: "on"
       styles:
         card:
-          - background-color: >
+          - background-color: >-
               [[[
                   var color = entity.attributes.rgb_color;
-                  if (variables.ulm_card_light_enable_background_color == true){
-                    if(variables.ulm_card_light_force_background_color == true){
+                  if (variables.ulm_card_light_enable_color == true){
+                    if(variables.ulm_card_light_force_background_color == true || hass.themes.darkMode){
                       if (color){
                         return 'rgba(' + color + ',0.1)'
                       } else {
-                        return 'rgba(var(--color-yellow),0.1)'
-                      }
-                    } else {
-                      if (states['sun.sun'].state == "below_horizon"){
-                        if (color){
-                          return 'rgba(' + color + ',0.1)'
-                        } else {
-                          return 'rgba(var(--color-yellow),0.1)'
-                        }
+                        return 'rgba(var(--color-yellow-text),0.1)'
                       }
                     }
                   }
@@ -167,20 +158,12 @@ card_light:
                       - color: >-
                           [[[
                               var color = entity.attributes.rgb_color;
-                              if (variables.ulm_card_light_enable_background_color == true){
-                                if(variables.ulm_card_light_force_background_color == true){
+                              if (variables.ulm_card_light_enable_color == true){
+                                if(variables.ulm_card_light_force_background_color == true || hass.themes.darkMode){
                                   if (color){
                                     return 'rgba(' + color + ',1)'
                                   } else {
                                     return 'rgba(var(--color-yellow-text),1)'
-                                  }
-                                } else {
-                                  if (states['sun.sun'].state == "below_horizon"){
-                                    if (color){
-                                      return 'rgba(' + color + ',1)'
-                                    } else {
-                                      return 'rgba(var(--color-yellow-text),1)'
-                                    }
                                   }
                                 }
                               }
@@ -190,20 +173,12 @@ card_light:
                       - color: >-
                           [[[
                               var color = entity.attributes.rgb_color;
-                              if (variables.ulm_card_light_enable_background_color == true){
-                                if(variables.ulm_card_light_force_background_color == true){
+                              if (variables.ulm_card_light_enable_color == true){
+                                if(variables.ulm_card_light_force_background_color == true || hass.themes.darkMode){
                                   if (color){
                                     return 'rgba(' + color + ',1)'
                                   } else {
                                     return 'rgba(var(--color-yellow-text),1)'
-                                  }
-                                } else {
-                                  if (states['sun.sun'].state == "below_horizon"){
-                                    if (color){
-                                      return 'rgba(' + color + ',1)'
-                                    } else {
-                                      return 'rgba(var(--color-yellow-text),1)'
-                                    }
                                   }
                                 }
                               }
