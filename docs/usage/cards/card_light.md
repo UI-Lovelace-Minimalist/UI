@@ -29,6 +29,9 @@ This card merges the following one :
 !!! warning
     This card has backward compatibilty with older template except custom names and icons. It means variables like `ulm_card_XXX_name` and `ulm_card_XXX_icon` must be replaced by `ulm_card_light_name` and `ulm_card_light_icon`.
 
+!!! warning
+  To use `popup_light` you need to set the variable `ulm_card_light_enable_popup` to `true`. This is a different approach as the other `popup_cards` use.
+
 ## Variables
 
 | Variable/Entity                        | Default         | Required         | Notes          | Requirement |
