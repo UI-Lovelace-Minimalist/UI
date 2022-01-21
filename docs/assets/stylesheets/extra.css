@@ -6,12 +6,7 @@
     --md-accent-fg-color--transparent:  hsla(183, 56%, 52%, 0.1);
 }
 
-pre { color: white !important; }
-
-.md-clipboard:before {
-    color: rgb(255, 255, 255);
-}
-
-.codehilite:hover .md-clipboard:before,.md-typeset .highlight:hover .md-clipboard:before,pre:hover .md-clipboard:before {
-    color: rgba(255, 255, 255, 0.54) !important
-}
+.codehilite code, .codehilite pre {
+    padding: 6px 0px 6px 12px;
+    margin-bottom: 16px;
+  }

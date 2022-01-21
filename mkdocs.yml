@@ -23,6 +23,7 @@ nav:
 
 extra_css:
   - "assets/stylesheets/extra.css"
+  - "assets/stylesheets/monokai.css"
 
 theme:
   name: "material"
@@ -81,11 +82,7 @@ markdown_extensions:
   - "def_list"
   - toc:
       permalink: true
-  - codehilite:
-      guess_lang: false
-      use_pygments: true
-      noclasses: true
-      pygments_style: "monokai"
+  - "codehilite"
 
 plugins:
   - "search"
