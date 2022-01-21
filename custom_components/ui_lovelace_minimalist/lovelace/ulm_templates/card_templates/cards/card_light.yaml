@@ -138,6 +138,25 @@ card_light:
                             return 'rgba(var(--color-yellow),0.2)';
                           }
                       ]]]
+              tap_action:
+                action: >
+                  [[[
+                      if (variables.ulm_card_light_enable_popup){
+                        return 'fire-dom-event'
+                      }
+                      else{
+                        return 'more-info'
+                      }
+                  ]]]
+                browser_mod:
+                  command: "popup"
+                  large: true
+                  hide_header: true
+                  card:
+                    type: "custom:button-card"
+                    template: "popup_light_brightness"
+                    variables:
+                      ulm_popup_light_entity: "[[[ return entity.entity_id ]]]"
           item2:
             card:
               type: "custom:button-card"

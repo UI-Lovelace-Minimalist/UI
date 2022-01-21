@@ -29,6 +29,10 @@ This card merges the following one :
 !!! warning
     This card has backward compatibilty with older template except custom names and icons. It means variables like `ulm_card_XXX_name` and `ulm_card_XXX_icon` must be replaced by `ulm_card_light_name` and `ulm_card_light_icon`.
 
+!!! warning
+    `popup_light` template is not supported anymore. To keep popup working add the variable `ulm_card_light_enable_popup: true`.
+
+
 ## Variables
 
 | Variable/Entity                        | Default         | Required         | Notes          | Requirement |
@@ -43,6 +47,7 @@ This card merges the following one :
 | ulm_card_light_enable_color            | `false`         | :material-close: | Enable icon and label light color | |
 | ulm_card_light_enable_background_color | `false`         | :material-close: | Enable background light color in dark theme| |
 | ulm_card_light_force_background_color  | `false`         | :material-close: | Force background light color even in light theme | Need `ulm_card_light_enable_background_color: true` |
+| ulm_card_light_enable_popup            | `false`         | :material-close: | Enable minimalist light popup. See ["popup_light"](https://ui-lovelace-minimalist.github.io/UI/usage/popups/popup_light/) documentation.  |  |
 
 ## Usage
 
