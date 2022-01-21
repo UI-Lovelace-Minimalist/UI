@@ -31,7 +31,8 @@ For exemple :
 - type: "custom:button-card"
   template:
     - card_light
-    - popup_light
+  variables:
+    ulm_card_light_enable_popup: true
   entity: light.cuisine
 ```
 
