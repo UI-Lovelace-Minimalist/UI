@@ -9,7 +9,7 @@ hide:
 
 The `card_scenes` you can control a input_number entity
 
-![Scenes Card](../../docs/assets/img/card_scenes.png)
+![Scenes Card](../../docs/assets/img/ulm_cards/card_scenes.png)
 
 ## Credits
 
