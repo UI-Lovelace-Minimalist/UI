@@ -6,7 +6,7 @@ hide:
 
 ## Install Integration
 
-Open your Home Assistant instance and start setting up "UI Lovelace Minimalist". Or you can use the My Home Assistant Button bellow.
+Open your Home Assistant instance and start setting up "UI Lovelace Minimalist" under "Configuration" --> "Devices & Services". Or you can use the My Home Assistant Button bellow.
 
 [![Open your Home Assistant instance and start setting up a new integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=ui_lovelace_minimalist){ height="250" }
 
@@ -30,6 +30,6 @@ Now you can configure the Integration, you can do this also after it's installed
 | [`my-cards-slider-card`](https://github.com/AnthonMS/my-cards)          |
 | [`light-entity-card`](https://github.com/ljmerza/light-entity-card)     |
 
-Hit submit and in the Sidebar a new entry should appear.
+Hit submit and in the Sidebar a new Dashboard entry should appear.
 
 In case you want to use this Theme in your own ui-lovelace files go to [Configuration](../configuration).

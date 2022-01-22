@@ -57,3 +57,6 @@ config
             ├── custom_card_2.yaml
             └── EN.yaml
 ```
+
+Once you have added new custom_cards, you can always check the orders via Home Assistant and add the new cards to the config.
+Just go to "Configuration" --> "Settings" in Home Assistant and press the "UI_LOVELACE_MINIMALIST" button within the "YAML configuration reloading" section.
