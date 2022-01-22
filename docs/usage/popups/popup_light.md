@@ -23,7 +23,7 @@ This popup is displayed using ``hold_action`` and it is compatible with the foll
 
 ##### How to use
 
-To enable this popup, you need to add the ``popup_light`` template on your card.
+To enable this popup, you need to add the ``popup_light`` template on your card with variable `ulm_card_light_enable_popup` set to ``true``.
 
 For exemple :
 
@@ -31,8 +31,9 @@ For exemple :
 - type: "custom:button-card"
   template:
     - card_light
-    - popup_light
   entity: light.cuisine
+  variables:
+    ulm_card_light_enable_popup: true
 ```
 
 ## Credits
