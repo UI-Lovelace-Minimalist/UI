@@ -3,7 +3,7 @@ title: card_input_datetime
 ---
 <!-- markdownlint-disable MD046 -->
 
-# Custom-card "NAS"
+# Custom-card "Input Datetime Card"
 
 The `card_input_datetime` you can control a input_number entity
 
