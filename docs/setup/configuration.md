@@ -49,13 +49,14 @@ Example on how the directory tree could look is:
 config
 └── ui_lovelace_minimalist
     ├── config
-    └── custom_cards
-        ├── custom_card_1
-        |   ├── custom_card_1.yaml
-        |   └── EN.yaml
-        └── custom_card_2
-            ├── custom_card_2.yaml
-            └── EN.yaml
+    ├── custom_cards
+    |   ├── custom_card_1
+    |   |   ├── custom_card_1.yaml
+    |   |   └── EN.yaml
+    |   └── custom_card_2
+    |       ├── custom_card_2.yaml
+    |       └── EN.yaml
+    └── dashboard
 ```
 
 Once you have added new custom_cards, you can always check the orders via Home Assistant and add the new cards to the config.
