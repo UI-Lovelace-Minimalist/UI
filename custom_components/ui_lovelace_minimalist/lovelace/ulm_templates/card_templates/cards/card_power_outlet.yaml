@@ -1,0 +1,23 @@
+---
+### Card Power Outlet ###
+card_power_outlet:
+  template:
+    - "icon_info_bg"
+    - "yellow"
+    - "ulm_language_variables"
+  variables:
+    ulm_card_power_outlet_consumption_sensor:
+  label: |-
+    [[[
+      if (entity.state === "on" && variables.ulm_card_power_outlet_consumption_sensor !== null) {
+        return variables.ulm_on + " • " + states[variables.ulm_card_power_outlet_consumption_sensor].state + "W";
+      } else if (entity.state === "on") {
+        return variables.ulm_on;
+      } else if (entity.state === "off") {
+        return variables.ulm_off;
+      } else if (entity.state === "unavailable") {
+        return variables.ulm_unavailable;
+      } else {
+        return entity.state;
+      }
+    ]]]

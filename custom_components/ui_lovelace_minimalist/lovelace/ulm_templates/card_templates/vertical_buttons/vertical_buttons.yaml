@@ -1,0 +1,32 @@
+---
+### Vertical Buttons ###
+vertical_buttons:
+  show_label: true
+  label: "[[[ return (entity.attributes.value )]]]"
+  styles:
+    icon:
+      - color: "rgba(var(--color-theme),0.2)"
+    label:
+      - justify-self: "center"
+      - align-self: "start"
+      - font-weight: "bolder"
+      - font-size: "12px"
+      - filter: "opacity(40%)"
+    name:
+      - margin-top: "10px"
+      - justify-self: "center"
+      - font-weight: "bold"
+      - font-size: "14px"
+    img_cell:
+      - background-color: "rgba(var(--color-theme),0.05)"
+      - border-radius: "50%"
+      - place-self: "center"
+      - width: "42px"
+      - height: "42px"
+    grid:
+      - grid-template-areas: "'i' 'n' 'l'"
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "10px 0px 8px 0px"
+  size: "20px"

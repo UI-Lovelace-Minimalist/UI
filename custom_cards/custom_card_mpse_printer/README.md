@@ -1,0 +1,322 @@
+---
+title: custom_card_mpse_printer
+hide:
+  - toc
+---
+<!-- markdownlint-disable MD046 -->
+
+# Custom-card "Printer"
+
+The `custom_card_mpse_printer` is used to display the status of a printer and the toner.
+
+![Printer](../../docs/assets/img/custom_printer.png)
+
+## Credits
+
+Author: mpse (based on clemalex post)
+Version: 0.3.0
+
+## Changelog
+
+<details>
+<summary>0.3.0</summary>
+Updated documention.
+Cleanup code in card.
+Updated colors to match input values.
+</details>
+<details>
+<summary>0.2.0</summary>
+Added reference to used card.
+Fixed yaml indentation
+</details>
+<details>
+<summary>0.1.0</summary>
+Initial release adapted from a post on home assistant forum by user clemalex.
+</details>
+
+## Usage
+
+```yaml
+- type: 'custom:button-card'
+  template: custom_card_mpse_printer
+  entity: sensor.hp_color_laser_mfp_178nw
+  variables:
+    ulm_card_printer_name: HP Color Laser MFP 178nw
+    ulm_card_printer_black_name: sensor.hp_color_laser_mfp_178nw_black_toner
+    ulm_card_printer_yellow_name: sensor.hp_color_laser_mfp_178nw_yellow_toner
+    ulm_card_printer_cyan_name: sensor.hp_color_laser_mfp_178nw_cyan_toner
+    ulm_card_printer_magenta_name: sensor.hp_color_laser_mfp_178nw_magenta_toner
+```
+
+## Requirements
+
+Uses this card: <https://github.com/custom-cards/bar-card>
+Tested with the IPP Integration from Home Assistant: <https://www.home-assistant.io/integrations/ipp>
+On my printer i cannot get any state update, it always reports idle. I wanted to highlight the button when the printer is active.
+
+## Variables
+
+<table>
+<tr>
+<th>Variable</th>
+<th>Example</th>
+<th>Required</th>
+<th>Explanation</th>
+</tr>
+<tr>
+<td>ulm_card_printer_name</td>
+<td>HP Color Laser MFP 178nw</td>
+<td>yes</td>
+<td>Name of printer to display on card</td>
+</tr>
+<tr>
+<td>ulm_card_printer_black_name</td>
+<td>sensor.hp_color_laser_mfp_178nw_black_toner</td>
+<td>yes</td>
+<td>Name of black toner sensor</td>
+</tr>
+<tr>
+<td>ulm_card_printer_yellow_name</td>
+<td>sensor.hp_color_laser_mfp_178nw_yellow_toner</td>
+<td>yes</td>
+<td>Name of yellow toner sensor</td>
+</tr>
+<tr>
+<td>ulm_card_printer_cyan_name</td>
+<td>sensor.hp_color_laser_mfp_178nw_cyan_toner</td>
+<td>yes</td>
+<td>Name of cyan toner sensor</td>
+</tr>
+<tr>
+<td>ulm_card_printer_magenta_name</td>
+<td>sensor.hp_color_laser_mfp_178nw_magenta_toner</td>
+<td>yes</td>
+<td>Name of magenta toner sensor</td>
+</tr>
+
+</table>
+
+## Template code
+
+```yaml
+---
+custom_card_mpse_printer:
+  show_icon: false
+  show_name: false
+  show_label: false
+  styles:
+    card:
+      - border-radius: "20px"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "0px"
+    grid:
+      - grid-template-areas: "'item1' 'item2' 'item3' 'item4' 'item5'"
+      - grid-template-columns: "1fr"
+      - grid-template-rows: "min-content"
+  custom_fields:
+    item1:
+      card:
+        entity: "[[[ return entity.entity_id ]]]"
+        name: "[[[ return variables.ulm_card_printer_name ]]]"
+        label: >-
+          [[[
+          return entity.state;
+          ]]]
+        template:
+          - "icon_info"
+          - "custom_card_mpse_printer_blue"
+        styles:
+          card:
+            - padding: "12px"
+        type: "custom:button-card"
+    item2:
+      card:
+        type: "custom:bar-card"
+        height: "20px"
+        positions:
+          name: off
+          value: "inside"
+          icon: off
+          indicator: off
+          minmax: off
+        color: "black"
+        entities:
+          - entity: "[[[ return variables.ulm_card_printer_black_name ]]]"
+        style: |
+          bar-card-currentbar{
+            border: 0.01rem solid rgba(var(--color-theme),.4);
+          }
+          bar-card-backgroundbar{
+            display: none;
+          }
+          bar-card-name{
+            width: 2rem;
+            margin-right: 40px !important;
+          }
+          bar-card-value{
+            width: 2rem;
+            margin-left: 40px !important;
+            justify-content: center;
+            display: flex;
+            color: grey;
+          }
+          bar-card-background{
+            margin: 4px 0 4px 0 !important;
+            text-align: initial;
+          }
+          ha-card{
+            --bar-card-border-radius: 5px;
+            border-radius: 0px;
+            box-shadow: none;
+          }
+          #states{
+            padding: 0 16px;
+          }
+    item3:
+      card:
+        type: "custom:bar-card"
+        height: "20px"
+        positions:
+          name: off
+          value: "inside"
+          icon: off
+          indicator: off
+          minmax: off
+        color: "rgb(250,255,0)"
+        entities:
+          - entity: "[[[ return variables.ulm_card_printer_yellow_name ]]]"
+        style: |
+          bar-card-currentbar{
+            border: 0.01rem solid rgba(var(--color-theme),.4);
+          }
+          bar-card-backgroundbar{
+            display: none;
+          }
+            bar-card-name{
+            width: 2rem;
+            margin-right: 40px !important;
+          }
+          bar-card-value{
+            width: 2rem;
+            margin-left: 40px !important;
+            justify-content: center;
+            display: flex;
+            color: grey;
+          }
+          bar-card-background{
+            margin: 4px 0 4px 0 !important;
+            text-align: initial;
+          }
+          ha-card{
+            --bar-card-border-radius: 5px;
+            border-radius: 0px;
+            box-shadow: none;
+          }
+          #states{
+            padding: 0 16px;
+          }
+    item4:
+      card:
+        type: "custom:bar-card"
+        height: "20px"
+        positions:
+          name: off
+          value: "inside"
+          icon: off
+          indicator: off
+          minmax: off
+        color: "rgb(248,0,255)"
+        entities:
+          - entity: "[[[ return variables.ulm_card_printer_magenta_name ]]]"
+        style: |
+          bar-card-currentbar{
+            border: 0.01rem solid rgba(var(--color-theme),.4);
+          }
+          bar-card-backgroundbar{
+            display: none;
+          }
+          bar-card-name{
+            width: 2rem;
+            margin-right: 40px !important;
+          }
+          bar-card-value{
+            width: 2rem;
+            margin-left: 40px !important;
+            justify-content: center;
+            display: flex;
+            color: grey;
+          }
+          bar-card-background{
+            margin: 4px 0 4px 0 !important;
+            text-align: initial;
+          }
+          ha-card{
+            --bar-card-border-radius: 5px;
+            border-radius: 0px;
+            box-shadow: none;
+          }
+          #states{
+            padding: 0 16px;
+          }
+    item5:
+      card:
+        type: "custom:bar-card"
+        height: "20px"
+        positions:
+          name: off
+          value: "inside"
+          icon: off
+          indicator: off
+          minmax: off
+        color: "rgb(0,255,255)"
+        entities:
+          - entity: "[[[ return variables.ulm_card_printer_cyan_name ]]]"
+        style: |
+          bar-card-currentbar{
+            border: 0.01rem solid rgba(var(--color-theme),.4);
+          }
+          bar-card-backgroundbar{
+            display: none;
+          }
+          bar-card-name{
+            width: 2rem;
+            margin-right: 40px !important;
+          }
+          bar-card-value{
+            width: 2rem;
+            margin-left: 40px !important;
+            justify-content: center;
+            display: flex;
+            color: grey;
+          }
+            bar-card-background{
+            margin: 4px 0 4px 0 !important;
+            text-align: initial;
+          }
+          ha-card{
+            --bar-card-border-radius: 5px;
+            border-radius: 0px;
+            box-shadow: none;
+          }
+          #states{
+            padding: 0 16px 16px 16px;
+          }
+custom_card_mpse_printer_blue:
+  state:
+    - styles:
+        icon:
+          - color: "rgba(var(--color-blue),1)"
+        label:
+          - color: "rgba(var(--color-blue-text),1)"
+        name:
+          - color: "rgba(var(--color-blue-text),1)"
+        img_cell:
+          - background-color: "rgba(var(--color-blue), 0.2)"
+        card:
+          - background-color: "rgba(var(--color-background-blue), var(--opacity-bg))"
+      operator: template
+      value: >
+        [[[
+          return entity.state!="idle" ? true : false
+        ]]]
+```

@@ -1,0 +1,4 @@
+---
+popup_button_brightness:
+  template: "ulm_language_variables"
+  name: "[[[ return variables.ulm_popups_brightness ]]]"

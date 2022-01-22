@@ -1,0 +1,25 @@
+---
+name: "Check Code Quality"
+
+on:
+  pull_request:
+    branches: ["main", "dev"]
+
+jobs:
+  pre-commit:
+    name: "Check Code Quality"
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "⤵️ Check out code from GitHub"
+        uses: "actions/checkout@v2"
+      - name: "⚙️ Set up Python"
+        uses: "actions/setup-python@v2"
+        with:
+          python-version: 3.8
+      - name: "⚙️ Set up Ruby"
+        uses: "ruby/setup-ruby@v1"
+        with:
+          ruby-version: 2.7
+          bundler-cache: true
+      - name: "\U0001F680 Run pre-commit"
+        uses: "pre-commit/action@v2.0.3"

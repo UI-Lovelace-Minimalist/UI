@@ -1,0 +1,8 @@
+---
+### Card Binary Sensor ###
+card_binary_sensor:
+  template:
+    - "icon_info_bg"
+    - "blue"
+  name: "[[[ return entity.attributes.friendly_name != '' ? entity.attributes.friendly_name : entity.entity_id ]]]"
+  show_last_changed: true

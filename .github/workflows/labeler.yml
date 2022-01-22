@@ -1,0 +1,19 @@
+---
+name: "Manage labels"
+
+on:
+  push:
+    # Should only run on "main" since labels on "dev" sometimes not usabele for base branch
+    branches: ["main"]
+
+jobs:
+  labeler:
+    name: "Labeler"
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "⤵️ Check out code from GitHub"
+        uses: "actions/checkout@v2"
+      - name: "\U0001F680 Run Labeler"
+        uses: "crazy-max/ghaction-github-labeler@v3.1.1"
+        with:
+          skip-delete: false

@@ -1,0 +1,7 @@
+---
+### Card Binary Sensor Alert ###
+card_binary_sensor_alert:
+  template:
+    - "icon_info_alert"
+  name: "[[[ return entity.attributes.friendly_name != '' ? entity.attributes.friendly_name : entity.entity_id ]]]"
+  show_last_changed: true

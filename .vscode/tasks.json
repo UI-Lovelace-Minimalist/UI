@@ -1,0 +1,35 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run Home Assistant on port 9123",
+      "type": "shell",
+      "command": "container start",
+      "problemMatcher": []
+    },
+    {
+      "label": "Run Home Assistant configuration against /config",
+      "type": "shell",
+      "command": "container check",
+      "problemMatcher": []
+    },
+    {
+      "label": "Upgrade Home Assistant to latest dev",
+      "type": "shell",
+      "command": "container install",
+      "problemMatcher": []
+    },
+    {
+      "label": "Install a specific version of Home Assistant",
+      "type": "shell",
+      "command": "container set-version",
+      "problemMatcher": []
+    },
+    {
+      "label": "Serve Documentation on port 8000",
+      "type": "shell",
+      "command": "mkdocs -v serve",
+      "problemMatcher": []
+    }
+  ]
+}

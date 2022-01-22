@@ -1,0 +1,56 @@
+---
+### chip_alarm ###
+chip_alarm:
+  template:
+    - "chip_icon_label"
+    - "ulm_language_variables"
+  label: |
+    [[[
+      var alarm_label = variables.ulm_unknown;
+      if (entity.state == "armed_home"){
+        var alarm_label = variables.ulm_alarm_armed_home;
+      } else if(entity.state == "armed_away"){
+        var alarm_label = variables.ulm_alarm_armed_away;
+      } else if(entity.state == "disarmed"){
+        var alarm_label = variables.ulm_alarm_disarmed;
+      } else if(entity.state == "arming"){
+        var alarm_label = variables.ulm_alarm_arming;
+      } else if(entity.state == "triggered"){
+        var alarm_label = variables.ulm_alarm_triggered;
+      }
+      return alarm_label;
+    ]]]
+  icon: |
+    [[[
+      var alarm_icon = "mdi:shield-outline";
+      if (entity.state == "armed_home"){
+        var alarm_icon = "mdi:shield-home";
+      } else if(entity.state == "armed_away"){
+        var alarm_icon = "mdi:shield-lock";
+      } else if(entity.state == "disarmed"){
+        var alarm_icon = "mdi:shield-off";
+      } else if(entity.state == "arming"){
+        var alarm_icon = "mdi:shield";
+      } else if(entity.state == "triggered"){
+        var alarm_icon = "mdi:shield-alert";
+      }
+      return alarm_icon;
+    ]]]
+  styles:
+    icon:
+      - color: |
+          [[[
+            var alarm_color = "var(--google-yellow)";
+            if (entity.state == "armed_home"){
+              var alarm_color = "var(--google-red)";
+            } else if(entity.state == "armed_away"){
+              var alarm_color = "var(--google-red)";
+            } else if(entity.state == "disarmed"){
+              var alarm_color = "var(--google-green)";
+            } else if(entity.state == "arming"){
+              var alarm_color = "var(--google-yellow)";
+            } else if(entity.state == "triggered"){
+              var alarm_color = "var(--google-red)";
+            }
+            return alarm_color;
+          ]]]

@@ -1,0 +1,55 @@
+{
+  "image": "ghcr.io/ludeeus/devcontainer/integration:latest",
+  "name": "Lovelace Minimalist UI integration development",
+  "context": "..",
+  "appPort": [
+    "9123:8123",
+    "8000:8000"
+  ],
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+  "extensions": [
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "github.vscode-pull-request-github",
+    "ryanluker.vscode-coverage-gutters",
+    "visualstudioexptteam.vscodeintellicode",
+    "redhat.vscode-yaml",
+    "esbenp.prettier-vscode"
+  ],
+  "settings": {
+    "files.eol": "\n",
+    "editor.tabSize": 4,
+    "terminal.integrated.shell.linux": "/bin/bash",
+    "python.pythonPath": "/usr/bin/python",
+    "python.analysis.autoSearchPaths": false,
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "python.linting.pylintArgs": [
+      "--disable",
+      "import-error"
+    ],
+    "python.formatting.provider": "black",
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "files.trimTrailingWhitespace": true,
+    "terminal.integrated.profiles.linux": {
+      "zsh": {
+        "path": "/usr/bin/zsh"
+      }
+    },
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "files.associations": {
+      "*.yaml": "yaml",
+      "*.yml": "yaml"
+    },
+    "yaml.customTags": [
+      "!input scalar",
+      "!secret scalar",
+      "!include_dir_named scalar",
+      "!include_dir_list scalar",
+      "!include_dir_merge_list scalar",
+      "!include_dir_merge_named scalar"
+    ]
+  }
+}

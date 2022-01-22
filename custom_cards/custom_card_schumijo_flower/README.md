@@ -1,13 +1,23 @@
+---
+title: card_flower
+hide:
+  - toc
+---
+<!-- markdownlint-disable MD046 -->
+
 # Custom-card "Flower"
+
 This is a `custom-card` to display a plant entity. Shows state of the plant and attributes.
 
-![Generic](../../screenshots/flower.png)
+![Generic](../../docs/assets/img/flower.png)
 
 ## Credits
+
 Author: schumijo - 2021
 Version: 1.1.0
 
 ## Changelog
+
 <details>
 <summary>1.0.0</summary>
 Initial release
@@ -28,7 +38,9 @@ Updated README
     ulm_card_flower_name: Bonsai Ficus
     ulm_card_flower_species: "ficus retusa"
 ```
+
 #### Variables
+
 <table>
 <tr>
 <th>Variable</th>

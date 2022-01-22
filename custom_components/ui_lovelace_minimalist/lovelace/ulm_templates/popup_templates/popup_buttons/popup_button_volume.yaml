@@ -1,0 +1,5 @@
+---
+popup_button_volume:
+  template: "ulm_language_variables"
+  icon: "mdi:volume-high"
+  name: "Volume"

@@ -1,0 +1,29 @@
+---
+### Icon Info Line ###s
+icon_info_line:
+  show_icon: true
+  show_label: true
+  show_name: false
+  styles:
+    icon:
+      - filter: "opacity(40%)"
+    label:
+      - padding: "2px"
+      - justify-self: "start"
+      - align-self: "center"
+      - font-weight: "bolder"
+      - font-size: "12px"
+      - margin-left: "0px"
+      - filter: "opacity(40%)"
+    img_cell:
+      - place-self: "center"
+      - width: "14px"
+      - height: "24px"
+    grid:
+      - grid-template-areas: "'i l'"
+      - grid-template-columns: "max_content auto"
+      - grid-template-rows: "min-content"
+    card:
+      - box-shadow: "none"
+      - padding: "0px"
+  size: "100%"

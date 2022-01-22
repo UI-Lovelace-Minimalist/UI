@@ -1,0 +1,9 @@
+
+# git+git://github.com/home-assistant/home-assistant.git@dev
+jinja2
+mkdocs-awesome-pages-plugin
+mkdocs-material
+pre-commit
+
+# Causing some wierd Typguard error in devcontainer(typing-extensions-3.7.4.3)
+# typing-extensions>=4.0.0
