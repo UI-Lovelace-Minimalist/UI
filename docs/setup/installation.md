@@ -31,5 +31,15 @@ Now you can configure the Integration, you can do this also after it's installed
 | [`light-entity-card`](https://github.com/ljmerza/light-entity-card)     |
 
 Hit submit and in the Sidebar a new Dashboard entry should appear.
+A new file for the dashboard configuration, with a small example, where you can generate your own layout should have been created under that location:
 
-In case you want to use this Theme in your own ui-lovelace files go to [Configuration](../configuration).
+```yaml
+config
+└── ui_lovelace_minimalist
+    ├── config
+    ├── custom_cards
+    └── dashboard
+        └── ui-lovelace.yaml
+```
+
+In case you want to use your own ui-lovelace files go to [Configuration](../configuration).
