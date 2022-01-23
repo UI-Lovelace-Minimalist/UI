@@ -7,7 +7,7 @@ hide:
 
 ## Description
 
-![example-image](../../assets/img/ulm_chips/chip_example.png){ width="500" }
+![example-image](../../assets/img/ulm_chips/chip_power_consumption.png){ width="500" }
 
 This `chip` shows you the electric consumption from a sensor. Configurable to show power (kWh) or price (currency).
 

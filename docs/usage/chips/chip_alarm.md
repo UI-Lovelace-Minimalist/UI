@@ -7,7 +7,7 @@ hide:
 
 ## Description
 
-![example-image](../../assets/img/ulm_chips/chip_example.png){ width="500" }
+![example-image](../../assets/img/ulm_chips/chip_alarm.png){ width="500" }
 
 Alarm chip that displays alarm armed and disarmed state with colored icon.
 

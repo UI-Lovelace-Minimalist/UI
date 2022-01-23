@@ -7,7 +7,7 @@ hide:
 
 ## Description
 
-![example-image](../../assets/img/ulm_chips/chip_example.png){ width="500" }
+![example-image](../../assets/img/ulm_chips/chip_presence_detection.png){ width="500" }
 
 This `chip` shows you the actual presence in your home. Shows residents and guests (guests only if one or more).
 

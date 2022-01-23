@@ -7,7 +7,7 @@ hide:
 
 ## Description
 
-![example-image](../../assets/img/ulm_chips/chip_example.png){ width="500" }
+![example-image](../../assets/img/ulm_chips/chip_icon_state.png){ width="500" }
 
 This `chip` displays an icon and a label, where the label can be any state of a sensor you configure.
 
