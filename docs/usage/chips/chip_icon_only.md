@@ -7,7 +7,7 @@ hide:
 
 ## Description
 
-![example-image](../../assets/img/ulm_chips/chip_example.png){ width="500" }
+![example-image](../../assets/img/ulm_chips/chip_icon_only.png){ width="500" }
 
 This `chip` displays just an icon.
 

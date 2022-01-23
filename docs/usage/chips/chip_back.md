@@ -6,7 +6,7 @@ hide:
 <!-- markdownlint-disable MD046 -->
 ## Description
 
-![example-image](../../assets/img/ulm_chips/chip_example.png){ width="500" }
+![example-image](../../assets/img/ulm_chips/chip_back.png){ width="500" }
 
 This is a `back-button`, primarly used if you switch between views and want a convenient way back.
 

@@ -7,7 +7,7 @@ hide:
 
 ## Description
 
-![example-image](../../assets/img/ulm_chips/chip_example.png){ width="500" }
+![example-image](../../assets/img/ulm_chips/chip_navigate.png){ width="500" }
 
 Chip description should be here.
 
