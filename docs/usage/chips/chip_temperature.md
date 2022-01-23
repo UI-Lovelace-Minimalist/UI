@@ -7,7 +7,7 @@ hide:
 
 ## Description
 
-![example-image](../../assets/img/ulm_chips/chip_example.png){ width="500" }
+![example-image](../../assets/img/ulm_chips/chip_temperature.png){ width="500" }
 
 This `chip` is to display a weather icon together with the outside and inside temperature.
 
