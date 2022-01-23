@@ -25,3 +25,6 @@ card_weather:
             border-radius: 14px;
             box-shadow: none;
           }
+          ha-card.type-custom-simple-weather-card .weather__info {
+            text-align: left
+          }
