@@ -1,6 +1,8 @@
 ---
 ### Card Weather ###
 card_weather:
+  variables:
+    ulm_card_weather_backdrop: false
   show_icon: false
   show_name: false
   show_label: false
@@ -13,17 +15,24 @@ card_weather:
     card:
       - border-radius: "var(--border-radius)"
       - box-shadow: "var(--box-shadow)"
-      - padding: "12px"
+      - padding: "0px"
   custom_fields:
     item1:
       card:
         type: "custom:simple-weather-card"
         entity: "[[[ return entity.entity_id; ]]]"
-        card_mod:
+        name: "[[[ return variables.ulm_card_weather_name || entity.attributes.friendly_name ]]]"
+        backdrop: "[[[ return variables.ulm_card_weather_backdrop ]]]"
         style: |
           ha-card {
             border-radius: 14px;
             box-shadow: none;
+          }
+          ha-card.type-custom-simple-weather-card {
+            padding: 24px;
+          }
+          ha-card[bg].type-custom-simple-weather-card{
+            color: white;
           }
           ha-card.type-custom-simple-weather-card .weather__info {
             text-align: left
