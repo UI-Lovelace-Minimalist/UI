@@ -7,7 +7,7 @@ hide:
 
 ## Description
 
-![example-image](../../assets/img/ulm_chips/chip_example.png){ width="500" }
+![example-image](../../assets/img/ulm_chips/chip_icon_only.png){ width="500" }
 
 This `chip` displays just an icon.
 
@@ -28,4 +28,6 @@ This `chip` displays just an icon.
 
 ??? note "Template Code"
 
-        Internal Link to Template Code here
+    ```yaml title="card_light.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/chips/chip_icon_only.yaml"
+    ```
