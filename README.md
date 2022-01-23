@@ -7,7 +7,7 @@
 
 It's kind of hard to explain what this is, so let's call it a "theme" (in quotation marks). But one thing is for sure, it is very nice! Taking the exceptional work of tben as a basis, this repository is aimed to ease installation and maintainance of his wonderful work. You can use this interpretation of a SmartHomeUI more or less like a theme in HomeAssistant.
 
-<img src="./docs/assets/img/example_home.png" width="200"> <img src="./docs/assets/img/example_temperature.png" width="200"> <img src="./docs/assets/img/example_consumption.png" width="200"> <img src="./docs/assets/img/example_localisation.png" width="200">
+<img src="https://raw.githubusercontent.com/UI-Lovelace-Minimalist/UI/main/docs/assets/img/example_home.png" width="200"> <img src="https://raw.githubusercontent.com/UI-Lovelace-Minimalist/UI/main/docs/assets/img/example_temperature.png" width="200"> <img src="https://raw.githubusercontent.com/UI-Lovelace-Minimalist/UI/main/docs/assets/img/example_consumption.png" width="200"> <img src="https://raw.githubusercontent.com/UI-Lovelace-Minimalist/UI/main/docs/assets/img/example_localisation.png" width="200">
 
 ## Wiki for documentation
 
