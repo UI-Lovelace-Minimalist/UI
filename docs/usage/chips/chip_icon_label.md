@@ -7,22 +7,24 @@ hide:
 
 ## Description
 
-![example-image](../../assets/img/ulm_chips/chip_example.png){ width="500" }
+![example-image](../../assets/img/ulm_chips/chip_icon_label.png){ width="500" }
 
-Chip description should be here.
+This `chip` displays an icon using [mdi](https://materialdesignicons.com/) and a label.
 
 ## Variables
 
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
-| name     |         | :material-check: |                   |
-|background| `true`  | :material-close: | Enable background |
+|icon      |         | :material-check: | Icon to display   |
+|label     |         | :material-check: | Label to display  |
 
 ## Usage
 
 ```yaml
-- type: "custom:button-card"
-  template: example
+- type: 'custom:button-card'
+  template: chip_icon_label
+  label: Label
+  icon: 'mdi:heart'
 ```
 
 ??? note "Template Code"
