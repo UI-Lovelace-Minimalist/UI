@@ -25,7 +25,7 @@ This `chip` shows you the actual presence in your home. Shows residents and gues
   template: chip_presence_detection
   variables:
     ulm_chip_presence_counter_residents: sensor.people_home
-    ulm_chip_presence_counter_guests: sensor.people_home
+    ulm_chip_presence_counter_guests: sensor.guests_home
 ```
 
 ??? note "Template Code"
