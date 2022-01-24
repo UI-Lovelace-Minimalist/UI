@@ -1,10 +1,9 @@
 ---
 name: "Add contributors"
 on:
-  schedule:
-    - cron: "20 20 * * *"
   push:
-    branches: ["master"]
+    # Should only run on "dev" due push protected main branch
+    branches: ["dev"]
 
 jobs:
   add-contributors:
