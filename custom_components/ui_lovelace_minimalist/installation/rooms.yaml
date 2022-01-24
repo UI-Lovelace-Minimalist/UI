@@ -1,5 +1,7 @@
+---
 # https://ui-lovelace-minimalist.github.io/UI/setup/configuration#rooms
 
+# yamllint disable
 rooms:
   # - name: Livingroom
   #   icon: mdi:sofa

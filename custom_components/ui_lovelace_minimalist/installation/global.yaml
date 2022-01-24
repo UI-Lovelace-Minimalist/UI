@@ -1,4 +1,6 @@
+---
 # https://ui-lovelace-minimalist.github.io/UI/setup/configuration#global
 
+# yamllint disable
 global:
   # weather: weather.buienradar # Configure a weather entity see HA docs for more info
