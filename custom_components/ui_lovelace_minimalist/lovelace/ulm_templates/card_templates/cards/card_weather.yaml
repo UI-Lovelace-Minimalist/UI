@@ -22,6 +22,8 @@ card_weather:
         type: "custom:simple-weather-card"
         entity: "[[[ return entity.entity_id; ]]]"
         name: "[[[ return variables.ulm_card_weather_name || entity.attributes.friendly_name ]]]"
+        primary_info: "[[[ return variables.ulm_card_weather_primary_info ]]]"
+        secondary_info: "[[[ return variables.ulm_card_weather_secondary_info ]]]"
         backdrop: "[[[ return variables.ulm_card_weather_backdrop ]]]"
         style: |
           ha-card {
