@@ -19,6 +19,8 @@ This is a card based on simple-weather-card to show your weather.
 | ------------------------- | --------------- | ---------------- | ----------------------------------------------------------------------------------------------------------- |
 | entity                    |                 | :material-check: | your weather entity                                                                                         |
 | ulm_card_weather_name     | `friendly_name` |                  | customize display name                                                                                      |
+| ulm_card_weather_primary_info | `extrema`   |                  | customize primary info. See [simple-weather-card](https://github.com/kalkih/simple-weather-card) for more information |
+| ulm_card_weather_secondary_info | `precipitation`   |          | customize secondary info. See [simple-weather-card](https://github.com/kalkih/simple-weather-card) for more information |
 | ulm_card_weather_backdrop | `false`         |                  | add backdrop. See [simple-weather-card](https://github.com/kalkih/simple-weather-card) for more information |
 
 ## Usage
@@ -29,6 +31,9 @@ This is a card based on simple-weather-card to show your weather.
   entity: weather.my_local_weather
   variables:
     ulm_card_weather_name: " "
+    ulm_card_weather_primary_info:
+      - wind_speed
+      - precipitation_probability
     ulm_card_weather_backdrop:
       fade: true
 ```
