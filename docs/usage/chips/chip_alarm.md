@@ -9,7 +9,7 @@ hide:
 
 ![example-image](../../assets/img/ulm_chips/chip_alarm.png){ width="500" }
 
-Alarm chip that displays alarm armed and disarmed state with colored icon.
+Alarm `chip` that displays alarm armed and disarmed state with colored icon.
 
 ## Variables
 

@@ -9,20 +9,23 @@ hide:
 
 ![example-image](../../assets/img/ulm_chips/chip_navigate.png){ width="500" }
 
-Chip description should be here.
+This `chip` is a menu button with an icon using [mdi](https://materialdesignicons.com/).
 
 ## Variables
 
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
-| name     |         | :material-check: |                   |
-|background| `true`  | :material-close: | Enable background |
+|ulm_chip_navigate_path     |         | :material-check: | `path` to navigate to |
+|ulm_chip_navigate_icon     |         | :material-close: | Icon to use |
 
 ## Usage
 
 ```yaml
 - type: "custom:button-card"
-  template: example
+  template: chip_navigate
+  variables:
+    ulm_chip_navigate_path: /lovelace-minimalist-test/
+    ulm_chip_navigate_icon: mdi:sofa
 ```
 
 ??? note "Template Code"
