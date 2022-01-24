@@ -299,6 +299,13 @@ The same goes for our `custom_cards`. As the number grows, the list would be to 
 </tr>
 <tr>
     <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/AndyVRD>
+            <img src=https://avatars.githubusercontent.com/u/67138158?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=AndyVRD/>
+            <br />
+            <sub style="font-size:10px"><b>AndyVRD</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
         <a href=https://github.com/briis>
             <img src=https://avatars.githubusercontent.com/u/24776272?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Bjarne Riis/>
             <br />
@@ -333,6 +340,8 @@ The same goes for our `custom_cards`. As the number grows, the list would be to 
             <sub style="font-size:10px"><b>Martin Nöhrer</b></sub>
         </a>
     </td>
+</tr>
+<tr>
     <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
         <a href=https://github.com/pedrojreis>
             <img src=https://avatars.githubusercontent.com/u/28795057?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Pedro Reis/>
@@ -340,8 +349,6 @@ The same goes for our `custom_cards`. As the number grows, the list would be to 
             <sub style="font-size:10px"><b>Pedro Reis</b></sub>
         </a>
     </td>
-</tr>
-<tr>
     <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
         <a href=https://github.com/jmoransalama>
             <img src=https://avatars.githubusercontent.com/u/16177130?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=jmoransalama/>
