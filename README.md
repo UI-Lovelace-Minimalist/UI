@@ -74,15 +74,9 @@ The actual version of this "theme" has 20 different cards, seven chips and other
 
 The same goes for our `custom_cards`. As the number grows, the list would be to big for this readme, so we provide you with an overview page with pictures, code examples and additional informations. [Find the list here](https://ui-lovelace-minimalist.github.io/UI/usage/custom_cards/custom_card_bar_card/).
 
-## Credits
+### Contributors
 
-- This design was made by [tben](https://community.home-assistant.io/u/tben/summary)
-- A lot of inspiration is taken from [7ahang’s work](https://www.behance.net/gallery/88433905/Redesign-Smart-Home) found on Behance.
-- Contributions from others in the HomeAssistant forum thread, you can find it [here](https://community.home-assistant.io/t/lovelace-ui-minimalist/322687).
-- The technical part is realised mostly by taking advantage of the great work RomRaider did with his [button-card](https://github.com/custom-cards/button-card).
-- Code refactor, cleanup and maintainance schumijo and paddy0174.
-- Wiki by paddy0174.
-- Special thanks to clemalex and schumijo for contributing their cards to the main repository.
+❤️ Thank you so much for helping out to keep this UI awesome
 
 ### Contributions
 
