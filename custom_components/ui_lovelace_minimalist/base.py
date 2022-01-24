@@ -32,6 +32,10 @@ class UlmConfiguration:
     include_other_cards: bool = DEFAULT_INCLUDE_OTHER_CARDS
     language: str = DEFAULT_LANGUAGE
 
+    def to_dict(self) -> dict:
+        """Return Dict."""
+        return self.__dict__
+
     def to_json(self) -> str:
         """Return a json string."""
         return asdict(self)

@@ -21,6 +21,31 @@ _LOGGER: logging.Logger = logging.getLogger(__name__)
 def load_plugins(hass: HomeAssistant, ulm: UlmBase):
     """Load Plugins."""
 
+    _LOGGER.debug("Checking dependencies")
+    if not os.path.exists(hass.config.path("custom_components/browser_mod")):
+        _LOGGER.error('HACS Integration repo "browser mod" is not installed!')
+
+    depenceny_resource_paths = [
+        "button-card",
+        "light-entity-card",
+        "lovelace-card-mod",
+        "mini-graph-card",
+        "mini-media-player",
+        "my-cards",
+        "simple-weather-card",
+    ]
+    for p in depenceny_resource_paths:
+        if not ulm.configuration.include_other_cards:
+            if not os.path.exists(hass.config.path(f"www/community/{p}")):
+                _LOGGER.error(
+                    f'HACS Frontend repo "{p}" is not installed, See Integration Configuration.'
+                )
+        else:
+            if os.path.exists(hass.config.path(f"www/community/{p}")):
+                _LOGGER.error(
+                    f'HACS Frontend repo "{p}" is already installed, Remove it or disable include custom cards'
+                )
+
     add_extra_js_url(hass, "/ui_lovelace_minimalist/js/ui-lovelace-minimalist.js")
 
     if ulm.configuration.include_other_cards:

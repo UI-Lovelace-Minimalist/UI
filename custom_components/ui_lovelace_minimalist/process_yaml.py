@@ -139,26 +139,6 @@ yaml.composer.Composer.compose_node = compose_node
 # TODO: Maybe move all of this to .base.py so functions can be called
 def process_yaml(hass: HomeAssistant, ulm: UlmBase):
     """Process Yaml."""
-    _LOGGER.debug("Checking dependencies")
-    if not os.path.exists(hass.config.path("custom_components/browser_mod")):
-        _LOGGER.error('HACS Integration repo "browser mod" is not installed!')
-
-    if not ulm.configuration.include_other_cards:
-        depenceny_resource_paths = [
-            "button-card",
-            "light-entity-card",
-            "lovelace-card-mod",
-            "mini-graph-card",
-            "mini-media-player",
-            "my-cards",
-            "simple-weather-card",
-        ]
-        for p in depenceny_resource_paths:
-            if not os.path.exists(hass.config.path(f"www/community/{p}")):
-                _LOGGER.error(
-                    f'HACS Frontend repo "{p}" is not installed, See Integration Configuration.'
-                )
-
     _LOGGER.info("Start of function to process all yaml files!")
 
     # Create config dir

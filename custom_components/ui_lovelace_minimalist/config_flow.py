@@ -131,6 +131,6 @@ class UlmOptionFlowHandler(config_entries.OptionsFlow):
         if ulm.configuration.config_type == ConfigurationType.YAML:
             schema = {vol.Optional("not_in_use", default=""): str}
         else:
-            schema = ulm_config_option_schema(self.config_entry.options)
+            schema = ulm_config_option_schema(ulm.configuration.to_dict())
 
         return self.async_show_form(step_id="user", data_schema=vol.Schema(schema))
