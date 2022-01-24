@@ -5,7 +5,7 @@ hide:
 ---
 <!-- markdownlint-disable MD046 -->
 
-# Custom-card "Printer"
+# Custom-card "Gauge"
 
 The `custom_card_mpse_gauge` is used present a value in form of a gauge. The card can handle two gauges so it would be easy to adapt the card to that if required. I prefered the minimal look.
 
