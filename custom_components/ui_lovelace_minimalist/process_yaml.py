@@ -54,7 +54,7 @@ def load_yamll(fname, secrets=None, args={}):
             if f.readline().lower().startswith("# ui_lovelace_minimalist"):
                 process_yaml = True
         if process_yaml:
-            _LOGGER.warning("PARSING JINJA TEMPLATE")
+            _LOGGER.debug(f"Parsing jira template: {fname}")
             stream = io.StringIO(
                 jinja.get_template(fname).render(
                     {
@@ -139,31 +139,24 @@ yaml.composer.Composer.compose_node = compose_node
 # TODO: Maybe move all of this to .base.py so functions can be called
 def process_yaml(hass: HomeAssistant, ulm: UlmBase):
     """Process Yaml."""
-    _LOGGER.debug("Checking dependencies")
-    if not os.path.exists(hass.config.path("custom_components/browser_mod")):
-        _LOGGER.error('HACS Integration repo "browser mod" is not installed!')
-
-    if not ulm.configuration.include_other_cards:
-        depenceny_resource_paths = [
-            "button-card",
-            "light-entity-card",
-            "lovelace-card-mod",
-            "mini-graph-card",
-            "mini-media-player",
-            "my-cards",
-        ]
-        for p in depenceny_resource_paths:
-            if not os.path.exists(hass.config.path(f"www/community/{p}")):
-                _LOGGER.error(
-                    f'HACS Frontend repo "{p}" is not installed, See Integration Configuration.'
-                )
-
-    _LOGGER.warning("Start of function to process all yaml files!")
+    _LOGGER.info("Start of function to process all yaml files!")
 
     # Create config dir
     os.makedirs(hass.config.path(f"{DOMAIN}/configs"), exist_ok=True)
     os.makedirs(hass.config.path(f"{DOMAIN}/dashboard"), exist_ok=True)
     os.makedirs(hass.config.path(f"{DOMAIN}/custom_cards"), exist_ok=True)
+    # Future use
+    os.makedirs(hass.config.path(f"{DOMAIN}/addons"), exist_ok=True)
+
+    for fname in os.listdir(
+        hass.config.path(f"custom_components/{DOMAIN}/installation/")
+    ):
+        if not os.path.isfile(hass.config.path(f"{DOMAIN}/configs/{fname}")):
+            _LOGGER.debug(f"COPY: {fname}")
+            shutil.copy2(
+                hass.config.path(f"custom_components/{DOMAIN}/installation/{fname}"),
+                hass.config.path(f"{DOMAIN}/configs"),
+            )
 
     if os.path.exists(hass.config.path(f"{DOMAIN}/configs")):
         # Create combined cards dir
@@ -239,7 +232,7 @@ def process_yaml(hass: HomeAssistant, ulm: UlmBase):
             [
                 ("version", VERSION),
                 ("theme", ulm.configuration.theme),
-                ("themes", json.dumps(themes)),
+                # ("themes", json.dumps(themes)),
                 ("installed", installed),
             ]
         )
