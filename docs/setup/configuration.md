@@ -47,7 +47,9 @@ button_card_templates: !include_dir_merge_named "custom_components/ui_lovelace_m
 
 This integration also allows you to add your own Custom Button Cards. These cards will be merged into a directory together witch the cards of this integration and the selected Language.
 
-You might have noticed, during the installation process a directory for UI Lovelace Minimalist is/should be created in the Home Assistant configuration directory. The directory is named `ui_lovelace_minimalist`, within this directory you can put custom cards in the folder `custom_cards`. Make sure it's in the [include_dir_merge_named](https://www.home-assistant.io/docs/configuration/splitting_configuration/#example-include_dir_merge_named) like the following example:
+You might have noticed, during the installation process a directory for UI Lovelace Minimalist is/should be created in the Home Assistant configuration directory. The directory is named `ui_lovelace_minimalist`, within this directory you can put custom cards in the folder `custom_cards`. Basically you just have to create an folder inside `ui_lovelace_minimalist/custom_cards` for each cusom_card you want to add and put the custom_card.yaml file and the language file you need for the respective custom_card inside.
+
+Make sure it's in the format like the following example:
 
 ```yaml
 config
@@ -63,9 +65,9 @@ config
     └── dashboard
 ```
 
-You don't need to do any extra inclusion in your dashboard yaml via `!include`, the custom_cards will be copied from this folder to the custom_component directory. The custom_cards folder itself remains untouched.
+You don't need to do any extra inclusion in your dashboard yaml via `!include`, the custom_cards will be copied from this folder to the custom_component directory. The custom_cards folder itself remains untouched. A list of all currently available custom_cards can be found on our repo here: https://github.com/UI-Lovelace-Minimalist/UI/tree/main/custom_cards
 
 !!! note ""
 
-    Once you have added new custom_cards, you can always check the orders via Home Assistant and add the new cards to the config.
-    Just go to "Configuration" --> "Settings" in Home Assistant and press the "UI_LOVELACE_MINIMALIST" button within the "YAML configuration reloading" section.
+    Once you have added new custom_cards, you can always reload that folder via Home Assistant and add the new cards to the config.
+    Just go to `"Configuration" --> "Settings"` in Home Assistant and press the `"UI_LOVELACE_MINIMALIST"` button within the "YAML configuration reloading" section.
