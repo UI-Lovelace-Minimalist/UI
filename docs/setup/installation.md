@@ -3,7 +3,7 @@ title: Installation
 hide:
   - toc
 ---
-
+<!-- markdownlint-disable MD046 -->
 ## Install Integration
 
 Open your Home Assistant instance and start setting up "UI Lovelace Minimalist" under "Configuration" --> "Devices & Services". Or you can use the My Home Assistant Button bellow.
@@ -20,6 +20,10 @@ Now you can configure the Integration, you can do this also after it's installed
 - Theme: Choose a theme of your choice (Note: Both themes will be installed anyway and can be customized later if needed.)
 - Theme path: Make sure this is set to the same path as is configured in your `configuration.yaml` (default: `/themes`)
 - Include Custom Cards: This will make sure almost all dependency cards are included and configured for you.
+
+!!! danger ""
+
+    Activate **"Include Custom Cards"** only if you have not already installed the required Lovelace resources yourself, or if you dont want to install them by yourself. Otherwise this can currently lead to a freeze of the frontend due to double loaded lovelace resources.
 
 | Included lovelace resources                                             |
 |-------------------------------------------------------------------------|
