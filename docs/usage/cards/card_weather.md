@@ -3,6 +3,7 @@ title: card_weather
 hide:
   - toc
 ---
+
 <!-- markdownlint-disable MD046 -->
 
 ## Description
@@ -14,16 +15,22 @@ This is a card based on simple-weather-card to show your weather.
 
 ## Variables
 
-| Variable | Default | Required         | Notes             |
-|----------|---------|------------------|-------------------|
-| entity     |         | :material-check: | your weather entity |
+| Variable                  | Default         | Required         | Notes                                                                                                       |
+| ------------------------- | --------------- | ---------------- | ----------------------------------------------------------------------------------------------------------- |
+| entity                    |                 | :material-check: | your weather entity                                                                                         |
+| ulm_card_weather_name     | `friendly_name` |                  | customize display name                                                                                      |
+| ulm_card_weather_backdrop | `false`         |                  | add backdrop. See [simple-weather-card](https://github.com/kalkih/simple-weather-card) for more information |
 
 ## Usage
 
 ```yaml
-- type: 'custom:button-card'
+- type: "custom:button-card"
   template: card_weather
   entity: weather.my_local_weather
+  variables:
+    ulm_card_weather_name: " "
+    ulm_card_weather_backdrop:
+      fade: true
 ```
 
 ??? note "Template Code"
