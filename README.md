@@ -225,6 +225,13 @@ The same goes for our `custom_cards`. As the number grows, the list would be to 
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/willyp713>
+            <img src=https://avatars.githubusercontent.com/u/21319282?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=willyp713/>
+            <br />
+            <sub style="font-size:10px"><b>willyp713</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
         <a href=https://github.com/desty2k>
             <img src=https://avatars.githubusercontent.com/u/55806660?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Wojciech Wentland/>
             <br />
@@ -245,6 +252,8 @@ The same goes for our `custom_cards`. As the number grows, the list would be to 
             <sub style="font-size:10px"><b>Mathieu Desvé</b></sub>
         </a>
     </td>
+</tr>
+<tr>
     <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
         <a href=https://github.com/TJohnson93>
             <img src=https://avatars.githubusercontent.com/u/6167090?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Todd Johnson/>
@@ -252,8 +261,6 @@ The same goes for our `custom_cards`. As the number grows, the list would be to 
             <sub style="font-size:10px"><b>Todd Johnson</b></sub>
         </a>
     </td>
-</tr>
-<tr>
     <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
         <a href=https://github.com/servis>
             <img src=https://avatars.githubusercontent.com/u/3391351?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=servis/>
@@ -287,13 +294,6 @@ The same goes for our `custom_cards`. As the number grows, the list would be to 
             <img src=https://avatars.githubusercontent.com/u/34039879?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=raphael/>
             <br />
             <sub style="font-size:10px"><b>raphael</b></sub>
-        </a>
-    </td>
-    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
-        <a href=https://github.com/AndyVRD>
-            <img src=https://avatars.githubusercontent.com/u/67138158?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=AndyVRD/>
-            <br />
-            <sub style="font-size:10px"><b>AndyVRD</b></sub>
         </a>
     </td>
 </tr>
