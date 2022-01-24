@@ -18,5 +18,6 @@ jobs:
           FONT_SIZE: "10"
           AVATAR_SHAPE: "round"
           PATH: "/README.md"
+          BRANCH: "dev"
           COMMIT_MESSAGE: "docs(README): update contributors"
           ACCESS_TOKEN: "${{secrets.GITHUB_TOKEN}}"
