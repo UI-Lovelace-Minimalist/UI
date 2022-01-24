@@ -3,8 +3,8 @@ name: "Pages"
 
 on:
   push:
-    # TODO: Remove 'dev' branch after testing
-    branches: ["main", "dev"]
+    # Should only run on "main" since we dont want any "dev" changes in our docs before release
+    branches: ["main"]
 
 jobs:
   deploy:

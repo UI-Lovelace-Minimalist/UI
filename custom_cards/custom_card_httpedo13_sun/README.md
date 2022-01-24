@@ -1,3 +1,10 @@
+---
+title: custom_card_httpedo13_sun
+hide:
+  - toc
+---
+<!-- markdownlint-disable MD046 -->
+
 # Custom-card "Sun"
 
 The `custom_card_httpedo13_sun` adapt `sun card` for minimalist ui.

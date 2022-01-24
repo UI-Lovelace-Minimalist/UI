@@ -163,6 +163,7 @@ def process_yaml(hass: HomeAssistant, ulm: UlmBase):
 
     # Create config dir
     os.makedirs(hass.config.path(f"{DOMAIN}/configs"), exist_ok=True)
+    os.makedirs(hass.config.path(f"{DOMAIN}/dashboard"), exist_ok=True)
     os.makedirs(hass.config.path(f"{DOMAIN}/custom_cards"), exist_ok=True)
     # Future use
     os.makedirs(hass.config.path(f"{DOMAIN}/addons"), exist_ok=True)
@@ -198,6 +199,14 @@ def process_yaml(hass: HomeAssistant, ulm: UlmBase):
         # Non needed yet
         # translations = load_yamll(hass.config.path(f"custom_components/{DOMAIN}/lovelace/translations/{language}.yaml"))
 
+        # Copy example dashboard file over to user config dir if not exists
+        if not os.path.exists(hass.config.path(f"{DOMAIN}/dashboard/ui-lovelace.yaml")):
+            shutil.copy2(
+                hass.config.path(
+                    f"custom_components/{DOMAIN}/lovelace/ui-lovelace.yaml"
+                ),
+                hass.config.path(f"{DOMAIN}/dashboard/ui-lovelace.yaml"),
+            )
         # Copy chosen language file over to config dir
         shutil.copy2(
             hass.config.path(

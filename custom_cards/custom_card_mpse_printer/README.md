@@ -1,3 +1,10 @@
+---
+title: custom_card_mpse_printer
+hide:
+  - toc
+---
+<!-- markdownlint-disable MD046 -->
+
 # Custom-card "Printer"
 
 The `custom_card_mpse_printer` is used to display the status of a printer and the toner.

@@ -1,28 +1,14 @@
 ---
 title: popup_aircondition
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 
-## Description
+### Aircondition popup
 
-![example-image](../../assets/img/card_example.png){ width="500" }
+TBD
 
-Popup description should be here.
+## Credits
 
-## Variables
-
-| Variable | Default | Required         | Notes             |
-|----------|---------|------------------|-------------------|
-| name     |         | :material-check: |                   |
-|background| `true`  | :material-close: | Enable background |
-
-## Usage
-
-```yaml
-- type: "custom:button-card"
-  template: example
-```
-
-??? note "Template Code"
-
-        Internal Link to Template Code here
+- Designed by schumijo and bavo (special thanks to him for his help on this development)).

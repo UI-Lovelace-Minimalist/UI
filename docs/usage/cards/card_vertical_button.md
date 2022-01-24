@@ -1,5 +1,7 @@
 ---
 title: card_vertical_button
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 
@@ -13,16 +15,24 @@ Card description should be here.
 
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
-| name     |         | :material-check: |                   |
-|background| `true`  | :material-close: | Enable background |
+| ulm_card_vertical_button_state     | on | :material-check: | Compare the entity state value with this value, ex: the button will be on if the entity.state == state |
+| ulm_card_vertical_button_color | blue | :material-close: | color for the when the button is on. The color names are defined in the theme. The following colors are supported: blue, green, yellow, pink, red, purple |
 
 ## Usage
 
 ```yaml
-- type: "custom:button-card"
-  template: example
+- type: 'custom:button-card'
+  template: card_vertical_button
+  entity: input_select.test_vertical_buttons
+  name: Away
+  icon: mdi:television-classic
+  variables:
+    ulm_card_vertical_button_state: Away
+    ulm_card_vertical_button_color: green
 ```
 
 ??? note "Template Code"
 
-        Internal Link to Template Code here
+    ```yaml title="card_light.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_vertical_button.yaml"
+    ```

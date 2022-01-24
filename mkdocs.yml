@@ -12,10 +12,14 @@ edit_uri: "edit/dev/docs"
 nav:
   - Home: "index.md"
   - Setup:
+      - Download: "setup/download.md"
       - Installation: "setup/installation.md"
       - Configuration: "setup/configuration.md"
   - "... | usage/**/*.md"
-  - "... | development/**/*.md"
+  - Development:
+      - Card Style Guide: "development/card_style_guide.md"
+      - Docs Style Guide: "development/docs_style_guide.md"
+      - Custom-Cards: "development/custom_cards.md"
 
 extra_css:
   - "assets/stylesheets/extra.css"
@@ -23,13 +27,13 @@ extra_css:
 theme:
   name: "material"
   language: "en"
-  font:
-    text: "Comfortaa"
+  font: false
   logo: "assets/logos/website_logo.png"
   favicon: "assets/logos/favicon/favicon-32x32.png"
+  custom_dir: "docs/assets/overrides"
   palette:
     - media: "(prefers-color-scheme: light)"
-      scheme: "default"
+      primary: "white"
       toggle:
         icon: "material/weather-night"
         name: "Dark mode"
@@ -42,8 +46,8 @@ theme:
     - "navigation.instant"
     - "navigation.tracking"
     - "navigation.top"
+    - "navigation.tabs"
     - "navigation.indexes"
-    - "toc.integrate"
     - "search.suggest"
     - "search.highlight"
     - "search.share"

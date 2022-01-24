@@ -1,3 +1,10 @@
+---
+title: card_media_player_sonos_with_controls
+hide:
+  - toc
+---
+<!-- markdownlint-disable MD046 -->
+
 ### Media player: sonos
 
 > NOTE

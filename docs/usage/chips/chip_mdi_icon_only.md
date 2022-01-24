@@ -1,28 +1,35 @@
 ---
 title: chip_mdi_icon_only
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 
 ## Description
 
-![example-image](../../assets/img/ulm_chips/chip_example.png){ width="500" }
+![example-image](../../assets/img/ulm_chips/chip_mdi_icon_only.png){ width="500" }
 
-Chip description should be here.
+This `chip` displays an icon using [mdi](https://materialdesignicons.com/).
 
 ## Variables
 
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
-| name     |         | :material-check: |                   |
-|background| `true`  | :material-close: | Enable background |
+|ulm_chip_mdi_icon_only_entity      |         | :material-check: | `entity` to link     |
+|ulm_chip_mdi_icon_only_icon        |         | :material-check: | mdi:icon to display  |
 
 ## Usage
 
 ```yaml
-- type: "custom:button-card"
-  template: example
+- type: 'custom:button-card'
+  template: chip_mdi_icon_only
+  variables:
+    ulm_chip_mdi_icon_only_entity: binary_sensor.bedroom_master_closed_door
+    ulm_chip_mdi_icon_only_icon: mdi:door
 ```
 
 ??? note "Template Code"
 
-        Internal Link to Template Code here
+    ```yaml title="card_light.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/chips/chip_mdi_icon_only.yaml"
+    ```

@@ -1,28 +1,35 @@
 ---
 title: popup_media_player
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 
-## Description
+### Media Player popup
 
-![example-image](../../assets/img/card_example.png){ width="500" }
+![Phone](../../assets/img/popup_media_phone.png){ width="500" }
+![Tablet](../../assets/img/popup_media_tablet.png){ width="500" }
 
-Popup description should be here.
+#### Card compatibility
 
-## Variables
+This popup is displayed using ``hold_action`` and it is compatible with the following cards/chips :
 
-| Variable | Default | Required         | Notes             |
-|----------|---------|------------------|-------------------|
-| name     |         | :material-check: |                   |
-|background| `true`  | :material-close: | Enable background |
+- card_media_player
 
-## Usage
+#### How to use
+
+To enable this popup, you need to add the ``popup_media_player`` template on your card.
+
+For exemple :
 
 ```yaml
 - type: "custom:button-card"
-  template: example
+  template:
+    - card_media_player
+    - popup_media_player
+  entity: media_player.lounge_room
 ```
 
-??? note "Template Code"
+## Credits
 
-        Internal Link to Template Code here
+- Designed by schumijo and bavo (special thanks to him for his help on this development)).

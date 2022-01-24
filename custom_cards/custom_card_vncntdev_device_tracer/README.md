@@ -1,3 +1,10 @@
+---
+title: custom_card_vncntdev_device_tracker
+hide:
+  - toc
+---
+<!-- markdownlint-disable MD046 -->
+
 # Custom-card "Device Tracker (Online or Offline ?)"
 
 This card indicated whether a given device is online or offline using the Home Assistant device_tracker or the WoL-integration.

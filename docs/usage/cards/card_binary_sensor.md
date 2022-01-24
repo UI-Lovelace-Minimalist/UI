@@ -1,5 +1,7 @@
 ---
 title: card_binary_sensor
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 
@@ -7,22 +9,28 @@ title: card_binary_sensor
 
 ![example-image](../../assets/img/ulm_cards/card_binary_sensor.png){ width="500" }
 
-Card description should be here.
+The `binary-sensor-card` is to show the state (on/off, open/close, etc.) of a binary sensor, eg. your garage door or a window contact sensor.
 
 ## Variables
 
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
-| name     |         | :material-check: |                   |
-|background| `true`  | :material-close: | Enable background |
+| entity     |         | :material-check: |                   |
+| show_last_changed |   | :material-close: | `true` or `false` |
 
 ## Usage
 
 ```yaml
-- type: "custom:button-card"
-  template: example
+- type: 'custom:button-card'
+  template: card_binary_sensor_alert
+  variables:
+    - ulm_card_binary_sensor_alert: true
+  entity: binary_sensor.garage_door
+  show_last_changed: true
 ```
 
 ??? note "Template Code"
 
-        Internal Link to Template Code here
+    ```yaml title="card_light.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_binary_sensor.yaml"
+    ```

@@ -1,28 +1,41 @@
 ---
 title: popup_light
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 
-## Description
+### Light popup
 
-![example-image](../../assets/img/card_example.png){ width="500" }
+![Phone](../../assets/img/popup_light_phone.png){ width="500" }
+![Tablet](../../assets/img/popup_light_tablet.png){ width="500" }
 
-Popup description should be here.
+#### Requirements
 
-## Variables
+- My Cards Bundle aka slider-card (download for HACS)
+- Light Entity Card (download for HACS)
 
-| Variable | Default | Required         | Notes             |
-|----------|---------|------------------|-------------------|
-| name     |         | :material-check: |                   |
-|background| `true`  | :material-close: | Enable background |
+##### Card compatibility
 
-## Usage
+This popup is displayed using ``hold_action`` and it is compatible with the following cards/chips :
+
+- card_light
+
+##### How to use
+
+To enable this popup, you need to add the ``popup_light`` template on your card with variable `ulm_card_light_enable_popup` set to ``true``.
+
+For exemple :
 
 ```yaml
 - type: "custom:button-card"
-  template: example
+  template:
+    - card_light
+  entity: light.cuisine
+  variables:
+    ulm_card_light_enable_popup: true
 ```
 
-??? note "Template Code"
+## Credits
 
-        Internal Link to Template Code here
+- Designed by schumijo and bavo (special thanks to him for his help on this development)).

@@ -1,5 +1,7 @@
 ---
 title: card_input_boolean
+hide:
+  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 
@@ -7,22 +9,24 @@ title: card_input_boolean
 
 ![example-image](../../assets/img/ulm_cards/card_input_boolean.png){ width="500" }
 
-Card description should be here.
+The `input-boolean-card` is to switch an `input_boolean` on or off.
 
 ## Variables
 
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
-| name     |         | :material-check: |                   |
-|background| `true`  | :material-close: | Enable background |
+| entity     |         | :material-check: |                   |
 
 ## Usage
 
 ```yaml
-- type: "custom:button-card"
-  template: example
+- type: 'custom:button-card'
+  template: card_input_boolean
+  entity: input_boolean.guest_mode
 ```
 
 ??? note "Template Code"
 
-        Internal Link to Template Code here
+    ```yaml title="card_light.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_input_boolean.yaml"
+    ```

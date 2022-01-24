@@ -3,7 +3,8 @@ name: "Manage labels"
 
 on:
   push:
-    branches: ["main", "dev"]
+    # Should only run on "main" since labels on "dev" sometimes not usabele for base branch
+    branches: ["main"]
 
 jobs:
   labeler:

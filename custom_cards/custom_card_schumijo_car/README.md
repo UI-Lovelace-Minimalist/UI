@@ -1,3 +1,10 @@
+---
+title: custom_card_schumijo_car
+hide:
+  - toc
+---
+<!-- markdownlint-disable MD046 -->
+
 # Custom-card "Car"
 
 This is a `custom-card` to informations about your car.
