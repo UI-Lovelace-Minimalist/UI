@@ -74,20 +74,292 @@ The actual version of this "theme" has 20 different cards, seven chips and other
 
 The same goes for our `custom_cards`. As the number grows, the list would be to big for this readme, so we provide you with an overview page with pictures, code examples and additional informations. [Find the list here](https://ui-lovelace-minimalist.github.io/UI/usage/custom_cards/custom_card_bar_card/).
 
-### Credits & Contributors
+### Contributors
 
-- This design was made by [tben](https://community.home-assistant.io/u/tben/summary)
-- A lot of inspiration is taken from [7ahang’s work](https://www.behance.net/gallery/88433905/Redesign-Smart-Home) found on Behance.
-- Contributions from others in the HomeAssistant forum thread, you can find it here.
-- The technical part is realised mostly by taking advantage of the great work RomRaider did with his [button-card](https://github.com/custom-cards/button-card).
-- Code refactor, cleanup and maintainance by [schumijo](https://github.com/schumijo) and [paddy0174](https://github.com/Paddy0174) & [CM000n](https://github.com/CM000n).
-- [dwainscheeren](https://github.com/dwainscheeren) for his inspiration to deliver themes via HACS.
-- Wiki by [paddy0174](https://github.com/Paddy0174).
-- Special thanks to clemalex and [schumijo](https://github.com/schumijo)for contributing their cards to the main repository.
-- [stokkie90](https://github.com/stokkie90) for implementing most of the HACS functionalities.
-- And of course [all the others](https://github.com/UI-Lovelace-Minimalist/UI/graphs/contributors) who cannot be named here due to space limitations.
+<table>
+<tr>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/CM000n>
+            <img src=https://avatars.githubusercontent.com/u/7945681?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Simon Hörrle/>
+            <br />
+            <sub style="font-size:10px"><b>Simon Hörrle</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/stokkie90>
+            <img src=https://avatars.githubusercontent.com/u/10831825?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Rick Stokkingreef/>
+            <br />
+            <sub style="font-size:10px"><b>Rick Stokkingreef</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/schumijo>
+            <img src=https://avatars.githubusercontent.com/u/40740060?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=schumijo/>
+            <br />
+            <sub style="font-size:10px"><b>schumijo</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/basbruss>
+            <img src=https://avatars.githubusercontent.com/u/68892092?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=BasBruss/>
+            <br />
+            <sub style="font-size:10px"><b>BasBruss</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/sildehoop>
+            <img src=https://avatars.githubusercontent.com/u/34340385?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Sil de Hoop/>
+            <br />
+            <sub style="font-size:10px"><b>Sil de Hoop</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/httpedo13>
+            <img src=https://avatars.githubusercontent.com/u/40502451?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=httpedo13/>
+            <br />
+            <sub style="font-size:10px"><b>httpedo13</b></sub>
+        </a>
+    </td>
+</tr>
+<tr>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/TBens>
+            <img src=https://avatars.githubusercontent.com/u/12232620?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=TBens/>
+            <br />
+            <sub style="font-size:10px"><b>TBens</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/mp-se>
+            <img src=https://avatars.githubusercontent.com/u/51722613?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Magnus Persson/>
+            <br />
+            <sub style="font-size:10px"><b>Magnus Persson</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/actions-user>
+            <img src=https://avatars.githubusercontent.com/u/65916846?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=actions-user/>
+            <br />
+            <sub style="font-size:10px"><b>actions-user</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/aehru>
+            <img src=https://avatars.githubusercontent.com/u/17024799?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Arthur/>
+            <br />
+            <sub style="font-size:10px"><b>Arthur</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/juvenalandres>
+            <img src=https://avatars.githubusercontent.com/u/18738412?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=juvenalandres/>
+            <br />
+            <sub style="font-size:10px"><b>juvenalandres</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/Paddy0174>
+            <img src=https://avatars.githubusercontent.com/u/1948551?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Paddy0174/>
+            <br />
+            <sub style="font-size:10px"><b>Paddy0174</b></sub>
+        </a>
+    </td>
+</tr>
+<tr>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/tkwy-rick>
+            <img src=https://avatars.githubusercontent.com/u/66776023?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=tkwy-rick/>
+            <br />
+            <sub style="font-size:10px"><b>tkwy-rick</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/vncnt-dev>
+            <img src=https://avatars.githubusercontent.com/u/36577908?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Vincent Pelz/>
+            <br />
+            <sub style="font-size:10px"><b>Vincent Pelz</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/13robin37>
+            <img src=https://avatars.githubusercontent.com/u/83340?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Robin/>
+            <br />
+            <sub style="font-size:10px"><b>Robin</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/saxel>
+            <img src=https://avatars.githubusercontent.com/u/12456858?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=saxel/>
+            <br />
+            <sub style="font-size:10px"><b>saxel</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/revin34>
+            <img src=https://avatars.githubusercontent.com/u/50664921?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=revin34/>
+            <br />
+            <sub style="font-size:10px"><b>revin34</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/Damix48>
+            <img src=https://avatars.githubusercontent.com/u/23702345?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Damiano Zanardo/>
+            <br />
+            <sub style="font-size:10px"><b>Damiano Zanardo</b></sub>
+        </a>
+    </td>
+</tr>
+<tr>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/denes44>
+            <img src=https://avatars.githubusercontent.com/u/60078357?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=denes44/>
+            <br />
+            <sub style="font-size:10px"><b>denes44</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/telashton>
+            <img src=https://avatars.githubusercontent.com/u/27425051?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=telashton/>
+            <br />
+            <sub style="font-size:10px"><b>telashton</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/desty2k>
+            <img src=https://avatars.githubusercontent.com/u/55806660?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Wojciech Wentland/>
+            <br />
+            <sub style="font-size:10px"><b>Wojciech Wentland</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/KaherdinTristan>
+            <img src=https://avatars.githubusercontent.com/u/3398594?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Andreas/>
+            <br />
+            <sub style="font-size:10px"><b>Andreas</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/mazerte>
+            <img src=https://avatars.githubusercontent.com/u/236866?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Mathieu Desvé/>
+            <br />
+            <sub style="font-size:10px"><b>Mathieu Desvé</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/TJohnson93>
+            <img src=https://avatars.githubusercontent.com/u/6167090?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Todd Johnson/>
+            <br />
+            <sub style="font-size:10px"><b>Todd Johnson</b></sub>
+        </a>
+    </td>
+</tr>
+<tr>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/servis>
+            <img src=https://avatars.githubusercontent.com/u/3391351?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=servis/>
+            <br />
+            <sub style="font-size:10px"><b>servis</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/bavo>
+            <img src=https://avatars.githubusercontent.com/u/1813273?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=bavo/>
+            <br />
+            <sub style="font-size:10px"><b>bavo</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/checkerschaf>
+            <img src=https://avatars.githubusercontent.com/u/7757317?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=checkerschaf | Jan/>
+            <br />
+            <sub style="font-size:10px"><b>checkerschaf | Jan</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/pierrecle>
+            <img src=https://avatars.githubusercontent.com/u/397503?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Pierre/>
+            <br />
+            <sub style="font-size:10px"><b>Pierre</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/rphlwnk>
+            <img src=https://avatars.githubusercontent.com/u/34039879?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=raphael/>
+            <br />
+            <sub style="font-size:10px"><b>raphael</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/AndyVRD>
+            <img src=https://avatars.githubusercontent.com/u/67138158?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=AndyVRD/>
+            <br />
+            <sub style="font-size:10px"><b>AndyVRD</b></sub>
+        </a>
+    </td>
+</tr>
+<tr>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/briis>
+            <img src=https://avatars.githubusercontent.com/u/24776272?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Bjarne Riis/>
+            <br />
+            <sub style="font-size:10px"><b>Bjarne Riis</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/eliseo-juan>
+            <img src=https://avatars.githubusercontent.com/u/5939795?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Eliseo Juan Quintanilla/>
+            <br />
+            <sub style="font-size:10px"><b>Eliseo Juan Quintanilla</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/EmilZackrisson>
+            <img src=https://avatars.githubusercontent.com/u/51415707?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Emil Zackrisson/>
+            <br />
+            <sub style="font-size:10px"><b>Emil Zackrisson</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/jp2creation>
+            <img src=https://avatars.githubusercontent.com/u/17984068?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=JP2 Création/>
+            <br />
+            <sub style="font-size:10px"><b>JP2 Création</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/matrixx567>
+            <img src=https://avatars.githubusercontent.com/u/4608946?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Martin Nöhrer/>
+            <br />
+            <sub style="font-size:10px"><b>Martin Nöhrer</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/pedrojreis>
+            <img src=https://avatars.githubusercontent.com/u/28795057?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Pedro Reis/>
+            <br />
+            <sub style="font-size:10px"><b>Pedro Reis</b></sub>
+        </a>
+    </td>
+</tr>
+<tr>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/jmoransalama>
+            <img src=https://avatars.githubusercontent.com/u/16177130?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=jmoransalama/>
+            <br />
+            <sub style="font-size:10px"><b>jmoransalama</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/tombo12354>
+            <img src=https://avatars.githubusercontent.com/u/87553937?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=tombo12354/>
+            <br />
+            <sub style="font-size:10px"><b>tombo12354</b></sub>
+        </a>
+    </td>
+</tr>
+</table>
 
-❤️ Thank you so much for helping to keep this UI awesome
+❤️ Thank you so much for helping out to keep this UI awesome
 
 ### Contributions
 
