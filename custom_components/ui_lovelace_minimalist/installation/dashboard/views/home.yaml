@@ -11,8 +11,70 @@
   path: "home"
   type: "custom:ui-lovelace-minimalist"
   cards:
-    - type: "custom:ulm-flexbox-card"
-      item_classes: "col-xs-12 col-sm-6 col-md-5 col-lg-4"
+  {% if _ulm_global.installed and _ulm_global.installed == 'false' %}
+    - type: vertical-stack
       cards:
-        - type: "custom:button-card"
-          entity: "sun.sun"
+        - type: markdown
+          content: >
+            ## You have successfully installed the UI Lovelace Minimalist Dashboard
+
+            Explore the wonderfull templates/cards we offer.
+
+        - type: horizontal-stack
+          cards:
+            - type: custom:button-card
+              template: card_title
+              name: Continue and load dashboard
+              icon: mdi:chevron-right
+              styles:
+                card:
+                  - padding: 8px
+              tap_action:
+                action: call-service
+                service: ui_lovelace_minimalist.installed
+  {% else %}
+    - type: "custom:ulm-flexbox-card"
+      css: |
+        padding: 0px;
+        background-color: var(--app-header-background-color);
+        color: var(--app-header-text-color, white);
+        border-radius: 0;
+        overflow: hidden;
+      padding: true
+      cards:
+        - type: custom:ulm-flexbox-card
+          item_classes: 'col-xs-6'
+          cards:
+            - type: markdown
+              content: >
+                {% raw %}
+                ## Hello, {{ user}}
+                {% endraw %}
+
+    {% if _ulm_config.global['weather'] %}
+    - type: weather-forecast
+      item_classes: 'col-xs-6'
+      padding: true
+      entity: {{ _ulm_config.global['weather'] }}
+      show_forecast: true
+    {% endif %}
+
+    - type: custom:auto-entities
+      show_empty: false
+      card:
+        type: custom:ulm-flexbox-card
+        items_classes: 'col-xs-4'
+      card_param: cards
+      filter:
+        include:
+          - domain: light
+            options:
+              type: custom:button-card
+              template: card_light
+              variables:
+                ulm_card_light_enable_slider: true
+                ulm_card_light_enable_collapse: true
+                ulm_card_light_enable_popup: true
+        exclude:
+          - state: "unavailable"
+{% endif %}

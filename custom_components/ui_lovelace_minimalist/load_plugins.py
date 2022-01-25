@@ -59,10 +59,10 @@ def load_plugins(hass: HomeAssistant, ulm: UlmBase):
         add_extra_js_url(
             hass, "/ui_lovelace_minimalist/cards/lovelace-card-mod/card-mod.js"
         )
-        add_extra_js_url(
-            hass,
-            "/ui_lovelace_minimalist/cards/lovelace-card-mod/rollup.config.js",
-        )
+        # add_extra_js_url(
+        #     hass,
+        #     "/ui_lovelace_minimalist/cards/lovelace-card-mod/rollup.config.js",
+        # )
         add_extra_js_url(
             hass,
             "/ui_lovelace_minimalist/cards/mini-graph-card/mini-graph-card-bundle.js",

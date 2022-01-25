@@ -20,6 +20,11 @@ repos:
       - id: "check-merge-conflict"
       - id: "check-yaml"
         args: ["--unsafe"]
+        exclude: |
+            (?x)^(
+                .pre-commit-config.yaml|
+                custom_components/ui_lovelace_minimalist/installation/dashboard/.*
+            )$
       - id: "detect-private-key"
       - id: "no-commit-to-branch"
       - id: "requirements-txt-fixer"
@@ -36,7 +41,8 @@ repos:
         # exclude: ".pre-commit-config.yaml"
         exclude: |
             (?x)^(
-                .pre-commit-config.yaml
+                .pre-commit-config.yaml|
+                custom_components/ui_lovelace_minimalist/installation/dashboard/.*
             )$
 
   - repo: https://github.com/igorshubovych/markdownlint-cli

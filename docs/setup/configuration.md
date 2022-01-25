@@ -18,7 +18,10 @@ config
     ├── config
     ├── custom_cards
     └── dashboard
-        └── ui-lovelace.yaml
+        ├── ui-lovelace.yaml
+        └── views/
+            └── home.yaml
+
 ```
 
 This example dashbaord file already contains the necessary directory bindings with our templates from the custom_component and you can directly start customizing the dashboard according to your own wishes.
@@ -71,3 +74,35 @@ You don't need to do any extra inclusion in your dashboard yaml via `!include`, 
 
     Once you have added new custom_cards, you can always reload that folder via Home Assistant and add the new cards to the config.
     Just go to `"Configuration" --> "Settings"` in Home Assistant and press the `"UI_LOVELACE_MINIMALIST"` button within the "YAML configuration reloading" section.
+
+## Advanced Templating
+
+This integrations also allows you to use Jinja2 Templating language to create views. This can be really powerfull! You might have noticed the directory `configs` in the `/config/ui_lovelace_minimalist/` folder. This directory currenlty consists of 2 files:
+
+- `global.yaml`: Global you can define key/values that you would like to use inside your lovelace views.
+- `rooms.yaml`: Here you can make a list of rooms and loop over them in views. For example create a separate view for every room or create a room card for every room.
+
+The values you put in these files will be available under the variable in `_ulm_config`. to use it in a template it's required that the included file is included using a `!include` statement. and the included file must have `# ui_lovelace_minimalist` on the first line! If both conditions are met, the integration will parse it as a Jinja2 Template. So it will allows you to do magic like:
+
+```yaml title="global.yaml"
+global:
+  weather: weather.buienradar
+```
+
+```yaml+jinja title="views/home.yaml"
+# ui_lovelace_minimalist
+
+- title: "Home"
+  icon: "mdi:home"
+  path: "home"
+  type: "custom:ui-lovelace-minimalist"
+  cards:
+    - type: "custom:ulm-flexbox-card"
+      item_classes: "col-xs-12 col-sm-6 col-md-5 col-lg-4"
+      cards:
+        {% if "weather" in _ulm_config.global %}
+        - type: "custom:button-card"
+          entity: "{{ _ulm_config.global.weather }}"
+          template: card_weather
+        {% endif %}
+```
