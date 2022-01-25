@@ -28,7 +28,7 @@ To enable this popup, add the variable ``ulm_card_light_enable_popup`` and set t
 !!! warning
     This is a different approach as the other `popup_cards` use.
 
-For exemple :
+For example :
 
 ```yaml
 - type: "custom:button-card"
