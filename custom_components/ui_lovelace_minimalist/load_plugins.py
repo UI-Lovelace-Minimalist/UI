@@ -27,7 +27,7 @@ def load_plugins(hass: HomeAssistant, ulm: UlmBase):
 
     depenceny_resource_paths = [
         "button-card",
-        "light-entity-card",
+        "auto-entities" "light-entity-card",
         "lovelace-card-mod",
         "mini-graph-card",
         "mini-media-player",
@@ -52,6 +52,9 @@ def load_plugins(hass: HomeAssistant, ulm: UlmBase):
         # # Cards by others
         add_extra_js_url(
             hass, "/ui_lovelace_minimalist/cards/button-card/button-card.js"
+        )
+        add_extra_js_url(
+            hass, "/ui_lovelace_minimalist/cards/auto-entities/auto-entities.js"
         )
         add_extra_js_url(
             hass, "/ui_lovelace_minimalist/cards/lovelace-card-mod/card-mod.js"

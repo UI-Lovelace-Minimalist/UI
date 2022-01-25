@@ -1,0 +1,18 @@
+# ui_lovelace_minimalist
+
+#
+# Do not remove: "# ui_lovelace_minimalist" on the top of the file.
+#  This is used to parse it as a Jinja2 Template and gives you more power.
+#  If you don't want it remove it
+#
+
+- title: "Home"
+  icon: "mdi:home"
+  path: "home"
+  type: "custom:ui-lovelace-minimalist"
+  cards:
+    - type: "custom:ulm-flexbox-card"
+      item_classes: "col-xs-12 col-sm-6 col-md-5 col-lg-4"
+      cards:
+        - type: "custom:button-card"
+          entity: "sun.sun"

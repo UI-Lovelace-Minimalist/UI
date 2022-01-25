@@ -1,4 +1,3 @@
----
 # ui_lovelace_minimalist
 version: "{{ _ulm_global.version }}"
 theme: "{{ _ulm_global.theme }}"

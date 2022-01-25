@@ -32,14 +32,15 @@ Now you can configure the Integration, you can do this also after it's installed
 
     Activate **"Include Custom Cards"** only if you have not already installed the required Lovelace resources yourself, or if you dont want to install them by yourself. Otherwise this can currently lead to a freeze of the frontend due to double loaded lovelace resources.
 
-| Included lovelace resources                                             |
-| ----------------------------------------------------------------------- |
-| [`button-card`](https://github.com/custom-cards/button-card)            |
-| [`lovelace-card-mod`](https://github.com/thomasloven/lovelace-card-mod) |
-| [`mini-graph-card`](https://github.com/kalkih/mini-graph-card)          |
-| [`mini-media-player`](https://github.com/kalkih/mini-media-player)      |
-| [`my-cards-slider-card`](https://github.com/AnthonMS/my-cards)          |
-| [`light-entity-card`](https://github.com/ljmerza/light-entity-card)     |
+| Included lovelace resources                                                   |
+| ----------------------------------------------------------------------------- |
+| [`button-card`](https://github.com/custom-cards/button-card)                  |
+| [`lovelace-card-mod`](https://github.com/thomasloven/lovelace-card-mod)       |
+| [`mini-graph-card`](https://github.com/kalkih/mini-graph-card)                |
+| [`mini-media-player`](https://github.com/kalkih/mini-media-player)            |
+| [`my-cards-slider-card`](https://github.com/AnthonMS/my-cards)                |
+| [`light-entity-card`](https://github.com/ljmerza/light-entity-card)           |
+| [`auto-entities-card`](https://github.com/thomasloven/lovelace-auto-entities) |
 
 Hit submit and in the Sidebar a new Dashboard entry should appear.
 A new file for the dashboard configuration, with a small example, where you can generate your own layout should have been created under that location:
