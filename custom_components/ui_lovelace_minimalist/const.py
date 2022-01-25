@@ -12,6 +12,7 @@ ISSUE_URL = "https://github.com/stokkie90/ui-lovelace-minimalist/issues"
 CONF_LANGUAGE = "language"
 CONF_LANGUAGES = [
     "Danish",
+    "Dutch",
     "English (GB)",
     "French",
     "German",

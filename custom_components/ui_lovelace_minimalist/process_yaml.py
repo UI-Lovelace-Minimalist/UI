@@ -37,6 +37,7 @@ ui_lovelace_minimalist_global = {}
 
 LANGUAGES = {
     "Danish": "DA",
+    "Dutch": "NL",
     "English (GB)": "EN",
     "French": "FR",
     "German": "DE",
