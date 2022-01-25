@@ -27,12 +27,14 @@ def load_plugins(hass: HomeAssistant, ulm: UlmBase):
 
     depenceny_resource_paths = [
         "button-card",
-        "auto-entities" "light-entity-card",
+        "auto-entities",
+        "light-entity-card",
         "lovelace-card-mod",
         "mini-graph-card",
         "mini-media-player",
         "my-cards",
         "simple-weather-card",
+        "lovelace-layout-card",
     ]
     for p in depenceny_resource_paths:
         if not ulm.configuration.include_other_cards:
@@ -46,7 +48,8 @@ def load_plugins(hass: HomeAssistant, ulm: UlmBase):
                     f'HACS Frontend repo "{p}" is already installed, Remove it or disable include custom cards'
                 )
 
-    add_extra_js_url(hass, "/ui_lovelace_minimalist/js/ui-lovelace-minimalist.js")
+    # # not in use yet
+    # add_extra_js_url(hass, "/ui_lovelace_minimalist/js/ui-lovelace-minimalist.js")
 
     if ulm.configuration.include_other_cards:
         # # Cards by others
@@ -59,10 +62,10 @@ def load_plugins(hass: HomeAssistant, ulm: UlmBase):
         add_extra_js_url(
             hass, "/ui_lovelace_minimalist/cards/lovelace-card-mod/card-mod.js"
         )
-        # add_extra_js_url(
-        #     hass,
-        #     "/ui_lovelace_minimalist/cards/lovelace-card-mod/rollup.config.js",
-        # )
+        add_extra_js_url(
+            hass,
+            "/ui_lovelace_minimalist/cards/layout-card/layout-card.js",
+        )
         add_extra_js_url(
             hass,
             "/ui_lovelace_minimalist/cards/mini-graph-card/mini-graph-card-bundle.js",
@@ -92,11 +95,12 @@ def load_plugins(hass: HomeAssistant, ulm: UlmBase):
     )
 
     # Register
-    hass.http.register_static_path(
-        "/ui_lovelace_minimalist/js",
-        hass.config.path(f"custom_components/{DOMAIN}/js"),
-        True,
-    )
+    # # not in use yet
+    # hass.http.register_static_path(
+    #     "/ui_lovelace_minimalist/js",
+    #     hass.config.path(f"custom_components/{DOMAIN}/js"),
+    #     True,
+    # )
     hass.http.register_static_path(
         "/ui_lovelace_minimalist/cards",
         hass.config.path(f"custom_components/{DOMAIN}/cards"),

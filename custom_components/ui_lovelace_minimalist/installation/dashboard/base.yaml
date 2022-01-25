@@ -1,0 +1,24 @@
+# ui_lovelace_minimalist
+
+# Main // *Do Not Remove
+{% for name, data in _ulm_config.view_config.items() %}
+- path: {{ name }}
+  icon: {{ data.icon | default('mdi:home') }}
+  visible: {{ data.show_in_navbar|default('false') }}
+  {% if data.title is defined %}
+  title: {{ data.title }}
+  {% else %}
+  title: {{ name|replace("_", " "|title) }}
+  {% endif %}
+  panel: true
+  cards:
+
+# Header // *Do Not Remove
+    - type: vertical-stack
+      cards:
+        {% if data.show_header is undefined or data.show_header is true %}
+        - type: markdown
+          content: >
+            # This is the Header
+        {% endif %}
+{% endfor %}

@@ -100,9 +100,9 @@ global:
     - type: "custom:ulm-flexbox-card"
       item_classes: "col-xs-12 col-sm-6 col-md-5 col-lg-4"
       cards:
-        {% if "weather" in _ulm_config.global %}
-        - type: "custom:button-card"
-          entity: "{{ _ulm_config.global.weather }}"
-          template: card_weather
+        {% if _ulm_config.global["weather"] %}
+        - type: "weather-forecast"
+          entity: "{{ _ulm_config.global["weather"] }}"
+          show_forecast: true
         {% endif %}
 ```

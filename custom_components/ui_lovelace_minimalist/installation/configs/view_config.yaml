@@ -1,0 +1,7 @@
+# https://ui-lovelace-minimalist.github.io/UI/setup/configuration
+
+# yamllint disable
+view_config:
+  home:
+    title: Home
+    show_in_navbar: true

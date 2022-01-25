@@ -61,7 +61,6 @@ def load_yamll(fname, secrets=None, args={}):
                         **args,
                         "_ulm_config": ui_lovelace_minimalist_config,
                         "_ulm_global": ui_lovelace_minimalist_global,
-                        # "_ulm_hass_states": HomeAssistant.states,
                     }
                 )
             )
@@ -161,18 +160,6 @@ def process_yaml(hass: HomeAssistant, ulm: UlmBase):
                 hass.config.path(f"{DOMAIN}/configs"),
             )
 
-    # for fname in os.listdir(
-    #     hass.config.path(f"custom_components/{DOMAIN}/installation/dashboard/")
-    # ):
-    #     if not os.path.isfile(hass.config.path(f"{DOMAIN}/dashboard/{fname}")):
-    #         _LOGGER.debug(f"COPY: {fname}")
-    #         shutil.copy2(
-    #             hass.config.path(
-    #                 f"custom_components/{DOMAIN}/installation/dashboard/{fname}"
-    #             ),
-    #             hass.config.path(f"{DOMAIN}/dashboard"),
-    #         )
-
     if os.path.exists(hass.config.path(f"{DOMAIN}/configs")):
         # Create combined cards dir
         combined_cards_dir = hass.config.path(
@@ -200,6 +187,14 @@ def process_yaml(hass: HomeAssistant, ulm: UlmBase):
                 hass.config.path(f"custom_components/{DOMAIN}/installation/dashboard"),
                 hass.config.path(f"{DOMAIN}/dashboard"),
             )
+        _LOGGER.debug("COPY: dashboard/base.yaml")
+        shutil.copy2(
+            hass.config.path(
+                f"custom_components/{DOMAIN}/installation/dashboard/base.yaml"
+            ),
+            hass.config.path(f"{DOMAIN}/dashboard"),
+        )
+
         # Copy chosen language file over to config dir
         shutil.copy2(
             hass.config.path(

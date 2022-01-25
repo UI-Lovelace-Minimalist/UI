@@ -64,7 +64,7 @@ class UILovelaceMinimalist {
       if (lovelace.config) {
         if (lovelace.config.ui_lovelace_minimalist) {
           // this.set_theme(lovelace.config.ui_lovelace_minimalist);
-          this.custom_header(lovelace.config.ui_lovelace_minimalist);
+          // this.custom_header(lovelace.config.ui_lovelace_minimalist);
 
           console.log(lovelace.config.ui_lovelace_minimalist);
         }

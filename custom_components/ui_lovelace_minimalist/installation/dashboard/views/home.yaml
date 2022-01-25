@@ -9,7 +9,6 @@
 - title: "Home"
   icon: "mdi:home"
   path: "home"
-  type: "custom:ui-lovelace-minimalist"
   cards:
   {% if _ulm_global.installed and _ulm_global.installed == 'false' %}
     - type: vertical-stack
