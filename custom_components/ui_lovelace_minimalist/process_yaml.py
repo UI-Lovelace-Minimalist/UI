@@ -36,13 +36,15 @@ ui_lovelace_minimalist_config = {}
 ui_lovelace_minimalist_global = {}
 
 LANGUAGES = {
-    "English": "EN",
-    "German": "DE",
-    "Spanish": "ES",
+    "Danish": "DA",
+    "English (GB)": "EN",
     "French": "FR",
+    "German": "DE",
     "Italian": "IT",
+    "Polish": "PL",
+    "Portuguese": "PT",
+    "Spanish": "ES",
     "Swedish": "SE",
-    "Dutch": "NL",
 }
 
 
