@@ -20,7 +20,7 @@ This popup is displayed using ``hold_action`` and it is compatible with the foll
 
 To enable this popup, you need to add the ``popup_media_player`` template on your card.
 
-For exemple :
+For example :
 
 ```yaml
 - type: "custom:button-card"
