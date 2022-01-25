@@ -1,10 +1,9 @@
 ---
 name: "Add contributors"
 on:
-  schedule:
-    - cron: "20 20 * * *"
   push:
-    branches: ["master"]
+    # Should only run on "dev" due push protected main branch
+    branches: ["dev"]
 
 jobs:
   add-contributors:
@@ -19,5 +18,6 @@ jobs:
           FONT_SIZE: "10"
           AVATAR_SHAPE: "round"
           PATH: "/README.md"
+          BRANCH: "dev"
           COMMIT_MESSAGE: "docs(README): update contributors"
           ACCESS_TOKEN: "${{secrets.GITHUB_TOKEN}}"
