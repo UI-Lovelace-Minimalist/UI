@@ -26,13 +26,13 @@ Now you can configure the Integration, you can do this also after it's installed
 - Side panel icon: Which icon to put in front of the Title.
 - Theme: Choose a theme of your choice (Note: Both themes will be installed anyway and can be customized later if needed.)
 
-  !!! note ""
+!!! note ""
 
     Currently, it may happen that themes are not automatically selected correctly for you in all cases automatically. Please make sure that the minimalist theme is correctly selected in your Home Assistant settings (click on your profile picture in Home Assistant, bottom left).
 
 - Theme path: Make sure this is set to the same path as is configured in your `configuration.yaml` (default: `/themes`)
 
-  !!! note ""
+!!! note ""
 
     Please make sure that you have included this themes folder in your `configuration.yaml` in the [frontend settings](https://www.home-assistant.io/integrations/frontend/). Unfortunately, this is something that the HACS integration cannot do for you. If you use the /themes folder, your entry in `configuration.yaml` must look like this for example:
 
