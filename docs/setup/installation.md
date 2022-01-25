@@ -28,18 +28,18 @@ Now you can configure the Integration, you can do this also after it's installed
 
 !!! note ""
 
-  Currently, it may happen that themes are not automatically selected correctly for you in all cases automatically. Please make sure that the minimalist theme is correctly selected in your Home Assistant settings (click on your profile picture in Home Assistant, bottom left).
+    Currently, it may happen that themes are not automatically selected correctly for you in all cases automatically. Please make sure that the minimalist theme is correctly selected in your Home Assistant settings (click on your profile picture in Home Assistant, bottom left).
 
 - Theme path: Make sure this is set to the same path as is configured in your `configuration.yaml` (default: `/themes`)
 
 !!! note ""
 
-  Please make sure that you have included this themes folder in your `configuration.yaml` in the [frontend settings](https://www.home-assistant.io/integrations/frontend/). Unfortunately, this is something that the HACS integration cannot do for you. If you use the /themes folder, your entry in `configuration.yaml` must look like this for example:
+    Please make sure that you have included this themes folder in your `configuration.yaml` in the [frontend settings](https://www.home-assistant.io/integrations/frontend/). Unfortunately, this is something that the HACS integration cannot do for you. If you use the /themes folder, your entry in `configuration.yaml` must look like this for example:
 
-  ```yaml
-  frontend:
-    themes: !include_dir_merge_named themes
-  ```
+    ```yaml
+    frontend:
+      themes: !include_dir_merge_named themes
+    ```
 
 - Include Custom Cards: This will make sure almost all dependency cards are included and configured for you.
 
