@@ -18,6 +18,7 @@ CONF_LANGUAGES = [
     "Italian",
     "Swedish",
     "Dutch",
+    "Danish",
 ]
 CONF_SIDEPANEL_ENABLED = "sidepanel_enabled"
 CONF_SIDEPANEL_TITLE = "sidepanel_title"

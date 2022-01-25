@@ -43,6 +43,7 @@ LANGUAGES = {
     "Italian": "IT",
     "Swedish": "SE",
     "Dutch": "NL",
+    "Danish": "DA",
 }
 
 
