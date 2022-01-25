@@ -327,12 +327,21 @@ The same goes for our `custom_cards`. As the number grows, the list would be to 
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/filikun>
+            <img src=https://avatars.githubusercontent.com/u/9947929?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Filip/>
+            <br />
+            <sub style="font-size:10px"><b>Filip</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
         <a href=https://github.com/jp2creation>
             <img src=https://avatars.githubusercontent.com/u/17984068?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=JP2 Création/>
             <br />
             <sub style="font-size:10px"><b>JP2 Création</b></sub>
         </a>
     </td>
+</tr>
+<tr>
     <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
         <a href=https://github.com/matrixx567>
             <img src=https://avatars.githubusercontent.com/u/4608946?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Martin Nöhrer/>
@@ -340,8 +349,6 @@ The same goes for our `custom_cards`. As the number grows, the list would be to 
             <sub style="font-size:10px"><b>Martin Nöhrer</b></sub>
         </a>
     </td>
-</tr>
-<tr>
     <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
         <a href=https://github.com/pedrojreis>
             <img src=https://avatars.githubusercontent.com/u/28795057?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Pedro Reis/>
