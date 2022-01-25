@@ -59,7 +59,7 @@ This popup is displayed using ``hold_action`` and it is compatible with the foll
 
 To enable this popup, you need to add the ``popup_power_outlet`` template on your card. And also the previously explained variables.
 
-For exemple :
+For example :
 
 ```yaml
 - type: "custom:button-card"
