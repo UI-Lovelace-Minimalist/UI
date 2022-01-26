@@ -7,6 +7,7 @@ card_power_outlet:
     - "ulm_language_variables"
   variables:
     ulm_card_power_outlet_consumption_sensor:
+  triggers_update: "all"
   label: |-
     [[[
       if (entity.state === "on" && variables.ulm_card_power_outlet_consumption_sensor !== null) {
