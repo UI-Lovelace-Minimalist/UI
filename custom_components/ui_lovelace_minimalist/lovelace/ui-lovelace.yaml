@@ -14,8 +14,8 @@ views:
         cards:
           - type: "custom:button-card"
             template: "card_title"
-            name: "You have succesfully installed the Minimalist-UI"
-            label: "Explore the wonderfull 'Minimalistic' cards we offer"
+            name: "Congrats with your installation 🎉"
+            label: "Explore here some of the wonderfull 'Minimalistic-UI' cards we offer"
           - type: "custom:auto-entities"
             card:
               type: "grid"
@@ -109,11 +109,12 @@ views:
             filter:
               include:
                 - attributes:
-                    battery_level: "<= 100"
+                    unit_of_measurement: "%"
+                    device_class: "battery"
                   options:
                     type: "custom:button-card"
                     template: "card_battery"
                     variables:
-                      ulm_card_battery_charger_type_entity_id: "this.entity_id"
+                      ulm_card_battery_battery_state_entity_id: "this.entity_id"
                       ulm_card_battery_battery_level_danger: 30
                       ulm_card_battery_battery_level_warning: 80
