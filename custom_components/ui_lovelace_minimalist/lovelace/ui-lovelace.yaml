@@ -64,13 +64,13 @@ views:
               type: "grid"
               columns: 2
               square: false
-            card_param: 'cards'
+            card_param: "cards"
             sort:
               count: 4
             filter:
               include:
                 - domain: "binary_sensor"
-                  options: 
+                  options:
                     type: "custom:button-card"
                     template: "card_binary_sensor_alert"
                     variables:
@@ -91,7 +91,7 @@ views:
             filter:
               include:
                 - domain: "sensor"
-                  options: 
+                  options:
                     type: "custom:button-card"
                     template: "card_generic"
           - type: "custom:button-card"
