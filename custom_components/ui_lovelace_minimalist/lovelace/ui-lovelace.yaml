@@ -29,7 +29,7 @@ views:
                 - domain: "weather"
                   options:
                     type: "custom:button-card"
-                    template: "custom_card_paddy_welcome_with_weather"
+                    template: "welcome_with_weather"
                     variables:
                       ulm_custom_card_paddy_welcome_time: "sensor.time"
                       ulm_custom_card_paddy_welcome_weather_provider: "this.entity_id"
