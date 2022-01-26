@@ -5,7 +5,7 @@ hide:
 ---
 <!-- markdownlint-disable MD046 -->
 
-# "Welcome" card 
+# "Welcome" card
 
 This is the `welcome-card` to show a welcome message to the user. It comes in four different versions:
 
@@ -52,7 +52,6 @@ This card needs the following to function correctly:
 <td></td>
 </tr>
 </table>
-
 
 ## Usage
 
