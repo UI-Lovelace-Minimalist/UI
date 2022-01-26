@@ -8,6 +8,112 @@ background: "var(--background-image)"
 views:
   - title: "Example View"
     path: 0
+    icon: "mdi:flower"
     cards:
-      - type: "custom:button-card"
-        entity: "sun.sun"
+      - type: "vertical-stack"
+        cards:
+          - type: "custom:button-card"
+            template: "card_title"
+            name: "You have succesfully installed the Minimalist-UI"
+            label: "Explore the wonderfull templates/cards we offer"
+          - type: "custom:auto-entities"
+            card:
+              type: "grid"
+              columns: 1
+              square: false
+            card_param: "cards"
+            sort:
+              count: 1
+            filter:
+              include:
+                - domain: "weather"
+                  options:
+                    type: "custom:button-card"
+                    template: "custom_card_paddy_welcome_with_weather"
+                    variables:
+                      ulm_custom_card_paddy_welcome_time: "sensor.time"
+                      ulm_custom_card_paddy_welcome_weather_provider: "this.entity_id"
+          - type: "custom:button-card"
+            template: "card_title"
+            name: "Lights"
+            label: "This is the Minimalist-lightcard"
+          - type: "custom:auto-entities"
+            card:
+              type: "grid"
+              columns: 2
+              square: false
+            card_param: "cards"
+            sort:
+              count: 4
+            filter:
+              include:
+                - domain: "light"
+                  options:
+                    type: "custom:button-card"
+                    template: "card_light"
+                    variables:
+                      ulm_card_light_enable_slider: true
+                      ulm_card_light_enable_color: true
+                      ulm_card_light_enable_popup: true
+          - type: "custom:button-card"
+            template: "card_title"
+            name: "Binary Sensors"
+            label: "This is the Minimalist-binary_sensorcard"
+          - type: "custom:auto-entities"
+            card:
+              type: "grid"
+              columns: 2
+              square: false
+            card_param: 'cards'
+            sort:
+              count: 4
+            filter:
+              include:
+                - domain: "binary_sensor"
+                  options: 
+                    type: "custom:button-card"
+                    template: "card_binary_sensor_alert"
+                    variables:
+                      - ulm_card_binary_sensor_alert: true
+                    show_last_changed: true
+          - type: "custom:button-card"
+            template: "card_title"
+            name: "Sensors"
+            label: "This is the Minimalist-sensorcard"
+          - type: "custom:auto-entities"
+            card:
+              type: "grid"
+              columns: 2
+              square: false
+            card_param: "cards"
+            sort:
+              count: 4
+            filter:
+              include:
+                - domain: "sensor"
+                  options: 
+                    type: "custom:button-card"
+                    template: "card_generic"
+          - type: "custom:button-card"
+            template: "card_title"
+            name: "Batteries"
+            label: "This is the Minimalist-batterycard"
+          - type: "custom:auto-entities"
+            card:
+              type: "grid"
+              columns: 2
+              square: false
+            card_param: "cards"
+            sort:
+              count: 4
+            filter:
+              include:
+                - attributes:
+                    battery_level: "<= 100"
+                  options:
+                    type: "custom:button-card"
+                    template: "card_battery"
+                    variables:
+                      ulm_card_battery_charger_type_entity_id: "this.entity_id"
+                      ulm_card_battery_battery_level_danger: 30
+                      ulm_card_battery_battery_level_warning: 80
