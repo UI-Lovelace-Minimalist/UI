@@ -1,56 +1,42 @@
 ---
 default_config:
 
-# frontend:
-#   themes: !include_dir_merge_named "themes"
+frontend:
+  themes: !include_dir_merge_named "themes"
 
-# # For some reason default_config is not picking it up.
-# automation ui: !include "automations.yaml"
+automation ui: !include "automations.yaml"
 
-# # lovelace:
-# #   mode: "storage"
+logger:
+  default: "info"
+  logs:
+    custom_components.ui_lovelace_minimalist: "debug"
 
-# sensor:
-#   - platform: "time_date"
+browser_mod:
+virtual:
 
-# logger:
-#   default: "info"
-#   logs:
-#     custom_components.ui_lovelace_minimalist: "debug"
-# # If you need to debug uncommment the line below (doc: https://www.home-assistant.io/integrations/debugpy/)
-# # debugpy:
+weather:
+  - platform: "template"
+    name: "DummyTown"
+    condition_template: "cloudy"
+    temperature_template: "{{ '20' | float }}"
+    humidity_template: "{{ '50' | float }}"
 
-# #
-# # Uncomment part below after installing dependencies
-# #
-# ## Requirement for popups, install browser mod with hacs
-# browser_mod:
+light:
+  - platform: "virtual"
+    name: "Livingroom"
+    support_color: true
+    support_color_temp: true
+    support_white_value: true
 
-# weather:
-#   - platform: "template"
-#     name: "DummyTown"
-#     condition_template: "cloudy"
-#     temperature_template: "20"
-#     humidity_template: "50"
-
-# ## Install virtual integration with hacs
-# virtual:
-
-# light:
-#   - platform: "virtual"
-#     name: "Livingroom"
-#     support_color: true
-#     support_color_temp: true
-#     support_white_value: true
-
-# sensor:
-#   - platform: "virtual"
-#     name: "Livingroom Temperature"
-#     class: "temperature"
-#     initial_value: 20
-#     initial_availability: true
-#   - platform: "virtual"
-#     name: "Livingroom Humidity"
-#     class: "humidity"
-#     initial_value: 50
-#     initial_availability: true
+sensor:
+  - platform: "time_date"
+  - platform: "virtual"
+    name: "Livingroom Temperature"
+    class: "temperature"
+    initial_value: 20
+    initial_availability: true
+  - platform: "virtual"
+    name: "Livingroom Humidity"
+    class: "humidity"
+    initial_value: 50
+    initial_availability: true

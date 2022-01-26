@@ -16,6 +16,9 @@ views:
             template: "card_title"
             name: "Congrats with your installation 🎉"
             label: "Explore here some of the wonderfull 'Minimalistic-UI' cards we offer"
+          - type: "markdown"
+            content: >
+              # Welcome {{ user[0]|upper}}{{user[1:] }}
           - type: "custom:auto-entities"
             card:
               type: "grid"
@@ -28,11 +31,7 @@ views:
               include:
                 - domain: "weather"
                   options:
-                    type: "custom:button-card"
-                    template: "custom_card_paddy_welcome_with_weather"
-                    variables:
-                      ulm_custom_card_paddy_welcome_time: "sensor.time"
-                      ulm_custom_card_paddy_welcome_weather_provider: "this.entity_id"
+                    type: "weather-forecast"
           - type: "custom:button-card"
             template: "card_title"
             name: "Lights"
