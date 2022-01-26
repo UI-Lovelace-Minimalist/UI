@@ -28,3 +28,7 @@ ulm_language_variables:
     ulm_alarm_triggered: "TRIGGERED"
     ulm_playing: "Playing"
     ulm_paused: "Paused"
+    ulm_morning: "Bonjour"
+    ulm_afternoon: "Bonne après-midi"
+    ulm_evening: "Bonsoir"
+    ulm_hello: "Bonjour"

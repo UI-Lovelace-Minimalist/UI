@@ -28,3 +28,7 @@ ulm_language_variables:
     ulm_alarm_triggered: "AKTIVERET"
     ulm_playing: "Spiller"
     ulm_paused: "Sat på pause"
+    ulm_morning: "Good morning"
+    ulm_afternoon: "Good afternoon"
+    ulm_evening: "Good evening"
+    ulm_hello: "Hello"
