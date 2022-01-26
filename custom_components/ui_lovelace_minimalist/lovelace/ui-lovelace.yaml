@@ -64,7 +64,7 @@ views:
               type: "grid"
               columns: 2
               square: false
-            card_param: 'cards'
+            card_param: "cards"
             sort:
               count: 4
             filter:
