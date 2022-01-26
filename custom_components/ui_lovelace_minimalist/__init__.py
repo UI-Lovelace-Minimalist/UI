@@ -9,11 +9,11 @@ from homeassistant.config_entries import SOURCE_IMPORT, ConfigEntry
 from homeassistant.core import Config, HomeAssistant
 
 from .base import UlmBase
+from .configure import configure_cards
 from .const import DOMAIN, NAME
 from .enums import ConfigurationType
 from .load_dashboard import load_dashboard
 from .load_plugins import load_plugins
-from .process_yaml import process_yaml
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 
@@ -58,7 +58,7 @@ async def async_initialize_integration(
         )
     _LOGGER.debug("Configuration type: %s", ulm.configuration.config_type)
 
-    process_yaml(hass=hass, ulm=ulm)
+    configure_cards(hass=hass, ulm=ulm)
 
     load_plugins(hass=hass, ulm=ulm)
 
