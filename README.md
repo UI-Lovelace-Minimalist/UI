@@ -87,9 +87,9 @@ The same goes for our `custom_cards`. As the number grows, the list would be to 
     </td>
     <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
         <a href=https://github.com/stokkie90>
-            <img src=https://avatars.githubusercontent.com/u/10831825?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Rick Stokkingreef/>
+            <img src=https://avatars.githubusercontent.com/u/10831825?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Stokkie90>
             <br />
-            <sub style="font-size:10px"><b>Rick Stokkingreef</b></sub>
+            <sub style="font-size:10px"><b>Stokkie90</b></sub>
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
