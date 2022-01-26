@@ -64,10 +64,10 @@ card_thermostat:
           [[[
                 var areas = [];
                 areas.push("item1");
-                if ((variables.ulm_card_thermostat_enable_collapse && entity.state == "off") ||  variables.ulm_card_thermostat_enable_controls) {
+                if ( !(variables.ulm_card_thermostat_enable_collapse && entity.state == "off") &&  variables.ulm_card_thermostat_enable_controls) {
                     areas.push("item2");
                 }
-                if ((variables.ulm_card_thermostat_enable_collapse && entity.state == "off") ||  variables.ulm_card_thermostat_enable_hvac_modes) {
+                if ( !(variables.ulm_card_thermostat_enable_collapse && entity.state == "off") &&  variables.ulm_card_thermostat_enable_hvac_modes) {
                     areas.push("item3");
                 }
                 return "\"" + areas.join("\" \"") + "\"";
@@ -77,10 +77,10 @@ card_thermostat:
           [[[
                 var rows = [];
                 rows.push("min-content");
-                if ((variables.ulm_card_thermostat_enable_collapse && entity.state == "off") ||  variables.ulm_card_thermostat_enable_controls) {
+                if ( !(variables.ulm_card_thermostat_enable_collapse && entity.state == "off") &&  variables.ulm_card_thermostat_enable_controls) {
                     rows.push("min-content");
                 }
-                if ((variables.ulm_card_thermostat_enable_collapse && entity.state == "off") ||  variables.ulm_card_thermostat_enable_hvac_modes) {
+                if ( !(variables.ulm_card_thermostat_enable_collapse && entity.state == "off") &&  variables.ulm_card_thermostat_enable_hvac_modes) {
                     rows.push("min-content");
                 }
                 return rows.join(" ");
@@ -94,26 +94,25 @@ card_thermostat:
       item2:
         - display: >
             [[[
-                  if ((variables.ulm_card_thermostat_enable_collapse && entity.state == "off") ||  !variables.ulm_card_thermostat_enable_controls) {
-                      return "none";
-                  } else {
+                if ( !(variables.ulm_card_thermostat_enable_collapse && entity.state == "off") &&  variables.ulm_card_thermostat_enable_controls) {
                       return "block";
+                  } else {
+                      return "none";
                   }
             ]]]
       item3:
         - display: >
             [[[
-                  if ((variables.ulm_card_thermostat_enable_collapse && entity.state == "off") ||  !variables.ulm_card_thermostat_enable_hvac_modes) {
-                      return "none";
-                  } else {
+                if ( !(variables.ulm_card_thermostat_enable_collapse && entity.state == "off") &&  variables.ulm_card_thermostat_enable_hvac_modes) {
                       return "block";
+                  } else {
+                      return "none";
                   }
             ]]]
   custom_fields:
     item1:
       card:
         type: "custom:button-card"
-        # entity: "climate.netatmo_salon" #####
         template:
           - "icon_more_info"
         custom_fields:
@@ -157,6 +156,18 @@ card_thermostat:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
               name: "[[[ return variables.ulm_card_thermostat_name ]]]"
+              tap_action:
+                action: "call-service"
+                service: >
+                  [[[
+                        if (entity.state =='off'){
+                            return "climate.turn_on";
+                        } else {
+                            return "climate.turn_off";
+                        }
+                  ]]]
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
               #             hold_action:
               #               action: >
               #                 [[[
@@ -176,20 +187,39 @@ card_thermostat:
               #                   template: "popup_light_brightness"
               #                   variables:
               #                     ulm_popup_light_entity: "[[[ return entity.entity_id ]]]"
-              label: >- ##### A REVOIR
+              label: >-
                 [[[
                     var label = variables.ulm_off ;
                     if (entity.state =='off'){
                       label = variables.ulm_off ;
+                    }else if (entity.state == 'auto'){
+                      label = variables.ulm_auto ;
                     }else if (entity.state == 'heat'){
                       label = variables.ulm_heat ;
                     }else if (entity.state == 'cool'){
                       label = variables.ulm_cool ;
+                    }else if (entity.state == 'dry'){
+                      label = variables.ulm_dry ;
+                    }else if (entity.state == 'fan_only'){
+                      label = variables.ulm_fan_only ;
+                    }else if (entity.state == 'heat_cool'){
+                      label = variables.ulm_heat_cool ;
                     }else{
                       label = variables.ulm_idle;
                     }
+
+                    if (entity.attributes.hvac_action == 'heating'){
+                      var mode = variables.ulm_heating ;
+                    }else if (entity.attributes.hvac_action == 'cooling'){
+                      var mode = variables.ulm_cooling ;
+                    }else if (entity.attributes.hvac_action == 'idle'){
+                      var mode = variables.ulm_idle ;
+                    }else{
+                      var mode = variables.ulm_unavailable;
+                    }
+
                     if(entity.attributes.temperature){
-                      return (entity.attributes.current_temperature ) + '°' + ' • ' + label + ' (' + entity.attributes.hvac_action + ')';
+                      return (entity.attributes.current_temperature ) + '°' + ' • ' + label + ' (' + mode + ')';
                     }
                     return label; 
                 ]]]
@@ -302,7 +332,7 @@ card_thermostat:
                       - background-color: "rgba(255, 255, 255, 0.15)" ###
                     icon:
                       - color: "rgba(var(--card-background-color),0.9)"
-    item3: #off, auto, heat, cool, dry, fan_only, heat_cool
+    item3:
       card:
         type: "custom:button-card"
         styles:
