@@ -123,6 +123,13 @@ The same goes for our `custom_cards`. As the number grows, the list would be to 
 </tr>
 <tr>
     <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
+        <a href=https://github.com/tkwy-rick>
+            <img src=https://avatars.githubusercontent.com/u/66776023?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=tkwy-rick/>
+            <br />
+            <sub style="font-size:10px"><b>tkwy-rick</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
         <a href=https://github.com/TBens>
             <img src=https://avatars.githubusercontent.com/u/12232620?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=TBens/>
             <br />
@@ -157,20 +164,13 @@ The same goes for our `custom_cards`. As the number grows, the list would be to 
             <sub style="font-size:10px"><b>juvenalandres</b></sub>
         </a>
     </td>
+</tr>
+<tr>
     <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
         <a href=https://github.com/Paddy0174>
             <img src=https://avatars.githubusercontent.com/u/1948551?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Paddy0174/>
             <br />
             <sub style="font-size:10px"><b>Paddy0174</b></sub>
-        </a>
-    </td>
-</tr>
-<tr>
-    <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">
-        <a href=https://github.com/tkwy-rick>
-            <img src=https://avatars.githubusercontent.com/u/66776023?v=4 width="30;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=tkwy-rick/>
-            <br />
-            <sub style="font-size:10px"><b>tkwy-rick</b></sub>
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 45.0; height: 45.0">

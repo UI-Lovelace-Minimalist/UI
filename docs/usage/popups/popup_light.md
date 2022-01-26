@@ -23,9 +23,12 @@ This popup is displayed using ``hold_action`` and it is compatible with the foll
 
 ##### How to use
 
-To enable this popup, you need to add the ``popup_light`` template on your card with variable `ulm_card_light_enable_popup` set to ``true``.
+To enable this popup, add the variable ``ulm_card_light_enable_popup`` and set to ``true``.
 
-For exemple :
+!!! warning
+    This is a different approach as the other `popup_cards` use.
+
+For example :
 
 ```yaml
 - type: "custom:button-card"
