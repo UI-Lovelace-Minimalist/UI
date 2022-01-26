@@ -41,7 +41,7 @@ card_thermostat:
         ]]]
       styles:
         card:
-          - background-color: "rgba(var(--color-yellow),1)"
+          - background-color: "rgba(255,165,0,0.75)"
     - operator: "template"
       value: >
         [[[
@@ -49,7 +49,7 @@ card_thermostat:
         ]]]
       styles:
         card:
-          - background-color: "rgba(var(--color-blue),1)"
+          - background-color: "rgba(0,191,255,0.75)"
     - operator: "template"
       value: >
         [[[
@@ -223,17 +223,17 @@ card_thermostat:
                     }
                     return label; 
                 ]]]
-              state:
-                - operator: "template"
-                  value: >
-                    [[[
-                      return (entity.attributes.hvac_action == 'cooling' || entity.attributes.hvac_action == 'heating') && variables.ulm_card_thermostat_enable_background_color
-                    ]]]
-                  styles:
-                    name:
-                      - color: "var(--card-background-color)"
-                    label:
-                      - color: "var(--card-background-color)"
+              # state:
+              #   - operator: "template"
+              #     value: >
+              #       [[[
+              #         return (entity.attributes.hvac_action == 'cooling' || entity.attributes.hvac_action == 'heating') && variables.ulm_card_thermostat_enable_background_color && hass.themes.darkMode
+              #       ]]]
+              #     styles:
+              #       name:
+              #         - color: "var(--card-background-color)"
+              #       label:
+              #         - color: "var(--card-background-color)"
     item2:
       card:
         type: "custom:button-card"
@@ -258,21 +258,11 @@ card_thermostat:
                 - operator: "template"
                   value: >
                     [[[
-                      return (entity.attributes.hvac_action == 'heating' && variables.ulm_card_thermostat_enable_background_color)
+                      return (entity.attributes.hvac_action == 'cooling' || entity.attributes.hvac_action == 'heating') && variables.ulm_card_thermostat_enable_background_color
                     ]]]
                   styles:
                     card:
                       - background-color: "rgba(var(--color-theme),0.15)"
-                - operator: "template"
-                  value: >
-                    [[[
-                      return (entity.attributes.hvac_action == 'cooling' && variables.ulm_card_thermostat_enable_background_color)
-                    ]]]
-                  styles:
-                    card:
-                      - background-color: "rgba(255, 255, 255, 0.15)" ###
-                    icon:
-                      - color: "rgba(var(--card-background-color),0.9)"
           item2:
             card:
               type: "custom:button-card"
@@ -292,15 +282,6 @@ card_thermostat:
                 card:
                   - background: "none"
                   - box-shadow: "none"
-              state:
-                - operator: "template"
-                  value: >
-                    [[[
-                      return (entity.attributes.hvac_action == 'cooling' || entity.attributes.hvac_action == 'heating') && variables.ulm_card_thermostat_enable_background_color
-                    ]]]
-                  styles:
-                    card:
-                      - color: "var(--card-background-color)"
           item3:
             card:
               type: "custom:button-card"
@@ -317,21 +298,11 @@ card_thermostat:
                 - operator: "template"
                   value: >
                     [[[
-                      return (entity.attributes.hvac_action == 'heating' && variables.ulm_card_thermostat_enable_background_color)
+                      return (entity.attributes.hvac_action == 'cooling' || entity.attributes.hvac_action == 'heating') && variables.ulm_card_thermostat_enable_background_color
                     ]]]
                   styles:
                     card:
                       - background-color: "rgba(var(--color-theme),0.15)"
-                - operator: "template"
-                  value: >
-                    [[[
-                      return (entity.attributes.hvac_action == 'cooling' && variables.ulm_card_thermostat_enable_background_color)
-                    ]]]
-                  styles:
-                    card:
-                      - background-color: "rgba(255, 255, 255, 0.15)" ###
-                    icon:
-                      - color: "rgba(var(--card-background-color),0.9)"
     item3:
       card:
         type: "custom:button-card"
@@ -470,21 +441,11 @@ card_thermostat:
                 - operator: "template"
                   value: >
                     [[[
-                      return (entity.attributes.hvac_action == 'heating' && variables.ulm_card_thermostat_enable_background_color)
+                      return (entity.attributes.hvac_action == 'cooling' || entity.attributes.hvac_action == 'heating') && variables.ulm_card_thermostat_enable_background_color
                     ]]]
                   styles:
                     card:
                       - background-color: "rgba(var(--color-theme),0.15)"
-                - operator: "template"
-                  value: >
-                    [[[
-                      return (entity.attributes.hvac_action == 'cooling' && variables.ulm_card_thermostat_enable_background_color)
-                    ]]]
-                  styles:
-                    card:
-                      - background-color: "rgba(255, 255, 255, 0.15)" ###
-                    icon:
-                      - color: "rgba(var(--card-background-color),0.9)"
           heat:
             card:
               type: "custom:button-card"
@@ -510,21 +471,11 @@ card_thermostat:
                 - operator: "template"
                   value: >
                     [[[
-                      return (entity.attributes.hvac_action == 'heating' && variables.ulm_card_thermostat_enable_background_color)
+                      return (entity.attributes.hvac_action == 'cooling' || entity.attributes.hvac_action == 'heating') && variables.ulm_card_thermostat_enable_background_color
                     ]]]
                   styles:
                     card:
                       - background-color: "rgba(var(--color-theme),0.15)"
-                - operator: "template"
-                  value: >
-                    [[[
-                      return (entity.attributes.hvac_action == 'cooling' && variables.ulm_card_thermostat_enable_background_color)
-                    ]]]
-                  styles:
-                    card:
-                      - background-color: "rgba(255, 255, 255, 0.15)" ###
-                    icon:
-                      - color: "rgba(var(--card-background-color),0.9)"
           cool:
             card:
               type: "custom:button-card"
@@ -550,21 +501,11 @@ card_thermostat:
                 - operator: "template"
                   value: >
                     [[[
-                      return (entity.attributes.hvac_action == 'heating' && variables.ulm_card_thermostat_enable_background_color)
+                      return (entity.attributes.hvac_action == 'cooling' || entity.attributes.hvac_action == 'heating') && variables.ulm_card_thermostat_enable_background_color
                     ]]]
                   styles:
                     card:
                       - background-color: "rgba(var(--color-theme),0.15)"
-                - operator: "template"
-                  value: >
-                    [[[
-                      return (entity.attributes.hvac_action == 'cooling' && variables.ulm_card_thermostat_enable_background_color)
-                    ]]]
-                  styles:
-                    card:
-                      - background-color: "rgba(255, 255, 255, 0.15)" ###
-                    icon:
-                      - color: "rgba(var(--card-background-color),0.9)"
           dry:
             card:
               type: "custom:button-card"
@@ -590,21 +531,11 @@ card_thermostat:
                 - operator: "template"
                   value: >
                     [[[
-                      return (entity.attributes.hvac_action == 'heating' && variables.ulm_card_thermostat_enable_background_color)
+                      return (entity.attributes.hvac_action == 'cooling' || entity.attributes.hvac_action == 'heating') && variables.ulm_card_thermostat_enable_background_color
                     ]]]
                   styles:
                     card:
                       - background-color: "rgba(var(--color-theme),0.15)"
-                - operator: "template"
-                  value: >
-                    [[[
-                      return (entity.attributes.hvac_action == 'cooling' && variables.ulm_card_thermostat_enable_background_color)
-                    ]]]
-                  styles:
-                    card:
-                      - background-color: "rgba(255, 255, 255, 0.15)" ###
-                    icon:
-                      - color: "rgba(var(--card-background-color),0.9)"
           fan_only:
             card:
               type: "custom:button-card"
@@ -630,21 +561,11 @@ card_thermostat:
                 - operator: "template"
                   value: >
                     [[[
-                      return (entity.attributes.hvac_action == 'heating' && variables.ulm_card_thermostat_enable_background_color)
+                      return (entity.attributes.hvac_action == 'cooling' || entity.attributes.hvac_action == 'heating') && variables.ulm_card_thermostat_enable_background_color
                     ]]]
                   styles:
                     card:
                       - background-color: "rgba(var(--color-theme),0.15)"
-                - operator: "template"
-                  value: >
-                    [[[
-                      return (entity.attributes.hvac_action == 'cooling' && variables.ulm_card_thermostat_enable_background_color)
-                    ]]]
-                  styles:
-                    card:
-                      - background-color: "rgba(255, 255, 255, 0.15)" ###
-                    icon:
-                      - color: "rgba(var(--card-background-color),0.9)"
           heat_cool:
             card:
               type: "custom:button-card"
@@ -670,18 +591,8 @@ card_thermostat:
                 - operator: "template"
                   value: >
                     [[[
-                      return (entity.attributes.hvac_action == 'heating' && variables.ulm_card_thermostat_enable_background_color)
+                      return (entity.attributes.hvac_action == 'cooling' || entity.attributes.hvac_action == 'heating') && variables.ulm_card_thermostat_enable_background_color
                     ]]]
                   styles:
                     card:
                       - background-color: "rgba(var(--color-theme),0.15)"
-                - operator: "template"
-                  value: >
-                    [[[
-                      return (entity.attributes.hvac_action == 'cooling' && variables.ulm_card_thermostat_enable_background_color)
-                    ]]]
-                  styles:
-                    card:
-                      - background-color: "rgba(255, 255, 255, 0.15)" ###
-                    icon:
-                      - color: "rgba(var(--card-background-color),0.9)"
