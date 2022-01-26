@@ -70,7 +70,7 @@ views:
             filter:
               include:
                 - domain: "binary_sensor"
-                  options: 
+                  options:
                     type: "custom:button-card"
                     template: "card_binary_sensor_alert"
                     variables:
@@ -91,7 +91,7 @@ views:
             filter:
               include:
                 - domain: "sensor"
-                  options: 
+                  options:
                     type: "custom:button-card"
                     template: "card_generic"
           - type: "custom:button-card"
@@ -109,11 +109,12 @@ views:
             filter:
               include:
                 - attributes:
-                    battery_level: "<= 100"
+                    unit_of_measurement: "%"
+                    device_class: "battery"
                   options:
                     type: "custom:button-card"
                     template: "card_battery"
                     variables:
-                      ulm_card_battery_charger_type_entity_id: "this.entity_id"
+                      ulm_card_battery_battery_state_entity_id: "this.entity_id"
                       ulm_card_battery_battery_level_danger: 30
                       ulm_card_battery_battery_level_warning: 80
