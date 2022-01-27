@@ -1,9 +1,9 @@
 ---
 ### Card Media Player With Controls ###
-card_media_player_with_controls:
+card_media_player_controls:
   variables:
-    ulm_card_media_player_with_controls_name: "No name set"
-    ulm_card_media_player_with_controls_entity:
+    ulm_card_media_player_controls_name: "No name set"
+    ulm_card_media_player_controls_entity:
   triggers_update: "all"
   styles:
     grid:
@@ -24,8 +24,8 @@ card_media_player_with_controls:
           - "card_media_player"
         tap_action:
           action: "more-info"
-        entity: "[[[ return variables.ulm_card_media_player_with_controls_entity ]]]"
-        name: "[[[ return variables.ulm_card_media_player_with_controls_name ]]]"
+        entity: "[[[ return variables.ulm_card_media_player_controls_entity ]]]"
+        name: "[[[ return variables.ulm_card_media_player_controls_name ]]]"
         styles:
           card:
             - box-shadow: "none"
@@ -43,18 +43,18 @@ card_media_player_with_controls:
                 action: "call-service"
                 service: "media_player.media_previous_track"
                 service_data:
-                  entity_id: "[[[ return variables.ulm_card_media_player_with_controls_entity ]]]"
+                  entity_id: "[[[ return variables.ulm_card_media_player_controls_entity ]]]"
               icon: "mdi:skip-previous"
           item2:
             card:
               type: "custom:button-card"
               template: "widget_icon"
-              entity: "[[[ return variables.ulm_card_media_player_with_controls_entity ]]]"
+              entity: "[[[ return variables.ulm_card_media_player_controls_entity ]]]"
               tap_action:
                 action: "call-service"
                 service: "media_player.media_play_pause"
                 service_data:
-                  entity_id: "[[[ return variables.ulm_card_media_player_with_controls_entity ]]]"
+                  entity_id: "[[[ return variables.ulm_card_media_player_controls_entity ]]]"
               icon: "mdi:pause"
               state:
                 - value: "paused"
@@ -69,5 +69,5 @@ card_media_player_with_controls:
                 action: "call-service"
                 service: "media_player.media_next_track"
                 service_data:
-                  entity_id: "[[[ return variables.ulm_card_media_player_with_controls_entity ]]]"
+                  entity_id: "[[[ return variables.ulm_card_media_player_controls_entity ]]]"
               icon: "mdi:skip-next"
