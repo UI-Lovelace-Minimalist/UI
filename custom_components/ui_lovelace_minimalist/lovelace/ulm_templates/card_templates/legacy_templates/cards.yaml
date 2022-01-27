@@ -21,10 +21,10 @@ outlet:
 # template: card_thermostat
 
 cover_buttons:
-  template: "card_cover_with_buttons"
+  template: "card_cover_buttons"
   variables:
-    ulm_card_cover_with_buttons_name:
-    ulm_card_cover_with_buttons_entity:
+    ulm_card_cover_buttons_name:
+    ulm_card_cover_buttons_entity:
 
 graph:
   template: "card_graph"

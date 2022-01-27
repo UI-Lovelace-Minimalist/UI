@@ -1,5 +1,5 @@
 ---
-title: card_cover_with_buttons
+title: card_cover_buttons
 hide:
   - toc
 ---
@@ -15,22 +15,22 @@ With the `cover-card` you have the state of your cover and on the second line UP
 
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
-| ulm_card_cover_with_buttons_entity     |         | :material-check: | The entity_id of your cover |
-| ulm_card_cover_with_buttons_name |         | :material-close: | The name of your cover entity |
+| ulm_card_cover_buttons_entity     |         | :material-check: | The entity_id of your cover |
+| ulm_card_cover_buttons_name |         | :material-close: | The name of your cover entity |
 
 ## Usage
 
 ```yaml
 - type: 'custom:button-card'
   template:
-    - card_cover_with_buttons
+    - card_cover_buttons
   variables:
-    ulm_card_cover_with_buttons_name: "Cover Livingroom Window"
-    ulm_card_cover_with_buttons_entity: "cover.livingroom_window"
+    ulm_card_cover_buttons_name: "Cover Livingroom Window"
+    ulm_card_cover_buttons_entity: "cover.livingroom_window"
 ```
 
 ??? note "Template Code"
 
     ```yaml title="card_light.yaml"
-    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/2-line_cards/card_cover_with_buttons.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/2-line_cards/card_cover_buttons.yaml"
     ```
