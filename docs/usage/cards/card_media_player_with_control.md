@@ -29,6 +29,6 @@ This is the second `media-player-card`, in contrast to the first one above, it s
 
 ??? note "Template Code"
 
-    ```yaml title="card_light.yaml"
+    ```yaml title="card_media_player_with_control.yaml"
     --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_media_player_with_control.yaml"
     ```
