@@ -30,6 +30,12 @@ card_room:
         } else {
           return variables.ulm_unavailable;
         }
+      } else if (entity.state == "on") {
+          return variables.ulm_on
+      } else if (entity.state == "off") {
+          return variables.ulm_off
+      } else {
+        return entity.state
       }
     ]]]
   state:
