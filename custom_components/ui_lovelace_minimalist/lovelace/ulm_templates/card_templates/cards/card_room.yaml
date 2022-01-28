@@ -92,7 +92,7 @@ card_room:
       - font-size: "12px"
       - filter: "opacity(40%)"
       - margin-left: "12px"
-      - margin-top: "-10%" 
+      - margin-top: "-10%"
     state:
       - justify-self: "start"
       - font-weight: "bold"
@@ -233,9 +233,9 @@ card_room:
 widget_icon_room:
   variables:
     tap_action:
-      action: toggle
+      action: "toggle"
     hold_action:
-      action: none
+      action: "none"
   tap_action:
     action: >
       [[[ if (variables?.tap_action?.action) return variables.tap_action.action; else return 'none'; ]]]
@@ -245,7 +245,7 @@ widget_icon_room:
     service: "[[[ return variables.tap_action.service; ]]]"
     service_data: "[[[ return variables.tap_action.service_data; ]]]"
   hold_action:
-    action: > 
+    action: >
       [[[ if (variables?.hold_action?.action) return variables.hold_action.action; else return 'none'; ]]]
     entity: "[[[ return variables.hold_action.entity; ]]]"
     navigation_path: "[[[ return variables.hold_action.navigation_path; ]]]"
