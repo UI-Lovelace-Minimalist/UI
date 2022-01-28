@@ -1,11 +1,8 @@
 ---
 card_input_number:
   variables:
-    ulm_card_input_number_name: "[[[ return entity.attributes.friendly_name ]]]"
+    ulm_card_input_number_name: "n/a"
   triggers_update: "all"
-  show_icon: false
-  show_label: false
-  show_name: false
   styles:
     grid:
       - grid-template-areas: "'item1' 'item2'"
@@ -26,7 +23,7 @@ card_input_number:
           - "input_number"
         tap_action:
           action: "more-info"
-        entity: "[[[ return entity.entity_id ]]]"
+        entity: "[[[ return variables.ulm_card_input_number_entity ]]]"
         name: "[[[ return variables.ulm_card_input_number_name ]]]"
     item2:
       card:
@@ -41,18 +38,18 @@ card_input_number:
                 action: "call-service"
                 service: "input_number.decrement"
                 service_data:
-                  entity_id: "[[[ return entity.entity_id ]]]"
+                  entity_id: "[[[ return variables.ulm_card_input_number_entity ]]]"
               icon: "mdi:arrow-down"
           item2:
             card:
               type: "custom:button-card"
               template: "widget_text"
-              entity: "[[[ return entity.entity_id ]]]"
+              entity: "[[[ return variables.ulm_card_input_number_entity ]]]"
               tap_action:
                 action: "call-service"
                 service: "cover.stop_cover"
                 service_data:
-                  entity_id: "[[[ return entity.entity_id ]]]"
+                  entity_id: "[[[ return variables.ulm_card_input_number_entity ]]]"
           item3:
             card:
               type: "custom:button-card"
@@ -61,7 +58,7 @@ card_input_number:
                 action: "call-service"
                 service: "input_number.increment"
                 service_data:
-                  entity_id: "[[[ return entity.entity_id ]]]"
+                  entity_id: "[[[ return variables.ulm_card_input_number_entity ]]]"
               icon: "mdi:arrow-up"
 
 input_number:
@@ -100,6 +97,7 @@ widget_text:
     card:
       - box-shadow: "none"
       - padding: "0px"
+      - background-color: "rgba(var(--color-theme),0.05)"
       - border-radius: "14px"
       - place-self: "center"
       - height: "42px"
