@@ -8,6 +8,7 @@ hide:
 
 If you want to alight cards to the center, right. Or only 1 card on the right it can be done using a `blank-card`.
 
+<!-- markdownlint-disable -->
 ??? note "Center"
 
     ![chip_center](../../assets/img/layout/chip_center.png){ align=right width=40% }
@@ -62,4 +63,4 @@ If you want to alight cards to the center, right. Or only 1 card on the right it
           template: chip_icon_label
           label: Your right card here
     ```
-
+<!-- markdownlint-enable -->
