@@ -31,6 +31,6 @@ With the `cover-card` you have the state of your cover and on the second line UP
 
 ??? note "Template Code"
 
-    ```yaml title="card_light.yaml"
+    ```yaml title="card_cover_with_buttons.yaml"
     --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/2-line_cards/card_cover_with_buttons.yaml"
     ```
