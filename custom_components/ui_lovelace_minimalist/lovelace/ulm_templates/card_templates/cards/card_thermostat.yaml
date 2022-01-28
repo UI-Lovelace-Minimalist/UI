@@ -10,6 +10,8 @@ card_thermostat:
     ulm_card_thermostat_enable_controls: false
     ulm_card_thermostat_enable_hvac_modes: false
     ulm_card_thermostat_enable_background_color: false
+    ulm_card_thermostat_enable_display_temperature: false
+    ulm_card_thermostat_enable_horizontal: false
     # ulm_card_thermostat_enable_popup: false
   show_icon: false
   show_name: false
@@ -63,20 +65,37 @@ card_thermostat:
       - grid-template-areas: >
           [[[
                 var areas = [];
-                areas.push("item1");
+                if (variables.ulm_card_thermostat_enable_horizontal) {
+                  return "\"item1 item2\"";
+                } 
+                if (variables.ulm_card_thermostat_enable_display_temperature) {
+                    areas.push("item1 item4");
+                } else {
+                  areas.push("item1 item1");
+                }
                 if ( !(variables.ulm_card_thermostat_enable_collapse && entity.state == "off") &&  variables.ulm_card_thermostat_enable_controls) {
-                    areas.push("item2");
+                    areas.push("item2 item2");
                 }
                 if ( !(variables.ulm_card_thermostat_enable_collapse && entity.state == "off") &&  variables.ulm_card_thermostat_enable_hvac_modes) {
-                    areas.push("item3");
+                    areas.push("item3 item3");
                 }
                 return "\"" + areas.join("\" \"") + "\"";
           ]]]
-      - grid-template-columns: "1fr"
+      - grid-template-columns: >
+          [[[
+                if (variables.ulm_card_thermostat_enable_horizontal) {
+                  return "1fr 1fr";
+                } else {
+                  return "2fr 1fr";
+                }
+          ]]]
       - grid-template-rows: >
           [[[
                 var rows = [];
                 rows.push("min-content");
+                if (variables.ulm_card_thermostat_enable_horizontal) {
+                  return "min-content";
+                }    
                 if ( !(variables.ulm_card_thermostat_enable_collapse && entity.state == "off") &&  variables.ulm_card_thermostat_enable_controls) {
                     rows.push("min-content");
                 }
@@ -103,11 +122,26 @@ card_thermostat:
       item3:
         - display: >
             [[[
+                if (variables.ulm_card_thermostat_enable_horizontal) {
+                  return "none";
+                } 
                 if ( !(variables.ulm_card_thermostat_enable_collapse && entity.state == "off") &&  variables.ulm_card_thermostat_enable_hvac_modes) {
-                      return "block";
-                  } else {
-                      return "none";
-                  }
+                  return "block";
+                } else {
+                  return "none";
+                }
+            ]]]
+      item4:
+        - display: >
+            [[[
+                if (variables.ulm_card_thermostat_enable_horizontal) {
+                  return "none";
+                } 
+                if (variables.ulm_card_thermostat_enable_display_temperature) {
+                  return "block";
+                } else {
+                  return "none";
+                }
             ]]]
   custom_fields:
     item1:
@@ -218,22 +252,11 @@ card_thermostat:
                       var mode = variables.ulm_unavailable;
                     }
 
-                    if(entity.attributes.temperature){
+                    if(entity.attributes.temperature && !variables.ulm_card_thermostat_enable_display_temperature){
                       return (entity.attributes.current_temperature ) + '°' + ' • ' + label + ' (' + mode + ')';
                     }
                     return label; 
                 ]]]
-              # state:
-              #   - operator: "template"
-              #     value: >
-              #       [[[
-              #         return (entity.attributes.hvac_action == 'cooling' || entity.attributes.hvac_action == 'heating') && variables.ulm_card_thermostat_enable_background_color && hass.themes.darkMode
-              #       ]]]
-              #     styles:
-              #       name:
-              #         - color: "var(--card-background-color)"
-              #       label:
-              #         - color: "var(--card-background-color)"
     item2:
       card:
         type: "custom:button-card"
@@ -596,3 +619,22 @@ card_thermostat:
                   styles:
                     card:
                       - background-color: "rgba(var(--color-theme),0.15)"
+    item4:
+      card:
+        type: "custom:button-card"
+        show_icon: false
+        show_name: false
+        show_label: true
+        entity: "[[[ return entity.entity_id ]]]"
+        label: |-
+          [[[
+              var temperature = entity.attributes.current_temperature;
+              if (temperature == null) {
+                var temperature = '-';
+              }
+              return temperature + '°C'
+          ]]]
+        styles:
+          card:
+            - background: "none"
+            - box-shadow: "none"
