@@ -40,6 +40,6 @@ The `card_graph` shows an entity with the actual state and a *min-graph-card* in
 
 ??? note "Template Code"
 
-    ```yaml title="card_light.yaml"
+    ```yaml title="card_graph.yaml"
     --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/2-line_cards/card_graph.yaml"
     ```

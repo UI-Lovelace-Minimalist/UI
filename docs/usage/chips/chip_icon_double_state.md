@@ -32,6 +32,6 @@ This `chip` displays can display an icon and value of two entities.
 
 ??? note "Template Code"
 
-    ```yaml title="card_light.yaml"
+    ```yaml title="chip_icon_double_state.yaml"
     --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/chips/chip_icon_double_state.yaml"
     ```
