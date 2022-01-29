@@ -114,3 +114,11 @@ This card needs the following to function correctly:
     ulm_custom_card_bar_card_entity: sensor.memory_use_percent
     ulm_custom_card_bar_card_name: Memory Usage
 ```
+
+## Template code
+
+??? note "Template Code"
+
+    ```yaml title="custom_card_bar_card.yaml"
+    --8<-- "custom_cards/custom_card_bar_card/custom_card_bar_card.yaml"
+    ```
