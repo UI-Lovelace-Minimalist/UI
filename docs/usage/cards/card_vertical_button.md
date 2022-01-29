@@ -33,6 +33,6 @@ Card description should be here.
 
 ??? note "Template Code"
 
-    ```yaml title="card_light.yaml"
+    ```yaml title="card_vertical_button.yaml"
     --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_vertical_button.yaml"
     ```

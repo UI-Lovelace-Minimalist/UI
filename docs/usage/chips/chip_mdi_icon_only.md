@@ -30,6 +30,6 @@ This `chip` displays an icon using [mdi](https://materialdesignicons.com/).
 
 ??? note "Template Code"
 
-    ```yaml title="card_light.yaml"
+    ```yaml title="chip_mdi_icon_only.yaml"
     --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/chips/chip_mdi_icon_only.yaml"
     ```

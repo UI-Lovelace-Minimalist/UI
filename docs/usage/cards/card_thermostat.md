@@ -31,6 +31,6 @@ The thermostat-card is used to switch a climate entity on/off and show the tempe
 
 ??? note "Template Code"
 
-    ```yaml title="card_light.yaml"
+    ```yaml title="card_thermostat.yaml"
     --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_thermostat.yaml"
     ```
