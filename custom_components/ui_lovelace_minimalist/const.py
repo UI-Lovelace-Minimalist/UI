@@ -11,14 +11,18 @@ ISSUE_URL = "https://github.com/stokkie90/ui-lovelace-minimalist/issues"
 
 CONF_LANGUAGE = "language"
 CONF_LANGUAGES = [
-    "English",
-    "German",
-    "Spanish",
-    "French",
-    "Italian",
-    "Swedish",
+    "Danish",
     "Dutch",
+    "English (GB)",
+    "French",
+    "German",
+    "Italian",
+    "Polish",
+    "Portuguese",
+    "Spanish",
+    "Swedish",
 ]
+CONF_SIDEPANEL_ENABLED = "sidepanel_enabled"
 CONF_SIDEPANEL_TITLE = "sidepanel_title"
 CONF_SIDEPANEL_ICON = "sidepanel_icon"
 CONF_THEME = "theme"
@@ -32,7 +36,8 @@ CONF_INCLUDE_OTHER_CARDS = "include_other_cards"
 
 # Defaults
 DEFAULT_NAME = DOMAIN
-DEFAULT_LANGUAGE = "English"
+DEFAULT_LANGUAGE = "English (GB)"
+DEFAULT_SIDEPANEL_ENABLED = False
 DEFAULT_SIDEPANEL_TITLE = NAME
 DEFAULT_SIDEPANEL_ICON = "mdi:flower"
 DEFAULT_THEME = "minimalist-desktop"

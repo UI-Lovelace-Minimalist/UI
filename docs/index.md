@@ -36,6 +36,9 @@ This is a living project and all input is very welcome! If you configured and de
 - A lot of inspiration is taken from [7ahang’s work](https://www.behance.net/gallery/88433905/Redesign-Smart-Home) found on Behance.
 - Contributions from others in the HomeAssistant forum thread, you can find it here.
 - The technical part is realised mostly by taking advantage of the great work RomRaider did with his [button-card](https://github.com/custom-cards/button-card).
-- Code refactor, cleanup and maintainance by schumijo and paddy0174.
-- Wiki by paddy0174.
-- Special thanks to clemalex and schumijo for contributing their cards to the main repository.
+- Code refactor, cleanup and maintainance by [schumijo](https://github.com/schumijo) and [paddy0174](https://github.com/Paddy0174) & [CM000n](https://github.com/CM000n).
+- [dwainscheeren](https://github.com/dwainscheeren) for his inspiration to deliver themes via HACS.
+- Wiki by [paddy0174](https://github.com/Paddy0174).
+- Special thanks to clemalex and [schumijo](https://github.com/schumijo)for contributing their cards to the main repository.
+- [stokkie90](https://github.com/stokkie90) for implementing most of the HACS functionalities.
+- And of course [all the others](https://github.com/UI-Lovelace-Minimalist/UI/graphs/contributors) who cannot be named here due to space limitations. 😉 Thank you for your contribution ❤️
