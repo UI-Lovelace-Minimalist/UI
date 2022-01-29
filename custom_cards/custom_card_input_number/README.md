@@ -5,11 +5,11 @@ hide:
 ---
 <!-- markdownlint-disable MD046 -->
 
-# Custom-card "NAS"
+# Custom-card "Input Number"
 
 The `card_input_number` you can control a input_number entity
 
-![Input Number Card](./assets/img/card_input_number.png)
+![Input Number Card](../../docs/assets/img/card_input_number.png)
 
 ## Credits
 

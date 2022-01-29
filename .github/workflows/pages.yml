@@ -3,8 +3,8 @@ name: "Pages"
 
 on:
   push:
-    # TODO: Remove 'dev' branch after testing
-    branches: ["main", "dev"]
+    # Should only run on "main" since we dont want any "dev" changes in our docs before release
+    branches: ["main"]
 
 jobs:
   deploy:
@@ -14,5 +14,5 @@ jobs:
       - uses: "actions/setup-python@v2"
         with:
           python-version: "3.x"
-      - run: "pip install mkdocs-material mkdocs-awesome-pages-plugin pygments"
+      - run: "pip install mkdocs-material mkdocs-awesome-pages-plugin"
       - run: "mkdocs gh-deploy --force"

@@ -23,26 +23,27 @@ logger:
 #
 # Uncomment part below after installing dependencies
 #
-# # Requirement for popups, install browser mod with hacs
-# browser_mod:
+## Requirement for popups, install browser mod with hacs
+browser_mod:
 
-# # Install virtual integration with hacs
-# virtual:
-# light:
-#   - platform: "virtual"
-#     name: "Light 1"
-#     support_color: true
-#     support_color_temp: true
-#     support_white_value: true
+## Install virtual integration with hacs
+virtual:
 
-#   - platform: "virtual"
-#     name: "Light 2"
-#     support_color: true
-#     support_color_temp: true
-#     support_white_value: true
+light:
+  - platform: "virtual"
+    name: "Livingroom"
+    support_color: true
+    support_color_temp: true
+    support_white_value: true
 
-#   - platform: "virtual"
-#     name: "Light 3"
-#     support_color: true
-#     support_color_temp: true
-#     support_white_value: true
+sensor:
+  - platform: "virtual"
+    name: "Livingroom Temperature"
+    class: "temperature"
+    initial_value: 20
+    initial_availability: true
+  - platform: "virtual"
+    name: "Livingroom Humidity"
+    class: "humidity"
+    initial_value: 50
+    initial_availability: true

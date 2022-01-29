@@ -7,22 +7,25 @@ hide:
 
 ## Description
 
-![example-image](../../assets/img/ulm_chips/chip_example.png){ width="500" }
+![example-image](../../assets/img/ulm_chips/chip_mdi_icon_state.png){ width="500" }
 
-Chip description should be here.
+This `chip` displays an icon using [mdi](https://materialdesignicons.com/) and `state` of the chosen `entity`.
 
 ## Variables
 
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
-| name     |         | :material-check: |                   |
-|background| `true`  | :material-close: | Enable background |
+|ulm_chip_mdi_icon_state_entity     |         | :material-check: | `entity` to link |                  |
+|ulm_chip_mdi_icon_state_icon       |         | :material-close: | mdi:icon to display  |
 
 ## Usage
 
 ```yaml
 - type: "custom:button-card"
-  template: example
+  template: chip_mdi_icon_state
+  variables:
+    ulm_chip_mdi_icon_state_entity: light.kitchen_lights
+    ulm_chip_mdi_icon_state_icon: mdi:lightbulb
 ```
 
 ??? note "Template Code"

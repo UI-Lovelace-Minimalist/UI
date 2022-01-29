@@ -33,7 +33,11 @@ repos:
     hooks:
       - id: "yamllint"
         args: ["--format", "parsable", "--strict"]
-        exclude: ".pre-commit-config.yaml"
+        # exclude: ".pre-commit-config.yaml"
+        exclude: |
+            (?x)^(
+                .pre-commit-config.yaml
+            )$
 
   - repo: https://github.com/igorshubovych/markdownlint-cli
     rev: v0.30.0

@@ -27,13 +27,13 @@ extra_css:
 theme:
   name: "material"
   language: "en"
-  font:
-    text: "Roboto"
+  font: false
   logo: "assets/logos/website_logo.png"
   favicon: "assets/logos/favicon/favicon-32x32.png"
+  custom_dir: "docs/assets/overrides"
   palette:
     - media: "(prefers-color-scheme: light)"
-      scheme: "default"
+      primary: "white"
       toggle:
         icon: "material/weather-night"
         name: "Dark mode"
@@ -81,11 +81,6 @@ markdown_extensions:
   - "def_list"
   - toc:
       permalink: true
-  - codehilite:
-      guess_lang: false
-      use_pygments: true
-      noclasses: true
-      pygments_style: "monokai"
 
 plugins:
   - "search"
