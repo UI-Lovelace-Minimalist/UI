@@ -7,7 +7,7 @@ hide:
 
 # Custom-card "Scenes Card"
 
-With the `card_scenes` you can activate scenes.
+The `card_scenes` you can control up to 5 `entity` such as `scene` or `script`.
 
 ![Scenes Card](../../docs/assets/img/card_scenes.png)
 
