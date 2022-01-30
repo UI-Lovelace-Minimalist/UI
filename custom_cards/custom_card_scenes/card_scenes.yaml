@@ -48,7 +48,7 @@ card_scenes:
           color_bg: "[[[ return variables.color_bg_1 ]]]"
         tap_action:
           action: "call-service"
-          service: "scene.turn_on"
+          service: "homeassistant.turn_on"
           service_data:
             entity_id: "[[[ return variables.entity_1 ]]]"
     item2:
@@ -63,7 +63,7 @@ card_scenes:
           color_bg: "[[[ return variables.color_bg_2 ]]]"
         tap_action:
           action: "call-service"
-          service: "scene.turn_on"
+          service: "homeassistant.turn_on"
           service_data:
             entity_id: "[[[ return variables.entity_2 ]]]"
     item3:
@@ -78,7 +78,7 @@ card_scenes:
           color_bg: "[[[ return variables.color_bg_3 ]]]"
         tap_action:
           action: "call-service"
-          service: "scene.turn_on"
+          service: "homeassistant.turn_on"
           service_data:
             entity_id: "[[[ return variables.entity_3 ]]]"
     item4:
@@ -93,7 +93,7 @@ card_scenes:
           color_bg: "[[[ return variables.color_bg_4 ]]]"
         tap_action:
           action: "call-service"
-          service: "scene.turn_on"
+          service: "homeassistant.turn_on"
           service_data:
             entity_id: "[[[ return variables.entity_4 ]]]"
     item5:
@@ -108,7 +108,7 @@ card_scenes:
           color_bg: "[[[ return variables.color_bg_5 ]]]"
         tap_action:
           action: "call-service"
-          service: "scene.turn_on"
+          service: "homeassistant.turn_on"
           service_data:
             entity_id: "[[[ return variables.entity_5 ]]]"
 
