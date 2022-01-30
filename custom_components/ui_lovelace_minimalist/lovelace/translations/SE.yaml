@@ -13,6 +13,7 @@ ulm_language_variables:
     ulm_cool: "Cool"
     ulm_person_state_home: "home"
     ulm_person_state_away: "away"
+    ulm_person_state_not_home: "away"
     ulm_popups_back: "Tillbaka"
     ulm_popups_toggle: "Toogle"
     ulm_popups_statistics: "Statistik"
