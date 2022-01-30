@@ -6,7 +6,7 @@ hide:
 <!-- markdownlint-disable MD046 -->
 ## Description
 
-![example-image](../../assets/img/ulm_chips/chip_example.png){ width="500" }
+![example-image](../../assets/img/ulm_chips/chip_back.png){ width="500" }
 
 This is a `back-button`, primarly used if you switch between views and want a convenient way back.
 
@@ -27,6 +27,6 @@ This is a `back-button`, primarly used if you switch between views and want a co
 
 ??? note "Template Code"
 
-    ```yaml title="card_light.yaml"
+    ```yaml title="chip_back.yaml"
     --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/chips/chip_back.yaml"
     ```

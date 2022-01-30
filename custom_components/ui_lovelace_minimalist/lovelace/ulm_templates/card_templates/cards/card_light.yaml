@@ -5,7 +5,7 @@ card_light:
     - "ulm_language_variables"
   variables:
     ulm_card_light_name: "[[[ return entity.attributes.friendly_name ]]]"
-    ulm_card_light_icon: "[[[ return 'mdi:lightbulb' ]]]"
+    ulm_card_light_icon: "[[[ return entity.attributes.icon ]]]"
     ulm_card_light_enable_collapse: false
     ulm_card_light_enable_slider: false
     ulm_card_light_enable_horizontal: false

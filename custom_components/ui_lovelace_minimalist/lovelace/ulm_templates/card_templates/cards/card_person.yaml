@@ -8,6 +8,7 @@ card_person:
     ulm_card_person_use_entity_picture: false
     ulm_card_person_zone1: ""
     ulm_card_person_zone2: ""
+  triggers_update: "all"
   tap_action:
     action: "more-info"
     entity: "[[[ return variables.ulm_card_person_entity; ]]]"

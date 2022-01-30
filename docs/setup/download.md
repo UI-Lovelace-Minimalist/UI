@@ -3,7 +3,7 @@ title: Prepare & Download
 hide:
   - toc
 ---
-
+<!-- markdownlint-disable MD046 -->
 Before get started on anything, make sure you have created a backup of your home assistant configuration.
 
 > In case you experience problems during installation please reach join the [Discord Server](https://discord.gg/TPXg9b7GfR).

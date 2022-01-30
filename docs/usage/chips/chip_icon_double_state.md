@@ -1,5 +1,5 @@
 ---
-title: chip_icon_dauble_state
+title: chip_icon_double_state
 hide:
   - toc
 ---
@@ -7,17 +7,17 @@ hide:
 
 ## Description
 
-![example-image](../../assets/img/ulm_chips/chip_example.png){ width="500" }
+![example-image](../../assets/img/ulm_chips/chip_icon_double_state.png){ width="500" }
 
-Chip description should be here.
+This `chip` displays can display an icon and value of two entities.
 
 ## Variables
 
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
-| ulm_chip_icon_double_state_icon     |         | :material-check: | This is the icon to show. See icons to read more about the used unicode `emojis`. |
-|ulm_chip_icon_double_state_entity_1|     | :material-check: |  |
-|ulm_chip_icon_double_state_entity_2|     | :material-check: |  |
+|ulm_chip_icon_double_state_icon    |     | :material-check: | This is the icon to show. See icons to read more about the used unicode `emojis`. |
+|ulm_chip_icon_double_state_entity_1|     | :material-check: | This is the `entity` to display in first position |
+|ulm_chip_icon_double_state_entity_2|     | :material-check: | This is the `entity` to display in second position |
 
 ## Usage
 
@@ -32,6 +32,6 @@ Chip description should be here.
 
 ??? note "Template Code"
 
-    ```yaml title="card_light.yaml"
+    ```yaml title="chip_icon_double_state.yaml"
     --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/chips/chip_icon_double_state.yaml"
     ```

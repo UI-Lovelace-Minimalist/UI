@@ -7,6 +7,7 @@
                 "description": "",
                 "data": {
                     "language": "Language",
+                    "sidepanel_enabled": "Enable creation of a Dashboard entry in the Side panel.",
                     "sidepanel_icon": "Side panel icon",
                     "sidepanel_title": "Side panel title",
                     "theme": "Theme",
@@ -26,6 +27,7 @@
                 "description": "",
                 "data": {
                     "language": "Language",
+                    "sidepanel_enabled": "Enable creation of a Dashboard entry in the Side panel.",
                     "sidepanel_icon": "Side panel icon",
                     "sidepanel_title": "Side panel title",
                     "theme": "Theme",
