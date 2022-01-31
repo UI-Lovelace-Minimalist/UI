@@ -57,8 +57,8 @@ theme:
 markdown_extensions:
   - "meta"
   - "pymdownx.superfences"
-#  - pymdownx.tabbed:
-#      alternate_style: true
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
@@ -83,11 +83,11 @@ markdown_extensions:
   - "def_list"
   - toc:
       permalink: true
-#  - codehilite:
-#      guess_lang: false
-#      use_pygments: true
-#      noclasses: true
-#      pygments_style: "monokai"
+  - codehilite:
+      guess_lang: false
+      use_pygments: true
+      noclasses: true
+      pygments_style: "monokai"
 
 plugins:
   - "search"
