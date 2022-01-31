@@ -4,6 +4,7 @@ hide:
   - toc
 ---
 
+<!-- markdownlint-disable -->
 ```yaml
 https://squidfunk.github.io/mkdocs-material/reference/admonitions/#custom-admonitions
 ```
@@ -11,7 +12,6 @@ https://squidfunk.github.io/mkdocs-material/reference/admonitions/#custom-admoni
 {% for card in card_templates.card_templates %}
 
 ## {{ card.title }}
-<!-- markdownlint-disable -->
 !!! example "{{ card.title }}"
     <table>
     <tr>
