@@ -12,29 +12,29 @@ card_thermostat:
     ulm_card_thermostat_enable_background_color: false
     ulm_card_thermostat_enable_display_temperature: false
     ulm_card_thermostat_enable_horizontal: false
-    # ulm_card_thermostat_enable_popup: false
+    ulm_card_thermostat_enable_popup: false
   show_icon: false
   show_name: false
   show_label: false
-  # hold_action:
-  #   action: >
-  #     [[[
-  #         if (variables.ulm_card_thermostat_enable_popup){
-  #           return 'fire-dom-event'
-  #         }
-  #         else{
-  #           return 'more-info'
-  #         }
-  #     ]]]
-  #   browser_mod:
-  #     command: "popup"
-  #     large: true
-  #     hide_header: true
-  #     card:
-  #       type: "custom:button-card"
-  #       template: "popup_light_brightness"
-  #       variables:
-  #         ulm_popup_light_entity: "[[[ return entity.entity_id ]]]"
+  hold_action:
+    action: >
+      [[[
+          if (variables.ulm_card_thermostat_enable_popup){
+            return 'fire-dom-event'
+          }
+          else{
+            return 'more-info'
+          }
+      ]]]
+    browser_mod:
+      command: "popup"
+      large: true
+      hide_header: true
+      card:
+        type: "custom:button-card"
+        template: "popup_thermostat_temperature"
+        variables:
+          ulm_popup_thermostat_entity: "[[[ return entity.entity_id ]]]"
   state:
     - operator: "template"
       value: >
@@ -155,25 +155,25 @@ card_thermostat:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
               icon: "[[[ return variables.ulm_card_thermostat_icon ]]]"
-              #             hold_action:
-              #               action: >
-              #                 [[[
-              #                     if (variables.ulm_card_thermostat_enable_popup){
-              #                       return 'fire-dom-event'
-              #                     }
-              #                     else{
-              #                       return 'more-info'
-              #                     }
-              #                 ]]]
-              #               browser_mod:
-              #                 command: "popup"
-              #                 large: true
-              #                 hide_header: true
-              #                 card:
-              #                   type: "custom:button-card"
-              #                   template: "popup_light_brightness"
-              #                   variables:
-              #                     ulm_popup_light_entity: "[[[ return entity.entity_id ]]]"
+              hold_action:
+                action: >
+                  [[[
+                      if (variables.ulm_card_thermostat_enable_popup){
+                        return 'fire-dom-event'
+                      }
+                      else{
+                        return 'more-info'
+                      }
+                  ]]]
+                browser_mod:
+                  command: "popup"
+                  large: true
+                  hide_header: true
+                  card:
+                    type: "custom:button-card"
+                    template: "popup_thermostat_temperature"
+                    variables:
+                      ulm_popup_thermostat_entity: "[[[ return entity.entity_id ]]]"
               state:
                 - operator: "template"
                   value: >
@@ -202,25 +202,25 @@ card_thermostat:
                   ]]]
                 service_data:
                   entity_id: "[[[ return entity.entity_id ]]]"
-              #             hold_action:
-              #               action: >
-              #                 [[[
-              #                     if (variables.ulm_card_thermostat_enable_popup){
-              #                       return 'fire-dom-event'
-              #                     }
-              #                     else{
-              #                       return 'more-info'
-              #                     }
-              #                 ]]]
-              #               browser_mod:
-              #                 command: "popup"
-              #                 large: true
-              #                 hide_header: true
-              #                 card:
-              #                   type: "custom:button-card"
-              #                   template: "popup_light_brightness"
-              #                   variables:
-              #                     ulm_popup_light_entity: "[[[ return entity.entity_id ]]]"
+              hold_action:
+                action: >
+                  [[[
+                      if (variables.ulm_card_thermostat_enable_popup){
+                        return 'fire-dom-event'
+                      }
+                      else{
+                        return 'more-info'
+                      }
+                  ]]]
+                browser_mod:
+                  command: "popup"
+                  large: true
+                  hide_header: true
+                  card:
+                    type: "custom:button-card"
+                    template: "popup_thermostat_temperature"
+                    variables:
+                      ulm_popup_thermostat_entity: "[[[ return entity.entity_id ]]]"
               label: >-
                 [[[
                     var label = variables.ulm_off ;
