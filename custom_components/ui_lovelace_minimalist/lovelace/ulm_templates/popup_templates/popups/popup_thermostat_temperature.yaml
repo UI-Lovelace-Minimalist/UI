@@ -188,7 +188,7 @@ popup_thermostat_temperature:
                   - height: "42px"
                   - width: "42px"
                   - border-radius: "50%"
-                  - box-shadow: none
+                  - box-shadow: "none"
               state:
                 - value: "auto"
                   styles:
@@ -214,7 +214,7 @@ popup_thermostat_temperature:
                   - height: "42px"
                   - width: "42px"
                   - border-radius: "50%"
-                  - box-shadow: none
+                  - box-shadow: "none"
               state:
                 - value: "heat"
                   styles:
@@ -240,7 +240,7 @@ popup_thermostat_temperature:
                   - height: "42px"
                   - width: "42px"
                   - border-radius: "50%"
-                  - box-shadow: none
+                  - box-shadow: "none"
               state:
                 - value: "cool"
                   styles:
@@ -266,7 +266,7 @@ popup_thermostat_temperature:
                   - height: "42px"
                   - width: "42px"
                   - border-radius: "50%"
-                  - box-shadow: none
+                  - box-shadow: "none"
               state:
                 - value: "dry"
                   styles:
@@ -292,7 +292,7 @@ popup_thermostat_temperature:
                   - height: "42px"
                   - width: "42px"
                   - border-radius: "50%"
-                  - box-shadow: none
+                  - box-shadow: "none"
               state:
                 - value: "fan_only"
                   styles:
@@ -318,7 +318,7 @@ popup_thermostat_temperature:
                   - height: "42px"
                   - width: "42px"
                   - border-radius: "50%"
-                  - box-shadow: none
+                  - box-shadow: "none"
               state:
                 - value: "heat_cool"
                   styles:
