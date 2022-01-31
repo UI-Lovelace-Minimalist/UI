@@ -1,5 +1,6 @@
 ---
 title: custom_card_paddy_welcome
+ignore_macros: true
 hide:
   - toc
 ---

@@ -1,8 +1,10 @@
 ---
 title: custom_card_paddy_dwd_pollen
+ignore_macros: true
 hide:
   - toc
 ---
+
 <!-- markdownlint-disable MD046 -->
 
 # Custom-card "DWD Pollen"

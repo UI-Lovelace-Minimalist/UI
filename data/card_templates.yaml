@@ -1,0 +1,31 @@
+card_templates:
+  - name: card_battery
+    title: Battery Card
+    description: "The `battery-card` is a slightly enhanced `generic-card`, just to ease the use. You could always configure it from the `generic-card` yourself."
+    image_path: "assets/img/ulm_cards/card_battery.png"
+    internal: false
+    variables:
+      - name: entity
+        type: entry
+        example: sensor.livingroom_thermometer_battery
+        required: true
+        description: "This is your battery entity"
+      - name: ulm_card_battery_attribute
+        type: variable
+        example: battery_attribute
+        required: false
+        description: "If your entity provides the battery percent in an attribute (= not as an own sensor), fill in the <u>attributes name</u> here. Eg. if you have `sensor.livingroom_thermometer` and the attribute for your battery power is `sensor.livingroom_thermometer.attributes.battery_percent`, you fill in <i>battery_percent</i> here."
+    yaml: |-
+      - type: 'custom:button-card'
+        template: card_battery
+        variables:
+          ulm_card_battery_attribute: battery_attribute
+        entity: sensor.livingoom_thermometer_battery
+
+    ui: |-
+      type: 'custom:button-card'
+      template: card_battery
+      variables:
+        ulm_card_battery_attribute: battery_attribute
+      entity: sensor.livingoom_thermometer_battery
+    code: lovelace/ulm_templates/card_templates/cards/card_battery.yaml

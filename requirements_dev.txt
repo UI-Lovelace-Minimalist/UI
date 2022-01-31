@@ -5,6 +5,7 @@
 #
 jinja2
 mkdocs-awesome-pages-plugin
+mkdocs-macros-plugin
 mkdocs-material
 pre-commit
 
