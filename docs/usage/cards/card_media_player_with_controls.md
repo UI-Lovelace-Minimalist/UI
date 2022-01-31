@@ -31,6 +31,6 @@ With the `card_media_player_with_controls` you have the state of your media_play
 
 ??? note "Template Code"
 
-    ```yaml title="card_light.yaml"
+    ```yaml title="card_media_player_with_controls.yaml"
     --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_media_player_with_controls.yaml"
     ```

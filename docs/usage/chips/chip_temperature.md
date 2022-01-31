@@ -32,6 +32,6 @@ This `chip` is to display a weather icon together with the outside and inside te
 
 ??? note "Template Code"
 
-    ```yaml title="card_light.yaml"
+    ```yaml title="chip_temperature.yaml"
     --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/chips/chip_temperature.yaml"
     ```
