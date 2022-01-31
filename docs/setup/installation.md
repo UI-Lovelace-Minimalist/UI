@@ -30,11 +30,11 @@ Now you can configure the Integration, you can do this also after it's installed
 
     Currently, it may happen that themes are not automatically selected correctly for you in all cases automatically. Please make sure that the minimalist theme is correctly selected in your Home Assistant settings (click on your profile picture in Home Assistant, bottom left).
 
-- Theme path: Make sure this is set to the same path as is configured in your `configuration.yaml` (default: `/themes`)
+- Theme path: Make sure this is set to the same path as is configured in your `configuration.yaml` (default: `themes/`)
 
 !!! note ""
 
-    Please make sure that you have included this themes folder in your `configuration.yaml` in the [frontend settings](https://www.home-assistant.io/integrations/frontend/). Unfortunately, this is something that the HACS integration cannot do for you. If you use the /themes folder, your entry in `configuration.yaml` must look like this for example:
+    Please make sure that you have included this themes/ folder in your `configuration.yaml` in the [frontend settings](https://www.home-assistant.io/integrations/frontend/). Unfortunately, this is something that the HACS integration cannot do for you. If you use the themes/ folder, your entry in `configuration.yaml` must look like this for example:
 
     ```yaml
     frontend:
@@ -62,10 +62,10 @@ A new file for the dashboard configuration, with a small example, where you can 
 ```yaml
 config
 └── ui_lovelace_minimalist
-├── config
-├── custom_cards
-└── dashboard
-└── ui-lovelace.yaml
+    ├── config
+    ├── custom_cards
+    └── dashboard
+        └── ui-lovelace.yaml
 ```
 
 In case you want to use your own ui-lovelace files go to [Configuration](../configuration).
