@@ -267,6 +267,7 @@ widget_icon_room:
       - height: "100%"
       - box-shadow: "none"
       - padding: "0px"
+      - border-radius: "50%"
     icon:
       - width: "50%"
       - height: "50%"
