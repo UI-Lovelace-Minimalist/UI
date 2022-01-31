@@ -1,6 +1,19 @@
 ---
 ### chip_alarm ###
 chip_alarm:
+  doc:
+    title: "Chip Alarm"
+    description: "Alarm `chip` that displays alarm armed and disarmed state with colored icon."
+    image_path: "assets/img/ulm_chips/chip_alarm.png"
+    variables:
+      - name: "entity"
+        required: true
+        description: "entity of your alarm_control_panel"
+    yaml: |-
+      - type: 'custom:button-card'
+        template: chip_alarm
+        entity: alarm_control_panel.alarm
+
   template:
     - "chip_icon_label"
     - "ulm_language_variables"

@@ -9,6 +9,8 @@ mkdocs-macros-plugin
 mkdocs-material
 pre-commit
 
+# pyyaml==6.0
+
 # Optional, if container start takes really long due to PyTurboJPEG==1.6.3
 # wheel
 # PyTurboJPEG==1.6.3
