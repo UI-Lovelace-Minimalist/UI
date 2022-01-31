@@ -1,6 +1,5 @@
 ---
-### Blue ###
-blue:
+blue_on:
   state:
     - styles:
         icon:
@@ -14,3 +13,7 @@ blue:
         card:
           - background-color: "rgba(var(--color-background-blue), var(--opacity-bg))"
       value: "on"
+
+# Legacy
+blue:
+  template: "blue_on"
