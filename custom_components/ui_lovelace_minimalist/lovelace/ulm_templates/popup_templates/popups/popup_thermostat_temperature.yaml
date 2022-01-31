@@ -173,6 +173,7 @@ popup_thermostat_temperature:
           auto:
             card:
               type: "custom:button-card"
+              entity: "[[[ return variables.ulm_popup_thermostat_entity ]]]"
               template: "widget_icon"
               icon: "mdi:autorenew"
               tap_action:
@@ -189,11 +190,7 @@ popup_thermostat_temperature:
                   - border-radius: "50%"
                   - box-shadow: none
               state:
-                - operator: "template"
-                  value: >
-                    [[[
-                      return states[variables.ulm_popup_thermostat_entity].state == "auto"
-                    ]]]
+                - value: "auto"
                   styles:
                     card:
                       - background-color: "var(--card-background-color)"
@@ -202,6 +199,7 @@ popup_thermostat_temperature:
           heat:
             card:
               type: "custom:button-card"
+              entity: "[[[ return variables.ulm_popup_thermostat_entity ]]]"
               template: "widget_icon"
               icon: "mdi:fire"
               tap_action:
@@ -218,11 +216,7 @@ popup_thermostat_temperature:
                   - border-radius: "50%"
                   - box-shadow: none
               state:
-                - operator: "template"
-                  value: >
-                    [[[
-                      return states[variables.ulm_popup_thermostat_entity].state == "heat"
-                    ]]]
+                - value: "heat"
                   styles:
                     card:
                       - background-color: "var(--card-background-color)"
@@ -231,6 +225,7 @@ popup_thermostat_temperature:
           cool:
             card:
               type: "custom:button-card"
+              entity: "[[[ return variables.ulm_popup_thermostat_entity ]]]"
               template: "widget_icon"
               icon: "mdi:snowflake"
               tap_action:
@@ -247,11 +242,7 @@ popup_thermostat_temperature:
                   - border-radius: "50%"
                   - box-shadow: none
               state:
-                - operator: "template"
-                  value: >
-                    [[[
-                      return states[variables.ulm_popup_thermostat_entity].state == "cool"
-                    ]]]
+                - value: "cool"
                   styles:
                     card:
                       - background-color: "var(--card-background-color)"
@@ -260,6 +251,7 @@ popup_thermostat_temperature:
           dry:
             card:
               type: "custom:button-card"
+              entity: "[[[ return variables.ulm_popup_thermostat_entity ]]]"
               template: "widget_icon"
               icon: "mdi:water"
               tap_action:
@@ -276,11 +268,7 @@ popup_thermostat_temperature:
                   - border-radius: "50%"
                   - box-shadow: none
               state:
-                - operator: "template"
-                  value: >
-                    [[[
-                      return states[variables.ulm_popup_thermostat_entity].state == "dry"
-                    ]]]
+                - value: "dry"
                   styles:
                     card:
                       - background-color: "var(--card-background-color)"
@@ -289,6 +277,7 @@ popup_thermostat_temperature:
           fan_only:
             card:
               type: "custom:button-card"
+              entity: "[[[ return variables.ulm_popup_thermostat_entity ]]]"
               template: "widget_icon"
               icon: "mdi:fan"
               tap_action:
@@ -305,11 +294,7 @@ popup_thermostat_temperature:
                   - border-radius: "50%"
                   - box-shadow: none
               state:
-                - operator: "template"
-                  value: >
-                    [[[
-                      return states[variables.ulm_popup_thermostat_entity].state == "fan_only"
-                    ]]]
+                - value: "fan_only"
                   styles:
                     card:
                       - background-color: "var(--card-background-color)"
@@ -318,6 +303,7 @@ popup_thermostat_temperature:
           heat_cool:
             card:
               type: "custom:button-card"
+              entity: "[[[ return variables.ulm_popup_thermostat_entity ]]]"
               template: "widget_icon"
               icon: "mdi:sun-snowflake"
               tap_action:
@@ -334,11 +320,7 @@ popup_thermostat_temperature:
                   - border-radius: "50%"
                   - box-shadow: none
               state:
-                - operator: "template"
-                  value: >
-                    [[[
-                      return states[variables.ulm_popup_thermostat_entity].state == "heat_cool"
-                    ]]]
+                - value: "heat_cool"
                   styles:
                     card:
                       - background-color: "var(--card-background-color)"
