@@ -29,6 +29,6 @@ The `card_media_player` shows you the *app*, the *title* and the *album name* pl
 
 ??? note "Template Code"
 
-    ```yaml title="card_light.yaml"
+    ```yaml title="card_media_player.yaml"
     --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_media_player.yaml"
     ```

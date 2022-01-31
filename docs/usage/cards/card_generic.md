@@ -27,6 +27,6 @@ This is the `generic-card` to display values from a sensor, eg. to show humidity
 
 ??? note "Template Code"
 
-    ```yaml title="card_light.yaml"
+    ```yaml title="card_generic.yaml"
     --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_generic.yaml"
     ```

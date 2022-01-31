@@ -46,8 +46,6 @@ def load_plugins(hass: HomeAssistant, ulm: UlmBase):
                     f'HACS Frontend repo "{p}" is already installed, Remove it or disable include custom cards'
                 )
 
-    add_extra_js_url(hass, "/ui_lovelace_minimalist/js/ui-lovelace-minimalist.js")
-
     if ulm.configuration.include_other_cards:
         # # Cards by others
         add_extra_js_url(
@@ -83,17 +81,7 @@ def load_plugins(hass: HomeAssistant, ulm: UlmBase):
             "/ui_lovelace_minimalist/cards/simple-weather-card/simple-weather-card-bundle.js",
         )
 
-    # Cards by UI Lovelace Minimalist
-    add_extra_js_url(
-        hass, "/ui_lovelace_minimalist/cards/ulm-flexbox-card/ulm-flexbox-card.js"
-    )
-
     # Register
-    hass.http.register_static_path(
-        "/ui_lovelace_minimalist/js",
-        hass.config.path(f"custom_components/{DOMAIN}/js"),
-        True,
-    )
     hass.http.register_static_path(
         "/ui_lovelace_minimalist/cards",
         hass.config.path(f"custom_components/{DOMAIN}/cards"),
