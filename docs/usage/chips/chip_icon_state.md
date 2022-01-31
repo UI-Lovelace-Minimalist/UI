@@ -30,6 +30,6 @@ This `chip` displays an icon and a label, where the label can be any `state` of 
 
 ??? note "Template Code"
 
-    ```yaml title="card_light.yaml"
+    ```yaml title="chip_icon_state.yaml"
     --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/chips/chip_icon_state.yaml"
     ```
