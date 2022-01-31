@@ -40,3 +40,5 @@ jobs:
           committer: "GitHub <noreply@github.com>"
           title: "[Action] Update custom_cards docs"
           labels: ":memo: documentation"
+          body: |
+            Update custom_cards docs due to latest changes.
