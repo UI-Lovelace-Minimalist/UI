@@ -10,19 +10,19 @@ ISSUE_URL = "https://github.com/stokkie90/ui-lovelace-minimalist/issues"
 
 
 CONF_LANGUAGE = "language"
-CONF_LANGUAGES = [
-    "Danish",
-    "Dutch",
-    "English (GB)",
-    "French",
-    "German",
-    "Italian",
-    "Polish",
-    "Portuguese",
-    "Spanish",
-    "Swedish",
-    "Norwegian",
-]
+CONF_LANGUAGES = {
+    "Danish": "DA",
+    "Dutch": "NL",
+    "English": "EN",
+    "French": "FR",
+    "German": "DE",
+    "Italian": "IT",
+    "Polish": "PL",
+    "Portuguese": "PT",
+    "Spanish": "ES",
+    "Swedish": "SE",
+    "Norwegian": "NO",
+}
 CONF_SIDEPANEL_ENABLED = "sidepanel_enabled"
 CONF_SIDEPANEL_TITLE = "sidepanel_title"
 CONF_SIDEPANEL_ICON = "sidepanel_icon"

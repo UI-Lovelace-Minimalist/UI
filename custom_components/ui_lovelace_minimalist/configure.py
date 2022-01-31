@@ -10,14 +10,14 @@ import shutil
 from homeassistant.core import HomeAssistant
 
 from .base import UlmBase
-from .const import DOMAIN
+from .const import DOMAIN, CONF_LANGUAGES
 
 _LOGGER: logging.Logger = logging.getLogger(__name__)
 
 LANGUAGES = {
     "Danish": "DA",
     "Dutch": "NL",
-    "English (GB)": "EN",
+    "English": "EN",
     "French": "FR",
     "German": "DE",
     "Italian": "IT",
