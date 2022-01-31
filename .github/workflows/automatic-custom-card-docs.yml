@@ -30,17 +30,13 @@ jobs:
           replace: "../../assets/img"
           include: "docs/usage/custom_cards/**"
           regex: true
-      - name: "Commit files"
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git pull -p
-          git add --all
-          git commit -a -m "Add changes for automatically custom_cards docs"
       - name: "Create Pull Request"
         uses: "peter-evans/create-pull-request@v3"
         with:
           token: "${{ secrets.GITHUB_TOKEN }}"
           branch: "automated_custom_card_docs"
           delete-branch: true
-          base: "${{ github.ref }}"
+          commit-message: "Update docs"
+          committer: "GitHub <noreply@github.com>"
+          title: "[Action] Update custom_cards docs"
+          labels: ":memo: documentation"
