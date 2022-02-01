@@ -1,6 +1,6 @@
 ---
 ### Card Media Player With Control ###
-card_media_player_with_control:
+card_media_player_art:
   template:
     - "card_media_player"
   styles:

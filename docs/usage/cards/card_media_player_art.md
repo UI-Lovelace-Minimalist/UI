@@ -1,5 +1,5 @@
 ---
-title: card_media_player_with_control
+title: card_media_player_art
 hide:
   - toc
 ---
@@ -22,13 +22,13 @@ This is the second `media-player-card`, in contrast to the first one above, it s
 
 ```yaml
 - type: 'custom:button-card'
-  template: card_media_player_with_control
+  template: card_media_player_art
   entity: media_player.livingroom_shield
   name: Livingroom Nvidia Shield
 ```
 
 ??? note "Template Code"
 
-    ```yaml title="card_media_player_with_control.yaml"
-    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_media_player_with_control.yaml"
+    ```yaml title="card_media_player_art.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_media_player_art.yaml"
     ```

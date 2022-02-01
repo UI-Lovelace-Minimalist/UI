@@ -1,9 +1,8 @@
 ---
-### Card Media Player With Controls ###
-card_media_player_with_controls:
+### Card Cover With Buttons ###
+card_cover_buttons:
   variables:
-    ulm_card_media_player_with_controls_name: "No name set"
-    ulm_card_media_player_with_controls_entity:
+    ulm_card_cover_buttons_name: "n/a"
   triggers_update: "all"
   styles:
     grid:
@@ -20,16 +19,13 @@ card_media_player_with_controls:
       card:
         type: "custom:button-card"
         template:
+          - "icon_info"
           - "ulm_language_variables"
-          - "card_media_player"
+          - "cover"
         tap_action:
           action: "more-info"
-        entity: "[[[ return variables.ulm_card_media_player_with_controls_entity ]]]"
-        name: "[[[ return variables.ulm_card_media_player_with_controls_name ]]]"
-        styles:
-          card:
-            - box-shadow: "none"
-            - padding: "0px"
+        entity: "[[[ return variables.ulm_card_cover_buttons_entity ]]]"
+        name: "[[[ return variables.ulm_card_cover_buttons_name ]]]"
     item2:
       card:
         type: "custom:button-card"
@@ -41,33 +37,27 @@ card_media_player_with_controls:
               template: "widget_icon"
               tap_action:
                 action: "call-service"
-                service: "media_player.media_previous_track"
+                service: "cover.close_cover"
                 service_data:
-                  entity_id: "[[[ return variables.ulm_card_media_player_with_controls_entity ]]]"
-              icon: "mdi:skip-previous"
+                  entity_id: "[[[ return variables.ulm_card_cover_buttons_entity ]]]"
+              icon: "mdi:arrow-down"
           item2:
             card:
               type: "custom:button-card"
               template: "widget_icon"
-              entity: "[[[ return variables.ulm_card_media_player_with_controls_entity ]]]"
               tap_action:
                 action: "call-service"
-                service: "media_player.media_play_pause"
+                service: "cover.stop_cover"
                 service_data:
-                  entity_id: "[[[ return variables.ulm_card_media_player_with_controls_entity ]]]"
+                  entity_id: "[[[ return variables.ulm_card_cover_buttons_entity ]]]"
               icon: "mdi:pause"
-              state:
-                - value: "paused"
-                  icon: "mdi:play"
-                - value: "off"
-                  icon: "mdi:play"
           item3:
             card:
               type: "custom:button-card"
               template: "widget_icon"
               tap_action:
                 action: "call-service"
-                service: "media_player.media_next_track"
+                service: "cover.open_cover"
                 service_data:
-                  entity_id: "[[[ return variables.ulm_card_media_player_with_controls_entity ]]]"
-              icon: "mdi:skip-next"
+                  entity_id: "[[[ return variables.ulm_card_cover_buttons_entity ]]]"
+              icon: "mdi:arrow-up"
