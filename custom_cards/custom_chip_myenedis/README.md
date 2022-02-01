@@ -14,12 +14,6 @@ The `myenedis` you can control a input_number entity
 
 ![HP / HC](../../docs/assets/img/ulm_chips/chip_myenedis_hp_hc.png)
 
-# Why not the default `chip_power_consumption`
-
-- The my enedis integration doesn't split the cost and the consumption in a specific sensor
-- All values are in the main sensor under the `attributes` item
-- Split `Heures Creuses (HC)` and `Heures pleines (HP)`
-
 ## Credits
 
 Author: acesyde - 2021
@@ -31,6 +25,12 @@ Version: 1.0.0
 <summary>1.0.0</summary>
 Initial release
 </details>
+
+## Why not the default `chip_power_consumption`
+
+- The my enedis integration doesn't split the cost and the consumption in a specific sensor
+- All values are in the main sensor under the `attributes` item
+- Split `Heures Creuses (HC)` and `Heures pleines (HP)`
 
 ## Usage
 
