@@ -29,6 +29,7 @@ def load_plugins(hass: HomeAssistant, ulm: UlmBase):
         "button-card",
         "light-entity-card",
         "lovelace-card-mod",
+        "lovelace-auto-entities",
         "mini-graph-card",
         "mini-media-player",
         "my-cards",
@@ -56,7 +57,7 @@ def load_plugins(hass: HomeAssistant, ulm: UlmBase):
         )
         add_extra_js_url(
             hass,
-            "/ui_lovelace_minimalist/cards/lovelace-card-mod/rollup.config.js",
+            "/ui_lovelace_minimalist/cards/lovelace-auto-entities/auto-entities.js",
         )
         add_extra_js_url(
             hass,

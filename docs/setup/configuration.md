@@ -26,15 +26,13 @@ This example dashbaord file already contains the necessary directory bindings wi
 However, if you want to use your own, possibly already existing, dashbaord file, you must make the necessary bindings of the templates in it yourself. This can be done for example by specifying the following:
 
 ```yaml
-# For future use!
-ui_lovelace_minimalist: !include "custom_components/ui_lovelace_minimalist/lovelace/plugins/ui_lovelace_minimalist.yaml"
 # Button cards location
 button_card_templates: !include_dir_merge_named "custom_components/ui_lovelace_minimalist/__ui_minimalist__/ulm_templates/"
 ```
 
 !!! note ""
 
-    **Please note!** Depending on where you have stored your own Dashboard .yaml file, your path specification can of course differ from the example and must be adapted by you. In the example it was assumed that the .yaml file is located in the top level of the Home Assistant configuration.
+    **Please note!** This step is only necessary if you are not using the sample dashboard file created for you. The path specifications are relative. Depending on where you have stored your own Dashboard .yaml file, your path specification can differ from the example and must be adapted by you. In the example it was assumed that the .yaml file is located in the top level of the Home Assistant configuration.
 
 ### UI Mode
 
@@ -45,9 +43,9 @@ button_card_templates: !include_dir_merge_named "custom_components/ui_lovelace_m
 
 ## Custom Cards
 
-This integration also allows you to add your own Custom Button Cards. These cards will be merged into a directory together witch the cards of this integration and the selected Language.
+This integration also allows you to add your own Custom Button Cards. These cards are not part of the HACS installation and must be downloaded separately from the repo as needed. You can find an overview of the cards [here](https://ui-lovelace-minimalist.github.io/UI/usage/custom_cards/custom_card_bar_card/) in our wiki. The cards themselves for the download are on our repo [here](https://github.com/UI-Lovelace-Minimalist/UI/tree/main/custom_cards).
 
-You might have noticed, during the installation process a directory for UI Lovelace Minimalist is/should be created in the Home Assistant configuration directory. The directory is named `ui_lovelace_minimalist`, within this directory you can put custom cards in the folder `custom_cards`. Basically you just have to create an folder inside `ui_lovelace_minimalist/custom_cards` for each cusom_card you want to add and put the custom_card.yaml file and the language file you need for the respective custom_card inside.
+You might have noticed, during the installation process a directory for UI Lovelace Minimalist is/should be created in the Home Assistant configuration directory. The directory is named `ui_lovelace_minimalist`, within this directory you can put custom cards in the folder `custom_cards`. Basically you just have to create an folder inside `ui_lovelace_minimalist/custom_cards` for each cusom_card you want to add and put the custom_card.yaml file and the language file you need for the respective custom_card inside. These cards will then be merged into a directory together witch the cards of this integration and the selected Language.
 
 Make sure it's in the format like the following example:
 

@@ -36,4 +36,5 @@ def load_dashboard(hass: HomeAssistant, ulm: UlmBase):
 
         _register_panel(hass, dashboard_url, "yaml", dashboard_config, True)
     else:
-        async_remove_panel(hass, "ui-lovelace-minimalist")
+        if dashboard_url in hass.data["lovelace"]["dashboards"]:
+            async_remove_panel(hass, "ui-lovelace-minimalist")

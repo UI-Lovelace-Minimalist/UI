@@ -5,9 +5,9 @@ title: card_input_datetime
 
 # Custom-card "Input Datetime Card"
 
-The `card_input_datetime` you can control a input_number entity
+The `card_input_datetime` you can control a input_datetime entity.
 
-![Input Datetime Card](./assets/img/card_input_datetime.png)
+![Input Datetime Card](../../docs/assets/img/card_input_datetime.png)
 
 ## Credits
 
@@ -58,5 +58,5 @@ n/a
 ??? note "Template Code"
 
     ```yaml title="custom_card_input_datetime.yaml"
-    --8<-- "custom_cards/custom_card_input_datetime/custom_card_input_datetime.yaml"
+    --8<-- "custom_cards/custom_card_input_datetime/card_input_datetime.yaml"
     ```
