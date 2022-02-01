@@ -54,7 +54,6 @@ card_welcome_scenes:
         template: "card_topbar_welcome"
         variables:
           ulm_weather: "[[[ return variables.ulm_weather]]]"
-          ulm_chip_date: "[[[ return variables.ulm_chip_date ]]]"
         styles:
           card:
             - border-radius: "none"
@@ -363,7 +362,6 @@ card_topbar_welcome:
         type: "custom:button-card"
         template: "chip_temperature_custom"
         variables:
-          ulm_chip_date: "[[[ return variables.ulm_chip_date ]]]"
           ulm_weather: "[[[ return variables.ulm_weather]]]"
     item3:
       card:
@@ -380,6 +378,17 @@ chip_temperature_custom:
   triggers_update: "all"
   label: |
     [[[
+      const months = ["Jan", "Feb", "Mar","Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      let current_datetime = new Date()
+      let formatted_date = months[current_datetime.getMonth()] + "." + current_datetime.getDate()
+      var date = "st";
+      if(current_datetime.getDate()==1){
+        var date = "st";
+      } else if(current_datetime.getDate()==2){
+        var date = "nd";
+      } else {
+        var date = "th"
+      }
       var icon = '🌡️';
       if (states[variables.ulm_weather].state == 'clear-night'){
         var icon = '🌙';
@@ -410,7 +419,7 @@ chip_temperature_custom:
       } else if(states[variables.ulm_weather].state == 'windy'){
         var icon = '🌪️';
       }
-      return icon + ' ' + states[variables.ulm_chip_date].state;
+      return icon + ' ' + formatted_date + date;
     ]]]
 
 card_scenes_welcome_auto:

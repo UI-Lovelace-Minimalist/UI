@@ -33,7 +33,6 @@ views:
                     variables:
                       ulm_time: "sensor.time"
                       ulm_weather: "this.entity_id"
-                      ulm_chip_date: "sensor.date"
           - type: "custom:button-card"
             template: "card_title"
             name: "Lights"
