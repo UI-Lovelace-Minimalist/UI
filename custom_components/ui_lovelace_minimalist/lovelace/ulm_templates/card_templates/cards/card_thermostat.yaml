@@ -67,7 +67,7 @@ card_thermostat:
                 var areas = [];
                 if (variables.ulm_card_thermostat_enable_horizontal) {
                   return "\"item1 item2\"";
-                } 
+                }
                 if (variables.ulm_card_thermostat_enable_display_temperature) {
                     areas.push("item1 item4");
                 } else {
@@ -95,7 +95,7 @@ card_thermostat:
                 rows.push("min-content");
                 if (variables.ulm_card_thermostat_enable_horizontal) {
                   return "min-content";
-                }    
+                }
                 if ( !(variables.ulm_card_thermostat_enable_collapse && entity.state == "off") &&  variables.ulm_card_thermostat_enable_controls) {
                     rows.push("min-content");
                 }
@@ -124,7 +124,7 @@ card_thermostat:
             [[[
                 if (variables.ulm_card_thermostat_enable_horizontal) {
                   return "none";
-                } 
+                }
                 if ( !(variables.ulm_card_thermostat_enable_collapse && entity.state == "off") &&  variables.ulm_card_thermostat_enable_hvac_modes) {
                   return "block";
                 } else {
@@ -136,7 +136,7 @@ card_thermostat:
             [[[
                 if (variables.ulm_card_thermostat_enable_horizontal) {
                   return "none";
-                } 
+                }
                 if (variables.ulm_card_thermostat_enable_display_temperature) {
                   return "block";
                 } else {
