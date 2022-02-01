@@ -12,6 +12,7 @@ blue_on:
           - background-color: "rgba(var(--color-blue), 0.2)"
         card:
           - background-color: "rgba(var(--color-background-blue), var(--opacity-bg))"
+      id: "on"
       value: "on"
 
 # Legacy

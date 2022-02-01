@@ -13,6 +13,7 @@ yellow_on:
         card:
           - background-color: "rgba(var(--color-background-yellow),var(--opacity-bg))"
       value: "on"
+      id: "on"
 
 # Legacy
 yellow:

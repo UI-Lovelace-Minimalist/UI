@@ -2,10 +2,10 @@
 pink_no_state:
   styles:
     icon:
-      - color: 'rgba(var(--color-pink),1)'
+      - color: "rgba(var(--color-pink),1)"
     label:
-      - color: 'rgba(var(--color-pink-text),1)'
+      - color: "rgba(var(--color-pink-text),1)"
     name:
-      - color: 'rgba(var(--color-pink-text),1)'
+      - color: "rgba(var(--color-pink-text),1)"
     img_cell:
-      - background-color: 'rgba(var(--color-pink), 0.2)'
+      - background-color: "rgba(var(--color-pink), 0.2)"
