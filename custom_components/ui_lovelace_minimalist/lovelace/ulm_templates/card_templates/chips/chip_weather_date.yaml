@@ -8,9 +8,9 @@ chip_weather_date:
       let current_datetime = new Date()
       let formatted_date = months[current_datetime.getMonth()] + "." + current_datetime.getDate()
       var date = "st";
-      if(current_datetime.getDate()==1){
+      if(current_datetime.getDate()==1 || current_datetime.getDate()==21 || current_datetime.getDate()==31){
         var date = "st";
-      } else if(current_datetime.getDate()==2){
+      } else if(current_datetime.getDate()==2 || current_datetime.getDate()==22){
         var date = "nd";
       } else {
         var date = "th"
