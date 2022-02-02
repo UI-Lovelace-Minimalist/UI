@@ -2,7 +2,7 @@
 custom_card_irmajavi_entities:
   template:
     - "ulm_language_variables"
-  triggers_update: all
+  triggers_update: "all"
   show_icon: false
   show_name: false
   show_label: false
