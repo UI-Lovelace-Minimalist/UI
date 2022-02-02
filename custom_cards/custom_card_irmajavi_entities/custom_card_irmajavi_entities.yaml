@@ -51,10 +51,11 @@ custom_card_irmajavi_entities:
         name: |
           [[[
             var icon = '👽';
-            if (variables.ulm_custom_card_irmajavi_entities_icon){
+            if (variables.ulm_custom_card_irmajavi_entities_icon)
+            {
               var icon = variables.ulm_custom_card_irmajavi_entities_icon;
             }
-            return icon + ' ' + variables.ulm_custom_card_irmajavi_entities_name;
+            return icon + "' '" + variables.ulm_custom_card_irmajavi_entities_name;
           ]]]
         label: |
           [[[ 
@@ -105,13 +106,11 @@ custom_card_irmajavi_entities:
               name: >-
                 [[[ return variables.ulm_custom_card_irmajavi_entities_name_4
                 ]]]
-
-
 custom_widget_irmajavi:
   show_label: true
   show_icon: false
   label: |
-    [[[
+  [[[
       var unit = entity.attributes.unit_of_measurement != null ? ' ' + entity.attributes.unit_of_measurement : ''
       if (entity.state == 'on') {
         return variables.ulm_on;
@@ -128,7 +127,7 @@ custom_widget_irmajavi:
       } else {
         return entity.state + unit;
       }
-    ]]]
+  ]]]
   styles:
     name:
       - justify-self: "center"
