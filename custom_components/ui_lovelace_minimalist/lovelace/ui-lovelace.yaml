@@ -36,11 +36,7 @@ views:
           - type: "custom:button-card"
             template: "card_title"
             name: "Lights"
-            label: "This is the Minimalist-lightcard"
-          - type: "custom:button-card"
-            template: "card_title"
-            name: "Lights"
-            label: "These are your 'Minimalist' light cards"
+            label: "This is the Minimalist-light-card"
           - type: "custom:auto-entities"
             card:
               type: "grid"
