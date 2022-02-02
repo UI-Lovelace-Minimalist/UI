@@ -119,6 +119,7 @@ variables:
 
 ## Template Code
 ```yaml
+---
 custom_card_irmajavi_entities:
   template:
     - ulm_language_variables
