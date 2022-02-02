@@ -117,7 +117,7 @@ variables:
 </tbody>
 </table>
 
-##Template Code
+## Template Code
 ```yaml
 custom_card_irmajavi_entities:
   template:
