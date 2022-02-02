@@ -5,13 +5,14 @@ hide:
 ---
 <!-- markdownlint-disable MD046 -->
 
-# Custom-card "Entities"
+## Custom-card "Entities"
 
 This is a `custom-card` to display states from multiple entities or from an entity with multiples attributes (To use it with attributes need to modify the code)
 
 ![Screenshot](../../docs/assets/img/screenshot_irmajavi_entities_card.jpg)
 
 ## Credits
+
 Author: irmajavi - 2022
 Version: 1.0.0
 
@@ -23,7 +24,9 @@ Initial release
 </details>
 
 ## Requirements
+
  none
+ 
 ## Usage
 
 ```yaml
@@ -118,6 +121,7 @@ variables:
 </table>
 
 ## Template Code
+
 ```yaml
 ---
 custom_card_irmajavi_entities:
