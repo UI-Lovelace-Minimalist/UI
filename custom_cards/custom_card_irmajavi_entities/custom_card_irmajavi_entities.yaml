@@ -1,52 +1,53 @@
+---
 custom_card_irmajavi_entities:
   template:
-    - ulm_language_variables
+    - "ulm_language_variables"
   triggers_update: all
   show_icon: false
   show_name: false
   show_label: false
   styles:
     grid:
-      - grid-template-areas: '"item1" "item2" "item3" "item4"'
-      - grid-template-columns: 1fr
-      - grid-template-rows: min-content min-content
-      - row-gap: 12px
+      - grid-template-areas: "'item1' 'item2''item3' 'item4'"
+      - grid-template-columns: "1fr"
+      - grid-template-rows: "min-content min-content"
+      - row-gap: "12px"
     card:
-      - border-radius: 30px
-      - box-shadow: var(--box-shadow)
-      - padding: 12px
-      - height: 160px
+      - border-radius: "30px"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
+      - height: "160px"
   custom_fields:
     item1:
       card:
-        type: custom:button-card
-        color: var(--google-grey)
+        type: "custom:button-card"
+        color: "var(--google-grey)"
         show_icon: false
         show_label: true
         show_name: true
         styles:
           name:
-            - align-self: start
-            - justify-self: start
-            - font-weight: bold
-            - font-size: 14px
-            - margin-left: 12px
+            - align-self: "start"
+            - justify-self: "start"
+            - font-weight: "bold"
+            - font-size: "14px"
+            - margin-left: "12px"
           grid:
-            - grid-template-areas: '"n" "l"'
-            - grid-template-columns: min-content auto min-content
-            - grid-template-rows: min-content min-content
+            - grid-template-areas: "'n' 'l'"
+            - grid-template-columns: "min-content auto min-content"
+            - grid-template-rows: "min-content min-content"
           card:
-            - box-shadow: none
-            - border-radius: 20px
-            - border: 2px solid var(--google-grey)
-            - height: 70px
+            - box-shadow: "none"
+            - border-radius: "20px"
+            - border: "2px solid var(--google-grey)"
+            - height: "70px"
           label:
-            - justify-self: start
-            - align-self: end
-            - font-weight: bold
-            - font-size: 14px
-            - filter: opacity(40%)
-            - margin-left: 35px
+            - justify-self: "start"
+            - align-self: "end"
+            - font-weight: "bold"
+            - font-size: "14px"
+            - filter: "opacity(40%)"
+            - margin-left: "35px"
         name: |
           [[[
             var icon = '👽';
@@ -61,13 +62,13 @@ custom_card_irmajavi_entities:
           ]]]
     item2:
       card:
-        type: custom:button-card
-        template: list_4_items
+        type: "custom:button-card"
+        template: "list_4_items"
         custom_fields:
           item1:
             card:
-              type: custom:button-card
-              template: custom_widget_irmajavi
+              type: "custom:button-card"
+              template: "custom_widget_irmajavi"
               entity: >-
                 [[[ return variables.ulm_custom_card_irmajavi_entities_entity_1;
                 ]]]
@@ -76,8 +77,8 @@ custom_card_irmajavi_entities:
                 ]]]
           item2:
             card:
-              type: custom:button-card
-              template: custom_widget_irmajavi
+              type: "custom:button-card"
+              template: "custom_widget_irmajavi"
               entity: >-
                 [[[ return variables.ulm_custom_card_irmajavi_entities_entity_2;
                 ]]]
@@ -86,8 +87,8 @@ custom_card_irmajavi_entities:
                 ]]]
           item3:
             card:
-              type: custom:button-card
-              template: custom_widget_irmajavi
+              type: "custom:button-card"
+              template: "custom_widget_irmajavi"
               entity: >-
                 [[[ return variables.ulm_custom_card_irmajavi_entities_entity_3;
                 ]]]
@@ -96,8 +97,8 @@ custom_card_irmajavi_entities:
                 ]]]
           item4:
             card:
-              type: custom:button-card
-              template: custom_widget_irmajavi
+              type: "custom:button-card"
+              template: "custom_widget_irmajavi"
               entity: >-
                 [[[ return variables.ulm_custom_card_irmajavi_entities_entity_4;
                 ]]]
@@ -130,19 +131,19 @@ custom_widget_irmajavi:
     ]]]
   styles:
     name:
-      - justify-self: center
-      - align-self: start
-      - font-weight: bolder
-      - font-size: 12px
-      - filter: opacity(40%)
+      - justify-self: "center"
+      - align-self: "start"
+      - font-weight: "bolder"
+      - font-size: "12px"
+      - filter: "opacity(40%)"
     label:
-      - margin-top: 10px
-      - justify-self: center
-      - font-weight: bold
-      - font-size: 14px
+      - margin-top: "10px"
+      - justify-self: "center"
+      - font-weight: "bold"
+      - font-size: "14px"
     grid:
-      - grid-template-areas: '"l" "n"'
-      - grid-template-columns: 1fr
-      - grid-template-rows: min-content min-content
+      - grid-template-areas: "'l' 'n'"
+      - grid-template-columns: "1fr"
+      - grid-template-rows: "min-content min-content"
     card:
-      - box-shadow: none
+      - box-shadow: "none"
