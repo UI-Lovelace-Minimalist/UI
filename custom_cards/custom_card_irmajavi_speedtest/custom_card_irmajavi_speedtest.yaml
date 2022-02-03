@@ -106,7 +106,7 @@ custom_card_irmajavi_speedtest:
             - height: "40px"
             - padding-top: "5px"
             - padding-left: "5px"
-        name: "Speed Test"
+        name: "Speedtest"
         icon: "mdi:speedometer"
         custom_fields:
           item1:
