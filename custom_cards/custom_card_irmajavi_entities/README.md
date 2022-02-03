@@ -182,7 +182,7 @@ custom_card_irmajavi_entities:
             return icon + ' ' + variables.ulm_custom_card_irmajavi_entities_name;
           ]]]
         label: |
-          [[[ 
+          [[[
             return states[variables.ulm_custom_card_irmajavi_entities].state
           ]]]
     item2:
