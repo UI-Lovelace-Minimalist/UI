@@ -237,14 +237,14 @@ custom_card_irmajavi_speedtest:
                 ]]]
               label: |
                 [[[ 
-                  var state1 = "";
-                  if (states[variables.ulm_custom_card_irmajavi_speedtest_download_speed_entity].state){
-                    var state1 = states[variables.ulm_custom_card_irmajavi_speedtest_download_speed_entity].state;
-                    if (states[variables.ulm_custom_card_irmajavi_speedtest_download_speed_entity].attributes.unit_of_measurement){
-                      state1 += states[variables.ulm_custom_card_irmajavi_speedtest_download_speed_entity].attributes.unit_of_measurement;
+                    var state1 = "";
+                    if (states[variables.ulm_custom_card_irmajavi_speedtest_download_speed_entity].state){
+                      var state1 = states[variables.ulm_custom_card_irmajavi_speedtest_download_speed_entity].state;
+                      if (states[variables.ulm_custom_card_irmajavi_speedtest_download_speed_entity].attributes.unit_of_measurement){
+                        state1 += states[variables.ulm_custom_card_irmajavi_speedtest_download_speed_entity].attributes.unit_of_measurement;
+                      }
                     }
-                  }
-                  return state1;
+                    return state1;
                 ]]]
               styles:
                 icon:
@@ -286,14 +286,14 @@ custom_card_irmajavi_speedtest:
                 ]]]
               label: |
                 [[[ 
-                var state1 = "";
-                if (states[variables.ulm_custom_card_irmajavi_speedtest_upload_speed_entity].state){
-                    var state1 = states[variables.ulm_custom_card_irmajavi_speedtest_upload_speed_entity].state;
-                    if (states[variables.ulm_custom_card_irmajavi_speedtest_upload_speed_entity].attributes.unit_of_measurement){
-                      state1 += states[variables.ulm_custom_card_irmajavi_speedtest_upload_speed_entity].attributes.unit_of_measurement;
+                    var state1 = "";
+                    if (states[variables.ulm_custom_card_irmajavi_speedtest_upload_speed_entity].state){
+                        var state1 = states[variables.ulm_custom_card_irmajavi_speedtest_upload_speed_entity].state;
+                        if (states[variables.ulm_custom_card_irmajavi_speedtest_upload_speed_entity].attributes.unit_of_measurement){
+                          state1 += states[variables.ulm_custom_card_irmajavi_speedtest_upload_speed_entity].attributes.unit_of_measurement;
+                        }
                     }
-                }
-                return state1;
+                    return state1;
                 ]]]
               styles:
                 icon:
