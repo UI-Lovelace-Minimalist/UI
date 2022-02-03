@@ -109,7 +109,7 @@ custom_widget_irmajavi:
   show_icon: false
   label: |
   [[[
-      var unit = entity.attributes.unit_of_measurement != null ? ' ' + entity.attributes.unit_of_measurement : ''
+      var unit = entity.attributes.unit_of_measurement != null ? ' ' + entity.attributes.unit_of_measurement: ''
       if (entity.state == 'on') {
         return variables.ulm_on;
       } else if (entity.state == 'off') {
