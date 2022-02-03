@@ -97,26 +97,26 @@ custom_card_irmajavi_weather:
             card:
               type: "custom:button-card"
               template: "generic_text"
-              entity: '[[[ return variables.ulm_custom_card_irmajavi_weather_entity_1; ]]]'
-              name: '[[[ return variables.ulm_custom_card_irmajavi_weather_name_1; ]]]'
+              entity: "'[[[ return variables.ulm_custom_card_irmajavi_weather_entity_1; ]]]'"
+              name: "'[[[ return variables.ulm_custom_card_irmajavi_weather_name_1; ]]]'"
           item2:
             card:
               type: "custom:button-card"
               template: "generic_text"
-              entity: '[[[ return variables.ulm_custom_card_irmajavi_weather_entity_2; ]]]'
-              name: '[[[ return variables.ulm_custom_card_irmajavi_weather_name_2; ]]]'
+              entity: "'[[[ return variables.ulm_custom_card_irmajavi_weather_entity_2; ]]]'"
+              name: "'[[[ return variables.ulm_custom_card_irmajavi_weather_name_2; ]]]'"
           item3:
             card:
               type: "custom:button-card"
               template: "generic_text"
-              entity: '[[[ return variables.ulm_custom_card_irmajavi_weather_entity_3; ]]]'
-              name: '[[[ return variables.ulm_custom_card_irmajavi_weather_name_3; ]]]'
+              entity: "'[[[ return variables.ulm_custom_card_irmajavi_weather_entity_3; ]]]'"
+              name: "'[[[ return variables.ulm_custom_card_irmajavi_weather_name_3; ]]]'"
           item4:
             card:
               type: "custom:button-card"
               template: "generic_text"
-              entity: '[[[ return variables.ulm_custom_card_irmajavi_weather_entity_4; ]]]'
-              name: '[[[ return variables.ulm_custom_card_irmajavi_weather_name_4; ]]]'
+              entity: "'[[[ return variables.ulm_custom_card_irmajavi_weather_entity_4; ]]]'"
+              name: "'[[[ return variables.ulm_custom_card_irmajavi_weather_name_4; ]]]'"
 generic_text:
   show_label: true
   show_icon: false
