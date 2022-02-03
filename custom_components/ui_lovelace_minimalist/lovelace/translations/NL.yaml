@@ -29,3 +29,7 @@ ulm_language_variables:
     ulm_alarm_triggered: "Gedetecteerd"
     ulm_playing: "Speelt af"
     ulm_paused: "Gepauzeerd"
+    ulm_morning: "Goede morgen"
+    ulm_afternoon: "Goede middag"
+    ulm_evening: "Goede avond"
+    ulm_hello: "Hallo"

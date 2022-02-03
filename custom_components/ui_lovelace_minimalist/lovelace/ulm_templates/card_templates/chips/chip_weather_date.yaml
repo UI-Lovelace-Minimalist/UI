@@ -1,0 +1,49 @@
+---
+chip_weather_date:
+  template: "chips"
+  triggers_update: "all"
+  label: |
+    [[[
+      const months = ["Jan", "Feb", "Mar","Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      let current_datetime = new Date()
+      let formatted_date = months[current_datetime.getMonth()] + "." + current_datetime.getDate()
+      var date = "st";
+      if(current_datetime.getDate()==1 || current_datetime.getDate()==21 || current_datetime.getDate()==31){
+        var date = "st";
+      } else if(current_datetime.getDate()==2 || current_datetime.getDate()==22){
+        var date = "nd";
+      } else {
+        var date = "th"
+      }
+      var icon = '🌡️';
+      if (states[variables.ulm_weather].state == 'clear-night'){
+        var icon = '🌙';
+      } else if(states[variables.ulm_weather].state == 'cloudy'){
+        var icon = '☁️';
+      } else if(states[variables.ulm_weather].state == 'exceptional'){
+        var icon = '🌞';
+      } else if(states[variables.ulm_weather].state == 'fog'){
+        var icon = '🌫️';
+      } else if(states[variables.ulm_weather].state == 'hail'){
+        var icon = '⛈️';
+      } else if(states[variables.ulm_weather].state == 'lightning'){
+        var icon = '⚡';
+      } else if(states[variables.ulm_weather].state == 'lightning-rainy'){
+        var icon = '⛈️';
+      } else if(states[variables.ulm_weather].state == 'partlycloudy'){
+        var icon = '⛅';
+      } else if(states[variables.ulm_weather].state == 'pouring'){
+        var icon = '🌧️';
+      } else if(states[variables.ulm_weather].state == 'rainy'){
+        var icon = '💧';
+      } else if(states[variables.ulm_weather].state == 'snowy'){
+        var icon = '❄️';
+      } else if(states[variables.ulm_weather].state == 'snowy-rainy'){
+        var icon = '🌨️';
+      } else if(states[variables.ulm_weather].state == 'sunny'){
+        var icon = '☀️';
+      } else if(states[variables.ulm_weather].state == 'windy'){
+        var icon = '🌪️';
+      }
+      return icon + ' ' + formatted_date + date;
+    ]]]
