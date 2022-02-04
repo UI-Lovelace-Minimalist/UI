@@ -23,7 +23,7 @@ Example: `custom_card_paddy_temperature/custom_card_paddy_temperature.yaml`
 
 ### Style and Qualtiy guidelines
 
-- Your card need to satisfy some guidelines to assure your card is easy to read and looks like all the other cards in the repository.
+- Your card needs to satisfy some guidelines to assure your card is easy to read and looks like all the other cards in the repository.
     1. Each file needs to start only with `---` on the first line.
     2. Each file needs to end with a empty code line.
     3. All strings need to be `"double-quoted"`.
@@ -33,7 +33,7 @@ Example: `custom_card_paddy_temperature/custom_card_paddy_temperature.yaml`
     7. **IMPORTANT!** Unix-style line endings. (It's recommend to use a code-editor like VSCode and set CRLF to LF)
 ![example-image](../assets/img/unix_line_endings.png){ width="500" }
 
-- More advanced users can make use of pre-commit to apply most of the styles automatically.
+- More advanced users can make use of Pre-commit to apply most of the styles automatically.
     1. Open your fork in a code-editor like VSCode.
     2. Install [Pre-commit](https://pre-commit.com/) (Linux or Mac-system recommended).
     3. All the needed hooks are available within the repository.
@@ -43,10 +43,12 @@ Example: `custom_card_paddy_temperature/custom_card_paddy_temperature.yaml`
 
 ### Add your custom-card
 
-- You can make a pull request on Github to add your custom-card.
+- You can make a pull request on [Github](https://github.com/UI-Lovelace-Minimalist/UI/tree/dev) to add your custom-card.
 - To make a pull request you need the fork the repository first.
+![example-image](../assets/img/fork.png){ width="500" }
 - Add your custom-card folder to your fork. This needs to be in the already existing folder: `custom_cards`.
-- All pull requests need to be directed to the `dev` branch: `UI-Lovelace-Minimalist:dev`.
+![example-image](../assets/img/upload.png){ width="500" }
+- All pull requests need to be directed to the `dev` branch: `UI-Lovelace-Minimalist:dev`. [Additional documentation](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
 
 ### Naming conventions
 
