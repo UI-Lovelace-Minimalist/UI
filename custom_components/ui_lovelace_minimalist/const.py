@@ -31,6 +31,7 @@ CONF_THEME_PATH = "theme_path"
 CONF_THEME_OPTIONS = [
     "minimalist-mobile",
     "minimalist-desktop",
+    "minimalist-mobile-tapbar",
     "HA selected theme",
 ]
 CONF_INCLUDE_OTHER_CARDS = "include_other_cards"
