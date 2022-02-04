@@ -3,7 +3,7 @@ title: custom_card_irmajavi_speedtest
 hide:
   - toc
 ---
-
+<!-- markdownlint-disable MD046 -->
 
 # Custom-card "Speedtest"
 
