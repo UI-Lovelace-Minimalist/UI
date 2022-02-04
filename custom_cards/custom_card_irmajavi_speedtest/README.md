@@ -236,7 +236,7 @@ custom_card_irmajavi_speedtest:
                     variables.ulm_custom_card_irmajavi_speedtest_download_speed_entity;
                 ]]]
               label: |
-                [[[ 
+                [[[
                     var state1 = "";
                     if (states[variables.ulm_custom_card_irmajavi_speedtest_download_speed_entity].state){
                       var state1 = states[variables.ulm_custom_card_irmajavi_speedtest_download_speed_entity].state;
@@ -285,7 +285,7 @@ custom_card_irmajavi_speedtest:
                 variables.ulm_custom_card_irmajavi_speedtest_upload_speed_entity;
                 ]]]
               label: |
-                [[[ 
+                [[[
                     var state1 = "";
                     if (states[variables.ulm_custom_card_irmajavi_speedtest_upload_speed_entity].state){
                         var state1 = states[variables.ulm_custom_card_irmajavi_speedtest_upload_speed_entity].state;
