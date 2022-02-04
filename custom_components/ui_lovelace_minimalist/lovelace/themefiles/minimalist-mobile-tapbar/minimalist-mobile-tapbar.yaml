@@ -69,7 +69,6 @@ minimalist-mobile-tapbar:
       paper-tab[aria-selected=true] {
         color: var(--header-active-tab-color) !important;
         background-color: var(--header-active-tab-bg-color) !important
-        
       }
       paper-tab {
         color: var(--header-all-tabs-color) !important;
