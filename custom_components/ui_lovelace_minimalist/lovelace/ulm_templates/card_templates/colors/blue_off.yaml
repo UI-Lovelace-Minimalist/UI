@@ -1,6 +1,5 @@
 ---
-### Blue ###
-blue:
+blue_off:
   state:
     - styles:
         icon:
@@ -11,6 +10,5 @@ blue:
           - color: "rgba(var(--color-blue-text),1)"
         img_cell:
           - background-color: "rgba(var(--color-blue), 0.2)"
-        card:
-          - background-color: "rgba(var(--color-background-blue), var(--opacity-bg))"
-      value: "on"
+      value: "off"
+      id: "off"

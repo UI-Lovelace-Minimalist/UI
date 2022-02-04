@@ -1,0 +1,14 @@
+---
+green_off:
+  state:
+    - styles:
+        icon:
+          - color: "rgba(var(--color-green),1)"
+        label:
+          - color: "rgba(var(--color-green-text),1)"
+        name:
+          - color: "rgba(var(--color-green-text),1)"
+        img_cell:
+          - background-color: "rgba(var(--color-green), 0.2)"
+      value: "off"
+      id: "off"

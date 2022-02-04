@@ -1,6 +1,5 @@
 ---
-### Yellow ###
-yellow:
+yellow_on:
   state:
     - styles:
         icon:
@@ -14,3 +13,8 @@ yellow:
         card:
           - background-color: "rgba(var(--color-background-yellow),var(--opacity-bg))"
       value: "on"
+      id: "on"
+
+# Legacy
+yellow:
+  template: "yellow_on"
