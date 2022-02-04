@@ -1,0 +1,342 @@
+---
+popup_thermostat_temperature:
+  styles:
+    grid:
+      - grid-template-areas: "'header' 'content1' 'buttons' 'footer'"
+      - grid-template-rows: "16vh 42vh 14vh 14vh"
+      - grid-template-columns: "1fr"
+      - column-gap: "30px"
+    card:
+      - background: "var(--primary-background-color)"
+      - box-shadow: "none"
+      - padding: "4%"
+    custom_fields:
+      header:
+        - align-self: "start"
+      content1:
+        - align-self: "center"
+      buttons:
+        - align-self: "start"
+        - width: "50%"
+        - margin: "0 auto"
+      footer:
+        - align-self: "end"
+        - margin-top: "25px"
+  extra_styles: |
+    @media (max-width: 800px) {
+      #container {
+        grid-template-rows: 16vh 52vh 14vh 14vh !important;
+      }
+      #buttons {
+        width: 100% !important;
+      }
+  custom_fields:
+    header:
+      card:
+        type: "custom:button-card"
+        template: "popup_header"
+        entity: "[[[ return variables.ulm_popup_thermostat_entity ]]]"
+    content1:
+      card:
+        type: "thermostat"
+        entity: "[[[ return variables.ulm_popup_thermostat_entity ]]]"
+        card_mod:
+          style: |
+            ha-card {
+              background: none !important;
+              box-shadow: none !important;
+              padding: 0 0 20px 0 !important;
+            }
+            .more-info {
+              display: none;
+            }
+            #info {
+              display: none;
+            }
+            .type-thermostat {
+              --mode-color: rgb(var(--color-blue)) !important;
+            }
+    buttons:
+      card:
+        type: "custom:button-card"
+        styles:
+          grid:
+            - grid-template-areas: >
+                [[[
+                      var areas = [];
+                      if (states[variables.ulm_popup_thermostat_entity].attributes.hvac_modes.includes("auto")) {
+                          areas.push("auto");
+                      }
+                      if (states[variables.ulm_popup_thermostat_entity].attributes.hvac_modes.includes("heat")) {
+                          areas.push("heat");
+                      }
+                      if (states[variables.ulm_popup_thermostat_entity].attributes.hvac_modes.includes("cool")) {
+                          areas.push("cool");
+                      }
+                      if (states[variables.ulm_popup_thermostat_entity].attributes.hvac_modes.includes("dry")) {
+                          areas.push("dry");
+                      }
+                      if (states[variables.ulm_popup_thermostat_entity].attributes.hvac_modes.includes("fan_only")) {
+                          areas.push("fan_only");
+                      }
+                      if (states[variables.ulm_popup_thermostat_entity].attributes.hvac_modes.includes("heat_cool")) {
+                          areas.push("heat_cool");
+                      }
+                      return "\"" + areas.join(" ") + "\"";
+                ]]]
+            - grid-template-columns: >
+                [[[
+                      var columns = [];
+                      if (states[variables.ulm_popup_thermostat_entity].attributes.hvac_modes.includes("auto")) {
+                          columns.push("1fr");
+                      }
+                      if (states[variables.ulm_popup_thermostat_entity].attributes.hvac_modes.includes("heat")) {
+                          columns.push("1fr");
+                      }
+                      if (states[variables.ulm_popup_thermostat_entity].attributes.hvac_modes.includes("cool")) {
+                          columns.push("1fr");
+                      }
+                      if (states[variables.ulm_popup_thermostat_entity].attributes.hvac_modes.includes("dry")) {
+                          columns.push("1fr");
+                      }
+                      if (states[variables.ulm_popup_thermostat_entity].attributes.hvac_modes.includes("fan_only")) {
+                          columns.push("1fr");
+                      }
+                      if (states[variables.ulm_popup_thermostat_entity].attributes.hvac_modes.includes("heat_cool")) {
+                          columns.push("1fr");
+                      }
+                      return columns.join(" ");
+                ]]]
+            - grid-template-rows: "min-content"
+            - justify-items: "center"
+          card:
+            - box-shadow: "none"
+            - padding: "0px"
+            - border-radius: "21px"
+            - background-color: "rgba(var(--color-theme),0.1)"
+          custom_fields:
+            auto:
+              - display: >
+                  [[[
+                    if (states[variables.ulm_popup_thermostat_entity].attributes.hvac_modes.includes("auto")) {
+                        return "block";
+                    } else {
+                        return "none";
+                    }
+                  ]]]
+            heat:
+              - display: >
+                  [[[
+                    if (states[variables.ulm_popup_thermostat_entity].attributes.hvac_modes.includes("heat")) {
+                        return "block";
+                    } else {
+                        return "none";
+                    }
+                  ]]]
+            cool:
+              - display: >
+                  [[[
+                    if (states[variables.ulm_popup_thermostat_entity].attributes.hvac_modes.includes("cool")) {
+                        return "block";
+                    } else {
+                        return "none";
+                    }
+                  ]]]
+            dry:
+              - display: >
+                  [[[
+                    if (states[variables.ulm_popup_thermostat_entity].attributes.hvac_modes.includes("dry")) {
+                        return "block";
+                    } else {
+                        return "none";
+                    }
+                  ]]]
+            fan_only:
+              - display: >
+                  [[[
+                    if (states[variables.ulm_popup_thermostat_entity].attributes.hvac_modes.includes("fan_only")) {
+                        return "block";
+                    } else {
+                        return "none";
+                    }
+                  ]]]
+            heat_cool:
+              - display: >
+                  [[[
+                    if (states[variables.ulm_popup_thermostat_entity].attributes.hvac_modes.includes("heat_cool")) {
+                        return "block";
+                    } else {
+                        return "none";
+                    }
+                  ]]]
+        custom_fields:
+          auto:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.ulm_popup_thermostat_entity ]]]"
+              template: "widget_icon"
+              icon: "mdi:autorenew"
+              tap_action:
+                action: "call-service"
+                service: "climate.set_hvac_mode"
+                service_data:
+                  entity_id: "[[[ return variables.ulm_popup_thermostat_entity ]]]"
+                  hvac_mode: "auto"
+              styles:
+                card:
+                  - background-color: "transparent"
+                  - height: "42px"
+                  - width: "42px"
+                  - border-radius: "50%"
+                  - box-shadow: "none"
+              state:
+                - value: "auto"
+                  styles:
+                    card:
+                      - background-color: "var(--card-background-color)"
+                      - box-shadow: "var( --ha-card-box-shadow)"
+                      - transform: "scale(0.95)"
+          heat:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.ulm_popup_thermostat_entity ]]]"
+              template: "widget_icon"
+              icon: "mdi:fire"
+              tap_action:
+                action: "call-service"
+                service: "climate.set_hvac_mode"
+                service_data:
+                  entity_id: "[[[ return variables.ulm_popup_thermostat_entity ]]]"
+                  hvac_mode: "heat"
+              styles:
+                card:
+                  - background-color: "transparent"
+                  - height: "42px"
+                  - width: "42px"
+                  - border-radius: "50%"
+                  - box-shadow: "none"
+              state:
+                - value: "heat"
+                  styles:
+                    card:
+                      - background-color: "var(--card-background-color)"
+                      - box-shadow: "var( --ha-card-box-shadow)"
+                      - transform: "scale(0.95)"
+          cool:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.ulm_popup_thermostat_entity ]]]"
+              template: "widget_icon"
+              icon: "mdi:snowflake"
+              tap_action:
+                action: "call-service"
+                service: "climate.set_hvac_mode"
+                service_data:
+                  entity_id: "[[[ return variables.ulm_popup_thermostat_entity ]]]"
+                  hvac_mode: "cool"
+              styles:
+                card:
+                  - background-color: "transparent"
+                  - height: "42px"
+                  - width: "42px"
+                  - border-radius: "50%"
+                  - box-shadow: "none"
+              state:
+                - value: "cool"
+                  styles:
+                    card:
+                      - background-color: "var(--card-background-color)"
+                      - box-shadow: "var( --ha-card-box-shadow)"
+                      - transform: "scale(0.95)"
+          dry:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.ulm_popup_thermostat_entity ]]]"
+              template: "widget_icon"
+              icon: "mdi:water"
+              tap_action:
+                action: "call-service"
+                service: "climate.set_hvac_mode"
+                service_data:
+                  entity_id: "[[[ return variables.ulm_popup_thermostat_entity ]]]"
+                  hvac_mode: "dry"
+              styles:
+                card:
+                  - background-color: "transparent"
+                  - height: "42px"
+                  - width: "42px"
+                  - border-radius: "50%"
+                  - box-shadow: "none"
+              state:
+                - value: "dry"
+                  styles:
+                    card:
+                      - background-color: "var(--card-background-color)"
+                      - box-shadow: "var( --ha-card-box-shadow)"
+                      - transform: "scale(0.95)"
+          fan_only:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.ulm_popup_thermostat_entity ]]]"
+              template: "widget_icon"
+              icon: "mdi:fan"
+              tap_action:
+                action: "call-service"
+                service: "climate.set_hvac_mode"
+                service_data:
+                  entity_id: "[[[ return variables.ulm_popup_thermostat_entity ]]]"
+                  hvac_mode: "fan_only"
+              styles:
+                card:
+                  - background-color: "transparent"
+                  - height: "42px"
+                  - width: "42px"
+                  - border-radius: "50%"
+                  - box-shadow: "none"
+              state:
+                - value: "fan_only"
+                  styles:
+                    card:
+                      - background-color: "var(--card-background-color)"
+                      - box-shadow: "var( --ha-card-box-shadow)"
+                      - transform: "scale(0.95)"
+          heat_cool:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.ulm_popup_thermostat_entity ]]]"
+              template: "widget_icon"
+              icon: "mdi:sun-snowflake"
+              tap_action:
+                action: "call-service"
+                service: "climate.set_hvac_mode"
+                service_data:
+                  entity_id: "[[[ return variables.ulm_popup_thermostat_entity ]]]"
+                  hvac_mode: "heat_cool"
+              styles:
+                card:
+                  - background-color: "transparent"
+                  - height: "42px"
+                  - width: "42px"
+                  - border-radius: "50%"
+                  - box-shadow: "none"
+              state:
+                - value: "heat_cool"
+                  styles:
+                    card:
+                      - background-color: "var(--card-background-color)"
+                      - box-shadow: "var( --ha-card-box-shadow)"
+                      - transform: "scale(0.95)"
+    footer:
+      card:
+        type: "custom:button-card"
+        template: "popup_list_items"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template: "popup_button_back"
+          item2:
+            card:
+              type: "custom:button-card"
+              template: "popup_button_power"
+              entity: "[[[ return variables.ulm_popup_thermostat_entity ]]]"
