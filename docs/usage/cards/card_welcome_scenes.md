@@ -16,27 +16,10 @@ This is a card which shows the basic needs for your dashboard. This card can gen
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
 | ulm_weather   |         | :material-check: | This is your weather provider. <br> Example: `weather.your_provider`|
-|ulm_time| `sensor.time`  | :material-check: | Sensor to check the current time. <br> Example: `sensor.time` |
-|entity_pill_1| `script.*`  | :material-close: | Script entity to show in the first pill. <br> When not configured it will be auto-configured with `auto-entities` |
-|entity_pill_2| `script.*`  | :material-close: | Script entity to show in the first pill. <br> When not configured it will be auto-configured with `auto-entities` |
-|entity_pill_3| `script.*`  | :material-close: | Script entity to show in the first pill. <br> When not configured it will be auto-configured with `auto-entities` |
-|entity_pill_4| `script.*`  | :material-close: | Script entity to show in the first pill. <br> When not configured it will be auto-configured with `auto-entities` |
-|entity_pill_5| `script.*`  | :material-close: | Script entity to show in the first pill. <br> When not configured it will be auto-configured with `auto-entities` |
-|color_pill_1| `random`  | :material-close: | Random generated color for the icon of the 1st pill. <br>. Can be manual configured with: `blue`,`yellow`,`green`,`red`,`purple`,`pink` |
-|color_pill_2| `random`  | :material-close: | Random generated color for the icon of the 2nd pill. <br>. Can be manual configured with: `blue`,`yellow`,`green`,`red`,`purple`,`pink` |
-|color_pill_3| `random`  | :material-close: | Random generated color for the icon of the 3th pill. <br>. Can be manual configured with: `blue`,`yellow`,`green`,`red`,`purple`,`pink` |
-|color_pill_4| `random`  | :material-close: | Random generated color for the icon of the 4th pill. <br>Can be manual configured with: `blue`,`yellow`,`green`,`red`,`purple`,`pink` |
-|color_pill_5| `random`  | :material-close: | Random generated color for the icon of the 5th pill. <br>Can be manual configured with: `blue`,`yellow`,`green`,`red`,`purple`,`pink` |
-|icon_pill_1|  | :material-close: | Set a custom `MDI` icon for the 1st pill |
-|icon_pill_2|  | :material-close: | Set a custom `MDI` icon for the 2nd pill |
-|icon_pill_3|  | :material-close: | Set a custom `MDI` icon for the 3th pill |
-|icon_pill_4|  | :material-close: | Set a custom `MDI` icon for the 4th pill |
-|icon_pill_5|  | :material-close: | Set a custom `MDI` icon for the 5th pill |
-|name_pill_1|  | :material-close: | Set a custom `MDI` icon for the 1st pill |
-|name_pill_2|  | :material-close: | Set a custom `MDI` icon for the 2nd pill |
-|name_pill_3|  | :material-close: | Set a custom `MDI` icon for the 3th pill |
-|name_pill_4|  | :material-close: | Set a custom `MDI` icon for the 4th pill |
-|name_pill_5|  | :material-close: | Set a custom `MDI` icon for the 5th pill | for the 5th pill |
+| entity_  |    `script.*`  | :material-check: | Your script entity <br> If not specified, it will take a random script |
+| icon_  |    | :material-close: | The icon to show |
+| name_  |      | :material-close: | The name to show|
+| color_  |  Random    | :material-close: | Color of the icon <br> Can choose between: `blue`, `red`, `green`, `yellow`, `pink`, `purple` <br> If not specified, it will take a random color  |
 
 ## Usage
 
@@ -44,8 +27,80 @@ This is a card which shows the basic needs for your dashboard. This card can gen
 - type: "custom:button-card"
   template: "card_welcome_scenes"
   variables:
-    ulm_time: "sensor.time"
-    ulm_weather: "this.entity_id"
+    ulm_weather: "weather.YOUR_WEATHERPROVIDER"
+    entity_1:
+      entity_id: "script.YOUR_SCRIPT"
+      icon: "mdi:YOUR_ICON" #OPTIONAL
+      name: "YOUR_NAME" #OPTIONAL
+      color: "blue"
+    entity_2:
+      entity_id: "script.YOUR_SCRIPT"
+      icon: "mdi:YOUR_ICON" #OPTIONAL
+      name: "YOUR_NAME" #OPTIONAL
+      color: "red"
+    entity_3:
+      entity_id: "script.YOUR_SCRIPT"
+      icon: "mdi:YOUR_ICON" #OPTIONAL
+      name: "YOUR_NAME" #OPTIONAL
+      color: "green"
+    entity_4:
+      entity_id: "script.YOUR_SCRIPT"
+      icon: "mdi:YOUR_ICON" #OPTIONAL
+      name: "YOUR_NAME" #OPTIONAL
+      color: "purple"
+    entity_5:
+      entity_id: "script.YOUR_SCRIPT"
+      icon: "mdi:YOUR_ICON" #OPTIONAL
+      name: "YOUR_NAME" #OPTIONAL
+      color: "yellow"
+
+# Use random script entities (icon and name cannot be specified!!)
+- type: "custom:button-card"
+  template: "card_welcome_scenes"
+  variables:
+    ulm_weather: "weather.YOUR_WEATHERPROVIDER"
+    entity_1:
+      color: "blue"
+    entity_2:
+      color: "red"
+    entity_3:
+      color: "green"
+    entity_4:
+      color: "purple"
+    entity_5:
+      color: "yellow"
+
+# Use random colors
+- type: "custom:button-card"
+  template: "card_welcome_scenes"
+  variables:
+    ulm_weather: "weather.YOUR_WEATHERPROVIDER"
+    entity_1:
+      entity_id: "script.YOUR_SCRIPT"
+      icon: "mdi:YOUR_ICON" #OPTIONAL
+      name: "YOUR_NAME" #OPTIONAL
+    entity_2:
+      entity_id: "script.YOUR_SCRIPT"
+      icon: "mdi:YOUR_ICON" #OPTIONAL
+      name: "YOUR_NAME" #OPTIONAL
+    entity_3:
+      entity_id: "script.YOUR_SCRIPT"
+      icon: "mdi:YOUR_ICON" #OPTIONAL
+      name: "YOUR_NAME" #OPTIONAL
+    entity_4:
+      entity_id: "script.YOUR_SCRIPT"
+      icon: "mdi:YOUR_ICON" #OPTIONAL
+      name: "YOUR_NAME" #OPTIONAL
+    entity_5:
+      entity_id: "script.YOUR_SCRIPT"
+      icon: "mdi:YOUR_ICON" #OPTIONAL
+      name: "YOUR_NAME" #OPTIONAL
+
+# Let the card decide everything
+- type: "custom:button-card"
+  template: "card_welcome_scenes"
+  variables:
+    ulm_weather: "weather.YOUR_WEATHERPROVIDER"
 ```
 
 ??? note "Template Code"
