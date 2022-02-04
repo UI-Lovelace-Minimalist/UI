@@ -30,7 +30,7 @@ Example: `custom_card_paddy_temperature/custom_card_paddy_temperature.yaml`
     4. Only use `lowercase` in your code.
     5. No trailing white-space (No random space between and around the code).
     6. A line-length of 256.
-    7. **IMPORTANT!** Unix-style line endings. (It's recommend to use a code-editor like VSCode and set CRLF to LF)
+    7. **IMPORTANT!** Unix-style line endings. (It's recommended to use a code-editor like VSCode and set CRLF to LF)
 ![example-image](../assets/img/unix_line_endings.png){ width="500" }
 
 - More advanced users can make use of Pre-commit to apply most of the styles automatically.
@@ -44,7 +44,7 @@ Example: `custom_card_paddy_temperature/custom_card_paddy_temperature.yaml`
 ### Add your custom-card
 
 - You can make a pull request on [Github](https://github.com/UI-Lovelace-Minimalist/UI/tree/dev) to add your custom-card.
-- To make a pull request you need the fork the repository first.
+- To make a pull request you need to fork the repository first.
 ![example-image](../assets/img/fork.png){ width="500" }
 - Add your custom-card folder to your fork. This needs to be in the already existing folder: `custom_cards`.
 ![example-image](../assets/img/upload.png){ width="500" }
