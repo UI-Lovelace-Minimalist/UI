@@ -51,7 +51,8 @@ minimalist-mobile-tapbar:
         float:left;
         width:100%;
         min-height: 100% !important;
-        margin-top: calc(env(safe-area-inset-top) - 4.625rem) !important;
+        /*margin-top: calc(env(safe-area-inset-top) - 4.625rem) !important;*/
+        margin-top: calc(env(safe-area-inset-top) + -3.75rem) !important;
         padding-bottom: calc(env(safe-area-inset-bottom) + 4.625rem) !important;
       }
       ha-app-layout{
@@ -73,10 +74,12 @@ minimalist-mobile-tapbar:
       paper-tab {
         color: var(--header-all-tabs-color) !important;
         border-radius: 25px !important;
-        height:50px !important;
+        /*height:50px !important;
         width: calc(100% / 4);
         padding-left: 0px;
-        padding-right: 0px;
+        padding-right: 0px;*/
+        padding-left: 25px;
+        padding-right: 25px;
       }
 
   # Color themes
