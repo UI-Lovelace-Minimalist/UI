@@ -31,7 +31,6 @@ views:
                     type: "custom:button-card"
                     template: "card_welcome_scenes"
                     variables:
-                      ulm_time: "sensor.time"
                       ulm_weather: "this.entity_id"
           - type: "custom:button-card"
             template: "card_title"
