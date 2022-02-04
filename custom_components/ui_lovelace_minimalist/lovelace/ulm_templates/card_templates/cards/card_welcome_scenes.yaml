@@ -2,36 +2,56 @@
 card_welcome_scenes:
   variables:
     ulm_weather: "[[[ return variables.ulm_weather]]]"
-    color_pill_1: >
-      [[[
-        var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
-        var color = colors[Math.floor(Math.random() * colors.length)];
-        return color;
-      ]]]
-    color_pill_2: >
-      [[[
-        var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
-        var color = colors[Math.floor(Math.random() * colors.length)];
-        return color;
-      ]]]
-    color_pill_3: >
-      [[[
-        var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
-        var color = colors[Math.floor(Math.random() * colors.length)];
-        return color;
-      ]]]
-    color_pill_4: >
-      [[[
-        var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
-        var color = colors[Math.floor(Math.random() * colors.length)];
-        return color;
-      ]]]
-    color_pill_5: >
-      [[[
-        var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
-        var color = colors[Math.floor(Math.random() * colors.length)];
-        return color;
-      ]]]
+    entity_1:
+      entity_id:
+      icon: "[[[ return entity.attributes.icon ]]]"
+      name: "[[[ return entity.attributes.friendly_name ]]]"
+      color: >
+        [[[
+          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
+    entity_2:
+      entity_id:
+      icon: "[[[ return entity.attributes.icon  ]]]"
+      name: "[[[ return entity.attributes.friendly_name ]]]"
+      color: >
+        [[[
+          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
+    entity_3:
+      entity_id:
+      icon: "[[[ return entity.attributes.icon  ]]]"
+      name: "[[[ return entity.attributes.friendly_name ]]]"
+      color: >
+        [[[
+          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
+    entity_4:
+      entity_id:
+      icon: "[[[ return entity.attributes.icon  ]]]"
+      name: "[[[ return entity.attributes.friendly_name ]]]"
+      color: >
+        [[[
+          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
+    entity_5:
+      entity_id:
+      icon: "[[[ return entity.attributes.icon  ]]]"
+      name: "[[[ return entity.attributes.friendly_name ]]]"
+      color: >
+        [[[
+          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
   template:
     - "ulm_language_variables"
   show_icon: false
@@ -69,7 +89,8 @@ card_welcome_scenes:
         show_entity_picture: false
         name: |
           [[[
-            let time = states[variables.ulm_time].state;
+            var today = new Date();
+            var time = today.getHours() + ":" + today.getMinutes()
             let welcome = '';
 
             if (time > '18:00'){
@@ -132,7 +153,7 @@ card_welcome_scenes:
         type: "custom:button-card"
         template: >
           [[[
-            if(variables.entity_pill_1 && variables.entity_pill_2 && variables.entity_pill_3 && variables.entity_pill_4 && variables.entity_pill_5){
+            if(variables.entity_1.entity_id && variables.entity_2.entity_id && variables.entity_3.entity_id && variables.entity_4.entity_id && variables.entity_5.entity_id){
               return 'card_scenes_welcome'
             } else {
               return 'card_scenes_welcome_auto'
@@ -144,26 +165,11 @@ card_welcome_scenes:
             - box-shadow: "none"
             - padding: "4px"
         variables:
-          icon_pill_1: "[[[ return variables.icon_pill_1]]]"
-          icon_pill_2: "[[[ return variables.icon_pill_2]]]"
-          icon_pill_3: "[[[ return variables.icon_pill_3]]]"
-          icon_pill_4: "[[[ return variables.icon_pill_4]]]"
-          icon_pill_5: "[[[ return variables.icon_pill_5]]]"
-          name_pill_1: "[[[ return variables.name_pill_1]]]"
-          name_pill_2: "[[[ return variables.name_pill_2]]]"
-          name_pill_3: "[[[ return variables.name_pill_3]]]"
-          name_pill_4: "[[[ return variables.name_pill_4]]]"
-          name_pill_5: "[[[ return variables.name_pill_5]]]"
-          entity_pill_1: "[[[ return variables.entity_pill_1]]]"
-          entity_pill_2: "[[[ return variables.entity_pill_2]]]"
-          entity_pill_3: "[[[ return variables.entity_pill_3]]]"
-          entity_pill_4: "[[[ return variables.entity_pill_4]]]"
-          entity_pill_5: "[[[ return variables.entity_pill_5]]]"
-          color_pill_1: "[[[ return variables.color_pill_1]]]"
-          color_pill_2: "[[[ return variables.color_pill_2]]]"
-          color_pill_3: "[[[ return variables.color_pill_3]]]"
-          color_pill_4: "[[[ return variables.color_pill_4]]]"
-          color_pill_5: "[[[ return variables.color_pill_5]]]"
+          entity_1: "[[[ return variables.entity_1]]]"
+          entity_2: "[[[ return variables.entity_2]]]"
+          entity_3: "[[[ return variables.entity_3]]]"
+          entity_4: "[[[ return variables.entity_4]]]"
+          entity_5: "[[[ return variables.entity_5]]]"
 card_title_welcome:
   tap_action:
     action: "none"
@@ -212,87 +218,87 @@ card_scenes_welcome:
       card:
         type: "custom:button-card"
         template: "card_scenes_pill_welcome"
-        entity: "[[[ return variables.entity_pill_1 ]]]"
-        icon: "[[[ return variables.icon_pill_1 ]]]"
-        name: "[[[ return variables.name_pill_1 ]]]"
+        entity: "[[[ return variables.entity_1.entity_id ]]]"
+        icon: "[[[ return variables.entity_1.icon ]]]"
+        name: "[[[ return variables.entity_1.name ]]]"
         styles:
           icon:
-            - color: "[[[ return `rgba(var(--color-${variables.color_pill_1}), 1)`;]]]"
+            - color: "[[[ return `rgba(var(--color-${variables.entity_1.color}), 1)`;]]]"
           img_cell:
-            - background-color: "[[[ return `rgba(var(--color-${variables.color_pill_1}), 0.20)`;]]]"
+            - background-color: "[[[ return `rgba(var(--color-${variables.entity_1.color}), 0.20)`;]]]"
         tap_action:
           action: "call-service"
           service: "script.toggle"
           service_data:
-            entity_id: "[[[ return variables.entity_pill_1 ]]]"
+            entity_id: "[[[ return variables.entity_1.entity_id ]]]"
     item2:
       card:
         type: "custom:button-card"
         template: "card_scenes_pill_welcome"
-        entity: "[[[ return variables.entity_pill_2 ]]]"
-        icon: "[[[ return variables.icon_pill_2 ]]]"
-        name: "[[[ return variables.name_pill_2 ]]]"
+        entity: "[[[ return variables.entity_2.entity_id ]]]"
+        icon: "[[[ return variables.entity_2.icon ]]]"
+        name: "[[[ return variables.entity_2.name ]]]"
         styles:
           icon:
-            - color: "[[[ return `rgba(var(--color-${variables.color_pill_2}), 1)`;]]]"
+            - color: "[[[ return `rgba(var(--color-${variables.entity_2.color}), 1)`;]]]"
           img_cell:
-            - background-color: "[[[ return `rgba(var(--color-${variables.color_pill_2}), 0.20)`;]]]"
+            - background-color: "[[[ return `rgba(var(--color-${variables.entity_2.color}), 0.20)`;]]]"
         tap_action:
           action: "call-service"
           service: "script.toggle"
           service_data:
-            entity_id: "[[[ return variables.entity_pill_2 ]]]"
+            entity_id: "[[[ return variables.entity_2.entity_id ]]]"
     item3:
       card:
         type: "custom:button-card"
         template: "card_scenes_pill_welcome"
-        entity: "[[[ return variables.entity_pill_3 ]]]"
-        icon: "[[[ return variables.icon_pill_3 ]]]"
-        name: "[[[ return variables.name_pill_3 ]]]"
+        entity: "[[[ return variables.entity_3.entity_id ]]]"
+        icon: "[[[ return variables.entity_3.icon ]]]"
+        name: "[[[ return variables.entity_3.name ]]]"
         styles:
           icon:
-            - color: "[[[ return `rgba(var(--color-${variables.color_pill_3}), 1)`;]]]"
+            - color: "[[[ return `rgba(var(--color-${variables.entity_3.color}), 1)`;]]]"
           img_cell:
-            - background-color: "[[[ return `rgba(var(--color-${variables.color_pill_3}), 0.20)`;]]]"
+            - background-color: "[[[ return `rgba(var(--color-${variables.entity_3.color}), 0.20)`;]]]"
         tap_action:
           action: "call-service"
           service: "script.toggle"
           service_data:
-            entity_id: "[[[ return variables.entity_pill_3 ]]]"
+            entity_id: "[[[ return variables.entity_3.entity_id ]]]"
     item4:
       card:
         type: "custom:button-card"
         template: "card_scenes_pill_welcome"
-        entity: "[[[ return variables.entity_pill_4 ]]]"
-        icon: "[[[ return variables.icon_pill_4 ]]]"
-        name: "[[[ return variables.name_pill_4 ]]]"
+        entity: "[[[ return variables.entity_4.entity_id ]]]"
+        icon: "[[[ return variables.entity_4.icon ]]]"
+        name: "[[[ return variables.entity_4.name ]]]"
         styles:
           icon:
-            - color: "[[[ return `rgba(var(--color-${variables.color_pill_4}), 1)`;]]]"
+            - color: "[[[ return `rgba(var(--color-${variables.entity_4.color}), 1)`;]]]"
           img_cell:
-            - background-color: "[[[ return `rgba(var(--color-${variables.color_pill_4}), 0.20)`;]]]"
+            - background-color: "[[[ return `rgba(var(--color-${variables.entity_4.color}), 0.20)`;]]]"
         tap_action:
           action: "call-service"
           service: "script.toggle"
           service_data:
-            entity_id: "[[[ return variables.entity_pill_4 ]]]"
+            entity_id: "[[[ return variables.entity_4.entity_id ]]]"
     item5:
       card:
         type: "custom:button-card"
         template: "card_scenes_pill_welcome"
-        entity: "[[[ return variables.entity_pill_5 ]]]"
-        icon: "[[[ return variables.icon_pill_5 ]]]"
-        name: "[[[ return variables.name_pill_5 ]]]"
+        entity: "[[[ return variables.entity_5.entity_id ]]]"
+        icon: "[[[ return variables.entity_5.icon ]]]"
+        name: "[[[ return variables.entity_5.name ]]]"
         styles:
           icon:
-            - color: "[[[ return `rgba(var(--color-${variables.color_pill_5}), 1)`;]]]"
+            - color: "[[[ return `rgba(var(--color-${variables.entity_5.color}), 1)`;]]]"
           img_cell:
-            - background-color: "[[[ return `rgba(var(--color-${variables.color_pill_5}), 0.20)`;]]]"
+            - background-color: "[[[ return `rgba(var(--color-${variables.entity_5.color}), 0.20)`;]]]"
         tap_action:
           action: "call-service"
           service: "script.toggle"
           service_data:
-            entity_id: "[[[ return variables.entity_pill_5 ]]]"
+            entity_id: "[[[ return variables.entity_5.entity_id ]]]"
 card_scenes_pill_welcome:
   show_icon: true
   show_label: false
@@ -407,9 +413,9 @@ card_scenes_welcome_auto:
                 template: "card_scenes_pill_welcome"
                 styles:
                   icon:
-                    - color: "[[[ return `rgba(var(--color-${variables.color_pill_1}), 1)`;]]]"
+                    - color: "[[[ return `rgba(var(--color-${variables.entity_1.color}), 1)`;]]]"
                   img_cell:
-                    - background-color: "[[[ return `rgba(var(--color-${variables.color_pill_1}), 0.20)`;]]]"
+                    - background-color: "[[[ return `rgba(var(--color-${variables.entity_1.color}), 0.20)`;]]]"
                 tap_action:
                   action: "call-service"
                   service: "script.toggle"
@@ -434,9 +440,9 @@ card_scenes_welcome_auto:
                 template: "card_scenes_pill_welcome"
                 styles:
                   icon:
-                    - color: "[[[ return `rgba(var(--color-${variables.color_pill_2}), 1)`;]]]"
+                    - color: "[[[ return `rgba(var(--color-${variables.entity_2.color}), 1)`;]]]"
                   img_cell:
-                    - background-color: "[[[ return `rgba(var(--color-${variables.color_pill_2}), 0.20)`;]]]"
+                    - background-color: "[[[ return `rgba(var(--color-${variables.entity_2.color}), 0.20)`;]]]"
                 tap_action:
                   action: "call-service"
                   service: "script.toggle"
@@ -461,9 +467,9 @@ card_scenes_welcome_auto:
                 template: "card_scenes_pill_welcome"
                 styles:
                   icon:
-                    - color: "[[[ return `rgba(var(--color-${variables.color_pill_3}), 1)`;]]]"
+                    - color: "[[[ return `rgba(var(--color-${variables.entity_3.color}), 1)`;]]]"
                   img_cell:
-                    - background-color: "[[[ return `rgba(var(--color-${variables.color_pill_3}), 0.20)`;]]]"
+                    - background-color: "[[[ return `rgba(var(--color-${variables.entity_3.color}), 0.20)`;]]]"
                 tap_action:
                   action: "call-service"
                   service: "script.toggle"
@@ -488,9 +494,9 @@ card_scenes_welcome_auto:
                 template: "card_scenes_pill_welcome"
                 styles:
                   icon:
-                    - color: "[[[ return `rgba(var(--color-${variables.color_pill_4}), 1)`;]]]"
+                    - color: "[[[ return `rgba(var(--color-${variables.entity_4.color}), 1)`;]]]"
                   img_cell:
-                    - background-color: "[[[ return `rgba(var(--color-${variables.color_pill_4}), 0.20)`;]]]"
+                    - background-color: "[[[ return `rgba(var(--color-${variables.entity_4.color}), 0.20)`;]]]"
                 tap_action:
                   action: "call-service"
                   service: "script.toggle"
@@ -515,9 +521,9 @@ card_scenes_welcome_auto:
                 template: "card_scenes_pill_welcome"
                 styles:
                   icon:
-                    - color: "[[[ return `rgba(var(--color-${variables.color_pill_5}), 1)`;]]]"
+                    - color: "[[[ return `rgba(var(--color-${variables.entity_5.color}), 1)`;]]]"
                   img_cell:
-                    - background-color: "[[[ return `rgba(var(--color-${variables.color_pill_5}), 0.20)`;]]]"
+                    - background-color: "[[[ return `rgba(var(--color-${variables.entity_5.color}), 0.20)`;]]]"
                 tap_action:
                   action: "call-service"
                   service: "script.toggle"
