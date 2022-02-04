@@ -14,22 +14,15 @@ The `card_scenes` you can control up to 5 `entity` such as `scene` or `script`.
 ## Credits
 
 Author: sildehoop - 2021
-Version: 1.1.0
+Version: 1.2.0
 
-## Changelog
+<h2 style="color: red">Braking changes</h2>
 
-<details>
-<summary>1.1.0</summary>
-Auto dark mode box shadow
-</details>
-<details>
-<summary>1.0.0</summary>
-Initial release
-</details>
+ <details style="color: red">
+   <summary>1.2.0</summary>
 
-## Usage
-
-```yaml
+ ```yaml
+ #OLD
 - type: "custom:button-card"
   template:
     - card_scenes
@@ -59,6 +52,100 @@ Initial release
     color_bg_3: "purple"
     color_bg_4: "green"
     color_bg_5: "red"
+ ```
+
+ ```yaml
+ #NEW
+- type: "custom:button-card"
+  template:
+    - card_scenes
+  variables:
+    entity_1:
+      entity_id: "scene.YOUR_SCENE"
+      icon: "mdi:YOUR_ICON"
+      icon_color: "yellow"
+      name: "YOUR_NAME"
+      bg_color: "yellow"
+    entity_2:
+      entity_id: "scene.YOUR_SCENE"
+      icon: "mdi:YOUR_ICON"
+      icon_color: "blue"
+      name: "YOUR_NAME"
+      bg_color: "blue"
+    entity_3:
+      entity_id: "scene.YOUR_SCENE"
+      icon: "mdi:YOUR_ICON"
+      icon_color: "purple"
+      name: "YOUR_NAME"
+      bg_color: "purple"
+    entity_4:
+      entity_id: "scene.YOUR_SCENE"
+      icon: "mdi:YOUR_ICON"
+      icon_color: "green"
+      name: "YOUR_NAME"
+      bg_color: "green"
+    entity_5:
+      entity_id: "scene.YOUR_SCENE"
+      icon: "mdi:YOUR_ICON"
+      icon_color: "red"
+      name: "YOUR_NAME"
+      bg_color: "red"
+ ```
+
+ </details>
+
+## Changelog
+
+<details>
+<summary>1.2.0</summary>
+Implementation of nested variables
+</details>
+<details>
+<summary>1.1.0</summary>
+Auto dark mode box shadow
+</details>
+<details>
+<summary>1.0.0</summary>
+Initial release
+</details>
+
+## Usage
+
+```yaml
+- type: "custom:button-card"
+  template:
+    - card_scenes
+  variables:
+    entity_1:
+      entity_id: "scene.YOUR_SCENE"
+      icon: "mdi:YOUR_ICON"
+      icon_color: "yellow"
+      name: "YOUR_NAME"
+      bg_color: "yellow"
+    entity_2:
+      entity_id: "scene.YOUR_SCENE"
+      icon: "mdi:YOUR_ICON"
+      icon_color: "blue"
+      name: "YOUR_NAME"
+      bg_color: "blue"
+    entity_3:
+      entity_id: "scene.YOUR_SCENE"
+      icon: "mdi:YOUR_ICON"
+      icon_color: "purple"
+      name: "YOUR_NAME"
+      bg_color: "purple"
+    entity_4:
+      entity_id: "scene.YOUR_SCENE"
+      icon: "mdi:YOUR_ICON"
+      icon_color: "green"
+      name: "YOUR_NAME"
+      bg_color: "green"
+    entity_5:
+      entity_id: "scene.YOUR_SCENE"
+      icon: "mdi:YOUR_ICON"
+      icon_color: "red"
+      name: "YOUR_NAME"
+      bg_color: "red"
 ```
 
 ## Requirements
