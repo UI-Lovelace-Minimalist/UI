@@ -29,57 +29,55 @@ minimalist-mobile-tapbar:
     .: |
       @media (orientation: portrait) {
         a.menu-link[target="_blank"], ha-button-menu, ha-menu-button, [main-title] {
-              display: none !important;
+          display: none !important;
         }
         app-toolbar {
-              padding-right: 0px;
-              padding-left: 0px;
+          padding-right: 0px;
+          padding-left: 0px;
         }
       }
+      ha-app-layout{
+        transform: initial;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100%;
+      }
       app-header {
-        top: auto !important;
-        bottom: 0 !important;
-        transform: unset !important;
+        top: auto;
+        bottom: 0;
         box-shadow: var(--footer-shadow);
         position: fixed;
       }
       app-toolbar {
         transform: none;
         padding-top:10px !important;
-        padding-bottom: calc(env(safe-area-inset-bottom) + 0.5rem) !important;
+        padding-bottom: calc(env(safe-area-inset-bottom) + 5px);
       }
       #view {
-        padding-top:0;
-        width:100%;
-        /*min-height: 100% !important;*/
-        height:auto !important;
-        padding-top: env(safe-area-inset-top);
-        position: fixed;
-        top:0;
-        padding-bottom: calc(env(safe-area-inset-bottom) + 80px) !important;
-      }
-      ha-app-layout{
-        transform: initial;
-        padding: 0 !important;
-        margin: 0 !important;
-        width:100%;
+        margin-top: calc(-71px + env(safe-area-inset-top)) !important;
+        width: 100%;
+        min-height: 100%;
+        height: auto;
+        padding-bottom: calc(env(safe-area-inset-bottom) + 80px);
       }
       ha-tabs {
-        --paper-tabs-selection-bar-color: var(--header-tab-indicator-color) !important;
+        --paper-tabs-selection-bar-color: var(--header-tab-indicator-color);
         --mdc-icon-size: 26px;
         display: flex;
         justify-content: space-between;
         padding: 0 10px;
       }
       paper-tab[aria-selected=true] {
-        color: var(--header-active-tab-color) !important;
-        background-color: var(--header-active-tab-bg-color) !important
+        color: var(--header-active-tab-color);
+        background-color: var(--header-active-tab-bg-color)
       }
       paper-tab {
-        color: var(--header-all-tabs-color) !important;
-        border-radius: 25px !important;
-        padding-left: 25px;
-        padding-right: 25px;
+        color: var(--header-all-tabs-color);
+        border-radius: 25px;
+        height:50px;
+        /*width: calc(100% / 4);*/
+        padding-left: 20px;
+        padding-right: 20px;
       }
 
   # Color themes
