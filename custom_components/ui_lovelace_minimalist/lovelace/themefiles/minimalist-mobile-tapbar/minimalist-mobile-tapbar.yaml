@@ -51,10 +51,12 @@ minimalist-mobile-tapbar:
       #view {
         padding-top:0;
         width:100%;
-        min-height: 100% !important;
+        /*min-height: 100% !important;*/
+        height:auto !important;
         padding-top: env(safe-area-inset-top);
         position: fixed;
         top:0;
+        padding-bottom: calc(env(safe-area-inset-bottom) + 80px) !important;
       }
       ha-app-layout{
         transform: initial;
