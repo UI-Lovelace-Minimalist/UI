@@ -59,7 +59,7 @@ minimalist-mobile-tapbar:
       ha-app-layout{
         transform: initial;
         padding: 0 !important;
-        margin: 0 !important;        
+        margin: 0 !important;
         width:100%;
       }
       ha-tabs {
