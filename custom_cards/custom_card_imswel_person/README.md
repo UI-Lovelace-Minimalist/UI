@@ -7,7 +7,7 @@ hide:
 
 # Custom-card "Person"
 
-This is a `custom-card` that improves the original person card (`card_person`) by allowing the user to define as many areas as 'He wishes and adding a pop-up window inspired by the nice theme of [@matt8707](https://github.com/matt8707/hass-config)
+This is a `custom-card` that improves the original person card (`card_person`) by allowing the user to define as many areas as desired and adding a pop-up window inspired by the nice theme of [@matt8707](https://github.com/matt8707/hass-config)
 
 ![Generic](../../docs/assets/img/custom_card_imswel_person.gif)
 
