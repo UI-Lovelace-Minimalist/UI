@@ -4,28 +4,28 @@ find_my_phone_button:
     - "ulm_custom_card_imswel_person_language_variables"
   tap_action:
     action: toggle
-  icon: mdi:volume-high
+  icon: "mdi:volume-high"
   name: "[[[ return variables.ulm_custom_card_imswel_person_findmy; ]]]"
-  size: 1.4em
+  size: "1.4em"
   styles:
     icon:
       - color: "rgba(var(--color-blue),1)"
     name:
-      - font-size: 1.06em
-      - letterspacing: 0.015em
+      - font-size: "1.06em"
+      - letterspacing: "0.015em"
     grid:
       - grid-template-areas: '"i n"'
-      - grid-column-gap: 0.3em
+      - grid-column-gap: "0.3em"
     card:
       - color: "rgba(var(--color-blue),1)"
       - background: "rgba(var(--color-blue),0.2"
-      - border-radius: 0.6em
-      - padding: 1em 1.4em
-      - width: max-content
-      - font-size: 1.06em
-      - font-weight: 500
-      - letter-spacing: 0.015em
-      - box-shadow: none
+      - border-radius: "0.6em"
+      - padding: "1em 1.4em"
+      - width: "max-content"
+      - font-size: "1.06em"
+      - font-weight: "500"
+      - letter-spacing: "0.015em"
+      - box-shadow: "none"
 
 custom_card_imswel_person:
   template:
@@ -113,9 +113,9 @@ custom_card_imswel_person:
 
 custom_popup_imswel_person:
   tap_action:
-    action: fire-dom-event
+    action: "fire-dom-event"
     browser_mod:
-      command: popup
+      command: "popup"
       title: "[[[ return states[variables.ulm_card_imswel_person_entity].attributes.friendly_name ]]]"
       style:
         $: >
@@ -184,35 +184,35 @@ custom_popup_imswel_person:
                   filter: contrast(95%);
                 }
       card:
-        type: vertical-stack
+        type: "vertical-stack"
         cards:
-          - type: entities
+          - type: "entities"
             entities:
               - entity: "[[[ return variables.ulm_card_imswel_person_entity; ]]]"
-                secondary_info: last-changed
-          - type: history-graph
+                secondary_info: "last-changed"
+          - type: "history-graph"
             entities:
               - entity: "[[[ return variables.ulm_card_imswel_person_entity; ]]]"
-          - type: glance
+          - type: "glance"
             show_state: false
             entities:
               - entity: "[[[ return variables.ulm_card_imswel_person_wifi_tracker; ]]]"
-                name: WiFi
-                icon: mdi:wifi
+                name: "WiFi"
+                icon: "mdi:wifi"
                 style: &state >
                   state-badge{
                     color: {{ 'rgba(var(--color-blue),1)' if is_state(config.entity, 'home') }};
                     filter: {{ 'opacity(100%)' if is_state(config.entity, 'home') else 'opacity(40%)'}};
                   }
               - entity: "[[[ return variables.ulm_card_imswel_person_gps_tracker; ]]]"
-                name: GPS
-                icon: mdi:map-marker
+                name: "GPS"
+                icon: "mdi:map-marker"
                 style: *state
-          - type: custom:button-card
+          - type: "custom:button-card"
             template:
               - "find_my_phone_button"
             entity: "[[[ return variables.ulm_card_imswel_person_findmy_script; ]]]"
-          - type: map
-            aspect_ratio: 12x10
+          - type: "map"
+            aspect_ratio: "12x10"
             default_zoom: 16
             entities: "[[[ return [variables.ulm_card_imswel_person_gps_tracker]; ]]]"
