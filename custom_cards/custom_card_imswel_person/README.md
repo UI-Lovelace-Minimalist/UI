@@ -13,7 +13,7 @@ This is a `custom-card` that improves the original person card (`card_person`) b
 
 ## Credits
 
-Author: imswel - 2021
+Author: imswel - 2022
 Version: 1.0.0
 
 ## Changelog
