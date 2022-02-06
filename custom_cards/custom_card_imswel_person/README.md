@@ -60,46 +60,46 @@ This card needs the following to function correctly:
 #### Variables
 
 <table>
-	<tr>
-		<th>Variable</th>
-		<th>Example</th>
-		<th>Required</th>
-		<th>Explanation</th>
-	</tr>
-	<tr>
-		<td>ulm_card_imswel_person_entity</td>
-		<td>person.john</td>
-		<td>yes</td>
-		<td>The person entity</td>
-	</tr>
-	<tr>
-		<td>ulm_card_imswel_person_wifi_tracker</td>
-		<td>device_tracker.wifi_oneplus_6t</td>
-		<td>yes</td>
-		<td>A device_tracker entity of the person based on wifi</td>
-	</tr>
-	<tr>
-		<td>ulm_card_imswel_person_gps_tracker</td>
-		<td>device_tracker.oneplus_6t</td>
-		<td>yes</td>
-		<td>A device_tracker entity of the person based on location</td>
-	</tr>
-	<tr>
-		<td>ulm_card_imswel_person_findmy_script</td>
-		<td>script.find_my_oneplus_6t</td>
-		<td>yes</td>
-		<td>A script entity that make ring your phone</td>
-	</tr>
-	<tr>
-		<td>ulm_card_imswel_person_use_entity_picture</td>
-		<td>true or false</td>
-		<td>no</td>
-		<td>If true, shows the entity picture from your user instead of the icon. Default is false</td>
-	</tr>
-	<tr>
-		<td>ulm_card_imswel_person_zones</td>
-		<td>- zone.work<br>- zone.school</td>
-		<td>no</td>
-		<td>A list of zones (beside "home") to use for the card. You can set up as many zones as you want besides "home".</td>
-	</tr>
+  <tr>
+    <th>Variable</th>
+    <th>Example</th>
+    <th>Required</th>
+    <th>Explanation</th>
+  </tr>
+  <tr>
+    <td>ulm_card_imswel_person_entity</td>
+    <td>person.john</td>
+    <td>yes</td>
+    <td>The person entity</td>
+  </tr>
+  <tr>
+    <td>ulm_card_imswel_person_wifi_tracker</td>
+    <td>device_tracker.wifi_oneplus_6t</td>
+    <td>yes</td>
+    <td>A device_tracker entity of the person based on wifi</td>
+  </tr>
+  <tr>
+    <td>ulm_card_imswel_person_gps_tracker</td>
+    <td>device_tracker.oneplus_6t</td>
+    <td>yes</td>
+    <td>A device_tracker entity of the person based on location</td>
+  </tr>
+  <tr>
+    <td>ulm_card_imswel_person_findmy_script</td>
+    <td>script.find_my_oneplus_6t</td>
+    <td>yes</td>
+    <td>A script entity that make ring your phone</td>
+  </tr>
+  <tr>
+    <td>ulm_card_imswel_person_use_entity_picture</td>
+    <td>true or false</td>
+    <td>no</td>
+    <td>If true, shows the entity picture from your user instead of the icon. Default is false</td>
+  </tr>
+  <tr>
+    <td>ulm_card_imswel_person_zones</td>
+    <td>- zone.work<br>- zone.school</td>
+    <td>no</td>
+    <td>A list of zones (beside "home") to use for the card. You can set up as many zones as you want besides "home".</td>
+  </tr>
 </table>
