@@ -53,8 +53,8 @@ This card needs the following to function correctly:
     ulm_card_imswel_person_findmy_script: script.find_my_oneplus_6t
     ulm_card_imswel_person_use_entity_picture: true
     ulm_card_imswel_person_zones:
-	- zone.work
-	- zone.school
+      - zone.work
+      - zone.school
 ```
 
 #### Variables
