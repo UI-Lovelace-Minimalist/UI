@@ -1,9 +1,8 @@
----
 find_my_phone_button:
   template:
     - "ulm_custom_card_imswel_person_language_variables"
   tap_action:
-    action: toggle
+    action: "toggle"
   icon: "mdi:volume-high"
   name: "[[[ return variables.ulm_custom_card_imswel_person_findmy; ]]]"
   size: "1.4em"
@@ -14,7 +13,7 @@ find_my_phone_button:
       - font-size: "1.06em"
       - letterspacing: "0.015em"
     grid:
-      - grid-template-areas: '"i n"'
+      - grid-template-areas: "'i n'"
       - grid-column-gap: "0.3em"
     card:
       - color: "rgba(var(--color-blue),1)"
