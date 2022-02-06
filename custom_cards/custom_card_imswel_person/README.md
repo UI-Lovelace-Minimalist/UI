@@ -19,26 +19,26 @@ Version: 1.0.0
 ## Changelog
 
 <details>
-	<summary>1.0.0</summary>
-	Initial release
+  <summary>1.0.0</summary>
+  Initial release
 </details>
 
 ## Requirements
 
 This card needs the following to function correctly:
 <table>
-	<tr>
-		<th>Component / card</th>
-		<th>required</th>
-	</tr>
-	<tr>
-		<td><a href="https://github.com/thomasloven/hass-browser_mod">browser_mod</a></td>
-		<td>yes</td>
-	</tr>
-	<tr>
-		<td><a href="https://github.com/thomasloven/lovelace-card-mod">lovelace-card-mod</a></td>
-		<td>yes</td>
-	</tr>
+  <tr>
+    <th>Component / card</th>
+    <th>required</th>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/thomasloven/hass-browser_mod">browser_mod</a></td>
+    <td>yes</td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/thomasloven/lovelace-card-mod">lovelace-card-mod</a></td>
+    <td>yes</td>
+  </tr>
 </table>
 
 ## Usage
