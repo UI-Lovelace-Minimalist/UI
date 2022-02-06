@@ -47,7 +47,7 @@ This card needs the following to function correctly:
 - type: "custom:button-card"
   template: custom_card_imswel_person
   variables:
-    ulm_card_imswel_person_entity: person.username
+    ulm_card_imswel_person_entity: person.john
     ulm_card_imswel_person_wifi_tracker: device_tracker.wifi_oneplus_6t
     ulm_card_imswel_person_gps_tracker: device_tracker.oneplus_6t
     ulm_card_imswel_person_findmy_script: script.find_my_oneplus_6t
@@ -68,7 +68,7 @@ This card needs the following to function correctly:
 	</tr>
 	<tr>
 		<td>ulm_card_imswel_person_entity</td>
-		<td>person.username</td>
+		<td>person.john</td>
 		<td>yes</td>
 		<td>The person entity</td>
 	</tr>
