@@ -98,10 +98,7 @@ This card needs the following to function correctly:
 	</tr>
 	<tr>
 		<td>ulm_card_imswel_person_zones</td>
-		<td>
-		- zone.work
-		- zone.school
-		</td>
+		<td>- zone.work<br>- zone.school</td>
 		<td>no</td>
 		<td>A list of zones (beside "home") to use for the card. You can set up as many zones as you want besides "home".</td>
 	</tr>
