@@ -59,6 +59,8 @@ card_light:
           [[[
                 if (variables.ulm_card_light_enable_collapse && entity.state == "off") {
                     return "\"item1\"";
+                } else if (variables.ulm_card_light_enable_collapse && entity.state == "unavailable") {
+                    return "\"item1\"";
                 } else if (variables.ulm_card_light_enable_horizontal) {
                     return "\"item1 item2\"";
                 } else if (variables.ulm_card_light_enable_slider) {
@@ -71,6 +73,8 @@ card_light:
           [[[
                 if (variables.ulm_card_light_enable_collapse && entity.state == "off") {
                     return "1fr";
+                } else if (variables.ulm_card_light_enable_collapse && entity.state == "unavailable") {
+                  return "1fr";
                 } else if (variables.ulm_card_light_enable_horizontal) {
                   if(variables.ulm_card_light_enable_horizontal_wide){
                     return "1fr 2fr";
@@ -85,6 +89,8 @@ card_light:
           [[[
                 if (variables.ulm_card_light_enable_collapse && entity.state == "off") {
                     return "1fr";
+                } else if (variables.ulm_card_light_enable_collapse && entity.state == "unavailable") {
+                  return "1fr";
                 } else if (variables.ulm_card_light_enable_slider && !variables.ulm_card_light_enable_horizontal) {
                     return "min-content min-content";
                 } else {
@@ -102,6 +108,8 @@ card_light:
             [[[
                   if (variables.ulm_card_light_enable_collapse && entity.state == "off") {
                       return "none";
+                  } else if (variables.ulm_card_light_enable_collapse && entity.state == "unavailable") {
+                    return "none";
                   } else if (variables.ulm_card_light_enable_slider) {
                       return "block";
                   } else {
