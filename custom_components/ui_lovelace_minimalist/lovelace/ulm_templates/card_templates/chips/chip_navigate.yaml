@@ -9,4 +9,8 @@ chip_navigate:
   icon: "[[[ return variables.ulm_chip_navigate_icon; ]]]"
   styles:
     grid:
-      - grid-template-areas: "'i'"
+      - grid-template-areas: "'i l'"
+    icon:
+      - color: "[[[ return variables.ulm_chip_navigate_icon_color; ]]]"
+    label:
+      - color: "[[[ return variables.ulm_chip_navigate_label_color; ]]]"

@@ -12,3 +12,7 @@ chip_mdi_icon_state:
   styles:
     grid:
       - grid-template-areas: "'i l'"
+    icon:
+      - color: "[[[ return variables.ulm_chip_mdi_icon_state_icon_color; ]]]"
+    label:
+      - color: "[[[ return variables.ulm_chip_mdi_icon_state_label_color; ]]]"

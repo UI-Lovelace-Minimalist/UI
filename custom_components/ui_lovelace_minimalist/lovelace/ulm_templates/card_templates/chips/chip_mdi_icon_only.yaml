@@ -10,3 +10,5 @@ chip_mdi_icon_only:
   styles:
     grid:
       - grid-template-areas: "'i'"
+    icon:
+      - color: "[[[ return variables.ulm_chip_mdi_icon_only_icon_color; ]]]"
