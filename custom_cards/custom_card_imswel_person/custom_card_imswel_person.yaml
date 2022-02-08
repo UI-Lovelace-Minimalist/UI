@@ -100,9 +100,9 @@ custom_card_imswel_person:
         if (person_location !== 'home'){
           for (const item of zones){
             if (person_location == states[item]?.attributes?.friendly_name){
-              var icon = (states[zone].attributes.icon !== null) ? states[zone].attributes.icon : 'mdi:help-circle';
+              var icon = (states[item].attributes.icon !== null) ? states[item].attributes.icon : 'mdi:help-circle';
               return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
-            } else{
+            } else if (person_location == 'not_home'){
               return '<ha-icon icon="mdi:home-minus" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
             }
           }
