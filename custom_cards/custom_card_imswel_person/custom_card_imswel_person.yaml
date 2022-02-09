@@ -1,0 +1,218 @@
+---
+find_my_phone_button:
+  template:
+    - "ulm_custom_card_imswel_person_language_variables"
+  tap_action:
+    action: "toggle"
+  icon: "mdi:volume-high"
+  name: "[[[ return variables.ulm_custom_card_imswel_person_findmy; ]]]"
+  size: "1.4em"
+  styles:
+    icon:
+      - color: "rgba(var(--color-blue),1)"
+    name:
+      - font-size: "1.06em"
+      - letterspacing: "0.015em"
+    grid:
+      - grid-template-areas: "'i n'"
+      - grid-column-gap: "0.3em"
+    card:
+      - color: "rgba(var(--color-blue),1)"
+      - background: "rgba(var(--color-blue),0.2"
+      - border-radius: "0.6em"
+      - padding: "1em 1.4em"
+      - width: "max-content"
+      - font-size: "1.06em"
+      - font-weight: "500"
+      - letter-spacing: "0.015em"
+      - box-shadow: "none"
+
+custom_card_imswel_person:
+  template:
+    - "icon_info_bg"
+    - "ulm_language_variables"
+    - "ulm_custom_card_imswel_person_language_variables"
+    - "custom_popup_imswel_person"
+  variables:
+    ulm_card_imswel_person_use_entity_picture: false
+    ulm_card_imswel_person_zones: ""
+  triggers_update: "all"
+  show_entity_picture: "[[[ return variables.ulm_card_imswel_person_use_entity_picture ]]]"
+  show_label: true
+  show_name: true
+  icon: "mdi:face-man"
+  entity_picture: >
+    [[[
+      if (variables.ulm_card_imswel_person_use_entity_picture == true){
+        return states[variables.ulm_card_imswel_person_entity].attributes.entity_picture;
+      } else{
+        return null;
+      }
+    ]]]
+  label: >
+    [[[
+      var location = states[variables.ulm_card_imswel_person_entity].state
+      if (location == "unavailable"){
+        return variables.ulm_unavailable;
+      } else if (location == "not_home"){
+        return variables.ulm_custom_card_imswel_person_not_home;
+      } else{
+        return (location == "home") ? variables.ulm_custom_card_imswel_person_home : location;
+      }
+    ]]]
+  name: "[[[ return states[variables.ulm_card_imswel_person_entity].attributes.friendly_name ]]]"
+  entity: "[[[ return variables.ulm_card_imswel_person_entity; ]]]"
+  styles:
+    icon:
+      - color: "rgba(var(--color-theme), 0.9)"
+      - width: >
+          [[[
+            if (variables.ulm_card_imswel_person_use_entity_picture == true){
+              return "42px";
+            } else {
+              return "20px";
+            }
+          ]]]
+    custom_fields:
+      notification:
+        - border-radius: "50%"
+        - position: "absolute"
+        - left: "38px"
+        - top: "8px"
+        - height: "16px"
+        - width: "16px"
+        - border: "2px solid var(--card-background-color)"
+        - font-size: "12px"
+        - line-height: "14px"
+        - background-color: >
+            [[[
+              if (states[variables.ulm_card_imswel_person_entity].state == 'home') {
+                return "rgba(var(--color-blue),1)";
+              } else {
+                return "rgba(var(--color-green),1)";
+              }
+            ]]]
+  custom_fields:
+    notification: >
+      [[[
+        var zones = variables.ulm_card_imswel_person_zones;
+        var person_location = states[variables.ulm_card_imswel_person_entity].state;
+        if (person_location !== 'home'){
+          for (const item of zones){
+            if (person_location == states[item]?.attributes?.friendly_name){
+              var icon = (states[item].attributes.icon !== null) ? states[item].attributes.icon : 'mdi:help-circle';
+              return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+            } else if (person_location == 'not_home'){
+              return '<ha-icon icon="mdi:home-minus" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+            }
+          }
+        } else{
+          return '<ha-icon icon="mdi:home-variant" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+        }
+      ]]]
+
+custom_popup_imswel_person:
+  tap_action:
+    action: "fire-dom-event"
+    browser_mod:
+      command: "popup"
+      title: "[[[ return states[variables.ulm_card_imswel_person_entity].attributes.friendly_name ]]]"
+      style:
+        $: >
+          [[[
+            if (hass.themes.theme.includes("desktop")){
+              var dialog = `
+                .mdc-dialog__surface{
+                  border-radius: var(--border-radius) !important;
+                }
+              `;
+            } else{
+              var dialog = "";
+            }
+            return `
+              *{
+                --secondary-background-color: none !important;
+              }
+              ${dialog}
+            `;
+          ]]]
+        hui-vertical-stack-card:
+          $: >
+            button-card {
+              align-self: center;
+              padding: 0.2em 0 2.3em 0;
+            }
+            hui-entities-card{
+              padding: 0.8em 1.4em;
+            }
+          $hui-entities-card$: >
+            ha-card{
+              box-shadow: none;
+            }
+          $hui-history-graph-card$: >
+            .content {
+              padding: 0 2.4em !important;
+            }
+            ha-card{
+              box-shadow: none;
+            }
+          $hui-glance-card$: >
+            ha-card{
+              box-shadow: none;
+            }
+          $hui-map-card:
+            $: >
+              ha-icon-button {
+                color: rgba(var(--color-blue),1);
+              }
+            $ha-map:
+              $: >
+                .leaflet-control-attribution {
+                  display: none;
+                }
+                .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
+                  border: 2px solid rgba(var(--color-blue),0.4) !important;
+                }
+                .leaflet-bar a {
+                  background-color: rgba(var(--color-blue),0.2) !important;
+                  color: rgba(var(--color-blue),1) !important;
+                }
+                .leaflet-bar a:first-child {
+                  border-bottom: 2px solid rgba(var(--color-blue),0.4) !important;
+                }
+                .leaflet-pane.leaflet-tile-pane {
+                  filter: contrast(95%);
+                }
+      card:
+        type: "vertical-stack"
+        cards:
+          - type: "entities"
+            entities:
+              - entity: "[[[ return variables.ulm_card_imswel_person_entity; ]]]"
+                secondary_info: "last-changed"
+          - type: "history-graph"
+            entities:
+              - entity: "[[[ return variables.ulm_card_imswel_person_entity; ]]]"
+          - type: "glance"
+            show_state: false
+            entities:
+              - entity: "[[[ return variables.ulm_card_imswel_person_wifi_tracker; ]]]"
+                name: "WiFi"
+                icon: "mdi:wifi"
+                style: &state >
+                  state-badge{
+                    color: {{ 'rgba(var(--color-blue),1)' if is_state(config.entity, 'home') }};
+                    filter: {{ 'opacity(100%)' if is_state(config.entity, 'home') else 'opacity(40%)'}};
+                  }
+              - entity: "[[[ return variables.ulm_card_imswel_person_gps_tracker; ]]]"
+                name: "GPS"
+                icon: "mdi:map-marker"
+                style: *state
+          - type: "custom:button-card"
+            template:
+              - "find_my_phone_button"
+            entity: "[[[ return variables.ulm_card_imswel_person_findmy_script; ]]]"
+          - type: "map"
+            aspect_ratio: "12x10"
+            default_zoom: 16
+            entities: "[[[ return [variables.ulm_card_imswel_person_gps_tracker]; ]]]"
