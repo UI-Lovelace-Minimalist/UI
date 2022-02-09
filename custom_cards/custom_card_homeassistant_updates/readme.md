@@ -7,7 +7,7 @@
     <img src="https://img.shields.io/badge/UI%20Minimalist-Default-299ec2.svg" />
   </a>
   <a href="https://github.com/LRvdLinden/find_my_dd_addon">
-    <img src="https://img.shields.io/github/v/release/LRvdLinden/find_my_dd_addon" />
+    <img src="https://img.shields.io/github/v/release/AndyVRD/UI/blob/dev/custom_cards/custom_card_homeassistant_updates" />
   </a>
     <a href="https://github.com/AndyVRD">
     <img src="https://img.shields.io/github/followers/AndyVRD?style=social" />
