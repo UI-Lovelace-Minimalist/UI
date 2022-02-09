@@ -7,9 +7,11 @@ hide:
 
 # Custom-card "Homeassistant updates"
 
+![Homeassistant updates card](../../docs/assets/img/ulm_cards/card_homeassistant_updates.png)
+
 !! Attention !!
 
-This card needs additional template sensors to work, all detail can be found in this readme.
+This card needs additional template sensors and a group.updaters sensor to work, all detail can be found in this readme.
 
 
 
@@ -254,4 +256,48 @@ icon_info_updates:
       ]]]
   size: 20px
 
+```
+
+## Template sensors code
+```
+  - platform: command_line
+    name: core_updates
+    command: 'curl http://supervisor/core/info -H "Authorization: Bearer $(printenv SUPERVISOR_TOKEN)" | jq ''{"latest_version":.data.version_latest,"installed_version":.data.version,"update_available":.data.update_available}'''
+    value_template: '{{ value_json.update_available }}'
+    scan_interval: 600
+    json_attributes:
+      - update_available
+      - latest_version
+      - installed_version
+
+  - platform: command_line
+    name: supervisor_updates
+    command: 'curl http://supervisor/supervisor/info -H "Authorization: Bearer $(printenv SUPERVISOR_TOKEN)" | jq ''{"latest_version":.data.version_latest,"installed_version":.data.version,"update_available":.data.update_available}'''
+    value_template: '{{ value_json.update_available }}'
+    scan_interval: 600
+    json_attributes:
+      - update_available
+      - latest_version
+      - installed_version
+
+  - platform: command_line
+    name: os_updates
+    command: 'curl http://supervisor/os/info -H "Authorization: Bearer $(printenv SUPERVISOR_TOKEN)" | jq ''{"latest_version":.data.version_latest,"installed_version":.data.version,"update_available":.data.update_available}'''
+    value_template: '{{ value_json.update_available }}'
+    scan_interval: 600
+    json_attributes:
+      - update_available
+      - latest_version
+      - installed_version
+```
+
+## Template sensor group.updates
+```
+group:
+  updaters:
+    name: Updates
+    entities:
+      - binary_sensor.updater_core
+      - binary_sensor.updater_supervisor
+      - binary_sensor.updater_os
 ```
