@@ -46,50 +46,13 @@
 - If you want to add more cards, copy a whole row`
 ### Example
 ```yaml
-                    #devices row 1   
-                  - type: vertical-stack
-                    cards:
-                      - type: entities
-                        title: Devices NAME PERSON # <- fill in the right name
-                        style: |
-                          ha-card {
-                            border-radius: 10px;
-                            padding-bottom: 10px;
-                            background-color: var(--dwains-theme-primary)
-                          }
-                          :host {
-                            --paper-item-icon-color: var(--dwains-theme-accent) !important;
-                          }
-                          .card-header {
-                            padding: 5px 16px;
-                            font-size: 15px;
-                            font-weight: 700 !important;
-                          }
-                          #states {
-                            padding-top: 0px !important;
-                            padding-bottom: 0px !important;
-                          }
-                          .secondary {
-                            color: darkgray !important;
-                            margin-left: 2px !important;
-                          }
-                        entities:
-                          - entity: device_tracker.1 # <- fill in the right device_tracker
-                            secondary_info: last-updated
-                          - entity: device_tracker.2 # <- fill in the right device_tracker
-                            secondary_info: last-updated
-                          - entity: device_tracker.3 # <- fill in the right device_tracker
-                            secondary_info: last-updated
-                          - entity: device_tracker.4 # <- fill in the right device_tracker
-                            secondary_info: last-updated
-                          - type: 'divider'
-                            style:
-                              pandding-top: 10px;
-                              height: 1px
-                              width: 100%
-                              margin-left: auto
-                              margin-right: auto
-                              background: "var(--primary-text-color)"
+      - type: 'custom:button-card'
+        template: card_homeassistant
+        variables:
+          ulm_card_homeassistant_entity: 'group.updaters'
+          ulm_card_homeassistant_core: "sensor.core_updates"
+          ulm_card_homeassistant_supervisor: "sensor.supervisor_updates"
+          ulm_card_homeassistant_os: "sensor.os_updates"
 ```
 
 
