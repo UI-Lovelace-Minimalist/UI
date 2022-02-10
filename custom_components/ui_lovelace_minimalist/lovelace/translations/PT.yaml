@@ -33,3 +33,6 @@ ulm_language_variables:
     ulm_afternoon: "Boa tarde"
     ulm_evening: "Boa noite"
     ulm_hello: "Olá"
+    ulm_cleaning: "Cleaning"
+    ulm_returning: "Returning"
+    ulm_docked: "Docked"
