@@ -35,6 +35,11 @@ card_cover_buttons:
             card:
               type: "custom:button-card"
               template: "widget_icon"
+              state:
+                - value: "closed"
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
               tap_action:
                 action: "call-service"
                 service: "cover.close_cover"
@@ -55,6 +60,11 @@ card_cover_buttons:
             card:
               type: "custom:button-card"
               template: "widget_icon"
+              state:
+                - value: "open"
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
               tap_action:
                 action: "call-service"
                 service: "cover.open_cover"
