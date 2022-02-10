@@ -1,3 +1,4 @@
+---
 card_homeassistant_updates:
   triggers_update: "all"
   styles:
@@ -18,7 +19,7 @@ card_homeassistant_updates:
         template:
           - "icon_info_updates"
           - "ulm_language_variables"
-        icon: 'mdi:home-assistant'
+        icon: "mdi:home-assistant"
         tap_action:
           action: "none"
         entity: "[[[ return variables.ulm_card_homeassistant_entity ]]]"
@@ -31,7 +32,7 @@ card_homeassistant_updates:
                 }
               ]]]
         label: >
-              [[[ 
+              [[[
                 if(variables.ulm_card_homeassistant_core){
                   if(states[variables.ulm_card_homeassistant_core].state ==='True'){
                     var core = 'Core: ' + states[variables.ulm_card_homeassistant_core].attributes.installed_version + ' -> ' + states[variables.ulm_card_homeassistant_core].attributes.latest_version;
@@ -74,29 +75,29 @@ card_homeassistant_updates:
               type: "custom:button-card"
               template: "widget_icon"
               icon: "mdi:file-document"
-              tap_action: 
-                action: url
-                url_path: https://www.home-assistant.io/latest-release-notes/
+              tap_action:
+                action: "url"
+                url_path: "https://www.home-assistant.io/latest-release-notes/"
           item2:
             card:
               type: "custom:button-card"
               template: "widget_icon"
               icon: "mdi:cog"
-              tap_action: 
-                action: navigate
-                navigation_path: /config/server_control
+              tap_action:
+                action: "navigate"
+                navigation_path: "/config/server_control"
 
           item3:
             card:
               type: "custom:button-card"
               template: "widget_icon"
               icon: "mdi:update"
-              tap_action: 
-                action: navigate
-                navigation_path: /config/dashboard
+              tap_action:
+                action: "navigate"
+                navigation_path: "/config/dashboard"
 
 icon_info_updates:
-  color: var(--google-grey)
+  color: "var(--google-grey)"
   show_icon: true
   show_label: true
   show_name: true
@@ -119,49 +120,48 @@ icon_info_updates:
                   return "rgba(var(--color-blue),1)";
                 ]]]
         icon:
-          - color: 'rgba(var(--color-blue),1)'
+          - color: "rgba(var(--color-blue),1)"
         img_cell:
-          - background-color: 'rgba(var(--color-blue), 0.2)'
+          - background-color: "rgba(var(--color-blue), 0.2)"
   styles:
     icon:
-      - color: 'rgba(var(--color-theme),0.2)'
+      - color: "rgba(var(--color-theme),0.2)"
     label:
-      - justify-self: start
-      - align-self: start
-      - font-weight: bolder
-      - font-size: 12px
-      - filter: opacity(40%)
-      - margin-left: 16px
+      - justify-self: "start"
+      - align-self: "start"
+      - font-weight: "bolder"
+      - font-size: "12px"
+      - filter: "opacity(40%)"
+      - margin-left: "16px"
       - text-align: "start"
     name:
-      - align-self: end
-      - justify-self: start
-      - font-weight: bold
-      - font-size: 14px
-      - margin-left: 16px
-      - margin-bottom: 4px
+      - align-self: "end"
+      - justify-self: "start"
+      - font-weight: "bold"
+      - font-size: "14px"
+      - margin-left: "16px"
+      - margin-bottom: "4px"
     state:
-      - justify-self: start
-      - align-self: start
-      - font-weight: bolder
-      - font-size: 12px
-      - filter: opacity(40%)
-      - margin-left: 12px
+      - justify-self: "start"
+      - align-self: "start"
+      - font-weight: "bolder"
+      - font-size: "12px"
+      - filter: "opacity(40%)"
+      - margin-left: "12px"
     img_cell:
-      - background-color: 'rgba(var(--color-theme),0.05)'
-      - border-radius: 50%
-      - place-self: center
-      - width: 42px
-      - height: 42px
+      - background-color: "rgba(var(--color-theme),0.05)"
+      - border-radius: "50%"
+      - place-self: "center"
+      - width: "42px"
+      - height: "42px"
     grid:
-      - grid-template-areas: '"i n" "i l"'
-      - grid-template-columns: min-content auto
-      - grid-template-rows: min-content min-content
+      - grid-template-areas: "'i n' 'i l'"
+      - grid-template-columns: "min-content auto"
+      - grid-template-rows: "min-content min-content"
     card:
-      - border-radius: 21px 8px 8px 21px 
-      - box-shadow: none
-      - padding: 0px
-      # - background-color: 'rgba(var(--color-theme),0)'
+      - border-radius: "21px 8px 8px 21px"
+      - box-shadow: "none"
+      - padding: "0px"
   custom_fields:
     notification: >
       [[[
@@ -169,4 +169,4 @@ icon_info_updates:
           return `<ha-icon icon="mdi:party-popper" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`;
         }
       ]]]
-  size: 20px
+  size: "20px"

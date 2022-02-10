@@ -13,8 +13,6 @@ hide:
 
 This card needs additional template sensors and a group.updaters sensor to work, all detail can be found in this readme.
 
-
-
 ## Credits
 
 - Author: AndyVRD - 2021
@@ -116,7 +114,7 @@ card_homeassistant_updates:
                 }
               ]]]
         label: >
-              [[[ 
+              [[[
                 if(variables.ulm_card_homeassistant_core){
                   if(states[variables.ulm_card_homeassistant_core].state ==='True'){
                     var core = 'Core: ' + states[variables.ulm_card_homeassistant_core].attributes.installed_version + ' -> ' + states[variables.ulm_card_homeassistant_core].attributes.latest_version;
@@ -159,7 +157,7 @@ card_homeassistant_updates:
               type: "custom:button-card"
               template: "widget_icon"
               icon: "mdi:file-document"
-              tap_action: 
+              tap_action:
                 action: url
                 url_path: https://www.home-assistant.io/latest-release-notes/
           item2:
@@ -167,7 +165,7 @@ card_homeassistant_updates:
               type: "custom:button-card"
               template: "widget_icon"
               icon: "mdi:cog"
-              tap_action: 
+              tap_action:
                 action: navigate
                 navigation_path: /config/server_control
 
@@ -176,7 +174,7 @@ card_homeassistant_updates:
               type: "custom:button-card"
               template: "widget_icon"
               icon: "mdi:update"
-              tap_action: 
+              tap_action:
                 action: navigate
                 navigation_path: /config/dashboard
 
@@ -243,7 +241,7 @@ icon_info_updates:
       - grid-template-columns: min-content auto
       - grid-template-rows: min-content min-content
     card:
-      - border-radius: 21px 8px 8px 21px 
+      - border-radius: 21px 8px 8px 21px
       - box-shadow: none
       - padding: 0px
       # - background-color: 'rgba(var(--color-theme),0)'
@@ -259,7 +257,8 @@ icon_info_updates:
 ```
 
 ## Template sensors code
-```
+
+```yaml
   - platform: command_line
     name: core_updates
     command: 'curl http://supervisor/core/info -H "Authorization: Bearer $(printenv SUPERVISOR_TOKEN)" | jq ''{"latest_version":.data.version_latest,"installed_version":.data.version,"update_available":.data.update_available}'''
@@ -292,7 +291,8 @@ icon_info_updates:
 ```
 
 ## Template sensor group.updates
-```
+
+```yaml
 group:
   updaters:
     name: Updates
