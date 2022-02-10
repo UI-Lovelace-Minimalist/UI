@@ -18,7 +18,7 @@ This card needs additional template sensors and a group.updaters sensor to work,
 ## Credits
 
 - Author: AndyVRD - 2021
-- Special thanks to [basbruss](https://github.com/basbruss/UI)
+- Special thanks to [basbruss](https://github.com/basbruss) and [dmatik](https://github.com/dmatik)
 - Version: 1.0.0
 
 ## Changelog
@@ -26,6 +26,10 @@ This card needs additional template sensors and a group.updaters sensor to work,
 <details>
 <summary>1.0.0</summary>
 Initial release
+</details>
+<details>
+<summary>1.0.1</summary>
+Updated translation from dutch to english
 </details>
 
 ## Usage
