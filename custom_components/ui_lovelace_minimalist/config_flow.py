@@ -41,7 +41,7 @@ def ulm_config_option_schema(options: dict = {}) -> dict:
     return {
         vol.Optional(
             CONF_LANGUAGE, default=options.get(CONF_LANGUAGE, DEFAULT_LANGUAGE)
-        ): vol.In(CONF_LANGUAGES),
+        ): vol.In(CONF_LANGUAGES.keys()),
         vol.Optional(
             CONF_SIDEPANEL_ENABLED,
             default=options.get(CONF_SIDEPANEL_ENABLED, DEFAULT_SIDEPANEL_ENABLED),

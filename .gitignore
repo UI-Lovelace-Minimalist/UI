@@ -3,7 +3,7 @@ custom_components/*
 /ui_lovelace-minimalist
 ui_lovelace_minimalist/
 /themes/
-
+/site
 !custom_components/ui_lovelace_minimalist
 !custom_components/__init__.py
 custom_components/ui_lovelace_minimalist/__pycache__

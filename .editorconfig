@@ -1,0 +1,8 @@
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+[*.{yaml,yml}]
+quote_type = double
+insert_final_newline = true

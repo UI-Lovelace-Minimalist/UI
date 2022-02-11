@@ -1,5 +1,6 @@
 ---
 title: custom_card_paddy_waste_collection
+ignore_macros: true
 hide:
   - toc
 ---
