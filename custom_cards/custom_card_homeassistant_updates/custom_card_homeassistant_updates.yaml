@@ -26,9 +26,9 @@ card_homeassistant_updates:
         name: >
               [[[
                 if(states[variables.ulm_card_homeassistant_core].state ==='True' || states[variables.ulm_card_homeassistant_supervisor].state ==='True' || states[variables.ulm_card_homeassistant_os].state ==='True'){
-                  return 'Updates beschikbaar!';
+                  return variables.ulm_updates_available;
                 } else {
-                  return 'Geen updates'
+                  return variables.ulm_no_updates_available
                 }
               ]]]
         label: >
