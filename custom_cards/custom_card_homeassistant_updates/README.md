@@ -17,13 +17,17 @@ This card needs additional template sensors and a group.updaters sensor to work,
 
 - Author: AndyVRD - 2021
 - Special thanks to [basbruss](https://github.com/basbruss/UI)
-- Version: 1.0.0
+- Version: 1.0.1
 
 ## Changelog
 
 <details>
 <summary>1.0.0</summary>
 Initial release
+</details>
+<details>
+<summary>1.0.0</summary>
+Added support for ulm_language variables
 </details>
 
 ## Usage
