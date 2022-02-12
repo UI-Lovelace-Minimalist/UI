@@ -26,7 +26,7 @@ This card needs additional template sensors and a group.updaters sensor to work,
 Initial release
 </details>
 <details>
-<summary>1.0.0</summary>
+<summary>1.0.1</summary>
 Added support for ulm_language variables
 </details>
 
