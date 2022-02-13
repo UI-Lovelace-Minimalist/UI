@@ -7,29 +7,22 @@ hide:
 
 # Custom-card "Scenes Card"
 
-The `card_scenes` you can control a input_number entity
+The `card_scenes` you can control up to 5 `entity` such as `scene` or `script`.
 
-![Scenes Card](../../assets/img/ulm_cards/card_scenes.png)
+![Scenes Card](../../assets/img/card_scenes.png)
 
 ## Credits
 
 Author: sildehoop - 2021
-Version: 1.1.0
+Version: 1.2.0
 
-## Changelog
+<h2 style="color: red">Braking changes</h2>
 
-<details>
-<summary>1.1.0</summary>
-Auto dark mode box shadow
-</details>
-<details>
-<summary>1.0.0</summary>
-Initial release
-</details>
+ <details style="color: red">
+   <summary>1.2.0</summary>
 
-## Usage
-
-```yaml
+ ```yaml
+ #OLD
 - type: "custom:button-card"
   template:
     - card_scenes
@@ -59,6 +52,100 @@ Initial release
     color_bg_3: "purple"
     color_bg_4: "green"
     color_bg_5: "red"
+ ```
+
+ ```yaml
+ #NEW
+- type: "custom:button-card"
+  template:
+    - card_scenes
+  variables:
+    entity_1:
+      entity_id: "scene.YOUR_SCENE"
+      icon: "mdi:YOUR_ICON"
+      icon_color: "yellow"
+      name: "YOUR_NAME"
+      bg_color: "yellow"
+    entity_2:
+      entity_id: "scene.YOUR_SCENE"
+      icon: "mdi:YOUR_ICON"
+      icon_color: "blue"
+      name: "YOUR_NAME"
+      bg_color: "blue"
+    entity_3:
+      entity_id: "scene.YOUR_SCENE"
+      icon: "mdi:YOUR_ICON"
+      icon_color: "purple"
+      name: "YOUR_NAME"
+      bg_color: "purple"
+    entity_4:
+      entity_id: "scene.YOUR_SCENE"
+      icon: "mdi:YOUR_ICON"
+      icon_color: "green"
+      name: "YOUR_NAME"
+      bg_color: "green"
+    entity_5:
+      entity_id: "scene.YOUR_SCENE"
+      icon: "mdi:YOUR_ICON"
+      icon_color: "red"
+      name: "YOUR_NAME"
+      bg_color: "red"
+ ```
+
+ </details>
+
+## Changelog
+
+<details>
+<summary>1.2.0</summary>
+Implementation of nested variables
+</details>
+<details>
+<summary>1.1.0</summary>
+Auto dark mode box shadow
+</details>
+<details>
+<summary>1.0.0</summary>
+Initial release
+</details>
+
+## Usage
+
+```yaml
+- type: "custom:button-card"
+  template:
+    - card_scenes
+  variables:
+    entity_1:
+      entity_id: "scene.YOUR_SCENE"
+      icon: "mdi:YOUR_ICON"
+      icon_color: "yellow"
+      name: "YOUR_NAME"
+      bg_color: "yellow"
+    entity_2:
+      entity_id: "scene.YOUR_SCENE"
+      icon: "mdi:YOUR_ICON"
+      icon_color: "blue"
+      name: "YOUR_NAME"
+      bg_color: "blue"
+    entity_3:
+      entity_id: "scene.YOUR_SCENE"
+      icon: "mdi:YOUR_ICON"
+      icon_color: "purple"
+      name: "YOUR_NAME"
+      bg_color: "purple"
+    entity_4:
+      entity_id: "scene.YOUR_SCENE"
+      icon: "mdi:YOUR_ICON"
+      icon_color: "green"
+      name: "YOUR_NAME"
+      bg_color: "green"
+    entity_5:
+      entity_id: "scene.YOUR_SCENE"
+      icon: "mdi:YOUR_ICON"
+      icon_color: "red"
+      name: "YOUR_NAME"
+      bg_color: "red"
 ```
 
 ## Requirements
@@ -108,199 +195,8 @@ n/a
 
 ## Template code
 
-```yaml
----
-card_scenes:
-  show_icon: false
-  show_name: false
-  show_label: false
-  variables:
-    icon_1: "mdi:help-circle-outline"
-    icon_2: "mdi:help-circle-outline"
-    icon_3: "mdi:help-circle-outline"
-    icon_4: "mdi:help-circle-outline"
-    icon_5: "mdi:help-circle-outline"
-    name_1: "n/a"
-    name_2: "n/a"
-    name_3: "n/a"
-    name_4: "n/a"
-    name_5: "n/a"
-    color_icon_1: "gray"
-    color_icon_2: "gray"
-    color_icon_3: "gray"
-    color_icon_4: "gray"
-    color_icon_5: "gray"
-    color_bg_1: "gray"
-    color_bg_2: "gray"
-    color_bg_3: "gray"
-    color_bg_4: "gray"
-    color_bg_5: "gray"
-  styles:
-    grid:
-      - grid-template-areas: "'item1 item2 item3 item4 item5'"
-      - grid-template-columns: "1fr 1fr 1fr 1fr 1fr"
-      - grid-template-rows: "min-content"
-      - justify-items: "center"
-      - column-gap: "auto"
-    card:
-      - border-radius: "var(--border-radius)"
-      - box-shadow: "var(--box-shadow)"
-      - padding: "12px"
-  custom_fields:
-    item1:
-      card:
-        type: "custom:button-card"
-        template: "card_scenes_pill"
-        entity: "[[[ return variables.entity_1 ]]]"
-        icon: "[[[ return variables.icon_1 ]]]"
-        name: "[[[ return variables.name_1 ]]]"
-        variables:
-          color_icon: "[[[ return variables.color_icon_1 ]]]"
-          color_bg: "[[[ return variables.color_bg_1 ]]]"
-        tap_action:
-          action: "call-service"
-          service: "scene.turn_on"
-          service_data:
-            entity_id: "[[[ return variables.entity_1 ]]]"
-    item2:
-      card:
-        type: "custom:button-card"
-        template: "card_scenes_pill"
-        entity: "[[[ return variables.entity_2 ]]]"
-        icon: "[[[ return variables.icon_2 ]]]"
-        name: "[[[ return variables.name_2 ]]]"
-        variables:
-          color_icon: "[[[ return variables.color_icon_2 ]]]"
-          color_bg: "[[[ return variables.color_bg_2 ]]]"
-        tap_action:
-          action: "call-service"
-          service: "scene.turn_on"
-          service_data:
-            entity_id: "[[[ return variables.entity_2 ]]]"
-    item3:
-      card:
-        type: "custom:button-card"
-        template: "card_scenes_pill"
-        entity: "[[[ return variables.entity_3 ]]]"
-        icon: "[[[ return variables.icon_3 ]]]"
-        name: "[[[ return variables.name_3 ]]]"
-        variables:
-          color_icon: "[[[ return variables.color_icon_3 ]]]"
-          color_bg: "[[[ return variables.color_bg_3 ]]]"
-        tap_action:
-          action: "call-service"
-          service: "scene.turn_on"
-          service_data:
-            entity_id: "[[[ return variables.entity_3 ]]]"
-    item4:
-      card:
-        type: "custom:button-card"
-        template: "card_scenes_pill"
-        entity: "[[[ return variables.entity_4 ]]]"
-        icon: "[[[ return variables.icon_4 ]]]"
-        name: "[[[ return variables.name_4 ]]]"
-        variables:
-          color_icon: "[[[ return variables.color_icon_4 ]]]"
-          color_bg: "[[[ return variables.color_bg_4 ]]]"
-        tap_action:
-          action: "call-service"
-          service: "scene.turn_on"
-          service_data:
-            entity_id: "[[[ return variables.entity_4 ]]]"
-    item5:
-      card:
-        type: "custom:button-card"
-        template: "card_scenes_pill"
-        entity: "[[[ return variables.entity_5 ]]]"
-        icon: "[[[ return variables.icon_5 ]]]"
-        name: "[[[ return variables.name_5 ]]]"
-        variables:
-          color_icon: "[[[ return variables.color_icon_5 ]]]"
-          color_bg: "[[[ return variables.color_bg_5 ]]]"
-        tap_action:
-          action: "call-service"
-          service: "scene.turn_on"
-          service_data:
-            entity_id: "[[[ return variables.entity_5 ]]]"
+??? note "Template Code"
 
-card_scenes_pill:
-  show_icon: true
-  show_label: false
-  show_name: true
-  variables:
-    color_icon: "gray"
-    color_bg: "gray"
-  styles:
-    grid:
-      - grid-template-areas: "'i' 'n'"
-      - grid-template-columns: "min-content"
-      - grid-template-rows: "1fr 1fr"
-      - row-gap: "12px"
-      - justify-items: "center"
-      - column-gap: "auto"
-    card:
-      - box-shadow: "none"
-      - padding: "5px"
-      - box-shadow: >
-          [[[
-            if (hass.themes.darkMode){
-              return "0px 2px 4px 0px rgba(0,0,0,0.80)";
-            } else {
-              return "var(--box-shadow)";
-            }
-          ]]]
-      - border-radius: "50px"
-      - place-self: "center"
-      - width: "52px"
-      - height: "84px"
-    icon:
-      - color: >
-          [[[
-            var color = [variables.color_icon];
-            if (color == "gray"){
-              var color = "rgba(var(--color-theme),0.20)";
-            } else if(color == "yellow"){
-              var color = "rgba(var(--color-yellow),1)";
-            } else if(color == "blue"){
-              var color = "rgba(var(--color-blue),1)";
-            } else if(color == "purple"){
-              var color = "rgba(var(--color-purple),1)";
-            } else if(color == "green"){
-              var color = "rgba(var(--color-green),1)";
-            } else if(color == "red"){
-              var color = "rgba(var(--color-red),1)";
-            }
-            return color;
-          ]]]
-    img_cell:
-      - background-color: >
-          [[[
-            var color = [variables.color_bg];
-            if (color == "gray"){
-              var color = "rgba(var(--color-theme),0.05)";
-            } else if(color == "yellow"){
-              var color = "rgba(var(--color-yellow),0.20)";
-            } else if(color == "blue"){
-              var color = "rgba(var(--color-blue),0.20)";
-            } else if(color == "purple"){
-              var color = "rgba(var(--color-purple),0.20)";
-            } else if(color == "green"){
-              var color = "rgba(var(--color-green),0.20)";
-            } else if(color == "red"){
-              var color = "rgba(var(--color-red),0.20)";
-            }
-            return color;
-          ]]]
-      - border-radius: "50%"
-      - width: "42px"
-      - height: "42px"
-    name:
-      - font-weight: "bold"
-      - font-size: "9.5px"
-      - width: "33px"
-      - padding-bottom: "7px"
-    state:
-      - color: "rgba(var(--color-theme),0.9)"
-  color: "var(--google-grey)"
-
-```
+    ```yaml title="custom_card_scenes.yaml"
+    --8<-- "custom_cards/custom_card_scenes/card_scenes.yaml"
+    ```

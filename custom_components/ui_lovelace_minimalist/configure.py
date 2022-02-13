@@ -25,6 +25,7 @@ LANGUAGES = {
     "Portuguese": "PT",
     "Spanish": "ES",
     "Swedish": "SE",
+    "Norwegian": "NO",
 }
 
 

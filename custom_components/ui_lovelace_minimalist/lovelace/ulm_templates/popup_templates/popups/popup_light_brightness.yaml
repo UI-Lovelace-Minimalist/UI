@@ -5,7 +5,7 @@ popup_light_brightness:
       - grid-template-areas: >
           [[[
                 var contents = [];
-                var brightness_modes = ["brightness", "hs", "color_temp", "rgb", "rgbw"];
+                var brightness_modes = ["brightness", "hs", "color_temp", "rgb", "rgbw", "xy"];
                 var color_temp_modes = ["color_temp"];
                 var color_modes = ["hs", "rgb", "rgbw", "xy"];
                 if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => brightness_modes.includes(r))) {
@@ -23,7 +23,7 @@ popup_light_brightness:
       - grid-template-columns: >
           [[[
                 var columns = [];
-                var brightness_modes = ["brightness", "hs", "color_temp", "rgb", "rgbw"];
+                var brightness_modes = ["brightness", "hs", "color_temp", "rgb", "rgbw", "xy"];
                 var color_temp_modes = ["color_temp"];
                 var color_modes = ["hs", "rgb", "rgbw", "xy"];
                 if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => brightness_modes.includes(r))) {
@@ -49,7 +49,7 @@ popup_light_brightness:
         - align-self: "center"
         - display: >
             [[[
-                  var brightness_modes = ["brightness", "hs", "color_temp", "rgb", "rgbw"];
+                  var brightness_modes = ["brightness", "hs", "color_temp", "rgb", "rgbw", "xy"];
                   if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => brightness_modes.includes(r))) {
                       return "block";
                   }
@@ -191,7 +191,7 @@ popup_light_brightness:
             - grid-template-areas: >
                 [[[
                       var areas = [];
-                      var brightness_modes = ["brightness", "hs", "color_temp", "rgb", "rgbw"];
+                      var brightness_modes = ["brightness", "hs", "color_temp", "rgb", "rgbw", "xy"];
                       var color_temp_modes = ["color_temp"];
                       var color_modes = ["hs", "rgb", "rgbw", "xy"];
                       if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => brightness_modes.includes(r))) {
@@ -208,7 +208,7 @@ popup_light_brightness:
             - grid-template-columns: >
                 [[[
                       var columns = [];
-                      var brightness_modes = ["brightness", "hs", "color_temp", "rgb", "rgbw"];
+                      var brightness_modes = ["brightness", "hs", "color_temp", "rgb", "rgbw", "xy"];
                       var color_temp_modes = ["color_temp"];
                       var color_modes = ["hs", "rgb", "rgbw", "xy"];
                       if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => brightness_modes.includes(r))) {

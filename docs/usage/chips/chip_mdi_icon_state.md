@@ -17,6 +17,8 @@ This `chip` displays an icon using [mdi](https://materialdesignicons.com/) and `
 |----------|---------|------------------|-------------------|
 |ulm_chip_mdi_icon_state_entity     |         | :material-check: | `entity` to link |                  |
 |ulm_chip_mdi_icon_state_icon       |         | :material-close: | mdi:icon to display  |
+|ulm_chip_mdi_icon_state_icon_color | `primary-text-color` | :material-close: | Allow to change `icon` color |
+|ulm_chip_mdi_icon_state_label_color | `primary-text-color` | :material-close: | Allow to change `label` color |
 
 ## Usage
 
@@ -30,6 +32,6 @@ This `chip` displays an icon using [mdi](https://materialdesignicons.com/) and `
 
 ??? note "Template Code"
 
-    ```yaml title="card_light.yaml"
+    ```yaml title="chip_mdi_icon_state.yaml"
     --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/chips/chip_mdi_icon_state.yaml"
     ```

@@ -29,6 +29,6 @@ Titles (and optionally subtitles) are used to seperate different areas in your d
 
 ??? note "Template Code"
 
-    ```yaml title="card_light.yaml"
+    ```yaml title="card_title.yaml"
     --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/title/card_title.yaml"
     ```

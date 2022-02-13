@@ -15,6 +15,7 @@ nav:
       - Download: "setup/download.md"
       - Installation: "setup/installation.md"
       - Configuration: "setup/configuration.md"
+      - Custom cards: "setup/custom_cards.md"
   - "... | usage/**/*.md"
   - Development:
       - Card Style Guide: "development/card_style_guide.md"
