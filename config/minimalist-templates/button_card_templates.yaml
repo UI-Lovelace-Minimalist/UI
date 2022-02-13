@@ -56,8 +56,13 @@ chip_icon_only:
       }
       return icon;
     ]]]
+---
+### Chip Icon State ###
 chip_icon_state:
   template: "chips"
+  tap_action:
+    action: "navigate"
+    navigation_path: "[[[ return variables.ulm_chip_navigate_path; ]]]"
   triggers_update: "all"
   label: |
     [[[
@@ -74,6 +79,7 @@ chip_icon_state:
       }
       return icon + " " + state;
     ]]]
+
 chip_icon_double_state:
   template: "chips"
   triggers_update: "all"
