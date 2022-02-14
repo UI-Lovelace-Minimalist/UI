@@ -5,7 +5,7 @@ card_light:
     - "ulm_language_variables"
   variables:
     ulm_card_light_name: "[[[ return entity.attributes.friendly_name ]]]"
-    ulm_card_light_icon: "[[[ return 'mdi:lightbulb' ]]]"
+    ulm_card_light_icon: "[[[ return entity.attributes.icon ]]]"
     ulm_card_light_enable_collapse: false
     ulm_card_light_enable_slider: false
     ulm_card_light_enable_horizontal: false
@@ -57,7 +57,7 @@ card_light:
     grid:
       - grid-template-areas: >
           [[[
-                if (variables.ulm_card_light_enable_collapse && entity.state == "off") {
+                if (variables.ulm_card_light_enable_collapse && entity.state != "on") {
                     return "\"item1\"";
                 } else if (variables.ulm_card_light_enable_horizontal) {
                     return "\"item1 item2\"";
@@ -69,7 +69,7 @@ card_light:
           ]]]
       - grid-template-columns: >
           [[[
-                if (variables.ulm_card_light_enable_collapse && entity.state == "off") {
+                if (variables.ulm_card_light_enable_collapse && entity.state != "on") {
                     return "1fr";
                 } else if (variables.ulm_card_light_enable_horizontal) {
                   if(variables.ulm_card_light_enable_horizontal_wide){
@@ -83,7 +83,7 @@ card_light:
           ]]]
       - grid-template-rows: >
           [[[
-                if (variables.ulm_card_light_enable_collapse && entity.state == "off") {
+                if (variables.ulm_card_light_enable_collapse && entity.state != "on") {
                     return "1fr";
                 } else if (variables.ulm_card_light_enable_slider && !variables.ulm_card_light_enable_horizontal) {
                     return "min-content min-content";
@@ -100,7 +100,7 @@ card_light:
       item2:
         - display: >
             [[[
-                  if (variables.ulm_card_light_enable_collapse && entity.state == "off") {
+                  if (variables.ulm_card_light_enable_collapse && entity.state != "on") {
                       return "none";
                   } else if (variables.ulm_card_light_enable_slider) {
                       return "block";

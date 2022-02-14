@@ -8,7 +8,7 @@ Before get started on anything, make sure you have created a backup of your home
 
 > In case you experience problems during installation please reach join the [Discord Server](https://discord.gg/TPXg9b7GfR).
 
-You can install this UI Lovelace Minimalist Theme manual or throuhg HACS.
+You can install this UI Lovelace Minimalist Theme manual or through HACS.
 
 You should have a HomeAssistant (HA) instance running, preferrably with [HACS](https://hacs.xyz/) installed and you should know the basics in using HA, eg. how to change settings in your `lovelace` configuration.
 
@@ -29,15 +29,10 @@ To find this Integration on HACS we first need to add the UI Lovelace Minimalist
 
 1. Go to HACS
 2. Click on Integrations
-3. Click on 3-dots in the Right-Top corner and select "Custom Repositories"
-    1. Repository: https://github.com/UI-Lovelace-Minimalist/UI
-    2. Category: Integration
-    3. Add
-4. New Repository Should pop-up, if this is not the case hit "Explore & Download Repositories"
-5. Search for "UI Lovelace Minimalist" and click "Download this Repository with HACS"
-6. Select the version (will auto select latest)
-7. Now we need to restart home-assistant under [![Open your Home Assistant instance and show your server controls.](https://my.home-assistant.io/badges/server_controls.svg)](https://my.home-assistant.io/redirect/server_controls/)
-8. Wait until Home assistant is restarted and Continue to ["Install Integration"](https://ui-lovelace-minimalist.github.io/UI/setup/installation/#install-integration).
+3. Search for "UI Lovelace Minimalist" and click "Download this Repository with HACS"
+4. Select the version (will auto select latest)
+5. Now we need to restart home-assistant under [![Open your Home Assistant instance and show your server controls.](https://my.home-assistant.io/badges/server_controls.svg)](https://my.home-assistant.io/redirect/server_controls/)
+6. Wait until Home assistant is restarted and Continue to ["Install Integration"](https://ui-lovelace-minimalist.github.io/UI/setup/installation/#install-integration).
 
 ---
 

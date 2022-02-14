@@ -11,15 +11,18 @@ ISSUE_URL = "https://github.com/stokkie90/ui-lovelace-minimalist/issues"
 
 CONF_LANGUAGE = "language"
 CONF_LANGUAGES = [
+    "Czech",
     "Danish",
-    "Dutch",
-    "English (GB)",
-    "French",
     "German",
+    "English (GB)",
+    "Spanish",
+    "French",
     "Italian",
+    "Dutch",
+    "Norwegian",
     "Polish",
     "Portuguese",
-    "Spanish",
+    "Slovak",
     "Swedish",
 ]
 CONF_SIDEPANEL_ENABLED = "sidepanel_enabled"
@@ -30,6 +33,7 @@ CONF_THEME_PATH = "theme_path"
 CONF_THEME_OPTIONS = [
     "minimalist-mobile",
     "minimalist-desktop",
+    "minimalist-mobile-tapbar",
     "HA selected theme",
 ]
 CONF_INCLUDE_OTHER_CARDS = "include_other_cards"

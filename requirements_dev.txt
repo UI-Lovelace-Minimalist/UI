@@ -1,9 +1,13 @@
 
-# git+git://github.com/home-assistant/home-assistant.git@dev
+#
+# If the dev version of homeassistant gives you problems:
+#   pip install git+git://github.com/home-assistant/core.git@2021.12.10
+#
 jinja2
 mkdocs-awesome-pages-plugin
 mkdocs-material
 pre-commit
 
-# Causing some wierd Typguard error in devcontainer(typing-extensions-3.7.4.3)
-# typing-extensions>=4.0.0
+# Optional, if container start takes really long due to PyTurboJPEG==1.6.3
+# wheel
+# PyTurboJPEG==1.6.3
