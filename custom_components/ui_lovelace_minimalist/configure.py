@@ -15,6 +15,7 @@ from .const import DOMAIN
 _LOGGER: logging.Logger = logging.getLogger(__name__)
 
 LANGUAGES = {
+    "Czech": "CS",
     "Danish": "DA",
     "Dutch": "NL",
     "English (GB)": "EN",
@@ -23,6 +24,7 @@ LANGUAGES = {
     "Italian": "IT",
     "Polish": "PL",
     "Portuguese": "PT",
+    "Slovak": "SK",
     "Spanish": "ES",
     "Swedish": "SE",
     "Norwegian": "NO",
