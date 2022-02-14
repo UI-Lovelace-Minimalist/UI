@@ -35,6 +35,8 @@ ulm_language_variables:
     ulm_alarm_triggered: "TRIGGERED"
     ulm_playing: "Playing"
     ulm_paused: "Paused"
+    ulm_updates_available: "Updates available!"
+    ulm_no_updates_available: "No updates available"
     ulm_morning: "Bom dia"
     ulm_afternoon: "Boa tarde"
     ulm_evening: "Boa noite"
