@@ -30,6 +30,7 @@ ulm_language_variables:
     ulm_unknown: "neznámý"
     ulm_alarm_armed_home: "Režim domov"
     ulm_alarm_armed_away: "Nepřítomnost"
+    ulm_alarm_armed_night: "Armed night"
     ulm_alarm_disarmed: "Nezabezpečeno"
     ulm_alarm_arming: "Zabezpečování"
     ulm_alarm_triggered: "SPUŠTĚN"
