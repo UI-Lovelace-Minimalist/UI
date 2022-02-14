@@ -13,17 +13,17 @@ CONF_LANGUAGE = "language"
 CONF_LANGUAGES = [
     "Czech",
     "Danish",
-    "Dutch",
-    "English (GB)",
-    "French",
     "German",
+    "English (GB)",
+    "Spanish",
+    "French",
     "Italian",
+    "Dutch",
+    "Norwegian",
     "Polish",
     "Portuguese",
     "Slovak",
-    "Spanish",
     "Swedish",
-    "Norwegian",
 ]
 CONF_SIDEPANEL_ENABLED = "sidepanel_enabled"
 CONF_SIDEPANEL_TITLE = "sidepanel_title"
