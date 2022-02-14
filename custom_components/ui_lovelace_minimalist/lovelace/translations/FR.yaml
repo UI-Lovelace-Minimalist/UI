@@ -39,3 +39,6 @@ ulm_language_variables:
     ulm_afternoon: "Bon après-midi"
     ulm_evening: "Bonsoir"
     ulm_hello: "Bonjour"
+    ulm_cleaning: "Cleaning"
+    ulm_returning: "Returning"
+    ulm_docked: "Docked"

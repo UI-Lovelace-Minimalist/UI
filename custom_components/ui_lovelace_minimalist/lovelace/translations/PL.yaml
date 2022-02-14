@@ -39,3 +39,6 @@ ulm_language_variables:
     ulm_afternoon: "Dzień dobry"
     ulm_evening: "Dobry wieczór"
     ulm_hello: "Witaj"
+    ulm_cleaning: "Cleaning"
+    ulm_returning: "Returning"
+    ulm_docked: "Docked"
