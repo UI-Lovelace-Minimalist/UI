@@ -8,6 +8,7 @@ card_person:
     ulm_card_person_use_entity_picture: false
     ulm_card_person_zone1: ""
     ulm_card_person_zone2: ""
+    ulm_address: ""
   triggers_update: "all"
   tap_action:
     action: "more-info"
@@ -16,8 +17,12 @@ card_person:
   show_name: true
   label: >
     [[[
-      let state = states[variables.ulm_card_person_entity].state;
-      return variables["ulm_person_state_" + state] ? variables["ulm_person_state_" + state] : state;
+      if (variables.ulm_address !== ''){
+        return states[variables.ulm_address].state
+      } else {
+        let state = states[variables.ulm_card_person_entity].state;
+        return variables["ulm_person_state_" + state] ? variables["ulm_person_state_" + state] : state;
+      }
     ]]]
   name: "[[[ return states[variables.ulm_card_person_entity].attributes.friendly_name ]]]"
   entity: "[[[ return variables.ulm_card_person_entity; ]]]"
