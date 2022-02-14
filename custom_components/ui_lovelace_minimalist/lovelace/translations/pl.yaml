@@ -35,6 +35,8 @@ ulm_language_variables:
     ulm_alarm_triggered: "Naruszony"
     ulm_playing: "Odtwarzanie"
     ulm_paused: "Wstrzymano"
+    ulm_updates_available: "Updates available!"
+    ulm_no_updates_available: "No updates available"
     ulm_morning: "Dzień dobry"
     ulm_afternoon: "Dzień dobry"
     ulm_evening: "Dobry wieczór"

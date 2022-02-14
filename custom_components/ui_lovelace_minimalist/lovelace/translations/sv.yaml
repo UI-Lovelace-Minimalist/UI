@@ -35,6 +35,8 @@ ulm_language_variables:
     ulm_alarm_triggered: "LARM UTLÖST"
     ulm_playing: "Spelar"
     ulm_paused: "Pausad"
+    ulm_updates_available: "Updates available!"
+    ulm_no_updates_available: "No updates available"
     ulm_morning: "Good morning"
     ulm_afternoon: "Good afternoon"
     ulm_evening: "Good evening"
