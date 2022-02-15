@@ -15,16 +15,19 @@ from .const import DOMAIN
 _LOGGER: logging.Logger = logging.getLogger(__name__)
 
 LANGUAGES = {
-    "Danish": "DA",
-    "Dutch": "NL",
-    "English (GB)": "EN",
-    "French": "FR",
-    "German": "DE",
-    "Italian": "IT",
-    "Polish": "PL",
-    "Portuguese": "PT",
-    "Spanish": "ES",
-    "Swedish": "SE",
+    "Czech": "cs",
+    "Danish": "da",
+    "German": "de",
+    "English (GB)": "en",
+    "Spanish": "es",
+    "French": "fr",
+    "Italian": "it",
+    "Dutch": "nl",
+    "Norwegian": "no",
+    "Polish": "pl",
+    "Portuguese": "pt",
+    "Slovak": "sk",
+    "Swedish": "sv",
 }
 
 

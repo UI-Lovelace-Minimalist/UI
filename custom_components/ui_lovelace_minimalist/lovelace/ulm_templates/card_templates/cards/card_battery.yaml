@@ -28,13 +28,16 @@ card_battery:
       if(variables.ulm_card_battery_charger_type_entity_id == null) {
         // is charging?
         infix = variables.ulm_card_battery_battery_state_entity_id !== null
-                && states[variables.ulm_card_battery_battery_state_entity_id].state =="charging"
+                && states[variables.ulm_card_battery_battery_state_entity_id].state == "charging"
                 ? "-charging" : ""
       } else {
         // is charging/ is charging wireless?
         switch (states[variables.ulm_card_battery_charger_type_entity_id].state) {
           case "wireless":
             infix = "-charging-wireless";
+            break;
+          case "Charging":
+            infix = "-charging";
             break;
           case "ac":
             infix = "-charging";

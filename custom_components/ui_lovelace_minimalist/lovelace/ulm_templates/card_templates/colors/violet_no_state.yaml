@@ -1,0 +1,11 @@
+---
+purple_no_state:
+  styles:
+    icon:
+      - color: "rgba(var(--color-purple),1)"
+    label:
+      - color: "rgba(var(--color-purple-text),1)"
+    name:
+      - color: "rgba(var(--color-purple-text),1)"
+    img_cell:
+      - background-color: "rgba(var(--color-purple), 0.2)"

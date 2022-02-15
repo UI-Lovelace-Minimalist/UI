@@ -12,17 +12,43 @@ If you have configured something great for this theme, like a new card, you migh
 
 - Create a new folder following the naming convention of this theme, preferably by using the username and describing your card, eg. custom_card_paddy_temperature.
 - Create a new file `README.md` where you describe your card, note of specific requirements (like `custom_components` from HA or other `custom-cards`) and your name as the author.
-- Create a new file in this folder, naming it the same like your folder, eg. custom_card_paddy_temperature.yaml.
+- Create a new file in this folder, naming it the same like your folder, eg. `custom_card_paddy_temperature.yaml`.
 - **IMPORTANT!**
 Name the folder and file to your liking (preferably describing your chip/card), **but you must add the prefix custom_** to both, the folder and the file name. Otherwise the file will not be correctly included!
-Example: custom_card_paddy_temperature/custom_card_paddy_temperature.yaml
-- Now open the newly created file and start working on your definitions. Please see order for the prefered structure of your definition.
+Example: `custom_card_paddy_temperature/custom_card_paddy_temperature.yaml`
+- **IMPORTANT!** All files need to follow our community style-guidelines. Please read these guidelines carefully before adding a pull request.
 - You can use and inherit all template definitions, that are available through the main button_card_templates.yaml of this theme. See the here for all definitions, including internal templates.
 - If you need to use language specific strings, please see here.
 - Please don’t inherit from other custom-cards, as the user might not have installed that card! If you really need to inherit from other custom-cards, you should clearly state this in your readme file!
-- To test your new code, copy the folder and its contents to the folder minimalist-templates in your config folder in HA.
-- Go to your lovelace view and click the three-dots button in the top right corner. Reload resources and afterwards refresh the page and you should now see your code working (hopefully).
-- You can now post your code in the support thread at the HA forum or you open an issue in the repository to upload a MergeRequest with your code. In both cases we will integrate your definition with one of the next updates.
+
+### Style and Qualtiy guidelines
+
+- Your card needs to satisfy some guidelines to assure your card is easy to read and looks like all the other cards in the repository.
+    1. Each file needs to start only with `---` on the first line.
+    2. Each file needs to end with a empty code line.
+    3. All strings need to be `"double-quoted"`.
+    4. Only use `lowercase` in your code.
+    5. No trailing white-space (No random space between and around the code).
+    6. A line-length of 256.
+    7. **IMPORTANT!** Unix-style line endings. (It's recommended to use a code-editor like VSCode and set CRLF to LF)
+![example-image](../assets/img/unix_line_endings.png){ width="500" }
+
+- More advanced users can make use of Pre-commit to apply most of the styles automatically.
+    1. Open your fork in a code-editor like VSCode.
+    2. Install [Pre-commit](https://pre-commit.com/) (Linux or Mac-system recommended).
+    3. All the needed hooks are available within the repository.
+    4. After your changes run `pre-commit run --all-files` in the terminal of your editor.
+    5. You could test your card in a dev-environment with the use of [Docker-desktop](https://www.docker.com/products/docker-desktop).
+    6. Make sure you read https://github.com/UI-Lovelace-Minimalist/UI/blob/dev/.devcontainer/README.md
+
+### Add your custom-card
+
+- You can make a pull request on [Github](https://github.com/UI-Lovelace-Minimalist/UI/tree/dev) to add your custom-card.
+- To make a pull request you need to fork the repository first.
+![example-image](../assets/img/fork.png){ width="500" }
+- Add your custom-card folder to your fork. This needs to be in the already existing folder: `custom_cards`.
+![example-image](../assets/img/upload.png){ width="500" }
+- All pull requests need to be directed to the `dev` branch: `UI-Lovelace-Minimalist:dev`. [Additional documentation](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
 
 ### Naming conventions
 

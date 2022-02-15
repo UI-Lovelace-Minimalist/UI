@@ -1,0 +1,145 @@
+---
+custom_card_irmajavi_weather:
+  show_icon: false
+  show_name: false
+  show_label: false
+  styles:
+    grid:
+      - grid-template-areas: "'item1' 'item2' 'item3' 'item4'"
+      - grid-template-columns: "1fr"
+      - grid-template-rows: "min-content min-content"
+      - row-gap: "12px"
+    card:
+      - border-radius: "30px"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
+      - height: "160px"
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        color: "var(--google-grey)"
+        show_icon: false
+        show_label: true
+        show_name: true
+        styles:
+          name:
+            - justify-self: "end"
+            - align-self: "end"
+            - font-weight: "bold"
+            - font-size: "20px"
+            - border: "10px solid var(--google-grey)"
+            - background-color: "var(--google-grey)"
+            - color: "#000000"
+            - border-radius: "12px"
+            - margin-right: "10px"
+            - margin-top: "'-4px'"
+          label:
+            - align-self: "start"
+            - justify-self: "center"
+            - font-weight: "bold"
+            - font-size: "14px"
+            - margin-left: "12px"
+          grid:
+            - grid-template-areas: "'l n item1'"
+            - grid-template-columns: "min-content auto min-content"
+            - grid-template-rows: "min-content min-content"
+          card:
+            - box-shadow: "none"
+            - border-radius: "20px"
+            - border: "2px solid var(--google-grey)"
+            - height: "70px"
+        label: |
+          [[[
+            var icon = '❔';
+            if (states[variables.ulm_custom_card_irmajavi_weather].state == 'clear-night'){
+              var icon = '🌙';
+            } else if(states[variables.ulm_custom_card_irmajavi_weather].state == 'cloudy'){
+              var icon = '☁️';
+            } else if(states[variables.ulm_custom_card_irmajavi_weather].state == 'exceptional'){
+              var icon = '🌞';
+            } else if(states[variables.ulm_custom_card_irmajavi_weather].state == 'fog'){
+              var icon = '🌫️';
+            } else if(states[variables.ulm_custom_card_irmajavi_weather].state == 'hail'){
+              var icon = '⛈️';
+            } else if(states[variables.ulm_custom_card_irmajavi_weather].state == 'lightning'){
+              var icon = '⚡';
+            } else if(states[variables.ulm_custom_card_irmajavi_weather].state == 'lightning-rainy'){
+              var icon = '⛈️';
+            } else if(states[variables.ulm_custom_card_irmajavi_weather].state == 'partlycloudy'){
+              var icon = '⛅';
+            } else if(states[variables.ulm_custom_card_irmajavi_weather].state == 'pouring'){
+              var icon = '🌧️';
+            } else if(states[variables.ulm_custom_card_irmajavi_weather].state == 'rainy'){
+              var icon = '💧';
+            } else if(states[variables.ulm_custom_card_irmajavi_weather].state == 'snowy'){
+              var icon = '❄️';
+            } else if(states[variables.ulm_custom_card_irmajavi_weather].state == 'snowy-rainy'){
+              var icon = '🌨️';
+            } else if(states[variables.ulm_custom_card_irmajavi_weather].state == 'sunny'){
+              var icon = '☀️';
+            } else if(states[variables.ulm_custom_card_irmajavi_weather].state == 'windy'){
+              var icon = '🌪️';
+            }
+            return icon + ' ' + states[variables.ulm_custom_card_irmajavi_weather_date].state;
+          ]]]
+        name: |
+          [[[
+            var unit = states[variables.ulm_custom_card_irmajavi_weather_temperature_outside].attributes.unit_of_measurement != null ? ' ' + states[variables.ulm_custom_card_irmajavi_weather_temperature_outside].attributes.unit_of_measurement : ''
+            return states[variables.ulm_custom_card_irmajavi_weather_temperature_outside].state + unit;
+          ]]]
+    item2:
+      card:
+        type: "custom:button-card"
+        template: "list_4_items"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template: "generic_text"
+              entity: "'[[[ return variables.ulm_custom_card_irmajavi_weather_entity_1; ]]]'"
+              name: "'[[[ return variables.ulm_custom_card_irmajavi_weather_name_1; ]]]'"
+          item2:
+            card:
+              type: "custom:button-card"
+              template: "generic_text"
+              entity: "'[[[ return variables.ulm_custom_card_irmajavi_weather_entity_2; ]]]'"
+              name: "'[[[ return variables.ulm_custom_card_irmajavi_weather_name_2; ]]]'"
+          item3:
+            card:
+              type: "custom:button-card"
+              template: "generic_text"
+              entity: "'[[[ return variables.ulm_custom_card_irmajavi_weather_entity_3; ]]]'"
+              name: "'[[[ return variables.ulm_custom_card_irmajavi_weather_name_3; ]]]'"
+          item4:
+            card:
+              type: "custom:button-card"
+              template: "generic_text"
+              entity: "'[[[ return variables.ulm_custom_card_irmajavi_weather_entity_4; ]]]'"
+              name: "'[[[ return variables.ulm_custom_card_irmajavi_weather_name_4; ]]]'"
+generic_text:
+  show_label: true
+  show_icon: false
+  label: |
+    [[[
+      var unit = entity.attributes.unit_of_measurement != null ? ' ' + entity.attributes.unit_of_measurement : ''
+      return entity.state + unit;
+    ]]]
+  styles:
+    name:
+      - justify-self: "center"
+      - align-self: "start"
+      - font-weight: "bolder"
+      - font-size: "12px"
+      - filter: "opacity(40%)"
+    label:
+      - margin-top: "10px"
+      - justify-self: "center"
+      - font-weight: "bold"
+      - font-size: "14px"
+    grid:
+      - grid-template-areas: "'l' 'n'"
+      - grid-template-columns: "1fr"
+      - grid-template-rows: "min-content min-content"
+    card:
+      - box-shadow: "none"
