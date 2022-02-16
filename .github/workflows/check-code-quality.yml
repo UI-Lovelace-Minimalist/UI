@@ -3,7 +3,7 @@ name: "Check Code Quality"
 
 on:
   pull_request:
-    branches: ["main", "dev"]
+    branches: ["main", "release"]
 
 jobs:
   pre-commit:
