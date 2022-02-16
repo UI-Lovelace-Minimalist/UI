@@ -39,9 +39,12 @@ card_media_player:
       name: "[[[ return states[entity.entity_id].attributes.media_title; ]]]"
       label: |
         [[[
-          var label = variables.ulm_on;
-          if(states[entity.entity_id].attributes.media_album_name){
+          if(states[entity.entity_id].attributes.media_album_name && states[entity.entity_id].attributes.media_album_name != states[entity.entity_id].attributes.media_title) {
             var label = states[entity.entity_id].attributes.media_album_name;
+          } else if (states[entity.entity_id].attributes.media_artist) {
+            var label = states[entity.entity_id].attributes.media_artist
+          } else {
+            var label = variables.ulm_on;
           }
           return label;
         ]]]
