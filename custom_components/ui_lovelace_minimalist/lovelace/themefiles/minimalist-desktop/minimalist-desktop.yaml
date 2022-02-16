@@ -2,7 +2,7 @@
 minimalist-desktop:
   # Journal
   state-icon-color: "rgb(var(--color-theme))"
-  border-radius: "20px"
+  ha-card-border-radius: "20px"
   error-color: "var(--google-red)"
   warning-color: "var(--google-yellow)"
   success-color: "var(--google-green)"
