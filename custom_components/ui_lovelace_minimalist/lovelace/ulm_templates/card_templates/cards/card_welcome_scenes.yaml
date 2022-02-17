@@ -90,14 +90,14 @@ card_welcome_scenes:
         name: |
           [[[
             var today = new Date();
-            var time = today.getHours() + ":" + today.getMinutes()
+            var time = today.getHours()
             let welcome = '';
 
-            if (time > '18:00'){
+            if (time >= '18'){
               welcome = variables.ulm_evening;
-            } else if (time > '12:00'){
+            } else if (time >= '12'){
               welcome = variables.ulm_afternoon;
-            } else if (time > '05:00'){
+            } else if (time >= '5'){
               welcome = variables.ulm_morning;
             } else {
               welcome = variables.ulm_hello;
@@ -208,27 +208,46 @@ card_scenes_welcome:
       - grid-template-columns: "1fr 1fr 1fr 1fr 1fr"
       - grid-template-rows: "min-content"
       - justify-items: "center"
-      - column-gap: "24px"
     card:
       - border-radius: "var(--border-radius)"
       - box-shadow: "var(--box-shadow)"
       - padding: "12px"
+      - overflow: "visible"
   custom_fields:
     item1:
       card:
         type: "custom:button-card"
         template: "card_scenes_pill_welcome"
         entity: "[[[ return variables.entity_1.entity_id ]]]"
-        icon: "[[[ return variables.entity_1.icon ]]]"
-        name: "[[[ return variables.entity_1.name ]]]"
-        styles:
-          icon:
-            - color: "[[[ return `rgba(var(--color-${variables.entity_1.color}), 1)`;]]]"
-          img_cell:
-            - background-color: "[[[ return `rgba(var(--color-${variables.entity_1.color}), 0.20)`;]]]"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_1.entity_id ]]]"
+              icon: "[[[ return variables.entity_1.icon ]]]"
+              tap_action:
+                action: "call-service"
+                service: "homeassistant.toggle"
+                service_data:
+                  entity_id: "[[[ return variables.entity_1.entity_id ]]]"
+              styles:
+                icon:
+                  - color: "[[[ return `rgba(var(--color-${variables.entity_1.color}), 1)`;]]]"
+                img_cell:
+                  - background-color: "[[[ return `rgba(var(--color-${variables.entity_1.color}), 0.20)`;]]]"
+          item2:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_1.entity_id ]]]"
+              name: "[[[ return variables.entity_1.name ]]]"
+              tap_action:
+                action: "call-service"
+                service: "homeassistant.toggle"
+                service_data:
+                  entity_id: "[[[ return variables.entity_1.entity_id ]]]"
         tap_action:
           action: "call-service"
-          service: "script.toggle"
+          service: "homeassistant.toggle"
           service_data:
             entity_id: "[[[ return variables.entity_1.entity_id ]]]"
     item2:
@@ -236,16 +255,35 @@ card_scenes_welcome:
         type: "custom:button-card"
         template: "card_scenes_pill_welcome"
         entity: "[[[ return variables.entity_2.entity_id ]]]"
-        icon: "[[[ return variables.entity_2.icon ]]]"
-        name: "[[[ return variables.entity_2.name ]]]"
-        styles:
-          icon:
-            - color: "[[[ return `rgba(var(--color-${variables.entity_2.color}), 1)`;]]]"
-          img_cell:
-            - background-color: "[[[ return `rgba(var(--color-${variables.entity_2.color}), 0.20)`;]]]"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_2.entity_id ]]]"
+              icon: "[[[ return variables.entity_2.icon ]]]"
+              tap_action:
+                action: "call-service"
+                service: "homeassistant.toggle"
+                service_data:
+                  entity_id: "[[[ return variables.entity_2.entity_id ]]]"
+              styles:
+                icon:
+                  - color: "[[[ return `rgba(var(--color-${variables.entity_2.color}), 1)`;]]]"
+                img_cell:
+                  - background-color: "[[[ return `rgba(var(--color-${variables.entity_2.color}), 0.20)`;]]]"
+          item2:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_2.entity_id ]]]"
+              name: "[[[ return variables.entity_2.name ]]]"
+              tap_action:
+                action: "call-service"
+                service: "homeassistant.toggle"
+                service_data:
+                  entity_id: "[[[ return variables.entity_2.entity_id ]]]"
         tap_action:
           action: "call-service"
-          service: "script.toggle"
+          service: "homeassistant.toggle"
           service_data:
             entity_id: "[[[ return variables.entity_2.entity_id ]]]"
     item3:
@@ -253,16 +291,35 @@ card_scenes_welcome:
         type: "custom:button-card"
         template: "card_scenes_pill_welcome"
         entity: "[[[ return variables.entity_3.entity_id ]]]"
-        icon: "[[[ return variables.entity_3.icon ]]]"
-        name: "[[[ return variables.entity_3.name ]]]"
-        styles:
-          icon:
-            - color: "[[[ return `rgba(var(--color-${variables.entity_3.color}), 1)`;]]]"
-          img_cell:
-            - background-color: "[[[ return `rgba(var(--color-${variables.entity_3.color}), 0.20)`;]]]"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_3.entity_id ]]]"
+              icon: "[[[ return variables.entity_3.icon ]]]"
+              tap_action:
+                action: "call-service"
+                service: "homeassistant.toggle"
+                service_data:
+                  entity_id: "[[[ return variables.entity_3.entity_id ]]]"
+              styles:
+                icon:
+                  - color: "[[[ return `rgba(var(--color-${variables.entity_3.color}), 1)`;]]]"
+                img_cell:
+                  - background-color: "[[[ return `rgba(var(--color-${variables.entity_3.color}), 0.20)`;]]]"
+          item2:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_3.entity_id ]]]"
+              name: "[[[ return variables.entity_3.name ]]]"
+              tap_action:
+                action: "call-service"
+                service: "homeassistant.toggle"
+                service_data:
+                  entity_id: "[[[ return variables.entity_3.entity_id ]]]"
         tap_action:
           action: "call-service"
-          service: "script.toggle"
+          service: "homeassistant.toggle"
           service_data:
             entity_id: "[[[ return variables.entity_3.entity_id ]]]"
     item4:
@@ -270,16 +327,35 @@ card_scenes_welcome:
         type: "custom:button-card"
         template: "card_scenes_pill_welcome"
         entity: "[[[ return variables.entity_4.entity_id ]]]"
-        icon: "[[[ return variables.entity_4.icon ]]]"
-        name: "[[[ return variables.entity_4.name ]]]"
-        styles:
-          icon:
-            - color: "[[[ return `rgba(var(--color-${variables.entity_4.color}), 1)`;]]]"
-          img_cell:
-            - background-color: "[[[ return `rgba(var(--color-${variables.entity_4.color}), 0.20)`;]]]"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_4.entity_id ]]]"
+              icon: "[[[ return variables.entity_4.icon ]]]"
+              tap_action:
+                action: "call-service"
+                service: "homeassistant.toggle"
+                service_data:
+                  entity_id: "[[[ return variables.entity_4.entity_id ]]]"
+              styles:
+                icon:
+                  - color: "[[[ return `rgba(var(--color-${variables.entity_4.color}), 1)`;]]]"
+                img_cell:
+                  - background-color: "[[[ return `rgba(var(--color-${variables.entity_4.color}), 0.20)`;]]]"
+          item2:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_4.entity_id ]]]"
+              name: "[[[ return variables.entity_4.name ]]]"
+              tap_action:
+                action: "call-service"
+                service: "homeassistant.toggle"
+                service_data:
+                  entity_id: "[[[ return variables.entity_4entity_id ]]]"
         tap_action:
           action: "call-service"
-          service: "script.toggle"
+          service: "homeassistant.toggle"
           service_data:
             entity_id: "[[[ return variables.entity_4.entity_id ]]]"
     item5:
@@ -287,32 +363,60 @@ card_scenes_welcome:
         type: "custom:button-card"
         template: "card_scenes_pill_welcome"
         entity: "[[[ return variables.entity_5.entity_id ]]]"
-        icon: "[[[ return variables.entity_5.icon ]]]"
-        name: "[[[ return variables.entity_5.name ]]]"
-        styles:
-          icon:
-            - color: "[[[ return `rgba(var(--color-${variables.entity_5.color}), 1)`;]]]"
-          img_cell:
-            - background-color: "[[[ return `rgba(var(--color-${variables.entity_5.color}), 0.20)`;]]]"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_5.entity_id ]]]"
+              icon: "[[[ return variables.entity_5.icon ]]]"
+              tap_action:
+                action: "call-service"
+                service: "homeassistant.toggle"
+                service_data:
+                  entity_id: "[[[ return variables.entity_5.entity_id ]]]"
+              styles:
+                icon:
+                  - color: "[[[ return `rgba(var(--color-${variables.entity_5.color}), 1)`;]]]"
+                img_cell:
+                  - background-color: "[[[ return `rgba(var(--color-${variables.entity_5.color}), 0.20)`;]]]"
+          item2:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_5.entity_id ]]]"
+              name: "[[[ return variables.entity_5.name ]]]"
+              tap_action:
+                action: "call-service"
+                service: "homeassistant.toggle"
+                service_data:
+                  entity_id: "[[[ return variables.entity_5.entity_id ]]]"
         tap_action:
           action: "call-service"
-          service: "script.toggle"
+          service: "homeassistant.toggle"
           service_data:
             entity_id: "[[[ return variables.entity_5.entity_id ]]]"
 card_scenes_pill_welcome:
-  show_icon: true
+  show_icon: false
   show_label: false
-  show_name: true
+  show_name: false
+  state:
+    - operator: "template"
+      value: >
+        [[[
+          return (entity.entity_id.includes("input_boolean") && entity.state === 'off')
+        ]]]
+      styles:
+        card:
+          - overflow: "visible"
+          - box-shadow: "none"
   styles:
     grid:
-      - grid-template-areas: "'i' 'n'"
+      - grid-template-areas: "'item1' 'item2'"
       - grid-template-columns: "min-content"
       - grid-template-rows: "1fr 1fr"
       - row-gap: "12px"
       - justify-items: "center"
       - column-gap: "auto"
     card:
-      - padding: "5px"
       - border-radius: "50px"
       - place-self: "center"
       - width: "52px"
@@ -325,23 +429,64 @@ card_scenes_pill_welcome:
               return "var(--box-shadow)";
             }
           ]]]
-    icon:
-      - color: "[[[ return `rgba(var(--color-theme), 0.20)`;]]]"
-      - width: "20px"
-    img_cell:
-      - background-color: "[[[ return `rgba(var(--color-theme), 0.05)`;]]] "
-      - border-radius: "50%"
-      - width: "42px"
-      - height: "42px"
-    name:
-      - font-weight: "bold"
-      - font-size: "9.5px"
-      - width: "33px"
-      - padding-bottom: "7px"
-    state:
-      - color: "rgba(var(--color-theme),0.9)"
   color: "var(--google-grey)"
-
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        show_icon: true
+        show_label: false
+        show_name: false
+        styles:
+          grid:
+            - grid-template-areas: "i"
+          icon:
+            - color: "[[[ return `rgba(var(--color-theme), 0.20)`;]]]"
+            - width: "20px"
+          img_cell:
+            - background-color: "[[[ return `rgba(var(--color-theme), 0.05)`;]]] "
+            - border-radius: "50%"
+            - width: "42px"
+            - height: "42px"
+          card:
+            - box-shadow: "none"
+            - border-radius: "50px"
+            - padding: "5px"
+        state:
+          - operator: "template"
+            value: >
+              [[[
+                return (entity.entity_id.includes("input_boolean") && entity.state === 'off')
+              ]]]
+            styles:
+              card:
+                - overflow: "visible"
+                - box-shadow: >
+                    [[[
+                      if (hass.themes.darkMode){
+                        return "0px 2px 4px 0px rgba(0,0,0,0.80)";
+                      } else {
+                        return "var(--box-shadow)";
+                      }
+                    ]]]
+    item2:
+      card:
+        type: "custom:button-card"
+        show_icon: false
+        show_label: false
+        styles:
+          grid:
+            - grid-template-areas: "n"
+          name:
+            - font-weight: "bold"
+            - font-size: "9.5px"
+            - width: "33px"
+            - padding-bottom: "7px"
+          card:
+            - box-shadow: "none"
+            - padding: "0px 5px 5px 5px"
+            - margin-top: "-5px"
+            - border-radius: "50px"
 card_topbar_welcome:
   show_icon: false
   show_name: true
@@ -378,7 +523,6 @@ card_topbar_welcome:
         template: "chip_mdi_icon_only"
         variables:
           ulm_chip_mdi_icon_only_icon: "mdi:cog-outline"
-
 card_scenes_welcome_auto:
   show_icon: false
   show_name: true
