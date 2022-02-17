@@ -15,7 +15,6 @@ As described in the [installation step](https://ui-lovelace-minimalist.github.io
 ```yaml
 config
 └── ui_lovelace_minimalist
-    ├── config
     ├── custom_cards
     └── dashboard
         └── ui-lovelace.yaml
