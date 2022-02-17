@@ -62,6 +62,7 @@ A new file for the dashboard configuration, with a small example, where you can 
 ```yaml
 config
 └── ui_lovelace_minimalist
+    ├── config
     ├── custom_cards
     └── dashboard
         └── ui-lovelace.yaml
