@@ -22,7 +22,7 @@ The `binary-sensor-card` is to show the state (on/off, open/close, etc.) of a bi
 
 ```yaml
 - type: 'custom:button-card'
-  template: card_binary_sensor_alert
+  template: card_binary_sensor
   variables:
     - ulm_card_binary_sensor_alert: true
   entity: binary_sensor.garage_door
