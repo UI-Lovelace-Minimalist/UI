@@ -446,7 +446,7 @@ card_topbar_welcome:
   styles:
     grid:
       - grid-template-areas: "'item1 item2 item3'"
-      - grid-template-columns: "1fr 7fr 1fr"
+      - grid-template-columns: "1fr 1fr 1fr"
       - grid-template-rows: "min-content"
       - justify-items: "center"
     card:
@@ -490,6 +490,8 @@ card_topbar_welcome:
         template: "chip_weather_date"
         variables:
           ulm_weather: "[[[ return variables.ulm_weather]]]"
+        tap_action:
+          action: "more-info"
         styles:
           card:
             - box-shadow: >
