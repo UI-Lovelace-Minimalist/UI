@@ -19,7 +19,6 @@ Make sure it's in the format like the following example:
 ```yaml
 config
 └── ui_lovelace_minimalist
-    ├── config
     ├── custom_cards
     |   ├── custom_card_1
     |   |   ├── custom_card_1.yaml
