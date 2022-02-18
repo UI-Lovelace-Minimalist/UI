@@ -34,6 +34,7 @@ minimalist-mobile-tapbar:
         app-toolbar {
           padding-right: 0px;
           padding-left: 0px;
+          height: 95px !important;
         }
       }
       ha-app-layout{
