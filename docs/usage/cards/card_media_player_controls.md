@@ -7,7 +7,7 @@ hide:
 
 ## Description
 
-![example-image](../../assets/img/ulm_cards/card_media_player_art.png){ width="500" }
+![example-image](../../assets/img/ulm_cards/card_media_player_control.png){ width="500" }
 
 With the `card_media_player_controls` you have the state of your media_player and on the second line PREVIOUS / PLAY-PAUSE / NEXT to control it
 
