@@ -11,6 +11,7 @@ minimalist-mobile-tapbar:
   accent-color: "var(--google-yellow)"
   card-mod-theme: "minimalist-mobile-tapbar"
   header-height: "56px"
+  app-header-selection-bar-color: "transparent"
 
   card-mod-view-yaml: |
     "*:first-child$": |
@@ -51,7 +52,8 @@ minimalist-mobile-tapbar:
       app-toolbar {
         transform: none;
         padding-top:10px !important;
-        padding-bottom: calc(env(safe-area-inset-bottom) + 5px);
+        padding-bottom: calc(env(safe-area-inset-bottom) + 10px);
+        height:50px !important;
       }
       #view {
         margin-top: calc(-71px + env(safe-area-inset-top)) !important;
@@ -69,7 +71,7 @@ minimalist-mobile-tapbar:
       }
       paper-tab[aria-selected=true] {
         color: var(--header-active-tab-color);
-        background-color: var(--header-active-tab-bg-color)
+        background-color: var(--header-active-tab-bg-color);
       }
       paper-tab {
         color: var(--header-all-tabs-color);
