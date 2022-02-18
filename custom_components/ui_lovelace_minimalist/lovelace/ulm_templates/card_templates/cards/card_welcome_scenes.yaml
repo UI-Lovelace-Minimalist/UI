@@ -354,7 +354,7 @@ card_scenes_pill_welcome:
     - operator: "template"
       value: >
         [[[
-          return (!(entity.entity_id.includes("script.")) && (entity.state !== 'on' && entity.state !== 'playing'))
+          return (entity.state !== 'on' && entity.state !== 'playing')
         ]]]
       styles:
         card:
@@ -408,7 +408,7 @@ card_scenes_pill_welcome:
           - operator: "template"
             value: >
               [[[
-                return (!(entity.entity_id.includes("script.")) && (entity.state !== 'on' && entity.state !== 'playing'))
+                return (entity.state !== 'on' && entity.state !== 'playing')
               ]]]
             styles:
               card:
@@ -673,6 +673,13 @@ card_scenes_welcome_auto:
 tap_action:
   tap_action:
     action: "call-service"
-    service: "homeassistant.toggle"
+    service: >
+      [[[
+        if(entity.entity_id.startsWith("scene.")){
+          return "scene.turn_on"
+        } else {
+          return "homeassistant.toggle"
+        }
+      ]]]
     service_data:
       entity_id: "[[[ return entity.entity_id]]]"
