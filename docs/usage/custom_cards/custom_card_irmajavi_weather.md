@@ -1,5 +1,5 @@
 ---
-title: custom_card_irmajavi_weather
+title: Weather Custom-card
 hide:
   - toc
 ---

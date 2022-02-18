@@ -1,5 +1,5 @@
 ---
-title: card_media_player_art
+title: Media_player Art Card
 hide:
   - toc
 ---

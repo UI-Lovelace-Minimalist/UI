@@ -1,5 +1,5 @@
 ---
-title: card_vacuum
+title: Vacuum Card
 hide:
   - toc
 ---

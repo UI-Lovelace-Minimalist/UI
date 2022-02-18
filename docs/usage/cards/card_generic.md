@@ -1,5 +1,5 @@
 ---
-title: card_generic
+title: Generic Card
 hide:
   - toc
 ---

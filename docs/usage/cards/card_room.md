@@ -1,5 +1,5 @@
 ---
-title: card_room
+title: Room Card
 hide:
   - toc
 ---

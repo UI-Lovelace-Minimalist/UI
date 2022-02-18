@@ -1,5 +1,5 @@
 ---
-title: chip_icon_label
+title: Icon Label Chip
 hide:
   - toc
 ---

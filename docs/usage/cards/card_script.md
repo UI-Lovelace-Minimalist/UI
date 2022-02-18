@@ -1,5 +1,5 @@
 ---
-title: card_script
+title: Script Card
 hide:
   - toc
 ---

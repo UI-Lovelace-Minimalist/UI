@@ -1,5 +1,5 @@
 ---
-title: card_binary_sensor_alert
+title: Binary Sensor Alert Card
 hide:
   - toc
 ---
