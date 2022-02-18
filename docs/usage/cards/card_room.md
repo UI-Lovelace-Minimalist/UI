@@ -7,7 +7,7 @@ hide:
 
 ## Description
 
-![Image title](../../assets/img/ulm_cards/card_room.png){ width="500" }
+![Image title](../../assets/img/ulm_cards/room-card.png){ width="500" }
 
 This is the `room-card`, used to show the state of single room in a quick glance.
 The card has support for 4 subicons at the right side of the card. These can be configured using custom colors and tap actions.
@@ -64,7 +64,7 @@ If you want to tweak this card a little bit more, below are some examples. The f
   - type: 'custom:button-card'
     template:
       - card_room
-      - red
+      - red_no_state
     name: Bathroom
     entity: light.bathroom
     icon: mdi:shower-head
