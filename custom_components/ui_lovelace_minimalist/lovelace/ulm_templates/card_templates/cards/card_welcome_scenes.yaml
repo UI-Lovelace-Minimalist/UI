@@ -252,11 +252,6 @@ card_scenes_welcome:
               type: "custom:button-card"
               entity: "[[[ return variables.entity_1.entity_id ]]]"
               icon: "[[[ return variables.entity_1.icon ]]]"
-              tap_action:
-                action: "call-service"
-                service: "homeassistant.toggle"
-                service_data:
-                  entity_id: "[[[ return variables.entity_1.entity_id ]]]"
               styles:
                 icon:
                   - color: "[[[ return `rgba(var(--color-${variables.entity_1.color}), 1)`;]]]"
@@ -267,16 +262,6 @@ card_scenes_welcome:
               type: "custom:button-card"
               entity: "[[[ return variables.entity_1.entity_id ]]]"
               name: "[[[ return variables.entity_1.name ]]]"
-              tap_action:
-                action: "call-service"
-                service: "homeassistant.toggle"
-                service_data:
-                  entity_id: "[[[ return variables.entity_1.entity_id ]]]"
-        tap_action:
-          action: "call-service"
-          service: "homeassistant.toggle"
-          service_data:
-            entity_id: "[[[ return variables.entity_1.entity_id ]]]"
     item2:
       card:
         type: "custom:button-card"
@@ -288,11 +273,6 @@ card_scenes_welcome:
               type: "custom:button-card"
               entity: "[[[ return variables.entity_2.entity_id ]]]"
               icon: "[[[ return variables.entity_2.icon ]]]"
-              tap_action:
-                action: "call-service"
-                service: "homeassistant.toggle"
-                service_data:
-                  entity_id: "[[[ return variables.entity_2.entity_id ]]]"
               styles:
                 icon:
                   - color: "[[[ return `rgba(var(--color-${variables.entity_2.color}), 1)`;]]]"
@@ -303,16 +283,6 @@ card_scenes_welcome:
               type: "custom:button-card"
               entity: "[[[ return variables.entity_2.entity_id ]]]"
               name: "[[[ return variables.entity_2.name ]]]"
-              tap_action:
-                action: "call-service"
-                service: "homeassistant.toggle"
-                service_data:
-                  entity_id: "[[[ return variables.entity_2.entity_id ]]]"
-        tap_action:
-          action: "call-service"
-          service: "homeassistant.toggle"
-          service_data:
-            entity_id: "[[[ return variables.entity_2.entity_id ]]]"
     item3:
       card:
         type: "custom:button-card"
@@ -324,11 +294,6 @@ card_scenes_welcome:
               type: "custom:button-card"
               entity: "[[[ return variables.entity_3.entity_id ]]]"
               icon: "[[[ return variables.entity_3.icon ]]]"
-              tap_action:
-                action: "call-service"
-                service: "homeassistant.toggle"
-                service_data:
-                  entity_id: "[[[ return variables.entity_3.entity_id ]]]"
               styles:
                 icon:
                   - color: "[[[ return `rgba(var(--color-${variables.entity_3.color}), 1)`;]]]"
@@ -339,16 +304,6 @@ card_scenes_welcome:
               type: "custom:button-card"
               entity: "[[[ return variables.entity_3.entity_id ]]]"
               name: "[[[ return variables.entity_3.name ]]]"
-              tap_action:
-                action: "call-service"
-                service: "homeassistant.toggle"
-                service_data:
-                  entity_id: "[[[ return variables.entity_3.entity_id ]]]"
-        tap_action:
-          action: "call-service"
-          service: "homeassistant.toggle"
-          service_data:
-            entity_id: "[[[ return variables.entity_3.entity_id ]]]"
     item4:
       card:
         type: "custom:button-card"
@@ -360,11 +315,6 @@ card_scenes_welcome:
               type: "custom:button-card"
               entity: "[[[ return variables.entity_4.entity_id ]]]"
               icon: "[[[ return variables.entity_4.icon ]]]"
-              tap_action:
-                action: "call-service"
-                service: "homeassistant.toggle"
-                service_data:
-                  entity_id: "[[[ return variables.entity_4.entity_id ]]]"
               styles:
                 icon:
                   - color: "[[[ return `rgba(var(--color-${variables.entity_4.color}), 1)`;]]]"
@@ -375,16 +325,6 @@ card_scenes_welcome:
               type: "custom:button-card"
               entity: "[[[ return variables.entity_4.entity_id ]]]"
               name: "[[[ return variables.entity_4.name ]]]"
-              tap_action:
-                action: "call-service"
-                service: "homeassistant.toggle"
-                service_data:
-                  entity_id: "[[[ return variables.entity_4entity_id ]]]"
-        tap_action:
-          action: "call-service"
-          service: "homeassistant.toggle"
-          service_data:
-            entity_id: "[[[ return variables.entity_4.entity_id ]]]"
     item5:
       card:
         type: "custom:button-card"
@@ -396,11 +336,6 @@ card_scenes_welcome:
               type: "custom:button-card"
               entity: "[[[ return variables.entity_5.entity_id ]]]"
               icon: "[[[ return variables.entity_5.icon ]]]"
-              tap_action:
-                action: "call-service"
-                service: "homeassistant.toggle"
-                service_data:
-                  entity_id: "[[[ return variables.entity_5.entity_id ]]]"
               styles:
                 icon:
                   - color: "[[[ return `rgba(var(--color-${variables.entity_5.color}), 1)`;]]]"
@@ -411,16 +346,6 @@ card_scenes_welcome:
               type: "custom:button-card"
               entity: "[[[ return variables.entity_5.entity_id ]]]"
               name: "[[[ return variables.entity_5.name ]]]"
-              tap_action:
-                action: "call-service"
-                service: "homeassistant.toggle"
-                service_data:
-                  entity_id: "[[[ return variables.entity_5.entity_id ]]]"
-        tap_action:
-          action: "call-service"
-          service: "homeassistant.toggle"
-          service_data:
-            entity_id: "[[[ return variables.entity_5.entity_id ]]]"
 card_scenes_pill_welcome:
   show_icon: false
   show_label: false
@@ -429,7 +354,7 @@ card_scenes_pill_welcome:
     - operator: "template"
       value: >
         [[[
-          return (entity.entity_id.includes("input_boolean") && entity.state === 'off')
+          return (!(entity.entity_id.includes("script.")) && (entity.state !== 'on' && entity.state !== 'playing'))
         ]]]
       styles:
         card:
@@ -483,7 +408,7 @@ card_scenes_pill_welcome:
           - operator: "template"
             value: >
               [[[
-                return (entity.entity_id.includes("input_boolean") && entity.state === 'off')
+                return (!(entity.entity_id.includes("script.")) && (entity.state !== 'on' && entity.state !== 'playing'))
               ]]]
             styles:
               card:
@@ -539,12 +464,21 @@ card_topbar_welcome:
         styles:
           grid:
             - grid-template-areas: "'i'"
+          card:
+            - box-shadow: >
+                [[[
+                  if (hass.themes.darkMode){
+                    return "0px 2px 4px 0px rgba(0,0,0,0.80)";
+                  } else {
+                    return "var(--box-shadow)";
+                  }
+                ]]]
         state:
           - value: "on"
             icon: "mdi:chevron-down"
             styles:
               icon:
-                - color: "black"
+                - color: "rgb(var(--color-theme))"
         tap_action:
           action: "call-service"
           service: "input_boolean.toggle"
@@ -556,6 +490,16 @@ card_topbar_welcome:
         template: "chip_weather_date"
         variables:
           ulm_weather: "[[[ return variables.ulm_weather]]]"
+        styles:
+          card:
+            - box-shadow: >
+                [[[
+                  if (hass.themes.darkMode){
+                    return "0px 2px 4px 0px rgba(0,0,0,0.80)";
+                  } else {
+                    return "var(--box-shadow)";
+                  }
+                ]]]
     item3:
       card:
         type: "custom:button-card"
@@ -565,6 +509,16 @@ card_topbar_welcome:
         template: "chip_mdi_icon_only"
         variables:
           ulm_chip_mdi_icon_only_icon: "mdi:cog-outline"
+        styles:
+          card:
+            - box-shadow: >
+                [[[
+                  if (hass.themes.darkMode){
+                    return "0px 2px 4px 0px rgba(0,0,0,0.80)";
+                  } else {
+                    return "var(--box-shadow)";
+                  }
+                ]]]
 card_scenes_welcome_auto:
   show_icon: false
   show_name: true
@@ -715,3 +669,10 @@ card_scenes_welcome_auto:
                   service: "script.toggle"
                   service_data:
                     entity_id: "this.entity_id"
+### tap_action
+tap_action:
+  tap_action:
+    action: "call-service"
+    service: "homeassistant.toggle"
+    service_data:
+      entity_id: "[[[ return entity.entity_id]]]"
