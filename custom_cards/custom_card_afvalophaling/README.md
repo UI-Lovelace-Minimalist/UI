@@ -7,7 +7,8 @@ hide:
 
 # Custom-card "Afvalophaling"
 
-![Afvalophaling](../../docs/assets/img/ulm_cards/card_homeassistant_updates.png)
+![Afvalophaling](../../docs/assets/img/ulm_cards/custom_card_afvalophaling_2.png)
+![Afvalophaling](../../docs/assets/img/ulm_cards/custom_card_afvalophaling_1.png)
 
 !! Attention !!
 
