@@ -52,15 +52,21 @@ minimalist-mobile-tapbar:
       app-toolbar {
         transform: none;
         padding-top:10px !important;
-        padding-bottom: calc(env(safe-area-inset-bottom) + 10px);
+        padding-bottom: -webkit-calc(env(safe-area-inset-bottom,30px) + 10px);
+        padding-bottom: -moz-calc(env(safe-area-inset-bottom,30px) + 10px);
+        padding-bottom: calc(env(safe-area-inset-bottom,30px) + 10px);
         height:50px !important;
       }
       #view {
-        margin-top: calc(-71px + env(safe-area-inset-top)) !important;
+        margin-top: -webkit-calc(-71px + env(safe-area-inset-top,30px)) !important;
+        margin-top: -moz-calc(-71px + env(safe-area-inset-top,30px)) !important;
+        margin-top: calc(-71px + env(safe-area-inset-top,30px)) !important;
         width: 100%;
         min-height: 100%;
         height: auto;
-        padding-bottom: calc(env(safe-area-inset-bottom) + 80px);
+        padding-bottom: -webkit-calc(80px + env(safe-area-inset-bottom,30px));
+        padding-bottom: -moz-calc(80px + env(safe-area-inset-bottom,30px));
+        padding-bottom: calc(80px + env(safe-area-inset-bottom,30px));
       }
       ha-tabs {
         --paper-tabs-selection-bar-color: var(--header-tab-indicator-color);
