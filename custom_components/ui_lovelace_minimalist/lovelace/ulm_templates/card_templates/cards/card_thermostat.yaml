@@ -275,7 +275,7 @@ card_thermostat:
                 action: "call-service"
                 service: "climate.set_temperature"
                 service_data:
-                  temperature: "[[[ return (parseFloat(states[entity.entity_id].attributes.temperature) - 0.5)  ]]]"
+                  temperature: "[[[ return entity.attributes.temperature - entity.attributes.target_temp_step ]]]"
                   entity_id: "[[[ return entity.entity_id ]]]"
               state:
                 - operator: "template"
@@ -315,7 +315,7 @@ card_thermostat:
                 action: "call-service"
                 service: "climate.set_temperature"
                 service_data:
-                  temperature: "[[[ return (parseFloat(states[entity.entity_id].attributes.temperature) + 0.5)  ]]]"
+                  temperature: "[[[ return entity.attributes.temperature + entity.attributes.target_temp_step ]]]"
                   entity_id: "[[[ return entity.entity_id ]]]"
               state:
                 - operator: "template"
