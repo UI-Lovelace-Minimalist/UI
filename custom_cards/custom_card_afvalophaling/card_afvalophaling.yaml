@@ -146,4 +146,4 @@ icon_info_afvalophaling:
           return `<ha-icon icon="mdi:help" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`
         }
       ]]]
-  size: 20px
+  size: "20px"
