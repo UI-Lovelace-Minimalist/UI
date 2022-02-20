@@ -20,9 +20,9 @@ config
         └── ui-lovelace.yaml
 ```
 
-This example dashbaord file already contains the necessary directory bindings with our templates from the custom_component and you can directly start customizing the dashboard according to your own wishes.
+This example dashboard file already contains the necessary directory bindings with our templates from the custom_component and you can directly start customizing the dashboard according to your own wishes.
 
-However, if you want to use your own, possibly already existing, dashbaord file, you must make the necessary bindings of the templates in it yourself. This can be done for example by specifying the following:
+However, if you want to use your own, possibly already existing, dashboard file, you must make the necessary bindings of the templates in it yourself. This can be done for example by specifying the following:
 
 ```yaml
 # Button cards location
