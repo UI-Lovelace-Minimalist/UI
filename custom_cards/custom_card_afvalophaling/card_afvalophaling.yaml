@@ -34,7 +34,10 @@ card_afvalophaling:
           if(states[variables.ulm_card_ophaling_morgen].state ==='pmd, restafval'){
             return "Morgen: Restafval + PMD"
           } else {
-            return "GFT " + ' • ' + states[variables.ulm_card_datum_gft].state + '<br>' + "PMD " + ' • ' + states[variables.ulm_card_datum_pmd].state + '<br>' + "Papier " + ' • ' + states[variables.ulm_card_datum_papier].state + '<br>' + "Restafval " + ' • ' + states[variables.ulm_card_datum_rest].state
+            return "GFT " + ' • ' + states[variables.ulm_card_datum_gft].state + '<br>' + 
+            "PMD " + ' • ' + states[variables.ulm_card_datum_pmd].state + '<br>' + 
+            "Papier " + ' • ' + states[variables.ulm_card_datum_papier].state + '<br>' + 
+            "Restafval " + ' • ' + states[variables.ulm_card_datum_rest].state
           }
         ]]]
 
