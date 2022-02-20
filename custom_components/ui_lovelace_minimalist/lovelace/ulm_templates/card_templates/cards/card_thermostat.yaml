@@ -248,14 +248,12 @@ card_thermostat:
                       var mode = variables.ulm_cooling ;
                     }else if (entity.attributes.hvac_action == 'idle'){
                       var mode = variables.ulm_idle ;
-                    }else if (entity.attributes.hvac_action == 'off'){
-                      var mode = variables.ulm_off ;
                     }else{
                       var mode = variables.ulm_unavailable;
                     }
 
                     if(entity.attributes.temperature && !variables.ulm_card_thermostat_enable_display_temperature){
-                      return (entity.attributes.current_temperature ) + '°' + ' • ' + label + ' (' + mode + ')';
+                      return (entity.attributes.current_temperature ) + '°' + ' • ' + label + (entity.state !='off' ? ' (' + mode + ')' : '');
                     }
                     return label;
                 ]]]
