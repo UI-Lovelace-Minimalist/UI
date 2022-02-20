@@ -35,7 +35,7 @@ card_afvalophaling:
             return "Morgen: Restafval + PMD"
           } else {
             return "GFT " + ' • ' + states[variables.ulm_card_datum_gft].state + '<br>' +
-            "PMD " + ' • ' + states[variables.ulm_card_datum_pmd].state + '<br>' + 
+            "PMD " + ' • ' + states[variables.ulm_card_datum_pmd].state + '<br>' +
             "Papier " + ' • ' + states[variables.ulm_card_datum_papier].state + '<br>' +
             "Restafval " + ' • ' + states[variables.ulm_card_datum_rest].state
           }
