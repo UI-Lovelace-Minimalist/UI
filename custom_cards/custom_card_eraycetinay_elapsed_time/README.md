@@ -74,7 +74,7 @@ ustom_card_eraycetinay_elapsed_time:
         text += minutes > 0 ? minutes + ' ' + (minutes > 1 ? variables.custom_card_eraycetinay_elapsed_time_minutes : variables.custom_card_eraycetinay_elapsed_time_minute) +' ' : '';
       }
 
-      text = text.length ? text += variables.custom_card_eraycetinay_elapsed_time_ago : '...';
+      text = text.length ? text += variables.custom_card_eraycetinay_elapsed_time_ago : variables.custom_card_eraycetinay_elapsed_time_justnow;
       return text;
     ]]]
 ```
