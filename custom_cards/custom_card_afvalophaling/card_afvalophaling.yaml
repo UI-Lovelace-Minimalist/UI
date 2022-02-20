@@ -1,6 +1,6 @@
 ---
 card_afvalophaling:
-  template: 
+  template:
     - "ulm_language_variables"
     - "icon_info_afvalophaling"
     - "custom_colors"
