@@ -248,6 +248,8 @@ card_thermostat:
                       var mode = variables.ulm_cooling ;
                     }else if (entity.attributes.hvac_action == 'idle'){
                       var mode = variables.ulm_idle ;
+                    }else if (entity.attributes.hvac_action == 'off'){
+                      var mode = variables.ulm_off ;
                     }else{
                       var mode = variables.ulm_unavailable;
                     }
