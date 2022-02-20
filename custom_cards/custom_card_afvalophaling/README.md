@@ -137,7 +137,6 @@ card_afvalophaling:
             "Restafval " + ' • ' + states[variables.ulm_card_datum_rest].state
           }
         ]]]
-
 custom_colors:
   state:
     - styles:
@@ -173,7 +172,6 @@ custom_colors:
         ]]]
       icon: "mdi:delete-empty"
       operator: "template"
-      
 icon_info_afvalophaling:
   color: "var(--google-grey)"
   show_icon: "true"
