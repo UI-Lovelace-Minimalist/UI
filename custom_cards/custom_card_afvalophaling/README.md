@@ -30,7 +30,7 @@ Initial release
 
 ```yaml
       - type: 'custom:button-card'
-        template: 
+        template:
           - card_afvalophaling
         variables:
           ulm_card_ophaling_vandaag: 'sensor.limburg_net_afvalophaling_vandaag'
