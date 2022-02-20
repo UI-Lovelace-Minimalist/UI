@@ -10,7 +10,8 @@ minimalist-mobile-tapbar:
   divider-color: "rgba(var(--color-theme),.12)"
   accent-color: "var(--google-yellow)"
   card-mod-theme: "minimalist-mobile-tapbar"
-  header-height: "56px"
+  header-height: "calc(var(--header-base-height) + env(safe-area-inset-bottom))"
+  header-base-height: "70px"
   app-header-selection-bar-color: "transparent"
 
   card-mod-view-yaml: |
@@ -25,7 +26,7 @@ minimalist-mobile-tapbar:
   card-mod-root-yaml: |
     ha-tabs$: |
       #tabsContent {
-            width: 97%;
+        width: 97%;
       }
     .: |
       @media (orientation: portrait) {
@@ -42,31 +43,21 @@ minimalist-mobile-tapbar:
         padding: 0 !important;
         margin: 0 !important;
         width: 100%;
+        height: 100% !important;
       }
       app-header {
         top: auto;
         bottom: 0;
         box-shadow: var(--footer-shadow);
         position: fixed;
+        height: var(--header-height) !important;
       }
       app-toolbar {
-        transform: none;
-        padding-top:10px !important;
-        padding-bottom: -webkit-calc(env(safe-area-inset-bottom,30px) + 10px);
-        padding-bottom: -moz-calc(env(safe-area-inset-bottom,30px) + 10px);
-        padding-bottom: calc(env(safe-area-inset-bottom,30px) + 10px);
-        height:50px !important;
+        height: var(--header-base-height) !important;
       }
       #view {
-        margin-top: -webkit-calc(-71px + env(safe-area-inset-top,30px)) !important;
-        margin-top: -moz-calc(-71px + env(safe-area-inset-top,30px)) !important;
-        margin-top: calc(-71px + env(safe-area-inset-top,30px)) !important;
-        width: 100%;
-        min-height: 100%;
-        height: auto;
-        padding-bottom: -webkit-calc(80px + env(safe-area-inset-bottom,30px));
-        padding-bottom: -moz-calc(80px + env(safe-area-inset-bottom,30px));
-        padding-bottom: calc(80px + env(safe-area-inset-bottom,30px));
+        margin-top: calc(-1 * var(--header-height)) !important;
+        padding-bottom: var(--header-height);
       }
       ha-tabs {
         --paper-tabs-selection-bar-color: var(--header-tab-indicator-color);
@@ -74,6 +65,7 @@ minimalist-mobile-tapbar:
         display: flex;
         justify-content: space-between;
         padding: 0 10px;
+        height:50px !important;
       }
       paper-tab[aria-selected=true] {
         color: var(--header-active-tab-color);
@@ -83,7 +75,8 @@ minimalist-mobile-tapbar:
         color: var(--header-all-tabs-color);
         border-radius: 25px;
         height:50px;
-        /*width: calc(100% / 4);*/
+        /*width: calc(100% / 4);
+        padding: 0;*/
         padding-left: 20px;
         padding-right: 20px;
       }
