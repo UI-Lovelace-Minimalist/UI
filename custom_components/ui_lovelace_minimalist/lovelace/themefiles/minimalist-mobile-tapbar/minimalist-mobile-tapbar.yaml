@@ -10,7 +10,8 @@ minimalist-mobile-tapbar:
   divider-color: "rgba(var(--color-theme),.12)"
   accent-color: "var(--google-yellow)"
   card-mod-theme: "minimalist-mobile-tapbar"
-  header-height: "56px"
+  header-height: "66px"
+  swiper-container: "padding-bottom: 4px"
 
   card-mod-view-yaml: |
     "*:first-child$": |
