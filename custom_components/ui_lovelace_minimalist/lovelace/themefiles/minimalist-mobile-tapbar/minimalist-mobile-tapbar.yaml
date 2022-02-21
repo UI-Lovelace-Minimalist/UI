@@ -54,6 +54,7 @@ minimalist-mobile-tapbar:
       }
       app-toolbar {
         height: var(--header-base-height) !important;
+        padding-bottom: env(safe-area-inset-bottom) !important;
       }
       #view {
         margin-top: calc(-1 * var(--header-height)) !important;
