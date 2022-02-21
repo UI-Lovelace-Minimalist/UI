@@ -253,7 +253,7 @@ card_thermostat:
                     }
 
                     if(entity.attributes.temperature && !variables.ulm_card_thermostat_enable_display_temperature){
-                      return (entity.attributes.current_temperature ) + '°' + ' • ' + label + ' (' + mode + ')';
+                      return (entity.attributes.current_temperature ) + '°' + ' • ' + label + (entity.state !='off' ? ' (' + mode + ')' : '');
                     }
                     return label;
                 ]]]
