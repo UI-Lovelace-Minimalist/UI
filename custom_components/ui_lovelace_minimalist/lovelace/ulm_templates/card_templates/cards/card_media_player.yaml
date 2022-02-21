@@ -40,17 +40,17 @@ card_media_player:
       value: "[[[ return entity.state != 'off' ]]]"
       name: |
         [[[
-          var name = states[entity.entity_id].attributes.friendly_name;
+          let name = states[entity.entity_id].attributes.friendly_name;
           if(states[entity.entity_id].attributes.media_title){
-            var name = states[entity.entity_id].attributes.media_title;
+              name = states[entity.entity_id].attributes.media_title;
           }
           return name;
         ]]]
       label: |
         [[[
-          var label = variables.ulm_on;
+          let label = variables.ulm_on;
           if(states[entity.entity_id].attributes.media_album_name){
-            var label = states[entity.entity_id].attributes.media_album_name;
+              label = states[entity.entity_id].attributes.media_album_name;
           }
           return label;
         ]]]
