@@ -11,6 +11,8 @@ chip_alarm:
         var alarm_label = variables.ulm_alarm_armed_home;
       } else if(entity.state == "armed_away"){
         var alarm_label = variables.ulm_alarm_armed_away;
+      } else if(entity.state == "armed_night"){
+        var alarm_label = variables.ulm_alarm_armed_night;
       } else if(entity.state == "disarmed"){
         var alarm_label = variables.ulm_alarm_disarmed;
       } else if(entity.state == "arming"){
@@ -27,6 +29,8 @@ chip_alarm:
         var alarm_icon = "mdi:shield-home";
       } else if(entity.state == "armed_away"){
         var alarm_icon = "mdi:shield-lock";
+      } else if(entity.state == "armed_night"){
+        var alarm_icon = "mdi:shield-moon";
       } else if(entity.state == "disarmed"){
         var alarm_icon = "mdi:shield-off";
       } else if(entity.state == "arming"){
@@ -44,6 +48,8 @@ chip_alarm:
             if (entity.state == "armed_home"){
               var alarm_color = "var(--google-red)";
             } else if(entity.state == "armed_away"){
+              var alarm_color = "var(--google-red)";
+            } else if(entity.state == "armed_night"){
               var alarm_color = "var(--google-red)";
             } else if(entity.state == "disarmed"){
               var alarm_color = "var(--google-green)";

@@ -29,11 +29,8 @@ card_media_player:
     ]]]
   label: |
     [[[
-        if (entity.state == "off"){
-          return variables.ulm_off;
-        } else {
-          return variables.ulm_on;
-        }
+        let state = entity.state;
+        return variables["ulm_" + state] ? variables["ulm_" + state] : state;
     ]]]
   state:
     - operator: "template"
@@ -51,6 +48,10 @@ card_media_player:
           let label = variables.ulm_on;
           if(states[entity.entity_id].attributes.media_album_name){
               label = states[entity.entity_id].attributes.media_album_name;
+          } else if (states[entity.entity_id].attributes.media_artist) {
+              label = states[entity.entity_id].attributes.media_artist
+          } else {
+              label = variables.ulm_on;
           }
           return label;
         ]]]
