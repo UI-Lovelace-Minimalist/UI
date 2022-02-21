@@ -40,7 +40,7 @@ card_input_datetime:
                 action: "call-service"
                 service: "input_datetime.set_datetime"
                 service_data:
-                  entity_id: "input_datetime.bedroom_sil_wekker"
+                  entity_id: "[[[ return entity.entity_id ]]]"
                   time: >
                     [[[
                       var timestamp = entity.attributes.timestamp
