@@ -302,7 +302,7 @@ card_thermostat:
                       if (temp_unit=='TEMP_CELSIUS'){
                          return temperature + '°C'
                       }else{
-                          return temperature + '°F'                      
+                          return temperature + '°F'
                       }
                     }
                 ]]]
