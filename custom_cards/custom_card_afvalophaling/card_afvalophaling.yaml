@@ -1,0 +1,150 @@
+---
+card_afvalophaling:
+  template:
+    - "ulm_language_variables"
+    - "icon_info_afvalophaling"
+    - "custom_colors"
+  triggers_update: "all"
+  icon: "mdi:delete"
+  name: >
+        [[[
+          if(states[variables.ulm_card_ophaling_vandaag].state !=='Geen' || states[variables.ulm_card_ophaling_morgen].state !=='Geen'){
+            return variables.ulm_ophaling
+          } else {
+            return variables.ulm_volgende_ophaling
+          }
+        ]]]
+  label: |
+        [[[
+          if(states[variables.ulm_card_ophaling_vandaag].state ==='gft'){
+            return "Vandaag: GFT"
+          }
+          if(states[variables.ulm_card_ophaling_morgen].state ==='gft'){
+            return "Morgen: GFT"
+          }
+          if(states[variables.ulm_card_ophaling_vandaag].state ==='papier'){
+            return "Vandaag: Papier"
+          }
+          if(states[variables.ulm_card_ophaling_morgen].state ==='papier'){
+            return "Morgen: Papier"
+          }
+          if(states[variables.ulm_card_ophaling_vandaag].state ==='pmd, restafval'){
+            return "Vandaag: Restafval + PMD"
+          }
+          if(states[variables.ulm_card_ophaling_morgen].state ==='pmd, restafval'){
+            return "Morgen: Restafval + PMD"
+          } else {
+            return "GFT " + ' • ' + states[variables.ulm_card_datum_gft].state + '<br>' +
+            "PMD " + ' • ' + states[variables.ulm_card_datum_pmd].state + '<br>' +
+            "Papier " + ' • ' + states[variables.ulm_card_datum_papier].state + '<br>' +
+            "Restafval " + ' • ' + states[variables.ulm_card_datum_rest].state
+          }
+        ]]]
+custom_colors:
+  state:
+    - styles:
+        icon:
+          - color: "rgba(var(--color-green),1)"
+        img_cell:
+          - background-color: "rgba(var(--color-green), 0.2)"
+      value: >
+        [[[
+          return states['sensor.limburg_net_afvalophaling_vandaag'].state == "gft" || states['sensor.limburg_net_afvalophaling_morgen'].state == "gft"
+        ]]]
+      icon: "mdi:recycle"
+      operator: "template"
+    - styles:
+        icon:
+          - color: "rgba(var(--color-green),1)"
+        img_cell:
+          - background-color: "rgba(var(--color-green), 0.2)"
+      value: >
+        [[[
+          return states['sensor.limburg_net_afvalophaling_vandaag'].state == "papier" || states['sensor.limburg_net_afvalophaling_morgen'].state == "papier"
+        ]]]
+      icon: "mdi:package-variant-closed"
+      operator: "template"
+    - styles:
+        icon:
+          - color: "rgba(var(--color-blue),1)"
+        img_cell:
+          - background-color: "rgba(var(--color-blue), 0.2)"
+      value: >
+        [[[
+          return states['sensor.limburg_net_afvalophaling_vandaag'].state == "pmd, restafval" || states['sensor.limburg_net_afvalophaling_morgen'].state == "pmd, restafval"
+        ]]]
+      icon: "mdi:delete-empty"
+      operator: "template"
+icon_info_afvalophaling:
+  color: "var(--google-grey)"
+  show_icon: "true"
+  show_label: "true"
+  show_name: "true"
+  state:
+    - value: "unavailable"
+      styles:
+        icon:
+          - color: "rgba(var(--color-red),1)"
+        img_cell:
+          - background-color: "rgba(var(--color-red), 0.2)"
+        custom_fields:
+          notification:
+            - border-radius: "50%"
+            - position: "absolute"
+            - left: "42px"
+            - top: "10px"
+            - height: "16px"
+            - width: "16px"
+            - font-size: "12px"
+            - line-height: "14px"
+            - background-color: >
+                [[[
+                  return "rgba(var(--color-red),1)";
+                ]]]
+  styles:
+    icon:
+      - color: "rgba(var(--color-theme),0.2)"
+    label:
+      - justify-self: "start"
+      - align-self: "start"
+      - font-weight: "bold"
+      - font-size: "12px"
+      - filter: "opacity(40%)"
+      - margin-left: "12px"
+      - text-align: "start"
+    name:
+      - align-self: "end"
+      - justify-self: "start"
+      - font-weight: "bold"
+      - font-size: "14px"
+      - margin-left: "12px"
+      - margin-bottom: "4px"
+    state:
+      - justify-self: "start"
+      - align-self: "start"
+      - font-weight: "bold"
+      - font-size: "12px"
+      - filter: "opacity(40%)"
+      - margin-left: "12px"
+    img_cell:
+      - background-color: "rgba(var(--color-theme),0.05)"
+      - border-radius: "50%"
+      - place-self: "center"
+      - width: "42px"
+      - height: "42px"
+    grid:
+      - grid-template-areas: "'i n' 'i l'"
+      - grid-template-columns: "min-content auto"
+      - grid-template-rows: "min-content min-content"
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
+  custom_fields:
+    notification: >
+      [[[
+        if (states[variables.ulm_card_ophaling_vandaag].state =='unavailable' || states[variables.ulm_card_ophaling_morgen].state =='unavailable'){
+          return `<ha-icon icon="mdi:help" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`
+        }
+      ]]]
+  size: "20px"
