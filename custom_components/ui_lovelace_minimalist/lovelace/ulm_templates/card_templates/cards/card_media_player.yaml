@@ -22,6 +22,8 @@ card_media_player:
         } else if (app == "oto music"){
           var icon = "mdi:music-circle";
         }
+      } else if (entity.attributes.icon){
+        var icon = entity.attributes.icon;
       }
       return icon;
     ]]]
@@ -32,16 +34,24 @@ card_media_player:
     ]]]
   state:
     - operator: "template"
-      value: "[[[ return entity.state == 'on' ]]]"
-      name: "[[[ return states[entity.entity_id].attributes.media_title; ]]]"
+      value: "[[[ return entity.state != 'off' ]]]"
+      name: |
+        [[[
+          let name = states[entity.entity_id].attributes.friendly_name;
+          if(states[entity.entity_id].attributes.media_title){
+              name = states[entity.entity_id].attributes.media_title;
+          }
+          return name;
+        ]]]
       label: |
         [[[
-          if(states[entity.entity_id].attributes.media_album_name && states[entity.entity_id].attributes.media_album_name != states[entity.entity_id].attributes.media_title) {
-            var label = states[entity.entity_id].attributes.media_album_name;
+          let label = variables.ulm_on;
+          if(states[entity.entity_id].attributes.media_album_name){
+              label = states[entity.entity_id].attributes.media_album_name;
           } else if (states[entity.entity_id].attributes.media_artist) {
-            var label = states[entity.entity_id].attributes.media_artist
+              label = states[entity.entity_id].attributes.media_artist
           } else {
-            var label = variables.ulm_on;
+              label = variables.ulm_on;
           }
           return label;
         ]]]
