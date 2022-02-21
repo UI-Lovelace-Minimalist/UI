@@ -27,15 +27,12 @@ card_media_player:
     ]]]
   label: |
     [[[
-        if (entity.state == "off"){
-          return variables.ulm_off;
-        } else {
-          return variables.ulm_on;
-        }
+        let state = entity.state;
+        return variables["ulm_" + state] ? variables["ulm_" + state] : state;
     ]]]
   state:
     - operator: "template"
-      value: "[[[ return entity.state != 'off' ]]]"
+      value: "[[[ return entity.state == 'on' ]]]"
       name: "[[[ return states[entity.entity_id].attributes.media_title; ]]]"
       label: |
         [[[
