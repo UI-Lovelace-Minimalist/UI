@@ -55,6 +55,8 @@ Now you can configure the Integration, you can do this also after it's installed
 | [`mini-media-player`](https://github.com/kalkih/mini-media-player)      |
 | [`my-cards-slider-card`](https://github.com/AnthonMS/my-cards)          |
 | [`light-entity-card`](https://github.com/ljmerza/light-entity-card)     |
+| [`auto-entities`](https://github.com/thomasloven/lovelace-auto-entities)|
+| [`simple-weather-card`](https://github.com/kalkih/simple-weather-card)  |
 
 Hit submit and in the Sidebar a new Dashboard entry should appear.
 A new file for the dashboard configuration, with a small example, where you can generate your own layout should have been created under that location:

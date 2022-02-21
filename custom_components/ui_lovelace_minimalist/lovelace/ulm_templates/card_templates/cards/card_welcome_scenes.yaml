@@ -54,9 +54,9 @@ card_welcome_scenes:
         ]]]
   template:
     - "ulm_language_variables"
-  show_icon: false
-  show_name: false
-  show_label: true
+  show_icon: "false"
+  show_name: "false"
+  show_label: "true"
   styles:
     grid:
       - grid-template-areas: >
@@ -110,10 +110,10 @@ card_welcome_scenes:
     item2:
       card:
         type: "custom:button-card"
-        show_icon: false
-        show_label: false
-        show_name: true
-        show_entity_picture: false
+        show_icon: "false"
+        show_label: "false"
+        show_name: "true"
+        show_entity_picture: "false"
         name: |
           [[[
             var today = new Date();
@@ -150,10 +150,10 @@ card_welcome_scenes:
     item3:
       card:
         type: "custom:button-card"
-        show_icon: true
-        show_label: true
-        show_name: true
-        show_entity_picture: false
+        show_icon: "true"
+        show_label: "true"
+        show_name: "true"
+        show_entity_picture: "false"
         name: "Scenes"
         icon: "mdi:dots-vertical"
         styles:
@@ -200,9 +200,9 @@ card_welcome_scenes:
 card_title_welcome:
   tap_action:
     action: "none"
-  show_icon: false
-  show_label: true
-  show_name: true
+  show_icon: "false"
+  show_label: "true"
+  show_name: "true"
   styles:
     card:
       - background-color: "rgba(0,0,0,0)"
@@ -226,9 +226,9 @@ card_title_welcome:
       - font-size: "1rem"
       - opacity: "0.4"
 card_scenes_welcome:
-  show_icon: false
-  show_name: true
-  show_label: false
+  show_icon: "false"
+  show_name: "true"
+  show_label: "false"
   styles:
     grid:
       - grid-template-areas: "'item1 item2 item3 item4 item5'"
@@ -250,6 +250,7 @@ card_scenes_welcome:
           item1:
             card:
               type: "custom:button-card"
+              template: "tap_action"
               entity: "[[[ return variables.entity_1.entity_id ]]]"
               icon: "[[[ return variables.entity_1.icon ]]]"
               styles:
@@ -260,6 +261,7 @@ card_scenes_welcome:
           item2:
             card:
               type: "custom:button-card"
+              template: "tap_action"
               entity: "[[[ return variables.entity_1.entity_id ]]]"
               name: "[[[ return variables.entity_1.name ]]]"
     item2:
@@ -271,6 +273,7 @@ card_scenes_welcome:
           item1:
             card:
               type: "custom:button-card"
+              template: "tap_action"
               entity: "[[[ return variables.entity_2.entity_id ]]]"
               icon: "[[[ return variables.entity_2.icon ]]]"
               styles:
@@ -281,6 +284,7 @@ card_scenes_welcome:
           item2:
             card:
               type: "custom:button-card"
+              template: "tap_action"
               entity: "[[[ return variables.entity_2.entity_id ]]]"
               name: "[[[ return variables.entity_2.name ]]]"
     item3:
@@ -292,6 +296,7 @@ card_scenes_welcome:
           item1:
             card:
               type: "custom:button-card"
+              template: "tap_action"
               entity: "[[[ return variables.entity_3.entity_id ]]]"
               icon: "[[[ return variables.entity_3.icon ]]]"
               styles:
@@ -302,6 +307,7 @@ card_scenes_welcome:
           item2:
             card:
               type: "custom:button-card"
+              template: "tap_action"
               entity: "[[[ return variables.entity_3.entity_id ]]]"
               name: "[[[ return variables.entity_3.name ]]]"
     item4:
@@ -313,6 +319,7 @@ card_scenes_welcome:
           item1:
             card:
               type: "custom:button-card"
+              template: "tap_action"
               entity: "[[[ return variables.entity_4.entity_id ]]]"
               icon: "[[[ return variables.entity_4.icon ]]]"
               styles:
@@ -323,6 +330,7 @@ card_scenes_welcome:
           item2:
             card:
               type: "custom:button-card"
+              template: "tap_action"
               entity: "[[[ return variables.entity_4.entity_id ]]]"
               name: "[[[ return variables.entity_4.name ]]]"
     item5:
@@ -334,6 +342,7 @@ card_scenes_welcome:
           item1:
             card:
               type: "custom:button-card"
+              template: "tap_action"
               entity: "[[[ return variables.entity_5.entity_id ]]]"
               icon: "[[[ return variables.entity_5.icon ]]]"
               styles:
@@ -344,12 +353,13 @@ card_scenes_welcome:
           item2:
             card:
               type: "custom:button-card"
+              template: "tap_action"
               entity: "[[[ return variables.entity_5.entity_id ]]]"
               name: "[[[ return variables.entity_5.name ]]]"
 card_scenes_pill_welcome:
-  show_icon: false
-  show_label: false
-  show_name: false
+  show_icon: "false"
+  show_label: "false"
+  show_name: "false"
   state:
     - operator: "template"
       value: >
@@ -386,9 +396,9 @@ card_scenes_pill_welcome:
     item1:
       card:
         type: "custom:button-card"
-        show_icon: true
-        show_label: false
-        show_name: false
+        show_icon: "true"
+        show_label: "false"
+        show_name: "false"
         styles:
           grid:
             - grid-template-areas: "i"
@@ -424,8 +434,8 @@ card_scenes_pill_welcome:
     item2:
       card:
         type: "custom:button-card"
-        show_icon: false
-        show_label: false
+        show_icon: "false"
+        show_label: "false"
         styles:
           grid:
             - grid-template-areas: "n"
@@ -440,9 +450,9 @@ card_scenes_pill_welcome:
             - margin-top: "-5px"
             - border-radius: "50px"
 card_topbar_welcome:
-  show_icon: false
-  show_name: true
-  show_label: false
+  show_icon: "false"
+  show_name: "true"
+  show_label: "false"
   styles:
     grid:
       - grid-template-areas: "'item1 item2 item3'"
@@ -460,7 +470,7 @@ card_topbar_welcome:
         template: "chips"
         entity: "[[[ return variables.ulm_card_welcome_scenes_collapse ]]]"
         icon: "mdi:chevron-up"
-        show_icon: true
+        show_icon: "true"
         styles:
           grid:
             - grid-template-areas: "'i'"
@@ -522,9 +532,9 @@ card_topbar_welcome:
                   }
                 ]]]
 card_scenes_welcome_auto:
-  show_icon: false
-  show_name: true
-  show_label: false
+  show_icon: "false"
+  show_name: "true"
+  show_label: "false"
   styles:
     grid:
       - grid-template-areas: "'item1 item2 item3 item4 item5'"
@@ -543,7 +553,7 @@ card_scenes_welcome_auto:
         card:
           type: "grid"
           columns: 1
-          square: false
+          square: "false"
         card_param: "cards"
         sort:
           count: 1
@@ -569,7 +579,7 @@ card_scenes_welcome_auto:
         card:
           type: "grid"
           columns: 1
-          square: false
+          square: "false"
         card_param: "cards"
         sort:
           count: 1
@@ -596,7 +606,7 @@ card_scenes_welcome_auto:
         card:
           type: "grid"
           columns: 1
-          square: false
+          square: "false"
         card_param: "cards"
         sort:
           count: 1
@@ -623,7 +633,7 @@ card_scenes_welcome_auto:
         card:
           type: "grid"
           columns: 1
-          square: false
+          square: "false"
         card_param: "cards"
         sort:
           count: 1
@@ -650,7 +660,7 @@ card_scenes_welcome_auto:
         card:
           type: "grid"
           columns: 1
-          square: false
+          square: "false"
         card_param: "cards"
         sort:
           count: 1
@@ -679,6 +689,9 @@ tap_action:
       [[[
         if(entity.entity_id.startsWith("scene.")){
           return "scene.turn_on"
+        }
+        if(entity.entity_id.startsWith("media_player.")){
+          return "media_player.media_play_pause"
         } else {
           return "homeassistant.toggle"
         }

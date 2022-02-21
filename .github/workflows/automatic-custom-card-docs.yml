@@ -4,7 +4,7 @@ name: "Automatic custom_cards docs"
 on:
   push:
     # Should only run on "dev" when new cards are submitted via PR
-    branches: ["release"]
+    branches: ["main"]
     paths: ["custom_cards/*/README.md"]
 
 jobs:
