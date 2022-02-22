@@ -4,11 +4,11 @@ card_media_player:
   template:
     - "ulm_language_variables"
   variables:
-    ulm_card_media_name: "[[[ return entity.attributes.friendly_name ]]]"
-    ulm_card_media_icon: false
-    ulm_card_media_enable_art: false
-    ulm_card_media_enable_controls: false
-    ulm_card_media_player_controls_entity: "[[[ return entity.entity_id ]]]"
+    ulm_card_media_player_name: "[[[ return entity.attributes.friendly_name ]]]"
+    ulm_card_media_player_icon: false
+    ulm_card_media_player_enable_art: false
+    ulm_card_media_player_enable_controls: false
+    ulm_card_media_player_player_controls_entity: "[[[ return entity.entity_id ]]]"
   triggers_update: "all"
   show_icon: false
   show_name: false
@@ -17,14 +17,14 @@ card_media_player:
     grid:
       - grid-template-areas: |
           [[[
-            return variables.ulm_card_media_enable_controls
+            return variables.ulm_card_media_player_enable_controls
               ? "'item1' 'item2'"
               : "'item1'"
           ]]]
       - grid-template-columns: "1fr"
       - grid-template-rows: |
           [[[
-            return variables.ulm_card_media_enable_controls
+            return variables.ulm_card_media_player_enable_controls
               ? "min-content min-content"
               : "min-content"
           ]]]
@@ -36,7 +36,7 @@ card_media_player:
       - background-blend-mode: "multiply"
       - background: |
           [[[
-            return variables.ulm_card_media_enable_art && states[entity.entity_id].attributes.entity_picture != null
+            return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
             ? 'center / cover url(' + states[entity.entity_id].attributes.entity_picture + ') rgba(0, 0, 0, 0.15)'
             : ''
           ]]]
@@ -44,7 +44,7 @@ card_media_player:
       item2:
         - display: |
             [[[
-              return variables.ulm_card_media_enable_controls
+              return variables.ulm_card_media_player_enable_controls
                 ? "block"
                 : "none"
             ]]]
@@ -77,7 +77,7 @@ card_media_player:
                 var icon = entity.attributes.icon;
               }
             }
-            return variables.ulm_card_media_icon || icon;
+            return variables.ulm_card_media_player_icon || icon;
           ]]]
         label: |
           [[[
@@ -89,7 +89,7 @@ card_media_player:
             value: "[[[ return entity.state != 'off' ]]]"
             name: |
               [[[
-                let name = states[entity.entity_id].attributes.friendly_name || variables.ulm_card_media_name;
+                let name = states[entity.entity_id].attributes.friendly_name || variables.ulm_card_media_player_name;
                 if(states[entity.entity_id].attributes.media_title){
                     name = states[entity.entity_id].attributes.media_title;
                 }
@@ -113,20 +113,20 @@ card_media_player:
             - filter: "opacity(100%)"
             - text-shadow: |
                 [[[
-                  return variables.ulm_card_media_enable_art && states[entity.entity_id].attributes.entity_picture != null
+                  return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
                   ? '0 0 black'
                   : 'none'
                 ]]]
             - color: |
                 [[[
-                  return variables.ulm_card_media_enable_art && states[entity.entity_id].attributes.entity_picture != null
+                  return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
                   ? 'white'
                   : 'rgba(var(--color-theme), .5)'
                 ]]]
           name:
             - color: |
                 [[[
-                  return variables.ulm_card_media_enable_art && states[entity.entity_id].attributes.entity_picture != null
+                  return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
                   ? 'white'
                   : 'rgba(var(--color-theme), 1)'
                 ]]]
@@ -134,14 +134,14 @@ card_media_player:
           icon:
             - color: |
                 [[[
-                  return variables.ulm_card_media_enable_art && states[entity.entity_id].attributes.entity_picture != null
+                  return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
                   ? 'white'
                   : 'rgba(var(--color-theme), 0.2)'
                 ]]]
           img_cell:
             - background-color: |
                 [[[
-                  return variables.ulm_card_media_enable_art && states[entity.entity_id].attributes.entity_picture != null
+                  return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
                   ? 'rgba(0, 0, 0, 0.2)'
                   : 'rgba(var(--color-theme), 0.05)'
                 ]]]
@@ -169,20 +169,20 @@ card_media_player:
                 action: "call-service"
                 service: "media_player.media_previous_track"
                 service_data:
-                  entity_id: "[[[ return variables.ulm_card_media_player_controls_entity ]]]"
+                  entity_id: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
               icon: "mdi:skip-previous"
               styles:
                 card:
                   - background-color: |
                       [[[
-                        return variables.ulm_card_media_enable_art && states[entity.entity_id].attributes.entity_picture != null
+                        return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
                         ? 'rgba(0, 0, 0, 0.2)'
                         : 'rgba(var(--color-theme),0.05)'
                       ]]]
                 icon:
                   - color: |
                       [[[
-                        return variables.ulm_card_media_enable_art && states[entity.entity_id].attributes.entity_picture != null
+                        return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
                         ? 'white'
                         : 'rgba(var(--color-theme), 0.9)'
                       ]]]
@@ -191,12 +191,12 @@ card_media_player:
             card:
               type: "custom:button-card"
               template: "widget_icon"
-              entity: "[[[ return variables.ulm_card_media_player_controls_entity ]]]"
+              entity: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
               tap_action:
                 action: "call-service"
                 service: "media_player.media_play_pause"
                 service_data:
-                  entity_id: "[[[ return variables.ulm_card_media_player_controls_entity ]]]"
+                  entity_id: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
               icon: "mdi:pause"
               state:
                 - value: "paused"
@@ -207,14 +207,14 @@ card_media_player:
                 card:
                   - background-color: |
                       [[[
-                        return variables.ulm_card_media_enable_art && states[entity.entity_id].attributes.entity_picture != null
+                        return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
                         ? 'rgba(0, 0, 0, 0.2)'
                         : 'rgba(var(--color-theme),0.05)'
                       ]]]
                 icon:
                   - color: |
                       [[[
-                        return variables.ulm_card_media_enable_art && states[entity.entity_id].attributes.entity_picture != null
+                        return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
                         ? 'white'
                         : 'rgba(var(--color-theme), 0.9)'
                       ]]]
@@ -226,20 +226,20 @@ card_media_player:
                 action: "call-service"
                 service: "media_player.media_next_track"
                 service_data:
-                  entity_id: "[[[ return variables.ulm_card_media_player_controls_entity ]]]"
+                  entity_id: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
               icon: "mdi:skip-next"
               styles:
                 card:
                   - background-color: |
                       [[[
-                        return variables.ulm_card_media_enable_art && states[entity.entity_id].attributes.entity_picture != null
+                        return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
                         ? 'rgba(0, 0, 0, 0.2)'
                         : 'rgba(var(--color-theme),0.05)'
                       ]]]
                 icon:
                   - color: |
                       [[[
-                        return variables.ulm_card_media_enable_art && states[entity.entity_id].attributes.entity_picture != null
+                        return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
                         ? 'white'
                         : 'rgba(var(--color-theme), 0.9)'
                       ]]]
