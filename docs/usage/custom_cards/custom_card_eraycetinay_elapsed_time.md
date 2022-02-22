@@ -5,14 +5,14 @@ hide:
 ---
 <!-- markdownlint-disable MD046 -->
 
-# Custom-card "Lock"
+# Custom-card "Elapsed Time"
 
-This is a `custom-card` that works with a `input_boolean` input.
+This is a `custom-card` that works with a `input_datetime` input.
 Template checks the `has_date` and `has_time` attributes and creates a label in `x days x hours x minutes ago` format.
 
-`x days` only included if `has_date` is true (datetime object)
-`x hours` only included if `has_time` is true (datetime and time objects)
-`x minutes` only included if `has_time` is true and has_date is false (time object)
+- `x days` only included if `has_date` is true (datetime object)
+- `x hours` only included if `has_time` is true (datetime and time objects)
+- `x minutes` only included if `has_time` is true and has_date is false (time object)
 
 ![Generic](../../assets/img/custom_card_eraycetinay_elapsed_time.png)
 
@@ -41,7 +41,7 @@ Version: 0.0.1
 
 ```yaml
 ---
-ustom_card_eraycetinay_elapsed_time:
+custom_card_eraycetinay_elapsed_time:
   template:
     - "ulm_custom_card_eraycetinay_elapsed_time_language_variables"
     - "icon_info_bg"
