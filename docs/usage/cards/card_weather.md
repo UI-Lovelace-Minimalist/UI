@@ -1,5 +1,5 @@
 ---
-title: card_weather
+title: Weather Card
 hide:
   - toc
 ---

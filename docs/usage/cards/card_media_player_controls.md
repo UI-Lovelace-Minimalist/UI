@@ -1,5 +1,5 @@
 ---
-title: card_media_player_controls
+title: Media_player Controls Card
 hide:
   - toc
 ---

@@ -1,5 +1,5 @@
 ---
-title: chip_icon_double_state
+title: Icon Double State Chip
 hide:
   - toc
 ---

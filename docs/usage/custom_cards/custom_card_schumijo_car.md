@@ -1,5 +1,5 @@
 ---
-title: custom_card_schumijo_car
+title: Car Custom-card
 hide:
   - toc
 ---

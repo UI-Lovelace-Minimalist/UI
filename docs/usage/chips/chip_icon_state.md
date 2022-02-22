@@ -1,5 +1,5 @@
 ---
-title: chip_icon_state
+title: Icon State Chip
 hide:
   - toc
 ---

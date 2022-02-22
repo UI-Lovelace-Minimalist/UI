@@ -1,5 +1,5 @@
 ---
-title: card_input_boolean
+title: Input_boolean Card
 hide:
   - toc
 ---

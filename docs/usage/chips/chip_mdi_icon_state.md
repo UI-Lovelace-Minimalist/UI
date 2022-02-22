@@ -1,5 +1,5 @@
 ---
-title: chip_mdi_icon_state
+title: Mdi:icon State Chip
 hide:
   - toc
 ---

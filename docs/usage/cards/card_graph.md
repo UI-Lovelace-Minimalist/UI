@@ -1,5 +1,5 @@
 ---
-title: card_graph
+title: Graph Card
 hide:
   - toc
 ---
