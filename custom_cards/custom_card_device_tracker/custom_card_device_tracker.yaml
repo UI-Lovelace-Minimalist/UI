@@ -1,3 +1,4 @@
+---
 custom_card_device_tracker:
   template:
     - "icon_info_bg"
@@ -42,7 +43,6 @@ custom_card_device_tracker:
                 }
               }
             ]]]
-      
       tracker_2:
         - border-radius: "50%"
         - position: "absolute"
@@ -79,7 +79,6 @@ custom_card_device_tracker:
           return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
         }
       ]]]
-    
     tracker_2: >
       [[[
         if (variables.ulm_custom_card_device_tracker_tracker_2_entity) {
