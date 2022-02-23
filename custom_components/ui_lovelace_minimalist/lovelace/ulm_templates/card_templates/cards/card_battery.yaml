@@ -42,6 +42,9 @@ card_battery:
           case "ac":
             infix = "-charging";
             break;
+          case "usb":
+            infix = "-charging";
+            break;
           default:
             infix = "";
         }
