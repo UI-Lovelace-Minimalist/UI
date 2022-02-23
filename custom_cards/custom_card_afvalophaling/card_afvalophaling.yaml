@@ -49,7 +49,7 @@ custom_colors:
           - background-color: "rgba(var(--color-green), 0.2)"
       value: >
         [[[
-          return states['sensor.limburg_net_afvalophaling_vandaag'].state == "gft" || states['sensor.limburg_net_afvalophaling_morgen'].state == "gft"
+          return states[variables.ulm_card_ophaling_vandaag].state == "gft" || states[variables.ulm_card_ophaling_morgen].state == "gft"
         ]]]
       icon: "mdi:recycle"
       operator: "template"
@@ -60,7 +60,7 @@ custom_colors:
           - background-color: "rgba(var(--color-green), 0.2)"
       value: >
         [[[
-          return states['sensor.limburg_net_afvalophaling_vandaag'].state == "papier" || states['sensor.limburg_net_afvalophaling_morgen'].state == "papier"
+          return states[variables.ulm_card_ophaling_vandaag].state == "papier" || states[variables.ulm_card_ophaling_morgen].state == "papier"
         ]]]
       icon: "mdi:package-variant-closed"
       operator: "template"
@@ -71,7 +71,7 @@ custom_colors:
           - background-color: "rgba(var(--color-blue), 0.2)"
       value: >
         [[[
-          return states['sensor.limburg_net_afvalophaling_vandaag'].state == "pmd, restafval" || states['sensor.limburg_net_afvalophaling_morgen'].state == "pmd, restafval"
+          return states[variables.ulm_card_ophaling_vandaag].state == "pmd, restafval" || states[variables.ulm_card_ophaling_morgen].state == "pmd, restafval"
         ]]]
       icon: "mdi:delete-empty"
       operator: "template"
