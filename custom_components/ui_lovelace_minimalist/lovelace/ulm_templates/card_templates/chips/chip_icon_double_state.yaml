@@ -2,6 +2,9 @@
 ### Chip Icon Double State ###
 chip_icon_double_state:
   template: "chips"
+  tap_action:
+    action: "navigate"
+    navigation_path: "[[[ return variables.ulm_chip_navigate_path; ]]]"
   triggers_update: "all"
   label: |
     [[[
