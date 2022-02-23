@@ -20,6 +20,8 @@ ulm_language_variables:
     ulm_person_state_home: "w domu"
     ulm_person_state_away: "poza domem"
     ulm_person_state_not_home: "poza domen"
+    ulm_device_state_home: "online"
+    ulm_device_state_not_home: "offline"
     ulm_popups_back: "Wróć"
     ulm_popups_toggle: "Przełącz"
     ulm_popups_statistics: "Statystyki"
