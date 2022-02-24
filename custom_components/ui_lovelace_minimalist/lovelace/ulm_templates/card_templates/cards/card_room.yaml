@@ -14,7 +14,7 @@ card_room:
   label: |-
     [[[
       if (variables.label_use_temperature) {
-        return (entity.attributes.current_temperature || entity.attributes.temperature || entity.state || '-') + '°C';
+        return (entity.attributes.current_temperature || entity.attributes.temperature || entity.state || '-') + (entity.attributes.unit_of_measurement || '°C');
       } else if (variables.label_use_brightness) {
         if (entity.state){
           if (entity.state == "off"){

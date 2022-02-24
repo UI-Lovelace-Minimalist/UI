@@ -1,5 +1,5 @@
 ---
-title: chip_power_consumption
+title: Power Consumption Chip
 hide:
   - toc
 ---

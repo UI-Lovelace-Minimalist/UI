@@ -253,7 +253,7 @@ card_thermostat:
                     }
 
                     if(entity.attributes.temperature && !variables.ulm_card_thermostat_enable_display_temperature){
-                      return (entity.attributes.current_temperature ) + '°' + ' • ' + label + ' (' + mode + ')';
+                      return (entity.attributes.current_temperature ) + '°' + ' • ' + label + (entity.state !='off' ? ' (' + mode + ')' : '');
                     }
                     return label;
                 ]]]
@@ -275,7 +275,11 @@ card_thermostat:
                 action: "call-service"
                 service: "climate.set_temperature"
                 service_data:
-                  temperature: "[[[ return (parseFloat(states[entity.entity_id].attributes.temperature) - 0.5)  ]]]"
+                  temperature: |
+                    [[[
+                      const step = entity.attributes.target_temp_step || 0.5
+                      return (parseFloat(states[entity.entity_id].attributes.temperature) - step)
+                    ]]]
                   entity_id: "[[[ return entity.entity_id ]]]"
               state:
                 - operator: "template"
@@ -298,8 +302,13 @@ card_thermostat:
                     var temperature = entity.attributes.temperature;
                     if (temperature == null) {
                       var temperature = '-';
+                    }else{
+                      if (temp_unit=='TEMP_CELSIUS'){
+                         return temperature + '°C'
+                      }else{
+                          return temperature + '°F'
+                      }
                     }
-                    return temperature + '°C'
                 ]]]
               styles:
                 card:
@@ -315,7 +324,11 @@ card_thermostat:
                 action: "call-service"
                 service: "climate.set_temperature"
                 service_data:
-                  temperature: "[[[ return (parseFloat(states[entity.entity_id].attributes.temperature) + 0.5)  ]]]"
+                  temperature: |
+                    [[[
+                      const step = entity.attributes.target_temp_step || 0.5
+                      return (parseFloat(states[entity.entity_id].attributes.temperature) + step)
+                    ]]]
                   entity_id: "[[[ return entity.entity_id ]]]"
               state:
                 - operator: "template"
@@ -629,10 +642,17 @@ card_thermostat:
         label: |-
           [[[
               var temperature = entity.attributes.current_temperature;
+              var temp_unit = entity.attributes.temperature_unit;
               if (temperature == null) {
                 var temperature = '-';
               }
-              return temperature + '°C'
+              else{
+                if (temp_unit == 'TEMP_CELSIUS') {
+                  return temperature + '°C'
+                }else{
+                  return temperature + '°F'
+                }
+              }
           ]]]
         styles:
           card:

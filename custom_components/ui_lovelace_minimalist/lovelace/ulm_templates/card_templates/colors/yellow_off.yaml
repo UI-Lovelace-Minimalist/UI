@@ -1,6 +1,6 @@
 ---
 ### Yellow ###
-yellow:
+yellow_off:
   state:
     - styles:
         icon:

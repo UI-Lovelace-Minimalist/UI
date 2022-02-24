@@ -1,5 +1,5 @@
 ---
-title: popup_thermostat
+title: Thermostat Popup
 hide:
   - toc
 ---

@@ -32,6 +32,7 @@ ulm_language_variables:
     ulm_unknown: "ukendt"
     ulm_alarm_armed_home: "Tilkoblet hjemme"
     ulm_alarm_armed_away: "Tilkoblet ude"
+    ulm_alarm_armed_night: "Armed night"
     ulm_alarm_disarmed: "Frakoblet"
     ulm_alarm_arming: "Tilkobler"
     ulm_alarm_triggered: "AKTIVERET"

@@ -1,5 +1,5 @@
 ---
-title: chip_mdi_icon_only
+title: Mdi:icon Only Chip
 hide:
   - toc
 ---

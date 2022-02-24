@@ -1,5 +1,5 @@
 ---
-title: chip_navigate
+title: Navigate Chip
 hide:
   - toc
 ---

@@ -1,5 +1,5 @@
 ---
-title: custom_card_irmajavi_entities
+title: Entities Custom-card
 hide:
   - toc
 ---

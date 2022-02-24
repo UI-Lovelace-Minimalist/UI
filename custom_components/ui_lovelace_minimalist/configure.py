@@ -28,6 +28,7 @@ LANGUAGES = {
     "Portuguese": "pt",
     "Slovak": "sk",
     "Swedish": "sv",
+    "Turkish": "tr",
 }
 
 

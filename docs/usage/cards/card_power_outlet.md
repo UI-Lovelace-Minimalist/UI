@@ -1,5 +1,5 @@
 ---
-title: card_power_outlet
+title: Power Outlet Card
 hide:
   - toc
 ---
