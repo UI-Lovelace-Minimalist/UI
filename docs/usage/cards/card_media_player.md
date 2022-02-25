@@ -27,6 +27,7 @@ The `card_media_player` shows you the _app_, the _title_ and the _album name_ pl
 | ulm_card_media_player_enable_art             | false   |                  | Enable album picture on background    |
 | ulm_card_media_player_enable_controls        | false   |                  | Enable controls bellow the title      |
 | ulm_card_media_player_player_controls_entity | entity  |                  | Change the controlled entity          |
+| ulm_card_media_player_enable_popup           | false   |                  | Enable pop-up        |
 
 ## Usage
 
