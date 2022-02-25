@@ -26,4 +26,4 @@ custom_card_person_chip:
       - width: "24px"
       - place-self: "stretch stretch"
     grid:
-      - grid-template-areas: '"i l"'
+      - grid-template-areas: "'i l'"
