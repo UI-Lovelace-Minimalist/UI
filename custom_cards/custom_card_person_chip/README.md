@@ -9,6 +9,8 @@ hide:
 
 This is a `custom-card` to display a person entity as a chip.
 
+![image](https://user-images.githubusercontent.com/13683094/155681028-64c3c5b8-0db5-403e-89be-75687bf74812.png)
+
 ## Credits
 
 Author: tmatheussen - 2022
