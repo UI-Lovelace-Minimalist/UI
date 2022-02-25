@@ -1,5 +1,5 @@
 ---
-title: custom_card_person_chip
+title: Person Chip Custom-card
 hide:
   - toc
 ---
