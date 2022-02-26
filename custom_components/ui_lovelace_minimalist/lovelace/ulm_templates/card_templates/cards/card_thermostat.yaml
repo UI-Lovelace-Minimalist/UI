@@ -299,7 +299,7 @@ card_thermostat:
                     if (temperature == null) {
                       var temperature = '-';
                     }
-                    return temperature + '°C'
+                    return temperature + hass.config.unit_system.temperature
                 ]]]
               styles:
                 card:
@@ -632,7 +632,7 @@ card_thermostat:
               if (temperature == null) {
                 var temperature = '-';
               }
-              return temperature + '°C'
+              return temperature + hass.config.unit_system.temperature
           ]]]
         styles:
           card:
