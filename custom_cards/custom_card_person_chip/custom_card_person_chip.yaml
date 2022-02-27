@@ -2,6 +2,7 @@
 custom_card_person_chip:
   template:
     - "chips"
+    - "ulm_language_variables"
   show_icon: true
   triggers_update: "all"
   icon: "mdi:face-man"
