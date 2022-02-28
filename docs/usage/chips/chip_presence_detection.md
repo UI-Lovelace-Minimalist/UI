@@ -1,5 +1,5 @@
 ---
-title: chip_presence_detection
+title: Presence Detection Chip
 hide:
   - toc
 ---

@@ -1,5 +1,5 @@
 ---
-title: chip_alarm
+title: Alarm Chip
 hide:
   - toc
 ---

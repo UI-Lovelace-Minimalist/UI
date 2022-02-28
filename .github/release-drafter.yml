@@ -34,6 +34,10 @@ template: |
 
   ## ❤️ Thank you so much for helping out to keep this UI awesome
   $CONTRIBUTORS
+
+exclude-contributors:
+  - "github-actions"
+
 autolabeler:
   - label: ":bug: bug"
     branch:

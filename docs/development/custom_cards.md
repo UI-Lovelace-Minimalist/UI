@@ -48,7 +48,7 @@ Example: `custom_card_paddy_temperature/custom_card_paddy_temperature.yaml`
 ![example-image](../assets/img/fork.png){ width="500" }
 - Add your custom-card folder to your fork. This needs to be in the already existing folder: `custom_cards`.
 ![example-image](../assets/img/upload.png){ width="500" }
-- All pull requests need to be directed to the `dev` branch: `UI-Lovelace-Minimalist:dev`. [Additional documentation](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
+- All pull requests for `custom_cards` need to be directed to the `main` branch: `UI-Lovelace-Minimalist:main`. [Additional documentation](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
 
 ### Naming conventions
 

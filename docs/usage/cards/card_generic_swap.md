@@ -1,5 +1,5 @@
 ---
-title: card_generic_swap
+title: Generic Swap Card
 hide:
   - toc
 ---

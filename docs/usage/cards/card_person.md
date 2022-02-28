@@ -1,5 +1,5 @@
 ---
-title: card_person
+title: Person Card
 hide:
   - toc
 ---

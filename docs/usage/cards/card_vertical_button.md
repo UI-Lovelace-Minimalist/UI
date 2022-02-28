@@ -1,5 +1,5 @@
 ---
-title: card_vertical_button
+title: Vertical Button Card
 hide:
   - toc
 ---

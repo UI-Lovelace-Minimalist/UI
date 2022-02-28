@@ -1,5 +1,5 @@
 ---
-title: card_cover_buttons
+title: Cover Buttons Card
 hide:
   - toc
 ---

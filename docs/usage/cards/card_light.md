@@ -1,5 +1,5 @@
 ---
-title: card_light
+title: Light Card
 hide:
   - toc
 ---
