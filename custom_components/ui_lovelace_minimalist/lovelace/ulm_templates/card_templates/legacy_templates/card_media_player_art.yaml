@@ -2,6 +2,6 @@
 ### Card Media Player With Art ###
 card_media_player_art:
   template:
-    - "card_media"
+    - "card_media_player"
   variables:
     ulm_card_media_enable_art: true
