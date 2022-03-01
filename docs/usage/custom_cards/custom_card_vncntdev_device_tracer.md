@@ -1,5 +1,5 @@
 ---
-title: Device Tracker Custom-card
+title: custom_card_vncntdev_device_tracker
 hide:
   - toc
 ---

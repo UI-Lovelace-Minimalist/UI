@@ -1,5 +1,5 @@
 ---
-title: Fan Custom-card
+title: custom_card_saxel_fan_blue
 hide:
   - toc
 ---

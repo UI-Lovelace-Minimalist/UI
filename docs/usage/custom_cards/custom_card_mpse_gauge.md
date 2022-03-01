@@ -1,5 +1,5 @@
 ---
-title: Gauge Custom-card
+title: custom_card_mpse_gauge
 hide:
   - toc
 ---
