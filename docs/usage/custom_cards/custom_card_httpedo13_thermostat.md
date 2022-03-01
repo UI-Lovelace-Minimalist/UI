@@ -1,5 +1,5 @@
 ---
-title: custom_card_httpedo13_thermostat_with_buttons
+title: Thermostat with Buttons Custom-card
 hide:
   - toc
 ---

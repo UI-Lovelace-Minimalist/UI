@@ -1,5 +1,5 @@
 ---
-title: chip_temperature
+title: Temperature Chip
 hide:
   - toc
 ---

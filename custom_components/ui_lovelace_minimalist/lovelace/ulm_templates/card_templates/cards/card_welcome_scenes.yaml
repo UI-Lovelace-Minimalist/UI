@@ -119,7 +119,6 @@ card_welcome_scenes:
             var today = new Date();
             var time = today.getHours()
             let welcome = '';
-
             if (time >= '18'){
               welcome = variables.ulm_evening;
             } else if (time >= '12'){
@@ -129,7 +128,6 @@ card_welcome_scenes:
             } else {
               welcome = variables.ulm_hello;
             }
-
             return welcome + ', ' + '   <br>' + user.name + '!';
           ]]]
         styles:
@@ -690,7 +688,7 @@ tap_action:
         if(entity.entity_id.startsWith("scene.")){
           return "scene.turn_on"
         }
-        if(entity.entity_id.startsWith("media_player.")){
+        else if(entity.entity_id.startsWith("media_player.")){
           return "media_player.media_play_pause"
         } else {
           return "homeassistant.toggle"
