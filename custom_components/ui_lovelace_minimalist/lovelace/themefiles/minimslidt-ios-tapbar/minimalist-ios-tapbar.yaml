@@ -1,7 +1,7 @@
-#version 1.0.0
-#By LRvdLinden
 ---
 minimalist-ios-tapbar:
+#version 1.0.0
+#By LRvdLinden
   # Journal
   state-icon-color: "rgb(var(--color-theme))"
   border-radius: "20px"
@@ -204,3 +204,4 @@ minimalist-ios-tapbar:
       mini-media-player-accent-color: "var(--google-blue)"
       # Journal
       state-icon-color: "rgb(var(--color-theme))"
+      
