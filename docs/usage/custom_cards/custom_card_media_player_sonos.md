@@ -1,5 +1,5 @@
 ---
-title: Media_player Sonos Custom-card
+title: card_media_player_sonos_with_controls
 hide:
   - toc
 ---

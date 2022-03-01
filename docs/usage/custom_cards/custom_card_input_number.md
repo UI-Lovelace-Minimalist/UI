@@ -1,5 +1,5 @@
 ---
-title: Input_number Custom-card
+title: card_input_number
 hide:
   - toc
 ---

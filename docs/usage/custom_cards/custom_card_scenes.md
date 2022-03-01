@@ -1,5 +1,5 @@
 ---
-title: Scenes Custom-card
+title: card_scenes
 hide:
   - toc
 ---

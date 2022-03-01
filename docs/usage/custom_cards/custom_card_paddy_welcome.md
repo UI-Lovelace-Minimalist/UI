@@ -1,5 +1,5 @@
 ---
-title: Welcome Custom-card
+title: custom_card_paddy_welcome
 hide:
   - toc
 ---

@@ -1,5 +1,5 @@
 ---
-title: Wifi Signal Custom-card
+title: custom_card_mpse_wifisignal
 hide:
   - toc
 ---
