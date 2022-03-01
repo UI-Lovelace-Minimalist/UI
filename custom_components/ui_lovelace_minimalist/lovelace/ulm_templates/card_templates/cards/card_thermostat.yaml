@@ -302,13 +302,8 @@ card_thermostat:
                     var temperature = entity.attributes.temperature;
                     if (temperature == null) {
                       var temperature = '-';
-                    }else{
-                      if (temp_unit=='TEMP_CELSIUS'){
-                         return temperature + '°C'
-                      }else{
-                          return temperature + '°F'
-                      }
                     }
+                    return temperature + hass.config.unit_system.temperature;
                 ]]]
               styles:
                 card:
@@ -642,17 +637,10 @@ card_thermostat:
         label: |-
           [[[
               var temperature = entity.attributes.current_temperature;
-              var temp_unit = entity.attributes.temperature_unit;
               if (temperature == null) {
                 var temperature = '-';
               }
-              else{
-                if (temp_unit == 'TEMP_CELSIUS') {
-                  return temperature + '°C'
-                }else{
-                  return temperature + '°F'
-                }
-              }
+              return temperature + hass.config.unit_system.temperature;
           ]]]
         styles:
           card:
