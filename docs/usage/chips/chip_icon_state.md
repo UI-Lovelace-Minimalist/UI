@@ -15,17 +15,17 @@ This `chip` displays an icon and a label, where the label can be any `state` of 
 
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
+| entity |  | :material-check: | `entity` to link |
 | ulm_chip_icon_state_icon     |         | :material-check: | This is the icon to show. See See icons to read more about the used unicode `emojis`.  |
-|ulm_chip_icon_state_entity|  | :material-check: | Enable background |
 
 ## Usage
 
 ```yaml
 - type: 'custom:button-card'
   template: chip_icon_state
+  entity: sensor.bed_occupancy
   variables:
     ulm_chip_icon_state_icon: '🛏️'
-    ulm_chip_icon_state_entity: sensor.bed_occupancy
 ```
 
 ??? note "Template Code"

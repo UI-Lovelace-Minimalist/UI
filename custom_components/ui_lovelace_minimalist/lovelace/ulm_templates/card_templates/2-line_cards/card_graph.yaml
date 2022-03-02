@@ -1,9 +1,10 @@
 ---
 ### Card Graph ###
 card_graph:
+  show_name: false
+  show_icon: false
   variables:
     ulm_card_graph_color: "var(--info-color)"
-    ulm_card_graph_name: "n/a"
     ulm_card_graph_color2: "var(--info-color)"
     ulm_card_graph_name2: "n/a"
     ulm_card_graph_entity2: ""
@@ -31,15 +32,15 @@ card_graph:
             - box-shadow: "none"
             - border-radius: "var(--border-radius) var(--border-radius) 0px 0px"
             - padding: "12px"
-        entity: "[[[ return variables.ulm_card_graph_entity ]]]"
-        name: "[[[ return variables.ulm_card_graph_name ]]]"
+        entity: "[[[ return entity.entity_id ]]]"
+        name: "[[[ return entity.attributes.friendly_name ]]]"
     item2:
       card:
         type: "custom:mini-graph-card"
         entities: >
           [[[
             var ent = [];
-            ent.push(variables.ulm_card_graph_entity);
+            ent.push(entity.entity_id);
             if(variables.ulm_card_graph_entity2 != "")
               ent.push(variables.ulm_card_graph_entity2);
             return ent;

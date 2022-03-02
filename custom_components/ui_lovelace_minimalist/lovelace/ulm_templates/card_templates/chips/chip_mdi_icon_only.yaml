@@ -4,9 +4,9 @@ chip_mdi_icon_only:
   template: "chips"
   tap_action:
     action: "more-info"
-    entity: "[[[ return variables.ulm_chip_mdi_icon_only_entity ]]]"
+    entity: "[[[ return entity.entity_id ]]]"
   show_icon: true
-  icon: "[[[ return variables.ulm_chip_mdi_icon_only_icon ]]]"
+  icon: "[[[ return entity.attributes.icon ]]]"
   styles:
     grid:
       - grid-template-areas: "'i'"
