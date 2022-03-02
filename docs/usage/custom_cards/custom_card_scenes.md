@@ -16,7 +16,7 @@ The `card_scenes` you can control up to 5 `entity` such as `scene` or `script`.
 Author: sildehoop - 2021
 Version: 1.2.0
 
-<h2 style="color: red">Braking changes</h2>
+<h2 style="color: red">Breaking changes</h2>
 
  <details style="color: red">
    <summary>1.2.0</summary>
