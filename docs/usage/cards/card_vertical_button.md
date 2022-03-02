@@ -28,7 +28,7 @@ The variable `ulm_card_vertical_button_state` needs to be used togehter with inp
 - type: 'custom:button-card'
   template: card_vertical_button
   entity: input_select.test_vertical_buttons
-  name: Away
+  name: "Away"
   icon: mdi:television-classic
   variables:
     ulm_card_vertical_button_state: Away

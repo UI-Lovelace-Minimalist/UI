@@ -23,7 +23,7 @@ This `chip` displays an icon using [mdi](https://materialdesignicons.com/) and `
 ## Usage
 
 ```yaml
-- type: "custom:button-card"
+- type: 'custom:button-card'
   template: chip_mdi_icon_state
   variables:
     ulm_chip_mdi_icon_state_entity: light.kitchen_lights

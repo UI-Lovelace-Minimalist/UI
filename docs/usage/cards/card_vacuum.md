@@ -26,15 +26,15 @@ This is a card to control your Robot-vacuum. It has support for all vacuums whic
 ## Usage
 
 ```yaml
-- type: "custom:button-card"
-  template: "card_vacuum"
-  entity: "vacuum.<Your_Vacuum>"
+- type: 'custom:button-card'
+  template: card_vacuum
+  entity: vacuum.<Your_Vacuum>
 
-- type: "custom:button-card"
-  template: "card_vacuum"
-  entity: "vacuum.<Your_Vacuum>"
+- type: 'custom:button-card'
+  template: card_vacuum
+  entity: vacuum.<Your_Vacuum>
   variables:
-    ulm_card_vacuum_room: "script.clean_kitchen"
+    ulm_card_vacuum_room: script.clean_kitchen
 ```
 
 ??? note "Template Code"

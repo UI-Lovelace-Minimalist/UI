@@ -35,10 +35,10 @@ The `card_media_player` shows you the _app_, the _title_ and the _album name_ pl
 ## Usage
 
 ```yaml
-- type: "custom:button-card"
+- type: 'custom:button-card'
   template: card_media_player
   entity: media_player.livingroom_shield
-  name: Livingroom Nvidia Shield
+  name: "Livingroom Nvidia Shield"
 ```
 
 ??? note "Template Code"

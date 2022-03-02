@@ -22,11 +22,10 @@ With the `cover-card` you have the state of your cover and on the second line UP
 
 ```yaml
 - type: 'custom:button-card'
-  template:
-    - card_cover_buttons
+  template: card_cover_buttons
   variables:
     ulm_card_cover_buttons_name: "Cover Livingroom Window"
-    ulm_card_cover_buttons_entity: "cover.livingroom_window"
+    ulm_card_cover_buttons_entity: cover.livingroom_window
 ```
 
 ??? note "Template Code"

@@ -23,7 +23,7 @@ This `chip` displays an icon using [mdi](https://materialdesignicons.com/) and a
 ```yaml
 - type: 'custom:button-card'
   template: chip_icon_label
-  label: Label
+  label: "Label"
   icon: 'mdi:heart'
 ```
 

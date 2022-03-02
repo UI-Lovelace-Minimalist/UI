@@ -34,8 +34,8 @@ Furthermore, you need to add the `input_boolean` to the variable `ulm_card_welco
 ## Usage
 
 ```yaml
-- type: "custom:button-card"
-  template: "card_welcome_scenes"
+- type: 'custom:button-card'
+  template: card_welcome_scenes
 ### uncomment entity or triggers_update for collapse function
   #triggers_update: input_boolean.<Your_boolean>
   #entity: input_boolean.<Your_boolean>
@@ -69,7 +69,7 @@ Furthermore, you need to add the `input_boolean` to the variable `ulm_card_welco
       color: "yellow"
 
 # Use random script entities (icon and name cannot be specified!!)
-- type: "custom:button-card"
+- type: 'custom:button-card'
   template: "card_welcome_scenes"
 ### uncomment entity or triggers_update for collapse function
   #triggers_update: input_boolean.<Your_boolean>
@@ -89,7 +89,7 @@ Furthermore, you need to add the `input_boolean` to the variable `ulm_card_welco
       color: "yellow"
 
 # Use random colors
-- type: "custom:button-card"
+- type: 'custom:button-card'
   template: "card_welcome_scenes"
 ### uncomment entity or triggers_update for collapse function
   #triggers_update: input_boolean.<Your_boolean>
@@ -119,8 +119,8 @@ Furthermore, you need to add the `input_boolean` to the variable `ulm_card_welco
       name: "YOUR_NAME" #OPTIONAL
 
 # Let the card decide everything
-- type: "custom:button-card"
-  template: "card_welcome_scenes"
+- type: 'custom:button-card'
+  template: card_welcome_scenes
 ### uncomment entity or triggers_update for collapse function
   #triggers_update: input_boolean.<Your_boolean>
   #entity: input_boolean.<Your_boolean>
