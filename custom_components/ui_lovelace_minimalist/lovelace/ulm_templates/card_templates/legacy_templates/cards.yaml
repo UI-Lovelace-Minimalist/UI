@@ -136,3 +136,9 @@ custom_card_httpedo13_thermostat_with_buttons_collapse:
     ulm_card_thermostat_enable_controls: true
     ulm_card_thermostat_enable_collapse: true
     ulm_card_thermostat_enable_background_color: true
+
+### NEW CARD_COVER ALL IN ONE ###
+card_cover_buttons:
+  template: "card_cover"
+  variables:
+    ulm_card_cover_enable_controls: true
