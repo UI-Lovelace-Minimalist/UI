@@ -142,4 +142,3 @@ card_cover_buttons:
   template: "card_cover"
   variables:
     ulm_card_cover_enable_controls: true
-    
