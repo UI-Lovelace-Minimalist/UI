@@ -1,5 +1,5 @@
 ---
-title: custom_card_homeassistant_updates
+title: Homeassistant Updates Custom-card
 hide:
   - toc
 ---
