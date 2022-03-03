@@ -1,5 +1,5 @@
 ---
-title: card_qubino
+title: Qubino Custom-card
 hide:
   - toc
 ---

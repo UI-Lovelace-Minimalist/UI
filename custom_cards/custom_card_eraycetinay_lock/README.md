@@ -1,5 +1,5 @@
 ---
-title: custom_card_eraycetinay_lock
+title: Lock Card Custom-card
 hide:
   - toc
 ---

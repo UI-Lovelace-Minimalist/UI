@@ -1,5 +1,5 @@
 ---
-title: custom_card_heat_pump
+title: Heat Pump Custom-card
 hide:
   - toc
 ---

@@ -1,5 +1,5 @@
 ---
-title: custom_card_damix48_power_details
+title: Power Details Custom-card
 hide:
   - toc
 ---

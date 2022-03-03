@@ -1,5 +1,5 @@
 ---
-title: custom_card_bar_card
+title: Bar Card Custom-card
 hide:
   - toc
 ---
