@@ -1,5 +1,5 @@
 ---
-title: custom_card_afvalophaling
+title: Afvalophaling Custom-card
 hide:
   - toc
 ---

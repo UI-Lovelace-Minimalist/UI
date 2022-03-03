@@ -1,5 +1,5 @@
 ---
-title: card_media_player_chromecast_with_controls
+title: Mediaplayer Chromecast Custom-card
 hide:
   - toc
 ---
