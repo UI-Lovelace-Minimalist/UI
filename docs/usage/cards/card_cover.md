@@ -7,9 +7,14 @@ hide:
 
 ## Description
 
-![example-image](../../assets/img/ulm_cards/card_cover_buttons.png){ width="500" }
+![example-image](../../assets/img/ulm_cards/card_cover.png){ width="500" }
+![example-image](../../assets/img/ulm_cards/card_cover_controls.png){ width="500" }
+![example-image](../../assets/img/ulm_cards/card_cover_horizontal.png){ width="500" }
 
-With the `cover-card` you have the state of your cover and on the second line UP / PAUSE / DOWN to control it.
+With the `cover-card` you have the state of your cover. Optionnaly, on the second line, OPEN / PAUSE / CLOSE to control it and/or a slider to control position.
+
+!!! warning
+    This card has backward compatibilty with older template except custom name. It means variable `ulm_card_cover_buttons_name` must be replaced by `ulm_card_cover_name`.
 
 ## Variables
 
