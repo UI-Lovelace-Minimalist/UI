@@ -1,5 +1,5 @@
 ---
-title: custom_card_paddy_dwd_pollen
+title: DWD Pollen Custom-card
 hide:
   - toc
 ---
