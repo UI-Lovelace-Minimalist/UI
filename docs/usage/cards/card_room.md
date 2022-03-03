@@ -65,8 +65,8 @@ If you want to tweak this card a little bit more, below are some examples. The f
     template:
       - card_room
       - red_no_state
-    name: Bathroom
-    entity: light.bathroom
+    entity: light.baxthroom
+    name: "Bathroom"
     icon: mdi:shower-head
     tap_action:
       action: navigate

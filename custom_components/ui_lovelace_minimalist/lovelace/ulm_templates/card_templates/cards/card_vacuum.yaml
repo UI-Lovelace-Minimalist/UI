@@ -1,4 +1,5 @@
 ---
+### Card Vacuum ###
 card_vacuum:
   show_name: false
   show_icon: false

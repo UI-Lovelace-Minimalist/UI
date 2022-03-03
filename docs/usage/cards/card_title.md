@@ -16,7 +16,7 @@ Titles (and optionally subtitles) are used to seperate different areas in your d
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
 | name     |         | :material-check: | This is a main title (either title or subtitle is required) |
-|label|   | :material-check: | This is a subtitle (either title or subtitle is required) |
+|label |   | :material-check: | This is a subtitle (either title or subtitle is required) |
 
 ## Usage
 

@@ -30,7 +30,7 @@ The `card_graph` shows an entity with the actual state and a *min-graph-card* in
     template: card_graph
     variables:
       ulm_card_graph_color: "var(--google-blue)"
-      ulm_card_graph_name: Temperature Livingroom
+      ulm_card_graph_name: "Temperature Livingroom"
       ulm_card_graph_entity: sensor.livingroom_temperature
       ulm_card_graph_color2: "var(--google-green)"
       ulm_card_graph_entity2: sensor.bedgroom_temperature

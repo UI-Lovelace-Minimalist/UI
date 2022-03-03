@@ -26,7 +26,7 @@ The `card_navigate` is for navigating inside your HA dashboard(s).
   template: card_navigate
   variables:
     ulm_card_navigate_path: /ui-lovelace-minimalist/media
-    ulm_card_navigate_title: Media
+    ulm_card_navigate_title: "Media"
     ulm_card_navigate_icon: mdi:television
 ```
 

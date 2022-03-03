@@ -65,7 +65,7 @@ Copy the folder `custom_card_saxel_fan` to `config/minimalist-templates/`
 
 ```yaml
 - type: custom:button-card
-  template: custom_card_saxel_fan_blue
+  template: custom_card_saxel_fan
   entity: fan.smart_fan
   name: Fan
   variables:
@@ -77,7 +77,7 @@ Copy the folder `custom_card_saxel_fan` to `config/minimalist-templates/`
 
 ```yaml
 - type: custom:button-card
-  template: custom_card_saxel_fan
+  template: custom_card_saxel_fan_blue
   entity: fan.smart_fan
   name: Fan
   variables:

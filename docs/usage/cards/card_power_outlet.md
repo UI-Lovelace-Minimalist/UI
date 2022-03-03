@@ -24,10 +24,10 @@ This is the `power-outlet-card`. It shows you the state of a power outlet, and i
 ```yaml
 - type: 'custom:button-card'
   template: card_power_outlet
-  variables:
-    ulm_card_power_outlet_consumption_sensor: sensor.power_outlet_livingroom_consumption
   entity: switch.power_outlet_livingroom
   name: Power Outlet Livingroom
+  variables:
+    ulm_card_power_outlet_consumption_sensor: sensor.power_outlet_livingroom_consumption
 ```
 
 ??? note "Template Code"

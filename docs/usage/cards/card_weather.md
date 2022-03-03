@@ -26,7 +26,7 @@ This is a card based on simple-weather-card to show your weather.
 ## Usage
 
 ```yaml
-- type: "custom:button-card"
+- type: 'custom:button-card'
   template: card_weather
   entity: weather.my_local_weather
   variables:

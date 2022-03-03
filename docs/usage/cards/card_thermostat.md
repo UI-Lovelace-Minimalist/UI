@@ -45,7 +45,7 @@ This card merges the following one :
 ## Usage
 
 ```yaml
-- type: "custom:button-card"
+- type: 'custom:button-card'
   template: card_thermostat
   entity: climate.hvac
   variables:

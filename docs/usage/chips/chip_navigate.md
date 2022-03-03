@@ -23,7 +23,7 @@ This `chip` is a menu button with an icon using [mdi](https://materialdesignicon
 ## Usage
 
 ```yaml
-- type: "custom:button-card"
+- type: 'custom:button-card'
   template: chip_navigate
   label: 'Living Room'
   variables:
