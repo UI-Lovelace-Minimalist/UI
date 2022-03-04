@@ -12,7 +12,7 @@ card_person:
   triggers_update: "all"
   tap_action:
     action: "more-info"
-    entity: "[[[ return variables.ulm_card_person_entity; ]]]"
+    entity: "[[[ return entity.entity_id; ]]]"
   show_label: true
   show_name: true
   label: >
@@ -20,15 +20,15 @@ card_person:
       if (variables.ulm_address !== ''){
         return states[variables.ulm_address].state
       } else {
-        let state = states[variables.ulm_card_person_entity].state;
+        let state = states[entity.entity_id].state;
         return variables["ulm_person_state_" + state] ? variables["ulm_person_state_" + state] : state;
       }
     ]]]
-  name: "[[[ return states[variables.ulm_card_person_entity].attributes.friendly_name ]]]"
-  entity: "[[[ return variables.ulm_card_person_entity; ]]]"
+  name: "[[[ return states[entity.entity_id].attributes.friendly_name ]]]"
+  entity: "[[[ return entity.entity_id; ]]]"
   icon: "mdi:face-man"
   show_entity_picture: "[[[ return variables.ulm_card_person_use_entity_picture ]]]"
-  entity_picture: "[[[ return variables.ulm_card_person_use_entity_picture != false ? states[variables.ulm_card_person_entity].attributes.entity_picture\
+  entity_picture: "[[[ return variables.ulm_card_person_use_entity_picture != false ? states[entity.entity_id].attributes.entity_picture\
     \ : null ]]]"
   styles:
     icon:
@@ -62,7 +62,7 @@ card_person:
         - line-height: "14px"
         - background-color: >
             [[[
-              if (states[variables.ulm_card_person_entity].state !== 'home') {
+              if (states[entity.entity_id].state !== 'home') {
                 return "rgba(var(--color-green),1)";
               } else {
                 return "rgba(var(--color-blue),1)";
@@ -71,11 +71,11 @@ card_person:
   custom_fields:
     notification: >
       [[[
-        if (states[variables.ulm_card_person_entity].state !== 'home') {
-          if (states[variables.ulm_card_person_entity].state === states[variables.ulm_card_person_zone1]?.attributes?.friendly_name) {
+        if (states[entity.entity_id].state !== 'home') {
+          if (states[entity.entity_id].state === states[variables.ulm_card_person_zone1]?.attributes?.friendly_name) {
             var icon = states[variables.ulm_card_person_zone1].attributes.icon !== null ? states[variables.ulm_card_person_zone1].attributes.icon : 'mdi:help-circle'
             return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
-          } else if (states[variables.ulm_card_person_entity].state === states[variables.ulm_card_person_zone2]?.attributes?.friendly_name) {
+          } else if (states[entity.entity_id].state === states[variables.ulm_card_person_zone2]?.attributes?.friendly_name) {
             var icon = states[variables.ulm_card_person_zone2].attributes.icon !== null ? states[variables.ulm_card_person_zone2].attributes.icon : 'mdi:help-circle'
             return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
           } else {

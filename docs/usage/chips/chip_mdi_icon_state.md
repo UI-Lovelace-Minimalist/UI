@@ -15,19 +15,18 @@ This `chip` displays an icon using [mdi](https://materialdesignicons.com/) and `
 
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
-|ulm_chip_mdi_icon_state_entity     |         | :material-check: | `entity` to link |                  |
-|ulm_chip_mdi_icon_state_icon       |         | :material-close: | mdi:icon to display  |
-|ulm_chip_mdi_icon_state_icon_color | `primary-text-color` | :material-close: | Allow to change `icon` color |
-|ulm_chip_mdi_icon_state_label_color | `primary-text-color` | :material-close: | Allow to change `label` color |
+| entity     |         | :material-check: | `entity` to link |                  |
+| icon       |         | :material-close: | mdi:icon to display  |
+| ulm_chip_mdi_icon_state_icon_color | `primary-text-color` | :material-close: | Allow to change `icon` color |
+| ulm_chip_mdi_icon_state_label_color | `primary-text-color` | :material-close: | Allow to change `label` color |
 
 ## Usage
 
 ```yaml
 - type: "custom:button-card"
   template: chip_mdi_icon_state
-  variables:
-    ulm_chip_mdi_icon_state_entity: light.kitchen_lights
-    ulm_chip_mdi_icon_state_icon: mdi:lightbulb
+  entity: light.kitchen_lights
+  icon: mdi:lightbulb
 ```
 
 ??? note "Template Code"

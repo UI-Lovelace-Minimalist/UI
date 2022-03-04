@@ -1,8 +1,8 @@
 ---
 ### Card Cover With Buttons ###
 card_cover_buttons:
-  variables:
-    ulm_card_cover_buttons_name: "n/a"
+  show_name: false
+  show_icon: false
   triggers_update: "all"
   styles:
     grid:
@@ -24,8 +24,8 @@ card_cover_buttons:
           - "cover"
         tap_action:
           action: "more-info"
-        entity: "[[[ return variables.ulm_card_cover_buttons_entity ]]]"
-        name: "[[[ return variables.ulm_card_cover_buttons_name ]]]"
+        entity: "[[[ return entity.entity_id ]]]"
+        name: "[[[ return entity.attributes.friendly_name ]]]"
     item2:
       card:
         type: "custom:button-card"
@@ -44,7 +44,7 @@ card_cover_buttons:
                 action: "call-service"
                 service: "cover.close_cover"
                 service_data:
-                  entity_id: "[[[ return variables.ulm_card_cover_buttons_entity ]]]"
+                  entity_id: "[[[ return entity.entity_id ]]]"
               icon: "mdi:arrow-down"
           item2:
             card:
@@ -54,7 +54,7 @@ card_cover_buttons:
                 action: "call-service"
                 service: "cover.stop_cover"
                 service_data:
-                  entity_id: "[[[ return variables.ulm_card_cover_buttons_entity ]]]"
+                  entity_id: "[[[ return entity.entity_id ]]]"
               icon: "mdi:pause"
           item3:
             card:
@@ -69,5 +69,5 @@ card_cover_buttons:
                 action: "call-service"
                 service: "cover.open_cover"
                 service_data:
-                  entity_id: "[[[ return variables.ulm_card_cover_buttons_entity ]]]"
+                  entity_id: "[[[ return entity.entity_id ]]]"
               icon: "mdi:arrow-up"
