@@ -17,7 +17,7 @@ This card needs additional template sensors and a group.updaters sensor to work,
 
 - Author: AndyVRD - 2021
 - Special thanks to [basbruss](https://github.com/basbruss/UI)
-- Version: 1.0.1
+- Version: 1.0.2
 
 ## Changelog
 
@@ -29,6 +29,7 @@ Initial release
 <summary>1.0.1</summary>
 Added support for ulm_language variables
 </details>
+<details>
 <summary>1.0.2</summary>
 Updated capitalization of OS
 </details>
