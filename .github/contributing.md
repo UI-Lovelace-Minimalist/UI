@@ -5,8 +5,10 @@ The following is a set of guidelines to contribution to the Minimalist 'theme'. 
 ## Pull Requests
 
 For Pull Requeste we use for now two branches:
-    *`main`
-    * `release`
+
+- [`main`](https://github.com/UI-Lovelace-Minimalist/UI)
+- [`release`](https://github.com/UI-Lovelace-Minimalist/UI/tree/release)
+
 Both branches handle different types of pull requests. <br>
 The `main` branch is for PR related to "Custom-cards" and bugfixes of documentation. <br>
 The `release` branch is for all HACS-release related requests.
