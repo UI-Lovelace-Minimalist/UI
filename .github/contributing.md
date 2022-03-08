@@ -1,6 +1,6 @@
 # Contributing to UI Lovelace Minimalist
 
-The following is a set of guidelines to contribution to the Minimalist 'theme'. You always are free to open an Issue or to make a PR to fix a bug, add a card or for something else.
+The following is a set of guidelines to contribution to the Minimalist 'theme'. You are always free to open an Issue or to make a PR to fix a bug, add a card or for something else.
 
 ## Pull Requests
 
