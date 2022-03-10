@@ -43,27 +43,27 @@ Furthermore, you need to add the `input_boolean` to the variable `ulm_card_welco
     ulm_card_welcome_scenes_collapse: input_boolean.<Your_boolean> #OPTIONAl
     ulm_weather: "weather.YOUR_WEATHERPROVIDER"
     entity_1:
-      entity_id: "script.YOUR_SCRIPT"
+      entity_id: "<YOUR_ENTITY>"
       icon: "mdi:YOUR_ICON" #OPTIONAL
       name: "YOUR_NAME" #OPTIONAL
       color: "blue"
     entity_2:
-      entity_id: "script.YOUR_SCRIPT"
+      entity_id: "<YOUR_ENTITY>"
       icon: "mdi:YOUR_ICON" #OPTIONAL
       name: "YOUR_NAME" #OPTIONAL
       color: "red"
     entity_3:
-      entity_id: "script.YOUR_SCRIPT"
+      entity_id: "<YOUR_ENTITY>"
       icon: "mdi:YOUR_ICON" #OPTIONAL
       name: "YOUR_NAME" #OPTIONAL
       color: "green"
     entity_4:
-      entity_id: "script.YOUR_SCRIPT"
+      entity_id: "<YOUR_ENTITY>"
       icon: "mdi:YOUR_ICON" #OPTIONAL
       name: "YOUR_NAME" #OPTIONAL
       color: "purple"
     entity_5:
-      entity_id: "script.YOUR_SCRIPT"
+      entity_id: "<YOUR_ENTITY>"
       icon: "mdi:YOUR_ICON" #OPTIONAL
       name: "YOUR_NAME" #OPTIONAL
       color: "yellow"
@@ -98,23 +98,23 @@ Furthermore, you need to add the `input_boolean` to the variable `ulm_card_welco
     ulm_card_welcome_scenes_collapse: input_boolean.<Your_boolean> #OPTIONAl
     ulm_weather: "weather.YOUR_WEATHERPROVIDER"
     entity_1:
-      entity_id: "script.YOUR_SCRIPT"
+      entity_id: "<YOUR_ENTITY>"
       icon: "mdi:YOUR_ICON" #OPTIONAL
       name: "YOUR_NAME" #OPTIONAL
     entity_2:
-      entity_id: "script.YOUR_SCRIPT"
+      entity_id: "<YOUR_ENTITY>"
       icon: "mdi:YOUR_ICON" #OPTIONAL
       name: "YOUR_NAME" #OPTIONAL
     entity_3:
-      entity_id: "script.YOUR_SCRIPT"
+      entity_id: "<YOUR_ENTITY>"
       icon: "mdi:YOUR_ICON" #OPTIONAL
       name: "YOUR_NAME" #OPTIONAL
     entity_4:
-      entity_id: "script.YOUR_SCRIPT"
+      entity_id: "<YOUR_ENTITY>"
       icon: "mdi:YOUR_ICON" #OPTIONAL
       name: "YOUR_NAME" #OPTIONAL
     entity_5:
-      entity_id: "script.YOUR_SCRIPT"
+      entity_id: "<YOUR_ENTITY>"
       icon: "mdi:YOUR_ICON" #OPTIONAL
       name: "YOUR_NAME" #OPTIONAL
 
