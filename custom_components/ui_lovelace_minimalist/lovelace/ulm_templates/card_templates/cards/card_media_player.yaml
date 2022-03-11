@@ -8,6 +8,7 @@ card_media_player:
     ulm_card_media_player_icon: false
     ulm_card_media_player_enable_art: false
     ulm_card_media_player_enable_controls: false
+    ulm_card_media_player_enable_volume_slider: false
     ulm_card_media_player_player_controls_entity: "[[[ return entity.entity_id ]]]"
     ulm_card_media_player_enable_popup: false
   triggers_update: "all"
@@ -37,16 +38,26 @@ card_media_player:
     grid:
       - grid-template-areas: |
           [[[
-            return variables.ulm_card_media_player_enable_controls
-              ? "'item1' 'item2'"
-              : "'item1'"
+            var areas = "'item1'";
+            if (variables.ulm_card_media_player_enable_controls){
+              areas = areas + " 'item2'";
+            }
+            if (variables.ulm_card_media_player_enable_volume_slider){
+              areas = areas + " 'item3'";
+            }
+            return areas;
           ]]]
       - grid-template-columns: "1fr"
       - grid-template-rows: |
           [[[
-            return variables.ulm_card_media_player_enable_controls
-              ? "min-content min-content"
-              : "min-content"
+            var rows = "min-content";
+            if (variables.ulm_card_media_player_enable_controls){
+              rows = rows + " min-content";
+            }
+            if (variables.ulm_card_media_player_enable_volume_slider){
+              rows = rows + " min-content";
+            }
+            return rows;
           ]]]
       - row-gap: "12px"
     card:
@@ -65,6 +76,13 @@ card_media_player:
         - display: |
             [[[
               return variables.ulm_card_media_player_enable_controls
+                ? "block"
+                : "none"
+            ]]]
+      item3:
+        - display: |
+            [[[
+              return variables.ulm_card_media_player_enable_volume_slider
                 ? "block"
                 : "none"
             ]]]
@@ -358,3 +376,33 @@ card_media_player:
                         ? 'white'
                         : 'rgba(var(--color-theme), 0.9)'
                       ]]]
+    item3:
+      card:
+        type: "custom:my-slider"
+        entity: "[[[ return entity.entity_id ]]]"
+        radius: "14px"
+        height: "42px"
+        mainSliderColor: |
+                      [[[
+                        return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
+                        ? 'rgba(0, 0, 0, 0.2)'
+                        : 'rgba(var(--color-blue),1)'
+                      ]]]
+        secondarySliderColor: |
+                      [[[
+                        return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
+                        ? 'rgba(0, 0, 0, 0.1)'
+                        : 'rgba(var(--color-blue),0.2)'
+                      ]]]
+        mainSliderColorOff: "rgba(var(--color-theme),0.05)"
+        secondarySliderColorOff: "rgba(var(--color-theme),0.05)"
+        thumbHorizontalPadding: "0px"
+        thumbVerticalPadding: "0px"
+        thumbWidth: "0px"
+        card_mod:
+        style: |
+          ha-card {
+            border-radius: 14px;
+            background-color: transparent;
+            box-shadow: none;
+          }
