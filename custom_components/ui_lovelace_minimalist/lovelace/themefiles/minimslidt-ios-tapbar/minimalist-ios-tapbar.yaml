@@ -1,7 +1,7 @@
 ---
 minimalist-ios-tapbar:
-#version 1.0.0
-#By LRvdLinden
+  # version 1.0.0
+  # By LRvdLinden
   # Journal
   state-icon-color: "rgb(var(--color-theme))"
   border-radius: "20px"
@@ -13,7 +13,6 @@ minimalist-ios-tapbar:
   accent-color: "var(--google-yellow)"
   card-mod-theme: "minimalist-ios-tapbar"
   header-height: "97px"
- 
 
   card-mod-view-yaml: |
     "*:first-child$": |
@@ -204,4 +203,3 @@ minimalist-ios-tapbar:
       mini-media-player-accent-color: "var(--google-blue)"
       # Journal
       state-icon-color: "rgb(var(--color-theme))"
-      
