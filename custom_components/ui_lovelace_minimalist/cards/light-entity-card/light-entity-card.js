@@ -9028,13 +9028,13 @@ found at http://polymer.github.io/PATENTS.txt
         </div>
 
         <div class='entities'>
-          <paper-dropdown-menu 
+          <paper-dropdown-menu
             label="Entity"
-            @value-changed="${this.configChanged}" 
+            @value-changed="${this.configChanged}"
             .configValue="${"entity"}"
           >
-            <paper-listbox 
-              slot="dropdown-content" 
+            <paper-listbox
+              slot="dropdown-content"
               .selected="${this.entityOptions.indexOf(this._config.entity)}"
             >
               ${e}
@@ -9067,7 +9067,7 @@ found at http://polymer.github.io/PATENTS.txt
           <div class='checkbox-options'>
             <ha-formfield label="Show Color Wheel">
               <ha-checkbox
-                @change="${this.checkboxConfigChanged}" 
+                @change="${this.checkboxConfigChanged}"
                 .checked=${this._config.color_wheel}
                 .value="${"color_wheel"}"
               ></ha-checkbox>

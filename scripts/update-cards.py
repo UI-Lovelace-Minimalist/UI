@@ -21,9 +21,6 @@ for card, src in cards:
         r.raise_for_status()
 
         open(f"custom_components/ui_lovelace_minimalist/cards/{card}/{card}.js", 'wb').write(r.content)
-    except Exception as e: 
+    except Exception as e:
         print(f"ERROR: {e}")
         exit(1)
-        
-
-

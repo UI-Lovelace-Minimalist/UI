@@ -54,10 +54,10 @@
 <script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-4Tg4dsOGatitnO1t/M8XDSD4mAEsBmkXr9NpHJ17oAF5ptoIMLWN/N96wTJRW/ogOjwlcmoTyJbGp7hLsmqShg==" src="https://github.githubassets.com/assets/9976-e1383876c386.js"></script>
 <script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-FG4BsLbFfJh2fhIkJCsIjO8DEpNLso1Sd/Lo2lut+cGacaZukHjvxM4HmCazpqQSjXzAA6GepakHbjngVLCSog==" src="https://github.githubassets.com/assets/repositories-146e01b0b6c5.js"></script>
 <script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-gPeKo6ftR3gkx9TZJ+kZIwlVU1R7aElDIyhhAelKa5ON68Xo3vn8cqMUKmPGHlCFneKCva3CAp5LmHBp+js38A==" src="https://github.githubassets.com/assets/diffs-80f78aa3a7ed.js"></script>
-  
+
 
   <meta name="viewport" content="width=device-width">
-  
+
   <title>my-cards/my-cards.js at main · AnthonMS/my-cards · GitHub</title>
     <meta name="description" content="Bundle of my custom Lovalace cards for Home Assistant. Includes: my-slider - my-cards/my-cards.js at main · AnthonMS/my-cards">
     <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub">
@@ -66,14 +66,14 @@
   <meta name="apple-itunes-app" content="app-id=1477376905" />
     <meta name="twitter:image:src" content="https://opengraph.githubassets.com/ef3dcc03b6edeba547a833ab33dc85e04e328bf286e79447ee223c9334358f40/AnthonMS/my-cards" /><meta name="twitter:site" content="@github" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="my-cards/my-cards.js at main · AnthonMS/my-cards" /><meta name="twitter:description" content="Bundle of my custom Lovalace cards for Home Assistant. Includes: my-slider - my-cards/my-cards.js at main · AnthonMS/my-cards" />
     <meta property="og:image" content="https://opengraph.githubassets.com/ef3dcc03b6edeba547a833ab33dc85e04e328bf286e79447ee223c9334358f40/AnthonMS/my-cards" /><meta property="og:image:alt" content="Bundle of my custom Lovalace cards for Home Assistant. Includes: my-slider - my-cards/my-cards.js at main · AnthonMS/my-cards" /><meta property="og:image:width" content="1200" /><meta property="og:image:height" content="600" /><meta property="og:site_name" content="GitHub" /><meta property="og:type" content="object" /><meta property="og:title" content="my-cards/my-cards.js at main · AnthonMS/my-cards" /><meta property="og:url" content="https://github.com/AnthonMS/my-cards" /><meta property="og:description" content="Bundle of my custom Lovalace cards for Home Assistant. Includes: my-slider - my-cards/my-cards.js at main · AnthonMS/my-cards" />
-    
 
 
 
-    
+
+
 
   <link rel="assets" href="https://github.githubassets.com/">
-  
+
 
   <meta name="request-id" content="9280:90E7:C176:1A4CD:6230E1A0" data-pjax-transient="true"/><meta name="html-safe-nonce" content="b511c282f8d4ae27d6e04b5a19e77c25352e9c7208463ed64c23a9d28c23082a" data-pjax-transient="true"/><meta name="visitor-payload" content="eyJyZWZlcnJlciI6IiIsInJlcXVlc3RfaWQiOiI5MjgwOjkwRTc6QzE3NjoxQTRDRDo2MjMwRTFBMCIsInZpc2l0b3JfaWQiOiI2NTM4NzA5MDU2NzgxNTU4NCIsInJlZ2lvbl9lZGdlIjoiZnJhIiwicmVnaW9uX3JlbmRlciI6ImZyYSJ9" data-pjax-transient="true"/><meta name="visitor-hmac" content="442afa4cf23358e1c591aa80f49fbb17212058507916f3a84a0292c76c9d581f" data-pjax-transient="true"/>
 
@@ -82,7 +82,7 @@
 
   <meta name="github-keyboard-shortcuts" content="repository,source-code" data-pjax-transient="true" />
 
-  
+
 
   <meta name="selected-link" value="repo_source" data-pjax-transient>
 
@@ -95,12 +95,12 @@
 
   <meta name="analytics-location" content="/&lt;user-name&gt;/&lt;repo-name&gt;/blob/show" data-pjax-transient="true" />
 
-  
 
 
 
 
-  
+
+
 
       <meta name="hostname" content="github.com">
     <meta name="user-login" content="">
@@ -117,9 +117,9 @@
   <meta http-equiv="x-pjax-csp-version" content="ad743a89372c421844ffcba4fd906096b07b7fd7c2a57617ff2d2f0fdf463e56" data-turbo-track="reload">
   <meta http-equiv="x-pjax-css-version" content="e7a65c9572b3bd3c6d2701286de3dc3029c1bf6266c08a65778cf3caeedd59e4" data-turbo-track="reload">
   <meta http-equiv="x-pjax-js-version" content="4bd7b612c0eb44a68726d92bb2f2cd8314b87f28b59ac2a78004699154c22d4e" data-turbo-track="reload">
-  
 
-    
+
+
   <meta name="go-import" content="github.com/AnthonMS/my-cards git https://github.com/AnthonMS/my-cards.git">
 
   <meta name="octolytics-dimension-user_id" content="23500433" /><meta name="octolytics-dimension-user_login" content="AnthonMS" /><meta name="octolytics-dimension-repository_id" content="399108901" /><meta name="octolytics-dimension-repository_nwo" content="AnthonMS/my-cards" /><meta name="octolytics-dimension-repository_public" content="true" /><meta name="octolytics-dimension-repository_is_fork" content="false" /><meta name="octolytics-dimension-repository_network_root_id" content="399108901" /><meta name="octolytics-dimension-repository_network_root_nwo" content="AnthonMS/my-cards" />
@@ -148,17 +148,17 @@
   </head>
 
   <body class="logged-out env-production page-responsive page-blob" style="word-wrap: break-word;">
-    
+
 
     <div class="position-relative js-header-wrapper ">
       <a href="#start-of-content" class="px-2 py-4 color-bg-accent-emphasis color-fg-on-emphasis show-on-focus js-skip-to-content">Skip to content</a>
       <span data-view-component="true" class="progress-pjax-loader js-pjax-loader-bar Progress position-fixed width-full">
     <span style="width: 0%;" data-view-component="true" class="Progress-item progress-pjax-loader-bar left-0 top-0 color-bg-accent-emphasis"></span>
-</span>      
-      
+</span>
 
 
-        
+
+
 
             <header class="Header-old header-logged-out js-details-container Details position-relative f4 py-2" role="banner">
   <div class="container-xl d-lg-flex flex-items-center p-responsive">
@@ -170,7 +170,7 @@
       </a>
 
         <div class="d-lg-none css-truncate css-truncate-target width-fit p-2">
-          
+
 
         </div>
 
@@ -391,7 +391,7 @@
 
       <div class="d-lg-flex flex-items-center px-3 px-lg-0 text-center text-lg-left">
           <div class="d-lg-flex min-width-0 mb-3 mb-lg-0">
-            
+
 
 
 
@@ -425,9 +425,9 @@
 
 
           <div class="Box position-absolute overflow-hidden d-none jump-to-suggestions js-jump-to-suggestions-container">
-            
+
 <ul class="d-none js-jump-to-suggestions-template-container">
-  
+
 
 <li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item js-jump-to-suggestion" role="option">
   <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" href="" data-item-type="suggestion">
@@ -474,7 +474,7 @@
 </ul>
 
 <ul id="jump-to-results" role="listbox" class="p-0 m-0 js-navigation-container jump-to-suggestions-results-container js-jump-to-suggestions-results-container">
-  
+
 
 <li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item js-jump-to-scoped-search d-none" role="option">
   <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" href="" data-item-type="scoped_search">
@@ -512,7 +512,7 @@
   </a>
 </li>
 
-  
+
 
 <li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item js-jump-to-owner-scoped-search d-none" role="option">
   <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" href="" data-item-type="owner_scoped_search">
@@ -550,7 +550,7 @@
   </a>
 </li>
 
-  
+
 
 <li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item js-jump-to-global-search d-none" role="option">
   <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" href="" data-item-type="global_search">
@@ -640,7 +640,7 @@
     <path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z"></path>
 </svg>
     </button>
-    
+
       <div>{{ message }}</div>
 
   </div>
@@ -649,7 +649,7 @@
 </div>
 
 
-    
+
 
   <include-fragment class="js-notification-shelf-include-fragment" data-base-src="https://github.com/notifications/beta/shelf"></include-fragment>
 
@@ -665,9 +665,9 @@
   >
         <div itemscope itemtype="http://schema.org/SoftwareSourceCode" class="">
     <main id="js-repo-pjax-container" data-pjax-container >
-      
 
-    
+
+
 
 
 
@@ -698,7 +698,7 @@
 
           <ul class="pagehead-actions flex-shrink-0 d-none d-md-inline" style="padding: 2px 0;">
 
-  
+
 
   <li>
       <a href="/login?return_to=%2FAnthonMS%2Fmy-cards" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;notification subscription menu watch&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;originating_url&quot;:&quot;https://github.com/AnthonMS/my-cards/blob/main/dist/my-cards.js&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="d1904c20b5f82dadb374ade4863487d72d8ffcf2240834c7ee5e62994d168adb" aria-label="You must be signed in to change notification settings" data-view-component="true" class="tooltipped tooltipped-s btn-sm btn">  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-bell mr-2">
@@ -728,7 +728,7 @@
 </button></div>
   </li>
 
-  
+
 
 </ul>
 
@@ -738,13 +738,13 @@
 </div>
 
 
-        
+
 <nav data-pjax="#js-repo-pjax-container" aria-label="Repository" data-view-component="true" class="js-repo-nav js-sidenav-container-pjax js-responsive-underlinenav overflow-hidden UnderlineNav px-3 px-md-4 px-lg-5">
 
   <ul data-view-component="true" class="UnderlineNav-body list-style-none">
       <li data-view-component="true" class="d-inline-flex">
   <a id="code-tab" href="/AnthonMS/my-cards" data-tab-item="i0code-tab" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches repo_packages repo_deployments /AnthonMS/my-cards" data-pjax="#repo-content-pjax-container" data-hotkey="g c" data-ga-click="Repository, Navigation click, Code tab" aria-current="page" data-view-component="true" class="UnderlineNav-item hx_underlinenav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item selected">
-    
+
                   <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-code UnderlineNav-octicon d-none d-sm-inline">
     <path fill-rule="evenodd" d="M4.72 3.22a.75.75 0 011.06 1.06L2.06 8l3.72 3.72a.75.75 0 11-1.06 1.06L.47 8.53a.75.75 0 010-1.06l4.25-4.25zm6.56 0a.75.75 0 10-1.06 1.06L13.94 8l-3.72 3.72a.75.75 0 101.06 1.06l4.25-4.25a.75.75 0 000-1.06l-4.25-4.25z"></path>
 </svg>
@@ -752,11 +752,11 @@
             <span id="code-repo-tab-count" data-pjax-replace="" title="Not available" data-view-component="true" class="Counter"></span>
 
 
-    
+
 </a></li>
       <li data-view-component="true" class="d-inline-flex">
   <a id="issues-tab" href="/AnthonMS/my-cards/issues" data-tab-item="i1issues-tab" data-selected-links="repo_issues repo_labels repo_milestones /AnthonMS/my-cards/issues" data-pjax="#repo-content-pjax-container" data-hotkey="g i" data-ga-click="Repository, Navigation click, Issues tab" data-view-component="true" class="UnderlineNav-item hx_underlinenav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
-    
+
                   <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-issue-opened UnderlineNav-octicon d-none d-sm-inline">
     <path d="M8 9.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path><path fill-rule="evenodd" d="M8 0a8 8 0 100 16A8 8 0 008 0zM1.5 8a6.5 6.5 0 1113 0 6.5 6.5 0 01-13 0z"></path>
 </svg>
@@ -764,11 +764,11 @@
             <span id="issues-repo-tab-count" data-pjax-replace="" title="7" data-view-component="true" class="Counter">7</span>
 
 
-    
+
 </a></li>
       <li data-view-component="true" class="d-inline-flex">
   <a id="pull-requests-tab" href="/AnthonMS/my-cards/pulls" data-tab-item="i2pull-requests-tab" data-selected-links="repo_pulls checks /AnthonMS/my-cards/pulls" data-pjax="#repo-content-pjax-container" data-hotkey="g p" data-ga-click="Repository, Navigation click, Pull requests tab" data-view-component="true" class="UnderlineNav-item hx_underlinenav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
-    
+
                   <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-git-pull-request UnderlineNav-octicon d-none d-sm-inline">
     <path fill-rule="evenodd" d="M7.177 3.073L9.573.677A.25.25 0 0110 .854v4.792a.25.25 0 01-.427.177L7.177 3.427a.25.25 0 010-.354zM3.75 2.5a.75.75 0 100 1.5.75.75 0 000-1.5zm-2.25.75a2.25 2.25 0 113 2.122v5.256a2.251 2.251 0 11-1.5 0V5.372A2.25 2.25 0 011.5 3.25zM11 2.5h-1V4h1a1 1 0 011 1v5.628a2.251 2.251 0 101.5 0V5A2.5 2.5 0 0011 2.5zm1 10.25a.75.75 0 111.5 0 .75.75 0 01-1.5 0zM3.75 12a.75.75 0 100 1.5.75.75 0 000-1.5z"></path>
 </svg>
@@ -776,11 +776,11 @@
             <span id="pull-requests-repo-tab-count" data-pjax-replace="" title="0" hidden="hidden" data-view-component="true" class="Counter">0</span>
 
 
-    
+
 </a></li>
       <li data-view-component="true" class="d-inline-flex">
   <a id="actions-tab" href="/AnthonMS/my-cards/actions" data-tab-item="i3actions-tab" data-selected-links="repo_actions /AnthonMS/my-cards/actions" data-pjax="#repo-content-pjax-container" data-hotkey="g a" data-ga-click="Repository, Navigation click, Actions tab" data-view-component="true" class="UnderlineNav-item hx_underlinenav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
-    
+
                   <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-play UnderlineNav-octicon d-none d-sm-inline">
     <path fill-rule="evenodd" d="M1.5 8a6.5 6.5 0 1113 0 6.5 6.5 0 01-13 0zM8 0a8 8 0 100 16A8 8 0 008 0zM6.379 5.227A.25.25 0 006 5.442v5.117a.25.25 0 00.379.214l4.264-2.559a.25.25 0 000-.428L6.379 5.227z"></path>
 </svg>
@@ -788,11 +788,11 @@
             <span id="actions-repo-tab-count" data-pjax-replace="" title="Not available" data-view-component="true" class="Counter"></span>
 
 
-    
+
 </a></li>
       <li data-view-component="true" class="d-inline-flex">
   <a id="projects-tab" href="/AnthonMS/my-cards/projects?type=beta" data-tab-item="i4projects-tab" data-selected-links="repo_projects new_repo_project repo_project /AnthonMS/my-cards/projects?type=beta" data-pjax="#repo-content-pjax-container" data-hotkey="g b" data-ga-click="Repository, Navigation click, Projects tab" data-view-component="true" class="UnderlineNav-item hx_underlinenav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
-    
+
                   <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-table UnderlineNav-octicon d-none d-sm-inline">
     <path fill-rule="evenodd" d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v3.585a.746.746 0 010 .83v8.085A1.75 1.75 0 0114.25 16H6.309a.748.748 0 01-1.118 0H1.75A1.75 1.75 0 010 14.25V6.165a.746.746 0 010-.83V1.75zM1.5 6.5v7.75c0 .138.112.25.25.25H5v-8H1.5zM5 5H1.5V1.75a.25.25 0 01.25-.25H5V5zm1.5 1.5v8h7.75a.25.25 0 00.25-.25V6.5h-8zm8-1.5h-8V1.5h7.75a.25.25 0 01.25.25V5z"></path>
 </svg>
@@ -800,11 +800,11 @@
             <span id="projects-repo-tab-count" data-pjax-replace="" title="0" hidden="hidden" data-view-component="true" class="Counter">0</span>
 
 
-    
+
 </a></li>
       <li data-view-component="true" class="d-inline-flex">
   <a id="wiki-tab" href="/AnthonMS/my-cards/wiki" data-tab-item="i5wiki-tab" data-selected-links="repo_wiki /AnthonMS/my-cards/wiki" data-pjax="#repo-content-pjax-container" data-hotkey="g w" data-ga-click="Repository, Navigation click, Wikis tab" data-view-component="true" class="UnderlineNav-item hx_underlinenav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
-    
+
                   <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-book UnderlineNav-octicon d-none d-sm-inline">
     <path fill-rule="evenodd" d="M0 1.75A.75.75 0 01.75 1h4.253c1.227 0 2.317.59 3 1.501A3.744 3.744 0 0111.006 1h4.245a.75.75 0 01.75.75v10.5a.75.75 0 01-.75.75h-4.507a2.25 2.25 0 00-1.591.659l-.622.621a.75.75 0 01-1.06 0l-.622-.621A2.25 2.25 0 005.258 13H.75a.75.75 0 01-.75-.75V1.75zm8.755 3a2.25 2.25 0 012.25-2.25H14.5v9h-3.757c-.71 0-1.4.201-1.992.572l.004-7.322zm-1.504 7.324l.004-5.073-.002-2.253A2.25 2.25 0 005.003 2.5H1.5v9h3.757a3.75 3.75 0 011.994.574z"></path>
 </svg>
@@ -812,22 +812,22 @@
             <span id="wiki-repo-tab-count" data-pjax-replace="" title="Not available" data-view-component="true" class="Counter"></span>
 
 
-    
+
 </a></li>
       <li data-view-component="true" class="d-inline-flex">
   <a id="security-tab" href="/AnthonMS/my-cards/security" data-tab-item="i6security-tab" data-selected-links="security overview alerts policy token_scanning code_scanning /AnthonMS/my-cards/security" data-pjax="#repo-content-pjax-container" data-hotkey="g s" data-ga-click="Repository, Navigation click, Security tab" data-view-component="true" class="UnderlineNav-item hx_underlinenav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
-    
+
                   <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-shield UnderlineNav-octicon d-none d-sm-inline">
     <path fill-rule="evenodd" d="M7.467.133a1.75 1.75 0 011.066 0l5.25 1.68A1.75 1.75 0 0115 3.48V7c0 1.566-.32 3.182-1.303 4.682-.983 1.498-2.585 2.813-5.032 3.855a1.7 1.7 0 01-1.33 0c-2.447-1.042-4.049-2.357-5.032-3.855C1.32 10.182 1 8.566 1 7V3.48a1.75 1.75 0 011.217-1.667l5.25-1.68zm.61 1.429a.25.25 0 00-.153 0l-5.25 1.68a.25.25 0 00-.174.238V7c0 1.358.275 2.666 1.057 3.86.784 1.194 2.121 2.34 4.366 3.297a.2.2 0 00.154 0c2.245-.956 3.582-2.104 4.366-3.298C13.225 9.666 13.5 8.36 13.5 7V3.48a.25.25 0 00-.174-.237l-5.25-1.68zM9 10.5a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.75a.75.75 0 10-1.5 0v3a.75.75 0 001.5 0v-3z"></path>
 </svg>
           <span data-content="Security">Security</span>
             <include-fragment src="/AnthonMS/my-cards/security/overall-count" accept="text/fragment+html"></include-fragment>
 
-    
+
 </a></li>
       <li data-view-component="true" class="d-inline-flex">
   <a id="insights-tab" href="/AnthonMS/my-cards/pulse" data-tab-item="i7insights-tab" data-selected-links="repo_graphs repo_contributors dependency_graph dependabot_updates pulse people community /AnthonMS/my-cards/pulse" data-pjax="#repo-content-pjax-container" data-ga-click="Repository, Navigation click, Insights tab" data-view-component="true" class="UnderlineNav-item hx_underlinenav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
-    
+
                   <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-graph UnderlineNav-octicon d-none d-sm-inline">
     <path fill-rule="evenodd" d="M1.5 1.75a.75.75 0 00-1.5 0v12.5c0 .414.336.75.75.75h14.5a.75.75 0 000-1.5H1.5V1.75zm14.28 2.53a.75.75 0 00-1.06-1.06L10 7.94 7.53 5.47a.75.75 0 00-1.06 0L3.22 8.72a.75.75 0 001.06 1.06L7 7.06l2.47 2.47a.75.75 0 001.06 0l5.25-5.25z"></path>
 </svg>
@@ -835,7 +835,7 @@
             <span id="insights-repo-tab-count" data-pjax-replace="" title="Not available" data-view-component="true" class="Counter"></span>
 
 
-    
+
 </a></li>
 </ul>
     <div style="visibility:hidden;" data-view-component="true" class="UnderlineNav-actions js-responsive-underlinenav-overflow position-absolute pr-3 pr-md-4 pr-lg-5 right-0">      <details data-view-component="true" class="details-overlay details-reset position-relative">
@@ -847,7 +847,7 @@
           </div>
 </summary>
   <div data-view-component="true">          <details-menu role="menu" data-view-component="true" class="dropdown-menu dropdown-menu-sw">
-  
+
             <ul>
                 <li data-menu-item="i0code-tab" hidden>
                   <a role="menuitem" class="js-selected-navigation-item selected dropdown-item" aria-current="page" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches repo_packages repo_deployments /AnthonMS/my-cards" href="/AnthonMS/my-cards">
@@ -893,25 +893,25 @@
 <div class="clearfix new-discussion-timeline container-xl px-3 px-md-4 px-lg-5">
   <div id="repo-content-pjax-container" class="repository-content " >
 
-    
-    
 
 
-    
-      
-  
-  
+
+
+
+
+
+
 <div>
-  
 
 
 
 
-    
+
+
 <a class="d-none js-permalink-shortcut" data-hotkey="y" href="/AnthonMS/my-cards/blob/8064713ee152e1358269fd1d564bd9be30424e35/dist/my-cards.js">Permalink</a>
 
 <div class="d-flex flex-items-start flex-shrink-0 pb-3 flex-wrap flex-md-nowrap flex-justify-between flex-md-justify-start">
-  
+
 <div class="position-relative">
   <details class="details-reset details-overlay mr-0 mb-0 " id="branch-select-menu">
     <summary class="btn css-truncate"
@@ -924,7 +924,7 @@
       <span class="dropdown-caret"></span>
     </summary>
 
-      
+
 <div class="SelectMenu">
   <div class="SelectMenu-modal">
     <header class="SelectMenu-header">
@@ -965,7 +965,7 @@
               focus-list:ref-selector#focusFirstListMember
             "
             query-endpoint="/AnthonMS/my-cards/refs"
-            
+
             cache-key="v0:1629724497.366225"
             current-committish="bWFpbg=="
             default-branch="bWFpbg=="
@@ -2539,13 +2539,13 @@
         <li class="dropdown-divider" role="none"></li>
         <li>
           <clipboard-copy data-toggle-for="blob-more-options-details" aria-label="Copy path" value="dist/my-cards.js" data-view-component="true" class="dropdown-item cursor-pointer">
-    
+
             Copy path
 
 </clipboard-copy>        </li>
         <li>
           <clipboard-copy data-toggle-for="blob-more-options-details" aria-label="Copy permalink" value="https://github.com/AnthonMS/my-cards/blob/8064713ee152e1358269fd1d564bd9be30424e35/dist/my-cards.js" data-view-component="true" class="dropdown-item cursor-pointer">
-    
+
             <span class="d-flex flex-items-baseline">
               <span class="flex-auto">Copy permalink</span>
             </span>
@@ -2561,8 +2561,8 @@
 
     <div id="spoof-warning" class="mt-0 pb-3" hidden aria-hidden>
   <div data-view-component="true" class="flash flash-warn mt-0 clearfix">
-  
-  
+
+
     <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert float-left mt-1">
     <path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path>
 </svg>
@@ -2570,7 +2570,7 @@
       <div class="overflow-hidden">This commit does not belong to any branch on this repository, and may belong to a fork outside of the repository.</div>
 
 
-  
+
 </div></div>
 
     <include-fragment src="/AnthonMS/my-cards/spoofed_commit_check/8064713ee152e1358269fd1d564bd9be30424e35" data-test-selector="spoofed-commit-check"></include-fragment>
@@ -2594,12 +2594,12 @@
 
 
 
-  
+
     <div data-target="readme-toc.content" class="Box mt-3 position-relative">
-      
+
   <div
     class="Box-header js-blob-header py-2 pr-2 d-flex flex-shrink-0 flex-md-row flex-items-center"
-    
+
   >
 
 
@@ -2611,7 +2611,7 @@
   </div>
 
   <div class="d-flex py-1 py-md-0 flex-auto flex-order-1 flex-md-order-2 flex-sm-grow-0 flex-justify-between hide-sm hide-md">
-      
+
 
     <div class="BtnGroup">
       <a data-permalink-href="/AnthonMS/my-cards/raw/8064713ee152e1358269fd1d564bd9be30424e35/dist/my-cards.js" href="/AnthonMS/my-cards/raw/main/dist/my-cards.js" id="raw-url" data-view-component="true" class="js-permalink-replaceable-link btn-sm btn BtnGroup-item">  Raw
@@ -2629,7 +2629,7 @@
 </svg>
           </a>
 
-        
+
           <a href="/login?return_to=https%3A%2F%2Fgithub.com%2FAnthonMS%2Fmy-cards%2Fblob%2Fmain%2Fdist%2Fmy-cards.js" class="btn-octicon disabled tooltipped tooltipped-nw"
             aria-label="You must be signed in to make or propose changes">
             <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-pencil">
@@ -2681,10 +2681,10 @@
 </div>
 
 
-      
+
   <div itemprop="text" class="Box-body p-0 blob-wrapper data type-javascript  gist-border-0">
 
-      
+
 <div class="js-check-bidi js-blob-code-container blob-code-content">
 
   <template class="js-file-alert-template">
@@ -2692,7 +2692,7 @@
   <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
     <path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path>
 </svg>
-  
+
     <span>
       This file contains bidirectional Unicode text that may be interpreted or compiled differently than what appears below. To review, open the file in an editor that reveals hidden Unicode characters.
       <a href="https://github.co/hiddenchars" target="_blank">Learn more about bidirectional Unicode characters</a>
@@ -4970,7 +4970,7 @@
     </div>
 
 
-  
+
 
   <details class="details-reset details-overlay details-overlay-dark" id="jumpto-line-details-dialog">
     <summary data-hotkey="l" aria-label="Jump to line"></summary>
@@ -5100,4 +5100,3 @@
 
   </body>
 </html>
-

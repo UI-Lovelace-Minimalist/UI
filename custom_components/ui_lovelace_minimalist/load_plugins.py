@@ -49,10 +49,7 @@ def load_plugins(hass: HomeAssistant, ulm: UlmBase):
 
     if ulm.configuration.include_other_cards:
         for c in depenceny_resource_paths:
-            add_extra_js_url(
-                hass,
-                f"/ui_lovelace_minimalist/cards/{c}/{c}.js"
-            )
+            add_extra_js_url(hass, f"/ui_lovelace_minimalist/cards/{c}/{c}.js")
 
     # Register
     hass.http.register_static_path(
