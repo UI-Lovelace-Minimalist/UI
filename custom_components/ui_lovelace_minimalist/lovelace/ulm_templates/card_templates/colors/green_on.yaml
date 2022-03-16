@@ -12,3 +12,7 @@ green_on:
           - background-color: "rgba(var(--color-green), 0.2)"
       value: "on"
       id: "on"
+
+#Legacy
+green:
+  template: "green_on"
