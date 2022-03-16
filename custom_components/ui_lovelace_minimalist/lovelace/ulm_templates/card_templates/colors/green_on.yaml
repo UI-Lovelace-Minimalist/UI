@@ -15,6 +15,6 @@ green_on:
       value: "on"
       id: "on"
 
-#Legacy
+# Legacy
 green:
   template: "green_on"
