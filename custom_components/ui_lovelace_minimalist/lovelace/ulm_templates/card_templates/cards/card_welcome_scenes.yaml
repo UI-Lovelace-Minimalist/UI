@@ -529,6 +529,7 @@ card_topbar_welcome:
                     return "var(--box-shadow)";
                   }
                 ]]]
+# auto-entities
 card_scenes_welcome_auto:
   show_icon: false
   show_name: true
