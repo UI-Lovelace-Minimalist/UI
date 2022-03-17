@@ -29,7 +29,7 @@ These are the most important *guidelines*, click [here](https://ui-lovelace-mini
 
 ### Style and Qualtiy guidelines
 
-- Your card needs to satisfy some guidelines to assure your card is easy to read and looks like all the other cards in the repository.
+- Your file needs to satisfy some guidelines to assure your card is easy to read and looks like all the other files in the repository.
     1. Each file needs to start only with `---` on the first line.
     2. Each file needs to end with a empty code line.
     3. All strings need to be `"double-quoted"`.
