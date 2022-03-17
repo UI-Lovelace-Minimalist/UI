@@ -92,5 +92,4 @@ The same goes for our `custom_cards`. As the number grows, the list would be to 
 ### Contributions
 
 >This is a living project and all input is very welcome! If you configured and designed  a card, that you would like to share, please feel free to do so! We are happy to include your contribution so others can use it as well!
-Your developments should always start from "dev" as the base branch. Due to the many contributions, it cannot be guaranteed that the "main" branch with the last published version contains all current changes.
 This project uses pre-commit for consistent and clean code. If possible, please make sure that you also use pre-commit for local development before creating a pull request.
