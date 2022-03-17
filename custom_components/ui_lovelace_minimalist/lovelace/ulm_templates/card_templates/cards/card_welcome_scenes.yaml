@@ -498,8 +498,6 @@ card_topbar_welcome:
         entity: "[[[ return variables.ulm_weather]]]"
         variables:
           ulm_weather: "[[[ return variables.ulm_weather]]]"
-        tap_action:
-          action: "more-info"
         styles:
           card:
             - width: "100px"
