@@ -21,7 +21,8 @@ This is a card to control your Robot-vacuum. It has support for all vacuums whic
 |`ulm_card_vacuum_name`|  | :material-close: | Add a custom name |
 |`ulm_card_vacuum_icon`|   | :material-close: | Add a custom MDI icon |
 |`ulm_card_vacuum_label`|  | :material-close: | Add a custom label |
-|`ulm_card_vacuum_room`|   | :material-close: | Add a script to clean a specific room|
+|`ulm_card_vacuum_room`|   | :material-close: | Add a script to clean a specific room |
+|`ulm_card_vacuum_room_icon`|   | :material-close: | Add custom icon to the room script |
 
 ## Usage
 
@@ -35,6 +36,7 @@ This is a card to control your Robot-vacuum. It has support for all vacuums whic
   entity: "vacuum.<Your_Vacuum>"
   variables:
     ulm_card_vacuum_room: "script.clean_kitchen"
+    ulm_card_vacuum_room_icon: "mdi:table-chair"
 ```
 
 ??? note "Template Code"

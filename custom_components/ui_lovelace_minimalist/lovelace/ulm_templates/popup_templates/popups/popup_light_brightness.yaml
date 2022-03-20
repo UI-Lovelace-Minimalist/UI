@@ -117,9 +117,33 @@ popup_light_brightness:
         left: "17%"
         thumbHorizontalPadding: "0px"
         thumbWidth: "0px"
-        mainSliderColor: "rgba(var(--color-theme),0.1)"
+        mainSliderColor: >
+          [[[
+              var color = states[variables.ulm_popup_light_entity].attributes.rgb_color;
+              if (states[variables.ulm_popup_light_entity].state == "unavailable"){
+                 return "rgba(var(--color-grey),1)";
+              }
+              else if (color){
+                 return "rgba(" + color + ",1)";
+              }
+              else{
+                return "rgba(var(--color-yellow),1)";
+              }
+          ]]]
         mainSliderColorOff: "rgba(var(--color-theme),0.1)"
-        secondarySliderColor: "var(--color-theme)"
+        secondarySliderColor: >
+          [[[
+              var color = states[variables.ulm_popup_light_entity].attributes.rgb_color;
+              if (states[variables.ulm_popup_light_entity].state == "unavailable"){
+                 return "rgba(var(--color-grey),0.2)";
+              }
+              else if (color){
+                 return "rgba(" + color + ",0.2)";
+              }
+              else{
+                return "rgba(var(--color-yellow),0.2)";
+              }
+              ]]]
         secondarySliderColorOff: "var(--color-theme)"
         card_mod:
           style: |

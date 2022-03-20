@@ -9,6 +9,7 @@ card_vacuum:
     ulm_card_vacuum_name: "[[[ return entity.attributes.friendly_name ]]]"
     ulm_card_vacuum_icon: "[[[ return entity.attributes.icon ]]]"
     ulm_card_vacuum_room:
+    ulm_card_vacuum_room_icon: "[[[ return entity.attributes.icon ]]]"
   triggers_update: "all"
   styles:
     grid:
@@ -164,6 +165,7 @@ card_vacuum:
               type: "custom:button-card"
               template: "widget_icon"
               entity: "[[[ return variables.ulm_card_vacuum_room ]]]"
+              icon: "[[[ return variables.ulm_card_vacuum_room_icon ]]]"
               tap_action:
                 action: "call-service"
                 service: "script.turn_on"
