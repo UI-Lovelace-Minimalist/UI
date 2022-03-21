@@ -74,7 +74,7 @@ icon_info_alert:
   custom_fields:
     notification: >
       [[[
-        if (entity.state =="unavailable" || entity.state == "on"){
+        if (entity.state =="unavailable" || entity.state == "unknown"){
           return `<ha-icon icon="mdi:exclamation" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`
         }
       ]]]
