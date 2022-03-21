@@ -1,7 +1,10 @@
 ---
 chip_weather_date:
   template: "chips"
+  entity: "[[[ return variables.ulm_weather]]]"
   triggers_update: "all"
+  tap_action:
+    action: "more-info"
   label: |
     [[[
       const months = ["Jan", "Feb", "Mar","Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
