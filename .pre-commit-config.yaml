@@ -25,7 +25,9 @@ repos:
       - id: "requirements-txt-fixer"
       - id: "debug-statements"
       - id: "end-of-file-fixer"
+        exclude: "^custom_componenents/ui_lovelace_minimalist/cards/"
       - id: "trailing-whitespace"
+        exclude: "^custom_componenents/ui_lovelace_minimalist/cards/"
       - id: "mixed-line-ending"
 
   - repo: "https://github.com/adrienverge/yamllint.git"

@@ -1,5 +1,5 @@
 ---
-title: Fan Custom-card
+title: Fan Card Custom-card
 hide:
   - toc
 ---

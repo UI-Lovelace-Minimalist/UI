@@ -1,5 +1,5 @@
 ---
-title: Playstation Custom-card
+title: PS4 Custom-card
 hide:
   - toc
 ---

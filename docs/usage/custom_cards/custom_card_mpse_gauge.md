@@ -1,5 +1,5 @@
 ---
-title: Gauge Custom-card
+title: Gauge Card Custom-card
 hide:
   - toc
 ---

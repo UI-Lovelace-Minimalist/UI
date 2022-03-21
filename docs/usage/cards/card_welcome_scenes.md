@@ -36,98 +36,111 @@ Furthermore, you need to add the `input_boolean` to the variable `ulm_card_welco
 ```yaml
 - type: "custom:button-card"
   template: "card_welcome_scenes"
-### uncomment entity or triggers_update for collapse function
   #triggers_update: input_boolean.<Your_boolean>
   #entity: input_boolean.<Your_boolean>
   variables:
-    ulm_card_welcome_scenes_collapse: input_boolean.<Your_boolean> #OPTIONAl
+    ulm_card_welcome_scenes_collapse: input_boolean.<Your_boolean> #OPTIONAl --> uncomment also entity or triggers_update
     ulm_weather: "weather.YOUR_WEATHERPROVIDER"
     entity_1:
-      entity_id: "script.YOUR_SCRIPT"
+      entity_id: "<YOUR_ENTITY>"
       icon: "mdi:YOUR_ICON" #OPTIONAL
       name: "YOUR_NAME" #OPTIONAL
       color: "blue"
     entity_2:
-      entity_id: "script.YOUR_SCRIPT"
+      entity_id: "<YOUR_ENTITY>"
       icon: "mdi:YOUR_ICON" #OPTIONAL
       name: "YOUR_NAME" #OPTIONAL
       color: "red"
     entity_3:
-      entity_id: "script.YOUR_SCRIPT"
+      entity_id: "<YOUR_ENTITY>"
       icon: "mdi:YOUR_ICON" #OPTIONAL
       name: "YOUR_NAME" #OPTIONAL
       color: "green"
     entity_4:
-      entity_id: "script.YOUR_SCRIPT"
+      entity_id: "<YOUR_ENTITY>"
       icon: "mdi:YOUR_ICON" #OPTIONAL
       name: "YOUR_NAME" #OPTIONAL
       color: "purple"
     entity_5:
-      entity_id: "script.YOUR_SCRIPT"
+      entity_id: "<YOUR_ENTITY>"
       icon: "mdi:YOUR_ICON" #OPTIONAL
       name: "YOUR_NAME" #OPTIONAL
       color: "yellow"
-
-# Use random script entities (icon and name cannot be specified!!)
-- type: "custom:button-card"
-  template: "card_welcome_scenes"
-### uncomment entity or triggers_update for collapse function
-  #triggers_update: input_boolean.<Your_boolean>
-  #entity: input_boolean.<Your_boolean>
-  variables:
-    ulm_card_welcome_scenes_collapse: input_boolean.<Your_boolean> #OPTIONAl
-    ulm_weather: "weather.YOUR_WEATHERPROVIDER"
-    entity_1:
-      color: "blue"
-    entity_2:
-      color: "red"
-    entity_3:
-      color: "green"
-    entity_4:
-      color: "purple"
-    entity_5:
-      color: "yellow"
-
-# Use random colors
-- type: "custom:button-card"
-  template: "card_welcome_scenes"
-### uncomment entity or triggers_update for collapse function
-  #triggers_update: input_boolean.<Your_boolean>
-  #entity: input_boolean.<Your_boolean>
-  variables:
-    ulm_card_welcome_scenes_collapse: input_boolean.<Your_boolean> #OPTIONAl
-    ulm_weather: "weather.YOUR_WEATHERPROVIDER"
-    entity_1:
-      entity_id: "script.YOUR_SCRIPT"
-      icon: "mdi:YOUR_ICON" #OPTIONAL
-      name: "YOUR_NAME" #OPTIONAL
-    entity_2:
-      entity_id: "script.YOUR_SCRIPT"
-      icon: "mdi:YOUR_ICON" #OPTIONAL
-      name: "YOUR_NAME" #OPTIONAL
-    entity_3:
-      entity_id: "script.YOUR_SCRIPT"
-      icon: "mdi:YOUR_ICON" #OPTIONAL
-      name: "YOUR_NAME" #OPTIONAL
-    entity_4:
-      entity_id: "script.YOUR_SCRIPT"
-      icon: "mdi:YOUR_ICON" #OPTIONAL
-      name: "YOUR_NAME" #OPTIONAL
-    entity_5:
-      entity_id: "script.YOUR_SCRIPT"
-      icon: "mdi:YOUR_ICON" #OPTIONAL
-      name: "YOUR_NAME" #OPTIONAL
-
-# Let the card decide everything
-- type: "custom:button-card"
-  template: "card_welcome_scenes"
-### uncomment entity or triggers_update for collapse function
-  #triggers_update: input_boolean.<Your_boolean>
-  #entity: input_boolean.<Your_boolean>
-  variables:
-    ulm_card_welcome_scenes_collapse: input_boolean.<Your_boolean> #OPTIONAl
-    ulm_weather: "weather.YOUR_WEATHERPROVIDER"
 ```
+
+??? note "Auto-entities"
+
+    ```yaml
+    - type: "custom:button-card"
+      template: "card_welcome_scenes"
+      #triggers_update: input_boolean.<Your_boolean>
+      #entity: input_boolean.<Your_boolean>
+      variables:
+        ulm_card_welcome_scenes_collapse: input_boolean.<Your_boolean> #OPTIONAl --> uncomment also entity or triggers_update
+        ulm_weather: "weather.YOUR_WEATHERPROVIDER"
+        entity_1:
+          entity_id:
+          icon:
+          name:
+          color: "blue" #OPTIONAL
+        entity_2:
+          entity_id:
+          icon:
+          name:
+          color: "red"  #OPTIONAL
+        entity_3:
+          entity_id:
+          icon:
+          name:
+          color: "green" #OPTIONAL
+        entity_4:
+          entity_id:
+          icon:
+          name:
+          color: "purple" #OPTIONAL
+        entity_5:
+          entity_id:
+          icon:
+          name:
+          color: "yellow" #OPTIONAL
+    ```
+
+??? note "Random Colors"
+
+    ```yaml
+    - type: "custom:button-card"
+      template: "card_welcome_scenes"
+      #triggers_update: input_boolean.<Your_boolean>
+      #entity: input_boolean.<Your_boolean>
+      variables:
+        ulm_card_welcome_scenes_collapse: input_boolean.<Your_boolean> #OPTIONAl --> uncomment also entity or triggers_update
+        ulm_weather: "weather.YOUR_WEATHERPROVIDER"
+        entity_1:
+          entity_id: "<YOUR_ENTITY>"
+          icon: "mdi:YOUR_ICON" #OPTIONAL
+          name: "YOUR_NAME" #OPTIONAL
+          color:
+        entity_2:
+          entity_id: "<YOUR_ENTITY>"
+          icon: "mdi:YOUR_ICON" #OPTIONAL
+          name: "YOUR_NAME" #OPTIONAL
+          color:
+        entity_3:
+          entity_id: "<YOUR_ENTITY>"
+          icon: "mdi:YOUR_ICON" #OPTIONAL
+          name: "YOUR_NAME" #OPTIONAL
+          color:
+        entity_4:
+          entity_id: "<YOUR_ENTITY>"
+          icon: "mdi:YOUR_ICON" #OPTIONAL
+          name: "YOUR_NAME" #OPTIONAL
+          color:
+        entity_5:
+          entity_id: "<YOUR_ENTITY>"
+          icon: "mdi:YOUR_ICON" #OPTIONAL
+          name: "YOUR_NAME" #OPTIONAL
+          color:
+    ```
 
 ??? note "Template Code"
 

@@ -5,7 +5,7 @@ hide:
 ---
 <!-- markdownlint-disable MD046 -->
 
-## Custom-card `Entities`
+## Custom-card "Entities"
 
 This is a `custom-card` to display states from multiple entities or from an entity with multiples attributes (To use it with attributes need to modify the code)
 

@@ -1,11 +1,11 @@
 ---
-title: custom_card_irmajavi_weather
+title: Weather Custom-card
 hide:
   - toc
 ---
 <!-- markdownlint-disable MD046 -->
 
-## Custom-card `Weather`
+## Custom-card "Weather"
 
 This is a `custom-card` to display states from weather entities or from a weather entity with multiples attributes (To use it with attributes need to modify the code)
 

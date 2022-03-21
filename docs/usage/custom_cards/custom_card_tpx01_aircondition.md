@@ -1,5 +1,5 @@
 ---
-title: Aircondition Custom-card
+title: AirCondition Custom-card
 hide:
   - toc
 ---
