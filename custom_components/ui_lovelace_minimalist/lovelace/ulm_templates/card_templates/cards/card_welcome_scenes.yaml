@@ -54,9 +54,9 @@ card_welcome_scenes:
         ]]]
   template:
     - "ulm_language_variables"
-  show_icon: "false"
-  show_name: "false"
-  show_label: "true"
+  show_icon: false
+  show_name: false
+  show_label: true
   styles:
     grid:
       - grid-template-areas: >
@@ -106,14 +106,13 @@ card_welcome_scenes:
             - border-radius: "none"
             - box-shadow: "none"
             - padding: "4px"
-            - margin-left: "relative"
     item2:
       card:
         type: "custom:button-card"
-        show_icon: "false"
-        show_label: "false"
-        show_name: "true"
-        show_entity_picture: "false"
+        show_icon: false
+        show_label: false
+        show_name: true
+        show_entity_picture: false
         name: |
           [[[
             var today = new Date();
@@ -148,10 +147,10 @@ card_welcome_scenes:
     item3:
       card:
         type: "custom:button-card"
-        show_icon: "true"
-        show_label: "true"
-        show_name: "true"
-        show_entity_picture: "false"
+        show_icon: true
+        show_label: true
+        show_name: true
+        show_entity_picture: false
         name: "Scenes"
         icon: "mdi:dots-vertical"
         styles:
@@ -198,9 +197,9 @@ card_welcome_scenes:
 card_title_welcome:
   tap_action:
     action: "none"
-  show_icon: "false"
-  show_label: "true"
-  show_name: "true"
+  show_icon: false
+  show_label: true
+  show_name: true
   styles:
     card:
       - background-color: "rgba(0,0,0,0)"
@@ -224,9 +223,9 @@ card_title_welcome:
       - font-size: "1rem"
       - opacity: "0.4"
 card_scenes_welcome:
-  show_icon: "false"
-  show_name: "true"
-  show_label: "false"
+  show_icon: false
+  show_name: true
+  show_label: false
   styles:
     grid:
       - grid-template-areas: "'item1 item2 item3 item4 item5'"
@@ -355,9 +354,9 @@ card_scenes_welcome:
               entity: "[[[ return variables.entity_5.entity_id ]]]"
               name: "[[[ return variables.entity_5.name ]]]"
 card_scenes_pill_welcome:
-  show_icon: "false"
-  show_label: "false"
-  show_name: "false"
+  show_icon: false
+  show_label: false
+  show_name: false
   state:
     - operator: "template"
       value: >
@@ -394,9 +393,9 @@ card_scenes_pill_welcome:
     item1:
       card:
         type: "custom:button-card"
-        show_icon: "true"
-        show_label: "false"
-        show_name: "false"
+        show_icon: true
+        show_label: false
+        show_name: false
         styles:
           grid:
             - grid-template-areas: "i"
@@ -432,8 +431,8 @@ card_scenes_pill_welcome:
     item2:
       card:
         type: "custom:button-card"
-        show_icon: "false"
-        show_label: "false"
+        show_icon: false
+        show_label: false
         styles:
           grid:
             - grid-template-areas: "n"
@@ -448,19 +447,19 @@ card_scenes_pill_welcome:
             - margin-top: "-5px"
             - border-radius: "50px"
 card_topbar_welcome:
-  show_icon: "false"
-  show_name: "true"
-  show_label: "false"
+  show_icon: false
+  show_name: false
+  show_label: false
   styles:
     grid:
-      - grid-template-areas: "'item1 item2 item3'"
-      - grid-template-columns: "1fr 7fr 1fr"
-      - grid-template-rows: "min-content"
-      - justify-items: "center"
+      - grid-template-areas: "item1 item2 item3"
+      - justify-content: "space-between"
+      - display: "flex"
     card:
-      - border-radius: "var(--border-radius)"
-      - box-shadow: "var(--box-shadow)"
+      - border-radius: "none"
+      - box-shadow: "none"
       - padding: "12px"
+      - background: "none"
   custom_fields:
     item1:
       card:
@@ -468,7 +467,7 @@ card_topbar_welcome:
         template: "chips"
         entity: "[[[ return variables.ulm_card_welcome_scenes_collapse ]]]"
         icon: "mdi:chevron-up"
-        show_icon: "true"
+        show_icon: true
         styles:
           grid:
             - grid-template-areas: "'i'"
@@ -496,12 +495,12 @@ card_topbar_welcome:
       card:
         type: "custom:button-card"
         template: "chip_weather_date"
+        entity: "[[[ return variables.ulm_weather]]]"
         variables:
           ulm_weather: "[[[ return variables.ulm_weather]]]"
-        tap_action:
-          action: "more-info"
         styles:
           card:
+            - width: "100px"
             - box-shadow: >
                 [[[
                   if (hass.themes.darkMode){
@@ -521,6 +520,7 @@ card_topbar_welcome:
           ulm_chip_mdi_icon_only_icon: "mdi:cog-outline"
         styles:
           card:
+            - align-self: "end"
             - box-shadow: >
                 [[[
                   if (hass.themes.darkMode){
@@ -529,10 +529,11 @@ card_topbar_welcome:
                     return "var(--box-shadow)";
                   }
                 ]]]
+# auto-entities
 card_scenes_welcome_auto:
-  show_icon: "false"
-  show_name: "true"
-  show_label: "false"
+  show_icon: false
+  show_name: true
+  show_label: false
   styles:
     grid:
       - grid-template-areas: "'item1 item2 item3 item4 item5'"
@@ -551,7 +552,7 @@ card_scenes_welcome_auto:
         card:
           type: "grid"
           columns: 1
-          square: "false"
+          square: false
         card_param: "cards"
         sort:
           count: 1
@@ -561,23 +562,31 @@ card_scenes_welcome_auto:
               options:
                 type: "custom:button-card"
                 template: "card_scenes_pill_welcome"
-                styles:
-                  icon:
-                    - color: "[[[ return `rgba(var(--color-${variables.entity_1.color}), 1)`;]]]"
-                  img_cell:
-                    - background-color: "[[[ return `rgba(var(--color-${variables.entity_1.color}), 0.20)`;]]]"
-                tap_action:
-                  action: "call-service"
-                  service: "script.toggle"
-                  service_data:
-                    entity_id: "this.entity_id"
+                custom_fields:
+                  item1:
+                    card:
+                      type: "custom:button-card"
+                      template: "tap_action"
+                      entity: "this.entity_id"
+                      icon: "[[[ return variables.entity_1.icon ]]]"
+                      styles:
+                        icon:
+                          - color: "[[[ return `rgba(var(--color-${variables.entity_1.color}), 1)`;]]]"
+                        img_cell:
+                          - background-color: "[[[ return `rgba(var(--color-${variables.entity_1.color}), 0.20)`;]]]"
+                  item2:
+                    card:
+                      type: "custom:button-card"
+                      template: "tap_action"
+                      entity: "this.entity_id"
+                      name: "[[[ return variables.entity_1.name ]]]"
     item2:
       card:
         type: "custom:auto-entities"
         card:
           type: "grid"
           columns: 1
-          square: "false"
+          square: false
         card_param: "cards"
         sort:
           count: 1
@@ -588,23 +597,31 @@ card_scenes_welcome_auto:
               options:
                 type: "custom:button-card"
                 template: "card_scenes_pill_welcome"
-                styles:
-                  icon:
-                    - color: "[[[ return `rgba(var(--color-${variables.entity_2.color}), 1)`;]]]"
-                  img_cell:
-                    - background-color: "[[[ return `rgba(var(--color-${variables.entity_2.color}), 0.20)`;]]]"
-                tap_action:
-                  action: "call-service"
-                  service: "script.toggle"
-                  service_data:
-                    entity_id: "this.entity_id"
+                custom_fields:
+                  item1:
+                    card:
+                      type: "custom:button-card"
+                      template: "tap_action"
+                      entity: "this.entity_id"
+                      icon: "[[[ return variables.entity_2.icon ]]]"
+                      styles:
+                        icon:
+                          - color: "[[[ return `rgba(var(--color-${variables.entity_2.color}), 1)`;]]]"
+                        img_cell:
+                          - background-color: "[[[ return `rgba(var(--color-${variables.entity_2.color}), 0.20)`;]]]"
+                  item2:
+                    card:
+                      type: "custom:button-card"
+                      template: "tap_action"
+                      entity: "this.entity_id"
+                      name: "[[[ return variables.entity_2.name ]]]"
     item3:
       card:
         type: "custom:auto-entities"
         card:
           type: "grid"
           columns: 1
-          square: "false"
+          square: false
         card_param: "cards"
         sort:
           count: 1
@@ -615,23 +632,31 @@ card_scenes_welcome_auto:
               options:
                 type: "custom:button-card"
                 template: "card_scenes_pill_welcome"
-                styles:
-                  icon:
-                    - color: "[[[ return `rgba(var(--color-${variables.entity_3.color}), 1)`;]]]"
-                  img_cell:
-                    - background-color: "[[[ return `rgba(var(--color-${variables.entity_3.color}), 0.20)`;]]]"
-                tap_action:
-                  action: "call-service"
-                  service: "script.toggle"
-                  service_data:
-                    entity_id: "this.entity_id"
+                custom_fields:
+                  item1:
+                    card:
+                      type: "custom:button-card"
+                      template: "tap_action"
+                      entity: "this.entity_id"
+                      icon: "[[[ return variables.entity_3.icon ]]]"
+                      styles:
+                        icon:
+                          - color: "[[[ return `rgba(var(--color-${variables.entity_3.color}), 1)`;]]]"
+                        img_cell:
+                          - background-color: "[[[ return `rgba(var(--color-${variables.entity_3.color}), 0.20)`;]]]"
+                  item2:
+                    card:
+                      type: "custom:button-card"
+                      template: "tap_action"
+                      entity: "this.entity_id"
+                      name: "[[[ return variables.entity_3.name ]]]"
     item4:
       card:
         type: "custom:auto-entities"
         card:
           type: "grid"
           columns: 1
-          square: "false"
+          square: false
         card_param: "cards"
         sort:
           count: 1
@@ -642,23 +667,31 @@ card_scenes_welcome_auto:
               options:
                 type: "custom:button-card"
                 template: "card_scenes_pill_welcome"
-                styles:
-                  icon:
-                    - color: "[[[ return `rgba(var(--color-${variables.entity_4.color}), 1)`;]]]"
-                  img_cell:
-                    - background-color: "[[[ return `rgba(var(--color-${variables.entity_4.color}), 0.20)`;]]]"
-                tap_action:
-                  action: "call-service"
-                  service: "script.toggle"
-                  service_data:
-                    entity_id: "this.entity_id"
+                custom_fields:
+                  item1:
+                    card:
+                      type: "custom:button-card"
+                      template: "tap_action"
+                      entity: "this.entity_id"
+                      icon: "[[[ return variables.entity_4.icon ]]]"
+                      styles:
+                        icon:
+                          - color: "[[[ return `rgba(var(--color-${variables.entity_4.color}), 1)`;]]]"
+                        img_cell:
+                          - background-color: "[[[ return `rgba(var(--color-${variables.entity_4.color}), 0.20)`;]]]"
+                  item2:
+                    card:
+                      type: "custom:button-card"
+                      template: "tap_action"
+                      entity: "this.entity_id"
+                      name: "[[[ return variables.entity_4.name ]]]"
     item5:
       card:
         type: "custom:auto-entities"
         card:
           type: "grid"
           columns: 1
-          square: "false"
+          square: false
         card_param: "cards"
         sort:
           count: 1
@@ -669,16 +702,24 @@ card_scenes_welcome_auto:
               options:
                 type: "custom:button-card"
                 template: "card_scenes_pill_welcome"
-                styles:
-                  icon:
-                    - color: "[[[ return `rgba(var(--color-${variables.entity_5.color}), 1)`;]]]"
-                  img_cell:
-                    - background-color: "[[[ return `rgba(var(--color-${variables.entity_5.color}), 0.20)`;]]]"
-                tap_action:
-                  action: "call-service"
-                  service: "script.toggle"
-                  service_data:
-                    entity_id: "this.entity_id"
+                custom_fields:
+                  item1:
+                    card:
+                      type: "custom:button-card"
+                      template: "tap_action"
+                      entity: "this.entity_id"
+                      icon: "[[[ return variables.entity_5.icon ]]]"
+                      styles:
+                        icon:
+                          - color: "[[[ return `rgba(var(--color-${variables.entity_5.color}), 1)`;]]]"
+                        img_cell:
+                          - background-color: "[[[ return `rgba(var(--color-${variables.entity_5.color}), 0.20)`;]]]"
+                  item2:
+                    card:
+                      type: "custom:button-card"
+                      template: "tap_action"
+                      entity: "this.entity_id"
+                      name: "[[[ return variables.entity_5.name ]]]"
 ### tap_action
 tap_action:
   tap_action:
