@@ -8,7 +8,6 @@ card_media_player:
     ulm_card_media_player_icon: false
     ulm_card_media_player_enable_art: false
     ulm_card_media_player_enable_controls: false
-    ulm_card_media_player_more_info: false
     ulm_card_media_player_player_controls_entity: "[[[ return entity.entity_id ]]]"
     ulm_card_media_player_enable_popup: false
   triggers_update: "all"
