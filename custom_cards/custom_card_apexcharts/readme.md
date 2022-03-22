@@ -7,8 +7,9 @@ hide:
 
 # Custom-card "Apexcharts"
 
-![Afvalophaling](../../docs/assets/img/ulm_cards/custom_card_afvalophaling_2.png)
-![Afvalophaling](../../docs/assets/img/ulm_cards/custom_card_afvalophaling_1.png)
+![Apexcharts radialBar](../../docs/assets/img/custom_card_apexcharts_radialBar.png)
+![Apexcharts line](../../docs/assets/img/custom_card_apexcharts_line.png)
+![Apexcharts Donut](../../docs/assets/img/custom_card_apexcharts_donut.png)
 
 ## Credits
 
