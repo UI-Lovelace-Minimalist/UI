@@ -31,8 +31,8 @@ apexcharts:
           var color = colors[Math.floor(Math.random() * colors.length)];
           return color;
         ]]]
-  color: auto
-  variable: spin
+  color: "auto"
+  variable: "spin"
   spin: false
   show_name: false
   show_state: false
@@ -41,8 +41,8 @@ apexcharts:
   show_last_changed: false
   show_entity_picture: false
   tap_action:
-    action: none
-  aspect_ratio: 2/1
+    action: "none"
+  aspect_ratio: "2/1"
   styles:
     grid:
       - grid-template-areas: '"item1 radial" "item2 radial" "item3 radial"'
@@ -119,19 +119,19 @@ apexcharts:
             padding-left: 10px;
             padding-bottom: 0px;
           }
-        header: 
-          show: false
-        apex_config: 
+        header:
+          show: "false"
+        apex_config:
           title:
-            floating: false
-            align: top
-            style: 
-              fontSize: 2px
-              fontWeight: bold
-          chart: 
-            foreColor: rgb(148,148,148)
+            floating: "false"
+            align: "top"
+            style:
+              fontSize: "2px"
+              fontWeight: "bold"
+          chart:
+            foreColor: "rgb(148,148,148)"
             offsetY: 5
-          legend: 
+          legend:
             show: false
         series:
           - entity: "[[[ return variables.entity_1.entity_id ]]]"
