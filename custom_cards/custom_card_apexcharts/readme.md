@@ -113,6 +113,7 @@ Integration from HACS: "custom:apexcharts-card" from RomRider
 
 ```yaml
 ---
+---
 apexcharts:
   variables:
     entity_1:
@@ -159,7 +160,7 @@ apexcharts:
   aspect_ratio: "2/1"
   styles:
     grid:
-      - grid-template-areas: '"item1 radial" "item2 radial" "item3 radial"'
+      - grid-template-areas: "'item1 radial' 'item2 radial' 'item3 radial'"
       - grid-template-columns: "35% 65%"
       - grid-template-rows: "1fr 1fr 1fr"
     card:
@@ -223,7 +224,7 @@ apexcharts:
             - padding-bottom: "1px"
     radial:
       card:
-        type: custom:apexcharts-card
+        type: "custom:apexcharts-card"
         graph_span: "[[[ return variables.graph_span ]]]"
         chart_type: "[[[ return variables.chart_type ]]]"
         style: |
@@ -234,10 +235,10 @@ apexcharts:
             padding-bottom: 0px;
           }
         header:
-          show: "false"
+          show: false
         apex_config:
           title:
-            floating: "false"
+            floating: false
             align: "top"
             style:
               fontSize: "2px"
