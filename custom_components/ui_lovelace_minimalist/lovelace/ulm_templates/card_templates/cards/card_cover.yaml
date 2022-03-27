@@ -6,7 +6,7 @@ card_cover:
   variables:
     ulm_card_cover_name: "[[[ return entity.attributes.friendly_name ]]]"
     ulm_card_cover_display_left_right: false
-    ulm_card_curtain_display_expand_collapse: false
+    ulm_card_curtain_display_collapse_expand: false
     ulm_card_cover_enable_controls: false
     ulm_card_cover_enable_slider: false
     ulm_card_cover_enable_horizontal: false
@@ -242,8 +242,8 @@ card_cover:
                   if (variables.ulm_card_cover_display_left_right){
                     return "mdi:arrow-left";
                   }
-                  if (variables.ulm_card_curtain_display_expand_collapse){
-                    return "mdi:arrow-expand-horizontal";
+                  if (variables.ulm_card_curtain_display_collapse_expand){
+                    return "mdi:arrow-collapse-horizontal";
                   }
                   return "mdi:arrow-down";
                 ]]]
@@ -276,8 +276,8 @@ card_cover:
                   if (variables.ulm_card_cover_display_left_right){
                     return "mdi:arrow-right";
                   }
-                  if (variables.ulm_card_curtain_display_expand_collapse){
-                    return "mdi:arrow-collapse-horizontal";
+                  if (variables.ulm_card_curtain_display_collapse_expand){
+                    return "mdi:arrow-expand-horizontal";
                   }
                   return "mdi:arrow-up";
                 ]]]
