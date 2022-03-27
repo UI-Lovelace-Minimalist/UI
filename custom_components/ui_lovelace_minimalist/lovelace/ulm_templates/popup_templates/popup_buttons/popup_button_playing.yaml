@@ -2,4 +2,4 @@
 popup_button_playing:
   template: "ulm_language_variables"
   icon: "mdi:play-circle"
-  name: "Lecture"
+  name: "Playback"

@@ -1,5 +1,5 @@
 ---
-title: custom_card_bar_card
+title: Bar Card Custom-card
 hide:
   - toc
 ---
@@ -20,7 +20,7 @@ Version: 1.0.0
 
 <details>
 <summary>1.0.0</summary>
-Initial release
+Initial release.
 </details>
 
 ## Requirements

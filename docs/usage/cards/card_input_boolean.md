@@ -1,5 +1,5 @@
 ---
-title: card_input_boolean
+title: Input_boolean Card
 hide:
   - toc
 ---
@@ -16,6 +16,7 @@ The `input-boolean-card` is to switch an `input_boolean` on or off.
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
 | entity     |         | :material-check: |                   |
+| name     |         | :material-close: |                   |
 
 ## Usage
 
@@ -23,10 +24,11 @@ The `input-boolean-card` is to switch an `input_boolean` on or off.
 - type: 'custom:button-card'
   template: card_input_boolean
   entity: input_boolean.guest_mode
+  name: Guest Mode
 ```
 
 ??? note "Template Code"
 
-    ```yaml title="card_light.yaml"
+    ```yaml title="card_input_boolean.yaml"
     --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_input_boolean.yaml"
     ```

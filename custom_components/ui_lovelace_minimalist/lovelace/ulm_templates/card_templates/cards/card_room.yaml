@@ -1,0 +1,280 @@
+---
+card_room:
+  template:
+    - "ulm_language_variables"
+  variables:
+    label_use_temperature: true
+    label_use_brightness: false
+  color: "var(--google-grey-500)"
+  show_icon: true
+  show_name: true
+  show_label: true
+  size: "45%"
+  aspect_ratio: "1/1"
+  label: |-
+    [[[
+      if (variables.label_use_temperature) {
+        return (entity.attributes.current_temperature || entity.attributes.temperature || entity.state || '-') + (entity.attributes.unit_of_measurement || '°C');
+      } else if (variables.label_use_brightness) {
+        if (entity.state){
+          if (entity.state == "off"){
+            return variables.ulm_off;
+          } else if (entity.state == "on"){
+            if (entity.attributes.brightness != null){
+              var bri = Math.round(entity.attributes.brightness / 2.55);
+              return (bri ? bri : "0") + "%";
+            } else {
+              return variables.ulm_on
+            }
+          }
+        } else {
+          return variables.ulm_unavailable;
+        }
+      } else if (entity.state == "on") {
+          return variables.ulm_on
+      } else if (entity.state == "off") {
+          return variables.ulm_off
+      } else {
+        return entity.state
+      }
+    ]]]
+  state:
+    - styles:
+        custom_fields:
+          notification:
+            - border-radius: "50%"
+            - border: "2px solid var(--card-background-color)"
+            - width: "24.5px"
+            - height: "24.5px"
+            - position: "absolute"
+            - left: "50%"
+            - top: "50%"
+            - transform: "translate(-50%,-50%)"
+            - margin-top: "35%"
+            - margin-left: "-35%"
+            - line-height: 0
+            - display: "grid"
+            - background-color: >
+                [[[
+                  return "rgba(var(--color-red),1)";
+                ]]]
+      value: "unavailable"
+  styles:
+    card:
+      - border-radius: "20px"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "5px"
+    grid:
+      - grid-template-areas: "'n n n i1' 'l l l i2' 'i i . i3' 'i i . i4'"
+      - grid-template-columns: "1fr 1fr 1fr 1fr"
+      - grid-template-rows: "1fr 1fr 1fr 1fr"
+      - justify-items: "center"
+    icon:
+      - color: "rgba(var(--color-theme),0.2)"
+    img_cell:
+      - background-color: "rgba(var(--color-theme),0.05)"
+      - border-radius: "50%"
+      - width: "75%"
+      - height: "75%"
+      - max-width: "none"
+      - max-height: "none"
+      - position: "absolute"
+      - left: "50%"
+      - top: "50%"
+      - transform: "translate(-50%,-50%)"
+      - margin-top: "25%"
+      - margin-left: "-25%"
+    name:
+      - justify-self: "start"
+      - align-self: "end"
+      - font-weight: "bold"
+      - font-size: "14px"
+      - margin-left: "12px"
+      - margin-bottom: "10%"
+    label:
+      - justify-self: "start"
+      - align-self: "start"
+      - font-weight: "bold"
+      - font-size: "12px"
+      - filter: "opacity(40%)"
+      - margin-left: "12px"
+      - margin-top: "-10%"
+    state:
+      - justify-self: "start"
+      - font-weight: "bold"
+      - font-size: "12px"
+      - filter: "opacity(40%)"
+      - margin-left: "6px"
+    custom_fields:
+      i1:
+        - border-radius: "50%"
+        - width: "80%"
+        - height: "80%"
+        - line-height: 0
+        - display: "grid"
+      i2:
+        - border-radius: "50%"
+        - width: "80%"
+        - height: "80%"
+        - line-height: 0
+        - display: "grid"
+      i3:
+        - border-radius: "50%"
+        - width: "80%"
+        - height: "80%"
+        - line-height: 0
+        - display: "grid"
+      i4:
+        - border-radius: "50%"
+        - width: "80%"
+        - height: "80%"
+        - line-height: 0
+        - display: "grid"
+  custom_fields:
+    notification: >
+      [[[
+        if (entity.state =='unavailable'){
+          return `<ha-icon icon="mdi:exclamation" style="width: 50%; height: 50%; color: var(--primary-background-color);"></ha-icon>`
+        }
+      ]]]
+    i1:
+      card:
+        type: "custom:button-card"
+        template: >
+          [[[
+            var templates = ['widget_icon_room'];
+            if (variables?.entity_1?.templates?.length) {
+              return ['widget_icon_room'].concat(variables.entity_1.templates);
+            }
+            return templates;
+          ]]]
+        variables: "[[[ return variables.entity_1; ]]]"
+        entity: >
+          [[[
+            if (variables.entity_1.entity_id) {
+              return variables.entity_1.entity_id;
+            }
+          ]]]
+        state:
+          - operator: "template"
+            value: "[[[ return !variables.entity_1; ]]]"
+            styles:
+              card:
+                - display: "none"
+
+    i2:
+      card:
+        type: "custom:button-card"
+        template: >
+          [[[
+            var templates = ['widget_icon_room'];
+            if (variables?.entity_2?.templates?.length) {
+              return ['widget_icon_room'].concat(variables.entity_2.templates);
+            }
+            return templates;
+          ]]]
+        variables: "[[[ return variables.entity_2; ]]]"
+        entity: >
+          [[[
+            if (variables?.entity_2?.entity_id) {
+              return variables.entity_2.entity_id;
+            }
+          ]]]
+        state:
+          - operator: "template"
+            value: "[[[ return !variables.entity_2; ]]]"
+            styles:
+              card:
+                - display: "none"
+
+    i3:
+      card:
+        type: "custom:button-card"
+        template: >
+          [[[
+            var templates = ['widget_icon_room'];
+            if (variables?.entity_3?.templates?.length) {
+              return ['widget_icon_room'].concat(variables.entity_3.templates);
+            }
+            return templates;
+          ]]]
+        variables: "[[[ return variables.entity_3; ]]]"
+        entity: >
+          [[[
+            if (variables?.entity_3?.entity_id) {
+              return variables.entity_3.entity_id;
+            }
+          ]]]
+        state:
+          - operator: "template"
+            value: "[[[ return !variables.entity_3; ]]]"
+            styles:
+              card:
+                - display: "none"
+    i4:
+      card:
+        type: "custom:button-card"
+        template: >
+          [[[
+            var templates = ['widget_icon_room'];
+            if (variables?.entity_4?.templates?.length) {
+              return ['widget_icon_room'].concat(variables.entity_4.templates);
+            }
+            return templates;
+          ]]]
+        variables: "[[[ return variables.entity_4; ]]]"
+        entity: >
+          [[[
+            if (variables?.entity_4?.entity_id) {
+              return variables.entity_4.entity_id;
+            }
+          ]]]
+        state:
+          - operator: "template"
+            value: "[[[ return !variables.entity_4; ]]]"
+            styles:
+              card:
+                - display: "none"
+
+widget_icon_room:
+  variables:
+    tap_action:
+      action: "toggle"
+    hold_action:
+      action: "none"
+  tap_action:
+    action: >
+      [[[ if (variables?.tap_action?.action) return variables.tap_action.action; else return 'none'; ]]]
+    entity: "[[[ return variables.tap_action.entity; ]]]"
+    navigation_path: "[[[ return variables.tap_action.navigation_path; ]]]"
+    url_path: "[[[ return variables.tap_action.url_path; ]]]"
+    service: "[[[ return variables.tap_action.service; ]]]"
+    service_data: "[[[ return variables.tap_action.service_data; ]]]"
+  hold_action:
+    action: >
+      [[[ if (variables?.hold_action?.action) return variables.hold_action.action; else return 'none'; ]]]
+    entity: "[[[ return variables.hold_action.entity; ]]]"
+    navigation_path: "[[[ return variables.hold_action.navigation_path; ]]]"
+    url_path: "[[[ return variables.hold_action.url_path; ]]]"
+    service: "[[[ return variables.hold_action.service; ]]]"
+    service_data: "[[[ return variables.hold_action.service_data; ]]]"
+  show_icon: true
+  show_name: false
+  styles:
+    grid:
+      - grid-template-areas: "'i'"
+    card:
+      - height: "100%"
+      - box-shadow: "none"
+      - padding: "0px"
+      - border-radius: "50%"
+    icon:
+      - width: "50%"
+      - height: "50%"
+      - line-height: "0"
+      - color: "rgba(var(--color-theme),0.2)"
+    img_cell:
+      - border-radius: "50%"
+      - background-color: "rgba(var(--color-theme),0.05)"
+  size: "15px"
+  color: "var(--google-grey)"

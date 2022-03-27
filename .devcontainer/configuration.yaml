@@ -4,30 +4,22 @@ default_config:
 frontend:
   themes: !include_dir_merge_named "themes"
 
-# For some reason default_config is not picking it up.
 automation ui: !include "automations.yaml"
-
-# lovelace:
-#   mode: "storage"
-
-# sensor:
-#   - platform: "time_date"
 
 logger:
   default: "info"
   logs:
     custom_components.ui_lovelace_minimalist: "debug"
-# If you need to debug uncommment the line below (doc: https://www.home-assistant.io/integrations/debugpy/)
-# debugpy:
 
-#
-# Uncomment part below after installing dependencies
-#
-## Requirement for popups, install browser mod with hacs
 browser_mod:
-
-## Install virtual integration with hacs
 virtual:
+
+weather:
+  - platform: "template"
+    name: "DummyTown"
+    condition_template: "cloudy"
+    temperature_template: "{{ '20' | float }}"
+    humidity_template: "{{ '50' | float }}"
 
 light:
   - platform: "virtual"
@@ -37,6 +29,7 @@ light:
     support_white_value: true
 
 sensor:
+  - platform: "time_date"
   - platform: "virtual"
     name: "Livingroom Temperature"
     class: "temperature"

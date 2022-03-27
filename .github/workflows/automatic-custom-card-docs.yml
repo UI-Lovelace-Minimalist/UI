@@ -4,7 +4,7 @@ name: "Automatic custom_cards docs"
 on:
   push:
     # Should only run on "dev" when new cards are submitted via PR
-    branches: ["dev"]
+    branches: ["main"]
     paths: ["custom_cards/*/README.md"]
 
 jobs:
@@ -30,15 +30,15 @@ jobs:
           replace: "../../assets/img"
           include: "docs/usage/custom_cards/**"
           regex: true
-      - name: "Commit files"
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git pull -p
-          git add --all
-          git commit -a -m "Add changes for automatically custom_cards docs"
-      - name: "Push changes"
-        uses: "ad-m/github-push-action@master"
+      - name: "Create Pull Request"
+        uses: "peter-evans/create-pull-request@v3"
         with:
-          github_token: "${{ secrets.GITHUB_TOKEN }}"
-          branch: "${{ github.ref }}"
+          token: "${{ secrets.GITHUB_TOKEN }}"
+          branch: "automated_custom_card_docs"
+          delete-branch: true
+          commit-message: "Update docs"
+          committer: "GitHub <noreply@github.com>"
+          title: "[Action] Update custom_cards docs"
+          labels: ":memo: documentation"
+          body: |
+            Update custom_cards docs due to latest changes.

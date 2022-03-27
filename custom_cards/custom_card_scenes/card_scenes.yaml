@@ -4,26 +4,36 @@ card_scenes:
   show_name: false
   show_label: false
   variables:
-    icon_1: "mdi:help-circle-outline"
-    icon_2: "mdi:help-circle-outline"
-    icon_3: "mdi:help-circle-outline"
-    icon_4: "mdi:help-circle-outline"
-    icon_5: "mdi:help-circle-outline"
-    name_1: "n/a"
-    name_2: "n/a"
-    name_3: "n/a"
-    name_4: "n/a"
-    name_5: "n/a"
-    color_icon_1: "gray"
-    color_icon_2: "gray"
-    color_icon_3: "gray"
-    color_icon_4: "gray"
-    color_icon_5: "gray"
-    color_bg_1: "gray"
-    color_bg_2: "gray"
-    color_bg_3: "gray"
-    color_bg_4: "gray"
-    color_bg_5: "gray"
+    entity_1:
+      entity_id:
+      icon: "mdi:help-circle-outline"
+      icon_color: "gray"
+      name: "n/a"
+      bg_color: "gray"
+    entity_2:
+      entity_id:
+      icon: "mdi:help-circle-outline"
+      icon_color: "gray"
+      name: "n/a"
+      bg_color: "gray"
+    entity_3:
+      entity_id:
+      icon: "mdi:help-circle-outline"
+      icon_color: "gray"
+      name: "n/a"
+      bg_color: "gray"
+    entity_4:
+      entity_id:
+      icon: "mdi:help-circle-outline"
+      icon_color: "gray"
+      name: "n/a"
+      bg_color: "gray"
+    entity_5:
+      entity_id:
+      icon: "mdi:help-circle-outline"
+      icon_color: "gray"
+      name: "n/a"
+      bg_color: "gray"
   styles:
     grid:
       - grid-template-areas: "'item1 item2 item3 item4 item5'"
@@ -40,77 +50,77 @@ card_scenes:
       card:
         type: "custom:button-card"
         template: "card_scenes_pill"
-        entity: "[[[ return variables.entity_1 ]]]"
-        icon: "[[[ return variables.icon_1 ]]]"
-        name: "[[[ return variables.name_1 ]]]"
+        entity: "[[[ return variables.entity_1.entity_id ]]]"
+        icon: "[[[ return variables.entity_1.icon ]]]"
+        name: "[[[ return variables.entity_1.name ]]]"
         variables:
-          color_icon: "[[[ return variables.color_icon_1 ]]]"
-          color_bg: "[[[ return variables.color_bg_1 ]]]"
+          color_icon: "[[[ return variables.entity_1.icon_color ]]]"
+          color_bg: "[[[ return variables.entity_1.bg_color ]]]"
         tap_action:
           action: "call-service"
-          service: "scene.turn_on"
+          service: "homeassistant.turn_on"
           service_data:
-            entity_id: "[[[ return variables.entity_1 ]]]"
+            entity_id: "[[[ return variables.entity_1.entity_id ]]]"
     item2:
       card:
         type: "custom:button-card"
         template: "card_scenes_pill"
-        entity: "[[[ return variables.entity_2 ]]]"
-        icon: "[[[ return variables.icon_2 ]]]"
-        name: "[[[ return variables.name_2 ]]]"
+        entity: "[[[ return variables.entity_2.entity_id ]]]"
+        icon: "[[[ return variables.entity_2.icon ]]]"
+        name: "[[[ return variables.entity_2.name ]]]"
         variables:
-          color_icon: "[[[ return variables.color_icon_2 ]]]"
-          color_bg: "[[[ return variables.color_bg_2 ]]]"
+          color_icon: "[[[ return variables.entity_2.icon_color ]]]"
+          color_bg: "[[[ return variables.entity_2.bg_color ]]]"
         tap_action:
           action: "call-service"
-          service: "scene.turn_on"
+          service: "homeassistant.turn_on"
           service_data:
-            entity_id: "[[[ return variables.entity_2 ]]]"
+            entity_id: "[[[ return variables.entity_2.entity_id ]]]"
     item3:
       card:
         type: "custom:button-card"
         template: "card_scenes_pill"
-        entity: "[[[ return variables.entity_3 ]]]"
-        icon: "[[[ return variables.icon_3 ]]]"
-        name: "[[[ return variables.name_3 ]]]"
+        entity: "[[[ return variables.entity_3.entity_id ]]]"
+        icon: "[[[ return variables.entity_3.icon ]]]"
+        name: "[[[ return variables.entity_3.name ]]]"
         variables:
-          color_icon: "[[[ return variables.color_icon_3 ]]]"
-          color_bg: "[[[ return variables.color_bg_3 ]]]"
+          color_icon: "[[[ return variables.entity_3.icon_color ]]]"
+          color_bg: "[[[ return variables.entity_3.bg_color ]]]"
         tap_action:
           action: "call-service"
-          service: "scene.turn_on"
+          service: "homeassistant.turn_on"
           service_data:
-            entity_id: "[[[ return variables.entity_3 ]]]"
+            entity_id: "[[[ return variables.entity_3.entity_id ]]]"
     item4:
       card:
         type: "custom:button-card"
         template: "card_scenes_pill"
-        entity: "[[[ return variables.entity_4 ]]]"
-        icon: "[[[ return variables.icon_4 ]]]"
-        name: "[[[ return variables.name_4 ]]]"
+        entity: "[[[ return variables.entity_4.entity_id ]]]"
+        icon: "[[[ return variables.entity_4.icon ]]]"
+        name: "[[[ return variables.entity_4.name ]]]"
         variables:
-          color_icon: "[[[ return variables.color_icon_4 ]]]"
-          color_bg: "[[[ return variables.color_bg_4 ]]]"
+          color_icon: "[[[ return variables.entity_4.icon_color ]]]"
+          color_bg: "[[[ return variables.entity_4.bg_color ]]]"
         tap_action:
           action: "call-service"
-          service: "scene.turn_on"
+          service: "homeassistant.turn_on"
           service_data:
-            entity_id: "[[[ return variables.entity_4 ]]]"
+            entity_id: "[[[ return variables.entity_4.entity_id ]]]"
     item5:
       card:
         type: "custom:button-card"
         template: "card_scenes_pill"
-        entity: "[[[ return variables.entity_5 ]]]"
-        icon: "[[[ return variables.icon_5 ]]]"
-        name: "[[[ return variables.name_5 ]]]"
+        entity: "[[[ return variables.entity_5.entity_id ]]]"
+        icon: "[[[ return variables.entity_5.icon ]]]"
+        name: "[[[ return variables.entity_5.name ]]]"
         variables:
-          color_icon: "[[[ return variables.color_icon_5 ]]]"
-          color_bg: "[[[ return variables.color_bg_5 ]]]"
+          color_icon: "[[[ return variables.entity_5.icon_color ]]]"
+          color_bg: "[[[ return variables.entity_5.bg_color ]]]"
         tap_action:
           action: "call-service"
-          service: "scene.turn_on"
+          service: "homeassistant.turn_on"
           service_data:
-            entity_id: "[[[ return variables.entity_5 ]]]"
+            entity_id: "[[[ return variables.entity_5.entity_id ]]]"
 
 card_scenes_pill:
   show_icon: true

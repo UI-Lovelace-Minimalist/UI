@@ -71,10 +71,6 @@ async def async_setup(hass: HomeAssistant, config: Config):
     """Set up this integration using UI."""
     return await async_initialize_integration(hass=hass, config=config)
 
-    # load_plugins(hass, DOMAIN)
-
-    # return True
-
 
 async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> bool:
     """Set up this integration using UI."""

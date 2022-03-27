@@ -1,5 +1,5 @@
 ---
-title: popup_power_outlet
+title: Power Outlet Popup
 hide:
   - toc
 ---

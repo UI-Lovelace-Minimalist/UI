@@ -13,6 +13,7 @@ blueprint:
           options:
             - "minimalist-desktop"
             - "minimalist-mobile"
+            - "minimalist-mobile-tapbar"
 
     mode:
       name: "Which Mode should it be default in"

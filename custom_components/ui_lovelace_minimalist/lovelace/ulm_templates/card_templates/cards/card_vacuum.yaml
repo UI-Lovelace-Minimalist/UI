@@ -1,0 +1,210 @@
+---
+card_vacuum:
+  show_name: false
+  show_icon: false
+  show_label: false
+  template:
+    - "ulm_language_variables"
+  variables:
+    ulm_card_vacuum_name: "[[[ return entity.attributes.friendly_name ]]]"
+    ulm_card_vacuum_icon: "[[[ return entity.attributes.icon ]]]"
+    ulm_card_vacuum_room:
+    ulm_card_vacuum_room_icon: "[[[ return entity.attributes.icon ]]]"
+  triggers_update: "all"
+  styles:
+    grid:
+      - grid-template-areas: "'item1' 'item2'"
+      - grid-template-columns: "1fr"
+      - grid-template-rows: "min-content  min-content"
+      - row-gap: "12px"
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
+      - background-color: >
+          [[[
+            if(hass.themes.darkMode)
+              if( entity.state.toLowerCase() === 'cleaning' ){
+                return 'rgba(var(--color-blue),0.1)'
+              } else if( entity.state.toLowerCase() === 'paused' ){
+                return 'rgba(var(--color-green),0.1)'
+              } else if( entity.state.toLowerCase() === 'mopping' ){
+                return 'rgba(var(--color-yellow),0.1)'
+              } else if( entity.state.toLowerCase() === 'returning' ){
+                return 'rgba(var(--color-purple),0.1)'
+              }
+          ]]]
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        template: "icon_more_info"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              icon: "[[[ return variables.ulm_card_vacuum_icon ]]]"
+              styles:
+                icon:
+                  - color: >
+                      [[[
+                        if( entity.state.toLowerCase() === 'cleaning' ){
+                          return 'rgba(var(--color-blue),1)'
+                        } else if( entity.state.toLowerCase() === 'paused' ){
+                          return 'rgba(var(--color-green),1)'
+                        } else if( entity.state.toLowerCase() === 'mopping' ){
+                          return 'rgba(var(--color-yellow),1)'
+                        } else if( entity.state.toLowerCase() === 'returning' ){
+                          return 'rgba(var(--color-purple),1)'
+                        } else if( entity.state.toLowerCase() === 'error' ){
+                          return 'rgba(var(--color-red),1)'
+                        } else {
+                        return 'rgba(var(--color-theme),0.2)'
+                        }
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        if( entity.state.toLowerCase() === 'cleaning' ){
+                          return 'rgba(var(--color-blue),0.2)'
+                        } else if( entity.state.toLowerCase() === 'paused' ){
+                          return 'rgba(var(--color-green),0.2)'
+                        } else if( entity.state.toLowerCase() === 'mopping' ){
+                          return 'rgba(var(--color-yellow),0.2)'
+                        } else if( entity.state.toLowerCase() === 'returning' ){
+                          return 'rgba(var(--color-purple),0.2)'
+                        } else if( entity.state.toLowerCase() === 'error' ){
+                          return 'rgba(var(--color-red),0.2)'
+                        } else {
+                        return 'rgba(var(--color-theme),0.05)'
+                        }
+                      ]]]
+          item2:
+            card:
+              type: "custom:button-card"
+              templates:
+                - "ulm_language_variables"
+              entity: "[[[ return entity.entity_id ]]]"
+              name: "[[[ return variables.ulm_card_vacuum_name ]]]"
+              label: >
+                [[[
+                  let label = entity.attributes.friendly_name
+                  if(variables.ulm_card_vacuum_label){
+                    label = variables.ulm_card_vacuum_label;
+                  } else if(entity.state.toLowerCase() === 'cleaning'){
+                    label = variables.ulm_cleaning;
+                  } else if(entity.state.toLowerCase() === 'idle'){
+                    label = variables.ulm_idle;
+                  } else if(entity.state.toLowerCase() === 'paused'){
+                    label = variables.ulm_paused;
+                  } else if(entity.state.toLowerCase() === 'returning'){
+                    label = variables.ulm_returning;
+                  } else if(entity.state.toLowerCase() === 'docked'){
+                    label = variables.ulm_docked;
+                  } else if(entity.state.toLowerCase() === 'mopping'){
+                    label = variables.ulm_mopping;
+                  } else {
+                    label = entity.state;
+                  }
+                  return label
+                ]]]
+    item2:
+      card:
+        type: "custom:button-card"
+        template: "list_4_items"
+        styles:
+          card:
+            - padding: "0px"
+            - background: "none"
+            - border-radius: "0"
+            - box-shadow: "none"
+          grid:
+            - grid-template-areas: >
+                [[[
+                  if(variables.ulm_card_vacuum_room){
+                    return "'item1 item2 item3 item4'";
+                  } else {
+                    return "'item1 item2 item3'";
+                  }
+                ]]]
+            - grid-template-columns: >
+                [[[
+                  if(variables.ulm_card_vacuum_room){
+                    return "1fr 1fr 1fr 1fr";
+                  } else {
+                    return "1fr 1fr 1fr";
+                  }
+                ]]]
+          custom_fields:
+            item4:
+              - display: >
+                  [[[
+                    if(variables.ulm_card_vacuum_room){
+                      return "block";
+                    } else {
+                      return "none";
+                    }
+                  ]]]
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              entity: "[[[ return entity.entity_id ]]]"
+              icon: "mdi:play"
+              state:
+                - operator: "template"
+                  value: "[[[ return entity.state.toLowerCase() === 'cleaning' ]]]"
+                  icon: "mdi:stop"
+                  tap_action:
+                    action: "call-service"
+                    service: "vacuum.stop"
+                    service_data:
+                      entity_id: "[[[ return entity.entity_id ]]]"
+              tap_action:
+                action: "call-service"
+                service: >
+                  [[[
+                    if (entity.state.toLowerCase() === 'cleaning'){
+                      return "vacuum.stop"
+                    } else {
+                      return "vacuum.start"
+                    }
+                  ]]]
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+          item2:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              entity: "[[[ return entity.entity_id ]]]"
+              icon: "mdi:home-map-marker"
+              tap_action:
+                action: "call-service"
+                service: "vacuum.return_to_base"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+          item3:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              entity: "[[[ return entity.entity_id ]]]"
+              icon: "mdi:map-marker"
+              state:
+              tap_action:
+                action: "call-service"
+                service: "vacuum.locate"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+          item4:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              entity: "[[[ return variables.ulm_card_vacuum_room ]]]"
+              icon: "[[[ return variables.ulm_card_vacuum_room_icon ]]]"
+              tap_action:
+                action: "call-service"
+                service: "script.turn_on"
+                service_data:
+                  entity_id: "[[[ return variables.ulm_card_vacuum_room ]]]"

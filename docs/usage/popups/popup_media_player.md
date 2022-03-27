@@ -1,5 +1,5 @@
 ---
-title: popup_media_player
+title: Media_player Popup
 hide:
   - toc
 ---
@@ -18,7 +18,9 @@ This popup is displayed using ``hold_action`` and it is compatible with the foll
 
 #### How to use
 
-To enable this popup, you need to add the ``popup_media_player`` template on your card.
+To enable this popup, add the variable `ulm_card_media_player_enable_popup` and set to `true`.
+
+!!! warning This is a different approach as the other popup_cards use.
 
 For example :
 
@@ -26,8 +28,9 @@ For example :
 - type: "custom:button-card"
   template:
     - card_media_player
-    - popup_media_player
   entity: media_player.lounge_room
+  variables:
+    ulm_card_media_player_enable_popup: true
 ```
 
 ## Credits

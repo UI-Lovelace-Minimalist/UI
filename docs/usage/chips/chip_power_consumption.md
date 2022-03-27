@@ -1,5 +1,5 @@
 ---
-title: chip_power_consumption
+title: Power Consumption Chip
 hide:
   - toc
 ---
@@ -30,6 +30,6 @@ This `chip` shows you the electric consumption from a sensor. Configurable to sh
 
 ??? note "Template Code"
 
-    ```yaml title="card_light.yaml"
+    ```yaml title="chip_power_consumption.yaml"
     --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/chips/chip_power_consumption.yaml"
     ```

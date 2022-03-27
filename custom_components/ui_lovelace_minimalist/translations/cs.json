@@ -1,0 +1,43 @@
+{
+    "title": "UI Lovelace Minimalist",
+    "config": {
+        "step": {
+            "user": {
+                "title": "Nastavení UI Lovelace Minimalist",
+                "description": "",
+                "data": {
+                    "language": "Jazyk",
+                    "sidepanel_enabled": "Zobrazit v postranním panelu",
+                    "sidepanel_icon": "Ikona v postranním panel",
+                    "sidepanel_title": "Název v postranním panelu",
+                    "theme": "Motiv",
+                    "include_other_cards": "Do zdrojů zahrnout vlastní karty, na kterých závisí tato integrace."
+                }
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "Již nastaveno. Je možná pouze jediná konfigurace.",
+            "not_setup": "UI Lovelace Minimalist není nastaveno."
+        }
+    },
+    "options": {
+        "step": {
+            "user": {
+                "title": "Nastavení UI Lovelace Minimalist",
+                "description": "",
+                "data": {
+                    "language": "Jazyk",
+                    "sidepanel_enabled": "Zobrazit v postranním panelu",
+                    "sidepanel_icon": "Ikona v postranním panel",
+                    "sidepanel_title": "Název v postranním panelu",
+                    "theme": "Motiv",
+                    "include_other_cards": "Do zdrojů zahrnout vlastní karty, na kterých závisí tato integrace."
+                }
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "Již nastaveno. Je možná pouze jediná konfigurace.",
+            "not_setup": "UI Lovelace Minimalist není nastaveno."
+        }
+    }
+}

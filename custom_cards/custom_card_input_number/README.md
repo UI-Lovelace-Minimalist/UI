@@ -1,5 +1,5 @@
 ---
-title: card_input_number
+title: Input Number Custom-card
 hide:
   - toc
 ---
@@ -7,7 +7,7 @@ hide:
 
 # Custom-card "Input Number"
 
-The `card_input_number` you can control a input_number entity
+The `card_input_number` you can control a input_number entity.
 
 ![Input Number Card](../../docs/assets/img/card_input_number.png)
 

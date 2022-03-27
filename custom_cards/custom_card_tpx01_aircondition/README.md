@@ -1,5 +1,5 @@
 ---
-title: custom_card_tpx01_aircondition_with_buttons
+title: AirCondition Custom-card
 hide:
   - toc
 ---
