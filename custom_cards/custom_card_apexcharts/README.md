@@ -1,5 +1,5 @@
 ---
-title: Custom-card "Apexcharts"
+title: Apexcharts Custom-card
 hide:
   - toc
 ---
@@ -113,8 +113,7 @@ Integration from HACS: "custom:apexcharts-card" from RomRider
 
 ```yaml
 ---
----
-apexcharts:
+custom_card_apexcharts:
   variables:
     entity_1:
       entity_id:
