@@ -28,7 +28,7 @@ Initial release
 
 ```yaml
     - type: "custom:button-card"
-      template: "apexcharts"
+      template: "custom_card_apexcharts"
       variables:
         chart_type: "donut"
         graph_span: "1d"
