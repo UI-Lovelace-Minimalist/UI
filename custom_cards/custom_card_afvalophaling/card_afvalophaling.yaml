@@ -16,6 +16,14 @@ card_afvalophaling:
         ]]]
   label: |
         [[[
+          if(states[variables.ulm_card_ophaling_vandaag].state !=='Geen'){
+            return states[variables.ulm_card_ophaling_vandaag].state
+          }
+          
+          if(states[variables.ulm_card_ophaling_morgen].state !=='Geen'){
+            return states[variables.ulm_card_ophaling_morgen].state
+          }
+          
           var glas = ''
           if(variables.ulm_card_datum_glas){
           var glas = "Glas " + ' • ' + states[variables.ulm_card_datum_glas].state + '<br>'
@@ -36,14 +44,8 @@ card_afvalophaling:
           if(variables.ulm_card_datum_papier){
           var papier = "Papier " + ' • ' + states[variables.ulm_card_datum_papier].state + '<br>'
           }
-          if(states[variables.ulm_card_ophaling_vandaag].state !=='Geen'){
-            return states[variables.ulm_card_ophaling_vandaag].state
-          }
-          if(states[variables.ulm_card_ophaling_morgen].state !=='Geen'){
-            return states[variables.ulm_card_ophaling_morgen].state
-          } else {
-            return rest + papier + pmd + gft + glas
-          }
+          
+          return rest + papier + pmd + gft + glas
         ]]]
 custom_colors:
   state:
