@@ -24,28 +24,28 @@ card_afvalophaling:
             return states[variables.ulm_card_ophaling_morgen].state
           }
           
-          var glas = ''
-          if(variables.ulm_card_datum_glas){
-          var glas = "Glas " + ' • ' + states[variables.ulm_card_datum_glas].state + '<br>'
-          }
-          var pmd = ''
-          if(variables.ulm_card_datum_pmd){
-          var pmd = "PMD " + ' • ' + states[variables.ulm_card_datum_pmd].state + '<br>'
-          }
-          var gft = ''
-          if(variables.ulm_card_datum_gft){
-          var gft = "GFT " + ' • ' + states[variables.ulm_card_datum_gft].state + '<br>'
-          }
-          var rest = ''
+          var collections = [];
           if(variables.ulm_card_datum_rest){
-          var rest = "Restafval " + ' • ' + states[variables.ulm_card_datum_rest].state + '<br>'
+            collections.push("Restafval " + ' • ' + states[variables.ulm_card_datum_rest].state);
           }
-          var papier = ''
+
           if(variables.ulm_card_datum_papier){
-          var papier = "Papier " + ' • ' + states[variables.ulm_card_datum_papier].state + '<br>'
+            collections.push("Papier " + ' • ' + states[variables.ulm_card_datum_papier].state);
           }
-          
-          return rest + papier + pmd + gft + glas
+
+          if(variables.ulm_card_datum_pmd){
+            collections.push("PMD " + ' • ' + states[variables.ulm_card_datum_pmd].state);
+          }
+
+          if(variables.ulm_card_datum_gft){
+            collections.push("GFT " + ' • ' + states[variables.ulm_card_datum_gft].state);
+          }
+
+          if(variables.ulm_card_datum_glas){
+            collections.push("Glas " + ' • ' + states[variables.ulm_card_datum_glas].state);
+          }
+
+          return collections.join('<br>');
         ]]]
 custom_colors:
   state:
