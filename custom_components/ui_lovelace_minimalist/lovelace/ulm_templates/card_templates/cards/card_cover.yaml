@@ -112,14 +112,26 @@ card_cover:
                     var icon = "mdi:help-circle";
                     if (typeof states[entity.entity_id].attributes.current_position === "undefined"){
                       if (states[entity.entity_id].state == "closed"){
-                        var icon = "mdi:window-shutter";
+                        if (variables.ulm_card_curtain_display_collapse_expand){
+                          var icon = "mdi:curtains-closed";
+                        } else
+                          var icon = "mdi:window-shutter";
                       } else
-                        var icon = "mdi:window-shutter-open";
+                        if (variables.ulm_card_curtain_display_collapse_expand){
+                          var icon = "mdi:curtains";
+                        } else
+                          var icon = "mdi:window-shutter-open";
                     } else {
                       if (states[entity.entity_id].attributes.current_position == 0){
-                        var icon = "mdi:window-shutter";
+                        if (variables.ulm_card_curtain_display_collapse_expand){
+                          var icon = "mdi:curtains-closed";
+                        } else
+                          var icon = "mdi:window-shutter";
                       } else
-                        var icon = "mdi:window-shutter-open";
+                        if (variables.ulm_card_curtain_display_collapse_expand){
+                          var icon = "mdi:curtains";
+                        } else
+                          var icon = "mdi:window-shutter-open";
                     }
                     return icon ;
                 ]]]
