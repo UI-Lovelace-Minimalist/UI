@@ -130,6 +130,12 @@ card_media_player:
                 var icon = "mdi:youtube";
               } else if (app == "oto music"){
                 var icon = "mdi:music-circle";
+              } else if(app == "pandora"){
+                var icon = "mdi:pandora";
+              } else if(app == "netflix"){
+                var icon = "mdi:netflix";
+              } else if(app == "bluetooth audio"){
+                var icon = "mdi:bluetooth";
               } else if (entity.attributes.icon){
                 var icon = entity.attributes.icon;
               }
