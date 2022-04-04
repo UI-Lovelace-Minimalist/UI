@@ -10,7 +10,7 @@ cards = (
     ('lovelace-card-mod', 'https://raw.githubusercontent.com/thomasloven/lovelace-card-mod/3.1.2/card-mod.js'),
     ('mini-graph-card', 'https://github.com/kalkih/mini-graph-card/releases/download/v0.11.0-dev.5/mini-graph-card-bundle.js'),
     ('mini-media-player', 'https://github.com/kalkih/mini-media-player/releases/download/v1.16.2/mini-media-player-bundle.js'),
-    ('my-cards-slider-card', 'https://github.com/AnthonMS/my-cards/blob/main/dist/my-cards.js'),
+    ('my-cards', 'https://raw.githubusercontent.com/AnthonMS/my-cards/main/dist/my-cards.js'),
     ('simple-weather-card', 'https://github.com/kalkih/simple-weather-card/releases/download/v0.8.2/simple-weather-card-bundle.js'),
 )
 
