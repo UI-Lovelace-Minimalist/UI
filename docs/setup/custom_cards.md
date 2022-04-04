@@ -35,7 +35,7 @@ config
 
 You don't need to do any extra inclusion in your dashboard yaml via `!include`, the custom_cards will be copied from this folder to the custom_component directory. The custom_cards folder itself remains untouched. A list of all currently available custom_cards can be found on our repo here: https://github.com/UI-Lovelace-Minimalist/UI/tree/main/custom_cards
 
-!!! note ""
+!!! tip "Reloading"
 
     Once you have added new custom_cards, you can always reload that folder via Home Assistant and add the new cards to the config.
     Just go to `"Configuration" --> "Settings"` in Home Assistant and press the `"UI_LOVELACE_MINIMALIST"` button within the "YAML configuration reloading" section.

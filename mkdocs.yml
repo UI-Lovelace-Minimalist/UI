@@ -22,7 +22,7 @@ nav:
       - Card Style Guide: "development/card_style_guide.md"
       - Docs Style Guide: "development/docs_style_guide.md"
       - Custom-Cards: "development/custom_cards.md"
-  - Troubleshooting:
+  - Troubleshooting/FAQ:
       - FAQ: "troubleshooting/troubleshooting.md"
 
 extra_css:
