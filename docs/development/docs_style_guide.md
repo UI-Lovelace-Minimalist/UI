@@ -6,7 +6,7 @@ hide:
 
 ## Documentation Style Guide
 
-This document defines the standarads for UI Lovelace Minimalist Documentation.
+This document defines the standards for UI Lovelace Minimalist Documentation.
 
 - Rather than repeating information from another topic, link to the single source of truth and explain why it is important.
 
