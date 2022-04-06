@@ -53,25 +53,6 @@ This card needs the following to function correctly:
 </tr>
 </table>
 
-## Installation
-
-- Copy the folder `custom_card_paddy_welcome` from your download `custom_cards` to `config/minimalist-templates`
-- Go to the folder `config/minimalist-templates/custom_card_paddy_welcome/languages` and delete all but the one language file you want to use. For english, delete all but `EN.yaml`, for german delete all but `DE.yaml`.
-
-In the end it should look like this:
-
-```yaml
-config
-  └── minimalist-templates
-     └── custom_card_paddy_welcome
-        └── languages
-           └── EN.yaml
-        └── custom_card_paddy_welcome.yaml
-        └── README.md
-     └── button_card_templates.yaml
-     └── EN.yaml
-```
-
 ## Usage
 
 ```yaml
