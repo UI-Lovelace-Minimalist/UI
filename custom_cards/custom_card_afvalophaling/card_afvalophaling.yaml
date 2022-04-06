@@ -8,7 +8,8 @@ card_afvalophaling:
   icon: "mdi:delete"
   name: >
         [[[
-          if(states[variables.ulm_card_ophaling_vandaag].state !=='Geen' || states[variables.ulm_card_ophaling_morgen].state !=='Geen'){
+          if((variables.ulm_card_ophaling_vandaag && states[variables.ulm_card_ophaling_vandaag].state !== 'Geen') ||
+            (variables.ulm_card_ophaling_morgen && states[variables.ulm_card_ophaling_morgen].state !== 'Geen')) {
             return variables.ulm_ophaling
           } else {
             return variables.ulm_volgende_ophaling
@@ -16,34 +17,36 @@ card_afvalophaling:
         ]]]
   label: |
         [[[
-          var glas = ''
-          if(variables.ulm_card_datum_glas){
-          var glas = "Glas " + ' • ' + states[variables.ulm_card_datum_glas].state + '<br>'
-          }
-          var pmd = ''
-          if(variables.ulm_card_datum_pmd){
-          var pmd = "PMD " + ' • ' + states[variables.ulm_card_datum_pmd].state + '<br>'
-          }
-          var gft = ''
-          if(variables.ulm_card_datum_gft){
-          var gft = "GFT " + ' • ' + states[variables.ulm_card_datum_gft].state + '<br>'
-          }
-          var rest = ''
-          if(variables.ulm_card_datum_rest){
-          var rest = "Restafval " + ' • ' + states[variables.ulm_card_datum_rest].state + '<br>'
-          }
-          var papier = ''
-          if(variables.ulm_card_datum_papier){
-          var papier = "Papier " + ' • ' + states[variables.ulm_card_datum_papier].state + '<br>'
-          }
-          if(states[variables.ulm_card_ophaling_vandaag].state !=='Geen'){
+          if(variables.ulm_card_ophaling_vandaag && states[variables.ulm_card_ophaling_vandaag].state !== 'Geen'){
             return states[variables.ulm_card_ophaling_vandaag].state
           }
-          if(states[variables.ulm_card_ophaling_morgen].state !=='Geen'){
+
+          if(variables.ulm_card_ophaling_morgen && states[variables.ulm_card_ophaling_morgen].state !== 'Geen'){
             return states[variables.ulm_card_ophaling_morgen].state
-          } else {
-            return rest + papier + pmd + gft + glas
           }
+
+          var collections = [];
+          if(variables.ulm_card_datum_rest){
+            collections.push("Restafval " + ' • ' + states[variables.ulm_card_datum_rest].state);
+          }
+
+          if(variables.ulm_card_datum_papier){
+            collections.push("Papier " + ' • ' + states[variables.ulm_card_datum_papier].state);
+          }
+
+          if(variables.ulm_card_datum_pmd){
+            collections.push("PMD " + ' • ' + states[variables.ulm_card_datum_pmd].state);
+          }
+
+          if(variables.ulm_card_datum_gft){
+            collections.push("GFT " + ' • ' + states[variables.ulm_card_datum_gft].state);
+          }
+
+          if(variables.ulm_card_datum_glas){
+            collections.push("Glas " + ' • ' + states[variables.ulm_card_datum_glas].state);
+          }
+
+          return collections.join('<br>');
         ]]]
 custom_colors:
   state:
@@ -54,7 +57,7 @@ custom_colors:
           - background-color: "rgba(var(--color-green), 0.2)"
       value: >
         [[[
-          return states[variables.ulm_card_ophaling_vandaag].state !== "Geen" || states[variables.ulm_card_ophaling_morgen].state !== "Geen"
+          return (variables.ulm_card_ophaling_vandaag && states[variables.ulm_card_ophaling_vandaag].state !== "Geen") || (variables.ulm_card_ophaling_morgen && states[variables.ulm_card_ophaling_morgen].state !== "Geen")
         ]]]
       icon: "mdi:recycle"
       operator: "template"
@@ -65,7 +68,7 @@ custom_colors:
           - background-color: "rgba(var(--color-blue), 0.2)"
       value: >
         [[[
-          return states[variables.ulm_card_ophaling_vandaag].state === "glas" || states[variables.ulm_card_ophaling_morgen].state === "glas"
+          return (variables.ulm_card_ophaling_vandaag && states[variables.ulm_card_ophaling_vandaag].state === "glas") || (variables.ulm_card_ophaling_morgen && states[variables.ulm_card_ophaling_morgen].state === "glas")
         ]]]
       icon: "mdi:bottle-wine-outline"
       operator: "template"
@@ -137,8 +140,10 @@ icon_info_afvalophaling:
   custom_fields:
     notification: >
       [[[
-        if (states[variables.ulm_card_ophaling_vandaag].state =='unavailable' || states[variables.ulm_card_ophaling_morgen].state =='unavailable'){
+        if ((variables.ulm_card_ophaling_vandaag && states[variables.ulm_card_ophaling_vandaag].state =='unavailable') || 
+          (variables.ulm_card_ophaling_morgen && states[variables.ulm_card_ophaling_morgen].state =='unavailable')) {
           return `<ha-icon icon="mdi:help" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`
         }
       ]]]
   size: "20px"
+  
