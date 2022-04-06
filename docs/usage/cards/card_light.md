@@ -38,6 +38,8 @@ This card merges the following one :
 | ulm_card_light_name                    | `friendly_name` | :material-close: | Customize name |             |
 | ulm_card_light_icon                    | `mdi:lightbulb` | :material-close: | Customize icon |             |
 | ulm_card_light_enable_slider           | `false`         | :material-close: | Enable slider  |             |
+| ulm_card_light_enable_slider_minSet    | `0`             | :material-close: | Minimum brightness value user can select in the slider | Need `ulm_card_light_enable_slider: true` |
+| ulm_card_light_enable_slider_maxSet    | `100`           | :material-close: | Maximum brightness value user can select in the slider | Need `ulm_card_light_enable_slider: true` |
 | ulm_card_light_enable_collapse         | `false`         | :material-close: | Collapse slider when off | Need `ulm_card_light_enable_slider: true` |
 | ulm_card_light_enable_horizontal       | `false`         | :material-close: | Enable horizontal card | |
 | ulm_card_light_enable_horizontal_wide  | `false`         | :material-close: | Wider slider | Need `ulm_card_light_enable_horizontal: true` |
