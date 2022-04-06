@@ -1,5 +1,5 @@
 ---
-title: Light Colorpick Custom-card
+title: Colorpicker Light Card Custom-card
 hide:
   - toc
 ---

@@ -1,5 +1,5 @@
 ---
-title: Nas Custom-card
+title: NAS Custom-card
 hide:
   - toc
 ---

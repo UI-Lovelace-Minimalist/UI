@@ -1,5 +1,5 @@
 ---
-title: My Enedis Custom-card
+title: My Enedis Chip Custom-card
 hide:
   - toc
 ---

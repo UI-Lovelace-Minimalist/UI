@@ -1,5 +1,5 @@
 ---
-title: custom_card_eraycetinay_elapsed_time
+title: Elapsed Time Custom-card
 hide:
   - toc
 ---

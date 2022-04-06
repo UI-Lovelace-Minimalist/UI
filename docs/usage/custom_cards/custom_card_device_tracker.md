@@ -40,5 +40,5 @@ It allow to display the state of two tracker for this device
 ??? note "Template Code"
 
     ```yaml title="custom_card_device_tracker.yaml"
-    --8<-- "custom_card/custom_card_device_tracker/custom_card_device_tracker.yaml"
+    --8<-- "custom_cards/custom_card_device_tracker/custom_card_device_tracker.yaml"
     ```

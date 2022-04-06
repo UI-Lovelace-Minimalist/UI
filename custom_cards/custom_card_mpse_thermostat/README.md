@@ -1,11 +1,11 @@
 ---
-title: custom_card_mpse_thermostat
+title: Thermostat mpse Custom-card
 hide:
   - toc
 ---
 <!-- markdownlint-disable MD046 -->
 
-# Custom-card "Printer"
+# Custom-card "Thermostat"
 
 The `custom_card_mpse_thermostat` is used to display temperature and control a simple thermostat. I have tested this with a cooling function that I use to control my beer fridge.
 

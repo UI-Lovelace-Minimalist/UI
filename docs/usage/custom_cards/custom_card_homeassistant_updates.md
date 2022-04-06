@@ -17,7 +17,7 @@ This card needs additional template sensors and a group.updaters sensor to work,
 
 - Author: AndyVRD - 2021
 - Special thanks to [basbruss](https://github.com/basbruss/UI)
-- Version: 1.0.1
+- Version: 1.0.2
 
 ## Changelog
 
@@ -28,6 +28,10 @@ Initial release
 <details>
 <summary>1.0.1</summary>
 Added support for ulm_language variables
+</details>
+<details>
+<summary>1.0.2</summary>
+Updated capitalization of OS
 </details>
 
 ## Usage
@@ -135,9 +139,9 @@ card_homeassistant_updates:
                 }
                 if(variables.ulm_card_homeassistant_os){
                   if(states[variables.ulm_card_homeassistant_os].state ==='True'){
-                    var os = 'Os: ' + states[variables.ulm_card_homeassistant_os].attributes.installed_version + ' -> ' + states[variables.ulm_card_homeassistant_os].attributes.latest_version;
+                    var os = 'OS: ' + states[variables.ulm_card_homeassistant_os].attributes.installed_version + ' -> ' + states[variables.ulm_card_homeassistant_os].attributes.latest_version;
                   } else {
-                    var os = 'Os: ' + states[variables.ulm_card_homeassistant_os].attributes.installed_version;
+                    var os = 'OS: ' + states[variables.ulm_card_homeassistant_os].attributes.installed_version;
                   }
                 }
                 if(variables.ulm_card_homeassistant_core && variables.ulm_card_homeassistant_supervisor && variables.ulm_card_homeassistant_os){

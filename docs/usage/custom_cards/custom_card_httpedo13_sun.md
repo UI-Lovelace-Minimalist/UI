@@ -1,5 +1,5 @@
 ---
-title: Sun Custom-card
+title: Sun Card Custom-card
 hide:
   - toc
 ---
