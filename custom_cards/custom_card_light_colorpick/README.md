@@ -1,5 +1,5 @@
 ---
-title: card_light_colorpick
+title: Colorpicker Light Card Custom-card
 hide:
   - toc
 ---
@@ -43,22 +43,6 @@ This card needs the following to function correctly:
 <td></td>
 </tr>
 </table>
-
-## Installation
-
-- Copy the folder `custom_card_light_colorpick` from your download `custom_cards` to `config/minimalist-templates`
-
-In the end it should look like this:
-
-```yaml
-config
-  └── minimalist-templates
-     └── custom_card_light_colorpick
-        └── custom_card_light_colorpick.yaml
-        └── README.md
-     └── button_card_templates.yaml
-     └── EN.yaml
-```
 
 ## Usage
 

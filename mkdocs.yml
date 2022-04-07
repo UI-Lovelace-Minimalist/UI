@@ -15,12 +15,15 @@ nav:
       - Download: "setup/download.md"
       - Installation: "setup/installation.md"
       - Configuration: "setup/configuration.md"
+      - Customizing: "setup/customizing.md"
       - Custom cards: "setup/custom_cards.md"
   - "... | usage/**/*.md"
   - Development:
       - Card Style Guide: "development/card_style_guide.md"
       - Docs Style Guide: "development/docs_style_guide.md"
       - Custom-Cards: "development/custom_cards.md"
+  - Troubleshooting/FAQ:
+      - FAQ: "troubleshooting/troubleshooting.md"
 
 extra_css:
   - "assets/stylesheets/extra.css"

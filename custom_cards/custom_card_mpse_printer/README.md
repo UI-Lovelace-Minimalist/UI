@@ -1,5 +1,5 @@
 ---
-title: custom_card_mpse_printer
+title: Printer Card Custom-card
 hide:
   - toc
 ---

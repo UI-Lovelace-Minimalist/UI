@@ -1,5 +1,5 @@
 ---
-title: card_navigate
+title: Navigate Card
 hide:
   - toc
 ---

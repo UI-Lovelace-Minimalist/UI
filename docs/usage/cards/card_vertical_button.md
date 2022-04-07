@@ -1,5 +1,5 @@
 ---
-title: card_vertical_button
+title: Vertical Button Card
 hide:
   - toc
 ---
@@ -30,6 +30,7 @@ The variable `ulm_card_vertical_button_state` needs to be used togehter with inp
   entity: input_select.test_vertical_buttons
   name: Away
   icon: mdi:television-classic
+  show_last_changed: true
   variables:
     ulm_card_vertical_button_state: Away
     ulm_card_vertical_button_color: green

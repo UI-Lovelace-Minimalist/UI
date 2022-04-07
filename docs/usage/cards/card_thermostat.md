@@ -1,5 +1,5 @@
 ---
-title: card_thermostat
+title: Thermostat Card
 hide:
   - toc
 ---

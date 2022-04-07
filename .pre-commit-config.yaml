@@ -25,7 +25,9 @@ repos:
       - id: "requirements-txt-fixer"
       - id: "debug-statements"
       - id: "end-of-file-fixer"
+        exclude: "^custom_componenents/ui_lovelace_minimalist/cards/"
       - id: "trailing-whitespace"
+        exclude: "^custom_componenents/ui_lovelace_minimalist/cards/"
       - id: "mixed-line-ending"
 
   - repo: "https://github.com/adrienverge/yamllint.git"
@@ -46,7 +48,7 @@ repos:
       args: ["--fix"]
 
   - repo: "https://github.com/jumanjihouse/pre-commit-hook-yamlfmt"
-    rev: "0.1.0"
+    rev: "0.1.1"
     hooks:
       - id: "yamlfmt"
         args: ["--mapping", "2", "--sequence", "4", "--offset", "2", "--preserve-quotes"]

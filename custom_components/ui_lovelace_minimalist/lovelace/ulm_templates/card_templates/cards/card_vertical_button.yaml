@@ -70,6 +70,10 @@ card_vertical_button:
           return "switch.toggle";
         if( entity.entity_id.startsWith("light.") )
           return "light.toggle";
+        if( entity.entity_id.startsWith("automation.") )
+          return "automation.toggle";
+        if( entity.entity_id.startsWith("input_button.") )
+          return "input_button.press";
         // If we need to support other entities we can add these options here.
         return "";
       ]]]

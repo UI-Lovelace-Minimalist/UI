@@ -1,5 +1,5 @@
 ---
-title: popup_light
+title: Light Popup
 hide:
   - toc
 ---

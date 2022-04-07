@@ -8,7 +8,8 @@ card_afvalophaling:
   icon: "mdi:delete"
   name: >
         [[[
-          if(states[variables.ulm_card_ophaling_vandaag].state !=='Geen' || states[variables.ulm_card_ophaling_morgen].state !=='Geen'){
+          if((variables.ulm_card_ophaling_vandaag && states[variables.ulm_card_ophaling_vandaag].state !== 'Geen') ||
+            (variables.ulm_card_ophaling_morgen && states[variables.ulm_card_ophaling_morgen].state !== 'Geen')) {
             return variables.ulm_ophaling
           } else {
             return variables.ulm_volgende_ophaling
@@ -16,29 +17,36 @@ card_afvalophaling:
         ]]]
   label: |
         [[[
-          if(states[variables.ulm_card_ophaling_vandaag].state ==='gft'){
-            return "Vandaag: GFT"
+          if(variables.ulm_card_ophaling_vandaag && states[variables.ulm_card_ophaling_vandaag].state !== 'Geen'){
+            return states[variables.ulm_card_ophaling_vandaag].state
           }
-          if(states[variables.ulm_card_ophaling_morgen].state ==='gft'){
-            return "Morgen: GFT"
+
+          if(variables.ulm_card_ophaling_morgen && states[variables.ulm_card_ophaling_morgen].state !== 'Geen'){
+            return states[variables.ulm_card_ophaling_morgen].state
           }
-          if(states[variables.ulm_card_ophaling_vandaag].state ==='papier'){
-            return "Vandaag: Papier"
+
+          var collections = [];
+          if(variables.ulm_card_datum_rest){
+            collections.push("Restafval " + ' • ' + states[variables.ulm_card_datum_rest].state);
           }
-          if(states[variables.ulm_card_ophaling_morgen].state ==='papier'){
-            return "Morgen: Papier"
+
+          if(variables.ulm_card_datum_papier){
+            collections.push("Papier " + ' • ' + states[variables.ulm_card_datum_papier].state);
           }
-          if(states[variables.ulm_card_ophaling_vandaag].state ==='pmd, restafval'){
-            return "Vandaag: Restafval + PMD"
+
+          if(variables.ulm_card_datum_pmd){
+            collections.push("PMD " + ' • ' + states[variables.ulm_card_datum_pmd].state);
           }
-          if(states[variables.ulm_card_ophaling_morgen].state ==='pmd, restafval'){
-            return "Morgen: Restafval + PMD"
-          } else {
-            return "GFT " + ' • ' + states[variables.ulm_card_datum_gft].state + '<br>' +
-            "PMD " + ' • ' + states[variables.ulm_card_datum_pmd].state + '<br>' +
-            "Papier " + ' • ' + states[variables.ulm_card_datum_papier].state + '<br>' +
-            "Restafval " + ' • ' + states[variables.ulm_card_datum_rest].state
+
+          if(variables.ulm_card_datum_gft){
+            collections.push("GFT " + ' • ' + states[variables.ulm_card_datum_gft].state);
           }
+
+          if(variables.ulm_card_datum_glas){
+            collections.push("Glas " + ' • ' + states[variables.ulm_card_datum_glas].state);
+          }
+
+          return collections.join('<br>');
         ]]]
 custom_colors:
   state:
@@ -49,20 +57,9 @@ custom_colors:
           - background-color: "rgba(var(--color-green), 0.2)"
       value: >
         [[[
-          return states[variables.ulm_card_ophaling_vandaag].state == "gft" || states[variables.ulm_card_ophaling_morgen].state == "gft"
+          return (variables.ulm_card_ophaling_vandaag && states[variables.ulm_card_ophaling_vandaag].state !== "Geen") || (variables.ulm_card_ophaling_morgen && states[variables.ulm_card_ophaling_morgen].state !== "Geen")
         ]]]
       icon: "mdi:recycle"
-      operator: "template"
-    - styles:
-        icon:
-          - color: "rgba(var(--color-green),1)"
-        img_cell:
-          - background-color: "rgba(var(--color-green), 0.2)"
-      value: >
-        [[[
-          return states[variables.ulm_card_ophaling_vandaag].state == "papier" || states[variables.ulm_card_ophaling_morgen].state == "papier"
-        ]]]
-      icon: "mdi:package-variant-closed"
       operator: "template"
     - styles:
         icon:
@@ -71,9 +68,9 @@ custom_colors:
           - background-color: "rgba(var(--color-blue), 0.2)"
       value: >
         [[[
-          return states[variables.ulm_card_ophaling_vandaag].state == "pmd, restafval" || states[variables.ulm_card_ophaling_morgen].state == "pmd, restafval"
+          return (variables.ulm_card_ophaling_vandaag && states[variables.ulm_card_ophaling_vandaag].state === "glas") || (variables.ulm_card_ophaling_morgen && states[variables.ulm_card_ophaling_morgen].state === "glas")
         ]]]
-      icon: "mdi:delete-empty"
+      icon: "mdi:bottle-wine-outline"
       operator: "template"
 icon_info_afvalophaling:
   color: "var(--google-grey)"
@@ -143,8 +140,10 @@ icon_info_afvalophaling:
   custom_fields:
     notification: >
       [[[
-        if (states[variables.ulm_card_ophaling_vandaag].state =='unavailable' || states[variables.ulm_card_ophaling_morgen].state =='unavailable'){
+        if ((variables.ulm_card_ophaling_vandaag && states[variables.ulm_card_ophaling_vandaag].state =='unavailable') || 
+          (variables.ulm_card_ophaling_morgen && states[variables.ulm_card_ophaling_morgen].state =='unavailable')) {
           return `<ha-icon icon="mdi:help" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`
         }
       ]]]
   size: "20px"
+  

@@ -15,7 +15,7 @@ views:
           - type: "custom:button-card"
             template: "card_title"
             name: "Congrats with your installation 🎉"
-            label: "Explore here some of the wonderfull 'Minimalistic-UI' cards we offer"
+            label: "Explore here some of the wonderful 'Minimalistic-UI' cards we offer"
           - type: "custom:auto-entities"
             card:
               type: "grid"

@@ -16,6 +16,8 @@ card_light:
   show_icon: false
   show_name: false
   show_label: false
+  tap_action:
+    action: "toggle"
   hold_action:
     action: >
       [[[

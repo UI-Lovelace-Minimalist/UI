@@ -1,5 +1,5 @@
 ---
-title: custom_card_irmajavi_speedtest
+title: Speedtest Custom-card
 hide:
   - toc
 ---

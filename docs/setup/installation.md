@@ -18,7 +18,7 @@ Open your Home Assistant instance and start setting up "UI Lovelace Minimalist" 
 
 Now you can configure the Integration, you can do this also after it's installed!
 
-![hacs_integration_config](../../assets/img/setup/hacs_integration_config.png)
+![hacs_integration_config](../assets/img/setup/hacs_integration_config.png)
 
 - Language: Will set the language for the Integration.
 - Side panel enabled: If you want to add an Entry in the Side Panel for the auto generated Dashboard. (Still under heavy development!)
@@ -40,6 +40,8 @@ Now you can configure the Integration, you can do this also after it's installed
     frontend:
       themes: !include_dir_merge_named themes
     ```
+
+    You will also need to change your user theme to the chosen theme or else no visual modifications will work.
 
 - Include Custom Cards: This will make sure almost all dependency cards are included and configured for you.
 

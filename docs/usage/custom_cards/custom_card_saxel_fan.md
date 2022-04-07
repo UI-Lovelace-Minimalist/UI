@@ -1,5 +1,5 @@
 ---
-title: custom_card_saxel_fan_blue
+title: Fan Card Custom-card
 hide:
   - toc
 ---
@@ -54,10 +54,6 @@ This card needs the following to function correctly:
     <td></td>
   </tr>
 </table>
-
-## Installation
-
-Copy the folder `custom_card_saxel_fan` to `config/minimalist-templates/`
 
 ## Usage
 
