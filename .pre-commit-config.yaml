@@ -1,19 +1,18 @@
 ---
 ci:
   autofix_commit_msg: |
-      [pre-commit.ci] auto fixes from pre-commit.com hooks
-      for more information, see https://pre-commit.ci
+    [pre-commit.ci] auto fixes from pre-commit.com hooks
+    for more information, see https://pre-commit.ci
   autofix_prs: true
-  autoupdate_branch: "dev"
+  autoupdate_branch: "release"
   autoupdate_commit_msg: "[pre-commit.ci] pre-commit autoupdate"
   autoupdate_schedule: "weekly"
   skip: []
   submodules: false
 
 repos:
-
   - repo: "https://github.com/pre-commit/pre-commit-hooks"
-    rev: "v4.1.0"
+    rev: "v4.2.0"
     hooks:
       - id: "check-executables-have-shebangs"
       - id: "check-json"
@@ -37,21 +36,30 @@ repos:
         args: ["--format", "parsable", "--strict"]
         # exclude: ".pre-commit-config.yaml"
         exclude: |
-            (?x)^(
-                .pre-commit-config.yaml
-            )$
+          (?x)^(
+              .pre-commit-config.yaml
+          )$
 
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.30.0
+    rev: v0.31.1
     hooks:
-    - id: markdownlint
-      args: ["--fix"]
+      - id: markdownlint
+        args: ["--fix"]
 
   - repo: "https://github.com/jumanjihouse/pre-commit-hook-yamlfmt"
     rev: "0.1.1"
     hooks:
       - id: "yamlfmt"
-        args: ["--mapping", "2", "--sequence", "4", "--offset", "2", "--preserve-quotes"]
+        args:
+          [
+            "--mapping",
+            "2",
+            "--sequence",
+            "4",
+            "--offset",
+            "2",
+            "--preserve-quotes",
+          ]
         exclude: ".*"
 
   - repo: "https://github.com/mattlqx/pre-commit-search-and-replace"
@@ -60,7 +68,7 @@ repos:
       - id: "search-and-replace"
 
   - repo: "https://github.com/asottile/pyupgrade"
-    rev: "v2.29.1"
+    rev: "v2.31.1"
     hooks:
       - id: "pyupgrade"
         args: ["--py39-plus"]
@@ -71,7 +79,7 @@ repos:
       - id: "isort"
 
   - repo: "https://github.com/psf/black"
-    rev: "21.12b0"
+    rev: "22.3.0"
     hooks:
       - id: "black"
         args:
@@ -91,7 +99,7 @@ repos:
           files: '^(custom_components/.+)?[^/]+\.py$'
 
   - repo: "https://github.com/PyCQA/bandit"
-    rev: "1.7.1"
+    rev: "1.7.4"
     hooks:
       - id: "bandit"
         args:
