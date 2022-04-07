@@ -62,6 +62,7 @@ minimalist-ios-tapbar:
       app-toolbar {
         height: var(--header-height) !important;
         padding: 10px 0px !important;
+        background: var( --ha-card-background, var(--card-background-color) );
       }
       #view {
         margin-top: calc(-1 * var(--header-height)) !important;
@@ -125,7 +126,7 @@ minimalist-ios-tapbar:
       header-all-tabs-color: "var(--paper-item-icon-color)"
       header-tab-indicator-color: "rgba(0, 0, 0, 0)"
       app-header-text-color: "var(--primary-text-color)"
-      app-header-background-color: "var( --ha-card-background, var(--card-background-color, white) )"
+      app-header-background-color: "var(--primary-background-color)"
       paper-tabs-selection-bar-color: "var(--primary-text-color)"
       footer-shadow: "0px -1px 3px 0px rgba(0,0,0,0.12)"
       # background and sidebar
@@ -185,7 +186,7 @@ minimalist-ios-tapbar:
       header-all-tabs-color: "var(--paper-item-icon-color)"
       header-tab-indicator-color: "rgba(0, 0, 0, 0)"
       app-header-text-color: "var(--primary-text-color)"
-      app-header-background-color: "var( --ha-card-background, var(--card-background-color, rgb(29, 29, 29)) )"
+      app-header-background-color: "var(--primary-background-color)"
       paper-tabs-selection-bar-color: "var(--primary-text-color)"
       footer-shadow: "0px -1px 3px 0px rgba(0,0,0,0.12)"
       # background and sidebar
