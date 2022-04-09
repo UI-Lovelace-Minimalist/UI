@@ -10,7 +10,7 @@ hide:
 ![Image title](../../assets/img/ulm_cards/card_thermostat.png){ width="500" }
 ![Image title](../../assets/img/ulm_cards/card_thermostat_with_controls.png){ width="500" }
 ![Image title](../../assets/img/ulm_cards/card_thermostat_with_hvac_and_color.png){ width="500" }
-![Image title](../../assets/img/ulm_cards/card_themostat_with_high_low.png){ width="500" }
+![Image title](../../assets/img/ulm_cards/card_thermostat_with_high_low.png){ width="500" }
 
 This is the `thermostat-card`, used to toggle a climate entity. Shows state of the thermostat and, if available, current temperature.
 
