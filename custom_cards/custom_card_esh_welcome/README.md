@@ -10,7 +10,6 @@ hide:
 ![example-image-light](../../docs/assets/img/custom_card_esh_welcome_light.png)
 ![example-image-dark](../../docs/assets/img/custom_card_esh_welcome_dark.png)
 
-
 ## Credits
 
 - Author: Everything Smart Home - 2022
