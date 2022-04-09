@@ -28,6 +28,7 @@ hide:
 | ulm_card_media_player_enable_art             | false   |                  | Enable album picture on background              |
 | ulm_card_media_player_enable_controls        | false   |                  | Enable controls bellow the title                |
 | ulm_card_media_player_enable_volume_slider   | false   |                  | Enable volume slider bellow controls            |
+| ulm_card_media_player_collapsible            | false   |                  | Controls are collapsible when state is off      |
 | ulm_card_media_player_player_controls_entity | entity  |                  | Change the controlled entity                    |
 | ulm_card_media_player_enable_popup           | false   |                  | Enable pop-up                                   |
 | ulm_card_media_player_more_info              | false   |                  | Displays artist and album info in the sub-label |
