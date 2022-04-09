@@ -140,10 +140,9 @@ icon_info_afvalophaling:
   custom_fields:
     notification: >
       [[[
-        if ((variables.ulm_card_ophaling_vandaag && states[variables.ulm_card_ophaling_vandaag].state =='unavailable') || 
+        if ((variables.ulm_card_ophaling_vandaag && states[variables.ulm_card_ophaling_vandaag].state =='unavailable') ||
           (variables.ulm_card_ophaling_morgen && states[variables.ulm_card_ophaling_morgen].state =='unavailable')) {
           return `<ha-icon icon="mdi:help" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`
         }
       ]]]
   size: "20px"
-  
