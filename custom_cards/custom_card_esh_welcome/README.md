@@ -33,12 +33,12 @@ This is a welcome card based on the [welcome scenes card](https://ui-lovelace-mi
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
 | ulm_card_esh_welcome_collapse  |         | :material-close: | Enables the collapse function. <br> requires an `input_boolean` to track the state|
-| ulm_weather   |         | :material-check: | This is your weather provider. <br> Example: `weather.your_provider`|
-| entity_  |     | :material-check: | Support almost all types of entities <br> Scenes do always show as off |
-| icon_  |    | :material-close: | The icon to show |
-| name_  |      | :material-close: | The name to show|
-| color_  |  Random    | :material-close: | Color of the icon <br> Can choose between: `blue`, `red`, `green`, `yellow`, `pink`, `purple` <br> If not specified, it will take a random color  |
-| nav_  |      |        | The page/view to navigate to |
+| ulm_weather   |         | Yes | This is your weather provider. <br> Example: `weather.your_provider`|
+| entity_  |     | Yes | Support almost all types of entities <br> Scenes do always show as off |
+| icon_  |    | Yes | The icon to show |
+| name_  |      | Yes | The name to show|
+| color_  |     | Yes | Color of the icon <br> Can choose between: `blue`, `red`, `green`, `yellow`, `pink`, `purple` <br> |
+| nav_  |      | Yes | The page/view to navigate to |
 
 ## Collapse
 
@@ -48,7 +48,6 @@ You need to create a `input_boolean` in HA to track the state. See [Docs](https:
 Furthermore, you need to add the `input_boolean` to the variable `ulm_card_esh_welcome_collapse` **and** to either the `entity` or `triggers_update` to make sure it directly refreshes the state.
 !!! warning
     Do not use `triggers_update: "all"`! This will lead to unwanted behavior with the random colors generator.
-```
 
 ## Usage
 
