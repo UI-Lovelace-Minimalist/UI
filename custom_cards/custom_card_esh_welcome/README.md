@@ -7,8 +7,8 @@ hide:
 
 # Custom Card "Welcome Navigation"
 
-![example-image-light](../../docs/assets/img/custom_card_esh_welcome_light.png){ width="500" }
-![example-image-dark](../../docs/assets/img/custom_card_esh_welcome_dark.png){ width="500" }
+![example-image-light](../../docs/assets/img/custom_card_esh_welcome_light.png)
+![example-image-dark](../../docs/assets/img/custom_card_esh_welcome_dark.png)
 
 
 ## Credits
