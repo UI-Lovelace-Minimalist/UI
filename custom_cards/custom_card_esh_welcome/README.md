@@ -32,7 +32,7 @@ This is a welcome card based on the [welcome scenes card](https://ui-lovelace-mi
 
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
-| ulm_card_esh_welcome_collapse  |         | :material-close: | Enables the collapse function. <br> requires an `input_boolean` to track the state|
+| ulm_card_esh_welcome_collapse  |         | No | Enables the collapse function. <br> requires an `input_boolean` to track the state|
 | ulm_weather   |         | Yes | This is your weather provider. <br> Example: `weather.your_provider`|
 | entity_  |     | Yes | Support almost all types of entities <br> Scenes do always show as off |
 | icon_  |    | Yes | The icon to show |
