@@ -83,7 +83,7 @@ custom_card_yagrasdemonde_lights_count:
       - grid-template-rows: "min-content"
   state:
     - value: 1
-      operator: '>='
+      operator: ">="
       styles:
         card:
           - background-color: >-
