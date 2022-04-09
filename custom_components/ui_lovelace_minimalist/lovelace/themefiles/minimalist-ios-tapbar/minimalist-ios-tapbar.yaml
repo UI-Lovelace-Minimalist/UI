@@ -18,9 +18,6 @@ minimalist-ios-tapbar:
       display: none;
     }
   header-height: "78px"
-                            
-                                               
-
   card-mod-view-yaml: |
     "*:first-child$": |
       #columns .column > * {
@@ -28,7 +25,6 @@ minimalist-ios-tapbar:
         padding-right: 5px;
         padding-bottom: 5px;
       }
-
   # Move navbar
   card-mod-root-yaml: |
     ha-tabs$: |
@@ -87,7 +83,6 @@ minimalist-ios-tapbar:
         height:50px;
         padding: 0 20px;
       }
-
   # Color themes
   modes:
     light:
