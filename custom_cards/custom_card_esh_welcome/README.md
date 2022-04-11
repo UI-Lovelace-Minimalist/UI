@@ -53,7 +53,7 @@ Furthermore, you need to add the `input_boolean` to the variable `ulm_card_esh_w
 ```yaml
   - type: "custom:button-card"
     template: "card_esh_welcome"
-    entity: input_boolean.welcome_toggle
+    triggers_update: "input_boolean.welcome_toggle"
     variables:
       ulm_card_esh_welcome_collapse: input_boolean.welcome_toggle
       ulm_weather: "weather.your_weather"
@@ -565,6 +565,7 @@ card_esh_welcome_topbar:
           action: "more-info"
         styles:
           card:
+            - width: "100px"
             - box-shadow: >
                 [[[
                   if (hass.themes.darkMode){
@@ -584,6 +585,7 @@ card_esh_welcome_topbar:
           ulm_chip_mdi_icon_only_icon: "mdi:cog-outline"
         styles:
           card:
+            - align-self: "end"
             - box-shadow: >
                 [[[
                   if (hass.themes.darkMode){
