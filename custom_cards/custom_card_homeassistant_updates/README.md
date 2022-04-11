@@ -267,6 +267,7 @@ icon_info_updates:
 ## Template sensors code
 
 ```yaml
+sensor:
   - platform: command_line
     name: core_updates
     command: 'curl http://supervisor/core/info -H "Authorization: Bearer $(printenv SUPERVISOR_TOKEN)" | jq ''{"latest_version":.data.version_latest,"installed_version":.data.version,"update_available":.data.update_available}'''
@@ -296,6 +297,56 @@ icon_info_updates:
       - update_available
       - latest_version
       - installed_version
+
+  - platform: command_line
+    name: addons_updates
+    command: 'curl http://supervisor/addons -H "Authorization: Bearer $(printenv SUPERVISOR_TOKEN)" | jq ''{"addons":[.data.addons[] | select(.update_available)]}'''
+    value_template: '{{ value_json.addons | length }}'
+    scan_interval: 600
+    unit_of_measurement: pending update(s)
+    json_attributes:
+      - addons
+
+binary_sensor:
+  - platform: template
+    sensors:
+      updater_core:
+        friendly_name: Core
+        device_class: problem
+        value_template: "{{ states('sensor.core_updates') }}"
+        attribute_templates:
+          installed_version: "{{ state_attr('sensor.core_updates', 'installed_version') }}"
+          latest_version: "{{ state_attr('sensor.core_updates', 'latest_version') }}"
+
+      updater_supervisor:
+        friendly_name: Supervisor
+        device_class: problem
+        value_template: "{{ states('sensor.supervisor_updates') }}"
+        attribute_templates:
+          installed_version: "{{ state_attr('sensor.supervisor_updates', 'installed_version') }}"
+          latest_version: "{{ state_attr('sensor.supervisor_updates', 'latest_version') }}"
+
+      updater_os:
+        friendly_name: OS
+        device_class: problem
+        value_template: "{{ states('sensor.os_updates') }}"
+        attribute_templates:
+          installed_version: "{{ state_attr('sensor.os_updates', 'installed_version') }}"
+          latest_version: "{{ state_attr('sensor.os_updates', 'latest_version') }}"
+
+      updater_addons:
+        friendly_name: Supervisor Add-ons
+        device_class: problem
+        value_template: "{{ states('sensor.addons_updates')|int(0) != 0 }}"
+        attribute_templates:
+          addons: "{{ state_attr('sensor.addons_updates', 'addons') }}"
+
+      updater_hacs:
+        friendly_name: HACS Integrations
+        device_class: problem
+        value_template: "{{ states('sensor.hacs')|int(0) != 0 }}"
+        attribute_templates:
+          repositories: "{{ state_attr('sensor.hacs', 'repositories') }}"
 ```
 
 ## Template sensor group.updates
