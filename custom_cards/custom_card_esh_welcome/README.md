@@ -55,29 +55,29 @@ Furthermore, you need to add the `input_boolean` to the variable `ulm_card_esh_w
     template: "card_esh_welcome"
     entity: input_boolean.welcome_toggle
     variables:
-        ulm_card_esh_welcome_collapse: input_boolean.welcome_toggle
-        ulm_weather: "weather.your_weather"
-    entity_1:
+      ulm_card_esh_welcome_collapse: input_boolean.welcome_toggle
+      ulm_weather: "weather.your_weather"
+      entity_1:
         nav: "house"
         icon: "mdi:home"
         name: "House"
         color: "blue"
-    entity_2:
+      entity_2:
         nav: "lights"
         icon: "mdi:lightbulb"
         name: "Lights"
         color: "yellow"
-    entity_3:
+      entity_3:
         nav: "security"
         icon: "mdi:shield"
         name: Secure
         color: "green"
-    entity_4:
+      entity_4:
         nav: "network"
         icon: "mdi:nas"
         name: Lab
         color: "purple"
-    entity_5:
+      entity_5:
         nav: "network"
         icon: "mdi:flask"
         name: Lab
