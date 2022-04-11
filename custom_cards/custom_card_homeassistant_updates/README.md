@@ -33,6 +33,10 @@ Added support for ulm_language variables
 <summary>1.0.2</summary>
 Updated capitalization of OS
 </details>
+<details>
+<summary>1.0.3</summary>
+Updated sensors and binary_sensors + Removed group.updaters
+</details>
 
 ## Usage
 
@@ -40,7 +44,6 @@ Updated capitalization of OS
   - type: 'custom:button-card'
     template: card_homeassistant_updates
     variables:
-      ulm_card_homeassistant_entity: 'group.updaters'
       ulm_card_homeassistant_core: "sensor.core_updates"
       ulm_card_homeassistant_supervisor: "sensor.supervisor_updates"
       ulm_card_homeassistant_os: "sensor.os_updates"
@@ -58,12 +61,6 @@ n/a
 <th>Example</th>
 <th>Required</th>
 <th>Explanation</th>
-</tr>
-<tr>
-<td>entity_</td>
-<td>group.updaters</td>
-<td>yes</td>
-<td>Group of template sensors</td>
 </tr>
 <tr>
 <td>core_</td>
@@ -347,16 +344,4 @@ binary_sensor:
         value_template: "{{ states('sensor.hacs')|int(0) != 0 }}"
         attribute_templates:
           repositories: "{{ state_attr('sensor.hacs', 'repositories') }}"
-```
-
-## Template sensor group.updates
-
-```yaml
-group:
-  updaters:
-    name: Updates
-    entities:
-      - binary_sensor.updater_core
-      - binary_sensor.updater_supervisor
-      - binary_sensor.updater_os
 ```
