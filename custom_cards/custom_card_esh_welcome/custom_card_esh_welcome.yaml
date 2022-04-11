@@ -476,6 +476,7 @@ card_esh_welcome_topbar:
           action: "more-info"
         styles:
           card:
+            - width: "100px"
             - box-shadow: >
                 [[[
                   if (hass.themes.darkMode){
@@ -495,6 +496,7 @@ card_esh_welcome_topbar:
           ulm_chip_mdi_icon_only_icon: "mdi:cog-outline"
         styles:
           card:
+            - align-self: "end"
             - box-shadow: >
                 [[[
                   if (hass.themes.darkMode){
