@@ -1,5 +1,5 @@
 ---
-title: card_water_heater
+title: Water Heater Custom-card
 hide:
   - toc
 ---

@@ -1,0 +1,330 @@
+---
+### Card Cover ###
+card_cover:
+  template:
+    - "ulm_language_variables"
+  variables:
+    ulm_card_cover_name: "[[[ return entity.attributes.friendly_name ]]]"
+    ulm_card_cover_display_left_right: false
+    ulm_card_curtain_display_collapse_expand: false
+    ulm_card_cover_enable_controls: false
+    ulm_card_cover_enable_slider: false
+    ulm_card_cover_enable_horizontal: false
+    ulm_card_cover_enable_popup: false
+  show_icon: false
+  show_name: false
+  show_label: false
+  # hold_action:
+  #   action: >
+  #     [[[
+  #         if (variables.ulm_card_cover_enable_popup){
+  #           return 'fire-dom-event'
+  #         }
+  #         else{
+  #           return 'more-info'
+  #         }
+  #     ]]]
+  #   browser_mod:
+  #     command: "popup"
+  #     large: true
+  #     hide_header: true
+  #     card:
+  #       type: "custom:button-card"
+  #       template: "popup_cover_brightness"
+  #       variables:
+  #         ulm_popup_cover_entity: "[[[ return entity.entity_id ]]]"
+  styles:
+    grid:
+      - grid-template-areas: >
+          [[[
+                var areas = [];
+                if (variables.ulm_card_cover_enable_horizontal) {
+                  if ( variables.ulm_card_cover_enable_slider) {
+                      return "\"item1 item3\"";
+                  } else {
+                    return "\"item1 item2\"";
+                  }
+                } else {
+                  areas.push("item1 item1");
+                  if ( variables.ulm_card_cover_enable_controls) {
+                      areas.push("item2 item2");
+                  }
+                  if ( variables.ulm_card_cover_enable_slider) {
+                      areas.push("item3 item3");
+                  }
+              }
+                return "\"" + areas.join("\" \"") + "\"";
+          ]]]
+      - grid-template-columns: "1fr 1fr"
+      - grid-template-rows: >
+          [[[
+                var rows = [];
+                rows.push("min-content");
+                if (variables.ulm_card_cover_enable_horizontal) {
+                  return "min-content";
+                } else {
+                  if ( variables.ulm_card_cover_enable_controls) {
+                      rows.push("min-content");
+                  }
+                  if ( variables.ulm_card_cover_enable_sliderdf) {
+                      rows.push("min-content");
+                  }
+                }
+                return rows.join(" ");
+          ]]]
+      - row-gap: "12px"
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
+    custom_fields:
+      item2:
+        - display: >
+            [[[
+                  if (variables.ulm_card_cover_enable_controls) {
+                      return "block";
+                  } else {
+                      return "none";
+                  }
+            ]]]
+      item3:
+        - display: >
+            [[[
+                  if (variables.ulm_card_cover_enable_slider) {
+                      return "block";
+                  } else {
+                      return "none";
+                  }
+            ]]]
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        template:
+          - "icon_more_info"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              icon: |
+                [[[
+                    var icon = "mdi:help-circle";
+                    if (typeof states[entity.entity_id].attributes.current_position === "undefined"){
+                      if (states[entity.entity_id].state == "closed"){
+                        if (variables.ulm_card_curtain_display_collapse_expand){
+                          var icon = "mdi:curtains-closed";
+                        } else
+                          var icon = "mdi:window-shutter";
+                      } else
+                        if (variables.ulm_card_curtain_display_collapse_expand){
+                          var icon = "mdi:curtains";
+                        } else
+                          var icon = "mdi:window-shutter-open";
+                    } else {
+                      if (states[entity.entity_id].attributes.current_position == 0){
+                        if (variables.ulm_card_curtain_display_collapse_expand){
+                          var icon = "mdi:curtains-closed";
+                        } else
+                          var icon = "mdi:window-shutter";
+                      } else
+                        if (variables.ulm_card_curtain_display_collapse_expand){
+                          var icon = "mdi:curtains";
+                        } else
+                          var icon = "mdi:window-shutter-open";
+                    }
+                    return icon ;
+                ]]]
+              # hold_action:
+              #   action: >
+              #     [[[
+              #         if (variables.ulm_card_cover_enable_popup){
+              #           return 'fire-dom-event'
+              #         }
+              #         else{
+              #           return 'more-info'
+              #         }
+              #     ]]]
+              # browser_mod:
+              #   command: "popup"
+              #   large: true
+              #   hide_header: true
+              #   card:
+              #     type: "custom:button-card"
+              #     template: "popup_cover_brightness"
+              #     variables:
+              #       ulm_popup_cover_entity: "[[[ return entity.entity_id ]]]"
+              styles:
+                icon:
+                  - color: >
+                      [[[
+                          if (typeof states[entity.entity_id].attributes.current_position === "undefined"){
+                            if (states[entity.entity_id].state == "closed"){
+                              return 'rgba(var(--color-theme),0.2)';
+                            } else
+                              return 'rgba(var(--color-blue),1)'
+                          } else {
+                            if (states[entity.entity_id].attributes.current_position == 0){
+                              return 'rgba(var(--color-theme),0.2)';
+                            } else {
+                              return 'rgba(var(--color-blue),1)'
+                            }
+                          }
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                          if (typeof states[entity.entity_id].attributes.current_position === "undefined"){
+                            if (states[entity.entity_id].state == "closed"){
+                              return 'rgba(var(--color-theme),0.05)';
+                            } else
+                              return 'rgba(var(--color-blue),0.2)';
+                          } else {
+                            if (states[entity.entity_id].attributes.current_position == 0){
+                              return 'rgba(var(--color-theme),0.05)';
+                            } else {
+                              return 'rgba(var(--color-blue),0.2)';
+                            }
+                          }
+                      ]]]
+          item2:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              name: "[[[ return variables.ulm_card_cover_name ]]]"
+              # hold_action:
+              #   action: >
+              #     [[[
+              #         if (variables.ulm_card_cover_enable_popup){
+              #           return 'fire-dom-event'
+              #         }
+              #         else{
+              #           return 'more-info'
+              #         }
+              #     ]]]
+              #   browser_mod:
+              #     command: "popup"
+              #     large: true
+              #     hide_header: true
+              #     card:
+              #       type: "custom:button-card"
+              #       template: "popup_cover_brightness"
+              #       variables:
+              #         ulm_popup_cover_entity: "[[[ return entity.entity_id ]]]"
+              label: >-
+                [[[
+                    if (entity.state !="unavailable"){
+                      if (typeof states[entity.entity_id].attributes.current_position === "undefined"){
+                        if (states[entity.entity_id].state == "closed"){
+                          return variables.ulm_closed;
+                        } else
+                          return variables.ulm_open;
+                      } else {
+                        if (states[entity.entity_id].attributes.current_position == 0){
+                          return variables.ulm_closed;
+                        } else {
+                          return variables.ulm_open + " • " + (states[entity.entity_id].attributes.current_position) + "%" ;
+                        }
+                      }
+                  } else {
+                    return variables.ulm_unavailable;
+                  }
+                ]]]
+    item2:
+      card:
+        type: "custom:button-card"
+        template: "list_3_items"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              state:
+                - value: "closed"
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
+              tap_action:
+                action: "call-service"
+                service: "cover.close_cover"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+              icon: >-
+                [[[
+                  if (variables.ulm_card_cover_display_left_right){
+                    return "mdi:arrow-left";
+                  }
+                  if (variables.ulm_card_curtain_display_collapse_expand){
+                    return "mdi:arrow-collapse-horizontal";
+                  }
+                  return "mdi:arrow-down";
+                ]]]
+          item2:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              tap_action:
+                action: "call-service"
+                service: "cover.stop_cover"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+              icon: "mdi:pause"
+          item3:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              state:
+                - value: "open"
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
+              tap_action:
+                action: "call-service"
+                service: "cover.open_cover"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+              icon: >-
+                [[[
+                  if (variables.ulm_card_cover_display_left_right){
+                    return "mdi:arrow-right";
+                  }
+                  if (variables.ulm_card_curtain_display_collapse_expand){
+                    return "mdi:arrow-expand-horizontal";
+                  }
+                  return "mdi:arrow-up";
+                ]]]
+    item3:
+      card:
+        type: "custom:my-slider"
+        entity: "[[[ return entity.entity_id ]]]"
+        radius: "14px"
+        height: "42px"
+        mainSliderColor: >
+          [[[
+              if (entity.state == "unavailable"){
+                 return "rgba(var(--color-grey),1)";
+              }
+              else{
+                return "rgba(var(--color-blue),1)";
+              }
+          ]]]
+        secondarySliderColor: >
+          [[[
+              if (entity.state == "unavailable"){
+                 return "rgba(var(--color-grey),0.2)";
+              }
+              else{
+                return "rgba(var(--color-blue),0.2)";
+              }
+          ]]]
+        mainSliderColorOff: "rgba(var(--color-theme),0.05)"
+        secondarySliderColorOff: "rgba(var(--color-theme),0.05)"
+        thumbHorizontalPadding: "0px"
+        thumbVerticalPadding: "0px"
+        thumbWidth: "0px"
+        card_mod:
+        style: |
+          ha-card {
+            border-radius: 14px;
+            box-shadow: none;
+          }

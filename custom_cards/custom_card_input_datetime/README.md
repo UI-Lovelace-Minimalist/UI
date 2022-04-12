@@ -1,5 +1,5 @@
 ---
-title: card_input_datetime
+title: Input Datetime Custom-card
 ---
 <!-- markdownlint-disable MD046 -->
 

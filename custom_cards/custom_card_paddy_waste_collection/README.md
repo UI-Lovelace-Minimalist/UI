@@ -1,5 +1,5 @@
 ---
-title: custom_card_paddy_waste_collection
+title: Waste Collection Custom-card
 hide:
   - toc
 ---

@@ -315,78 +315,78 @@ found at http://polymer.github.io/PATENTS.txt
       ha-formfield {
         padding-bottom: 8px;
       }
-    `}};s([it({attribute:!1})],te.prototype,"hass",void 0),s([ot()],te.prototype,"_config",void 0),s([ot()],te.prototype,"_toggle",void 0),s([ot()],te.prototype,"_helpers",void 0),te=s([et("boilerplate-card-editor")],te),console.info(`%c  ---- MY-SLIDER ---- \n%c  ${r("common.version")} 2.0.3    `,"color: orange; font-weight: bold; background: black","color: white; font-weight: bold; background: green"),window.customCards=window.customCards||[],window.customCards.push({type:"my-slider",name:"Slider Card",description:"Custom Slider Card for Lovelace."});let ee=class extends dt{static async getConfigElement(){return document.createElement("boilerplate-card-editor")}static getStubConfig(){return{}}static get properties(){return{hass:{},config:{},active:{}}}setConfig(t){if(!t.entity)throw new Error("You need to define entity");if(!(t.entity.includes("input_number.")||t.entity.includes("light.")||t.entity.includes("media_player.")||t.entity.includes("cover.")||t.entity.includes("fan.")||t.entity.includes("switch.")||t.entity.includes("lock.")))throw new Error("Entity has to be a light, input_number, media_player, cover or a fan.");this.config=Object.assign({name:"MySlider",disabled_scroll:!1},t)}shouldUpdate(t){return!!this.config&&Lt(this,t,!1)}render(){var t,e=JSON.parse(JSON.stringify(this.config));const n=this.config.entity?this.config.entity:"ERROR: NO ENTITY ID",i=(null===(t=this.config.entity)||void 0===t||t.split(".")[1],this.hass.states[""+n]);var o=e.step?e.step:"1";n.includes("input_number.")&&(o=e.step?e.step:i.attributes.step);var r=e.minBar?e.minBar:0,s=e.maxBar?e.maxBar:100,a=e.minSet?e.minSet:0,l=e.maxSet?e.maxSet:100,c=e.width?e.width:"100%",d=e.height?e.height:"50px",u=e.radius?e.radius:"4px",h=e.top?e.top:"0px",p=e.bottom?e.bottom:"0px",m=e.right?e.right:"0px",g=e.left?e.left:"0px",f=e.rotate?e.rotate:"0",v=e.containerHeight?e.containerHeight:d;"0"!=f&&(f+="deg");var y=e.mainSliderColor?e.mainSliderColor:"var(--accent-color)",_=e.secondarySliderColor?e.secondarySliderColor:"#4d4d4d",b=e.mainSliderColorOff?e.mainSliderColorOff:"#636363",w=e.secondarySliderColorOff?e.secondarySliderColorOff:"#4d4d4d",S=e.border?e.border:"0",$=e.thumbWidth?e.thumbWidth:"25px",x=e.thumbHeight?e.thumbHeight:"80px",C=e.thumbColor?e.thumbColor:"#FFFFFF",k=e.thumbColorOff?e.thumbColorOff:"#969696",T=e.thumbHorizontalPadding?e.thumbHorizontalPadding:"10px",P=e.thumbVerticalPadding?e.thumbVerticalPadding:"20px",N=e.thumpTop?e.thumpTop:"calc((var(--slider-width) - var(--thumb-height)) / 2)",E=e.thumbBorderRight?e.thumbBorderRight:"var(--thumb-horizontal-padding) solid var(--slider-main-color)",M=e.thumbBorderLeft?e.thumbBorderLeft:"var(--thumb-horizontal-padding) solid var(--slider-main-color)",A=e.thumbBorderTop?e.thumbBorderTop:"var(--thumb-vertical-padding) solid var(--slider-main-color)",O=e.thumbBorderBotton?e.thumbBorderBotton:"var(--thumb-vertical-padding) solid var(--slider-main-color)",D=`\n\t\t\t--slider-width: ${c};\n\t\t\t--slider-width-inverse: -${c};\n\t\t\t--slider-height: ${d};\n\t\t\t--slider-main-color: ${"off"===i.state||"locked"===i.state||null==i.state?"var(--slider-main-color-off)":"var(--slider-main-color-on)"};\n\t\t\t--slider-main-color-on: ${y};\n\t\t\t--slider-main-color-off: ${b};\n\t\t\t--slider-secondary-color: ${"off"===i.state||"locked"===i.state||null==i.state?"var(--slider-secondary-color-off)":"var(--slider-secondary-color-on)"};\n\t\t\t--slider-secondary-color-on: ${_};\n\t\t\t--slider-secondary-color-off: ${w};\n\t\t\t--slider-radius: ${u};\n\t\t\t--border: ${S};\n\t\t\t\n\t\t\t--thumb-width: ${$};\n\t\t\t--thumb-height: ${x};\n\t\t\t--thumb-color: ${"off"===i.state||null==i.state?"var(--thumb-color-off)":"var(--thumb-color-on)"};\n\t\t\t--thumb-color-on: ${C};\n\t\t\t--thumb-color-off: ${k};\n\t\t\t--thumb-horizontal-padding: ${T};\n\t\t\t--thumb-vertical-padding: ${P};\n\n\t\t\t--rotate: ${f};\n\t\t\t--top: ${h};\n\t\t\t--bottom: ${p};\n\t\t\t--right: ${m};\n\t\t\t--left: ${g};\n\t\t\t--container-height: ${v};\n\t\t\t--thumb-top: ${N};\n\t\t\t--thumb-border-right: ${E};\n\t\t\t--thumb-border-left: ${M};\n\t\t\t--thumb-border-top: ${A};\n\t\t\t--thumb-border-bottom: ${O};\n\t\t`;const V=t=>{n.includes("light.")?"Warmth"==e.function?this._setWarmth(i,t.target,a,l):this._setBrightness(i,t.target,a,l):n.includes("input_number.")?this._setInputNumber(i,t.target,a,l):n.includes("media_player.")?this._setMediaVolume(i,t.target,a,l):n.includes("cover.")?this._setCover(i,t.target,a,l):n.includes("fan.")?this._setFan(i,t.target,a,l):n.includes("switch.")?this._setSwitch(i,t.target,a,l,r,s):n.includes("lock.")&&this._setLock(i,t.target,a,l,r,s)},H=t=>{e.intermediate&&V(t)},R=t=>{e.intermediate||V(t)},Y=()=>{this.config.disabled_scroll=!this.config.disabled_scroll,this.config.disabled_scroll?Gt(window):Kt(window)};if(n.includes("light."))return"Warmth"==e.function?B`
+    `}};s([it({attribute:!1})],te.prototype,"hass",void 0),s([ot()],te.prototype,"_config",void 0),s([ot()],te.prototype,"_toggle",void 0),s([ot()],te.prototype,"_helpers",void 0),te=s([et("boilerplate-card-editor")],te),console.info(`%c  ---- MY-SLIDER ---- \n%c  ${r("common.version")} 2.0.3    `,"color: orange; font-weight: bold; background: black","color: white; font-weight: bold; background: green"),window.customCards=window.customCards||[],window.customCards.push({type:"my-slider",name:"Slider Card",description:"Custom Slider Card for Lovelace."});let ee=class extends dt{static async getConfigElement(){return document.createElement("boilerplate-card-editor")}static getStubConfig(){return{}}static get properties(){return{hass:{},config:{},active:{}}}setConfig(t){if(!t.entity)throw new Error("You need to define entity");if(!(t.entity.includes("input_number.")||t.entity.includes("light.")||t.entity.includes("media_player.")||t.entity.includes("cover.")||t.entity.includes("fan.")||t.entity.includes("switch.")||t.entity.includes("lock.")))throw new Error("Entity has to be a light, input_number, media_player, cover or a fan.");this.config=Object.assign({name:"MySlider",disabled_scroll:!1},t)}shouldUpdate(t){return!!this.config&&Lt(this,t,!1)}render(){var t,e=JSON.parse(JSON.stringify(this.config));const n=this.config.entity?this.config.entity:"ERROR: NO ENTITY ID",i=(null===(t=this.config.entity)||void 0===t||t.split(".")[1],this.hass.states[""+n]);var o=e.step?e.step:"1";n.includes("input_number.")&&(o=e.step?e.step:i.attributes.step);var r=e.minBar?e.minBar:0,s=e.maxBar?e.maxBar:100,a=e.minSet?e.minSet:0,l=e.maxSet?e.maxSet:100,c=e.width?e.width:"100%",d=e.height?e.height:"50px",u=e.radius?e.radius:"4px",h=e.top?e.top:"0px",p=e.bottom?e.bottom:"0px",m=e.right?e.right:"0px",g=e.left?e.left:"0px",f=e.rotate?e.rotate:"0",v=e.containerHeight?e.containerHeight:d;"0"!=f&&(f+="deg");var y=e.mainSliderColor?e.mainSliderColor:"var(--accent-color)",_=e.secondarySliderColor?e.secondarySliderColor:"#4d4d4d",b=e.mainSliderColorOff?e.mainSliderColorOff:"#636363",w=e.secondarySliderColorOff?e.secondarySliderColorOff:"#4d4d4d",S=e.border?e.border:"0",$=e.thumbWidth?e.thumbWidth:"25px",x=e.thumbHeight?e.thumbHeight:"80px",C=e.thumbColor?e.thumbColor:"#FFFFFF",k=e.thumbColorOff?e.thumbColorOff:"#969696",T=e.thumbHorizontalPadding?e.thumbHorizontalPadding:"10px",P=e.thumbVerticalPadding?e.thumbVerticalPadding:"20px",N=e.thumpTop?e.thumpTop:"calc((var(--slider-width) - var(--thumb-height)) / 2)",E=e.thumbBorderRight?e.thumbBorderRight:"var(--thumb-horizontal-padding) solid var(--slider-main-color)",M=e.thumbBorderLeft?e.thumbBorderLeft:"var(--thumb-horizontal-padding) solid var(--slider-main-color)",A=e.thumbBorderTop?e.thumbBorderTop:"var(--thumb-vertical-padding) solid var(--slider-main-color)",O=e.thumbBorderBotton?e.thumbBorderBotton:"var(--thumb-vertical-padding) solid var(--slider-main-color)",D=!!e.lockTrack&&e.lockTrack,V=`\n\t\t\t--slider-width: ${c};\n\t\t\t--slider-width-inverse: -${c};\n\t\t\t--slider-height: ${d};\n\t\t\t--slider-main-color: ${"off"===i.state||"locked"===i.state||null==i.state?"var(--slider-main-color-off)":"var(--slider-main-color-on)"};\n\t\t\t--slider-main-color-on: ${y};\n\t\t\t--slider-main-color-off: ${b};\n\t\t\t--slider-secondary-color: ${"off"===i.state||"locked"===i.state||null==i.state?"var(--slider-secondary-color-off)":"var(--slider-secondary-color-on)"};\n\t\t\t--slider-secondary-color-on: ${_};\n\t\t\t--slider-secondary-color-off: ${w};\n\t\t\t--slider-radius: ${u};\n\t\t\t--border: ${S};\n\t\t\t\n\t\t\t--thumb-width: ${$};\n\t\t\t--thumb-height: ${x};\n\t\t\t--thumb-color: ${"off"===i.state||null==i.state?"var(--thumb-color-off)":"var(--thumb-color-on)"};\n\t\t\t--thumb-color-on: ${C};\n\t\t\t--thumb-color-off: ${k};\n\t\t\t--thumb-horizontal-padding: ${T};\n\t\t\t--thumb-vertical-padding: ${P};\n\n\t\t\t--rotate: ${f};\n\t\t\t--top: ${h};\n\t\t\t--bottom: ${p};\n\t\t\t--right: ${m};\n\t\t\t--left: ${g};\n\t\t\t--container-height: ${v};\n\t\t\t--thumb-top: ${N};\n\t\t\t--thumb-border-right: ${E};\n\t\t\t--thumb-border-left: ${M};\n\t\t\t--thumb-border-top: ${A};\n\t\t\t--thumb-border-bottom: ${O};\n\t\t\t\n\t\t\t--lock-track-container: ${D?"none":"auto"};\n\t\t`;const H=t=>{n.includes("light.")?"Warmth"==e.function?this._setWarmth(i,t.target,a,l):this._setBrightness(i,t.target,a,l):n.includes("input_number.")?this._setInputNumber(i,t.target,a,l):n.includes("media_player.")?this._setMediaVolume(i,t.target,a,l):n.includes("cover.")?this._setCover(i,t.target,a,l):n.includes("fan.")?this._setFan(i,t.target,a,l):n.includes("switch.")?this._setSwitch(i,t.target,a,l,r,s):n.includes("lock.")&&this._setLock(i,t.target,a,l,r,s)},R=t=>{e.intermediate&&H(t)},Y=t=>{e.intermediate||H(t)},L=()=>{this.config.disabled_scroll=!this.config.disabled_scroll,this.config.disabled_scroll?Gt(window):Kt(window)};if(n.includes("light."))return"Warmth"==e.function?B`
 					<ha-card>
-						<div class="slider-container" style="${D}">
-							<input name="foo" type="range" class="${i.state}" style="${D}"
+						<div class="slider-container" style="${V}">
+							<input name="foo" type="range" class="${i.state}" style="${V}"
 								min="${i.attributes.min_mireds}" max="${i.attributes.max_mireds}"
 								step="${o}" .value="${"off"===i.state?0:i.attributes.color_temp}"
-								@input=${H} @change=${R}
-								@touchstart=${e.toggle_scroll?Y:null}
-								@touchend=${e.toggle_scroll?Y:null} >
+								@input=${R} @change=${Y}
+								@touchstart=${e.toggle_scroll?L:null}
+								@touchend=${e.toggle_scroll?L:null} >
 						</div>
 					</ha-card>
 				`:B`
 					<ha-card>
-						<div class="slider-container" style="${D}">
-							<input name="foo" type="range" class="${i.state}" style="${D}"
+						<div class="slider-container" style="${V}">
+							<input name="foo" type="range" class="${i.state}" style="${V}"
 								step="${o}" .value="${"off"===i.state?0:Math.round(i.attributes.brightness/2.56)}"
-								@input=${H} @change=${R}
-								@touchstart=${e.toggle_scroll?Y:null}
-								@touchend=${e.toggle_scroll?Y:null} >
+								@input=${R} @change=${Y}
+								@touchstart=${e.toggle_scroll?L:null}
+								@touchend=${e.toggle_scroll?L:null} >
 						</div>
 					</ha-card>
 				`;if(n.includes("input_number."))return B`
 				<ha-card>
-					<div class="slider-container" style="${D}">
-						<input name="foo" type="range" class="${i.state}" style="${D}"
+					<div class="slider-container" style="${V}">
+						<input name="foo" type="range" class="${i.state}" style="${V}"
 							min="${i.attributes.min}" max="${i.attributes.max}"
 							step="${o}" .value="${i.state}"
-							@input=${H} @change=${R}
-							@touchstart=${e.toggle_scroll?Y:null}
-							@touchend=${e.toggle_scroll?Y:null} >
+							@input=${R} @change=${Y}
+							@touchstart=${e.toggle_scroll?L:null}
+							@touchend=${e.toggle_scroll?L:null} >
 					</div>
 				</ha-card>
-			`;if(n.includes("media_player.")){var L=0;if(null!=i.attributes.volume_level)L=Number(100*i.attributes.volume_level);return B`
+			`;if(n.includes("media_player.")){var U=0;if(null!=i.attributes.volume_level)U=Number(100*i.attributes.volume_level);return B`
 				<ha-card>
-					<div class="slider-container" style="${D}">
-						<input name="foo" type="range" class="${i.state}" style="${D}"
-							min="${r}" max="${s}" step="${o}" .value="${L}"
-							@input=${H} @change=${R}
-							@touchstart=${e.toggle_scroll?Y:null}
-							@touchend=${e.toggle_scroll?Y:null} >
+					<div class="slider-container" style="${V}">
+						<input name="foo" type="range" class="${i.state}" style="${V}"
+							min="${r}" max="${s}" step="${o}" .value="${U}"
+							@input=${R} @change=${Y}
+							@touchstart=${e.toggle_scroll?L:null}
+							@touchend=${e.toggle_scroll?L:null} >
 					</div>
 				</ha-card>
 			`}return n.includes("cover.")?B`
 				<ha-card>
-					<div class="slider-container" style="${D}">
-						<input name="foo" type="range" class="${i.state}" style="${D}"
+					<div class="slider-container" style="${V}">
+						<input name="foo" type="range" class="${i.state}" style="${V}"
 							min="${r}" max="${s}" step="${o}"
 							.value="${i.attributes.current_position}"
-							@input=${H} @change=${R}
-							@touchstart=${e.toggle_scroll?Y:null}
-							@touchend=${e.toggle_scroll?Y:null} >
+							@input=${R} @change=${Y}
+							@touchstart=${e.toggle_scroll?L:null}
+							@touchend=${e.toggle_scroll?L:null} >
 					</div>
 				</ha-card>
 			`:n.includes("fan.")?B`
 				<ha-card>
-					<div class="slider-container" style="${D}">
-						<input name="foo" type="range" class="${i.state}" style="${D}"
+					<div class="slider-container" style="${V}">
+						<input name="foo" type="range" class="${i.state}" style="${V}"
 							min="${r}" max="${s}" step="${o}"
 							.value="${i.attributes.percentage}"
-							@input=${H} @change=${R}
-							@touchstart=${e.toggle_scroll?Y:null}
-							@touchend=${e.toggle_scroll?Y:null} >
+							@input=${R} @change=${Y}
+							@touchstart=${e.toggle_scroll?L:null}
+							@touchend=${e.toggle_scroll?L:null} >
 					</div>
 				</ha-card>
 			`:n.includes("switch.")||n.includes("lock.")?B`
 				<ha-card>
-					<div class="slider-container" style="${D}">
-						<input name="foo" type="range" class="${i.state}" style="${D}"
+					<div class="slider-container" style="${V}">
+						<input name="foo" type="range" class="${i.state}" style="${V}"
 							min="${r}" max="${s}" step="${o}" .value="${r}"
-							@input=${H} @change=${R}
-							@touchstart=${e.toggle_scroll?Y:null}
-							@touchend=${e.toggle_scroll?Y:null} >
+							@input=${R} @change=${Y}
+							@touchstart=${e.toggle_scroll?L:null}
+							@touchend=${e.toggle_scroll?L:null} >
 					</div>
 				</ha-card>
 			`:void 0}_setBrightness(t,e,n,i){var o=e.value;o>i?o=i:o<n&&(o=n),this.hass.callService("homeassistant","turn_on",{entity_id:t.entity_id,brightness:2.56*o}),e.value=o}_setWarmth(t,e,n,i){var o=e.value;o>i?o=i:o<n&&(o=n),this.hass.callService("homeassistant","turn_on",{entity_id:t.entity_id,color_temp:o}),e.value=o}_setInputNumber(t,e,n,i){var o=e.value;o>i?o=i:o<n&&(o=n),this.hass.callService("input_number","set_value",{entity_id:t.entity_id,value:o}),e.value=o}_setFan(t,e,n,i){var o=e.value;o>i?o=i:o<n&&(o=n),this.hass.callService("fan","set_percentage",{entity_id:t.entity_id,percentage:o}),e.value=o}_setCover(t,e,n,i){var o=e.value;o>i?o=i:o<n&&(o=n),this.hass.callService("cover","set_cover_position",{entity_id:t.entity_id,position:o}),e.value=o}_setMediaVolume(t,e,n,i){var o=e.value;o>i?o=i:o<n&&(o=n),this.hass.callService("media_player","volume_set",{entity_id:t.entity_id,volume_level:o/100}),e.value=o}_setSwitch(t,e,n,i,o,r){var s=e.value,a=Math.min(i,r);Number(a)<=s&&this.hass.callService("homeassistant","toggle",{entity_id:t.entity_id}),e.value=Number(Math.max(n,o))}_setLock(t,e,n,i,o,r){var s=e.value,a=Math.min(i,r);if(Number(a)<=s){var l="locked"===t.state?"unlock":"lock";this.hass.callService("lock",l,{entity_id:t.entity_id})}e.value=Number(Math.max(n,o))}static get styles(){return lt`
@@ -418,6 +418,7 @@ found at http://polymer.github.io/PATENTS.txt
 				-o-transform: rotate(var(--rotate));
 				-ms-transform: rotate(var(--rotate));
 				transform: rotate(var(--rotate));
+				pointer-events: var(--lock-track-container);
 			}
 
 			.slider-container input[type="range"]::-webkit-slider-runnable-track {
@@ -443,6 +444,7 @@ found at http://polymer.github.io/PATENTS.txt
 				border-left: var(--thumb-border-left);
 				border-top: var(--thumb-border-top);
 				border-bottom: var(--thumb-border-bottom);
+				pointer-events: auto;
 			}
 
 			.slider-container input[type=range]::-moz-range-thumb {
@@ -459,6 +461,7 @@ found at http://polymer.github.io/PATENTS.txt
 			  border-left: var(--thumb-border-left);
 			  border-top: var(--thumb-border-top);
 			  border-bottom: var(--thumb-border-bottom);
+			  pointer-events: auto;
 			}
 
 			.slider-container input[type="range"]::-webkit-slider-thumb:hover {

@@ -1,5 +1,5 @@
 ---
-title: Thermostat with Buttons Custom-card
+title: Thermostat Custom-card
 hide:
   - toc
 ---

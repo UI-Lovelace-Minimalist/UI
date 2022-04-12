@@ -49,9 +49,9 @@ card_homeassistant_updates:
                 }
                 if(variables.ulm_card_homeassistant_os){
                   if(states[variables.ulm_card_homeassistant_os].state ==='True'){
-                    var os = 'Os: ' + states[variables.ulm_card_homeassistant_os].attributes.installed_version + ' -> ' + states[variables.ulm_card_homeassistant_os].attributes.latest_version;
+                    var os = 'OS: ' + states[variables.ulm_card_homeassistant_os].attributes.installed_version + ' -> ' + states[variables.ulm_card_homeassistant_os].attributes.latest_version;
                   } else {
-                    var os = 'Os: ' + states[variables.ulm_card_homeassistant_os].attributes.installed_version;
+                    var os = 'OS: ' + states[variables.ulm_card_homeassistant_os].attributes.installed_version;
                   }
                 }
                 if(variables.ulm_card_homeassistant_core && variables.ulm_card_homeassistant_supervisor && variables.ulm_card_homeassistant_os){

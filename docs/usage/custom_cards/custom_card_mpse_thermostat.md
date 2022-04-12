@@ -1,5 +1,5 @@
 ---
-title: Thermostat Custom-card
+title: Thermostat mpse Custom-card
 hide:
   - toc
 ---

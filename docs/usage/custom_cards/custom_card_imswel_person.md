@@ -1,5 +1,5 @@
 ---
-title: Person Custom-card
+title: Person Card Custom-card
 hide:
   - toc
 ---

@@ -8,25 +8,57 @@ card_media_player:
     ulm_card_media_player_icon: false
     ulm_card_media_player_enable_art: false
     ulm_card_media_player_enable_controls: false
+    ulm_card_media_player_enable_volume_slider: false
     ulm_card_media_player_player_controls_entity: "[[[ return entity.entity_id ]]]"
+    ulm_card_media_player_enable_popup: false
+    ulm_card_media_player_more_info: false
   triggers_update: "all"
   show_icon: false
   show_name: false
   show_label: false
+  hold_action:
+    action: >
+      [[[
+          if (variables.ulm_card_media_player_enable_popup){
+            return 'fire-dom-event'
+          }
+          else{
+            return 'more-info'
+          }
+      ]]]
+    browser_mod:
+      command: "popup"
+      large: true
+      hide_header: true
+      card:
+        type: "custom:button-card"
+        template: "popup_media_player_infos"
+        variables:
+          ulm_popup_media_player_entity: "[[[ return entity.entity_id ]]]"
   styles:
     grid:
       - grid-template-areas: |
           [[[
-            return variables.ulm_card_media_player_enable_controls
-              ? "'item1' 'item2'"
-              : "'item1'"
+            var areas = "'item1'";
+            if (variables.ulm_card_media_player_enable_controls){
+              areas = areas + " 'item2'";
+            }
+            if (variables.ulm_card_media_player_enable_volume_slider){
+              areas = areas + " 'item3'";
+            }
+            return areas;
           ]]]
       - grid-template-columns: "1fr"
       - grid-template-rows: |
           [[[
-            return variables.ulm_card_media_player_enable_controls
-              ? "min-content min-content"
-              : "min-content"
+            var rows = "min-content";
+            if (variables.ulm_card_media_player_enable_controls){
+              rows = rows + " min-content";
+            }
+            if (variables.ulm_card_media_player_enable_volume_slider){
+              rows = rows + " min-content";
+            }
+            return rows;
           ]]]
       - row-gap: "12px"
     card:
@@ -48,6 +80,13 @@ card_media_player:
                 ? "block"
                 : "none"
             ]]]
+      item3:
+        - display: |
+            [[[
+              return variables.ulm_card_media_player_enable_volume_slider
+                ? "block"
+                : "none"
+            ]]]
   custom_fields:
     item1:
       card:
@@ -56,9 +95,28 @@ card_media_player:
           - "icon_info_bg"
           - "ulm_language_variables"
         entity: "[[[ return entity.entity_id ]]]"
+        hold_action:
+          action: >
+            [[[
+                if (variables.ulm_card_media_player_enable_popup){
+                  return 'fire-dom-event'
+                }
+                else{
+                  return 'more-info'
+                }
+            ]]]
+          browser_mod:
+            command: "popup"
+            large: true
+            hide_header: true
+            card:
+              type: "custom:button-card"
+              template: "popup_media_player_infos"
+              variables:
+                ulm_popup_media_player_entity: "[[[ return entity.entity_id ]]]"
         icon: |
           [[[
-            var icon = "mdi:speaker";
+            var icon =  entity.attributes.icon || "mdi:speaker";
             if(entity.attributes.app_name){
               var app = entity.attributes.app_name.toLowerCase();
               if(app == "spotify"){
@@ -73,8 +131,12 @@ card_media_player:
                 var icon = "mdi:youtube";
               } else if (app == "oto music"){
                 var icon = "mdi:music-circle";
-              } else if (entity.attributes.icon){
-                var icon = entity.attributes.icon;
+              } else if(app == "pandora"){
+                var icon = "mdi:pandora";
+              } else if(app == "netflix"){
+                var icon = "mdi:netflix";
+              } else if(app == "bluetooth audio"){
+                var icon = "mdi:bluetooth";
               }
             }
             return variables.ulm_card_media_player_icon || icon;
@@ -89,7 +151,7 @@ card_media_player:
             value: "[[[ return entity.state != 'off' ]]]"
             name: |
               [[[
-                let name = states[entity.entity_id].attributes.friendly_name || variables.ulm_card_media_player_name;
+                let name = variables.ulm_card_media_player_name || states[entity.entity_id].attributes.friendly_name;
                 if(states[entity.entity_id].attributes.media_title){
                     name = states[entity.entity_id].attributes.media_title;
                 }
@@ -98,7 +160,10 @@ card_media_player:
             label: |
               [[[
                 let label = variables.ulm_on;
-                if(states[entity.entity_id].attributes.media_album_name){
+                if (variables.ulm_card_media_player_more_info && states[entity.entity_id].attributes.media_artist
+                    && states[entity.entity_id].attributes.media_album_name) {
+                    label = states[entity.entity_id].attributes.media_artist + " • " + states[entity.entity_id].attributes.media_album_name;
+                } else if(states[entity.entity_id].attributes.media_album_name) {
                     label = states[entity.entity_id].attributes.media_album_name;
                 } else if (states[entity.entity_id].attributes.media_artist) {
                     label = states[entity.entity_id].attributes.media_artist
@@ -154,6 +219,25 @@ card_media_player:
       card:
         type: "custom:button-card"
         template: "list_3_items"
+        hold_action:
+          action: >
+            [[[
+                if (variables.ulm_card_media_player_enable_popup){
+                  return 'fire-dom-event'
+                }
+                else{
+                  return 'more-info'
+                }
+            ]]]
+          browser_mod:
+            command: "popup"
+            large: true
+            hide_header: true
+            card:
+              type: "custom:button-card"
+              template: "popup_media_player_infos"
+              variables:
+                ulm_popup_media_player_entity: "[[[ return entity.entity_id ]]]"
         styles:
           card:
             - padding: "0px"
@@ -165,6 +249,25 @@ card_media_player:
             card:
               type: "custom:button-card"
               template: "widget_icon"
+              hold_action:
+                action: >
+                  [[[
+                      if (variables.ulm_card_media_player_enable_popup){
+                        return 'fire-dom-event'
+                      }
+                      else{
+                        return 'more-info'
+                      }
+                  ]]]
+                browser_mod:
+                  command: "popup"
+                  large: true
+                  hide_header: true
+                  card:
+                    type: "custom:button-card"
+                    template: "popup_media_player_infos"
+                    variables:
+                      ulm_popup_media_player_entity: "[[[ return entity.entity_id ]]]"
               tap_action:
                 action: "call-service"
                 service: "media_player.media_previous_track"
@@ -192,6 +295,25 @@ card_media_player:
               type: "custom:button-card"
               template: "widget_icon"
               entity: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
+              hold_action:
+                action: >
+                  [[[
+                      if (variables.ulm_card_media_player_enable_popup){
+                        return 'fire-dom-event'
+                      }
+                      else{
+                        return 'more-info'
+                      }
+                  ]]]
+                browser_mod:
+                  command: "popup"
+                  large: true
+                  hide_header: true
+                  card:
+                    type: "custom:button-card"
+                    template: "popup_media_player_infos"
+                    variables:
+                      ulm_popup_media_player_entity: "[[[ return entity.entity_id ]]]"
               tap_action:
                 action: "call-service"
                 service: "media_player.media_play_pause"
@@ -222,6 +344,25 @@ card_media_player:
             card:
               type: "custom:button-card"
               template: "widget_icon"
+              hold_action:
+                action: >
+                  [[[
+                      if (variables.ulm_card_media_player_enable_popup){
+                        return 'fire-dom-event'
+                      }
+                      else{
+                        return 'more-info'
+                      }
+                  ]]]
+                browser_mod:
+                  command: "popup"
+                  large: true
+                  hide_header: true
+                  card:
+                    type: "custom:button-card"
+                    template: "popup_media_player_infos"
+                    variables:
+                      ulm_popup_media_player_entity: "[[[ return entity.entity_id ]]]"
               tap_action:
                 action: "call-service"
                 service: "media_player.media_next_track"
@@ -243,3 +384,33 @@ card_media_player:
                         ? 'white'
                         : 'rgba(var(--color-theme), 0.9)'
                       ]]]
+    item3:
+      card:
+        type: "custom:my-slider"
+        entity: "[[[ return entity.entity_id ]]]"
+        radius: "14px"
+        height: "42px"
+        mainSliderColor: |
+                      [[[
+                        return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
+                        ? 'rgba(0, 0, 0, 0.2)'
+                        : 'rgba(var(--color-blue),1)'
+                      ]]]
+        secondarySliderColor: |
+                      [[[
+                        return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
+                        ? 'rgba(0, 0, 0, 0.1)'
+                        : 'rgba(var(--color-blue),0.2)'
+                      ]]]
+        mainSliderColorOff: "rgba(var(--color-theme),0.05)"
+        secondarySliderColorOff: "rgba(var(--color-theme),0.05)"
+        thumbHorizontalPadding: "0px"
+        thumbVerticalPadding: "0px"
+        thumbWidth: "0px"
+        card_mod:
+        style: |
+          ha-card {
+            border-radius: 14px;
+            background-color: transparent;
+            box-shadow: none;
+          }
