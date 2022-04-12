@@ -9,6 +9,7 @@ card_media_player:
     ulm_card_media_player_enable_art: false
     ulm_card_media_player_enable_controls: false
     ulm_card_media_player_enable_volume_slider: false
+    ulm_card_media_player_collapsible: false
     ulm_card_media_player_player_controls_entity: "[[[ return entity.entity_id ]]]"
     ulm_card_media_player_enable_popup: false
     ulm_card_media_player_more_info: false
@@ -60,7 +61,14 @@ card_media_player:
             }
             return rows;
           ]]]
-      - row-gap: "12px"
+      - row-gap: |-
+          [[[
+            if (!variables.ulm_card_media_player_collapsible) {
+                return "12px";
+              } else {
+                return entity.state !== "off" ? "12px" : "0px";
+              }
+          ]]]
     card:
       - border-radius: "var(--border-radius)"
       - box-shadow: "var(--box-shadow)"
@@ -76,16 +84,24 @@ card_media_player:
       item2:
         - display: |
             [[[
-              return variables.ulm_card_media_player_enable_controls
-                ? "block"
-                : "none"
+              if(variables.ulm_card_media_player_enable_controls) {
+                if(variables.ulm_card_media_player_collapsible){
+                  return entity.state === "off" ? "none" : "block";
+                }
+                return "block";
+              }
+              return "none";
             ]]]
       item3:
         - display: |
             [[[
-              return variables.ulm_card_media_player_enable_volume_slider
-                ? "block"
-                : "none"
+              if(variables.ulm_card_media_player_enable_volume_slider) {
+                if(variables.ulm_card_media_player_collapsible){
+                  return entity.state === "off" ? "none" : "block";
+                }
+                return "block";
+              }
+              return "none";
             ]]]
   custom_fields:
     item1:
@@ -391,17 +407,17 @@ card_media_player:
         radius: "14px"
         height: "42px"
         mainSliderColor: |
-                      [[[
-                        return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
-                        ? 'rgba(0, 0, 0, 0.2)'
-                        : 'rgba(var(--color-blue),1)'
-                      ]]]
+          [[[
+            return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
+            ? 'rgba(0, 0, 0, 0.2)'
+            : 'rgba(var(--color-blue),1)'
+          ]]]
         secondarySliderColor: |
-                      [[[
-                        return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
-                        ? 'rgba(0, 0, 0, 0.1)'
-                        : 'rgba(var(--color-blue),0.2)'
-                      ]]]
+          [[[
+            return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
+            ? 'rgba(0, 0, 0, 0.1)'
+            : 'rgba(var(--color-blue),0.2)'
+          ]]]
         mainSliderColorOff: "rgba(var(--color-theme),0.05)"
         secondarySliderColorOff: "rgba(var(--color-theme),0.05)"
         thumbHorizontalPadding: "0px"
