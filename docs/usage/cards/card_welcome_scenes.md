@@ -17,6 +17,8 @@ This is a card which shows the basic needs for your dashboard. This card can gen
 |----------|---------|------------------|-------------------|
 | ulm_card_welcome_scenes_collapse  |         | :material-close: | Enables the collapse function. <br> requires an `input_boolean` to track the state|
 | ulm_weather   |         | :material-check: | This is your weather provider. <br> Example: `weather.your_provider`|
+| ulm_language   |  Language of your system  | :material-close: | You can set a different format with the [BCP-47 language tags](https://www.techonthenet.com/js/language_tags.php) <br> Example:
+`"en-US"` or just `"en"`|
 | entity_  |     | :material-check: | Support almost all types of entities <br> Scenes do always show as off |
 | icon_  |    | :material-close: | The icon to show |
 | name_  |      | :material-close: | The name to show|

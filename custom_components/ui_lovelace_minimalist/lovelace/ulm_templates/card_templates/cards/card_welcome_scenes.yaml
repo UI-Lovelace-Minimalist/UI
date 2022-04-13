@@ -2,6 +2,7 @@
 card_welcome_scenes:
   variables:
     ulm_weather: "[[[ return variables.ulm_weather]]]"
+    ulm_language: "[[[return window.navigator.language ]]]"
     entity_1:
       entity_id:
       icon: "[[[ return entity.attributes.icon ]]]"
@@ -101,6 +102,7 @@ card_welcome_scenes:
         variables:
           ulm_card_welcome_scenes_collapse: "[[[ return variables.ulm_card_welcome_scenes_collapse ]]]"
           ulm_weather: "[[[ return variables.ulm_weather]]]"
+          ulm_language: "[[[ return variables.ulm_language ]]]"
         styles:
           card:
             - border-radius: "none"
@@ -497,7 +499,8 @@ card_topbar_welcome:
         template: "chip_weather_date"
         entity: "[[[ return variables.ulm_weather]]]"
         variables:
-          ulm_weather: "[[[ return variables.ulm_weather]]]"
+          ulm_weather: "[[[ return variables.ulm_weather ]]]"
+          ulm_language: "[[[ return variables.ulm_language ]]]"
         styles:
           card:
             - width: "100px"
