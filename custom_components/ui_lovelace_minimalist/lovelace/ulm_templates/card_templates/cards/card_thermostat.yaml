@@ -77,7 +77,7 @@ card_thermostat:
                 if ( !(variables.ulm_card_thermostat_enable_collapse && entity.state == "off") && variables.ulm_card_thermostat_enable_controls) {
                     areas.push("item2 item2");
                 }
-                if ( !(variables.ulm_card_thermostat_enable_collapse && entity.state == "off") && variables.ulm_card_thermostat_enable_controls && entity.attributes.target_temp_high !== null) {
+                if ( !(variables.ulm_card_thermostat_enable_collapse && entity.state == "off") && variables.ulm_card_thermostat_enable_controls && entity.attributes.target_temp_high != null) {
                     areas.push("low_temp_adjustment low_temp_adjustment");
                 }
                 if ( !(variables.ulm_card_thermostat_enable_collapse && entity.state == "off") && variables.ulm_card_thermostat_enable_hvac_modes) {
@@ -103,7 +103,7 @@ card_thermostat:
                 if ( !(variables.ulm_card_thermostat_enable_collapse && entity.state == "off") && variables.ulm_card_thermostat_enable_controls) {
                     rows.push("min-content");
                 }
-                if ( !(variables.ulm_card_thermostat_enable_collapse && entity.state == "off") && variables.ulm_card_thermostat_enable_controls && entity.attributes.target_temp_high !== null) {
+                if ( !(variables.ulm_card_thermostat_enable_collapse && entity.state == "off") && variables.ulm_card_thermostat_enable_controls && entity.attributes.target_temp_high != null) {
                     rows.push("min-content");
                 }
                 if ( !(variables.ulm_card_thermostat_enable_collapse && entity.state == "off") && variables.ulm_card_thermostat_enable_hvac_modes) {
@@ -129,7 +129,7 @@ card_thermostat:
       low_temp_adjustment:
         - display: >
             [[[
-                if ( !(variables.ulm_card_thermostat_enable_collapse && entity.state == "off") && variables.ulm_card_thermostat_enable_controls && entity.attributes.target_temp_high !== null) {
+                if ( !(variables.ulm_card_thermostat_enable_collapse && entity.state == "off") && variables.ulm_card_thermostat_enable_controls && entity.attributes.target_temp_high != null) {
                       return "block";
                   } else {
                       return "none";
@@ -278,7 +278,7 @@ card_thermostat:
                       var mode = variables.ulm_unavailable;
                     }
 
-                    if((entity.attributes.temperature || entity.attributes.target_temp_high) && !variables.ulm_card_thermostat_enable_display_temperature){
+                    if((entity.attributes.temperature || entity.attributes.target_temp_high != null) && !variables.ulm_card_thermostat_enable_display_temperature){
                       return (entity.attributes.current_temperature ) + '°' + ' • ' + label + (entity.state !='off' ? ' (' + mode + ')' : '');
                     }
                     return label;
