@@ -13,7 +13,7 @@ For Pull Requeste we use for now two branches:
 
 Both branches handle different types of pull requests. <br>
 
-The `main` branch is for pull requests related to "Custom-cards" and bugfixes/adaptations of documentation files. <br>
+The `main` branch is for pull requests related to "Custom-cards" and bugfixes/adaptations of documentation files and scripts. <br>
 
 The `release` branch is for all HACS-release related requests.
 These are mostly adaptations and or bugfixes to official cards and their documentation. It also includes changes in workflows related to the HACS integration.

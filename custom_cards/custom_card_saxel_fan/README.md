@@ -55,10 +55,6 @@ This card needs the following to function correctly:
   </tr>
 </table>
 
-## Installation
-
-Copy the folder `custom_card_saxel_fan` to `config/minimalist-templates/`
-
 ## Usage
 
 #### Standard

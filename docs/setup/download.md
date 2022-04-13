@@ -53,6 +53,7 @@ In order to function correctly, the UI Lovelace Mininmalist "Theme" requires som
 | [`mini-media-player`](https://github.com/kalkih/mini-media-player)      |
 | [`my-cards-slider-card`](https://github.com/AnthonMS/my-cards)          |
 | [`light-entity-card`](https://github.com/ljmerza/light-entity-card)     |
+| [`lovelace-auto-entities`](https://github.com/thomasloven/lovelace-auto-entities)|
 
 You can install most of them also via HACS or manually.
 

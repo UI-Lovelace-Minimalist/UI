@@ -41,6 +41,8 @@ Now you can configure the Integration, you can do this also after it's installed
       themes: !include_dir_merge_named themes
     ```
 
+    You will also need to change your user theme to the chosen theme or else no visual modifications will work.
+
 - Include Custom Cards: This will make sure almost all dependency cards are included and configured for you.
 
 !!! danger ""
