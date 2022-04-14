@@ -26,6 +26,7 @@ LANGUAGES = {
     "Norwegian": "no",
     "Polish": "pl",
     "Portuguese": "pt",
+    "Portuguese (Brazil)": "pt-BR",
     "Slovak": "sk",
     "Swedish": "sv",
     "Turkish": "tr",
