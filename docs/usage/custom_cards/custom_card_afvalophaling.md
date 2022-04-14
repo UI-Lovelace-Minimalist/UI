@@ -7,8 +7,6 @@ hide:
 
 # Custom-card "Afvalophaling"
 
-This card will show the next collection date for each configured garbage collection type. If `ulm_card_ophaling_vandaag` or `ulm_card_ophaling_morgen` are configured, the card will show the state of these sensors, showing the specific gargabe collection type being collected.
-
 ![Afvalophaling](../../assets/img/ulm_cards/custom_card_afvalophaling_2.png)
 ![Afvalophaling](../../assets/img/ulm_cards/custom_card_afvalophaling_1.png)
 
@@ -41,7 +39,6 @@ Initial release
           ulm_card_datum_pmd: "sensor.limburg_net_afvalophaling_pmd"
           ulm_card_datum_rest: "sensor.limburg_net_afvalophaling_restafval"
           ulm_card_datum_papier: "sensor.limburg_net_afvalophaling_papier"
-          ulm_card_datum_glas: "sensor.limburg_net_afvalophaling_glas"
 ```
 
 ## Requirements
@@ -60,44 +57,38 @@ Integration from HACS: "Home-Assistant-Sensor-Afvalbeheer" from pippyn
 <tr>
 <td>ulm_card_ophaling_vandaag</td>
 <td>sensor.limburg_net_afvalophaling_vandaag</td>
-<td>no</td>
+<td>yes</td>
 <td>Collection(s) for today</td>
 </tr>
 <tr>
 <td>ulm_card_ophaling_morgen</td>
 <td>sensor.limburg_net_afvalophaling_morgen</td>
-<td>no</td>
+<td>yes</td>
 <td>Collection(s) for tomorrow</td>
 </tr>
 <tr>
 <td>ulm_card_datum_gft</td>
 <td>sensor.limburg_net_afvalophaling_gft</td>
-<td>no</td>
+<td>yes</td>
 <td>GFT collection date</td>
 </tr>
 <tr>
 <td>ulm_card_datum_pmd</td>
 <td>sensor.limburg_net_afvalophaling_pmd</td>
-<td>no</td>
+<td>yes</td>
 <td>PMD collection date</td>
 </tr>
 <tr>
 <td>ulm_card_datum_rest</td>
 <td>sensor.limburg_net_afvalophaling_rest</td>
-<td>no</td>
+<td>yes</td>
 <td>Restafval collection date</td>
 </tr>
 <tr>
 <td>ulm_card_datum_papier</td>
 <td>sensor.limburg_net_afvalophaling_papier</td>
-<td>no</td>
+<td>yes</td>
 <td>Papier collection date</td>
-</tr>
-<tr>
-<td>ulm_card_datum_glas</td>
-<td>sensor.limburg_net_afvalophaling_glas</td>
-<td>no</td>
-<td>Glas collection date</td>
 </tr>
 </table>
 
