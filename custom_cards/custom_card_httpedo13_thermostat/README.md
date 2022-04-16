@@ -72,7 +72,7 @@ Entity climate with only heat mode
 </tr>
 <tr>
 <td>entity</td>
-<td>climate.ground_floor/td>
+<td>climate.ground_floor</td>
 <td>yes</td>
 <td>Your climate with only heat mode entity</td>
 </tr>
