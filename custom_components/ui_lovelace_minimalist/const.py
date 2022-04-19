@@ -26,7 +26,7 @@ CONF_LANGUAGES = [
     "Slovak",
     "Swedish",
     "Turkish",
-    "Russian"
+    "Russian",
 ]
 CONF_SIDEPANEL_ENABLED = "sidepanel_enabled"
 CONF_SIDEPANEL_TITLE = "sidepanel_title"

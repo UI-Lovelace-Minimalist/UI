@@ -30,7 +30,7 @@ LANGUAGES = {
     "Slovak": "sk",
     "Swedish": "sv",
     "Turkish": "tr",
-    "Russian": "ru"
+    "Russian": "ru",
 }
 
 
