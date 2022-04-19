@@ -2,22 +2,18 @@
 chip_weather_date:
   template: "chips"
   entity: "[[[ return variables.ulm_weather]]]"
+  variables:
+    ulm_language: "[[[return window.navigator.language ]]]"
   triggers_update: "all"
   tap_action:
     action: "more-info"
   label: |
     [[[
-      const months = ["Jan", "Feb", "Mar","Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-      let current_datetime = new Date()
-      let formatted_date = months[current_datetime.getMonth()] + "." + current_datetime.getDate()
-      var date = "st";
-      if(current_datetime.getDate()==1 || current_datetime.getDate()==21 || current_datetime.getDate()==31){
-        var date = "st";
-      } else if(current_datetime.getDate()==2 || current_datetime.getDate()==22){
-        var date = "nd";
-      } else {
-        var date = "th"
-      }
+      const event = new Date();
+      const options = {month: 'short', day: 'numeric' };
+      var locale = variables.ulm_language;
+      let formatted_date = event.toLocaleDateString(locale, options);
+
       var icon = '🌡️';
       if (states[variables.ulm_weather].state == 'clear-night'){
         var icon = '🌙';
@@ -48,5 +44,5 @@ chip_weather_date:
       } else if(states[variables.ulm_weather].state == 'windy'){
         var icon = '🌪️';
       }
-      return icon + ' ' + formatted_date + date;
+      return icon + ' ' + formatted_date
     ]]]

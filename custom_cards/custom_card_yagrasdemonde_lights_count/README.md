@@ -12,7 +12,6 @@ This is a `custom-card` to display number of lights on or covers open.
 ![Screenshot light mode](../../docs/assets/img/screenshot_light_count_lights.png)
 ![Screenshot dark mode](../../docs/assets/img/screenshot_dark_count_lights.png)
 
-
 ## Credits
 
 Author: yagrasdemonde - 04/2022
@@ -59,12 +58,15 @@ template:
 ## Usage
 
 For lights
+
 ```yaml
 - type: "custom:button-card"
   template: custom_card_yagrasdemonde_lights_count
   entity: sensor.lights_on
 ```
+
 For covers
+
 ```yaml
 - type: "custom:button-card"
   template: custom_card_yagrasdemonde_lights_count

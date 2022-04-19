@@ -1,6 +1,6 @@
 ---
 minimalist-ios-tapbar:
-  # version 1.0.0
+  # version 1.0.1
   # By LRvdLinden
   # Journal
   state-icon-color: "rgb(var(--color-theme))"
@@ -13,8 +13,11 @@ minimalist-ios-tapbar:
   divider-color: "rgba(var(--color-theme),.12)"
   accent-color: "var(--google-yellow)"
   card-mod-theme: "minimalist-ios-tapbar"
-  header-height: "97px"
-
+  card-mod-root: |
+    app-toolbar {
+      display: none;
+    }
+  header-height: "78px"
   card-mod-view-yaml: |
     "*:first-child$": |
       #columns .column > * {
@@ -22,7 +25,6 @@ minimalist-ios-tapbar:
         padding-right: 5px;
         padding-bottom: 5px;
       }
-
   # Move navbar
   card-mod-root-yaml: |
     ha-tabs$: |
@@ -54,8 +56,9 @@ minimalist-ios-tapbar:
         height: var(--header-height) !important;
       }
       app-toolbar {
-        height: 115px !important;
-        padding-bottom: env(safe-area-inset-bottom) !important;
+        height: var(--header-height) !important;
+        padding: 10px 0px !important;
+        background: var( --ha-card-background, var(--card-background-color) );
       }
       #view {
         margin-top: calc(-1 * var(--header-height)) !important;
@@ -66,8 +69,9 @@ minimalist-ios-tapbar:
         --mdc-icon-size: 26px;
         display: flex;
         justify-content: space-between;
-        padding: 0 10px;
-        height:50px !important;
+        padding: 10px;
+        margin-top:15px;
+        height:var(--header-height) !important;
       }
       paper-tab[aria-selected=true] {
         color: var(--header-active-tab-color);
@@ -77,12 +81,8 @@ minimalist-ios-tapbar:
         color: var(--header-all-tabs-color);
         border-radius: 25px;
         height:50px;
-        /*width: calc(100% / 4);
-        padding: 0;*/
-        padding-left: 20px;
-        padding-right: 20px;
+        padding: 0 20px;
       }
-
   # Color themes
   modes:
     light:
@@ -121,7 +121,7 @@ minimalist-ios-tapbar:
       header-all-tabs-color: "var(--paper-item-icon-color)"
       header-tab-indicator-color: "rgba(0, 0, 0, 0)"
       app-header-text-color: "var(--primary-text-color)"
-      app-header-background-color: "var( --ha-card-background, var(--card-background-color, white) )"
+      app-header-background-color: "var(--primary-background-color)"
       paper-tabs-selection-bar-color: "var(--primary-text-color)"
       footer-shadow: "0px -1px 3px 0px rgba(0,0,0,0.12)"
       # background and sidebar
@@ -181,7 +181,7 @@ minimalist-ios-tapbar:
       header-all-tabs-color: "var(--paper-item-icon-color)"
       header-tab-indicator-color: "rgba(0, 0, 0, 0)"
       app-header-text-color: "var(--primary-text-color)"
-      app-header-background-color: "var( --ha-card-background, var(--card-background-color, rgb(29, 29, 29)) )"
+      app-header-background-color: "var(--primary-background-color)"
       paper-tabs-selection-bar-color: "var(--primary-text-color)"
       footer-shadow: "0px -1px 3px 0px rgba(0,0,0,0.12)"
       # background and sidebar

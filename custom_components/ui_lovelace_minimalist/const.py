@@ -22,6 +22,7 @@ CONF_LANGUAGES = [
     "Norwegian",
     "Polish",
     "Portuguese",
+    "Portuguese (Brazil)",
     "Slovak",
     "Swedish",
     "Turkish",

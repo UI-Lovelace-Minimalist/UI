@@ -9,8 +9,10 @@ card_media_player:
     ulm_card_media_player_enable_art: false
     ulm_card_media_player_enable_controls: false
     ulm_card_media_player_enable_volume_slider: false
+    ulm_card_media_player_collapsible: false
     ulm_card_media_player_player_controls_entity: "[[[ return entity.entity_id ]]]"
     ulm_card_media_player_enable_popup: false
+    ulm_card_media_player_more_info: false
   triggers_update: "all"
   show_icon: false
   show_name: false
@@ -59,7 +61,14 @@ card_media_player:
             }
             return rows;
           ]]]
-      - row-gap: "12px"
+      - row-gap: |-
+          [[[
+            if (!variables.ulm_card_media_player_collapsible) {
+                return "12px";
+              } else {
+                return entity.state !== "off" ? "12px" : "0px";
+              }
+          ]]]
     card:
       - border-radius: "var(--border-radius)"
       - box-shadow: "var(--box-shadow)"
@@ -75,16 +84,24 @@ card_media_player:
       item2:
         - display: |
             [[[
-              return variables.ulm_card_media_player_enable_controls
-                ? "block"
-                : "none"
+              if(variables.ulm_card_media_player_enable_controls) {
+                if(variables.ulm_card_media_player_collapsible){
+                  return entity.state === "off" ? "none" : "block";
+                }
+                return "block";
+              }
+              return "none";
             ]]]
       item3:
         - display: |
             [[[
-              return variables.ulm_card_media_player_enable_volume_slider
-                ? "block"
-                : "none"
+              if(variables.ulm_card_media_player_enable_volume_slider) {
+                if(variables.ulm_card_media_player_collapsible){
+                  return entity.state === "off" ? "none" : "block";
+                }
+                return "block";
+              }
+              return "none";
             ]]]
   custom_fields:
     item1:
@@ -115,7 +132,7 @@ card_media_player:
                 ulm_popup_media_player_entity: "[[[ return entity.entity_id ]]]"
         icon: |
           [[[
-            var icon = "mdi:speaker";
+            var icon =  entity.attributes.icon || "mdi:speaker";
             if(entity.attributes.app_name){
               var app = entity.attributes.app_name.toLowerCase();
               if(app == "spotify"){
@@ -130,8 +147,12 @@ card_media_player:
                 var icon = "mdi:youtube";
               } else if (app == "oto music"){
                 var icon = "mdi:music-circle";
-              } else if (entity.attributes.icon){
-                var icon = entity.attributes.icon;
+              } else if(app == "pandora"){
+                var icon = "mdi:pandora";
+              } else if(app == "netflix"){
+                var icon = "mdi:netflix";
+              } else if(app == "bluetooth audio"){
+                var icon = "mdi:bluetooth";
               }
             }
             return variables.ulm_card_media_player_icon || icon;
@@ -146,7 +167,7 @@ card_media_player:
             value: "[[[ return entity.state != 'off' ]]]"
             name: |
               [[[
-                let name = states[entity.entity_id].attributes.friendly_name || variables.ulm_card_media_player_name;
+                let name = variables.ulm_card_media_player_name || states[entity.entity_id].attributes.friendly_name;
                 if(states[entity.entity_id].attributes.media_title){
                     name = states[entity.entity_id].attributes.media_title;
                 }
@@ -155,7 +176,10 @@ card_media_player:
             label: |
               [[[
                 let label = variables.ulm_on;
-                if(states[entity.entity_id].attributes.media_album_name){
+                if (variables.ulm_card_media_player_more_info && states[entity.entity_id].attributes.media_artist
+                    && states[entity.entity_id].attributes.media_album_name) {
+                    label = states[entity.entity_id].attributes.media_artist + " • " + states[entity.entity_id].attributes.media_album_name;
+                } else if(states[entity.entity_id].attributes.media_album_name) {
                     label = states[entity.entity_id].attributes.media_album_name;
                 } else if (states[entity.entity_id].attributes.media_artist) {
                     label = states[entity.entity_id].attributes.media_artist
@@ -383,17 +407,17 @@ card_media_player:
         radius: "14px"
         height: "42px"
         mainSliderColor: |
-                      [[[
-                        return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
-                        ? 'rgba(0, 0, 0, 0.2)'
-                        : 'rgba(var(--color-blue),1)'
-                      ]]]
+          [[[
+            return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
+            ? 'rgba(0, 0, 0, 0.2)'
+            : 'rgba(var(--color-blue),1)'
+          ]]]
         secondarySliderColor: |
-                      [[[
-                        return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
-                        ? 'rgba(0, 0, 0, 0.1)'
-                        : 'rgba(var(--color-blue),0.2)'
-                      ]]]
+          [[[
+            return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
+            ? 'rgba(0, 0, 0, 0.1)'
+            : 'rgba(var(--color-blue),0.2)'
+          ]]]
         mainSliderColorOff: "rgba(var(--color-theme),0.05)"
         secondarySliderColorOff: "rgba(var(--color-theme),0.05)"
         thumbHorizontalPadding: "0px"

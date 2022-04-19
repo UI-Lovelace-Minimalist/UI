@@ -8,6 +8,8 @@ card_light:
     ulm_card_light_icon: "[[[ return entity.attributes.icon ]]]"
     ulm_card_light_enable_collapse: false
     ulm_card_light_enable_slider: false
+    ulm_card_light_enable_slider_minSet: 0
+    ulm_card_light_enable_slider_maxSet: 100
     ulm_card_light_enable_horizontal: false
     ulm_card_light_enable_horizontal_wide: false
     ulm_card_light_enable_color: false
@@ -250,6 +252,8 @@ card_light:
         entity: "[[[ return entity.entity_id ]]]"
         radius: "14px"
         height: "42px"
+        minSet: "[[[ return variables.ulm_card_light_enable_slider_minSet ]]]"
+        maxSet: "[[[ return variables.ulm_card_light_enable_slider_maxSet ]]]"
         mainSliderColor: >
           [[[
               var color = entity.attributes.rgb_color;
