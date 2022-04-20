@@ -1,0 +1,43 @@
+{
+    "title": "UI Lovelace Minimalist",
+    "config": {
+        "step": {
+            "user": {
+                "title": "Настройки UI Lovelace Minimalist",
+                "description": "",
+                "data": {
+                    "language": "Язык",
+                    "sidepanel_enabled": "Создайте новую Панель инструментов на боковой панели.",
+                    "sidepanel_icon": "Значок боковой панели",
+                    "sidepanel_title": "Название боковой панели",
+                    "theme": "Тема",
+                    "include_other_cards": "Включите ресурсы, необходимые для пользовательских карт."
+                }
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "Допустима только одна конфигурация UI Lovelace Minimalist.",
+            "not_setup": "UI Lovelace Minimalist не установлена."
+        }
+    },
+    "options": {
+        "step": {
+            "user": {
+                "title": "Настройки UI Lovelace Minimalist",
+                "description": "",
+                "data": {
+                    "language": "Язык",
+                    "sidepanel_enabled": "Создайте новую Панель инструментов на боковой панели.",
+                    "sidepanel_icon": "Значок боковой панели",
+                    "sidepanel_title": "Название боковой панели",
+                    "theme": "Тема",
+                    "include_other_cards": "Включите ресурсы, необходимые для пользовательских карт."
+                }
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "Допустима только одна конфигурация UI Lovelace Minimalist.",
+            "not_setup": "UI Lovelace Minimalist не установлена."
+        }
+    }
+}
