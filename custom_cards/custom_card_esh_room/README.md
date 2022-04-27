@@ -40,40 +40,25 @@ This is an alternative room card to the standard one that is more rectangular th
 ## Usage
 
 ```yaml
-  - type: custom:button-card
-    template:
-      - card_esh_room
-      - yellow_on
-    entity: light.office
-    name: Office
-    icon: mdi:desk
-    tap_action:
-      action: navigate
-      navigation_path: "office"
-    label: '[[[ return states["sensor.office_temperature"].state + "°C" ]]]'
-```
-
-## Template code
-
-```yaml
+---
 ---
 card_esh_room:
   tap_action:
-    action: more-info
-  color: var(--google-grey-500)
+    action: "more-info"
+  color: "var(--google-grey-500)"
   show_icon: true
   show_name: true
   show_label: true
-  size: 20px
+  size: "20px"
   label: >-
-    [[[ 
-        if (entity.state !='unavailable'){
-          if (entity.state =='off'){
+    [[[
+        if (entity.state !="unavailable"){
+          if (entity.state =="off"){
             var bri = Math.round(entity.attributes.brightness / 2.55);
-            return 'Off';  
+            return "Off";
           }else{
             var bri = Math.round(entity.attributes.brightness / 2.55);
-            return (bri ? bri : '0') + '%'; 
+            return (bri ? bri : "0") + "%";
           }
         }else{
           return "Unavailable";
@@ -81,42 +66,42 @@ card_esh_room:
     ]]]
   styles:
     card:
-      - border-radius: 20px
-      - box-shadow: var(--box-shadow)
-      - padding: 12px
+      - border-radius: "20px"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
     grid:
-      - grid-template-areas: '"i toggle" "n n" "l l"'
-      - grid-template-columns: 1fr 1fr
-      - grid-template-rows: min-content
+      - grid-template-areas: "'i toggle' 'n n' 'l l'"
+      - grid-template-columns: "1fr 1fr"
+      - grid-template-rows: "min-content"
     icon:
       - color: "rgba(var(--color-theme),0.2)"
     img_cell:
       - background-color: "rgba(var(--color-theme),0.05)"
-      - border-radius: 50%
-      - place-self: center
-      - width: 42px
-      - height: 42px
+      - border-radius: "50%"
+      - place-self: "center"
+      - width: "42px"
+      - height: "42px"
     name:
-      - align-self: end
-      - justify-self: start
-      - font-weight: bold
-      - font-size: 14px
-      - margin-left: 12px
-      - margin-top: 12px
+      - align-self: "end"
+      - justify-self: "start"
+      - font-weight: "bold"
+      - font-size: "14px"
+      - margin-left: "12px"
+      - margin-top: "12px"
     label:
-      - justify-self: start
-      - align-self: start
-      - font-weight: bolder
-      - font-size: 12px
-      - filter: opacity(40%)
-      - margin-left: 12px
+      - justify-self: "start"
+      - align-self: "start"
+      - font-weight: "bolder"
+      - font-size: "12px"
+      - filter: "opacity(40%)"
+      - margin-left: "12px"
     state:
-      - justify-self: start
-      - align-self: start
-      - font-weight: bolder
-      - font-size: 12px
-      - filter: opacity(40%)
-      - margin-left: 12px
+      - justify-self: "start"
+      - align-self: "start"
+      - font-weight: "bolder"
+      - font-size: "12px"
+      - filter: "opacity(40%)"
+      - margin-left: "12px"
   custom_fields:
     toggle:
       card:
@@ -133,8 +118,7 @@ card_esh_room:
           - value: "off"
             icon: "mdi:lightbulb-off"
         tap_action:
-          action: toggle
+          action: "toggle"
         type: "custom:button-card"
-        template:
-          - widget_icon
+        template: "widget_icon"
 ```
