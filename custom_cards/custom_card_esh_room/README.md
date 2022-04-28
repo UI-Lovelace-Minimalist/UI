@@ -38,9 +38,22 @@ This is an alternative room card to the standard one that is more rectangular th
 | label  |      | Yes | The label to display information, this can be a template that returns a temperature or static text |
 
 ## Usage
-
 ```yaml
----
+  - type: 'custom:button-card'
+    template:
+      - card_esh_room
+      - yellow_on
+    name: Bathroom
+    entity: light.bathroom_lights
+    icon: mdi:bathtub
+    tap_action:
+      action: navigate
+      navigation_path: 'bathroom'
+    label: '[[[ return states["sensor.room_temperature"].state + "°C" ]]]'
+```
+
+## Template code
+```yaml
 ---
 card_esh_room:
   tap_action:
