@@ -38,6 +38,7 @@ This is an alternative room card to the standard one that is more rectangular th
 | label  |      | Yes | The label to display information, this can be a template that returns a temperature or static text |
 
 ## Usage
+
 ```yaml
   - type: 'custom:button-card'
     template:
@@ -53,6 +54,7 @@ This is an alternative room card to the standard one that is more rectangular th
 ```
 
 ## Template code
+
 ```yaml
 ---
 card_esh_room:
