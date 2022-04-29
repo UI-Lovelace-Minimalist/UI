@@ -103,6 +103,84 @@ car:
         }
       ]]]
 
+ulm_custom_card_schumijo_ca_popup:
+  tap_action:
+    action: "fire-dom-event"
+    browser_mod:
+      command: "popup"
+      title: "Map"
+      style:
+        $: >
+          [[[
+            if (hass.themes.theme.includes("desktop")){
+              var dialog = `
+                .mdc-dialog__surface{
+                  border-radius: var(--border-radius) !important;
+                }
+              `;
+            } else{
+              var dialog = "";
+            }
+            return `
+              *{
+                --secondary-background-color: none !important;
+              }
+              ${dialog}
+            `;
+          ]]]
+        hui-vertical-stack-card:
+          $: >
+            button-card {
+              align-self: center;
+              padding: 0.2em 0 2.3em 0;
+            }
+            hui-entities-card{
+              padding: 0.8em 1.4em;
+            }
+          $hui-entities-card$: >
+            ha-card{
+              box-shadow: none;
+            }
+          $hui-history-graph-card$: >
+            .content {
+              padding: 0 2.4em !important;
+            }
+            ha-card{
+              box-shadow: none;
+            }
+          $hui-glance-card$: >
+            ha-card{
+              box-shadow: none;
+            }
+          $hui-map-card:
+            $: >
+              ha-icon-button {
+                color: rgba(var(--color-blue),1);
+              }
+            $ha-map:
+              $: >
+                .leaflet-control-attribution {
+                  display: none;
+                }
+                .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
+                  border: 2px solid rgba(var(--color-blue),0.4) !important;
+                }
+                .leaflet-bar a {
+                  background-color: rgba(var(--color-blue),0.2) !important;
+                  color: rgba(var(--color-blue),1) !important;
+                }
+                .leaflet-bar a:first-child {
+                  border-bottom: 2px solid rgba(var(--color-blue),0.4) !important;
+                }
+                .leaflet-pane.leaflet-tile-pane {
+                  filter: contrast(95%);
+                }
+      card:
+        - type: "map"
+          aspect_ratio: "12x10"
+          default_zoom: 16
+          entities: "[[[ return [variables.ulm_card_schumijo_car_tracker]; ]]]"
+
 custom_card_schumijo_car:
   template:
     - "ulm_custom_card_schumijo_car_language_variables"
@@ -125,7 +203,9 @@ custom_card_schumijo_car:
     item1:
       card:
         type: "custom:button-card"
-        template: "car"
+        template:
+          - "car"
+          - "ulm_custom_card_schumijo_ca_popup"
         entity: "[[[ return variables.ulm_card_schumijo_car_tracker ]]]"
         variables:
           ulm_card_schumijo_car_tracker: "[[[ return variables.ulm_card_schumijo_car_tracker ]]]"
