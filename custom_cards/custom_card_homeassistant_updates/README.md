@@ -87,7 +87,7 @@ This card needs additional template sensors and binary_sensor updaters to work, 
 card_homeassistant_updates:
   triggers_update: "all"
   template:
-    - ulm_language_variables
+    - "ulm_language_variables"
   styles:
     grid:
       - grid-template-areas: "'item1' 'item2'"
@@ -104,7 +104,7 @@ card_homeassistant_updates:
         triggers_update: "all"
         type: "custom:button-card"
         template:
-          - icon_info_updates
+          - "icon_info_updates"
         icon: "mdi:home-assistant"
         tap_action:
           action: "none"
