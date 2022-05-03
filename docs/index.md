@@ -20,7 +20,7 @@ This wiki is intended to help you install and use the wonderful “theme” UI-L
 
 ## Youtube video on how to setup UI Minimalist
 
-[![Minimalist UI](https://img.youtube.com/vi/A0fMt8IRKoI/hqdefault.jpg){ width="400" }](https://www.youtube.com/watch?v=A0fMt8IRKoI&t=668s)
+[![Minimalist UI](https://img.youtube.com/vi/A0fMt8IRKoI/hqdefault.jpg){ width="400" }](https://www.youtube.com/watch?v=A0fMt8IRKoI)
 
 ## What is "Ui-Lovelace-Minimalist"
 
