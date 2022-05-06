@@ -29,52 +29,15 @@ Initial release.
 
 This card uses the Tomorrow.io integration for the pollen index:
 
-```yaml
-template:
-  - sensor:
-    - name: "lights on"
-      unique_id: lights_on
-      icon: mdi:lightbulb-on-outline
-      state: >
-        {% set lights = [
-            states.light.living_room,
-            states.light.bedroom,
-            states.light.bathroom,
-            states.switch.kitchen,
-            ] %}
-        {{ lights | selectattr('state','eq','on') | list | count }}
-    - name: "covers open"
-      unique_id: covers_open
-      icon: mdi:window-shutter-open
-      state: >
-        {% set covers = [
-            states.cover.bedroom,
-            states.cover.livingroom1,
-            states.cover.livingroom2,
-            ] %}
-        {{ covers | selectattr('state','eq','open') | list | count }}
-```
-
 ## Usage
 
-For lights
-
 ```yaml
-- type: "custom:button-card"
-  template: custom_card_yagrasdemonde_lights_count
-  entity: sensor.lights_on
-```
-
-For covers
-
-```yaml
-- type: "custom:button-card"
-  template: custom_card_yagrasdemonde_lights_count
-  entity: sensor.covers_open
+- type: 'custom:button-card'
+  template: custom_card_wsly_pollen
   variables:
-    ulm_custom_card_yagrasdemonde_lights_count_type: "cover"
-    ulm_custom_card_yagrasdemonde_lights_count_icon_off: "mdi:window-shutter"
-    ulm_custom_card_yagrasdemonde_lights_count_color: "blue"
+    custom_card_wsly_pollen_tree: sensor.tomorrow_io_home_tree_pollen_index
+    custom_card_wsly_pollen_grass: sensor.tomorrow_io_home_grass_pollen_index
+    custom_card_wsly_pollen_weed: sensor.tomorrow_io_home_weed_pollen_index
 ```
 
 ## Variables
@@ -88,47 +51,33 @@ For covers
 <th>Explanation</th>
 </tr>
 <tr>
-<td>ulm_custom_card_yagrasdemonde_lights_count_type</td>
-<td>"cover"</td>
-<td>No</td>
-<td>"light"</td>
-<td>The entity type used for translations<br>Values available : cover, light</td>
+<td>custom_card_wsly_pollen_tree</td>
+<td>"sensor.tomorrow_io_home_tree_pollen_index"</td>
+<td>Yes</td>
+<td></td>
+<td>The entity for the tree pollen index</td>
 </tr>
 <tr>
-<td>ulm_custom_card_yagrasdemonde_lights_count_icon_on</td>
-<td>"mdi:lightbulb-on-outline"</td>
-<td>No</td>
-<td>Sensor Icon</td>
-<td>Overwrites the sensor icon used for on/open state</td>
+<td>custom_card_wsly_pollen_grass</td>
+<td>"sensor.tomorrow_io_home_grass_pollen_index"</td>
+<td>Yes</td>
+<td></td>
+<td>The entity for the grass pollen index</td>
 </tr>
 <tr>
-<td>ulm_custom_card_yagrasdemonde_lights_count_icon_off</td>
-<td>"mdi:lightbulb-outline"</td>
-<td>No</td>
-<td>"mdi:lightbulb-outline"</td>
-<td>Icon for state off/closed</td>
-</tr>
-<tr>
-<td>ulm_custom_card_yagrasdemonde_lights_count_color</td>
-<td>"red"</td>
-<td>No</td>
-<td>"yellow"</td>
-<td>Style the color of icon, name and card (if applicable)<br>Values available : blue, green, grey, pink, purple, red, yellow</td>
-</tr>
-<tr>
-<td>ulm_custom_card_yagrasdemonde_lights_count_force_background_color</td>
-<td>true</td>
-<td>No</td>
-<td>false</td>
-<td>Force background card color even in light mode</td>
+<td>custom_card_wsly_pollen_weed</td>
+<td>"sensor.tomorrow_io_home_weed_pollen_index"</td>
+<td>Yes</td>
+<td></td>
+<td>The entity for the weed pollen index</td>
 </tr>
 </table>
 
 <details>
 <summary>Template code</summary>
 
-```yaml
-
+```yaml title="card_light.yaml"
+--8<-- "custom_cards/custom_card_wsly_pollen/custom_card_wsly_pollen.yaml"
 ```
 
 </details>
