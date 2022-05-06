@@ -1,13 +1,11 @@
 ---
 title: More Power Outlet Card
-hide:
-  - toc
 ---
 <!-- markdownlint-disable MD046 -->
 
 ## Description
 
-![example-image](../../assets/img/ulm_cards/card_power_outlet.png){ width="500" }
+<img width="248" alt="image" src="https://user-images.githubusercontent.com/30660751/167216999-2a911d70-0955-410e-a050-ebdcc4c43706.png">
 
 This is the power outlet card is very similar to the default `power-outlet-card` from UI-Minimalist but it is also possible to show two additional sensors - one for total energy and one for time.
 
