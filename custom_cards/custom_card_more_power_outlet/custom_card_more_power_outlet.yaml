@@ -13,17 +13,22 @@ custom_card_more_power_outlet:
   label: |-
     [[[
       if (entity.state === "on" && variables.custom_card_more_power_outlet_power_sensor !== null && variables.custom_card_more_power_outlet_energy_sensor !== null && variables.custom_card_more_power_outlet_time_sensor !== null) {
-        return states[variables.custom_card_more_power_outlet_power_sensor].state + "W • " + states[variables.custom_card_more_power_outlet_energy_sensor].state + "kWh • " + states[variables.custom_card_more_power_outlet_time_sensor].state + "Mins";
-        
+        if (states[variables.custom_card_more_power_outlet_time_sensor].state < 1){
+          return states[variables.custom_card_more_power_outlet_power_sensor].state + "W • " + states[variables.custom_card_more_power_outlet_energy_sensor].state + "kWh • " + (states[variables.custom_card_more_power_outlet_time_sensor].state * 100) + "Mins";
+        } else
+          return states[variables.custom_card_more_power_outlet_power_sensor].state + "W • " + states[variables.custom_card_more_power_outlet_energy_sensor].state + "kWh • " + states[variables.custom_card_more_power_outlet_time_sensor].state + "Hrs";
       } else if (entity.state === "on" && variables.custom_card_more_power_outlet_power_sensor !== null && variables.custom_card_more_power_outlet_energy_sensor !== null) {
         return states[variables.custom_card_more_power_outlet_power_sensor].state + "W • " + states[variables.custom_card_more_power_outlet_energy_sensor].state + "kWh";
-
       } else if (entity.state === "on" && variables.custom_card_more_power_outlet_power_sensor !== null && variables.custom_card_more_power_outlet_time_sensor !== null) {
-        return states[variables.custom_card_more_power_outlet_power_sensor].state + "W • " + states[variables.custom_card_more_power_outlet_time_sensor].state + "Mins";
-
+          if (states[variables.custom_card_more_power_outlet_time_sensor].state < 1){
+          return states[variables.custom_card_more_power_outlet_power_sensor].state + "W • " + (states[variables.custom_card_more_power_outlet_time_sensor].state * 100) + "Mins";
+        } else
+          return states[variables.custom_card_more_power_outlet_power_sensor].state + "W • " + states[variables.custom_card_more_power_outlet_time_sensor].state + "Hrs";
       } else if (entity.state === "on" && variables.custom_card_more_power_outlet_energy_sensor !== null && variables.custom_card_more_power_outlet_time_sensor !== null) {
-        return states[variables.custom_card_more_power_outlet_energy_sensor].state + "kWh • " + states[variables.custom_card_more_power_outlet_time_sensor].state + "Mins";
-
+          if (states[variables.custom_card_more_power_outlet_time_sensor].state < 1){
+          return states[variables.custom_card_more_power_outlet_energy_sensor].state + "kWh • " + (states[variables.custom_card_more_power_outlet_time_sensor].state * 100) + "Mins";
+        } else
+          return states[variables.custom_card_more_power_outlet_energy_sensor].state + "kWh • " + states[variables.custom_card_more_power_outlet_time_sensor].state + "Hrs";
       } else if (entity.state === "on" && variables.custom_card_more_power_outlet_power_sensor !== null) {
         return states[variables.custom_card_more_power_outlet_power_sensor].state + "W";
 
@@ -31,8 +36,10 @@ custom_card_more_power_outlet:
         return states[variables.custom_card_more_power_outlet_energy_sensor].state + "kWh";
 
       } else if (entity.state === "on" && variables.custom_card_more_power_outlet_time_sensor !== null) {
-        return states[variables.custom_card_more_power_outlet_time_sensor].state + "Mins";
-
+          if (states[variables.custom_card_more_power_outlet_time_sensor].state < 1){
+          return (states[variables.custom_card_more_power_outlet_time_sensor].state * 100) + "Mins";
+        } else
+          return states[variables.custom_card_more_power_outlet_time_sensor].state + "Hrs";
       } else if (entity.state === "on") {
         return variables.ulm_on;
       } else if (entity.state === "off") {
