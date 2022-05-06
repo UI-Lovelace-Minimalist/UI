@@ -9,6 +9,9 @@ title: More Power Outlet Card
 
 This is the power outlet card is very similar to the default `power-outlet-card` from UI-Minimalist but it is also possible to show two additional sensors - one for total energy and one for time.
 
+## Credits
+Author: Wranglatang - 2022 Vesion 1.0.0
+
 ## Variables
 
 | Variable | Default | Required         | Notes             |
