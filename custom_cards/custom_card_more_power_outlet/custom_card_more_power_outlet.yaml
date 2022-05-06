@@ -1,0 +1,45 @@
+---
+### Custom Card More Power Outlet ###
+custom_card_more_power_outlet:
+  template:
+    - "icon_info_bg"
+    - "yellow"
+    - "ulm_language_variables"
+  variables:
+    custom_card_more_power_outlet_power_sensor:
+    custom_card_more_power_outlet_energy_sensor:
+    custom_card_more_power_outlet_time_sensor:
+  triggers_update: "all"
+  label: |-
+    [[[
+      if (entity.state === "on" && variables.custom_card_more_power_outlet_power_sensor !== null && variables.custom_card_more_power_outlet_energy_sensor !== null && variables.custom_card_more_power_outlet_time_sensor !== null) {
+        return states[variables.custom_card_more_power_outlet_power_sensor].state + "W • " + states[variables.custom_card_more_power_outlet_energy_sensor].state + "kWh • " + states[variables.custom_card_more_power_outlet_time_sensor].state + "Mins";
+        
+      } else if (entity.state === "on" && variables.custom_card_more_power_outlet_power_sensor !== null && variables.custom_card_more_power_outlet_energy_sensor !== null) {
+        return states[variables.custom_card_more_power_outlet_power_sensor].state + "W • " + states[variables.custom_card_more_power_outlet_energy_sensor].state + "kWh";
+
+      } else if (entity.state === "on" && variables.custom_card_more_power_outlet_power_sensor !== null && variables.custom_card_more_power_outlet_time_sensor !== null) {
+        return states[variables.custom_card_more_power_outlet_power_sensor].state + "W • " + states[variables.custom_card_more_power_outlet_time_sensor].state + "Mins";
+
+      } else if (entity.state === "on" && variables.custom_card_more_power_outlet_energy_sensor !== null && variables.custom_card_more_power_outlet_time_sensor !== null) {
+        return states[variables.custom_card_more_power_outlet_energy_sensor].state + "kWh • " + states[variables.custom_card_more_power_outlet_time_sensor].state + "Mins";
+
+      } else if (entity.state === "on" && variables.custom_card_more_power_outlet_power_sensor !== null) {
+        return states[variables.custom_card_more_power_outlet_power_sensor].state + "W";
+
+      } else if (entity.state === "on" && variables.custom_card_more_power_outlet_energy_sensor !== null) {
+        return states[variables.custom_card_more_power_outlet_energy_sensor].state + "kWh";
+
+      } else if (entity.state === "on" && variables.custom_card_more_power_outlet_time_sensor !== null) {
+        return states[variables.custom_card_more_power_outlet_time_sensor].state + "Mins";
+
+      } else if (entity.state === "on") {
+        return variables.ulm_on;
+      } else if (entity.state === "off") {
+        return variables.ulm_off;
+      } else if (entity.state === "unavailable") {
+        return variables.ulm_unavailable;
+      } else {
+        return entity.state;
+      }
+    ]]]
