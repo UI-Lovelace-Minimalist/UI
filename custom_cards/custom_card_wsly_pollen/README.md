@@ -80,7 +80,7 @@ This card uses the following integration:
 ```yaml
 ---
 ### Custom card Pollen ###
-custom_card_wsly_pollen: 
+custom_card_wsly_pollen:
   type: "custom:button-card"
   template: "list_3_items"
   triggers_update: "all"
@@ -107,7 +107,7 @@ custom_card_wsly_pollen_item:
     - custom_card_wsly_pollen_language_variables
     - vertical_buttons
   label: >
-    [[[ 
+    [[[
       let pollen_state_label = variables.custom_card_wsly_pollen_none;
       if (entity.state == "very_low") pollen_state_label = variables.custom_card_wsly_pollen_very_low;
       else if (entity.state == "low") pollen_state_label = variables.custom_card_wsly_pollen_low;
@@ -153,7 +153,7 @@ custom_card_wsly_pollen_item:
           - color: "rgba(var(--color-pink), 1)"
         img_cell:
           - background-color: "rgba(var(--color-pink), 0.2)"
-  styles: 
+  styles:
     card:
       - box-shadow: "none"
       - border-radius: "var(--border-radius)"
@@ -180,6 +180,6 @@ custom_card_wsly_pollen_item:
           return `<ha-icon icon="mdi:exclamation-thick" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`
         }
       ]]]
-      
+
 ```
 </details>
