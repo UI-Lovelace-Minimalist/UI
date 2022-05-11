@@ -470,6 +470,7 @@ card_esh_welcome_topbar:
       card:
         type: "custom:button-card"
         template: "chip_weather_date"
+        entity: "[[[ return variables.ulm_weather]]]"
         variables:
           ulm_weather: "[[[ return variables.ulm_weather]]]"
         tap_action:
