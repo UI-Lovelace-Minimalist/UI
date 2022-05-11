@@ -4,6 +4,10 @@ custom_card_wsly_pollen:
   type: "custom:button-card"
   template: "list_3_items"
   triggers_update: "all"
+  styles:
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
   custom_fields:
     item1:
       card:
