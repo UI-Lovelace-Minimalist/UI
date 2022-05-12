@@ -42,6 +42,7 @@ The `custom_card_person_info` is an extension of `card_person`. It can also show
     ulm_card_person_use_entity_picture: true
     ulm_card_person_zone1: zone.uw
     ulm_card_person_zone2: zone.store
+    ulm_multiline: true
     ulm_card_person_driving_entity: binary_sensor.lee_in_car
     ulm_card_person_commute_entity: sensor.uw_commute
     ulm_card_person_commute_icon: mdi:bus
@@ -52,7 +53,6 @@ The `custom_card_person_info` is an extension of `card_person`. It can also show
 ## Template Code
 
 ```yaml
----
 ---
 card_person_info:
   template:
