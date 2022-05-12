@@ -40,9 +40,9 @@ card_person_info:
     \ : null ]]]"
   styles:
     grid:
-      - grid-template-areas: '"i n" "i l" "battery commute"'
-      - grid-template-columns: min-content auto
-      - grid-template-rows: min-content min-content
+      - grid-template-areas: "'i n' 'i l' 'battery commute'"
+      - grid-template-columns: "min-content auto"
+      - grid-template-rows: "min-content min-content"
     icon:
       - color: "rgba(var(--color-theme),0.9)"
       - width: >
@@ -83,19 +83,19 @@ card_person_info:
               }
             ]]]
       battery:
-        - align-self: middle
-        - justify-self: start
-        - display: flex
-        - align-items: center
-        - margin-top: 6px
-        - font-size: 12px
+        - align-self: "middle"
+        - justify-self: "start"
+        - display: "flex"
+        - align-items: "center"
+        - margin-top: "6px"
+        - font-size: "12px"
       commute:
-        - align-self: middle
-        - justify-self: end
-        - display: flex
-        - align-items: center
-        - margin-top: 6px
-        - font-size: 12px
+        - align-self: "middle"
+        - justify-self: "end"
+        - display: "flex"
+        - align-items: "center"
+        - margin-top: "6px"
+        - font-size: "12px"
 
   custom_fields:
     notification: >
