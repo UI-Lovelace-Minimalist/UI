@@ -6,6 +6,7 @@ title: Person Info Card
 
 ## Description
 
+![Person Info](../../docs/assets/img/custom_card_person_info2.png)
 ![Person Info](../../docs/assets/img/custom_card_person_info.png)
 
 The `custom_card_person_info` is an extension of `card_person`. It can also show if the user is driving, a related battery level, and a related commute time.
@@ -24,11 +25,12 @@ The `custom_card_person_info` is an extension of `card_person`. It can also show
 | ulm_card_person_zone1                |           | :material-close: | Set another zone (beside "home") to use for the card. You can set up two zones besides "home".                                                  |
 | ulm_card_person_zone2                |           | :material-close: | Set another zone (beside "home") to use for the card. You can set up two zones besides "home".                                                  |
 | ulm_address                          |           | :material-close: | Show an address as label, add an entity with a geo location                                                                                     |
-| ulm_card_person_driving_entity       |           |                  | Set a binary sensor that depicts when this person is driving                                                                                    |
-| ulm_card_person_battery_entity       |           |                  | Set a battery level sensor                                                                                                                      |
-| ulm_card_person_battery_state_entity |           |                  | Set a battery state sensor (eg the battery state sensor from the home assistant companion app will have the states "charging" or "discharging") |
-| ulm_card_person_commute_entity       |           |                  | Set a travel time sensor                                                                                                                        |
-| ulm_card_person_cummute_icon         | "mdi:car" |                  | Set an icon for the commute sensor to use                                                                                                       |
+| ulm_multiline                        | false     | :material-close: | Show battery and commute sensors below state                                                                                                    |
+| ulm_card_person_driving_entity       |           | :material-close: | Set a binary sensor that depicts when this person is driving                                                                                    |
+| ulm_card_person_battery_entity       |           | :material-close: | Set a battery level sensor                                                                                                                      |
+| ulm_card_person_battery_state_entity |           | :material-close: | Set a battery state sensor (eg the battery state sensor from the home assistant companion app will have the states "charging" or "discharging") |
+| ulm_card_person_commute_entity       |           | :material-close: | Set a travel time sensor                                                                                                                        |
+| ulm_card_person_cummute_icon         | "mdi:car" | :material-close: | Set an icon for the commute sensor to use                                                                                                       |
 
 ## Usage
 
@@ -51,6 +53,7 @@ The `custom_card_person_info` is an extension of `card_person`. It can also show
 
 ```yaml
 ---
+---
 card_person_info:
   template:
     - "icon_info_bg"
@@ -65,6 +68,7 @@ card_person_info:
     ulm_card_person_battery_state_entity: ""
     ulm_card_person_commute_entity: ""
     ulm_card_person_cummute_icon: "mdi:car"
+    ulm_multiline: false
   triggers_update: "all"
   tap_action:
     action: "more-info"
@@ -92,9 +96,19 @@ card_person_info:
     \ : null ]]]"
   styles:
     grid:
-      - grid-template-areas: '"i n" "i l" "battery commute"'
-      - grid-template-columns: min-content auto
-      - grid-template-rows: min-content min-content
+      - grid-template-areas: >
+          [[[
+            return variables.ulm_multiline
+              ? "'i n' 'i l' 'battery commute'"
+              : "'i n battery' 'i l commute'"
+          ]]]
+      - grid-template-columns: >
+          [[[
+            return variables.ulm_multiline
+              ? "min-content auto"
+              : "min-content auto min-content"
+          ]]]
+      - grid-template-rows: "min-content min-content"
     icon:
       - color: "rgba(var(--color-theme),0.9)"
       - width: >
@@ -135,19 +149,21 @@ card_person_info:
               }
             ]]]
       battery:
-        - align-self: middle
-        - justify-self: start
-        - display: flex
-        - align-items: center
-        - margin-top: 6px
-        - font-size: 12px
+        - align-self: "middle"
+        - justify-self: "start"
+        - display: "flex"
+        - align-items: "center"
+        - margin-top: >
+            [[[
+              return variables.ulm_multiline ? "6px" : "0"
+        - font-size: "12px"
       commute:
-        - align-self: middle
-        - justify-self: end
-        - display: flex
-        - align-items: center
-        - margin-top: 6px
-        - font-size: 12px
+        - align-self: "middle"
+        - justify-self: "end"
+        - display: "flex"
+        - align-items: "center"
+        - margin-top: "6px"
+        - font-size: "12px"
 
   custom_fields:
     notification: >

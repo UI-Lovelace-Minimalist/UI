@@ -13,6 +13,7 @@ card_person_info:
     ulm_card_person_battery_state_entity: ""
     ulm_card_person_commute_entity: ""
     ulm_card_person_cummute_icon: "mdi:car"
+    ulm_multiline: true
   triggers_update: "all"
   tap_action:
     action: "more-info"
@@ -40,8 +41,18 @@ card_person_info:
     \ : null ]]]"
   styles:
     grid:
-      - grid-template-areas: "'i n' 'i l' 'battery commute'"
-      - grid-template-columns: "min-content auto"
+      - grid-template-areas: >
+          [[[
+            return variables.ulm_multiline
+              ? "'i n' 'i l' 'battery commute'"
+              : "'i n battery' 'i l commute'"
+          ]]]
+      - grid-template-columns: >
+          [[[
+            return variables.ulm_multiline
+              ? "min-content auto"
+              : "min-content auto min-content"
+          ]]]
       - grid-template-rows: "min-content min-content"
     icon:
       - color: "rgba(var(--color-theme),0.9)"
@@ -87,7 +98,10 @@ card_person_info:
         - justify-self: "start"
         - display: "flex"
         - align-items: "center"
-        - margin-top: "6px"
+        - margin-top: >
+            [[[
+              return variables.ulm_multiline ? "6px" : "0";
+            ]]]
         - font-size: "12px"
       commute:
         - align-self: "middle"
