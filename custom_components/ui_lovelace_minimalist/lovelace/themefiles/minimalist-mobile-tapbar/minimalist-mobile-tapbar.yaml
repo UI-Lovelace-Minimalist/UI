@@ -131,8 +131,8 @@ minimalist-mobile-tapbar:
       # text
       primary-text-color: "#212121"
       # slider
-      slider-color: "rgb(var(--google-blue))"
-      slider-bar-color: "rgba(var(--google-blue),0.38)"
+      slider-color: "rgb(var(--color-blue))"
+      slider-bar-color: "rgba(var(--color-blue),0.38)"
       # cards
       box-shadow: "0px 2px 4px 0px rgba(0,0,0,0.16)"
       ha-card-box-shadow: "var(--box-shadow)"
