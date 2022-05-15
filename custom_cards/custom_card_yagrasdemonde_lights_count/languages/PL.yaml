@@ -1,0 +1,9 @@
+---
+ulm_custom_card_yagrasdemonde_lights_count_language_variables:
+  variables:
+    ulm_custom_card_yagrasdemonde_lights_count_light_0: "Brak zapalonych świateł"
+    ulm_custom_card_yagrasdemonde_lights_count_light_1: "Jedno zapalone światło"
+    ulm_custom_card_yagrasdemonde_lights_count_light_many: "zapalonych świateł"
+    ulm_custom_card_yagrasdemonde_lights_count_cover_0: "Brak otwartych rolet"
+    ulm_custom_card_yagrasdemonde_lights_count_cover_1: "Jedna otwarta roleta"
+    ulm_custom_card_yagrasdemonde_lights_count_cover_many: "otwartych rolet"

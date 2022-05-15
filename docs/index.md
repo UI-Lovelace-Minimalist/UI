@@ -18,6 +18,10 @@ This wiki is intended to help you install and use the wonderful “theme” UI-L
 
 ![Home](./assets/img/example_home.png){ width="200" } ![Temperature](./assets/img/example_temperature.png){ width="200" } ![Consumption](./assets/img/example_consumption.png){ width="200" } ![Localisation](./assets/img/example_localisation.png){ width="200" }
 
+## Youtube video on how to setup UI Minimalist
+
+[![Minimalist UI](https://img.youtube.com/vi/A0fMt8IRKoI/hqdefault.jpg){ width="400" }](https://www.youtube.com/watch?v=A0fMt8IRKoI)
+
 ## What is "Ui-Lovelace-Minimalist"
 
 We call it a "theme" (the quotation marks are on purpose), as it uses theme specific techniques, but it uses so much more, that one can’t say it is only a theme. This "theme" is depending on two things, namely using a theme and make extensive use of the `template` function from the `custom_component` [button-card](https://github.com/custom-cards/button-card) made by RomRaider.
