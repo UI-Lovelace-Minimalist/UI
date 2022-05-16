@@ -94,7 +94,7 @@ custom_card_nas:
           return variables.ulm_custom_card_nas_text + " " + states[variables.ulm_custom_card_nas_sensor].state + variables.ulm_custom_card_nas_unit;
       ]]]
   name: |-
-      [[[ 
+      [[[
           return "Nas";
       ]]]
   size: "20px"
