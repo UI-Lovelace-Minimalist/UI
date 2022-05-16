@@ -9,17 +9,17 @@ custom_card_nas:
   show_label: true
   show_name: true
   icon: |-
-      [[[
-          return "mdi:nas";
-      ]]]
+    [[[
+       return "mdi:nas";
+    ]]]
   label: |-
-      [[[
-          return variables.ulm_custom_card_nas_text + " " + states[variables.ulm_custom_card_nas_sensor].state + variables.ulm_custom_card_nas_unit;
-      ]]]
+    [[[
+       return variables.ulm_custom_card_nas_text + " " + states[variables.ulm_custom_card_nas_sensor].state + variables.ulm_custom_card_nas_unit;
+    ]]]
   name: |-
-      [[[
-          return "Nas";
-      ]]]
+    [[[
+       return "Nas";
+    ]]]
   size: "20px"
   styles:
     label:
