@@ -90,9 +90,9 @@ custom_card_nas:
           return "mdi:nas";
       ]]]
   label: |-
-    [[[
-        return variables.ulm_custom_card_nas_text + " " + states[variables.ulm_custom_card_nas_sensor].state + variables.ulm_custom_card_nas_unit;
-    ]]]
+      [[[
+          return variables.ulm_custom_card_nas_text + " " + states[variables.ulm_custom_card_nas_sensor].state + variables.ulm_custom_card_nas_unit;
+      ]]]
   name: |-
       [[[ 
           return "Nas";
