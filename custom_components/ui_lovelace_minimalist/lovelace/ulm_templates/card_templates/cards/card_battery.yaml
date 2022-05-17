@@ -3,6 +3,7 @@
 card_battery:
   template:
     - "icon_info_bg"
+    - "ulm_language_variables"
   tap_action:
     action: "more-info"
   variables:
@@ -55,6 +56,8 @@ card_battery:
         icon = "mdi:battery";
       } else if (battery_level < 10) {
         icon = "mdi:battery" + infix + "-outline";
+      } else if (battery_level == "unknown" || battery_level == "unavailable") {
+        icon = "mdi:battery-off";
       } else {
         icon = "mdi:battery" + infix + "-" + Math.floor(battery_level / 10) * 10;
       }
@@ -66,7 +69,10 @@ card_battery:
       const battery_level = variables.ulm_card_battery_attribute !== null
         ? states[entity.entity_id].attributes[variables.ulm_card_battery_attribute]
         : states[entity.entity_id].state;
-      return battery_level + "%";
+      if(battery_level == "unknown")
+      { return variables.ulm_unavailable; }
+      else
+      { return battery_level + "%"; }
     ]]]
   name: |
     [[[
@@ -87,6 +93,8 @@ card_battery:
                 color = variables.ulm_card_battery_color_battery_level_danger;
               } else if (battery_level <= variables.ulm_card_battery_battery_level_warning) {
                 color = variables.ulm_card_battery_color_battery_level_warning;
+              } else if (battery_level == "unknown" || battery_level == "unavailable") {
+                color = variables.ulm_card_battery_color_battery_level_danger;
               } else {
                 color = variables.ulm_card_battery_color_battery_level_ok;
               }
