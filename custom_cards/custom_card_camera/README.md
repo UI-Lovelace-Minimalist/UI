@@ -9,8 +9,8 @@ hide:
 
 This is a `custom-card` to display a camera live view.
 
-![Screenshot](../../docs/assets/img/screenshot_camera_card1.png)
-![Screenshot](../../docs/assets/img/screenshot_camera_card2.png)
+![Screenshot](../../docs/assets/img/screenshot_custom_camera1.png)
+![Screenshot](../../docs/assets/img/screenshot_custom_camera2.png)
 ## Credits
 
 Author: eltarius - 2022
