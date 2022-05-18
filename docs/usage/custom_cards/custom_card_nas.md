@@ -9,6 +9,8 @@ hide:
 
 The `card-nas` shows you a specific sensor value from your NAS, eg. the disk space used.
 
+![Screenshot](../../assets/img/custom_card_nas.png)
+
 ## Credits
 
 Author: tben - 2021
@@ -19,6 +21,10 @@ Version: 1.0.0
 <details>
 <summary>1.0.0</summary>
 Initial release
+</details>
+<details>
+<summary>1.0.1</summary>
+Fix card & add Screenshot
 </details>
 
 ## Usage
@@ -59,7 +65,7 @@ n/a
 <td>The text to show on your card</td>
 </tr>
 <tr>
-<td>ulm_custom_cad_nas_unit</td>
+<td>ulm_custom_card_nas_unit</td>
 <td>%</td>
 <td>yes</td>
 <td>The unit to show after your sensors state</td>
@@ -69,19 +75,55 @@ n/a
 ## Template code
 
 ```yaml
+---
 custom_card_nas:
-  tap_action:
-    action: more-info
   template:
-    - blue
+    - "blue_no_state"
+  tap_action:
+    action: "more-info"
+    entity: "[[[ return variables.ulm_custom_card_nas_sensor; ]]]"
+  show_icon: true
   show_label: true
+  show_name: true
+  icon: |-
+      [[[
+          return "mdi:nas";
+      ]]]
   label: |-
-    [[[
-      if (entity.state == 'on'){
-        var state = variables.ulm_custom_card_nas_text + states[variables.ulm_custom_card_nas_sensor].state + variables.ulm_custom_card_nas_unit;
-      } else {
-        var state = "Off";
-      }
-      return state;
-    ]]]
+      [[[
+          return variables.ulm_custom_card_nas_text + " " + states[variables.ulm_custom_card_nas_sensor].state + variables.ulm_custom_card_nas_unit;
+      ]]]
+  name: |-
+      [[[
+          return "Nas";
+      ]]]
+  size: "20px"
+  styles:
+    label:
+      - justify-self: "start"
+      - align-self: "start"
+      - font-weight: "bolder"
+      - font-size: "12px"
+      - filter: "opacity(40%)"
+      - margin-left: "12px"
+    name:
+      - align-self: "end"
+      - justify-self: "start"
+      - font-weight: "bold"
+      - font-size: "14px"
+      - margin-left: "12px"
+      - filter: "opacity(100%)"
+    img_cell:
+      - border-radius: "50%"
+      - place-self: "center"
+      - width: "42px"
+      - height: "42px"
+    grid:
+      - grid-template-areas: "'i n' 'i l'"
+      - grid-template-columns: "min-content auto"
+      - grid-template-rows: "min-content min-content"
+    card:
+      - border-radius: "20px"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
 ```
