@@ -10,6 +10,7 @@ title: More Power Outlet Card
 This is the power outlet card is very similar to the default `power-outlet-card` from UI-Minimalist but it is also possible to show two additional sensors - one for total energy and one for time.
 
 ## Credits
+
 Author: Wranglatang - 2022 Vesion 1.0.0
 
 ## Variables
@@ -19,8 +20,8 @@ Author: Wranglatang - 2022 Vesion 1.0.0
 | entity     |         | :material-check: |                   |
 |name|  | :material-check: | Enable background |
 |custom_card_more_power_outlet_power_sensor|  | :material-close: | If you set this sensor, the `custom_card_more_power_outlet` shows the current power consumption (W). |
-|custom_card_more_power_outlet_energy_sensor|  | :material-close: | If you set this sensor, the `custom_card_more_power_outlet` shows the energy consumption (kWh) - Typically used with a Daily (Utility Meter)[https://www.home-assistant.io/integrations/utility_meter]. |
-|custom_card_more_power_outlet_time_sensor|  | :material-close: | If you set this sensor, the `custom_card_more_power_outlet` shows the a duration (Mins) - Typically used with the (History Stats)[https://www.home-assistant.io/integrations/history_stats]. |
+|custom_card_more_power_outlet_energy_sensor|  | :material-close: | If you set this sensor, the `custom_card_more_power_outlet` shows the energy consumption (kWh) - Typically used with a Daily [Utility Meter](https://www.home-assistant.io/integrations/utility_meter). |
+|custom_card_more_power_outlet_time_sensor|  | :material-close: | If you set this sensor, the `custom_card_more_power_outlet` shows the a duration (Mins) - Typically used with the [History Stats](https://www.home-assistant.io/integrations/history_stats). |
 
 ## Usage
 
