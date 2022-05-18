@@ -1,0 +1,9 @@
+---
+ulm_custom_card_yagrasdemonde_lights_count_language_variables:
+  variables:
+    ulm_custom_card_yagrasdemonde_lights_count_light_0: "Ninguna luz encendida"
+    ulm_custom_card_yagrasdemonde_lights_count_light_1: "1 luz encendida"
+    ulm_custom_card_yagrasdemonde_lights_count_light_many: "luces encendidas"
+    ulm_custom_card_yagrasdemonde_lights_count_cover_0: "Ninguna cortina abierta"
+    ulm_custom_card_yagrasdemonde_lights_count_cover_1: "1 cortina abierta"
+    ulm_custom_card_yagrasdemonde_lights_count_cover_many: "cortinas abiertas"
