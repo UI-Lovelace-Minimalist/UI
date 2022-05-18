@@ -4,6 +4,12 @@ card_battery:
   template:
     - "icon_info_bg"
     - "ulm_language_variables"
+  double_tap_action:
+    action: "call-service"
+    service: "input_select.select_option"
+    service_data:
+      option: "[[[ return variables.ulm_card_battery_input_select_option ]]]"
+      entity_id: "[[[ return variables.ulm_card_battery_input_select ]]]"
   tap_action:
     action: "more-info"
   variables:
@@ -69,6 +75,7 @@ card_battery:
       const battery_level = variables.ulm_card_battery_attribute !== null
         ? states[entity.entity_id].attributes[variables.ulm_card_battery_attribute]
         : states[entity.entity_id].state;
+      return battery_level + "%";
       if(battery_level == "unknown")
       { return variables.ulm_unavailable; }
       else

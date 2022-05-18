@@ -8,6 +8,12 @@ card_power_outlet:
   variables:
     ulm_card_power_outlet_consumption_sensor:
   triggers_update: "all"
+  double_tap_action:
+    action: "call-service"
+    service: "input_select.select_option"
+    service_data:
+      option: "[[[ return variables.ulm_card_power_outlet_input_select_option ]]]"
+      entity_id: "[[[ return variables.ulm_card_power_outlet_input_select ]]]"
   label: |-
     [[[
       if (entity.state === "on" && variables.ulm_card_power_outlet_consumption_sensor !== null) {

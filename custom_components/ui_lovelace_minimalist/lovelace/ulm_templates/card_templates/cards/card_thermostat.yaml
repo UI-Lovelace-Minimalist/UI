@@ -17,6 +17,12 @@ card_thermostat:
   show_icon: false
   show_name: false
   show_label: false
+  double_tap_action:
+    action: "call-service"
+    service: "input_select.select_option"
+    service_data:
+      option: "[[[ return variables.ulm_card_thermostat_input_select_option ]]]"
+      entity_id: "[[[ return variables.ulm_card_thermostat_input_select ]]]"
   hold_action:
     action: >
       [[[
@@ -171,6 +177,12 @@ card_thermostat:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
               icon: "[[[ return variables.ulm_card_thermostat_icon ]]]"
+              double_tap_action:
+                action: "call-service"
+                service: "input_select.select_option"
+                service_data:
+                  option: "[[[ return variables.ulm_card_thermostat_input_select_option ]]]"
+                  entity_id: "[[[ return variables.ulm_card_thermostat_input_select ]]]"
               hold_action:
                 action: >
                   [[[
@@ -216,6 +228,12 @@ card_thermostat:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
               name: "[[[ return variables.ulm_card_thermostat_name ]]]"
+              double_tap_action:
+                action: "call-service"
+                service: "input_select.select_option"
+                service_data:
+                  option: "[[[ return variables.ulm_card_thermostat_input_select_option ]]]"
+                  entity_id: "[[[ return variables.ulm_card_thermostat_input_select ]]]"
               tap_action:
                 action: "call-service"
                 service: >
