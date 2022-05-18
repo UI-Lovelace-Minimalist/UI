@@ -1,5 +1,5 @@
 ---
-camera_live:  #Display the camera in a picture-entity
+custom_card_camera:  #Display the camera in a picture-entity
   template:
     - "blue_no_state"
   show_name: false
