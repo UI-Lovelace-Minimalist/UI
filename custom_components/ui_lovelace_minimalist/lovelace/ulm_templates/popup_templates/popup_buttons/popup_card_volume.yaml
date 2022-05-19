@@ -1,0 +1,15 @@
+---
+popup_card_volume:
+  template: "chips"
+  show_icon: true
+  icon: "mdi:volume-high"
+  label: "80%"
+  styles:
+    card:
+      - background: "none"
+      - box-shadow: "none"
+      - border: "1px solid rgba(var(--color-theme),0.25)"
+    grid:
+      - grid-template-areas: "i l"
+      - justify-content: "space-between"
+      - display: "flex"
