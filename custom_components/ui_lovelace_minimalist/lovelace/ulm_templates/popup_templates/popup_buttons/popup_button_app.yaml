@@ -16,6 +16,7 @@ popup_button_app:
       - font-size: "12px"
       - filter: "opacity(40%)"
       - margin-left: "12px"
+      - color: "#212121"
     name:
       - align-self: "end"
       - justify-self: "start"
@@ -26,7 +27,7 @@ popup_button_app:
     icon:
       - color: >
           [[[
-            var color = "var(--color-theme)";
+            var color = "51,51,51";
             if(entity.attributes.app_name){
               var app = entity.attributes.app_name.toLowerCase();
               if(app = "spotify"){
