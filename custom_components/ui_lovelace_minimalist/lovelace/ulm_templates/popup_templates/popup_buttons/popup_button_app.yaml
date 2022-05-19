@@ -16,7 +16,6 @@ popup_button_app:
       - font-size: "12px"
       - filter: "opacity(40%)"
       - margin-left: "12px"
-      - color: "#212121"
     name:
       - align-self: "end"
       - justify-self: "start"
@@ -27,7 +26,7 @@ popup_button_app:
     icon:
       - color: >
           [[[
-            var color = "51,51,51";
+            var color = "var(--color-theme)";
             if(entity.attributes.app_name){
               var app = entity.attributes.app_name.toLowerCase();
               if(app = "spotify"){
@@ -47,10 +46,10 @@ popup_button_app:
             if(entity.attributes.app_name){
               var app = entity.attributes.app_name.toLowerCase();
               if(app = "spotify"){
-                color = "var(--primary-color)";
+                color = "#434343";
               }
             } else if(entity.attributes.media_content_id.toLowerCase().includes("spotify")){
-              var color = "var(--primary-color)";
+              var color = "#434343";
             }
             return color;
           ]]]

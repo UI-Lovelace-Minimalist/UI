@@ -65,9 +65,15 @@ popup_media_player_infos:
             - background-blend-mode: "soft-light"
             - background: |
                 [[[
-                  return states[variables.ulm_popup_media_player_entity].state == 'playing' && states[variables.ulm_popup_media_player_entity].attributes.entity_picture != null
-                  ? ' center / cover url(' + states[variables.ulm_popup_media_player_entity].attributes.entity_picture + '), radial-gradient(circle, white 5%, grey 100% ,white 110%)'
-                  : ''
+                  if(hass.themes.darkMode){
+                    return states[variables.ulm_popup_media_player_entity].state == 'playing' && states[variables.ulm_popup_media_player_entity].attributes.entity_picture != null
+                    ? ' center / cover url(' + states[variables.ulm_popup_media_player_entity].attributes.entity_picture + '), radial-gradient(circle, #333333 90%, grey 105% ,#333333 110%)'
+                    : ''
+                  }else{
+                    return states[variables.ulm_popup_media_player_entity].state == 'playing' && states[variables.ulm_popup_media_player_entity].attributes.entity_picture != null
+                    ? ' center / cover url(' + states[variables.ulm_popup_media_player_entity].attributes.entity_picture + '), radial-gradient(circle, white 5%, grey 100% ,white 110%)'
+                    : ''
+                  }
                 ]]]
             - box-shadow: "none"
             - padding: "1%"
@@ -147,7 +153,7 @@ popup_media_player_infos:
                   .entity__info__media {
                     font-weight: bold !important;
                     font-size: 14px !important;
-                    color: "#212121" !important;
+                    color: var(--primary-text-color) !important;
                   }
                   :host {
                     --paper-progress-active-color: blue !important;
