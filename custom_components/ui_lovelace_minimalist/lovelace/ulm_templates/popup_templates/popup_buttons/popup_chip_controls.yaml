@@ -7,7 +7,7 @@ popup_chip_controls:
     card:
       - background: "none"
       - box-shadow: "none"
-      - border: "1px solid rgba(var(--color-theme),0.25)"
+      - border: "1px solid rgba(var(--color-theme),0.5)"
       - height: "42px"
       - border-radius: "21px"
     grid:
@@ -29,7 +29,7 @@ popup_chip_controls:
             entity_id: "[[[ return variables.ulm_popup_media_player_entity]]]"
         styles:
           icon:
-            - color: "rgba(var(--color-theme),0.25)"
+            - color: "rgba(var(--color-theme),0.5)"
     item2:
       card:
         type: "custom:button-card"
@@ -57,7 +57,7 @@ popup_chip_controls:
             entity_id: "[[[ return variables.ulm_popup_media_player_entity]]]"
         styles:
           icon:
-            - color: "rgba(var(--color-theme),0.25)"
+            - color: "rgba(var(--color-theme),0.5)"
 
 icon_controls:
   show_icon: true

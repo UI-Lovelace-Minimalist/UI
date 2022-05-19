@@ -147,7 +147,7 @@ popup_media_player_infos:
                   .entity__info__media {
                     font-weight: bold !important;
                     font-size: 14px !important;
-                    color: var(--primary-text-color) !important;
+                    color: "#212121" !important;
                   }
                   :host {
                     --paper-progress-active-color: blue !important;
