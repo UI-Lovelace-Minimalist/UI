@@ -11,6 +11,8 @@ popup_button:
     card:
       - background: "none"
       - box-shadow: "none"
+      - border-radius: "none"
+      - padding: "12px"
     icon:
       - color: "var(--primary-color)"
     img_cell:
