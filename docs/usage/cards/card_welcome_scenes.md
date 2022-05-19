@@ -35,6 +35,7 @@ This is a card which shows the basic needs for your dashboard. This card can gen
 | _name  |      | :material-close: | The name to show|
 | _color  |  Random    | :material-close: | Color of the icon <br> Can choose between: `blue`, `red`, `green`, `yellow`, `pink`, `purple` <br> If not specified, it will take a random color  |
 | _state  | `on` or `playing`    | :material-close: | Define `input_select` state or give manual state for pill to be full |
+| _nav_path |     | :material-close:  | Navigate to another view <br> *Overrides other types of actions*
 
 ## Requirement Collapse Function
 
