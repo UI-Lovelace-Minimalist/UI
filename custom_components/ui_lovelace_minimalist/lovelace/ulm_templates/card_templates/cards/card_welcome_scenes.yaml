@@ -3,6 +3,62 @@ card_welcome_scenes:
   variables:
     ulm_weather: "[[[ return variables.ulm_weather]]]"
     ulm_language: "[[[ return window.navigator.language ]]]"
+    entity_1:
+      entity_id: ""
+      color: >
+        [[[
+          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
+    entity_2:
+      entity_id: ""
+      color: >
+        [[[
+          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
+    entity_3:
+      entity_id: ""
+      color: >
+        [[[
+          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
+    entity_4:
+      entity_id: ""
+      color: >
+        [[[
+          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
+    entity_5:
+      entity_id: ""
+      color: >
+        [[[
+          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
+    entity_6:
+      entity_id: ""
+      color: >
+        [[[
+          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
+    entity_7:
+      entity_id: ""
+      color: >
+        [[[
+          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
   template:
     - "ulm_language_variables"
   show_icon: false
@@ -129,8 +185,8 @@ card_welcome_scenes:
         type: "custom:button-card"
         template: >
           [[[
-            if(variables?.entity_1?.entity_id  && variables?.entity_2?.entity_id  && variables?.entity_3?.entity_id && variables?.entity_4?.entity_id && variables?.entity_5?.entity_id){
-              return 'card_scenes_welcome'
+            if(variables?.entity_1?.entity_id != ""){
+              return 'card_scenes'
             } else {
               return 'card_scenes_welcome_auto'
             }
@@ -244,7 +300,7 @@ card_scenes_pill_welcome:
                 return "homeassistant.toggle"
               }
             ]]]
-          navigation_path: "[[[ return variables.nav_path; ]]]"
+          navigation_path: "[[[ return variables?.nav_path; ]]]"
           service_data: |
             [[[
               var obj;
@@ -311,7 +367,7 @@ card_scenes_pill_welcome:
                 return "call-service"
               }
             ]]]
-          navigation_path: "[[[ return variables.nav_path; ]]]"
+          navigation_path: "[[[ return variables?.nav_path; ]]]"
           service: >
             [[[
               if(entity.entity_id.startsWith("scene.")){
@@ -466,7 +522,7 @@ card_scenes_welcome_auto:
           count: 5
         filter:
           include:
-            - domain: "scene"
+            - domain: "light"
               options:
                 type: "custom:button-card"
                 template: "card_scenes_pill_welcome"
@@ -477,9 +533,21 @@ card_scenes_welcome_auto:
                       entity: "this.entity_id"
                       styles:
                         icon:
-                          - color: "[[[ return `rgba(var(--color-${variables.colors}), 1)`;]]]"
+                          - color: >
+                              [[[
+                                var color = variables.colors
+                                if(hass.themes.darkMode){var color = "#FAFAFA";}
+                                return `rgba(var(--color-${color}), 1)`;
+                              ]]]
+                          - width: "20px"
                         img_cell:
-                          - background-color: "[[[ return `rgba(var(--color-${variables.colors}), 0.20)`;]]]"
+                          - background-color: >
+                              [[[
+                                var color = variables.colors
+                                var opacity = '0.20'
+                                if(hass.themes.darkMode){var opacity = '1'}
+                                return `rgba(var(--color-${color}), ${opacity})`;
+                              ]]]
                   item2:
                     card:
                       type: "custom:button-card"
