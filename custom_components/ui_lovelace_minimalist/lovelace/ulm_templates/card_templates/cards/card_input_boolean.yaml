@@ -9,8 +9,8 @@ card_input_boolean:
     action: "call-service"
     service: "input_select.select_option"
     service_data:
-      option: "[[[ return variables.ulm_card_input_boolean_input_select_option ]]]"
-      entity_id: "[[[ return variables.ulm_card_input_boolean_input_select ]]]"
+      option: "[[[ return variables.ulm_input_select_option ]]]"
+      entity_id: "[[[ return variables.ulm_input_select ]]]"
   name: "[[[ return entity.attributes.friendly_name != '' ? entity.attributes.friendly_name : entity.entity_id ]]]"
   label: >
     [[[

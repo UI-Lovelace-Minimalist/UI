@@ -9,5 +9,5 @@ card_binary_sensor_alert:
     action: "call-service"
     service: "input_select.select_option"
     service_data:
-      option: "[[[ return variables.ulm_card_binary_senor_alert_input_select_option ]]]"
-      entity_id: "[[[ return variables.ulm_card_binary_senor_alert_input_select ]]]"
+      option: "[[[ return variables.ulm_input_select_option ]]]"
+      entity_id: "[[[ return variables.ulm_input_select ]]]"

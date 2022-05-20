@@ -8,8 +8,8 @@ card_generic_swap:
     action: "call-service"
     service: "input_select.select_option"
     service_data:
-      option: "[[[ return variables.ulm_card_generic_swap_input_select_option ]]]"
-      entity_id: "[[[ return variables.ulm_card_generic_swap_input_select ]]]"
+      option: "[[[ return variables.ulm_input_select_option ]]]"
+      entity_id: "[[[ return variables.ulm_input_select ]]]"
   label: >
     [[[
       var unit = entity.attributes.unit_of_measurement != null ? " " + entity.attributes.unit_of_measurement : ""

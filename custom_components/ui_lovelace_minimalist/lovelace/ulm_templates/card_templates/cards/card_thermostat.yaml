@@ -21,8 +21,8 @@ card_thermostat:
     action: "call-service"
     service: "input_select.select_option"
     service_data:
-      option: "[[[ return variables.ulm_card_thermostat_input_select_option ]]]"
-      entity_id: "[[[ return variables.ulm_card_thermostat_input_select ]]]"
+      option: "[[[ return variables.ulm_input_select_option ]]]"
+      entity_id: "[[[ return variables.ulm_input_select ]]]"
   hold_action:
     action: >
       [[[
@@ -181,8 +181,8 @@ card_thermostat:
                 action: "call-service"
                 service: "input_select.select_option"
                 service_data:
-                  option: "[[[ return variables.ulm_card_thermostat_input_select_option ]]]"
-                  entity_id: "[[[ return variables.ulm_card_thermostat_input_select ]]]"
+                  option: "[[[ return variables.ulm_input_select_option ]]]"
+                  entity_id: "[[[ return variables.ulm_input_select ]]]"
               hold_action:
                 action: >
                   [[[
@@ -232,8 +232,8 @@ card_thermostat:
                 action: "call-service"
                 service: "input_select.select_option"
                 service_data:
-                  option: "[[[ return variables.ulm_card_thermostat_input_select_option ]]]"
-                  entity_id: "[[[ return variables.ulm_card_thermostat_input_select ]]]"
+                  option: "[[[ return variables.ulm_input_select_option ]]]"
+                  entity_id: "[[[ return variables.ulm_input_select ]]]"
               tap_action:
                 action: "call-service"
                 service: >

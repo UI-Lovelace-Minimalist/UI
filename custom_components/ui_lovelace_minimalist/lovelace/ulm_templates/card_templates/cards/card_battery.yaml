@@ -8,8 +8,8 @@ card_battery:
     action: "call-service"
     service: "input_select.select_option"
     service_data:
-      option: "[[[ return variables.ulm_card_battery_input_select_option ]]]"
-      entity_id: "[[[ return variables.ulm_card_battery_input_select ]]]"
+      option: "[[[ return variables.ulm_input_select_option ]]]"
+      entity_id: "[[[ return variables.ulm_input_select ]]]"
   tap_action:
     action: "more-info"
   variables:
