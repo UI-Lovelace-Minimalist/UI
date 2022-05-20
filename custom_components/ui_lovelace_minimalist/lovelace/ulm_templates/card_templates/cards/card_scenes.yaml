@@ -1,5 +1,5 @@
 ---
-card_scenes_welcome:
+card_scenes:
   show_icon: false
   show_name: true
   show_label: false
@@ -110,11 +110,6 @@ card_scenes_welcome:
               type: "custom:button-card"
               entity: "[[[ return variables.entity_1.entity_id ]]]"
               icon: "[[[ return variables.entity_1.icon ]]]"
-              styles:
-                icon:
-                  - color: "[[[ return `rgba(var(--color-${variables.entity_1.color}), 1)`;]]]"
-                img_cell:
-                  - background-color: "[[[ return `rgba(var(--color-${variables.entity_1.color}), 0.20)`;]]]"
           item2:
             card:
               type: "custom:button-card"
@@ -132,11 +127,6 @@ card_scenes_welcome:
               type: "custom:button-card"
               entity: "[[[ return variables.entity_2.entity_id ]]]"
               icon: "[[[ return variables.entity_2.icon ]]]"
-              styles:
-                icon:
-                  - color: "[[[ return `rgba(var(--color-${variables.entity_2.color}), 1)`;]]]"
-                img_cell:
-                  - background-color: "[[[ return `rgba(var(--color-${variables.entity_2.color}), 0.20)`;]]]"
           item2:
             card:
               type: "custom:button-card"
@@ -154,11 +144,6 @@ card_scenes_welcome:
               type: "custom:button-card"
               entity: "[[[ return variables.entity_3.entity_id ]]]"
               icon: "[[[ return variables.entity_3.icon ]]]"
-              styles:
-                icon:
-                  - color: "[[[ return `rgba(var(--color-${variables.entity_3.color}), 1)`;]]]"
-                img_cell:
-                  - background-color: "[[[ return `rgba(var(--color-${variables.entity_3.color}), 0.20)`;]]]"
           item2:
             card:
               type: "custom:button-card"
@@ -176,11 +161,6 @@ card_scenes_welcome:
               type: "custom:button-card"
               entity: "[[[ return variables.entity_4.entity_id ]]]"
               icon: "[[[ return variables.entity_4.icon ]]]"
-              styles:
-                icon:
-                  - color: "[[[ return `rgba(var(--color-${variables.entity_4.color}), 1)`;]]]"
-                img_cell:
-                  - background-color: "[[[ return `rgba(var(--color-${variables.entity_4.color}), 0.20)`;]]]"
           item2:
             card:
               type: "custom:button-card"
@@ -198,11 +178,6 @@ card_scenes_welcome:
               type: "custom:button-card"
               entity: "[[[ return variables.entity_5.entity_id ]]]"
               icon: "[[[ return variables.entity_5.icon ]]]"
-              styles:
-                icon:
-                  - color: "[[[ return `rgba(var(--color-${variables.entity_5.color}), 1)`;]]]"
-                img_cell:
-                  - background-color: "[[[ return `rgba(var(--color-${variables.entity_5.color}), 0.20)`;]]]"
           item2:
             card:
               type: "custom:button-card"
@@ -220,11 +195,6 @@ card_scenes_welcome:
               type: "custom:button-card"
               entity: "[[[ return variables.entity_6.entity_id ]]]"
               icon: "[[[ return variables.entity_6.icon ]]]"
-              styles:
-                icon:
-                  - color: "[[[ return `rgba(var(--color-${variables.entity_6.color}), 1)`;]]]"
-                img_cell:
-                  - background-color: "[[[ return `rgba(var(--color-${variables.entity_6.color}), 0.20)`;]]]"
           item2:
             card:
               type: "custom:button-card"
@@ -242,11 +212,6 @@ card_scenes_welcome:
               type: "custom:button-card"
               entity: "[[[ return variables.entity_7.entity_id ]]]"
               icon: "[[[ return variables.entity_7.icon ]]]"
-              styles:
-                icon:
-                  - color: "[[[ return `rgba(var(--color-${variables.entity_7.color}), 1)`;]]]"
-                img_cell:
-                  - background-color: "[[[ return `rgba(var(--color-${variables.entity_7.color}), 0.20)`;]]]"
           item2:
             card:
               type: "custom:button-card"
