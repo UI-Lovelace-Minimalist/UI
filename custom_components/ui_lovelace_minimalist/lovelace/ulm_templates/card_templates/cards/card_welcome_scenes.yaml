@@ -258,21 +258,10 @@ card_scenes_pill_welcome:
           grid:
             - grid-template-areas: "i"
           icon:
-            - color: >
-                [[[
-                  var color = variables?.color
-                  if(hass.themes.darkMode){var color = "#FAFAFA";}
-                  return `rgba(var(--color-${color}), 1)`;
-                ]]]
+            - color: "[[[ return `rgba(var(--color-theme), 0.20)`;]]]"
             - width: "20px"
           img_cell:
-            - background-color: >
-                [[[
-                  var color = variables?.color
-                  var opacity = '0.20'
-                  if(hass.themes.darkMode){var opacity = '1'}
-                  return `rgba(var(--color-${color}), ${opacity})`;
-                ]]]
+            - background-color: "[[[ return `rgba(var(--color-theme), 0.05)`;]]] "
             - border-radius: "50%"
             - width: "42px"
             - height: "42px"
