@@ -222,7 +222,14 @@ card_scenes_pill_welcome:
         show_label: false
         show_name: false
         tap_action:
-          action: "call-service"
+          action: >
+            [[[
+              if(variables?.nav_path){
+                return "navigate"
+              } else {
+                return "call-service"
+              }
+            ]]]
           service: >
             [[[
               if(entity.entity_id.startsWith("scene.")){
@@ -237,6 +244,7 @@ card_scenes_pill_welcome:
                 return "homeassistant.toggle"
               }
             ]]]
+          navigation_path: "[[[ return variables.nav_path; ]]]"
           service_data: |
             [[[
               var obj;
@@ -295,7 +303,15 @@ card_scenes_pill_welcome:
         show_icon: false
         show_label: false
         tap_action:
-          action: "call-service"
+          action: >
+            [[[
+              if(variables?.nav_path){
+                return "navigate"
+              } else {
+                return "call-service"
+              }
+            ]]]
+          navigation_path: "[[[ return variables.nav_path; ]]]"
           service: >
             [[[
               if(entity.entity_id.startsWith("scene.")){
