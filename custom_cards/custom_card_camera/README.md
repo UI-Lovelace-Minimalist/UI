@@ -13,7 +13,7 @@ This is a `custom-card` to display a camera live view.
 ![Screenshot](../../docs/assets/img/screenshot_custom_camera2.png)
 ## Credits
 
-Author: Eltarius (From the script of [Clemalex](https://forum.hacf.fr/t/dashboard-minimalist/5507/183?u=clemalex))  - 2022
+Author: Eltarius (From the script of [Clemalex](https://forum.hacf.fr/t/dashboard-minimalist/5507/183?u=clemalex)) - 2022
 Version: 1.0.0
 
 ## Changelog
@@ -22,10 +22,6 @@ Version: 1.0.0
 <summary>1.0.0</summary>
 Initial release.
 </details>
-
-## Requirements
-
----
 
 ## Usage
 
