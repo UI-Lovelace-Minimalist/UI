@@ -176,5 +176,4 @@ custom_card_nik_door:
                       - color: "rgba(var(--color-green),1)"
                     img_cell:
                       - background-color: "rgba(var(--color-green),0.2)"
-                      
 ```
