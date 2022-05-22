@@ -1,5 +1,5 @@
 ---
-title: Camera Custom-card
+title: Custom Camera Card
 hide:
   - toc
 ---
@@ -11,9 +11,10 @@ This is a `custom-card` to display a camera live view.
 
 ![Screenshot](../../docs/assets/img/screenshot_custom_camera1.png)
 ![Screenshot](../../docs/assets/img/screenshot_custom_camera2.png)
+
 ## Credits
 
-Author: Eltarius (From the script of [Clemalex](https://forum.hacf.fr/t/dashboard-minimalist/5507/183?u=clemalex)) - 2022
+Author: Eltarius, from the script of [Clemalex](https://forum.hacf.fr/t/dashboard-minimalist/5507/183?u=clemalex) - 2022
 Version: 1.0.0
 
 ## Changelog
