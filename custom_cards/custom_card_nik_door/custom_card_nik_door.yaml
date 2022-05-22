@@ -18,7 +18,7 @@ custom_card_nik_door:
                 return "\"" + areas.join("\" \"") + "\"";
           ]]]
       - grid-template-columns: "1fr 1fr"
-      - grid-template-rows: "min-content" "min-content"
+      - grid-template-rows: "min-content min-content"
       - row-gap: "12px"
     card:
       - border-radius: "var(--border-radius)"
