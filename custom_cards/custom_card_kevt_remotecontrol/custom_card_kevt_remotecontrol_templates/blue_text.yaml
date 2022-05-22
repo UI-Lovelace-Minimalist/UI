@@ -1,0 +1,11 @@
+---
+blue_text:
+  styles:
+    icon:
+      - color: "rgba(var(--color-blue),1)"
+    label:
+      - color: "rgba(var(--color-blue-text),1)"
+    name:
+      - color: "rgba(var(--color-blue-text),1)"
+    img_cell:
+      - background-color: "rgba(var(--color-theme),0.05)"

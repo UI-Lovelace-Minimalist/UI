@@ -1,0 +1,11 @@
+---
+play_button_style:
+  state:
+    - operator: "template"
+      value: "return (entity.state == 'playing')"
+      icon: "mdi:play"
+    - operator: "template"
+      value: "return (entity.state == 'paused')"
+      icon: "mdi:pause"
+    - operator: "default"
+      icon: "mdi:stop"
