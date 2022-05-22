@@ -79,8 +79,8 @@ custom_card_nik_door:
   template:
     - "ulm_language_variables"
   variables:
-    entity_1_name: "[[[ return variables.entity_1_name]]]"
-    entity_1_lock: "[[[ return variables.entity_1_lock]]]"
+    ulm_custom_card_entity_1_name: "[[[ return variables.ulm_custom_card_entity_1_name]]]"
+    ulm_custom_card_entity_1_lock: "[[[ return variables.ulm_custom_card_entity_1_lock]]]"
   show_icon: false
   show_name: false
   show_label: false
@@ -94,7 +94,7 @@ custom_card_nik_door:
                 return "\"" + areas.join("\" \"") + "\"";
           ]]]
       - grid-template-columns: "1fr 1fr"
-      - grid-template-rows: min-content min-content
+      - grid-template-rows: "min-content" "min-content"
       - row-gap: "12px"
     card:
       - border-radius: "var(--border-radius)"
@@ -112,17 +112,19 @@ custom_card_nik_door:
             card:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id]]]"
-              icon: mdi:door
+              icon: "mdi:door"
               styles:
                 icon:
-                  - color: rgba(var(--color-blue),1)
+                  - color: "rgba(var(--color-blue),1)"
                 img_cell:
-                  - background-color: rgba(var(--color-blue),0.2)
+                  - background-color: "rgba(var(--color-blue),0.2)"
+              tap_action:
+                action: "none"
           item2:
             card:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id]]]"
-              name: "[[[ return variables.entity_1_name]]]"
+              name: "[[[ return variables.ulm_custom_card_entity_1_name]]]"
               label: >
                 [[[
                   return entity.state
@@ -136,13 +138,13 @@ custom_card_nik_door:
             card:
               type: "custom:button-card"
               template: "widget_icon"
-              icon: mdi:lock-open-variant
+              icon: "mdi:lock-open-variant"
               entity: "[[[ return entity.entity_id]]]"
               tap_action:
-                action: call-service
-                service: lock.open
+                action: "call-service"
+                service: "lock.open"
                 service_data:
-                  entity_id: "[[[ return variables.entity_1_lock]]]"
+                  entity_id: "[[[ return variables.ulm_custom_card_entity_1_lock]]]"
               state:
                 - value: "Open"
                   styles:
@@ -160,13 +162,13 @@ custom_card_nik_door:
             card:
               type: "custom:button-card"
               template: "widget_icon"
-              icon: mdi:lock
+              icon: "mdi:lock"
               entity: "[[[ return entity.entity_id]]]"
               tap_action:
-                action: call-service
-                service: lock.lock
+                action: "call-service"
+                service: "lock.lock"
                 service_data:
-                  entity_id: "[[[ return variables.entity_1_lock]]]"
+                  entity_id: "[[[ return variables.ulm_custom_card_entity_1_lock]]]"
               state:
                 - value: "Closed & Locked"
                   styles:
@@ -174,4 +176,5 @@ custom_card_nik_door:
                       - color: "rgba(var(--color-green),1)"
                     img_cell:
                       - background-color: "rgba(var(--color-green),0.2)"
+                      
 ```
