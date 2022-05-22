@@ -52,19 +52,19 @@ variables:
 <tbody>
   <tr>
     <td>ulm_custom_card_entity_1_name</td>
-    <td>Blindato</td>
+    <td>sensor.nuki_blindato_door_security_state</td>
     <td>Yes</td>
     <td>Your Door Name</td>
   </tr>
   <tr>
     <td>ulm_custom_card_entity_1_lock</td>
-    <td>lock.nuki_blindato_lock</td>
+    <td>EA8549</td>
     <td>Yes</td>
     <td>Your Door Lock entity</td>
   </tr>
   <tr>
     <td>entity</td>
-    <td>sensor.nuki_blindato_door_security_state</td>
+    <td>EA8549</td>
     <td>Yes</td>
     <td>Your door sensor to track Open and Close state.</td>
   </tr>
@@ -79,8 +79,8 @@ custom_card_nik_door:
   template:
     - "ulm_language_variables"
   variables:
-    ulm_custom_card_entity_1_name: "[[[ return variables.ulm_custom_card_entity_1_name]]]"
-    ulm_custom_card_entity_1_lock: "[[[ return variables.ulm_custom_card_entity_1_lock]]]"
+    entity_1_name: "[[[ return variables.entity_1_name]]]"
+    entity_1_lock: "[[[ return variables.entity_1_lock]]]"
   show_icon: false
   show_name: false
   show_label: false
@@ -118,13 +118,11 @@ custom_card_nik_door:
                   - color: rgba(var(--color-blue),1)
                 img_cell:
                   - background-color: rgba(var(--color-blue),0.2)
-              tap_action:
-                action: none
           item2:
             card:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id]]]"
-              name: "[[[ return variables.ulm_custom_card_entity_1_name]]]"
+              name: "[[[ return variables.entity_1_name]]]"
               label: >
                 [[[
                   return entity.state
@@ -144,7 +142,7 @@ custom_card_nik_door:
                 action: call-service
                 service: lock.open
                 service_data:
-                  entity_id: "[[[ return variables.ulm_custom_card_entity_1_lock]]]"
+                  entity_id: "[[[ return variables.entity_1_lock]]]"
               state:
                 - value: "Open"
                   styles:
@@ -168,7 +166,7 @@ custom_card_nik_door:
                 action: call-service
                 service: lock.lock
                 service_data:
-                  entity_id: "[[[ return variables.ulm_custom_card_entity_1_lock]]]"
+                  entity_id: "[[[ return variables.entity_1_lock]]]"
               state:
                 - value: "Closed & Locked"
                   styles:
