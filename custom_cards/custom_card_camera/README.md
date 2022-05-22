@@ -30,8 +30,8 @@ Initial release.
 ## Usage
 
 ```yaml
-- type: custom:button-card
-  entity: camera.sensor
+- type: "custom:button-card"
+  entity: "camera.sensor"
   template: "custom_card_camera"
   show_icon: false #True if you set ulm_custom_card_camera_title: true
   variables:
