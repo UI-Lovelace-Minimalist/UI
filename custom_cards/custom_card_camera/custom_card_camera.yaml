@@ -1,5 +1,5 @@
 ---
-custom_card_camera:  #Display the camera in a picture-entity
+custom_card_camera:
   template:
     - "blue_no_state"
   show_name: false
@@ -61,7 +61,7 @@ custom_card_camera:  #Display the camera in a picture-entity
           grid:
             - grid-template-areas: "'n' 'l'"
             - grid-template-columns: "auto"
-            - grid-template-rows: "min-content min-content" 
+            - grid-template-rows: "min-content min-content"
     item2:
       card:
         camera_image: "[[[ return entity.entity_id ]]]"
