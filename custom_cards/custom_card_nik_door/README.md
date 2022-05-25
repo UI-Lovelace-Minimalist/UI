@@ -10,7 +10,7 @@ hide:
 This is a `custom-card` that shows the currenct state of your Lock and allows you to open and close it showing the state with a Minimal Design.
 
 ![Screenshot](../../docs/assets/img/custom_card_nik_door.png)
-
+## Credits
 ## Credits
 
 Author: Nik - 2022
