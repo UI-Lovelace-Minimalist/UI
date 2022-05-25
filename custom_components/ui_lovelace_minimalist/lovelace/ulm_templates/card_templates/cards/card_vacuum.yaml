@@ -10,11 +10,11 @@ card_vacuum:
     ulm_card_vacuum_icon: "[[[ return entity.attributes.icon ]]]"
     ulm_card_vacuum_room:
     ulm_card_vacuum_room_icon: "[[[ return entity.attributes.icon ]]]"
-    ulm_card_vacuum_camera: 
+    ulm_card_vacuum_camera:
     ulm_card_vacuum_camera_toggle:
   triggers_update: "all"
   styles:
-    grid: 
+    grid:
       - grid-template-areas: >
           [[[
             if( variables.ulm_card_vacuum_camera ){
