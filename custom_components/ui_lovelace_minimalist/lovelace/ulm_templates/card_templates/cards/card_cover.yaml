@@ -7,6 +7,8 @@ card_cover:
     ulm_card_cover_name: "[[[ return entity.attributes.friendly_name ]]]"
     ulm_card_cover_display_left_right: false
     ulm_card_curtain_display_collapse_expand: false
+    ulm_card_cover_garage: false
+    ulm_card_cover_gate: false
     ulm_card_cover_enable_controls: false
     ulm_card_cover_enable_slider: false
     ulm_card_cover_enable_horizontal: false
@@ -114,23 +116,40 @@ card_cover:
                       if (states[entity.entity_id].state == "closed"){
                         if (variables.ulm_card_curtain_display_collapse_expand){
                           var icon = "mdi:curtains-closed";
+                        } else if (variables.ulm_card_cover_garage){
+                          var icon = "mdi:garage-variant";
+                        } else if (variables.ulm_card_cover_gate){
+                          var icon = "mdi:gate";
                         } else
                           var icon = "mdi:window-shutter";
                       } else
                         if (variables.ulm_card_curtain_display_collapse_expand){
                           var icon = "mdi:curtains";
-                        } else
+                        } else if (variables.ulm_card_cover_garage){
+                          var icon = "mdi:garage-open-variant";
+                        } else if (variables.ulm_card_cover_gate){
+                          var icon = "mdi:gate-open";
+                        }else
                           var icon = "mdi:window-shutter-open";
                     } else {
                       if (states[entity.entity_id].attributes.current_position == 0){
                         if (variables.ulm_card_curtain_display_collapse_expand){
                           var icon = "mdi:curtains-closed";
+                        } else if (variables.ulm_card_cover_garage){
+                          var icon = "mdi:garage-variant";
+                        } else if(variables.ulm_card_cover_gate){
+                          var icon = "mdi:gate";
                         } else
                           var icon = "mdi:window-shutter";
                       } else
                         if (variables.ulm_card_curtain_display_collapse_expand){
                           var icon = "mdi:curtains";
-                        } else
+                        } else if(variables.ulm_card_cover_garage){
+                          var icon = "mdi:garage-open-variant";
+                        } else if(variables.ulm_card_cover_gate){
+                          var icon = "mdi:gate-open";
+                        }
+                        else
                           var icon = "mdi:window-shutter-open";
                     }
                     return icon ;
@@ -302,7 +321,7 @@ card_cover:
         mainSliderColor: >
           [[[
               if (entity.state == "unavailable"){
-                 return "rgba(var(--color-grey),1)";
+                return "rgba(var(--color-grey),1)";
               }
               else{
                 return "rgba(var(--color-blue),1)";
@@ -311,7 +330,7 @@ card_cover:
         secondarySliderColor: >
           [[[
               if (entity.state == "unavailable"){
-                 return "rgba(var(--color-grey),0.2)";
+                return "rgba(var(--color-grey),0.2)";
               }
               else{
                 return "rgba(var(--color-blue),0.2)";

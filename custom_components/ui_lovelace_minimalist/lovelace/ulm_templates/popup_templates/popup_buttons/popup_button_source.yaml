@@ -1,10 +1,10 @@
 ---
-popup_button_volume:
+popup_button_source:
   template:
     - "popup_button"
     - "ulm_language_variables"
-  icon: "mdi:volume-high"
-  name: "Volume"
+  icon: "mdi:playlist-music"
+  name: "Source"
   styles:
     name:
       - text-transform: "uppercase"
@@ -13,5 +13,3 @@ popup_button_volume:
       - background: "none"
       - box-shadow: "none"
       - border: "1px solid rgba(var(--color-theme),0.25)"
-  tap_action:
-    action: "more_info"

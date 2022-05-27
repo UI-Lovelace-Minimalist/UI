@@ -1,0 +1,118 @@
+---
+popup_button_app:
+  template:
+    - "popup_button"
+  show_name: true
+  show_label: true
+  styles:
+    grid:
+      - grid-template-areas: "'i n' 'i l'"
+      - grid-template-columns: "min-content auto"
+      - grid-template-rows: "min-content min-content"
+    label:
+      - justify-self: "start"
+      - align-self: "start"
+      - font-weight: "bolder"
+      - font-size: "12px"
+      - filter: "opacity(40%)"
+      - margin-left: "12px"
+    name:
+      - align-self: "end"
+      - justify-self: "start"
+      - font-weight: "bold"
+      - font-size: "14px"
+      - margin-left: "12px"
+      - margin-top: "0px"
+    icon:
+      - color: >
+          [[[
+            var color = "var(--color-theme)";
+            if(entity?.attributes?.app_name){
+              var app = entity.attributes?.app_name.toLowerCase();
+              if(app = "spotify"){
+                var color = "#1DB954";
+              }
+            } else if(entity?.attributes?.media_content_id?.toLowerCase().includes("spotify")){
+              var color = "#1DB954";
+            }
+            return color;
+          ]]]
+    img_cell:
+      - border: "1px solid var(--color-theme)"
+      - border-shadow: "none"
+      - background-color: >
+          [[[
+            var color = "var(--color-theme)";
+            if(entity?.attributes?.app_name){
+              var app = entity?.attributes?.app_name?.toLowerCase();
+              if(app = "spotify"){
+                var color = "#434343";
+              }
+            } else if(entity?.attributes?.media_content_id?.toLowerCase().includes("spotify")){
+              var color = "#434343";
+            }
+            return color;
+          ]]]
+  icon: >
+    [[[
+      var icon =  entity.attributes.icon || "mdi:speaker";
+      if(entity?.attributes?.app_name){
+        var app = entity.attributes.app_name.toLowerCase();
+        if(app == "spotify"){
+          var icon = "mdi:spotify";
+        } else if(app == "google podcasts"){
+          var icon = "mdi:google-podcast";
+        } else if(app == "plex"){
+          var icon = "mdi:plex";
+        } else if(app == "soundcloud"){
+          var icon = "mdi:soundcloud";
+        } else if(app == "youtube music"){
+          var icon = "mdi:youtube";
+        } else if (app == "oto music"){
+          var icon = "mdi:music-circle";
+        } else if(app == "pandora"){
+          var icon = "mdi:pandora";
+        } else if(app == "netflix"){
+          var icon = "mdi:netflix";
+        } else if(app == "bluetooth audio"){
+          var icon = "mdi:bluetooth";
+        }
+      } else if(entity?.attributes?.media_content_id?.toLowerCase().includes("spotify")){
+          var icon = "mdi:spotify";
+      }
+      return icon;
+    ]]]
+  label: >
+    [[[
+      var label = entity.attributes.media_title || entity.attributes.friendly_name;
+      return label;
+    ]]]
+  name: >
+    [[[
+      var name =  entity.attributes.friendly_name;
+      if(entity?.attributes?.app_name){
+        var app = entity?.attributes?.app_name?.toLowerCase();
+        if(app == "spotify"){
+          var name = "Spotify";
+        } else if(app == "google podcasts"){
+          var name = "Google-Podcast";
+        } else if(app == "plex"){
+          var name = "Plex";
+        } else if(app == "soundcloud"){
+          var name = "Soundcloud";
+        } else if(app == "youtube music"){
+          var name = "Youtube";
+        } else if (app == "oto music"){
+          var name = "Oto Music";
+        } else if(app == "pandora"){
+          var name = "Pandora";
+        } else if(app == "netflix"){
+          var name = "Netflix";
+        } else if(app == "bluetooth audio"){
+          var name = "Bluetooth";
+        }
+      } else if(entity?.attributes?.media_content_id?.toLowerCase().includes("spotify")){
+          var name = "Spotify";
+      }
+      return name;
+    ]]]
