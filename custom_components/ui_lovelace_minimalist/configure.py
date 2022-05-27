@@ -56,13 +56,27 @@ def configure_cards(hass: HomeAssistant, ulm: UlmBase):
         language = LANGUAGES[ulm.configuration.language]
 
         # Copy example dashboard file over to user config dir if not exists
-        if not os.path.exists(hass.config.path(f"{DOMAIN}/dashboard/ui-lovelace.yaml")):
-            shutil.copy2(
-                hass.config.path(
-                    f"custom_components/{DOMAIN}/lovelace/ui-lovelace.yaml"
-                ),
-                hass.config.path(f"{DOMAIN}/dashboard/ui-lovelace.yaml"),
-            )
+        if ulm.configuration.sidepanel_enabled:
+            if not os.path.exists(
+                hass.config.path(f"{DOMAIN}/dashboard/ui-lovelace.yaml")
+            ):
+                shutil.copy2(
+                    hass.config.path(
+                        f"custom_components/{DOMAIN}/lovelace/ui-lovelace.yaml"
+                    ),
+                    hass.config.path(f"{DOMAIN}/dashboard/ui-lovelace.yaml"),
+                )
+        # Copy advanced dashboard if not exists and is selected as option
+        if ulm.configuration.advanced_enabled:
+            if not os.path.exists(
+                hass.config.path(f"{DOMAIN}/dashboard/advanced-dash")
+            ):
+                shutil.copytree(
+                    hass.config.path(
+                        f"custom_components/{DOMAIN}/lovelace/advanced-dash"
+                    ),
+                    hass.config.path(f"{DOMAIN}/dashboard/advanced-dash"),
+                )
         # Copy chosen language file over to config dir
         shutil.copy2(
             hass.config.path(
