@@ -192,7 +192,7 @@ custom_card_nik_nas:
             - padding-bottom: "1px"
     item4:
       card:
-        type: horizontal-stack
+        type: "horizontal-stack"
         cards:
           - type: "custom:button-card"
             template: "card_input_boolean"
