@@ -7,7 +7,7 @@ hide:
 
 # Custom-card "Nas Summary Card"
 
-This is a `custom-card` that shows you a summary for your nas with sensors, Wake on Lan and collapsed info.
+This is a `custom-card` that shows you a summary for your NAS with sensors, Wake on Lan and collapsed info. Once the NAS is off or unavailable it collapses the info.
 
 ![Screenshot](../../docs/assets/img/custom_card_nik_nas_off.png)
 ![Screenshot](../../docs/assets/img/custom_card_nik_nas_on.png)
@@ -31,7 +31,7 @@ To have the Minimalist cards and custom cards installed
 ## Usage
 
 ```yaml
-- type: "custom:button-card" #NAS Custom Card
+- type: "custom:button-card"
     template: "custom_card_nik_nas"
     entity: switch.qnap_wol
     variables:
@@ -89,14 +89,14 @@ To have the Minimalist cards and custom cards installed
   <tr>
     <td>graph_span</td>
     <td>1h, 12min, 1d, 1h25, 10sec, ...</td>
-    <td>no</td>
+    <td>yes</td>
     <td>The span of the graph as a time interval</td>
   </tr>
   <tr>
     <td>entity_id</td>
     <td>sensor.disk_use_percent</td>
     <td>yes</td>
-    <td>Entity sensor of choice</td>
+    <td>Entity sensor of choice. 4 entities must be added</td>
   </tr>
   <tr>
     <td>icon</td>
