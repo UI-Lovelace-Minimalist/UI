@@ -5,16 +5,15 @@ hide:
 ---
 <!-- markdownlint-disable MD046 -->
 
-# Custom-card "Minimal Door Lock with Lock and unlock status"
+# Custom-card "Minimal Door Lock"
 
 This is a `custom-card` that shows the currenct state of your Lock and allows you to open and close it showing the state with a Minimal Design.
 
-![Screenshot](../../assets/img/custom_card_nik_door.jpg)
+![Screenshot](../../assets/img/custom_card_nik_door.png)
 
 ## Credits
 
-Author: Nik - 2022
-Version: 1.0.0
+Author: Nik - 2022 Version: 1.0.0
 
 ## Changelog
 
@@ -25,17 +24,17 @@ Initial release
 
 ## Requirements
 
- To have the Minimalist cards and custom cards installed
+To have the Minimalist cards and custom cards installed
 
 ## Usage
 
 ```yaml
-type: 'custom:button-card'
-template: custom_card_nik_door
-entity: sensor.nuki_blindato_door_security_state
-variables:
-  ulm_custom_card_entity_1_name: Blindato
-  ulm_custom_card_entity_1_lock: lock.nuki_blindato_lock
+- type: 'custom:button-card'
+  template: custom_card_nik_door
+  entity: sensor.nuki_blindato_door_security_state
+  variables:
+    ulm_custom_card_entity_1_name: Blindato
+    ulm_custom_card_entity_1_lock: lock.nuki_blindato_lock
 ```
 
 ## Variables
@@ -58,15 +57,15 @@ variables:
   </tr>
   <tr>
     <td>ulm_custom_card_entity_1_lock</td>
-    <td>EA8549</td>
+    <td>lock.nuki_blindato_lock</td>
     <td>Yes</td>
     <td>Your Door Lock entity</td>
   </tr>
   <tr>
     <td>entity</td>
-    <td>EA8549</td>
+    <td>sensor.nuki_blindato_door_security_state</td>
     <td>Yes</td>
-    <td>Your door sensor to track Open and Close state.</td>
+    <td>Your door sensor to track "Open" and "Close" state.</td>
   </tr>
 </tbody>
 </table>
