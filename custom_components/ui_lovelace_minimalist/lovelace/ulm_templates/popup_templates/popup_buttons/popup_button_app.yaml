@@ -27,12 +27,12 @@ popup_button_app:
       - color: >
           [[[
             var color = "var(--color-theme)";
-            if(entity.attributes.app_name){
-              var app = entity.attributes.app_name.toLowerCase();
+            if(entity?.attributes?.app_name){
+              var app = entity.attributes?.app_name.toLowerCase();
               if(app = "spotify"){
-                color = "#1DB954";
+                var color = "#1DB954";
               }
-            } else if(entity.attributes.media_content_id.toLowerCase().includes("spotify")){
+            } else if(entity?.attributes?.media_content_id?.toLowerCase().includes("spotify")){
               var color = "#1DB954";
             }
             return color;
@@ -43,12 +43,12 @@ popup_button_app:
       - background-color: >
           [[[
             var color = "var(--color-theme)";
-            if(entity.attributes.app_name){
-              var app = entity.attributes.app_name.toLowerCase();
+            if(entity?.attributes?.app_name){
+              var app = entity?.attributes?.app_name?.toLowerCase();
               if(app = "spotify"){
-                color = "#434343";
+                var color = "#434343";
               }
-            } else if(entity.attributes.media_content_id.toLowerCase().includes("spotify")){
+            } else if(entity?.attributes?.media_content_id?.toLowerCase().includes("spotify")){
               var color = "#434343";
             }
             return color;
@@ -56,7 +56,7 @@ popup_button_app:
   icon: >
     [[[
       var icon =  entity.attributes.icon || "mdi:speaker";
-      if(entity.attributes.app_name){
+      if(entity?.attributes?.app_name){
         var app = entity.attributes.app_name.toLowerCase();
         if(app == "spotify"){
           var icon = "mdi:spotify";
@@ -77,7 +77,7 @@ popup_button_app:
         } else if(app == "bluetooth audio"){
           var icon = "mdi:bluetooth";
         }
-      } else if(entity.attributes.media_content_id.toLowerCase().includes("spotify")){
+      } else if(entity?.attributes?.media_content_id?.toLowerCase().includes("spotify")){
           var icon = "mdi:spotify";
       }
       return icon;
@@ -90,8 +90,8 @@ popup_button_app:
   name: >
     [[[
       var name =  entity.attributes.friendly_name;
-      if(entity.attributes.app_name){
-        var app = entity.attributes.app_name.toLowerCase();
+      if(entity?.attributes?.app_name){
+        var app = entity?.attributes?.app_name?.toLowerCase();
         if(app == "spotify"){
           var name = "Spotify";
         } else if(app == "google podcasts"){
@@ -111,7 +111,7 @@ popup_button_app:
         } else if(app == "bluetooth audio"){
           var name = "Bluetooth";
         }
-      } else if(entity.attributes.media_content_id.toLowerCase().includes("spotify")){
+      } else if(entity?.attributes?.media_content_id?.toLowerCase().includes("spotify")){
           var name = "Spotify";
       }
       return name;
