@@ -181,33 +181,33 @@ custom_card_nik_nas:
     grid:
       - grid-template-areas: >
           [[[   
-              var areas = [];
-              if ( entity.state == "off" || entity.state == "unavailable") {
-                  areas.push("item5");
-                  return "\"" + areas.join("\" \"") + "\"";
-              } else {
-                  areas.push("item4 item4");
-                  areas.push("item1 radial");
-                  areas.push("item2 radial");
-                  areas.push("item3 radial");
-                  return "\"" + areas.join("\" \"") + "\"";
-              }
+            var areas = [];
+            if ( entity.state == "off" || entity.state == "unavailable") {
+                areas.push("item5");
+                return "\"" + areas.join("\" \"") + "\"";
+            } else {
+                areas.push("item4 item4");
+                areas.push("item1 radial");
+                areas.push("item2 radial");
+                areas.push("item3 radial");
+                return "\"" + areas.join("\" \"") + "\"";
+            }
           ]]]
       - grid-template-columns: >
           [[[
-              if ( entity.state == "off" || entity.state == "unavailable" ) {
-                  return "1fr";
-              } else {
-                  return "35% 65%";
-              }
+            if ( entity.state == "off" || entity.state == "unavailable" ) {
+                return "1fr";
+            } else {
+                return "35% 65%";
+            }
           ]]]
       - grid-template-rows: >
           [[[
-              if ( entity.state == "off" || entity.state == "unavailable" ) {
-                  return "min-content";
-              } else {
-                  return "1fr";
-              }
+            if ( entity.state == "off" || entity.state == "unavailable" ) {
+                return "min-content";
+            } else {
+                return "1fr";
+            }
           ]]]
     card:
       - border-radius: "var(--border-radius)"
@@ -217,56 +217,56 @@ custom_card_nik_nas:
       item1:
         - display: >
             [[[
-                if (entity.state == "off" || entity.state == "unavailable") {
-                    return "none";
-                } else {
-                    return "block";
-                }
+              if (entity.state == "off" || entity.state == "unavailable") {
+                  return "none";
+              } else {
+                  return "block";
+              }
             ]]]
       item2:
         - display: >
             [[[
-                if (entity.state == "off" || entity.state == "unavailable") {
-                    return "none";
-                } else {
-                    return "block";
-                }
+              if (entity.state == "off" || entity.state == "unavailable") {
+                  return "none";
+              } else {
+                  return "block";
+              }
             ]]]
       item3:
         - display: >
             [[[
-                if (entity.state == "off" || entity.state == "unavailable") {
-                    return "none";
-                } else {
-                    return "block";
-                }
+              if (entity.state == "off" || entity.state == "unavailable") {
+                  return "none";
+              } else {
+                  return "block";
+              }
             ]]]
       item4:
         - display: >
             [[[
-                if (entity.state == "off" || entity.state == "unavailable") {
-                    return "none";
-                } else {
-                    return "block";
-                }
+              if (entity.state == "off" || entity.state == "unavailable") {
+                  return "none";
+              } else {
+                  return "block";
+              }
             ]]]
       item5:
         - display: >
             [[[
-                if (entity.state == "off" || entity.state == "unavailable") {
-                    return "block";
-                } else {
-                    return "none";
-                }
+              if (entity.state == "off" || entity.state == "unavailable") {
+                  return "block";
+              } else {
+                  return "none";
+              }
             ]]]
       radial:
         - display: >
             [[[
-                if (entity.state == "off" || entity.state == "unavailable") {
-                    return "none";
-                } else {
-                    return "block";
-                }
+              if (entity.state == "off" || entity.state == "unavailable") {
+                  return "none";
+              } else {
+                  return "block";
+              }
             ]]]
   custom_fields:
     item1:
@@ -275,8 +275,7 @@ custom_card_nik_nas:
         entity: "[[[ return variables.entity_1.entity_id ]]]"
         icon: "[[[ return variables.entity_1.icon ]]]"
         name: "[[[ return variables.entity_1.name ]]]"
-        template:
-          - "card_generic_swap"
+        template: "card_generic_swap"
         styles:
           icon:
             - color: "[[[ return `rgba(var(--color-${variables.entity_1.color}), 1)`;]]]"
@@ -293,8 +292,7 @@ custom_card_nik_nas:
         entity: "[[[ return variables.entity_2.entity_id ]]]"
         icon: "[[[ return variables.entity_2.icon ]]]"
         name: "[[[ return variables.entity_2.name ]]]"
-        template:
-          - "card_generic_swap"
+        template: "card_generic_swap"
         styles:
           icon:
             - color: "[[[ return `rgba(var(--color-${variables.entity_2.color}), 1)`;]]]"
@@ -311,8 +309,7 @@ custom_card_nik_nas:
         entity: "[[[ return variables.entity_3.entity_id ]]]"
         icon: "[[[ return variables.entity_3.icon ]]]"
         name: "[[[ return variables.entity_3.name ]]]"
-        template:
-          - "card_generic_swap"
+        template: "card_generic_swap"
         styles:
           icon:
             - color: "[[[ return `rgba(var(--color-${variables.entity_3.color}), 1)`;]]]"
@@ -328,8 +325,7 @@ custom_card_nik_nas:
         type: horizontal-stack
         cards:
           - type: "custom:button-card"
-            template: 
-              - "card_input_boolean"
+            template: "card_input_boolean"
             entity: "[[[ return entity.entity_id]]]"
             icon: "mdi:nas"
             name: "Status"
@@ -342,8 +338,7 @@ custom_card_nik_nas:
               action: "more-info"
 
           - type: "custom:button-card"
-            template:
-              - "card_generic_swap"
+            template: "card_generic_swap"
             entity: "[[[ return variables.entity_4.entity_id ]]]"
             icon: "[[[ return variables.entity_4.icon ]]]"
             name: "[[[ return variables.entity_4.name ]]]"
@@ -361,8 +356,7 @@ custom_card_nik_nas:
     item5:
       card:
         type: "custom:button-card"
-        template: 
-          - "card_input_boolean"
+        template: "card_input_boolean"
         entity: "[[[ return entity.entity_id]]]"
         icon: "mdi:nas"
         name: "Status"
