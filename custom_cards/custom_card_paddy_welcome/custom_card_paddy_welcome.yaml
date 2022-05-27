@@ -1,5 +1,7 @@
 ---
 custom_card_paddy_welcome:
+  template:
+    - "ulm_language_variables"
   show_icon: false
   show_name: false
   show_label: false
@@ -45,6 +47,8 @@ custom_card_paddy_welcome:
           }
 
 custom_card_paddy_welcome_with_weather:
+  template:
+    - "ulm_language_variables"
   show_icon: false
   show_name: false
   show_label: false
@@ -127,6 +131,8 @@ custom_card_paddy_welcome_with_weather:
           }
 
 custom_card_paddy_welcome_with_news:
+  template:
+    - "ulm_language_variables"
   show_icon: false
   show_name: false
   show_label: false
