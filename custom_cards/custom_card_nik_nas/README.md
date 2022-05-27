@@ -182,7 +182,7 @@ custom_card_nik_nas:
       - grid-template-areas: >
           [[[   
             var areas = [];
-            if ( entity.state == "off" || entity.state == "unavailable") {
+            if (entity.state == "off" || entity.state == "unavailable") {
                 areas.push("item5");
                 return "\"" + areas.join("\" \"") + "\"";
             } else {
@@ -195,7 +195,7 @@ custom_card_nik_nas:
           ]]]
       - grid-template-columns: >
           [[[
-            if ( entity.state == "off" || entity.state == "unavailable" ) {
+            if (entity.state == "off" || entity.state == "unavailable") {
                 return "1fr";
             } else {
                 return "35% 65%";
@@ -203,7 +203,7 @@ custom_card_nik_nas:
           ]]]
       - grid-template-rows: >
           [[[
-            if ( entity.state == "off" || entity.state == "unavailable" ) {
+            if (entity.state == "off" || entity.state == "unavailable") {
                 return "min-content";
             } else {
                 return "1fr";
