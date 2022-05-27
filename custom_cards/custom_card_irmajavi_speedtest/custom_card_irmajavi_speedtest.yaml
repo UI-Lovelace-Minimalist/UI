@@ -80,6 +80,8 @@ custom_card_irmajavi_speedtest:
           custom_fields:
             item1:
               - justify-self: "end"
+              - margin-top: "-23px"
+              - margin-right: "3px"
           icon:
             - color: "rgba(var(--color-theme),0.9)"
             - width: "20px"
@@ -94,6 +96,8 @@ custom_card_irmajavi_speedtest:
             - justify-self: "start"
             - font-weight: "bold"
             - font-size: "16px"
+            - margin-left: "40px"
+            - margin-top: "3px"
           grid:
             - grid-template-areas: "i n item1"
             - grid-template-columns: "min-content"
