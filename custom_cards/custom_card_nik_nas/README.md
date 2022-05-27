@@ -180,7 +180,7 @@ custom_card_nik_nas:
   styles:
     grid:
       - grid-template-areas: >
-          [[[   
+          [[[
             var areas = [];
             if (entity.state == "off" || entity.state == "unavailable") {
                 areas.push("item5");
