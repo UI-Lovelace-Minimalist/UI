@@ -9,7 +9,7 @@ hide:
 
 This is a `custom-card` that uses the installed Kiosk app on a tablet to get information from. It includes USB Power (if the tablet has it), Motion, light and maintenance switch as well as restart and reload mode.
 
-![Screenshot](../../docs/assets/img/custom_card_nik_tablet.png)
+![Screenshot](../../docs/assets/img/custom_card_nik_tablet_1.png)
 ![Screenshot](../../docs/assets/img/custom_card_nik_tablet_2.png)
 
 ## Credits
@@ -26,9 +26,9 @@ Initial release
 
 ## Requirements
 
-- To have all the Minimalist Card and Custom Cards;
+- To have all the Minimalist Cards and Custom Cards;
 - To have installed and configured Kiosk APP on the Tablet (enabled permissions etc...);
-- To have che HACS Integration "Fully Kiosk Browser" installed and configured in HomeAssistant;
+- To have the HACS Integration "Fully Kiosk Browser" installed and configured in HomeAssistant;
 
 ## Usage
 
@@ -94,7 +94,7 @@ Initial release
   <td>ulm_custom_card_nik_tablet_button1</td>
   <td>switch.sonoff_tablet_1p</td>
   <td>Yes</td>
-  <td>A Switch that enables or not USB Power for the Tablet. If not present you can replace it with another Switch of your choise. (Check Device configs)</td>
+  <td>A Switch that enables or not USB Power for the Tablet. If not present you can replace it with another Switch of your choise. (check your device configs)</td>
 </tr>
 <tr>
   <td>ulm_custom_card_nik_tablet_button2</td>
