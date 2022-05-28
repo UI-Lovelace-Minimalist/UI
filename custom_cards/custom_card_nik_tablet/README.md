@@ -271,7 +271,7 @@ custom_card_nik_tablet:
               entity: "[[[ return variables.ulm_custom_card_nik_tablet_restart ]]]"
               icon: "mdi:restart-alert"
               tap_action:
-                action: "call-service"
+              action: "call-service"
                 service: "button.press"
                 service_data:
                   entity_id: "[[[ return variables.ulm_custom_card_nik_tablet_restart ]]]"
@@ -295,7 +295,7 @@ custom_card_nik_tablet:
                 action: "call-service"
                 service: "button.press"
                 service_data:
-                  entity_id: "[[[ return variables.ulm_custom_card_nik_tablet_reload ]]]" 
+                  entity_id: "[[[ return variables.ulm_custom_card_nik_tablet_reload ]]]"
     item4:
       card:
         type: "custom:button-card"
@@ -397,7 +397,7 @@ custom_bar_card_nik_tablet:
           title: "off"
           value: "[[[ return variables.ulm_custom_bar_card_nik_tablet_card_value == true ? 'inside' : 'off' ]]]"
           name: "off"
-        severity: 
+        severity:
           - color: "var(--google-red)"
             from: 1
             to: 30
