@@ -398,13 +398,13 @@ custom_bar_card_nik_tablet:
           value: "[[[ return variables.ulm_custom_bar_card_nik_tablet_card_value == true ? 'inside' : 'off' ]]]"
           name: "off"
         severity: 
-          - color: var(--google-red)
+          - color: "var(--google-red)"
             from: 1
             to: 30
-          - color: var(--google-yellow)
+          - color: "var(--google-yellow)"
             from: 31
             to: 59
-          - color: var(--google-green)
+          - color: "var(--google-green)"
             from: 60
             to: 100
         min: 1
