@@ -17,16 +17,29 @@ This is a card which shows the basic needs for your dashboard. This card can gen
 |----------|---------|------------------|-------------------|
 | ulm_card_welcome_scenes_collapse  |         | :material-close: | Enables the collapse function. <br> requires an `input_boolean` to track the state|
 | ulm_weather   |         | :material-check: | This is your weather provider. <br> Example: `weather.your_provider`|
-| ulm_language   |  Language of your system  | :material-close: | You can set a different format with the [BCP-47 language tags](https://www.techonthenet.com/js/language_tags.php) <br> Example:
-`"en-US"` or just `"en"`|
-| entity_  |     | :material-check: | Support almost all types of entities <br> Scenes do always show as off |
-| icon_  |    | :material-close: | The icon to show |
-| name_  |      | :material-close: | The name to show|
-| color_  |  Random    | :material-close: | Color of the icon <br> Can choose between: `blue`, `red`, `green`, `yellow`, `pink`, `purple` <br> If not specified, it will take a random color  |
+| ulm_language   |  Language of your system  | :material-close: | You can set a different format with the [BCP-47 language tags](https://www.techonthenet.com/js/language_tags.php) <br> Example: `"en-US"` or just `"en"`|
+| entity_1  | auto-entities | :material-close:  | Can be any common type of entity <br> if no entity is specified defaults to auto-entities |
+| entity_2  | auto-entities | :material-close:  | Can be any common type of entity <br> if no entity is specified defaults to auto-entities|
+| entity_3  | auto-entities | :material-close:  | Can be any common type of entity <br> if no entity is specified defaults to auto-entities|
+| entity_4  | auto-entities | :material-close:  | Can be any common type of entity <br> if no entity is specified defaults to auto-entities|
+| entity_5  | auto-entities | :material-close:  | Can be any common type of entity <br> if no entity is specified defaults to auto-entities|
+| entity_6  | none          | :material-close:  | Can be any common type of entity |
+| entity_7  | none          | :material-close:  | Can be any common type of entity |
 
-## Collapse
+## Entity Variables
 
-!!! note
+| Variable | Default | Required         | Notes             |
+|----------|---------|------------------|-------------------|
+| _entity_id  |     | :material-close: | Support almost all types of entities <br> Scenes do always show as off |
+| _icon |    | :material-close: | The icon to show |
+| _name  |      | :material-close: | The name to show|
+| _color  |  Random    | :material-close: | Color of the icon <br> Can choose between: `blue`, `red`, `green`, `yellow`, `pink`, `purple` <br> If not specified, it will take a random color  |
+| _state  | `on` or `playing`    | :material-close: | Define `input_select` state or give manual state for pill to be full |
+| _nav_path |     | :material-close:  | Navigate to another view <br> *Overrides other types of actions*
+
+## Requirement Collapse Function
+
+!!! note ""
     This feature is fully optional. It requires some more manual configuration!
 You need to create a `input_boolean` in HA to track the state. See [Docs](https://www.home-assistant.io/integrations/input_boolean/).
 Furthermore, you need to add the `input_boolean` to the variable `ulm_card_welcome_scenes_collapse` **and** to either the `entity` or `triggers_update` to make sure it directly refreshes the state.
@@ -34,6 +47,10 @@ Furthermore, you need to add the `input_boolean` to the variable `ulm_card_welco
     Do not use `triggers_update: "all"`! This will lead to unwanted behavior with the random colors generator.
 
 ## Usage
+
+!!! note ""
+    You can set 1 to 7 entities to show 1 to 7 pills dynamically <br>
+    If set none it uses `auto-entities` with max 5 pills
 
 ```yaml
 - type: "custom:button-card"
@@ -68,6 +85,16 @@ Furthermore, you need to add the `input_boolean` to the variable `ulm_card_welco
       icon: "mdi:YOUR_ICON" #OPTIONAL
       name: "YOUR_NAME" #OPTIONAL
       color: "yellow"
+    entity_6:
+      entity_id: "<YOUR_ENTITY>"
+      icon: "mdi:YOUR_ICON" #OPTIONAL
+      name: "YOUR_NAME" #OPTIONAL
+      color: "pink"
+    entity_7:
+      entity_id: "<YOUR_ENTITY>"
+      icon: "mdi:YOUR_ICON" #OPTIONAL
+      name: "YOUR_NAME" #OPTIONAL
+      color: "yellow"
 ```
 
 ??? note "Auto-entities"
@@ -80,31 +107,6 @@ Furthermore, you need to add the `input_boolean` to the variable `ulm_card_welco
       variables:
         ulm_card_welcome_scenes_collapse: input_boolean.<Your_boolean> #OPTIONAl --> uncomment also entity or triggers_update
         ulm_weather: "weather.YOUR_WEATHERPROVIDER"
-        entity_1:
-          entity_id:
-          icon:
-          name:
-          color: "blue" #OPTIONAL
-        entity_2:
-          entity_id:
-          icon:
-          name:
-          color: "red"  #OPTIONAL
-        entity_3:
-          entity_id:
-          icon:
-          name:
-          color: "green" #OPTIONAL
-        entity_4:
-          entity_id:
-          icon:
-          name:
-          color: "purple" #OPTIONAL
-        entity_5:
-          entity_id:
-          icon:
-          name:
-          color: "yellow" #OPTIONAL
     ```
 
 ??? note "Random Colors"
@@ -121,27 +123,31 @@ Furthermore, you need to add the `input_boolean` to the variable `ulm_card_welco
           entity_id: "<YOUR_ENTITY>"
           icon: "mdi:YOUR_ICON" #OPTIONAL
           name: "YOUR_NAME" #OPTIONAL
-          color:
         entity_2:
           entity_id: "<YOUR_ENTITY>"
           icon: "mdi:YOUR_ICON" #OPTIONAL
           name: "YOUR_NAME" #OPTIONAL
-          color:
         entity_3:
           entity_id: "<YOUR_ENTITY>"
           icon: "mdi:YOUR_ICON" #OPTIONAL
           name: "YOUR_NAME" #OPTIONAL
-          color:
         entity_4:
           entity_id: "<YOUR_ENTITY>"
           icon: "mdi:YOUR_ICON" #OPTIONAL
           name: "YOUR_NAME" #OPTIONAL
-          color:
         entity_5:
           entity_id: "<YOUR_ENTITY>"
           icon: "mdi:YOUR_ICON" #OPTIONAL
           name: "YOUR_NAME" #OPTIONAL
-          color:
+        entity_6:
+          entity_id: "<YOUR_ENTITY>"
+          icon: "mdi:YOUR_ICON" #OPTIONAL
+          name: "YOUR_NAME" #OPTIONAL
+        entity_7:
+          entity_id: "<YOUR_ENTITY>"
+          icon: "mdi:YOUR_ICON" #OPTIONAL
+          name: "YOUR_NAME" #OPTIONAL
+
     ```
 
 ??? note "Template Code"
