@@ -5,7 +5,7 @@ hide:
 ---
 <!-- markdownlint-disable MD046 -->
 
-## Custom-card "Tablet"
+## Custom-card "Tablet Custom Card"
 
 This is a `custom-card` that uses the installed Kiosk app on a tablet to get information from. It includes USB Power (if the tablet has it), Motion, light and maintenance switch as well as restart and reload mode.
 
@@ -272,9 +272,9 @@ custom_card_nik_tablet:
               icon: "mdi:restart-alert"
               tap_action:
               action: "call-service"
-                service: "button.press"
-                service_data:
-                  entity_id: "[[[ return variables.ulm_custom_card_nik_tablet_restart ]]]"
+              service: "button.press"
+              service_data:
+                entity_id: "[[[ return variables.ulm_custom_card_nik_tablet_restart ]]]"
           item2:
             card:
               type: "custom:button-card"
