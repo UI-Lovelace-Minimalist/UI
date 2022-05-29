@@ -185,12 +185,7 @@ card_light:
               hold_action:
                 action: >
                   [[[
-                      if (variables.ulm_card_light_enable_popup){
-                        return 'fire-dom-event'
-                      }
-                      else{
-                        return 'more-info'
-                      }
+                      return variables.ulm_card_light_enable_popup ? "fire-dom-event" : "more-info";
                   ]]]
                 browser_mod:
                   command: "popup"
