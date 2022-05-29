@@ -13,7 +13,7 @@ chip_weather_date:
       const options = {month: 'short', day: 'numeric' };
       var locale = variables.ulm_language;
       let formatted_date = event.toLocaleDateString(locale, options);
-      var state = states[variables?.ulm_weather]?.state;
+      var state = states[variables.ulm_chip_temperature_weather].state;
       var icon = {
         "clear-night": "🌙",
         "cloudy": "☁️",

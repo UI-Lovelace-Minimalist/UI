@@ -5,7 +5,7 @@ chip_temperature:
   triggers_update: "all"
   label: |
     [[[
-      var state = states[variables?.ulm_weather]?.state;
+      var state = states[variables.ulm_chip_temperature_weather].state;
       var icon = {
         "clear-night": "🌙",
         "cloudy": "☁️",
