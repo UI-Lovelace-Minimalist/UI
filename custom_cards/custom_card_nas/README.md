@@ -3,6 +3,7 @@ title: NAS Custom-card
 hide:
   - toc
 ---
+
 <!-- markdownlint-disable MD046 -->
 
 # Custom-card "NAS"
@@ -24,7 +25,7 @@ Initial release
 ## Usage
 
 ```yaml
-- type: 'custom:button-card'
+- type: "custom:button-card"
   template:
     - custom_card_nas
   variables:
@@ -68,6 +69,8 @@ n/a
 
 ## Template code
 
+<<<<<<< Updated upstream
+
 ```yaml
 custom_card_nas:
   tap_action:
@@ -85,3 +88,11 @@ custom_card_nas:
       return state;
     ]]]
 ```
+
+=======
+??? note "Template Code"
+
+    ```yaml title="custom_card_nas.yaml"
+    --8<-- "custom_cards/custom_card_nas/custom_card_nas.yaml"
+    ```
+>>>>>>> Stashed changes
