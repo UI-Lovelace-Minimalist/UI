@@ -157,3 +157,6 @@ states:
       ulm_popup_power_outlet_sensor1:
       ulm_popup_power_outlet_sensor2:
       ulm_popup_power_outlet_graph_sensor:
+
+  ## Rooms
+  livingroom: !include "../views/livingroom.yaml"
