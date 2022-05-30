@@ -332,7 +332,7 @@ card_esh_welcome_nav:
               type: "custom:button-card"
               tap_action:
                 action: "navigate"
-                navigation_path: "[[[ return variables.entity_1.nav; ]]]"
+                navigation_path: "[[[ return variables.entity_5.nav; ]]]"
               name: "[[[ return variables.entity_5.name ]]]"
 
 card_esh_welcome_pill_nav:

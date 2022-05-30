@@ -1,0 +1,15 @@
+---
+popup_button_source:
+  template:
+    - "popup_button"
+    - "ulm_language_variables"
+  icon: "mdi:playlist-music"
+  name: "Source"
+  styles:
+    name:
+      - text-transform: "uppercase"
+      - color: "rgba(var(--color-theme),0.5)"
+    img_cell:
+      - background: "none"
+      - box-shadow: "none"
+      - border: "1px solid rgba(var(--color-theme),0.25)"

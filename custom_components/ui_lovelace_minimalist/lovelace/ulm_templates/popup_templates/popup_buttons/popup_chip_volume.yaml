@@ -1,0 +1,23 @@
+---
+popup_chip_volume:
+  template: "chips"
+  show_icon: true
+  icon: "mdi:volume-high"
+  label: >
+    [[[
+      let level = entity.attributes.volume_level
+      return level * 100 + '%'
+    ]]]
+  styles:
+    card:
+      - background: "none"
+      - box-shadow: "none"
+      - border: "1px solid rgba(var(--color-theme),0.25)"
+      - height: "42px"
+      - border-radius: "21px"
+    grid:
+      - grid-template-areas: "i l"
+      - justify-content: "space-between"
+      - display: "flex"
+    img_cell:
+      - width: "30px"

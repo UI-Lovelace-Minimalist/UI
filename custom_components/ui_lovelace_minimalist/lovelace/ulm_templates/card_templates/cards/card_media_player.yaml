@@ -164,6 +164,13 @@ card_media_player:
           ]]]
         state:
           - operator: "template"
+            value: "[[[ return entity.state == 'off' ]]]"
+            name: |
+              [[[
+                let name = variables.ulm_card_media_player_name || states[entity.entity_id].attributes.friendly_name;
+                return name;
+              ]]]
+          - operator: "template"
             value: "[[[ return entity.state != 'off' ]]]"
             name: |
               [[[

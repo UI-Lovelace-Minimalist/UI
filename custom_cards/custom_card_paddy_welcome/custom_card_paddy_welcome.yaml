@@ -1,7 +1,7 @@
 ---
 custom_card_paddy_welcome:
   template:
-    - "ulm_custom_card_paddy_welcome_language_variables"
+    - "ulm_language_variables"
   show_icon: false
   show_name: false
   show_label: false
@@ -25,13 +25,13 @@ custom_card_paddy_welcome:
             let welcome = '';
 
             if (time > '18:00'){
-              welcome = variables.ulm_custom_card_paddy_welcome_evening;
+              welcome = variables.ulm_evening;
             } else if (time > '12:00'){
-              welcome = variables.ulm_custom_card_paddy_welcome_afternoon;
+              welcome = variables.ulm_afternoon;
             } else if (time > '05:00'){
-              welcome = variables.ulm_custom_card_paddy_welcome_morning;
+              welcome = variables.ulm_morning;
             } else {
-              welcome = variables.ulm_custom_card_paddy_welcome_hello;
+              welcome = variables.ulm_hello;
             }
 
             return welcome + ',<br>' + user.name + '!';
@@ -48,7 +48,7 @@ custom_card_paddy_welcome:
 
 custom_card_paddy_welcome_with_weather:
   template:
-    - "ulm_custom_card_paddy_welcome_language_variables"
+    - "ulm_language_variables"
   show_icon: false
   show_name: false
   show_label: false
@@ -72,14 +72,13 @@ custom_card_paddy_welcome_with_weather:
             let welcome = '';
 
             if (time > '18:00'){
-              welcome = variables.ulm_custom_card_paddy_welcome_evening;
+              welcome = variables.ulm_evening;
             } else if (time > '12:00'){
-              welcome = variables.ulm_custom_card_paddy_welcome_afternoon;
+              welcome = variables.ulm_afternoon;
             } else if (time > '05:00'){
-              welcome = variables.ulm_custom_card_paddy_welcome_morning;
+              welcome = variables.ulm_morning;
             } else {
-              welcome = variables.ulm_custom_card_paddy_welcome_hello;
-            }
+              welcome = variables.ulm_hello;
 
             return welcome + ',<br>' + user.name + '!';
           ]]]
@@ -133,7 +132,7 @@ custom_card_paddy_welcome_with_weather:
 
 custom_card_paddy_welcome_with_news:
   template:
-    - "ulm_custom_card_paddy_welcome_language_variables"
+    - "ulm_language_variables"
   show_icon: false
   show_name: false
   show_label: false
@@ -157,14 +156,13 @@ custom_card_paddy_welcome_with_news:
             let welcome = '';
 
             if (time > '18:00'){
-              welcome = variables.ulm_custom_card_paddy_welcome_evening;
+              welcome = variables.ulm_evening;
             } else if (time > '12:00'){
-              welcome = variables.ulm_custom_card_paddy_welcome_afternoon;
+              welcome = variables.ulm_afternoon;
             } else if (time > '05:00'){
-              welcome = variables.ulm_custom_card_paddy_welcome_morning;
+              welcome = variables.ulm_morning;
             } else {
-              welcome = variables.ulm_custom_card_paddy_welcome_hello;
-            }
+              welcome = variables.ulm_hello;
 
             return welcome + ',<br>' + user.name + '!';
           ]]]

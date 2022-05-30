@@ -17,10 +17,15 @@ custom_card_eraycetinay_lock:
     service: |
       [[[
         if(variables.ulm_custom_card_eraycetinay_lock_tap_control == true){
-          if (entity.state == "locked"){
-            return "lock.unlock"
-          } else if (entity.state == "unlocked"){
-            return "lock.lock"
+          if(variables.ulm_custom_card_eraycetinay_lock_open == true){
+            return "lock.open"
+          } else {
+            if (entity.state == "locked"){
+                return "lock.unlock"
+              }
+            } else if (entity.state == "unlocked"){
+              return "lock.lock"
+            }
           }
         } else {
           return;
@@ -41,10 +46,14 @@ custom_card_eraycetinay_lock:
           return variables.custom_card_eraycetinay_lock_locked;
         } else if (entity.state == "unlocked"){
           return variables.custom_card_eraycetinay_lock_unlocked;
+        } else if (entity.state == "open"){
+          return variables.ulm_open;
         } else if (entity.state == "unlocking"){
           return variables.custom_card_eraycetinay_lock_unlocking;
         } else if (entity.state == "locking"){
           return variables.custom_card_eraycetinay_lock_locking;
+        } else if (entity.state == "jammed"){
+          return variables.custom_card_eraycetinay_lock_jammed;
         }  else {
           return entity.state;
         }

@@ -1,15 +1,17 @@
 ---
 popup_media_player_infos:
+  triggers_update: "all"
   styles:
     grid:
-      - grid-template-areas: "'header header' 'content1 content2' 'footer footer'"
-      - grid-template-rows: "16vh 56vh 14vh"
-      - grid-template-columns: "1fr 1fr"
-      - column-gap: "30px"
+      - grid-template-areas: "'header' 'content1' 'footer'"
+      - grid-template-rows: "14vh 56vh 16vh"
+      - row-gap: "2.5%"
     card:
       - background: "var(--primary-background-color)"
       - box-shadow: "none"
       - padding: "4%"
+      - border-radius: "none"
+      - height: "100vh"
     custom_fields:
       header:
         - align-self: "start"
@@ -22,17 +24,18 @@ popup_media_player_infos:
         - max-width: "400px"
         - justify-self: "center"
       content2:
-        - align-self: "center"
+        - display: "none"
       buttons:
         - display: "none"
       footer:
         - align-self: "end"
         - margin-top: "25px"
+        - padding-bottom: "4%"
   extra_styles: |
     @media (max-width: 800px) {
       #container {
-        grid-template-areas: "header" "content1" "buttons" "footer" !important;
-        grid-template-rows: 16vh 52vh 14vh 14vh !important;
+        grid-template-areas: "header" "content1" "footer" !important;
+        grid-template-rows: 14vh 56vh 16vh !important;
         grid-template-columns: 1fr !important;
       }
       #buttons {
@@ -52,14 +55,32 @@ popup_media_player_infos:
     content1:
       card:
         type: "custom:button-card"
+        show_icon: false
+        show_name: false
+        show_label: false
         styles:
           grid:
-            - grid-template-areas: "'picture' 'media' 'control'"
+            - grid-template-areas: "'app' 'picture' 'media' 'control' 'bar'"
           card:
-            - background: "none"
+            - background-blend-mode: "soft-light"
+            - background: |
+                [[[
+                  if(hass.themes.darkMode){
+                    return states[variables.ulm_popup_media_player_entity].state == 'playing' && states[variables.ulm_popup_media_player_entity].attributes.entity_picture != null
+                    ? ' center / cover url(' + states[variables.ulm_popup_media_player_entity].attributes.entity_picture + '), radial-gradient(circle, #333333 90%, grey 105% ,#333333 110%)'
+                    : ''
+                  }else{
+                    return states[variables.ulm_popup_media_player_entity].state == 'playing' && states[variables.ulm_popup_media_player_entity].attributes.entity_picture != null
+                    ? ' center / cover url(' + states[variables.ulm_popup_media_player_entity].attributes.entity_picture + '), radial-gradient(circle, white 5%, grey 100% ,white 110%)'
+                    : ''
+                  }
+                ]]]
             - box-shadow: "none"
-            - padding: "4%"
+            - padding: "1%"
           custom_fields:
+            app:
+              - justify-self: "start"
+              - align-self: "start"
             picture:
               - margin-left: "auto"
               - margin-right: "auto"
@@ -73,7 +94,17 @@ popup_media_player_infos:
             control:
               - background: "none"
               - box-shadow: "none"
+            bar:
+              - align-self: "start"
+              - background: "none"
+              - box-shadow: "none"
+              - margin-bottom: "12px"
         custom_fields:
+          app:
+            card:
+              type: "custom:button-card"
+              template: "popup_button_app"
+              entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
           picture:
             card:
               type: "custom:mini-media-player"
@@ -132,6 +163,7 @@ popup_media_player_infos:
               type: "custom:mini-media-player"
               entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
               hide:
+                controls: true
                 icon: true
                 name: true
                 info: true
@@ -145,43 +177,58 @@ popup_media_player_infos:
                     background: none !important;
                     box-shadow: none !important;
                     width: 50% !important;
-                    margin-left: auto !important;
-                    margin-right: auto !important;
+                    margin-left: 6px !important;
+                    margin-right: 6px !important;
                   }
                   .mmp__bg{
                     background: none !important;
                   }
-    buttons:
-      card:
-        type: "custom:button-card"
-        template: "list_2_items"
-        styles:
-          card:
-            - background: "none"
-        custom_fields:
-          item1:
+          bar:
             card:
               type: "custom:button-card"
-              template:
-                - "popup_button"
-                - "popup_button_selected"
-                - "popup_button_playing"
-          item2:
-            card:
-              type: "custom:button-card"
-              template:
-                - "popup_button"
-                - "popup_button_volume"
-              tap_action:
-                action: "fire-dom-event"
-                browser_mod:
-                  command: "popup"
-                  hide_header: true
+              template: "list_2_items"
+              variables:
+                ulm_popup_media_player_entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
+              styles:
+                card:
+                  - background: "none"
+                  - box-shadow: "none"
+                  - padding: "0px"
+                grid:
+                  - display: "flex"
+                  - justify-content: "center"
+              custom_fields:
+                item1:
                   card:
                     type: "custom:button-card"
-                    template: "popup_media_player_volume"
+                    template: "popup_chip_controls"
                     variables:
                       ulm_popup_media_player_entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
+                    styles:
+                      card:
+                        - background: "none"
+                        - box-shadow: "none"
+                        - padding: "0px"
+                item2:
+                  card:
+                    type: "custom:button-card"
+                    template: "popup_chip_volume"
+                    entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
+                    styles:
+                      card:
+                        - background: "none"
+                        - box-shadow: "none"
+                        - padding: "0"
+                    tap_action:
+                      action: "fire-dom-event"
+                      browser_mod:
+                        command: "popup"
+                        hide_header: true
+                        card:
+                          type: "custom:button-card"
+                          template: "popup_media_player_volume"
+                          variables:
+                            ulm_popup_media_player_entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
     footer:
       card:
         type: "custom:button-card"
@@ -195,6 +242,11 @@ popup_media_player_infos:
             card:
               type: "custom:button-card"
               template: "popup_button_power"
+              entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
+          item3:
+            card:
+              type: "custom:button-card"
+              template: "popup_button_source"
               entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
     content2:
       card:

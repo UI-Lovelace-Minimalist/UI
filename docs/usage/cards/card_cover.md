@@ -18,16 +18,18 @@ With the `cover-card` you have the state of your cover. Optionnaly, on the secon
 
 ## Variables
 
-| Variable/Entity                        | Default         | Required         | Notes          | Requirement |
-|----------------------------------------|-----------------|------------------|----------------|-------------|
-| entity                                 |                 | :material-check: | Your HA entity |             |
-| ulm_card_cover_name                    | `friendly_name` | :material-close: | Customize name |             |
-| ulm_card_cover_display_left_right      | `false`         | :material-close: | Display left right control button  |             |
-| ulm_card_curtain_display_collapse_expand      | `false`         | :material-close: | Display expand collapse control button  |             |
-| ulm_card_cover_enable_controls         | `false`         | :material-close: | Enable control buttons |             |
-| ulm_card_cover_enable_slider           | `false`         | :material-close: | Enable slider |             |
-| ulm_card_cover_enable_horizontal       | `false`         | :material-close: | Enable horizontal card | Need `ulm_card_cover_enable_controls: true` or `ulm_card_cover_enable_slider: true` |
-| ulm_card_cover_enable_popup            | `false`         | :material-close: | Enable `popup_cover` | |
+| Variable/Entity                        | Default         | Required         | Notes                                  | Requirement |
+|----------------------------------------|-----------------|------------------|----------------------------------------|-------------|
+| entity                                 |                 | :material-check: | Your HA entity                         |             |
+| ulm_card_cover_name                    | `friendly_name` | :material-close: | Customize name                         |             |
+| ulm_card_cover_display_left_right      | `false`         | :material-close: | Display left right control button      |             |
+| ulm_card_curtain_display_collapse_expand      | `false`         | :material-close: | Display expand collapse control button |             |
+| ulm_card_cover_garage      | `false`         | :material-close: | Display garage icon for garage cover   |             |
+| ulm_card_cover_gate      | `false`         | :material-close: | Display gate icon for gate cover       |             |
+| ulm_card_cover_enable_controls         | `false`         | :material-close: | Enable control buttons                 |             |
+| ulm_card_cover_enable_slider           | `false`         | :material-close: | Enable slider                          |             |
+| ulm_card_cover_enable_horizontal       | `false`         | :material-close: | Enable horizontal card                 | Need `ulm_card_cover_enable_controls: true` or `ulm_card_cover_enable_slider: true` |
+| ulm_card_cover_enable_popup            | `false`         | :material-close: | Enable `popup_cover`                   | |
 
 ## Usage
 
