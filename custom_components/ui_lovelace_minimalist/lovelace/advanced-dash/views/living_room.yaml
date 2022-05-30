@@ -1,0 +1,34 @@
+---
+type: "custom:layout-card"
+layout_type: "custom:grid-layout"
+layout:
+  grid-template-rows: "min-content"
+  grid-template-columns: "1fr 1fr 1fr"
+  grid-template-areas: >
+    "title title title"
+    "card1 card1 card1"
+    "card2 card3 card4"
+    "card5 card6 ."
+    "card7 card8 card9"
+    "card10 card11 card12"
+    "card13 card14 card15"
+    "card16 card17 card18"
+  mediaquery:
+    # Mobile
+    "(max-width: 800px)":
+      grid-template-columns: "1fr 1fr"
+      grid-template-areas: |
+        "title title"
+        "card1 card1"
+        "card2 card3"
+        "card4 card5"
+        "card6 card7"
+        "card8 card9"
+        "card10 card11"
+        "card12 card13"
+        "card14 card15"
+        "card16 card17"
+        "card18 card19"
+view_layout:
+  grid-area: "livingroom"
+cards:
