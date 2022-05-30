@@ -10,12 +10,44 @@ card_vacuum:
     ulm_card_vacuum_icon: "[[[ return entity.attributes.icon ]]]"
     ulm_card_vacuum_room:
     ulm_card_vacuum_room_icon: "[[[ return entity.attributes.icon ]]]"
+    ulm_card_vacuum_camera:
+    ulm_card_vacuum_camera_toggle:
   triggers_update: "all"
   styles:
     grid:
-      - grid-template-areas: "'item1' 'item2'"
+      - grid-template-areas: >
+          [[[
+            if( variables.ulm_card_vacuum_camera ){
+              if ( variables.ulm_card_vacuum_camera_toggle ) {
+                if( entity.state.toLowerCase() === 'cleaning' ){
+                  return "'item1' 'item3' 'item2'";
+                } else {
+                  return "'item1' 'item2'";
+                }
+              } else {
+                return "'item1' 'item3' 'item2'";
+              }
+            } else {
+              return "'item1' 'item2'";
+            }
+          ]]]
       - grid-template-columns: "1fr"
-      - grid-template-rows: "min-content  min-content"
+      - grid-template-rows: >
+          [[[
+            if( variables.ulm_card_vacuum_camera ){
+              if ( variables.ulm_card_vacuum_camera_toggle ) {
+                if( entity.state.toLowerCase() === 'cleaning' ){
+                  return "repeat(3, min-content)";
+                } else {
+                  return "repeat(2, min-content)";
+                }
+              } else {
+                return "repeat(3, min-content)";
+              }
+            } else {
+              return "repeat(2, min-content)";
+            }
+          ]]]
       - row-gap: "12px"
     card:
       - border-radius: "var(--border-radius)"
@@ -34,6 +66,24 @@ card_vacuum:
                 return 'rgba(var(--color-purple),0.1)'
               }
           ]]]
+    custom_fields:
+      item3:
+        - display: >
+            [[[
+              if( variables.ulm_card_vacuum_camera ){
+                if ( variables.ulm_card_vacuum_camera_toggle ) {
+                  if( entity.state.toLowerCase() === 'cleaning' ){
+                    return "block";
+                  } else {
+                    return "none";
+                  }
+                } else {
+                  return "block";
+                }
+              } else {
+                return "none";
+              }
+            ]]]
   custom_fields:
     item1:
       card:
@@ -208,3 +258,10 @@ card_vacuum:
                 service: "script.turn_on"
                 service_data:
                   entity_id: "[[[ return variables.ulm_card_vacuum_room ]]]"
+    item3:
+      card:
+        type: "picture-entity"
+        camera_view: "live"
+        entity: "[[[ return variables.ulm_card_vacuum_camera ]]]"
+        show_name: false
+        show_state: false

@@ -14,12 +14,12 @@ The `card_input_number` you can control a input_number entity
 ## Credits
 
 Author: sildehoop - 2021
-Version: 1.0.1
+Version: 1.1.0
 
 <h2 style="color: red">Braking changes</h2>
 
 <details style="color: red">
-  <summary>1.0.1</summary>
+  <summary>1.1.0</summary>
 
 ```yaml
 #OLD
@@ -44,6 +44,10 @@ Version: 1.0.1
 
 ## Changelog
 
+<details>
+<summary>1.1.0</summary>
+Adds ability to work with counter entities. Compatibility with input number entities is not affected.
+</details>
 <details>
 <summary>1.0.1</summary>
 Added option to leave ulm_card_input_number_name empty (takes the friendly_name of the entity)

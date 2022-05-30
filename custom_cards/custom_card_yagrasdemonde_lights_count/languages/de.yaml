@@ -1,0 +1,9 @@
+---
+ulm_custom_card_yagrasdemonde_lights_count_language_variables:
+  variables:
+    ulm_custom_card_yagrasdemonde_lights_count_light_0: "Keine Lampen an"
+    ulm_custom_card_yagrasdemonde_lights_count_light_1: "1 Lampe an"
+    ulm_custom_card_yagrasdemonde_lights_count_light_many: "Lampen an"
+    ulm_custom_card_yagrasdemonde_lights_count_cover_0: "Keine Rollos offen"
+    ulm_custom_card_yagrasdemonde_lights_count_cover_1: "1 Rollo offen"
+    ulm_custom_card_yagrasdemonde_lights_count_cover_many: "Rollos offen"

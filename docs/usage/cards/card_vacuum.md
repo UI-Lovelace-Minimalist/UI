@@ -23,6 +23,8 @@ This is a card to control your Robot-vacuum. It has support for all vacuums whic
 |`ulm_card_vacuum_label`|  | :material-close: | Add a custom label |
 |`ulm_card_vacuum_room`|   | :material-close: | Add a script to clean a specific room |
 |`ulm_card_vacuum_room_icon`|   | :material-close: | Add custom icon to the room script |
+|`ulm_card_vacuum_camera`|   | :material-close: | Add a camera entity to the card to show the vacuum map |
+|`ulm_card_vacuum_camera_toggle`|   | :material-close: | Only show the camera entity while cleaning |
 
 ## Usage
 
@@ -37,6 +39,8 @@ This is a card to control your Robot-vacuum. It has support for all vacuums whic
   variables:
     ulm_card_vacuum_room: "script.clean_kitchen"
     ulm_card_vacuum_room_icon: "mdi:table-chair"
+    ulm_card_vacuum_camera: "camera.vacuum_map"
+    ulm_card_vacuum_camera_toggle: true
 ```
 
 ??? note "Template Code"

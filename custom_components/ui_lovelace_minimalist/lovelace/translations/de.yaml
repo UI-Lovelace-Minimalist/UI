@@ -46,5 +46,5 @@ ulm_language_variables:
     ulm_hello: "Hallo"
     ulm_cleaning: "Staubsaugen"
     ulm_returning: "Auf dem Heimweg"
-    ulm_docked: "Docked"
+    ulm_docked: "Angedockt"
     ulm_mopping: "Wischen"
