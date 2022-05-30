@@ -20,7 +20,7 @@ views:
           grid-template-areas: "main"
     cards:
       - !include "views/main.yaml"
-      - !include "popup/popup-view.yaml"
+      - !include "popup/popup.yaml"
 
   - type: "custom:grid-layout"
     title: "Livingroom"
@@ -37,4 +37,4 @@ views:
           grid-template-areas: "livingroom"
     cards:
       - !include "views/livingroom.yaml"
-      - !include "popup/popup-view.yaml"
+      - !include "popup/popup.yaml"
