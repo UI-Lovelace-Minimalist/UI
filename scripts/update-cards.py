@@ -12,6 +12,7 @@ cards = (
     ('mini-media-player', 'https://github.com/kalkih/mini-media-player/releases/download/v1.16.2/mini-media-player-bundle.js'),
     ('my-cards', 'https://raw.githubusercontent.com/AnthonMS/my-cards/main/dist/my-cards.js'),
     ('simple-weather-card', 'https://github.com/kalkih/simple-weather-card/releases/download/v0.8.2/simple-weather-card-bundle.js'),
+    ('simple-icons', 'https://github.com/vigonotion/hass-simpleicons/blob/v2.0.0/custom_components/simpleicons/data/si.js'),
 )
 
 for card, src in cards:

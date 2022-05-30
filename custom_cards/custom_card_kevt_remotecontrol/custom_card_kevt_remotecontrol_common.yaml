@@ -1,9 +1,1173 @@
 ---
 ########################################################
-#####  GRID TEMPLATES                               ####
+#####  COMMON VARIABLES                             ####
 ########################################################
 
-button_grid_3_by_4:
+vars_remotecontrol_shared:
+  variables:
+    entity_id:
+    background_color: "rgba(var(--color-grey), 0.1)"
+
+vars_remotecontrol_shared_grey:
+  variables:
+    entity_id:
+    background_color: "rgba(var(--color-grey), 0.2)"
+
+########################################################
+#####  BUTTON GROUP TEMPLATES                      #####
+########################################################
+
+card_remotecontrol_group_power:
+  type: "custom:button-card"
+  template:
+    - "layout_group"
+    - "vars_remotecontrol_shared"
+  triggers_update: "all"
+  custom_fields:
+    group1:
+      card:
+        type: "custom:button-card"
+        template: "layout_cell_gap_cell"
+        custom_fields:
+          cell1:
+            card:
+              type: "custom:button-card"
+              template: >
+                [[[
+                  var templates = ['remotecontrol_1w1h_button'];
+                  if (variables.cell1.button.templates != null) {
+                    templates = ['remotecontrol_1w1h_button'].concat(variables.cell1.button.templates);
+                  }
+                  return templates;
+                ]]]
+              variables:
+                button:
+                  entity_id: "[[[ return variables.entity_id ]]]"
+                  entity_id_tap: "[[[ return variables.entity_id_power_tap ]]]"
+                  entity_id_double_tap: "[[[ return variables.entity_id_power_double_tap ]]]"
+                  entity_id_hold: "[[[ return variables.entity_id_power_hold ]]]"
+                  background_color: >
+                    [[[
+                      if (variables.cell1.button.background_color == null) {
+                        if (variables.background_color == null) {
+                          return null;
+                        } else {
+                          return variables.background_color;
+                        }
+                      } else {
+                        return variables.cell1.button.background_color;
+                      }
+                    ]]]
+                  tooltip: "[[[ return variables.cell1.button.tooltip ]]]"
+                  icon: "[[[ return variables.cell1.button.icon ]]]"
+                  actions: "[[[ return variables.cell1.button.actions ]]]"
+          cell2:
+            card:
+              type: "custom:button-card"
+              template: >
+                [[[
+                  var templates = ['remotecontrol_1w1h_button'];
+                  if (variables.cell2.button.templates != null) {
+                    templates = ['remotecontrol_1w1h_button'].concat(variables.cell2.button.templates);
+                  }
+                  return templates;
+                ]]]
+              variables:
+                button:
+                  entity_id: "[[[ return variables.entity_id ]]]"
+                  entity_id_tap: "[[[ return variables.entity_id_input_tap ]]]"
+                  entity_id_double_tap: "[[[ return variables.entity_id_input_double_tap ]]]"
+                  entity_id_hold: "[[[ return variables.entity_id_input_hold ]]]"
+                  background_color: >
+                    [[[
+                      if (variables.cell2.button.background_color == null) {
+                        if (variables.background_color == null) {
+                          return null;
+                        } else {
+                          return variables.background_color;
+                        }
+                      } else {
+                        return variables.cell2.button.background_color;
+                      }
+                    ]]]
+                  tooltip: "[[[ return variables.cell2.button.tooltip ]]]"
+                  icon: "[[[ return variables.cell2.button.icon ]]]"
+                  actions: "[[[ return variables.cell2.button.actions ]]]"
+
+card_remotecontrol_group_home:
+  type: "custom:button-card"
+  template:
+    - "layout_group"
+    - "vars_remotecontrol_shared_grey"
+  custom_fields:
+    group1:
+      card:
+        type: "custom:button-card"
+        template: "layout_cell_cell_cell"
+        custom_fields:
+          cell1:
+            card:
+              type: "custom:button-card"
+              template: >
+                [[[
+                  var templates = ['remotecontrol_1w1h_button'];
+                  if (variables.cell1.button.templates != null) {
+                    templates = ['remotecontrol_1w1h_button'].concat(variables.cell1.button.templates);
+                  }
+                  return templates;
+                ]]]
+              variables:
+                button:
+                  entity_id: "[[[ return variables.entity_id ]]]"
+                  entity_id_tap: "[[[ return variables.entity_id_home_tap ]]]"
+                  entity_id_double_tap: "[[[ return variables.entity_id_home_double_tap ]]]"
+                  entity_id_hold: "[[[ return variables.entity_id_home_hold ]]]"
+                  background_color: >
+                    [[[
+                      if (variables.cell1.button.background_color == null) {
+                        if (variables.background_color == null) {
+                          return null;
+                        } else {
+                          return variables.background_color;
+                        }
+                      } else {
+                        return variables.cell1.button.background_color;
+                      }
+                    ]]]
+                  tooltip: "[[[ return variables.cell1.button.tooltip ]]]"
+                  icon: "[[[ return variables.cell1.button.icon ]]]"
+                  actions: "[[[ return variables.cell1.button.actions ]]]"
+          cell2:
+            card:
+              type: "custom:button-card"
+              template: >
+                [[[
+                  var templates = ['remotecontrol_1w1h_button'];
+                  if (variables.cell2.button.templates != null) {
+                    templates = ['remotecontrol_1w1h_button'].concat(variables.cell2.button.templates);
+                  }
+                  return templates;
+                ]]]
+              variables:
+                button:
+                  entity_id: "[[[ return variables.entity_id ]]]"
+                  entity_id_tap: "[[[ return variables.entity_id_home_tap ]]]"
+                  entity_id_double_tap: "[[[ return variables.entity_id_home_double_tap ]]]"
+                  entity_id_hold: "[[[ return variables.entity_id_home_hold ]]]"
+                  background_color: >
+                    [[[
+                      if (variables.cell2.button.background_color == null) {
+                        if (variables.background_color == null) {
+                          return null;
+                        } else {
+                          return variables.background_color;
+                        }
+                      } else {
+                        return variables.cell2.button.background_color;
+                      }
+                    ]]]
+                  tooltip: "[[[ return variables.cell2.button.tooltip ]]]"
+                  icon: "[[[ return variables.cell2.button.icon ]]]"
+                  actions: "[[[ return variables.cell2.button.actions ]]]"
+          cell3:
+            card:
+              type: "custom:button-card"
+              template: >
+                [[[
+                  var templates = ['remotecontrol_1w1h_button'];
+                  if (variables.cell3.button.templates != null) {
+                    templates = ['remotecontrol_1w1h_button'].concat(variables.cell3.button.templates);
+                  }
+                  return templates;
+                ]]]
+              variables:
+                button:
+                  entity_id: "[[[ return variables.entity_id ]]]"
+                  entity_id_tap: "[[[ return variables.entity_id_home_tap ]]]"
+                  entity_id_double_tap: "[[[ return variables.entity_id_home_double_tap ]]]"
+                  entity_id_hold: "[[[ return variables.entity_id_home_hold ]]]"
+                  background_color: >
+                    [[[
+                      if (variables.cell3.button.background_color == null) {
+                        if (variables.background_color == null) {
+                          return null;
+                        } else {
+                          return variables.background_color;
+                        }
+                      } else {
+                        return variables.cell3.button.background_color;
+                      }
+                    ]]]
+                  tooltip: "[[[ return variables.cell3.button.tooltip ]]]"
+                  icon: "[[[ return variables.cell3.button.icon ]]]"
+                  actions: "[[[ return variables.cell3.button.actions ]]]"
+
+card_remotecontrol_group_play:
+  type: "custom:button-card"
+  template:
+    - "layout_group"
+    - "vars_remotecontrol_shared_grey"
+  custom_fields:
+    group1:
+      card:
+        type: "custom:button-card"
+        template: "layout_cell_cell_cell"
+        custom_fields:
+          cell1:
+            card:
+              type: "custom:button-card"
+              template: >
+                [[[
+                  var templates = ['remotecontrol_1w1h_button'];
+                  if (variables.cell1.button.templates != null) {
+                    templates = ['remotecontrol_1w1h_button'].concat(variables.cell1.button.templates);
+                  }
+                  return templates;
+                ]]]
+              variables:
+                button:
+                  entity_id: "[[[ return variables.entity_id ]]]"
+                  entity_id_tap: "[[[ return variables.entity_id_play_tap ]]]"
+                  entity_id_double_tap: "[[[ return variables.entity_id_play_double_tap ]]]"
+                  entity_id_hold: "[[[ return variables.entity_id_play_hold ]]]"
+                  background_color: >
+                    [[[
+                      if (variables.cell1.button.background_color == null) {
+                        if (variables.background_color == null) {
+                          return null;
+                        } else {
+                          return variables.background_color;
+                        }
+                      } else {
+                        return variables.cell1.button.background_color;
+                      }
+                    ]]]
+                  tooltip: "[[[ return variables.cell1.button.tooltip ]]]"
+                  icon: "[[[ return variables.cell1.button.icon ]]]"
+                  actions: "[[[ return variables.cell1.button.actions ]]]"
+          cell2:
+            card:
+              type: "custom:button-card"
+              template: >
+                [[[
+                  var templates = ['remotecontrol_1w1h_button'];
+                  if (variables.cell2.button.templates != null) {
+                    templates = ['remotecontrol_1w1h_button'].concat(variables.cell2.button.templates);
+                  }
+                  return templates;
+                ]]]
+              variables:
+                button:
+                  entity_id: "[[[ return variables.entity_id ]]]"
+                  entity_id_tap: "[[[ return variables.entity_id_play_tap ]]]"
+                  entity_id_double_tap: "[[[ return variables.entity_id_play_double_tap ]]]"
+                  entity_id_hold: "[[[ return variables.entity_id_play_hold ]]]"
+                  background_color: >
+                    [[[
+                      if (variables.cell2.button.background_color == null) {
+                        if (variables.background_color == null) {
+                          return null;
+                        } else {
+                          return variables.background_color;
+                        }
+                      } else {
+                        return variables.cell2.button.background_color;
+                      }
+                    ]]]
+                  tooltip: "[[[ return variables.cell2.button.tooltip ]]]"
+                  icon: "[[[ return variables.cell2.button.icon ]]]"
+                  actions: "[[[ return variables.cell2.button.actions ]]]"
+          cell3:
+            card:
+              type: "custom:button-card"
+              template: >
+                [[[
+                  var templates = ['remotecontrol_1w1h_button'];
+                  if (variables.cell3.button.templates != null) {
+                    templates = ['remotecontrol_1w1h_button'].concat(variables.cell3.button.templates);
+                  }
+                  return templates;
+                ]]]
+              variables:
+                button:
+                  entity_id: "[[[ return variables.entity_id ]]]"
+                  entity_id_tap: "[[[ return variables.entity_id_play_tap ]]]"
+                  entity_id_double_tap: "[[[ return variables.entity_id_play_double_tap ]]]"
+                  entity_id_hold: "[[[ return variables.entity_id_play_hold ]]]"
+                  background_color: >
+                    [[[
+                      if (variables.cell3.button.background_color == null) {
+                        if (variables.background_color == null) {
+                          return null;
+                        } else {
+                          return variables.background_color;
+                        }
+                      } else {
+                        return variables.cell3.button.background_color;
+                      }
+                    ]]]
+                  tooltip: "[[[ return variables.cell3.button.tooltip ]]]"
+                  icon: "[[[ return variables.cell3.button.icon ]]]"
+                  actions: "[[[ return variables.cell3.button.actions ]]]"
+
+card_remotecontrol_group_arrow_select:
+  type: "custom:button-card"
+  template:
+    - "layout_group"
+    - "vars_remotecontrol_shared"
+  custom_fields:
+    group1:
+      card:
+        type: "custom:button-card"
+        template: "layout_gap_cell_gap-cell_cell_cell-gap_cell_gap"
+        custom_fields:
+          cell1:
+            card:
+              type: "custom:button-card"
+              template: >
+                [[[
+                  var templates = ['remotecontrol_1w1h_button'];
+                  if (variables.cell1.button.templates != null) {
+                    templates = ['remotecontrol_1w1h_button'].concat(variables.cell1.button.templates);
+                  }
+                  return templates;
+                ]]]
+              variables:
+                button:
+                  entity_id: "[[[ return variables.entity_id ]]]"
+                  entity_id_tap: "[[[ return variables.entity_id_arrow_tap ]]]"
+                  entity_id_double_tap: "[[[ return variables.entity_id_arrow_double_tap ]]]"
+                  entity_id_hold: "[[[ return variables.entity_id_arrow_hold ]]]"
+                  background_color: >
+                    [[[
+                      if (variables.cell1.button.background_color == null) {
+                        if (variables.background_color == null) {
+                          return null;
+                        } else {
+                          return variables.background_color;
+                        }
+                      } else {
+                        return variables.cell1.button.background_color;
+                      }
+                    ]]]
+                  tooltip: "[[[ return variables.cell1.button.tooltip ]]]"
+                  icon: "[[[ return variables.cell1.button.icon ]]]"
+                  actions: "[[[ return variables.cell1.button.actions ]]]"
+          cell2:
+            card:
+              type: "custom:button-card"
+              template: >
+                [[[
+                  var templates = ['remotecontrol_1w1h_button'];
+                  if (variables.cell2.button.templates != null) {
+                    templates = ['remotecontrol_1w1h_button'].concat(variables.cell2.button.templates);
+                  }
+                  return templates;
+                ]]]
+              variables:
+                button:
+                  entity_id: "[[[ return variables.entity_id ]]]"
+                  entity_id_tap: "[[[ return variables.entity_id_arrow_tap ]]]"
+                  entity_id_double_tap: "[[[ return variables.entity_id_arrow_double_tap ]]]"
+                  entity_id_hold: "[[[ return variables.entity_id_arrow_hold ]]]"
+                  background_color: >
+                    [[[
+                      if (variables.cell2.button.background_color == null) {
+                        if (variables.background_color == null) {
+                          return null;
+                        } else {
+                          return variables.background_color;
+                        }
+                      } else {
+                        return variables.cell2.button.background_color;
+                      }
+                    ]]]
+                  tooltip: "[[[ return variables.cell2.button.tooltip ]]]"
+                  icon: "[[[ return variables.cell2.button.icon ]]]"
+                  actions: "[[[ return variables.cell2.button.actions ]]]"
+          cell3:
+            card:
+              type: "custom:button-card"
+              template: >
+                [[[
+                  var templates = ['remotecontrol_1w1h_button'];
+                  if (variables.cell3.button.templates != null) {
+                    templates = ['remotecontrol_1w1h_button'].concat(variables.cell3.button.templates);
+                  }
+                  return templates;
+                ]]]
+              variables:
+                button:
+                  entity_id: "[[[ return variables.entity_id ]]]"
+                  entity_id_tap: "[[[ return variables.entity_id_arrow_tap ]]]"
+                  entity_id_double_tap: "[[[ return variables.entity_id_arrow_double_tap ]]]"
+                  entity_id_hold: "[[[ return variables.entity_id_arrow_hold ]]]"
+                  background_color: >
+                    [[[
+                      if (variables.cell3.button.background_color == null) {
+                        if (variables.background_color == null) {
+                          return null;
+                        } else {
+                          return variables.background_color;
+                        }
+                      } else {
+                        return variables.cell3.button.background_color;
+                      }
+                    ]]]
+                  tooltip: "[[[ return variables.cell3.button.tooltip ]]]"
+                  icon: "[[[ return variables.cell3.button.icon ]]]"
+                  actions: "[[[ return variables.cell3.button.actions ]]]"
+          cell4:
+            card:
+              type: "custom:button-card"
+              template: >
+                [[[
+                  var templates = ['remotecontrol_1w1h_button'];
+                  if (variables.cell4.button.templates != null) {
+                    templates = ['remotecontrol_1w1h_button'].concat(variables.cell4.button.templates);
+                  }
+                  return templates;
+                ]]]
+              variables:
+                button:
+                  entity_id: "[[[ return variables.entity_id ]]]"
+                  entity_id_tap: "[[[ return variables.entity_id_arrow_tap ]]]"
+                  entity_id_double_tap: "[[[ return variables.entity_id_arrow_double_tap ]]]"
+                  entity_id_hold: "[[[ return variables.entity_id_arrow_hold ]]]"
+                  background_color: >
+                    [[[
+                      if (variables.cell4.button.background_color == null) {
+                        if (variables.background_color == null) {
+                          return null;
+                        } else {
+                          return variables.background_color;
+                        }
+                      } else {
+                        return variables.cell4.button.background_color;
+                      }
+                    ]]]
+                  tooltip: "[[[ return variables.cell4.button.tooltip ]]]"
+                  icon: "[[[ return variables.cell4.button.icon ]]]"
+                  actions: "[[[ return variables.cell4.button.actions ]]]"
+          cell5:
+            card:
+              type: "custom:button-card"
+              template: >
+                [[[
+                  var templates = ['remotecontrol_1w1h_button'];
+                  if (variables.cell5.button.templates != null) {
+                    templates = ['remotecontrol_1w1h_button'].concat(variables.cell5.button.templates);
+                  }
+                  return templates;
+                ]]]
+              variables:
+                button:
+                  entity_id: "[[[ return variables.entity_id ]]]"
+                  entity_id_tap: "[[[ return variables.entity_id_arrow_tap ]]]"
+                  entity_id_double_tap: "[[[ return variables.entity_id_arrow_double_tap ]]]"
+                  entity_id_hold: "[[[ return variables.entity_id_arrow_hold ]]]"
+                  background_color: >
+                    [[[
+                      if (variables.cell5.button.background_color == null) {
+                        if (variables.background_color == null) {
+                          return null;
+                        } else {
+                          return variables.background_color;
+                        }
+                      } else {
+                        return variables.cell5.button.background_color;
+                      }
+                    ]]]
+                  tooltip: "[[[ return variables.cell5.button.tooltip ]]]"
+                  icon: "[[[ return variables.cell5.button.icon ]]]"
+                  actions: "[[[ return variables.cell5.button.actions ]]]"
+
+card_remotecontrol_group_volume:
+  type: "custom:button-card"
+  template:
+    - "layout_row_row_row"
+    - "vars_remotecontrol_shared"
+  custom_fields:
+    row1:
+      card:
+        type: "custom:button-card"
+        template: >
+          [[[
+            var templates = ['remotecontrol_1w1h_button'];
+            if (variables.row1.button.templates != null) {
+              templates = ['remotecontrol_1w1h_button'].concat(variables.row1.button.templates);
+            }
+            return templates;
+          ]]]
+        variables:
+          button:
+            entity_id: "[[[ return variables.entity_id ]]]"
+            entity_id_tap: "[[[ return variables.entity_id_volume_tap ]]]"
+            entity_id_double_tap: "[[[ return variables.entity_id_volume_double_tap ]]]"
+            entity_id_hold: "[[[ return variables.entity_id_volume_hold ]]]"
+            background_color: >
+              [[[
+                if (variables.row1.button.background_color == null) {
+                  if (variables.background_color == null) {
+                    return null;
+                  } else {
+                    return variables.background_color;
+                  }
+                } else {
+                  return variables.row1.button.background_color;
+                }
+              ]]]
+            tooltip: "[[[ return variables.row1.button.tooltip ]]]"
+            icon: "[[[ return variables.row1.button.icon ]]]"
+            actions: "[[[ return variables.row1.button.actions ]]]"
+    row2:
+      card:
+        type: "custom:button-card"
+        template: >
+          [[[
+            var templates = ['remotecontrol_1w1h_button'];
+            if (variables.row2.button.templates != null) {
+              templates = ['remotecontrol_1w1h_button'].concat(variables.row2.button.templates);
+            }
+            return templates;
+          ]]]
+        variables:
+          button:
+            entity_id: "[[[ return variables.entity_id ]]]"
+            entity_id_tap: "[[[ return variables.entity_id_volume_tap ]]]"
+            entity_id_double_tap: "[[[ return variables.entity_id_volume_double_tap ]]]"
+            entity_id_hold: "[[[ return variables.entity_id_volume_hold ]]]"
+            background_color: >
+              [[[
+                if (variables.row2.button.background_color == null) {
+                  if (variables.background_color == null) {
+                    return null;
+                  } else {
+                    return variables.background_color;
+                  }
+                } else {
+                  return variables.row2.button.background_color;
+                }
+              ]]]
+            tooltip: "[[[ return variables.row2.button.tooltip ]]]"
+            icon: "[[[ return variables.row2.button.icon ]]]"
+            actions: "[[[ return variables.row2.button.actions ]]]"
+    row3:
+      card:
+        type: "custom:button-card"
+        template: >
+          [[[
+            var templates = ['remotecontrol_1w1h_button'];
+            if (variables.row3.button.templates != null) {
+              templates = ['remotecontrol_1w1h_button'].concat(variables.row3.button.templates);
+            }
+            return templates;
+          ]]]
+        variables:
+          button:
+            entity_id: "[[[ return variables.entity_id ]]]"
+            entity_id_tap: "[[[ return variables.entity_id_volume_tap ]]]"
+            entity_id_double_tap: "[[[ return variables.entity_id_volume_double_tap ]]]"
+            entity_id_hold: "[[[ return variables.entity_id_volume_hold ]]]"
+            background_color: >
+              [[[
+                if (variables.row3.button.background_color == null) {
+                  if (variables.background_color == null) {
+                    return null;
+                  } else {
+                    return variables.background_color;
+                  }
+                } else {
+                  return variables.row3.button.background_color;
+                }
+              ]]]
+            tooltip: "[[[ return variables.row3.button.tooltip ]]]"
+            icon: "[[[ return variables.row3.button.icon ]]]"
+            actions: "[[[ return variables.row3.button.actions ]]]"
+
+card_remotecontrol_group_channel_selector:
+  type: "custom:button-card"
+  template:
+    - "layout_doublerow_doublerow"
+    - "vars_remotecontrol_shared"
+  custom_fields:
+    doublerow1:
+      card:
+        type: "custom:button-card"
+        template: >
+          [[[
+            var templates = ['remotecontrol_1w1h_button'];
+            if (variables.doublerow1.button.templates != null) {
+              templates = ['remotecontrol_1w1h_button'].concat(variables.doublerow1.button.templates);
+            }
+            return templates;
+          ]]]
+        variables:
+          button:
+            entity_id: "[[[ return variables.entity_id ]]]"
+            entity_id_tap: "[[[ return variables.entity_id_channel_tap ]]]"
+            entity_id_double_tap: "[[[ return variables.entity_id_channel_double_tap ]]]"
+            entity_id_hold: "[[[ return variables.entity_id_channel_hold ]]]"
+            background_color: >
+              [[[
+                if (variables.doublerow1.button.background_color == null) {
+                  if (variables.background_color == null) {
+                    return null;
+                  } else {
+                    return variables.background_color;
+                  }
+                } else {
+                  return variables.doublerow1.button.background_color;
+                }
+              ]]]
+            name: "[[[ return variables.doublerow1.button.name ]]]"
+            tooltip: "[[[ return variables.doublerow1.button.tooltip ]]]"
+            icon: "[[[ return variables.doublerow1.button.icon ]]]"
+            actions: "[[[ return variables.doublerow1.button.actions ]]]"
+    doublerow2:
+      card:
+        type: "custom:button-card"
+        template: >
+          [[[
+            var templates = ['remotecontrol_1w1h_button'];
+            if (variables.doublerow2.button.templates != null) {
+              templates = ['remotecontrol_1w1h_button'].concat(variables.doublerow2.button.templates);
+            }
+            return templates;
+          ]]]
+        variables:
+          button:
+            entity_id: "[[[ return variables.entity_id ]]]"
+            entity_id_tap: "[[[ return variables.entity_id_channel_tap ]]]"
+            entity_id_double_tap: "[[[ return variables.entity_id_channel_double_tap ]]]"
+            entity_id_hold: "[[[ return variables.entity_id_channel_hold ]]]"
+            background_color: >
+              [[[
+                if (variables.doublerow2.button.background_color == null) {
+                  if (variables.background_color == null) {
+                    return null;
+                  } else {
+                    return variables.background_color;
+                  }
+                } else {
+                  return variables.doublerow2.button.background_color;
+                }
+              ]]]
+            name: "[[[ return variables.doublerow2.button.name ]]]"
+            tooltip: "[[[ return variables.doublerow2.button.tooltip ]]]"
+            icon: "[[[ return variables.doublerow2.button.icon ]]]"
+            actions: "[[[ return variables.doublerow2.button.actions ]]]"
+
+card_remotecontrol_group_numbers:
+  type: "custom:button-card"
+  template:
+    - "button_grid_4row_3column"
+    - "vars_remotecontrol_shared"
+  custom_fields:
+    row1:
+      card:
+        type: "custom:button-card"
+        template: "button_row_3_column"
+        variables:
+          entity_id: "[[[ return variables.entity_id ]]]"
+          entity_id_tap: "[[[ return variables.entity_id_numbers_tap ]]]"
+          entity_id_double_tap: "[[[ return variables.entity_id_numbers_double_tap ]]]"
+          entity_id_hold: "[[[ return variables.entity_id_numbers_hold ]]]"
+          background_color: "[[[ return variables.background_color ]]]"
+          cell1: "[[[ return variables.row1.cell1 ]]]"
+          cell2: "[[[ return variables.row1.cell2 ]]]"
+          cell3: "[[[ return variables.row1.cell3 ]]]"
+    row2:
+      card:
+        type: "custom:button-card"
+        template: "button_row_3_column"
+        variables:
+          entity_id: "[[[ return variables.entity_id ]]]"
+          entity_id_tap: "[[[ return variables.entity_id_numbers_tap ]]]"
+          entity_id_double_tap: "[[[ return variables.entity_id_numbers_double_tap ]]]"
+          entity_id_hold: "[[[ return variables.entity_id_numbers_hold ]]]"
+          background_color: "[[[ return variables.background_color ]]]"
+          cell1: "[[[ return variables.row2.cell1 ]]]"
+          cell2: "[[[ return variables.row2.cell2 ]]]"
+          cell3: "[[[ return variables.row2.cell3 ]]]"
+    row3:
+      card:
+        type: "custom:button-card"
+        template: "button_row_3_column"
+        variables:
+          entity_id: "[[[ return variables.entity_id ]]]"
+          entity_id_tap: "[[[ return variables.entity_id_numbers_tap ]]]"
+          entity_id_double_tap: "[[[ return variables.entity_id_numbers_double_tap ]]]"
+          entity_id_hold: "[[[ return variables.entity_id_numbers_hold ]]]"
+          background_color: "[[[ return variables.background_color ]]]"
+          cell1: "[[[ return variables.row3.cell1 ]]]"
+          cell2: "[[[ return variables.row3.cell2 ]]]"
+          cell3: "[[[ return variables.row3.cell3 ]]]"
+    row4:
+      card:
+        type: "custom:button-card"
+        template: "button_row_3_column_gap_cell_gap"
+        variables:
+          entity_id: "[[[ return variables.entity_id ]]]"
+          background_color: "[[[ return variables.background_color ]]]"
+          cell1: "[[[ return variables.row4.cell1 ]]]"
+
+card_remotecontrol_group_apps:
+  type: "custom:button-card"
+  template:
+    - "layout_row_row_row_row"
+    - "vars_remotecontrol_shared"
+  custom_fields:
+    row1:
+      card:
+        type: "custom:button-card"
+        template: "button_row_4_column"
+        variables:
+          entity_id: "[[[ return variables.entity_id ]]]"
+          entity_id_tap: "[[[ return variables.entity_id_apps_tap ]]]"
+          entity_id_double_tap: "[[[ return variables.entity_id_apps_double_tap ]]]"
+          entity_id_hold: "[[[ return variables.entity_id_apps_hold ]]]"
+          background_color: "[[[ return variables.background_color ]]]"
+          cell1: "[[[ return variables.row1.cell1 ]]]"
+          cell2: "[[[ return variables.row1.cell2 ]]]"
+          cell3: "[[[ return variables.row1.cell3 ]]]"
+          cell4: "[[[ return variables.row1.cell4 ]]]"
+    row2:
+      card:
+        type: "custom:button-card"
+        template: "button_row_4_column"
+        variables:
+          entity_id: "[[[ return variables.entity_id ]]]"
+          entity_id_tap: "[[[ return variables.entity_id_apps_tap ]]]"
+          entity_id_double_tap: "[[[ return variables.entity_id_apps_double_tap ]]]"
+          entity_id_hold: "[[[ return variables.entity_id_apps_hold ]]]"
+          background_color: "[[[ return variables.background_color ]]]"
+          cell1: "[[[ return variables.row2.cell1 ]]]"
+          cell2: "[[[ return variables.row2.cell2 ]]]"
+          cell3: "[[[ return variables.row2.cell3 ]]]"
+          cell4: "[[[ return variables.row2.cell4 ]]]"
+    row3:
+      card:
+        type: "custom:button-card"
+        template: "button_row_4_column"
+        variables:
+          entity_id: "[[[ return variables.entity_id ]]]"
+          entity_id_tap: "[[[ return variables.entity_id_apps_tap ]]]"
+          entity_id_double_tap: "[[[ return variables.entity_id_apps_double_tap ]]]"
+          entity_id_hold: "[[[ return variables.entity_id_apps_hold ]]]"
+          background_color: "[[[ return variables.background_color ]]]"
+          cell1: "[[[ return variables.row3.cell1 ]]]"
+          cell2: "[[[ return variables.row3.cell2 ]]]"
+          cell3: "[[[ return variables.row3.cell3 ]]]"
+          cell4: "[[[ return variables.row3.cell4 ]]]"
+    row4:
+      card:
+        type: "custom:button-card"
+        template: "button_row_4_column"
+        variables:
+          entity_id: "[[[ return variables.entity_id ]]]"
+          entity_id_tap: "[[[ return variables.entity_id_apps_tap ]]]"
+          entity_id_double_tap: "[[[ return variables.entity_id_apps_double_tap ]]]"
+          entity_id_hold: "[[[ return variables.entity_id_apps_hold ]]]"
+          background_color: "[[[ return variables.background_color ]]]"
+          cell1: "[[[ return variables.row4.cell1; ]]]"
+          cell2: "[[[ return variables.row4.cell2; ]]]"
+          cell3: "[[[ return variables.row4.cell3; ]]]"
+          cell4: "[[[ return variables.row4.cell4; ]]]"
+
+card_remotecontrol_group_arrows_and_volume:
+  type: "custom:button-card"
+  template:
+    - "layout_direction_row3"
+    - "vars_remotecontrol_shared"
+  custom_fields:
+    cell1:
+      card:
+        type: "custom:button-card"
+        template: >
+          [[[
+            var templates = ['remotecontrol_1w1h_button'];
+            if (variables.cell1.button.templates != null) {
+              templates = ['remotecontrol_1w1h_button'].concat(variables.cell1.button.templates);
+            }
+            return templates;
+          ]]]
+        variables:
+          button:
+            entity_id: "[[[ return variables.entity_id ]]]"
+            entity_id_tap: "[[[ return variables.entity_id_arrow_tap ]]]"
+            entity_id_double_tap: "[[[ return variables.entity_id_arrow_double_tap ]]]"
+            entity_id_hold: "[[[ return variables.entity_id_arrow_hold ]]]"
+            background_color: >
+              [[[
+                if (variables.cell1.button.background_color == null) {
+                  if (variables.background_color == null) {
+                    return null;
+                  } else {
+                    return variables.background_color;
+                  }
+                } else {
+                  return variables.cell1.button.background_color;
+                }
+              ]]]
+            tooltip: "[[[ return variables.cell1.button.tooltip ]]]"
+            icon: "[[[ return variables.cell1.button.icon ]]]"
+            actions: "[[[ return variables.cell1.button.actions ]]]"
+    cell2:
+      card:
+        type: "custom:button-card"
+        template: >
+          [[[
+            var templates = ['remotecontrol_1w1h_button'];
+            if (variables.cell2.button.templates != null) {
+              templates = ['remotecontrol_1w1h_button'].concat(variables.cell2.button.templates);
+            }
+            return templates;
+          ]]]
+        variables:
+          button:
+            entity_id: "[[[ return variables.entity_id ]]]"
+            entity_id_tap: "[[[ return variables.entity_id_arrow_tap ]]]"
+            entity_id_double_tap: "[[[ return variables.entity_id_arrow_double_tap ]]]"
+            entity_id_hold: "[[[ return variables.entity_id_arrow_hold ]]]"
+            background_color: >
+              [[[
+                if (variables.cell2.button.background_color == null) {
+                  if (variables.background_color == null) {
+                    return null;
+                  } else {
+                    return variables.background_color;
+                  }
+                } else {
+                  return variables.cell2.button.background_color;
+                }
+              ]]]
+            tooltip: "[[[ return variables.cell2.button.tooltip ]]]"
+            icon: "[[[ return variables.cell2.button.icon ]]]"
+            actions: "[[[ return variables.cell2.button.actions ]]]"
+    cell3:
+      card:
+        type: "custom:button-card"
+        template: >
+          [[[
+            var templates = ['remotecontrol_1w1h_button'];
+            if (variables.cell3.button.templates != null) {
+              templates = ['remotecontrol_1w1h_button'].concat(variables.cell3.button.templates);
+            }
+            return templates;
+          ]]]
+        variables:
+          button:
+            entity_id: "[[[ return variables.entity_id ]]]"
+            entity_id_tap: "[[[ return variables.entity_id_arrow_tap ]]]"
+            entity_id_double_tap: "[[[ return variables.entity_id_arrow_double_tap ]]]"
+            entity_id_hold: "[[[ return variables.entity_id_arrow_hold ]]]"
+            background_color: >
+              [[[
+                if (variables.cell3.button.background_color == null) {
+                  if (variables.background_color == null) {
+                    return null;
+                  } else {
+                    return variables.background_color;
+                  }
+                } else {
+                  return variables.cell3.button.background_color;
+                }
+              ]]]
+            tooltip: "[[[ return variables.cell3.button.tooltip ]]]"
+            icon: "[[[ return variables.cell3.button.icon ]]]"
+            actions: "[[[ return variables.cell3.button.actions ]]]"
+    cell4:
+      card:
+        type: "custom:button-card"
+        template: >
+          [[[
+            var templates = ['remotecontrol_1w1h_button'];
+            if (variables.cell4.button.templates != null) {
+              templates = ['remotecontrol_1w1h_button'].concat(variables.cell4.button.templates);
+            }
+            return templates;
+          ]]]
+        variables:
+          button:
+            entity_id: "[[[ return variables.entity_id ]]]"
+            entity_id_tap: "[[[ return variables.entity_id_arrow_tap ]]]"
+            entity_id_double_tap: "[[[ return variables.entity_id_arrow_double_tap ]]]"
+            entity_id_hold: "[[[ return variables.entity_id_arrow_hold ]]]"
+            background_color: >
+              [[[
+                if (variables.cell4.button.background_color == null) {
+                  if (variables.background_color == null) {
+                    return null;
+                  } else {
+                    return variables.background_color;
+                  }
+                } else {
+                  return variables.cell4.button.background_color;
+                }
+              ]]]
+            tooltip: "[[[ return variables.cell4.button.tooltip ]]]"
+            icon: "[[[ return variables.cell4.button.icon ]]]"
+            actions: "[[[ return variables.cell4.button.actions ]]]"
+    cell5:
+      card:
+        type: "custom:button-card"
+        template: >
+          [[[
+            var templates = ['remotecontrol_1w1h_button'];
+            if (variables.cell5.button.templates != null) {
+              templates = ['remotecontrol_1w1h_button'].concat(variables.cell5.button.templates);
+            }
+            return templates;
+          ]]]
+        variables:
+          button:
+            entity_id: "[[[ return variables.entity_id ]]]"
+            entity_id_tap: "[[[ return variables.entity_id_arrow_tap ]]]"
+            entity_id_double_tap: "[[[ return variables.entity_id_arrow_double_tap ]]]"
+            entity_id_hold: "[[[ return variables.entity_id_arrow_hold ]]]"
+            background_color: >
+              [[[
+                if (variables.cell5.button.background_color == null) {
+                  if (variables.background_color == null) {
+                    return null;
+                  } else {
+                    return variables.background_color;
+                  }
+                } else {
+                  return variables.cell5.button.background_color;
+                }
+              ]]]
+            tooltip: "[[[ return variables.cell5.button.tooltip ]]]"
+            icon: "[[[ return variables.cell5.button.icon ]]]"
+            actions: "[[[ return variables.cell5.button.actions ]]]"
+
+    row1:
+      card:
+        type: "custom:button-card"
+        template: >
+          [[[
+            var templates = ['remotecontrol_1w1h_button'];
+            if (variables.row1.button.templates != null) {
+              templates = ['remotecontrol_1w1h_button'].concat(variables.row1.button.templates);
+            }
+            return templates;
+          ]]]
+        variables:
+          button:
+            entity_id: "[[[ return variables.entity_id ]]]"
+            entity_id_tap: "[[[ return variables.entity_id_volume_tap ]]]"
+            entity_id_double_tap: "[[[ return variables.entity_id_volume_double_tap ]]]"
+            entity_id_hold: "[[[ return variables.entity_id_volume_hold ]]]"
+            background_color: >
+              [[[
+                if (variables.row1.button.background_color == null) {
+                  if (variables.background_color == null) {
+                    return null;
+                  } else {
+                    return variables.background_color;
+                  }
+                } else {
+                  return variables.row1.button.background_color;
+                }
+              ]]]
+            tooltip: "[[[ return variables.row1.button.tooltip ]]]"
+            icon: "[[[ return variables.row1.button.icon ]]]"
+            actions: "[[[ return variables.row1.button.actions ]]]"
+    row2:
+      card:
+        type: "custom:button-card"
+        template: >
+          [[[
+            var templates = ['remotecontrol_1w1h_button'];
+            if (variables.row2.button.templates != null) {
+              templates = ['remotecontrol_1w1h_button'].concat(variables.row2.button.templates);
+            }
+            return templates;
+          ]]]
+        variables:
+          button:
+            entity_id: "[[[ return variables.entity_id ]]]"
+            entity_id_tap: "[[[ return variables.entity_id_volume_tap ]]]"
+            entity_id_double_tap: "[[[ return variables.entity_id_volume_double_tap ]]]"
+            entity_id_hold: "[[[ return variables.entity_id_volume_hold ]]]"
+            background_color: >
+              [[[
+                if (variables.row2.button.background_color == null) {
+                  if (variables.background_color == null) {
+                    return null;
+                  } else {
+                    return variables.background_color;
+                  }
+                } else {
+                  return variables.row2.button.background_color;
+                }
+              ]]]
+            tooltip: "[[[ return variables.row2.button.tooltip ]]]"
+            icon: "[[[ return variables.row2.button.icon ]]]"
+            actions: "[[[ return variables.row2.button.actions ]]]"
+    row3:
+      card:
+        type: "custom:button-card"
+        template: >
+          [[[
+            var templates = ['remotecontrol_1w1h_button'];
+            if (variables.row3.button.templates != null) {
+              templates = ['remotecontrol_1w1h_button'].concat(variables.row3.button.templates);
+            }
+            return templates;
+          ]]]
+        variables:
+          button:
+            entity_id: "[[[ return variables.entity_id ]]]"
+            entity_id_tap: "[[[ return variables.entity_id_volume_tap ]]]"
+            entity_id_double_tap: "[[[ return variables.entity_id_volume_double_tap ]]]"
+            entity_id_hold: "[[[ return variables.entity_id_volume_hold ]]]"
+            background_color: >
+              [[[
+                if (variables.row3.button.background_color == null) {
+                  if (variables.background_color == null) {
+                    return null;
+                  } else {
+                    return variables.background_color;
+                  }
+                } else {
+                  return variables.row3.button.background_color;
+                }
+              ]]]
+            tooltip: "[[[ return variables.row3.button.tooltip ]]]"
+            icon: "[[[ return variables.row3.button.icon ]]]"
+            actions: "[[[ return variables.row3.button.actions ]]]"
+
+card_remotecontrol_group_channel_and_numbers:
+  type: "custom:button-card"
+  template:
+    - "layout_2row_4row"
+    - "vars_remotecontrol_shared"
+  custom_fields:
+    doublerow1:
+      card:
+        type: "custom:button-card"
+        template: >
+          [[[
+            var templates = ['remotecontrol_1w2h_icon_name_button'];
+            if (variables.doublerow1.button.templates != null) {
+              templates = ['remotecontrol_1w2h_icon_name_button'].concat(variables.doublerow1.button.templates);
+            }
+            return templates;
+          ]]]
+        variables:
+          button:
+            entity_id: "[[[ return variables.entity_id ]]]"
+            entity_id_tap: "[[[ return variables.entity_id_channel_tap ]]]"
+            entity_id_double_tap: "[[[ return variables.entity_id_channel_double_tap ]]]"
+            entity_id_hold: "[[[ return variables.entity_id_channel_hold ]]]"
+            background_color: >
+              [[[
+                if (variables.doublerow1.button.background_color == null) {
+                  if (variables.background_color == null) {
+                    return null;
+                  } else {
+                    return variables.background_color;
+                  }
+                } else {
+                  return variables.doublerow1.button.background_color;
+                }
+              ]]]
+            name: "[[[ return variables.doublerow1.button.name ]]]"
+            tooltip: "[[[ return variables.doublerow1.button.tooltip ]]]"
+            icon: "[[[ return variables.doublerow1.button.icon ]]]"
+            actions: "[[[ return variables.doublerow1.button.actions ]]]"
+    doublerow2:
+      card:
+        type: "custom:button-card"
+        template: >
+          [[[
+            var templates = ['remotecontrol_1w2h_name_icon_button'];
+            if (variables.doublerow2.button.templates != null) {
+              templates = ['remotecontrol_1w2h_name_icon_button'].concat(variables.doublerow2.button.templates);
+            }
+            return templates;
+          ]]]
+        variables:
+          button:
+            entity_id: "[[[ return variables.entity_id ]]]"
+            entity_id_tap: "[[[ return variables.entity_id_channel_tap ]]]"
+            entity_id_double_tap: "[[[ return variables.entity_id_channel_double_tap ]]]"
+            entity_id_hold: "[[[ return variables.entity_id_channel_hold ]]]"
+            background_color: >
+              [[[
+                if (variables.doublerow2.button.background_color == null) {
+                  if (variables.background_color == null) {
+                    return null;
+                  } else {
+                    return variables.background_color;
+                  }
+                } else {
+                  return variables.doublerow2.button.background_color;
+                }
+              ]]]
+            name: "[[[ return variables.doublerow2.button.name ]]]"
+            tooltip: "[[[ return variables.doublerow2.button.tooltip ]]]"
+            icon: "[[[ return variables.doublerow2.button.icon ]]]"
+            actions: "[[[ return variables.doublerow2.button.actions ]]]"
+    row1:
+      card:
+        type: "custom:button-card"
+        template: "button_row_3_column"
+        variables:
+          entity_id: "[[[ return variables.entity_id ]]]"
+          entity_id_tap: "[[[ return variables.entity_id_channel_tap ]]]"
+          entity_id_double_tap: "[[[ return variables.entity_id_channel_double_tap ]]]"
+          entity_id_hold: "[[[ return variables.entity_id_channel_hold ]]]"
+          background_color: "[[[ return variables.background_color ]]]"
+          cell1: "[[[ return variables.row1.cell1 ]]]"
+          cell2: "[[[ return variables.row1.cell2 ]]]"
+          cell3: "[[[ return variables.row1.cell3 ]]]"
+    row2:
+      card:
+        type: "custom:button-card"
+        template: "button_row_3_column"
+        variables:
+          entity_id: "[[[ return variables.entity_id ]]]"
+          entity_id_tap: "[[[ return variables.entity_id_channel_tap ]]]"
+          entity_id_double_tap: "[[[ return variables.entity_id_channel_double_tap ]]]"
+          entity_id_hold: "[[[ return variables.entity_id_channel_hold ]]]"
+          background_color: "[[[ return variables.background_color ]]]"
+          cell1: "[[[ return variables.row2.cell1 ]]]"
+          cell2: "[[[ return variables.row2.cell2 ]]]"
+          cell3: "[[[ return variables.row2.cell3 ]]]"
+    row3:
+      card:
+        type: "custom:button-card"
+        template: "button_row_3_column"
+        variables:
+          entity_id: "[[[ return variables.entity_id ]]]"
+          entity_id_tap: "[[[ return variables.entity_id_channel_tap ]]]"
+          entity_id_double_tap: "[[[ return variables.entity_id_channel_double_tap ]]]"
+          entity_id_hold: "[[[ return variables.entity_id_channel_hold ]]]"
+          background_color: "[[[ return variables.background_color ]]]"
+          cell1: "[[[ return variables.row3.cell1 ]]]"
+          cell2: "[[[ return variables.row3.cell2 ]]]"
+          cell3: "[[[ return variables.row3.cell3 ]]]"
+    row4:
+      card:
+        type: "custom:button-card"
+        template: "button_row_3_column_gap_cell_gap"
+        variables:
+          entity_id: "[[[ return variables.entity_id ]]]"
+          entity_id_tap: "[[[ return variables.entity_id_channel_tap ]]]"
+          entity_id_double_tap: "[[[ return variables.entity_id_channel_double_tap ]]]"
+          entity_id_hold: "[[[ return variables.entity_id_channel_hold ]]]"
+          background_color: "[[[ return variables.background_color ]]]"
+          cell1: "[[[ return variables.row4.cell1 ]]]"
+
+
+########################################################
+#####  GRID TEMPLATES                              #####
+########################################################
+
+button_grid_4row_3column:
   type: "custom:button-card"
   template: "layout_row_row_row_row"
   variables:
@@ -17,7 +1181,9 @@ button_grid_3_by_4:
         type: "custom:button-card"
         template: "button_row_3_column"
         variables:
-          entity_id: "[[[ return variables.row1.entity_id ]]]"
+          entity_id_tap: "[[[ return variables.row1.entity_id_tap ]]]"
+          entity_id_double_tap: "[[[ return variables.row1.entity_id_double_tap ]]]"
+          entity_id_hold: "[[[ return variables.row1.entity_id_hold ]]]"
           background_color: "[[[ return variables.row1.background_color ]]]"
           cell1: "[[[ return variables.row1.cell1 ]]]"
           cell2: "[[[ return variables.row1.cell2 ]]]"
@@ -28,7 +1194,9 @@ button_grid_3_by_4:
         type: "custom:button-card"
         template: "button_row_3_column"
         variables:
-          entity_id: "[[[ return variables.row2.entity_id ]]]"
+          entity_id_tap: "[[[ return variables.row2.entity_id_tap ]]]"
+          entity_id_double_tap: "[[[ return variables.row2.entity_id_double_tap ]]]"
+          entity_id_hold: "[[[ return variables.row2.entity_id_hold ]]]"
           background_color: "[[[ return variables.row2.background_color ]]]"
           cell1: "[[[ return variables.row2.cell1 ]]]"
           cell2: "[[[ return variables.row2.cell2 ]]]"
@@ -38,7 +1206,9 @@ button_grid_3_by_4:
         type: "custom:button-card"
         template: "button_row_3_column"
         variables:
-          entity_id: "[[[ return variables.row3.entity_id ]]]"
+          entity_id_tap: "[[[ return variables.row3.entity_id_tap ]]]"
+          entity_id_double_tap: "[[[ return variables.row3.entity_id_double_tap ]]]"
+          entity_id_hold: "[[[ return variables.row3.entity_id_hold ]]]"
           background_color: "[[[ return variables.row3.background_color ]]]"
           cell1: "[[[ return variables.row3.cell1 ]]]"
           cell2: "[[[ return variables.row3.cell2 ]]]"
@@ -48,13 +1218,15 @@ button_grid_3_by_4:
         type: "custom:button-card"
         template: "button_row_3_column"
         variables:
-          entity_id: "[[[ return variables.row4.entity_id ]]]"
+          entity_id_tap: "[[[ return variables.row4.entity_id_tap ]]]"
+          entity_id_double_tap: "[[[ return variables.row4.entity_id_double_tap ]]]"
+          entity_id_hold: "[[[ return variables.row4.entity_id_hold ]]]"
           background_color: "[[[ return variables.row4.background_color ]]]"
           cell1: "[[[ return variables.row4.cell1 ]]]"
           cell2: "[[[ return variables.row4.cell2 ]]]"
           cell3: "[[[ return variables.row4.cell3 ]]]"
 
-button_grid_4_by_4:
+button_grid_4row_4column:
   type: "custom:button-card"
   template: "layout_row_row_row_row"
   variables:
@@ -68,7 +1240,9 @@ button_grid_4_by_4:
         type: "custom:button-card"
         template: "button_row_4_column"
         variables:
-          entity_id: "[[[ return variables.row1.entity_id ]]]"
+          entity_id_tap: "[[[ return variables.row1.entity_id_tap ]]]"
+          entity_id_double_tap: "[[[ return variables.row1.entity_id_double_tap ]]]"
+          entity_id_hold: "[[[ return variables.row1.entity_id_hold ]]]"
           background_color: "[[[ return variables.row1.background_color ]]]"
           cell1: "[[[ return variables.row1.cell1 ]]]"
           cell2: "[[[ return variables.row1.cell2 ]]]"
@@ -79,7 +1253,9 @@ button_grid_4_by_4:
         type: "custom:button-card"
         template: "button_row_4_column"
         variables:
-          entity_id: "[[[ return variables.row2.entity_id ]]]"
+          entity_id_tap: "[[[ return variables.row2.entity_id_tap ]]]"
+          entity_id_double_tap: "[[[ return variables.row2.entity_id_double_tap ]]]"
+          entity_id_hold: "[[[ return variables.row2.entity_id_hold ]]]"
           background_color: "[[[ return variables.row2.background_color ]]]"
           cell1: "[[[ return variables.row2.cell1 ]]]"
           cell2: "[[[ return variables.row2.cell2 ]]]"
@@ -90,7 +1266,9 @@ button_grid_4_by_4:
         type: "custom:button-card"
         template: "button_row_4_column"
         variables:
-          entity_id: "[[[ return variables.row3.entity_id ]]]"
+          entity_id_tap: "[[[ return variables.row3.entity_id_tap ]]]"
+          entity_id_double_tap: "[[[ return variables.row3.entity_id_double_tap ]]]"
+          entity_id_hold: "[[[ return variables.row3.entity_id_hold ]]]"
           background_color: "[[[ return variables.row3.background_color ]]]"
           cell1: "[[[ return variables.row3.cell1 ]]]"
           cell2: "[[[ return variables.row3.cell2 ]]]"
@@ -101,7 +1279,9 @@ button_grid_4_by_4:
         type: "custom:button-card"
         template: "button_row_4_column"
         variables:
-          entity_id: "[[[ return variables.row4.entity_id ]]]"
+          entity_id_tap: "[[[ return variables.row4.entity_id_tap ]]]"
+          entity_id_double_tap: "[[[ return variables.row4.entity_id_double_tap ]]]"
+          entity_id_hold: "[[[ return variables.row4.entity_id_hold ]]]"
           background_color: "[[[ return variables.row4.background_color ]]]"
           cell1: "[[[ return variables.row4.cell1 ]]]"
           cell2: "[[[ return variables.row4.cell2 ]]]"
@@ -109,7 +1289,7 @@ button_grid_4_by_4:
           cell4: "[[[ return variables.row4.cell4 ]]]"
 
 ########################################################
-#####  ROW TEMPLATES                                ####
+#####  ROW TEMPLATES                               #####
 ########################################################
 
 button_row_3_column:
@@ -117,6 +1297,9 @@ button_row_3_column:
   template: "layout_cell_cell_cell"
   variables:
     entity_id:
+    entity_id_tap:
+    entity_id_double_tap:
+    entity_id_hold:
     background_color:
     cell1:
     cell2:
@@ -127,9 +1310,9 @@ button_row_3_column:
         type: "custom:button-card"
         template: >
           [[[
-            var templates = ['remotecontrol_button'];
+            var templates = ['remotecontrol_1w1h_button'];
             if (variables.cell1.button.templates != null) {
-              return ['remotecontrol_button'].concat(variables.cell1.button.templates);
+              templates = ['remotecontrol_1w1h_button'].concat(variables.cell1.button.templates);
             }
             return templates;
           ]]]
@@ -143,11 +1326,35 @@ button_row_3_column:
                   return variables.cell1.button.entity_id;
                 }
               ]]]
+            entity_id_tap: >
+              [[[
+                if (variables.cell1.button.entity_id_tap == null) {
+                  return variables.entity_id_tap;
+                } else {
+                  return variables.cell1.button.entity_id_tap;
+                }
+              ]]]
+            entity_id_double_tap: >
+              [[[
+                if (variables.cell1.button.entity_id_double_tap == null) {
+                  return variables.entity_id_double_tap;
+                } else {
+                  return variables.cell1.button.entity_id_double_tap;
+                }
+              ]]]
+            entity_id_hold: >
+              [[[
+                if (variables.cell1.button.entity_id_hold == null) {
+                  return variables.entity_id_hold;
+                } else {
+                  return variables.cell1.button.entity_id_hold;
+                }
+              ]]]
             background_color: >
               [[[
                 if (variables.cell1.button.background_color == null) {
                   if (variables.background_color == null) {
-                    return 'rgba(var(--color-theme),0.05)';
+                    return null;
                   } else {
                     return variables.background_color;
                   }
@@ -164,9 +1371,9 @@ button_row_3_column:
         type: "custom:button-card"
         template: >
           [[[
-            var templates = ['remotecontrol_button'];
+            var templates = ['remotecontrol_1w1h_button'];
             if (variables.cell2.button.templates != null) {
-              return ['remotecontrol_button'].concat(variables.cell2.button.templates);
+              templates = ['remotecontrol_1w1h_button'].concat(variables.cell2.button.templates);
             }
             return templates;
           ]]]
@@ -180,11 +1387,35 @@ button_row_3_column:
                   return variables.cell2.button.entity_id;
                 }
               ]]]
+            entity_id_tap: >
+              [[[
+                if (variables.cell2.button.entity_id_tap == null) {
+                  return variables.entity_id_tap;
+                } else {
+                  return variables.cell2.button.entity_id_tap;
+                }
+              ]]]
+            entity_id_double_tap: >
+              [[[
+                if (variables.cell2.button.entity_id_double_tap == null) {
+                  return variables.entity_id_double_tap;
+                } else {
+                  return variables.cell2.button.entity_id_double_tap;
+                }
+              ]]]
+            entity_id_hold: >
+              [[[
+                if (variables.cell2.button.entity_id_hold == null) {
+                  return variables.entity_id_hold;
+                } else {
+                  return variables.cell2.button.entity_id_hold;
+                }
+              ]]]
             background_color: >
               [[[
                 if (variables.cell2.button.background_color == null) {
                   if (variables.background_color == null) {
-                    return 'rgba(var(--color-theme),0.05)';
+                    return null;
                   } else {
                     return variables.background_color;
                   }
@@ -200,9 +1431,9 @@ button_row_3_column:
         type: "custom:button-card"
         template: >
           [[[
-            var templates = ['remotecontrol_button'];
+            var templates = ['remotecontrol_1w1h_button'];
             if (variables.cell3.button.templates != null) {
-              return ['remotecontrol_button'].concat(variables.cell3.button.templates);
+              templates = ['remotecontrol_1w1h_button'].concat(variables.cell3.button.templates);
             }
             return templates;
           ]]]
@@ -216,11 +1447,35 @@ button_row_3_column:
                   return variables.cell3.button.entity_id;
                 }
               ]]]
+            entity_id_tap: >
+              [[[
+                if (variables.cell3.button.entity_id_tap == null) {
+                  return variables.entity_id_tap;
+                } else {
+                  return variables.cell3.button.entity_id_tap;
+                }
+              ]]]
+            entity_id_double_tap: >
+              [[[
+                if (variables.cell3.button.entity_id_double_tap == null) {
+                  return variables.entity_id_double_tap;
+                } else {
+                  return variables.cell3.button.entity_id_double_tap;
+                }
+              ]]]
+            entity_id_hold: >
+              [[[
+                if (variables.cell3.button.entity_id_hold == null) {
+                  return variables.entity_id_hold;
+                } else {
+                  return variables.cell3.button.entity_id_hold;
+                }
+              ]]]
             background_color: >
               [[[
                 if (variables.cell3.button.background_color == null) {
                   if (variables.background_color == null) {
-                    return 'rgba(var(--color-theme),0.05)';
+                    return null;
                   } else {
                     return variables.background_color;
                   }
@@ -237,6 +1492,9 @@ button_row_3_column_gap_cell_gap:
   template: "layout_gap_cell_gap"
   variables:
     entity_id:
+    entity_id_tap:
+    entity_id_double_tap:
+    entity_id_hold:
     background_color:
     cell1:
   custom_fields:
@@ -245,9 +1503,9 @@ button_row_3_column_gap_cell_gap:
         type: "custom:button-card"
         template: >
           [[[
-            var templates = ['remotecontrol_button'];
+            var templates = ['remotecontrol_1w1h_button'];
             if (variables.cell1.button.templates != null) {
-              return ['remotecontrol_button'].concat(variables.cell1.button.templates);
+              templates = ['remotecontrol_1w1h_button'].concat(variables.cell1.button.templates);
             }
             return templates;
           ]]]
@@ -261,11 +1519,35 @@ button_row_3_column_gap_cell_gap:
                   return variables.cell1.button.entity_id;
                 }
               ]]]
+            entity_id_tap: >
+              [[[
+                if (variables.cell1.button.entity_id_tap == null) {
+                  return variables.entity_id_tap;
+                } else {
+                  return variables.cell1.button.entity_id_tap;
+                }
+              ]]]
+            entity_id_double_tap: >
+              [[[
+                if (variables.cell1.button.entity_id_double_tap == null) {
+                  return variables.entity_id_double_tap;
+                } else {
+                  return variables.cell1.button.entity_id_double_tap;
+                }
+              ]]]
+            entity_id_hold: >
+              [[[
+                if (variables.cell1.button.entity_id_hold == null) {
+                  return variables.entity_id_hold;
+                } else {
+                  return variables.cell1.button.entity_id_hold;
+                }
+              ]]]
             background_color: >
               [[[
                 if (variables.cell1.button.background_color == null) {
                   if (variables.background_color == null) {
-                    return 'rgba(var(--color-theme),0.05)';
+                    return null;
                   } else {
                     return variables.background_color;
                   }
@@ -282,6 +1564,9 @@ button_row_4_column:
   template: "layout_cell_cell_cell_cell"
   variables:
     entity_id:
+    entity_id_tap:
+    entity_id_double_tap:
+    entity_id_hold:
     background_color:
     cell1:
     cell2:
@@ -293,9 +1578,9 @@ button_row_4_column:
         type: "custom:button-card"
         template: >
           [[[
-            var templates = ['remotecontrol_button'];
+            var templates = ['remotecontrol_1w1h_button'];
             if (variables.cell1.button.templates != null) {
-              return ['remotecontrol_button'].concat(variables.cell1.button.templates);
+              templates = ['remotecontrol_1w1h_button'].concat(variables.cell1.button.templates);
             }
             return templates;
           ]]]
@@ -309,11 +1594,35 @@ button_row_4_column:
                   return variables.cell1.button.entity_id;
                 }
               ]]]
+            entity_id_tap: >
+              [[[
+                if (variables.cell1.button.entity_id_tap == null) {
+                  return variables.entity_id_tap;
+                } else {
+                  return variables.cell1.button.entity_id_tap;
+                }
+              ]]]
+            entity_id_double_tap: >
+              [[[
+                if (variables.cell1.button.entity_id_double_tap == null) {
+                  return variables.entity_id_double_tap;
+                } else {
+                  return variables.cell1.button.entity_id_double_tap;
+                }
+              ]]]
+            entity_id_hold: >
+              [[[
+                if (variables.cell1.button.entity_id_hold == null) {
+                  return variables.entity_id_hold;
+                } else {
+                  return variables.cell1.button.entity_id_hold;
+                }
+              ]]]
             background_color: >
               [[[
                 if (variables.cell1.button.background_color == null) {
                   if (variables.background_color == null) {
-                    return 'rgba(var(--color-theme),0.05)';
+                    return null;
                   } else {
                     return variables.background_color;
                   }
@@ -329,9 +1638,9 @@ button_row_4_column:
         type: "custom:button-card"
         template: >
           [[[
-            var templates = ['remotecontrol_button'];
+            var templates = ['remotecontrol_1w1h_button'];
             if (variables.cell2.button.templates != null) {
-              return ['remotecontrol_button'].concat(variables.cell2.button.templates);
+              templates = ['remotecontrol_1w1h_button'].concat(variables.cell2.button.templates);
             }
             return templates;
           ]]]
@@ -345,11 +1654,35 @@ button_row_4_column:
                   return variables.cell2.button.entity_id;
                 }
               ]]]
+            entity_id_tap: >
+              [[[
+                if (variables.cell2.button.entity_id_tap == null) {
+                  return variables.entity_id_tap;
+                } else {
+                  return variables.cell2.button.entity_id_tap;
+                }
+              ]]]
+            entity_id_double_tap: >
+              [[[
+                if (variables.cell2.button.entity_id_double_tap == null) {
+                  return variables.entity_id_double_tap;
+                } else {
+                  return variables.cell2.button.entity_id_double_tap;
+                }
+              ]]]
+            entity_id_hold: >
+              [[[
+                if (variables.cell2.button.entity_id_hold == null) {
+                  return variables.entity_id_hold;
+                } else {
+                  return variables.cell2.button.entity_id_hold;
+                }
+              ]]]
             background_color: >
               [[[
                 if (variables.cell2.button.background_color == null) {
                   if (variables.background_color == null) {
-                    return 'rgba(var(--color-theme),0.05)';
+                    return null;
                   } else {
                     return variables.background_color;
                   }
@@ -365,9 +1698,9 @@ button_row_4_column:
         type: "custom:button-card"
         template: >
           [[[
-            var templates = ['remotecontrol_button'];
+            var templates = ['remotecontrol_1w1h_button'];
             if (variables.cell3.button.templates != null) {
-              return ['remotecontrol_button'].concat(variables.cell3.button.templates);
+              templates = ['remotecontrol_1w1h_button'].concat(variables.cell3.button.templates);
             }
             return templates;
           ]]]
@@ -381,11 +1714,35 @@ button_row_4_column:
                   return variables.cell3.button.entity_id;
                 }
               ]]]
+            entity_id_tap: >
+              [[[
+                if (variables.cell3.button.entity_id_tap == null) {
+                  return variables.entity_id_tap;
+                } else {
+                  return variables.cell3.button.entity_id_tap;
+                }
+              ]]]
+            entity_id_double_tap: >
+              [[[
+                if (variables.cell3.button.entity_id_double_tap == null) {
+                  return variables.entity_id_double_tap;
+                } else {
+                  return variables.cell3.button.entity_id_double_tap;
+                }
+              ]]]
+            entity_id_hold: >
+              [[[
+                if (variables.cell3.button.entity_id_hold == null) {
+                  return variables.entity_id_hold;
+                } else {
+                  return variables.cell3.button.entity_id_hold;
+                }
+              ]]]
             background_color: >
               [[[
                 if (variables.cell3.button.background_color == null) {
                   if (variables.background_color == null) {
-                    return 'rgba(var(--color-theme),0.05)';
+                    return null;
                   } else {
                     return variables.background_color;
                   }
@@ -401,9 +1758,9 @@ button_row_4_column:
         type: "custom:button-card"
         template: >
           [[[
-            var templates = ['remotecontrol_button'];
+            var templates = ['remotecontrol_1w1h_button'];
             if (variables.cell4.button.templates != null) {
-              return ['remotecontrol_button'].concat(variables.cell4.button.templates);
+              templates = ['remotecontrol_1w1h_button'].concat(variables.cell4.button.templates);
             }
             return templates;
           ]]]
@@ -417,11 +1774,35 @@ button_row_4_column:
                   return variables.cell4.button.entity_id;
                 }
               ]]]
+            entity_id_tap: >
+              [[[
+                if (variables.cell4.button.entity_id_tap == null) {
+                  return variables.entity_id_tap;
+                } else {
+                  return variables.cell4.button.entity_id_tap;
+                }
+              ]]]
+            entity_id_double_tap: >
+              [[[
+                if (variables.cell4.button.entity_id_double_tap == null) {
+                  return variables.entity_id_double_tap;
+                } else {
+                  return variables.cell4.button.entity_id_double_tap;
+                }
+              ]]]
+            entity_id_hold: >
+              [[[
+                if (variables.cell4.button.entity_id_hold == null) {
+                  return variables.entity_id_hold;
+                } else {
+                  return variables.cell4.button.entity_id_hold;
+                }
+              ]]]
             background_color: >
               [[[
                 if (variables.cell4.button.background_color == null) {
                   if (variables.background_color == null) {
-                    return 'rgba(var(--color-theme),0.05)';
+                    return null;
                   } else {
                     return variables.background_color;
                   }
@@ -434,34 +1815,36 @@ button_row_4_column:
             actions: "[[[ return variables.cell4.button.actions ]]]"
 
 ########################################################
-#####  LAYOUTS                                      ####
+#####  LAYOUTS                                     #####
 ########################################################
 layout_cell_cell_cell_cell:
   styles:
     grid:
-      - grid-template-areas: "cell1 cell2 cell3 cell4"
+      - grid-template-areas: "'cell1 cell2 cell3 cell4'"
       - grid-template-columns: "1fr 1fr 1fr 1fr"
       - grid-template-rows: "min-content"
       - column-gap: "7px"
     card:
       - box-shadow: "none"
       - padding: "0px"
+      - border-radius: "0px"
 
 layout_cell_gap_cell:
   styles:
     grid:
-      - grid-template-areas: "cell1 . cell2"
+      - grid-template-areas: "'cell1 . cell2'"
       - grid-template-columns: "1fr 1fr 1fr"
       - grid-template-rows: "min-content"
       - column-gap: "7px"
     card:
       - box-shadow: "none"
       - padding: "0px"
+      - border-radius: "0px"
 
 layout_gap_cell_gap:
   styles:
     grid:
-      - grid-template-areas: ". cell1 ."
+      - grid-template-areas: "'. cell1 .'"
       - grid-template-columns: "1fr 1fr 1fr"
       - grid-template-rows: "min-content"
       - column-gap: "7px"
@@ -481,10 +1864,21 @@ layout_gap_cell_gap-cell_cell_cell-gap_cell_gap:
       - box-shadow: "none"
       - padding: "0px"
 
+layout_section_sectionsection:
+  styles:
+    grid:
+      - grid-template-areas: "'section1 section2 section2'"
+      - grid-template-columns: "1fr 1fr 1fr"
+      - grid-template-rows: "min-content"
+      - column-gap: "7px"
+    card:
+      - box-shadow: "none"
+      - padding: "0px"
+
 layout_sectionsection_section:
   styles:
     grid:
-      - grid-template-areas: "section1 section1 section2"
+      - grid-template-areas: "'section1 section1 section2'"
       - grid-template-columns: "1fr 1fr 1fr"
       - grid-template-rows: "min-content"
       - column-gap: "7px"
@@ -495,13 +1889,46 @@ layout_sectionsection_section:
 layout_cell_cell_cell:
   styles:
     grid:
-      - grid-template-areas: "cell1 cell2 cell3"
+      - grid-template-areas: "'cell1 cell2 cell3'"
       - grid-template-columns: "1fr 1fr 1fr"
       - grid-template-rows: "min-content"
       - column-gap: "7px"
     card:
       - box-shadow: "none"
       - padding: "0px"
+      - border-radius: "0px"
+
+layout_2row_4row:
+  styles:
+    grid:
+      - grid-template-areas: "'doublerow1 row1 row1 row1' 'doublerow1 row2 row2 row2' 'doublerow2 row3 row3 row3' 'doublerow2 row4 row4 row4'"
+      - grid-template-columns: "1fr 1fr 1fr 1fr"
+      - grid-template-rows: "1fr 1fr 1fr 1fr"
+      - row-gap: "12px"
+      - column-gap: "7px"
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
+    custom_fields:
+      doublerow1:
+        - height: "100%"
+        # - width: "80%"
+      doublerow2:
+        - height: "100%"
+        # - width: "80%"
+
+layout_doublerow_doublerow:
+  styles:
+    grid:
+      - grid-template-areas: "'doublerow1' 'doublerow2'"
+      - grid-template-columns: "1fr"
+      - grid-template-rows: "2fr"
+      - row-gap: "12px"
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
 
 layout_row_row_row:
   styles:
@@ -539,20 +1966,62 @@ layout_group:
       - box-shadow: "var(--box-shadow)"
       - padding: "12px"
 
-layout_button:
+layout_common_button:
+  styles:
+    card:
+      - box-shadow: "none"
+      - padding: "0px"
+      - background-color: "rgba(var(--color-grey), 0.05)"
+      - border-radius: "14px"
+      - place-self: "center"
+    icon:
+      - color: "rgba(var(--color-theme),0.9)"
+    name:
+      - align-self: "center"
+      - font-weight: "bold"
+      - font-size: "14px"
+  size: "20px"
+  color: "var(--google-grey)"
+
+layout_1w1h_button:
   show_icon: "true"
   show_name: "false"
   styles:
     grid:
       - grid-template-areas: "'i'"
     card:
-      - box-shadow: "none"
-      - padding: "0px"
-      - background-color: "rgba(var(--color-theme),0.05)"
-      - border-radius: "14px"
-      - place-self: "center"
       - height: "42px"
-    icon:
-      - color: "rgba(var(--color-theme),0.9)"
-  size: "20px"
-  color: "var(--google-grey)"
+
+layout_1w2h_button:
+  show_icon: "true"
+  show_name: "true"
+  styles:
+    grid:
+      - grid-template-columns: "1fr"
+      - grid-template-rows: "1fr 1fr"
+      - background-color: "rgba(var(--color-grey), 0.05)"
+    card:
+      - height: "91px"
+
+layout_1w2h_icon_name_button:
+  styles:
+    grid:
+      - grid-template-areas: "'i' 'n'"
+
+layout_1w2h_name_icon_button:
+  styles:
+    grid:
+      - grid-template-areas: "'n' 'i'"
+
+layout_direction_row3:
+  styles:
+    grid:
+      - grid-template-areas: "'. cell1 . row1' 'cell2 cell3 cell4 row2' '. cell5 . row3'"
+      - grid-template-columns: "1fr 1fr 1fr 1fr"
+      - grid-template-rows: "1fr 1fr 1fr"
+      - row-gap: "12px"
+      - column-gap: "7px"
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"

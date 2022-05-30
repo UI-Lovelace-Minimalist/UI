@@ -1,26 +1,25 @@
 ---
 ########################################################
-#####  AMAZON FIRESTICK CARDS                       ####
+#####  AMAZON FIRESTICK CARDS                      #####
 ########################################################
 
-card_remotecontrol_firestick_group_power:
-  type: "custom:button-card"
-  template: "layout_group"
-  triggers_update: "all"
+vars_remotecontrol_firestick_group_power:
   variables:
-    entity_id:
-    background_color:
+    entity_id_power_tap:
+    entity_id_power_double_tap:
+    entity_id_power_hold:
+    entity_id_input_tap:
+    entity_id_input_double_tap:
+    entity_id_input_hold:
     cell1:
       button:
-        entity_id:
-        background_color:
         templates:
           - "power_state_button_style"
         icon:
-          name:
+          name: "mdi:power"
           color:
           size:
-        tooltip: "Turns on power. A red background shows the power is on."
+        tooltip: "Power"
         actions:
           tap:
             entity_id:
@@ -59,7 +58,7 @@ card_remotecontrol_firestick_group_power:
           name: "mdi:import"
           color:
           size:
-        tooltip: "Changes the input on the display device"
+        tooltip: "Input"
         actions:
           tap:
             entity_id:
@@ -89,77 +88,12 @@ card_remotecontrol_firestick_group_power:
             harmony:
               device:
               delay:
-  custom_fields:
-    group1:
-      card:
-        type: "custom:button-card"
-        template: "layout_cell_gap_cell"
-        custom_fields:
-          cell1:
-            card:
-              type: "custom:button-card"
-              template: >
-                [[[
-                  var templates = ['remotecontrol_button'];
-                  if (variables.cell1.button.templates != null) {
-                    return ['remotecontrol_button'].concat(variables.cell1.button.templates);
-                  }
-                  return templates;
-                ]]]
-              variables:
-                button:
-                  entity_id: "[[[ return variables.entity_id ]]]"
-                  background_color: >
-                    [[[
-                      if (variables.cell1.button.background_color == null) {
-                        if (variables.background_color == null) {
-                          return null;
-                        } else {
-                          return variables.background_color;
-                        }
-                      } else {
-                        return variables.cell1.button.background_color;
-                      }
-                    ]]]
-                  tooltip: "[[[ return variables.cell1.button.tooltip ]]]"
-                  icon: "[[[ return variables.cell1.button.icon ]]]"
-                  actions: "[[[ return variables.cell1.button.actions ]]]"
-          cell2:
-            card:
-              type: "custom:button-card"
-              template: >
-                [[[
-                  var templates = ['remotecontrol_button'];
-                  if (variables.cell2.button.templates != null) {
-                    return ['remotecontrol_button'].concat(variables.cell2.button.templates);
-                  }
-                  return templates;
-                ]]]
-              variables:
-                button:
-                  entity_id: "[[[ return variables.entity_id ]]]"
-                  background_color: >
-                    [[[
-                      if (variables.cell2.button.background_color == null) {
-                        if (variables.background_color == null) {
-                          return null;
-                        } else {
-                          return variables.background_color;
-                        }
-                      } else {
-                        return variables.cell2.button.background_color;
-                      }
-                    ]]]
-                  tooltip: "[[[ return variables.cell2.button.tooltip ]]]"
-                  icon: "[[[ return variables.cell2.button.icon ]]]"
-                  actions: "[[[ return variables.cell2.button.actions ]]]"
 
-card_remotecontrol_firestick_group_home:
-  type: "custom:button-card"
-  template: "layout_group"
+vars_remotecontrol_firestick_group_home:
   variables:
-    entity_id:
-    background_color: "rgba(var(--color-grey), 0.2)"
+    entity_id_home_tap:
+    entity_id_home_double_tap:
+    entity_id_home_hold:
     cell1:
       button:
         entity_id:
@@ -277,106 +211,12 @@ card_remotecontrol_firestick_group_home:
             harmony:
               device:
               delay:
-  custom_fields:
-    group1:
-      card:
-        type: "custom:button-card"
-        template: "layout_cell_cell_cell"
-        custom_fields:
-          cell1:
-            card:
-              type: "custom:button-card"
-              template: >
-                [[[
-                  var templates = ['remotecontrol_button'];
-                  if (variables.cell1.button.templates != null) {
-                    return ['remotecontrol_button'].concat(variables.cell1.button.templates);
-                  }
-                  return templates;
-                ]]]
-              variables:
-                button:
-                  entity_id: "[[[ return variables.entity_id ]]]"
-                  background_color: >
-                    [[[
-                      if (variables.cell1.button.background_color == null) {
-                        if (variables.background_color == null) {
-                          return null;
-                        } else {
-                          return variables.background_color;
-                        }
-                      } else {
-                        return variables.cell1.button.background_color;
-                      }
-                    ]]]
-                  tooltip: "[[[ return variables.cell1.button.tooltip ]]]"
-                  icon: "[[[ return variables.cell1.button.icon ]]]"
-                  actions: "[[[ return variables.cell1.button.actions ]]]"
-          cell2:
-            card:
-              type: "custom:button-card"
-              template: >
-                [[[
-                  var templates = ['remotecontrol_button'];
-                  if (variables.cell2.button.templates != null) {
-                    return ['remotecontrol_button'].concat(variables.cell2.button.templates);
-                  }
-                  return templates;
-                ]]]
-              variables:
-                button:
-                  entity_id: "[[[ return variables.entity_id ]]]"
-                  background_color: >
-                    [[[
-                      if (variables.cell2.button.background_color == null) {
-                        if (variables.background_color == null) {
-                          return null;
-                        } else {
-                          return variables.background_color;
-                        }
-                      } else {
-                        return variables.cell2.button.background_color;
-                      }
-                    ]]]
-                  tooltip: "[[[ return variables.cell2.button.tooltip ]]]"
-                  icon: "[[[ return variables.cell2.button.icon ]]]"
-                  actions: "[[[ return variables.cell2.button.actions ]]]"
-          cell3:
-            card:
-              type: "custom:button-card"
-              template: >
-                [[[
-                  var templates = ['remotecontrol_button'];
-                  if (variables.cell3.button.templates != null) {
-                    return ['remotecontrol_button'].concat(variables.cell3.button.templates);
-                  }
-                  return templates;
-                ]]]
-              variables:
-                button:
-                  entity_id: "[[[ return variables.entity_id ]]]"
-                  background_color: >
-                    [[[
-                      if (variables.cell3.button.background_color == null) {
-                        if (variables.background_color == null) {
-                          return null;
-                        } else {
-                          return variables.background_color;
-                        }
-                      } else {
-                        return variables.cell3.button.background_color;
-                      }
-                    ]]]
-                  tooltip: "[[[ return variables.cell3.button.tooltip ]]]"
-                  icon: "[[[ return variables.cell3.button.icon ]]]"
-                  actions: "[[[ return variables.cell3.button.actions ]]]"
 
-card_remotecontrol_firestick_group_play:
-  type: "custom:button-card"
-  template: "layout_group"
+vars_remotecontrol_firestick_group_play:
   variables:
-    entity_id:
-    background_color: "rgba(var(--color-grey), 0.2)"
+    entity_id_play_tap:
+    entity_id_play_double_tap:
+    entity_id_play_hold:
     cell1:
       button:
         entity_id:
@@ -426,7 +266,7 @@ card_remotecontrol_firestick_group_play:
           name:
           color:
           size:
-        tooltip: "Play or Pause. The icon changes to the currently occuring activity."
+        tooltip: "Play"
         actions:
           tap:
             entity_id:
@@ -495,146 +335,12 @@ card_remotecontrol_firestick_group_play:
             harmony:
               device:
               delay:
-  custom_fields:
-    group1:
-      card:
-        type: "custom:button-card"
-        template: "layout_cell_cell_cell"
-        custom_fields:
-          cell1:
-            card:
-              type: "custom:button-card"
-              template: >
-                [[[
-                  var templates = ['remotecontrol_button'];
-                  if (variables.cell1.button.templates != null) {
-                    return ['remotecontrol_button'].concat(variables.cell1.button.templates);
-                  }
-                  return templates;
-                ]]]
-              variables:
-                button:
-                  entity_id: "[[[ return variables.entity_id ]]]"
-                  background_color: >
-                    [[[
-                      if (variables.cell1.button.background_color == null) {
-                        if (variables.background_color == null) {
-                          return null;
-                        } else {
-                          return variables.background_color;
-                        }
-                      } else {
-                        return variables.cell1.button.background_color;
-                      }
-                    ]]]
-                  tooltip: "[[[ return variables.cell1.button.tooltip ]]]"
-                  icon: "[[[ return variables.cell1.button.icon ]]]"
-                  actions: "[[[ return variables.cell1.button.actions ]]]"
-          cell2:
-            card:
-              type: "custom:button-card"
-              template: >
-                [[[
-                  var templates = ['remotecontrol_button'];
-                  if (variables.cell2.button.templates != null) {
-                    return ['remotecontrol_button'].concat(variables.cell2.button.templates);
-                  }
-                  return templates;
-                ]]]
-              variables:
-                button:
-                  entity_id: "[[[ return variables.entity_id ]]]"
-                  background_color: >
-                    [[[
-                      if (variables.cell2.button.background_color == null) {
-                        if (variables.background_color == null) {
-                          return null;
-                        } else {
-                          return variables.background_color;
-                        }
-                      } else {
-                        return variables.cell2.button.background_color;
-                      }
-                    ]]]
-                  tooltip: "[[[ return variables.cell2.button.tooltip ]]]"
-                  icon: "[[[ return variables.cell2.button.icon ]]]"
-                  actions: "[[[ return variables.cell2.button.actions ]]]"
-          cell3:
-            card:
-              type: "custom:button-card"
-              template: >
-                [[[
-                  var templates = ['remotecontrol_button'];
-                  if (variables.cell3.button.templates != null) {
-                    return ['remotecontrol_button'].concat(variables.cell3.button.templates);
-                  }
-                  return templates;
-                ]]]
-              variables:
-                button:
-                  entity_id: "[[[ return variables.entity_id ]]]"
-                  background_color: >
-                    [[[
-                      if (variables.cell3.button.background_color == null) {
-                        if (variables.background_color == null) {
-                          return null;
-                        } else {
-                          return variables.background_color;
-                        }
-                      } else {
-                        return variables.cell3.button.background_color;
-                      }
-                    ]]]
-                  tooltip: "[[[ return variables.cell3.button.tooltip ]]]"
-                  icon: "[[[ return variables.cell3.button.icon ]]]"
-                  actions: "[[[ return variables.cell3.button.actions ]]]"
 
-card_remotecontrol_firestick_group_arrows_and_volume:
-  type: "custom:button-card"
-  template: "layout_sectionsection_section"
+vars_remotecontrol_firestick_group_arrow_select:
   variables:
-    entity_id:
-  styles:
-    card:
-      - background-color: "var(--primary-background-color)"
-  custom_fields:
-    section1:
-      card:
-        type: "custom:button-card"
-        template: "card_remotecontrol_firestick_group_arrow_select"
-        variables:
-          entity_id: >
-            [[[
-              if (variables?.entity_id) {
-                return variables.entity_id;
-              }
-            ]]]
-        styles:
-          card:
-            - border-radius: "var(--border-radius)"
-            - box-shadow: "var(--box-shadow)"
-    section2:
-      card:
-        type: "custom:button-card"
-        template: "card_remotecontrol_firestick_group_volume"
-        variables:
-          entity_id: >
-            [[[
-              if (variables?.entity_id) {
-                return variables.entity_id;
-              }
-            ]]]
-        styles:
-          card:
-            - border-radius: "var(--border-radius)"
-            - box-shadow: "var(--box-shadow)"
-
-card_remotecontrol_firestick_group_arrow_select:
-  type: "custom:button-card"
-  template: "layout_group"
-  variables:
-    entity_id:
-    background_color:
+    entity_id_arrow_tap:
+    entity_id_arrow_double_tap:
+    entity_id_arrow_hold:
     cell1:
       button:
         entity_id:
@@ -645,7 +351,7 @@ card_remotecontrol_firestick_group_arrow_select:
           name: "mdi:arrow-up-bold"
           color:
           size:
-        tooltip: "Arrow up. Primary device controlled using single tap, secondary using double-tap."
+        tooltip: "Arrow Up"
         actions:
           tap:
             entity_id:
@@ -685,7 +391,7 @@ card_remotecontrol_firestick_group_arrow_select:
           name: "mdi:arrow-left-bold"
           color:
           size:
-        tooltip: "Arrow left. Primary device controlled using single tap, secondary using double-tap."
+        tooltip: "Arrow Left"
         actions:
           tap:
             entity_id:
@@ -725,7 +431,7 @@ card_remotecontrol_firestick_group_arrow_select:
           name: "mdi:circle-slice-8"
           color:
           size:
-        tooltip: "Select. Primary device controlled using single tap, secondary using double-tap."
+        tooltip: "Select"
         actions:
           tap:
             entity_id:
@@ -765,7 +471,7 @@ card_remotecontrol_firestick_group_arrow_select:
           name: "mdi:arrow-right-bold"
           color:
           size:
-        tooltip: "Arrow right. Primary device controlled using single tap, secondary using double-tap."
+        tooltip: "Arrow Right"
         actions:
           tap:
             entity_id:
@@ -805,7 +511,7 @@ card_remotecontrol_firestick_group_arrow_select:
           name: "mdi:arrow-down-bold"
           color:
           size:
-        tooltip: "Arrow down. Primary device controlled using single tap, secondary using double-tap."
+        tooltip: "Arrow Down"
         actions:
           tap:
             entity_id:
@@ -835,165 +541,12 @@ card_remotecontrol_firestick_group_arrow_select:
             harmony:
               device:
               delay:
-  custom_fields:
-    group1:
-      card:
-        type: "custom:button-card"
-        template: "layout_gap_cell_gap-cell_cell_cell-gap_cell_gap"
-        custom_fields:
-          cell1:
-            card:
-              type: "custom:button-card"
-              template: >
-                [[[
-                  var templates = ['remotecontrol_button'];
-                  if (variables.cell1.button.templates != null) {
-                    return ['remotecontrol_button'].concat(variables.cell1.button.templates);
-                  }
-                  return templates;
-                ]]]
-              variables:
-                button:
-                  entity_id: "[[[ return variables.entity_id ]]]"
-                  background_color: >
-                    [[[
-                      if (variables.cell1.button.background_color == null) {
-                        if (variables.background_color == null) {
-                          return null;
-                        } else {
-                          return variables.background_color;
-                        }
-                      } else {
-                        return variables.cell1.button.background_color;
-                      }
-                    ]]]
-                  tooltip: "[[[ return variables.cell1.button.tooltip ]]]"
-                  icon: "[[[ return variables.cell1.button.icon ]]]"
-                  actions: "[[[ return variables.cell1.button.actions ]]]"
-          cell2:
-            card:
-              type: "custom:button-card"
-              template: >
-                [[[
-                  var templates = ['remotecontrol_button'];
-                  if (variables.cell2.button.templates != null) {
-                    return ['remotecontrol_button'].concat(variables.cell2.button.templates);
-                  }
-                  return templates;
-                ]]]
-              variables:
-                button:
-                  entity_id: "[[[ return variables.entity_id ]]]"
-                  background_color: >
-                    [[[
-                      if (variables.cell2.button.background_color == null) {
-                        if (variables.background_color == null) {
-                          return null;
-                        } else {
-                          return variables.background_color;
-                        }
-                      } else {
-                        return variables.cell2.button.background_color;
-                      }
-                    ]]]
-                  tooltip: "[[[ return variables.cell2.button.tooltip ]]]"
-                  icon: "[[[ return variables.cell2.button.icon ]]]"
-                  actions: "[[[ return variables.cell2.button.actions ]]]"
-          cell3:
-            card:
-              type: "custom:button-card"
-              template: >
-                [[[
-                  var templates = ['remotecontrol_button'];
-                  if (variables.cell3.button.templates != null) {
-                    return ['remotecontrol_button'].concat(variables.cell3.button.templates);
-                  }
-                  return templates;
-                ]]]
-              variables:
-                button:
-                  entity_id: "[[[ return variables.entity_id ]]]"
-                  background_color: >
-                    [[[
-                      if (variables.cell3.button.background_color == null) {
-                        if (variables.background_color == null) {
-                          return null;
-                        } else {
-                          return variables.background_color;
-                        }
-                      } else {
-                        return variables.cell3.button.background_color;
-                      }
-                    ]]]
-                  tooltip: "[[[ return variables.cell3.button.tooltip ]]]"
-                  icon: "[[[ return variables.cell3.button.icon ]]]"
-                  actions: "[[[ return variables.cell3.button.actions ]]]"
-          cell4:
-            card:
-              type: "custom:button-card"
-              template: >
-                [[[
-                  var templates = ['remotecontrol_button'];
-                  if (variables.cell4.button.templates != null) {
-                    return ['remotecontrol_button'].concat(variables.cell4.button.templates);
-                  }
-                  return templates;
-                ]]]
-              variables:
-                button:
-                  entity_id: "[[[ return variables.entity_id ]]]"
-                  background_color: >
-                    [[[
-                      if (variables.cell4.button.background_color == null) {
-                        if (variables.background_color == null) {
-                          return null;
-                        } else {
-                          return variables.background_color;
-                        }
-                      } else {
-                        return variables.cell4.button.background_color;
-                      }
-                    ]]]
-                  tooltip: "[[[ return variables.cell4.button.tooltip ]]]"
-                  icon: "[[[ return variables.cell4.button.icon ]]]"
-                  actions: "[[[ return variables.cell4.button.actions ]]]"
-          cell5:
-            card:
-              type: "custom:button-card"
-              template: >
-                [[[
-                  var templates = ['remotecontrol_button'];
-                  if (variables.cell5.button.templates != null) {
-                    return ['remotecontrol_button'].concat(variables.cell5.button.templates);
-                  }
-                  return templates;
-                ]]]
-              variables:
-                button:
-                  entity_id: "[[[ return variables.entity_id ]]]"
-                  background_color: >
-                    [[[
-                      if (variables.cell5.button.background_color == null) {
-                        if (variables.background_color == null) {
-                          return null;
-                        } else {
-                          return variables.background_color;
-                        }
-                      } else {
-                        return variables.cell5.button.background_color;
-                      }
-                    ]]]
-                  tooltip: "[[[ return variables.cell5.button.tooltip ]]]"
-                  icon: "[[[ return variables.cell5.button.icon ]]]"
-                  actions: "[[[ return variables.cell5.button.actions ]]]"
 
-card_remotecontrol_firestick_group_volume:
-  type: "custom:button-card"
-  template:
-    - "layout_row_row_row"
+vars_remotecontrol_firestick_group_volume:
   variables:
-    entity_id:
-    background_color:
+    entity_id_volume_tap:
+    entity_id_volume_double_tap:
+    entity_id_volume_hold:
     row1:
       button:
         entity_id:
@@ -1004,7 +557,7 @@ card_remotecontrol_firestick_group_volume:
           name: "mdi:volume-plus"
           color:
           size:
-        tooltip: "Increase volume"
+        tooltip: "Volume Up"
         actions:
           tap:
             entity_id:
@@ -1044,7 +597,7 @@ card_remotecontrol_firestick_group_volume:
           name: "mdi:volume-minus"
           color:
           size:
-        tooltip: "Decrease Volume"
+        tooltip: "Volume Down"
         actions:
           tap:
             entity_id:
@@ -1084,7 +637,7 @@ card_remotecontrol_firestick_group_volume:
           name: "mdi:volume-off"
           color:
           size:
-        tooltip: "Volume Mute. If enabled the button is red."
+        tooltip: "Volume Mute"
         actions:
           tap:
             entity_id:
@@ -1114,101 +667,100 @@ card_remotecontrol_firestick_group_volume:
             harmony:
               device:
               delay:
-  custom_fields:
-    row1:
-      card:
-        type: "custom:button-card"
-        template: >
-          [[[
-            var templates = ['remotecontrol_button'];
-            if (variables.row1.button.templates != null) {
-              return ['remotecontrol_button'].concat(variables.row1.button.templates);
-            }
-            return templates;
-          ]]]
-        variables:
-          button:
-            entity_id: "[[[ return variables.entity_id ]]]"
-            background_color: >
-              [[[
-                if (variables.row1.button.background_color == null) {
-                  if (variables.background_color == null) {
-                    return null;
-                  } else {
-                    return variables.background_color;
-                  }
-                } else {
-                  return variables.row1.button.background_color;
-                }
-              ]]]
-            tooltip: "[[[ return variables.row1.button.tooltip ]]]"
-            icon: "[[[ return variables.row1.button.icon ]]]"
-            actions: "[[[ return variables.row1.button.actions ]]]"
-    row2:
-      card:
-        type: "custom:button-card"
-        template: >
-          [[[
-            var templates = ['remotecontrol_button'];
-            if (variables.row2.button.templates != null) {
-              return ['remotecontrol_button'].concat(variables.row2.button.templates);
-            }
-            return templates;
-          ]]]
-        variables:
-          button:
-            entity_id: "[[[ return variables.entity_id ]]]"
-            background_color: >
-              [[[
-                if (variables.row2.button.background_color == null) {
-                  if (variables.background_color == null) {
-                    return null;
-                  } else {
-                    return variables.background_color;
-                  }
-                } else {
-                  return variables.row2.button.background_color;
-                }
-              ]]]
-            tooltip: "[[[ return variables.row2.button.tooltip ]]]"
-            icon: "[[[ return variables.row2.button.icon ]]]"
-            actions: "[[[ return variables.row2.button.actions ]]]"
-    row3:
-      card:
-        type: "custom:button-card"
-        template: >
-          [[[
-            var templates = ['remotecontrol_button'];
-            if (variables.row3.button.templates != null) {
-              return ['remotecontrol_button'].concat(variables.row3.button.templates);
-            }
-            return templates;
-          ]]]
-        variables:
-          button:
-            entity_id: "[[[ return variables.entity_id ]]]"
-            background_color: >
-              [[[
-                if (variables.row3.button.background_color == null) {
-                  if (variables.background_color == null) {
-                    return null;
-                  } else {
-                    return variables.background_color;
-                  }
-                } else {
-                  return variables.row3.button.background_color;
-                }
-              ]]]
-            tooltip: "[[[ return variables.row3.button.tooltip ]]]"
-            icon: "[[[ return variables.row3.button.icon ]]]"
-            actions: "[[[ return variables.row3.button.actions ]]]"
 
-card_remotecontrol_firestick_group_numbers:
-  type: "custom:button-card"
-  template: "button_grid_4_by_4"
+vars_remotecontrol_firestick_group_channel_selector:
   variables:
-    entity_id:
-    background_color:
+    entity_id_channel_tap:
+    entity_id_channel_double_tap:
+    entity_id_channel_hold:
+    doublerow1:
+      button:
+        entity_id:
+        background_color:
+        templates:
+          - "green_text"
+        icon:
+          name: "mdi:chevron-up"
+          color:
+          size:
+        name: "Ch"
+        tooltip: "Channel Up"
+        actions:
+          tap:
+            entity_id:
+            action: "none"
+            service: "call-service"
+            command: "input keyevent 89"
+            haptic: "none"
+            harmony:
+              device:
+              delay:
+          double_tap:
+            entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "none"
+            harmony:
+              device:
+              delay:
+          hold:
+            entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "selection"
+            repeat:
+            harmony:
+              device:
+              delay:
+    doublerow2:
+      button:
+        entity_id:
+        background_color:
+        templates:
+          - "green_text"
+        icon:
+          name: "mdi:chevron-down"
+          color:
+          size:
+        name: "Ch"
+        tooltip: "Channel Down"
+        actions:
+          tap:
+            entity_id:
+            action: "none"
+            service: "call-service"
+            command: "input keyevent 85"
+            haptic: "none"
+            harmony:
+              device:
+              delay:
+          double_tap:
+            entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "none"
+            harmony:
+              device:
+              delay:
+          hold:
+            entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "selection"
+            repeat:
+            harmony:
+              device:
+              delay:
+
+vars_remotecontrol_firestick_group_numbers:
+  variables:
+    entity_id_numbers_tap:
+    entity_id_numbers_double_tap:
+    entity_id_numbers_hold:
     row1:
       entity_id:
       background_color:
@@ -1622,52 +1174,11 @@ card_remotecontrol_firestick_group_numbers:
                 device:
                 delay:
 
-  custom_fields:
-    row1:
-      card:
-        type: "custom:button-card"
-        template: "button_row_3_column"
-        variables:
-          entity_id: "[[[ return variables.entity_id ]]]"
-          background_color: "[[[ return variables.background_color ]]]"
-          cell1: "[[[ return variables.row1.cell1 ]]]"
-          cell2: "[[[ return variables.row1.cell2 ]]]"
-          cell3: "[[[ return variables.row1.cell3 ]]]"
-    row2:
-      card:
-        type: "custom:button-card"
-        template: "button_row_3_column"
-        variables:
-          entity_id: "[[[ return variables.entity_id ]]]"
-          background_color: "[[[ return variables.background_color ]]]"
-          cell1: "[[[ return variables.row2.cell1 ]]]"
-          cell2: "[[[ return variables.row2.cell2 ]]]"
-          cell3: "[[[ return variables.row2.cell3 ]]]"
-    row3:
-      card:
-        type: "custom:button-card"
-        template: "button_row_3_column"
-        variables:
-          entity_id: "[[[ return variables.entity_id ]]]"
-          background_color: "[[[ return variables.background_color ]]]"
-          cell1: "[[[ return variables.row3.cell1 ]]]"
-          cell2: "[[[ return variables.row3.cell2 ]]]"
-          cell3: "[[[ return variables.row3.cell3 ]]]"
-    row4:
-      card:
-        type: "custom:button-card"
-        template: "button_row_3_column_gap_cell_gap"
-        variables:
-          entity_id: "[[[ return variables.entity_id ]]]"
-          background_color: "[[[ return variables.background_color ]]]"
-          cell1: "[[[ return variables.row4.cell1 ]]]"
-
-card_remotecontrol_firestick_group_apps:
-  type: "custom:button-card"
-  template: "button_grid_4_by_4"
+vars_remotecontrol_firestick_group_apps:
   variables:
-    entity_id:
-    background_color:
+    entity_id_apps_tap:
+    entity_id_apps_double_tap:
+    entity_id_apps_hold:
     row1:
       entity_id:
       background_color:
@@ -1680,7 +1191,7 @@ card_remotecontrol_firestick_group_apps:
             name: "si:netflix"
             color: "#E50914"
             size:
-          tooltip:
+          tooltip: "Netflix"
           actions:
             tap:
               entity_id:
@@ -1719,7 +1230,7 @@ card_remotecontrol_firestick_group_apps:
             name: "si:prime"
             color: "#FFFFFF"
             size: "90%"
-          tooltip:
+          tooltip: "Amazon Prime"
           actions:
             tap:
               entity_id:
@@ -1797,7 +1308,7 @@ card_remotecontrol_firestick_group_apps:
             name: "si:youtube"
             color: "#FF0000"
             size: "85%"
-          tooltip:
+          tooltip: "YouTube"
           actions:
             tap:
               entity_id:
@@ -1839,7 +1350,7 @@ card_remotecontrol_firestick_group_apps:
             name: "si:plex"
             color: "#E5A00D"
             size:
-          tooltip:
+          tooltip: "Plex"
           actions:
             tap:
               entity_id:
@@ -1878,7 +1389,7 @@ card_remotecontrol_firestick_group_apps:
             name: "si:spotify"
             color: "#1DB954"
             size:
-          tooltip:
+          tooltip: "Spotify"
           actions:
             tap:
               entity_id:
@@ -1917,7 +1428,7 @@ card_remotecontrol_firestick_group_apps:
             name: "si:appletv"
             color: "#FFFFFF"
             size: "85%"
-          tooltip:
+          tooltip: "Apple TV"
           actions:
             tap:
               entity_id:
@@ -1956,7 +1467,7 @@ card_remotecontrol_firestick_group_apps:
             name: "si:bbciplayer"
             color: "#F54997"
             size:
-          tooltip:
+          tooltip: "BBC iPlayer"
           actions:
             tap:
               entity_id:
@@ -1998,7 +1509,7 @@ card_remotecontrol_firestick_group_apps:
             name: "si:ubiquiti"
             color: "#0559C9"
             size:
-          tooltip:
+          tooltip: "Unifi Protect"
           actions:
             tap:
               entity_id:
@@ -2037,7 +1548,7 @@ card_remotecontrol_firestick_group_apps:
             name: "si:youtubemusic"
             color: "#FF0000"
             size:
-          tooltip:
+          tooltip: "YouTube Music"
           actions:
             tap:
               entity_id:
@@ -2076,7 +1587,7 @@ card_remotecontrol_firestick_group_apps:
             name: "si:applemusic"
             color: "#FA243C"
             size:
-          tooltip:
+          tooltip: "Apple Music"
           actions:
             tap:
               entity_id:
@@ -2115,7 +1626,7 @@ card_remotecontrol_firestick_group_apps:
             name: "si:googleplay"
             color: "#414141"
             size:
-          tooltip:
+          tooltip: "Google Play"
           actions:
             tap:
               entity_id:
@@ -2157,7 +1668,7 @@ card_remotecontrol_firestick_group_apps:
             name: "si:pluralsight"
             color: "#FFFFFF"
             size:
-          tooltip:
+          tooltip: "Pluralsight"
           actions:
             tap:
               entity_id:
@@ -2196,7 +1707,7 @@ card_remotecontrol_firestick_group_apps:
             name: "si:twitch"
             color: "#FFFFFF"
             size:
-          tooltip:
+          tooltip: "Twitch"
           actions:
             tap:
               entity_id:
@@ -2235,7 +1746,7 @@ card_remotecontrol_firestick_group_apps:
             name: "si:ted"
             color: "#E62B1E"
             size: "85%"
-          tooltip:
+          tooltip: "TED"
           actions:
             tap:
               entity_id:
@@ -2274,7 +1785,7 @@ card_remotecontrol_firestick_group_apps:
             name: "si:vlcmediaplayer"
             color: "#FFFFFF"
             size:
-          tooltip:
+          tooltip: "VLC Media Player"
           actions:
             tap:
               entity_id:
@@ -2304,49 +1815,3 @@ card_remotecontrol_firestick_group_apps:
               harmony:
                 device:
                 delay:
-
-  custom_fields:
-    row1:
-      card:
-        type: "custom:button-card"
-        template: "button_row_4_column"
-        variables:
-          entity_id: "[[[ return variables.entity_id ]]]"
-          background_color: "[[[ return variables.background_color ]]]"
-          cell1: "[[[ return variables.row1.cell1 ]]]"
-          cell2: "[[[ return variables.row1.cell2 ]]]"
-          cell3: "[[[ return variables.row1.cell3 ]]]"
-          cell4: "[[[ return variables.row1.cell4 ]]]"
-    row2:
-      card:
-        type: "custom:button-card"
-        template: "button_row_4_column"
-        variables:
-          entity_id: "[[[ return variables.entity_id ]]]"
-          background_color: "[[[ return variables.background_color ]]]"
-          cell1: "[[[ return variables.row2.cell1 ]]]"
-          cell2: "[[[ return variables.row2.cell2 ]]]"
-          cell3: "[[[ return variables.row2.cell3 ]]]"
-          cell4: "[[[ return variables.row2.cell4 ]]]"
-    row3:
-      card:
-        type: "custom:button-card"
-        template: "button_row_4_column"
-        variables:
-          entity_id: "[[[ return variables.entity_id ]]]"
-          background_color: "[[[ return variables.background_color ]]]"
-          cell1: "[[[ return variables.row3.cell1 ]]]"
-          cell2: "[[[ return variables.row3.cell2 ]]]"
-          cell3: "[[[ return variables.row3.cell3 ]]]"
-          cell4: "[[[ return variables.row3.cell4 ]]]"
-    row4:
-      card:
-        type: "custom:button-card"
-        template: "button_row_4_column"
-        variables:
-          entity_id: "[[[ return variables.entity_id ]]]"
-          background_color: "[[[ return variables.background_color ]]]"
-          cell1: "[[[ return variables.row4.cell1; ]]]"
-          cell2: "[[[ return variables.row4.cell2; ]]]"
-          cell3: "[[[ return variables.row4.cell3; ]]]"
-          cell4: "[[[ return variables.row4.cell4; ]]]"
