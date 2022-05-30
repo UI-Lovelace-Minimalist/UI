@@ -1,0 +1,8 @@
+---
+ulm_custom_card_eraycetinay_lock_language_variables:
+  variables:
+    custom_card_eraycetinay_lock_locked: "bloqueado"
+    custom_card_eraycetinay_lock_unlocked: "desbloqueado"
+    custom_card_eraycetinay_lock_locking: "bloqueando"
+    custom_card_eraycetinay_lock_unlocking: "desbloqueando"
+    custom_card_eraycetinay_lock_unavailable: "no disponible"
