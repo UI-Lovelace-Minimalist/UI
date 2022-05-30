@@ -1,0 +1,43 @@
+{
+    "title": "UI Lovelace Minimalist",
+    "config": {
+        "step": {
+            "user": {
+                "title": "UI Lovelace Minimalist Einstellungen",
+                "description": "",
+                "data": {
+                    "language": "Sprache",
+                    "sidepanel_enabled": "Erstellung eines Eintrages in der Seitenleiste aktivieren.",
+                    "sidepanel_icon": "Icon Seitenleiste",
+                    "sidepanel_title": "Titel Seitenleiste",
+                    "theme": "Thema",
+                    "include_other_cards": "Individuelle Karten, die für die Nutzung benötigt werden, ebenfalls laden."
+                }
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "Es ist nur eine Konfiguration von UI Lovelace Minimalist erlaubt.",
+            "not_setup": "UI Lovelace Minimalist ist nicht eingerichtet."
+        }
+    },
+    "options": {
+        "step": {
+            "user": {
+                "title": "UI Lovelace Minimalist Einstellungen",
+                "description": "",
+                "data": {
+                    "language": "Sprache",
+                    "sidepanel_enabled": "Erstellung eines Eintrages in der Seitenleiste aktivieren.",
+                    "sidepanel_icon": "Icon Seitenleiste",
+                    "sidepanel_title": "Titel Seitenleiste",
+                    "theme": "Thema",
+                    "include_other_cards": "Individuelle Karten, die für die Nutzung benötigt werden, ebenfalls laden."
+                }
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "Es ist nur eine Konfiguration von UI Lovelace Minimalist erlaubt.",
+            "not_setup": "UI Lovelace Minimalist ist nicht eingerichtet."
+        }
+    }
+}
