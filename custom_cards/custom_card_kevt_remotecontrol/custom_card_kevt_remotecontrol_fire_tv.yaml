@@ -1304,7 +1304,6 @@ vars_remotecontrol_firestick_group_apps:
           entity_id:
           background_color: "#FFFFFF"
           templates:
-            - "blue_text"
           icon:
             name: "si:youtube"
             color: "#FF0000"
