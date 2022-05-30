@@ -57,6 +57,8 @@ This is an alternative room card to the standard one that is more rectangular th
 
 To add both temperature and humidity to the card enter this code into the label section:
 
+![image](https://user-images.githubusercontent.com/51805396/170957237-4025b2c0-2532-49e6-a908-d45c1f7a0728.png)
+
 ```
 '[[[ return states["sensor.room_temperature"].state +"°C " + states["sensor.room_humidity"].state + "%"]]]'
 ```
