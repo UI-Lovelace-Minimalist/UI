@@ -10,6 +10,9 @@
                     "sidepanel_enabled": "Abilita la creazione di una nuova Dashboard nel Pannello Laterale.",
                     "sidepanel_icon": "Icona Pannello Laterale",
                     "sidepanel_title": "Titolo Pannello Laterale",
+                    "advanced_ui_enabled": "Enable advanced Dashboard with popup splitview",
+                    "advanced_ui_title": "Advanced panel title",
+                    "advanced_ui_icon": "Advanced panel icon",
                     "theme": "Tema",
                     "include_other_cards": "Inlcudere le risorse da cui dipendono le card personalizzate."
                 }
@@ -30,6 +33,9 @@
                     "sidepanel_enabled": "Abilita la creazione di una nuova Dashboard nel Pannello Laterale.",
                     "sidepanel_icon": "Icona Pannello Laterale",
                     "sidepanel_title": "Titolo Pannello Laterale",
+                    "advanced_ui_enabled": "Enable advanced Dashboard with popup splitview",
+                    "advanced_ui_title": "Advanced panel title",
+                    "advanced_ui_icon": "Advanced panel icon",
                     "theme": "Tema",
                     "include_other_cards": "Inlcudere le risorse da cui dipendono le card personalizzate."
                 }
