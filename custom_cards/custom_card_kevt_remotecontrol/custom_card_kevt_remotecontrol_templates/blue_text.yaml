@@ -7,5 +7,5 @@ blue_text:
       - color: "rgba(var(--color-blue-text),1)"
     name:
       - color: "rgba(var(--color-blue-text),1)"
-    img_cell:
-      - background-color: "rgba(var(--color-theme),0.05)"
+    # img_cell:
+    #   - background-color: "rgba(var(--color-theme),0.05)"

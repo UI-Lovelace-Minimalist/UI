@@ -3,10 +3,31 @@
 #####  BUTTON TEMPLATES                             ####
 ########################################################
 
-remotecontrol_button:
+remotecontrol_1w2h_icon_name_button:
   type: "custom:button-card"
   template:
-    - "layout_button"
+    - "layout_common_button"
+    - "layout_1w2h_button"
+    - "layout_1w2h_icon_name_button"
+    - "remotecontrol_button"
+
+remotecontrol_1w2h_name_icon_button:
+  type: "custom:button-card"
+  template:
+    - "layout_common_button"
+    - "layout_1w2h_button"
+    - "layout_1w2h_name_icon_button"
+    - "remotecontrol_button"
+
+remotecontrol_1w1h_button:
+  type: "custom:button-card"
+  template:
+    - "layout_common_button"
+    - "layout_1w1h_button"
+    - "remotecontrol_button"
+
+remotecontrol_button:
+  type: "custom:button-card"
   variables:
     button:
   card:
@@ -15,12 +36,15 @@ remotecontrol_button:
       - "remotecontrol_button_presses"
     variables:
       entity_id:
+      entity_id_tap:
+      entity_id_double_tap:
+      entity_id_hold:
       button_actions:
         tap:
           entity_id: >
             [[[
               if (variables.button.actions.tap.entity_id == null) {
-                return variables.button.entity_id;
+                return variables.button.entity_id_tap;
               } else {
                 return variables.button.actions.tap.entity_id;
               }
@@ -32,7 +56,7 @@ remotecontrol_button:
           entity_id: >
             [[[
               if (variables.button.actions.double_tap.entity_id == null) {
-                return variables.button.entity_id;
+                return variables.button.entity_id_double_tap;
               } else {
                 return variables.button.actions.double_tap.entity_id;
               }
@@ -44,7 +68,7 @@ remotecontrol_button:
           entity_id: >
             [[[
               if (variables.button.actions.hold.entity_id == null) {
-                return variables.button.entity_id;
+                return variables.button.entity_id_hold;
               } else {
                 return variables.button.actions.hold.entity_id;
               }
@@ -53,7 +77,18 @@ remotecontrol_button:
           service: "[[[ return variables.button.actions.hold.service ]]]"
           haptic: "[[[ return variables.button.actions.hold.haptic ]]]"
           repeat: "[[[ return variables.button.actions.hold.repeat ]]]"
-  tooltip: "[[[ return variables.button.tooltip; ]]]"
+  tooltip: >
+    [[[ 
+      if (variables.button.tooltip != null) {
+        return variables.button.tooltip;
+      }
+    ]]]
+  name: >
+    [[[ 
+      if (variables.button.name != null) {
+        return variables.button.name;
+      }
+    ]]]
   icon: "[[[ return variables.button.icon.name; ]]]"
   styles:
     icon:
@@ -76,11 +111,13 @@ remotecontrol_button:
           ]]]
     img_cell:
       - background-color: "[[[ return variables.button.background_color ]]]"
+    name:
+      - color: "[[[ return variables.button.icon.color ]]]"
   color: "var(--google-grey)"
 
 remotecontrol_button_presses:
   type: "custom:button-card"
-  template: "layout_button"
+  template: "layout_common_button"
   variables:
     button_actions:
   tap_action:
@@ -104,7 +141,7 @@ remotecontrol_button_presses:
 
 remotecontrol_button_action:
   type: "custom:button-card"
-  template: "layout_button"
+  template: "layout_common_button"
   variables:
     button_action:
   action: >
