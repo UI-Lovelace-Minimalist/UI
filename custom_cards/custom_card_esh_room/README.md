@@ -14,6 +14,7 @@ hide:
 
 - Author: Everything Smart Home - 2022
 - Full credit to user [bms on the forum](https://community.home-assistant.io/t/lovelace-ui-minimalist/322687/192), they created it in full, I just put it into a PR as the basis
+- beasthouse on the EverythingSmartHome discord channel for emoji/humidity customization
 - Version: 1.0.0
 
 ## Changelog
@@ -69,8 +70,6 @@ For further customization Emoji can be added to distiguish between multiple sens
 label: '[[[ return["🌡️"] + states["sensor.room_temperature"].state +"°C  💧"+states["sensor.room_humidity"].state + "%"]]]'
 ```
 Replace 🌡️ and 💧 with desired Emoji and sensor.room_temperature/sensor.room_humidity to match your HA entities
-
-Credit to beasthouse on the EverythingSmartHome discord channel for this customization
 
 ## Template code
 
