@@ -58,9 +58,17 @@ This is an alternative room card to the standard one that is more rectangular th
 To add both temperature and humidity to the card enter this code into the label section:
 
 ```
-'[[[ return states["sensor.master_bedroom_temperature_humidity_sensor_temperature"].state +"°C " + states["sensor.master_bedroom_temperature_humidity_sensor_humidity"].state + "%"]]]'
+'[[[ return states["sensor.room_temperature"].state +"°C " + states["sensor.room_humidity"].state + "%"]]]'
 ```
-Credit to beasthouse on the EverythingSmartHome discord channel
+
+For further customization Emoji can be added to distiguish between multiple sensors:
+
+```
+label: '[[[ return["🌡️"] + states["sensor.room_temperature"].state +"°C  💧"+states["sensor.room_humidity"].state + "%"]]]'
+```
+Replace 🌡️ and 💧 with desired Emoji and sensor.room_temperature/sensor.room_humidity to match your HA entities
+
+Credit to beasthouse on the EverythingSmartHome discord channel for this customization
 
 ## Template code
 
