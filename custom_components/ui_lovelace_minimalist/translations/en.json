@@ -10,9 +10,9 @@
                     "sidepanel_enabled": "Enable creation of a Dashboard entry in the Side panel.",
                     "sidepanel_icon": "Side panel icon",
                     "sidepanel_title": "Side panel title",
-                    "advanced_enabled": "Enable advanced Dashboard with popup splitview",
-                    "advanced_title": "Advanced panel title",
-                    "advanced_icon": "Advanced panel icon",
+                    "advanced_ui_enabled": "Enable advanced Dashboard with popup splitview",
+                    "advanced_ui_title": "Advanced panel title",
+                    "advanced_ui_icon": "Advanced panel icon",
                     "theme": "Theme",
                     "include_other_cards": "Include custom card resources it's depending on."
                 }
@@ -33,9 +33,9 @@
                     "sidepanel_enabled": "Enable creation of a Dashboard entry in the Side panel.",
                     "sidepanel_icon": "Side panel icon",
                     "sidepanel_title": "Side panel title",
-                    "advanced_enabled": "Enable advanced Dashboard with popup splitview",
-                    "advanced_title": "Advanced panel title",
-                    "advanced_icon": "Advanced panel icon",
+                    "advanced_ui_enabled": "Enable advanced Dashboard with popup splitview",
+                    "advanced_ui_title": "Advanced panel title",
+                    "advanced_ui_icon": "Advanced panel icon",
                     "theme": "Theme",
                     "include_other_cards": "Include custom card resources it's depending on."
                 }

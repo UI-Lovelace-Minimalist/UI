@@ -30,9 +30,9 @@ def load_dashboard(hass: HomeAssistant, ulm: UlmBase):
     adv_dashboard_url = "advanced-dash"
     adv_dashboard_config = {
         "mode": "yaml",
-        "icon": ulm.configuration.advanced_icon,
-        "title": ulm.configuration.advanced_title,
-        "filename": "ui_lovelace_minimalist/dashboard/advanced-dash/test.yaml",
+        "icon": ulm.configuration.advanced_ui_icon,
+        "title": ulm.configuration.advanced_ui_title,
+        "filename": "ui_lovelace_minimalist/dashboard/advanced-dash/advanced-ui.yaml",
         "show_in_sidebar": True,
         "require_admin": False,
     }
@@ -48,7 +48,7 @@ def load_dashboard(hass: HomeAssistant, ulm: UlmBase):
         if dashboard_url in hass.data["lovelace"]["dashboards"]:
             async_remove_panel(hass, "ui-lovelace-minimalist")
 
-    if ulm.configuration.advanced_enabled:
+    if ulm.configuration.advanced_ui_enabled:
         hass.data["lovelace"]["dashboards"][adv_dashboard_url] = LovelaceYAML(
             hass, adv_dashboard_url, adv_dashboard_config
         )
@@ -56,4 +56,4 @@ def load_dashboard(hass: HomeAssistant, ulm: UlmBase):
         _register_panel(hass, adv_dashboard_url, "yaml", adv_dashboard_config, True)
     else:
         if adv_dashboard_url in hass.data["lovelace"]["dashboards"]:
-            async_remove_panel(hass, "ui-lovelace-minimalist")
+            async_remove_panel(hass, "advanced-dash")

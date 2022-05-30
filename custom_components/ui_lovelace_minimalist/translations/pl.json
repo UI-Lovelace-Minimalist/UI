@@ -10,6 +10,9 @@
                     "sidepanel_enabled": "Utwórz nowy Dashboard w panelu bocznym.",
                     "sidepanel_icon": "Ikona w panelu bocznym",
                     "sidepanel_title": "Tytuł w panelu bocznym",
+                    "advanced_ui_enabled": "Enable advanced Dashboard with popup splitview",
+                    "advanced_ui_title": "Advanced panel title",
+                    "advanced_ui_icon": "Advanced panel icon",
                     "theme": "Motyw",
                     "include_other_cards": "Dołącz zasoby wymagane przez niestandardowe karty."
                 }
@@ -30,6 +33,9 @@
                     "sidepanel_enabled": "Utwórz nowy Dashboard w panelu bocznym.",
                     "sidepanel_icon": "Ikona w panelu bocznym",
                     "sidepanel_title": "Tytuł w panelu bocznym",
+                    "advanced_ui_enabled": "Enable advanced Dashboard with popup splitview",
+                    "advanced_ui_title": "Advanced panel title",
+                    "advanced_ui_icon": "Advanced panel icon",
                     "theme": "Motyw",
                     "include_other_cards": "Dołącz zasoby wymagane przez niestandardowe karty."
                 }
