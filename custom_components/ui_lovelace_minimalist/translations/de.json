@@ -10,6 +10,9 @@
                     "sidepanel_enabled": "Erstellung eines Eintrages in der Seitenleiste aktivieren.",
                     "sidepanel_icon": "Icon Seitenleiste",
                     "sidepanel_title": "Titel Seitenleiste",
+                    "advanced_ui_enabled": "Enable advanced Dashboard with popup splitview",
+                    "advanced_ui_title": "Advanced panel title",
+                    "advanced_ui_icon": "Advanced panel icon",
                     "theme": "Thema",
                     "include_other_cards": "Individuelle Karten, die für die Nutzung benötigt werden, ebenfalls laden."
                 }
@@ -30,6 +33,9 @@
                     "sidepanel_enabled": "Erstellung eines Eintrages in der Seitenleiste aktivieren.",
                     "sidepanel_icon": "Icon Seitenleiste",
                     "sidepanel_title": "Titel Seitenleiste",
+                    "advanced_ui_enabled": "Enable advanced Dashboard with popup splitview",
+                    "advanced_ui_title": "Advanced panel title",
+                    "advanced_ui_icon": "Advanced panel icon",
                     "theme": "Thema",
                     "include_other_cards": "Individuelle Karten, die für die Nutzung benötigt werden, ebenfalls laden."
                 }

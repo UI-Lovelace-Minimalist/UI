@@ -10,6 +10,9 @@
                     "sidepanel_enabled": "Zobraziť v postrannom paneli",
                     "sidepanel_icon": "Ikona v postrannom paneli",
                     "sidepanel_title": "Názov v postrannom paneli",
+                    "advanced_ui_enabled": "Enable advanced Dashboard with popup splitview",
+                    "advanced_ui_title": "Advanced panel title",
+                    "advanced_ui_icon": "Advanced panel icon",
                     "theme": "Téma",
                     "include_other_cards": "Do zdrojov zahrnúť vlastné karty potrebné pre túto integráciu."
                 }
@@ -30,6 +33,9 @@
                     "sidepanel_enabled": "Zobraziť v postrannom paneli",
                     "sidepanel_icon": "Ikona v postrannom paneli",
                     "sidepanel_title": "Názov v postrannom paneli",
+                    "advanced_ui_enabled": "Enable advanced Dashboard with popup splitview",
+                    "advanced_ui_title": "Advanced panel title",
+                    "advanced_ui_icon": "Advanced panel icon",
                     "theme": "Téma",
                     "include_other_cards": "Do zdrojov zahrnúť vlastné karty potrebné pre túto integráciu."
                 }

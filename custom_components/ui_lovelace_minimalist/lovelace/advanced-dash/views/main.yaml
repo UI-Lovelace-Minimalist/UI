@@ -1,0 +1,30 @@
+---
+type: "custom:layout-card"
+layout_type: "custom:grid-layout"
+layout:
+  # Tablet portrait
+  grid-template-columns: "1fr 1fr 1fr 1fr 1fr 1fr"
+  grid-template-areas: |
+    "text text text weather weather weather"
+    "person person person weather weather weather"
+    "welcome welcome welcome welcome welcome welcome"
+    "title1 title1 title1 title1 title1 title1"
+    "card1 card1 card2 card2 card3 card3"
+    "title2 title2 title2 title2 title2 title2"
+    "card4 card4 card5 card5 card6 card6"
+  mediaquery:
+    # Mobile
+    "(max-width: 800px)":
+      grid-template-columns: "1fr 1fr"
+      grid-template-areas: |
+        "welcome welcome"
+        "person person"
+        "title1 title1"
+        "card1 card2"
+        "card3 card4"
+        "title2 title2"
+        "card5 card6"
+        "card7 card8"
+view_layout:
+  grid-area: "main"
+cards:
