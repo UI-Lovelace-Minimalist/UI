@@ -8,3 +8,6 @@ custom_card_wsly_pollen_language_variables:
     custom_card_wsly_pollen_medium: "Medio"
     custom_card_wsly_pollen_high: "Alto"
     custom_card_wsly_pollen_very_high: "Muy alto"
+    custom_card_wsly_pollen_tree_name: "Árboles"
+    custom_card_wsly_pollen_grass_name: "Hierbas"
+    custom_card_wsly_pollen_weed_name: "Malezas"
