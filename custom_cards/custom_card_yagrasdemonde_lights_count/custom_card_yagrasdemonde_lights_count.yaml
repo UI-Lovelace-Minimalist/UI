@@ -3,7 +3,7 @@
 custom_card_yagrasdemonde_lights_count:
   show_name: true
   template:
-    - "ulm_custom_card_yagrasdemonde_lights_count_language_variables"
+    - "custom_card_yagrasdemonde_lights_count_language_variables"
     - "icon_only"
     - "ulm_language_variables"
   variables:
@@ -19,14 +19,14 @@ custom_card_yagrasdemonde_lights_count:
         var entity_count_1 = '';
         var entity_count_many = '';
         if(variables.ulm_custom_card_yagrasdemonde_lights_count_type == "cover") {
-          entity_count_O = variables.ulm_custom_card_yagrasdemonde_lights_count_cover_0;
-          entity_count_1 = variables.ulm_custom_card_yagrasdemonde_lights_count_cover_1;
-          entity_count_many = variables.ulm_custom_card_yagrasdemonde_lights_count_cover_many;
+          entity_count_O = variables.custom_card_yagrasdemonde_lights_count_cover_0;
+          entity_count_1 = variables.custom_card_yagrasdemonde_lights_count_cover_1;
+          entity_count_many = variables.custom_card_yagrasdemonde_lights_count_cover_many;
         }
         else {
-          entity_count_O = variables.ulm_custom_card_yagrasdemonde_lights_count_light_0;
-          entity_count_1 = variables.ulm_custom_card_yagrasdemonde_lights_count_light_1;
-          entity_count_many = variables.ulm_custom_card_yagrasdemonde_lights_count_light_many;
+          entity_count_O = variables.custom_card_yagrasdemonde_lights_count_light_0;
+          entity_count_1 = variables.custom_card_yagrasdemonde_lights_count_light_1;
+          entity_count_many = variables.custom_card_yagrasdemonde_lights_count_light_many;
         }
         if (entity.state != "unavailable") {
           if (entity.state == 0) {

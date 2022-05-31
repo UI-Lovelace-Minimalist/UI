@@ -1,9 +1,9 @@
 ---
-ulm_custom_card_yagrasdemonde_lights_count_language_variables:
+custom_card_yagrasdemonde_lights_count_language_variables:
   variables:
-    ulm_custom_card_yagrasdemonde_lights_count_light_0: "Aucune lampe allumée"
-    ulm_custom_card_yagrasdemonde_lights_count_light_1: "1 Lumière allumée"
-    ulm_custom_card_yagrasdemonde_lights_count_light_many: "Lumières allumées"
-    ulm_custom_card_yagrasdemonde_lights_count_cover_0: "Aucun volet ouvert"
-    ulm_custom_card_yagrasdemonde_lights_count_cover_1: "1 Volet ouvert"
-    ulm_custom_card_yagrasdemonde_lights_count_cover_many: "Volets ouverts"
+    custom_card_yagrasdemonde_lights_count_light_0: "Aucune lampe allumée"
+    custom_card_yagrasdemonde_lights_count_light_1: "1 Lumière allumée"
+    custom_card_yagrasdemonde_lights_count_light_many: "Lumières allumées"
+    custom_card_yagrasdemonde_lights_count_cover_0: "Aucun volet ouvert"
+    custom_card_yagrasdemonde_lights_count_cover_1: "1 Volet ouvert"
+    custom_card_yagrasdemonde_lights_count_cover_many: "Volets ouverts"
