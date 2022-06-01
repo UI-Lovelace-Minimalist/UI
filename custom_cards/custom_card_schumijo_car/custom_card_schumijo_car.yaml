@@ -176,10 +176,10 @@ ulm_custom_card_schumijo_ca_popup:
                   filter: contrast(95%);
                 }
       card:
-        - type: "map"
-          aspect_ratio: "12x10"
-          default_zoom: 16
-          entities: "[[[ return [variables.ulm_card_schumijo_car_tracker]; ]]]"
+        type: "map"
+        aspect_ratio: "12:10"
+        default_zoom: 16
+        entities: "[[[ return [variables.ulm_card_schumijo_car_tracker]; ]]]"
 
 custom_card_schumijo_car:
   template:
