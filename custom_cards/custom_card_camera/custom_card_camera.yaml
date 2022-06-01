@@ -1,0 +1,74 @@
+---
+custom_card_camera:
+  template:
+    - "blue_no_state"
+  show_name: false
+  show_label: false
+  styles:
+    card:
+      - border-radius: "20px"
+      - box-shadow: "var(--box-shadow)"
+      - padding: |-
+          [[[
+            if(variables.ulm_custom_card_camera_title)
+              return "12px";
+            else
+              return "0px";
+          ]]]
+    img_cell:
+      - border-radius: "50%"
+      - place-self: "center"
+      - width: "42px"
+      - height: "42px"
+    grid:
+      - grid-template-areas: "'i item1' 'i item1' 'item2 item2'"
+      - grid-template-columns: "min-content auto"
+      - grid-template-rows: "min-content min-content min-content"
+      - row-gap: |-
+          [[[
+            if(variables.ulm_custom_card_camera_title)
+              return "12px";
+            else
+              return "0px";
+          ]]]
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        show_name: "[[[ return variables.ulm_custom_card_camera_title; ]]]"
+        show_label: "[[[ return variables.ulm_custom_card_camera_title; ]]]"
+        show_icon: "[[[ return variables.ulm_custom_card_camera_title; ]]]"
+        name: "[[[ return variables.ulm_custom_card_camera_name; ]]]"
+        label: "[[[ return variables.ulm_custom_card_camera_label; ]]]"
+        styles:
+          card:
+            - box-shadow: "none"
+            - padding: "0"
+          name:
+            - align-self: "end"
+            - justify-self: "start"
+            - font-weight: "bold"
+            - font-size: "14px"
+            - margin-left: "12px"
+            - filter: "opacity(100%)"
+          label:
+            - justify-self: "start"
+            - align-self: "start"
+            - font-weight: "bolder"
+            - font-size: "12px"
+            - filter: "opacity(40%)"
+            - margin-left: "12px"
+          grid:
+            - grid-template-areas: "'n' 'l'"
+            - grid-template-columns: "auto"
+            - grid-template-rows: "min-content min-content"
+    item2:
+      card:
+        type: "picture-entity"
+        camera_image: "[[[ return entity.entity_id ]]]"
+        camera_view: "live"
+        entity: "[[[ return entity.entity_id ]]]"
+        show_name: false
+        show_state: false
+  tap_action:
+    action: "more-info"

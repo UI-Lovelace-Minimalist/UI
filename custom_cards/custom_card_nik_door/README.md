@@ -30,6 +30,7 @@ To have the Minimalist cards and custom cards installed
 ## Usage
 
 ```yaml
+
 - type: "custom:button-card"
   template: custom_card_nik_door
   entity: sensor.nuki_blindato_door_security_state
