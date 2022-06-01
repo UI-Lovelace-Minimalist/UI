@@ -13,7 +13,11 @@ custom_card_nik_clock:
     [[[
       const time = new Date();
       let hour = time.getHours();
+<<<<<<< HEAD
       let minute = (time.getMinutes()<10?'0':'') + time.getMinutes()
+=======
+      let minute = time.getMinutes();
+>>>>>>> 67374aef3d6c9f7ca8da279f127110e210ed3e88
       return hour + ":" + minute;
     ]]]
   layout: "vertical"
@@ -23,7 +27,11 @@ custom_card_nik_clock:
       const options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
       var locale = variables.ulm_language;
       let formatted_date = event.toLocaleDateString(locale, options);
+<<<<<<< HEAD
       return formatted_date;
+=======
+      console.log(formatted_date);
+>>>>>>> 67374aef3d6c9f7ca8da279f127110e210ed3e88
     ]]]
   tap_action:
     action: >
