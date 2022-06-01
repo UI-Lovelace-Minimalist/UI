@@ -7,7 +7,7 @@ hide:
 
 # Custom-card "Lock"
 
-This is a `custom-card` that works in switch logic with a `lock` entity. Card structure uses `lock`, `unlock` actions and `lock`,`unlock`,`locking`,`unlocking` states.
+This is a `custom-card` that works in switch logic with a `lock` entity. Card structure uses `lock`, `unlock` (optional `open`) actions and `lock`,`unlock`,`locking`,`unlocking`, `jammed` states.
 
 ![Generic](../../assets/img/custom_card_eraycetinay_lock_locked.png)
 ![Generic](../../assets/img/custom_card_eraycetinay_lock_unlocked.png)
@@ -20,6 +20,8 @@ Version: 0.0.1
 ## Changelog
 
 <details>
+  <summary>0.0.2</summary>
+  Added option to only use lock.open
   <summary>0.0.1</summary>
   Initial release
 </details>
@@ -33,6 +35,7 @@ Version: 0.0.1
   name: "Door Lock"
   variables:
     ulm_custom_card_eraycetinay_lock_tap_control: true
+    ulm_custom_card_eraycetinay_lock_open: true
 ```
 
 ## Variables
@@ -49,6 +52,12 @@ Version: 0.0.1
 <td>true</td>
 <td>no</td>
 <td>Lock/Unlock on tap action</td>
+</tr>
+<tr>
+<td>ulm_custom_card_eraycetinay_lock_open</td>
+<td>true</td>
+<td>no</td>
+<td>Only use the card to open the door (always sends lock.open on tap)</td>
 </tr>
 </table>
 
@@ -74,10 +83,15 @@ custom_card_eraycetinay_lock:
     service: |
       [[[
         if(variables.ulm_custom_card_eraycetinay_lock_tap_control == true){
-          if (entity.state == "locked"){
-            return "lock.unlock"
-          } else if (entity.state == "unlocked"){
-            return "lock.lock"
+          if(variables.ulm_custom_card_eraycetinay_lock_open == true){
+            return "lock.open"
+          } else {
+            if (entity.state == "locked"){
+                return "lock.unlock"
+              }
+            } else if (entity.state == "unlocked"){
+              return "lock.lock"
+            }
           }
         } else {
           return;
@@ -98,10 +112,14 @@ custom_card_eraycetinay_lock:
           return variables.custom_card_eraycetinay_lock_locked;
         } else if (entity.state == "unlocked"){
           return variables.custom_card_eraycetinay_lock_unlocked;
+        } else if (entity.state == "open"){
+          return variables.ulm_open;
         } else if (entity.state == "unlocking"){
           return variables.custom_card_eraycetinay_lock_unlocking;
         } else if (entity.state == "locking"){
           return variables.custom_card_eraycetinay_lock_locking;
+        } else if (entity.state == "jammed"){
+          return variables.custom_card_eraycetinay_lock_jammed;
         }  else {
           return entity.state;
         }
@@ -134,9 +152,9 @@ custom_card_eraycetinay_lock:
     icon:
       - color: "rgba(var(--color-theme),0.2)"
     img_cell:
-          - background-color: "rgba(var(--color-theme),0.05)"
-          - border-radius: "50%"
-          - place-self: "center"
-          - width: "42px"
-          - height: "42px"
+      - background-color: "rgba(var(--color-theme),0.05)"
+      - border-radius: "50%"
+      - place-self: "center"
+      - width: "42px"
+      - height: "42px"
 ```

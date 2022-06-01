@@ -1,0 +1,76 @@
+---
+popup_chip_controls:
+  template: "chips"
+  variables:
+    ulm_popup_media_player_entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
+  styles:
+    card:
+      - background: "none"
+      - box-shadow: "none"
+      - border: "1px solid rgba(var(--color-theme),0.5)"
+      - height: "42px"
+      - border-radius: "21px"
+    grid:
+      - grid-template-areas: "item1 item2 item3"
+      - justify-content: "space-evenly"
+      - display: "flex"
+      - grid-template-columns: "min-content min-content min-content"
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        template: "icon_controls"
+        entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
+        icon: "mdi:skip-previous"
+        tap_action:
+          action: "call-service"
+          service: "media_player.media_previous_track"
+          service_data:
+            entity_id: "[[[ return variables.ulm_popup_media_player_entity]]]"
+        styles:
+          icon:
+            - color: "rgba(var(--color-theme),0.5)"
+    item2:
+      card:
+        type: "custom:button-card"
+        template: "icon_controls"
+        entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
+        icon: "mdi:play"
+        state:
+          - value: "playing"
+            icon: "mdi:pause"
+        tap_action:
+          action: "call-service"
+          service: "media_player.media_play_pause"
+          service_data:
+            entity_id: "[[[ return variables.ulm_popup_media_player_entity]]]"
+    item3:
+      card:
+        type: "custom:button-card"
+        template: "icon_controls"
+        entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
+        icon: "mdi:skip-next"
+        tap_action:
+          action: "call-service"
+          service: "media_player.media_next_track"
+          service_data:
+            entity_id: "[[[ return variables.ulm_popup_media_player_entity]]]"
+        styles:
+          icon:
+            - color: "rgba(var(--color-theme),0.5)"
+
+icon_controls:
+  show_icon: true
+  show_label: false
+  show_name: false
+  show_state: false
+  styles:
+    card:
+      - background: "none"
+      - box-shadow: "none"
+      - height: "42px"
+    grid:
+      - grid-template-areas: "'i'"
+    img_cell:
+      - width: "30px"
+  size: "80%"

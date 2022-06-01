@@ -37,7 +37,6 @@ popup_light_brightness:
                 }
                 return columns.join(" ");
           ]]]
-      - column-gap: "30px"
     card:
       - background: "var(--primary-background-color)"
       - box-shadow: "none"

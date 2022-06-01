@@ -174,7 +174,7 @@ card_homeassistant_updates:
               icon: "mdi:cog"
               tap_action:
                 action: "navigate"
-                navigation_path: "/config/server_control"
+                navigation_path: "/developer-tools/yaml"
 
           item3:
             card:
