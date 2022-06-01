@@ -77,7 +77,7 @@ chip_update:
 
 ## Requirements
 
-If you don't have an update sensor follow that [instruction](https://github.com/basbruss/UI/blob/main/custom_cards/custom_card_homeassistant_updates/README.md) to create a sensor.
+If you don't have an update sensor follow that [instruction](https://github.com/basbruss/UI/blob/main/custom_cards/custom_card_homeassistant_updates/README.md) to create one.
 
 ## Credits
 
