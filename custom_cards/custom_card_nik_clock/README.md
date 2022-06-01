@@ -24,8 +24,7 @@ Initial release
 
 ## Requirements
 
-- To have setup the "sensor.time" in Home Assistant
-- To have setup the custom sensor "sensor.pretty_date"
+- To have all the Minimalist Card and Custom Cards installed
 
 ## Usage
 
@@ -33,7 +32,6 @@ Initial release
 - type: "custom:button-card"
   template: custom_card_nik_clock
   variables:
-    ulm_custom_card_nik_clock_label: sensor.pretty_date
     ulm_custom_card_nik_clock_switch: input_boolean.menu_tablet
     ulm_custom_card_nik_clock_switch_enable: false
 ```
@@ -50,12 +48,6 @@ Initial release
   </tr>
 </thead>
 <tbody>
-  <tr>
-    <td>ulm_custom_card_nik_clock_label</td>
-    <td>sensor.pretty_date</td>
-    <td>Yes</td>
-    <td>See template sensor details</td>
-  </tr>
   <tr>
     <td>ulm_custom_card_nik_clock_switch</td>
     <td>lock.input_boolean.menu_tablet</td>
@@ -79,16 +71,28 @@ custom_card_nik_clock:
   template:
     - "ulm_language_variables"
   variables:
-    ulm_custom_card_nik_clock_label: "[[[ return variables.ulm_custom_card_nik_clock_label ]]]"
     ulm_custom_card_nik_clock_switch: "[[[ return variables.ulm_custom_card_nik_clock_switch ]]]"
     ulm_custom_card_nik_clock_switch_enable: false
   show_icon: false
-  show_name: false
-  show_state: true
+  show_name: true
+  show_state: false
   show_label: true
-  entity: "sensor.time"
+  name: >
+    [[[
+      const time = new Date();
+      let hour = time.getHours();
+      let minute = (time.getMinutes()<10?'0':'') + time.getMinutes()
+      return hour + ":" + minute;
+    ]]]
   layout: "vertical"
-  label: "[[[ return states[variables.ulm_custom_card_nik_clock_label].state; ]]]"
+  label: >
+    [[[
+      const event = new Date();
+      const options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      var locale = variables.ulm_language;
+      let formatted_date = event.toLocaleDateString(locale, options);
+      return formatted_date;
+    ]]]
   tap_action:
     action: >
       [[[
@@ -107,30 +111,11 @@ custom_card_nik_clock:
       - background-color: "transparent"
       - height: "100px"
       - box-shadow: "none"
-    state:
+    name:
       - font-size: "290%"
       - font-weight: "bold"
       - justify-self: "center"
     label:
       - justify-self: "center"
       - font-size: "110%"
-```
-
-## Template Code
-
-```yaml
----
-- platform: template
-  sensors:
-    pretty_date:
-      friendly_name: Data di oggi
-      value_template: >-
-        {% set today = states("sensor.date") %}
-        {% set arr_week_days = ["Domenica", "Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato"] %}
-        {% set arr_months = ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"] %}
-        {% set week_day = as_timestamp(today) | timestamp_custom('%w') | int %}
-        {% set day = as_timestamp(today) | timestamp_custom('%d') %}
-        {% set month = as_timestamp(today) | timestamp_custom('%m') | int %}
-        {% set year = as_timestamp(today) | timestamp_custom('%Y') | int %}
-        {{ arr_week_days[week_day] }}, {{ day }} {{ arr_months[month-1] }} {{ year }}
 ```
