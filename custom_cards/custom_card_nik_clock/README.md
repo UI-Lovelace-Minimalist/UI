@@ -35,6 +35,7 @@ Initial release
   variables:
     ulm_custom_card_nik_clock_label: sensor.pretty_date
     ulm_custom_card_nik_clock_switch: input_boolean.menu_tablet
+    ulm_custom_card_nik_clock_switch_enable: false
 ```
 
 ## Variables
