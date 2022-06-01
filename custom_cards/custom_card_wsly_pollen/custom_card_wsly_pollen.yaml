@@ -2,7 +2,9 @@
 ### Custom card Pollen ###
 custom_card_wsly_pollen:
   type: "custom:button-card"
-  template: "list_3_items"
+  template:
+    - "custom_card_wsly_pollen_language_variables"
+    - "list_3_items"
   triggers_update: "all"
   styles:
     card:
@@ -14,16 +16,22 @@ custom_card_wsly_pollen:
         type: "custom:button-card"
         template: "custom_card_wsly_pollen_item"
         entity: "[[[ return variables.custom_card_wsly_pollen_tree ]]]"
+        name: "[[[ return variables.custom_card_wsly_pollen_tree_name || states[variables.custom_card_wsly_pollen_tree].attributes.friendly_name ]]]"
+        icon: "[[[ return variables.custom_card_wsly_pollen_tree_icon || states[variables.custom_card_wsly_pollen_tree].attributes.icon ]]]"
     item2:
       card:
         type: "custom:button-card"
         template: "custom_card_wsly_pollen_item"
         entity: "[[[ return variables.custom_card_wsly_pollen_grass ]]]"
+        name: "[[[ return variables.custom_card_wsly_pollen_grass_name || states[variables.custom_card_wsly_pollen_grass].attributes.friendly_name ]]]"
+        icon: "[[[ return variables.custom_card_wsly_pollen_grass_icon || states[variables.custom_card_wsly_pollen_grass].attributes.icon ]]]"
     item3:
       card:
         type: "custom:button-card"
         template: "custom_card_wsly_pollen_item"
         entity: "[[[ return variables.custom_card_wsly_pollen_weed ]]]"
+        name: "[[[ return variables.custom_card_wsly_pollen_weed_name || states[variables.custom_card_wsly_pollen_weed].attributes.friendly_name ]]]"
+        icon: "[[[ return variables.custom_card_wsly_pollen_weed_icon || states[variables.custom_card_wsly_pollen_weed].attributes.icon ]]]"
 
 custom_card_wsly_pollen_item:
   type: "custom:button-card"
