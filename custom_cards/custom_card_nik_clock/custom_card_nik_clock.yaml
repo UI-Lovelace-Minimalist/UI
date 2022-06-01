@@ -1,0 +1,40 @@
+---
+custom_card_nik_clock:
+  template:
+    - "ulm_language_variables"
+  variables:
+    ulm_custom_card_nik_clock_label: "[[[ return variables.ulm_custom_card_nik_clock_label ]]]"
+    ulm_custom_card_nik_clock_switch: "[[[ return variables.ulm_custom_card_nik_clock_switch ]]]"
+    ulm_custom_card_nik_clock_switch_enable: false
+  show_icon: false
+  show_name: false
+  show_state: true
+  show_label: true
+  entity: "sensor.time"
+  layout: "vertical"
+  label: "[[[ return states[variables.ulm_custom_card_nik_clock_label].state; ]]]"
+  tap_action:
+    action: >
+      [[[
+          if (variables.ulm_custom_card_nik_clock_switch_enable){
+            return 'call-service'
+          }
+          else{
+            return 'none'
+          }
+      ]]]
+    service: "input_boolean.toggle"
+    service_data:
+      entity_id: "[[[ return variables.ulm_custom_card_nik_clock_switch ]]]"
+  styles:
+    card:
+      - background-color: "transparent"
+      - height: "100px"
+      - box-shadow: "none"
+    state:
+      - font-size: "290%"
+      - font-weight: "bold"
+      - justify-self: "center"
+    label:
+      - justify-self: "center"
+      - font-size: "110%"
