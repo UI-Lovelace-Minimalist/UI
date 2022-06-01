@@ -10,7 +10,13 @@ custom_card_nik_clock:
   show_name: false
   show_state: true
   show_label: true
-  entity: "sensor.time"
+  name: >
+    [[[
+      const time = new Date();
+      let hour = time.getHours();
+      let minute = time.getMinutes();
+      return hour + ":" + minute;
+    ]]]
   layout: "vertical"
   label: "[[[ return states[variables.ulm_custom_card_nik_clock_label].state; ]]]"
   tap_action:
