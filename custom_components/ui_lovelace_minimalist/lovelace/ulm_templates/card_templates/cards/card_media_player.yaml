@@ -136,6 +136,7 @@ card_media_player:
                 "netflix": "mdi:netflix",
                 "bluetooth audio": "mdi:bluetooth"
               }
+            }
             return variables.ulm_card_media_player_icon || icon[app];
           ]]]
         label: |
