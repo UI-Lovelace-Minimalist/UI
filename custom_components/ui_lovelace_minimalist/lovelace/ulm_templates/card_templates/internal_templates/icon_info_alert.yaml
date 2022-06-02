@@ -79,3 +79,9 @@ icon_info_alert:
         }
       ]]]
   size: "20px"
+  tap_action:
+    action: "[[[ return variables.ulm_global_card_tap_action ]]]"
+  hold_action:
+    action: "[[[ return variables.ulm_global_card_hold_action ]]]"
+  double_tap_action:
+    action: "[[[ return variables.ulm_global_card_double_tap_action ]]]"

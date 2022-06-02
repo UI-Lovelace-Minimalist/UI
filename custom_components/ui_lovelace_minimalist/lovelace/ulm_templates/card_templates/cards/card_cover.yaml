@@ -3,6 +3,7 @@
 card_cover:
   template:
     - "ulm_language_variables"
+    - "action_card"
   variables:
     ulm_card_cover_name: "[[[ return entity.attributes.friendly_name ]]]"
     ulm_card_cover_display_left_right: false
