@@ -61,11 +61,11 @@ chip_update:
     haptic: light
   show_icon: true
   state:
-  - value: 'off'
+  - operator: default
     color: red
     icon: mdi:shield-alert
     label: "[[[ return variables.ulm_updates_available  ]]]"
-  - operator: default
+  - value: 'off'
     color: green
     icon: mdi:shield-check
     label: "[[[ return variables.ulm_no_updates_available  ]]]"
