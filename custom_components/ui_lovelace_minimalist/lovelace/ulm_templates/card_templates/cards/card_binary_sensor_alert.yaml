@@ -3,11 +3,11 @@
 card_binary_sensor_alert:
   template:
     - "icon_info_alert"
+  tap_action:
+    action: "[[[ return variables.ulm_global_card_tap_action == 'toggle' ? 'none' : variables.ulm_global_card_tap_action ]]]"
+  hold_action:
+    action: "[[[ return variables.ulm_global_card_hold_action == 'toggle' ? 'none' : variables.ulm_global_card_hold_action ]]]"
+  double_tap_action:
+    action: "[[[ return variables.ulm_global_card_double_tap_action == 'toggle' ? 'none' : variables.ulm_global_card_double_tap_action ]]]"
   name: "[[[ return entity.attributes.friendly_name != '' ? entity.attributes.friendly_name : entity.entity_id ]]]"
   show_last_changed: true
-  tap_action:
-    action: "[[[ variables.ulm_global_card_tap_action == 'toggle' ? none : variables.ulm_global_card_tap_action ]]]"
-  hold_action:
-    action: "[[[ variables.ulm_global_card_hold_action == 'toggle' ? none : variables.ulm_global_card_hold_action ]]]"
-  double_tap_action:
-    action: "[[[ variables.ulm_global_card_double_tap_action == 'toggle' ? none : variables.ulm_global_card_double_tap_action ]]]"

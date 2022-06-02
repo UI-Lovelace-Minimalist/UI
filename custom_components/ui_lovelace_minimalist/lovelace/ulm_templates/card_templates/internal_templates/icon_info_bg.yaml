@@ -74,4 +74,3 @@ icon_info_bg:
     action: "[[[ return variables.ulm_global_card_hold_action ]]]"
   double_tap_action:
     action: "[[[ return variables.ulm_global_card_double_tap_action ]]]"
-    
