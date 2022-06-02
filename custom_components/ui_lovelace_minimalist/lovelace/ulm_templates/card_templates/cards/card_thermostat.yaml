@@ -3,6 +3,7 @@
 card_thermostat:
   template:
     - "ulm_language_variables"
+    - "ulm_global_config"
   variables:
     ulm_card_thermostat_name: "[[[ return entity.attributes.friendly_name ]]]"
     ulm_card_thermostat_icon: "[[[ return 'mdi:thermometer' ]]]"
@@ -217,27 +218,29 @@ card_thermostat:
               entity: "[[[ return entity.entity_id ]]]"
               name: "[[[ return variables.ulm_card_thermostat_name ]]]"
               tap_action:
-                action: "call-service"
-                service: >
-                  [[[
-                        if (entity.state =='off'){
-                            return "climate.turn_on";
-                        } else {
-                            return "climate.turn_off";
-                        }
-                  ]]]
-                service_data:
-                  entity_id: "[[[ return entity.entity_id ]]]"
+                action: "[[[ return variables.ulm_global_name_tap_action ]]]"
+                browser_mod:
+                  command: "popup"
+                  large: true
+                  hide_header: true
+                  card:
+                    type: "custom:button-card"
+                    template: "popup_thermostat_temperature"
+                    variables:
+                      ulm_popup_thermostat_entity: "[[[ return entity.entity_id ]]]"
               hold_action:
-                action: >
-                  [[[
-                      if (variables.ulm_card_thermostat_enable_popup){
-                        return 'fire-dom-event'
-                      }
-                      else{
-                        return 'more-info'
-                      }
-                  ]]]
+                action: "[[[ return variables.ulm_global_name_hold_action ]]]"
+                browser_mod:
+                  command: "popup"
+                  large: true
+                  hide_header: true
+                  card:
+                    type: "custom:button-card"
+                    template: "popup_thermostat_temperature"
+                    variables:
+                      ulm_popup_thermostat_entity: "[[[ return entity.entity_id ]]]"
+              double_tap_action:
+                action: "[[[ return variables.ulm_global_name_double_tap_action ]]]"
                 browser_mod:
                   command: "popup"
                   large: true
