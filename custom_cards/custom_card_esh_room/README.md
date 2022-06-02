@@ -14,6 +14,7 @@ hide:
 
 - Author: Everything Smart Home - 2022
 - Full credit to user [bms on the forum](https://community.home-assistant.io/t/lovelace-ui-minimalist/322687/192), they created it in full, I just put it into a PR as the basis
+- beasthouse and basbruss on the EverythingSmartHome discord channel for emoji/humidity customization
 - Version: 1.0.0
 
 ## Changelog
@@ -52,6 +53,20 @@ This is an alternative room card to the standard one that is more rectangular th
       navigation_path: 'bathroom'
     label: '[[[ return states["sensor.room_temperature"].state + "°C" ]]]'
 ```
+
+## Customizations
+
+To add both temperature and humidity (as shown below) to the card, replace the label section with this code:
+![image](https://user-images.githubusercontent.com/51805396/170957237-4025b2c0-2532-49e6-a908-d45c1f7a0728.png)
+
+```yaml
+label: >
+  [[[
+    return "🌡️ " + states['sensor.temperature'].state + " °C" + " 💧 " + states['sensor.humidity'].state + " %"
+  ]]]
+```
+
+You can also replace 🌡️ and 💧 with any desired Emoji, and sensor.room_temperature/sensor.room_humidity to match any of your HA entities you would like to be displayed. Ensure that the correct units of measurement are also updated (or removed) to match your custom entities. In this example they are °C and %.
 
 ## Template code
 
