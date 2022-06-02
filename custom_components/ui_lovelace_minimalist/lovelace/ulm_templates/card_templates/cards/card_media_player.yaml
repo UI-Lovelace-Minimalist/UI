@@ -20,12 +20,7 @@ card_media_player:
   hold_action:
     action: >
       [[[
-          if (variables.ulm_card_media_player_enable_popup){
-            return 'fire-dom-event'
-          }
-          else{
-            return 'more-info'
-          }
+          return variables.ulm_card_media_player_enable_popup ? "fire-dom-event" : "more-info";
       ]]]
     browser_mod:
       command: "popup"
@@ -114,12 +109,7 @@ card_media_player:
         hold_action:
           action: >
             [[[
-                if (variables.ulm_card_media_player_enable_popup){
-                  return 'fire-dom-event'
-                }
-                else{
-                  return 'more-info'
-                }
+                return variables.ulm_card_media_player_enable_popup ? "fire-dom-event" : "more-info";
             ]]]
           browser_mod:
             command: "popup"
@@ -135,27 +125,19 @@ card_media_player:
             var icon =  entity.attributes.icon || "mdi:speaker";
             if(entity.attributes.app_name){
               var app = entity.attributes.app_name.toLowerCase();
-              if(app == "spotify"){
-                var icon = "mdi:spotify";
-              } else if(app == "google podcasts"){
-                var icon = "mdi:google-podcast";
-              } else if(app == "plex"){
-                var icon = "mdi:plex";
-              } else if(app == "soundcloud"){
-                var icon = "mdi:soundcloud";
-              } else if(app == "youtube music"){
-                var icon = "mdi:youtube";
-              } else if (app == "oto music"){
-                var icon = "mdi:music-circle";
-              } else if(app == "pandora"){
-                var icon = "mdi:pandora";
-              } else if(app == "netflix"){
-                var icon = "mdi:netflix";
-              } else if(app == "bluetooth audio"){
-                var icon = "mdi:bluetooth";
+              var icon = {
+                "spotify": "mdi:spotify",
+                "google podcasts": "mdi:google-podcast",
+                "plex": "mdi:plex",
+                "soundcloud": "mdi:soundcloud",
+                "youtube music": "mdi:youtube",
+                "oto music": "mdi:music-circle",
+                "pandora": "mdi:pandora",
+                "netflix": "mdi:netflix",
+                "bluetooth audio": "mdi:bluetooth"
               }
             }
-            return variables.ulm_card_media_player_icon || icon;
+            return variables.ulm_card_media_player_icon || icon[app];
           ]]]
         label: |
           [[[
@@ -245,12 +227,7 @@ card_media_player:
         hold_action:
           action: >
             [[[
-                if (variables.ulm_card_media_player_enable_popup){
-                  return 'fire-dom-event'
-                }
-                else{
-                  return 'more-info'
-                }
+                return variables.ulm_card_media_player_enable_popup ? "fire-dom-event" : "more-info";
             ]]]
           browser_mod:
             command: "popup"
@@ -275,12 +252,7 @@ card_media_player:
               hold_action:
                 action: >
                   [[[
-                      if (variables.ulm_card_media_player_enable_popup){
-                        return 'fire-dom-event'
-                      }
-                      else{
-                        return 'more-info'
-                      }
+                      return variables.ulm_card_media_player_enable_popup ? "fire-dom-event" : "more-info";
                   ]]]
                 browser_mod:
                   command: "popup"
@@ -321,12 +293,7 @@ card_media_player:
               hold_action:
                 action: >
                   [[[
-                      if (variables.ulm_card_media_player_enable_popup){
-                        return 'fire-dom-event'
-                      }
-                      else{
-                        return 'more-info'
-                      }
+                      return variables.ulm_card_media_player_enable_popup ? "fire-dom-event" : "more-info";
                   ]]]
                 browser_mod:
                   command: "popup"
@@ -370,12 +337,7 @@ card_media_player:
               hold_action:
                 action: >
                   [[[
-                      if (variables.ulm_card_media_player_enable_popup){
-                        return 'fire-dom-event'
-                      }
-                      else{
-                        return 'more-info'
-                      }
+                      return variables.ulm_card_media_player_enable_popup ? "fire-dom-event" : "more-info";
                   ]]]
                 browser_mod:
                   command: "popup"

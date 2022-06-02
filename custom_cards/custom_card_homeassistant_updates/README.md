@@ -3,6 +3,7 @@ title: Homeassistant Updates Custom-card
 hide:
   - toc
 ---
+
 <!-- markdownlint-disable MD046 -->
 
 # Custom-card "Homeassistant updates"
@@ -37,13 +38,13 @@ Updated sensors and binary_sensors + Removed group.updaters
 ## Usage
 
 ```yaml
-  - type: 'custom:button-card'
-    template: card_homeassistant_updates
-    variables:
-      ulm_card_homeassistant_entity: "binary_sensor.updates"
-      ulm_card_homeassistant_core: "sensor.core_updates"
-      ulm_card_homeassistant_supervisor: "sensor.supervisor_updates"
-      ulm_card_homeassistant_os: "sensor.os_updates"
+- type: "custom:button-card"
+  template: card_homeassistant_updates
+  variables:
+    ulm_card_homeassistant_entity: "binary_sensor.updates"
+    ulm_card_homeassistant_core: "sensor.core_updates"
+    ulm_card_homeassistant_supervisor: "sensor.supervisor_updates"
+    ulm_card_homeassistant_os: "sensor.os_updates"
 ```
 
 ## Requirements
@@ -79,6 +80,8 @@ This card needs additional template sensors and binary_sensor updaters to work, 
 <td>sensor supervisor installed/latest version</td>
 </tr>
 </table>
+
+<<<<<<< Updated upstream
 
 ## Template code
 
@@ -312,41 +315,10 @@ binary_sensor:
         attribute_templates:
           installed_version: "{{ state_attr('sensor.core_updates', 'installed_version') }}"
           latest_version: "{{ state_attr('sensor.core_updates', 'latest_version') }}"
+=======
+??? note "Template Code"
+>>>>>>> Stashed changes
 
-      updater_supervisor:
-        friendly_name: Supervisor
-        device_class: problem
-        value_template: "{{ states('sensor.supervisor_updates') }}"
-        attribute_templates:
-          installed_version: "{{ state_attr('sensor.supervisor_updates', 'installed_version') }}"
-          latest_version: "{{ state_attr('sensor.supervisor_updates', 'latest_version') }}"
-
-      updater_os:
-        friendly_name: OS
-        device_class: problem
-        value_template: "{{ states('sensor.os_updates') }}"
-        attribute_templates:
-          installed_version: "{{ state_attr('sensor.os_updates', 'installed_version') }}"
-          latest_version: "{{ state_attr('sensor.os_updates', 'latest_version') }}"
-
-      updater_addons:
-        friendly_name: Supervisor Add-ons
-        device_class: problem
-        value_template: "{{ states('sensor.addons_updates')|int(0) != 0 }}"
-        attribute_templates:
-          addons: "{{ state_attr('sensor.addons_updates', 'addons') }}"
-
-      updater_hacs:
-        friendly_name: HACS Integrations
-        device_class: problem
-        value_template: "{{ states('sensor.hacs')|int(0) != 0 }}"
-        attribute_templates:
-          repositories: "{{ state_attr('sensor.hacs', 'repositories') }}"
-
-  - platform: group
-    name: "Updates"
-    entities:
-      - binary_sensor.updater_core
-      - binary_sensor.updater_supervisor
-      - binary_sensor.updater_os
-```
+    ```yaml title="custom_card_homeassistant_updates.yaml"
+    --8<-- "custom_cards/custom_card_homeassistant_updates/custom_card_homeassistant_updates.yaml"
+    ```

@@ -8,13 +8,6 @@ card_input_boolean:
   name: "[[[ return entity.attributes.friendly_name != '' ? entity.attributes.friendly_name : entity.entity_id ]]]"
   label: >
     [[[
-      if (entity.state != "unavailable"){
-        if (entity.state == "on"){
-          return variables.ulm_on;
-        } else {
-          return variables.ulm_off;
-        }
-      } else {
-        return variables.ulm_unavailable;
-      }
+      let state = entity.state;
+      return variables["ulm_" + state] ? variables["ulm_" + state] : state;
     ]]]
