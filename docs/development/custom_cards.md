@@ -25,8 +25,16 @@ If you have configured something great for this theme, like a new card, you migh
 
 ### Style and Qualtiy guidelines
 
-- Your card needs to satisfy some guidelines to assure your card is easy to read and looks like all the other cards in the repository. 1. Each file needs to start only with `---` on the first line. 2. Each file needs to end with a empty code line. 3. All strings need to be `"double-quoted"`. 4. Only use `lowercase` in your code. 5. No trailing white-space (No random space between and around the code). 6. A line-length of 256. 7. **IMPORTANT!** Unix-style line endings. (It's recommended to use a code-editor like VSCode and set CRLF to LF)
-  ![example-image](../assets/img/unix_line_endings.png){ width="500" }
+- Your card needs to satisfy some guidelines to assure your card is easy to read and looks like all the other cards in the repository.
+
+  1. Each file needs to start only with `---` on the first line.
+  2. Each file needs to end with a empty code line.
+  3. All strings need to be `"double-quoted"`.
+  4. Only use `lowercase` in your code.
+  5. No trailing white-space (No random space between and around the code).
+  6. A line-length of 256.
+  7. **IMPORTANT!** Unix-style line endings. (It's recommended to use a code-editor like VSCode and set CRLF to LF)
+     ![example-image](../assets/img/unix_line_endings.png){ width="500" }
 
 - More advanced users can make use of Pre-commit to apply most of the styles automatically.
   1. Open your fork in a code-editor like VSCode.
