@@ -1,25 +1,18 @@
 ---
 power_state_button_style:
-  entity: "[[[ return variables.entity_id ]]]"
-  state:
-    - operator: "template"
-      value: "return (entity.state == 'off' || entity.state == 'PowerOff')"
-      styles:
-        icon:
-          - color: "rgba(var(--color-red),1)"
-        label:
-          - color: "rgba(var(--color-red-text),1)"
-        name:
-          - color: "rgba(var(--color-red-text),1)"
-      icon: "mdi:exponent-box"
-    - operator: "default"
-      styles:
-        icon:
-          - color: "rgba(var(--color-red),1)"
-        label:
-          - color: "rgba(var(--color-red-text),1)"
-        name:
-          - color: "rgba(var(--color-red-text),1)"
-        img_cell:
-          - background-color: "rgba(var(--color-red), 0.2)"
-      icon: "mdi:transmission-tower"
+  styles:
+    img_cell:
+      - background-color: >
+          [[[
+            var offColor = "rgba(var(--color-grey), 0.1)";
+            var onColor = "rgba(var(--color-red), 0.2)";
+            if (entity.state) {
+              if (entity.state == "off" || entity.state == "PowerOff") {
+                return offColor;
+              } else {
+                return onColor;
+              }
+            } else {
+              return offColor;
+            }
+          ]]]

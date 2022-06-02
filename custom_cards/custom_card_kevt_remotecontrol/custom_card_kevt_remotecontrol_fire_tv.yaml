@@ -5,15 +5,11 @@
 
 vars_remotecontrol_firestick_group_power:
   variables:
-    entity_id_power_tap:
-    entity_id_power_double_tap:
-    entity_id_power_hold:
-    entity_id_input_tap:
-    entity_id_input_double_tap:
-    entity_id_input_hold:
     cell1:
       button:
+        entity_id:
         templates:
+          - "red_text"
           - "power_state_button_style"
         icon:
           name: "mdi:power"
@@ -22,7 +18,7 @@ vars_remotecontrol_firestick_group_power:
         tooltip: "Power"
         actions:
           tap:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "call-service"
             command: "input keyevent 26"
@@ -31,7 +27,7 @@ vars_remotecontrol_firestick_group_power:
               device:
               delay:
           double_tap:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "androidtv.adb_command"
             command:
@@ -40,7 +36,7 @@ vars_remotecontrol_firestick_group_power:
               device:
               delay:
           hold:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "androidtv.adb_command"
             command:
@@ -61,7 +57,7 @@ vars_remotecontrol_firestick_group_power:
         tooltip: "Input"
         actions:
           tap:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "call-service"
             command:
@@ -70,7 +66,7 @@ vars_remotecontrol_firestick_group_power:
               device:
               delay:
           double_tap:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "androidtv.adb_command"
             command:
@@ -79,7 +75,7 @@ vars_remotecontrol_firestick_group_power:
               device:
               delay:
           hold:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "androidtv.adb_command"
             command:
@@ -91,9 +87,6 @@ vars_remotecontrol_firestick_group_power:
 
 vars_remotecontrol_firestick_group_home:
   variables:
-    entity_id_home_tap:
-    entity_id_home_double_tap:
-    entity_id_home_hold:
     cell1:
       button:
         entity_id:
@@ -106,7 +99,7 @@ vars_remotecontrol_firestick_group_home:
         tooltip: "Back"
         actions:
           tap:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "call-service"
             command: "BACK"
@@ -115,7 +108,7 @@ vars_remotecontrol_firestick_group_home:
               device:
               delay:
           double_tap:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "androidtv.adb_command"
             command:
@@ -124,7 +117,7 @@ vars_remotecontrol_firestick_group_home:
               device:
               delay:
           hold:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "androidtv.adb_command"
             command:
@@ -145,7 +138,7 @@ vars_remotecontrol_firestick_group_home:
         tooltip: "Home"
         actions:
           tap:
-            entity:
+            more_info_entity_id:
             action: "none"
             service: "call-service"
             command: "HOME"
@@ -154,7 +147,7 @@ vars_remotecontrol_firestick_group_home:
               device:
               delay:
           double_tap:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "androidtv.adb_command"
             command:
@@ -163,7 +156,7 @@ vars_remotecontrol_firestick_group_home:
               device:
               delay:
           hold:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "androidtv.adb_command"
             command:
@@ -184,7 +177,7 @@ vars_remotecontrol_firestick_group_home:
         tooltip: "Menu"
         actions:
           tap:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "call-service"
             command: "MENU"
@@ -193,7 +186,7 @@ vars_remotecontrol_firestick_group_home:
               device:
               delay:
           double_tap:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "androidtv.adb_command"
             command:
@@ -202,7 +195,7 @@ vars_remotecontrol_firestick_group_home:
               device:
               delay:
           hold:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "androidtv.adb_command"
             command:
@@ -214,9 +207,6 @@ vars_remotecontrol_firestick_group_home:
 
 vars_remotecontrol_firestick_group_play:
   variables:
-    entity_id_play_tap:
-    entity_id_play_double_tap:
-    entity_id_play_hold:
     cell1:
       button:
         entity_id:
@@ -229,7 +219,7 @@ vars_remotecontrol_firestick_group_play:
         tooltip: "Rewind"
         actions:
           tap:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "call-service"
             command: "input keyevent 89"
@@ -238,7 +228,7 @@ vars_remotecontrol_firestick_group_play:
               device:
               delay:
           double_tap:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "androidtv.adb_command"
             command:
@@ -247,7 +237,7 @@ vars_remotecontrol_firestick_group_play:
               device:
               delay:
           hold:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "androidtv.adb_command"
             command:
@@ -269,7 +259,7 @@ vars_remotecontrol_firestick_group_play:
         tooltip: "Play"
         actions:
           tap:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "call-service"
             command: "input keyevent 85"
@@ -278,7 +268,7 @@ vars_remotecontrol_firestick_group_play:
               device:
               delay:
           double_tap:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "androidtv.adb_command"
             command:
@@ -287,7 +277,7 @@ vars_remotecontrol_firestick_group_play:
               device:
               delay:
           hold:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "androidtv.adb_command"
             command:
@@ -308,7 +298,7 @@ vars_remotecontrol_firestick_group_play:
         tooltip: "Fast Forward"
         actions:
           tap:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "call-service"
             command: "input keyevent 90"
@@ -317,7 +307,7 @@ vars_remotecontrol_firestick_group_play:
               device:
               delay:
           double_tap:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "androidtv.adb_command"
             command:
@@ -326,7 +316,7 @@ vars_remotecontrol_firestick_group_play:
               device:
               delay:
           hold:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "androidtv.adb_command"
             command:
@@ -338,9 +328,6 @@ vars_remotecontrol_firestick_group_play:
 
 vars_remotecontrol_firestick_group_arrow_select:
   variables:
-    entity_id_arrow_tap:
-    entity_id_arrow_double_tap:
-    entity_id_arrow_hold:
     cell1:
       button:
         entity_id:
@@ -354,7 +341,7 @@ vars_remotecontrol_firestick_group_arrow_select:
         tooltip: "Arrow Up"
         actions:
           tap:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "call-service"
             command: "UP"
@@ -363,7 +350,7 @@ vars_remotecontrol_firestick_group_arrow_select:
               device:
               delay:
           double_tap:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "androidtv.adb_command"
             haptic: "selection"
@@ -372,7 +359,7 @@ vars_remotecontrol_firestick_group_arrow_select:
               device:
               delay:
           hold:
-            entity_id:
+            more_info_entity_id:
             action: "more-info"
             service: "androidtv.adb_command"
             command:
@@ -394,7 +381,7 @@ vars_remotecontrol_firestick_group_arrow_select:
         tooltip: "Arrow Left"
         actions:
           tap:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "call-service"
             command: "LEFT"
@@ -403,7 +390,7 @@ vars_remotecontrol_firestick_group_arrow_select:
               device:
               delay:
           double_tap:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "androidtv.adb_command"
             command:
@@ -412,7 +399,7 @@ vars_remotecontrol_firestick_group_arrow_select:
               device:
               delay:
           hold:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "androidtv.adb_command"
             command:
@@ -434,7 +421,7 @@ vars_remotecontrol_firestick_group_arrow_select:
         tooltip: "Select"
         actions:
           tap:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "call-service"
             command: "input keyevent 23"
@@ -443,7 +430,7 @@ vars_remotecontrol_firestick_group_arrow_select:
               device:
               delay:
           double_tap:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "androidtv.adb_command"
             command:
@@ -452,7 +439,7 @@ vars_remotecontrol_firestick_group_arrow_select:
               device:
               delay:
           hold:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "androidtv.adb_command"
             command:
@@ -474,7 +461,7 @@ vars_remotecontrol_firestick_group_arrow_select:
         tooltip: "Arrow Right"
         actions:
           tap:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "call-service"
             command: "RIGHT"
@@ -483,7 +470,7 @@ vars_remotecontrol_firestick_group_arrow_select:
               device:
               delay:
           double_tap:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "androidtv.adb_command"
             command:
@@ -492,7 +479,7 @@ vars_remotecontrol_firestick_group_arrow_select:
               device:
               delay:
           hold:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "androidtv.adb_command"
             command:
@@ -514,7 +501,7 @@ vars_remotecontrol_firestick_group_arrow_select:
         tooltip: "Arrow Down"
         actions:
           tap:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "call-service"
             command: "DOWN"
@@ -523,7 +510,7 @@ vars_remotecontrol_firestick_group_arrow_select:
               device:
               delay:
           double_tap:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "androidtv.adb_command"
             command:
@@ -532,7 +519,7 @@ vars_remotecontrol_firestick_group_arrow_select:
               device:
               delay:
           hold:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "androidtv.adb_command"
             command:
@@ -544,9 +531,6 @@ vars_remotecontrol_firestick_group_arrow_select:
 
 vars_remotecontrol_firestick_group_volume:
   variables:
-    entity_id_volume_tap:
-    entity_id_volume_double_tap:
-    entity_id_volume_hold:
     row1:
       button:
         entity_id:
@@ -560,7 +544,7 @@ vars_remotecontrol_firestick_group_volume:
         tooltip: "Volume Up"
         actions:
           tap:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "call-service"
             command: "input keyevent 89"
@@ -569,7 +553,7 @@ vars_remotecontrol_firestick_group_volume:
               device:
               delay:
           double_tap:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "androidtv.adb_command"
             command:
@@ -578,7 +562,7 @@ vars_remotecontrol_firestick_group_volume:
               device:
               delay:
           hold:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "androidtv.adb_command"
             command:
@@ -600,7 +584,7 @@ vars_remotecontrol_firestick_group_volume:
         tooltip: "Volume Down"
         actions:
           tap:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "call-service"
             command: "input keyevent 85"
@@ -609,7 +593,7 @@ vars_remotecontrol_firestick_group_volume:
               device:
               delay:
           double_tap:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "androidtv.adb_command"
             command:
@@ -618,7 +602,7 @@ vars_remotecontrol_firestick_group_volume:
               device:
               delay:
           hold:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "androidtv.adb_command"
             command:
@@ -640,7 +624,7 @@ vars_remotecontrol_firestick_group_volume:
         tooltip: "Volume Mute"
         actions:
           tap:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "call-service"
             command: "input keyevent 90"
@@ -649,7 +633,7 @@ vars_remotecontrol_firestick_group_volume:
               device:
               delay:
           double_tap:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "androidtv.adb_command"
             command:
@@ -658,7 +642,7 @@ vars_remotecontrol_firestick_group_volume:
               device:
               delay:
           hold:
-            entity_id:
+            more_info_entity_id:
             action: "more-info"
             service: "androidtv.adb_command"
             command:
@@ -670,9 +654,6 @@ vars_remotecontrol_firestick_group_volume:
 
 vars_remotecontrol_firestick_group_channel_selector:
   variables:
-    entity_id_channel_tap:
-    entity_id_channel_double_tap:
-    entity_id_channel_hold:
     doublerow1:
       button:
         entity_id:
@@ -687,7 +668,7 @@ vars_remotecontrol_firestick_group_channel_selector:
         tooltip: "Channel Up"
         actions:
           tap:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "call-service"
             command: "input keyevent 89"
@@ -696,7 +677,7 @@ vars_remotecontrol_firestick_group_channel_selector:
               device:
               delay:
           double_tap:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "androidtv.adb_command"
             command:
@@ -705,7 +686,7 @@ vars_remotecontrol_firestick_group_channel_selector:
               device:
               delay:
           hold:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "androidtv.adb_command"
             command:
@@ -728,7 +709,7 @@ vars_remotecontrol_firestick_group_channel_selector:
         tooltip: "Channel Down"
         actions:
           tap:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "call-service"
             command: "input keyevent 85"
@@ -737,7 +718,7 @@ vars_remotecontrol_firestick_group_channel_selector:
               device:
               delay:
           double_tap:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "androidtv.adb_command"
             command:
@@ -746,7 +727,7 @@ vars_remotecontrol_firestick_group_channel_selector:
               device:
               delay:
           hold:
-            entity_id:
+            more_info_entity_id:
             action: "none"
             service: "androidtv.adb_command"
             command:
@@ -758,9 +739,6 @@ vars_remotecontrol_firestick_group_channel_selector:
 
 vars_remotecontrol_firestick_group_numbers:
   variables:
-    entity_id_numbers_tap:
-    entity_id_numbers_double_tap:
-    entity_id_numbers_hold:
     row1:
       entity_id:
       background_color:
@@ -777,7 +755,7 @@ vars_remotecontrol_firestick_group_numbers:
           tooltip: "Number 1"
           actions:
             tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "call-service"
               command: "input keyevent 89"
@@ -786,7 +764,7 @@ vars_remotecontrol_firestick_group_numbers:
                 device:
                 delay:
             double_tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "androidtv.adb_command"
               command:
@@ -795,7 +773,7 @@ vars_remotecontrol_firestick_group_numbers:
                 device:
                 delay:
             hold:
-              entity_id:
+              more_info_entity_id:
               action: "more-info"
               service: "androidtv.adb_command"
               command:
@@ -817,7 +795,7 @@ vars_remotecontrol_firestick_group_numbers:
           tooltip: "Number 2"
           actions:
             tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "call-service"
               command: "input keyevent 89"
@@ -826,7 +804,7 @@ vars_remotecontrol_firestick_group_numbers:
                 device:
                 delay:
             double_tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "androidtv.adb_command"
               command:
@@ -835,7 +813,7 @@ vars_remotecontrol_firestick_group_numbers:
                 device:
                 delay:
             hold:
-              entity_id:
+              more_info_entity_id:
               action: "more-info"
               service: "androidtv.adb_command"
               command:
@@ -857,7 +835,7 @@ vars_remotecontrol_firestick_group_numbers:
           tooltip: "Number 3"
           actions:
             tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "call-service"
               command: "input keyevent 89"
@@ -866,7 +844,7 @@ vars_remotecontrol_firestick_group_numbers:
                 device:
                 delay:
             double_tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "androidtv.adb_command"
               command:
@@ -875,7 +853,7 @@ vars_remotecontrol_firestick_group_numbers:
                 device:
                 delay:
             hold:
-              entity_id:
+              more_info_entity_id:
               action: "more-info"
               service: "androidtv.adb_command"
               command:
@@ -900,7 +878,7 @@ vars_remotecontrol_firestick_group_numbers:
           tooltip: "Number 4"
           actions:
             tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "call-service"
               command: "input keyevent 89"
@@ -909,7 +887,7 @@ vars_remotecontrol_firestick_group_numbers:
                 device:
                 delay:
             double_tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "androidtv.adb_command"
               command:
@@ -918,7 +896,7 @@ vars_remotecontrol_firestick_group_numbers:
                 device:
                 delay:
             hold:
-              entity_id:
+              more_info_entity_id:
               action: "more-info"
               service: "androidtv.adb_command"
               command:
@@ -940,7 +918,7 @@ vars_remotecontrol_firestick_group_numbers:
           tooltip: "Number 5"
           actions:
             tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "call-service"
               command: "input keyevent 89"
@@ -949,7 +927,7 @@ vars_remotecontrol_firestick_group_numbers:
                 device:
                 delay:
             double_tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "androidtv.adb_command"
               command:
@@ -958,7 +936,7 @@ vars_remotecontrol_firestick_group_numbers:
                 device:
                 delay:
             hold:
-              entity_id:
+              more_info_entity_id:
               action: "more-info"
               service: "androidtv.adb_command"
               command:
@@ -980,7 +958,7 @@ vars_remotecontrol_firestick_group_numbers:
           tooltip: "Number 6"
           actions:
             tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "call-service"
               command: "input keyevent 89"
@@ -989,7 +967,7 @@ vars_remotecontrol_firestick_group_numbers:
                 device:
                 delay:
             double_tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "androidtv.adb_command"
               command:
@@ -998,7 +976,7 @@ vars_remotecontrol_firestick_group_numbers:
                 device:
                 delay:
             hold:
-              entity_id:
+              more_info_entity_id:
               action: "more-info"
               service: "androidtv.adb_command"
               command:
@@ -1023,7 +1001,7 @@ vars_remotecontrol_firestick_group_numbers:
           tooltip: "Number 7"
           actions:
             tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "call-service"
               command: "input keyevent 89"
@@ -1032,7 +1010,7 @@ vars_remotecontrol_firestick_group_numbers:
                 device:
                 delay:
             double_tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "androidtv.adb_command"
               command:
@@ -1041,7 +1019,7 @@ vars_remotecontrol_firestick_group_numbers:
                 device:
                 delay:
             hold:
-              entity_id:
+              more_info_entity_id:
               action: "more-info"
               service: "androidtv.adb_command"
               command:
@@ -1063,7 +1041,7 @@ vars_remotecontrol_firestick_group_numbers:
           tooltip: "Number 8"
           actions:
             tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "call-service"
               command: "input keyevent 89"
@@ -1072,7 +1050,7 @@ vars_remotecontrol_firestick_group_numbers:
                 device:
                 delay:
             double_tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "androidtv.adb_command"
               command:
@@ -1081,7 +1059,7 @@ vars_remotecontrol_firestick_group_numbers:
                 device:
                 delay:
             hold:
-              entity_id:
+              more_info_entity_id:
               action: "more-info"
               service: "androidtv.adb_command"
               command:
@@ -1103,7 +1081,7 @@ vars_remotecontrol_firestick_group_numbers:
           tooltip: "Number 9"
           actions:
             tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "call-service"
               command: "input keyevent 89"
@@ -1112,7 +1090,7 @@ vars_remotecontrol_firestick_group_numbers:
                 device:
                 delay:
             double_tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "androidtv.adb_command"
               command:
@@ -1121,7 +1099,7 @@ vars_remotecontrol_firestick_group_numbers:
                 device:
                 delay:
             hold:
-              entity_id:
+              more_info_entity_id:
               action: "more-info"
               service: "androidtv.adb_command"
               command:
@@ -1146,7 +1124,7 @@ vars_remotecontrol_firestick_group_numbers:
           tooltip: "Number 0"
           actions:
             tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "call-service"
               command: "input keyevent 89"
@@ -1155,7 +1133,7 @@ vars_remotecontrol_firestick_group_numbers:
                 device:
                 delay:
             double_tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "androidtv.adb_command"
               command:
@@ -1164,7 +1142,7 @@ vars_remotecontrol_firestick_group_numbers:
                 device:
                 delay:
             hold:
-              entity_id:
+              more_info_entity_id:
               action: "more-info"
               service: "androidtv.adb_command"
               command:
@@ -1176,9 +1154,6 @@ vars_remotecontrol_firestick_group_numbers:
 
 vars_remotecontrol_firestick_group_apps:
   variables:
-    entity_id_apps_tap:
-    entity_id_apps_double_tap:
-    entity_id_apps_hold:
     row1:
       entity_id:
       background_color:
@@ -1194,7 +1169,7 @@ vars_remotecontrol_firestick_group_apps:
           tooltip: "Netflix"
           actions:
             tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "call-service"
               command: "input keyevent 89"
@@ -1203,7 +1178,7 @@ vars_remotecontrol_firestick_group_apps:
                 device:
                 delay:
             double_tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "androidtv.adb_command"
               command:
@@ -1212,7 +1187,7 @@ vars_remotecontrol_firestick_group_apps:
                 device:
                 delay:
             hold:
-              entity_id:
+              more_info_entity_id:
               action: "more-info"
               service: "androidtv.adb_command"
               command:
@@ -1233,7 +1208,7 @@ vars_remotecontrol_firestick_group_apps:
           tooltip: "Amazon Prime"
           actions:
             tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "call-service"
               command: "input keyevent 89"
@@ -1242,7 +1217,7 @@ vars_remotecontrol_firestick_group_apps:
                 device:
                 delay:
             double_tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "androidtv.adb_command"
               command:
@@ -1251,7 +1226,7 @@ vars_remotecontrol_firestick_group_apps:
                 device:
                 delay:
             hold:
-              entity_id:
+              more_info_entity_id:
               action: "more-info"
               service: "androidtv.adb_command"
               command:
@@ -1272,7 +1247,7 @@ vars_remotecontrol_firestick_group_apps:
           tooltip:
           actions:
             tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "call-service"
               command: "input keyevent 89"
@@ -1281,7 +1256,7 @@ vars_remotecontrol_firestick_group_apps:
                 device:
                 delay:
             double_tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "androidtv.adb_command"
               command:
@@ -1290,7 +1265,7 @@ vars_remotecontrol_firestick_group_apps:
                 device:
                 delay:
             hold:
-              entity_id:
+              more_info_entity_id:
               action: "more-info"
               service: "androidtv.adb_command"
               command:
@@ -1311,7 +1286,7 @@ vars_remotecontrol_firestick_group_apps:
           tooltip: "YouTube"
           actions:
             tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "call-service"
               command: "input keyevent 89"
@@ -1320,7 +1295,7 @@ vars_remotecontrol_firestick_group_apps:
                 device:
                 delay:
             double_tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "androidtv.adb_command"
               command:
@@ -1329,7 +1304,7 @@ vars_remotecontrol_firestick_group_apps:
                 device:
                 delay:
             hold:
-              entity_id:
+              more_info_entity_id:
               action: "more-info"
               service: "androidtv.adb_command"
               command:
@@ -1353,7 +1328,7 @@ vars_remotecontrol_firestick_group_apps:
           tooltip: "Plex"
           actions:
             tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "call-service"
               command: "input keyevent 89"
@@ -1362,7 +1337,7 @@ vars_remotecontrol_firestick_group_apps:
                 device:
                 delay:
             double_tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "androidtv.adb_command"
               command:
@@ -1371,7 +1346,7 @@ vars_remotecontrol_firestick_group_apps:
                 device:
                 delay:
             hold:
-              entity_id:
+              more_info_entity_id:
               action: "more-info"
               service: "androidtv.adb_command"
               command:
@@ -1392,7 +1367,7 @@ vars_remotecontrol_firestick_group_apps:
           tooltip: "Spotify"
           actions:
             tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "call-service"
               command: "input keyevent 89"
@@ -1401,7 +1376,7 @@ vars_remotecontrol_firestick_group_apps:
                 device:
                 delay:
             double_tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "androidtv.adb_command"
               command:
@@ -1410,7 +1385,7 @@ vars_remotecontrol_firestick_group_apps:
                 device:
                 delay:
             hold:
-              entity_id:
+              more_info_entity_id:
               action: "more-info"
               service: "androidtv.adb_command"
               command:
@@ -1431,7 +1406,7 @@ vars_remotecontrol_firestick_group_apps:
           tooltip: "Apple TV"
           actions:
             tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "call-service"
               command: "input keyevent 89"
@@ -1440,7 +1415,7 @@ vars_remotecontrol_firestick_group_apps:
                 device:
                 delay:
             double_tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "androidtv.adb_command"
               command:
@@ -1449,7 +1424,7 @@ vars_remotecontrol_firestick_group_apps:
                 device:
                 delay:
             hold:
-              entity_id:
+              more_info_entity_id:
               action: "more-info"
               service: "androidtv.adb_command"
               command:
@@ -1470,7 +1445,7 @@ vars_remotecontrol_firestick_group_apps:
           tooltip: "BBC iPlayer"
           actions:
             tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "call-service"
               command: "input keyevent 89"
@@ -1479,7 +1454,7 @@ vars_remotecontrol_firestick_group_apps:
                 device:
                 delay:
             double_tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "androidtv.adb_command"
               command:
@@ -1488,7 +1463,7 @@ vars_remotecontrol_firestick_group_apps:
                 device:
                 delay:
             hold:
-              entity_id:
+              more_info_entity_id:
               action: "more-info"
               service: "androidtv.adb_command"
               command:
@@ -1512,7 +1487,7 @@ vars_remotecontrol_firestick_group_apps:
           tooltip: "Unifi Protect"
           actions:
             tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "call-service"
               command: "input keyevent 89"
@@ -1521,7 +1496,7 @@ vars_remotecontrol_firestick_group_apps:
                 device:
                 delay:
             double_tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "androidtv.adb_command"
               command:
@@ -1530,7 +1505,7 @@ vars_remotecontrol_firestick_group_apps:
                 device:
                 delay:
             hold:
-              entity_id:
+              more_info_entity_id:
               action: "more-info"
               service: "androidtv.adb_command"
               command:
@@ -1551,7 +1526,7 @@ vars_remotecontrol_firestick_group_apps:
           tooltip: "YouTube Music"
           actions:
             tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "call-service"
               command: "input keyevent 89"
@@ -1560,7 +1535,7 @@ vars_remotecontrol_firestick_group_apps:
                 device:
                 delay:
             double_tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "androidtv.adb_command"
               command:
@@ -1569,7 +1544,7 @@ vars_remotecontrol_firestick_group_apps:
                 device:
                 delay:
             hold:
-              entity_id:
+              more_info_entity_id:
               action: "more-info"
               service: "androidtv.adb_command"
               command:
@@ -1590,7 +1565,7 @@ vars_remotecontrol_firestick_group_apps:
           tooltip: "Apple Music"
           actions:
             tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "call-service"
               command: "input keyevent 89"
@@ -1599,7 +1574,7 @@ vars_remotecontrol_firestick_group_apps:
                 device:
                 delay:
             double_tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "androidtv.adb_command"
               command:
@@ -1608,7 +1583,7 @@ vars_remotecontrol_firestick_group_apps:
                 device:
                 delay:
             hold:
-              entity_id:
+              more_info_entity_id:
               action: "more-info"
               service: "androidtv.adb_command"
               command:
@@ -1629,7 +1604,7 @@ vars_remotecontrol_firestick_group_apps:
           tooltip: "Google Play"
           actions:
             tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "call-service"
               command: "input keyevent 89"
@@ -1638,7 +1613,7 @@ vars_remotecontrol_firestick_group_apps:
                 device:
                 delay:
             double_tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "androidtv.adb_command"
               command:
@@ -1647,7 +1622,7 @@ vars_remotecontrol_firestick_group_apps:
                 device:
                 delay:
             hold:
-              entity_id:
+              more_info_entity_id:
               action: "more-info"
               service: "androidtv.adb_command"
               command:
@@ -1671,7 +1646,7 @@ vars_remotecontrol_firestick_group_apps:
           tooltip: "Pluralsight"
           actions:
             tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "call-service"
               command: "input keyevent 89"
@@ -1680,7 +1655,7 @@ vars_remotecontrol_firestick_group_apps:
                 device:
                 delay:
             double_tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "androidtv.adb_command"
               command:
@@ -1689,7 +1664,7 @@ vars_remotecontrol_firestick_group_apps:
                 device:
                 delay:
             hold:
-              entity_id:
+              more_info_entity_id:
               action: "more-info"
               service: "androidtv.adb_command"
               command:
@@ -1710,7 +1685,7 @@ vars_remotecontrol_firestick_group_apps:
           tooltip: "Twitch"
           actions:
             tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "call-service"
               command: "input keyevent 89"
@@ -1719,7 +1694,7 @@ vars_remotecontrol_firestick_group_apps:
                 device:
                 delay:
             double_tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "androidtv.adb_command"
               command:
@@ -1728,7 +1703,7 @@ vars_remotecontrol_firestick_group_apps:
                 device:
                 delay:
             hold:
-              entity_id:
+              more_info_entity_id:
               action: "more-info"
               service: "androidtv.adb_command"
               command:
@@ -1749,7 +1724,7 @@ vars_remotecontrol_firestick_group_apps:
           tooltip: "TED"
           actions:
             tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "call-service"
               command: "input keyevent 89"
@@ -1758,7 +1733,7 @@ vars_remotecontrol_firestick_group_apps:
                 device:
                 delay:
             double_tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "androidtv.adb_command"
               command:
@@ -1767,7 +1742,7 @@ vars_remotecontrol_firestick_group_apps:
                 device:
                 delay:
             hold:
-              entity_id:
+              more_info_entity_id:
               action: "more-info"
               service: "androidtv.adb_command"
               command:
@@ -1788,7 +1763,7 @@ vars_remotecontrol_firestick_group_apps:
           tooltip: "VLC Media Player"
           actions:
             tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "call-service"
               command: "input keyevent 89"
@@ -1797,7 +1772,7 @@ vars_remotecontrol_firestick_group_apps:
                 device:
                 delay:
             double_tap:
-              entity_id:
+              more_info_entity_id:
               action: "none"
               service: "androidtv.adb_command"
               command:
@@ -1806,7 +1781,7 @@ vars_remotecontrol_firestick_group_apps:
                 device:
                 delay:
             hold:
-              entity_id:
+              more_info_entity_id:
               action: "more-info"
               service: "androidtv.adb_command"
               command:

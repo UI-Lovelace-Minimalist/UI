@@ -36,43 +36,19 @@ remotecontrol_button:
       - "remotecontrol_button_presses"
     variables:
       entity_id:
-      entity_id_tap:
-      entity_id_double_tap:
-      entity_id_hold:
       button_actions:
         tap:
-          entity_id: >
-            [[[
-              if (variables.button.actions.tap.entity_id == null) {
-                return variables.button.entity_id_tap;
-              } else {
-                return variables.button.actions.tap.entity_id;
-              }
-            ]]]
+          entity_id: "[[[ return variables.button.entity_id ]]]"
           action: "[[[ return variables.button.actions.tap.action ]]]"
           service: "[[[ return variables.button.actions.tap.service ]]]"
           haptic: "[[[ return variables.button.actions.tap.haptic ]]]"
         double_tap:
-          entity_id: >
-            [[[
-              if (variables.button.actions.double_tap.entity_id == null) {
-                return variables.button.entity_id_double_tap;
-              } else {
-                return variables.button.actions.double_tap.entity_id;
-              }
-            ]]]
+          entity_id: "[[[ return variables.button.entity_id ]]]"
           action: "[[[ return variables.button.actions.double_tap.action ]]]"
           service: "[[[ return variables.button.actions.double_tap.service ]]]"
           haptic: "[[[ return variables.button.actions.double_tap.haptic ]]]"
         hold:
-          entity_id: >
-            [[[
-              if (variables.button.actions.hold.entity_id == null) {
-                return variables.button.entity_id_hold;
-              } else {
-                return variables.button.actions.hold.entity_id;
-              }
-            ]]]
+          entity_id: "[[[ return variables.button.entity_id ]]]"
           action: "[[[ return variables.button.actions.hold.action ]]]"
           service: "[[[ return variables.button.actions.hold.service ]]]"
           haptic: "[[[ return variables.button.actions.hold.haptic ]]]"
@@ -172,7 +148,7 @@ remotecontrol_button_action:
       {% endif%}
     {% elif variables.button_action.action == "more-info" %}
       action: more-info
-      entity_id: "[[[ return variables.button_action.entity_id ]]]"
+      entity: "[[[ return (variables.button_action.more_info_entity_id != null ? variables.button_action.more_info_entity_id : variables.button_action.entity_id) ]]]"
     {% elif variables.button_action.action == "toggle" %}
       action: toggle
     {% elif variables.button_action.action == "navigate" %}
@@ -183,3 +159,4 @@ remotecontrol_button_action:
       "none"
     {% endif %}
     haptic: "[[[ return variables.button_action.haptic ]]]"
+    repeat: "[[[ return variables.button_action.repeat ]]]"
