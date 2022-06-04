@@ -32,10 +32,10 @@ custom_card_damix48_power_details:
         entity: "[[[ return variables.ulm_card_power_details_entity ]]]"
         name: |
           [[[
-            if (variables.ulm_card_power_details_hours == 1) {
-              return variables.ulm_custom_card_damix48_power_details_in_the_last + " " + variables.ulm_custom_card_damix48_power_details_hour;
+            if (variables.ulm_card_power_details_hours <= 1) {
+              return "In the Last " + variables.ulm_card_power_details_hours + " hour";
             } else {
-              return variables.ulm_custom_card_damix48_power_details_in_the_lasts + " " + variables.ulm_card_power_details_hours + " " + variables.ulm_custom_card_damix48_power_details_hours;
+              return "In the Last " + variables.ulm_card_power_details_hours + " hours";
             }
           ]]]
         label: "[[[ return variables.ulm_card_power_details_name ]]]"
