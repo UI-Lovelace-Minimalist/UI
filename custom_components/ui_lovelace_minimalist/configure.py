@@ -63,6 +63,13 @@ def configure_cards(hass: HomeAssistant, ulm: UlmBase):
                 ),
                 hass.config.path(f"{DOMAIN}/dashboard/ui-lovelace.yaml"),
             )
+        # Copy default language file over to config dir
+        shutil.copy2(
+            hass.config.path(
+                f"custom_components/{DOMAIN}/lovelace/translations/default.yaml"
+            ),
+            hass.config.path(f"{combined_cards_dir}/default.yaml"),
+        )
         # Copy chosen language file over to config dir
         shutil.copy2(
             hass.config.path(

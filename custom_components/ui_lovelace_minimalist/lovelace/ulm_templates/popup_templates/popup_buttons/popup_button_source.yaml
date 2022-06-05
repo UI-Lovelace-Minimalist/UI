@@ -2,7 +2,6 @@
 popup_button_source:
   template:
     - "popup_button"
-    - "ulm_language_variables"
   icon: "mdi:playlist-music"
   name: "Source"
   styles:

@@ -3,10 +3,5 @@
 card_generic_swap:
   template:
     - "icon_info_bg"
-    - "ulm_language_variables"
-  label: >
-    [[[
-      var unit = entity.attributes.unit_of_measurement != null ? " " + entity.attributes.unit_of_measurement : ""
-      let state = entity.state;
-      return variables["ulm_" + state] ? variables["ulm_" + state] : state + unit;
-    ]]]
+    - "ulm_translation_engine"
+  label: "[[[ return variables.ulm_translation_state_unit ]]]"

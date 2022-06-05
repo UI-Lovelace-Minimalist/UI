@@ -21,7 +21,7 @@ card_input_datetime:
         type: "custom:button-card"
         template:
           - "icon_info"
-          - "ulm_language_variables"
+          - "ulm_translation_engine"
           - "input_datetime"
         tap_action:
           action: "more-info"
@@ -153,25 +153,7 @@ widget_text:
   show_icon: false
   show_label: true
   show_name: false
-  label: >-
-    [[[
-      var unit = entity.attributes.unit_of_measurement != null ? ' ' + entity.attributes.unit_of_measurement : ''
-      if (entity.state == 'on') {
-        return variables.ulm_on;
-      } else if (entity.state == 'off') {
-        return variables.ulm_off;
-      } else if (entity.state == 'unavailable') {
-        return variables.ulm_unavailable;
-      } else if (entity.state == 'idle') {
-        return variables.ulm_idle;
-      } else if (entity.state == 'open') {
-        return variables.ulm_open;
-      } else if (entity.state == 'closed') {
-        return variables.ulm_closed;
-      } else {
-        return entity.state + unit;
-      }
-    ]]]
+  label: "[[[ return variables.ulm_translation_state_unit ]]]"
   styles:
     grid:
       - grid-template-areas: "'l'"

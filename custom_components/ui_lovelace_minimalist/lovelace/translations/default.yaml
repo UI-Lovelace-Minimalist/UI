@@ -1,0 +1,92 @@
+---
+ulm_translation_engine:
+  variables:
+    ulm_translation_back: "[[[ return hass.resources[hass['language']]['ui.common.back']; ]]]"
+    ulm_translation_brightness: "[[[ return hass.resources[hass['language']]['ui.card.light.brightness']; ]]]"
+    ulm_translation_color_temperature: "[[[ return hass.resources[hass['language']]['ui.card.light.color_temperature']; ]]]"
+    ulm_translation_history: "[[[ return hass.resources[hass['language']]['ui.dialogs.more_info_control.history']; ]]]"
+    ulm_translation_hvac: >
+      #Robin: Needs adjustment
+      [[[
+          var label = variables.ulm_translation_state;
+          if (entity.attributes.hvac_action == 'heating'){
+            var mode = variables.ulm_heating ;
+          }else if (entity.attributes.hvac_action == 'cooling'){
+            var mode = variables.ulm_cooling ;
+          }else if (entity.attributes.hvac_action == 'idle'){
+            var mode = variables.ulm_idle ;
+          }else{
+            var mode = variables.ulm_unavailable;
+          }
+
+          if((entity.attributes.temperature || entity.attributes.target_temp_high != null) && !variables.ulm_card_thermostat_enable_display_temperature){
+            return (entity.attributes.current_temperature ) + '°' + ' • ' + label + (entity.state !='off' ? ' (' + mode + ')' : '');
+          }
+          return label;
+      ]]]
+    ulm_translation_off: "[[[ return hass.resources[hass['language']]['state.default.off']; ]]]"
+    ulm_translation_on: "[[[ return hass.resources[hass['language']]['state.default.on']; ]]]"
+    ulm_translation_state: >
+      [[[
+        if (typeof(entity) !== 'undefined' && entity !== undefined){
+          let state = entity.state;
+          let d_class = entity.attributes.device_class;
+          let def = ["unknown", "unavailable"];
+          let lang = hass["language"];
+          let domain = entity.entity_id.substr(0, entity.entity_id.indexOf("."));
+          var translation = hass.resources[lang]["component." + domain + ".state._." + state] || state;
+          if (def.includes(state)) {
+            var translation = hass.resources[lang]["state.default." + state ];
+          }
+          else if (domain == "binary_sensor" && d_class != ''){
+            var translation = hass.resources[lang]["component." + domain + ".state." + d_class + "." + state] || state;
+          }
+          return translation;
+        }
+      ]]]
+    ulm_translation_state_reverse: >
+      [[[
+        if (typeof(entity) !== 'undefined' && entity !== undefined){
+          let state = entity.state;
+          let def = ["unknown", "unavailable"];
+          let lang = hass["language"];
+          if (state === "on"){
+            var translation = hass.resources[lang]["state.default.off"];
+          } else if (state === "off"){
+            var translation = hass.resources[lang]["state.default.on"];
+          }
+          if (def.includes(state)) {
+            var translation = hass.resources[lang]["state.default." + state ];
+          }
+          return translation;
+        }
+      ]]]
+    ulm_translation_state_unit: >
+      [[[
+        if (typeof(entity) !== 'undefined' && entity !== undefined){
+          let state = entity.state;
+          let d_class = entity.attributes.device_class;
+          let def = ["unknown", "unavailable"];
+          let lang = hass["language"];
+          let domain = entity.entity_id.substr(0, entity.entity_id.indexOf("."));
+          let unit = entity.attributes.unit_of_measurement != null ? " " + entity.attributes.unit_of_measurement : "";
+
+          var translation = hass.resources[lang]["component." + domain + ".state._." + state] + unit || state + unit;
+          if (def.includes(state)) {
+            var translation = hass.resources[lang]["state.default." + state ];
+          }
+          else if (domain == "binary_sensor" && d_class != ''){
+            var translation = hass.resources[lang]["component." + domain + ".state." + d_class + "." + state] || state;
+          }
+          else if (domain == "media_player" && d_class != ''){
+            if (state == 'idle' || state == 'paused')
+              var translation = hass.resources[lang]["component." + domain + ".state." + state]  || state;
+            else {
+              var translation = (entity.attributes.source) + ' • ' +  ( Math.round(entity.attributes.volume_level / 0.01)) + '%' ;
+            }
+          }
+          return translation;
+        }
+      ]]]
+    ulm_translation_statistics: "[[[ return hass.resources[hass['language']]['ui.components.statistic-picker.statistic']; ]]]"
+    ulm_translation_unavailable: "[[[ return hass.resources[hass['language']]['state.default.unavailable']; ]]]"

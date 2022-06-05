@@ -3,7 +3,7 @@
 card_battery:
   template:
     - "icon_info_bg"
-    - "ulm_language_variables"
+    - "ulm_translation_engine"
   tap_action:
     action: "more-info"
   variables:
@@ -70,7 +70,7 @@ card_battery:
         ? states[entity.entity_id].attributes[variables.ulm_card_battery_attribute]
         : states[entity.entity_id].state;
       if(battery_level == "unknown")
-      { return variables.ulm_unavailable; }
+      { return variables.ulm_translation_state; }
       else
       { return battery_level + "%"; }
     ]]]

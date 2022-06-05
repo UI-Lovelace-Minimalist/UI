@@ -3,7 +3,7 @@
 card_person:
   template:
     - "icon_info_bg"
-    - "ulm_language_variables"
+    - "ulm_translation_engine"
   variables:
     ulm_card_person_use_entity_picture: false
     ulm_card_person_zone1: ""
@@ -21,14 +21,14 @@ card_person:
         return states[variables.ulm_address].state
       } else {
         let state = states[variables.ulm_card_person_entity].state;
-        return variables["ulm_person_state_" + state] ? variables["ulm_person_state_" + state] : state;
+        return (state == "home" || state == "not_home") ? hass.resources[hass["language"]]["component.person" + ".state._." + state] : state == "unavailable" ? variables.ulm_translation_unavailable : state;
       }
     ]]]
   name: "[[[ return states[variables.ulm_card_person_entity].attributes.friendly_name ]]]"
   entity: "[[[ return variables.ulm_card_person_entity; ]]]"
   icon: "mdi:face-man"
   show_entity_picture: "[[[ return variables.ulm_card_person_use_entity_picture ]]]"
-  entity_picture: "[[[ return variables.ulm_card_person_use_entity_picture != false ? states[variables.ulm_card_person_entity].attributes.entity_picture\
+  entity_picture: "[[[ return variables.ulm_card_person_use_entity_picture ? states[variables.ulm_card_person_entity].attributes.entity_picture\
     \ : null ]]]"
   styles:
     icon:

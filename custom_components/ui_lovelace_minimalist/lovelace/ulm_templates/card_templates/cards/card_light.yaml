@@ -2,7 +2,7 @@
 ### Card Light ###
 card_light:
   template:
-    - "ulm_language_variables"
+    - "ulm_translation_engine"
   variables:
     ulm_card_light_name: "[[[ return entity.attributes.friendly_name ]]]"
     ulm_card_light_icon: "[[[ return entity.attributes.icon ]]]"
@@ -200,17 +200,17 @@ card_light:
                 [[[
                   if (entity.state !="unavailable"){
                     if (entity.state =="off"){
-                      return variables.ulm_off;
+                      return variables.ulm_translation_state;
                     } else if (entity.state == "on"){
                       if (entity.attributes.brightness != null){
                         var bri = Math.round(entity.attributes.brightness / 2.55);
                         return (bri ? bri : "0") + "%";
                       } else {
-                        return variables.ulm_on
+                        return variables.ulm_translation_state;
                       }
                     }
                   } else {
-                    return variables.ulm_unavailable;
+                    return variables.ulm_translation_state;
                   }
                 ]]]
               state:

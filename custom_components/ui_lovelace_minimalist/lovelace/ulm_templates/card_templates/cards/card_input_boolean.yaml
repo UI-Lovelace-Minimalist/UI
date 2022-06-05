@@ -3,11 +3,7 @@
 card_input_boolean:
   template:
     - "icon_info_bg"
-    - "ulm_language_variables"
+    - "ulm_translation_engine"
     - "blue"
   name: "[[[ return entity.attributes.friendly_name != '' ? entity.attributes.friendly_name : entity.entity_id ]]]"
-  label: >
-    [[[
-      let state = entity.state;
-      return variables["ulm_" + state] ? variables["ulm_" + state] : state;
-    ]]]
+  label: "[[[ return variables.ulm_translation_state ]]]"
