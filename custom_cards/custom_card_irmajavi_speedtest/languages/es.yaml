@@ -1,0 +1,6 @@
+---
+ulm_custom_card_irmajavi_speedtest_language_variables:
+  variables:
+    ulm_custom_card_irmajavi_speedtest_speedtest: "Prueba de velocidad"
+    ulm_custom_card_irmajavi_speedtest_download: "Velocidad de bajada"
+    ulm_custom_card_irmajavi_speedtest_upload: "Velocidad de subida"
