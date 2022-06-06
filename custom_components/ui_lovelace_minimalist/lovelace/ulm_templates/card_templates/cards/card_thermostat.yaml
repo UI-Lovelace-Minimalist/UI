@@ -20,12 +20,7 @@ card_thermostat:
   hold_action:
     action: >
       [[[
-          if (variables.ulm_card_thermostat_enable_popup){
-            return 'fire-dom-event'
-          }
-          else{
-            return 'more-info'
-          }
+            return variables.ulm_card_thermostat_enable_popup ? 'fire-dom-event' : 'more-info';
       ]]]
     browser_mod:
       command: "popup"
@@ -87,11 +82,7 @@ card_thermostat:
           ]]]
       - grid-template-columns: >
           [[[
-                if (variables.ulm_card_thermostat_enable_horizontal) {
-                  return "1fr 1fr";
-                } else {
-                  return "2fr 1fr";
-                }
+                  return variables.ulm_card_thermostat_enable_horizontal ? "1fr 1fr" : "2fr 1fr";
           ]]]
       - grid-template-rows: >
           [[[
@@ -174,12 +165,7 @@ card_thermostat:
               hold_action:
                 action: >
                   [[[
-                      if (variables.ulm_card_thermostat_enable_popup){
-                        return 'fire-dom-event'
-                      }
-                      else{
-                        return 'more-info'
-                      }
+                        return variables.ulm_card_thermostat_enable_popup ? 'fire-dom-event' : 'more-info';
                   ]]]
                 browser_mod:
                   command: "popup"
@@ -231,12 +217,7 @@ card_thermostat:
               hold_action:
                 action: >
                   [[[
-                      if (variables.ulm_card_thermostat_enable_popup){
-                        return 'fire-dom-event'
-                      }
-                      else{
-                        return 'more-info'
-                      }
+                      return variables.ulm_card_thermostat_enable_popup ? 'fire-dom-event' : 'more-info';
                   ]]]
                 browser_mod:
                   command: "popup"
@@ -247,7 +228,14 @@ card_thermostat:
                     template: "popup_thermostat_temperature"
                     variables:
                       ulm_popup_thermostat_entity: "[[[ return entity.entity_id ]]]"
-              label: "[[[ return variables.ulm_translation_hvac ]]]"
+              label: >-
+                [[[
+                    var label = variables.ulm_translation_state;
+                    if((entity.attributes.temperature || entity.attributes.target_temp_high != null) && !variables.ulm_card_thermostat_enable_display_temperature){
+                      return variables.ulm_translation_hvac;
+                    }
+                    return label;
+                ]]]
     item2:
       card:
         type: "custom:button-card"

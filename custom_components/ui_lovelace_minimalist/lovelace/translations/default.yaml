@@ -5,24 +5,36 @@ ulm_translation_engine:
     ulm_translation_brightness: "[[[ return hass.resources[hass['language']]['ui.card.light.brightness']; ]]]"
     ulm_translation_color_temperature: "[[[ return hass.resources[hass['language']]['ui.card.light.color_temperature']; ]]]"
     ulm_translation_history: "[[[ return hass.resources[hass['language']]['ui.dialogs.more_info_control.history']; ]]]"
+    ulm_translation_hour: >
+      var number = hass.resources.de["ui.duration.hour"];
+      var matches = number.match(/[^{\}]+(?=})/g);
+      var hour = "Hour";
+      if (matches) {
+        var hour = matches[1];
+      }
+      return(hour);
+    ulm_translation_hours: >
+      var number = hass.resources.de["ui.duration.hour"];
+      var matches = number.match(/[^{\}]+(?=})/g);
+      var hour = "Hours";
+      if (matches) {
+        var hour = matches[2];
+      }
+      return(hour);
     ulm_translation_hvac: >
-      #Robin: Needs adjustment
       [[[
-          var label = variables.ulm_translation_state;
-          if (entity.attributes.hvac_action == 'heating'){
-            var mode = variables.ulm_heating ;
-          }else if (entity.attributes.hvac_action == 'cooling'){
-            var mode = variables.ulm_cooling ;
-          }else if (entity.attributes.hvac_action == 'idle'){
-            var mode = variables.ulm_idle ;
-          }else{
-            var mode = variables.ulm_unavailable;
-          }
-
-          if((entity.attributes.temperature || entity.attributes.target_temp_high != null) && !variables.ulm_card_thermostat_enable_display_temperature){
+          if (typeof(entity) !== 'undefined' && entity !== undefined){
+            var label = variables.ulm_translation_state;
+            let d_class = "climate";
+            let def = ["unknown", "unavailable"];
+            let lang = hass["language"];
+            let action = entity.attributes.hvac_action;
+            var mode = hass.resources[lang]["state_attributes." + domain + ".hvac_action." + action];
+            if (def.includes(state)) {
+              var mode = hass.resources[lang]["state.default." + state ];
+            }
             return (entity.attributes.current_temperature ) + '°' + ' • ' + label + (entity.state !='off' ? ' (' + mode + ')' : '');
           }
-          return label;
       ]]]
     ulm_translation_off: "[[[ return hass.resources[hass['language']]['state.default.off']; ]]]"
     ulm_translation_on: "[[[ return hass.resources[hass['language']]['state.default.on']; ]]]"
