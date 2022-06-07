@@ -31,7 +31,7 @@ cards:
       grid-area: "text"
     type: "custom:button-card"
     template: "card_title"
-    name: "This is the advanced <br>dashboard provided by <br> UI Minimalist"
+    name: "This is the adaptive <br>dashboard provided by <br> UI Minimalist"
     label: "Find instructions to add <br> cards on the wiki"
 
   - view_layout:

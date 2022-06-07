@@ -66,16 +66,16 @@ def configure_cards(hass: HomeAssistant, ulm: UlmBase):
                     ),
                     hass.config.path(f"{DOMAIN}/dashboard/ui-lovelace.yaml"),
                 )
-        # Copy advanced dashboard if not exists and is selected as option
-        if ulm.configuration.advanced_ui_enabled:
+        # Copy adaptive dashboard if not exists and is selected as option
+        if ulm.configuration.adaptive_ui_enabled:
             if not os.path.exists(
-                hass.config.path(f"{DOMAIN}/dashboard/advanced-dash")
+                hass.config.path(f"{DOMAIN}/dashboard/adaptive-dash")
             ):
                 shutil.copytree(
                     hass.config.path(
-                        f"custom_components/{DOMAIN}/lovelace/advanced-dash"
+                        f"custom_components/{DOMAIN}/lovelace/adaptive-dash"
                     ),
-                    hass.config.path(f"{DOMAIN}/dashboard/advanced-dash"),
+                    hass.config.path(f"{DOMAIN}/dashboard/adaptive-dash"),
                 )
         # Copy chosen language file over to config dir
         shutil.copy2(

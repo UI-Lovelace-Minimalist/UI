@@ -1,12 +1,12 @@
 ---
-title: Advanced Dashboard
+title: Adaptive Dashboard
 hide:
   - toc
 ---
 <!-- markdownlint-disable MD046 -->
 ###### insert image/gif here
 
-## Add advanced Dashboard
+## Add Adaptive Dashboard
 
 To get full use of your Minimalist themed HA you need to setup some more custom_components (see requirements below). <br>
 This dashboard automatically changes based on the device/screen size your are using. You can also alter the cards showing on the right-side by double-tapping a card. (Steps to configure this are described below)
@@ -19,6 +19,9 @@ This dashboard make extensive use of `state-switch` and `layout-card`. These are
 | ----------------------------------------------------------------------- |
 | [`layout-card`](https://github.com/thomasloven/lovelace-layout-card)            |
 | [`state-switch`](https://github.com/thomasloven/lovelace-state-switch) |
+
+!!! warning "Warning"
+    For now the `state-switch` works only with version `v1.9.3` or below!
 
 You need also configure an `input_select` with options for each popup_card and view you have configured. This `input_select` controls the cards showing on the right-side of the screen when in fullscreen mode.
 
@@ -48,9 +51,9 @@ input_select:
 
 ## Setup
 
-To enable the advanced dashboard you need to select the right option in the integration configuration menu.
+To enable the adaptive dashboard you need to select the right option in the integration configuration menu.
 
-![hacs_advanced_dashboard](../assets/img/setup/hacs_advanced_dashboard.png){ width="300" }
+![hacs_adaptive_dashboard](../assets/img/setup/hacs_adaptive_dashboard.png){ width="300" }
 
 Once setup you should see another dashboard in your sidebar. This dashboard is filled with `card_title` template cards as placeholders.
 
@@ -62,8 +65,8 @@ config
     ├── custom_cards
     └── dashboard
         └── ui-lovelace.yaml
-        └── advanced-dash
-            └── advanced-ui.yaml
+        └── adaptive-dash
+            └── adaptive-ui.yaml
             └── popup
                 └── popup.yaml
             └── views
@@ -73,7 +76,7 @@ config
 
 ## Customizing
 
-The best place to start adding your personal cards is in `advanced-dash/views/main.yaml`.
+The best place to start adding your personal cards is in `adaptive-dash/views/main.yaml`.
 
 !!! tip "Grid-Layout"
 
@@ -119,19 +122,56 @@ Do this for all placeholders. You can always use less cards by deleting placehol
 
 ### Adding popups on the right-side
 
-All cards on the right-side are configured in `advanced-dash/popup/popup.yaml`.
+All cards on the right-side are configured in `adaptive-dash/popup/popup.yaml`.
 
 We preconfigured multiple popups for different types of devices. In `popup.yaml` you only have to complete the information in the variables part. The `light 1`, `mediaplayer 1`, `livingroom` parts in the code refer to the options you have configuered in your `input_select`. Make sure they are spelled the same. ([see documentation on `state-switch`](https://github.com/thomasloven/lovelace-state-switch))
 
+Follow this part to add a card to an option of your `input_select`:
+To add a light popup to your first light card you just have to add the corresponding entity:
+
+```yaml
+type: custom:state-switch
+view_layout:
+  grid-area: popup
+  show:
+    mediaquery: "(min-width: 1100px)"
+entity: input_select.minimalist_ui # put your input_select here
+default: default
+transition: slide-down
+transition_time: 500
+states:
+  ## Lights
+  light 1:
+    type: "custom:button-card"
+    template: "popup_light_brightness"
+    variables:
+      ulm_popup_light_entity: "<your_entity>"
+```
+
+You can also add any other card by copying its yaml code in without the hypen `(-)`
+
+```yaml
+states:
+  ## Lights
+  light 1:
+    type: "custom:button-card"
+    template: "popup_light_brightness"
+    variables:
+      ulm_popup_light_entity: "<your_entity>"
+  card 1:
+    type: "custom:button-card"
+    template: "<your_template>"
+```
+
 !!! note "Important!"
 
-    All device entities need its own popup config!
+    All options(devices) need its own config in `popup.yaml`!
 
 !!! warning "Warning"
 
     Delete all entries you don't use in `popup.yaml`. If not this can fill your dev-console with unwanted errors.
 
-To switch between popups we need to go back to `advanced-dash/views/main.yaml`. Here we have to add two variables to the cards we want to show a popup off. After adding these variables the cards need to be double_tapped to change popups.
+To switch between popups we need to go back to `adaptive-dash/views/main.yaml`. Here we have to add two variables to the cards we want to show a popup off. After adding these variables the cards need to be double_tapped to change popups.
 
 ```yaml
 variables:
@@ -139,10 +179,10 @@ variables:
   ulm_input_select: input_select.minimalist_ui_switch
 ```
 
-Eventually the card_light we did configure should be like this:
+Eventually the `card_light` we did configure should be like this:
 
 ```yaml
- - view_layout:
+- view_layout:
     grid-area: "card1"
   type: "custom:button-card"
   template: "card_light"
@@ -162,68 +202,68 @@ From here you can duplicate the steps for each card.
 
 ### Setup more views
 
-We already made a file for a second view: `advanced-dash/views/livingroom.yaml`. You can make as many views as you want by duplicating and alter the views files.
+We already made a file for a second view: `adaptive-dash/views/livingroom.yaml`. You can make as many views as you want by duplicating and alter the views files.
 
-To make the new view visible you have to add some entry to `advanced-dash/advanced-ui.yaml`. You only have to change the name of the room/view to the new entry.
+To make the new view visible you have to add some entry to `adaptive-dash/adaptive-ui.yaml`. You only have to change the name of the room/view to the new entry.
 
-??? note "Add view example (click to open)"
+??? note "Add an extra view example (click to open)"
 
-        ```yaml
-        title: "UI Lovelace Minimalist"
-        theme: "minimalist-desktop"
-        background: "var(--background-image)"
-        views:
-        - type: "custom:grid-layout"
-            title: "home"
-            icon: "mdi:home"
-            path: "0"
-            layout:
-            grid-template-columns: "1fr 1fr"
-            grid-template-rows: "min-content"
-            grid-template-areas: |
-                "main popup"
-            mediaquery:
-                "(max-width: 1100px), (orientation: portrait)":
-                grid-template-columns: "100%"
-                grid-template-areas: "main"
-            cards:
-            - !include "views/main.yaml"
-            - !include "popup/popup.yaml"
+    ```yaml
+    title: "UI Lovelace Minimalist"
+    theme: "minimalist-desktop"
+    background: "var(--background-image)"
+    views:
+      - type: "custom:grid-layout"
+        title: "home"
+        icon: "mdi:home"
+        path: "0"
+        layout:
+        grid-template-columns: "1fr 1fr"
+        grid-template-rows: "min-content"
+        grid-template-areas: |
+            "main popup"
+        mediaquery:
+            "(max-width: 1100px), (orientation: portrait)":
+            grid-template-columns: "100%"
+            grid-template-areas: "main"
+        cards:
+        - !include "views/main.yaml"
+        - !include "popup/popup.yaml"
 
-        - type: "custom:grid-layout"
-            title: "Livingroom"
-            icon: "mdi:sofa"
-            path: "Livingroom"
-            layout:
-            grid-template-columns: "1fr 1fr"
-            grid-template-rows: "min-content"
-            grid-template-areas: |
-                "livingroom popup"
-            mediaquery:
-                "(max-width: 1100px), (orientation: portrait)":
-                grid-template-columns: "100%"
-                grid-template-areas: "livingroom"
-            cards:
-            - !include "views/livingroom.yaml"
-            - !include "popup/popup.yaml"
+      - type: "custom:grid-layout"
+        title: "Livingroom"
+        icon: "mdi:sofa"
+        path: "Livingroom"
+        layout:
+        grid-template-columns: "1fr 1fr"
+        grid-template-rows: "min-content"
+        grid-template-areas: |
+            "livingroom popup"
+        mediaquery:
+            "(max-width: 1100px), (orientation: portrait)":
+            grid-template-columns: "100%"
+            grid-template-areas: "livingroom"
+        cards:
+        - !include "views/livingroom.yaml"
+        - !include "popup/popup.yaml"
 
-        - type: "custom:grid-layout"
-            title: "New View"
-            icon: "mdi:flower"
-            path: "New View"
-            layout:
-            grid-template-columns: "1fr 1fr"
-            grid-template-rows: "min-content"
-            grid-template-areas: |
-                "new_view popup"
-            mediaquery:
-                "(max-width: 1100px), (orientation: portrait)":
-                grid-template-columns: "100%"
-                grid-template-areas: "newview"
-            cards:
-            - !include "views/newview.yaml"
-            - !include "popup/popup.yaml"
-        ```
+      - type: "custom:grid-layout"
+        title: "New View"
+        icon: "mdi:flower"
+        path: "New View"
+        layout:
+        grid-template-columns: "1fr 1fr"
+        grid-template-rows: "min-content"
+        grid-template-areas: |
+            "new_view popup"
+        mediaquery:
+            "(max-width: 1100px), (orientation: portrait)":
+            grid-template-columns: "100%"
+            grid-template-areas: "newview"
+        cards:
+        - !include "views/newview.yaml"
+        - !include "popup/popup.yaml"
+    ```
 
 You can also show room views as a popup. To configure this add a `!include` entry in the popup.yaml file. As example we configured `livingroom` already. Make sure this is also an option in your `input_select`.
 
