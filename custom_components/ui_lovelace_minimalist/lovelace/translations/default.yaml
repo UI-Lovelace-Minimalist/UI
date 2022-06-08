@@ -6,34 +6,40 @@ ulm_translation_engine:
     ulm_translation_color_temperature: "[[[ return hass.resources[hass['language']]['ui.card.light.color_temperature']; ]]]"
     ulm_translation_history: "[[[ return hass.resources[hass['language']]['ui.dialogs.more_info_control.history']; ]]]"
     ulm_translation_hour: >
-      var number = hass.resources[hass['language']]["ui.duration.hour"];
-      var matches = number.match(/[^{\}]+(?=})/g);
-      var hour = "Hour";
-      if (matches) {
-        var hour = matches[1];
-      }
-      return(hour);
+      [[[
+        var number = hass.resources[hass['language']]["ui.duration.hour"];
+        var matches = number.match(/[^{\}]+(?=})/g);
+        var hour = "Hour";
+        if (matches) {
+          var hour = matches[1];
+        }
+        return(hour);
+      ]]]
     ulm_translation_hours: >
-      var number = hass.resources[hass['language']]["ui.duration.hour"];
-      var matches = number.match(/[^{\}]+(?=})/g);
-      var hour = "Hours";
-      if (matches) {
-        var hour = matches[2];
-      }
-      return(hour);
+      [[[
+        var number = hass.resources[hass['language']]["ui.duration.hour"];
+        var matches = number.match(/[^{\}]+(?=})/g);
+        var hour = "Hours";
+        if (matches) {
+          var hour = matches[2];
+        }
+        return(hour);
+      ]]]
     ulm_translation_hvac: >
       [[[
-          if (typeof(entity) !== 'undefined' && entity !== undefined){
-            var label = variables.ulm_translation_state;
-            let d_class = "climate";
-            let def = ["unknown", "unavailable"];
-            let lang = hass["language"];
-            let action = entity.attributes.hvac_action;
-            var mode = hass.resources[lang]["state_attributes." + domain + ".hvac_action." + action];
-            if (def.includes(state)) {
-              var mode = hass.resources[lang]["state.default." + state ];
-            }
-            return (entity.attributes.current_temperature ) + '°' + ' • ' + label + (entity.state !='off' ? ' (' + mode + ')' : '');
+        if (typeof(entity) !== 'undefined' && entity !== undefined){
+          let state = entity.state;
+          let d_class = entity.attributes.device_class;
+          let def = ["unknown", "unavailable"];
+          let lang = hass["language"];
+          let action = entity.attributes.hvac_action;
+          let domain = entity.entity_id.substr(0, entity.entity_id.indexOf("."));
+          var mode = hass.resources[lang]["state_attributes." + domain + ".hvac_action." + action];
+          if (def.includes(state)) {
+            var mode = hass.resources[lang]["state.default." + state ];
+          }
+          var label = hass.resources[lang]["component." + domain + ".state._." + state] || state;
+          return (entity.attributes.current_temperature ) + '°' + ' • ' + label + (entity.state !='off' ? ' (' + mode + ')' : '');
           }
       ]]]
     ulm_translation_off: "[[[ return hass.resources[hass['language']]['state.default.off']; ]]]"

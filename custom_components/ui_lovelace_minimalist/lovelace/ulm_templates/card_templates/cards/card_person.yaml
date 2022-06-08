@@ -21,7 +21,8 @@ card_person:
         return states[variables.ulm_address].state
       } else {
         let state = states[variables.ulm_card_person_entity].state;
-        return (state == "home" || state == "not_home") ? hass.resources[hass["language"]]["component.person" + ".state._." + state] : state == "unavailable" ? variables.ulm_translation_unavailable : state;
+        let option = ["home", "not_home", "unavailable", "unknown"]
+        return (option.includes(state)) ? variables.ulm_translation_state : state
       }
     ]]]
   name: "[[[ return states[variables.ulm_card_person_entity].attributes.friendly_name ]]]"

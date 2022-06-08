@@ -198,20 +198,12 @@ card_light:
                       ulm_popup_light_entity: "[[[ return entity.entity_id ]]]"
               label: >-
                 [[[
-                  if (entity.state !="unavailable"){
-                    if (entity.state =="off"){
-                      return variables.ulm_translation_state;
-                    } else if (entity.state == "on"){
-                      if (entity.attributes.brightness != null){
-                        var bri = Math.round(entity.attributes.brightness / 2.55);
-                        return (bri ? bri : "0") + "%";
-                      } else {
-                        return variables.ulm_translation_state;
-                      }
+                  var label = variables.ulm_translation_state
+                    if (entity.attributes.brightness != null && entity.state === 'on'){
+                      var bri = Math.round(entity.attributes.brightness / 2.55);
+                      var label = (bri ? bri : "0") + "%";
                     }
-                  } else {
-                    return variables.ulm_translation_state;
-                  }
+                  return label;
                 ]]]
               state:
                 - value: "on"
