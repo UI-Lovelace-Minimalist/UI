@@ -1,6 +1,7 @@
 ---
 ### Icon Info Alert ###
 icon_info_alert:
+  template: "ulm_global_config"
   color: "var(--google-grey)"
   show_icon: true
   show_label: true
