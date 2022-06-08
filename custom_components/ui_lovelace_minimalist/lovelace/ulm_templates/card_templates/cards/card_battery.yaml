@@ -5,11 +5,11 @@ card_battery:
     - "icon_info_bg"
     - "ulm_language_variables"
   tap_action:
-    action: "[[[ return variables.ulm_global_card_tap_action == 'toggle' ? 'none' : variables.ulm_global_card_tap_action ]]]"
+    action: "[[[ return variables.ulm_global_card_tap_action == 'toggle' ? 'none' :  variables.ulm_global_card_tap_action == 'popup' ? 'more-info' : variables.ulm_global_card_tap_action ]]]"
   hold_action:
-    action: "[[[ return variables.ulm_global_card_hold_action == 'toggle' ? 'none' : variables.ulm_global_card_hold_action ]]]"
+    action: "[[[ return variables.ulm_global_card_hold_action == 'toggle' ? 'none' : variables.ulm_global_card_hold_action == 'popup' ? 'more-info' : variables.ulm_global_card_hold_action ]]]"
   double_tap_action:
-    action: "[[[ return variables.ulm_global_card_double_tap_action == 'toggle' ? 'none' : variables.ulm_global_card_double_tap_action ]]]"
+    action: "[[[ return variables.ulm_global_card_double_tap_action == 'toggle' ? 'none' : variables.ulm_global_card_double_tap_action == 'popup' ? 'more-info' : variables.ulm_global_card_double_tap_action ]]]"
   variables:
     ulm_card_battery_attribute:
     ulm_card_battery_battery_state_entity_id:
