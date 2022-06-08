@@ -70,6 +70,7 @@ label: >
 You can also replace 🌡️ and 💧 with any desired Emoji, and sensor.room_temperature/sensor.room_humidity to match any of your HA entities you would like to be displayed. Ensure that the correct units of measurement are also updated (or removed) to match your custom entities. In this example they are °C and %.
 
 ## Template code
+
 ??? note "Template Code"
 
     ```yaml title="custom_card_esh_room.yaml"
