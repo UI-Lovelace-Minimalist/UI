@@ -3,6 +3,7 @@ title: Device Tracker Custom-card
 hide:
   - toc
 ---
+
 <!-- markdownlint-disable MD046 -->
 
 # Custom-card "Device Tracker (Online or Offline ?)"
@@ -108,46 +109,10 @@ default: "var(--google-red)"</td>
 
 ## Template code
 
-```yaml
-custom_card_vncntdev_device_tracker:
-  template: "card_generic"
-  variables:
-    custom_card_vncntdev_device_tracker_name:
-    custom_card_vncntdev_device_tracker_status_as_name: false
-    custom_card_vncntdev_device_tracker_icon: "mdi:server"
-    custom_card_vncntdev_device_tracker_color_online: "var(--google-green)"
-    custom_card_vncntdev_device_tracker_color_offline: "var(--google-red)"
-  tap_action:
-    action: "more-info"
-  icon: "[[[return variables.custom_card_vncntdev_device_tracker_icon]]]"
-  label: |
-    [[[
-        if (variables.custom_card_vncntdev_device_tracker_status_as_name) {
-          return variables.custom_card_vncntdev_device_tracker_name !== null?
-          variables.custom_card_vncntdev_device_tracker_name:
-          entity.attributes.friendly_name;
-        } else {
-          return (entity.state == "not_home" || entity.state == "off") ? "Offline" : "Online";
-        }
-    ]]]
-  name: |
-    [[[
-        if (!variables.custom_card_vncntdev_device_tracker_status_as_name) {
-          return variables.custom_card_vncntdev_device_tracker_name !== null?
-          variables.custom_card_vncntdev_device_tracker_name:
-          entity.attributes.friendly_name;
-        } else {
-          return (entity.state == "not_home" || entity.state == "off") ? "Offline" : "Online";
-        }
-    ]]]
-  styles:
-    icon:
-      - color: >
-          [[[
-              return (entity.state == "not_home" || entity.state == "off") ?
-              variables.custom_card_vncntdev_device_tracker_color_offline:
-              variables.custom_card_vncntdev_device_tracker_color_online;
-          ]]]
-```
+??? note "Template Code"
+
+    ```yaml title="vncntdev_card_device_tracer.yaml"
+    --8<-- "custom_cards/custom_card_vncntdev_device_tracer/vncntdev_card_device_tracer.yaml"
+    ```
 
 ## Note
