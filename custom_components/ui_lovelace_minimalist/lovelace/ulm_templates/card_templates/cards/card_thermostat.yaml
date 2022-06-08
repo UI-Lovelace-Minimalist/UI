@@ -18,16 +18,30 @@ card_thermostat:
   show_icon: false
   show_name: false
   show_label: false
+  tap_action:
+    action: "[[[ return variables.ulm_global_card_tap_action == 'popup' ? 'fire-dom-event' : variables.ulm_global_card_tap_action ]]]"
+    browser_mod:
+      command: "popup"
+      large: true
+      hide_header: true
+      card:
+        type: "custom:button-card"
+        template: "popup_thermostat_temperature"
+        variables:
+          ulm_popup_thermostat_entity: "[[[ return entity.entity_id ]]]"
   hold_action:
-    action: >
-      [[[
-          if (variables.ulm_card_thermostat_enable_popup){
-            return 'fire-dom-event'
-          }
-          else{
-            return 'more-info'
-          }
-      ]]]
+    action: "[[[ return variables.ulm_global_card_hold_action == 'popup' ? 'fire-dom-event' : variables.ulm_global_card_hold_action ]]]"
+    browser_mod:
+      command: "popup"
+      large: true
+      hide_header: true
+      card:
+        type: "custom:button-card"
+        template: "popup_thermostat_temperature"
+        variables:
+          ulm_popup_thermostat_entity: "[[[ return entity.entity_id ]]]"
+  double_tap_action:
+    action: "[[[ return variables.ulm_global_card_double_tap_action == 'popup' ? 'fire-dom-event' : variables.ulm_global_card_double_tap_action ]]]"
     browser_mod:
       command: "popup"
       large: true
@@ -172,16 +186,30 @@ card_thermostat:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
               icon: "[[[ return variables.ulm_card_thermostat_icon ]]]"
+              tap_action:
+                action: "[[[ return variables.ulm_global_icon_tap_action == 'popup' ? 'fire-dom-event' : variables.ulm_global_icon_tap_action ]]]"
+                browser_mod:
+                  command: "popup"
+                  large: true
+                  hide_header: true
+                  card:
+                    type: "custom:button-card"
+                    template: "popup_thermostat_temperature"
+                    variables:
+                      ulm_popup_thermostat_entity: "[[[ return entity.entity_id ]]]"
               hold_action:
-                action: >
-                  [[[
-                      if (variables.ulm_card_thermostat_enable_popup){
-                        return 'fire-dom-event'
-                      }
-                      else{
-                        return 'more-info'
-                      }
-                  ]]]
+                action: "[[[ return variables.ulm_global_icon_hold_action == 'popup' ? 'fire-dom-event' : variables.ulm_global_icon_hold_action ]]]"
+                browser_mod:
+                  command: "popup"
+                  large: true
+                  hide_header: true
+                  card:
+                    type: "custom:button-card"
+                    template: "popup_thermostat_temperature"
+                    variables:
+                      ulm_popup_thermostat_entity: "[[[ return entity.entity_id ]]]"
+              double_tap_action:
+                action: "[[[ return variables.ulm_global_icon_double_tap_action == 'popup' ? 'fire-dom-event' : variables.ulm_global_icon_double_tap_action ]]]"
                 browser_mod:
                   command: "popup"
                   large: true
@@ -218,7 +246,7 @@ card_thermostat:
               entity: "[[[ return entity.entity_id ]]]"
               name: "[[[ return variables.ulm_card_thermostat_name ]]]"
               tap_action:
-                action: "[[[ return variables.ulm_global_name_tap_action ]]]"
+                action: "[[[ return variables.ulm_global_name_tap_action == 'popup' ? 'fire-dom-event' : variables.ulm_global_name_tap_action ]]]"
                 browser_mod:
                   command: "popup"
                   large: true
@@ -229,7 +257,7 @@ card_thermostat:
                     variables:
                       ulm_popup_thermostat_entity: "[[[ return entity.entity_id ]]]"
               hold_action:
-                action: "[[[ return variables.ulm_global_name_hold_action ]]]"
+                action: "[[[ return variables.ulm_global_name_hold_action == 'popup' ? 'fire-dom-event' : variables.ulm_global_name_hold_action ]]]"
                 browser_mod:
                   command: "popup"
                   large: true
@@ -240,7 +268,7 @@ card_thermostat:
                     variables:
                       ulm_popup_thermostat_entity: "[[[ return entity.entity_id ]]]"
               double_tap_action:
-                action: "[[[ return variables.ulm_global_name_double_tap_action ]]]"
+                action: "[[[ return variables.ulm_global_name_double_tap_action == 'popup' ? 'fire-dom-event' : variables.ulm_global_name_double_tap_action ]]]"
                 browser_mod:
                   command: "popup"
                   large: true

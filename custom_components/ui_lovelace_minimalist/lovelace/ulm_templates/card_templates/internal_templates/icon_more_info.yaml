@@ -12,8 +12,6 @@ icon_more_info:
       - column-gap: "0px"
     card:
       - background-color: "rgba(0,0,0,0)"
-  hold_action:
-    action: "more-info"
   custom_fields:
     item1:
       card:
@@ -24,8 +22,6 @@ icon_more_info:
         styles:
           card:
             - overflow: "visible"
-        tap_action:
-          action: "more-info"
     item2:
       card:
         type: "custom:button-card"
