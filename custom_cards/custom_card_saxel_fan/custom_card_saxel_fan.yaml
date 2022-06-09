@@ -112,6 +112,7 @@ custom_card_saxel_fan_common:
         card:
           type: "custom:my-slider"
           entity: "[[[ return entity.entity_id ]]]"
+          step: "[[[ return typeof states[entity.entity_id].attributes.percentage_step === 'undefined' ? 1 : parseInt(states[entity.entity_id].attributes.percentage_step); ]]]"
           radius: "14px"
           height: "42px"
           mainSliderColor: "[[[return variables.mainSliderColor]]]"
