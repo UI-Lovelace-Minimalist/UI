@@ -37,12 +37,12 @@ card_light_colorpick:
         entity: "[[[ return entity.entity_id ]]]"
         label: >-
           [[[
-            if (entity.attributes.brightness != null){
+            var label = variables.ulm_translation_state
+            if (entity.attributes.brightness != null && entity.state == 'on'){
               var bri = Math.round(entity.attributes.brightness / 2.55);
-              return (bri ? bri : "0") + "%";
-            } else {
-              return variables.ulm_translation_state;
+              var label = (bri ? bri : "0") + "%";
             }
+            return label;
           ]]]
         name: "[[[ return variables.ulm_card_light_slider_horizontal_name ]]]"
         styles:

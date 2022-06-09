@@ -4,6 +4,9 @@ ulm_translation_engine:
     ulm_translation_back: "[[[ return hass.resources[hass['language']]['ui.common.back']; ]]]"
     ulm_translation_brightness: "[[[ return hass.resources[hass['language']]['ui.card.light.brightness']; ]]]"
     ulm_translation_color_temperature: "[[[ return hass.resources[hass['language']]['ui.card.light.color_temperature']; ]]]"
+    ulm_translation_status: "[[[ return hass.resources[hass['language']]['ui.dialogs.more_info_control.vacuum.status']; ]]]"
+    ulm_translation_scenes: "[[[ return hass.resources[hass['language']]['ui.dialogs.quick-bar.commands.navigation.scene']; ]]]"
+    ulm_translation_source: "[[[ return hass.resources[hass['language']]['ui.card.media_player.source']; ]]]"
     ulm_translation_history: "[[[ return hass.resources[hass['language']]['ui.dialogs.more_info_control.history']; ]]]"
     ulm_translation_hour: >
       [[[

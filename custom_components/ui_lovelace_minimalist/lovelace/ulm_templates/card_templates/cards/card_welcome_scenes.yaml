@@ -155,11 +155,13 @@ card_welcome_scenes:
     item3:
       card:
         type: "custom:button-card"
+        template:
+          - "ulm_translation_engine"
         show_icon: true
         show_label: true
         show_name: true
         show_entity_picture: false
-        name: "Scenes"
+        name: "[[[ return variables.ulm_translation_scenes ]]]"
         icon: "mdi:dots-vertical"
         styles:
           icon:
