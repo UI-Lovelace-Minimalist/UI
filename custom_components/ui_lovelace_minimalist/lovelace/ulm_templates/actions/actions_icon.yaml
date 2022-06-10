@@ -1,0 +1,56 @@
+---
+### Actions icon ###
+ulm_actions_icon:
+  template:
+    - "ulm_global_config"
+  tap_action:
+    action: >
+      [[[ 
+        var action = variables.ulm_global_icon_tap_action;
+        let domain = entity.entity_id.substr(0, entity.entity_id.indexOf("."));
+
+        if (domain == "binary_sensor" || domain == "sensor"){
+          if (action == 'toggle')
+            action = 'none';
+        }
+
+        if (action == 'popup'){
+          action = 'more-info'
+        }
+
+        return action 
+      ]]]
+  hold_action:
+    action: >
+      [[[ 
+        var action = variables.ulm_global_icon_hold_action;
+        let domain = entity.entity_id.substr(0, entity.entity_id.indexOf("."));
+
+        if (domain == "binary_sensor" || domain == "sensor"){
+          if (action == 'toggle')
+            action = 'none';
+        }
+
+        if (action == 'popup'){
+          action = 'more-info'
+        }
+
+        return action 
+      ]]]
+  double_tap_action:
+    action: >
+      [[[ 
+        var action = variables.ulm_global_icon_double_tap_action;
+        let domain = entity.entity_id.substr(0, entity.entity_id.indexOf("."));
+
+        if (domain == "binary_sensor" || domain == "sensor"){
+          if (action == 'toggle')
+            action = 'none';
+        }
+
+        if (action == 'popup'){
+          action = 'more-info'
+        }
+
+        return action 
+      ]]]

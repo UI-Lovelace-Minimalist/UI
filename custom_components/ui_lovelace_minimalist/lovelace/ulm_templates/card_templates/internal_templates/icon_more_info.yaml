@@ -19,6 +19,7 @@ icon_more_info:
         entity: "[[[ return entity.entity_id ]]]"
         template:
           - "icon"
+          - "ulm_actions_icon"
         styles:
           card:
             - overflow: "visible"
@@ -29,6 +30,7 @@ icon_more_info:
         entity: "[[[ return entity.entity_id ]]]"
         template:
           - "icon_info"
+          - "ulm_actions_name"
         styles:
           card:
             - padding: "6px"
