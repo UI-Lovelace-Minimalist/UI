@@ -14,12 +14,38 @@ ulm_actions_name:
             action = 'none';
         }
 
+        if (action == 'popup' && (variables.ulm_card_light_enable_popup || variables.ulm_card_media_player_enable_popup || variables.ulm_card_thermostat_enable_popup) ){
+          action = 'fire-dom-event'
+        }
         if (action == 'popup'){
           action = 'more-info'
         }
 
         return action 
       ]]]
+    browser_mod:
+      command: "popup"
+      large: true
+      hide_header: true
+      card:
+        type: "custom:button-card"
+        template: >
+          [[[ 
+            if (variables.ulm_card_light_enable_popup){
+              return 'popup_light_brightness'
+            }
+            if (variables.ulm_card_thermostat_enable_popup){
+              return 'popup_thermostat_temperature'
+            }
+            if (variables.ulm_card_media_player_enable_popup){
+              return 'popup_media_player_infos'
+            }
+          ]]] 
+        variables:
+          ulm_popup_light_entity: "[[[ return entity.entity_id ]]]"
+          ulm_popup_thermostat_entity: "[[[ return entity.entity_id ]]]"
+          ulm_popup_media_player_entity: "[[[ return entity.entity_id ]]]"
+
   hold_action:
     action: >
       [[[ 
@@ -31,12 +57,37 @@ ulm_actions_name:
             action = 'none';
         }
 
+        if (action == 'popup' && (variables.ulm_card_light_enable_popup || variables.ulm_card_media_player_enable_popup || variables.ulm_card_thermostat_enable_popup) ){
+          action = 'fire-dom-event'
+        }
         if (action == 'popup'){
           action = 'more-info'
         }
 
         return action 
       ]]]
+    browser_mod:
+      command: "popup"
+      large: true
+      hide_header: true
+      card:
+        type: "custom:button-card"
+        template: >
+          [[[ 
+            if (variables.ulm_card_light_enable_popup){
+              return 'popup_light_brightness'
+            }
+            if (variables.ulm_card_thermostat_enable_popup){
+              return 'popup_thermostat_temperature'
+            }
+            if (variables.ulm_card_media_player_enable_popup){
+              return 'popup_media_player_infos'
+            }
+          ]]] 
+        variables:
+          ulm_popup_light_entity: "[[[ return entity.entity_id ]]]"
+          ulm_popup_thermostat_entity: "[[[ return entity.entity_id ]]]"
+          ulm_popup_media_player_entity: "[[[ return entity.entity_id ]]]"
   double_tap_action:
     action: >
       [[[ 
@@ -48,9 +99,34 @@ ulm_actions_name:
             action = 'none';
         }
 
+        if (action == 'popup' && (variables.ulm_card_light_enable_popup || variables.ulm_card_media_player_enable_popup || variables.ulm_card_thermostat_enable_popup) ){
+          action = 'fire-dom-event'
+        }
         if (action == 'popup'){
           action = 'more-info'
         }
 
         return action 
       ]]]
+    browser_mod:
+      command: "popup"
+      large: true
+      hide_header: true
+      card:
+        type: "custom:button-card"
+        template: >
+          [[[ 
+            if (variables.ulm_card_light_enable_popup){
+              return 'popup_light_brightness'
+            }
+            if (variables.ulm_card_thermostat_enable_popup){
+              return 'popup_thermostat_temperature'
+            }
+            if (variables.ulm_card_media_player_enable_popup){
+              return 'popup_media_player_infos'
+            }
+          ]]] 
+        variables:
+          ulm_popup_light_entity: "[[[ return entity.entity_id ]]]"
+          ulm_popup_thermostat_entity: "[[[ return entity.entity_id ]]]"
+          ulm_popup_media_player_entity: "[[[ return entity.entity_id ]]]"

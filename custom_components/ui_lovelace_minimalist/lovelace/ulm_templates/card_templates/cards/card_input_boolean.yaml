@@ -9,7 +9,7 @@ card_input_boolean:
   variables:
     ulm_card_power_outlet_consumption_sensor:
   custom_fields:
-    item:
+    item1:
       card:
         type: "custom:button-card"
         template:

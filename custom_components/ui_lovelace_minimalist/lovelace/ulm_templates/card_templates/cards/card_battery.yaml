@@ -15,7 +15,7 @@ card_battery:
     ulm_card_battery_color_battery_level_warning: "var(--google-yellow)"
     ulm_card_battery_color_battery_level_ok: "var(--google-green)"
   custom_fields:
-    item:
+    item1:
       card:
         type: "custom:button-card"
         template:

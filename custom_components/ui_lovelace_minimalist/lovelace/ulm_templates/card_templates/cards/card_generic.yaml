@@ -5,7 +5,7 @@ card_generic:
     - "icon_more_info_new"
     - "ulm_actions_card"
   custom_fields:
-    item:
+    item1:
       card:
         type: "custom:button-card"
         template:
