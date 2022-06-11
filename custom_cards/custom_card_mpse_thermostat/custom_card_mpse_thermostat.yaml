@@ -29,6 +29,7 @@ custom_card_mpse_thermostat:
         name: "[[[ return entity.name ]]]"
         label: >-
           [[[
+              label = variables.ulm_translation_state;
               if(entity.attributes.temperature){
                 return (entity.attributes.current_temperature ) + '°' + ' • ' + label + ' (' + entity.attributes.hvac_action + ')';
               }
