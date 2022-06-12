@@ -1,5 +1,5 @@
 ---
-card_scenes:
+card_scenes_welcome:
   show_icon: false
   show_name: true
   show_label: false

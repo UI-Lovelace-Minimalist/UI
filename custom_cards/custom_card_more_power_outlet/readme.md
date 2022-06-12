@@ -1,6 +1,7 @@
 ---
 title: More Power Outlet Card
 ---
+
 <!-- markdownlint-disable MD046 -->
 
 ## Description
@@ -15,18 +16,18 @@ Author: Wranglatang - 2022 Vesion 1.0.0
 
 ## Variables
 
-| Variable | Default | Required         | Notes             |
-|----------|---------|------------------|-------------------|
-| entity     |         | :material-check: |                   |
-|name|  | :material-check: | Enable background |
-|custom_card_more_power_outlet_power_sensor|  | :material-close: | If you set this sensor, the `custom_card_more_power_outlet` shows the current power consumption (W). |
-|custom_card_more_power_outlet_energy_sensor|  | :material-close: | If you set this sensor, the `custom_card_more_power_outlet` shows the energy consumption (kWh) - Typically used with a Daily [Utility Meter](https://www.home-assistant.io/integrations/utility_meter). |
-|custom_card_more_power_outlet_time_sensor|  | :material-close: | If you set this sensor, the `custom_card_more_power_outlet` shows the a duration (Mins) - Typically used with the [History Stats](https://www.home-assistant.io/integrations/history_stats). |
+| Variable                                    | Default | Required         | Notes                                                                                                                                                                                                   |
+| ------------------------------------------- | ------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| entity                                      |         | :material-check: |                                                                                                                                                                                                         |
+| name                                        |         | :material-check: | Enable background                                                                                                                                                                                       |
+| custom_card_more_power_outlet_power_sensor  |         | :material-close: | If you set this sensor, the `custom_card_more_power_outlet` shows the current power consumption (W).                                                                                                    |
+| custom_card_more_power_outlet_energy_sensor |         | :material-close: | If you set this sensor, the `custom_card_more_power_outlet` shows the energy consumption (kWh) - Typically used with a Daily [Utility Meter](https://www.home-assistant.io/integrations/utility_meter). |
+| custom_card_more_power_outlet_time_sensor   |         | :material-close: | If you set this sensor, the `custom_card_more_power_outlet` shows the a duration (Mins) - Typically used with the [History Stats](https://www.home-assistant.io/integrations/history_stats).            |
 
 ## Usage
 
 ```yaml
-- type: 'custom:button-card'
+- type: "custom:button-card"
   template: custom_card_more_power_outlet
   variables:
     custom_card_more_power_outlet_power_sensor: sensor.immersion_heater_power
@@ -38,57 +39,8 @@ Author: Wranglatang - 2022 Vesion 1.0.0
 
 ## Template code
 
-```yaml
----
-### Custom Card More Power Outlet ###
-custom_card_more_power_outlet:
-  template:
-    - "icon_info_bg"
-    - "yellow"
-    - "ulm_language_variables"
-  variables:
-    custom_card_more_power_outlet_power_sensor:
-    custom_card_more_power_outlet_energy_sensor:
-    custom_card_more_power_outlet_time_sensor:
-  triggers_update: "all"
-  label: |-
-    [[[
-      if (entity.state === "on" && variables.custom_card_more_power_outlet_power_sensor !== null && variables.custom_card_more_power_outlet_energy_sensor !== null && variables.custom_card_more_power_outlet_time_sensor !== null) {
-        if (states[variables.custom_card_more_power_outlet_time_sensor].state < 1){
-          return states[variables.custom_card_more_power_outlet_power_sensor].state + "W • " + states[variables.custom_card_more_power_outlet_energy_sensor].state + "kWh • " + (states[variables.custom_card_more_power_outlet_time_sensor].state * 100) + "Mins";
-        } else
-          return states[variables.custom_card_more_power_outlet_power_sensor].state + "W • " + states[variables.custom_card_more_power_outlet_energy_sensor].state + "kWh • " + states[variables.custom_card_more_power_outlet_time_sensor].state + "Hrs";
-      } else if (entity.state === "on" && variables.custom_card_more_power_outlet_power_sensor !== null && variables.custom_card_more_power_outlet_energy_sensor !== null) {
-        return states[variables.custom_card_more_power_outlet_power_sensor].state + "W • " + states[variables.custom_card_more_power_outlet_energy_sensor].state + "kWh";
-      } else if (entity.state === "on" && variables.custom_card_more_power_outlet_power_sensor !== null && variables.custom_card_more_power_outlet_time_sensor !== null) {
-          if (states[variables.custom_card_more_power_outlet_time_sensor].state < 1){
-          return states[variables.custom_card_more_power_outlet_power_sensor].state + "W • " + (states[variables.custom_card_more_power_outlet_time_sensor].state * 100) + "Mins";
-        } else
-          return states[variables.custom_card_more_power_outlet_power_sensor].state + "W • " + states[variables.custom_card_more_power_outlet_time_sensor].state + "Hrs";
-      } else if (entity.state === "on" && variables.custom_card_more_power_outlet_energy_sensor !== null && variables.custom_card_more_power_outlet_time_sensor !== null) {
-          if (states[variables.custom_card_more_power_outlet_time_sensor].state < 1){
-          return states[variables.custom_card_more_power_outlet_energy_sensor].state + "kWh • " + (states[variables.custom_card_more_power_outlet_time_sensor].state * 100) + "Mins";
-        } else
-          return states[variables.custom_card_more_power_outlet_energy_sensor].state + "kWh • " + states[variables.custom_card_more_power_outlet_time_sensor].state + "Hrs";
-      } else if (entity.state === "on" && variables.custom_card_more_power_outlet_power_sensor !== null) {
-        return states[variables.custom_card_more_power_outlet_power_sensor].state + "W";
+??? note "Template Code"
 
-      } else if (entity.state === "on" && variables.custom_card_more_power_outlet_energy_sensor !== null) {
-        return states[variables.custom_card_more_power_outlet_energy_sensor].state + "kWh";
-
-      } else if (entity.state === "on" && variables.custom_card_more_power_outlet_time_sensor !== null) {
-          if (states[variables.custom_card_more_power_outlet_time_sensor].state < 1){
-          return (states[variables.custom_card_more_power_outlet_time_sensor].state * 100) + "Mins";
-        } else
-          return states[variables.custom_card_more_power_outlet_time_sensor].state + "Hrs";
-      } else if (entity.state === "on") {
-        return variables.ulm_on;
-      } else if (entity.state === "off") {
-        return variables.ulm_off;
-      } else if (entity.state === "unavailable") {
-        return variables.ulm_unavailable;
-      } else {
-        return entity.state;
-      }
-    ]]]
-```
+    ```yaml title="custom_card_more_power_outlet.yaml"
+    --8<-- "custom_cards/custom_card_more_power_outlet/custom_card_more_power_outlet.yaml"
+    ```
