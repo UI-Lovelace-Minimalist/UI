@@ -59,7 +59,7 @@ card_esh_welcome:
       - box-shadow: "var(--box-shadow)"
       - padding: "10px"
       - cursor: "default"
-      - "--mdc-ripple-press-opacity": 0 # prevent click animation
+      - "--mdc-ripple-press-opacity": 0   # prevent click animation
     custom_fields:
       item3:
         - display: >
@@ -94,7 +94,7 @@ card_esh_welcome:
             - padding: "4px"
             - margin-left: "relative"
             - cursor: "default"
-            - "--mdc-ripple-press-opacity": 0 # prevent click animation
+            - "--mdc-ripple-press-opacity": 0   # prevent click animation
     item2:
       card:
         type: "custom:button-card"
@@ -134,7 +134,7 @@ card_esh_welcome:
             - box-shadow: "none"
             - padding-bottom: "8px"
             - cursor: "default"
-            - "--mdc-ripple-press-opacity": 0 # prevent click animation
+            - "--mdc-ripple-press-opacity": 0   # prevent click animation
     item3:
       card:
         type: "custom:button-card"
@@ -145,7 +145,7 @@ card_esh_welcome:
             - box-shadow: "none"
             - padding: "4px"
             - cursor: "default"
-            - "--mdc-ripple-press-opacity": 0 # prevent click animation
+            - "--mdc-ripple-press-opacity": 0   # prevent click animation
         variables:
           entity_1: "[[[ return variables.entity_1 ]]]"
           entity_2: "[[[ return variables.entity_2 ]]]"
@@ -182,7 +182,7 @@ card_esh_welcome_title:
       - margin-left: "16px"
       - margin-bottom: "-15px"
       - cursor: "default"
-      - "--mdc-ripple-press-opacity": 0 # prevent click animation
+      - "--mdc-ripple-press-opacity": 0   # prevent click animation
 
 card_esh_welcome_nav:
   show_icon: false
@@ -319,7 +319,7 @@ card_esh_welcome_pill_nav:
               return "var(--box-shadow)";
             }
           ]]]
-      - "--mdc-ripple-press-opacity": 0.12 # allow click animation
+      - "--mdc-ripple-press-opacity": 0.12    # allow click animation
   color: "var(--google-grey)"
   custom_fields:
     item1:
@@ -398,7 +398,7 @@ card_esh_welcome_topbar:
       - box-shadow: "var(--box-shadow)"
       - padding: "12px"
       - cursor: "default"
-      - "--mdc-ripple-press-opacity": 0 # prevent click animation
+      - "--mdc-ripple-press-opacity": 0   # prevent click animation
   custom_fields:
     item1:
       card:
@@ -425,7 +425,7 @@ card_esh_welcome_topbar:
                   }
                 ]]]
             - visibility: "[[[ return variables.ulm_card_esh_welcome_collapse ? 'visible' : 'hidden'; ]]]"
-            - "--mdc-ripple-press-opacity": 0.12 # allow click animation
+            - "--mdc-ripple-press-opacity": 0.12    # allow click animation
         state:
           - value: "on"
             icon: "mdi:chevron-down"
@@ -452,7 +452,7 @@ card_esh_welcome_topbar:
                     return "var(--box-shadow)";
                   }
                 ]]]
-            - "--mdc-ripple-press-opacity": 0.12 # allow click animation
+            - "--mdc-ripple-press-opacity": 0.12    # allow click animation
     item3:
       card:
         type: "custom:button-card"
@@ -473,4 +473,4 @@ card_esh_welcome_topbar:
                     return "var(--box-shadow)";
                   }
                 ]]]
-            - "--mdc-ripple-press-opacity": 0.12 # allow click animation
+            - "--mdc-ripple-press-opacity": 0.12    # allow click animation
