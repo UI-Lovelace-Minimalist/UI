@@ -13,8 +13,6 @@ hide:
 ## Credits
 
 - Author: Everything Smart Home - 2022
-- Contributor: 
-  - [Sisimomo](https://github.com/sisimomo) - 2022-06-12
 - Credits to the [welcome scenes card](https://ui-lovelace-minimalist.github.io/UI/usage/cards/card_welcome_scenes/) as the basis
 - Version: 1.1.0
 
@@ -23,6 +21,7 @@ hide:
 <details>
 <summary>1.1.0</summary>
   <ul>
+    <h4>Contributor: <a href="https://github.com/sisimomo">Sisimomo</a> - 2022-06-12</h4>
     <li>Now support from 0-5 navigation pill.</li>
     <li>Added dynamic nav pill size.</li>
     <li>Code refactoring to fit <a href="https://ui-lovelace-minimalist.github.io/UI/development/custom_cards/#order">framework structure</a>.</li>
@@ -95,7 +94,6 @@ Furthermore, you need to add the `input_boolean` to the variable `ulm_card_esh_w
         name: Lab
         color: "red"
 ```
-
 
 ## Template code
 
