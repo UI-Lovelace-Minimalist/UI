@@ -33,7 +33,7 @@ custom_card_eraycetinay_lock:
     service_data:
       entity_id: "[[[ return entity.entity_id; ]]]"
   hold_action:
-    action: more-info
+    action: "more-info"
   triggers_update: "[[[ return entity.entity_id; ]]]"
   show_label: true
   show_name: true
@@ -80,13 +80,13 @@ custom_card_eraycetinay_lock:
       - width: "42px"
       - height: "42px"
     grid:
-      - position: relative
+      - position: "relative"
     custom_fields:
       notification_locked_and_opened:
         - border-radius: "50%"
         - position: "absolute"
-        - left: 28px
-        - top: -6px
+        - left: "28px"
+        - top: "-6px"
         - height: "16px"
         - width: "16px"
         - border: "2px solid var(--card-background-color)"
@@ -96,8 +96,8 @@ custom_card_eraycetinay_lock:
       notification_battery:
         - border-radius: "50%"
         - position: "absolute"
-        - left: -6px
-        - top: -6px
+        - left: "-6px"
+        - top: "-6px"
         - height: "16px"
         - width: "16px"
         - border: "2px solid var(--card-background-color)"
@@ -124,7 +124,9 @@ custom_card_eraycetinay_lock:
       [[[
           if (variables.custom_card_eraycetinay_lock_battery_level !== undefined) {
             if (variables.custom_card_eraycetinay_lock_battery_warning >= states[variables.custom_card_eraycetinay_lock_battery_level].state) {
-              return `<span title="${variables.custom_card_eraycetinay_lock_battery_is_at} ${states[variables.custom_card_eraycetinay_lock_battery_level].state}%"><ha-icon icon="mdi:battery-low" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon></span>`;
+              return `<span title="${variables.custom_card_eraycetinay_lock_battery_is_at} ${states[variables.custom_card_eraycetinay_lock_battery_level].state}%">
+                        <ha-icon icon="mdi:battery-low" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>
+                      </span>`;
             }
           }
       ]]]
