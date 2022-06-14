@@ -4,7 +4,7 @@ hide:
   - toc
 ---
 <!-- markdownlint-disable MD046 -->
-###### insert image/gif here
+![Minimalist_adaptive_dashboard](../assets/img/setup/minimalist_adaptive_dash.gif)
 
 ## Add Adaptive Dashboard
 
