@@ -15,7 +15,7 @@ This is a `custom-card` that works in switch logic with a `lock` entity. Card st
 
 Author: eraycetinay - 2022
 Version: 0.0.3
-Contributor: 
+Contributor:
 - [Sisimomo](https://github.com/sisimomo) - 2022-06-14
 
 

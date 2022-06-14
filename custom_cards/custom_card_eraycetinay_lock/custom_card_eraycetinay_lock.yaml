@@ -104,7 +104,7 @@ custom_card_eraycetinay_lock:
         - font-size: "12px"
         - line-height: "14px"
         - background-color: |
-            [[[ 
+            [[[
               if (variables.custom_card_eraycetinay_lock_battery_level !== undefined) {
                 if (states[variables.custom_card_eraycetinay_lock_battery_level].state <= variables.custom_card_eraycetinay_lock_battery_warning_low) {
                   return "rgba(var(--color-red),1)";
