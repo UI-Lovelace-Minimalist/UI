@@ -9,6 +9,7 @@ card_graph:
     ulm_card_graph_entity2: ""
     ulm_card_graph_hours: 24
     ulm_card_graph_type: "fill"
+    ulm_card_graph_points: "0.5"
   triggers_update: "all"
   styles:
     grid:
@@ -60,6 +61,7 @@ card_graph:
           graph: "[[[ return variables.ulm_card_graph_type=='fill'?'line':variables.ulm_card_graph_type; ]]]"
           fill: "[[[ return variables.ulm_card_graph_type=='fill'?true:false; ]]]"
         hours_to_show: "[[[ return variables.ulm_card_graph_hours; ]]]"
+        points_per_hour: "[[[ return variables.ulm_card_graph_points; ]]]"
         style: |
           ha-card {
             box-shadow: none;
