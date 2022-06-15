@@ -1,6 +1,6 @@
 ---
-### Icon More Info ###
-icon_more_info_new:
+### Icon More Info Alert ###
+icon_more_info_alert:
   show_icon: false
   show_name: false
   show_label: false
@@ -35,7 +35,7 @@ icon_more_info_new:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
               template:
-                - "icon"
+                - "icon_alert"
                 - "ulm_actions_icon"
               styles:
                 card:

@@ -1,18 +1,12 @@
 ---
 ### Card Binary Sensor ###
 card_binary_sensor:
-  # template:
-  #   - "icon_info_bg"
-  #   - "blue"
-  #   - "ulm_actions_card"
-  # name: "[[[ return entity.attributes.friendly_name != '' ? entity.attributes.friendly_name : entity.entity_id ]]]"
-  # show_last_changed: true
-
   template:
     - "icon_more_info_new"
-    - "blue_no_card"
+    - "blue"
     - "ulm_language_variables"
     - "ulm_actions_card"
+  show_last_changed: false
   custom_fields:
     item1:
       card:
@@ -31,21 +25,7 @@ card_binary_sensor:
             card:
               type: "custom:button-card"
               template: 
-                - "blue"
+                - "blue_no_card"
               entity: "[[[ return entity.entity_id ]]]"
               name: "[[[ return entity.attributes.friendly_name != '' ? entity.attributes.friendly_name : entity.entity_id ]]]"
-              label: >
-                [[[
-                  if (entity.state != "unavailable"){
-                    if (entity.state == "on"){
-                      return variables.ulm_on;
-                    } else {
-                      return variables.ulm_off;
-                    }
-                  } else {
-                    return variables.ulm_unavailable;
-                  }
-                ]]]
-              styles:
-                card:
-                  - background-color: "rgba(0,0,0,0)"
+              show_last_changed: true
