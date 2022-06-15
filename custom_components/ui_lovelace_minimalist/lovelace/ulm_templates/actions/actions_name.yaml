@@ -2,11 +2,11 @@
 ### Actions name ###
 ulm_actions_name:
   template:
-    - "ulm_global_config"
+    - "ulm_custom_actions"
   tap_action:
     action: >
       [[[ 
-        var action = variables.ulm_global_name_tap_action;
+        var action = variables.ulm_name_tap_action;
         let domain = entity.entity_id.substr(0, entity.entity_id.indexOf("."));
 
         if (domain == "binary_sensor" || domain == "sensor"){
@@ -49,7 +49,7 @@ ulm_actions_name:
   hold_action:
     action: >
       [[[ 
-        var action = variables.ulm_global_name_hold_action;
+        var action = variables.ulm_name_hold_action;
         let domain = entity.entity_id.substr(0, entity.entity_id.indexOf("."));
 
         if (domain == "binary_sensor" || domain == "sensor"){
@@ -91,7 +91,7 @@ ulm_actions_name:
   double_tap_action:
     action: >
       [[[ 
-        var action = variables.ulm_global_name_double_tap_action;
+        var action = variables.ulm_name_double_tap_action;
         let domain = entity.entity_id.substr(0, entity.entity_id.indexOf("."));
 
         if (domain == "binary_sensor" || domain == "sensor"){

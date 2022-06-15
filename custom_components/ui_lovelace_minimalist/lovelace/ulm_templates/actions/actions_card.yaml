@@ -2,11 +2,11 @@
 ### Actions card ###
 ulm_actions_card:
   template:
-    - "ulm_global_config"
+    - "ulm_custom_actions"
   tap_action:
     action: >
       [[[ 
-        var action = variables.ulm_global_card_tap_action;
+        var action = variables.ulm_card_tap_action;
         let domain = entity.entity_id.substr(0, entity.entity_id.indexOf("."));
 
         if (domain == "binary_sensor" || domain == "sensor"){
@@ -49,7 +49,7 @@ ulm_actions_card:
   hold_action:
     action: >
       [[[ 
-        var action = variables.ulm_global_card_hold_action;
+        var action = variables.ulm_card_hold_action;
         let domain = entity.entity_id.substr(0, entity.entity_id.indexOf("."));
 
         if (domain == "binary_sensor" || domain == "sensor"){
@@ -91,7 +91,7 @@ ulm_actions_card:
   double_tap_action:
     action: >
       [[[ 
-        var action = variables.ulm_global_card_double_tap_action;
+        var action = variables.ulm_card_double_tap_action;
         let domain = entity.entity_id.substr(0, entity.entity_id.indexOf("."));
 
         if (domain == "binary_sensor" || domain == "sensor"){
