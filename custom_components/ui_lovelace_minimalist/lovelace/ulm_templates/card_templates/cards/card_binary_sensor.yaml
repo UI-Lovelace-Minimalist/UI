@@ -10,7 +10,7 @@ card_binary_sensor:
 
   template:
     - "icon_more_info_new"
-    - "blue"
+    - "blue_no_card"
     - "ulm_language_variables"
     - "ulm_actions_card"
   custom_fields:

@@ -26,7 +26,7 @@ card_power_outlet:
             card:
               type: "custom:button-card"
               template: 
-                - "yellow"
+                - "yellow_no_card"
               entity: "[[[ return entity.entity_id ]]]"
               label: |
                 [[[
@@ -42,6 +42,3 @@ card_power_outlet:
                     return entity.state;
                   }
                 ]]]
-              styles:
-                card:
-                  - background-color: "rgba(0,0,0,0)"

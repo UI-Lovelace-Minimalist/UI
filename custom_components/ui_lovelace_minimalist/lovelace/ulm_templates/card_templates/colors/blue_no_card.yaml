@@ -1,0 +1,17 @@
+---
+### Blue No Card ###
+blue_no_card:
+  state:
+    - styles:
+        icon:
+          - color: "rgba(var(--color-blue),1)"
+        label:
+          - color: "rgba(var(--color-blue-text),1)"
+        name:
+          - color: "rgba(var(--color-blue-text),1)"
+        img_cell:
+          - background-color: "rgba(var(--color-blue), 0.2)"
+        card:
+          - background-color: "rgba(0,0,0,0)"
+      id: "on"
+      value: "on"
