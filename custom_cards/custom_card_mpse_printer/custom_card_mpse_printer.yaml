@@ -91,14 +91,14 @@ custom_card_mpse_printer_slider:
   show_name: false
   styles:
     grid:
-      - display: flex
+      - display: "flex"
     card:
-      - display: block
-      - box-shadow: none
-      - padding: 0px
+      - display: "block"
+      - box-shadow: "none"
+      - padding: "0px"
     custom_fields:
       slider:
-        - width: 100%
+        - width: "100%"
   custom_fields:
     slider: |
       [[[
