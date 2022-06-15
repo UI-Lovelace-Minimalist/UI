@@ -1,220 +1,134 @@
 ---
 custom_card_mpse_printer:
   show_icon: false
-  show_name: false
   show_label: false
+  show_name: false
   styles:
-    card:
-      - border-radius: "20px"
-      - box-shadow: "var(--box-shadow)"
-      - padding: "0px"
     grid:
-      - grid-template-areas: "'item1' 'item2' 'item3' 'item4' 'item5'"
+      - grid-template-areas: |
+          [[[
+            let json = {
+              "printer_state": true,
+              "black_ink": variables.card_printer_black_ink,
+              "yellow_ink": variables.card_printer_yellow_ink,
+              "magenta_ink": variables.card_printer_magenta_ink,
+              "cyan_ink": variables.card_printer_cyan_ink
+            };
+            return "'" + Object.keys(json).filter(key => json[key] !== undefined).join("' '") + "'";
+          ]]]
       - grid-template-columns: "1fr"
       - grid-template-rows: "min-content"
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
   custom_fields:
-    item1:
+    printer_state:
       card:
-        entity: "[[[ return entity.entity_id ]]]"
-        name: "[[[ return variables.ulm_card_printer_name ]]]"
-        label: >-
+        type: "custom:button-card"
+        template: |
           [[[
-          return entity.state;
+            return entity.state.toLowerCase() != "idle" ? [ 'icon_info', 'blue_no_state' ] : [ 'icon_info' ];
           ]]]
-        template:
-          - "icon_info"
-          - "custom_card_mpse_printer_blue"
+        label: "[[[ return entity.state; ]]]"
+        name: "[[[ return variables.card_printer_name !== undefined ? variables.card_printer_name : entity.attributes.friendly_name; ]]]"
+        entity: "[[[ return entity.entity_id; ]]]"
         styles:
           card:
-            - padding: "12px"
+            - margin-bottom: |
+                [[[
+                  if ([ variables.card_printer_black_ink,
+                        variables.card_printer_yellow_ink,
+                        variables.card_printer_magenta_ink,
+                        variables.card_printer_cyan_ink ].filter(value => value !== undefined).length > 0) {
+                    return "7px";
+                  }
+                  return undefined;
+                ]]]
+
+    black_ink:
+      card:
         type: "custom:button-card"
-    item2:
+        template: "custom_card_mpse_printer_slider"
+        variables:
+          text_color: "white"
+          bar_color: "black"
+        entity: "[[[ return variables.card_printer_black_ink; ]]]"
+
+    yellow_ink:
       card:
-        type: "custom:bar-card"
-        height: "20px"
-        positions:
-          name: off
-          value: "inside"
-          icon: off
-          indicator: off
-          minmax: off
-        color: "black"
-        entities:
-          - entity: "[[[ return variables.ulm_card_printer_black_name ]]]"
-        style: |
-          bar-card-currentbar{
-            border: 0.01rem solid rgba(var(--color-theme),.4);
-          }
-          bar-card-backgroundbar{
-            display: none;
-          }
-          bar-card-name{
-            width: 2rem;
-            margin-right: 40px !important;
-          }
-          bar-card-value{
-            width: 2rem;
-            margin-left: 40px !important;
-            justify-content: center;
-            display: flex;
-            color: grey;
-          }
-          bar-card-background{
-            margin: 4px 0 4px 0 !important;
-            text-align: initial;
-          }
-          ha-card{
-            --bar-card-border-radius: 5px;
-            border-radius: 0px;
-            box-shadow: none;
-          }
-          #states{
-            padding: 0 16px;
-          }
-    item3:
+        type: "custom:button-card"
+        template: "custom_card_mpse_printer_slider"
+        variables:
+          text_color: "black"
+          bar_color: "yellow"
+        entity: "[[[ return variables.card_printer_yellow_ink; ]]]"
+
+    magenta_ink:
       card:
-        type: "custom:bar-card"
-        height: "20px"
-        positions:
-          name: off
-          value: "inside"
-          icon: off
-          indicator: off
-          minmax: off
-        color: "rgb(250,255,0)"
-        entities:
-          - entity: "[[[ return variables.ulm_card_printer_yellow_name ]]]"
-        style: |
-          bar-card-currentbar{
-            border: 0.01rem solid rgba(var(--color-theme),.4);
-          }
-          bar-card-backgroundbar{
-            display: none;
-          }
-            bar-card-name{
-            width: 2rem;
-            margin-right: 40px !important;
-          }
-          bar-card-value{
-            width: 2rem;
-            margin-left: 40px !important;
-            justify-content: center;
-            display: flex;
-            color: grey;
-          }
-          bar-card-background{
-            margin: 4px 0 4px 0 !important;
-            text-align: initial;
-          }
-          ha-card{
-            --bar-card-border-radius: 5px;
-            border-radius: 0px;
-            box-shadow: none;
-          }
-          #states{
-            padding: 0 16px;
-          }
-    item4:
+        type: "custom:button-card"
+        template: "custom_card_mpse_printer_slider"
+        variables:
+          text_color: "white"
+          bar_color: "magenta"
+        entity: "[[[ return variables.card_printer_magenta_ink; ]]]"
+
+    cyan_ink:
       card:
-        type: "custom:bar-card"
-        height: "20px"
-        positions:
-          name: off
-          value: "inside"
-          icon: off
-          indicator: off
-          minmax: off
-        color: "rgb(248,0,255)"
-        entities:
-          - entity: "[[[ return variables.ulm_card_printer_magenta_name ]]]"
-        style: |
-          bar-card-currentbar{
-            border: 0.01rem solid rgba(var(--color-theme),.4);
-          }
-          bar-card-backgroundbar{
-            display: none;
-          }
-          bar-card-name{
-            width: 2rem;
-            margin-right: 40px !important;
-          }
-          bar-card-value{
-            width: 2rem;
-            margin-left: 40px !important;
-            justify-content: center;
-            display: flex;
-            color: grey;
-          }
-          bar-card-background{
-            margin: 4px 0 4px 0 !important;
-            text-align: initial;
-          }
-          ha-card{
-            --bar-card-border-radius: 5px;
-            border-radius: 0px;
-            box-shadow: none;
-          }
-          #states{
-            padding: 0 16px;
-          }
-    item5:
-      card:
-        type: "custom:bar-card"
-        height: "20px"
-        positions:
-          name: off
-          value: "inside"
-          icon: off
-          indicator: off
-          minmax: off
-        color: "rgb(0,255,255)"
-        entities:
-          - entity: "[[[ return variables.ulm_card_printer_cyan_name ]]]"
-        style: |
-          bar-card-currentbar{
-            border: 0.01rem solid rgba(var(--color-theme),.4);
-          }
-          bar-card-backgroundbar{
-            display: none;
-          }
-          bar-card-name{
-            width: 2rem;
-            margin-right: 40px !important;
-          }
-          bar-card-value{
-            width: 2rem;
-            margin-left: 40px !important;
-            justify-content: center;
-            display: flex;
-            color: grey;
-          }
-            bar-card-background{
-            margin: 4px 0 4px 0 !important;
-            text-align: initial;
-          }
-          ha-card{
-            --bar-card-border-radius: 5px;
-            border-radius: 0px;
-            box-shadow: none;
-          }
-          #states{
-            padding: 0 16px 16px 16px;
-          }
-custom_card_mpse_printer_blue:
-  state:
-    - styles:
-        icon:
-          - color: "rgba(var(--color-blue),1)"
-        label:
-          - color: "rgba(var(--color-blue-text),1)"
-        name:
-          - color: "rgba(var(--color-blue-text),1)"
-        img_cell:
-          - background-color: "rgba(var(--color-blue), 0.2)"
-        card:
-          - background-color: "rgba(var(--color-background-blue), var(--opacity-bg))"
-      operator: "template"
-      value: >
-        [[[
-          return entity.state!="idle" ? true : false
-        ]]]
+        type: "custom:button-card"
+        template: "custom_card_mpse_printer_slider"
+        variables:
+          text_color: "black"
+          bar_color: "cyan"
+        entity: "[[[ return variables.card_printer_cyan_ink; ]]]"
+
+custom_card_mpse_printer_slider:
+  variables:
+    text_color: "white"
+    bar_color: "black"
+  show_icon: false
+  show_label: false
+  show_name: false
+  styles:
+    grid:
+      - display: flex
+    card:
+      - display: block
+      - box-shadow: none
+      - padding: 0px
+    custom_fields:
+      slider:
+        - width: 100%
+  custom_fields:
+    slider: |
+      [[[
+        if (entity) {
+          return `<div class="container">
+            <div class="bar" style="background-color: ${variables.bar_color}; color: ${variables.text_color}; width: ${entity.state}%;">
+              ${entity.state}%
+            </div>
+          </div>`;
+        }
+      ]]]
+  style: |
+    ha-card .container {
+      position: relative;
+      margin-top: 3px;
+      margin-bottom: 2px;
+      border-radius: 13px;
+      padding: 3px;
+      border: 0.01rem solid rgba(var(--color-theme),.4);
+    }
+
+    ha-card .bar {
+      height: 20px;
+      line-height: 20px;
+      min-width: 35px;
+      border-radius: 10px;
+      border: 0.01rem solid rgba(var(--color-theme),.4);
+      font-size: smaller;
+      font-weight: bolder;
+      padding-left: 8px;
+      box-sizing: border-box;
+      text-align: left;
+    }
