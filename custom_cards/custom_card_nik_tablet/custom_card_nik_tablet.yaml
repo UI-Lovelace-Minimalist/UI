@@ -99,10 +99,10 @@ custom_card_nik_tablet:
               entity: "[[[ return variables.ulm_custom_card_nik_tablet_restart ]]]"
               icon: "mdi:restart-alert"
               tap_action:
-              action: "call-service"
-              service: "button.press"
-              service_data:
-                entity_id: "[[[ return variables.ulm_custom_card_nik_tablet_restart ]]]"
+                action: "call-service"
+                service: "button.press"
+                service_data:
+                  entity_id: "[[[ return variables.ulm_custom_card_nik_tablet_restart ]]]"
           item2:
             card:
               type: "custom:button-card"
