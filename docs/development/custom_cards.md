@@ -127,42 +127,35 @@ Feel free to delete defintions, that you don’t use or need.
 
 This “theme” supports language specific strings, as the translated strings (states) from HA are sometimes not available.
 
-These variables are already provided by the “theme”:
+Most variables are already provided by Home Assistant:
 
-- ulm_on
-- ulm_off
-- ulm_open
-- ulm_closed
-- ulm_unavailable
-- ulm_standby
-- ulm_idle
-- ulm_currency
+- On
+- Off
+- Open
+- Closed
+- Unavailable
+- Standby
+- Idle
 - and more
 
 The usage is easy:
-Include the language variables by including the template ulm_language_variables in your card and then use them just like every other variable.
+Include the language variables by including the template ulm_translation_engine in your card and then use them just like every other variable. As long as you want to translate an entity state to a human readable state, you should be good with just using variables.ulm_translation_state. If you use variables to supply an entity this variable won't work (yet).
 
 ```yaml
 template:
+  - ulm_translation_engine
+  # optional, only if general language variables not provided by Home Assistant are used
   - ulm_language_variables
   # optional, only if language variables are used
   - custom_card_paddy0174_temperature_language_variables
 state:
   [[[
-    if (state == 'off') {
-      return variables.ulm_off;
     # if you use your own language variables, use them like this
-    } else if (state == 'cool') {
+    if (state == 'cool') {
       return variables.custom_card_paddy0174_temperature_cool;
     } else {
-      return variables.ulm_on;
+      return variables.ulm_translation_state;
     }
-  ]]]
-# Alternative short version, works in 90 percent of use cases, useful if you have lots of states or other variables which act for one entity
-  [[[
-  let state = entity.state;
-  # Check if custom language variable for the entity state exists, otherwise check default language_variables, otherwise just output the entity state
-  return variables["ulm_custom_card_paddy0174_temperature_" + state] ? variables["ulm_custom_card_paddy0174_temperature_" + state] : variables["ulm_" + state] ? variables["ulm_" + state] : state;
   ]]]
 ```
 

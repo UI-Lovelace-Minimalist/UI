@@ -328,7 +328,7 @@ custom_card_nik_nas:
             template: "card_input_boolean"
             entity: "[[[ return entity.entity_id]]]"
             icon: "mdi:nas"
-            name: "Status"
+            name: "[[[ return variables.ulm_translation_status ]]]"
             styles:
               card:
                 - background-color: "transparent"
@@ -359,7 +359,7 @@ custom_card_nik_nas:
         template: "card_input_boolean"
         entity: "[[[ return entity.entity_id]]]"
         icon: "mdi:nas"
-        name: "Status"
+        name: "[[[ return variables.ulm_translation_status ]]]"
         styles:
           card:
             - background-color: "transparent"

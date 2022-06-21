@@ -8,19 +8,13 @@ card_media_player_sonos:
   template:
     - "green_playing"
     - "icon_info_bg"
-    - "ulm_language_variables"
+    - "ulm_translation_engine"
   label: |
     [[[
-        if (entity.state == 'idle'){
-          return variables.ulm_off;
-        }
-        if (entity.state == 'paused'){
-          return variables.ulm_paused;
-        }
-        if (entity.state == 'unavailable'){
-          return variables.ulm_unavailable;
+        if (entity.state == 'idle' || entity.state == 'paused' || entity.state == 'unavailable'){
+          return variables.ulm_translation_state;
         } else {
-        return (entity.attributes.source ? entity.attributes.source : variables.ulm_playing)
+        return (entity.attributes.source ? entity.attributes.source : variables.ulm_translation_state)
             + ' • ' +  ( Math.round(entity.attributes.volume_level / 0.01)) + '%' ;
         }
     ]]]
@@ -45,7 +39,6 @@ card_media_player_sonos_with_controls:
       card:
         type: "custom:button-card"
         template:
-          - "ulm_language_variables"
           - "card_media_player_sonos"
         tap_action:
           action: "more-info"

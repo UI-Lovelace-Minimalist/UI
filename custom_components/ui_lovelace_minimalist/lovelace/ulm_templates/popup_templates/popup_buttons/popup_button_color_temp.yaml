@@ -1,4 +1,4 @@
 ---
 popup_button_color_temp:
-  template: "ulm_language_variables"
-  name: "[[[ return variables.ulm_popups_color_temp ]]]"
+  template: "ulm_translation_engine"
+  name: "[[[ return variables.ulm_translation_color_temperature; ]]]"

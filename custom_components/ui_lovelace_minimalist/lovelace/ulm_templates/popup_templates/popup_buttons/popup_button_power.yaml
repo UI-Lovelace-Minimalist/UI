@@ -2,9 +2,9 @@
 popup_button_power:
   template:
     - "popup_button"
-    - "ulm_language_variables"
+    - "ulm_translation_engine"
   icon: "mdi:power"
-  name: "[[[ return variables.ulm_popups_toggle ]]]"
+  name: "[[[ return variables.ulm_translation_state; ]]]"
   styles:
     name:
       - text-transform: "uppercase"

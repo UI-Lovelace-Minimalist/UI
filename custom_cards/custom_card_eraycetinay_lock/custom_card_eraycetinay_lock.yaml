@@ -1,9 +1,10 @@
 ---
 custom_card_eraycetinay_lock:
   template:
-    - "ulm_language_variables"
-    - "custom_card_eraycetinay_lock_language_variables"
+
     - "icon_info_bg"
+    - "ulm_translation_engine"
+    - "custom_card_eraycetinay_lock_language_variables"
   variables:
     custom_card_eraycetinay_lock_battery_warning: 20
     custom_card_eraycetinay_lock_battery_warning_low: 5
@@ -35,11 +36,7 @@ custom_card_eraycetinay_lock:
   show_name: true
   triggers_update:
     - "[[[ return entity.entity_id; ]]]"
-  label: |
-    [[[
-      let state = entity.state;
-      return variables["custom_card_eraycetinay_lock_" + state] ? variables["custom_card_eraycetinay_lock_" + state] : variables["ulm_" + state] ? variables["ulm_" + state] : state;
-    ]]]
+  label: "[[[ return variables.ulm_translation_state ]]]"
   state:
     - operator: "template"
       value: |

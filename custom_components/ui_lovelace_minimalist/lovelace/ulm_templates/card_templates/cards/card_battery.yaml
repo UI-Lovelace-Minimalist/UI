@@ -3,7 +3,8 @@
 card_battery:
   template:
     - "icon_info_bg"
-    - "ulm_language_variables"
+
+    - "ulm_translation_engine"
   double_tap_action:
     action: "call-service"
     service: "input_select.select_option"
@@ -77,7 +78,7 @@ card_battery:
         : states[entity.entity_id].state;
       return battery_level + "%";
       if(battery_level == "unknown")
-      { return variables.ulm_unavailable; }
+      { return variables.ulm_translation_state; }
       else
       { return battery_level + "%"; }
     ]]]

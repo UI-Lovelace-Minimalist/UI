@@ -2,7 +2,7 @@
 ### Card Thermostat ###
 card_thermostat:
   template:
-    - "ulm_language_variables"
+    - "ulm_translation_engine"
   variables:
     ulm_card_thermostat_name: "[[[ return entity.attributes.friendly_name ]]]"
     ulm_card_thermostat_icon: "[[[ return 'mdi:thermometer' ]]]"
@@ -26,12 +26,7 @@ card_thermostat:
   hold_action:
     action: >
       [[[
-          if (variables.ulm_card_thermostat_enable_popup){
-            return 'fire-dom-event'
-          }
-          else{
-            return 'more-info'
-          }
+            return variables.ulm_card_thermostat_enable_popup ? 'fire-dom-event' : 'more-info';
       ]]]
     browser_mod:
       command: "popup"
@@ -93,11 +88,7 @@ card_thermostat:
           ]]]
       - grid-template-columns: >
           [[[
-                if (variables.ulm_card_thermostat_enable_horizontal) {
-                  return "1fr 1fr";
-                } else {
-                  return "2fr 1fr";
-                }
+                  return variables.ulm_card_thermostat_enable_horizontal ? "1fr 1fr" : "2fr 1fr";
           ]]]
       - grid-template-rows: >
           [[[
@@ -186,12 +177,7 @@ card_thermostat:
               hold_action:
                 action: >
                   [[[
-                      if (variables.ulm_card_thermostat_enable_popup){
-                        return 'fire-dom-event'
-                      }
-                      else{
-                        return 'more-info'
-                      }
+                        return variables.ulm_card_thermostat_enable_popup ? 'fire-dom-event' : 'more-info';
                   ]]]
                 browser_mod:
                   command: "popup"
@@ -249,12 +235,7 @@ card_thermostat:
               hold_action:
                 action: >
                   [[[
-                      if (variables.ulm_card_thermostat_enable_popup){
-                        return 'fire-dom-event'
-                      }
-                      else{
-                        return 'more-info'
-                      }
+                      return variables.ulm_card_thermostat_enable_popup ? 'fire-dom-event' : 'more-info';
                   ]]]
                 browser_mod:
                   command: "popup"
@@ -267,37 +248,9 @@ card_thermostat:
                       ulm_popup_thermostat_entity: "[[[ return entity.entity_id ]]]"
               label: >-
                 [[[
-                    var label = variables.ulm_off ;
-                    if (entity.state =='off'){
-                      label = variables.ulm_off ;
-                    }else if (entity.state == 'auto'){
-                      label = variables.ulm_auto ;
-                    }else if (entity.state == 'heat'){
-                      label = variables.ulm_heat ;
-                    }else if (entity.state == 'cool'){
-                      label = variables.ulm_cool ;
-                    }else if (entity.state == 'dry'){
-                      label = variables.ulm_dry ;
-                    }else if (entity.state == 'heat_cool'){
-                      label = variables.ulm_heat_cool ;
-                    }else if (entity.state == 'fan_only' || ((variables.ulm_card_thermostat_fan_entity !== null) && states[variables.ulm_card_thermostat_fan_entity].state == 'on')){
-                      label = variables.ulm_fan_only ;
-                    }else{
-                      label = variables.ulm_idle;
-                    }
-
-                    if (entity.attributes.hvac_action == 'heating'){
-                      var mode = variables.ulm_heating ;
-                    }else if (entity.attributes.hvac_action == 'cooling'){
-                      var mode = variables.ulm_cooling ;
-                    }else if (entity.attributes.hvac_action == 'idle'){
-                      var mode = variables.ulm_idle ;
-                    }else{
-                      var mode = variables.ulm_unavailable;
-                    }
-
+                    var label = variables.ulm_translation_state;
                     if((entity.attributes.temperature || entity.attributes.target_temp_high != null) && !variables.ulm_card_thermostat_enable_display_temperature){
-                      return (entity.attributes.current_temperature ) + '°' + ' • ' + label + (entity.state !='off' ? ' (' + mode + ')' : '');
+                      return variables.ulm_translation_hvac;
                     }
                     return label;
                 ]]]
