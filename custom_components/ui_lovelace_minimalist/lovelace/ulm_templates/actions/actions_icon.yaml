@@ -1,6 +1,6 @@
 ---
 ### Actions card ###
-ulm_actions_card:
+ulm_actions_icon:
   template:
     - "ulm_custom_actions"
   tap_action:
