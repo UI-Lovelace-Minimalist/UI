@@ -13,6 +13,9 @@ from .const import (
     CONF_INCLUDE_OTHER_CARDS,
     CONF_LANGUAGE,
     CONF_LANGUAGES,
+    CONF_SIDEPANEL_ADV_ENABLED,
+    CONF_SIDEPANEL_ADV_ICON,
+    CONF_SIDEPANEL_ADV_TITLE,
     CONF_SIDEPANEL_ENABLED,
     CONF_SIDEPANEL_ICON,
     CONF_SIDEPANEL_TITLE,
@@ -53,6 +56,18 @@ def ulm_config_option_schema(options: dict = {}) -> dict:
         vol.Optional(
             CONF_SIDEPANEL_ICON,
             default=options.get(CONF_SIDEPANEL_ICON, DEFAULT_SIDEPANEL_ICON),
+        ): str,
+        vol.Optional(
+            CONF_SIDEPANEL_ADV_ENABLED,
+            default=options.get(CONF_SIDEPANEL_ADV_ENABLED, DEFAULT_SIDEPANEL_ENABLED),
+        ): bool,
+        vol.Optional(
+            CONF_SIDEPANEL_ADV_TITLE,
+            default=options.get(CONF_SIDEPANEL_ADV_TITLE, DEFAULT_SIDEPANEL_TITLE),
+        ): str,
+        vol.Optional(
+            CONF_SIDEPANEL_ADV_ICON,
+            default=options.get(CONF_SIDEPANEL_ADV_ICON, DEFAULT_SIDEPANEL_ICON),
         ): str,
         vol.Optional(
             CONF_THEME, default=options.get(CONF_THEME, DEFAULT_THEME)

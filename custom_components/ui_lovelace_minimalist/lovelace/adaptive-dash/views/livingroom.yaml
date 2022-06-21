@@ -1,0 +1,89 @@
+---
+type: "custom:layout-card"
+layout_type: "custom:grid-layout"
+layout:
+  grid-template-rows: "min-content"
+  grid-template-columns: "1fr 1fr 1fr"
+  grid-template-areas: >
+    "title1 title1 title1"
+    "card1 card1 card1"
+    "card2 card3 card4"
+    "card5 card6 ."
+    "card7 card8 card9"
+    "card10 card11 card12"
+    "card13 card14 card15"
+    "card16 card17 card18"
+  mediaquery:
+    # Mobile
+    "(max-width: 800px)":
+      grid-template-columns: "1fr 1fr"
+      grid-template-areas: |
+        "title1 title1"
+        "card1 card1"
+        "card2 card3"
+        "card4 card5"
+        "card6 card7"
+        "card8 card9"
+        "card10 card11"
+        "card12 card13"
+        "card14 card15"
+        "card16 card17"
+        "card18 card19"
+view_layout:
+  grid-area: "livingroom"
+cards:
+  - view_layout:
+      grid-area: "title1"
+    type: "custom:button-card"
+    template: "card_title"
+    name: "Some title"
+    label: "grid-area: title1"
+
+  - view_layout:
+      grid-area: "title2"
+    type: "custom:button-card"
+    template: "card_title"
+    name: "Some title"
+    label: "grid-area: title2"
+
+  - view_layout:
+      grid-area: "card1"
+    type: "custom:button-card"
+    template: "card_title"
+    name: "Put here your <br> first card"
+    label: "grid-area: card1"
+
+  - view_layout:
+      grid-area: "card2"
+    type: "custom:button-card"
+    template: "card_title"
+    name: "Put here your <br> second card"
+    label: "grid-area: card2"
+
+  - view_layout:
+      grid-area: "card3"
+    type: "custom:button-card"
+    template: "card_title"
+    name: "Put here your <br> third card"
+    label: "grid-area: card3"
+
+  - view_layout:
+      grid-area: "card4"
+    type: "custom:button-card"
+    template: "card_title"
+    name: "Put here your <br> fourth card"
+    label: "grid-area: card4"
+
+  - view_layout:
+      grid-area: "card5"
+    type: "custom:button-card"
+    template: "card_title"
+    name: "Put here your <br> fifth card"
+    label: "grid-area: card5"
+
+  - view_layout:
+      grid-area: "card6"
+    type: "custom:button-card"
+    template: "card_title"
+    name: "Put here your <br> sixth card"
+    label: "grid-area: card6"
