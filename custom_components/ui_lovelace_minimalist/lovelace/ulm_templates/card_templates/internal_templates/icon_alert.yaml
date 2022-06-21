@@ -34,7 +34,6 @@ icon_alert:
                 [[[
                   return "rgba(var(--color-red),1)";
                 ]]]
-      value: "unavailable"
   styles:
     icon:
       - color: "rgba(var(--color-theme),0.2)"
