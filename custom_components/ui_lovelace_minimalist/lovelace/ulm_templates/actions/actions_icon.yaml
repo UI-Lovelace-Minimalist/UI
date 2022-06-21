@@ -1,5 +1,5 @@
 ---
-### Actions card ###
+### Actions icon ###
 ulm_actions_icon:
   template:
     - "ulm_custom_actions"
