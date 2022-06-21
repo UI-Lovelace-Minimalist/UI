@@ -186,7 +186,7 @@ card_welcome_scenes:
         template: >
           [[[
             if(variables?.entity_1?.entity_id != ""){
-              return 'card_scenes_welcome'
+              return 'card_scenes'
             } else {
               return 'card_scenes_welcome_auto'
             }

@@ -220,24 +220,11 @@ card_light:
                 return "rgba(var(--color-yellow),0.2)";
               }
           ]]]
-        thumbColor: >
-          [[[
-              var color = entity.attributes.rgb_color;
-              if (entity.state == "unavailable"){
-                 return "rgba(var(--color-grey),1)";
-              }
-              else if (color && variables.ulm_card_light_enable_color){
-                 return "rgba(" + color + ",1)";
-              }
-              else{
-                return "rgba(var(--color-yellow),1)";
-              }
-          ]]]
         mainSliderColorOff: "rgba(var(--color-theme),0.05)"
         secondarySliderColorOff: "rgba(var(--color-theme),0.05)"
         thumbHorizontalPadding: "0px"
         thumbVerticalPadding: "0px"
-        thumbWidth: "12px"
+        thumbWidth: "0px"
         card_mod:
         style: |
           ha-card {

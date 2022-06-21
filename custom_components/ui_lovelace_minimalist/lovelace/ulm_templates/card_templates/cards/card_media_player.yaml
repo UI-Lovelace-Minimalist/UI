@@ -205,16 +205,15 @@ card_media_player:
       card:
         type: "custom:button-card"
         template: "list_3_items"
-        double_tap_action:
-          action: "call-service"
-          service: "input_select.select_option"
-          service_data:
-            option: "[[[ return variables.ulm_input_select_option ]]]"
-            entity_id: "[[[ return variables.ulm_input_select ]]]"
         hold_action:
           action: >
             [[[
-                return variables.ulm_card_media_player_enable_popup ? "fire-dom-event" : "more-info";
+                if (variables.ulm_card_media_player_enable_popup){
+                  return 'fire-dom-event'
+                }
+                else{
+                  return 'more-info'
+                }
             ]]]
           browser_mod:
             command: "popup"
@@ -239,7 +238,12 @@ card_media_player:
               hold_action:
                 action: >
                   [[[
-                      return variables.ulm_card_media_player_enable_popup ? "fire-dom-event" : "more-info";
+                      if (variables.ulm_card_media_player_enable_popup){
+                        return 'fire-dom-event'
+                      }
+                      else{
+                        return 'more-info'
+                      }
                   ]]]
                 browser_mod:
                   command: "popup"
@@ -280,7 +284,12 @@ card_media_player:
               hold_action:
                 action: >
                   [[[
-                      return variables.ulm_card_media_player_enable_popup ? "fire-dom-event" : "more-info";
+                      if (variables.ulm_card_media_player_enable_popup){
+                        return 'fire-dom-event'
+                      }
+                      else{
+                        return 'more-info'
+                      }
                   ]]]
                 browser_mod:
                   command: "popup"
@@ -324,7 +333,12 @@ card_media_player:
               hold_action:
                 action: >
                   [[[
-                      return variables.ulm_card_media_player_enable_popup ? "fire-dom-event" : "more-info";
+                      if (variables.ulm_card_media_player_enable_popup){
+                        return 'fire-dom-event'
+                      }
+                      else{
+                        return 'more-info'
+                      }
                   ]]]
                 browser_mod:
                   command: "popup"

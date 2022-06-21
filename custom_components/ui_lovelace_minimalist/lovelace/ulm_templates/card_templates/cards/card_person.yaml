@@ -17,7 +17,7 @@ card_person:
   show_name: true
   label: >
     [[[
-      if (variables.ulm_address){
+      if (variables.ulm_address !== ''){
         return states[variables.ulm_address].state
       } else {
         let state = states[variables.ulm_card_person_entity].state;
@@ -35,11 +35,19 @@ card_person:
       - color: "rgba(var(--color-theme),0.9)"
       - width: >
           [[[
-            return !variables.ulm_card_person_use_entity_picture ? "20px" : "42px";
+            if (variables.ulm_card_person_use_entity_picture !== true){
+              return "20px";
+            } else {
+              return "42px";
+            }
           ]]]
       - place-self: >
           [[[
-            return !variables.ulm_card_person_use_entity_picture ? "center" : "stretch stretch";
+            if (variables.ulm_card_person_use_entity_picture !== true){
+              return "center";
+            } else {
+              return "stretch stretch";
+            }
           ]]]
     custom_fields:
       notification:
@@ -54,7 +62,11 @@ card_person:
         - line-height: "14px"
         - background-color: >
             [[[
-              return (states[variables.ulm_card_person_entity].state !== 'home') ? "rgba(var(--color-green),1)" : "rgba(var(--color-blue),1)";
+              if (states[variables.ulm_card_person_entity].state !== 'home') {
+                return "rgba(var(--color-green),1)";
+              } else {
+                return "rgba(var(--color-blue),1)";
+              }
             ]]]
   custom_fields:
     notification: >
