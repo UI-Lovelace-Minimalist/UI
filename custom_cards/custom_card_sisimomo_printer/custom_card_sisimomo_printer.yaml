@@ -1,0 +1,122 @@
+---
+custom_card_sisimomo_printer:
+  template: "ulm_language_variables"
+  show_icon: false
+  show_label: false
+  show_name: false
+  triggers_update: "all"
+  tap_action:
+    action: ""
+  styles:
+    grid:
+      - grid-template-areas: "'printer_state' 'cartridges'"
+      - grid-template-columns: "1fr"
+      - grid-template-rows: "min-content"
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
+      - "--mdc-ripple-press-opacity": 0
+      - cursor: "default"
+  custom_fields:
+    printer_state:
+      card:
+        type: "custom:button-card"
+        template: |
+          [[[
+            return entity.state.toLowerCase() != variables.ulm_idle && entity.state.toLowerCase() != variables.ulm_unavailable ? [ "icon_info", "blue_no_state" ] : [ "icon_info" ];
+          ]]]
+        tap_action:
+          action: "more-info"
+        label: "[[[ return entity.state; ]]]"
+        name: "[[[ return variables.printer_name !== undefined ? variables.printer_name : entity.attributes.friendly_name; ]]]"
+        entity: "[[[ return entity.entity_id; ]]]"
+        styles:
+          card:
+            - padding: "0"
+            - "--mdc-ripple-press-opacity": 0.12
+            - cursor: "pointer"
+    cartridges: |
+      [[[
+        // Source: https://stackoverflow.com/a/56266358
+        const isColor = (strColor) => {
+          const s = new Option().style;
+          s.color = strColor;
+          return s.color !== '';
+        }
+
+        if (variables.cartridges !== undefined ? Array.isArray(variables.cartridges) && variables.cartridges.length > 0 : false) {
+          let errorArray = [];
+          variables.cartridges.forEach(cartridge => {
+            let index = variables.cartridges.indexOf(cartridge);
+            // Confirm that the label is provided.
+            if (cartridge.label === undefined) {
+              errorArray.push(`cartridges.[${index}].label: You must provide a value.`);
+            }
+            // Confirm that the color is provided and is a valid color css.
+            if (cartridge.color === undefined) {
+              errorArray.push(`cartridges.[${index}].color: You must provide a value.`);
+            } else if (!isColor(cartridge.color)) {
+              errorArray.push(`cartridges.[${index}].color: You must provide a valid css color value.`);
+            }
+            // Confirm that the entity_id is provided, is a valid entity_id, a integer and a value between 0 and 100 inclusively.
+            if (cartridge.entity_id === undefined) {
+              errorArray.push(`cartridges.[${index}].entity_id: You must provide a value.`);
+            } else if (states[cartridge.entity_id] === undefined) {
+              errorArray.push(`cartridges.[${index}].entity_id: You must provide a existing entity_id.`);
+            } else if (isNaN(states[cartridge.entity_id].state) || typeof states[cartridge.entity_id].state === "boolean") {
+              errorArray.push(`cartridges.[${index}].entity_id: You must provide a entity representing an integer.`);
+            } else if (states[cartridge.entity_id].state < 0 || states[cartridge.entity_id].state > 100) {
+              errorArray.push(`cartridges.[${index}].entity_id: You must provide a entity representing an integer between 0 and 100 inclusively.`);
+            }
+          });
+          if (errorArray.length > 0) {
+            return `<div style="padding: 1em;background-color: rgba(219, 68, 55, 0.75);white-space: normal;">
+              ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
+              <ul style="list-style: none;padding-left: 0;">
+                ${errorArray.map(error => `<li style="margin-top: 0.5em;">${error}</li>`).join("")}
+              </ul>
+              ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
+            </div>`;
+          }
+
+          return '<div class="wrapper">' +
+            variables.cartridges.map(cartridge => {
+              return `<div class="label">${cartridge.label}</div>
+                <div class="container-bar">
+                  <div class="bar" style="background-color: ${cartridge.color};width: ${states[cartridge.entity_id].state}%;"></div>
+                </div>
+              <div class="state">${states[cartridge.entity_id].state}%</div>`;
+            }).join("") +
+          '</div>';
+        } else {
+
+        }
+      ]]]
+  style: |
+    div#cartridges .wrapper {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      grid-gap: 1rem;
+      padding: 12px 8px 8px 8px;
+    }
+    div#cartridges .wrapper > *:nth-child(3n-2), .wrapper > *:nth-child(3n) {
+      place-self: center start;
+    }
+    div#cartridges .wrapper > .label {
+      filter: opacity(70%);
+      font-size: medium;
+    }
+    div#cartridges .wrapper > .container-bar {
+      position: relative;
+      border-radius: 4px;
+      border: 0.01rem solid rgba(var(--color-theme),.35);
+    }
+    div#cartridges .wrapper > .container-bar .bar {
+      height: 20px;
+      border-radius: 4px;
+    }
+    div#cartridges .wrapper > .state {
+      filter: opacity(40%);
+      font-size: medium;
+    }
