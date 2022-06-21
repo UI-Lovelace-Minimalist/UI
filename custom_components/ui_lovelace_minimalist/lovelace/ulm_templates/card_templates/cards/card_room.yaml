@@ -10,6 +10,12 @@ card_room:
   show_name: true
   show_label: true
   size: "45%"
+  double_tap_action:
+    action: "call-service"
+    service: "input_select.select_option"
+    service_data:
+      option: "[[[ return variables.ulm_input_select_option ]]]"
+      entity_id: "[[[ return variables.ulm_input_select ]]]"
   aspect_ratio: "1/1"
   label: |-
     [[[

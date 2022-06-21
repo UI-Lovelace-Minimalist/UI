@@ -17,6 +17,12 @@ card_media_player:
   show_icon: false
   show_name: false
   show_label: false
+  double_tap_action:
+    action: "call-service"
+    service: "input_select.select_option"
+    service_data:
+      option: "[[[ return variables.ulm_input_select_option ]]]"
+      entity_id: "[[[ return variables.ulm_input_select ]]]"
   hold_action:
     action: >
       [[[
@@ -106,6 +112,12 @@ card_media_player:
           - "icon_info_bg"
           - "ulm_translation_engine"
         entity: "[[[ return entity.entity_id ]]]"
+        double_tap_action:
+          action: "call-service"
+          service: "input_select.select_option"
+          service_data:
+            option: "[[[ return variables.ulm_input_select_option ]]]"
+            entity_id: "[[[ return variables.ulm_input_select ]]]"
         hold_action:
           action: >
             [[[
@@ -218,6 +230,12 @@ card_media_player:
       card:
         type: "custom:button-card"
         template: "list_3_items"
+        double_tap_action:
+          action: "call-service"
+          service: "input_select.select_option"
+          service_data:
+            option: "[[[ return variables.ulm_input_select_option ]]]"
+            entity_id: "[[[ return variables.ulm_input_select ]]]"
         hold_action:
           action: >
             [[[
