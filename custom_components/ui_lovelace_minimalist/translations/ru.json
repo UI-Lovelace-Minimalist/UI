@@ -10,6 +10,9 @@
                     "sidepanel_enabled": "Создайте новую Панель инструментов на боковой панели.",
                     "sidepanel_icon": "Значок боковой панели",
                     "sidepanel_title": "Название боковой панели",
+                    "adaptive_ui_enabled": "Enable adaptive Dashboard with popup splitview",
+                    "adaptive_ui_title": "adaptive panel title",
+                    "adaptive_ui_icon": "adaptive panel icon",
                     "theme": "Тема",
                     "include_other_cards": "Включите ресурсы, необходимые для пользовательских карт."
                 }
@@ -30,6 +33,9 @@
                     "sidepanel_enabled": "Создайте новую Панель инструментов на боковой панели.",
                     "sidepanel_icon": "Значок боковой панели",
                     "sidepanel_title": "Название боковой панели",
+                    "adaptive_ui_enabled": "Enable adaptive Dashboard with popup splitview",
+                    "adaptive_ui_title": "adaptive panel title",
+                    "adaptive_ui_icon": "adaptive panel icon",
                     "theme": "Тема",
                     "include_other_cards": "Включите ресурсы, необходимые для пользовательских карт."
                 }

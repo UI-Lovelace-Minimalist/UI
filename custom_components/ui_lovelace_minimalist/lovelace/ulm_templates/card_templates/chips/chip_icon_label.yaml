@@ -3,16 +3,12 @@
 chip_icon_label:
   template: "chips"
   show_icon: true
-  show_name: false
-  show_label: true
   size: "100%"
   styles:
     card:
-      - box-shadow: "var(--box-shadow)"
       - padding-top: "6px"
       - padding-button: "6px"
       - padding-left: "12px"
-      - padding-right: "6px"
     grid:
       - grid-template-areas: "'i l'"
       - grid-template-columns: "max_content auto"
@@ -22,7 +18,5 @@ chip_icon_label:
       - width: "14px"
       - height: "24px"
     label:
-      - justify-self: "center"
-      - font-weight: "bold"
       - font-size: "12px"
       - margin-left: "0px"
