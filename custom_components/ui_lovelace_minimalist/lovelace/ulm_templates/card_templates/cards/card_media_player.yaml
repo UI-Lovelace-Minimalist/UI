@@ -2,7 +2,7 @@
 ### Card Media Player ###
 card_media_player:
   template:
-    - "ulm_language_variables"
+    - "ulm_translation_engine"
   variables:
     ulm_card_media_player_name: "[[[ return entity.attributes.friendly_name ]]]"
     ulm_card_media_player_icon: false
@@ -110,7 +110,7 @@ card_media_player:
         type: "custom:button-card"
         template:
           - "icon_info_bg"
-          - "ulm_language_variables"
+          - "ulm_translation_engine"
         entity: "[[[ return entity.entity_id ]]]"
         double_tap_action:
           action: "call-service"
@@ -151,11 +151,7 @@ card_media_player:
             }
             return variables.ulm_card_media_player_icon || icon[app];
           ]]]
-        label: |
-          [[[
-              let state = entity.state;
-              return variables["ulm_" + state] ? variables["ulm_" + state] : state;
-          ]]]
+        label: "[[[ return variables.ulm_translation_state ]]]"
         state:
           - operator: "template"
             value: "[[[ return entity.state == 'off' ]]]"
@@ -176,7 +172,7 @@ card_media_player:
               ]]]
             label: |
               [[[
-                let label = variables.ulm_on;
+                let label = variables.ulm_translation_on;
                 if (variables.ulm_card_media_player_more_info && states[entity.entity_id].attributes.media_artist
                     && states[entity.entity_id].attributes.media_album_name) {
                     label = states[entity.entity_id].attributes.media_artist + " • " + states[entity.entity_id].attributes.media_album_name;
@@ -184,8 +180,6 @@ card_media_player:
                     label = states[entity.entity_id].attributes.media_album_name;
                 } else if (states[entity.entity_id].attributes.media_artist) {
                     label = states[entity.entity_id].attributes.media_artist
-                } else {
-                    label = variables.ulm_on;
                 }
                 return label;
               ]]]

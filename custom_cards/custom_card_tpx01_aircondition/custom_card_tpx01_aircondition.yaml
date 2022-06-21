@@ -1,7 +1,7 @@
 ---
 custom_card_tpx01_aircondition:
   template:
-    - "ulm_language_variables"
+    - "ulm_translation_engine"
     - "custom_card_tpx01_aircondition_language_variables"
   tap_action:
     action: "more-info"
@@ -18,23 +18,7 @@ custom_card_tpx01_aircondition:
         }
         return 'mdi:air-conditioner';
     ]]]
-  label: >-
-    [[[
-        if (entity.state =='off') {
-          return variables.ulm_off;
-        } else if (entity.state =='dry') {
-          return variables.ulm_dry;
-        } else if (entity.state =='heat') {
-          return variables.ulm_heating;
-        } else if (entity.state =='heat_cool') {
-          return variables.ulm_heat_cool;
-        } else if (entity.state =='cool') {
-          return variables.ulm_cooling;
-        } else if (entity.state =='fan_only') {
-          return variables.ulm_fan_only;
-        }
-        return entity.state;
-    ]]]
+  label: "[[[ return variables.ulm_translation_state ]]]"
   state:
     - operator: "template"
       value: >

@@ -15,9 +15,20 @@ hide:
 
 - Author: Everything Smart Home - 2022
 - Credits to the [welcome scenes card](https://ui-lovelace-minimalist.github.io/UI/usage/cards/card_welcome_scenes/) as the basis
-- Version: 1.0.0
+- Version: 1.1.0
 
 ## Changelog
+
+<details>
+<summary>1.1.0</summary>
+  <ul>
+    <h4>Contributor: <a href="https://github.com/sisimomo">Sisimomo</a> - 2022-06-12</h4>
+    <li>Now support from 0-5 navigation pill.</li>
+    <li>Added dynamic nav pill size.</li>
+    <li>Code refactoring to fit <a href="https://ui-lovelace-minimalist.github.io/UI/development/custom_cards/#order">framework structure</a>.</li>
+    <li>Code clean up.</li>
+  </ul>
+</details>
 
 <details>
 <summary>1.0.0</summary>
@@ -84,6 +95,8 @@ Do not use `triggers_update: "all"`! This will lead to unwanted behavior with th
       name: Lab
       color: "red"
 ```
+
+## Template code
 
 ??? note "Template Code"
 

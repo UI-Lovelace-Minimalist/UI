@@ -1,8 +1,0 @@
----
-custom_card_tpx01_aircondition_language_variables:
-  variables:
-    custom_card_tpx01_aircondition_dry: "déshumidifier"
-    custom_card_tpx01_aircondition_heat: "chaleur"
-    custom_card_tpx01_aircondition_heat_cool: "auto"
-    custom_card_tpx01_aircondition_cool: "frais"
-    custom_card_tpx01_aircondition_fan_only: "fan seulement"

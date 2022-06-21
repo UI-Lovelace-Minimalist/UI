@@ -3,7 +3,8 @@
 card_generic:
   template:
     - "icon_info_bg"
-    - "ulm_language_variables"
+    - "ulm_translation_engine"
+  label: "[[[ return variables.ulm_translation_state_unit ]]]"
   double_tap_action:
     action: "call-service"
     service: "input_select.select_option"
