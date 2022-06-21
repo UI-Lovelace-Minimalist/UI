@@ -74,7 +74,6 @@ views:
                     template: "card_binary_sensor_alert"
                     variables:
                       - ulm_card_binary_sensor_alert: true
-                    show_last_changed: true
           - type: "custom:button-card"
             template: "card_title"
             name: "Sensors"
