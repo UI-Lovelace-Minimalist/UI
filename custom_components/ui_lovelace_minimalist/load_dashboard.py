@@ -27,6 +27,15 @@ def load_dashboard(hass: HomeAssistant, ulm: UlmBase):
         "require_admin": False,
     }
 
+    adv_dashboard_url = "adaptive-dash"
+    adv_dashboard_config = {
+        "mode": "yaml",
+        "icon": ulm.configuration.adaptive_ui_icon,
+        "title": ulm.configuration.adaptive_ui_title,
+        "filename": "ui_lovelace_minimalist/dashboard/adaptive-dash/adaptive-ui.yaml",
+        "show_in_sidebar": True,
+        "require_admin": False,
+    }
     # Optoinal override can be done with config_flow?
     # if not dashboard_url in hass.data["lovelace"]["dashboards"]:
     if ulm.configuration.sidepanel_enabled:
@@ -38,3 +47,13 @@ def load_dashboard(hass: HomeAssistant, ulm: UlmBase):
     else:
         if dashboard_url in hass.data["lovelace"]["dashboards"]:
             async_remove_panel(hass, "ui-lovelace-minimalist")
+
+    if ulm.configuration.adaptive_ui_enabled:
+        hass.data["lovelace"]["dashboards"][adv_dashboard_url] = LovelaceYAML(
+            hass, adv_dashboard_url, adv_dashboard_config
+        )
+
+        _register_panel(hass, adv_dashboard_url, "yaml", adv_dashboard_config, True)
+    else:
+        if adv_dashboard_url in hass.data["lovelace"]["dashboards"]:
+            async_remove_panel(hass, "adaptive-dash")

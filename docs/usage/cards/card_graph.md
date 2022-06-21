@@ -22,6 +22,7 @@ The `card_graph` shows an entity with the actual state and a *min-graph-card* in
 | ulm_card_graph_color2      |         | :material-close: | This is to adjust your color value of the second graph. Use a CSS varible from HA or set a color value (eg. #FFFFFF) |
 | ulm_card_graph_type      | fill | :material-close: | This is to change the appearence of the graph. Default is fill, but line, bar are valid options. |
 | ulm_card_graph_hours      |  24 | :material-close: | How much time should the graph cover, default is 24 hours. |
+| ulm_card_graph_points      | 0.5 | :material-close: | Specify amount of data points the graph should display for each hour. A larger number results in a more detailed graph. |
 
 ## Usage
 

@@ -2,30 +2,13 @@
 ### Card Binary Sensor ###
 card_binary_sensor:
   template:
-    - "icon_more_info_new"
+    - "icon_info_bg"
     - "blue"
-    - "ulm_language_variables"
-    - "ulm_actions_card"
-  show_last_changed: false
-  custom_fields:
-    item1:
-      card:
-        type: "custom:button-card"
-        template:
-          - "icon_more_info"
-          - "blue"
-        custom_fields:
-          item1:
-            card:
-              type: "custom:button-card"
-              template: 
-                - "blue"
-              entity: "[[[ return entity.entity_id ]]]"
-          item2:
-            card:
-              type: "custom:button-card"
-              template: 
-                - "blue_no_card"
-              entity: "[[[ return entity.entity_id ]]]"
-              name: "[[[ return entity.attributes.friendly_name != '' ? entity.attributes.friendly_name : entity.entity_id ]]]"
-              show_last_changed: true
+  name: "[[[ return entity.attributes.friendly_name != '' ? entity.attributes.friendly_name : entity.entity_id ]]]"
+  show_last_changed: true
+  double_tap_action:
+    action: "call-service"
+    service: "input_select.select_option"
+    service_data:
+      option: "[[[ return variables.ulm_input_select_option ]]]"
+      entity_id: "[[[ return variables.ulm_input_select ]]]"
