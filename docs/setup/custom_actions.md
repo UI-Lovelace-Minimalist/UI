@@ -36,7 +36,6 @@ Possible values for each variables are :
 | more-info  | Display more-info window                                                                                   |
 | popup      | Display UI LOVELACE MINIMALIST popup if available and enabled on card (if not `more-info` action is used)  |
 
-
 !!! tip "Reloading"
 
     Once you have edited `custom_actions.yaml` file, you must reload `"UI LOVELACE MINIMALIST"` configuration.

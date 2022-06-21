@@ -11,9 +11,3 @@ card_generic_swap:
     service_data:
       option: "[[[ return variables.ulm_input_select_option ]]]"
       entity_id: "[[[ return variables.ulm_input_select ]]]"
-  label: >
-    [[[
-      var unit = entity.attributes.unit_of_measurement != null ? " " + entity.attributes.unit_of_measurement : ""
-      let state = entity.state;
-      return variables["ulm_" + state] ? variables["ulm_" + state] : state + unit;
-    ]]]
