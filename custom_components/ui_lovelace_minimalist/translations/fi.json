@@ -10,6 +10,9 @@
                     "sidepanel_enabled": "Lisää kojelauta sivuvalikkoon.",
                     "sidepanel_icon": "Sivuvalikon kuvake",
                     "sidepanel_title": "Sivuvalikon otsikko",
+                    "adaptive_ui_enabled": "Enable adaptive Dashboard with popup splitview",
+                    "adaptive_ui_title": "adaptive panel title",
+                    "adaptive_ui_icon": "adaptive panel icon",
                     "theme": "Teema",
                     "include_other_cards": "Asenna mukautetut kortit, joista asennus on riippuvainen."
                 }
@@ -30,6 +33,9 @@
                     "sidepanel_enabled": "Lisää kojelauta sivuvalikkoon.",
                     "sidepanel_icon": "Sivuvalikon kuvake",
                     "sidepanel_title": "Sivuvalikon otsikko",
+                    "adaptive_ui_enabled": "Enable adaptive Dashboard with popup splitview",
+                    "adaptive_ui_title": "adaptive panel title",
+                    "adaptive_ui_icon": "adaptive panel icon",
                     "theme": "Teema",
                     "include_other_cards": "Asenna mukautetut kortit, joista asennus on riippuvainen."
                 }
