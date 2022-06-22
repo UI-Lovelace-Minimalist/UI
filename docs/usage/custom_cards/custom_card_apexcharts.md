@@ -3,6 +3,7 @@ title: Apexcharts Custom-card
 hide:
   - toc
 ---
+
 <!-- markdownlint-disable MD046 -->
 
 # Custom-card "Apexcharts"
@@ -27,29 +28,29 @@ Initial release
 ## Usage
 
 ```yaml
-    - type: "custom:button-card"
-      template: "custom_card_apexcharts"
-      variables:
-        chart_type: "donut"
-        graph_span: "1d"
-        entity_1:
-          entity_id: "sensor.google"
-          icon: ''
-          name: "Google"
-          color: "blue"
-          max_value: 300
-        entity_2:
-          entity_id: "sensor.cloudflare"
-          icon: ''
-          name: "Cloudflare"
-          color: "yellow"
-          max_value: 50
-        entity_3:
-          entity_id: "sensor.gateway"
-          icon: ''
-          name: "Gateway"
-          color: "green"
-          max_value: 30
+- type: "custom:button-card"
+  template: "custom_card_apexcharts"
+  variables:
+    chart_type: "donut"
+    graph_span: "1d"
+    entity_1:
+      entity_id: "sensor.google"
+      icon: ""
+      name: "Google"
+      color: "blue"
+      max_value: 300
+    entity_2:
+      entity_id: "sensor.cloudflare"
+      icon: ""
+      name: "Cloudflare"
+      color: "yellow"
+      max_value: 50
+    entity_3:
+      entity_id: "sensor.gateway"
+      icon: ""
+      name: "Gateway"
+      color: "green"
+      max_value: 30
 ```
 
 ## Requirements
@@ -109,155 +110,8 @@ Integration from HACS: "custom:apexcharts-card" from RomRider
 </tr>
 </table>
 
-## Template code
+??? note "Template Code"
 
-```yaml
----
-custom_card_apexcharts:
-  variables:
-    entity_1:
-      entity_id:
-      icon: "[[[ return entity.attributes.icon ]]]"
-      name: "[[[ return entity.attributes.friendly_name ]]]"
-      color: >
-        [[[
-          var colors = ['yellow', 'blue', 'red', 'green'];
-          var color = colors[Math.floor(Math.random() * colors.length)];
-          return color;
-        ]]]
-    entity_2:
-      entity_id:
-      icon: "[[[ return entity.attributes.icon  ]]]"
-      name: "[[[ return entity.attributes.friendly_name ]]]"
-      color: >
-        [[[
-          var colors = ['yellow', 'blue', 'red', 'green'];
-          var color = colors[Math.floor(Math.random() * colors.length)];
-          return color;
-        ]]]
-    entity_3:
-      entity_id:
-      icon: "[[[ return entity.attributes.icon  ]]]"
-      name: "[[[ return entity.attributes.friendly_name ]]]"
-      color: >
-        [[[
-          var colors = ['yellow', 'blue', 'red','green'];
-          var color = colors[Math.floor(Math.random() * colors.length)];
-          return color;
-        ]]]
-  color: "auto"
-  variable: "spin"
-  spin: false
-  show_name: false
-  show_state: false
-  show_label: false
-  show_icon: false
-  show_last_changed: false
-  show_entity_picture: false
-  tap_action:
-    action: "none"
-  aspect_ratio: "2/1"
-  styles:
-    grid:
-      - grid-template-areas: "'item1 radial' 'item2 radial' 'item3 radial'"
-      - grid-template-columns: "35% 65%"
-      - grid-template-rows: "1fr 1fr 1fr"
-    card:
-      - border-radius: "var(--border-radius)"
-      - box-shadow: "var(--box-shadow)"
-      - padding: "0px"
-  custom_fields:
-    item1:
-      card:
-        type: "custom:button-card"
-        entity: "[[[ return variables.entity_1.entity_id ]]]"
-        icon: "[[[ return variables.entity_1.icon ]]]"
-        name: "[[[ return variables.entity_1.name ]]]"
-        template:
-          - "card_generic_swap"
-        styles:
-          icon:
-            - color: "[[[ return `rgba(var(--color-${variables.entity_1.color}), 1)`;]]]"
-          img_cell:
-            - background-color: "[[[ return `rgba(var(--color-${variables.entity_1.color}), 0.20)`;]]]"
-          card:
-            - box-shadow: "none"
-            - border-radius: "none"
-            - padding-top: "1px"
-            - padding-bottom: "1px"
-    item2:
-      card:
-        type: "custom:button-card"
-        entity: "[[[ return variables.entity_2.entity_id ]]]"
-        icon: "[[[ return variables.entity_2.icon ]]]"
-        name: "[[[ return variables.entity_2.name ]]]"
-        template:
-          - "card_generic_swap"
-        styles:
-          icon:
-            - color: "[[[ return `rgba(var(--color-${variables.entity_2.color}), 1)`;]]]"
-          img_cell:
-            - background-color: "[[[ return `rgba(var(--color-${variables.entity_2.color}), 0.20)`;]]]"
-          card:
-            - box-shadow: "none"
-            - border-radius: "none"
-            - padding-top: "1px"
-            - padding-bottom: "1px"
-    item3:
-      card:
-        type: "custom:button-card"
-        entity: "[[[ return variables.entity_3.entity_id ]]]"
-        icon: "[[[ return variables.entity_3.icon ]]]"
-        name: "[[[ return variables.entity_3.name ]]]"
-        template:
-          - "card_generic_swap"
-        styles:
-          icon:
-            - color: "[[[ return `rgba(var(--color-${variables.entity_3.color}), 1)`;]]]"
-          img_cell:
-            - background-color: "[[[ return `rgba(var(--color-${variables.entity_3.color}), 0.20)`;]]]"
-          card:
-            - box-shadow: "none"
-            - border-radius: "none"
-            - padding-top: "1px"
-            - padding-bottom: "1px"
-    radial:
-      card:
-        type: "custom:apexcharts-card"
-        graph_span: "[[[ return variables.graph_span ]]]"
-        chart_type: "[[[ return variables.chart_type ]]]"
-        style: |
-          ha-card {
-            border-radius: "var(--border-radius)";
-            box-shadow: none;
-            padding-left: 10px;
-            padding-bottom: 0px;
-          }
-        header:
-          show: false
-        apex_config:
-          title:
-            floating: false
-            align: "top"
-            style:
-              fontSize: "2px"
-              fontWeight: "bold"
-          chart:
-            foreColor: "rgb(148,148,148)"
-            offsetY: 5
-          legend:
-            show: false
-        series:
-          - entity: "[[[ return variables.entity_1.entity_id ]]]"
-            name: "[[[ return variables.entity_1_name ]]]"
-            color: "[[[ return `var(--google-${variables.entity_1.color})`;]]]"
-            max: "[[[ return variables.entity_1.max_value ]]]"
-          - entity: "[[[ return variables.entity_2.entity_id ]]]"
-            name: "[[[ return variables.entity_2_name ]]]"
-            color: "[[[ return `var(--google-${variables.entity_2.color})`;]]]"
-            max: "[[[ return variables.entity_2.max_value ]]]"
-          - entity: "[[[ return variables.entity_3.entity_id ]]]"
-            name: "[[[ return variables.entity_3_name ]]]"
-            color: "[[[ return `var(--google-${variables.entity_3.color})`;]]]"
-            max: "[[[ return variables.entity_3.max_value ]]]"
-```
+    ```yaml title="apexcharts.yaml"
+    --8<-- "custom_cards/custom_card_apexcharts/apexcharts.yaml"
+    ```

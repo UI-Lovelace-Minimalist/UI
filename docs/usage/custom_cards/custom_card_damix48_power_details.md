@@ -3,6 +3,7 @@ title: Power Details Custom-card
 hide:
   - toc
 ---
+
 <!-- markdownlint-disable MD046 -->
 
 # Custom-card "Power details"
@@ -102,92 +103,8 @@ Need [mini-graph-card](https://github.com/kalkih/mini-graph-card)
 </tr>
 </table>
 
-## Template code
+??? note "Template Code"
 
-```yaml
----
-custom_card_damix48_power_details:
-  template:
-    - "ulm_custom_card_damix48_power_details_language_variables"
-  variables:
-    ulm_card_power_details_name: "n/a"
-    ulm_card_power_details_hours: 2
-    ulm_card_power_details_24hour: false
-    ulm_card_power_details_height: 180
-  triggers_update: "all"
-  styles:
-    grid:
-      - grid-template-areas: "'item1' 'item2'"
-      - grid-template-columns: "1fr"
-      - grid-template-rows: "min-content  min-content"
-    card:
-      - border-radius: "var(--border-radius)"
-      - box-shadow: "var(--box-shadow)"
-      - padding: "0px"
-  custom_fields:
-    item1:
-      card:
-        type: "custom:button-card"
-        template:
-          - "icon_info"
-          - "card_generic"
-        styles:
-          card:
-            - box-shadow: "none"
-            - border-radius: "var(--border-radius) var(--border-radius) 0px 0px"
-            - padding: "12px"
-        entity: "[[[ return variables.ulm_card_power_details_entity ]]]"
-        name: |
-          [[[
-            if (variables.ulm_card_power_details_hours == 1) {
-              return variables.ulm_custom_card_damix48_power_details_in_the_last + " " + variables.ulm_custom_card_damix48_power_details_hour;
-            } else {
-              return variables.ulm_custom_card_damix48_power_details_in_the_lasts + " " + variables.ulm_card_power_details_hours + " " + variables.ulm_custom_card_damix48_power_details_hours;
-            }
-          ]]]
-        label: "[[[ return variables.ulm_card_power_details_name ]]]"
-    item2:
-      card:
-        type: "custom:mini-graph-card"
-        template:
-          - "icon_info"
-          - "card_generic"
-        entities:
-          - entity: "[[[ return variables.ulm_card_power_details_entity ]]]"
-        color_thresholds: |
-          [[[
-            if (variables.ulm_card_power_details_thresholds) {
-              return variables.ulm_card_power_details_thresholds;
-            } else {
-              return [{
-                value: 0,
-                color: "var(--info-color)"
-              }];
-            }
-          ]]]
-        hours_to_show: "[[[ return variables.ulm_card_power_details_hours ]]]"
-        points_per_hour: "[[[ return Math.floor(120 / variables.ulm_card_power_details_hours) ]]]"
-        name: "[[[ return variables.ulm_card_power_details_name ]]]"
-        hour24: "[[[ return variables.ulm_card_power_details_24hour ]]]"
-        decimals: 1
-        show:
-          name: false
-          icon: false
-          legend: false
-          state: true
-        align_state: center
-        height: "[[[ return variables.ulm_card_power_details_height ]]]"
-        style: |
-          ha-card {
-            box-shadow: none;
-            border-radius: var(--border-radius);
-          }
-          ha-card .state {
-            font-weight: bold;
-            font-size: 14px;
-          }
-          ha-card .graph__labels > span {
-            background: var(--card-background-color);
-            color: var(--secondary-text-color)
-          }
-```
+    ```yaml title="custom_card_damix48_power_details.yaml"
+    --8<-- "custom_cards/custom_card_damix48_power_details/custom_card_damix48_power_details.yaml"
+    ```
