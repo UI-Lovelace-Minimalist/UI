@@ -3,6 +3,7 @@ title: Lock Card Custom-card
 hide:
   - toc
 ---
+
 <!-- markdownlint-disable MD046 -->
 
 # Custom-card "Lock"
@@ -107,8 +108,6 @@ Version: 0.0.3
     <td>Displays a warning when the door is lock but the door is still open.</td>
   </tr>
 </table>
-
-## Template code
 
 ??? note "Template Code"
 
