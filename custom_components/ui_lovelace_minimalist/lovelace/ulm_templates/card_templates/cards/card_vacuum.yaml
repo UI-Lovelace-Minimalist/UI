@@ -79,6 +79,7 @@ card_vacuum:
             card:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
+              icon: "[[[ return variables.ulm_card_vacuum_icon ]]]"
               styles:
                 icon:
                   - color: >
