@@ -2,7 +2,7 @@
 ### Card Binary Sensor ###
 card_binary_sensor:
   template:
-    - "icon_more_info_new"
+    - "icon_info_bg"
     - "blue"
     - "ulm_language_variables"
     - "ulm_actions_card"

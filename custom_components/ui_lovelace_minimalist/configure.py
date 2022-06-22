@@ -44,7 +44,6 @@ def configure_cards(hass: HomeAssistant, ulm: UlmBase):
     # Create config dir
     os.makedirs(hass.config.path(f"{DOMAIN}/dashboard"), exist_ok=True)
     os.makedirs(hass.config.path(f"{DOMAIN}/custom_cards"), exist_ok=True)
-    os.makedirs(hass.config.path(f"{DOMAIN}/custom_actions"), exist_ok=True)
 
     if os.path.exists(hass.config.path(f"{DOMAIN}/dashboard")):
         # Create combined cards dir
@@ -56,6 +55,13 @@ def configure_cards(hass: HomeAssistant, ulm: UlmBase):
         # Translations
         language = LANGUAGES[ulm.configuration.language]
 
+        # Copy default language file over to config dir
+        shutil.copy2(
+            hass.config.path(
+                f"custom_components/{DOMAIN}/lovelace/translations/default.yaml"
+            ),
+            hass.config.path(f"{combined_cards_dir}/default.yaml"),
+        )
         # Copy example dashboard file over to user config dir if not exists
         if ulm.configuration.sidepanel_enabled:
             if not os.path.exists(
@@ -86,6 +92,7 @@ def configure_cards(hass: HomeAssistant, ulm: UlmBase):
                 ),
                 hass.config.path(f"{DOMAIN}/custom_actions/custom_actions.yaml"),
             )
+            
         # Copy chosen language file over to config dir
         shutil.copy2(
             hass.config.path(
@@ -103,13 +110,6 @@ def configure_cards(hass: HomeAssistant, ulm: UlmBase):
         shutil.copytree(
             hass.config.path(f"{DOMAIN}/custom_cards"),
             hass.config.path(f"{combined_cards_dir}/custom_cards"),
-            dirs_exist_ok=True,
-        )
-        # Copy over custom actions from user
-        
-        shutil.copytree(
-            hass.config.path(f"{DOMAIN}/custom_actions"),
-            hass.config.path(f"{combined_cards_dir}/custom_actions"),
             dirs_exist_ok=True,
         )
 
@@ -142,14 +142,6 @@ def reload_configuration(hass):
         shutil.copytree(
             hass.config.path(f"{DOMAIN}/custom_cards"),
             hass.config.path(f"{combined_cards_dir}/custom_cards"),
-            dirs_exist_ok=True,
-        )
-
-    if os.path.exists(hass.config.path(f"{DOMAIN}/custom_actions.yaml")):
-        # Copy over custom actions from user
-        shutil.copytree(
-            hass.config.path(f"{DOMAIN}/custom_actions.yaml"),
-            hass.config.path(f"{combined_cards_dir}/custom_actions.yaml"),
             dirs_exist_ok=True,
         )
 

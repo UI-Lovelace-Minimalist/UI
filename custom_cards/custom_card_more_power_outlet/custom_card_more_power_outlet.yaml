@@ -4,7 +4,7 @@ custom_card_more_power_outlet:
   template:
     - "icon_info_bg"
     - "yellow"
-    - "ulm_language_variables"
+    - "ulm_translation_engine"
   variables:
     custom_card_more_power_outlet_power_sensor:
     custom_card_more_power_outlet_energy_sensor:
@@ -40,18 +40,14 @@ custom_card_more_power_outlet:
         } else
           return states[variables.custom_card_more_power_outlet_time_sensor].state + "Hrs";
       } else if (entity.state === "on") {
-        return variables.ulm_on;
+        return variables.ulm_translation_state;
       } else if (entity.state === "off" && variables.custom_card_more_power_outlet_energy_sensor !== null) {
         if (states[variables.custom_card_more_power_outlet_energy_sensor].state > 0){
-          return variables.ulm_off + " • " + states[variables.custom_card_more_power_outlet_energy_sensor].state + "kWh";
+          return variables.ulm_translation_state + " • " + states[variables.custom_card_more_power_outlet_energy_sensor].state + "kWh";
         } else {
-          return variables.ulm_off;
+          return variables.ulm_translation_state;
         }
-      } else if (entity.state === "off") {
-        return variables.ulm_off;
-      } else if (entity.state === "unavailable") {
-        return variables.ulm_unavailable;
       } else {
-        return entity.state;
+        return variables.ulm_translation_state;
       }
     ]]]

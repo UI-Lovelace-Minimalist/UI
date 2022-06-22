@@ -5,7 +5,7 @@ ulm_actions_name:
     - "ulm_custom_actions"
   tap_action:
     action: >
-      [[[ 
+      [[[
         var action = variables.ulm_name_tap_action;
         let domain = entity.entity_id.substr(0, entity.entity_id.indexOf("."));
 
@@ -28,7 +28,7 @@ ulm_actions_name:
           action = 'more-info'
         }
 
-        return action 
+        return action
       ]]]
     service: "input_select.select_option"
     service_data:
@@ -41,7 +41,7 @@ ulm_actions_name:
       card:
         type: "custom:button-card"
         template: >
-          [[[ 
+          [[[
             if (variables.ulm_card_light_enable_popup){
               return 'popup_light_brightness'
             }
@@ -51,7 +51,7 @@ ulm_actions_name:
             if (variables.ulm_card_media_player_enable_popup){
               return 'popup_media_player_infos'
             }
-          ]]] 
+          ]]]
         variables:
           ulm_popup_light_entity: "[[[ return entity.entity_id ]]]"
           ulm_popup_thermostat_entity: "[[[ return entity.entity_id ]]]"
@@ -59,7 +59,7 @@ ulm_actions_name:
 
   hold_action:
     action: >
-      [[[ 
+      [[[
         var action = variables.ulm_name_hold_action;
         let domain = entity.entity_id.substr(0, entity.entity_id.indexOf("."));
 
@@ -82,7 +82,7 @@ ulm_actions_name:
           action = 'more-info'
         }
 
-        return action 
+        return action
       ]]]
     service: "input_select.select_option"
     service_data:
@@ -95,7 +95,7 @@ ulm_actions_name:
       card:
         type: "custom:button-card"
         template: >
-          [[[ 
+          [[[
             if (variables.ulm_card_light_enable_popup){
               return 'popup_light_brightness'
             }
@@ -105,14 +105,14 @@ ulm_actions_name:
             if (variables.ulm_card_media_player_enable_popup){
               return 'popup_media_player_infos'
             }
-          ]]] 
+          ]]]
         variables:
           ulm_popup_light_entity: "[[[ return entity.entity_id ]]]"
           ulm_popup_thermostat_entity: "[[[ return entity.entity_id ]]]"
           ulm_popup_media_player_entity: "[[[ return entity.entity_id ]]]"
   double_tap_action:
     action: >
-      [[[ 
+      [[[
         var action = variables.ulm_name_double_tap_action;
         let domain = entity.entity_id.substr(0, entity.entity_id.indexOf("."));
 
@@ -135,7 +135,7 @@ ulm_actions_name:
           action = 'more-info'
         }
 
-        return action 
+        return action
       ]]]
     service: "input_select.select_option"
     service_data:
@@ -148,7 +148,7 @@ ulm_actions_name:
       card:
         type: "custom:button-card"
         template: >
-          [[[ 
+          [[[
             if (variables.ulm_card_light_enable_popup){
               return 'popup_light_brightness'
             }
@@ -158,7 +158,7 @@ ulm_actions_name:
             if (variables.ulm_card_media_player_enable_popup){
               return 'popup_media_player_infos'
             }
-          ]]] 
+          ]]]
         variables:
           ulm_popup_light_entity: "[[[ return entity.entity_id ]]]"
           ulm_popup_thermostat_entity: "[[[ return entity.entity_id ]]]"

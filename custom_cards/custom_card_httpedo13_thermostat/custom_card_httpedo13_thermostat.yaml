@@ -1,7 +1,7 @@
 ---
 custom_card_httpedo13_thermostat:
   template:
-    - "ulm_language_variables"
+    - "ulm_translation_engine"
   tap_action:
     action: "toggle"
   icon: |
@@ -11,17 +11,7 @@ custom_card_httpedo13_thermostat:
         }
         return "mdi:radiator-off";
     ]]]
-  label: >-
-    [[[
-        if (entity.state =='off') {
-          return variables.ulm_off;
-        } else if (entity.state =='heat') {
-          return variables.ulm_on;
-        } else if (entity.attributes.hvac_action == 'heating') {
-          return variables.ulm_heating;
-        }
-        return entity.state;
-    ]]]
+  label: "[[[ return variables.ulm_translation_state ]]]"
   state:
     - operator: "template"
       value: >

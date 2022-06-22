@@ -4,6 +4,7 @@ card_generic:
   template:
     - "icon_more_info_new"
     - "ulm_actions_card"
+    - "ulm_translation_engine"
   custom_fields:
     item1:
       card:
@@ -22,25 +23,7 @@ card_generic:
             card:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
-              label: >
-                [[[
-                  var unit = entity.attributes.unit_of_measurement != null ? " " + entity.attributes.unit_of_measurement : ""
-                  if (entity.state == "on") {
-                    return variables.ulm_on;
-                  } else if (entity.state == "off") {
-                    return variables.ulm_off;
-                  } else if (entity.state == "unavailable") {
-                    return variables.ulm_unavailable;
-                  } else if (entity.state == "idle") {
-                    return variables.ulm_idle;
-                  } else if (entity.state == "open") {
-                    return variables.ulm_open;
-                  } else if (entity.state == "closed") {
-                    return variables.ulm_closed;
-                  } else {
-                    return entity.state + unit;
-                  }
-                ]]]
+              label: "[[[ return variables.ulm_translation_state_unit ]]]"
               styles:
                 grid:
                   - grid-template-areas: "'i l' 'i n'"

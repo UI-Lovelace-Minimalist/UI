@@ -2,7 +2,8 @@
 ### Card Input Boolean ###
 card_input_boolean:
   template:
-    - "icon_more_info_new"
+    - "icon_info_bg"
+    - "ulm_translation_engine"
     - "blue"
     - "ulm_language_variables"
     - "ulm_actions_card"

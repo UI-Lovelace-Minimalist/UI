@@ -1,10 +1,10 @@
 ---
-### Card Vacuum ###
 card_vacuum:
+  show_name: false
+  show_icon: false
+  show_label: false
   template:
-    - "icon_more_info_new"
-    - "ulm_language_variables"
-    - "ulm_actions_card"
+    - "ulm_translation_engine"
   variables:
     ulm_card_vacuum_name: "[[[ return entity.attributes.friendly_name ]]]"
     ulm_card_vacuum_icon: "[[[ return entity.attributes.icon ]]]"
@@ -70,13 +70,13 @@ card_vacuum:
     item1:
       card:
         type: "custom:button-card"
-        template:
-          - "icon_more_info"
+        template: "icon_more_info"
         custom_fields:
           item1:
             card:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
+              icon: "[[[ return variables.ulm_card_vacuum_icon ]]]"
               styles:
                 icon:
                   - color: >
@@ -91,15 +91,17 @@ card_vacuum:
           item2:
             card:
               type: "custom:button-card"
+              templates:
+                - "ulm_translation_engine"
               entity: "[[[ return entity.entity_id ]]]"
+              name: "[[[ return variables.ulm_card_vacuum_name ]]]"
               label: >
                 [[[
                   let label = entity.attributes.friendly_name
                   if(variables.ulm_card_vacuum_label){
                     label = variables.ulm_card_vacuum_label;
                   } else {
-                    let state = entity.state;
-                    label = variables["ulm_" + state] ? variables["ulm_" + state] : state;
+                    label = variables.ulm_translation_state;
                   }
                   return label;
                 ]]]

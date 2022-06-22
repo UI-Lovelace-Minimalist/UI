@@ -1,8 +1,0 @@
----
-custom_card_tpx01_aircondition_language_variables:
-  variables:
-    custom_card_tpx01_aircondition_dry: "dry"
-    custom_card_tpx01_aircondition_heat: "heat"
-    custom_card_tpx01_aircondition_heat_cool: "auto"
-    custom_card_tpx01_aircondition_cool: "cool"
-    custom_card_tpx01_aircondition_fan_only: "fan only"

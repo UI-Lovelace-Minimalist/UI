@@ -3,7 +3,10 @@ chip_weather_date:
   template: "chips"
   entity: "[[[ return variables.ulm_weather]]]"
   variables:
-    ulm_language: "[[[return window.navigator.language ]]]"
+    ulm_language: >
+      [[[
+        return hass["language"];
+      ]]]
   triggers_update: "all"
   tap_action:
     action: "more-info"
@@ -13,7 +16,7 @@ chip_weather_date:
       const options = {month: 'short', day: 'numeric' };
       var locale = variables.ulm_language;
       let formatted_date = event.toLocaleDateString(locale, options);
-      var state = states[variables.ulm_chip_temperature_weather].state;
+      var state = states[variables.ulm_weather].state;
       var icon = {
         "clear-night": "🌙",
         "cloudy": "☁️",
