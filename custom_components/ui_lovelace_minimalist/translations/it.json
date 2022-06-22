@@ -7,7 +7,7 @@
                 "description": "",
                 "data": {
                     "language": "Lingua",
-                    "sidepanel_enabled": "Abilita la creazione di una nuova Dashboard nel Pannello Laterale.",
+                    "sidepanel_enabled": "Crea una nuova Dashboard nel Pannello Laterale.",
                     "sidepanel_icon": "Icona Pannello Laterale",
                     "sidepanel_title": "Titolo Pannello Laterale",
                     "adaptive_ui_enabled": "Enable adaptive Dashboard with popup splitview",
@@ -19,7 +19,7 @@
             }
         },
         "abort": {
-            "single_instance_allowed": "E' permesse un'unica configurazione di UI Lovelace Minimalist.",
+            "single_instance_allowed": "È permessa un'unica configurazione di UI Lovelace Minimalist.",
             "not_setup": "UI Lovelace Minimalist non è stato configurato."
         }
     },
@@ -30,7 +30,7 @@
                 "description": "",
                 "data": {
                     "language": "Lingua",
-                    "sidepanel_enabled": "Abilita la creazione di una nuova Dashboard nel Pannello Laterale.",
+                    "sidepanel_enabled": "Crea di una nuova Dashboard nel Pannello Laterale.",
                     "sidepanel_icon": "Icona Pannello Laterale",
                     "sidepanel_title": "Titolo Pannello Laterale",
                     "adaptive_ui_enabled": "Enable adaptive Dashboard with popup splitview",
@@ -42,7 +42,7 @@
             }
         },
         "abort": {
-            "single_instance_allowed": "E' permesse un'unica configurazione di UI Lovelace Minimalist.",
+            "single_instance_allowed": "È permessa un'unica configurazione di UI Lovelace Minimalist.",
             "not_setup": "UI Lovelace Minimalist non è stato configurato."
         }
     }
