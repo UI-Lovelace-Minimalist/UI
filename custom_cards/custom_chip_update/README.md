@@ -1,10 +1,11 @@
 # Custom-chip "Update"
+
 ![chip_update6](https://user-images.githubusercontent.com/78684384/171427015-a1e7fb62-782a-4ca9-bd9b-f8ae2c61c7bc.PNG)
 ![chip_update3](https://user-images.githubusercontent.com/78684384/171427065-20963541-013b-4328-8c20-8d2fe19ad4eb.PNG)
 
 ## Information
-Chip that shows you if an update for Home Assistant is available.
 
+Chip that shows you if an update for Home Assistant is available.
 
 ## Changelog
 
@@ -52,7 +53,7 @@ Initial release
 ---
 ### Chip Update ###
 chip_update:
-  template: 
+  template:
     - "ulm_language_variables"
     - "chips"
   tap_action:
@@ -72,7 +73,7 @@ chip_update:
   styles:
     grid:
       - grid-template-areas: "'i l'"
-  
+
 ```
 
 ## Requirements

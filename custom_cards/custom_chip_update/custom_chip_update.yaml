@@ -1,6 +1,6 @@
 ---
 chip_update:
-  template: 
+  template:
     - "ulm_language_variables"
     - "chips"
   tap_action:
