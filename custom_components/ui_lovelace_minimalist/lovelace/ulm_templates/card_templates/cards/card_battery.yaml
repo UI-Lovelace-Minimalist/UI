@@ -3,7 +3,6 @@
 card_battery:
   template:
     - "icon_info_bg"
-
     - "ulm_translation_engine"
   double_tap_action:
     action: "call-service"

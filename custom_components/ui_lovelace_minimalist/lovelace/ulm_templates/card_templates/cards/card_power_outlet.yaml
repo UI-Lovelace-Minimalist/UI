@@ -18,13 +18,13 @@ card_power_outlet:
           item1:
             card:
               type: "custom:button-card"
-              template: 
+              template:
                 - "yellow"
               entity: "[[[ return entity.entity_id ]]]"
           item2:
             card:
               type: "custom:button-card"
-              template: 
+              template:
                 - "yellow_no_card"
               entity: "[[[ return entity.entity_id ]]]"
               label: |

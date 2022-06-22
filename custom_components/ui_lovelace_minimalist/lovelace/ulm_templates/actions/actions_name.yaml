@@ -33,7 +33,7 @@ ulm_actions_name:
     service: "input_select.select_option"
     service_data:
       option: "[[[ return variables.ulm_input_select_option ]]]"
-      entity_id: "[[[ return variables.ulm_input_select ]]]" 
+      entity_id: "[[[ return variables.ulm_input_select ]]]"
     browser_mod:
       command: "popup"
       large: true
@@ -87,7 +87,7 @@ ulm_actions_name:
     service: "input_select.select_option"
     service_data:
       option: "[[[ return variables.ulm_input_select_option ]]]"
-      entity_id: "[[[ return variables.ulm_input_select ]]]" 
+      entity_id: "[[[ return variables.ulm_input_select ]]]"
     browser_mod:
       command: "popup"
       large: true
@@ -140,7 +140,7 @@ ulm_actions_name:
     service: "input_select.select_option"
     service_data:
       option: "[[[ return variables.ulm_input_select_option ]]]"
-      entity_id: "[[[ return variables.ulm_input_select ]]]" 
+      entity_id: "[[[ return variables.ulm_input_select ]]]"
     browser_mod:
       command: "popup"
       large: true

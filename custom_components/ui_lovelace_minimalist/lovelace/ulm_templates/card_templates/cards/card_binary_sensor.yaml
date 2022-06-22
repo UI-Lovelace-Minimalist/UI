@@ -18,13 +18,13 @@ card_binary_sensor:
           item1:
             card:
               type: "custom:button-card"
-              template: 
+              template:
                 - "blue"
               entity: "[[[ return entity.entity_id ]]]"
           item2:
             card:
               type: "custom:button-card"
-              template: 
+              template:
                 - "blue_no_card"
               entity: "[[[ return entity.entity_id ]]]"
               name: "[[[ return entity.attributes.friendly_name != '' ? entity.attributes.friendly_name : entity.entity_id ]]]"
