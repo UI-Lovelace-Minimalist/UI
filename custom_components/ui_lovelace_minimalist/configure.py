@@ -55,13 +55,44 @@ def configure_cards(hass: HomeAssistant, ulm: UlmBase):
         # Translations
         language = LANGUAGES[ulm.configuration.language]
 
+        # Copy default language file over to config dir
+        shutil.copy2(
+            hass.config.path(
+                f"custom_components/{DOMAIN}/lovelace/translations/default.yaml"
+            ),
+            hass.config.path(f"{combined_cards_dir}/default.yaml"),
+        )
         # Copy example dashboard file over to user config dir if not exists
-        if not os.path.exists(hass.config.path(f"{DOMAIN}/dashboard/ui-lovelace.yaml")):
+        if ulm.configuration.sidepanel_enabled:
+            if not os.path.exists(
+                hass.config.path(f"{DOMAIN}/dashboard/ui-lovelace.yaml")
+            ):
+                shutil.copy2(
+                    hass.config.path(
+                        f"custom_components/{DOMAIN}/lovelace/ui-lovelace.yaml"
+                    ),
+                    hass.config.path(f"{DOMAIN}/dashboard/ui-lovelace.yaml"),
+                )
+        # Copy adaptive dashboard if not exists and is selected as option
+        if ulm.configuration.adaptive_ui_enabled:
+            if not os.path.exists(
+                hass.config.path(f"{DOMAIN}/dashboard/adaptive-dash")
+            ):
+                shutil.copytree(
+                    hass.config.path(
+                        f"custom_components/{DOMAIN}/lovelace/adaptive-dash"
+                    ),
+                    hass.config.path(f"{DOMAIN}/dashboard/adaptive-dash"),
+                )
+        # Copy example custom actions file over to user config dir if not exists
+        if not os.path.exists(
+            hass.config.path(f"{DOMAIN}/custom_actions/custom_actions.yaml")
+        ):
             shutil.copy2(
                 hass.config.path(
-                    f"custom_components/{DOMAIN}/lovelace/ui-lovelace.yaml"
+                    f"custom_components/{DOMAIN}/lovelace/custom_actions.yaml"
                 ),
-                hass.config.path(f"{DOMAIN}/dashboard/ui-lovelace.yaml"),
+                hass.config.path(f"{DOMAIN}/custom_actions/custom_actions.yaml"),
             )
         # Copy chosen language file over to config dir
         shutil.copy2(

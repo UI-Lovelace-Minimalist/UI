@@ -2,15 +2,8 @@
 card_ps4:
   template:
     - "icon_info_bg"
-  label: >-
-    [[[ if (entity.state =='unknown'){
-          return variables.ulm_off;
-        }else if (entity.state =='standby'){
-          return variables.ulm_standby;
-        }else{
-          return variables.ulm_on;
-        }
-    ]]]
+    - "ulm_translation_engine"
+  label: "[[[ return variables.ulm_translation_state ]]]"
   styles:
     icon:
       - color: "rgba(var(--color-theme),0.2)"

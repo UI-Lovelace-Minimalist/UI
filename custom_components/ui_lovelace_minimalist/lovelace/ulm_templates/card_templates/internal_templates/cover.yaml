@@ -24,14 +24,14 @@ cover:
         var icon = "mdi:help-circle";
         if (typeof states[entity.entity_id].attributes.current_position === "undefined"){
           if (states[entity.entity_id].state == "closed"){
-            return variables.ulm_closed;
+            return variables.ulm_translation_state;
           } else
-            return variables.ulm_open;
+            return variables.ulm_translation_state;
         } else {
           if (states[entity.entity_id].attributes.current_position == 0){
-            return variables.ulm_closed;
+            return variables.ulm_translation_state;
           } else {
-            return variables.ulm_open + " • " + (states[entity.entity_id].attributes.current_position) + "%" ;
+            return variables.ulm_translation_state + " • " + (states[entity.entity_id].attributes.current_position) + "%" ;
           }
         }
         return icon ;

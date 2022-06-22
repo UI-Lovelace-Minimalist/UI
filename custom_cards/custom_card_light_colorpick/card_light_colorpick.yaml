@@ -1,7 +1,7 @@
 ---
 card_light_colorpick:
   template:
-    - "ulm_language_variables"
+    - "ulm_translation_engine"
   variables:
     ulm_card_light_colorpick_name: "[[[ return entity.attributes.friendly_name ]]]"
     ulm_card_light_colorpick_transition: 1
@@ -37,20 +37,12 @@ card_light_colorpick:
         entity: "[[[ return entity.entity_id ]]]"
         label: >-
           [[[
-            if (entity.state !="unavailable"){
-              if (entity.state =="off"){
-                return variables.ulm_off;
-              } else if (entity.state == "on"){
-                if (entity.attributes.brightness != null){
-                  var bri = Math.round(entity.attributes.brightness / 2.55);
-                  return (bri ? bri : "0") + "%";
-                } else {
-                  return variables.ulm_on
-                }
-              }
-            } else {
-              return variables.ulm_unavailable;
+            var label = variables.ulm_translation_state
+            if (entity.attributes.brightness != null && entity.state == 'on'){
+              var bri = Math.round(entity.attributes.brightness / 2.55);
+              var label = (bri ? bri : "0") + "%";
             }
+            return label;
           ]]]
         name: "[[[ return variables.ulm_card_light_slider_horizontal_name ]]]"
         styles:

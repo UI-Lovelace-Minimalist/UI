@@ -5,7 +5,7 @@ custom_card_yagrasdemonde_lights_count:
   template:
     - "ulm_custom_card_yagrasdemonde_lights_count_language_variables"
     - "icon_only"
-    - "ulm_language_variables"
+    - "ulm_translation_engine"
   variables:
     ulm_custom_card_yagrasdemonde_lights_count_icon_on: "[[[ return entity.attributes.icon ]]]"
     ulm_custom_card_yagrasdemonde_lights_count_icon_off: "mdi:lightbulb-outline"
@@ -37,7 +37,7 @@ custom_card_yagrasdemonde_lights_count:
             return entity.state + " " + entity_count_many;
           }
         } else {
-          return variables.ulm_unavailable;
+          return variables.ulm_translation_state;
         }
       ]]]
   icon: >

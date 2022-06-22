@@ -10,6 +10,9 @@
                     "sidepanel_enabled": "Enable creation of a Dashboard entry in the Side panel.",
                     "sidepanel_icon": "Side panel icon",
                     "sidepanel_title": "Side panel title",
+                    "adaptive_ui_enabled": "Enable adaptive Dashboard with popup splitview",
+                    "adaptive_ui_title": "adaptive panel title",
+                    "adaptive_ui_icon": "adaptive panel icon",
                     "theme": "Theme",
                     "include_other_cards": "Include custom card resources it's depending on."
                 }
@@ -30,6 +33,9 @@
                     "sidepanel_enabled": "Enable creation of a Dashboard entry in the Side panel.",
                     "sidepanel_icon": "Side panel icon",
                     "sidepanel_title": "Side panel title",
+                    "adaptive_ui_enabled": "Enable adaptive Dashboard with popup splitview",
+                    "adaptive_ui_title": "adaptive panel title",
+                    "adaptive_ui_icon": "adaptive panel icon",
                     "theme": "Theme",
                     "include_other_cards": "Include custom card resources it's depending on."
                 }

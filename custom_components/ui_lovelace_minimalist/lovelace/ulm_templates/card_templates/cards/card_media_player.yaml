@@ -2,7 +2,7 @@
 ### Card Media Player ###
 card_media_player:
   template:
-    - "ulm_language_variables"
+    - "ulm_translation_engine"
   variables:
     ulm_card_media_player_name: "[[[ return entity.attributes.friendly_name ]]]"
     ulm_card_media_player_icon: false
@@ -17,15 +17,16 @@ card_media_player:
   show_icon: false
   show_name: false
   show_label: false
+  double_tap_action:
+    action: "call-service"
+    service: "input_select.select_option"
+    service_data:
+      option: "[[[ return variables.ulm_input_select_option ]]]"
+      entity_id: "[[[ return variables.ulm_input_select ]]]"
   hold_action:
     action: >
       [[[
-          if (variables.ulm_card_media_player_enable_popup){
-            return 'fire-dom-event'
-          }
-          else{
-            return 'more-info'
-          }
+          return variables.ulm_card_media_player_enable_popup ? "fire-dom-event" : "more-info";
       ]]]
     browser_mod:
       command: "popup"
@@ -109,17 +110,18 @@ card_media_player:
         type: "custom:button-card"
         template:
           - "icon_info_bg"
-          - "ulm_language_variables"
+          - "ulm_translation_engine"
         entity: "[[[ return entity.entity_id ]]]"
+        double_tap_action:
+          action: "call-service"
+          service: "input_select.select_option"
+          service_data:
+            option: "[[[ return variables.ulm_input_select_option ]]]"
+            entity_id: "[[[ return variables.ulm_input_select ]]]"
         hold_action:
           action: >
             [[[
-                if (variables.ulm_card_media_player_enable_popup){
-                  return 'fire-dom-event'
-                }
-                else{
-                  return 'more-info'
-                }
+                return variables.ulm_card_media_player_enable_popup ? "fire-dom-event" : "more-info";
             ]]]
           browser_mod:
             command: "popup"
@@ -135,33 +137,21 @@ card_media_player:
             var icon =  entity.attributes.icon || "mdi:speaker";
             if(entity.attributes.app_name){
               var app = entity.attributes.app_name.toLowerCase();
-              if(app == "spotify"){
-                var icon = "mdi:spotify";
-              } else if(app == "google podcasts"){
-                var icon = "mdi:google-podcast";
-              } else if(app == "plex"){
-                var icon = "mdi:plex";
-              } else if(app == "soundcloud"){
-                var icon = "mdi:soundcloud";
-              } else if(app == "youtube music"){
-                var icon = "mdi:youtube";
-              } else if (app == "oto music"){
-                var icon = "mdi:music-circle";
-              } else if(app == "pandora"){
-                var icon = "mdi:pandora";
-              } else if(app == "netflix"){
-                var icon = "mdi:netflix";
-              } else if(app == "bluetooth audio"){
-                var icon = "mdi:bluetooth";
+              var icon = {
+                "spotify": "mdi:spotify",
+                "google podcasts": "mdi:google-podcast",
+                "plex": "mdi:plex",
+                "soundcloud": "mdi:soundcloud",
+                "youtube music": "mdi:youtube",
+                "oto music": "mdi:music-circle",
+                "pandora": "mdi:pandora",
+                "netflix": "mdi:netflix",
+                "bluetooth audio": "mdi:bluetooth"
               }
             }
-            return variables.ulm_card_media_player_icon || icon;
+            return variables.ulm_card_media_player_icon || icon[app];
           ]]]
-        label: |
-          [[[
-              let state = entity.state;
-              return variables["ulm_" + state] ? variables["ulm_" + state] : state;
-          ]]]
+        label: "[[[ return variables.ulm_translation_state ]]]"
         state:
           - operator: "template"
             value: "[[[ return entity.state == 'off' ]]]"
@@ -182,7 +172,7 @@ card_media_player:
               ]]]
             label: |
               [[[
-                let label = variables.ulm_on;
+                let label = variables.ulm_translation_on;
                 if (variables.ulm_card_media_player_more_info && states[entity.entity_id].attributes.media_artist
                     && states[entity.entity_id].attributes.media_album_name) {
                     label = states[entity.entity_id].attributes.media_artist + " • " + states[entity.entity_id].attributes.media_album_name;
@@ -190,8 +180,6 @@ card_media_player:
                     label = states[entity.entity_id].attributes.media_album_name;
                 } else if (states[entity.entity_id].attributes.media_artist) {
                     label = states[entity.entity_id].attributes.media_artist
-                } else {
-                    label = variables.ulm_on;
                 }
                 return label;
               ]]]
@@ -242,15 +230,16 @@ card_media_player:
       card:
         type: "custom:button-card"
         template: "list_3_items"
+        double_tap_action:
+          action: "call-service"
+          service: "input_select.select_option"
+          service_data:
+            option: "[[[ return variables.ulm_input_select_option ]]]"
+            entity_id: "[[[ return variables.ulm_input_select ]]]"
         hold_action:
           action: >
             [[[
-                if (variables.ulm_card_media_player_enable_popup){
-                  return 'fire-dom-event'
-                }
-                else{
-                  return 'more-info'
-                }
+                return variables.ulm_card_media_player_enable_popup ? "fire-dom-event" : "more-info";
             ]]]
           browser_mod:
             command: "popup"
@@ -275,12 +264,7 @@ card_media_player:
               hold_action:
                 action: >
                   [[[
-                      if (variables.ulm_card_media_player_enable_popup){
-                        return 'fire-dom-event'
-                      }
-                      else{
-                        return 'more-info'
-                      }
+                      return variables.ulm_card_media_player_enable_popup ? "fire-dom-event" : "more-info";
                   ]]]
                 browser_mod:
                   command: "popup"
@@ -321,12 +305,7 @@ card_media_player:
               hold_action:
                 action: >
                   [[[
-                      if (variables.ulm_card_media_player_enable_popup){
-                        return 'fire-dom-event'
-                      }
-                      else{
-                        return 'more-info'
-                      }
+                      return variables.ulm_card_media_player_enable_popup ? "fire-dom-event" : "more-info";
                   ]]]
                 browser_mod:
                   command: "popup"
@@ -370,12 +349,7 @@ card_media_player:
               hold_action:
                 action: >
                   [[[
-                      if (variables.ulm_card_media_player_enable_popup){
-                        return 'fire-dom-event'
-                      }
-                      else{
-                        return 'more-info'
-                      }
+                      return variables.ulm_card_media_player_enable_popup ? "fire-dom-event" : "more-info";
                   ]]]
                 browser_mod:
                   command: "popup"
