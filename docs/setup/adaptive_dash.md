@@ -15,22 +15,22 @@ This dashboard automatically changes based on the device/screen size your are us
 
 This dashboard make extensive use of `state-switch` and `layout-card`. These are available through HACS or as manual install from Github.
 
+!!! warning "Warning"
+    For now the `state-switch` works only with version `v1.9.3` or below!
+
 | Additional lovelace resources                                             |
 | ----------------------------------------------------------------------- |
 | [`layout-card`](https://github.com/thomasloven/lovelace-layout-card)            |
 | [`state-switch`](https://github.com/thomasloven/lovelace-state-switch) |
 
-!!! warning "Warning"
-    For now the `state-switch` works only with version `v1.9.3` or below!
-
 You need also configure an `input_select` with options for each popup_card and view you have configured. This `input_select` controls the cards showing on the right-side of the screen when in fullscreen mode.
 
 !!! note "Popups"
 
-    Not all device types do have Minimalist UI themed popups.
+    **Note:** Not all device types do have Minimalist UI themed popups.
     Currently supported devices are: `lights`, `mediaplayers`, `thermostats`, `sensors`.
 
-You can setup an `input_select` either via the GUI or in YAML.
+You can setup an `input_select` either via the GUI or in YAML. [See HA docs](https://www.home-assistant.io/integrations/input_select/)
 
 ```yaml
 # Example configuration.yaml entry
@@ -51,13 +51,13 @@ input_select:
 
 ## Setup
 
-To enable the adaptive dashboard you need to select the right option in the integration configuration menu.
+To enable the adaptive dashboard you need to select the right option in the integration configuration menu. You can also set a name and icon for the new dashboard.
 
 ![hacs_adaptive_dashboard](../assets/img/setup/hacs_adaptive_dashboard.png){ width="300" }
 
-Once setup you should see another dashboard in your sidebar. This dashboard is filled with `card_title` template cards as placeholders.
+Once setup you should see another dashboard in your sidebar. This dashboard is filled with `card_title` template cards as placeholders on the pre-configured grid.
 
-We have also added a folder with all needed files to customizing your new dashboard:
+We have also added a folder with all the needed files to customizing your new dashboard:
 
 ```yaml
 config
@@ -124,7 +124,24 @@ Do this for all placeholders. You can always use less cards by deleting placehol
 
 All cards on the right-side are configured in `adaptive-dash/popup/popup.yaml`.
 
+First you need to add the `input_select` you have created to the file.
+
+!!! tip "Important"
+
+    ```yaml
+    type: custom:state-switch
+    view_layout:
+      grid-area: popup
+      show:
+        mediaquery: "(min-width: 1100px)"
+    entity: input_select.minimalist_ui # put your input_select here
+    ```
+
 We preconfigured multiple popups for different types of devices. In `popup.yaml` you only have to complete the information in the variables part. The `light 1`, `mediaplayer 1`, `livingroom` parts in the code refer to the options you have configuered in your `input_select`. Make sure they are spelled the same. ([see documentation on `state-switch`](https://github.com/thomasloven/lovelace-state-switch))
+
+!!! warning "Warning"
+    Only uncomment the options you have configured!
+    Else it could result in multiple errors in the dev-console of your browser.
 
 Follow this part to add a card to an option of your `input_select`:
 To add a light popup to your first light card you just have to add the corresponding entity:
@@ -165,11 +182,7 @@ states:
 
 !!! note "Important!"
 
-    All options(devices) need its own config in `popup.yaml`!
-
-!!! warning "Warning"
-
-    Delete all entries you don't use in `popup.yaml`. If not this can fill your dev-console with unwanted errors.
+    All options(devices) do need its own config in `popup.yaml`!
 
 To switch between popups we need to go back to `adaptive-dash/views/main.yaml`. Here we have to add two variables to the cards we want to show a popup off. After adding these variables the cards need to be double_tapped to change popups.
 
