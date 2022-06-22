@@ -14,6 +14,13 @@ ulm_actions_card:
             action = 'none';
         }
 
+        if (action == 'adaptive' && !(variables.ulm_input_select_option) ){
+          action = 'popup'
+        }
+        if (action == 'adaptive'){
+          action = 'call-service'
+        }
+
         if (action == 'popup' && (variables.ulm_card_light_enable_popup || variables.ulm_card_media_player_enable_popup || variables.ulm_card_thermostat_enable_popup) ){
           action = 'fire-dom-event'
         }
@@ -23,6 +30,10 @@ ulm_actions_card:
 
         return action
       ]]]
+    service: "input_select.select_option"
+    service_data:
+      option: "[[[ return variables.ulm_input_select_option ]]]"
+      entity_id: "[[[ return variables.ulm_input_select ]]]"
     browser_mod:
       command: "popup"
       large: true
@@ -57,6 +68,13 @@ ulm_actions_card:
             action = 'none';
         }
 
+        if (action == 'adaptive' && !(variables.ulm_input_select_option) ){
+          action = 'popup'
+        }
+        if (action == 'adaptive'){
+          action = 'call-service'
+        }
+
         if (action == 'popup' && (variables.ulm_card_light_enable_popup || variables.ulm_card_media_player_enable_popup || variables.ulm_card_thermostat_enable_popup) ){
           action = 'fire-dom-event'
         }
@@ -66,6 +84,10 @@ ulm_actions_card:
 
         return action
       ]]]
+    service: "input_select.select_option"
+    service_data:
+      option: "[[[ return variables.ulm_input_select_option ]]]"
+      entity_id: "[[[ return variables.ulm_input_select ]]]"
     browser_mod:
       command: "popup"
       large: true
@@ -99,6 +121,13 @@ ulm_actions_card:
             action = 'none';
         }
 
+        if (action == 'adaptive' && !(variables.ulm_input_select_option) ){
+          action = 'popup'
+        }
+        if (action == 'adaptive'){
+          action = 'call-service'
+        }
+
         if (action == 'popup' && (variables.ulm_card_light_enable_popup || variables.ulm_card_media_player_enable_popup || variables.ulm_card_thermostat_enable_popup) ){
           action = 'fire-dom-event'
         }
@@ -108,6 +137,10 @@ ulm_actions_card:
 
         return action
       ]]]
+    service: "input_select.select_option"
+    service_data:
+      option: "[[[ return variables.ulm_input_select_option ]]]"
+      entity_id: "[[[ return variables.ulm_input_select ]]]"
     browser_mod:
       command: "popup"
       large: true

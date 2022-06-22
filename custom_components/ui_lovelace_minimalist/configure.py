@@ -84,6 +84,16 @@ def configure_cards(hass: HomeAssistant, ulm: UlmBase):
                     ),
                     hass.config.path(f"{DOMAIN}/dashboard/adaptive-dash"),
                 )
+        # Copy example custom actions file over to user config dir if not exists
+        if not os.path.exists(
+            hass.config.path(f"{DOMAIN}/custom_actions/custom_actions.yaml")
+        ):
+            shutil.copy2(
+                hass.config.path(
+                    f"custom_components/{DOMAIN}/lovelace/custom_actions.yaml"
+                ),
+                hass.config.path(f"{DOMAIN}/custom_actions/custom_actions.yaml"),
+            )
         # Copy chosen language file over to config dir
         shutil.copy2(
             hass.config.path(

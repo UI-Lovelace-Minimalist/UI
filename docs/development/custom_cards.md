@@ -157,6 +157,12 @@ state:
       return variables.ulm_translation_state;
     }
   ]]]
+# Alternative short version, works in 90 percent of use cases, useful if you have lots of states or other variables which act for one entity
+  [[[
+  let state = entity.state;
+  # Check if custom language variable for the entity state exists, otherwise check default language_variables, otherwise just output the entity state
+  return variables["ulm_custom_card_paddy0174_temperature_" + state] ? variables["ulm_custom_card_paddy0174_temperature_" + state] : variables["ulm_" + state] ? variables["ulm_" + state] : state;
+  ]]]
 ```
 
 Your language file should use this format:
