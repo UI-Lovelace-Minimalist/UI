@@ -29,6 +29,7 @@ ulm_custom_actions:
 ```
 
 Possible values for each variables are :
+
 | Value      | Description                                                                                                                     |
 |------------|---------------------------------------------------------------------------------------------------------------------------------|
 | none       | No action                                                                                                                       |
