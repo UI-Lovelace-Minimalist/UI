@@ -44,6 +44,7 @@ def configure_cards(hass: HomeAssistant, ulm: UlmBase):
     # Create config dir
     os.makedirs(hass.config.path(f"{DOMAIN}/dashboard"), exist_ok=True)
     os.makedirs(hass.config.path(f"{DOMAIN}/custom_cards"), exist_ok=True)
+    os.makedirs(hass.config.path(f"{DOMAIN}/custom_actions"), exist_ok=True)
 
     if os.path.exists(hass.config.path(f"{DOMAIN}/dashboard")):
         # Create combined cards dir
