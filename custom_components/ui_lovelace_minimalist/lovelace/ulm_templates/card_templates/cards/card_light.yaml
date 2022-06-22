@@ -2,6 +2,8 @@
 ### Card Light ###
 card_light:
   template:
+    - "icon_more_info_new"
+    - "ulm_actions_card"
     - "ulm_translation_engine"
   variables:
     ulm_card_light_name: "[[[ return entity.attributes.friendly_name ]]]"
@@ -19,28 +21,6 @@ card_light:
   show_icon: false
   show_name: false
   show_label: false
-  tap_action:
-    action: "toggle"
-  double_tap_action:
-    action: "call-service"
-    service: "input_select.select_option"
-    service_data:
-      option: "[[[ return variables.ulm_input_select_option ]]]"
-      entity_id: "[[[ return variables.ulm_input_select ]]]"
-  hold_action:
-    action: >
-      [[[
-          return variables.ulm_card_light_enable_popup ? "fire-dom-event" : "more-info";
-      ]]]
-    browser_mod:
-      command: "popup"
-      large: true
-      hide_header: true
-      card:
-        type: "custom:button-card"
-        template: "popup_light_brightness"
-        variables:
-          ulm_popup_light_entity: "[[[ return entity.entity_id ]]]"
   state:
     - value: "on"
       styles:
@@ -126,40 +106,6 @@ card_light:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
               icon: "[[[ return variables.ulm_card_light_icon ]]]"
-              double_tap_action:
-                action: "call-service"
-                service: "input_select.select_option"
-                service_data:
-                  option: "[[[ return variables.ulm_input_select_option ]]]"
-                  entity_id: "[[[ return variables.ulm_input_select ]]]"
-              hold_action:
-                action: >
-                  [[[
-                      return variables.ulm_card_light_enable_popup ? "fire-dom-event" : "more-info";
-                  ]]]
-                browser_mod:
-                  command: "popup"
-                  large: true
-                  hide_header: true
-                  card:
-                    type: "custom:button-card"
-                    template: "popup_light_brightness"
-                    variables:
-                      ulm_popup_light_entity: "[[[ return entity.entity_id ]]]"
-              tap_action:
-                action: >
-                  [[[
-                      return variables.ulm_card_light_enable_popup_tap ? "fire-dom-event" : "more-info";
-                  ]]]
-                browser_mod:
-                  command: "popup"
-                  large: true
-                  hide_header: true
-                  card:
-                    type: "custom:button-card"
-                    template: "popup_light_brightness"
-                    variables:
-                      ulm_popup_light_entity: "[[[ return entity.entity_id ]]]"
               styles:
                 icon:
                   - color: >
@@ -194,26 +140,6 @@ card_light:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
               name: "[[[ return variables.ulm_card_light_name ]]]"
-              double_tap_action:
-                action: "call-service"
-                service: "input_select.select_option"
-                service_data:
-                  option: "[[[ return variables.ulm_input_select_option ]]]"
-                  entity_id: "[[[ return variables.ulm_input_select ]]]"
-              hold_action:
-                action: >
-                  [[[
-                      return variables.ulm_card_light_enable_popup ? "fire-dom-event" : "more-info";
-                  ]]]
-                browser_mod:
-                  command: "popup"
-                  large: true
-                  hide_header: true
-                  card:
-                    type: "custom:button-card"
-                    template: "popup_light_brightness"
-                    variables:
-                      ulm_popup_light_entity: "[[[ return entity.entity_id ]]]"
               label: >-
                 [[[
                   var label = variables.ulm_translation_state

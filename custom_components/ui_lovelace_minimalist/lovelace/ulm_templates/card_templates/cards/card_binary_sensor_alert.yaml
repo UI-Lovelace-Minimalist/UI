@@ -1,6 +1,12 @@
 ---
 ### Card Binary Sensor Alert ###
 card_binary_sensor_alert:
+  # template:
+  #   - "icon_info_alert"
+  #   - "ulm_actions_card"
+  # name: "[[[ return entity.attributes.friendly_name != '' ? entity.attributes.friendly_name : entity.entity_id ]]]"
+  # show_last_changed: true
+
   template:
     - "icon_more_info_alert"
     - "blue"
