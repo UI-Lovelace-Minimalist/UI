@@ -114,7 +114,12 @@ def configure_cards(hass: HomeAssistant, ulm: UlmBase):
             hass.config.path(f"{combined_cards_dir}/custom_cards"),
             dirs_exist_ok=True,
         )
-
+        # Copy over manually installed custom_actions from user
+        shutil.copytree(
+            hass.config.path(f"{DOMAIN}/custom_actions"),
+            hass.config.path(f"{combined_cards_dir}/custom_actions"),
+            dirs_exist_ok=True,
+        )
         # Copy over themes to defined themes folder
         shutil.copytree(
             hass.config.path(f"custom_components/{DOMAIN}/lovelace/themefiles"),
