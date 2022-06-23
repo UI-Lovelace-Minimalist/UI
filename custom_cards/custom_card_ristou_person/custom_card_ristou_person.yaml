@@ -306,13 +306,9 @@ custom_card_ristou_person:
                   if (driving_state === "on" || driving_state === "true") {
                     return variables.ulm_custom_card_ristou_person_driving;
                   } else {
-                    if (location == "unavailable"){
-                      return variables.ulm_unavailable;
-                    } else if (location == "not_home"){
-                      return variables.ulm_custom_card_ristou_person_not_home;
-                    } else{
-                      return (location == "home") ? variables.ulm_custom_card_ristou_person_home : location;
-                    }
+                    let state = location;
+                    let option = ["home", "not_home", "unavailable", "unknown"]
+                    return (option.includes(state)) ? variables.ulm_translation_state : state
                   }
                 ]]]
           #####################
@@ -343,10 +339,10 @@ custom_card_ristou_person:
       ### STATIC MAP ###
       ##################
       card:
-        type: picture-entity
+        type: "picture-entity"
         show_state: false
         show_name: false
-        camera_view: auto
+        camera_view: "auto"
         entity: >-
           [[[
               if (hass.themes.darkMode) {
