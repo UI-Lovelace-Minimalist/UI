@@ -122,4 +122,4 @@ In my case I used developper tool to find out exact width of the card (which is 
 <!-- <details>
 <summary>Template Code</summary> -->
 
- <a href="/custom_card_ristou_person.yaml" target="_blank">Open template code</a>
+[Template code](custom_card_ristou_person.yaml)
