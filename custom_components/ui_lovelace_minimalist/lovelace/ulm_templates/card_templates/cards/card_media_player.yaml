@@ -134,6 +134,8 @@ card_media_player:
                         ? 'rgba(0, 0, 0, 0.2)'
                         : 'rgba(var(--color-theme), 0.05)'
                       ]]]
+                card:
+                  - background: "none"
           item2:
             card:
               type: "custom:button-card"
