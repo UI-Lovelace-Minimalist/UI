@@ -109,6 +109,7 @@ card_light:
               variables:
                 ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
                 ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
+                ulm_card_light_enable_popup: "[[[ return variables.ulm_card_light_enable_popup; ]]]"
               styles:
                 icon:
                   - color: >
@@ -145,6 +146,7 @@ card_light:
               variables:
                 ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
                 ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
+                ulm_card_light_enable_popup: "[[[ return variables.ulm_card_light_enable_popup; ]]]"
               name: "[[[ return variables.ulm_card_light_name ]]]"
               label: >-
                 [[[
