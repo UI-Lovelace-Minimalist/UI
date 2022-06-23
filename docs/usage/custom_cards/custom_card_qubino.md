@@ -3,6 +3,7 @@ title: Qubino Custom-card
 hide:
   - toc
 ---
+
 <!-- markdownlint-disable MD046 -->
 
 # Custom-card "Qubino"
@@ -25,11 +26,13 @@ Initial release
 ## Usage
 
 ```yaml
+
 ```
 
 ## Requirements
 
 This card needs the following to function correctly:
+
 <table>
 <tr>
 <th>Component / card</th>
@@ -61,8 +64,11 @@ This card needs the following to function correctly:
 
 ## Template code
 
-```yaml
-```
+??? note "Template Code"
+
+    ```yaml title="custom_card_qubino.yaml"
+    --8<-- "custom_cards/custom_card_qubino/custom_card_qubino.yaml"
+    ```
 
 ## HomeAssistant
 
@@ -73,6 +79,7 @@ This card needs the following to function correctly:
 ...
 
 ```yaml
+
 ```
 
 ## Note
