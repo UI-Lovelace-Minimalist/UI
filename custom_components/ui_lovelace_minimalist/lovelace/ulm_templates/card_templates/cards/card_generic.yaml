@@ -4,6 +4,7 @@ card_generic:
   template:
     - "icon_more_info_new"
     - "ulm_actions_card"
+    - "ulm_translation_engine"
   custom_fields:
     item1:
       card:
@@ -22,7 +23,5 @@ card_generic:
             card:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
-              template:
-                - "ulm_translation_engine"
               name: "[[[ return variables.ulm_translation_state_unit ]]]"
               label: "[[[ return entity.attributes.friendly_name; ]]]"
