@@ -35,7 +35,6 @@ The `binary-sensor-card` is to show the state (on/off, open/close, etc.) of a bi
     ulm_card_binary_sensor_alert: true
     ulm_show_last_changed: true
   entity: binary_sensor.garage_door
-  show_last_changed: true
 ```
 
 ??? note "Template Code"
