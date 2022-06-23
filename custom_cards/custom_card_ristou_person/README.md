@@ -71,11 +71,14 @@ https://api.mapbox.com/styles/v1/mapbox/light-v10/static/pin-l-suitcase+f88927({
 ## Known issues
 
 ### map
+
 built in map is not always rendering properly. I observed 2 issues:
+
 - Not displaying if under sub stack like `horizontal stack` or `vertical stack`. another map has to be added somewhere else in the page. [Github issue](https://github.com/home-assistant/frontend/issues/12023)
 - In IOS (never tried with other devices) bottom corner radius is not taken into consideration
 
 ### Static map
+
 Static map can be blurry if ratio does not fit card width.
 In my case I used developper tool to find out exact width of the card (which is 466px) and then I ajusted the heigh to my needs.
 
@@ -118,6 +121,7 @@ In my case I used developper tool to find out exact width of the card (which is 
 ```
 
 ## Template code
+
 ??? note "Template Code"
 
     ```yaml title="custom_card_ristou_person.yaml"
