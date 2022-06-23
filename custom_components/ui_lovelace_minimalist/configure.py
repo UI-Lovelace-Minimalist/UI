@@ -151,5 +151,11 @@ def reload_configuration(hass):
             hass.config.path(f"{combined_cards_dir}/custom_cards"),
             dirs_exist_ok=True,
         )
-
+    if os.path.exists(hass.config.path(f"{DOMAIN}/custom_actions")):
+        # Copy over manually installed custom_actions from user
+        shutil.copytree(
+            hass.config.path(f"{DOMAIN}/custom_actions"),
+            hass.config.path(f"{combined_cards_dir}/custom_actions"),
+            dirs_exist_ok=True,
+        )
     hass.bus.async_fire("ui_lovelace_minimalist_reload")
