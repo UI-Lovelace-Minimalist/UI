@@ -6,7 +6,7 @@ hide:
 
 <!-- markdownlint-disable MD046 -->
 
-# Custom Card Ristou Person 
+# Custom Card Ristou Person
 
 <table>
     <tbody>
