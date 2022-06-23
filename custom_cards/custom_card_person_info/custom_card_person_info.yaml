@@ -2,7 +2,7 @@
 card_person_info:
   template:
     - "icon_info_bg"
-    - "ulm_language_variables"
+    - "ulm_translation_engine"
   variables:
     ulm_card_person_use_entity_picture: false
     ulm_card_person_zone1: ""
