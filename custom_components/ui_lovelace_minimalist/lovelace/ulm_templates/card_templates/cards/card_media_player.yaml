@@ -100,6 +100,7 @@ card_media_player:
               variables:
                 ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
                 ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
+                ulm_card_media_player_enable_popup: "[[[ return variables.ulm_card_media_player_enable_popup; ]]]"
               icon: |
                 [[[
                   var icon =  entity.attributes.icon || "mdi:speaker";
@@ -143,6 +144,7 @@ card_media_player:
               variables:
                 ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
                 ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
+                ulm_card_media_player_enable_popup: "[[[ return variables.ulm_card_media_player_enable_popup; ]]]"
               label: "[[[ return variables.ulm_translation_state ]]]"
               state:
                 - operator: "template"

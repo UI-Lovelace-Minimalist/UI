@@ -152,6 +152,7 @@ card_thermostat:
               variables:
                 ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
                 ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
+                ulm_card_thermostat_enable_popup: "[[[ return variables.ulm_card_thermostat_enable_popup; ]]]"
               icon: "[[[ return variables.ulm_card_thermostat_icon ]]]"
               state:
                 - operator: "template"
@@ -181,6 +182,7 @@ card_thermostat:
               variables:
                 ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
                 ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
+                ulm_card_thermostat_enable_popup: "[[[ return variables.ulm_card_thermostat_enable_popup; ]]]"
               name: "[[[ return variables.ulm_card_thermostat_name ]]]"
               label: >-
                 [[[
