@@ -10,7 +10,7 @@ custom_card_ristou_person:
     ulm_custom_card_ristou_use_entity_picture: false
     ulm_custom_card_ristou_use_badge: true
     ulm_custom_card_ristou_map_enable: false
-    ulm_custom_card_ristou_findmy_script: ""
+    ulm_custom_card_ristou_find_device_script: ""
     ulm_custom_card_ristou_zones:
     ulm_custom_card_ristou_person_driving_entity: ""
     ulm_custom_card_ristou_map_aspect_ratio: "466:200"
@@ -91,7 +91,7 @@ custom_card_ristou_person:
             item3:
               - display: >
                   [[[
-                        if (variables.ulm_custom_card_ristou_findmy_script !== "") {
+                        if (variables.ulm_custom_card_ristou_find_device_script !== "") {
                             return "block";
                         } else {
                             return "none";
@@ -326,7 +326,7 @@ custom_card_ristou_person:
               show_name: false
               show_label: false
               type: "custom:button-card"
-              entity: "[[[ return variables.ulm_custom_card_ristou_findmy_script ]]]"
+              entity: "[[[ return variables.ulm_custom_card_ristou_find_device_script ]]]"
               icon: "[[[ return variables.ulm_custom_card_ristou_icon ]]]"
               tap_action:
                 action: "toggle"
