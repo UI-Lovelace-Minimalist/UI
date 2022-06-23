@@ -22,12 +22,18 @@ card_power_outlet:
               type: "custom:button-card"
               template:
                 - "yellow"
+              variables:
+                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
+                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
               entity: "[[[ return entity.entity_id ]]]"
           item2:
             card:
               type: "custom:button-card"
               template:
                 - "yellow_no_card"
+              variables:
+                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
+                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
               entity: "[[[ return entity.entity_id ]]]"
               label: |-
                 [[[

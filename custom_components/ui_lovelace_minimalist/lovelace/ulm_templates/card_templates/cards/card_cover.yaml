@@ -91,6 +91,9 @@ card_cover:
           item1:
             card:
               type: "custom:button-card"
+              variables:
+                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
+                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
               entity: "[[[ return entity.entity_id ]]]"
               icon: |
                 [[[
@@ -173,6 +176,9 @@ card_cover:
           item2:
             card:
               type: "custom:button-card"
+              variables:
+                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
+                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
               entity: "[[[ return entity.entity_id ]]]"
               name: "[[[ return variables.ulm_card_cover_name ]]]"
               label: >-

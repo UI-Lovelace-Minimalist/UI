@@ -14,7 +14,8 @@ card_vacuum:
     ulm_card_vacuum_room:
     ulm_card_vacuum_room_icon: "[[[ return entity.attributes.icon ]]]"
     ulm_card_vacuum_camera:
-    ulm_card_vacuum_camera_toggle: >
+    ulm_card_vacuum_camera_toggle:
+    ulm_card_vacuum_light_color: >
       [[[
         var state = entity.state.toLowerCase();
         var colors = {
@@ -79,6 +80,9 @@ card_vacuum:
             card:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
+              variables:
+                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
+                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
               icon: "[[[ return variables.ulm_card_vacuum_icon ]]]"
               styles:
                 icon:
@@ -94,8 +98,9 @@ card_vacuum:
           item2:
             card:
               type: "custom:button-card"
-              templates:
-                - "ulm_translation_engine"
+              variables:
+                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
+                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
               entity: "[[[ return entity.entity_id ]]]"
               name: "[[[ return variables.ulm_card_vacuum_name ]]]"
               label: >

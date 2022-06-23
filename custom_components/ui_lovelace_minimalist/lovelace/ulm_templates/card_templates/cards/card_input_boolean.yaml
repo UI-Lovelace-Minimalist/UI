@@ -19,12 +19,18 @@ card_input_boolean:
               type: "custom:button-card"
               template:
                 - "blue"
+              variables:
+                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
+                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
               entity: "[[[ return entity.entity_id ]]]"
           item2:
             card:
               type: "custom:button-card"
               template:
                 - "blue_no_card"
+              variables:
+                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
+                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
               entity: "[[[ return entity.entity_id ]]]"
               name: "[[[ return entity.attributes.friendly_name != '' ? entity.attributes.friendly_name : entity.entity_id ]]]"
               label: "[[[ return variables.ulm_translation_state ]]]"

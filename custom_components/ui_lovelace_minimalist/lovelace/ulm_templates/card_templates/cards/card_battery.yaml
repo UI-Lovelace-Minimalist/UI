@@ -25,6 +25,9 @@ card_battery:
           item1:
             card:
               type: "custom:button-card"
+              variables:
+                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
+                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
               entity: "[[[ return entity.entity_id ]]]"
               icon: |
                 [[[
@@ -96,6 +99,9 @@ card_battery:
           item2:
             card:
               type: "custom:button-card"
+              variables:
+                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
+                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
               entity: "[[[ return entity.entity_id ]]]"
               label: |
                 [[[
