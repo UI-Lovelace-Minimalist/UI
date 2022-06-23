@@ -7,6 +7,8 @@ card_binary_sensor:
     - "ulm_language_variables"
     - "ulm_actions_card"
   show_last_changed: false
+  variables:
+    ulm_show_last_changed: false
   custom_fields:
     item1:
       card:
@@ -28,4 +30,4 @@ card_binary_sensor:
                 - "blue_no_card"
               entity: "[[[ return entity.entity_id ]]]"
               name: "[[[ return entity.attributes.friendly_name != '' ? entity.attributes.friendly_name : entity.entity_id ]]]"
-              show_last_changed: true
+              show_last_changed: "[[[ return variables.ulm_show_last_changed; ]]]"
