@@ -134,7 +134,6 @@ card_media_player:
           item2:
             card:
               type: "custom:button-card"
-              template: "ulm_translation_engine"
               entity: "[[[ return entity.entity_id ]]]"
               label: "[[[ return variables.ulm_translation_state ]]]"
               state:
@@ -192,30 +191,15 @@ card_media_player:
                         : 'rgba(var(--color-theme), 1)'
                       ]]]
                   - text-shadow: "0 0 black"
+                card:
+                  - padding: "0px"
+                  - background: "none"
+                  - border-radius: "0"
+                  - box-shadow: "none"
     item2:
       card:
         type: "custom:button-card"
         template: "list_3_items"
-        double_tap_action:
-          action: "call-service"
-          service: "input_select.select_option"
-          service_data:
-            option: "[[[ return variables.ulm_input_select_option ]]]"
-            entity_id: "[[[ return variables.ulm_input_select ]]]"
-        hold_action:
-          action: >
-            [[[
-                return variables.ulm_card_media_player_enable_popup ? "fire-dom-event" : "more-info";
-            ]]]
-          browser_mod:
-            command: "popup"
-            large: true
-            hide_header: true
-            card:
-              type: "custom:button-card"
-              template: "popup_media_player_infos"
-              variables:
-                ulm_popup_media_player_entity: "[[[ return entity.entity_id ]]]"
         styles:
           card:
             - padding: "0px"
