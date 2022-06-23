@@ -38,6 +38,7 @@ Showing driving state is also possible with a binary sensor.
 In addition, this card can display a map (either static or using buit in map) in a second row.
 
 ## Icon style
+
 As the main icon of this card you can choose the following set up
 | Variables | UI |
 |---------|----|
@@ -54,10 +55,12 @@ As the main icon of this card you can choose the following set up
 | ulm_custom_card_ristou_camera_entity_light = "" and <br>ulm_custom_card_ristou_camera_entity_dark = "" and <br>ulm_custom_card_ristou_map_enable = `false` | ![no_map](../../docs/assets/img/custom_card_ristou_person/custom_card_ristou_person_no_map.png) |
 
 ## About Static maps
+
 The advantage of static map is that it is easy to custom and non-draggable.
 For instance when you scroll down and you accidently press first on map card.
 
 I choose map box for the following reasons:
+
 - Easy to sep it up with [static image API playground](https://docs.mapbox.com/playground/static/)
 - Already existing styles (light & dark) to fit to your theme.
 - Add many custom markers, I decided to represent my current location , home, and work.
@@ -66,6 +69,7 @@ I choose map box for the following reasons:
 URL can be direclty used inside a camera entity using dynamic markers as explain [here](https://www.home-assistant.io/examples/google_maps_card/)
 
 below is an example of the url I use for mapbox:
+
 ``` yaml
 https://api.mapbox.com/styles/v1/mapbox/light-v10/static/pin-l-suitcase+f88927({{ state_attr('zone.work', 'longitude') }},{{ state_attr('zone.work', 'latitude') }}),pin-l-home+01C852({{ state_attr('zone.home', 'longitude') }},{{ state_attr('zone.home', 'latitude') }}),pin-l-m+3D5AFE({{ state_attr('device_tracker.mathieu_phone', 'longitude') }},{{ state_attr('device_tracker.mathieu_phone', 'latitude') }})/auto/466x200?attribution=false&logo=false&&access_token=YOUR_TOKEN
 ```
