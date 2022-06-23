@@ -1,9 +1,11 @@
 ---
-title: Custom Card Ristou Person 
+title: Custom Card Ristou Person
 hide:
   - toc
 ---
+
 <!-- markdownlint-disable MD046 -->
+
 # Custom Card Ristou Person 
 
 <table>
