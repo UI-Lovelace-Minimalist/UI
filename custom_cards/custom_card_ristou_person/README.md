@@ -41,17 +41,17 @@ In addition, this card can display a map (either static or using buit in map) in
 As the main icon of this card you can choose the following set up
 | Variables | UI |
 |---------|----|
-| ulm_custom_card_ristou_use_badge: `true` <br> ulm_custom_card_ristou_use_entity_picture: `false`| ![](../../docs/assets/img/custom_card_ristou_person/custom_card_ristou_person_face_icon_badge.png) |
-| ulm_custom_card_ristou_use_badge: `true` <br> ulm_custom_card_ristou_use_entity_picture: `true`| ![](../../docs/assets/img/custom_card_ristou_person/custom_card_ristou_person_picture_badge.png) |
-| ulm_custom_card_ristou_use_badge: `false` <br> ulm_custom_card_ristou_use_entity_picture: `false` | ![](../../docs/assets/img/custom_card_ristou_person/custom_card_ristou_person_icon_only.png) |
+| ulm_custom_card_ristou_use_badge: `true` <br> ulm_custom_card_ristou_use_entity_picture: `false`| ![face_icon_badge](../../docs/assets/img/custom_card_ristou_person/custom_card_ristou_person_face_icon_badge.png) |
+| ulm_custom_card_ristou_use_badge: `true` <br> ulm_custom_card_ristou_use_entity_picture: `true`| ![picture_badge](../../docs/assets/img/custom_card_ristou_person/custom_card_ristou_person_picture_badge.png) |
+| ulm_custom_card_ristou_use_badge: `false` <br> ulm_custom_card_ristou_use_entity_picture: `false` | ![icon_only](../../docs/assets/img/custom_card_ristou_person/custom_card_ristou_person_icon_only.png) |
 
 ## map style
 
 | Variables | UI |
 |---------|----|
-|ulm_custom_card_ristou_camera_entity_light != "" and <br> ulm_custom_card_ristou_camera_entity_dark != "" | <img src="../../docs/assets/img/custom_card_ristou_person/custom_card_ristou_person_camera.png">|
-| ulm_custom_card_ristou_map_enable: `true` | <img src="../../docs/assets/img/custom_card_ristou_person/custom_card_ristou_person_map.png"> |
-| ulm_custom_card_ristou_camera_entity_light = "" and <br>ulm_custom_card_ristou_camera_entity_dark = "" and <br>ulm_custom_card_ristou_map_enable = `false` | <img src="../../docs/assets/img/custom_card_ristou_person/custom_card_ristou_person_no_map.png"> |
+|ulm_custom_card_ristou_camera_entity_light != "" and <br> ulm_custom_card_ristou_camera_entity_dark != "" | ![camera](../../docs/assets/img/custom_card_ristou_person/custom_card_ristou_person_camera.png)|
+| ulm_custom_card_ristou_map_enable: `true` | ![map](../../docs/assets/img/custom_card_ristou_person/custom_card_ristou_person_map.png) |
+| ulm_custom_card_ristou_camera_entity_light = "" and <br>ulm_custom_card_ristou_camera_entity_dark = "" and <br>ulm_custom_card_ristou_map_enable = `false` | ![no_map](../../docs/assets/img/custom_card_ristou_person/custom_card_ristou_person_no_map.png) |
 
 ## About Static maps
 The advantage of static map is that it is easy to custom and non-draggable.
