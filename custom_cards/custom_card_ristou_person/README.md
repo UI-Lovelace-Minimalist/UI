@@ -1,10 +1,10 @@
 ---
-title: Person Ristou Custom Card
+title: Custom Card Ristou Person 
 hide:
   - toc
 ---
 <!-- markdownlint-disable MD046 -->
-# Custom card ristou person
+# Custom Card Ristou Person 
 
 <table>
     <tbody>
@@ -93,7 +93,7 @@ In my case I used developper tool to find out exact width of the card (which is 
 | ulm_custom_card_ristou_camera_entity_light     |         | ❌ | Camera entity picture in light mode |
 | ulm_custom_card_ristou_camera_entity_dark     |         | ❌ | Camera entity picture in dark mode |
 | ulm_custom_card_ristou_zones     |         | ❌ | Used to display known zone on badge, icon, label or map |
-| ulm_custom_card_ristou_findmy_script     |         | ❌ | Show a button to find your phone |
+| ulm_custom_card_ristou_find_device_script     |         | ❌ | Show a button to find your device |
 
 ## Usage
 
@@ -103,7 +103,7 @@ In my case I used developper tool to find out exact width of the card (which is 
   entity: person.mathieu
   variables:
     ulm_custom_card_ristou_use_entity_picture: true
-    ulm_custom_card_ristou_findmy_script: script.find_phone_mathieu
+    ulm_custom_card_ristou_find_device_script: script.find_phone_mathieu
     ulm_custom_card_ristou_person_driving_entity: binary_sensor.mathieu_driving
     ulm_custom_card_ristou_camera_entity_light: "camera.mapbox_mathieu_light"
     ulm_custom_card_ristou_camera_entity_dark: "camera.mapbox_mathieu_dark"
@@ -118,8 +118,8 @@ In my case I used developper tool to find out exact width of the card (which is 
 ```
 
 ## Template code
+??? note "Template Code"
 
-<!-- <details>
-<summary>Template Code</summary> -->
-
-[Template code](custom_card_ristou_person.yaml)
+    ```yaml title="custom_card_ristou_person.yaml"
+    --8<-- "custom_cards/custom_card_ristou_person/custom_card_ristou_person.yaml"
+    ```

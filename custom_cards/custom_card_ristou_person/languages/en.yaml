@@ -1,6 +1,6 @@
 ---
 ulm_custom_card_ristou_person_language_variables:
   variables:
-    ulm_custom_card_ristou_person_home: "Here"
+    ulm_custom_card_ristou_person_home: "Home"
     ulm_custom_card_ristou_person_driving: "Driving"
     ulm_custom_card_ristou_person_not_home: "Away"

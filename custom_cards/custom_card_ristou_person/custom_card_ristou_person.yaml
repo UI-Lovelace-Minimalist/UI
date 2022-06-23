@@ -2,7 +2,7 @@
 ### custom card ristou person ###
 custom_card_ristou_person:
   template:
-    - "ulm_language_variables"
+    - "ulm_translation_engine"
     - "ulm_custom_card_ristou_person_language_variables"
   variables:
     ulm_custom_card_ristou_name: "[[[ return entity.attributes.friendly_name ]]]"
