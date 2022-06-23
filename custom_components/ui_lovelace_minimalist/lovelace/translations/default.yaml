@@ -92,7 +92,11 @@ ulm_translation_engine:
           let domain = entity.entity_id.substr(0, entity.entity_id.indexOf("."));
           let unit = entity.attributes.unit_of_measurement != null ? " " + entity.attributes.unit_of_measurement : "";
 
-          var translation = hass.resources[lang]["component." + domain + ".state._." + state] + unit || state + unit;
+          if(hass.resources[lang]["component." + domain + ".state._." + state]){
+          var translation = hass.resources[lang]["component." + domain + ".state._." + state] + unit
+          } else {
+          var translation =  state + unit;
+          }
           if (def.includes(state)) {
             var translation = hass.resources[lang]["state.default." + state ];
           }
