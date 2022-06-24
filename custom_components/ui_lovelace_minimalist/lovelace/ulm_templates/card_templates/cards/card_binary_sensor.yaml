@@ -28,7 +28,7 @@ card_binary_sensor:
                 ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
                 ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
               entity: "[[[ return entity.entity_id ]]]"
-              con: "[[[ return variables.ulm_card_binary_sensor_icon; ]]]"
+              icon: "[[[ return variables.ulm_card_binary_sensor_icon; ]]]"
           item2:
             card:
               type: "custom:button-card"
