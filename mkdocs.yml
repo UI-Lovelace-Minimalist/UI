@@ -17,6 +17,8 @@ nav:
       - Configuration: "setup/configuration.md"
       - Customizing: "setup/customizing.md"
       - Custom cards: "setup/custom_cards.md"
+      - Adaptive Dashboard: "setup/adaptive_dash.md"
+      - Custom Actions: "setup/custom_actions.md"
   - "... | usage/**/*.md"
   - Development:
       - Card Style Guide: "development/card_style_guide.md"

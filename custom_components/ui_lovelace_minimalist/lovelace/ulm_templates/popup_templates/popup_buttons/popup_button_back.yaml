@@ -2,9 +2,9 @@
 popup_button_back:
   template:
     - "popup_button"
-    - "ulm_language_variables"
+    - "ulm_translation_engine"
   icon: "mdi:arrow-left"
-  name: "[[[ return variables.ulm_popups_back ]]]"
+  name: "[[[ return variables.ulm_translation_back; ]]]"
   styles:
     name:
       - text-transform: "uppercase"

@@ -1,0 +1,11 @@
+---
+ulm_language_variables:
+  variables:
+    ulm_currency: "￥"
+    ulm_updates_available: "有更新!"
+    ulm_no_updates_available: "无更新"
+    ulm_morning: "早上好"
+    ulm_afternoon: "下午好"
+    ulm_evening: "晚上好"
+    ulm_hello: "你好"
+    ulm_volume: "体积"

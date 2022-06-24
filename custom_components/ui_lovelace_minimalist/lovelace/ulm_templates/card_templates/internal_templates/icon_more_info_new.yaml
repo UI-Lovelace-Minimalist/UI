@@ -1,0 +1,55 @@
+---
+### Icon More Info ###
+icon_more_info_new:
+  show_icon: false
+  show_name: false
+  show_label: false
+  styles:
+    grid:
+      - grid-template-areas: "'item1'"
+      - grid-template-columns: "1fr"
+      - grid-template-rows: "1fr"
+      - column-gap: "0px"
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        show_icon: false
+        show_name: false
+        show_label: false
+        template:
+          - "list_2_items"
+        styles:
+          grid:
+            - grid-template-columns: "min-content auto"
+            - column-gap: "0px"
+          card:
+            - background-color: "rgba(0,0,0,0)"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              template:
+                - "icon"
+                - "ulm_actions_icon"
+              styles:
+                card:
+                  - overflow: "visible"
+          item2:
+            card:
+              type: "custom:button-card"
+              show_icon: false
+              entity: "[[[ return entity.entity_id ]]]"
+              template:
+                - "icon_info"
+                - "ulm_actions_name"
+              styles:
+                card:
+                  - padding: "6px"
+                  - margin-left: "-6px"
+                  - background-color: "rgba(0,0,0,0)"

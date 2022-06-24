@@ -96,6 +96,11 @@ popup_light_brightness:
       #content3 {
         display: none !important;
       }
+      #card {
+        height: 100vh;
+        overflow: hidden;
+        position: fixed;
+      }
     }
   custom_fields:
     header:

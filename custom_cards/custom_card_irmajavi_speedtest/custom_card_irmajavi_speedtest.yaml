@@ -110,7 +110,7 @@ custom_card_irmajavi_speedtest:
             - height: "40px"
             - padding-top: "5px"
             - padding-left: "5px"
-        name: "Speedtest"
+        name: "[[[ return variables.ulm_custom_card_irmajavi_speedtest_speedtest ]]]"
         icon: "mdi:speedometer"
         custom_fields:
           item1:
@@ -144,7 +144,7 @@ custom_card_irmajavi_speedtest:
               color: "var(--google-blue)"
               show_label: true
               show_icon: false
-              name: "Download Speed"
+              name: "[[[ return variables.ulm_custom_card_irmajavi_speedtest_download ]]]"
               entity: >-
                 [[[ return
                     variables.ulm_custom_card_irmajavi_speedtest_download_speed_entity;
@@ -193,7 +193,7 @@ custom_card_irmajavi_speedtest:
               color: "var(--google-blue)"
               show_label: true
               show_icon: false
-              name: "Upload Speed"
+              name: "[[[ return variables.ulm_custom_card_irmajavi_speedtest_upload ]]]"
               entity: >-
                 [[[ return
                 variables.ulm_custom_card_irmajavi_speedtest_upload_speed_entity;

@@ -3,6 +3,7 @@ title: Gauge Card Custom-card
 hide:
   - toc
 ---
+
 <!-- markdownlint-disable MD046 -->
 
 # Custom-card "Gauge"
@@ -25,7 +26,7 @@ Initial release.
 ## Usage
 
 ```yaml
-- type: 'custom:button-card'
+- type: "custom:button-card"
   template: custom_card_mpse_gauge
   entity: sensor.temp_office_temperature
   variables:
@@ -62,72 +63,8 @@ Uses this card: <https://github.com/custom-cards/dual-gauge-card> which can be i
 
 ## Template code
 
-```yaml
----
-custom_card_mpse_gauge:
-  variables:
-    ulm_card_mpse_gauge_min: 0
-    ulm_card_mpse_gauge_max: 100
-  styles:
-    grid:
-      - grid-template-areas: "'item1' 'item2'"
-      - grid-template-columns: "1fr"
-      - grid-template-rows: "min-content  min-content"
-    card:
-      - border-radius: "var(--border-radius)"
-      - box-shadow: "var(--box-shadow)"
-      - padding: "0px"
-  show_name: false
-  show_icon: false
-  custom_fields:
-    item1:
-      card:
-        entity: "[[[ return entity.entity_id ]]]"
-        label: >-
-          [[[
-            return entity.state;
-          ]]]
-        template:
-          - "icon_info"
-        styles:
-          card:
-            - padding: "12px"
-        type: "custom:button-card"
-    item2:
-      card:
-        type: "custom:dual-gauge-card"
-        min: "[[[ return variables.ulm_card_mpse_gauge_min ]]]"
-        max: "[[[ return variables.ulm_card_mpse_gauge_max ]]]"
-        title: >
-          [[[
-            var min = variables.ulm_card_mpse_gauge_min;
-            var max = variables.ulm_card_mpse_gauge_max;
+??? note "Template Code"
 
-            if( min == 0 && max == 100 )
-              return "";
-
-            return min + ' - ' + max;
-          ]]]
-        shadeInner: false
-        cardwidth: 200
-        outer:
-          entity: "[[[ return entity.entity_id ]]]"
-        inner:
-          entity: "[[[ return entity.entity_id ]]]"
-        colors:
-          - color: "var(--google-blue)"
-            value: 0
-        card_mod:
-          style: |
-            div.gauge-value.gauge-value-inner {
-              color: rgba(0,0,0,0);
-            }
-            div.gauge-value.gauge-value-outer {
-              color: rgba(0,0,0,0);
-            }
-            div.gauge-dual-card {
-              margin: 0px 0px;
-              --title-font-size: calc(var(--gauge-card-width) / 16);
-              color: var(--google-grey);
-            }
-```
+    ```yaml title="custom_card_mpse_gauge.yaml"
+    --8<-- "custom_cards/custom_card_mpse_gauge/custom_card_mpse_gauge.yaml"
+    ```

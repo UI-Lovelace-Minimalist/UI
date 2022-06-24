@@ -1,9 +1,0 @@
----
-ulm_custom_card_eraycetinay_lock_language_variables:
-  variables:
-    custom_card_eraycetinay_lock_locked: "verriegelt"
-    custom_card_eraycetinay_lock_unlocked: "entriegelt"
-    custom_card_eraycetinay_lock_locking: "verriegeln"
-    custom_card_eraycetinay_lock_unlocking: "entriegeln"
-    custom_card_eraycetinay_lock_unavailable: "nicht verfügbar"
-    custom_card_eraycetinay_lock_jammed: "blockiert"

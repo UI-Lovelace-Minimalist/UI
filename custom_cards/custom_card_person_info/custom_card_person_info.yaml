@@ -2,7 +2,7 @@
 card_person_info:
   template:
     - "icon_info_bg"
-    - "ulm_language_variables"
+    - "ulm_translation_engine"
   variables:
     ulm_card_person_use_entity_picture: false
     ulm_card_person_zone1: ""
@@ -22,14 +22,14 @@ card_person_info:
   show_name: true
   label: >
     [[[
-      if (variables.ulm_address !== ''){
+      if (variables.ulm_address){
         return states[variables.ulm_address].state;
       } else if (states[variables.ulm_card_person_driving_entity].state === "on") {
         let state = states[variables.ulm_card_person_entity].state;
-        return `Driving - ${variables["ulm_person_state_" + state] ? variables["ulm_person_state_" + state] : state}`;
+        return `Driving - ${variables.ulm_translation_state}`;
       } else {
         let state = states[variables.ulm_card_person_entity].state;
-        return variables["ulm_person_state_" + state] ? variables["ulm_person_state_" + state] : state;
+        return hass.resources[hass["language"]]["component.person" + ".state._." + state];
       }
     ]]]
   name: "[[[ return states[variables.ulm_card_person_entity].attributes.friendly_name ]]]"

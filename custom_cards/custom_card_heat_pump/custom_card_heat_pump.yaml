@@ -4,8 +4,7 @@ custom_card_heat_pump:
   show_icon: false
   template:
     - "icon_info_bg"
-    - "ulm_language_variables"
-    - "custom_card_heat_pump_language_variables"
+    - "ulm_translation_engine"
   hold_action:
     action: "more-info"
   styles:
@@ -24,31 +23,17 @@ custom_card_heat_pump:
         type: "custom:button-card"
         template:
           - "icon_info"
-          - "ulm_language_variables"
+          - "ulm_translation_engine"
         tap_action:
           action: "more-info"
         entity: "[[[ return entity.entity_id ]]]"
         name: "[[[ return entity.name ]]]"
         label: >-
           [[[
-              var label = variables.ulm_off ;
-              if (entity.state =='off'){
-                label = variables.ulm_off ;
-              } else if (entity.state =='dry') {
-                return variables.custom_card_heat_pump_dry;
-              } else if (entity.state =='heat') {
-                return variables.custom_card_heat_pump_heat;
-              } else if (entity.state =='heat_cool') {
-                return variables.custom_card_heat_pump_heat_cool;
-              } else if (entity.state =='cool') {
-                return variables.custom_card_heat_pump_cool;
-              } else if (entity.state =='fan_only') {
-                return variables.custom_card_heat_pump_fan_only;
-              }
               if(entity.attributes.temperature){
-                return (entity.attributes.current_temperature ) + '°' + ' • ' + label + ' (' + entity.attributes.hvac_action + ')';
+                return (entity.attributes.current_temperature ) + '°' + ' • ' + variables.ulm_translation_state + ' (' + entity.attributes.hvac_action + ')';
               }
-              return label;
+              return variables.ulm_translation_state;
           ]]]
         icon: >
           [[[

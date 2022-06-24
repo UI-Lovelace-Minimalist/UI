@@ -1,6 +1,7 @@
 ---
 ### Icon Info Alert ###
 icon_info_alert:
+  template: "ulm_custom_actions"
   color: "var(--google-grey)"
   show_icon: true
   show_label: true
@@ -79,3 +80,9 @@ icon_info_alert:
         }
       ]]]
   size: "20px"
+  tap_action:
+    action: "[[[ return variables.ulm_card_tap_action ]]]"
+  hold_action:
+    action: "[[[ return variables.ulm_card_hold_action ]]]"
+  double_tap_action:
+    action: "[[[ return variables.ulm_card_double_tap_action ]]]"

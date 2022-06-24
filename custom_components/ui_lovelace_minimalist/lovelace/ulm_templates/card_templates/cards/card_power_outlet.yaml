@@ -2,23 +2,44 @@
 ### Card Power Outlet ###
 card_power_outlet:
   template:
-    - "icon_info_bg"
+    - "icon_more_info_new"
     - "yellow"
-    - "ulm_language_variables"
+    - "ulm_translation_engine"
+    - "ulm_actions_card"
   variables:
     ulm_card_power_outlet_consumption_sensor:
   triggers_update: "all"
-  label: |-
-    [[[
-      if (entity.state === "on" && variables.ulm_card_power_outlet_consumption_sensor !== null) {
-        return variables.ulm_on + " • " + states[variables.ulm_card_power_outlet_consumption_sensor].state + "W";
-      } else if (entity.state === "on") {
-        return variables.ulm_on;
-      } else if (entity.state === "off") {
-        return variables.ulm_off;
-      } else if (entity.state === "unavailable") {
-        return variables.ulm_unavailable;
-      } else {
-        return entity.state;
-      }
-    ]]]
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        template:
+          - "icon_more_info"
+          - "yellow"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template:
+                - "yellow"
+              variables:
+                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
+                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
+              entity: "[[[ return entity.entity_id ]]]"
+          item2:
+            card:
+              type: "custom:button-card"
+              template:
+                - "yellow_no_card"
+              variables:
+                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
+                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
+              entity: "[[[ return entity.entity_id ]]]"
+              label: |-
+                [[[
+                  if (entity.state === "on" && variables.ulm_card_power_outlet_consumption_sensor !== null) {
+                    return variables.ulm_translation_state + " • " + states[variables.ulm_card_power_outlet_consumption_sensor].state + "W";
+                  } else {
+                    return variables.ulm_translation_state;
+                  }
+                ]]]

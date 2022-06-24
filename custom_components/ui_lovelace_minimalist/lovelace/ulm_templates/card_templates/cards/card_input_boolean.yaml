@@ -2,19 +2,35 @@
 ### Card Input Boolean ###
 card_input_boolean:
   template:
-    - "icon_info_bg"
-    - "ulm_language_variables"
+    - "icon_more_info_new"
+    - "ulm_actions_card"
+    - "ulm_translation_engine"
     - "blue"
-  name: "[[[ return entity.attributes.friendly_name != '' ? entity.attributes.friendly_name : entity.entity_id ]]]"
-  label: >
-    [[[
-      if (entity.state != "unavailable"){
-        if (entity.state == "on"){
-          return variables.ulm_on;
-        } else {
-          return variables.ulm_off;
-        }
-      } else {
-        return variables.ulm_unavailable;
-      }
-    ]]]
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        template:
+          - "icon_more_info"
+          - "blue"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template:
+                - "blue"
+              variables:
+                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
+                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
+              entity: "[[[ return entity.entity_id ]]]"
+          item2:
+            card:
+              type: "custom:button-card"
+              template:
+                - "blue_no_card"
+              variables:
+                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
+                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
+              entity: "[[[ return entity.entity_id ]]]"
+              name: "[[[ return entity.attributes.friendly_name != '' ? entity.attributes.friendly_name : entity.entity_id ]]]"
+              label: "[[[ return variables.ulm_translation_state ]]]"

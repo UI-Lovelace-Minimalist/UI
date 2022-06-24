@@ -55,29 +55,8 @@ Initial release
 
 ## Template code
 
-```yaml
----
----
-### Chip My Enedis ###
-custom_chip_myenedis:
-  template:
-    - "chips"
-    - "ulm_language_variables"
-  variables:
-    ulm_chip_separate_hp_hc: false
-    ulm_chip_unit_of_measurement: "[[[ return entity.attributes.unit_of_measurement ]]]"
-  triggers_update: "all"
-  label: |
-    [[[
-      var result = "💰 " +  parseFloat(entity.attributes.daily_cost).toFixed(1) + " €";
+??? note "Template Code"
 
-      if(variables.ulm_chip_separate_hp_hc) {
-        result += " ☀️ " + parseFloat(entity.attributes.yesterday_HC).toFixed(1) + " " +  variables.ulm_chip_unit_of_measurement;
-        result += " 🌑 " + parseFloat(entity.attributes.yesterday_HP).toFixed(1) + " " +  variables.ulm_chip_unit_of_measurement;
-      } else {
-        result += " ⚡ " + parseFloat(entity.attributes.yesterday_HCHP).toFixed(1) + " " +  variables.ulm_chip_unit_of_measurement;
-      }
-
-      return result;
-    ]]]
-```
+    ```yaml title="custom_chip_myenedis.yaml"
+    --8<-- "custom_cards/custom_chip_myenedis/custom_chip_myenedis.yaml"
+    ```

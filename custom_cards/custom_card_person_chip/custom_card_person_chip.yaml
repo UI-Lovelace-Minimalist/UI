@@ -2,7 +2,7 @@
 custom_card_person_chip:
   template:
     - "chips"
-    - "ulm_language_variables"
+    - "ulm_translation_engine"
   show_icon: true
   triggers_update: "all"
   icon: "mdi:face-man"
@@ -13,7 +13,7 @@ custom_card_person_chip:
   label: >
     [[[
       let state = states[variables.ulm_custom_card_person_chip_entity].state;
-      return variables["ulm_person_state_" + state] ? variables["ulm_person_state_" + state] : state;
+      return hass.resources[hass["language"]]["component.person" + ".state._." + state];
     ]]]
   show_entity_picture: true
   entity_picture: "[[[ return states[variables.ulm_custom_card_person_chip_entity].attributes.entity_picture ]]]"
