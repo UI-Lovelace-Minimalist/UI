@@ -8,6 +8,7 @@ card_person_info:
     ulm_card_person_zone1: ""
     ulm_card_person_zone2: ""
     ulm_address: ""
+    alm_address_locality: ""
     ulm_card_person_driving_entity: ""
     ulm_card_person_battery_entity: ""
     ulm_card_person_battery_state_entity: ""
@@ -24,7 +25,11 @@ card_person_info:
     [[[
       if (variables.ulm_address){
         return states[variables.ulm_address].state;
-      } else if (states[variables.ulm_card_person_driving_entity].state === "on") {
+      } 
+      else if (variables.ulm_address_locality){
+          return states[variables.ulm_address_locality].attributes.Locality;
+        }
+      else if (states[variables.ulm_card_person_driving_entity].state === "on") {
         let state = states[variables.ulm_card_person_entity].state;
         return `Driving - ${variables.ulm_translation_state}`;
       } else {
@@ -136,7 +141,7 @@ card_person_info:
       [[[
         if (states[variables.ulm_card_person_battery_entity]?.state) {
           var battery = states[variables.ulm_card_person_battery_entity]?.state;
-          var charging = states[variables.ulm_card_person_battery_state_entity]?.state === "charging";
+          var charging = states[variables.ulm_card_person_battery_state_entity]?.state === "Charging";
           var iconBase = charging ? "mdi:battery-charging" : "mdi:battery"
           var roundedBattery = Math.ceil(battery / 10) * 10;
           var icon = roundedBattery === 100 ? iconBase : `${iconBase}-${roundedBattery}`;
