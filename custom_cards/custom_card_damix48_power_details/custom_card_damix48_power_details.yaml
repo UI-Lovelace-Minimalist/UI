@@ -25,7 +25,7 @@ custom_card_damix48_power_details:
           - "icon_info"
           - "card_generic"
         variables:
-          ulm_card_generic_name: ""[[[ return variables.ulm_card_power_details_name ]]]"
+          ulm_card_generic_name: "[[[ return variables.ulm_card_power_details_name ]]]"
         styles:
           card:
             - box-shadow: "none"
