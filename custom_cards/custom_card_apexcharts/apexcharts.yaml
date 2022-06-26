@@ -57,10 +57,11 @@ custom_card_apexcharts:
       card:
         type: "custom:button-card"
         entity: "[[[ return variables.entity_1.entity_id ]]]"
-        icon: "[[[ return variables.entity_1.icon ]]]"
-        name: "[[[ return variables.entity_1.name ]]]"
         template:
           - "card_generic_swap"
+        variables:
+          ulm_card_generic_swap_name: "[[[ return variables.entity_1.name ]]]"
+          ulm_card_generic_swap_icon: "[[[ return variables.entity_1.icon ]]]"
         styles:
           icon:
             - color: "[[[ return `rgba(var(--color-${variables.entity_1.color}), 1)`;]]]"
@@ -75,10 +76,11 @@ custom_card_apexcharts:
       card:
         type: "custom:button-card"
         entity: "[[[ return variables.entity_2.entity_id ]]]"
-        icon: "[[[ return variables.entity_2.icon ]]]"
-        name: "[[[ return variables.entity_2.name ]]]"
         template:
           - "card_generic_swap"
+        variables:
+          ulm_card_generic_swap_name: "[[[ return variables.entity_2.name ]]]"
+          ulm_card_generic_swap_icon: "[[[ return variables.entity_2.icon ]]]"
         styles:
           icon:
             - color: "[[[ return `rgba(var(--color-${variables.entity_2.color}), 1)`;]]]"
@@ -93,10 +95,11 @@ custom_card_apexcharts:
       card:
         type: "custom:button-card"
         entity: "[[[ return variables.entity_3.entity_id ]]]"
-        icon: "[[[ return variables.entity_3.icon ]]]"
-        name: "[[[ return variables.entity_3.name ]]]"
         template:
           - "card_generic_swap"
+        variables:
+          ulm_card_generic_swap_name: "[[[ return variables.entity_3.name ]]]"
+          ulm_card_generic_swap_icon: "[[[ return variables.entity_3.icon ]]]"
         styles:
           icon:
             - color: "[[[ return `rgba(var(--color-${variables.entity_3.color}), 1)`;]]]"
