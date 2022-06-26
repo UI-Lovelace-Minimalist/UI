@@ -2,10 +2,15 @@
 ### Card Cover ###
 card_cover:
   template:
-    - "ulm_language_variables"
+    - "icon_more_info_new"
+    - "ulm_actions_card"
+    - "ulm_translation_engine"
   variables:
     ulm_card_cover_name: "[[[ return entity.attributes.friendly_name ]]]"
     ulm_card_cover_display_left_right: false
+    ulm_card_curtain_display_collapse_expand: false
+    ulm_card_cover_garage: false
+    ulm_card_cover_gate: false
     ulm_card_cover_enable_controls: false
     ulm_card_cover_enable_slider: false
     ulm_card_cover_enable_horizontal: false
@@ -13,25 +18,6 @@ card_cover:
   show_icon: false
   show_name: false
   show_label: false
-  # hold_action:
-  #   action: >
-  #     [[[
-  #         if (variables.ulm_card_cover_enable_popup){
-  #           return 'fire-dom-event'
-  #         }
-  #         else{
-  #           return 'more-info'
-  #         }
-  #     ]]]
-  #   browser_mod:
-  #     command: "popup"
-  #     large: true
-  #     hide_header: true
-  #     card:
-  #       type: "custom:button-card"
-  #       template: "popup_cover_brightness"
-  #       variables:
-  #         ulm_popup_cover_entity: "[[[ return entity.entity_id ]]]"
   styles:
     grid:
       - grid-template-areas: >
@@ -65,7 +51,7 @@ card_cover:
                   if ( variables.ulm_card_cover_enable_controls) {
                       rows.push("min-content");
                   }
-                  if ( variables.ulm_card_cover_enable_sliderdf) {
+                  if ( variables.ulm_card_cover_enable_slider) {
                       rows.push("min-content");
                   }
                 }
@@ -105,42 +91,55 @@ card_cover:
           item1:
             card:
               type: "custom:button-card"
+              variables:
+                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
+                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
               entity: "[[[ return entity.entity_id ]]]"
               icon: |
                 [[[
                     var icon = "mdi:help-circle";
                     if (typeof states[entity.entity_id].attributes.current_position === "undefined"){
                       if (states[entity.entity_id].state == "closed"){
-                        var icon = "mdi:window-shutter";
+                        if (variables.ulm_card_curtain_display_collapse_expand){
+                          var icon = "mdi:curtains-closed";
+                        } else if (variables.ulm_card_cover_garage){
+                          var icon = "mdi:garage-variant";
+                        } else if (variables.ulm_card_cover_gate){
+                          var icon = "mdi:gate";
+                        } else
+                          var icon = "mdi:window-shutter";
                       } else
-                        var icon = "mdi:window-shutter-open";
+                        if (variables.ulm_card_curtain_display_collapse_expand){
+                          var icon = "mdi:curtains";
+                        } else if (variables.ulm_card_cover_garage){
+                          var icon = "mdi:garage-open-variant";
+                        } else if (variables.ulm_card_cover_gate){
+                          var icon = "mdi:gate-open";
+                        }else
+                          var icon = "mdi:window-shutter-open";
                     } else {
                       if (states[entity.entity_id].attributes.current_position == 0){
-                        var icon = "mdi:window-shutter";
+                        if (variables.ulm_card_curtain_display_collapse_expand){
+                          var icon = "mdi:curtains-closed";
+                        } else if (variables.ulm_card_cover_garage){
+                          var icon = "mdi:garage-variant";
+                        } else if(variables.ulm_card_cover_gate){
+                          var icon = "mdi:gate";
+                        } else
+                          var icon = "mdi:window-shutter";
                       } else
-                        var icon = "mdi:window-shutter-open";
+                        if (variables.ulm_card_curtain_display_collapse_expand){
+                          var icon = "mdi:curtains";
+                        } else if(variables.ulm_card_cover_garage){
+                          var icon = "mdi:garage-open-variant";
+                        } else if(variables.ulm_card_cover_gate){
+                          var icon = "mdi:gate-open";
+                        }
+                        else
+                          var icon = "mdi:window-shutter-open";
                     }
                     return icon ;
                 ]]]
-              # hold_action:
-              #   action: >
-              #     [[[
-              #         if (variables.ulm_card_cover_enable_popup){
-              #           return 'fire-dom-event'
-              #         }
-              #         else{
-              #           return 'more-info'
-              #         }
-              #     ]]]
-              # browser_mod:
-              #   command: "popup"
-              #   large: true
-              #   hide_header: true
-              #   card:
-              #     type: "custom:button-card"
-              #     template: "popup_cover_brightness"
-              #     variables:
-              #       ulm_popup_cover_entity: "[[[ return entity.entity_id ]]]"
               styles:
                 icon:
                   - color: >
@@ -177,44 +176,28 @@ card_cover:
           item2:
             card:
               type: "custom:button-card"
+              variables:
+                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
+                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
               entity: "[[[ return entity.entity_id ]]]"
               name: "[[[ return variables.ulm_card_cover_name ]]]"
-              # hold_action:
-              #   action: >
-              #     [[[
-              #         if (variables.ulm_card_cover_enable_popup){
-              #           return 'fire-dom-event'
-              #         }
-              #         else{
-              #           return 'more-info'
-              #         }
-              #     ]]]
-              #   browser_mod:
-              #     command: "popup"
-              #     large: true
-              #     hide_header: true
-              #     card:
-              #       type: "custom:button-card"
-              #       template: "popup_cover_brightness"
-              #       variables:
-              #         ulm_popup_cover_entity: "[[[ return entity.entity_id ]]]"
               label: >-
                 [[[
                     if (entity.state !="unavailable"){
                       if (typeof states[entity.entity_id].attributes.current_position === "undefined"){
                         if (states[entity.entity_id].state == "closed"){
-                          return variables.ulm_closed;
+                          return variables.ulm_translation_state;
                         } else
-                          return variables.ulm_open;
+                          return variables.ulm_translation_state;
                       } else {
                         if (states[entity.entity_id].attributes.current_position == 0){
-                          return variables.ulm_closed;
+                          return variables.ulm_translation_state;
                         } else {
-                          return variables.ulm_open + " • " + (states[entity.entity_id].attributes.current_position) + "%" ;
+                          return variables.ulm_translation_state + " • " + (states[entity.entity_id].attributes.current_position) + "%" ;
                         }
                       }
                   } else {
-                    return variables.ulm_unavailable;
+                    return variables.ulm_translation_state;
                   }
                 ]]]
     item2:
@@ -240,6 +223,9 @@ card_cover:
                 [[[
                   if (variables.ulm_card_cover_display_left_right){
                     return "mdi:arrow-left";
+                  }
+                  if (variables.ulm_card_curtain_display_collapse_expand){
+                    return "mdi:arrow-collapse-horizontal";
                   }
                   return "mdi:arrow-down";
                 ]]]
@@ -272,6 +258,9 @@ card_cover:
                   if (variables.ulm_card_cover_display_left_right){
                     return "mdi:arrow-right";
                   }
+                  if (variables.ulm_card_curtain_display_collapse_expand){
+                    return "mdi:arrow-expand-horizontal";
+                  }
                   return "mdi:arrow-up";
                 ]]]
     item3:
@@ -283,7 +272,7 @@ card_cover:
         mainSliderColor: >
           [[[
               if (entity.state == "unavailable"){
-                 return "rgba(var(--color-grey),1)";
+                return "rgba(var(--color-grey),1)";
               }
               else{
                 return "rgba(var(--color-blue),1)";
@@ -292,7 +281,7 @@ card_cover:
         secondarySliderColor: >
           [[[
               if (entity.state == "unavailable"){
-                 return "rgba(var(--color-grey),0.2)";
+                return "rgba(var(--color-grey),0.2)";
               }
               else{
                 return "rgba(var(--color-blue),0.2)";

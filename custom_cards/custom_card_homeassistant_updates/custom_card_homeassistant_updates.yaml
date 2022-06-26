@@ -1,6 +1,8 @@
 ---
 card_homeassistant_updates:
   triggers_update: "all"
+  template:
+    - "ulm_language_variables"
   styles:
     grid:
       - grid-template-areas: "'item1' 'item2'"
@@ -18,7 +20,6 @@ card_homeassistant_updates:
         type: "custom:button-card"
         template:
           - "icon_info_updates"
-          - "ulm_language_variables"
         icon: "mdi:home-assistant"
         tap_action:
           action: "none"
@@ -28,7 +29,7 @@ card_homeassistant_updates:
                 if(states[variables.ulm_card_homeassistant_core].state ==='True' || states[variables.ulm_card_homeassistant_supervisor].state ==='True' || states[variables.ulm_card_homeassistant_os].state ==='True'){
                   return variables.ulm_updates_available;
                 } else {
-                  return variables.ulm_no_updates_available
+                  return variables.ulm_no_updates_available;
                 }
               ]]]
         label: >
@@ -85,7 +86,7 @@ card_homeassistant_updates:
               icon: "mdi:cog"
               tap_action:
                 action: "navigate"
-                navigation_path: "/config/server_control"
+                navigation_path: "/developer-tools/yaml"
 
           item3:
             card:

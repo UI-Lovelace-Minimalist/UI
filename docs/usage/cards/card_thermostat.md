@@ -10,6 +10,7 @@ hide:
 ![Image title](../../assets/img/ulm_cards/card_thermostat.png){ width="500" }
 ![Image title](../../assets/img/ulm_cards/card_thermostat_with_controls.png){ width="500" }
 ![Image title](../../assets/img/ulm_cards/card_thermostat_with_hvac_and_color.png){ width="500" }
+![Image title](../../assets/img/ulm_cards/card_thermostat_with_high_low.png){ width="500" }
 
 This is the `thermostat-card`, used to toggle a climate entity. Shows state of the thermostat and, if available, current temperature.
 
@@ -41,6 +42,7 @@ This card merges the following one :
 | ulm_card_thermostat_enable_display_temperature  | `false`           | :material-close: | Display  current temperature on top right | |
 | ulm_card_thermostat_enable_horizontal           | `false`           | :material-close: | Enable horizontal card| Need `ulm_card_thermostat_enable_controls: true` |
 | ulm_card_thermostat_enable_popup                | `false`           | :material-close: | Enable `popup_thermostat` | |
+| ulm_card_thermostat_fan_entity                | `null`           | :material-close: | `fan` entity for climate if seperate entity | |
 
 ## Usage
 

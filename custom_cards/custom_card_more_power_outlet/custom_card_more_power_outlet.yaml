@@ -1,0 +1,53 @@
+---
+### Custom Card More Power Outlet ###
+custom_card_more_power_outlet:
+  template:
+    - "icon_info_bg"
+    - "yellow"
+    - "ulm_translation_engine"
+  variables:
+    custom_card_more_power_outlet_power_sensor:
+    custom_card_more_power_outlet_energy_sensor:
+    custom_card_more_power_outlet_time_sensor:
+  triggers_update: "all"
+  label: |-
+    [[[
+      if (entity.state === "on" && variables.custom_card_more_power_outlet_power_sensor !== null && variables.custom_card_more_power_outlet_energy_sensor !== null && variables.custom_card_more_power_outlet_time_sensor !== null) {
+        if (states[variables.custom_card_more_power_outlet_time_sensor].state < 1){
+          return states[variables.custom_card_more_power_outlet_power_sensor].state + "W • " + states[variables.custom_card_more_power_outlet_energy_sensor].state + "kWh • " +
+          (states[variables.custom_card_more_power_outlet_time_sensor].state * 100) + "Mins";
+        } else
+          return states[variables.custom_card_more_power_outlet_power_sensor].state + "W • " + states[variables.custom_card_more_power_outlet_energy_sensor].state + "kWh • " + states[variables.custom_card_more_power_outlet_time_sensor].state + "Hrs";
+      } else if (entity.state === "on" && variables.custom_card_more_power_outlet_power_sensor !== null && variables.custom_card_more_power_outlet_energy_sensor !== null) {
+        return states[variables.custom_card_more_power_outlet_power_sensor].state + "W • " + states[variables.custom_card_more_power_outlet_energy_sensor].state + "kWh";
+      } else if (entity.state === "on" && variables.custom_card_more_power_outlet_power_sensor !== null && variables.custom_card_more_power_outlet_time_sensor !== null) {
+          if (states[variables.custom_card_more_power_outlet_time_sensor].state < 1){
+          return states[variables.custom_card_more_power_outlet_power_sensor].state + "W • " + (states[variables.custom_card_more_power_outlet_time_sensor].state * 100) + "Mins";
+        } else
+          return states[variables.custom_card_more_power_outlet_power_sensor].state + "W • " + states[variables.custom_card_more_power_outlet_time_sensor].state + "Hrs";
+      } else if (entity.state === "on" && variables.custom_card_more_power_outlet_energy_sensor !== null && variables.custom_card_more_power_outlet_time_sensor !== null) {
+          if (states[variables.custom_card_more_power_outlet_time_sensor].state < 1){
+          return states[variables.custom_card_more_power_outlet_energy_sensor].state + "kWh • " + (states[variables.custom_card_more_power_outlet_time_sensor].state * 100) + "Mins";
+        } else
+          return states[variables.custom_card_more_power_outlet_energy_sensor].state + "kWh • " + states[variables.custom_card_more_power_outlet_time_sensor].state + "Hrs";
+      } else if (entity.state === "on" && variables.custom_card_more_power_outlet_power_sensor !== null) {
+        return states[variables.custom_card_more_power_outlet_power_sensor].state + "W";
+      } else if (entity.state === "on" && variables.custom_card_more_power_outlet_energy_sensor !== null) {
+        return states[variables.custom_card_more_power_outlet_energy_sensor].state + "kWh";
+      } else if (entity.state === "on" && variables.custom_card_more_power_outlet_time_sensor !== null) {
+          if (states[variables.custom_card_more_power_outlet_time_sensor].state < 1){
+          return (states[variables.custom_card_more_power_outlet_time_sensor].state * 100) + "Mins";
+        } else
+          return states[variables.custom_card_more_power_outlet_time_sensor].state + "Hrs";
+      } else if (entity.state === "on") {
+        return variables.ulm_translation_state;
+      } else if (entity.state === "off" && variables.custom_card_more_power_outlet_energy_sensor !== null) {
+        if (states[variables.custom_card_more_power_outlet_energy_sensor].state > 0){
+          return variables.ulm_translation_state + " • " + states[variables.custom_card_more_power_outlet_energy_sensor].state + "kWh";
+        } else {
+          return variables.ulm_translation_state;
+        }
+      } else {
+        return variables.ulm_translation_state;
+      }
+    ]]]

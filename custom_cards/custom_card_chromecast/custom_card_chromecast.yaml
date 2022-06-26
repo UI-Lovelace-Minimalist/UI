@@ -8,19 +8,8 @@ card_media_player_chromecast:
   template:
     - "icon_info"
     - "blue_not_unavailable"
-    - "ulm_language_variables"
-  label: |
-    [[[
-      if (entity.attributes.app_name  == 'Telenet TV') {
-        return "TelenetTV" + ' • ' +  (entity.attributes.media_series_title);
-      } else if (entity.state == 'playing') {
-        return variables.ulm_on;
-      } else if (entity.state == 'off') {
-        return variables.ulm_off;
-      } else {
-        return variables.ulm_unavailable;
-      }
-    ]]]
+    - "ulm_translation_engine"
+  label: "[[[ return variables.ulm_translation_state_unit ]]]"
 card_media_player_chromecast_with_controls:
   variables:
     ulm_card_media_player_with_controls_name: "No name set"
@@ -41,7 +30,6 @@ card_media_player_chromecast_with_controls:
       card:
         type: "custom:button-card"
         template:
-          - "ulm_language_variables"
           - "card_media_player_chromecast"
         tap_action:
           action: "more-info"

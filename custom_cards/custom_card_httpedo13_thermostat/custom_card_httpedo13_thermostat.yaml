@@ -1,8 +1,7 @@
 ---
 custom_card_httpedo13_thermostat:
   template:
-    - "ulm_language_variables"
-    - "custom_card_httpedo13_thermostat_language_variables"
+    - "ulm_translation_engine"
   tap_action:
     action: "toggle"
   icon: |
@@ -12,17 +11,7 @@ custom_card_httpedo13_thermostat:
         }
         return "mdi:radiator-off";
     ]]]
-  label: >-
-    [[[
-        if (entity.state =='off') {
-          return variables.custom_card_httpedo13_thermostat_off;
-        } else if (entity.state =='heat') {
-          return variables.custom_card_httpedo13_thermostat_on;
-        } else if (entity.attributes.hvac_action == 'heating') {
-          return variables.custom_card_httpedo13_thermostat_heating;
-        }
-        return entity.state;
-    ]]]
+  label: "[[[ return variables.ulm_translation_state ]]]"
   state:
     - operator: "template"
       value: >
@@ -195,7 +184,6 @@ custom_card_httpedo13_thermostat_with_buttons:
                   entity_id: "[[[ return variables.entity ]]]"
               icon: "mdi:plus"
 
-
 custom_card_httpedo13_thermostat_with_buttons_collapse:
   triggers_update: "all"
   styles:
@@ -329,7 +317,6 @@ custom_card_httpedo13_thermostat_with_buttons_collapse:
                     temperature: "[[[ return (parseFloat(states[variables.entity].attributes.temperature) + 0.5)  ]]]"
                     entity_id: "[[[ return variables.entity ]]]"
                 icon: "mdi:plus"
-
 
 widget_current_temperature:
   color: "var(--google-grey-500)"

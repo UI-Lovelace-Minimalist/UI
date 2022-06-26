@@ -1,7 +1,7 @@
 ---
 card_room:
   template:
-    - "ulm_language_variables"
+    - "ulm_translation_engine"
   variables:
     label_use_temperature: true
     label_use_brightness: false
@@ -10,6 +10,12 @@ card_room:
   show_name: true
   show_label: true
   size: "45%"
+  double_tap_action:
+    action: "call-service"
+    service: "input_select.select_option"
+    service_data:
+      option: "[[[ return variables.ulm_input_select_option ]]]"
+      entity_id: "[[[ return variables.ulm_input_select ]]]"
   aspect_ratio: "1/1"
   label: |-
     [[[
@@ -18,24 +24,20 @@ card_room:
       } else if (variables.label_use_brightness) {
         if (entity.state){
           if (entity.state == "off"){
-            return variables.ulm_off;
+            return variables.ulm_translation_state;
           } else if (entity.state == "on"){
             if (entity.attributes.brightness != null){
               var bri = Math.round(entity.attributes.brightness / 2.55);
               return (bri ? bri : "0") + "%";
             } else {
-              return variables.ulm_on
+              return variables.ulm_translation_state;
             }
           }
         } else {
-          return variables.ulm_unavailable;
+          return variables.ulm_translation_state;
         }
-      } else if (entity.state == "on") {
-          return variables.ulm_on
-      } else if (entity.state == "off") {
-          return variables.ulm_off
       } else {
-        return entity.state
+          return variables.ulm_translation_state;
       }
     ]]]
   state:

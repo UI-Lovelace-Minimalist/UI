@@ -1,0 +1,49 @@
+{
+    "title": "UI Lovelace Minimalist",
+    "config": {
+        "step": {
+            "user": {
+                "title": "UI Lovelace Minimalist Einstellungen",
+                "description": "",
+                "data": {
+                    "language": "Sprache",
+                    "sidepanel_enabled": "Erstellung eines Eintrages in der Seitenleiste aktivieren.",
+                    "sidepanel_icon": "Icon Seitenleiste",
+                    "sidepanel_title": "Titel Seitenleiste",
+                    "adaptive_ui_enabled": "Enable adaptive Dashboard with popup splitview",
+                    "adaptive_ui_title": "adaptive panel title",
+                    "adaptive_ui_icon": "adaptive panel icon",
+                    "theme": "Thema",
+                    "include_other_cards": "Individuelle Karten, die für die Nutzung benötigt werden, ebenfalls laden."
+                }
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "Es ist nur eine Konfiguration von UI Lovelace Minimalist erlaubt.",
+            "not_setup": "UI Lovelace Minimalist ist nicht eingerichtet."
+        }
+    },
+    "options": {
+        "step": {
+            "user": {
+                "title": "UI Lovelace Minimalist Einstellungen",
+                "description": "",
+                "data": {
+                    "language": "Sprache",
+                    "sidepanel_enabled": "Erstellung eines Eintrages in der Seitenleiste aktivieren.",
+                    "sidepanel_icon": "Icon Seitenleiste",
+                    "sidepanel_title": "Titel Seitenleiste",
+                    "adaptive_ui_enabled": "Enable adaptive Dashboard with popup splitview",
+                    "adaptive_ui_title": "adaptive panel title",
+                    "adaptive_ui_icon": "adaptive panel icon",
+                    "theme": "Thema",
+                    "include_other_cards": "Individuelle Karten, die für die Nutzung benötigt werden, ebenfalls laden."
+                }
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "Es ist nur eine Konfiguration von UI Lovelace Minimalist erlaubt.",
+            "not_setup": "UI Lovelace Minimalist ist nicht eingerichtet."
+        }
+    }
+}

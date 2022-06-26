@@ -80,6 +80,8 @@ custom_card_irmajavi_speedtest:
           custom_fields:
             item1:
               - justify-self: "end"
+              - margin-top: "-23px"
+              - margin-right: "3px"
           icon:
             - color: "rgba(var(--color-theme),0.9)"
             - width: "20px"
@@ -94,6 +96,8 @@ custom_card_irmajavi_speedtest:
             - justify-self: "start"
             - font-weight: "bold"
             - font-size: "16px"
+            - margin-left: "40px"
+            - margin-top: "3px"
           grid:
             - grid-template-areas: "i n item1"
             - grid-template-columns: "min-content"
@@ -106,7 +110,7 @@ custom_card_irmajavi_speedtest:
             - height: "40px"
             - padding-top: "5px"
             - padding-left: "5px"
-        name: "Speedtest"
+        name: "[[[ return variables.ulm_custom_card_irmajavi_speedtest_speedtest ]]]"
         icon: "mdi:speedometer"
         custom_fields:
           item1:
@@ -140,7 +144,7 @@ custom_card_irmajavi_speedtest:
               color: "var(--google-blue)"
               show_label: true
               show_icon: false
-              name: "Download Speed"
+              name: "[[[ return variables.ulm_custom_card_irmajavi_speedtest_download ]]]"
               entity: >-
                 [[[ return
                     variables.ulm_custom_card_irmajavi_speedtest_download_speed_entity;
@@ -189,7 +193,7 @@ custom_card_irmajavi_speedtest:
               color: "var(--google-blue)"
               show_label: true
               show_icon: false
-              name: "Upload Speed"
+              name: "[[[ return variables.ulm_custom_card_irmajavi_speedtest_upload ]]]"
               entity: >-
                 [[[ return
                 variables.ulm_custom_card_irmajavi_speedtest_upload_speed_entity;

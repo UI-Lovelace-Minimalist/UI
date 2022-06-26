@@ -3,15 +3,12 @@ title: Homeassistant Updates Custom-card
 hide:
   - toc
 ---
+
 <!-- markdownlint-disable MD046 -->
 
 # Custom-card "Homeassistant updates"
 
 ![Homeassistant updates card](../../docs/assets/img/ulm_cards/card_homeassistant_updates.png)
-
-!! Attention !!
-
-This card needs additional template sensors and a group.updaters sensor to work, all detail can be found in this readme.
 
 ## Credits
 
@@ -41,17 +38,19 @@ Updated sensors and binary_sensors + Removed group.updaters
 ## Usage
 
 ```yaml
-  - type: 'custom:button-card'
-    template: card_homeassistant_updates
-    variables:
-      ulm_card_homeassistant_core: "sensor.core_updates"
-      ulm_card_homeassistant_supervisor: "sensor.supervisor_updates"
-      ulm_card_homeassistant_os: "sensor.os_updates"
+- type: "custom:button-card"
+  template: card_homeassistant_updates
+  variables:
+    ulm_card_homeassistant_entity: "binary_sensor.updates"
+    ulm_card_homeassistant_core: "sensor.core_updates"
+    ulm_card_homeassistant_supervisor: "sensor.supervisor_updates"
+    ulm_card_homeassistant_os: "sensor.os_updates"
 ```
 
 ## Requirements
 
-n/a
+!! Attention !!
+This card needs additional template sensors and binary_sensor updaters to work, all detail can be found in this readme.
 
 ## Variables
 
@@ -82,12 +81,16 @@ n/a
 </tr>
 </table>
 
+<<<<<<< Updated upstream
+
 ## Template code
 
 ```yaml
 ---
 card_homeassistant_updates:
   triggers_update: "all"
+  template:
+    - "ulm_language_variables"
   styles:
     grid:
       - grid-template-areas: "'item1' 'item2'"
@@ -105,17 +108,16 @@ card_homeassistant_updates:
         type: "custom:button-card"
         template:
           - "icon_info_updates"
-          - "ulm_language_variables"
-        icon: 'mdi:home-assistant'
+        icon: "mdi:home-assistant"
         tap_action:
           action: "none"
         entity: "[[[ return variables.ulm_card_homeassistant_entity ]]]"
         name: >
               [[[
                 if(states[variables.ulm_card_homeassistant_core].state ==='True' || states[variables.ulm_card_homeassistant_supervisor].state ==='True' || states[variables.ulm_card_homeassistant_os].state ==='True'){
-                  return 'Updates beschikbaar!';
+                  return variables.ulm_updates_available;
                 } else {
-                  return 'Geen updates'
+                  return variables.ulm_no_updates_available;
                 }
               ]]]
         label: >
@@ -163,16 +165,16 @@ card_homeassistant_updates:
               template: "widget_icon"
               icon: "mdi:file-document"
               tap_action:
-                action: url
-                url_path: https://www.home-assistant.io/latest-release-notes/
+                action: "url"
+                url_path: "https://www.home-assistant.io/latest-release-notes/"
           item2:
             card:
               type: "custom:button-card"
               template: "widget_icon"
               icon: "mdi:cog"
               tap_action:
-                action: navigate
-                navigation_path: /config/server_control
+                action: "navigate"
+                navigation_path: "/developer-tools/yaml"
 
           item3:
             card:
@@ -180,11 +182,11 @@ card_homeassistant_updates:
               template: "widget_icon"
               icon: "mdi:update"
               tap_action:
-                action: navigate
-                navigation_path: /config/dashboard
+                action: "navigate"
+                navigation_path: "/config/dashboard"
 
 icon_info_updates:
-  color: var(--google-grey)
+  color: "var(--google-grey)"
   show_icon: true
   show_label: true
   show_name: true
@@ -207,49 +209,48 @@ icon_info_updates:
                   return "rgba(var(--color-blue),1)";
                 ]]]
         icon:
-          - color: 'rgba(var(--color-blue),1)'
+          - color: "rgba(var(--color-blue),1)"
         img_cell:
-          - background-color: 'rgba(var(--color-blue), 0.2)'
+          - background-color: "rgba(var(--color-blue), 0.2)"
   styles:
     icon:
-      - color: 'rgba(var(--color-theme),0.2)'
+      - color: "rgba(var(--color-theme),0.2)"
     label:
-      - justify-self: start
-      - align-self: start
-      - font-weight: bolder
-      - font-size: 12px
-      - filter: opacity(40%)
-      - margin-left: 16px
+      - justify-self: "start"
+      - align-self: "start"
+      - font-weight: "bolder"
+      - font-size: "12px"
+      - filter: "opacity(40%)"
+      - margin-left: "16px"
       - text-align: "start"
     name:
-      - align-self: end
-      - justify-self: start
-      - font-weight: bold
-      - font-size: 14px
-      - margin-left: 16px
-      - margin-bottom: 4px
+      - align-self: "end"
+      - justify-self: "start"
+      - font-weight: "bold"
+      - font-size: "14px"
+      - margin-left: "16px"
+      - margin-bottom: "4px"
     state:
-      - justify-self: start
-      - align-self: start
-      - font-weight: bolder
-      - font-size: 12px
-      - filter: opacity(40%)
-      - margin-left: 12px
+      - justify-self: "start"
+      - align-self: "start"
+      - font-weight: "bolder"
+      - font-size: "12px"
+      - filter: "opacity(40%)"
+      - margin-left: "12px"
     img_cell:
-      - background-color: 'rgba(var(--color-theme),0.05)'
-      - border-radius: 50%
-      - place-self: center
-      - width: 42px
-      - height: 42px
+      - background-color: "rgba(var(--color-theme),0.05)"
+      - border-radius: "50%"
+      - place-self: "center"
+      - width: "42px"
+      - height: "42px"
     grid:
-      - grid-template-areas: '"i n" "i l"'
-      - grid-template-columns: min-content auto
-      - grid-template-rows: min-content min-content
+      - grid-template-areas: "'i n' 'i l'"
+      - grid-template-columns: "min-content auto"
+      - grid-template-rows: "min-content min-content"
     card:
-      - border-radius: 21px 8px 8px 21px
-      - box-shadow: none
-      - padding: 0px
-      # - background-color: 'rgba(var(--color-theme),0)'
+      - border-radius: "21px 8px 8px 21px"
+      - box-shadow: "none"
+      - padding: "0px"
   custom_fields:
     notification: >
       [[[
@@ -257,7 +258,7 @@ icon_info_updates:
           return `<ha-icon icon="mdi:party-popper" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`;
         }
       ]]]
-  size: 20px
+  size: "20px"
 
 ```
 
@@ -314,34 +315,10 @@ binary_sensor:
         attribute_templates:
           installed_version: "{{ state_attr('sensor.core_updates', 'installed_version') }}"
           latest_version: "{{ state_attr('sensor.core_updates', 'latest_version') }}"
+=======
+??? note "Template Code"
+>>>>>>> Stashed changes
 
-      updater_supervisor:
-        friendly_name: Supervisor
-        device_class: problem
-        value_template: "{{ states('sensor.supervisor_updates') }}"
-        attribute_templates:
-          installed_version: "{{ state_attr('sensor.supervisor_updates', 'installed_version') }}"
-          latest_version: "{{ state_attr('sensor.supervisor_updates', 'latest_version') }}"
-
-      updater_os:
-        friendly_name: OS
-        device_class: problem
-        value_template: "{{ states('sensor.os_updates') }}"
-        attribute_templates:
-          installed_version: "{{ state_attr('sensor.os_updates', 'installed_version') }}"
-          latest_version: "{{ state_attr('sensor.os_updates', 'latest_version') }}"
-
-      updater_addons:
-        friendly_name: Supervisor Add-ons
-        device_class: problem
-        value_template: "{{ states('sensor.addons_updates')|int(0) != 0 }}"
-        attribute_templates:
-          addons: "{{ state_attr('sensor.addons_updates', 'addons') }}"
-
-      updater_hacs:
-        friendly_name: HACS Integrations
-        device_class: problem
-        value_template: "{{ states('sensor.hacs')|int(0) != 0 }}"
-        attribute_templates:
-          repositories: "{{ state_attr('sensor.hacs', 'repositories') }}"
-```
+    ```yaml title="custom_card_homeassistant_updates.yaml"
+    --8<-- "custom_cards/custom_card_homeassistant_updates/custom_card_homeassistant_updates.yaml"
+    ```
