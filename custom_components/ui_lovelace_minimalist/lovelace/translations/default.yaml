@@ -41,8 +41,9 @@ ulm_translation_engine:
           if (def.includes(state)) {
             var mode = hass.resources[lang]["state.default." + state ];
           }
-          var label = hass.resources[lang]["component." + domain + ".state._." + state] || state;
-          return (entity.attributes.current_temperature ) + '°' + ' • ' + label + (entity.state !='off' ? ' (' + mode + ')' : '');
+          var label = hass.resources[lang]["component." + domain + ".state._." + state];
+          var translation = label ? label : state;
+          return (entity.attributes.current_temperature ) + '°' + ' • ' + translation + (entity.state !='off' ? ' (' + mode + ')' : '');
           }
       ]]]
     ulm_translation_off: "[[[ return hass.resources[hass['language']]['state.default.off']; ]]]"
@@ -55,14 +56,14 @@ ulm_translation_engine:
           let def = ["unknown", "unavailable"];
           let lang = hass["language"];
           let domain = entity.entity_id.substr(0, entity.entity_id.indexOf("."));
-          var translation = hass.resources[lang]["component." + domain + ".state._." + state] || state;
+          var translation = hass.resources[lang]["component." + domain + ".state._." + state]
           if (def.includes(state)) {
             var translation = hass.resources[lang]["state.default." + state ];
           }
           else if (domain == "binary_sensor" && d_class != ''){
-            var translation = hass.resources[lang]["component." + domain + ".state." + d_class + "." + state] || state;
+            var translation = hass.resources[lang]["component." + domain + ".state." + d_class + "." + state]
           }
-          return translation;
+          return translation ? translation : state;
         }
       ]]]
     ulm_translation_state_reverse: >
@@ -79,7 +80,7 @@ ulm_translation_engine:
           if (def.includes(state)) {
             var translation = hass.resources[lang]["state.default." + state ];
           }
-          return translation;
+          return translation ? translation : state;
         }
       ]]]
     ulm_translation_state_unit: >
@@ -101,16 +102,16 @@ ulm_translation_engine:
             var translation = hass.resources[lang]["state.default." + state ];
           }
           else if (domain == "binary_sensor" && d_class != ''){
-            var translation = hass.resources[lang]["component." + domain + ".state." + d_class + "." + state] || state;
+            var translation = hass.resources[lang]["component." + domain + ".state." + d_class + "." + state]
           }
           else if (domain == "media_player" && d_class != ''){
             if (state == 'idle' || state == 'paused')
-              var translation = hass.resources[lang]["component." + domain + ".state." + state]  || state;
+              var translation = hass.resources[lang]["component." + domain + ".state." + state];
             else {
               var translation = (entity.attributes.source) + ' • ' +  ( Math.round(entity.attributes.volume_level / 0.01)) + '%' ;
             }
           }
-          return translation;
+          return translation ? translation : state;
         }
       ]]]
     ulm_translation_statistics: "[[[ return hass.resources[hass['language']]['ui.components.statistic-picker.statistic']; ]]]"
