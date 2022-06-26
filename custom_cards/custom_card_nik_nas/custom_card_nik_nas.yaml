@@ -149,11 +149,20 @@ custom_card_nik_nas:
         variables:
           ulm_card_generic_swap_name: "[[[ return variables.entity_1.name ]]]"
           ulm_card_generic_swap_icon: "[[[ return variables.entity_1.icon ]]]"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              custom_fields:
+                item1:
+                  card:
+                    type: "custom:button-card"
+                    styles:
+                      icon:
+                        - color: "[[[ return `rgba(var(--color-${variables.entity_1.color}), 1)`;]]]"
+                      img_cell:
+                        - background-color: "[[[ return `rgba(var(--color-${variables.entity_1.color}), 0.20)`;]]]"
         styles:
-          icon:
-            - color: "[[[ return `rgba(var(--color-${variables.entity_1.color}), 1)`;]]]"
-          img_cell:
-            - background-color: "[[[ return `rgba(var(--color-${variables.entity_1.color}), 0.20)`;]]]"
           card:
             - box-shadow: "none"
             - border-radius: "none"
@@ -167,11 +176,20 @@ custom_card_nik_nas:
         variables:
           ulm_card_generic_swap_name: "[[[ return variables.entity_2.name ]]]"
           ulm_card_generic_swap_icon: "[[[ return variables.entity_2.icon ]]]"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              custom_fields:
+                item1:
+                  card:
+                    type: "custom:button-card"
+                    styles:
+                      icon:
+                        - color: "[[[ return `rgba(var(--color-${variables.entity_2.color}), 1)`;]]]"
+                      img_cell:
+                        - background-color: "[[[ return `rgba(var(--color-${variables.entity_2.color}), 0.20)`;]]]"
         styles:
-          icon:
-            - color: "[[[ return `rgba(var(--color-${variables.entity_2.color}), 1)`;]]]"
-          img_cell:
-            - background-color: "[[[ return `rgba(var(--color-${variables.entity_2.color}), 0.20)`;]]]"
           card:
             - box-shadow: "none"
             - border-radius: "none"
@@ -185,11 +203,20 @@ custom_card_nik_nas:
         variables:
           ulm_card_generic_swap_name: "[[[ return variables.entity_3.name ]]]"
           ulm_card_generic_swap_icon: "[[[ return variables.entity_3.icon ]]]"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              custom_fields:
+                item1:
+                  card:
+                    type: "custom:button-card"
+                    styles:
+                      icon:
+                        - color: "[[[ return `rgba(var(--color-${variables.entity_3.color}), 1)`;]]]"
+                      img_cell:
+                        - background-color: "[[[ return `rgba(var(--color-${variables.entity_3.color}), 0.20)`;]]]"
         styles:
-          icon:
-            - color: "[[[ return `rgba(var(--color-${variables.entity_3.color}), 1)`;]]]"
-          img_cell:
-            - background-color: "[[[ return `rgba(var(--color-${variables.entity_3.color}), 0.20)`;]]]"
           card:
             - box-shadow: "none"
             - border-radius: "none"
@@ -219,15 +246,24 @@ custom_card_nik_nas:
             variables:
               ulm_card_generic_swap_name: "[[[ return variables.entity_4.name ]]]"
               ulm_card_generic_swap_icon: "[[[ return variables.entity_4.icon ]]]"
+            custom_fields:
+              item1:
+                card:
+                  type: "custom:button-card"
+                  custom_fields:
+                    item1:
+                      card:
+                        type: "custom:button-card"
+                        styles:
+                          icon:
+                            - color: "[[[ return `rgba(var(--color-${variables.entity_4.color}), 1)`;]]]"
+                          img_cell:
+                            - background-color: "[[[ return `rgba(var(--color-${variables.entity_4.color}), 0.20)`;]]]"
             styles:
               card:
                 - background-color: "transparent"
                 - box-shadow: "none"
                 - border: "2px solid var(--google-grey)"
-              icon:
-                - color: "[[[ return `rgba(var(--color-${variables.entity_4.color}), 1)`;]]]"
-              img_cell:
-                - background-color: "[[[ return `rgba(var(--color-${variables.entity_4.color}), 0.20)`;]]]"
             tap_action:
               action: "none"
     item5:
