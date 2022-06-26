@@ -145,9 +145,10 @@ custom_card_nik_nas:
       card:
         type: "custom:button-card"
         entity: "[[[ return variables.entity_1.entity_id ]]]"
-        icon: "[[[ return variables.entity_1.icon ]]]"
-        name: "[[[ return variables.entity_1.name ]]]"
         template: "card_generic_swap"
+        variables:
+          ulm_card_generic_swap_name: "[[[ return variables.entity_1.name ]]]"
+          ulm_card_generic_swap_icon: "[[[ return variables.entity_1.icon ]]]"
         styles:
           icon:
             - color: "[[[ return `rgba(var(--color-${variables.entity_1.color}), 1)`;]]]"
@@ -162,9 +163,10 @@ custom_card_nik_nas:
       card:
         type: "custom:button-card"
         entity: "[[[ return variables.entity_2.entity_id ]]]"
-        icon: "[[[ return variables.entity_2.icon ]]]"
-        name: "[[[ return variables.entity_2.name ]]]"
         template: "card_generic_swap"
+        variables:
+          ulm_card_generic_swap_name: "[[[ return variables.entity_2.name ]]]"
+          ulm_card_generic_swap_icon: "[[[ return variables.entity_2.icon ]]]"
         styles:
           icon:
             - color: "[[[ return `rgba(var(--color-${variables.entity_2.color}), 1)`;]]]"
@@ -179,9 +181,10 @@ custom_card_nik_nas:
       card:
         type: "custom:button-card"
         entity: "[[[ return variables.entity_3.entity_id ]]]"
-        icon: "[[[ return variables.entity_3.icon ]]]"
-        name: "[[[ return variables.entity_3.name ]]]"
         template: "card_generic_swap"
+        variables:
+          ulm_card_generic_swap_name: "[[[ return variables.entity_3.name ]]]"
+          ulm_card_generic_swap_icon: "[[[ return variables.entity_3.icon ]]]"
         styles:
           icon:
             - color: "[[[ return `rgba(var(--color-${variables.entity_3.color}), 1)`;]]]"
@@ -199,8 +202,9 @@ custom_card_nik_nas:
           - type: "custom:button-card"
             template: "card_input_boolean"
             entity: "[[[ return entity.entity_id]]]"
-            icon: "mdi:nas"
-            name: "[[[ return variables.ulm_translation_status ]]]"
+            variables:
+              ulm_card_input_boolean_name: "[[[ return variables.ulm_translation_status ]]]"
+              ulm_card_input_boolean_icon: "mdi:nas"
             styles:
               card:
                 - background-color: "transparent"
@@ -212,8 +216,9 @@ custom_card_nik_nas:
           - type: "custom:button-card"
             template: "card_generic_swap"
             entity: "[[[ return variables.entity_4.entity_id ]]]"
-            icon: "[[[ return variables.entity_4.icon ]]]"
-            name: "[[[ return variables.entity_4.name ]]]"
+            variables:
+              ulm_card_generic_swap_name: "[[[ return variables.entity_4.name ]]]"
+              ulm_card_generic_swap_icon: "[[[ return variables.entity_4.icon ]]]"
             styles:
               card:
                 - background-color: "transparent"
@@ -230,8 +235,9 @@ custom_card_nik_nas:
         type: "custom:button-card"
         template: "card_input_boolean"
         entity: "[[[ return entity.entity_id]]]"
-        icon: "mdi:nas"
-        name: "[[[ return variables.ulm_translation_status ]]]"
+        variables:
+          ulm_card_input_boolean_name: "[[[ return variables.ulm_translation_status ]]]"
+          ulm_card_input_boolean_icon: "mdi:nas"
         styles:
           card:
             - background-color: "transparent"
