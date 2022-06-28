@@ -141,7 +141,7 @@ card_person_info:
       [[[
         if (states[variables.ulm_card_person_battery_entity]?.state) {
           var battery = states[variables.ulm_card_person_battery_entity]?.state;
-          var charging = states[variables.ulm_card_person_battery_state_entity]?.state === "Charging";
+          var charging = states[variables.ulm_card_person_battery_state_entity]?.state.toLowerCase() === "charging";
           var iconBase = charging ? "mdi:battery-charging" : "mdi:battery"
           var roundedBattery = Math.ceil(battery / 10) * 10;
           var icon = roundedBattery === 100 ? iconBase : `${iconBase}-${roundedBattery}`;
