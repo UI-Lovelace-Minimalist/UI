@@ -25,7 +25,8 @@ The `input-boolean-card` is to switch an `input_boolean` on or off.
 - type: 'custom:button-card'
   template: card_input_boolean
   entity: input_boolean.guest_mode
-  name: Guest Mode
+  variables:
+    ulm_card_input_boolean_name: Guest Mode
 ```
 
 ??? note "Template Code"
