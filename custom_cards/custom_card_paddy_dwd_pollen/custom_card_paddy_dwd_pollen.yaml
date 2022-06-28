@@ -4,8 +4,8 @@ custom_card_paddy_dwd_pollen:
     - "card_generic_swap"
     - "custom_card_paddy_dwd_pollen_language_variables"
   variables:
-    ulm_card_generic_icon: "[[[ return entity.attributes.icon ]]]"
-    ulm_card_generic_name: "[[[ return entity.attributes.friendly_name ]]]"
+    ulm_card_generic_swap_name: "[[[ return variables.ulm_custom_card_paddy_dwd_pollen_name; ]]]"
+    ulm_card_generic_swap_icon: "[[[ return variables.ulm_custom_card_paddy_dwd_pollen_icon; ]]]"
   custom_fields:
     item1:
       card:
