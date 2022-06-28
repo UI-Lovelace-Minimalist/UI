@@ -21,6 +21,10 @@ Version: 1.0.0
 <summary>1.0.0</summary>
 Initial release
 </details>
+<details>
+<summary>1.0.1</summary>
+Fix for UI Minimalist v1.0.1.
+</details>
 
 ## Usage
 
@@ -62,6 +66,16 @@ This card needs the following to function correctly:
 <td>sensor.waste_collection_paper</td>
 <td>yes</td>
 <td>Your waste collection sensor. See <a href="#homeassistant">HA example</a> on how to configure.</td>
+</tr>
+<td>ulm_custom_card_paddy_waste_collection_name</td>
+<td>Paper</td>
+<td>no</td>
+<td></td>
+</tr>
+<td>ulm_custom_card_paddy_waste_collection_icon</td>
+<td>mdi:trash-can</td>
+<td>no</td>
+<td></td>
 </tr>
 </table>
 

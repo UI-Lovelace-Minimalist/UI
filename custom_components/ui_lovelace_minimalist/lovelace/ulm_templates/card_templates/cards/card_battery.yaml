@@ -6,6 +6,7 @@ card_battery:
     - "ulm_actions_card"
     - "ulm_translation_engine"
   variables:
+    ulm_card_battery_name: "[[[ return entity.attributes.friendly_name ]]]"
     ulm_card_battery_attribute:
     ulm_card_battery_battery_state_entity_id:
     ulm_card_battery_charger_type_entity_id:
@@ -99,10 +100,11 @@ card_battery:
           item2:
             card:
               type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
               variables:
                 ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
                 ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
-              entity: "[[[ return entity.entity_id ]]]"
+              name: "[[[ return variables.ulm_card_battery_name ]]]"
               label: |
                 [[[
                   const battery_level = variables.ulm_card_battery_attribute !== null
@@ -113,8 +115,4 @@ card_battery:
                   { return variables.ulm_translation_state; }
                   else
                   { return battery_level + "%"; }
-                ]]]
-              name: |
-                [[[
-                  return states[entity.entity_id].attributes.friendly_name;
                 ]]]
