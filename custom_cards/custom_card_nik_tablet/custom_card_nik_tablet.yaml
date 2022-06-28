@@ -49,8 +49,9 @@ custom_card_nik_tablet:
         type: "custom:button-card"
         template: "card_input_boolean"
         entity: "[[[ return variables.ulm_custom_card_nik_tablet_main ]]]"
-        icon: "mdi:tablet"
-        name: "[[[ return variables.ulm_custom_card_nik_tablet_name ]]]"
+        variables:
+          ulm_card_input_boolean_name: "[[[ return variables.ulm_custom_card_nik_tablet_name ]]]"
+          ulm_card_input_boolean_icon: "mdi:tablet"
         styles:
           card:
             - box-shadow: "none"
@@ -203,16 +204,17 @@ custom_bar_card_nik_tablet:
     item1:
       card:
         type: "custom:button-card"
+        entity: "[[[ return variables.ulm_custom_bar_card_nik_tablet_card_entity ]]]"
         template:
           - "icon_info"
           - "card_generic"
+        variables:
+          ulm_card_generic_name: "[[[ return variables.ulm_custom_bar_card_nik_tablet_card_name != '' ? variables.ulm_custom_bar_card_nik_tablet_card_name : '' ]]]"
         styles:
           card:
             - box-shadow: "none"
             - border-radius: "none"
             - padding: "12px"
-        entity: "[[[ return variables.ulm_custom_bar_card_nik_tablet_card_entity ]]]"
-        name: "[[[ return variables.ulm_custom_bar_card_nik_tablet_card_name != '' ? variables.ulm_custom_bar_card_nik_tablet_card_name : '' ]]]"
     item2:
       card:
         type: "custom:bar-card"

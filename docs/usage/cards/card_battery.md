@@ -16,6 +16,7 @@ The `battery-card` is a slightly enhanced `generic-card`, that can indicate whet
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
 | entity     |         | :material-check: | This is your battery entity                  |
+| ulm_card_battery_name     | `friendly_name` | :material-close: | Customize name       |
 | ulm_card_battery_attribute |         | :material-close: | If your entity provides the battery percent in an attribute (= not as an own sensor), fill in the attribute's name here. E.g. if you have `sensor.livingroom_thermometer` and the attribute for your battery power is `sensor.livingroom_thermometer.attributes.battery_percent`, you fill in battery_percent here. |
 | ulm_card_battery_battery_state_entity_id |         | :material-close: | Entity that holds the battery state (charging/discharging). If provided, the Icon will display the current status. |
 | ulm_card_battery_charger_type_entity_id |         | :material-close: | Entity that holds the charger type (ac/wireless/none). This Entity replaces the need for the `ulm_card_battery_battery_state_entity_id` entity. If provided, the Icon will display the current charger type. This is only useful if you charge your devices Wireless and with cable. |
