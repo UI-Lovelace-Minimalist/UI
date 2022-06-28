@@ -16,6 +16,7 @@ card_thermostat:
     ulm_card_thermostat_enable_horizontal: false
     ulm_card_thermostat_enable_popup: false
     ulm_card_thermostat_fan_entity: null
+    ulm_card_thermostat_minimum_temp_spread: 1
   show_icon: false
   show_name: false
   show_label: false
@@ -218,7 +219,7 @@ card_thermostat:
                         const unit = hass.config.unit_system.temperature
                         const step = entity.attributes.target_temp_step || (unit == '°F' ? 1.0 : 0.5)
                         const new_temp =  (parseFloat(entity.attributes.target_temp_high) - step)
-                        return (new_temp < entity.attributes.target_temp_low ? new_temp : entity.attributes.target_temp_low);
+                        return (new_temp - variables.ulm_card_thermostat_minimum_temp_spread < entity.attributes.target_temp_low ? new_temp - variables.ulm_card_thermostat_minimum_temp_spread : entity.attributes.target_temp_low);
                       }
                     ]]]
                   target_temp_high: |
@@ -393,7 +394,7 @@ card_thermostat:
                       const unit = hass.config.unit_system.temperature
                       const step = entity.attributes.target_temp_step || (unit == '°F' ? 1.0 : 0.5)
                       const new_temp = (parseFloat(entity.attributes.target_temp_low) + step)
-                      return (new_temp > entity.attributes.target_temp_high ? new_temp : entity.attributes.target_temp_high)
+                      return (new_temp + variables.ulm_card_thermostat_minimum_temp_spread > entity.attributes.target_temp_high ? new_temp + variables.ulm_card_thermostat_minimum_temp_spread : entity.attributes.target_temp_high)
                     ]]]
                   entity_id: "[[[ return entity.entity_id ]]]"
               state:
