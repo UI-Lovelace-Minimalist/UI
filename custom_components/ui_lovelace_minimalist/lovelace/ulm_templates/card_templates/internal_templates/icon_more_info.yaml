@@ -12,6 +12,8 @@ icon_more_info:
       - column-gap: "0px"
     card:
       - background-color: "rgba(0,0,0,0)"
+  hold_action:
+    action: "more-info"
   custom_fields:
     item1:
       card:
@@ -19,10 +21,11 @@ icon_more_info:
         entity: "[[[ return entity.entity_id ]]]"
         template:
           - "icon"
-          - "ulm_actions_icon"
         styles:
           card:
             - overflow: "visible"
+        tap_action:
+          action: "more-info"
     item2:
       card:
         type: "custom:button-card"
@@ -30,7 +33,6 @@ icon_more_info:
         entity: "[[[ return entity.entity_id ]]]"
         template:
           - "icon_info"
-          - "ulm_actions_name"
         styles:
           card:
             - padding: "6px"

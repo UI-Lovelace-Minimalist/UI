@@ -6,6 +6,9 @@ card_input_boolean:
     - "ulm_actions_card"
     - "ulm_translation_engine"
     - "blue"
+  variables:
+    ulm_card_input_boolean_icon: "[[[ return entity.attributes.icon ]]]"
+    ulm_card_input_boolean_name: "[[[ return entity.attributes.friendly_name ]]]"
   custom_fields:
     item1:
       card:
@@ -23,6 +26,7 @@ card_input_boolean:
                 ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
                 ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
               entity: "[[[ return entity.entity_id ]]]"
+              icon: "[[[ return variables.ulm_card_input_boolean_icon; ]]]"
           item2:
             card:
               type: "custom:button-card"
@@ -32,5 +36,5 @@ card_input_boolean:
                 ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
                 ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
               entity: "[[[ return entity.entity_id ]]]"
-              name: "[[[ return entity.attributes.friendly_name != '' ? entity.attributes.friendly_name : entity.entity_id ]]]"
+              name: "[[[ return variables.ulm_card_input_boolean_name; ]]]"
               label: "[[[ return variables.ulm_translation_state ]]]"
