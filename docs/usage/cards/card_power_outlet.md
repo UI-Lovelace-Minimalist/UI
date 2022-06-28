@@ -27,8 +27,8 @@ This is the `power-outlet-card`. It shows you the state of a power outlet, and i
   template: card_power_outlet
   variables:
     ulm_card_power_outlet_consumption_sensor: sensor.power_outlet_livingroom_consumption
+    ulm_card_power_outlet_name: Power Outlet Livingroom
   entity: switch.power_outlet_livingroom
-  name: Power Outlet Livingroom
 ```
 
 ??? note "Template Code"
