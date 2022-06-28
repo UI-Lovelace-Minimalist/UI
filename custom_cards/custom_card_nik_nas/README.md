@@ -24,6 +24,9 @@ Version: 1.0.0
 <summary>1.0.0</summary>
 Initial release
 </details>
+<summary>0.1.1</summary>
+Fix for UI Minimalist v1.0.1.
+</details>
 
 ## Requirements
 

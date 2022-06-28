@@ -22,6 +22,11 @@ Version: 1.0.0
 ## Changelog
 
 <details>
+<summary>1.1.1</summary>
+Fix for UI Minimalist v1.0.1.
+</details>
+
+<details>
 <summary>1.1.0</summary>
 Support WoL
 </details>
