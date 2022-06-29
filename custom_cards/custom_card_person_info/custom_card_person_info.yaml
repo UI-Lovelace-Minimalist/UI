@@ -8,7 +8,7 @@ card_person_info:
     ulm_card_person_zone1: ""
     ulm_card_person_zone2: ""
     ulm_address: ""
-    alm_address_locality: ""
+    ulm_address_locality: ""
     ulm_card_person_driving_entity: ""
     ulm_card_person_battery_entity: ""
     ulm_card_person_battery_state_entity: ""
