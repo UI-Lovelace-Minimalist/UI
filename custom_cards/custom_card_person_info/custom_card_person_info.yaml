@@ -25,10 +25,9 @@ card_person_info:
     [[[
       if (variables.ulm_address){
         return states[variables.ulm_address].state;
-      } 
-      else if (variables.ulm_address_locality){
-          return states[variables.ulm_address_locality].attributes.Locality;
-        }
+      } else if (variables.ulm_address_locality){
+        return states[variables.ulm_address_locality].attributes.Locality;
+      }
       else if (states[variables.ulm_card_person_driving_entity].state === "on") {
         let state = states[variables.ulm_card_person_entity].state;
         return `Driving - ${variables.ulm_translation_state}`;
