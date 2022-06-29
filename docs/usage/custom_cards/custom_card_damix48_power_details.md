@@ -15,13 +15,17 @@ The `custom_card_damix48_power_details` is an extension of the standard graph ca
 ## Credits
 
 Author: Damix48
-Version: 0.1.0
+Version: 0.1.1
 
 ## Changelog
 
 <details>
 <summary>0.1.0</summary>
 Initial release.
+</details>
+<details>
+<summary>0.1.1</summary>
+Fix for UI Minimalist v1.0.1.
 </details>
 
 ## Usage

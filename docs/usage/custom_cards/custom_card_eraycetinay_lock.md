@@ -47,9 +47,9 @@ Version: 0.0.3
   template: "custom_card_eraycetinay_lock"
   name: "Door Lock"
   variables:
-    custom_card_eraycetinay_lock_tap_control: true
-    custom_card_eraycetinay_lock_battery_level: sensor.door_battery
-    custom_card_eraycetinay_lock_door_open: binary_sensor.door_open
+    ulm_custom_card_eraycetinay_lock_tap_control: true
+    ulm_custom_card_eraycetinay_lock_battery_level: sensor.door_battery
+    ulm_custom_card_eraycetinay_lock_door_open: binary_sensor.door_open
   triggers_update:
     - "sensor.door_battery"
     - "binary_sensor.door_open"
@@ -66,42 +66,42 @@ Version: 0.0.3
     <th>Explanation</th>
   </tr>
     <tr>
-    <td>custom_card_eraycetinay_lock_tap_control</td>
+    <td>ulm_custom_card_eraycetinay_lock_tap_control</td>
     <td>true</td>
     <td>false</td>
     <td>no</td>
     <td>Lock/Unlock on tap action</td>
   </tr>
   <tr>
-    <td>custom_card_eraycetinay_lock_only_open</td>
+    <td>ulm_custom_card_eraycetinay_lock_only_open</td>
     <td>true</td>
     <td>false</td>
     <td>no</td>
     <td>Only use the card to open the door (always sends lock.open on tap)</td>
   </tr>
   <tr>
-    <td>custom_card_eraycetinay_lock_battery_level</td>
+    <td>ulm_custom_card_eraycetinay_lock_battery_level</td>
     <td>sensor.door_battery</td>
     <td></td>
     <td>no</td>
     <td>Displays a warning when the battery is low.</td>
   </tr>
   <tr>
-    <td>custom_card_eraycetinay_lock_battery_warning</td>
+    <td>ulm_custom_card_eraycetinay_lock_battery_warning</td>
     <td>25</td>
     <td>20</td>
     <td>no</td>
     <td>At what battery percentage should the low battery warning appear.</td>
   </tr>
   <tr>
-    <td>custom_card_eraycetinay_lock_battery_warning_low</td>
+    <td>ulm_custom_card_eraycetinay_lock_battery_warning_low</td>
     <td>10</td>
     <td>5</td>
     <td>no</td>
     <td>At what battery percentage should the very low battery warning appear.</td>
   </tr>
   <tr>
-    <td>custom_card_eraycetinay_lock_door_open</td>
+    <td>ulm_custom_card_eraycetinay_lock_door_open</td>
     <td>binary_sensor.door_open</td>
     <td></td>
     <td>no</td>
