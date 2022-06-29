@@ -28,11 +28,16 @@ Initial release.
 Fix for UI Minimalist v1.0.1.
 </details>
 
+!!! Warning "Breaking Change"
+
+    Since `v1.0.2` you also need to specify the entity outside the variables section.
+
 ## Usage
 
 ```yaml
 - type: "custom:button-card"
   template: custom_card_damix48_power_details
+  entity: sensor.shellyem_id_channel_1_power
   variables:
     ulm_card_power_details_name: Power
     ulm_card_power_details_entity: sensor.shellyem_id_channel_1_power
