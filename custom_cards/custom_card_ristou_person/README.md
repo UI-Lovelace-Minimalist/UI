@@ -8,14 +8,9 @@ hide:
 
 # Custom Card Ristou Person
 
-<table>
-    <tbody>
-        <tr>
-            <td><img src="../../docs/assets/img/custom_card_ristou_person/custom_card_ristou_person_light.png"></td>
-            <td><img src="../../docs/assets/img/custom_card_ristou_person/custom_card_ristou_person_dark.png"></td>
-        </tr>
-    </tbody>
-</table>
+| Light | Dark |
+|---------|----|
+| ![light](../../docs/assets/img/custom_card_ristou_person/custom_card_ristou_person_light.png) | ![dark](../../docs/assets/img/custom_card_ristou_person/custom_card_ristou_person_dark.png) |
 
 ## Credits
 
@@ -25,6 +20,14 @@ hide:
 ## Changelog
 
 <details>
+<summary>1.0.1</summary>
+
+- Fixed image path on documentation
+- Added new template on card ( `icon_more_info_new` & `ulm_actions_card` )
+
+</details>
+
+<details>
 <summary>1.0.0</summary>
 Initial release
 </details>
@@ -32,7 +35,7 @@ Initial release
 ## Description
 
 The `custom_card_ristou_person` shows if a person is `home` or `not_home`. If you have setup other zones, it will show these as well (e.g `work`, `school`, `doctor`, etc... ).
-Work
+
 Showing driving state is also possible with a binary sensor.
 
 In addition, this card can display a map (either static or using buit in map) in a second row.
@@ -40,10 +43,11 @@ In addition, this card can display a map (either static or using buit in map) in
 ## Icon style
 
 As the main icon of this card you can choose the following set up
+
 | Variables | UI |
 |---------|----|
-| ulm_custom_card_ristou_use_badge: `true` <br> ulm_custom_card_ristou_use_entity_picture: `false`| ![face_icon_badge](../../docs/assets/img/custom_card_ristou_person/custom_card_ristou_person_face_icon_badge.png) |
-| ulm_custom_card_ristou_use_badge: `true` <br> ulm_custom_card_ristou_use_entity_picture: `true`| ![picture_badge](../../docs/assets/img/custom_card_ristou_person/custom_card_ristou_person_picture_badge.png) |
+| ulm_custom_card_ristou_use_badge: `true` <br> ulm_custom_card_ristou_use_entity_picture: `false` | ![face_icon_badge](../../docs/assets/img/custom_card_ristou_person/custom_card_ristou_person_face_icon_badge.png) |
+| ulm_custom_card_ristou_use_badge: `true` <br> ulm_custom_card_ristou_use_entity_picture: `true` | ![picture_badge](../../docs/assets/img/custom_card_ristou_person/custom_card_ristou_person_picture_badge.png) |
 | ulm_custom_card_ristou_use_badge: `false` <br> ulm_custom_card_ristou_use_entity_picture: `false` | ![icon_only](../../docs/assets/img/custom_card_ristou_person/custom_card_ristou_person_icon_only.png) |
 
 ## map style
