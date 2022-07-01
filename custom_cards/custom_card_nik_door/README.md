@@ -18,7 +18,6 @@ Author: Nik - 2022 Version: 1.0.0
 
 ## Changelog
 
-
 <details>
 <summary>1.0.0</summary>
 Initial release
@@ -29,7 +28,6 @@ Initial release
 - Added Battery Level for monitoring
 - Added double_tap unlock to prevent accidental opening
 </details>
-
 
 ## Requirements
 
@@ -89,7 +87,6 @@ To have the Minimalist cards and custom cards installed
 
 ## Template Code
 
-<<<<<<< HEAD
 ```yaml
 ---
 custom_card_nik_door:
@@ -241,10 +238,3 @@ custom_card_nik_door:
                     img_cell:
                       - background-color: "rgba(var(--color-green),0.2)"
 ```
-=======
-??? note "Template Code"
-
-    ```yaml title="custom_card_nik_door.yaml"
-    --8<-- "custom_cards/custom_card_nik_door/custom_card_nik_door.yaml"
-    ```
->>>>>>> 6faa88460640f0cad249ee910e1aff7d09b1fdb8
