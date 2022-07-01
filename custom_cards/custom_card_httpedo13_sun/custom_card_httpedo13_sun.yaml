@@ -8,7 +8,7 @@ custom_card_httpedo13_sun:
     language: "[[[ return hass.language; ]]]"
     showAzimuth: false
     showElevation: false
-    timeFormat: 24h
+    timeFormat: "24h"
     title:
   tap-action:
     action: "none"
