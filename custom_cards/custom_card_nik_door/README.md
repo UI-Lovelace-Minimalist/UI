@@ -21,6 +21,9 @@ Author: Nik - 2022 Version: 1.0.0
 <details>
 <summary>1.0.0</summary>
 Initial release
+<summary>2.0.0</summary>
+- Added Battery Level for monitoring
+- Added double_tap unlock to prevent accidental opening
 </details>
 
 ## Requirements
