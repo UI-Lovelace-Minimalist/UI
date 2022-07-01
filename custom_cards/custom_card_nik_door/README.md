@@ -62,11 +62,18 @@ To have the Minimalist cards and custom cards installed
     <td>Your Door Lock entity</td>
   </tr>
   <tr>
+    <td>ulm_custom_card_entity_1_lock_battery</td>
+    <td>sensor.blindato_battery</td>
+    <td>Yes</td>
+    <td>Your Door Lock battery sensor</td>
+  </tr>
+  <tr>
     <td>entity</td>
     <td>sensor.nuki_blindato_door_security_state</td>
     <td>Yes</td>
     <td>Your door sensor to track "Open" and "Close" state.</td>
   </tr>
+  
 </tbody>
 </table>
 
@@ -78,22 +85,26 @@ custom_card_nik_door:
   template:
     - "ulm_language_variables"
   variables:
-    ulm_custom_card_entity_1_name: "[[[ return variables.ulm_custom_card_entity_1_name]]]"
-    ulm_custom_card_entity_1_lock: "[[[ return variables.ulm_custom_card_entity_1_lock]]]"
+    ulm_custom_card_entity_1_name: "[[[ return variables.ulm_custom_card_entity_1_name ]]]"
+    ulm_custom_card_entity_1_lock: "[[[ return variables.ulm_custom_card_entity_1_lock ]]]"
+    ulm_custom_card_entity_1_lock_battery: "[[[ return variables.ulm_custom_card_entity_1_lock_battery ]]]"
   show_icon: false
   show_name: false
   show_label: false
+  lock:
+    enabled: true
+    unlock: "double_tap"
   styles:
     grid:
       - grid-template-areas: >
           [[[
-                var areas = [];
-                areas.push("item1 item1");
-                areas.push("item2 item2");
-                return "\"" + areas.join("\" \"") + "\"";
+            var areas = [];
+            areas.push("item1 item1");
+            areas.push("item2 item2");
+            return "\"" + areas.join("\" \"") + "\"";
           ]]]
       - grid-template-columns: "1fr 1fr"
-      - grid-template-rows: "min-content" "min-content"
+      - grid-template-rows: "min-content min-content"
       - row-gap: "12px"
     card:
       - border-radius: "var(--border-radius)"
@@ -106,11 +117,36 @@ custom_card_nik_door:
         type: "custom:button-card"
         template:
           - "icon_more_info"
+        styles:
+          icon:
+            - color: "rgba(var(--color-theme),0.9)"
+            - width: "20px"
+            - place-self: "center"
+          custom_fields:
+            lock:
+              - z-index: 2
+              - border-radius: "50%"
+              - position: "absolute"
+              - left: "30px"
+              - top: "24px"
+              - height: "18px"
+              - width: "18px"
+              - border: "2px solid var(--card-background-color)"
+              - font-size: "12px"
+              - line-height: "14px"
+              - background-color: >
+                  [[[
+                    if (states[variables.ulm_custom_card_entity_1_lock_battery].state <= 90){
+                      return "rgba(var(--color-red),1)";
+                    } else {
+                      return "rgba(var(--color-green),1)";
+                    }
+                  ]]]
         custom_fields:
           item1:
             card:
               type: "custom:button-card"
-              entity: "[[[ return entity.entity_id]]]"
+              entity: "[[[ return entity.entity_id ]]]"
               icon: "mdi:door"
               styles:
                 icon:
@@ -122,12 +158,30 @@ custom_card_nik_door:
           item2:
             card:
               type: "custom:button-card"
-              entity: "[[[ return entity.entity_id]]]"
-              name: "[[[ return variables.ulm_custom_card_entity_1_name]]]"
+              entity: "[[[ return entity.entity_id ]]]"
+              name: "[[[ return variables.ulm_custom_card_entity_1_name ]]]"
               label: >
                 [[[
                   return entity.state
                 ]]]
+          lock: >
+            [[[
+              if (states[variables.ulm_custom_card_entity_1_lock_battery].state == 100){
+                return '<ha-icon icon="mdi:battery" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+
+              } if (states[variables.ulm_custom_card_entity_1_lock_battery].state >= 80){
+                return '<ha-icon icon="mdi:battery-70" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+
+              } if (states[variables.ulm_custom_card_entity_1_lock_battery].state >= 60){
+                return '<ha-icon icon="mdi:battery-60" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+
+              } if (states[variables.ulm_custom_card_entity_1_lock_battery].state >= 50){
+                return '<ha-icon icon="mdi:battery-50" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+              }
+                if (states[variables.ulm_custom_card_entity_1_lock_battery].state <= 40){
+                return '<ha-icon icon="mdi:battery-20" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+              }
+            ]]]
     item2:
       card:
         type: "custom:button-card"
@@ -138,12 +192,12 @@ custom_card_nik_door:
               type: "custom:button-card"
               template: "widget_icon"
               icon: "mdi:lock-open-variant"
-              entity: "[[[ return entity.entity_id]]]"
+              entity: "[[[ return entity.entity_id ]]]"
               tap_action:
                 action: "call-service"
                 service: "lock.open"
                 service_data:
-                  entity_id: "[[[ return variables.ulm_custom_card_entity_1_lock]]]"
+                  entity_id: "[[[ return variables.ulm_custom_card_entity_1_lock ]]]"
               state:
                 - value: "Open"
                   styles:
@@ -162,12 +216,12 @@ custom_card_nik_door:
               type: "custom:button-card"
               template: "widget_icon"
               icon: "mdi:lock"
-              entity: "[[[ return entity.entity_id]]]"
+              entity: "[[[ return entity.entity_id ]]]"
               tap_action:
                 action: "call-service"
                 service: "lock.lock"
                 service_data:
-                  entity_id: "[[[ return variables.ulm_custom_card_entity_1_lock]]]"
+                  entity_id: "[[[ return variables.ulm_custom_card_entity_1_lock ]]]"
               state:
                 - value: "Closed & Locked"
                   styles:
