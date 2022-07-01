@@ -81,7 +81,6 @@ To have the Minimalist cards and custom cards installed
     <td>Yes</td>
     <td>Your door sensor to track "Open" and "Close" state.</td>
   </tr>
-  
 </tbody>
 </table>
 
