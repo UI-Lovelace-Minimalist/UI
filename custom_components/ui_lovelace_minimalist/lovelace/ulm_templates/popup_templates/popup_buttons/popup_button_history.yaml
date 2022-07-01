@@ -1,4 +1,4 @@
 ---
 popup_button_history:
-  template: "ulm_language_variables"
-  name: "[[[ return variables.ulm_popups_history ]]]"
+  template: "ulm_translation_engine"
+  name: "[[[ return variables.ulm_translation_history; ]]]"

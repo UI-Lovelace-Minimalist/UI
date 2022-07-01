@@ -22,7 +22,6 @@ hide:
 | Variable                                     | Default | Required         | Notes                                           |
 | -------------------------------------------- | ------- | ---------------- | ----------------------------------------------- |
 | entity                                       |         | :material-check: | The media-player entity                         |
-| name                                         |         | :material-check: | Name to display for your media-player           |
 | ulm_card_media_player_name                   |         |                  | Name to display for your media-player           |
 | ulm_card_media_player_icon                   |         |                  | Change the icon displayed                       |
 | ulm_card_media_player_enable_art             | false   |                  | Enable album picture on background              |

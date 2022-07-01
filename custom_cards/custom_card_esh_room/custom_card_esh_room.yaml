@@ -6,19 +6,16 @@ card_esh_room:
   show_icon: true
   show_name: true
   show_label: true
+  template:
+    - "ulm_translation_engine"
   size: "20px"
   label: >-
     [[[
-        if (entity.state !="unavailable"){
-          if (entity.state =="off"){
-            var bri = Math.round(entity.attributes.brightness / 2.55);
-            return "Off";
-          }else{
-            var bri = Math.round(entity.attributes.brightness / 2.55);
-            return (bri ? bri : "0") + "%";
-          }
-        }else{
-          return "Unavailable";
+        if (entity.state == "on"){
+          var bri = Math.round(entity.attributes.brightness / 2.55);
+          return (bri ? bri + "%" : variables.ulm_translation_state) ;
+        } else{
+          return variables.ulm_translation_state;
         }
     ]]]
   styles:

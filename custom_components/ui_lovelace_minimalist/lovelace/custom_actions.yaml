@@ -1,0 +1,12 @@
+---
+ulm_custom_actions:
+  variables:
+    ulm_card_tap_action: "toggle"
+    ulm_card_hold_action: "popup"
+    ulm_card_double_tap_action: "adaptive"
+    ulm_icon_tap_action: "toggle"
+    ulm_icon_hold_action: "popup"
+    ulm_icon_double_tap_action: "adaptive"
+    ulm_name_tap_action: "toggle"
+    ulm_name_hold_action: "popup"
+    ulm_name_double_tap_action: "adaptive"

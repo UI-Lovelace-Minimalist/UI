@@ -3,13 +3,13 @@
 chip_power_consumption:
   template:
     - "chips"
-    - "ulm_language_variables"
+    - "ulm_translation_engine"
   triggers_update: "all"
   label: |
     [[[
       var amount = variables.ulm_chip_electric_price != "" ? true : false
       if (amount){
-        return "⚡ " +  states[variables.ulm_chip_electric_price].state + variables.ulm_currency;
+        return "⚡ " +  states[variables.ulm_chip_electric_price].state + variables.ulm_translation_currency;
       } else {
         return "⚡ " +  states[variables.ulm_chip_electric_consumption].state + states[variables.ulm_chip_electric_consumption].attributes.unit_of_measurement;
       }

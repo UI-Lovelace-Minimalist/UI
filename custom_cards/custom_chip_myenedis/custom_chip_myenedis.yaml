@@ -3,7 +3,6 @@
 custom_chip_myenedis:
   template:
     - "chips"
-    - "ulm_language_variables"
   variables:
     ulm_chip_separate_hp_hc: false
     ulm_chip_unit_of_measurement: "[[[ return entity.attributes.unit_of_measurement ]]]"

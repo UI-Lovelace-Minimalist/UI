@@ -23,12 +23,17 @@ Version: 1.0.0
 <summary>1.0.0</summary>
 Initial release
 </details>
+<details>
+<summary>0.1.1</summary>
+Fix for UI Minimalist v1.0.1.
+</details>
 
 ## Requirements
 
 - To have all the Minimalist Cards and Custom Cards;
 - To have installed and configured Kiosk APP on the Tablet (enabled permissions etc...);
 - To have the HACS Integration "Fully Kiosk Browser" installed and configured in HomeAssistant;
+- Add [Bar Card](https://github.com/custom-cards/bar-card) to HACS frontend
 
 ## Usage
 

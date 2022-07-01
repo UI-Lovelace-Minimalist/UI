@@ -16,6 +16,8 @@ This is a `generic-card` with swapped label and name.
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
 | entity     |         | :material-check: |                   |
+| ulm_card_generic_swap_name |   | :material-close: | Set custom Name |
+| ulm_card_generic_swap_icon |   | :material-close: | Set custom Icon |
 
 ## Usage
 

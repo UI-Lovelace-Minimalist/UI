@@ -3,6 +3,7 @@ title: Bar Card Custom-card
 hide:
   - toc
 ---
+
 <!-- markdownlint-disable MD046 -->
 
 # Custom-card "Bar Card"
@@ -22,6 +23,10 @@ Version: 1.0.0
 <summary>1.0.0</summary>
 Initial release.
 </details>
+<details>
+<summary>0.1.1</summary>
+Fix for UI Minimalist v1.0.1.
+</details>
 
 ## Requirements
 
@@ -32,7 +37,7 @@ This card needs the following to function correctly:
 ## Usage
 
 ```yaml
-- type: 'custom:button-card'
+- type: "custom:button-card"
   template: custom_card_bar_card
   variables:
     ulm_custom_card_bar_card_entity: sensor.memory_use_percent
@@ -108,9 +113,15 @@ This card needs the following to function correctly:
 ## Example
 
 ```yaml
-- type: 'custom:button-card'
+- type: "custom:button-card"
   template: custom_card_bar_card
   variables:
     ulm_custom_card_bar_card_entity: sensor.memory_use_percent
     ulm_custom_card_bar_card_name: Memory Usage
 ```
+
+??? note "Template Code"
+
+    ```yaml title="custom_card_bar_card.yaml"
+    --8<-- "custom_cards/custom_card_bar_card/custom_card_bar_card.yaml"
+    ```

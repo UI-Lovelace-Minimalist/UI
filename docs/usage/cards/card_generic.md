@@ -16,6 +16,8 @@ This is the `generic-card` to display values from a sensor, eg. to show humidity
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
 | entity     |         | :material-check: |                   |
+| ulm_card_generic_name |   | :material-close: | Set custom Name |
+| ulm_card_generic_icon |   | :material-close: | Set custom Icon |
 
 ## Usage
 

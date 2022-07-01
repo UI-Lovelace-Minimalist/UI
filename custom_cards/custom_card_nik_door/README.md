@@ -3,6 +3,7 @@ title: Minimal Door Lock Card
 hide:
   - toc
 ---
+
 <!-- markdownlint-disable MD046 -->
 
 # Custom-card "Minimal Door Lock"
@@ -29,7 +30,8 @@ To have the Minimalist cards and custom cards installed
 ## Usage
 
 ```yaml
-- type: 'custom:button-card'
+
+- type: "custom:button-card"
   template: custom_card_nik_door
   entity: sensor.nuki_blindato_door_security_state
   variables:
@@ -79,6 +81,7 @@ To have the Minimalist cards and custom cards installed
 
 ## Template Code
 
+<<<<<<< HEAD
 ```yaml
 ---
 custom_card_nik_door:
@@ -230,3 +233,10 @@ custom_card_nik_door:
                     img_cell:
                       - background-color: "rgba(var(--color-green),0.2)"
 ```
+=======
+??? note "Template Code"
+
+    ```yaml title="custom_card_nik_door.yaml"
+    --8<-- "custom_cards/custom_card_nik_door/custom_card_nik_door.yaml"
+    ```
+>>>>>>> 6faa88460640f0cad249ee910e1aff7d09b1fdb8

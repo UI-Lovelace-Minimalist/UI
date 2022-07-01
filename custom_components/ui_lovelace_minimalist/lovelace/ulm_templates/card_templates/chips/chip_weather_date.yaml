@@ -3,7 +3,10 @@ chip_weather_date:
   template: "chips"
   entity: "[[[ return variables.ulm_weather]]]"
   variables:
-    ulm_language: "[[[return window.navigator.language ]]]"
+    ulm_language: >
+      [[[
+        return hass["language"];
+      ]]]
   triggers_update: "all"
   tap_action:
     action: "more-info"
@@ -13,36 +16,23 @@ chip_weather_date:
       const options = {month: 'short', day: 'numeric' };
       var locale = variables.ulm_language;
       let formatted_date = event.toLocaleDateString(locale, options);
-
-      var icon = '🌡️';
-      if (states[variables.ulm_weather].state == 'clear-night'){
-        var icon = '🌙';
-      } else if(states[variables.ulm_weather].state == 'cloudy'){
-        var icon = '☁️';
-      } else if(states[variables.ulm_weather].state == 'exceptional'){
-        var icon = '🌞';
-      } else if(states[variables.ulm_weather].state == 'fog'){
-        var icon = '🌫️';
-      } else if(states[variables.ulm_weather].state == 'hail'){
-        var icon = '⛈️';
-      } else if(states[variables.ulm_weather].state == 'lightning'){
-        var icon = '⚡';
-      } else if(states[variables.ulm_weather].state == 'lightning-rainy'){
-        var icon = '⛈️';
-      } else if(states[variables.ulm_weather].state == 'partlycloudy'){
-        var icon = '⛅';
-      } else if(states[variables.ulm_weather].state == 'pouring'){
-        var icon = '🌧️';
-      } else if(states[variables.ulm_weather].state == 'rainy'){
-        var icon = '💧';
-      } else if(states[variables.ulm_weather].state == 'snowy'){
-        var icon = '❄️';
-      } else if(states[variables.ulm_weather].state == 'snowy-rainy'){
-        var icon = '🌨️';
-      } else if(states[variables.ulm_weather].state == 'sunny'){
-        var icon = '☀️';
-      } else if(states[variables.ulm_weather].state == 'windy'){
-        var icon = '🌪️';
-      }
-      return icon + ' ' + formatted_date
+      var state = states[variables.ulm_weather].state;
+      var icon = {
+        "clear-night": "🌙",
+        "cloudy": "☁️",
+        "exceptional": "🌞",
+        "fog": "🌫️",
+        "hail": "⛈️",
+        "lightning": "⚡",
+        "lightning-rainy": "⛈️",
+        "partlycloudy": "⛅",
+        "pouring": "🌧️",
+        "rainy": "💧",
+        "snowy": "❄️",
+        "snowy-rainy": "🌨️",
+        "sunny": "☀️",
+        "windy": "🌪️",
+        "default": "🌡️"
+        }
+      return (icon[state] || icon["default"]) + ' ' + formatted_date
     ]]]
