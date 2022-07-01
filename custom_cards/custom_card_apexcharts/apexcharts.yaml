@@ -57,15 +57,25 @@ custom_card_apexcharts:
       card:
         type: "custom:button-card"
         entity: "[[[ return variables.entity_1.entity_id ]]]"
-        icon: "[[[ return variables.entity_1.icon ]]]"
-        name: "[[[ return variables.entity_1.name ]]]"
         template:
           - "card_generic_swap"
+        variables:
+          ulm_card_generic_swap_name: "[[[ return variables.entity_1.name ]]]"
+          ulm_card_generic_swap_icon: "[[[ return variables.entity_1.icon ]]]"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              custom_fields:
+                item1:
+                  card:
+                    type: "custom:button-card"
+                    styles:
+                      icon:
+                        - color: "[[[ return `rgba(var(--color-${variables.entity_1.color}), 1)`;]]]"
+                      img_cell:
+                        - background-color: "[[[ return `rgba(var(--color-${variables.entity_1.color}), 0.20)`;]]]"
         styles:
-          icon:
-            - color: "[[[ return `rgba(var(--color-${variables.entity_1.color}), 1)`;]]]"
-          img_cell:
-            - background-color: "[[[ return `rgba(var(--color-${variables.entity_1.color}), 0.20)`;]]]"
           card:
             - box-shadow: "none"
             - border-radius: "none"
@@ -75,15 +85,25 @@ custom_card_apexcharts:
       card:
         type: "custom:button-card"
         entity: "[[[ return variables.entity_2.entity_id ]]]"
-        icon: "[[[ return variables.entity_2.icon ]]]"
-        name: "[[[ return variables.entity_2.name ]]]"
         template:
           - "card_generic_swap"
+        variables:
+          ulm_card_generic_swap_name: "[[[ return variables.entity_2.name ]]]"
+          ulm_card_generic_swap_icon: "[[[ return variables.entity_2.icon ]]]"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              custom_fields:
+                item1:
+                  card:
+                    type: "custom:button-card"
+                    styles:
+                      icon:
+                        - color: "[[[ return `rgba(var(--color-${variables.entity_2.color}), 1)`;]]]"
+                      img_cell:
+                        - background-color: "[[[ return `rgba(var(--color-${variables.entity_2.color}), 0.20)`;]]]"
         styles:
-          icon:
-            - color: "[[[ return `rgba(var(--color-${variables.entity_2.color}), 1)`;]]]"
-          img_cell:
-            - background-color: "[[[ return `rgba(var(--color-${variables.entity_2.color}), 0.20)`;]]]"
           card:
             - box-shadow: "none"
             - border-radius: "none"
@@ -93,15 +113,25 @@ custom_card_apexcharts:
       card:
         type: "custom:button-card"
         entity: "[[[ return variables.entity_3.entity_id ]]]"
-        icon: "[[[ return variables.entity_3.icon ]]]"
-        name: "[[[ return variables.entity_3.name ]]]"
         template:
           - "card_generic_swap"
+        variables:
+          ulm_card_generic_swap_name: "[[[ return variables.entity_3.name ]]]"
+          ulm_card_generic_swap_icon: "[[[ return variables.entity_3.icon ]]]"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              custom_fields:
+                item1:
+                  card:
+                    type: "custom:button-card"
+                    styles:
+                      icon:
+                        - color: "[[[ return `rgba(var(--color-${variables.entity_3.color}), 1)`;]]]"
+                      img_cell:
+                        - background-color: "[[[ return `rgba(var(--color-${variables.entity_3.color}), 0.20)`;]]]"
         styles:
-          icon:
-            - color: "[[[ return `rgba(var(--color-${variables.entity_3.color}), 1)`;]]]"
-          img_cell:
-            - background-color: "[[[ return `rgba(var(--color-${variables.entity_3.color}), 0.20)`;]]]"
           card:
             - box-shadow: "none"
             - border-radius: "none"

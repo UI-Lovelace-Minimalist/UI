@@ -8,6 +8,8 @@ card_power_outlet:
     - "ulm_actions_card"
   variables:
     ulm_card_power_outlet_consumption_sensor:
+    ulm_card_power_outlet_name: "[[[ return entity.attributes.friendly_name ]]]"
+    ulm_card_power_outlet_icon: "[[[ return entity.attributes.icon ]]]"
   triggers_update: "all"
   custom_fields:
     item1:
@@ -26,6 +28,7 @@ card_power_outlet:
                 ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
                 ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
               entity: "[[[ return entity.entity_id ]]]"
+              icon: "[[[ return variables.ulm_card_power_outlet_icon ]]]"
           item2:
             card:
               type: "custom:button-card"
@@ -35,6 +38,7 @@ card_power_outlet:
                 ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
                 ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
               entity: "[[[ return entity.entity_id ]]]"
+              name: "[[[ return variables.ulm_card_power_outlet_name ]]]"
               label: |-
                 [[[
                   if (entity.state === "on" && variables.ulm_card_power_outlet_consumption_sensor !== null) {

@@ -150,6 +150,8 @@ input_datetime:
 widget_text:
   tap_action:
     action: "toggle"
+  template:
+    - "ulm_translation_engine"
   show_icon: false
   show_label: true
   show_name: false

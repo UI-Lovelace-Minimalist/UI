@@ -224,7 +224,7 @@ card_cover:
                   if (variables.ulm_card_cover_display_left_right){
                     return "mdi:arrow-left";
                   }
-                  if (variables.ulm_card_curtain_display_collapse_expand){
+                  if (variables.ulm_card_curtain_display_collapse_expand || variables.ulm_card_cover_gate){
                     return "mdi:arrow-collapse-horizontal";
                   }
                   return "mdi:arrow-down";
@@ -258,7 +258,7 @@ card_cover:
                   if (variables.ulm_card_cover_display_left_right){
                     return "mdi:arrow-right";
                   }
-                  if (variables.ulm_card_curtain_display_collapse_expand){
+                  if (variables.ulm_card_curtain_display_collapse_expand || variables.ulm_card_cover_gate){
                     return "mdi:arrow-expand-horizontal";
                   }
                   return "mdi:arrow-up";

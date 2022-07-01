@@ -2,14 +2,13 @@
 custom_card_paddy_waste_collection:
   template:
     - "card_generic_swap"
+  variables:
+    ulm_card_generic_swap_name: "[[[ return variables.ulm_custom_card_paddy_waste_collection_name; ]]]"
+    ulm_card_generic_swap_icon: "[[[ return variables.ulm_custom_card_paddy_waste_collection_icon; ]]]"
   state:
     - operator: "template"
       value: "[[[ return states[entity.entity_id].attributes.daysTo == 0; ]]]"
       styles:
-        img_cell:
-          - background-color: "rgba(var(--color-red),0.5)"
-        icon:
-          - color: "rgba(var(--color-red),1)"
         custom_fields:
           notification:
             - border-radius: "50%"
@@ -28,10 +27,6 @@ custom_card_paddy_waste_collection:
     - operator: "template"
       value: "[[[ return states[entity.entity_id].attributes.daysTo == 1; ]]]"
       styles:
-        img_cell:
-          - background-color: "rgba(var(--color-red),0.05)"
-        icon:
-          - color: "rgba(var(--color-red),1)"
         custom_fields:
           notification:
             - border-radius: "50%"
@@ -65,6 +60,35 @@ custom_card_paddy_waste_collection:
                   return "rgba(var(--color-red),1)";
                 ]]]
   custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        template:
+          - "icon_more_info"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              state:
+                - operator: "template"
+                  value: "[[[ return states[entity.entity_id].attributes.daysTo == 0; ]]]"
+                  styles:
+                    img_cell:
+                      - background-color: "rgba(var(--color-red),0.5)"
+                    icon:
+                      - color: "rgba(var(--color-red),1)"
+                - operator: "template"
+                  value: "[[[ return states[entity.entity_id].attributes.daysTo == 1; ]]]"
+                  styles:
+                    img_cell:
+                      - background-color: "rgba(var(--color-red),0.05)"
+                    icon:
+                      - color: "rgba(var(--color-red),1)"
+          item2:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
     notification: >
       [[[
         if (entity.state == 'unavailable' || states[entity.entity_id].attributes.daysTo == 0 || states[entity.entity_id].attributes.daysTo == 1){

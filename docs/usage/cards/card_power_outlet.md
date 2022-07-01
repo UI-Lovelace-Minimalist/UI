@@ -16,7 +16,8 @@ This is the `power-outlet-card`. It shows you the state of a power outlet, and i
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
 | entity     |         | :material-check: |                   |
-|name|  | :material-check: | Enable background |
+| ulm_card_power_outlet_name |   | :material-close: | Set custom Name |
+| ulm_card_power_outlet_icon |   | :material-close: | Set custom Icon |
 |ulm_card_power_outlet_consumption_sensor|  | :material-close: | If you set this sensor, the `power-outlet-card` shows the energy consumption next to the state. |
 
 ## Usage
@@ -26,8 +27,8 @@ This is the `power-outlet-card`. It shows you the state of a power outlet, and i
   template: card_power_outlet
   variables:
     ulm_card_power_outlet_consumption_sensor: sensor.power_outlet_livingroom_consumption
+    ulm_card_power_outlet_name: Power Outlet Livingroom
   entity: switch.power_outlet_livingroom
-  name: Power Outlet Livingroom
 ```
 
 ??? note "Template Code"
