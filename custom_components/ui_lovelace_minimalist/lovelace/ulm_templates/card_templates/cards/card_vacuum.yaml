@@ -73,8 +73,6 @@ card_vacuum:
     item1:
       card:
         type: "custom:button-card"
-        template:
-          - "icon_more_info"
         custom_fields:
           item1:
             card:
