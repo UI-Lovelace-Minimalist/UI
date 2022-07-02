@@ -16,6 +16,7 @@ card_binary_sensor:
       card:
         type: "custom:button-card"
         template:
+          - "icon_more_info"
           - "blue"
         custom_fields:
           item1:
