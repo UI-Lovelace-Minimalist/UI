@@ -97,6 +97,10 @@ Version: 1.2.0
 ## Changelog
 
 <details>
+<summary>1.3.0</summary>
+Option to trigger automation trigger
+</details>
+<details>
 <summary>1.2.0</summary>
 Implementation of nested variables
 </details>
@@ -122,30 +126,35 @@ Initial release
       icon_color: "yellow"
       name: "YOUR_NAME"
       bg_color: "yellow"
+      automation: false
     entity_2:
       entity_id: "scene.YOUR_SCENE"
       icon: "mdi:YOUR_ICON"
       icon_color: "blue"
       name: "YOUR_NAME"
       bg_color: "blue"
+      automation: false
     entity_3:
       entity_id: "scene.YOUR_SCENE"
       icon: "mdi:YOUR_ICON"
       icon_color: "purple"
       name: "YOUR_NAME"
       bg_color: "purple"
+      automation: false
     entity_4:
       entity_id: "scene.YOUR_SCENE"
       icon: "mdi:YOUR_ICON"
       icon_color: "green"
       name: "YOUR_NAME"
       bg_color: "green"
+      automation: false
     entity_5:
       entity_id: "scene.YOUR_SCENE"
       icon: "mdi:YOUR_ICON"
       icon_color: "red"
       name: "YOUR_NAME"
       bg_color: "red"
+      automation: false
 ```
 
 ## Requirements
@@ -190,6 +199,12 @@ n/a
 <td>yellow, blue, purple, green, red</td>
 <td>no</td>
 <td>The color of the icon background to show</td>
+</tr>
+<tr>
+<td>automation</td>
+<td>true/false</td>
+<td>no</td>
+<td>If the entity is an automation and needs te be triggered as and automation</td>
 </tr>
 </table>
 
