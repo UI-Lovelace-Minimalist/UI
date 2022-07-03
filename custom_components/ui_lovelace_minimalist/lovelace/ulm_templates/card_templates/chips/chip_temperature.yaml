@@ -38,4 +38,5 @@ chip_temperature:
       if (inside_temp) {
         label = label + " / " + convertTemperature(inside_temp) + "°";
       }
+      return label;
     ]]]
