@@ -4,7 +4,7 @@ power_state_button_style:
     img_cell:
       - background-color: >
           [[[
-            var offColor = "rgba(var(--color-grey), 0.1)";
+            var offColor = variables.button.background_color;
             var onColor = "rgba(var(--color-red), 0.2)";
             if (entity.state) {
               if (entity.state == "off" || entity.state == "PowerOff") {

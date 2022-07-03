@@ -1,0 +1,77 @@
+---
+icon_power_plug:
+  icon: "mdi:power-plug"
+
+icon_fire_alert:
+  icon: "mdi:fire-alert"
+
+icon_cctv:
+  icon: "mdi:cctv"
+
+icon_nas:
+  icon: "mdi:nas"
+
+icon_file_video:
+  icon: "mdi:file-video"
+
+icon_motion_sensor:
+  icon: "mdi:motion-sensor"
+
+icon_desktop_classic:
+  icon: "mdi:desktop-classic"
+
+icon_doorbell_video:
+  icon: "mdi:doorbell-video"
+
+icon_solar_power:
+  icon: "mdi:solar-power"
+
+icon_wifi_cog:
+  icon: "mdi:wifi-cog"
+
+icon_door_sliding:
+  icon: "mdi:door-sliding"
+
+icon_washing_machine:
+  icon: "mdi:washing-machine"
+
+icon_tumble_dryer:
+  icon: "mdi:tumble-dryer"
+
+
+# zoning locations
+icon_location_bloxham_school:
+  icon: "mdi:school"
+
+icon_location_gym:
+  icon: "mdi:run"
+
+icon_location_hollys_house:
+  icon: "mdi:human-female-boy"
+
+icon_location_home:
+  icon: "mdi:home"
+
+icon_location_jason_beer:
+  icon: "mdi:glass-mug-variant"
+
+icon_location_jus_parents:
+  icon: "mdi:human-male-female"
+
+icon_location_kevs_parents:
+  icon: "mdi:human-male-female"
+
+icon_location_kks_house:
+  icon: "mdi:diamond-stone"
+
+icon_location_louises_house:
+  icon: "mdi:human-female-girl"
+
+icon_location_martin_della:
+  icon: "mdi:airport"
+
+icon_location_repl_group:
+  icon: "mdi:office-building"
+
+icon_location_tudor_hall_school:
+  icon: "mdi:human-male-board"

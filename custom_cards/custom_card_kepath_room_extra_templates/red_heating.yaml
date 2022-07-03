@@ -1,0 +1,19 @@
+---
+red_heating:
+  state:
+    - operator: "template"
+      value: >
+        [[[
+          return (entity.attributes.hvac_action == 'heating')
+        ]]]
+      styles:
+        icon:
+          - color: "rgba(var(--color-red),1)"
+        label:
+          - color: "rgba(var(--color-red-text),1)"
+        name:
+          - color: "rgba(var(--color-red-text),1)"
+        img_cell:
+          - background-color: "rgba(var(--color-red), 0.2)"
+        card:
+          - background-color: "rgba(var(--color-background-red),var(--opacity-bg))"

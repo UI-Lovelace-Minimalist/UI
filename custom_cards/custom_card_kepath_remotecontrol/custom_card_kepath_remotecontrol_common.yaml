@@ -3,14 +3,20 @@
 #####  COMMON VARIABLES                             ####
 ########################################################
 
+vars_remotecontrol_constants:
+  template:
+    - "ulm_custom_card_kepath_remotecontrol_language_variables"
+    - "vars_adb_androidtv_firetv_constants"
+    - "vars_adb_androidtv_nvidia_constants"
+
 vars_remotecontrol_shared:
   variables:
-    entity_id:
+    # entity_id:
     background_color: "rgba(var(--color-grey), 0.1)"
 
 vars_remotecontrol_shared_grey:
   variables:
-    entity_id:
+    # entity_id:
     background_color: "rgba(var(--color-grey), 0.2)"
 
 ########################################################
@@ -20,12 +26,11 @@ vars_remotecontrol_shared_grey:
 card_remotecontrol_group_power:
   type: "custom:button-card"
   template:
-    - "layout_group"
+    - "layout_subgroup"
     - "vars_remotecontrol_shared"
   triggers_update: "all"
-  # entity: "[[[ return variables.entity_id ]]]"
   custom_fields:
-    group1:
+    subgroup1:
       card:
         type: "custom:button-card"
         template: "layout_cell_gap_cell"
@@ -62,11 +67,7 @@ card_remotecontrol_group_power:
                   background_color: >
                     [[[
                       if (variables.cell1.button.background_color == null) {
-                        if (variables.background_color == null) {
-                          return null;
-                        } else {
-                          return variables.background_color;
-                        }
+                        return variables.background_color;
                       } else {
                         return variables.cell1.button.background_color;
                       }
@@ -106,11 +107,7 @@ card_remotecontrol_group_power:
                   background_color: >
                     [[[
                       if (variables.cell2.button.background_color == null) {
-                        if (variables.background_color == null) {
-                          return null;
-                        } else {
-                          return variables.background_color;
-                        }
+                        return variables.background_color;
                       } else {
                         return variables.cell2.button.background_color;
                       }
@@ -765,11 +762,7 @@ card_remotecontrol_group_volume:
             background_color: >
               [[[
                 if (variables.row3.button.background_color == null) {
-                  if (variables.background_color == null) {
-                    return null;
-                  } else {
-                    return variables.background_color;
-                  }
+                  return variables.background_color;
                 } else {
                   return variables.row3.button.background_color;
                 }
@@ -2117,12 +2110,23 @@ layout_group:
       - box-shadow: "var(--box-shadow)"
       - padding: "12px"
 
+layout_subgroup:
+  styles:
+    grid:
+      - grid-template-areas: "'subgroup1'"
+      - grid-template-columns: "1fr"
+      - grid-template-rows: "min-content"
+      - row-gap: "0px"
+    card:
+      - box-shadow: "none"
+      - padding: "0px"
+
 layout_common_button:
   styles:
     card:
       - box-shadow: "none"
       - padding: "0px"
-      - background-color: "rgba(var(--color-grey), 0.05)"
+      # - background-color: "rgba(var(--color-grey), 0.05)"
       - border-radius: "14px"
       - place-self: "center"
     icon:
