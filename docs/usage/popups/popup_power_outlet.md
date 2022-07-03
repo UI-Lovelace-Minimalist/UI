@@ -18,6 +18,11 @@ hide:
 
 This popup is displayed using ``hold_action`` and it is compatible with the following cards/chips :
 
+!!! Warning "Warning"
+
+    The popup is not compatible with the custom_actions!
+    The hold_action only works on the outer layer!
+
 - card_generic
 - card_generic_swap
 - card_binary_sensor

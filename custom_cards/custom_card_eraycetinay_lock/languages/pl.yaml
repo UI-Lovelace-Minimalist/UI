@@ -1,8 +1,0 @@
----
-ulm_custom_card_eraycetinay_lock_language_variables:
-  variables:
-    custom_card_eraycetinay_lock_locked: "zamknięty"
-    custom_card_eraycetinay_lock_unlocked: "otwarty"
-    custom_card_eraycetinay_lock_locking: "zamykanie"
-    custom_card_eraycetinay_lock_unlocking: "otwieranie"
-    custom_card_eraycetinay_lock_unavailable: "niedostępny"

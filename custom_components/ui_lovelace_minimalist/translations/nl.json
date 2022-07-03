@@ -1,0 +1,49 @@
+{
+    "title": "UI Lovelace Minimalist",
+    "config": {
+        "step": {
+            "user": {
+                "title": "UI Lovelace Minimalist Instellingen",
+                "description": "",
+                "data": {
+                    "language": "Taal",
+                    "sidepanel_enabled": "Een Dashboard aan de zijbalk toevoegen",
+                    "sidepanel_icon": "Dashboard icon",
+                    "sidepanel_title": "Dashboard titel",
+                    "adaptive_ui_enabled": "Een adaptive Dashboard aan de zijbalk toevoegen",
+                    "adaptive_ui_title": "adaptive dashboard titel",
+                    "adaptive_ui_icon": "adaptive dashboard icon",
+                    "theme": "Thema",
+                    "include_other_cards": "'Frontend' repositories toevoegen die nodig zijn"
+                }
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "Enkel een installatie van UI Lovelace Minimalist is toegestaan.",
+            "not_setup": "UI Lovelace Minimalist is niet juist ingesteld."
+        }
+    },
+    "options": {
+        "step": {
+            "user": {
+                "title": "UI Lovelace Minimalist Instellingen",
+                "description": "",
+                "data": {
+                    "language": "Taal",
+                    "sidepanel_enabled": "Een Dashboard aan de zijbalk toevoegen",
+                    "sidepanel_icon": "Dashboard icon",
+                    "sidepanel_title": "Dashboard titel",
+                    "adaptive_ui_enabled": "Een adaptive Dashboard aan de zijbalk toevoegen",
+                    "adaptive_ui_title": "adaptive dashboard titel",
+                    "adaptive_ui_icon": "adaptive dashboard icon",
+                    "theme": "Thema",
+                    "include_other_cards": "'Frontend' repositories toevoegen die nodig zijn"
+                }
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "Enkel een installatie van UI Lovelace Minimalist is toegestaan.",
+            "not_setup": "UI Lovelace Minimalist is niet juist ingesteld."
+        }
+    }
+}

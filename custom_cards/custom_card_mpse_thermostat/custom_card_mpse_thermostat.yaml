@@ -4,7 +4,6 @@ custom_card_mpse_thermostat:
   show_icon: false
   template:
     - "icon_info_bg"
-    - "ulm_language_variables"
   hold_action:
     action: "more-info"
   styles:
@@ -23,27 +22,18 @@ custom_card_mpse_thermostat:
         type: "custom:button-card"
         template:
           - "icon_info"
-          - "ulm_language_variables"
+          - "ulm_translation_engine"
         tap_action:
           action: "more-info"
         entity: "[[[ return entity.entity_id ]]]"
         name: "[[[ return entity.name ]]]"
         label: >-
           [[[
-              var label = variables.ulm_off ;
-              if (entity.state =='off'){
-                label = variables.ulm_off ;
-              }else if (entity.state == 'heat'){
-                label = variables.ulm_heat ;
-              }else if (entity.state == 'cool'){
-                label = variables.ulm_cool ;
-              }else{
-                label = variables.ulm_idle;
-              }
+              label = variables.ulm_translation_state;
               if(entity.attributes.temperature){
                 return (entity.attributes.current_temperature ) + '°' + ' • ' + label + ' (' + entity.attributes.hvac_action + ')';
               }
-              return label;
+              return variables.ulm_translation_state;
           ]]]
         icon: >
           [[[

@@ -3,6 +3,7 @@ title: Wifi Signal Custom-card
 hide:
   - toc
 ---
+
 <!-- markdownlint-disable MD046 -->
 
 # Custom-card "WiFi Signal"
@@ -30,7 +31,7 @@ Initial release.
 ## Usage
 
 ```yaml
-- type: 'custom:button-card'
+- type: "custom:button-card"
   template: custom_card_mpse_wifisignal
   entity: sensor.wifi_julgran
 ```
@@ -58,28 +59,8 @@ No special cards needed.
 
 ## Template code
 
-```yaml
----
-custom_card_mpse_wifisignal:
-  template:
-    - "icon_info_bg"
-  icon: |
-    [[[
-      var icon = "mdi:wifi-strength-off";
-      var signal = states[entity.entity_id].state;
-      if (signal >= -50) {
-        icon = "mdi:wifi-strength-4";
-      } else if (signal >= -60) {
-        icon = "mdi:wifi-strength-3";
-      } else if (signal >= -70) {
-        icon = "mdi:wifi-strength-2";
-      } else if (signal >= -80) {
-        icon = "mdi:wifi-strength-1";
-      }
-      return icon;
-    ]]]
-  label: |
-    [[[
-      return entity.state + " dBm";
-    ]]]
-```
+??? note "Template Code"
+
+    ```yaml title="custom_card_mpse_wifisignal.yaml"
+    --8<-- "custom_cards/custom_card_mpse_wifisignal/custom_card_mpse_wifisignal.yaml"
+    ```

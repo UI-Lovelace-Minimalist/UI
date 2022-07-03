@@ -3,13 +3,8 @@
 chip_alarm:
   template:
     - "chip_icon_label"
-    - "ulm_language_variables"
-  label: |
-    [[[
-      var state = entity.state.toLowerCase();
-      var alarm_label = variables["ulm_alarm_" + state] ? variables["ulm_alarm_" + state] : variables["ulm_" + state] ? variables["ulm_" + state] : state;
-      return alarm_label;
-    ]]]
+    - "ulm_translation_engine"
+  label: "[[[ return variables.ulm_translation_state ]]]"
   icon: |
     [[[
       var state = entity.state.toLowerCase();

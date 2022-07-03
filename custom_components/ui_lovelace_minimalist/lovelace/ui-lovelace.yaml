@@ -15,7 +15,7 @@ views:
           - type: "custom:button-card"
             template: "card_title"
             name: "Congrats with your installation 🎉"
-            label: "Explore here some of the wonderful 'Minimalistic-UI' cards we offer"
+            label: "Explore some of the wonderful 'Minimalistic-UI' cards we offer here"
           - type: "custom:auto-entities"
             card:
               type: "grid"
@@ -34,7 +34,7 @@ views:
                       ulm_weather: "this.entity_id"
           - type: "custom:button-card"
             template: "card_title"
-            name: "Lights"
+            name: "[[[ hass.resources[hass['language']]['ui.panel.lovelace.editor.card.light.name'] ]]]"
             label: "This is the Minimalist-light-card"
           - type: "custom:auto-entities"
             card:
@@ -74,10 +74,9 @@ views:
                     template: "card_binary_sensor_alert"
                     variables:
                       - ulm_card_binary_sensor_alert: true
-                    show_last_changed: true
           - type: "custom:button-card"
             template: "card_title"
-            name: "Sensors"
+            name: "[[[ hass.resources[hass['language']]['ui.panel.lovelace.editor.card.sensor.name'] ]]]"
             label: "This is the Minimalist-sensor-card"
           - type: "custom:auto-entities"
             card:
@@ -95,7 +94,7 @@ views:
                     template: "card_generic"
           - type: "custom:button-card"
             template: "card_title"
-            name: "Batteries"
+            name: "[[[ hass.resources[hass['language']]['ui.dialogs.entity_registry.editor.device_classes.binary_sensor.battery'] ]]]"
             label: "This is the Minimalist-battery-card"
           - type: "custom:auto-entities"
             card:

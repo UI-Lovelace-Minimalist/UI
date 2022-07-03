@@ -24,6 +24,8 @@ custom_card_damix48_power_details:
         template:
           - "icon_info"
           - "card_generic"
+        variables:
+          ulm_card_generic_name: "[[[ return variables.ulm_card_power_details_name ]]]"
         styles:
           card:
             - box-shadow: "none"
@@ -38,7 +40,6 @@ custom_card_damix48_power_details:
               return variables.ulm_custom_card_damix48_power_details_in_the_lasts + " " + variables.ulm_card_power_details_hours + " " + variables.ulm_custom_card_damix48_power_details_hours;
             }
           ]]]
-        label: "[[[ return variables.ulm_card_power_details_name ]]]"
     item2:
       card:
         type: "custom:mini-graph-card"

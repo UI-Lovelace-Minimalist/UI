@@ -2,7 +2,7 @@
 popup_header:
   template:
     - "popup_button"
-    - "ulm_language_variables"
+    - "ulm_translation_engine"
   show_name: true
   show_label: true
   styles:
@@ -19,11 +19,4 @@ popup_header:
       - margin-top: "6px"
     icon:
       - color: "var(--color-theme)"
-  label: |-
-    [[[
-      if (entity.state == 'off') {
-        return variables.ulm_off;
-      } else {
-        return variables.ulm_on;
-      }
-    ]]]
+  label: "[[[ return variables.ulm_translation_state; ]]]"

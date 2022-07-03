@@ -26,6 +26,9 @@ class UlmConfiguration:
     sidepanel_enabled: bool = DEFAULT_SIDEPANEL_ENABLED
     sidepanel_icon: str = DEFAULT_SIDEPANEL_ICON
     sidepanel_title: str = DEFAULT_SIDEPANEL_TITLE
+    adaptive_ui_enabled: bool = DEFAULT_SIDEPANEL_ENABLED
+    adaptive_ui_icon: str = DEFAULT_SIDEPANEL_ICON
+    adaptive_ui_title: str = DEFAULT_SIDEPANEL_TITLE
     theme_path: str = DEFAULT_THEME_PATH
     theme: str = DEFAULT_THEME
     plugin_path: str = "www/community/"

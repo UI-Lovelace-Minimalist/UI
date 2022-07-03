@@ -5,7 +5,7 @@ chip_back:
   variables:
     ulm_chip_back_path: >
       [[[
-        return "/ui-lovelace-minimalist/0";
+        return hass["panelUrl"];
       ]]]
   tap_action:
     action: "navigate"

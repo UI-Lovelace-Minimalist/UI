@@ -20,13 +20,14 @@ custom_card_bar_card:
         template:
           - "icon_info"
           - "card_generic"
+        variables:
+          ulm_card_generic_name: "[[[ return variables.ulm_custom_card_bar_card_name != '' ? variables.ulm_custom_card_bar_card_name : '' ]]]"
         styles:
           card:
             - box-shadow: "none"
             - border-radius: "var(--border-radius) var(--border-radius) 0px 0px"
             - padding: "12px"
         entity: "[[[ return variables.ulm_custom_card_bar_card_entity ]]]"
-        name: "[[[ return variables.ulm_custom_card_bar_card_name != '' ? variables.ulm_custom_card_bar_card_name : '' ]]]"
     item2:
       card:
         type: "custom:bar-card"

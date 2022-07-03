@@ -2,24 +2,36 @@
 ### Card Generic ###
 card_generic:
   template:
-    - "icon_info_bg"
-    - "ulm_language_variables"
-  label: >
-    [[[
-      var unit = entity.attributes.unit_of_measurement != null ? " " + entity.attributes.unit_of_measurement : ""
-      let state = entity.state;
-      return variables["ulm_" + state] ? variables["ulm_" + state] : state + unit;
-    ]]]
-  styles:
-    icon:
-      - color: "rgba(var(--color-theme),0.9)"
-    label:
-      - align-self: "end"
-      - font-size: "14px"
-      - filter: "opacity(100%)"
-    name:
-      - align-self: "start"
-      - font-size: "12px"
-      - filter: "opacity(40%)"
-    grid:
-      - grid-template-areas: "'i l' 'i n'"
+    - "icon_more_info_new"
+    - "ulm_actions_card"
+    - "ulm_translation_engine"
+  variables:
+    ulm_card_generic_icon: "[[[ return entity.attributes.icon ]]]"
+    ulm_card_generic_name: "[[[ return entity.attributes.friendly_name ]]]"
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        template:
+          - "icon_more_info"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              variables:
+                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
+                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
+              icon: "[[[ return variables.ulm_card_generic_icon; ]]]"
+              styles:
+                icon:
+                  - color: "rgba(var(--color-theme),0.9)"
+          item2:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              variables:
+                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
+                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
+              name: "[[[ return variables.ulm_translation_state_unit ]]]"
+              label: "[[[ return variables.ulm_card_generic_name ]]]"

@@ -16,7 +16,8 @@ The `input-boolean-card` is to switch an `input_boolean` on or off.
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
 | entity     |         | :material-check: |                   |
-| name     |         | :material-close: |                   |
+| ulm_card_input_boolean_name |   | :material-close: | Set custom Name |
+| ulm_card_input_boolean_icon |   | :material-close: | Set custom Icon |
 
 ## Usage
 
@@ -24,7 +25,8 @@ The `input-boolean-card` is to switch an `input_boolean` on or off.
 - type: 'custom:button-card'
   template: card_input_boolean
   entity: input_boolean.guest_mode
-  name: Guest Mode
+  variables:
+    ulm_card_input_boolean_name: Guest Mode
 ```
 
 ??? note "Template Code"
