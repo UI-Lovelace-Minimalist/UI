@@ -14,7 +14,7 @@ This is a `custom-card` that shows the currenct state of your Lock and allows yo
 
 ## Credits
 
-Author: Nik - 2022 Version: 1.0.0
+Author: Nik - 2022 Version: 2.0.0
 
 ## Changelog
 
@@ -25,8 +25,8 @@ Initial release
 
 <details>
 <summary>2.0.0</summary>
-- Added Battery Level for monitoring
-- Added double_tap unlock to prevent accidental opening
+Added Battery Level for monitoring
+Added double_tap unlock to prevent accidental opening
 </details>
 
 ## Requirements
@@ -38,11 +38,12 @@ To have the Minimalist cards and custom cards installed
 ```yaml
 
 - type: "custom:button-card"
-  template: custom_card_nik_door
-  entity: sensor.nuki_blindato_door_security_state
+  template: "custom_card_nik_door"
+  entity: "sensor.nuki_blindato_door_security_state"
   variables:
-    ulm_custom_card_entity_1_name: Blindato
-    ulm_custom_card_entity_1_lock: lock.nuki_blindato_lock
+    ulm_custom_card_entity_1_name: "Blindato"
+    ulm_custom_card_entity_1_lock: "lock.nuki_blindato_lock"
+    ulm_custom_card_entity_1_lock_battery: "sensor.blindato_battery"
 ```
 
 ## Variables
