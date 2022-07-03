@@ -1,9 +1,0 @@
----
-red_text:
-  styles:
-    icon:
-      - color: "rgba(var(--color-red),1)"
-    label:
-      - color: "rgba(var(--color-red-text),1)"
-    name:
-      - color: "rgba(var(--color-red-text),1)"
