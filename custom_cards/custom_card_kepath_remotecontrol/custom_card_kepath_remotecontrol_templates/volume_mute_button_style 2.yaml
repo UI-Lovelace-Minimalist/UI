@@ -1,0 +1,22 @@
+---
+volume_mute_button_style:
+  state:
+    - operator: "template"
+      value: "return (typeof entity.attributes.is_volume_muted !== 'undefined' ? entity.attributes.is_volume_muted : false)"
+      styles:
+        icon:
+          - color: "rgba(var(--color-red),1)"
+        label:
+          - color: "rgba(var(--color-red-text),1)"
+        name:
+          - color: "rgba(var(--color-red-text),1)"
+        img_cell:
+          - background-color: "rgba(var(--color-red), 0.2)"
+    - operator: "default"
+      styles:
+        icon:
+          - color: "rgba(var(--color-green),1)"
+        label:
+          - color: "rgba(var(--color-green-text),1)"
+        name:
+          - color: "rgba(var(--color-green-text),1)"
