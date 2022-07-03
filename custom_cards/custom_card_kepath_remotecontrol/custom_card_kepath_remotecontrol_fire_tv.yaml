@@ -19,8 +19,8 @@ vars_remotecontrol_firestick_group_power:
         actions:
           tap:
             more_info_entity_id:
-            action: "none"
-            service: "call-service"
+            action: "call-service"
+            service: "androidtv.adb_command"
             command: "input keyevent 26"
             haptic: "heavy"
             harmony:

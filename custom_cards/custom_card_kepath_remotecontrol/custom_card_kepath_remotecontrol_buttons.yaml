@@ -146,6 +146,18 @@ remotecontrol_button_action:
       {% else %}
         "none"
       {% endif%}
+    {% elif variables.buttom_action.action == "service-select-source" %}
+      service: media_player.select_source
+      data:
+        source: "[[[ return variables.button_action.command ]]]"
+      target:
+        entity_id: "[[[ return variables.button_action.entity_id ]]]"
+    {% elif variables.button_action.action == "service-adb-command" %}
+      service: androidtv.adb_command
+      target:
+        entity_id: "[[[ return variables.button_action.entity_id ]]]"
+      data:
+        command: "[[[ return variables.button_action.command ]]]"
     {% elif variables.button_action.action == "more-info" %}
       action: more-info
       entity: "[[[ return (variables.button_action.more_info_entity_id != null ? variables.button_action.more_info_entity_id : variables.button_action.entity_id) ]]]"
