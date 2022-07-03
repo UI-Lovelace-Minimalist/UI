@@ -23,6 +23,7 @@ Version: 1.0.0
 </details>
 
 ## Description
+
 This custom cards works with any entity in the update domain and gives options for two-button control to begin the update or skip. It also supports both horizontal and vertical configurations.
 
 ## Variables
@@ -44,6 +45,7 @@ This custom cards works with any entity in the update domain and gives options f
   template: card_neekster_update
   entity: update.home_assistant_core_update
 ```
+
 </details>
 <details>
 <summary>Example 2</summary>
@@ -58,6 +60,7 @@ This custom cards works with any entity in the update domain and gives options f
     ulm_card_neekster_update_horizontal: true
     ulm_card_neekster_update_narrow_buttons: true
 ```
+
 </details>
 
 ## Template code
