@@ -98,7 +98,7 @@ Version: 1.2.0
 
 <details>
 <summary>1.3.0</summary>
-Option to trigger automation trigger
+Option to trigger automation
 </details>
 <details>
 <summary>1.2.0</summary>
