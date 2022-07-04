@@ -65,7 +65,8 @@ card_scenes:
           action: "call-service"
           service: |
             [[[
-              if (variables.entity_1.automation == true) {
+            let domain = variables.entity_1.entity_id.substr(0, variables.entity_1.entity_id.indexOf(".")); 
+              if (domain == "automation") {
                 return "automation.trigger"
               } else {
                 return "homeassistant.turn_on"
@@ -87,7 +88,8 @@ card_scenes:
           action: "call-service"
           service: |
             [[[
-              if (variables.entity_2.automation == true) {
+            let domain = variables.entity_2.entity_id.substr(0, variables.entity_2.entity_id.indexOf(".")); 
+              if (domain == "automation") {
                 return "automation.trigger"
               } else {
                 return "homeassistant.turn_on"
@@ -109,7 +111,8 @@ card_scenes:
           action: "call-service"
           service: |
             [[[
-              if (variables.entity_3.automation == true) {
+            let domain = variables.entity_3.entity_id.substr(0, variables.entity_3.entity_id.indexOf(".")); 
+              if (domain == "automation") {
                 return "automation.trigger"
               } else {
                 return "homeassistant.turn_on"
@@ -131,7 +134,8 @@ card_scenes:
           action: "call-service"
           service: |
             [[[
-              if (variables.entity_4.automation == true) {
+            let domain = variables.entity_4.entity_id.substr(0, variables.entity_4.entity_id.indexOf(".")); 
+              if (domain == "automation") {
                 return "automation.trigger"
               } else {
                 return "homeassistant.turn_on"
