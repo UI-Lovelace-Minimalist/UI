@@ -10,35 +10,30 @@ card_scenes:
       icon_color: "gray"
       name: "n/a"
       bg_color: "gray"
-      automation: false
     entity_2:
       entity_id:
       icon: "mdi:help-circle-outline"
       icon_color: "gray"
       name: "n/a"
       bg_color: "gray"
-      automation: false
     entity_3:
       entity_id:
       icon: "mdi:help-circle-outline"
       icon_color: "gray"
       name: "n/a"
       bg_color: "gray"
-      automation: false
     entity_4:
       entity_id:
       icon: "mdi:help-circle-outline"
       icon_color: "gray"
       name: "n/a"
       bg_color: "gray"
-      automation: false
     entity_5:
       entity_id:
       icon: "mdi:help-circle-outline"
       icon_color: "gray"
       name: "n/a"
       bg_color: "gray"
-      automation: false
   styles:
     grid:
       - grid-template-areas: "'item1 item2 item3 item4 item5'"
