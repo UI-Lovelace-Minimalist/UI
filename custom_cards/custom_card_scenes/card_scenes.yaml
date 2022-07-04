@@ -152,7 +152,8 @@ card_scenes:
           action: "call-service"
           service: |
             [[[
-              if (variables.entity_1.automation == true) {
+            let domain = variables.entity_5.entity_id.substr(0, variables.entity_5.entity_id.indexOf("."));
+              if (domain == "automation") {
                 return "automation.trigger"
               } else {
                 return "homeassistant.turn_on"
