@@ -65,7 +65,7 @@ card_scenes:
           action: "call-service"
           service: |
             [[[
-            let domain = variables.entity_1.entity_id.substr(0, variables.entity_1.entity_id.indexOf(".")); 
+            let domain = variables.entity_1.entity_id.substr(0, variables.entity_1.entity_id.indexOf("."));
               if (domain == "automation") {
                 return "automation.trigger"
               } else {
@@ -88,7 +88,7 @@ card_scenes:
           action: "call-service"
           service: |
             [[[
-            let domain = variables.entity_2.entity_id.substr(0, variables.entity_2.entity_id.indexOf(".")); 
+            let domain = variables.entity_2.entity_id.substr(0, variables.entity_2.entity_id.indexOf("."));
               if (domain == "automation") {
                 return "automation.trigger"
               } else {
@@ -111,7 +111,7 @@ card_scenes:
           action: "call-service"
           service: |
             [[[
-            let domain = variables.entity_3.entity_id.substr(0, variables.entity_3.entity_id.indexOf(".")); 
+            let domain = variables.entity_3.entity_id.substr(0, variables.entity_3.entity_id.indexOf("."));
               if (domain == "automation") {
                 return "automation.trigger"
               } else {
@@ -134,7 +134,7 @@ card_scenes:
           action: "call-service"
           service: |
             [[[
-            let domain = variables.entity_4.entity_id.substr(0, variables.entity_4.entity_id.indexOf(".")); 
+            let domain = variables.entity_4.entity_id.substr(0, variables.entity_4.entity_id.indexOf("."));
               if (domain == "automation") {
                 return "automation.trigger"
               } else {
