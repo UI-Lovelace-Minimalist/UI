@@ -1,0 +1,154 @@
+---
+### Card Neekster Update ###
+card_neekster_update:
+  template:
+    - "ulm_language_variables"
+  variables:
+    ulm_card_neekster_update_icon: false
+    ulm_card_neekster_update_enable_controls: false
+    ulm_card_neekster_update_collapsible: false
+    ulm_card_neekster_update_horizontal: false
+    ulm_card_neekster_update_narrow_buttons: false
+  triggers_update: "all"
+  show_icon: false
+  show_name: false
+  show_label: false
+  hold_action:
+    action: "more-info"
+  styles:
+    grid:
+      - grid-template-areas: >
+          [[[
+                if (variables.ulm_card_neekster_update_collapsible && entity.state != "on") {
+                    return "\"item1\"";
+                } else if (variables.ulm_card_neekster_update_horizontal) {
+                    return "\"item1 item2\"";
+                } else if (variables.ulm_card_neekster_update_enable_controls) {
+                    return "\"item1\" \"item2\"";
+                } else {
+                    return "\"item1\"";
+                }
+          ]]]
+      - grid-template-columns: >
+          [[[
+                if (variables.ulm_card_neekster_update_collapsible && entity.state != "on") {
+                    return "1fr";
+                } else if (variables.ulm_card_neekster_update_horizontal) {
+                  if(variables.ulm_card_neekster_update_narrow_buttons){
+                    return "2fr 1fr";
+                    } else {
+                      return "1fr 1fr";
+                    }
+                } else {
+                    return "1fr";
+                }
+          ]]]
+      - grid-template-rows: >
+          [[[
+                if (variables.ulm_card_neekster_update_collapsible && entity.state != "on") {
+                    return "1fr";
+                } else if (variables.ulm_card_neekster_update_enable_controls && !variables.ulm_card_neekster_update_horizontal) {
+                    return "min-content min-content";
+                } else {
+                    return "1fr";
+                }
+          ]]]
+      - row-gap: |-
+          [[[
+            if (!variables.ulm_card_neekster_update_collapsible) {
+                return "12px";
+              } else {
+                return entity.state !== "off" ? "12px" : "0px";
+              }
+          ]]]
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
+    custom_fields:
+      item2:
+        - display: |
+            [[[
+              if(variables.ulm_card_neekster_update_enable_controls) {
+                if(variables.ulm_card_neekster_update_collapsible){
+                  return entity.state === "off" ? "none" : "block";
+                }
+                return "block";
+              }
+              return "none";
+            ]]]
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        template:
+          - "icon_info_bg"
+          - "ulm_language_variables"
+        entity: "[[[ return entity.entity_id ]]]"
+        hold_action:
+          action: "more-info"
+        styles:
+          label:
+            - opacity: "1"
+            - filter: "opacity(100%)"
+          card:
+            - padding: "0px"
+            - background: "none"
+            - border-radius: "0"
+            - box-shadow: "none"
+        state:
+          - operator: "template"
+            value: "[[[ return entity.state == 'off' ]]]"
+            icon: "mdi:cloud-check"
+            label: "Up to Date."
+            styles:
+              img_cell:
+                - background-color: "rgba(var(--color-green), 0.2)"
+          - operator: "template"
+            value: "[[[ return entity.state != 'off' ]]]"
+            icon: "mdi:cloud-download"
+            label: "Update Available!"
+            styles:
+              img_cell:
+                - background-color: "rgba(var(--color-yellow), 0.2)"
+    item2:
+      card:
+        type: "custom:button-card"
+        template: "list_2_items"
+        hold_action:
+          action: "more-info"
+        styles:
+          card:
+            - padding: "0px"
+            - background: "none"
+            - border-radius: "0"
+            - box-shadow: "none"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              hold_action:
+                action: "more-info"
+              tap_action:
+                action: "call-service"
+                service: "update.install"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+              icon: "mdi:package-down"
+          item2:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              entity: "[[[ return entity.entity_id ]]]"
+              hold_action:
+                action: "call-service"
+                service: "update.clear_skipped"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+              tap_action:
+                action: "call-service"
+                service: "update.skip"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+              icon: "mdi:cancel"
