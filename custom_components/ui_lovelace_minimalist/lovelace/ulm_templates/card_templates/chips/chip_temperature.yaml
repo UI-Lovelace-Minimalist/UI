@@ -30,6 +30,13 @@ chip_temperature:
         return temp;
       }
       var outside_temp = states[variables.ulm_chip_temperature_outside].state;
-      var inside_temp = states[variables.ulm_chip_temperature_inside].state;
-      return (icon[state] || icon["default"]) + " " + convertTemperature(outside_temp) + "° / " + convertTemperature(inside_temp) + "°" ;
+      var inside_temp = null;
+      if (variables.ulm_chip_temperature_inside) {
+        inside_temp = states[variables.ulm_chip_temperature_inside].state;
+      }
+      var label = (icon[state] || icon["default"]) + " " + convertTemperature(outside_temp) + "°";
+      if (inside_temp) {
+        label = label + " / " + convertTemperature(inside_temp) + "°";
+      }
+      return label;
     ]]]
