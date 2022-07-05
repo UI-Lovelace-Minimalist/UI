@@ -9,12 +9,17 @@ card_esh_room:
   template:
     - "ulm_translation_engine"
   size: "20px"
+  variables:
+    ulm_custom_card_esh_room_light_entity: null
+    ulm_custom_card_esh_room_climate_entity: null
   label: >-
     [[[
-        if (entity.state == "on"){
+        if (!entity) {
+          return "<br/>";
+        } else if (entity.state == "on"){
           var bri = Math.round(entity.attributes.brightness / 2.55);
           return (bri ? bri + "%" : variables.ulm_translation_state) ;
-        } else{
+        } else {
           return variables.ulm_translation_state;
         }
     ]]]
@@ -24,7 +29,7 @@ card_esh_room:
       - box-shadow: "var(--box-shadow)"
       - padding: "12px"
     grid:
-      - grid-template-areas: "'i toggle' 'n n' 'l l'"
+      - grid-template-areas: "'i light' 'n climate' 'l climate'"
       - grid-template-columns: "1fr 1fr"
       - grid-template-rows: "min-content"
     icon:
@@ -41,7 +46,18 @@ card_esh_room:
       - font-weight: "bold"
       - font-size: "14px"
       - margin-left: "12px"
-      - margin-top: "12px"
+      - margin-top: >-
+          [[[
+            if (variables.ulm_custom_card_esh_room_light_entity && variables.ulm_custom_card_esh_room_climate_entity) {
+                return "8px";
+            } else if (variables.ulm_custom_card_esh_room_light_entity) {
+                return "12px";
+            } else if (variables.ulm_custom_card_esh_room_climate_entity) {
+                return "0px";
+            } else {
+                return "12px";
+            }
+          ]]]
     label:
       - justify-self: "start"
       - align-self: "start"
@@ -49,6 +65,18 @@ card_esh_room:
       - font-size: "12px"
       - filter: "opacity(40%)"
       - margin-left: "12px"
+      - margin-bottom: >-
+          [[[
+            if (variables.ulm_custom_card_esh_room_light_entity && variables.ulm_custom_card_esh_room_climate_entity) {
+                return "0px";
+            } else if (variables.ulm_custom_card_esh_room_light_entity) {
+                return "3px";
+            } else if (variables.ulm_custom_card_esh_room_climate_entity) {
+                return "0px";
+            } else {
+                return "3px";
+            }
+          ]]]
     state:
       - justify-self: "start"
       - align-self: "start"
@@ -56,10 +84,29 @@ card_esh_room:
       - font-size: "12px"
       - filter: "opacity(40%)"
       - margin-left: "12px"
+    custom_fields:
+      light:
+        - display: >
+            [[[
+                  if (variables.ulm_custom_card_esh_room_light_entity) {
+                      return "block";
+                  } else {
+                      return "none";
+                  }
+            ]]]
+      climate:
+        - display: >
+            [[[
+                  if (variables.ulm_custom_card_esh_room_climate_entity) {
+                      return "block";
+                  } else {
+                      return "none";
+                  }
+            ]]]
   custom_fields:
-    toggle:
+    light:
       card:
-        entity: "[[[ return entity.entity_id ]]]"
+        entity: "[[[ return variables.ulm_custom_card_esh_room_light_entity ]]]"
         name: "[[[ return name ]]]"
         state:
           - value: "on"
@@ -74,4 +121,61 @@ card_esh_room:
         tap_action:
           action: "toggle"
         type: "custom:button-card"
+        template: "widget_icon"
+
+    climate:
+      card:
+        entity: "[[[ return variables.ulm_custom_card_esh_room_climate_entity ]]]"
+        name: "[[[ return name ]]]"
+        state:
+          - value: "auto"
+            icon: "mdi:autorenew"
+            styles:
+              icon:
+                - color: "rgba(var(--color-green),1)"
+              img_cell:
+                - background-color: "rgba(var(--color-green), 0.2)"
+          - value: "cool"
+            icon: "mdi:snowflake"
+            styles:
+              icon:
+                - color: "rgba(var(--color-blue),1)"
+              img_cell:
+                - background-color: "rgba(var(--color-blue), 0.2)"
+          - value: "heat"
+            icon: "mdi:fire"
+            styles:
+              icon:
+                - color: "rgba(var(--color-red),1)"
+              img_cell:
+                - background-color: "rgba(var(--color-red), 0.2)"
+          - value: "dry"
+            icon: "mdi:water"
+            styles:
+              icon:
+                - color: "rgba(var(--color-yellow),1)"
+              img_cell:
+                - background-color: "rgba(var(--color-yellow), 0.2)"
+          - value: "heat_cool"
+            icon: "mdi:sun-snowflake"
+            styles:
+              icon:
+                - color: "rgba(var(--color-purple),1)"
+              img_cell:
+                - background-color: "rgba(var(--color-purple), 0.2)"
+          - value: "fan_only"
+            icon: "mdi:fan"
+            styles:
+              icon:
+                - color: "rgba(var(--color-green),1)"
+              img_cell:
+                - background-color: "rgba(var(--color-green), 0.2)"
+          - value: "off"
+            icon: "mdi:snowflake-off"
+        tap_action:
+          action: "toggle"
+        type: "custom:button-card"
+        styles:
+          card:
+            - margin-top: "5px"
         template: "widget_icon"
