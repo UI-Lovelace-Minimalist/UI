@@ -62,7 +62,7 @@ custom_card_saxel_fan_common:
     secondarySliderColor:
     oscillate_attribute: "oscillate"
   template:
-    - "ulm_language_variables"
+    - "ulm_translation_engine"
     - "icon_info_bg"
   hold_action:
     action: "more-info"
@@ -70,12 +70,8 @@ custom_card_saxel_fan_common:
     [[[
       if (entity.state === 'on') {
         return `${entity.attributes.percentage}%`;
-      } else if (entity.state === 'off') {
-        return variables.ulm_off;
-      } else if (entity.state === 'unavailable') {
-        return variables.ulm_unavailable;
       } else {
-        return entity.state;
+        return variables.ulm_translation_state;
       }
     ]]]
   styles:

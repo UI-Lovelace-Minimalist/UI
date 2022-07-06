@@ -2,7 +2,9 @@
 ### Card Light ###
 card_light:
   template:
-    - "ulm_language_variables"
+    - "icon_more_info_new"
+    - "ulm_actions_card"
+    - "ulm_translation_engine"
   variables:
     ulm_card_light_name: "[[[ return entity.attributes.friendly_name ]]]"
     ulm_card_light_icon: "[[[ return entity.attributes.icon ]]]"
@@ -15,30 +17,10 @@ card_light:
     ulm_card_light_enable_color: false
     ulm_card_light_force_background_color: false
     ulm_card_light_enable_popup: false
+    ulm_card_light_enable_popup_tap: false
   show_icon: false
   show_name: false
   show_label: false
-  tap_action:
-    action: "toggle"
-  hold_action:
-    action: >
-      [[[
-          if (variables.ulm_card_light_enable_popup){
-            return 'fire-dom-event'
-          }
-          else{
-            return 'more-info'
-          }
-      ]]]
-    browser_mod:
-      command: "popup"
-      large: true
-      hide_header: true
-      card:
-        type: "custom:button-card"
-        template: "popup_light_brightness"
-        variables:
-          ulm_popup_light_entity: "[[[ return entity.entity_id ]]]"
   state:
     - value: "on"
       styles:
@@ -124,25 +106,10 @@ card_light:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
               icon: "[[[ return variables.ulm_card_light_icon ]]]"
-              hold_action:
-                action: >
-                  [[[
-                      if (variables.ulm_card_light_enable_popup){
-                        return 'fire-dom-event'
-                      }
-                      else{
-                        return 'more-info'
-                      }
-                  ]]]
-                browser_mod:
-                  command: "popup"
-                  large: true
-                  hide_header: true
-                  card:
-                    type: "custom:button-card"
-                    template: "popup_light_brightness"
-                    variables:
-                      ulm_popup_light_entity: "[[[ return entity.entity_id ]]]"
+              variables:
+                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
+                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
+                ulm_card_light_enable_popup: "[[[ return variables.ulm_card_light_enable_popup; ]]]"
               styles:
                 icon:
                   - color: >
@@ -176,42 +143,19 @@ card_light:
             card:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
+              variables:
+                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
+                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
+                ulm_card_light_enable_popup: "[[[ return variables.ulm_card_light_enable_popup; ]]]"
               name: "[[[ return variables.ulm_card_light_name ]]]"
-              hold_action:
-                action: >
-                  [[[
-                      if (variables.ulm_card_light_enable_popup){
-                        return 'fire-dom-event'
-                      }
-                      else{
-                        return 'more-info'
-                      }
-                  ]]]
-                browser_mod:
-                  command: "popup"
-                  large: true
-                  hide_header: true
-                  card:
-                    type: "custom:button-card"
-                    template: "popup_light_brightness"
-                    variables:
-                      ulm_popup_light_entity: "[[[ return entity.entity_id ]]]"
               label: >-
                 [[[
-                  if (entity.state !="unavailable"){
-                    if (entity.state =="off"){
-                      return variables.ulm_off;
-                    } else if (entity.state == "on"){
-                      if (entity.attributes.brightness != null){
-                        var bri = Math.round(entity.attributes.brightness / 2.55);
-                        return (bri ? bri : "0") + "%";
-                      } else {
-                        return variables.ulm_on
-                      }
+                  var label = variables.ulm_translation_state
+                    if (entity.attributes.brightness != null && entity.state === 'on'){
+                      var bri = Math.round(entity.attributes.brightness / 2.55);
+                      var label = (bri ? bri : "0") + "%";
                     }
-                  } else {
-                    return variables.ulm_unavailable;
-                  }
+                  return label;
                 ]]]
               state:
                 - value: "on"
@@ -280,11 +224,24 @@ card_light:
                 return "rgba(var(--color-yellow),0.2)";
               }
           ]]]
+        thumbColor: >
+          [[[
+              var color = entity.attributes.rgb_color;
+              if (entity.state == "unavailable"){
+                 return "rgba(var(--color-grey),1)";
+              }
+              else if (color && variables.ulm_card_light_enable_color){
+                 return "rgba(" + color + ",1)";
+              }
+              else{
+                return "rgba(var(--color-yellow),1)";
+              }
+          ]]]
         mainSliderColorOff: "rgba(var(--color-theme),0.05)"
         secondarySliderColorOff: "rgba(var(--color-theme),0.05)"
         thumbHorizontalPadding: "0px"
         thumbVerticalPadding: "0px"
-        thumbWidth: "0px"
+        thumbWidth: "12px"
         card_mod:
         style: |
           ha-card {

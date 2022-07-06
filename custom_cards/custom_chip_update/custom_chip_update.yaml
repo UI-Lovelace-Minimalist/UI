@@ -1,0 +1,22 @@
+---
+chip_update:
+  template:
+    - "ulm_language_variables"
+    - "chips"
+  tap_action:
+    action: "navigate"
+    navigation_path: "[[[ return variables.ulm_chip_update_path; ]]]"
+    haptic: "light"
+  show_icon: true
+  state:
+    - operator: "default"
+      color: "red"
+      icon: "mdi:shield-alert"
+      label: "[[[ return variables.ulm_updates_available  ]]]"
+    - value: "off"
+      color: "green"
+      icon: "mdi:shield-check"
+      label: "[[[ return variables.ulm_no_updates_available  ]]]"
+  styles:
+    grid:
+      - grid-template-areas: "'i l'"

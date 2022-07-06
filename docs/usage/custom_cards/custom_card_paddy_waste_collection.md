@@ -3,6 +3,7 @@ title: Waste Collection Custom-card
 hide:
   - toc
 ---
+
 <!-- markdownlint-disable MD046 -->
 
 # Custom-card "Waste collection"
@@ -20,6 +21,10 @@ Version: 1.0.0
 <summary>1.0.0</summary>
 Initial release
 </details>
+<details>
+<summary>1.0.1</summary>
+Fix for UI Minimalist v1.0.1.
+</details>
 
 ## Usage
 
@@ -33,6 +38,7 @@ Initial release
 ## Requirements
 
 This card needs the following to function correctly:
+
 <table>
 <tr>
 <th>Component / card</th>
@@ -61,84 +67,25 @@ This card needs the following to function correctly:
 <td>yes</td>
 <td>Your waste collection sensor. See <a href="#homeassistant">HA example</a> on how to configure.</td>
 </tr>
+<td>ulm_custom_card_paddy_waste_collection_name</td>
+<td>Paper</td>
+<td>no</td>
+<td></td>
+</tr>
+<td>ulm_custom_card_paddy_waste_collection_icon</td>
+<td>mdi:trash-can</td>
+<td>no</td>
+<td></td>
+</tr>
 </table>
 
 ## Template code
 
-```yaml
-custom_card_paddy_waste_collection:
-  template:
-    - card_generic_swap
-  state:
-    - operator: template
-      value: "[[[ return states[entity.entity_id].attributes.daysTo == 0; ]]]"
-      styles:
-        img_cell:
-          - background-color: 'rgba(var(--color-red),0.5)'
-        icon:
-          - color: 'rgba(var(--color-red),1)'
-        custom_fields:
-          notification:
-            - border-radius: 50%
-            - position: absolute
-            - left: 38px
-            - top: 8px
-            - height: 16px
-            - width: 16px
-            - border: 2px solid var(--card-background-color)
-            - font-size: 12px
-            - line-height: 14px
-            - background-color: >
-                [[[
-                  return "rgba(var(--color-red),1)";
-                ]]]
-    - operator: template
-      value: "[[[ return states[entity.entity_id].attributes.daysTo == 1; ]]]"
-      styles:
-        img_cell:
-          - background-color: 'rgba(var(--color-red),0.05)'
-        icon:
-          - color: 'rgba(var(--color-red),1)'
-        custom_fields:
-          notification:
-            - border-radius: 50%
-            - position: absolute
-            - left: 38px
-            - top: 8px
-            - height: 16px
-            - width: 16px
-            - border: 2px solid var(--card-background-color)
-            - font-size: 12px
-            - line-height: 14px
-            - background-color: >
-                [[[
-                  return "rgba(var(--color-red),1)";
-                ]]]
-    - value: 'unavailable'
-      styles:
-        custom_fields:
-          notification:
-            - border-radius: 50%
-            - position: absolute
-            - left: 38px
-            - top: 8px
-            - height: 16px
-            - width: 16px
-            - border: 2px solid var(--card-background-color)
-            - font-size: 12px
-            - line-height: 14px
-            - background-color: >
-                [[[
-                  return "rgba(var(--color-red),1)";
-                ]]]
-  custom_fields:
-    notification: >
-      [[[
-        if (entity.state == 'unavailable' || states[entity.entity_id].attributes.daysTo == 0 || states[entity.entity_id].attributes.daysTo == 1){
-          return `<ha-icon icon="mdi:exclamation" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`
-        }
-      ]]]
-```
+??? note "Template Code"
+
+    ```yaml title="custom_card_paddy_waste_collection.yaml"
+    --8<-- "custom_cards/custom_card_paddy_waste_collection/custom_card_paddy_waste_collection.yaml"
+    ```
 
 ## HomeAssistant
 
@@ -156,7 +103,7 @@ sensor:
     name: waste_collection_paper
     details_format: upcoming
     add_days_to: true # this line is important
-    value_template:  >-
+    value_template: >-
       {% if value.daysTo == 0 %}
       HEUTE
       {% elif value.daysTo == 1 %}

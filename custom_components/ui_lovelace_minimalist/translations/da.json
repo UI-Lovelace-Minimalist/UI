@@ -1,0 +1,49 @@
+{
+    "title": "UI Lovelace Minimalist",
+    "config": {
+        "step": {
+            "user": {
+                "title": "UI Lovelace Minimalist Indstillinger",
+                "description": "",
+                "data": {
+                    "language": "Sprog",
+                    "sidepanel_enabled": "Vis Dashboard i sidepanelet.",
+                    "sidepanel_icon": "Sidepanel icon",
+                    "sidepanel_title": "Sidepanel titel",
+                    "adaptive_ui_enabled": "Aktivér adaptiv Dashboard med popup opdelt visning",
+                    "adaptive_ui_title": "adaptiv panel titel",
+                    "adaptive_ui_icon": "adaptiv panel ikon",
+                    "theme": "Tema",
+                    "include_other_cards": "Inkludér de nødvendige 'custom card' ressourcer."
+                }
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "Det er kun tilladt med én installation af UI Lovelace Minimalist",
+            "not_setup": "UI Lovelace Minimalist er ikke konfigureret."
+        }
+    },
+    "options": {
+        "step": {
+            "user": {
+                "title": "UI Lovelace Minimalist Indstillinger",
+                "description": "",
+                "data": {
+                    "language": "Sprog",
+                    "sidepanel_enabled": "Vis Dashboard i sidepanelet.",
+                    "sidepanel_icon": "Sidepanel icon",
+                    "sidepanel_title": "Sidepanel titel",
+                    "adaptive_ui_enabled": "Aktivér adaptiv Dashboard med popup opdelt visning",
+                    "adaptive_ui_title": "adaptiv panel titel",
+                    "adaptive_ui_icon": "adaptiv panel ikon",
+                    "theme": "Tema",
+                    "include_other_cards": "Inkludér de nødvendige 'custom card' ressourcer."
+                }
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "Det er kun tilladt med én installation af UI Lovelace Minimalist",
+            "not_setup": "UI Lovelace Minimalist er ikke konfigureret."
+        }
+    }
+}

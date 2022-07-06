@@ -1,10 +1,13 @@
 ---
 custom_card_nik_clock:
-  template:
-    - "ulm_language_variables"
+  triggers_update: "all"
   variables:
-    ulm_custom_card_nik_clock_switch: "[[[ return variables.ulm_custom_card_nik_clock_switch ]]]"
+    ulm_custom_card_nik_clock_switch:
     ulm_custom_card_nik_clock_switch_enable: false
+    ulm_language: >
+      [[[
+        return hass["language"];
+      ]]]
   show_icon: false
   show_name: true
   show_state: false

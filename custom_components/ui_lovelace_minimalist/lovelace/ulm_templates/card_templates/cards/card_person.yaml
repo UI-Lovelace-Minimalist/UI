@@ -3,7 +3,7 @@
 card_person:
   template:
     - "icon_info_bg"
-    - "ulm_language_variables"
+    - "ulm_translation_engine"
   variables:
     ulm_card_person_use_entity_picture: false
     ulm_card_person_zone1: ""
@@ -17,37 +17,30 @@ card_person:
   show_name: true
   label: >
     [[[
-      if (variables.ulm_address !== ''){
+      if (variables.ulm_address){
         return states[variables.ulm_address].state
       } else {
         let state = states[variables.ulm_card_person_entity].state;
-        return variables["ulm_person_state_" + state] ? variables["ulm_person_state_" + state] : state;
+        let option = ["home", "not_home", "unavailable", "unknown"]
+        return (option.includes(state)) ? variables.ulm_translation_state : state
       }
     ]]]
   name: "[[[ return states[variables.ulm_card_person_entity].attributes.friendly_name ]]]"
   entity: "[[[ return variables.ulm_card_person_entity; ]]]"
   icon: "mdi:face-man"
   show_entity_picture: "[[[ return variables.ulm_card_person_use_entity_picture ]]]"
-  entity_picture: "[[[ return variables.ulm_card_person_use_entity_picture != false ? states[variables.ulm_card_person_entity].attributes.entity_picture\
+  entity_picture: "[[[ return variables.ulm_card_person_use_entity_picture ? states[variables.ulm_card_person_entity].attributes.entity_picture\
     \ : null ]]]"
   styles:
     icon:
       - color: "rgba(var(--color-theme),0.9)"
       - width: >
           [[[
-            if (variables.ulm_card_person_use_entity_picture !== true){
-              return "20px";
-            } else {
-              return "42px";
-            }
+            return !variables.ulm_card_person_use_entity_picture ? "20px" : "42px";
           ]]]
       - place-self: >
           [[[
-            if (variables.ulm_card_person_use_entity_picture !== true){
-              return "center";
-            } else {
-              return "stretch stretch";
-            }
+            return !variables.ulm_card_person_use_entity_picture ? "center" : "stretch stretch";
           ]]]
     custom_fields:
       notification:
@@ -62,11 +55,7 @@ card_person:
         - line-height: "14px"
         - background-color: >
             [[[
-              if (states[variables.ulm_card_person_entity].state !== 'home') {
-                return "rgba(var(--color-green),1)";
-              } else {
-                return "rgba(var(--color-blue),1)";
-              }
+              return (states[variables.ulm_card_person_entity].state !== 'home') ? "rgba(var(--color-green),1)" : "rgba(var(--color-blue),1)";
             ]]]
   custom_fields:
     notification: >

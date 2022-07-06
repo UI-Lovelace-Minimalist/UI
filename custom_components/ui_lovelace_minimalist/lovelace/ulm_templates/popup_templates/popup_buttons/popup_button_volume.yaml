@@ -4,7 +4,7 @@ popup_button_volume:
     - "popup_button"
     - "ulm_language_variables"
   icon: "mdi:volume-high"
-  name: "Volume"
+  name: "[[[ return variables.ulm_volume; ]]]"
   styles:
     name:
       - text-transform: "uppercase"

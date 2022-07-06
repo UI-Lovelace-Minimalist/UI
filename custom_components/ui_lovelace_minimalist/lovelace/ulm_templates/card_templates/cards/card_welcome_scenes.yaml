@@ -2,7 +2,7 @@
 card_welcome_scenes:
   variables:
     ulm_weather: "[[[ return variables.ulm_weather]]]"
-    ulm_language: "[[[ return window.navigator.language ]]]"
+    ulm_language: "[[[ return hass['language']; ]]]"
     entity_1:
       entity_id: ""
       color: >
@@ -61,6 +61,7 @@ card_welcome_scenes:
         ]]]
   template:
     - "ulm_language_variables"
+    - "ulm_translation_engine"
   show_icon: false
   show_name: false
   show_label: true
@@ -159,7 +160,7 @@ card_welcome_scenes:
         show_label: true
         show_name: true
         show_entity_picture: false
-        name: "Scenes"
+        name: "[[[ return variables.ulm_translation_scenes ]]]"
         icon: "mdi:dots-vertical"
         styles:
           icon:
@@ -186,7 +187,7 @@ card_welcome_scenes:
         template: >
           [[[
             if(variables?.entity_1?.entity_id != ""){
-              return 'card_scenes'
+              return 'card_scenes_welcome'
             } else {
               return 'card_scenes_welcome_auto'
             }

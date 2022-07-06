@@ -1,0 +1,384 @@
+---
+### custom card ristou person ###
+custom_card_ristou_person:
+  template:
+    - "ulm_translation_engine"
+    - "ulm_custom_card_ristou_person_language_variables"
+    - "icon_more_info_new"
+    - "ulm_actions_card"
+  variables:
+    ulm_custom_card_ristou_name: "[[[ return entity.attributes.friendly_name ]]]"
+    ulm_custom_card_ristou_icon: "[[[ return entity.attributes.icon ]]]"
+    ulm_custom_card_ristou_use_entity_picture: false
+    ulm_custom_card_ristou_use_badge: true
+    ulm_custom_card_ristou_map_enable: false
+    ulm_custom_card_ristou_find_device_script: ""
+    ulm_custom_card_ristou_zones:
+    ulm_custom_card_ristou_person_driving_entity: ""
+    ulm_custom_card_ristou_map_aspect_ratio: "466:200"
+    ulm_custom_card_ristou_map_hours_to_show: 0
+    ulm_custom_card_ristou_map_default_zoom: 11
+    ulm_custom_card_ristou_camera_entity_light: ""
+    ulm_custom_card_ristou_camera_entity_dark: ""
+  show_icon: false
+  show_name: false
+  show_label: false
+  triggers_update: "all"
+  styles:
+    grid:
+      - grid-template-areas: >
+          [[[
+            if (variables.ulm_custom_card_ristou_map_enable) {
+                return "\"item1\" \"item3\"";
+            } else if (
+              variables.ulm_custom_card_ristou_camera_entity_light !== ""
+              && variables.ulm_custom_card_ristou_camera_entity_dark !== ""
+            ) {
+                return "\"item1\" \"item2\"";
+            } else {
+              return "\"item1\""
+            }
+          ]]]
+      - grid-template-columns: >
+          [[[
+
+            return "1fr";
+          ]]]
+      - grid-template-rows: >
+          [[[
+            return "1fr";
+          ]]]
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "0px"
+    custom_fields:
+      item2:
+        - display: >
+            [[[
+              if (
+                variables.ulm_custom_card_ristou_camera_entity_light !== ""
+                && variables.ulm_custom_card_ristou_camera_entity_dark !== ""
+                && !variables.ulm_custom_card_ristou_map_enable
+              ) {
+                  return "block";
+              } else {
+                  return "none";
+              }
+            ]]]
+      item3:
+        - display: >
+            [[[
+              if (variables.ulm_custom_card_ristou_map_enable) {
+                  return "block";
+              } else {
+                  return "none";
+              }
+            ]]]
+  custom_fields:
+    item1:
+      ###############
+      ### 1ST ROW ###
+      ###############
+      card:
+        type: "custom:button-card"
+        template:
+          - "icon_more_info"
+        styles:
+          grid:
+            - grid-template-areas: "'item1 item2 item3'"
+            - grid-template-columns: "min-content 1fr auto"
+            - grid-template-rows: "min-content"
+          custom_fields:
+            item3:
+              - display: >
+                  [[[
+                        if (variables.ulm_custom_card_ristou_find_device_script !== "") {
+                            return "block";
+                        } else {
+                            return "none";
+                        }
+                  ]]]
+        custom_fields:
+          ###################
+          ### PERSON ICON ###
+          ###################
+          item1:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              icon: >
+                [[[
+                  if (!variables.ulm_custom_card_ristou_use_badge) {
+                    var zones = variables.ulm_custom_card_ristou_zones;
+                    var person_location = entity.state;
+                    var driving_state = "off"
+                    if (variables.ulm_custom_card_ristou_person_driving_entity !== "") {
+                      driving_state = states[variables.ulm_custom_card_ristou_person_driving_entity].state;
+                    }
+                    if (driving_state === "on" || driving_state === "true") {
+                      return "mdi:car";
+                    } else {
+                      if (person_location !== 'home'){
+                          for (const item of zones){
+                            if (person_location == states[item]?.attributes?.friendly_name){
+                              var icon = (states[item].attributes.icon !== null) ? states[item].attributes.icon : 'mdi:help-circle';
+                              return icon ;
+                            } else if (person_location == 'not_home'){
+                              return "mdi:home-minus";
+                            }
+                          }
+                      } else{
+                        return "mdi:home-variant";
+                      }
+                    }
+                  } else {
+                    return  "mdi:face-man";
+                  }
+                ]]]
+              show_entity_picture: "[[[ return variables.ulm_custom_card_ristou_use_entity_picture ]]]"
+              entity_picture:
+                "[[[ return variables.ulm_custom_card_ristou_use_entity_picture != false ? states[entity.entity_id].attributes.entity_picture\
+                \ : null ]]]"
+              styles:
+                icon:
+                  - color: >
+                      [[[
+                        if (!variables.ulm_custom_card_ristou_use_badge) {
+                          var zones = variables.ulm_custom_card_ristou_zones;
+                          var person_location = entity.state;
+                          var driving_state = "off"
+                          if (variables.ulm_custom_card_ristou_person_driving_entity !== "") {
+                            driving_state = states[variables.ulm_custom_card_ristou_person_driving_entity].state;
+                          }
+
+                          if (driving_state === "on" || driving_state === "true") {
+                            return 'rgba(var(--color-red),0.9)';
+                          } else {
+                            if (person_location !== 'home'){
+                              for (const item of zones){
+                                if (person_location == states[item]?.attributes?.friendly_name){
+                                  return 'rgba(var(--color-yellow),0.9)';
+                                } else if (person_location == 'not_home'){
+                                  return 'rgba(var(--color-blue),0.9)';
+                                }
+                              }
+                            } else{
+                              return 'rgba(var(--color-green),0.9)';
+                            }
+                          }
+                        } else {
+                          return "rgba(var(--color-theme),0.9)";
+                        }
+                      ]]]
+                  - width: >
+                      [[[
+                        if (variables.ulm_custom_card_ristou_use_entity_picture !== true){
+                          return "20px";
+                        } else {
+                          return "42px";
+                        }
+                      ]]]
+                  - place-self: >
+                      [[[
+                        if (variables.ulm_custom_card_ristou_use_entity_picture !== true){
+                          return "center";
+                        } else {
+                          return "stretch stretch";
+                        }
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        if (!variables.ulm_custom_card_ristou_use_badge) {
+                          var zones = variables.ulm_custom_card_ristou_zones;
+                          var person_location = entity.state;
+                          var driving_state = "off"
+                          if (variables.ulm_custom_card_ristou_person_driving_entity !== "") {
+                            driving_state = states[variables.ulm_custom_card_ristou_person_driving_entity].state;
+                          }
+                          if (driving_state === "on" || driving_state === "true") {
+                            return 'rgba(var(--color-red),0.2)';
+                          } else {
+                            if (person_location !== 'home'){
+                              for (const item of zones){
+                                if (person_location == states[item]?.attributes?.friendly_name){
+                                  return 'rgba(var(--color-yellow),0.2)';
+                                } else if (person_location == 'not_home'){
+                                  return 'rgba(var(--color-blue),0.2)';
+                                }
+                              }
+                            } else {
+                              return 'rgba(var(--color-green),0.2)';
+                            }
+                          }
+                        } else {
+                          return 'rgba(var(--color-theme),0.05)';
+                        }
+                      ]]]
+                card:
+                  - box-shadow: "none"
+                  - border-radius: "var(--border-radius) var(--border-radius) 0px 0px"
+                  - padding: "12px 0px 12px 12px"
+                custom_fields:
+                  notification:
+                    - border-radius: "50%"
+                    - position: "absolute"
+                    - left: "38px"
+                    - top: "8px"
+                    - height: "16px"
+                    - width: "16px"
+                    - border: "2px solid var(--card-background-color)"
+                    - font-size: "12px"
+                    - line-height: "14px"
+                    - background-color: >
+                        [[[
+                          var zones = variables.ulm_custom_card_ristou_zones;
+                          var person_location = entity.state;
+                          var driving_state = "off"
+                          if (variables.ulm_custom_card_ristou_person_driving_entity !== "") {
+                            driving_state = states[variables.ulm_custom_card_ristou_person_driving_entity].state;
+                          }
+                          if (driving_state === "on" || driving_state === "true") {
+                            return "rgba(var(--color-red),1)";
+                          } else {
+                            if (person_location !== 'home'){
+                              for (const item of zones){
+                                if (person_location == states[item]?.attributes?.friendly_name){
+                                  return "rgba(var(--color-yellow),1)";
+                                } else if (person_location == 'not_home'){
+                                  return "rgba(var(--color-blue),1)";
+                                }
+                              }
+                            } else{
+                              return "rgba(var(--color-green),1)";
+                            }
+                          }
+                        ]]]
+                    - display: >
+                        [[[
+                              if (variables.ulm_custom_card_ristou_use_badge) {
+                                  return "block";
+                              } else {
+                                  return "none";
+                              }
+                        ]]]
+              custom_fields:
+                notification: >
+                  [[[
+                    var zones = variables.ulm_custom_card_ristou_zones;
+                    var person_location = entity.state;
+                    var driving_state = "off"
+                    var icon = "mdi:help-circle"
+                    if (variables.ulm_custom_card_ristou_person_driving_entity !== "") {
+                      driving_state = states[variables.ulm_custom_card_ristou_person_driving_entity].state;
+                    }
+                    if (driving_state === "on" || driving_state === "true") {
+                      icon = 'mdi:car';
+                    } else {
+                      if (person_location !== 'home'){
+                        for (const item of zones){
+                          if (person_location == states[item]?.attributes?.friendly_name){
+                            icon = (states[item].attributes.icon !== null) ? states[item].attributes.icon : 'mdi:help-circle';
+                          } else if (person_location == 'not_home'){
+                            icon = 'mdi:home-minus';
+                          }
+                        }
+                      } else{
+                        icon = 'mdi:home-variant';
+                      }
+                    }
+                    return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+                  ]]]
+          #####################
+          ### LABEL + STATE ###
+          #####################
+          item2:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              name: "[[[ return variables.ulm_custom_card_ristou_name ]]]"
+              label: >-
+                [[[
+                  var location = entity.state
+                  var driving_state = "off"
+                  if (variables.ulm_custom_card_ristou_person_driving_entity !== "") {
+                    driving_state = states[variables.ulm_custom_card_ristou_person_driving_entity].state;
+                  }
+                  if (driving_state === "on" || driving_state === "true") {
+                    return variables.ulm_custom_card_ristou_person_driving;
+                  } else {
+                    let state = location;
+                    let option = ["home", "not_home", "unavailable", "unknown"]
+                    return (option.includes(state)) ? variables.ulm_translation_state : state
+                  }
+                ]]]
+          #####################
+          ### FIND MY PHONE ###
+          #####################
+          item3:
+            card:
+              template:
+                - "icon_info_bg"
+                - "blue"
+              show_name: false
+              show_label: false
+              type: "custom:button-card"
+              entity: "[[[ return variables.ulm_custom_card_ristou_find_device_script ]]]"
+              icon: "[[[ return variables.ulm_custom_card_ristou_icon ]]]"
+              tap_action:
+                action: "toggle"
+              styles:
+                card:
+                  - box-shadow: "none"
+                  - border-radius: "var(--border-radius)"
+                  - padding: "12px"
+    ###############
+    ### 2ND ROW ###
+    ###############
+    item2:
+      ##################
+      ### STATIC MAP ###
+      ##################
+      card:
+        type: "picture-entity"
+        show_state: false
+        show_name: false
+        camera_view: "auto"
+        entity: >-
+          [[[
+              if (hass.themes.darkMode) {
+                return variables.ulm_custom_card_ristou_camera_entity_dark;
+              } else {
+                return variables.ulm_custom_card_ristou_camera_entity_light;
+              }
+          ]]]
+        style:
+          .: |
+            ha-card {
+              box-shadow: none;
+              border-radius: 0px 0px var(--border-radius) var(--border-radius);
+            }
+    item3:
+      ###################
+      ### BUILTIN MAP ###
+      ###################
+      card:
+        type: "map"
+        default_zoom: "[[[ return variables.ulm_custom_card_ristou_map_default_zoom ]]]"
+        aspect_ratio: "[[[ return variables.ulm_custom_card_ristou_map_aspect_ratio ]]]"
+        hours_to_show: "[[[ return variables.ulm_custom_card_ristou_map_hours_to_show ]]]"
+        entities: "[[[ return variables.ulm_custom_card_ristou_zones ]]]"
+        style:
+          ha-map$: |
+            .leaflet-control-attribution {
+              visibility: hidden;
+            }
+            .leaflet-control-zoom {
+              visibility: hidden;
+            }
+          .: |
+            ha-card {
+              box-shadow: none;
+              border-radius: 0px 0px var(--border-radius) var(--border-radius);
+            }
