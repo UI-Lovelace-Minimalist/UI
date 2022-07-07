@@ -56,7 +56,7 @@ To define the path of `navigate` action, add one of the following depending on y
 - ulm_name_tap_navigate_path
 - ulm_name_hold_navigate_path
 - ulm_name_double_tap_navigate_path
- 
+
 ```yaml
 - type: "custom:button-card"
   template: "card_cover"
@@ -71,7 +71,7 @@ To define the path of `navigate` action, add one of the following depending on y
 
 When creating a dashboard, custom actions can be overwritten on your card definition.
 For example, this code will overwrite the tap action on card with `more-info` action :
- 
+
 ```yaml
 - type: "custom:button-card"
   template: "card_cover"
