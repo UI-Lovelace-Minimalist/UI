@@ -47,15 +47,15 @@ Possible values for each variables are :
 ## Navigate action
 
 To define the path of `navigate` action, add one of the following depending on your action :
- - ulm_card_tap_navigate_path
- - ulm_card_hold_navigate_path
- - ulm_card_double_tap_navigate_path
- - ulm_icon_tap_navigate_path
- - ulm_icon_hold_navigate_path
- - ulm_icon_double_tap_navigate_path
- - ulm_name_tap_navigate_path
- - ulm_name_hold_navigate_path
- - ulm_name_double_tap_navigate_path
+- ulm_card_tap_navigate_path
+- ulm_card_hold_navigate_path
+- ulm_card_double_tap_navigate_path
+- ulm_icon_tap_navigate_path
+- ulm_icon_hold_navigate_path
+- ulm_icon_double_tap_navigate_path
+- ulm_name_tap_navigate_path
+- ulm_name_hold_navigate_path
+- ulm_name_double_tap_navigate_path
  
 ```yaml
 - type: "custom:button-card"
