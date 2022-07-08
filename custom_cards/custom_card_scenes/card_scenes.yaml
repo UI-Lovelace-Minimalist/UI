@@ -58,7 +58,15 @@ card_scenes:
           color_bg: "[[[ return variables.entity_1.bg_color ]]]"
         tap_action:
           action: "call-service"
-          service: "homeassistant.turn_on"
+          service: |
+            [[[
+              let domain = variables.entity_1.entity_id.substr(0, variables.entity_1.entity_id.indexOf("."));
+              if (domain == "automation") {
+                return "automation.trigger"
+              } else {
+                return "homeassistant.turn_on"
+              }
+            ]]]
           service_data:
             entity_id: "[[[ return variables.entity_1.entity_id ]]]"
     item2:
@@ -73,7 +81,15 @@ card_scenes:
           color_bg: "[[[ return variables.entity_2.bg_color ]]]"
         tap_action:
           action: "call-service"
-          service: "homeassistant.turn_on"
+          service: |
+            [[[
+              let domain = variables.entity_2.entity_id.substr(0, variables.entity_2.entity_id.indexOf("."));
+              if (domain == "automation") {
+                return "automation.trigger"
+              } else {
+                return "homeassistant.turn_on"
+              }
+            ]]]
           service_data:
             entity_id: "[[[ return variables.entity_2.entity_id ]]]"
     item3:
@@ -88,7 +104,15 @@ card_scenes:
           color_bg: "[[[ return variables.entity_3.bg_color ]]]"
         tap_action:
           action: "call-service"
-          service: "homeassistant.turn_on"
+          service: |
+            [[[
+              let domain = variables.entity_3.entity_id.substr(0, variables.entity_3.entity_id.indexOf("."));
+              if (domain == "automation") {
+                return "automation.trigger"
+              } else {
+                return "homeassistant.turn_on"
+              }
+            ]]]
           service_data:
             entity_id: "[[[ return variables.entity_3.entity_id ]]]"
     item4:
@@ -103,7 +127,15 @@ card_scenes:
           color_bg: "[[[ return variables.entity_4.bg_color ]]]"
         tap_action:
           action: "call-service"
-          service: "homeassistant.turn_on"
+          service: |
+            [[[
+              let domain = variables.entity_4.entity_id.substr(0, variables.entity_4.entity_id.indexOf("."));
+              if (domain == "automation") {
+                return "automation.trigger"
+              } else {
+                return "homeassistant.turn_on"
+              }
+            ]]]
           service_data:
             entity_id: "[[[ return variables.entity_4.entity_id ]]]"
     item5:
@@ -118,7 +150,15 @@ card_scenes:
           color_bg: "[[[ return variables.entity_5.bg_color ]]]"
         tap_action:
           action: "call-service"
-          service: "homeassistant.turn_on"
+          service: |
+            [[[
+              let domain = variables.entity_5.entity_id.substr(0, variables.entity_5.entity_id.indexOf("."));
+              if (domain == "automation") {
+                return "automation.trigger"
+              } else {
+                return "homeassistant.turn_on"
+              }
+            ]]]
           service_data:
             entity_id: "[[[ return variables.entity_5.entity_id ]]]"
 
