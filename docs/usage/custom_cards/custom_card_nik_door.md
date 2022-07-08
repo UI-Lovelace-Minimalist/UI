@@ -25,7 +25,6 @@ Initial release
 
 <details>
 <summary>2.0.0</summary>
-
 - Added Battery Level for monitoring
 - Added double_tap unlock to prevent accidental opening
 </details>
