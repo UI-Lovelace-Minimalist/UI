@@ -14,6 +14,12 @@ icon_nas:
 icon_file_video:
   icon: "mdi:file-video"
 
+icon_lan:
+  icon: "mdi:lan"
+
+icon_filmstrip:
+  icon: "mdi:filmstrip"
+
 icon_motion_sensor:
   icon: "mdi:motion-sensor"
 
@@ -37,6 +43,9 @@ icon_washing_machine:
 
 icon_tumble_dryer:
   icon: "mdi:tumble-dryer"
+
+icon_cloud_download:
+  icon: "mdi:cloud-download"
 
 
 # zoning locations
