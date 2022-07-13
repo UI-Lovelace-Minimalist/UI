@@ -16,7 +16,6 @@ card_power_outlet:
       card:
         type: "custom:button-card"
         template:
-          - "icon_more_info"
           - "yellow"
         custom_fields:
           item1:
