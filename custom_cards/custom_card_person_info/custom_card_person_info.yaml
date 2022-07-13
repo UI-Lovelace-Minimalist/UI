@@ -8,6 +8,7 @@ card_person_info:
     ulm_card_person_zone1: ""
     ulm_card_person_zone2: ""
     ulm_address: ""
+    ulm_address_locality: ""
     ulm_card_person_driving_entity: ""
     ulm_card_person_battery_entity: ""
     ulm_card_person_battery_state_entity: ""
@@ -24,12 +25,15 @@ card_person_info:
     [[[
       if (variables.ulm_address){
         return states[variables.ulm_address].state;
-      } else if (states[variables.ulm_card_person_driving_entity].state === "on") {
+      } else if (variables.ulm_address_locality){
+        return states[variables.ulm_address_locality].attributes.Locality;
+      }
+      else if (states[variables.ulm_card_person_driving_entity]?.state === "on") {
         let state = states[variables.ulm_card_person_entity].state;
         return `Driving - ${variables.ulm_translation_state}`;
       } else {
         let state = states[variables.ulm_card_person_entity].state;
-        return hass.resources[hass["language"]]["component.person" + ".state._." + state];
+        return hass.resources[hass["language"]]["component.person" + ".state._." + state] ? hass.resources[hass["language"]]["component.person" + ".state._." + state] : state;
       }
     ]]]
   name: "[[[ return states[variables.ulm_card_person_entity].attributes.friendly_name ]]]"
@@ -85,7 +89,7 @@ card_person_info:
         - line-height: "14px"
         - background-color: >
             [[[
-              if (states[variables.ulm_card_person_driving_entity].state === "on") {
+              if (states[variables.ulm_card_person_driving_entity]?.state === "on") {
                 return "rgba(var(--color-red),1)";
               } else if (states[variables.ulm_card_person_entity].state !== 'home') {
                 return "rgba(var(--color-green),1)";
@@ -114,7 +118,7 @@ card_person_info:
   custom_fields:
     notification: >
       [[[
-        if (states[variables.ulm_card_person_driving_entity].state === "on") {
+        if (states[variables.ulm_card_person_driving_entity]?.state === "on") {
           var icon = 'mdi:car'
           return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
         } else if (states[variables.ulm_card_person_entity].state !== 'home') {
@@ -131,12 +135,11 @@ card_person_info:
           return '<ha-icon icon="mdi:home-variant" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
         }
       ]]]
-
     battery: >
       [[[
         if (states[variables.ulm_card_person_battery_entity]?.state) {
           var battery = states[variables.ulm_card_person_battery_entity]?.state;
-          var charging = states[variables.ulm_card_person_battery_state_entity]?.state === "charging";
+          var charging = states[variables.ulm_card_person_battery_state_entity]?.state.toLowerCase() === "charging";
           var iconBase = charging ? "mdi:battery-charging" : "mdi:battery"
           var roundedBattery = Math.ceil(battery / 10) * 10;
           var icon = roundedBattery === 100 ? iconBase : `${iconBase}-${roundedBattery}`;

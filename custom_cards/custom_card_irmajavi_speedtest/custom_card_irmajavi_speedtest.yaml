@@ -3,6 +3,8 @@ custom_card_irmajavi_speedtest:
   triggers_update: "all"
   show_name: false
   show_label: false
+  template:
+    - "ulm_custom_card_irmajavi_speedtest_language_variables"
   variables:
     ulm_custom_card_irmajavi_speedtest_color: "blue"
     ulm_custom_card_irmajavi_speedtest_router_name: "router_name"
