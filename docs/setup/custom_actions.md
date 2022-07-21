@@ -43,6 +43,6 @@ Possible values for each variables are :
     Once you have edited `custom_actions.yaml` file, you must reload `"UI LOVELACE MINIMALIST"` configuration.
     Just go to `"Configuration" --> "Settings"` in Home Assistant and press the `"UI_LOVELACE_MINIMALIST"` button within the "YAML configuration reloading" section.
 
-## For developpers
+## For developers
 
 To enable action customization on your custom cards, use the following templates `icon_more_info_new` and `ulm_actions_card`
