@@ -15,6 +15,7 @@ The `card_graph` shows an entity with the actual state and a *min-graph-card* in
 
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
+| entity      |         | :material-check: | Your entity_id for the temperature sensor |
 | ulm_card_graph_color     |         | :material-close: | This is to adjust your color value. Use a CSS varible from HA or set a color value (eg. #FFFFFF) |
 | ulm_card_graph_name      |         | :material-close: | Enable background |
 | ulm_card_graph_icon    |         | :material-close: | Set custom icon |
@@ -30,6 +31,7 @@ The `card_graph` shows an entity with the actual state and a *min-graph-card* in
 ```yaml
   - type: 'custom:button-card'
     template: card_graph
+    entity: sensor.livingroom_temperature
     variables:
       ulm_card_graph_color: "var(--google-blue)"
       ulm_card_graph_name: Temperature Livingroom

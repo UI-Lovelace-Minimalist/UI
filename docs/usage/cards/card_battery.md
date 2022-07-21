@@ -36,7 +36,7 @@ The `battery-card` is a slightly enhanced `generic-card`, that can indicate whet
        ulm_card_battery_charger_type_entity_id: sensor.battery_level
        ulm_card_battery_battery_level_danger: 30
        ulm_card_battery_battery_level_warning: 80
-  name: Smartphone
+       ulm_card_batteryname: Smartphone
 ```
 
 ??? note "Template Code"

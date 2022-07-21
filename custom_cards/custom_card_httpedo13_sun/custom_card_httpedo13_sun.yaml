@@ -3,6 +3,13 @@ custom_card_httpedo13_sun:
   show_icon: false
   show_name: false
   show_label: false
+  variables:
+    darkMode: "[[[ return hass.themes.darkMode; ]]]"
+    language: "[[[ return hass.language; ]]]"
+    showAzimuth: false
+    showElevation: false
+    timeFormat: "24h"
+    title:
   tap-action:
     action: "none"
   styles:
