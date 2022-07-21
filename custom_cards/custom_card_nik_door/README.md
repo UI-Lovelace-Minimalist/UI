@@ -14,13 +14,19 @@ This is a `custom-card` that shows the currenct state of your Lock and allows yo
 
 ## Credits
 
-Author: Nik - 2022 Version: 1.0.0
+Author: Nik - 2022 Version: 2.0.0
 
 ## Changelog
 
 <details>
 <summary>1.0.0</summary>
 Initial release
+</details>
+
+<details>
+<summary>2.0.0</summary>
+Added Battery Level for monitoring
+Added double_tap unlock to prevent accidental opening
 </details>
 
 ## Requirements
@@ -32,11 +38,12 @@ To have the Minimalist cards and custom cards installed
 ```yaml
 
 - type: "custom:button-card"
-  template: custom_card_nik_door
-  entity: sensor.nuki_blindato_door_security_state
+  template: "custom_card_nik_door"
+  entity: "sensor.nuki_blindato_door_security_state"
   variables:
-    ulm_custom_card_entity_1_name: Blindato
-    ulm_custom_card_entity_1_lock: lock.nuki_blindato_lock
+    ulm_custom_card_entity_1_name: "Blindato"
+    ulm_custom_card_entity_1_lock: "lock.nuki_blindato_lock"
+    ulm_custom_card_entity_1_lock_battery: "sensor.blindato_battery"
 ```
 
 ## Variables
@@ -64,6 +71,12 @@ To have the Minimalist cards and custom cards installed
     <td>Your Door Lock entity</td>
   </tr>
   <tr>
+    <td>ulm_custom_card_entity_1_lock_battery</td>
+    <td>sensor.blindato_battery</td>
+    <td>Yes</td>
+    <td>Your Door Lock battery sensor</td>
+  </tr>
+  <tr>
     <td>entity</td>
     <td>sensor.nuki_blindato_door_security_state</td>
     <td>Yes</td>
@@ -72,7 +85,7 @@ To have the Minimalist cards and custom cards installed
 </tbody>
 </table>
 
-## Template Code
+## Template code
 
 ??? note "Template Code"
 

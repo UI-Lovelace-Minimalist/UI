@@ -7,7 +7,7 @@ hide:
 
 # Custom-card "Scenes Card"
 
-The `card_scenes` you can control up to 5 `entity` such as `scene` or `script`.
+The `card_scenes` you can control up to 5 `entity` such as `scene`, `script` or `automation`.
 
 ![Scenes Card](../../assets/img/card_scenes.png)
 
@@ -96,6 +96,10 @@ Version: 1.2.0
 
 ## Changelog
 
+<details>
+<summary>1.3.0</summary>
+Option to trigger automation
+</details>
 <details>
 <summary>1.2.0</summary>
 Implementation of nested variables
