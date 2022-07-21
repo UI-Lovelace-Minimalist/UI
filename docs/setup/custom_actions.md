@@ -82,6 +82,6 @@ For example, this code will overwrite the tap action on card with `more-info` ac
 
 ```
 
-## For developpers
+## For developers
 
 To enable action customization on your custom cards, use the following templates `icon_more_info_new` and `ulm_actions_card`

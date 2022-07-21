@@ -78,5 +78,5 @@ n/a
 ??? note "Template Code"
 
     ```yaml title="custom_card_nik_door.yaml"
-    --8<-- "custom_cards/custom_card_nas/custom_card_nik_door.yaml"
+    --8<-- "custom_cards/custom_card_nas/custom_card_nas.yaml"
     ```

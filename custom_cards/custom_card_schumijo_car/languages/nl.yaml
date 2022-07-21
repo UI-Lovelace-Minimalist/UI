@@ -1,0 +1,6 @@
+---
+ulm_custom_card_schumijo_car_language_variables:
+  variables:
+    ulm_custom_card_schumijo_car_default_name: "Mijn auto"
+    ulm_custom_card_schumijo_car_range: "Bereik"
+    ulm_custom_card_schumijo_car_energy_level: "Brandstofniveau"
