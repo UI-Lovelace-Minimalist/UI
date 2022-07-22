@@ -37,6 +37,8 @@ icon_more_info_new:
               template:
                 - "icon"
                 - "ulm_actions_icon"
+              variables:
+                ulm_custom_popup: "[[[ return variables.ulm_custom_popup; ]]]"
               styles:
                 card:
                   - overflow: "visible"
@@ -48,6 +50,8 @@ icon_more_info_new:
               template:
                 - "icon_info"
                 - "ulm_actions_name"
+              variables:
+                ulm_custom_popup: "[[[ return variables.ulm_custom_popup; ]]]"
               styles:
                 card:
                   - padding: "6px"
