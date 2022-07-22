@@ -43,7 +43,7 @@ ulm_translation_engine:
           }
           var label = hass.resources[lang]["component." + domain + ".state._." + state];
           var translation = label ? label : state;
-          return (entity.attributes.current_temperature ) + '°' + ' • ' + translation + (entity.state !='off' ? ' (' + mode + ')' : '');
+          return (entity.attributes.current_temperature ) + '°' + ' • ' + translation + ((entity.state !='off' && mode !== undefined) ? ' (' + mode + ')' : '');
           }
       ]]]
     ulm_translation_off: "[[[ return hass.resources[hass['language']]['state.default.off']; ]]]"

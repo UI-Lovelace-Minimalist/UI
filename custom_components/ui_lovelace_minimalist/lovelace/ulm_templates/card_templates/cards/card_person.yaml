@@ -22,7 +22,7 @@ card_person:
       } else {
         let state = states[variables.ulm_card_person_entity].state;
         let option = ["home", "not_home", "unavailable", "unknown"]
-        return (option.includes(state)) ? variables.ulm_translation_state : state
+        return (option.includes(state)) ? variables.ulm_translation_state : (states["zone."+state]?.attributes?.friendly_name || state)
       }
     ]]]
   name: "[[[ return states[variables.ulm_card_person_entity].attributes.friendly_name ]]]"
@@ -61,10 +61,10 @@ card_person:
     notification: >
       [[[
         if (states[variables.ulm_card_person_entity].state !== 'home') {
-          if (states[variables.ulm_card_person_entity].state === states[variables.ulm_card_person_zone1]?.attributes?.friendly_name) {
+          if (states[variables.ulm_card_person_zone1]?.attributes?.persons.includes(variables.ulm_card_person_entity)) {
             var icon = states[variables.ulm_card_person_zone1].attributes.icon !== null ? states[variables.ulm_card_person_zone1].attributes.icon : 'mdi:help-circle'
             return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
-          } else if (states[variables.ulm_card_person_entity].state === states[variables.ulm_card_person_zone2]?.attributes?.friendly_name) {
+          } else if (states[variables.ulm_card_person_zone2]?.attributes?.persons.includes(variables.ulm_card_person_entity)) {
             var icon = states[variables.ulm_card_person_zone2].attributes.icon !== null ? states[variables.ulm_card_person_zone2].attributes.icon : 'mdi:help-circle'
             return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
           } else {
