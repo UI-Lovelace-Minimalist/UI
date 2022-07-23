@@ -58,6 +58,18 @@ card_esh_room:
                 return "12px";
             }
           ]]]
+      - max-width: >-
+          [[[
+            if (variables.ulm_custom_card_esh_room_light_entity && variables.ulm_custom_card_esh_room_climate_entity) {
+                return "85%";
+            } else if (variables.ulm_custom_card_esh_room_light_entity) {
+                return "100%";
+            } else if (variables.ulm_custom_card_esh_room_climate_entity) {
+                return "85%";
+            } else {
+                return "100%";
+            }
+          ]]]
     label:
       - justify-self: "start"
       - align-self: "start"
@@ -75,6 +87,18 @@ card_esh_room:
                 return "0px";
             } else {
                 return "3px";
+            }
+          ]]]
+      - max-width: >-
+          [[[
+            if (variables.ulm_custom_card_esh_room_light_entity && variables.ulm_custom_card_esh_room_climate_entity) {
+                return "85%";
+            } else if (variables.ulm_custom_card_esh_room_light_entity) {
+                return "100%";
+            } else if (variables.ulm_custom_card_esh_room_climate_entity) {
+                return "85%";
+            } else {
+                return "100%";
             }
           ]]]
     state:
