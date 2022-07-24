@@ -89,9 +89,6 @@ ulm_actions_name:
         var action = variables.ulm_name_hold_action;
         let domain = entity.entity_id.substr(0, entity.entity_id.indexOf("."));
 
-        console.log(entity.entity_id);
-        console.log(variables.ulm_custom_popup);
-
         if (domain == "binary_sensor" || domain == "sensor"){
           if (action == 'toggle')
             action = 'none';
