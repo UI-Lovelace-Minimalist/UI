@@ -83,7 +83,6 @@ ulm_actions_name:
               'ulm_popup_media_player_entity': entity.entity_id
             };
           ]]]
-
   hold_action:
     action: >
       [[[
@@ -167,7 +166,6 @@ ulm_actions_name:
               'ulm_popup_media_player_entity': entity.entity_id
             };
           ]]]
-          
   double_tap_action:
     action: >
       [[[
@@ -192,7 +190,7 @@ ulm_actions_name:
 
         if (action == 'popup' && (variables.ulm_custom_popup != null )){
           let popup_config = variables.ulm_custom_popup;
-          if ((typeof popup_config === 'object') && 'template' in popup_config) {
+          if ((typeof popup_config === 'object') && 'template' in popup_config){
             action = 'fire-dom-event';
           }
         }
