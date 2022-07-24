@@ -83,7 +83,6 @@ ulm_actions_card:
               'ulm_popup_media_player_entity': entity.entity_id
             };
           ]]]
-
   hold_action:
     action: >
       [[[
