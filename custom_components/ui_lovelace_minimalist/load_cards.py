@@ -16,24 +16,77 @@ from .const import COMMUNITY_CARDS_FOLDER, DOMAIN, GITHUB_REPO
 _LOGGER: logging.Logger = logging.getLogger(__name__)
 
 
-async def download_file(url: str, location: str):
+async def download_file(ulm: UlmBase, url: str, location: str):
     """Download file from github."""
+    _LOGGER.debug(f"Downloading file: {str(location)}")
 
-    _LOGGER.debug(f"Downloading file: {location}")
-    headers = {"Accept": "application/vnd.github+json"}
-    async with aiohttp.ClientSession() as session:
-        async with session.get(url, headers=headers) as resp:
-            if resp.status == 200:
-                os.makedirs(os.path.dirname(location), exist_ok=True)
-                f = await aiofiles.open(location, mode="wb")
-                await f.write(await resp.read())
-                await f.close()
+    gh_token = ulm.configuration.token
+    headers = {
+        "Accept": "application/vnd.github+json",
+        "Authorization": f"token {gh_token}"
+        }
+
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.get(url, headers=headers) as resp:
+                if resp.status == 200:
+                    print(location)
+                    os.makedirs(os.path.dirname(location), exist_ok=True)
+                    f = await aiofiles.open(location, mode="wb")
+                    await f.write(await resp.read())
+                    await f.close()
+    except Exception as e:
+        _LOGGER.error(e)
+
+
+async def fetch_cards(ulm: UlmBase):
+    """Fetch all community cards from github"""
+
+    _LOGGER.debug("Getting list from github to update all-cards data config item.")
+    errors: dict[str, str] = {}
+    gh_token = ulm.configuration.token
+    headers = {
+        "Accept": "application/vnd.github+json",
+        "Authorization": f"token {gh_token}"
+    }
+    try:
+        async with aiohttp.ClientSession(raise_for_status=True) as session:
+            gh_root_tree_sha = ""
+            async with session.get(
+                f"https://api.github.com/repos/{GITHUB_REPO}/git/trees/HEAD",
+                headers=headers,
+            ) as gh_root_tree_resp:
+                gh_root_tree = await gh_root_tree_resp.json()
+                for p in gh_root_tree["tree"]:
+                    if p["path"] == COMMUNITY_CARDS_FOLDER:
+                        gh_root_tree_sha = p["sha"]
+                        break
+            if gh_root_tree_sha:
+                async with session.get(
+                    f"https://api.github.com/repos/{GITHUB_REPO}/git/trees/{gh_root_tree_sha}",
+                    headers=headers,
+                ) as gh_cards_tree_resp:
+                    gh_cards_tree = await gh_cards_tree_resp.json()
+                    ulm.configuration.all_community_cards = [
+                        p["path"]
+                        for p in gh_cards_tree["tree"]
+                        if p["type"] == "tree"
+                    ]
+            else:
+                errors["base"] = "github_cards"
+    except Exception as e:
+        _LOGGER.error(f"ERROR: {e}")
+        errors["base"] = "github_cards"
+
+    return errors
 
 
 async def load_cards(hass: HomeAssistant, ulm: UlmBase):
     """Load Community Cards."""
 
     _LOGGER.debug("Configuring Community Cards")
+
+    await fetch_cards(ulm)
 
     community_cards_dir = hass.config.path(
         f"custom_components/{DOMAIN}/__ui_minimalist__/ulm_templates/community_cards"
@@ -59,13 +112,19 @@ async def load_cards(hass: HomeAssistant, ulm: UlmBase):
                 )
                 shutil.rmtree(e, ignore_errors=True)
 
-    if ulm.configuration.community_cards:
+    gh_token = ulm.configuration.token
 
-        headers = {"Accept": "application/vnd.github+json"}
+    if ulm.configuration.community_cards:
+        for card in ulm.configuration.community_cards:
+            if card not in ulm.configuration.all_community_cards:
+                print("joow " + card)
+                ulm.configuration.community_cards.remove(card)
+        headers = {
+            "Accept": "application/vnd.github+json",
+            "Authorization": f"token {gh_token}"
+        }
         try:
-            async with aiohttp.ClientSession() as session:
-                # Clone repo
-                # Copy files over to correct loc
+            async with aiohttp.ClientSession(raise_for_status=True) as session:
                 for card in ulm.configuration.community_cards:
                     async with session.get(
                         f"https://api.github.com/repos/{GITHUB_REPO}/contents/{COMMUNITY_CARDS_FOLDER}/{card}",
@@ -80,9 +139,9 @@ async def load_cards(hass: HomeAssistant, ulm: UlmBase):
                                 if os.path.exists(file_loc):
                                     file_size = os.path.getsize(file_loc)
                                     if file_size != f["size"]:
-                                        await download_file(f["download_url"], file_loc)
+                                        await download_file(ulm, f["download_url"], file_loc)
                                 else:
-                                    await download_file(f["download_url"], file_loc)
+                                    await download_file(ulm, f["download_url"], file_loc)
                             # Only one dir deep supported for now
                             elif file_type == "dir":
                                 async with session.get(
@@ -94,16 +153,20 @@ async def load_cards(hass: HomeAssistant, ulm: UlmBase):
                                         sub_dir_file_name = sf["name"]
                                         sub_dir_file_type = sf["type"]
                                         if sub_dir_file_type == "file":
-                                            file_loc = f"{community_cards_dir}/{card}/{file_name}/{sub_dir_file_name}"
-                                            if os.path.exists(file_loc):
-                                                file_size = os.path.getsize(file_loc)
+                                            sub_dir_file_loc = f"{community_cards_dir}/{card}/{file_name}/{sub_dir_file_name}"
+                                            if os.path.exists(sub_dir_file_loc):
+                                                file_size = os.path.getsize(sub_dir_file_loc)
                                                 if file_size != sf["size"]:
                                                     await download_file(
-                                                        f["download_url"], file_loc
+                                                        ulm,
+                                                        sf["download_url"],
+                                                        sub_dir_file_loc
                                                     )
                                             else:
                                                 await download_file(
-                                                    f["download_url"], file_loc
+                                                    ulm,
+                                                    sf["download_url"],
+                                                    sub_dir_file_loc
                                                 )
 
         except Exception as e:

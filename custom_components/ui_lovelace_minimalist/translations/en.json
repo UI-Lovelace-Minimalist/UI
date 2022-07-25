@@ -22,6 +22,9 @@
         "abort": {
             "single_instance_allowed": "Only a single configuration of UI Lovelace Minimalist is allowed.",
             "not_setup": "UI Lovelace Minimalist is not setup."
+        },
+        "progress": {
+            "wait_for_device": "1. Open {url} \n2.Paste the following key to authorize ULM: \n```\n{code}\n```\n"
         }
     },
     "options": {

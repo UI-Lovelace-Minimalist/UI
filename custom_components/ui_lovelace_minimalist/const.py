@@ -4,6 +4,7 @@ NAME = "UI Lovelace Minimalist"
 DOMAIN = "ui_lovelace_minimalist"
 DOMAIN_DATA = f"{DOMAIN}_data"
 VERSION = "0.0.1"
+CLIENT_ID = "c1603968d9d29a2492df"
 
 ATTRIBUTION = "Data provided by http://jsonplaceholder.typicode.com/"
 ISSUE_URL = "https://github.com/stokkie90/ui-lovelace-minimalist/issues"
@@ -65,7 +66,7 @@ CONF_COMMUNITY_CARDS_ALL = [
 # Defaults
 DEFAULT_NAME = DOMAIN
 DEFAULT_LANGUAGE = "English (GB)"
-DEFAULT_SIDEPANEL_ENABLED = False
+DEFAULT_SIDEPANEL_ENABLED = True
 DEFAULT_SIDEPANEL_TITLE = NAME
 DEFAULT_SIDEPANEL_ICON = "mdi:flower"
 DEFAULT_THEME = "minimalist-desktop"

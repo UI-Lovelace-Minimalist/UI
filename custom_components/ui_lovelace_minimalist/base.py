@@ -36,6 +36,7 @@ class UlmConfiguration:
     language: str = DEFAULT_LANGUAGE
     community_cards: list = field(default_factory=list)
     all_community_cards: list = field(default_factory=list)
+    token: str = None
 
     def to_dict(self) -> dict:
         """Return Dict."""

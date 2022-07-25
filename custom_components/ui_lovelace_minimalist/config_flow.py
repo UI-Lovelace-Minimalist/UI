@@ -5,10 +5,14 @@ from __future__ import annotations
 import logging
 from typing import Any
 
-import aiohttp
+from aiogithubapi import GitHubDeviceAPI, GitHubException
+from aiogithubapi.common.const import OAUTH_USER_LOGIN
 from homeassistant import config_entries
 from homeassistant.core import callback
 import homeassistant.helpers.config_validation as cv
+from homeassistant.loader import async_get_integration
+from homeassistant.helpers import aiohttp_client
+from homeassistant.helpers.event import async_call_later
 import voluptuous as vol
 
 from .base import UlmBase
@@ -38,8 +42,10 @@ from .const import (  # CONF_COMMUNITY_CARDS_ALL,
     DOMAIN,
     GITHUB_REPO,
     NAME,
+    CLIENT_ID,
 )
 from .enums import ConfigurationType
+from .load_cards import fetch_cards
 
 _LOGGER: logging.Logger = logging.getLogger(__name__)
 
@@ -95,6 +101,16 @@ class UlmFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
 
     VERSION = 1
 
+    def __init__(self) -> None:
+        """Initialize"""
+        self._errors = {}
+        self.device = None
+        self.activation = None
+        self.log = _LOGGER
+        self._progress_task = None
+        self._login_device = None
+        self._reauth = False
+
     async def async_step_user(self, user_input: dict[str, Any] | None = None):
         """Handle a flow initialized by the user."""
 
@@ -104,10 +120,63 @@ class UlmFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
             return self.async_abort(reason="single_instance_allowed")
 
         if user_input is not None:
-            return self.async_create_entry(title=NAME, data=user_input)
+            if [x for x in user_input if not user_input[x]]:
+                self._errors["base"] = "acc"
+                print("Jooowoow")
+                return await self._show_config_form(user_input)
+
+            print("####### 0")
+            return await self.async_step_device(user_input)
+
+            # return self.async_create_entry(title=NAME, data=user_input)
 
         # Initial form
         return await self._show_config_form(user_input)
+
+    async def async_step_device(self, _user_input):
+        """Handle device steps"""
+        print("####### 1")
+        async def _wait_for_activation(_=None):
+            print("####### 2")
+            if self._login_device is None or self._login_device.expires_in is None:
+                print("####### 7")
+                async_call_later(self.hass, 1, _wait_for_activation)
+                return
+
+            response = await self.device.activation(device_code=self._login_device.device_code)
+            print("####### 3")
+            self.activation = response.data
+            self.hass.async_create_task(
+                self.hass.config_entries.flow.async_configure(flow_id=self.flow_id)
+            )
+        if not self.activation:
+            print("####### 4")
+            integration = await async_get_integration(self.hass, DOMAIN)
+            if not self.device:
+                print("####### 5")
+                self.device = GitHubDeviceAPI(
+                    client_id=CLIENT_ID,
+                    session=aiohttp_client.async_get_clientsession(self.hass),
+                    **{"client_name": f"ULM/{integration.version}"},
+                )
+            async_call_later(self.hass, 1, _wait_for_activation)
+            try:
+                response = await self.device.register()
+                self._login_device = response.data
+                print("####### 6", self._login_device.user_code, self._login_device.device_code)
+                return self.async_show_progress(
+                    step_id="device",
+                    progress_action="wait_for_device",
+                    description_placeholders={
+                        "url": OAUTH_USER_LOGIN,
+                        "code": self._login_device.user_code,
+                    },
+                )
+            except GitHubException as exception:
+                self.log.error(exception)
+                return self.async_abort(reason="github")
+
+        return self.async_show_progress_done(next_step_id="device_done")
 
     async def _show_config_form(self, user_input):
         """Show the configuration form to edit options."""
@@ -115,9 +184,38 @@ class UlmFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         if not user_input:
             user_input = {}
 
-        schema = await ulm_config_option_schema(user_input)
+        # schema = await ulm_config_option_schema(user_input)
+        schema = {}
 
-        return self.async_show_form(step_id="user", data_schema=vol.Schema(schema))
+        return self.async_show_form(step_id="user", data_schema=vol.Schema(schema), errors=self._errors)
+
+    async def async_step_device_done(self, _user_input):
+        """Handle device steps"""
+        if self._reauth:
+            existing_entry = self.hass.config_entries.async_get_entry(self.context["entry_id"])
+            self.hass.config_entries.async_update_entry(
+                existing_entry, data={"token": self.activation.access_token}
+            )
+            await self.hass.config_entries.async_reload(existing_entry.entry_id)
+            return self.async_abort(reason="reauth_successful")
+
+        return self.async_create_entry(title="", data={"token": self.activation.access_token})
+
+    async def async_step_reauth(self, user_input=None):
+        """Perform reauth upon an API authentication error."""
+        return await self.async_step_reauth_confirm()
+
+    async def async_step_reauth_confirm(self, user_input=None):
+        """Dialog that informs the user that reauth is required."""
+        if user_input is None:
+            return self.async_show_form(
+                step_id="reauth_confirm",
+                data_schema=vol.Schema({}),
+            )
+        self._reauth = True
+        return await self.async_step_device(None)
+
+
 
     @staticmethod
     @callback
@@ -146,7 +244,8 @@ class UlmOptionFlowHandler(config_entries.OptionsFlow):
             if user_input[CONF_COMMUNITY_CARDS]:
                 for card in user_input[CONF_COMMUNITY_CARDS]:
                     if card not in ulm.configuration.all_community_cards:
-                        user_input[CONF_COMMUNITY_CARDS].pop(card)
+                        print("jooooooooowww" + card)
+                        user_input[CONF_COMMUNITY_CARDS].remove(card)
             return self.async_create_entry(title=NAME, data=user_input)
 
         if ulm is None or ulm.configuration is None:
@@ -156,34 +255,8 @@ class UlmOptionFlowHandler(config_entries.OptionsFlow):
             schema = {vol.Optional("not_in_use", default=""): str}
         else:
             schema = await ulm_config_option_schema(ulm.configuration.to_dict())
-            headers = {"Accept": "application/vnd.github+json"}
-            try:
-                async with aiohttp.ClientSession() as session:
-                    gh_root_tree_sha = ""
-                    async with session.get(
-                        f"https://api.github.com/repos/{GITHUB_REPO}/git/trees/HEAD",
-                        headers=headers,
-                    ) as gh_root_tree_resp:
-                        gh_root_tree = await gh_root_tree_resp.json()
-                        for p in gh_root_tree["tree"]:
-                            if p["path"] == COMMUNITY_CARDS_FOLDER:
-                                gh_root_tree_sha = p["sha"]
-                    if gh_root_tree_sha:
-                        async with session.get(
-                            f"https://api.github.com/repos/{GITHUB_REPO}/git/trees/{gh_root_tree_sha}",
-                            headers=headers,
-                        ) as gh_cards_tree_resp:
-                            gh_cards_tree = await gh_cards_tree_resp.json()
-                            ulm.configuration.all_community_cards = [
-                                p["path"]
-                                for p in gh_cards_tree["tree"]
-                                if p["type"] == "tree"
-                            ]
-                    else:
-                        errors["base"] = "github_cards"
-            except Exception as e:
-                _LOGGER.error(e)
-                errors["base"] = "github_cards"
+
+            errors.update(await fetch_cards(ulm))
 
         schema.update(
             {
