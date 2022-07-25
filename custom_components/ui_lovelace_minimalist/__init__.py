@@ -14,6 +14,7 @@ from .const import DOMAIN, NAME
 from .enums import ConfigurationType
 from .load_dashboard import load_dashboard
 from .load_plugins import load_plugins
+from .load_cards import load_cards
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 
@@ -63,6 +64,8 @@ async def async_initialize_integration(
     load_plugins(hass=hass, ulm=ulm)
 
     load_dashboard(hass=hass, ulm=ulm)
+
+    await load_cards(hass=hass, ulm=ulm)
 
     return True
 

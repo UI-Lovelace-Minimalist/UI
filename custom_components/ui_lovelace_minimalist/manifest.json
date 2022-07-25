@@ -12,7 +12,9 @@
   "codeowners": [
     "@stokkie90"
   ],
-  "requirements": [],
+  "requirements": [
+    "aiofiles==0.8.0"
+  ],
   "version": "0.0.1",
   "iot_class": "calculated"
 }

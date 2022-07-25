@@ -28,7 +28,7 @@
     {
       "label": "Serve Documentation on port 8000",
       "type": "shell",
-      "command": "mkdocs -v serve",
+      "command": "mkdocs -v serve -a 0.0.0.0:8000",
       "problemMatcher": []
     }
   ]

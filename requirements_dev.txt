@@ -1,7 +1,7 @@
 
 #
 # If the dev version of homeassistant gives you problems:
-#   pip install git+git://github.com/home-assistant/core.git@2021.12.10
+#   pip install git+git://github.com/home-assistant/core.git@2022.7.6
 #
 jinja2
 mkdocs-awesome-pages-plugin

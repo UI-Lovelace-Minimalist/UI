@@ -143,7 +143,6 @@ def reload_configuration(hass):
     combined_cards_dir = hass.config.path(
         f"custom_components/{DOMAIN}/__ui_minimalist__/ulm_templates"
     )
-
     if os.path.exists(hass.config.path(f"{DOMAIN}/custom_cards")):
         # Copy over manually installed custom_cards from user
         shutil.copytree(

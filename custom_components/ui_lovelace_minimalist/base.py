@@ -34,6 +34,8 @@ class UlmConfiguration:
     plugin_path: str = "www/community/"
     include_other_cards: bool = DEFAULT_INCLUDE_OTHER_CARDS
     language: str = DEFAULT_LANGUAGE
+    community_cards: list = field(default_factory=list)
+    all_community_cards: list = field(default_factory=list)
 
     def to_dict(self) -> dict:
         """Return Dict."""

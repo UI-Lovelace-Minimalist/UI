@@ -14,7 +14,8 @@
                     "adaptive_ui_title": "adaptive panel title",
                     "adaptive_ui_icon": "adaptive panel icon",
                     "theme": "Theme",
-                    "include_other_cards": "Include custom card resources it's depending on."
+                    "include_other_cards": "Include custom card resources it's depending on.",
+                    "community_cards": "Select Community Cards you want to enable."
                 }
             }
         },
@@ -37,13 +38,17 @@
                     "adaptive_ui_title": "adaptive panel title",
                     "adaptive_ui_icon": "adaptive panel icon",
                     "theme": "Theme",
-                    "include_other_cards": "Include custom card resources it's depending on."
+                    "include_other_cards": "Include custom card resources it's depending on.",
+                    "community_cards": "Select Community Cards you want to enable."
                 }
             }
         },
         "abort": {
             "single_instance_allowed": "Only a single configuration of UI Lovelace Minimalist is allowed.",
             "not_setup": "UI Lovelace Minimalist is not setup."
+        },
+        "error": {
+            "github_cards": "Something went wrong when fetching cards from Github."
         }
     }
 }
