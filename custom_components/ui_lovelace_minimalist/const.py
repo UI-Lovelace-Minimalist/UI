@@ -46,7 +46,21 @@ CONF_THEME_OPTIONS = [
 ]
 CONF_INCLUDE_OTHER_CARDS = "include_other_cards"
 CONF_COMMUNITY_CARDS = "community_cards"
-CONF_COMMUNITY_CARDS_ALL = ["card-1", "card-2", "card-3", "card-4", "card-5", "card-6", "card-7", "card-8", "card-9", "card-9", "card-0", "card-11", "card-12"]
+CONF_COMMUNITY_CARDS_ALL = [
+    "card-1",
+    "card-2",
+    "card-3",
+    "card-4",
+    "card-5",
+    "card-6",
+    "card-7",
+    "card-8",
+    "card-9",
+    "card-9",
+    "card-0",
+    "card-11",
+    "card-12",
+]
 
 # Defaults
 DEFAULT_NAME = DOMAIN

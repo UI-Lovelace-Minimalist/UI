@@ -7,7 +7,7 @@ frontend:
 automation ui: !include "automations.yaml"
 
 lovelace:
-  mode: storage
+  mode: "storage"
 
 logger:
   default: "info"

@@ -361,7 +361,7 @@ const te=new WeakMap,ee=w(t=>e=>{if(!(e instanceof O)||e instanceof D||"style"!=
                     @mousemove="${S}"
                     @touchstart="${S}"
                     @touchend="${S}"
-                    @touchcancel="${S}" 
+                    @touchcancel="${S}"
                     @touchmove="${S}"
                 >
                     <div class="my-slider-custom-track" style="${ee(y)}">

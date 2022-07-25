@@ -3,17 +3,18 @@
 from __future__ import annotations
 
 import logging
-import aiohttp
-from optparse import Option
-from typing import Any, Dict, Optional
+from typing import Any
 
+import aiohttp
 from homeassistant import config_entries
 from homeassistant.core import callback
 import homeassistant.helpers.config_validation as cv
 import voluptuous as vol
 
 from .base import UlmBase
-from .const import (
+from .const import (  # CONF_COMMUNITY_CARDS_ALL,
+    COMMUNITY_CARDS_FOLDER,
+    CONF_COMMUNITY_CARDS,
     CONF_INCLUDE_OTHER_CARDS,
     CONF_LANGUAGE,
     CONF_LANGUAGES,
@@ -26,8 +27,6 @@ from .const import (
     CONF_THEME,
     CONF_THEME_OPTIONS,
     CONF_THEME_PATH,
-    CONF_COMMUNITY_CARDS,
-    # CONF_COMMUNITY_CARDS_ALL,
     DEFAULT_COMMUNITY_CARDS,
     DEFAULT_INCLUDE_OTHER_CARDS,
     DEFAULT_LANGUAGE,
@@ -37,9 +36,8 @@ from .const import (
     DEFAULT_THEME,
     DEFAULT_THEME_PATH,
     DOMAIN,
-    NAME,
     GITHUB_REPO,
-    COMMUNITY_CARDS_FOLDER
+    NAME,
 )
 from .enums import ConfigurationType
 
@@ -97,9 +95,8 @@ class UlmFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
 
     VERSION = 1
 
-    async def async_step_user(self, user_input: Optional[Dict[str, Any]] = None):
+    async def async_step_user(self, user_input: dict[str, Any] | None = None):
         """Handle a flow initialized by the user."""
-        errors: Dict[str, str] = {}
 
         if self._async_current_entries():
             return self.async_abort(reason="single_instance_allowed")
@@ -130,7 +127,7 @@ class UlmFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
 
 
 class UlmOptionFlowHandler(config_entries.OptionsFlow):
-    """ULM config flow option handler. (Edit Flow)"""
+    """ULM config flow option handler (Edit Flow)."""
 
     def __init__(self, config_entry: config_entries.ConfigEntry) -> None:
         """Initialize."""
@@ -143,7 +140,7 @@ class UlmOptionFlowHandler(config_entries.OptionsFlow):
     async def async_step_user(self, user_input=None):
         """Handle a flow initilized by the user."""
         ulm: UlmBase = self.hass.data.get(DOMAIN)
-        errors: Dict[str, str] = {}
+        errors: dict[str, str] = {}
 
         if user_input is not None:
             if user_input[CONF_COMMUNITY_CARDS]:
@@ -159,37 +156,48 @@ class UlmOptionFlowHandler(config_entries.OptionsFlow):
             schema = {vol.Optional("not_in_use", default=""): str}
         else:
             schema = await ulm_config_option_schema(ulm.configuration.to_dict())
-            headers = {
-                "Accept": "application/vnd.github+json"
-            }
+            headers = {"Accept": "application/vnd.github+json"}
             try:
                 async with aiohttp.ClientSession() as session:
                     gh_root_tree_sha = ""
                     async with session.get(
                         f"https://api.github.com/repos/{GITHUB_REPO}/git/trees/HEAD",
-                        headers=headers
+                        headers=headers,
                     ) as gh_root_tree_resp:
                         gh_root_tree = await gh_root_tree_resp.json()
-                        for p in gh_root_tree['tree']:
-                            if p['path'] == COMMUNITY_CARDS_FOLDER:
-                                gh_root_tree_sha = p['sha']
+                        for p in gh_root_tree["tree"]:
+                            if p["path"] == COMMUNITY_CARDS_FOLDER:
+                                gh_root_tree_sha = p["sha"]
                     if gh_root_tree_sha:
                         async with session.get(
                             f"https://api.github.com/repos/{GITHUB_REPO}/git/trees/{gh_root_tree_sha}",
-                            headers=headers
+                            headers=headers,
                         ) as gh_cards_tree_resp:
                             gh_cards_tree = await gh_cards_tree_resp.json()
-                            ulm.configuration.all_community_cards = [p['path'] for p in gh_cards_tree['tree'] if p['type'] == "tree"]
+                            ulm.configuration.all_community_cards = [
+                                p["path"]
+                                for p in gh_cards_tree["tree"]
+                                if p["type"] == "tree"
+                            ]
                     else:
                         errors["base"] = "github_cards"
             except Exception as e:
+                _LOGGER.error(e)
                 errors["base"] = "github_cards"
 
-        schema.update({
-            vol.Optional(
-                CONF_COMMUNITY_CARDS,
-                default=list(ulm.configuration.to_dict().get(CONF_COMMUNITY_CARDS, DEFAULT_COMMUNITY_CARDS))
-            ): cv.multi_select(ulm.configuration.all_community_cards)
-        })
+        schema.update(
+            {
+                vol.Optional(
+                    CONF_COMMUNITY_CARDS,
+                    default=list(
+                        ulm.configuration.to_dict().get(
+                            CONF_COMMUNITY_CARDS, DEFAULT_COMMUNITY_CARDS
+                        )
+                    ),
+                ): cv.multi_select(ulm.configuration.all_community_cards)
+            }
+        )
 
-        return self.async_show_form(step_id="user", data_schema=vol.Schema(schema), errors=errors)
+        return self.async_show_form(
+            step_id="user", data_schema=vol.Schema(schema), errors=errors
+        )
