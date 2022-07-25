@@ -9,15 +9,15 @@ from aiogithubapi import GitHubDeviceAPI, GitHubException
 from aiogithubapi.common.const import OAUTH_USER_LOGIN
 from homeassistant import config_entries
 from homeassistant.core import callback
-import homeassistant.helpers.config_validation as cv
-from homeassistant.loader import async_get_integration
 from homeassistant.helpers import aiohttp_client
+import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.event import async_call_later
+from homeassistant.loader import async_get_integration
 import voluptuous as vol
 
 from .base import UlmBase
 from .const import (  # CONF_COMMUNITY_CARDS_ALL,
-    COMMUNITY_CARDS_FOLDER,
+    CLIENT_ID,
     CONF_COMMUNITY_CARDS,
     CONF_INCLUDE_OTHER_CARDS,
     CONF_LANGUAGE,
@@ -40,9 +40,7 @@ from .const import (  # CONF_COMMUNITY_CARDS_ALL,
     DEFAULT_THEME,
     DEFAULT_THEME_PATH,
     DOMAIN,
-    GITHUB_REPO,
     NAME,
-    CLIENT_ID,
 )
 from .enums import ConfigurationType
 from .load_cards import fetch_cards
@@ -102,7 +100,7 @@ class UlmFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
     VERSION = 1
 
     def __init__(self) -> None:
-        """Initialize"""
+        """Initialize."""
         self._errors = {}
         self.device = None
         self.activation = None
@@ -134,8 +132,9 @@ class UlmFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         return await self._show_config_form(user_input)
 
     async def async_step_device(self, _user_input):
-        """Handle device steps"""
+        """Handle device steps."""
         print("####### 1")
+
         async def _wait_for_activation(_=None):
             print("####### 2")
             if self._login_device is None or self._login_device.expires_in is None:
@@ -143,12 +142,15 @@ class UlmFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
                 async_call_later(self.hass, 1, _wait_for_activation)
                 return
 
-            response = await self.device.activation(device_code=self._login_device.device_code)
+            response = await self.device.activation(
+                device_code=self._login_device.device_code
+            )
             print("####### 3")
             self.activation = response.data
             self.hass.async_create_task(
                 self.hass.config_entries.flow.async_configure(flow_id=self.flow_id)
             )
+
         if not self.activation:
             print("####### 4")
             integration = await async_get_integration(self.hass, DOMAIN)
@@ -163,7 +165,11 @@ class UlmFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
             try:
                 response = await self.device.register()
                 self._login_device = response.data
-                print("####### 6", self._login_device.user_code, self._login_device.device_code)
+                print(
+                    "####### 6",
+                    self._login_device.user_code,
+                    self._login_device.device_code,
+                )
                 return self.async_show_progress(
                     step_id="device",
                     progress_action="wait_for_device",
@@ -187,19 +193,25 @@ class UlmFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         # schema = await ulm_config_option_schema(user_input)
         schema = {}
 
-        return self.async_show_form(step_id="user", data_schema=vol.Schema(schema), errors=self._errors)
+        return self.async_show_form(
+            step_id="user", data_schema=vol.Schema(schema), errors=self._errors
+        )
 
     async def async_step_device_done(self, _user_input):
-        """Handle device steps"""
+        """Handle device steps."""
         if self._reauth:
-            existing_entry = self.hass.config_entries.async_get_entry(self.context["entry_id"])
+            existing_entry = self.hass.config_entries.async_get_entry(
+                self.context["entry_id"]
+            )
             self.hass.config_entries.async_update_entry(
                 existing_entry, data={"token": self.activation.access_token}
             )
             await self.hass.config_entries.async_reload(existing_entry.entry_id)
             return self.async_abort(reason="reauth_successful")
 
-        return self.async_create_entry(title="", data={"token": self.activation.access_token})
+        return self.async_create_entry(
+            title="", data={"token": self.activation.access_token}
+        )
 
     async def async_step_reauth(self, user_input=None):
         """Perform reauth upon an API authentication error."""
@@ -214,8 +226,6 @@ class UlmFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
             )
         self._reauth = True
         return await self.async_step_device(None)
-
-
 
     @staticmethod
     @callback

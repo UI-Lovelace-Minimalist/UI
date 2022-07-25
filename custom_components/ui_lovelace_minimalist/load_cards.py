@@ -23,8 +23,8 @@ async def download_file(ulm: UlmBase, url: str, location: str):
     gh_token = ulm.configuration.token
     headers = {
         "Accept": "application/vnd.github+json",
-        "Authorization": f"token {gh_token}"
-        }
+        "Authorization": f"token {gh_token}",
+    }
 
     try:
         async with aiohttp.ClientSession() as session:
@@ -40,14 +40,14 @@ async def download_file(ulm: UlmBase, url: str, location: str):
 
 
 async def fetch_cards(ulm: UlmBase):
-    """Fetch all community cards from github"""
+    """Fetch all community cards from github."""
 
     _LOGGER.debug("Getting list from github to update all-cards data config item.")
     errors: dict[str, str] = {}
     gh_token = ulm.configuration.token
     headers = {
         "Accept": "application/vnd.github+json",
-        "Authorization": f"token {gh_token}"
+        "Authorization": f"token {gh_token}",
     }
     try:
         async with aiohttp.ClientSession(raise_for_status=True) as session:
@@ -68,9 +68,7 @@ async def fetch_cards(ulm: UlmBase):
                 ) as gh_cards_tree_resp:
                     gh_cards_tree = await gh_cards_tree_resp.json()
                     ulm.configuration.all_community_cards = [
-                        p["path"]
-                        for p in gh_cards_tree["tree"]
-                        if p["type"] == "tree"
+                        p["path"] for p in gh_cards_tree["tree"] if p["type"] == "tree"
                     ]
             else:
                 errors["base"] = "github_cards"
@@ -121,7 +119,7 @@ async def load_cards(hass: HomeAssistant, ulm: UlmBase):
                 ulm.configuration.community_cards.remove(card)
         headers = {
             "Accept": "application/vnd.github+json",
-            "Authorization": f"token {gh_token}"
+            "Authorization": f"token {gh_token}",
         }
         try:
             async with aiohttp.ClientSession(raise_for_status=True) as session:
@@ -139,9 +137,13 @@ async def load_cards(hass: HomeAssistant, ulm: UlmBase):
                                 if os.path.exists(file_loc):
                                     file_size = os.path.getsize(file_loc)
                                     if file_size != f["size"]:
-                                        await download_file(ulm, f["download_url"], file_loc)
+                                        await download_file(
+                                            ulm, f["download_url"], file_loc
+                                        )
                                 else:
-                                    await download_file(ulm, f["download_url"], file_loc)
+                                    await download_file(
+                                        ulm, f["download_url"], file_loc
+                                    )
                             # Only one dir deep supported for now
                             elif file_type == "dir":
                                 async with session.get(
@@ -155,18 +157,20 @@ async def load_cards(hass: HomeAssistant, ulm: UlmBase):
                                         if sub_dir_file_type == "file":
                                             sub_dir_file_loc = f"{community_cards_dir}/{card}/{file_name}/{sub_dir_file_name}"
                                             if os.path.exists(sub_dir_file_loc):
-                                                file_size = os.path.getsize(sub_dir_file_loc)
+                                                file_size = os.path.getsize(
+                                                    sub_dir_file_loc
+                                                )
                                                 if file_size != sf["size"]:
                                                     await download_file(
                                                         ulm,
                                                         sf["download_url"],
-                                                        sub_dir_file_loc
+                                                        sub_dir_file_loc,
                                                     )
                                             else:
                                                 await download_file(
                                                     ulm,
                                                     sf["download_url"],
-                                                    sub_dir_file_loc
+                                                    sub_dir_file_loc,
                                                 )
 
         except Exception as e:
