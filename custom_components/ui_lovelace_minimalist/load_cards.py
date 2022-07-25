@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import logging
 import os
+import shutil
 
 import aiofiles
 import aiohttp
@@ -38,7 +39,28 @@ async def load_cards(hass: HomeAssistant, ulm: UlmBase):
         f"custom_components/{DOMAIN}/__ui_minimalist__/ulm_templates/community_cards"
     )
     os.makedirs(community_cards_dir, exist_ok=True)
+
+    if not ulm.configuration.community_cards:
+        # Clear out directory
+        shutil.rmtree(f"{community_cards_dir}/", ignore_errors=True)
+    else:
+        existing_cards = [f.path for f in os.scandir(community_cards_dir) if f.is_dir()]
+        for e in existing_cards:
+            card_dir = os.path.basename(e)
+            # Delete unselected folders
+            if card_dir not in ulm.configuration.community_cards:
+                _LOGGER.debug(
+                    f"Deleting community card folder {card_dir}, not selected anymore."
+                )
+                shutil.rmtree(e, ignore_errors=True)
+            if card_dir not in ulm.configuration.all_community_cards:
+                _LOGGER.debug(
+                    f"Deleting community card folder {card_dir}, that is not existing anymore on Github."
+                )
+                shutil.rmtree(e, ignore_errors=True)
+
     if ulm.configuration.community_cards:
+
         headers = {"Accept": "application/vnd.github+json"}
         try:
             async with aiohttp.ClientSession() as session:
