@@ -105,6 +105,9 @@ card_light:
               entity: "[[[ return entity.entity_id ]]]"
               icon: "[[[ return variables.ulm_card_light_icon ]]]"
               variables:
+                ulm_icon_tap_action: "[[[ return variables.ulm_icon_tap_action; ]]]"
+                ulm_icon_hold_action: "[[[ return variables.ulm_icon_hold_action; ]]]"
+                ulm_icon_double_tap_action: "[[[ return variables.ulm_icon_double_tap_action; ]]]"
                 ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
                 ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
                 ulm_card_light_enable_popup: "[[[ return variables.ulm_card_light_enable_popup; ]]]"
@@ -142,6 +145,9 @@ card_light:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
               variables:
+                ulm_name_tap_action: "[[[ return variables.ulm_name_tap_action; ]]]"
+                ulm_name_hold_action: "[[[ return variables.ulm_name_hold_action; ]]]"
+                ulm_name_double_tap_action: "[[[ return variables.ulm_name_double_tap_action; ]]]"
                 ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
                 ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
                 ulm_card_light_enable_popup: "[[[ return variables.ulm_card_light_enable_popup; ]]]"
