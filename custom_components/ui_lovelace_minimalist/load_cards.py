@@ -47,7 +47,6 @@ async def fetch_cards(ulm: UlmBase):
     gh_token = ulm.configuration.token
     if gh_token is None:
         errors["base"] = "gh_token"
-        print("JOOOOOWWWW")
         return errors
     headers = {
         "Accept": "application/vnd.github+json",
