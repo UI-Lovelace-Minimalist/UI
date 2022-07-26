@@ -37,6 +37,9 @@ from .const import (  # CONF_COMMUNITY_CARDS_ALL,
     DEFAULT_SIDEPANEL_ENABLED,
     DEFAULT_SIDEPANEL_ICON,
     DEFAULT_SIDEPANEL_TITLE,
+    DEFAULT_SIDEPANEL_ADV_ENABLED,
+    DEFAULT_SIDEPANEL_ADV_ICON,
+    DEFAULT_SIDEPANEL_ADV_TITLE,
     DEFAULT_THEME,
     DEFAULT_THEME_PATH,
     DOMAIN,
@@ -70,15 +73,15 @@ async def ulm_config_option_schema(options: dict = {}) -> dict:
         ): str,
         vol.Optional(
             CONF_SIDEPANEL_ADV_ENABLED,
-            default=options.get(CONF_SIDEPANEL_ADV_ENABLED, DEFAULT_SIDEPANEL_ENABLED),
+            default=options.get(CONF_SIDEPANEL_ADV_ENABLED, DEFAULT_SIDEPANEL_ADV_ENABLED),
         ): bool,
         vol.Optional(
             CONF_SIDEPANEL_ADV_TITLE,
-            default=options.get(CONF_SIDEPANEL_ADV_TITLE, DEFAULT_SIDEPANEL_TITLE),
+            default=options.get(CONF_SIDEPANEL_ADV_TITLE, DEFAULT_SIDEPANEL_ADV_TITLE),
         ): str,
         vol.Optional(
             CONF_SIDEPANEL_ADV_ICON,
-            default=options.get(CONF_SIDEPANEL_ADV_ICON, DEFAULT_SIDEPANEL_ICON),
+            default=options.get(CONF_SIDEPANEL_ADV_ICON, DEFAULT_SIDEPANEL_ADV_ICON),
         ): str,
         vol.Optional(
             CONF_THEME, default=options.get(CONF_THEME, DEFAULT_THEME)
@@ -119,43 +122,33 @@ class UlmFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
 
         if user_input is not None:
             if [x for x in user_input if not user_input[x]]:
-                self._errors["base"] = "acc"
-                print("Jooowoow")
+                self._errors["base"] = "ack"
                 return await self._show_config_form(user_input)
 
-            print("####### 0")
             return await self.async_step_device(user_input)
-
-            # return self.async_create_entry(title=NAME, data=user_input)
 
         # Initial form
         return await self._show_config_form(user_input)
 
     async def async_step_device(self, _user_input):
         """Handle device steps."""
-        print("####### 1")
 
         async def _wait_for_activation(_=None):
-            print("####### 2")
             if self._login_device is None or self._login_device.expires_in is None:
-                print("####### 7")
                 async_call_later(self.hass, 1, _wait_for_activation)
                 return
 
             response = await self.device.activation(
                 device_code=self._login_device.device_code
             )
-            print("####### 3")
             self.activation = response.data
             self.hass.async_create_task(
                 self.hass.config_entries.flow.async_configure(flow_id=self.flow_id)
             )
 
         if not self.activation:
-            print("####### 4")
             integration = await async_get_integration(self.hass, DOMAIN)
             if not self.device:
-                print("####### 5")
                 self.device = GitHubDeviceAPI(
                     client_id=CLIENT_ID,
                     session=aiohttp_client.async_get_clientsession(self.hass),
@@ -165,11 +158,6 @@ class UlmFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
             try:
                 response = await self.device.register()
                 self._login_device = response.data
-                print(
-                    "####### 6",
-                    self._login_device.user_code,
-                    self._login_device.device_code,
-                )
                 return self.async_show_progress(
                     step_id="device",
                     progress_action="wait_for_device",
@@ -190,7 +178,7 @@ class UlmFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         if not user_input:
             user_input = {}
 
-        # schema = await ulm_config_option_schema(user_input)
+        # Emtpy schema on startup.
         schema = {}
 
         return self.async_show_form(
@@ -254,7 +242,6 @@ class UlmOptionFlowHandler(config_entries.OptionsFlow):
             if user_input[CONF_COMMUNITY_CARDS]:
                 for card in user_input[CONF_COMMUNITY_CARDS]:
                     if card not in ulm.configuration.all_community_cards:
-                        print("jooooooooowww" + card)
                         user_input[CONF_COMMUNITY_CARDS].remove(card)
             return self.async_create_entry(title=NAME, data=user_input)
 

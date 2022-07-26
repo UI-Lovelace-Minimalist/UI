@@ -51,7 +51,8 @@
             "not_setup": "UI Lovelace Minimalist is not setup."
         },
         "error": {
-            "github_cards": "Something went wrong when fetching cards from Github."
+            "github_cards": "Something went wrong when fetching cards from Github.",
+            "ack": "You need to acknowledge all statements."
         }
     }
 }

@@ -30,7 +30,6 @@ async def download_file(ulm: UlmBase, url: str, location: str):
         async with aiohttp.ClientSession() as session:
             async with session.get(url, headers=headers) as resp:
                 if resp.status == 200:
-                    print(location)
                     os.makedirs(os.path.dirname(location), exist_ok=True)
                     f = await aiofiles.open(location, mode="wb")
                     await f.write(await resp.read())
@@ -38,13 +37,13 @@ async def download_file(ulm: UlmBase, url: str, location: str):
     except Exception as e:
         _LOGGER.error(e)
 
-
 async def fetch_cards(ulm: UlmBase):
     """Fetch all community cards from github."""
 
     _LOGGER.debug("Getting list from github to update all-cards data config item.")
     errors: dict[str, str] = {}
     gh_token = ulm.configuration.token
+    print(gh_token)
     headers = {
         "Accept": "application/vnd.github+json",
         "Authorization": f"token {gh_token}",
@@ -115,7 +114,6 @@ async def load_cards(hass: HomeAssistant, ulm: UlmBase):
     if ulm.configuration.community_cards:
         for card in ulm.configuration.community_cards:
             if card not in ulm.configuration.all_community_cards:
-                print("joow " + card)
                 ulm.configuration.community_cards.remove(card)
         headers = {
             "Accept": "application/vnd.github+json",
