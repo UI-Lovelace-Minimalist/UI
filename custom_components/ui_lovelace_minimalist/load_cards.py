@@ -21,6 +21,8 @@ async def download_file(ulm: UlmBase, url: str, location: str):
     _LOGGER.debug(f"Downloading file: {str(location)}")
 
     gh_token = ulm.configuration.token
+    if gh_token is None:
+        _LOGGER.error("Github Token not set. Please re-install this integration to go throught the setup procedure. (No custom configuration will be lost)")
     headers = {
         "Accept": "application/vnd.github+json",
         "Authorization": f"token {gh_token}",
@@ -43,7 +45,10 @@ async def fetch_cards(ulm: UlmBase):
     _LOGGER.debug("Getting list from github to update all-cards data config item.")
     errors: dict[str, str] = {}
     gh_token = ulm.configuration.token
-    print(gh_token)
+    if gh_token is None:
+        errors["base"] = "gh_token"
+        print("JOOOOOWWWW")
+        return errors
     headers = {
         "Accept": "application/vnd.github+json",
         "Authorization": f"token {gh_token}",
@@ -110,6 +115,8 @@ async def load_cards(hass: HomeAssistant, ulm: UlmBase):
                 shutil.rmtree(e, ignore_errors=True)
 
     gh_token = ulm.configuration.token
+    if gh_token is None:
+        _LOGGER.error("Github Token not set. Please re-install this integration to go throught the setup procedure. (No custom configuration will be lost)")
 
     if ulm.configuration.community_cards:
         for card in ulm.configuration.community_cards:
