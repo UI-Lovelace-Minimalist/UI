@@ -34,12 +34,12 @@ from .const import (  # CONF_COMMUNITY_CARDS_ALL,
     DEFAULT_COMMUNITY_CARDS,
     DEFAULT_INCLUDE_OTHER_CARDS,
     DEFAULT_LANGUAGE,
-    DEFAULT_SIDEPANEL_ENABLED,
-    DEFAULT_SIDEPANEL_ICON,
-    DEFAULT_SIDEPANEL_TITLE,
     DEFAULT_SIDEPANEL_ADV_ENABLED,
     DEFAULT_SIDEPANEL_ADV_ICON,
     DEFAULT_SIDEPANEL_ADV_TITLE,
+    DEFAULT_SIDEPANEL_ENABLED,
+    DEFAULT_SIDEPANEL_ICON,
+    DEFAULT_SIDEPANEL_TITLE,
     DEFAULT_THEME,
     DEFAULT_THEME_PATH,
     DOMAIN,
@@ -73,7 +73,9 @@ async def ulm_config_option_schema(options: dict = {}) -> dict:
         ): str,
         vol.Optional(
             CONF_SIDEPANEL_ADV_ENABLED,
-            default=options.get(CONF_SIDEPANEL_ADV_ENABLED, DEFAULT_SIDEPANEL_ADV_ENABLED),
+            default=options.get(
+                CONF_SIDEPANEL_ADV_ENABLED, DEFAULT_SIDEPANEL_ADV_ENABLED
+            ),
         ): bool,
         vol.Optional(
             CONF_SIDEPANEL_ADV_TITLE,
