@@ -36,10 +36,9 @@ popup_weather_radar:
             card:
               icon: "mdi:calendar-month"
               type: "custom:button-card"
-              name: "Forecast"
               template:
                 - "popup_button"
-                # - "popup_button_stats"
+                - "popup_button_forecast"
               tap_action:
                 action: "fire-dom-event"
                 browser_mod:
@@ -54,8 +53,7 @@ popup_weather_radar:
             card:
               icon: "mdi:radar"
               type: "custom:button-card"
-              name: "Radar"
               template:
                 - "popup_button"
                 - "popup_button_selected"
-                # - "popup_button_history"
+                - "popup_button_radar"
