@@ -33,7 +33,7 @@ ulm_actions_icon:
         return action;
       ]]]
     navigation_path: "[[[ return variables.ulm_icon_tap_action == 'navigate' ? variables.ulm_icon_tap_navigate_path : '/0' ]]]"
-    haptic: "medium"
+    haptic: "[[[ return variables.ulm_icon_tap_haptic != null ? variables.ulm_icon_tap_haptic : 'none' ]]]"
     service: "input_select.select_option"
     service_data:
       option: "[[[ return variables.ulm_input_select_option ]]]"
@@ -110,7 +110,7 @@ ulm_actions_icon:
         return action;
       ]]]
     navigation_path: "[[[ return variables.ulm_icon_hold_action == 'navigate' ? variables.ulm_icon_hold_navigate_path : '/0' ]]]"
-    haptic: "light"
+    haptic: "[[[ return variables.ulm_icon_hold_haptic != null ? variables.ulm_icon_hold_haptic : 'none' ]]]"
     service: "input_select.select_option"
     service_data:
       option: "[[[ return variables.ulm_input_select_option ]]]"
@@ -191,7 +191,7 @@ ulm_actions_icon:
         return action;
       ]]]
     navigation_path: "[[[ return variables.ulm_icon_double_tap_action == 'navigate' ? variables.ulm_icon_double_tap_navigate_path : '/0' ]]]"
-    haptic: "light"
+    haptic: "[[[ return variables.ulm_icon_double_tap_haptic != null ? variables.ulm_icon_double_tap_haptic : 'none' ]]]"
     service: "input_select.select_option"
     service_data:
       option: "[[[ return variables.ulm_input_select_option ]]]"
