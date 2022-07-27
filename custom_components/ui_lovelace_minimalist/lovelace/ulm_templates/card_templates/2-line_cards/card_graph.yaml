@@ -2,6 +2,7 @@
 ### Card Graph ###
 card_graph:
   template:
+    - "ulm_custom_actions"
     - "ulm_actions_card"
   variables:
     ulm_card_graph_color: "var(--info-color)"
@@ -35,6 +36,24 @@ card_graph:
         variables:
           ulm_card_generic_icon: "[[[ return variables.ulm_card_graph_icon; ]]]"
           ulm_card_generic_name: "[[[ return variables.ulm_card_graph_name; ]]]"
+          ulm_card_tap_action: "[[[ return variables.ulm_card_tap_action; ]]]"
+          ulm_card_tap_navigate_path: "[[[ return variables.ulm_card_tap_navigate_path; ]]]"
+          ulm_card_hold_action: "[[[ return variables.ulm_card_hold_action; ]]]"
+          ulm_card_hold_navigate_path: "[[[ return variables.ulm_card_hold_navigate_path; ]]]"
+          ulm_card_double_tap_action: "[[[ return variables.ulm_card_double_tap_action; ]]]"
+          ulm_card_double_tap_navigate_path: "[[[ return variables.ulm_card_double_tap_navigate_path; ]]]"
+          ulm_icon_tap_action: "[[[ return variables.ulm_icon_tap_action; ]]]"
+          ulm_icon_tap_navigate_path: "[[[ return variables.ulm_icon_tap_navigate_path; ]]]"
+          ulm_icon_hold_action: "[[[ return variables.ulm_icon_hold_action; ]]]"
+          ulm_icon_hold_navigate_path: "[[[ return variables.ulm_icon_hold_navigate_path; ]]]"
+          ulm_icon_double_tap_action: "[[[ return variables.ulm_icon_double_tap_action; ]]]"
+          ulm_icon_double_tap_navigate_path: "[[[ return variables.ulm_icon_double_tap_navigate_path; ]]]"
+          ulm_name_tap_action: "[[[ return variables.ulm_name_tap_action; ]]]"
+          ulm_name_tap_navigate_path: "[[[ return variables.ulm_name_tap_navigate_path; ]]]"
+          ulm_name_hold_action: "[[[ return variables.ulm_name_hold_action; ]]]"
+          ulm_name_hold_navigate_path: "[[[ return variables.ulm_name_hold_navigate_path; ]]]"
+          ulm_name_double_tap_action: "[[[ return variables.ulm_name_double_tap_action; ]]]"
+          ulm_name_double_tap_navigate_path: "[[[ return variables.ulm_name_double_tap_navigate_path; ]]]"
           ulm_custom_popup: "[[[ return variables.ulm_custom_popup; ]]]"
         styles:
           card:
