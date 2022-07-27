@@ -33,28 +33,13 @@ card_graph:
         template:
           - "card_generic"
         entity: "[[[ return entity.entity_id ]]]"
-        variables:
-          ulm_card_generic_icon: "[[[ return variables.ulm_card_graph_icon; ]]]"
-          ulm_card_generic_name: "[[[ return variables.ulm_card_graph_name; ]]]"
-          ulm_card_tap_action: "[[[ return variables.ulm_card_tap_action; ]]]"
-          ulm_card_tap_navigate_path: "[[[ return variables.ulm_card_tap_navigate_path; ]]]"
-          ulm_card_hold_action: "[[[ return variables.ulm_card_hold_action; ]]]"
-          ulm_card_hold_navigate_path: "[[[ return variables.ulm_card_hold_navigate_path; ]]]"
-          ulm_card_double_tap_action: "[[[ return variables.ulm_card_double_tap_action; ]]]"
-          ulm_card_double_tap_navigate_path: "[[[ return variables.ulm_card_double_tap_navigate_path; ]]]"
-          ulm_icon_tap_action: "[[[ return variables.ulm_icon_tap_action; ]]]"
-          ulm_icon_tap_navigate_path: "[[[ return variables.ulm_icon_tap_navigate_path; ]]]"
-          ulm_icon_hold_action: "[[[ return variables.ulm_icon_hold_action; ]]]"
-          ulm_icon_hold_navigate_path: "[[[ return variables.ulm_icon_hold_navigate_path; ]]]"
-          ulm_icon_double_tap_action: "[[[ return variables.ulm_icon_double_tap_action; ]]]"
-          ulm_icon_double_tap_navigate_path: "[[[ return variables.ulm_icon_double_tap_navigate_path; ]]]"
-          ulm_name_tap_action: "[[[ return variables.ulm_name_tap_action; ]]]"
-          ulm_name_tap_navigate_path: "[[[ return variables.ulm_name_tap_navigate_path; ]]]"
-          ulm_name_hold_action: "[[[ return variables.ulm_name_hold_action; ]]]"
-          ulm_name_hold_navigate_path: "[[[ return variables.ulm_name_hold_navigate_path; ]]]"
-          ulm_name_double_tap_action: "[[[ return variables.ulm_name_double_tap_action; ]]]"
-          ulm_name_double_tap_navigate_path: "[[[ return variables.ulm_name_double_tap_navigate_path; ]]]"
-          ulm_custom_popup: "[[[ return variables.ulm_custom_popup; ]]]"
+        variables: >
+          [[[
+            let vars = variables;
+            vars.ulm_card_generic_icon = variables.ulm_card_graph_icon;
+            vars.ulm_card_generic_name = variables.ulm_card_graph_name;
+            return vars;
+          ]]]
         styles:
           card:
             - box-shadow: "none"
