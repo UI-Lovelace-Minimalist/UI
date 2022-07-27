@@ -158,7 +158,7 @@ card_thermostat:
                       'popup_variables': {
                         'ulm_popup_thermostat_entity': entity.entity_id,
                       }
-                    };          
+                    };
                   }
                   return vars;
                 ]]]
@@ -198,7 +198,7 @@ card_thermostat:
                       'popup_variables': {
                         'ulm_popup_thermostat_entity': entity.entity_id,
                       }
-                    };          
+                    };
                   }
                   return vars;
                 ]]]
