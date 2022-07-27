@@ -25,8 +25,11 @@ card_binary_sensor_alert:
                 - "blue"
               variables:
                 ulm_icon_tap_action: "[[[ return variables.ulm_icon_tap_action; ]]]"
+                ulm_icon_tap_navigate_path: "[[[ return variables.ulm_icon_tap_navigate_path; ]]]"
                 ulm_icon_hold_action: "[[[ return variables.ulm_icon_hold_action; ]]]"
+                ulm_icon_hold_navigate_path: "[[[ return variables.ulm_icon_hold_navigate_path; ]]]"
                 ulm_icon_double_tap_action: "[[[ return variables.ulm_icon_double_tap_action; ]]]"
+                ulm_icon_double_tap_navigate_path: "[[[ return variables.ulm_icon_double_tap_navigate_path; ]]]"
                 ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
                 ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
               entity: "[[[ return entity.entity_id ]]]"
@@ -38,8 +41,11 @@ card_binary_sensor_alert:
                 - "blue_no_card"
               variables:
                 ulm_name_tap_action: "[[[ return variables.ulm_name_tap_action; ]]]"
+                ulm_name_tap_navigate_path: "[[[ return variables.ulm_name_tap_navigate_path; ]]]"
                 ulm_name_hold_action: "[[[ return variables.ulm_name_hold_action; ]]]"
+                ulm_name_hold_navigate_path: "[[[ return variables.ulm_name_hold_navigate_path; ]]]"
                 ulm_name_double_tap_action: "[[[ return variables.ulm_name_double_tap_action; ]]]"
+                ulm_name_double_tap_navigate_path: "[[[ return variables.ulm_name_double_tap_navigate_path; ]]]"
                 ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
                 ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
               entity: "[[[ return entity.entity_id ]]]"
