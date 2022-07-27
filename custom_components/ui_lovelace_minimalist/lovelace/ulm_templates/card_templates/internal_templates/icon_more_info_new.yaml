@@ -41,10 +41,13 @@ icon_more_info_new:
                 - "ulm_actions_icon"
               variables:
                 ulm_icon_tap_action: "[[[ return variables.ulm_icon_tap_action; ]]]"
+                ulm_icon_tap_haptic: "[[[ return variables.ulm_icon_tap_haptic; ]]]"
                 ulm_icon_tap_navigate_path: "[[[ return variables.ulm_icon_tap_navigate_path; ]]]"
                 ulm_icon_hold_action: "[[[ return variables.ulm_icon_hold_action; ]]]"
+                ulm_icon_hold_haptic: "[[[ return variables.ulm_icon_hold_haptic; ]]]"
                 ulm_icon_hold_navigate_path: "[[[ return variables.ulm_icon_hold_navigate_path; ]]]"
                 ulm_icon_double_tap_action: "[[[ return variables.ulm_icon_double_tap_action; ]]]"
+                ulm_icon_double_tap_haptic: "[[[ return variables.ulm_icon_double_tap_haptic; ]]]"
                 ulm_icon_double_tap_navigate_path: "[[[ return variables.ulm_icon_double_tap_navigate_path; ]]]"
                 ulm_custom_popup: "[[[ return variables.ulm_custom_popup; ]]]"
               styles:
@@ -60,10 +63,13 @@ icon_more_info_new:
                 - "ulm_actions_name"
               variables:
                 ulm_name_tap_action: "[[[ return variables.ulm_name_tap_action; ]]]"
+                ulm_name_tap_haptic: "[[[ return variables.ulm_name_tap_haptic; ]]]"
                 ulm_name_tap_navigate_path: "[[[ return variables.ulm_name_tap_navigate_path; ]]]"
                 ulm_name_hold_action: "[[[ return variables.ulm_name_hold_action; ]]]"
+                ulm_name_hold_haptic: "[[[ return variables.ulm_name_hold_haptic; ]]]"
                 ulm_name_hold_navigate_path: "[[[ return variables.ulm_name_hold_navigate_path; ]]]"
                 ulm_name_double_tap_action: "[[[ return variables.ulm_name_double_tap_action; ]]]"
+                ulm_name_double_tap_haptic: "[[[ return variables.ulm_name_double_tap_haptic; ]]]"
                 ulm_name_double_tap_navigate_path: "[[[ return variables.ulm_name_double_tap_navigate_path; ]]]"
                 ulm_custom_popup: "[[[ return variables.ulm_custom_popup; ]]]"
               styles:
