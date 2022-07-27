@@ -113,6 +113,7 @@ card_media_player:
                       "oto music": "mdi:music-circle",
                       "pandora": "mdi:pandora",
                       "netflix": "mdi:netflix",
+                      "hulu": "mdi:hulu",
                       "bluetooth audio": "mdi:bluetooth"
                     }
                   }
