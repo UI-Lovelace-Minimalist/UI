@@ -1,8 +1,6 @@
 ---
 ### Actions icon ###
 ulm_actions_icon:
-  template:
-    - "ulm_custom_actions"
   tap_action:
     action: >
       [[[

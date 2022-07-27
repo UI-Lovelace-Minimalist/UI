@@ -1,8 +1,6 @@
 ---
 ### Actions card ###
 ulm_actions_card:
-  template:
-    - "ulm_custom_actions"
   tap_action:
     action: >
       [[[
