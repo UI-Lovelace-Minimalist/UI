@@ -1,22 +1,12 @@
 """Base UI Lovelace Minimalist class."""
 from __future__ import annotations
-from calendar import c
 
-import os
+from dataclasses import asdict, dataclass, field
 import logging
+import os
 import pathlib
 import shutil
-from base64 import b64decode
-from dataclasses import asdict, dataclass, field
-from typing import Any, Callable, Awaitable
-from homeassistant.core import HomeAssistant
-from homeassistant.components.frontend import async_remove_panel
-from homeassistant.components.lovelace import _register_panel
-from homeassistant.components.lovelace.dashboard import LovelaceYAML
-from homeassistant.config_entries import ConfigEntry, ConfigEntryState
-from homeassistant.loader import Integration
-from homeassistant.components.frontend import add_extra_js_url
-
+from typing import Any, Awaitable, Callable
 
 from aiogithubapi import (
     GitHubAPI,
@@ -25,8 +15,13 @@ from aiogithubapi import (
     GitHubNotModifiedException,
     GitHubRatelimitException,
 )
-from .utils.json import json_loads
-from .utils.decode import decode_content
+from homeassistant.components.frontend import add_extra_js_url, async_remove_panel
+from homeassistant.components.lovelace import _register_panel
+from homeassistant.components.lovelace.dashboard import LovelaceYAML
+from homeassistant.config_entries import ConfigEntry, ConfigEntryState
+from homeassistant.core import HomeAssistant
+from homeassistant.loader import Integration
+
 from .const import (
     COMMUNITY_CARDS_FOLDER,
     DEFAULT_COMMUNITY_CARDS_ENABLED,
@@ -37,14 +32,16 @@ from .const import (
     DEFAULT_SIDEPANEL_TITLE,
     DEFAULT_THEME,
     DEFAULT_THEME_PATH,
-    GITHUB_REPO,
     DOMAIN,
-    TV,
+    GITHUB_REPO,
     LANGUAGES,
+    TV,
 )
 from .enums import ConfigurationType, UlmDisabledReason
+from .utils.decode import decode_content
 
 _LOGGER: logging.Logger = logging.getLogger(__name__)
+
 
 @dataclass
 class UlmSystem:
@@ -55,8 +52,9 @@ class UlmSystem:
 
     @property
     def disabled(self) -> bool:
-        """Return if ULM is disabled"""
+        """Return if ULM is disabled."""
         return self.disabled_reason is not None
+
 
 @dataclass
 class UlmConfiguration:
@@ -134,8 +132,9 @@ class UlmBase:
         if reason == UlmDisabledReason.INVALID_TOKEN:
             self.configuration.config_entry.state = ConfigEntryState.SETUP_ERROR
             self.configuration.config_entry.reason = "Authentiation Failed"
-            self.hass.add_job(self.configuration.config_entry.async_start_reauth, self.hass)
-
+            self.hass.add_job(
+                self.configuration.config_entry.async_start_reauth, self.hass
+            )
 
     def enable_ulm(self) -> None:
         """Enable Ulm."""
@@ -169,7 +168,7 @@ class UlmBase:
         response = await self.async_github_api_method(
             method=self.githubapi.repos.contents.get,
             repository=GITHUB_REPO,
-            path=filename
+            path=filename,
         )
         if response is None:
             return []
@@ -178,9 +177,7 @@ class UlmBase:
     async def async_github_get_tree(self, path: str) -> list:
         """Get teh content of a directory."""
         response = await self.async_github_api_method(
-            method=self.githubapi.repos.contents.get,
-            repository=GITHUB_REPO,
-            path=path
+            method=self.githubapi.repos.contents.get, repository=GITHUB_REPO, path=path
         )
         if response is None:
             return []
@@ -193,7 +190,7 @@ class UlmBase:
         raise_exception: bool = True,
         **kwargs,
     ) -> TV | None:
-        """Call a GitHub API method"""
+        """Call a GitHub API method."""
         _exception = None
 
         try:
@@ -220,12 +217,13 @@ class UlmBase:
         response = await self.async_github_api_method(
             method=self.githubapi.repos.contents.get,
             repository=GITHUB_REPO,
-            path=COMMUNITY_CARDS_FOLDER
+            path=COMMUNITY_CARDS_FOLDER,
         )
         if response is None:
             return []
-        self.configuration.all_community_cards = [c.name for c in response.data if c.type == "dir"]
-
+        self.configuration.all_community_cards = [
+            c.name for c in response.data if c.type == "dir"
+        ]
 
     async def configure_community_cards(self) -> None:
         """Configure selected community cards."""
@@ -234,10 +232,15 @@ class UlmBase:
         language = LANGUAGES[self.configuration.language]
         os.makedirs(self.community_cards_dir, exist_ok=True)
 
-        if not self.configuration.community_cards_enabled or self.configuration.community_cards == []:
+        if (
+            not self.configuration.community_cards_enabled
+            or self.configuration.community_cards == []
+        ):
             shutil.rmtree(f"{self.community_cards_dir}/", ignore_errors=True)
         elif self.configuration.community_cards_enabled:
-            existing_cards = [f.path for f in os.scandir(self.community_cards_dir) if f.is_dir()]
+            existing_cards = [
+                f.path for f in os.scandir(self.community_cards_dir) if f.is_dir()
+            ]
             for e in existing_cards:
                 card_dir = os.path.basename(e)
                 # Delete unselected folders
@@ -256,24 +259,28 @@ class UlmBase:
                 if card not in self.configuration.all_community_cards:
                     self.configuration.community_cards.remove(card)
                 else:
-                    card_files = await self.async_github_get_tree(path=f"{COMMUNITY_CARDS_FOLDER}/{card}")
+                    card_files = await self.async_github_get_tree(
+                        path=f"{COMMUNITY_CARDS_FOLDER}/{card}"
+                    )
                     for f in card_files:
                         if f.type == "file":
                             await self.async_save_file(
                                 file_path=f"{self.community_cards_dir}/{card}/{f.name}",
                                 content=await self.async_github_get_file(
                                     filename=f.path
-                                )
+                                ),
                             )
                         elif f.type == "dir" and f.name == "languages":
-                            language_files = await self.async_github_get_tree(path=f.path)
-                            for l in language_files:
-                                if pathlib.Path(l.name).stem == language:
+                            language_files = await self.async_github_get_tree(
+                                path=f.path
+                            )
+                            for lang in language_files:
+                                if pathlib.Path(lang.name).stem == language:
                                     await self.async_save_file(
-                                        file_path=f"{self.community_cards_dir}/{card}/languages/{l.name}",
+                                        file_path=f"{self.community_cards_dir}/{card}/languages/{lang.name}",
                                         content=await self.async_github_get_file(
-                                            filename=l.path
-                                        )
+                                            filename=lang.path
+                                        ),
                                     )
 
     async def configure_plugins(self) -> bool:
@@ -281,7 +288,9 @@ class UlmBase:
         self.log.debug("Checking Dependencies.")
 
         try:
-            if not os.path.exists(self.hass.config.path("custom_components/browser_mod")):
+            if not os.path.exists(
+                self.hass.config.path("custom_components/browser_mod")
+            ):
                 self.log.error('HACS Integration repo "browser mod" is not installed!')
 
             depenceny_resource_paths = [
@@ -308,7 +317,9 @@ class UlmBase:
 
             if self.configuration.include_other_cards:
                 for c in depenceny_resource_paths:
-                    add_extra_js_url(self.hass, f"/ui_lovelace_minimalist/cards/{c}/{c}.js")
+                    add_extra_js_url(
+                        self.hass, f"/ui_lovelace_minimalist/cards/{c}/{c}.js"
+                    )
 
             # Register
             self.hass.http.register_static_path(
@@ -323,7 +334,6 @@ class UlmBase:
             return False
 
         return True
-
 
     async def configure_dashboard(self) -> bool:
         """Configure the ULM Dashboards."""
@@ -355,17 +365,21 @@ class UlmBase:
                     self.hass, dashboard_url, dashboard_config
                 )
 
-                _register_panel(self.hass, dashboard_url, "yaml", dashboard_config, True)
+                _register_panel(
+                    self.hass, dashboard_url, "yaml", dashboard_config, True
+                )
             else:
                 if dashboard_url in self.hass.data["lovelace"]["dashboards"]:
                     async_remove_panel(self.hass, "ui-lovelace-minimalist")
 
             if self.configuration.adaptive_ui_enabled:
-                self.hass.data["lovelace"]["dashboards"][adv_dashboard_url] = LovelaceYAML(
-                    self.hass, adv_dashboard_url, adv_dashboard_config
-                )
+                self.hass.data["lovelace"]["dashboards"][
+                    adv_dashboard_url
+                ] = LovelaceYAML(self.hass, adv_dashboard_url, adv_dashboard_config)
 
-                _register_panel(self.hass, adv_dashboard_url, "yaml", adv_dashboard_config, True)
+                _register_panel(
+                    self.hass, adv_dashboard_url, "yaml", adv_dashboard_config, True
+                )
             else:
                 if adv_dashboard_url in self.hass.data["lovelace"]["dashboards"]:
                     async_remove_panel(self.hass, "adaptive-dash")
@@ -384,12 +398,16 @@ class UlmBase:
         try:
 
             # Cleanup
-            shutil.rmtree(self.hass.config.path(f"{DOMAIN}/configs"), ignore_errors=True)
+            shutil.rmtree(
+                self.hass.config.path(f"{DOMAIN}/configs"), ignore_errors=True
+            )
             shutil.rmtree(self.hass.config.path(f"{DOMAIN}/addons"), ignore_errors=True)
             # Create config dir
             os.makedirs(self.hass.config.path(f"{DOMAIN}/dashboard"), exist_ok=True)
             os.makedirs(self.hass.config.path(f"{DOMAIN}/custom_cards"), exist_ok=True)
-            os.makedirs(self.hass.config.path(f"{DOMAIN}/custom_actions"), exist_ok=True)
+            os.makedirs(
+                self.hass.config.path(f"{DOMAIN}/custom_actions"), exist_ok=True
+            )
 
             if os.path.exists(self.hass.config.path(f"{DOMAIN}/dashboard")):
                 os.makedirs(self.templates_dir, exist_ok=True)
@@ -409,7 +427,9 @@ class UlmBase:
                     ):
                         shutil.copy2(
                             f"{self.integration_dir}/lovelace/ui-lovelace.yaml",
-                            self.hass.config.path(f"{DOMAIN}/dashboard/ui-lovelace.yaml"),
+                            self.hass.config.path(
+                                f"{DOMAIN}/dashboard/ui-lovelace.yaml"
+                            ),
                         )
                 # Copy adaptive dashboard if not exists and is selected as option
                 if self.configuration.adaptive_ui_enabled:
@@ -422,11 +442,15 @@ class UlmBase:
                         )
                 # Copy example custom actions file over to user config dir if not exists
                 if not os.path.exists(
-                    self.hass.config.path(f"{DOMAIN}/custom_actions/custom_actions.yaml")
+                    self.hass.config.path(
+                        f"{DOMAIN}/custom_actions/custom_actions.yaml"
+                    )
                 ):
                     shutil.copy2(
                         f"{self.integration_dir}/lovelace/custom_actions.yaml",
-                        self.hass.config.path(f"{DOMAIN}/custom_actions/custom_actions.yaml"),
+                        self.hass.config.path(
+                            f"{DOMAIN}/custom_actions/custom_actions.yaml"
+                        ),
                     )
                 # Copy chosen language file over to config dir
                 shutil.copy2(
@@ -458,7 +482,6 @@ class UlmBase:
                     dirs_exist_ok=True,
                 )
 
-
             self.hass.bus.async_fire("ui_lovelace_minimalist_reload")
 
             async def handle_reload(call):
@@ -475,7 +498,6 @@ class UlmBase:
             return False
 
         return True
-
 
     def reload_configuration(self):
         """Reload Configuration."""

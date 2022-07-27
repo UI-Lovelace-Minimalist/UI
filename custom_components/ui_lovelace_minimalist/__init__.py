@@ -3,8 +3,8 @@ from __future__ import annotations
 
 import logging
 from typing import Any
-from aiogithubapi import GitHubAPI, AIOGitHubAPIException
 
+from aiogithubapi import AIOGitHubAPIException, GitHubAPI
 from homeassistant.components import frontend
 from homeassistant.config_entries import SOURCE_IMPORT, ConfigEntry
 from homeassistant.core import Config, HomeAssistant
@@ -76,18 +76,23 @@ async def async_initialize_integration(
     async def async_startup():
         """ULM Startup tasks."""
 
-        if ulm.configuration.community_cards_enabled and ulm.configuration.token is None:
+        if (
+            ulm.configuration.community_cards_enabled
+            and ulm.configuration.token is None
+        ):
             ulm.disable_ulm(UlmDisabledReason.INVALID_TOKEN)
-            ulm.log.error("Github token is not set up yet, please reconfigure the integration.")
+            ulm.log.error(
+                "Github token is not set up yet, please reconfigure the integration."
+            )
             return False
         if ulm.configuration.community_cards_enabled:
             await ulm.fetch_cards()
             await ulm.configure_community_cards()
 
         if (
-            not await ulm.configure_ulm() or
-            not await ulm.configure_plugins() or
-            not await ulm.configure_dashboard()
+            not await ulm.configure_ulm()
+            or not await ulm.configure_plugins()
+            or not await ulm.configure_dashboard()
         ):
             return False
 

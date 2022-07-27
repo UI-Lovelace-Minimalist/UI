@@ -1,4 +1,3 @@
-
 """Util to decode content from the github API."""
 from base64 import b64decode
 

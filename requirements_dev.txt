@@ -1,3 +1,4 @@
+fnvhash
 
 #
 # If the dev version of homeassistant gives you problems:
@@ -14,4 +15,3 @@ pre-commit
 
 # Problems with main home assistant core depds
 sqlalchemy
-fnvhash

@@ -1,9 +1,6 @@
 """Constants for UI Lovelace Minimalist."""
 from typing import TypeVar
 
-from aiogithubapi.common.const import ACCEPT_HEADERS
-
-
 # Base component constants
 NAME = "UI Lovelace Minimalist"
 DOMAIN = "ui_lovelace_minimalist"

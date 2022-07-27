@@ -4,8 +4,10 @@
         "step": {
             "user": {
                 "title": "UI Lovelace Minimalist -asetukset",
-                "description": "First we will setup the Github Authentication to fetch the community Cards. \nOnce that is done go ahead and configure the integrations",
-                "data": {}
+                "description": "",
+                "data": {
+                    "community_cards_enabled": "Enable the ability to configure community cards with this integrations, Does require github authentication!"
+                }
             }
         },
         "device": {
@@ -40,6 +42,7 @@
                     "adaptive_ui_icon": "adaptive panel icon",
                     "theme": "Teema",
                     "include_other_cards": "Asenna mukautetut kortit, joista asennus on riippuvainen.",
+                    "community_cards_enabled": "Enable the ability to configure community cards with this integrations, Does require github authentication!",
                     "community_cards": "Select Community Cards you want to enable."
                 }
             }

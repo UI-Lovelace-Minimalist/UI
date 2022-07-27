@@ -18,8 +18,8 @@ import voluptuous as vol
 from .base import UlmBase
 from .const import (  # CONF_COMMUNITY_CARDS_ALL,
     CLIENT_ID,
-    CONF_COMMUNITY_CARDS_ENABLED,
     CONF_COMMUNITY_CARDS,
+    CONF_COMMUNITY_CARDS_ENABLED,
     CONF_INCLUDE_OTHER_CARDS,
     CONF_LANGUAGE,
     CONF_LANGUAGES,
@@ -32,8 +32,8 @@ from .const import (  # CONF_COMMUNITY_CARDS_ALL,
     CONF_THEME,
     CONF_THEME_OPTIONS,
     CONF_THEME_PATH,
-    DEFAULT_COMMUNITY_CARDS_ENABLED,
     DEFAULT_COMMUNITY_CARDS,
+    DEFAULT_COMMUNITY_CARDS_ENABLED,
     DEFAULT_INCLUDE_OTHER_CARDS,
     DEFAULT_LANGUAGE,
     DEFAULT_SIDEPANEL_ADV_ENABLED,
@@ -97,8 +97,11 @@ async def ulm_config_option_schema(options: dict = {}) -> dict:
             CONF_INCLUDE_OTHER_CARDS,
             default=options.get(CONF_INCLUDE_OTHER_CARDS, DEFAULT_INCLUDE_OTHER_CARDS),
         ): bool,
-        vol.Optional(CONF_COMMUNITY_CARDS_ENABLED,
-            default=options.get(CONF_COMMUNITY_CARDS_ENABLED, DEFAULT_COMMUNITY_CARDS_ENABLED),
+        vol.Optional(
+            CONF_COMMUNITY_CARDS_ENABLED,
+            default=options.get(
+                CONF_COMMUNITY_CARDS_ENABLED, DEFAULT_COMMUNITY_CARDS_ENABLED
+            ),
         ): bool,
     }
 
@@ -127,7 +130,7 @@ class UlmFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
             return self.async_abort(reason="single_instance_allowed")
 
         if user_input is not None:
-            if user_input['community_cards_enabled']:
+            if user_input["community_cards_enabled"]:
                 return await self.async_step_device(user_input)
             else:
                 return self.async_create_entry(title="", data=user_input)
@@ -185,8 +188,11 @@ class UlmFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
 
         # Emtpy schema on startup.
         schema = {
-            vol.Optional(CONF_COMMUNITY_CARDS_ENABLED,
-                default=user_input.get(CONF_COMMUNITY_CARDS_ENABLED, DEFAULT_COMMUNITY_CARDS_ENABLED),
+            vol.Optional(
+                CONF_COMMUNITY_CARDS_ENABLED,
+                default=user_input.get(
+                    CONF_COMMUNITY_CARDS_ENABLED, DEFAULT_COMMUNITY_CARDS_ENABLED
+                ),
             ): bool,
         }
 
@@ -248,8 +254,7 @@ class UlmOptionFlowHandler(config_entries.OptionsFlow):
         errors: dict[str, str] = {}
 
         if user_input is not None:
-            if CONF_COMMUNITY_CARDS in user_input and \
-              user_input[CONF_COMMUNITY_CARDS]:
+            if CONF_COMMUNITY_CARDS in user_input and user_input[CONF_COMMUNITY_CARDS]:
                 for card in user_input[CONF_COMMUNITY_CARDS]:
                     if card not in ulm.configuration.all_community_cards:
                         user_input[CONF_COMMUNITY_CARDS].remove(card)
