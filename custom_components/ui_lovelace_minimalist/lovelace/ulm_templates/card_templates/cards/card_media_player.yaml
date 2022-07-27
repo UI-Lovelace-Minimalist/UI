@@ -105,7 +105,7 @@ card_media_player:
                       'popup_variables': {
                         'ulm_popup_media_player_entity': entity.entity_id,
                       }
-                    };          
+                    };
                   }
                   return vars;
                 ]]]
@@ -159,7 +159,7 @@ card_media_player:
                       'popup_variables': {
                         'ulm_popup_media_player_entity': entity.entity_id,
                       }
-                    };          
+                    };
                   }
                   return vars;
                 ]]]
