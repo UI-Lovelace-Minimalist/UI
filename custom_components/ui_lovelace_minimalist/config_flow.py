@@ -18,6 +18,7 @@ import voluptuous as vol
 from .base import UlmBase
 from .const import (  # CONF_COMMUNITY_CARDS_ALL,
     CLIENT_ID,
+    CONF_COMMUNITY_CARDS_ENABLED,
     CONF_COMMUNITY_CARDS,
     CONF_INCLUDE_OTHER_CARDS,
     CONF_LANGUAGE,
@@ -31,6 +32,7 @@ from .const import (  # CONF_COMMUNITY_CARDS_ALL,
     CONF_THEME,
     CONF_THEME_OPTIONS,
     CONF_THEME_PATH,
+    DEFAULT_COMMUNITY_CARDS_ENABLED,
     DEFAULT_COMMUNITY_CARDS,
     DEFAULT_INCLUDE_OTHER_CARDS,
     DEFAULT_LANGUAGE,
@@ -46,7 +48,6 @@ from .const import (  # CONF_COMMUNITY_CARDS_ALL,
     NAME,
 )
 from .enums import ConfigurationType
-from .load_cards import fetch_cards
 
 _LOGGER: logging.Logger = logging.getLogger(__name__)
 
@@ -96,6 +97,9 @@ async def ulm_config_option_schema(options: dict = {}) -> dict:
             CONF_INCLUDE_OTHER_CARDS,
             default=options.get(CONF_INCLUDE_OTHER_CARDS, DEFAULT_INCLUDE_OTHER_CARDS),
         ): bool,
+        vol.Optional(CONF_COMMUNITY_CARDS_ENABLED,
+            default=options.get(CONF_COMMUNITY_CARDS_ENABLED, DEFAULT_COMMUNITY_CARDS_ENABLED),
+        ): bool,
     }
 
 
@@ -123,11 +127,10 @@ class UlmFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
             return self.async_abort(reason="single_instance_allowed")
 
         if user_input is not None:
-            if [x for x in user_input if not user_input[x]]:
-                self._errors["base"] = "ack"
-                return await self._show_config_form(user_input)
-
-            return await self.async_step_device(user_input)
+            if user_input['community_cards_enabled']:
+                return await self.async_step_device(user_input)
+            else:
+                return self.async_create_entry(title="", data=user_input)
 
         # Initial form
         return await self._show_config_form(user_input)
@@ -181,7 +184,11 @@ class UlmFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
             user_input = {}
 
         # Emtpy schema on startup.
-        schema = {}
+        schema = {
+            vol.Optional(CONF_COMMUNITY_CARDS_ENABLED,
+                default=user_input.get(CONF_COMMUNITY_CARDS_ENABLED, DEFAULT_COMMUNITY_CARDS_ENABLED),
+            ): bool,
+        }
 
         return self.async_show_form(
             step_id="user", data_schema=vol.Schema(schema), errors=self._errors
@@ -200,7 +207,7 @@ class UlmFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
             return self.async_abort(reason="reauth_successful")
 
         return self.async_create_entry(
-            title="", data={"token": self.activation.access_token}
+            title=NAME, data={"token": self.activation.access_token}
         )
 
     async def async_step_reauth(self, user_input=None):
@@ -241,7 +248,8 @@ class UlmOptionFlowHandler(config_entries.OptionsFlow):
         errors: dict[str, str] = {}
 
         if user_input is not None:
-            if user_input[CONF_COMMUNITY_CARDS]:
+            if CONF_COMMUNITY_CARDS in user_input and \
+              user_input[CONF_COMMUNITY_CARDS]:
                 for card in user_input[CONF_COMMUNITY_CARDS]:
                     if card not in ulm.configuration.all_community_cards:
                         user_input[CONF_COMMUNITY_CARDS].remove(card)
@@ -255,20 +263,20 @@ class UlmOptionFlowHandler(config_entries.OptionsFlow):
         else:
             schema = await ulm_config_option_schema(ulm.configuration.to_dict())
 
-            errors.update(await fetch_cards(ulm))
-
-        schema.update(
-            {
-                vol.Optional(
-                    CONF_COMMUNITY_CARDS,
-                    default=list(
-                        ulm.configuration.to_dict().get(
-                            CONF_COMMUNITY_CARDS, DEFAULT_COMMUNITY_CARDS
-                        )
-                    ),
-                ): cv.multi_select(ulm.configuration.all_community_cards)
-            }
-        )
+        if ulm.configuration.community_cards_enabled:
+            await ulm.fetch_cards()
+            schema.update(
+                {
+                    vol.Optional(
+                        CONF_COMMUNITY_CARDS,
+                        default=list(
+                            ulm.configuration.to_dict().get(
+                                CONF_COMMUNITY_CARDS, DEFAULT_COMMUNITY_CARDS
+                            )
+                        ),
+                    ): cv.multi_select(ulm.configuration.all_community_cards)
+                }
+            )
 
         return self.async_show_form(
             step_id="user", data_schema=vol.Schema(schema), errors=errors

@@ -11,3 +11,7 @@ pre-commit
 # Optional, if container start takes really long due to PyTurboJPEG==1.6.3
 # wheel
 # PyTurboJPEG==1.6.3
+
+# Problems with main home assistant core depds
+sqlalchemy
+fnvhash
