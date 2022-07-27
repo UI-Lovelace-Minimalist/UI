@@ -113,7 +113,7 @@ card_light:
                       'popup_variables': {
                         'ulm_popup_light_entity': entity.entity_id,
                       }
-                    }          
+                    };
                   }
                   return vars;
                 ]]]
@@ -159,7 +159,7 @@ card_light:
                       'popup_variables': {
                         'ulm_popup_light_entity': entity.entity_id,
                       }
-                    };          
+                    };
                   }
                   return vars;
                 ]]]
