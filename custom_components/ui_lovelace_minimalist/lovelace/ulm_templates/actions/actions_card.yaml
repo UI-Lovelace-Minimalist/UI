@@ -4,7 +4,7 @@ ulm_actions_card:
   tap_action:
     action: >
       [[[
-        var action = variables.ulm_card_tap_action;
+        var action = variables.ulm_card_tap_action != null ? variables.ulm_card_tap_action : 'toggle';
         let domain = entity.entity_id.substr(0, entity.entity_id.indexOf("."));
 
         if (domain == "binary_sensor" || domain == "sensor"){
@@ -65,7 +65,7 @@ ulm_actions_card:
   hold_action:
     action: >
       [[[
-        var action = variables.ulm_card_hold_action;
+        var action = variables.ulm_card_hold_action != null ? variables.ulm_card_hold_action : 'more-info';
         let domain = entity.entity_id.substr(0, entity.entity_id.indexOf("."));
 
 
@@ -128,7 +128,7 @@ ulm_actions_card:
   double_tap_action:
     action: >
       [[[
-        var action = variables.ulm_card_double_tap_action;
+        var action = variables.ulm_card_double_tap_action != null ? variables.ulm_card_double_tap_action : "adaptive";
         let domain = entity.entity_id.substr(0, entity.entity_id.indexOf("."));
 
         if (domain == "binary_sensor" || domain == "sensor"){
