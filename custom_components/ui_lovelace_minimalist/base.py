@@ -145,6 +145,8 @@ class UlmBase:
     async def async_save_file(self, file_path: str, content: Any) -> bool:
         """Save a file."""
 
+        self.log.debug("Saving file: %s" % file_path)
+
         def _write_file():
             os.makedirs(os.path.dirname(file_path), exist_ok=True)
             with open(
@@ -165,6 +167,7 @@ class UlmBase:
 
     async def async_github_get_file(self, filename: str) -> list:
         """Get the content of a file."""
+        self.log.debug("Fetching github file: %s" % filename)
         response = await self.async_github_api_method(
             method=self.githubapi.repos.contents.get,
             repository=GITHUB_REPO,
@@ -176,6 +179,7 @@ class UlmBase:
 
     async def async_github_get_tree(self, path: str) -> list:
         """Get teh content of a directory."""
+        self.log.debug("Fetching github tree: %s" % path)
         response = await self.async_github_api_method(
             method=self.githubapi.repos.contents.get, repository=GITHUB_REPO, path=path
         )
@@ -264,24 +268,36 @@ class UlmBase:
                     )
                     for f in card_files:
                         if f.type == "file":
-                            await self.async_save_file(
-                                file_path=f"{self.community_cards_dir}/{card}/{f.name}",
-                                content=await self.async_github_get_file(
-                                    filename=f.path
-                                ),
+                            card_file_path = (
+                                f"{self.community_cards_dir}/{card}/{f.name}"
                             )
+                            if (
+                                not os.path.exists(card_file_path)
+                                or os.path.getsize(card_file_path) != f.size
+                            ):
+                                await self.async_save_file(
+                                    file_path=card_file_path,
+                                    content=await self.async_github_get_file(
+                                        filename=f.path
+                                    ),
+                                )
                         elif f.type == "dir" and f.name == "languages":
                             language_files = await self.async_github_get_tree(
                                 path=f.path
                             )
                             for lang in language_files:
+                                lang_file_path = f"{self.community_cards_dir}/{card}/languages/{lang.name}"
                                 if pathlib.Path(lang.name).stem == language:
-                                    await self.async_save_file(
-                                        file_path=f"{self.community_cards_dir}/{card}/languages/{lang.name}",
-                                        content=await self.async_github_get_file(
-                                            filename=lang.path
-                                        ),
-                                    )
+                                    if (
+                                        not os.path.exists(lang_file_path)
+                                        or os.path.getsize(lang_file_path) != lang.size
+                                    ):
+                                        await self.async_save_file(
+                                            file_path=lang_file_path,
+                                            content=await self.async_github_get_file(
+                                                filename=lang.path
+                                            ),
+                                        )
 
     async def configure_plugins(self) -> bool:
         """Configure the Plugins ULM depends on."""
