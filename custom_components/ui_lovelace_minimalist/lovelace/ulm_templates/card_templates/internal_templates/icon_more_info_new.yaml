@@ -42,7 +42,7 @@ icon_more_info_new:
                 - "ulm_actions_icon"
               variables:
                 ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
-                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"              
+                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
                 ulm_icon_tap_action: "[[[ return variables.ulm_icon_tap_action; ]]]"
                 ulm_icon_tap_haptic: "[[[ return variables.ulm_icon_tap_haptic; ]]]"
                 ulm_icon_tap_navigate_path: "[[[ return variables.ulm_icon_tap_navigate_path; ]]]"
