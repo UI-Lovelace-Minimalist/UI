@@ -86,8 +86,8 @@ Setup [WoL integration](https://www.home-assistant.io/integrations/wake_on_lan/)
 <td>custom_card_vncntdev_device_tracker_status_as_name</td>
 <td>true</td>
 <td>true</td>
-<td>swap label and name?<br>
-default: false</td>
+<td>swap label and name?<br>default: false
+default: "mdi:server"</td>
 </tr>
 <tr>
 <td>custom_card_vncntdev_device_tracker_icon</td>
