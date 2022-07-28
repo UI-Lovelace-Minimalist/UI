@@ -4,16 +4,16 @@ from __future__ import annotations
 import logging
 from typing import Any
 
+from aiogithubapi import AIOGitHubAPIException, GitHubAPI
 from homeassistant.components import frontend
 from homeassistant.config_entries import SOURCE_IMPORT, ConfigEntry
 from homeassistant.core import Config, HomeAssistant
+from homeassistant.helpers.aiohttp_client import async_get_clientsession
+from homeassistant.loader import async_get_integration
 
 from .base import UlmBase
-from .configure import configure_cards
 from .const import DOMAIN, NAME
-from .enums import ConfigurationType
-from .load_dashboard import load_dashboard
-from .load_plugins import load_plugins
+from .enums import ConfigurationType, UlmDisabledReason
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 
@@ -26,6 +26,7 @@ async def async_initialize_integration(
 ) -> bool:
     """Initialize the integration."""
     hass.data[DOMAIN] = ulm = UlmBase()
+    ulm.enable_ulm()
 
     if config is not None:
         if DOMAIN not in config:
@@ -56,13 +57,57 @@ async def async_initialize_integration(
                 **config_entry.options,
             }
         )
-    _LOGGER.debug("Configuration type: %s", ulm.configuration.config_type)
 
-    configure_cards(hass=hass, ulm=ulm)
+    integration = await async_get_integration(hass, DOMAIN)
 
-    load_plugins(hass=hass, ulm=ulm)
+    clientsession = async_get_clientsession(hass)
 
-    load_dashboard(hass=hass, ulm=ulm)
+    ulm.integration = integration
+    ulm.version = integration.version
+    ulm.session = clientsession
+    ulm.hass = hass
+    ulm.system.running = True
+    ulm.githubapi = GitHubAPI(
+        token=ulm.configuration.token,
+        session=clientsession,
+        **{"client_name": "ULM"},
+    )
+
+    async def async_startup():
+        """ULM Startup tasks."""
+
+        if (
+            ulm.configuration.community_cards_enabled
+            and ulm.configuration.token is None
+        ):
+            ulm.disable_ulm(UlmDisabledReason.INVALID_TOKEN)
+            ulm.log.error(
+                "Github token is not set up yet, please reconfigure the integration."
+            )
+            return False
+        if ulm.configuration.community_cards_enabled:
+            await ulm.fetch_cards()
+            await ulm.configure_community_cards()
+
+        if (
+            not await ulm.configure_ulm()
+            or not await ulm.configure_plugins()
+            or not await ulm.configure_dashboard()
+        ):
+            return False
+
+        ulm.enable_ulm()
+
+        return not ulm.system.disabled
+
+    try:
+        startup_result = await async_startup()
+    except AIOGitHubAPIException:
+        startup_result = False
+    if not startup_result:
+        return False
+
+    ulm.enable_ulm()
 
     return True
 
