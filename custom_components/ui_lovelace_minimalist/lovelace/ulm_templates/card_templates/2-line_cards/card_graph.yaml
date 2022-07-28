@@ -2,7 +2,7 @@
 ### Card Graph ###
 card_graph:
   template:
-    - "combound_card"
+    - "extended_card"
   variables:
     ulm_card_graph_color: "var(--info-color)"
     ulm_card_graph_name: "[[[ return entity.attributes.friendly_name; ]]]"

@@ -1,6 +1,6 @@
 ---
-### Combound card for extension ###
-combound_card:
+### Extension template for combining cards ###
+extended_card:
   template:
     - "ulm_custom_actions"
     - "ulm_actions_card"
