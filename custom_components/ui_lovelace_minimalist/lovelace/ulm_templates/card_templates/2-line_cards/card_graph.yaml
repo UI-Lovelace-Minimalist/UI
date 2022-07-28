@@ -20,8 +20,8 @@ card_graph:
         template:
           - "card_generic"
         variables:
-            ulm_card_generic_icon: "[[[ return variables.ulm_card_graph_icon; ]]]"
-            ulm_card_generic_name: "[[[ return variables.ulm_card_graph_name; ]]]"
+          ulm_card_generic_icon: "[[[ return variables.ulm_card_graph_icon; ]]]"
+          ulm_card_generic_name: "[[[ return variables.ulm_card_graph_name; ]]]"
 
     item2:
       card:
