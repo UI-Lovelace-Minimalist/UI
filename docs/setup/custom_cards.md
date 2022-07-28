@@ -8,7 +8,7 @@ hide:
 
 This 'theme' and his community do offer support for multiple great Custom-cards. To use and download these Custom-cards follow the instructions on this page.
 
-!!! tip "Select Community Cards on the Configure Integration page."
+!!! tip "  🚀  New Custom Card Selection Feature!  🚀"
 
     Since the release of `v1.0.4` support has been build in to select custom/community cards that are available in the `main` branch on our Github Repository in the `custom_cards` folder. This Removes the need for copying over files from the Github Repo and put them in the `/config/ui_lovelace_minimlist/custom_cards` folder.
 
