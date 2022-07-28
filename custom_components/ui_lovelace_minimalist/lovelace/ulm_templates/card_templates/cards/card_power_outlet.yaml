@@ -5,7 +5,6 @@ card_power_outlet:
     - "icon_more_info_new"
     - "yellow"
     - "ulm_translation_engine"
-    - "ulm_actions_card"
   variables:
     ulm_card_power_outlet_consumption_sensor:
     ulm_card_power_outlet_name: "[[[ return entity.attributes.friendly_name ]]]"
@@ -23,9 +22,6 @@ card_power_outlet:
               type: "custom:button-card"
               template:
                 - "yellow"
-              variables:
-                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
-                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
               entity: "[[[ return entity.entity_id ]]]"
               icon: "[[[ return variables.ulm_card_power_outlet_icon ]]]"
           item2:
@@ -33,9 +29,6 @@ card_power_outlet:
               type: "custom:button-card"
               template:
                 - "yellow_no_card"
-              variables:
-                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
-                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
               entity: "[[[ return entity.entity_id ]]]"
               name: "[[[ return variables.ulm_card_power_outlet_name ]]]"
               label: |-
