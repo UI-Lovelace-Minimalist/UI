@@ -8,14 +8,14 @@
                 "data": {
                     "community_cards_enabled": "Enable the ability to configure community cards with this integrations, Does require github authentication!"
                 }
+            },
+            "device": {
+                "title": "Waiting for device activation"
+            },
+            "reauth_confirm": {
+                "title": "Reauthentication needed",
+                "description": "You need to reauthenticate with GitHub."
             }
-        },
-        "device": {
-            "title": "Waiting for device activation"
-        },
-        "reauth_confirm": {
-            "title": "Reauthentication needed",
-            "description": "You need to reauthenticate with GitHub."
         },
         "abort": {
             "single_instance_allowed": "È permessa un'unica configurazione di UI Lovelace Minimalist.",
