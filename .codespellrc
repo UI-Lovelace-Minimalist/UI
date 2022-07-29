@@ -2,3 +2,4 @@
 skip = *.svg
 count =
 quiet-level = 3
+# write-changes =

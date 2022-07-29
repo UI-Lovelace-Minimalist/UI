@@ -54,7 +54,7 @@
         "error": {
             "github_cards": "Something went wrong when fetching cards from Github.",
             "ack": "You need to acknowledge all statements.",
-            "gh_token": "Github Token not set. Please re-install this integration to go throught the setup procedure. (No custom configuration will be lost)"
+            "gh_token": "Github Token not set. Please re-install this integration to go through the setup procedure. (No custom configuration will be lost)"
         }
     }
 }

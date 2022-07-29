@@ -16,3 +16,4 @@ jobs:
         with:
           ignore_words_list: .codespell
           config: .codespellrc
+          path: docs
