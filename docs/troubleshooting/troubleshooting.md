@@ -26,7 +26,7 @@ This is done by:
 
 ??? info "Custom element doesn't exist"
 
-    1. Check if you did install all [depencies](https://ui-lovelace-minimalist.github.io/UI/setup/download/#prerequisites_1) or checked the box to let UI-Minimalist them.
+    1. Check if you did install all [dependencies](https://ui-lovelace-minimalist.github.io/UI/setup/download/#prerequisites_1) or checked the box to let UI-Minimalist them.
     2. Clear your cache by clicking `CTRL + F5` on Windows or `SHIFT + reload` on Mac
 
 ??? info "Popups do not show up"

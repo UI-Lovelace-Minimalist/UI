@@ -1,0 +1,4 @@
+[codespell]
+skip = *.svg
+count =
+quiet-level = 3
