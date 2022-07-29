@@ -831,7 +831,7 @@ class nt{constructor(t){this.classes=new Set,this.changed=!1,this.element=t;cons
             <ha-icon .icon=${Lt}></ha-icon>
           </ha-icon-button>
         `:I`
-          <mmp-button id='button' class='mmp-dropdown__button' 
+          <mmp-button id='button' class='mmp-dropdown__button'
             @click=${this.toggleMenu}>
             <div>
               <span class='mmp-dropdown__label ellipsis'>
