@@ -64,7 +64,7 @@ ulm_custom_actions:
 Possible values for each variables (according to the underlying [button card](
 https://github.com/custom-cards/button-card)) are :
 
-- `none` 
+- `none`
 - `success`
 - `warning`
 - `failure`
@@ -143,11 +143,11 @@ the variable `popup_variables`.
         ulm_popup_power_outlet_sensor1: sensor.power_outlet_livingroom
         ulm_popup_power_outlet_sensor2: sensor.power_outlet_livingroom_consumption
         ulm_popup_power_outlet_graph_sensor: sensor.power_outlet_livingroom
-        ulm_popup_power_outlet_entity: switch.power_outlet_livingroom   
+        ulm_popup_power_outlet_entity: switch.power_outlet_livingroom
 
 ```
 
-The available popup templates `popup_media_player_infos`, `popup_light_brightness`, `popup_thermostat_temperature` 
+The available popup templates `popup_media_player_infos`, `popup_light_brightness`, `popup_thermostat_temperature`
 or `popup_power_outlet_stats` can already be used with the custom popups.
 
 This implementation allows the easy creation of custom popups that can be loaded by other cards.
@@ -172,7 +172,7 @@ There are tree possibilities to include the custom actions into your custom card
 
 The simplest way to create a custom card that uses these custom actions is the combination of two cards.
 
-For enabling the feature the custom card must implement the template `extended_card`.  
+For enabling the feature the custom card must implement the template `extended_card`.
 Then two custom fields must be used:
 - `item1` must be a card that already implements the template `icon_more_info_new`.
   Most of the core cards already implements this template.
@@ -197,7 +197,7 @@ The already available **Graph card** (`card_graph`) is an example for this imple
     ```
 
 
-### Use template `icon_more_info_new` or `icon_more_info_alert` 
+### Use template `icon_more_info_new` or `icon_more_info_alert`
 
 The card must implement the template `icon_more_info_new`or `icon_more_info_alert`. Then it must implement a custom field
 `item1` which is also a `custom:button-card`. This card must have the custom fields `item1`which represents the icon and
@@ -217,8 +217,8 @@ Most of the internal card templates uses this option. Take a look into the code.
 The following script shows the usage off all necessary variables and template that will be used by the custom actions.
 
 The card must implement the templates `ulm_custom_actions` and `ulm_action_card` in the correct order.
-The example shows the custom fields `item1` that implements the redirection of an icon field and `item2` that implements the redirecton
-of a name field.
+The example shows the custom fields `item1` that implements the redirection of an icon field and `item2` that implements the
+redirecton of a name field.
 
 ```yaml
 ---
@@ -279,5 +279,5 @@ custom_card:
 
     Also the custom popup feature has some breaking changes:
     The variables `ulm_card_light_enable_popup`, `ulm_card_thermostat_enable_popup` and  `ulm_card_media_player_enable_popup`
-    aren't used internally anymore. The are only working on their appropriate cards as configuration option for the end user of the card.  
-    So the custom_popup variable should be used instead.
+    aren't used internally anymore. The are only working on their appropriate cards as configuration option for the end user 
+    of the card. So the custom_popup variable should be used instead.
