@@ -12,8 +12,8 @@ jobs:
     steps:
       - name: "⤵️ Check out code from GitHub"
         uses: "actions/checkout@v2"
-      - uses: codespell-project/actions-codespell@master
+      - uses: "codespell-project/actions-codespell@master"
         with:
-          ignore_words_list: .codespell
-          config: .codespellrc
-          path: docs
+          ignore_words_list: ".codespell"
+          config: ".codespellrc"
+          path: "docs"
