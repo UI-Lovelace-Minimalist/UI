@@ -5,7 +5,6 @@ card_binary_sensor_alert:
     - "icon_more_info_alert"
     - "blue"
     - "ulm_translation_engine"
-    - "ulm_actions_card"
   show_last_changed: false
   variables:
     ulm_show_last_changed: false
@@ -23,9 +22,6 @@ card_binary_sensor_alert:
               type: "custom:button-card"
               template:
                 - "blue"
-              variables:
-                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
-                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
               entity: "[[[ return entity.entity_id ]]]"
               icon: "[[[ return variables.ulm_card_binary_sensor_alert_icon; ]]]"
           item2:
@@ -33,9 +29,6 @@ card_binary_sensor_alert:
               type: "custom:button-card"
               template:
                 - "blue_no_card"
-              variables:
-                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
-                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
               entity: "[[[ return entity.entity_id ]]]"
               name: "[[[ return variables.ulm_card_binary_sensor_alert_name; ]]]"
               label: "[[[ return variables.ulm_translation_state;]]]"

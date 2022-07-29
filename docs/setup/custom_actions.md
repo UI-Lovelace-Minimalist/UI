@@ -39,6 +39,39 @@ Possible values for each variables are :
 | adaptive   | Switch UI LOVELACE MINIMALIST popup on adaptive dashboard<br> if current dashboard is adaptive (if not `popup` action is used)  |
 | navigate   | Navigate to an other UI LOVELACE MINIMALIST view. Need additional variable (see below)                                         |
 
+## Haptic feedback
+
+Next to the action also the haptic feedback of the actions can be configured in the `custom_actions.yaml` file:
+
+For each action a haptic feedback could be configured:
+
+```yaml
+---
+ulm_custom_actions:
+  variables:
+    ulm_card_tap_haptic: "medium"
+    ulm_card_tap_haptic: "none"
+    ulm_card_double_tap_haptic: "none"
+    ulm_icon_tap_haptic: "none"
+    ulm_icon_hold_haptic: "none"
+    ulm_icon_double_tap_haptic: "none"
+    ulm_name_tap_haptic: "medium"
+    ulm_name_hold_haptic: "none"
+    ulm_name_double_tap_haptic: "none"
+```
+
+Possible values for each variables (according to the underlying [button card](
+https://github.com/custom-cards/button-card)) are :
+
+- `none`
+- `success`
+- `warning`
+- `failure`
+- `light`
+- `medium`
+- `heavy`
+- `selection`
+
 !!! tip "Reloading"
 
     Once you have edited `custom_actions.yaml` file, you must reload `"UI LOVELACE MINIMALIST"` configuration.
@@ -70,7 +103,7 @@ To define the path of `navigate` action, add one of the following depending on y
 
 ## Overwrite custom actions
 
-When creating a dashboard, custom actions can be overwritten on your card definition.
+When creating a dashboard, custom actions and the haptic feedback can be overwritten on your card definition.
 For example, this code will overwrite the tap action on card with `more-info` action :
 
 ```yaml
@@ -79,9 +112,163 @@ For example, this code will overwrite the tap action on card with `more-info` ac
   entity: "cover.somfy_portail"
   variables:
     ulm_card_tap_action: "more-info"
+    ulm_card_tap_haptic: "success"
 
 ```
 
+## Custom Popups
+
+The implementation of the custom action now supports the configuration of individual popups. The custom popup
+can be easily configured for each card.
+
+To enable a custom popup the variable `ulm_custom_popup` must be set within the card.
+This variable have two subvariables `template` and `popup_variables`. The template must be the name of the
+template that should be loaded. The necessary configuration variables for the popup can be configured in
+the variable `popup_variables`.
+
+```yaml
+- type: 'custom:button-card'
+  template: card_power_outlet
+  entity: switch.power_outlet_livingroom
+  variables:
+    ulm_card_power_outlet_consumption_sensor: sensor.power_outlet_livingroom_consumption
+    ulm_card_power_outlet_name: Power Outlet Livingroom
+    ulm_custom_popup:
+      template: "popup_power_outlet_stats"
+      popup_variables:
+        ulm_popup_power_outlet_sensor1: sensor.power_outlet_livingroom
+        ulm_popup_power_outlet_sensor2: sensor.power_outlet_livingroom_consumption
+        ulm_popup_power_outlet_graph_sensor: sensor.power_outlet_livingroom
+        ulm_popup_power_outlet_entity: switch.power_outlet_livingroom
+
+```
+
+The available popup templates `popup_media_player_infos`, `popup_light_brightness`, `popup_thermostat_temperature`
+or `popup_power_outlet_stats` can already be used with the custom popups.
+
+This implementation allows the easy creation of custom popups that can be loaded by other cards.
+
+!!! note "Light, Media Player, Thermostat"
+
+    The `card_light`, `card_media_player` and `card_thermostat` uses a different approach. Therefore the popup can
+    be simply enabled by setting on of the variables  `ulm_card_light_enable_popup`, `ulm_card_thermostat_enable_popup`
+    or  `ulm_card_media_player_enable_popup` to true.
+
 ## For developers
 
-To enable action customization on your custom cards, use the following templates `icon_more_info_new` and `ulm_actions_card`
+To enable action customization on your custom cards, use either the `icon_more_info_new`, `icon_more_info_alert` or
+the `extended_card` template. There is no need to implement the `ulm_card_actions` template anymore.
+
+There are three possibilities to include the custom actions into your custom cards:
+
+### Use template `extend_card` as combination of two cards
+
+The simplest way to create a custom card that uses these custom actions is the combination of two cards.
+
+For enabling the feature the custom card must implement the template `extended_card`.
+Then two custom fields must be used:
+
+- `item1` must be a card that already implements the template `icon_more_info_new`.
+  Most of the core cards already implements this template.
+- `item2` can be any Lovelace card that should extend the card.
+
+If you add custom styles to `item2` then following code should be added into the `style` field
+
+```javascript
+ha-card {
+  box-shadow: none;
+  border-radius: var(--border-radius);
+}
+```
+
+The already available **Graph card** (`card_graph`) is an example for this implementation. As
+`item1` a `generic_card` is used. The `item2` provides a mini-graph-card.
+
+??? note "Graph card as example"
+
+    ```yaml title="card_binary_sensor_alert.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/2-line_cards/card_graph.yaml"
+    ```
+
+### Use template `icon_more_info_new` or `icon_more_info_alert`
+
+The card must implement the template `icon_more_info_new`or `icon_more_info_alert`. Then it must implement a custom field
+`item1` which is also a `custom:button-card`. This card must have the custom fields `item1`which represents the icon and
+`item2`which represents the name.
+
+Most of the internal card templates uses this option. Take a look into the code.
+
+??? note "Generic card as example"
+
+    ```yaml title="card_binary_sensor_alert.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_generic.yaml"
+    ```
+
+### Individual implementation
+
+The following script shows the usage off all necessary variables and template that will be used by the custom actions.
+
+The card must implement the templates `ulm_custom_actions` and `ulm_action_card` in the correct order.
+The example shows the custom fields `item1` that implements the redirection of an icon field and `item2` that implements the
+redirecton of a name field.
+
+```yaml
+---
+custom_card:
+  template:
+    - "ulm_custom_actions"
+    - "ulm_actions_card"
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        entity: "[[[ return entity.entity_id ]]]"
+        template:
+          - "ulm_actions_icon"
+        variables:
+          ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
+          ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
+          ulm_icon_tap_action: "[[[ return variables.ulm_icon_tap_action; ]]]"
+          ulm_icon_tap_haptic: "[[[ return variables.ulm_icon_tap_haptic; ]]]"
+          ulm_icon_tap_navigate_path: "[[[ return variables.ulm_icon_tap_navigate_path; ]]]"
+          ulm_icon_hold_action: "[[[ return variables.ulm_icon_hold_action; ]]]"
+          ulm_icon_hold_haptic: "[[[ return variables.ulm_icon_hold_haptic; ]]]"
+          ulm_icon_hold_navigate_path: "[[[ return variables.ulm_icon_hold_navigate_path; ]]]"
+          ulm_icon_double_tap_action: "[[[ return variables.ulm_icon_double_tap_action; ]]]"
+          ulm_icon_double_tap_haptic: "[[[ return variables.ulm_icon_double_tap_haptic; ]]]"
+          ulm_icon_double_tap_navigate_path: "[[[ return variables.ulm_icon_double_tap_navigate_path; ]]]"
+          ulm_custom_popup: "[[[ return variables.ulm_custom_popup; ]]]"
+    item2:
+      card:
+        type: "custom:button-card"
+        entity: "[[[ return entity.entity_id ]]]"
+        template:
+          - "ulm_actions_name"
+        variables:
+          ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
+          ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
+          ulm_name_tap_action: "[[[ return variables.ulm_name_tap_action; ]]]"
+          ulm_name_tap_haptic: "[[[ return variables.ulm_name_tap_haptic; ]]]"
+          ulm_name_tap_navigate_path: "[[[ return variables.ulm_name_tap_navigate_path; ]]]"
+          ulm_name_hold_action: "[[[ return variables.ulm_name_hold_action; ]]]"
+          ulm_name_hold_haptic: "[[[ return variables.ulm_name_hold_haptic; ]]]"
+          ulm_name_hold_navigate_path: "[[[ return variables.ulm_name_hold_navigate_path; ]]]"
+          ulm_name_double_tap_action: "[[[ return variables.ulm_name_double_tap_action; ]]]"
+          ulm_name_double_tap_haptic: "[[[ return variables.ulm_name_double_tap_haptic; ]]]"
+          ulm_name_double_tap_navigate_path: "[[[ return variables.ulm_name_double_tap_navigate_path; ]]]"
+          ulm_custom_popup: "[[[ return variables.ulm_custom_popup; ]]]"
+
+```
+
+!!! tip "For developes who have already implemented the custom actions on their card"
+
+    There could be some breaking changes:
+
+    - The custom card should either implement the `icon_more_info_new` or the `extended_card`
+    - The template ulm_actions_card can be removed
+    - The variable redirections for the ulm_*_action can be removed
+
+    Also the custom popup feature has some breaking changes:
+    The variables `ulm_card_light_enable_popup`, `ulm_card_thermostat_enable_popup` and  `ulm_card_media_player_enable_popup`
+    aren't used internally anymore. The are only working on their appropriate cards as configuration option for the end user
+    of the card. So the custom_popup variable should be used instead.

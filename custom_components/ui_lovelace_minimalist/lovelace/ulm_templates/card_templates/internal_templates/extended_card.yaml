@@ -1,0 +1,69 @@
+---
+### Extension template for combining cards ###
+extended_card:
+  template:
+    - "ulm_custom_actions"
+    - "ulm_actions_card"
+  show_icon: false
+  show_name: false
+  show_label: false
+  triggers_update: "all"
+  styles:
+    grid:
+      - grid-template-areas: "'item1' 'item2'"
+      - grid-template-columns: "1fr"
+      - grid-template-rows: "min-content  min-content"
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "0px"
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        entity: "[[[ return entity.entity_id ]]]"
+        variables:
+          ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
+          ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
+          ulm_card_tap_action: "[[[ return variables.ulm_card_tap_action; ]]]"
+          ulm_card_tap_haptic: "[[[ return variables.ulm_card_tap_haptic; ]]]"
+          ulm_card_tap_navigate_path: "[[[ return variables.ulm_card_tap_navigate_path; ]]]"
+          ulm_card_hold_action: "[[[ return variables.ulm_card_hold_action; ]]]"
+          ulm_card_hold_haptic: "[[[ return variables.ulm_card_hold_haptic; ]]]"
+          ulm_card_hold_navigate_path: "[[[ return variables.ulm_card_hold_navigate_path; ]]]"
+          ulm_card_double_tap_action: "[[[ return variables.ulm_card_double_tap_action; ]]]"
+          ulm_card_double_tap_haptic: "[[[ return variables.ulm_card_double_tap_haptic; ]]]"
+          ulm_card_double_tap_navigate_path: "[[[ return variables.ulm_card_double_tap_navigate_path; ]]]"
+          ulm_icon_tap_action: "[[[ return variables.ulm_icon_tap_action; ]]]"
+          ulm_icon_tap_haptic: "[[[ return variables.ulm_icon_tap_haptic; ]]]"
+          ulm_icon_tap_navigate_path: "[[[ return variables.ulm_icon_tap_navigate_path; ]]]"
+          ulm_icon_hold_action: "[[[ return variables.ulm_icon_hold_action; ]]]"
+          ulm_icon_hold_haptic: "[[[ return variables.ulm_icon_hold_haptic; ]]]"
+          ulm_icon_hold_navigate_path: "[[[ return variables.ulm_icon_hold_navigate_path; ]]]"
+          ulm_icon_double_tap_action: "[[[ return variables.ulm_icon_double_tap_action; ]]]"
+          ulm_icon_double_tap_haptic: "[[[ return variables.ulm_icon_double_tap_haptic; ]]]"
+          ulm_icon_double_tap_navigate_path: "[[[ return variables.ulm_icon_double_tap_navigate_path; ]]]"
+          ulm_name_tap_action: "[[[ return variables.ulm_name_tap_action; ]]]"
+          ulm_name_tap_haptic: "[[[ return variables.ulm_name_tap_haptic; ]]]"
+          ulm_name_tap_navigate_path: "[[[ return variables.ulm_name_tap_navigate_path; ]]]"
+          ulm_name_hold_action: "[[[ return variables.ulm_name_hold_action; ]]]"
+          ulm_name_hold_haptic: "[[[ return variables.ulm_name_hold_haptic; ]]]"
+          ulm_name_hold_navigate_path: "[[[ return variables.ulm_name_hold_navigate_path; ]]]"
+          ulm_name_double_tap_action: "[[[ return variables.ulm_name_double_tap_action; ]]]"
+          ulm_name_double_tap_haptic: "[[[ return variables.ulm_name_double_tap_haptic; ]]]"
+          ulm_name_double_tap_navigate_path: "[[[ return variables.ulm_name_double_tap_navigate_path; ]]]"
+          ulm_custom_popup: "[[[ return variables.ulm_custom_popup; ]]]"
+        styles:
+          card:
+            - box-shadow: "none"
+            - border-radius: "var(--border-radius) var(--border-radius) 0px 0px"
+            - padding: "12px"
+
+    item2:
+      card:
+        type: "custom:button-card"
+        style: |
+          ha-card {
+            box-shadow: none;
+            border-radius: var(--border-radius);
+          }
