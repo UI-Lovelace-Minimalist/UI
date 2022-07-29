@@ -48,7 +48,7 @@ card_media_player:
             if (!variables.ulm_card_media_player_collapsible) {
                 return "12px";
               } else {
-                return (entity.state === "off" || entity.state === "standby") ? "0px" : "12p    }x";
+                return (entity.state === "off" || entity.state === "standby") ? "0px" : "12px";
               }
           ]]]
     card:
@@ -102,7 +102,7 @@ card_media_player:
                 ulm_card_media_player_enable_popup: "[[[ return variables.ulm_card_media_player_enable_popup; ]]]"
               icon: |
                 [[[
-                  var icon =  entity.attributes.icon || "mdi:speaker";
+                  var icon = entity.attributes.icon || "mdi:speaker";
                   if(entity.attributes.app_name){
                     var app = entity.attributes.app_name.toLowerCase();
                     var icon = {
@@ -141,7 +141,16 @@ card_media_player:
             card:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
-
+              variables:
+                ulm_name_tap_action: "[[[ return variables.ulm_name_tap_action; ]]]"
+                ulm_name_tap_navigate_path: "[[[ return variables.ulm_name_tap_navigate_path; ]]]"
+                ulm_name_hold_action: "[[[ return variables.ulm_name_hold_action; ]]]"
+                ulm_name_hold_navigate_path: "[[[ return variables.ulm_name_hold_navigate_path; ]]]"
+                ulm_name_double_tap_action: "[[[ return variables.ulm_name_double_tap_action; ]]]"
+                ulm_name_double_tap_navigate_path: "[[[ return variables.ulm_name_double_tap_navigate_path; ]]]"
+                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
+                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
+                ulm_card_media_player_enable_popup: "[[[ return variables.ulm_card_media_player_enable_popup; ]]]"
               label: "[[[ return variables.ulm_translation_state ]]]"
               state:
                 - operator: "template"
@@ -260,7 +269,6 @@ card_media_player:
                         ? 'white'
                         : 'rgba(var(--color-theme), 0.9)'
                       ]]]
-
           item2:
             card:
               type: "custom:button-card"
