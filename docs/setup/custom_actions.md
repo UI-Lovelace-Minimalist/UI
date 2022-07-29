@@ -156,8 +156,8 @@ This implementation allows the easy creation of custom popups that can be loaded
 
 ## For developers
 
-To enable action customization on your custom cards, use either the `icon_more_info_new` or the `extended_card` template.
-There is no need to implement the `ulm_card_actions` template anymore.
+To enable action customization on your custom cards, use either the `icon_more_info_new`, `icon_more_info_alert` or 
+the `extended_card` template. There is no need to implement the `ulm_card_actions` template anymore.
 
 There are tree possibilities to include the custom actions into your custom cards:
 
