@@ -21,7 +21,7 @@ Version: 0.3.0
 
 <details>
 <summary>0.3.0</summary>
-Updated documention.
+Updated documentation.
 Cleanup code in card.
 Updated colors to match input values.
 </details>

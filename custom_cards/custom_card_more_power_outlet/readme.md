@@ -12,7 +12,7 @@ This is the power outlet card is very similar to the default `power-outlet-card`
 
 ## Credits
 
-Author: Wranglatang - 2022 Vesion 1.0.0
+Author: Wranglatang - 2022 Version 1.0.0
 
 ## Variables
 

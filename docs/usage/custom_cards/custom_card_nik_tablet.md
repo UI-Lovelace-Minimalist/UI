@@ -99,7 +99,7 @@ Fix for UI Minimalist v1.0.1.
   <td>ulm_custom_card_nik_tablet_button1</td>
   <td>switch.sonoff_tablet_1p</td>
   <td>Yes</td>
-  <td>A Switch that enables or not USB Power for the Tablet. If not present you can replace it with another Switch of your choise. (check your device configs)</td>
+  <td>A Switch that enables or not USB Power for the Tablet. If not present you can replace it with another Switch of your choice. (check your device configs)</td>
 </tr>
 <tr>
   <td>ulm_custom_card_nik_tablet_button2</td>
@@ -135,19 +135,19 @@ Fix for UI Minimalist v1.0.1.
   <td>ulm_custom_card_nik_tablet_par1</td>
   <td>sensor.example</td>
   <td>Yes</td>
-  <td>An entity of your choise to monitor a specific tablet parameter</td>
+  <td>An entity of your choice to monitor a specific tablet parameter</td>
 </tr>
 <tr>
   <td>ulm_custom_card_nik_tablet_par2</td>
   <td>sensor.example</td>
   <td>Yes</td>
-  <td>An entity of your choise to monitor a specific tablet parameter</td>
+  <td>An entity of your choice to monitor a specific tablet parameter</td>
 </tr>
 <tr>
   <td>ulm_custom_card_nik_tablet_par3</td>
   <td>sensor.example</td>
   <td>Yes</td>
-  <td>An entity of your choise to monitor a specific tablet parameter</td>
+  <td>An entity of your choice to monitor a specific tablet parameter</td>
 </tr>
 <tr>
   <td>ulm_custom_card_nik_tablet_par1_name</td>

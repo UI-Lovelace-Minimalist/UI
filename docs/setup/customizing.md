@@ -6,7 +6,7 @@ hide:
 
 <!-- markdownlint-disable MD046 -->
 
-When you have finished the installation process succesfully it's time to start customizing your dashboard.
+When you have finished the installation process successfully it's time to start customizing your dashboard.
 You can find your ui-minimalist-lovelace file here:
 
 ```yaml
