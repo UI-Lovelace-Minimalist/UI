@@ -76,14 +76,7 @@ card_media_player:
             [[[
               if(variables.ulm_card_media_player_enable_controls) {
                 if(variables.ulm_card_media_player_collapsible){
-                  if (entity.state == "off"){
-                    return "none";
-                  } else if (entity.state == "standby"){
-                    return "none";
-                  } 
-                  else {
-                    return "block";
-                  }
+                  return (entity.state === "off" || entity.state === "standby") ? "none" : "block";
                 }
                 return "block";
               }
@@ -94,14 +87,7 @@ card_media_player:
             [[[
               if(variables.ulm_card_media_player_enable_volume_slider) {
                 if(variables.ulm_card_media_player_collapsible){
-                  if (entity.state == "off"){
-                    return "none";
-                  } else if (entity.state == "standby"){
-                    return "none";
-                  } 
-                  else {
-                    return "block";
-                  }
+                  return (entity.state === "off" || entity.state === "standby") ? "none" : "block";
                 }
                 return "block";
               }
