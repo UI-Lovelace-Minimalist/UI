@@ -4,7 +4,6 @@ card_thermostat:
   template:
     - "ulm_translation_engine"
     - "icon_more_info_new"
-    - "ulm_actions_card"
   variables:
     ulm_card_thermostat_name: "[[[ return entity.attributes.friendly_name ]]]"
     ulm_card_thermostat_icon: "[[[ return 'mdi:thermometer' ]]]"
