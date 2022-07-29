@@ -3,7 +3,6 @@
 card_input_boolean:
   template:
     - "icon_more_info_new"
-    - "ulm_actions_card"
     - "ulm_translation_engine"
     - "blue"
   variables:

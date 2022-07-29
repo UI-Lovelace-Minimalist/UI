@@ -3,7 +3,6 @@
 card_light:
   template:
     - "icon_more_info_new"
-    - "ulm_actions_card"
     - "ulm_translation_engine"
   variables:
     ulm_card_light_name: "[[[ return entity.attributes.friendly_name ]]]"
