@@ -60,7 +60,6 @@ ulm_custom_actions:
     ulm_name_double_tap_haptic: "none"
 ```
 
-
 Possible values for each variables (according to the underlying [button card](
 https://github.com/custom-cards/button-card)) are :
 
@@ -73,12 +72,10 @@ https://github.com/custom-cards/button-card)) are :
 - `heavy`
 - `selection`
 
-
 !!! tip "Reloading"
 
     Once you have edited `custom_actions.yaml` file, you must reload `"UI LOVELACE MINIMALIST"` configuration.
     Just go to `"Configuration" --> "Settings"` in Home Assistant and press the `"UI_LOVELACE_MINIMALIST"` button within the "YAML configuration reloading" section.
-
 
 ## Navigate action
 
@@ -129,7 +126,6 @@ This variable have two subvariables `template` and `popup_variables`. The templa
 template that should be loaded. The necessary configuration variables for the popup can be configured in
 the variable `popup_variables`.
 
-
 ```yaml
 - type: 'custom:button-card'
   template: card_power_outlet
@@ -158,8 +154,6 @@ This implementation allows the easy creation of custom popups that can be loaded
     be simply enabled by setting on of the variables  `ulm_card_light_enable_popup`, `ulm_card_thermostat_enable_popup`
     or  `ulm_card_media_player_enable_popup` to true.
 
-
-
 ## For developers
 
 To enable action customization on your custom cards, use either the `icon_more_info_new` or the `extended_card` template.
@@ -167,19 +161,20 @@ There is no need to implement the `ulm_card_actions` template anymore.
 
 There are tree possibilities to include the custom actions into your custom cards:
 
-
 ### Use template `extend_card` as combination of two cards
 
 The simplest way to create a custom card that uses these custom actions is the combination of two cards.
 
 For enabling the feature the custom card must implement the template `extended_card`.
 Then two custom fields must be used:
+
 - `item1` must be a card that already implements the template `icon_more_info_new`.
   Most of the core cards already implements this template.
 - `item2` can be any Lovelace card that should extend the card.
 
 If you add custom styles to `item2` then following code should be added into the `style` field
-```
+
+```javascript
 ha-card {
   box-shadow: none;
   border-radius: var(--border-radius);
@@ -189,13 +184,11 @@ ha-card {
 The already available **Graph card** (`card_graph`) is an example for this implementation. As
 `item1` a `generic_card` is used. The `item2` provides a mini-graph-card.
 
-
 ??? note "Graph card as example"
 
     ```yaml title="card_binary_sensor_alert.yaml"
     --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/2-line_cards/card_graph.yaml"
     ```
-
 
 ### Use template `icon_more_info_new` or `icon_more_info_alert`
 
@@ -204,7 +197,6 @@ The card must implement the template `icon_more_info_new`or `icon_more_info_aler
 `item2`which represents the name.
 
 Most of the internal card templates uses this option. Take a look into the code.
-
 
 ??? note "Generic card as example"
 
@@ -268,7 +260,6 @@ custom_card:
 
 ```
 
-
 !!! tip "For developes who have already implemented the custom actions on their card"
 
     There could be some breaking changes:
@@ -279,5 +270,5 @@ custom_card:
 
     Also the custom popup feature has some breaking changes:
     The variables `ulm_card_light_enable_popup`, `ulm_card_thermostat_enable_popup` and  `ulm_card_media_player_enable_popup`
-    aren't used internally anymore. The are only working on their appropriate cards as configuration option for the end user 
+    aren't used internally anymore. The are only working on their appropriate cards as configuration option for the end user
     of the card. So the custom_popup variable should be used instead.
