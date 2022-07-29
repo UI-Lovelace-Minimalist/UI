@@ -3,7 +3,6 @@
 card_cover:
   template:
     - "icon_more_info_new"
-    - "ulm_actions_card"
     - "ulm_translation_engine"
   variables:
     ulm_card_cover_name: "[[[ return entity.attributes.friendly_name ]]]"
@@ -89,9 +88,6 @@ card_cover:
           item1:
             card:
               type: "custom:button-card"
-              variables:
-                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
-                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
               entity: "[[[ return entity.entity_id ]]]"
               icon: |
                 [[[
@@ -174,9 +170,6 @@ card_cover:
           item2:
             card:
               type: "custom:button-card"
-              variables:
-                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
-                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
               entity: "[[[ return entity.entity_id ]]]"
               name: "[[[ return variables.ulm_card_cover_name ]]]"
               label: >-

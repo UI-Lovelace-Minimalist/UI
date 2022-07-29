@@ -148,10 +148,20 @@ card_thermostat:
             card:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
-              variables:
-                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
-                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
-                ulm_card_thermostat_enable_popup: "[[[ return variables.ulm_card_thermostat_enable_popup; ]]]"
+              variables: >
+                [[[
+                  let vars = variables;
+
+                  if(variables.ulm_card_thermostat_enable_popup) {
+                    vars.ulm_custom_popup = {
+                      'template': 'popup_thermostat_temperature',
+                      'popup_variables': {
+                        'ulm_popup_thermostat_entity': entity.entity_id,
+                      }
+                    };
+                  }
+                  return vars;
+                ]]]
               icon: "[[[ return variables.ulm_card_thermostat_icon ]]]"
               state:
                 - operator: "template"
@@ -178,10 +188,20 @@ card_thermostat:
             card:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
-              variables:
-                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
-                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
-                ulm_card_thermostat_enable_popup: "[[[ return variables.ulm_card_thermostat_enable_popup; ]]]"
+              variables: >
+                [[[
+                  let vars = variables;
+
+                  if(variables.ulm_card_thermostat_enable_popup) {
+                    vars.ulm_custom_popup = {
+                      'template': 'popup_thermostat_temperature',
+                      'popup_variables': {
+                        'ulm_popup_thermostat_entity': entity.entity_id,
+                      }
+                    };
+                  }
+                  return vars;
+                ]]]
               name: "[[[ return variables.ulm_card_thermostat_name ]]]"
               label: >-
                 [[[
