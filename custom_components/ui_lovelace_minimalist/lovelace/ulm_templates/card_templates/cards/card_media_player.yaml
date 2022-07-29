@@ -3,6 +3,7 @@
 card_media_player:
   template:
     - "icon_more_info_new"
+    - "ulm_actions_card"
     - "ulm_translation_engine"
   variables:
     ulm_card_media_player_name: "[[[ return entity.attributes.friendly_name ]]]"
@@ -48,7 +49,14 @@ card_media_player:
             if (!variables.ulm_card_media_player_collapsible) {
                 return "12px";
               } else {
-                return entity.state !== "off" ? "12px" : "0px";
+                if (entity.state == "off"){
+                  return "0px";
+                } else if (entity.state == "standby"){
+                  return "0px";
+                } 
+                else {
+                  return "12px";
+                }
               }
           ]]]
     card:
@@ -68,7 +76,14 @@ card_media_player:
             [[[
               if(variables.ulm_card_media_player_enable_controls) {
                 if(variables.ulm_card_media_player_collapsible){
-                  return entity.state === "off" ? "none" : "block";
+                  if (entity.state == "off"){
+                    return "none";
+                  } else if (entity.state == "standby"){
+                    return "none";
+                  } 
+                  else {
+                    return "block";
+                  }
                 }
                 return "block";
               }
@@ -79,7 +94,14 @@ card_media_player:
             [[[
               if(variables.ulm_card_media_player_enable_volume_slider) {
                 if(variables.ulm_card_media_player_collapsible){
-                  return entity.state === "off" ? "none" : "block";
+                  if (entity.state == "off"){
+                    return "none";
+                  } else if (entity.state == "standby"){
+                    return "none";
+                  } 
+                  else {
+                    return "block";
+                  }
                 }
                 return "block";
               }
@@ -94,20 +116,16 @@ card_media_player:
             card:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
-              variables: >
-                [[[
-                  let vars = variables;
-
-                  if(variables.ulm_card_media_player_enable_popup) {
-                    vars.ulm_custom_popup = {
-                      'template': 'popup_media_player_infos',
-                      'popup_variables': {
-                        'ulm_popup_media_player_entity': entity.entity_id,
-                      }
-                    };
-                  }
-                  return vars;
-                ]]]
+              variables:
+                ulm_icon_tap_action: "[[[ return variables.ulm_icon_tap_action; ]]]"
+                ulm_icon_tap_navigate_path: "[[[ return variables.ulm_icon_tap_navigate_path; ]]]"
+                ulm_icon_hold_action: "[[[ return variables.ulm_icon_hold_action; ]]]"
+                ulm_icon_hold_navigate_path: "[[[ return variables.ulm_icon_hold_navigate_path; ]]]"
+                ulm_icon_double_tap_action: "[[[ return variables.ulm_icon_double_tap_action; ]]]"
+                ulm_icon_double_tap_navigate_path: "[[[ return variables.ulm_icon_double_tap_navigate_path; ]]]"
+                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
+                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
+                ulm_card_media_player_enable_popup: "[[[ return variables.ulm_card_media_player_enable_popup; ]]]"
               icon: |
                 [[[
                   var icon =  entity.attributes.icon || "mdi:speaker";
@@ -149,20 +167,16 @@ card_media_player:
             card:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
-              variables: >
-                [[[
-                  let vars = variables;
-
-                  if(variables.ulm_card_media_player_enable_popup) {
-                    vars.ulm_custom_popup = {
-                      'template': 'popup_media_player_infos',
-                      'popup_variables': {
-                        'ulm_popup_media_player_entity': entity.entity_id,
-                      }
-                    };
-                  }
-                  return vars;
-                ]]]
+              variables:
+                ulm_name_tap_action: "[[[ return variables.ulm_name_tap_action; ]]]"
+                ulm_name_tap_navigate_path: "[[[ return variables.ulm_name_tap_navigate_path; ]]]"
+                ulm_name_hold_action: "[[[ return variables.ulm_name_hold_action; ]]]"
+                ulm_name_hold_navigate_path: "[[[ return variables.ulm_name_hold_navigate_path; ]]]"
+                ulm_name_double_tap_action: "[[[ return variables.ulm_name_double_tap_action; ]]]"
+                ulm_name_double_tap_navigate_path: "[[[ return variables.ulm_name_double_tap_navigate_path; ]]]"
+                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
+                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
+                ulm_card_media_player_enable_popup: "[[[ return variables.ulm_card_media_player_enable_popup; ]]]"
               label: "[[[ return variables.ulm_translation_state ]]]"
               state:
                 - operator: "template"
@@ -173,7 +187,14 @@ card_media_player:
                       return name;
                     ]]]
                 - operator: "template"
-                  value: "[[[ return entity.state != 'off' ]]]"
+                  value: "[[[ return entity.state == 'standby' ]]]"
+                  name: |
+                    [[[
+                      let name = variables.ulm_card_media_player_name || states[entity.entity_id].attributes.friendly_name;
+                      return name;
+                    ]]]
+                - operator: "template"
+                  value: "[[[ return entity.state != 'off'  || 'standby']]]"
                   name: |
                     [[[
                       let name = variables.ulm_card_media_player_name || states[entity.entity_id].attributes.friendly_name;
@@ -304,6 +325,8 @@ card_media_player:
                 - value: "paused"
                   icon: "mdi:play"
                 - value: "off"
+                  icon: "mdi:play"
+                - value: "standby"
                   icon: "mdi:play"
               styles:
                 card:
