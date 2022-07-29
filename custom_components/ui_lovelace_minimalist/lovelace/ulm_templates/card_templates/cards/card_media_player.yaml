@@ -3,7 +3,6 @@
 card_media_player:
   template:
     - "icon_more_info_new"
-    - "ulm_actions_card"
     - "ulm_translation_engine"
   variables:
     ulm_card_media_player_name: "[[[ return entity.attributes.friendly_name ]]]"
@@ -49,14 +48,7 @@ card_media_player:
             if (!variables.ulm_card_media_player_collapsible) {
                 return "12px";
               } else {
-                if (entity.state == "off"){
-                  return "0px";
-                } else if (entity.state == "standby"){
-                  return "0px";
-                } 
-                else {
-                  return "12px";
-                }
+                return (entity.state === "off" || entity.state === "standby") ? "0px" : "12p    }x";
               }
           ]]]
     card:
@@ -76,22 +68,18 @@ card_media_player:
             [[[
               if(variables.ulm_card_media_player_enable_controls) {
                 if(variables.ulm_card_media_player_collapsible){
-                  return (entity.state === "off" || entity.state === "standby") ? "none" : "block";
+                return (entity.state === "off" || entity.state === "standby") ? "none" : "block";
                 }
-                return "block";
               }
-              return "none";
             ]]]
       item3:
         - display: |
             [[[
               if(variables.ulm_card_media_player_enable_volume_slider) {
                 if(variables.ulm_card_media_player_collapsible){
-                  return (entity.state === "off" || entity.state === "standby") ? "none" : "block";
+                return (entity.state === "off" || entity.state === "standby") ? "none" : "block";
                 }
-                return "block";
               }
-              return "none";
             ]]]
   custom_fields:
     item1:
@@ -153,16 +141,7 @@ card_media_player:
             card:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
-              variables:
-                ulm_name_tap_action: "[[[ return variables.ulm_name_tap_action; ]]]"
-                ulm_name_tap_navigate_path: "[[[ return variables.ulm_name_tap_navigate_path; ]]]"
-                ulm_name_hold_action: "[[[ return variables.ulm_name_hold_action; ]]]"
-                ulm_name_hold_navigate_path: "[[[ return variables.ulm_name_hold_navigate_path; ]]]"
-                ulm_name_double_tap_action: "[[[ return variables.ulm_name_double_tap_action; ]]]"
-                ulm_name_double_tap_navigate_path: "[[[ return variables.ulm_name_double_tap_navigate_path; ]]]"
-                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
-                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
-                ulm_card_media_player_enable_popup: "[[[ return variables.ulm_card_media_player_enable_popup; ]]]"
+
               label: "[[[ return variables.ulm_translation_state ]]]"
               state:
                 - operator: "template"
