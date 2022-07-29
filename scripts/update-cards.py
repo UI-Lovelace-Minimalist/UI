@@ -10,8 +10,11 @@ cards = (
     ('lovelace-card-mod', 'https://raw.githubusercontent.com/thomasloven/lovelace-card-mod/3.1.5/card-mod.js'),
     ('mini-graph-card', 'https://github.com/kalkih/mini-graph-card/releases/download/v0.11.0/mini-graph-card-bundle.js'),
     ('mini-media-player', 'https://github.com/kalkih/mini-media-player/releases/download/v1.16.4/mini-media-player-bundle.js'),
-    ('my-cards', 'https://raw.githubusercontent.com/AnthonMS/my-cards/main/dist/my-cards.js'),
+    ('my-cards', 'https://github.com/AnthonMS/my-cards/releases/download/v1.0.0/my-cards.js'),
     ('simple-weather-card', 'https://github.com/kalkih/simple-weather-card/releases/download/v0.8.3/simple-weather-card-bundle.js'),
+    # for adaptive dashboard
+    ('lovelace-layout-card', 'https://raw.githubusercontent.com/thomasloven/lovelace-layout-card/2.4.2/layout-card.js'),
+    ('lovelace-state-switch', 'https://raw.githubusercontent.com/thomasloven/lovelace-state-switch/1.9.5/state-switch.js'),
 )
 
 for card, src in cards:
