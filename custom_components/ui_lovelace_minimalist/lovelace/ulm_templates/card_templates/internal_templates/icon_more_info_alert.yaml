@@ -53,3 +53,6 @@ icon_more_info_alert:
                   - padding: "6px"
                   - margin-left: "-6px"
                   - background-color: "rgba(0,0,0,0)"
+                custom_fields:
+                  notification:
+                    - display: "none"
