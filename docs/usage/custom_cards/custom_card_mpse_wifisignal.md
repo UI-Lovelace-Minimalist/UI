@@ -8,7 +8,7 @@ hide:
 
 # Custom-card "WiFi Signal"
 
-The `custom_card_mpse_wifisignal` is used to display the status of a wifi signal (dBm). Icon changes based on signal strenght.
+The `custom_card_mpse_wifisignal` is used to display the status of a wifi signal (dBm). Icon changes based on signal strength.
 
 ![WiFi Signal](../../assets/img/custom_wifisignal.png)
 
