@@ -5,9 +5,9 @@ ulm_actions_icon:
     action: >
       [[[
         var action = variables.ulm_icon_tap_action != null ? variables.ulm_icon_tap_action : 'toggle';
-        let domain = entity.entity_id.substr(0, entity.entity_id.indexOf("."));
+        let domain = (entity != null) ? entity.entity_id.substr(0, entity.entity_id.indexOf(".")) : "";
 
-        if (domain == "binary_sensor" || domain == "sensor"){
+        if (domain == "binary_sensor" || domain == "sensor" || domain == ""){
           if (action == 'toggle')
             action = 'none';
         }
@@ -76,9 +76,9 @@ ulm_actions_icon:
     action: >
       [[[
         var action = variables.ulm_icon_hold_action != null ? variables.ulm_icon_hold_action : 'more_info';
-        let domain = entity.entity_id.substr(0, entity.entity_id.indexOf("."));
+        let domain = (entity != null) ? entity.entity_id.substr(0, entity.entity_id.indexOf(".")) : "";
 
-        if (domain == "binary_sensor" || domain == "sensor"){
+        if (domain == "binary_sensor" || domain == "sensor" || domain == ""){
           if (action == 'toggle')
             action = 'none';
         }
@@ -147,9 +147,9 @@ ulm_actions_icon:
     action: >
       [[[
         var action = variables.ulm_icon_double_tap_action != null ? variables.ulm_icon_double_tap_action : 'adaptive';
-        let domain = entity.entity_id.substr(0, entity.entity_id.indexOf("."));
+        let domain = (entity != null) ? entity.entity_id.substr(0, entity.entity_id.indexOf(".")) : "";
 
-        if (domain == "binary_sensor" || domain == "sensor"){
+        if (domain == "binary_sensor" || domain == "sensor" || domain == ""){
           if (action == 'toggle')
             action = 'none';
         }
