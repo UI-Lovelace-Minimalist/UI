@@ -10,7 +10,7 @@ hide:
 
 ![example-image](../../assets/img/ulm_chips/chip_back.png){ width="500" }
 
-This is a `back-button`, primarly used if you switch between views and want a convenient way back.
+This is a `back-button`, primarily used if you switch between views and want a convenient way back.
 
 ## Variables
 

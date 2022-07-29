@@ -65,7 +65,7 @@ This card needs the following to function correctly:
   entity: fan.smart_fan
   name: Fan
   variables:
-    collapsable: false
+    collapsible: false
     oscillate_attribute: oscillate
 ```
 
@@ -77,7 +77,7 @@ This card needs the following to function correctly:
   entity: fan.smart_fan
   name: Fan
   variables:
-    collapsable: true
+    collapsible: true
     oscillate_attribute: oscillate
 ```
 
@@ -103,7 +103,7 @@ This card needs the following to function correctly:
     <td>Name to show. If not specified the attribute <i>friendly_name</i> is shown instead</td>
   </tr>
   <tr>
-    <td>collapsable</td>
+    <td>collapsible</td>
     <td>true</td>
     <td>no</td>
     <td>true/false if the fan speed row should collapse when the fan is turned off. Default: true</td>

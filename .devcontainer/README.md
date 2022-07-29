@@ -67,7 +67,7 @@ First we need to install some dependencies to get a basic Home Assistant instanc
 **Prerequisites**
 
 ```bash
-# start terminal in contianer
+# start terminal in container
 pip install -r requirements_dev.txt
 # install pre-commit
 pre-commit install
@@ -106,4 +106,4 @@ wget -O - https://get.hacs.xyz | bash -
 - To get the best experience with the themes that come with the integration:
     - Go to Configuration -> Blueprints
         - Create an automation from `System Set Default Theme`, and select what theme you want. And after restart it will be set.
-- Restart home assitant to make sure everything is located
+- Restart home assistant to make sure everything is located
