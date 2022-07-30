@@ -6,6 +6,7 @@ card_person:
     - "ulm_translation_engine"
   variables:
     ulm_card_person_use_entity_picture: false
+    ulm_card_person_icon: "mdi:face-man"
     ulm_card_person_zone1: ""
     ulm_card_person_zone2: ""
     ulm_address: ""
@@ -27,7 +28,7 @@ card_person:
     ]]]
   name: "[[[ return states[variables.ulm_card_person_entity].attributes.friendly_name ]]]"
   entity: "[[[ return variables.ulm_card_person_entity; ]]]"
-  icon: "mdi:face-man"
+  icon: "[[[ return variables.ulm_card_person_icon; ]]]"
   show_entity_picture: "[[[ return variables.ulm_card_person_use_entity_picture ]]]"
   entity_picture: "[[[ return variables.ulm_card_person_use_entity_picture ? states[variables.ulm_card_person_entity].attributes.entity_picture\
     \ : null ]]]"
