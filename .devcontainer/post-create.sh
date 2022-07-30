@@ -38,7 +38,7 @@ pre-commit install
 # Custom Cards & Modules
 echo "Installing NodeJS"
 curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
-apt-get install -y nodejs
+apt-get install -y nodejs bluetooth
 
 
 cd /tmp

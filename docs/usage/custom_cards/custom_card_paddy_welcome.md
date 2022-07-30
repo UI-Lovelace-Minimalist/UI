@@ -116,7 +116,7 @@ This card needs the following to function correctly:
 > #### Note \_welcome_with_news
 
 > This card is based on [home-feed-card](https://github.com/gadgetchnnel/lovelace-home-feed-card) and needs a little different configuration in the variables.
-> To allow almost all entites from HomeAssistant to show in the news, you're able to set all options that `home-feed-card` provides. This makes it necessary, that you set these entities in a list. Let me show you an example:
+> To allow almost all entities from HomeAssistant to show in the news, you're able to set all options that `home-feed-card` provides. This makes it necessary, that you set these entities in a list. Let me show you an example:
 >
 > ```yaml
 > # normally you do this

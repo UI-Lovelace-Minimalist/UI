@@ -8,7 +8,7 @@ hide:
 
 ## Install Integration
 
-Open your Home Assistant instance and start setting up "UI Lovelace Minimalist" under "Configuration" --> "Devices & Services". Or you can use the My Home Assistant Button bellow.
+Open your Home Assistant instance and start setting up "UI Lovelace Minimalist" under "Configuration" --> "Devices & Services". Or you can use the My Home Assistant Button below.
 
 !!! danger "Unsaved Settings"
 
