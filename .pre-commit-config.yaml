@@ -107,3 +107,13 @@ repos:
           - "--format=custom"
           # - "--configfile=bandit.yaml"
         <<: *python-files-with-tests
+  - repo: https://github.com/codespell-project/codespell.git
+    rev: "v2.1.0"
+    hooks:
+      - id: codespell
+        files: "(.*.md|translations/en.json)"
+        name: codespell
+        description: Checks for common misspellings in text files.
+        entry: codespell
+        language: python
+        types: [text]

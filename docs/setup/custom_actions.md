@@ -37,7 +37,7 @@ Possible values for each variables are :
 | more-info  | Display more-info window                                                                                                        |
 | popup      | Display UI LOVELACE MINIMALIST popup if available and enabled on card (if not `more-info` action is used)                       |
 | adaptive   | Switch UI LOVELACE MINIMALIST popup on adaptive dashboard<br> if current dashboard is adaptive (if not `popup` action is used)  |
-| navigate   | Navigate to an other UI LOVELACE MINIMALIST view. Need additionnal variable (see below)                                         |
+| navigate   | Navigate to an other UI LOVELACE MINIMALIST view. Need additional variable (see below)                                         |
 
 !!! tip "Reloading"
 

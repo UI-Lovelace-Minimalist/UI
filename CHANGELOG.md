@@ -150,7 +150,7 @@ If any of you have used this before, you should take a look at @saxel's pull req
 - Add custom single icon chip card @CM000n (#38)
 - Add custom card custom\_card\_schumijo\_car @schumijo (#39)
 - Round temperature when the temperature has decimal points @bavo (#46)
-- Add Alarm Chip to availabe templates @tombo12354 (#50)
+- Add Alarm Chip to available templates @tombo12354 (#50)
 - Create SE.yaml @EmilZackrisson (#53)
 - Vertical buttons custom state @saxel (#66)
 - Add release drafter @CM000n (#72)
