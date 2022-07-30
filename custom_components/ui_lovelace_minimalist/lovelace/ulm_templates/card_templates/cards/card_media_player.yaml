@@ -168,7 +168,7 @@ card_media_player:
                       return name;
                     ]]]
                 - operator: "template"
-                  value: "[[[ return entity.state != 'off'  || 'standby']]]"
+                  value: "[[[ return entity.state != 'off'  || entity.state != 'standby']]]"
                   name: |
                     [[[
                       let name = variables.ulm_card_media_player_name || states[entity.entity_id].attributes.friendly_name;
