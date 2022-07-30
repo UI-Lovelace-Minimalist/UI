@@ -3,7 +3,6 @@
 card_media_player:
   template:
     - "icon_more_info_new"
-    - "ulm_actions_card"
     - "ulm_translation_engine"
   variables:
     ulm_card_media_player_name: "[[[ return entity.attributes.friendly_name ]]]"
@@ -95,10 +94,20 @@ card_media_player:
             card:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
-              variables:
-                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
-                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
-                ulm_card_media_player_enable_popup: "[[[ return variables.ulm_card_media_player_enable_popup; ]]]"
+              variables: >
+                [[[
+                  let vars = variables;
+
+                  if(variables.ulm_card_media_player_enable_popup) {
+                    vars.ulm_custom_popup = {
+                      'template': 'popup_media_player_infos',
+                      'popup_variables': {
+                        'ulm_popup_media_player_entity': entity.entity_id,
+                      }
+                    };
+                  }
+                  return vars;
+                ]]]
               icon: |
                 [[[
                   var icon =  entity.attributes.icon || "mdi:speaker";
@@ -113,6 +122,7 @@ card_media_player:
                       "oto music": "mdi:music-circle",
                       "pandora": "mdi:pandora",
                       "netflix": "mdi:netflix",
+                      "hulu": "mdi:hulu",
                       "bluetooth audio": "mdi:bluetooth"
                     }
                   }
@@ -139,10 +149,20 @@ card_media_player:
             card:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
-              variables:
-                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
-                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
-                ulm_card_media_player_enable_popup: "[[[ return variables.ulm_card_media_player_enable_popup; ]]]"
+              variables: >
+                [[[
+                  let vars = variables;
+
+                  if(variables.ulm_card_media_player_enable_popup) {
+                    vars.ulm_custom_popup = {
+                      'template': 'popup_media_player_infos',
+                      'popup_variables': {
+                        'ulm_popup_media_player_entity': entity.entity_id,
+                      }
+                    };
+                  }
+                  return vars;
+                ]]]
               label: "[[[ return variables.ulm_translation_state ]]]"
               state:
                 - operator: "template"
