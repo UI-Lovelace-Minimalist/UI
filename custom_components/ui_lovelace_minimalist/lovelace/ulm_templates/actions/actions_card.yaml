@@ -61,7 +61,11 @@ ulm_actions_card:
                 return popup_config.popup_variables;
               }
             }
+            if (variables.ulm_card_weather_enable_popup){
+              return 'popup_weather_forecast'
+            }
           ]]]
+
   hold_action:
     action: >
       [[[
@@ -123,7 +127,11 @@ ulm_actions_card:
                 return popup_config.popup_variables;
               }
             }
+            if (variables.ulm_card_weather_enable_popup){
+              return 'popup_weather_forecast'
+            }
           ]]]
+
   double_tap_action:
     action: >
       [[[
@@ -183,5 +191,8 @@ ulm_actions_card:
               if ((typeof popup_config === 'object') && 'popup_variables' in popup_config) {
                 return popup_config.popup_variables;
               }
+            }
+            if (variables.ulm_card_weather_enable_popup){
+              return 'popup_weather_forecast'
             }
           ]]]

@@ -1,7 +1,11 @@
 ---
 ### Chip Temperature ###
 chip_temperature:
-  template: "chips"
+  template:
+    - "chips"
+    - "ulm_actions_card"
+  variables:
+    ulm_card_weather_enable_popup: false
   triggers_update: "all"
   label: |
     [[[
