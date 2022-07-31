@@ -70,7 +70,9 @@ card_media_player:
                 if(variables.ulm_card_media_player_collapsible){
                 return (entity.state === "off" || entity.state === "standby") ? "none" : "block";
                 }
+                return "block";
               }
+              return "none";
             ]]]
       item3:
         - display: |
@@ -79,7 +81,9 @@ card_media_player:
                 if(variables.ulm_card_media_player_collapsible){
                 return (entity.state === "off" || entity.state === "standby") ? "none" : "block";
                 }
+                return "block";
               }
+              return "none";
             ]]]
   custom_fields:
     item1:
