@@ -309,14 +309,14 @@ custom_card_nik_nas:
             show: false
         series:
           - entity: "[[[ return variables.entity_1.entity_id ]]]"
-            name: "[[[ return variables.entity_1_name ]]]"
+            name: "[[[ return variables.entity_1.name ]]]"
             color: "[[[ return `var(--google-${variables.entity_1.color})`;]]]"
             max: "[[[ return variables.entity_1.max_value ]]]"
           - entity: "[[[ return variables.entity_2.entity_id ]]]"
-            name: "[[[ return variables.entity_2_name ]]]"
+            name: "[[[ return variables.entity_2.name ]]]"
             color: "[[[ return `var(--google-${variables.entity_2.color})`;]]]"
             max: "[[[ return variables.entity_2.max_value ]]]"
           - entity: "[[[ return variables.entity_3.entity_id ]]]"
-            name: "[[[ return variables.entity_3_name ]]]"
+            name: "[[[ return variables.entity_3.name ]]]"
             color: "[[[ return `var(--google-${variables.entity_3.color})`;]]]"
             max: "[[[ return variables.entity_3.max_value ]]]"
