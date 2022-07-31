@@ -159,8 +159,21 @@ card_esh_room:
         template:
           - "widget_icon"
           - "ulm_actions_card"
-        variables:
-          ulm_card_light_enable_popup: "[[[ return variables.ulm_card_light_enable_popup; ]]]"
+        variables: >
+          [[[
+            let vars = {};
+            vars.ulm_card_light_enable_popup = variables.ulm_card_light_enable_popup;
+
+            if(variables.ulm_card_light_enable_popup) {
+              vars.ulm_custom_popup = {
+                'template': 'popup_light_brightness',
+                'popup_variables': {
+                  'ulm_popup_light_entity': variables.ulm_custom_card_esh_room_light_entity,
+                }
+              };
+            }
+            return vars;
+          ]]]
 
     climate:
       card:
@@ -218,5 +231,18 @@ card_esh_room:
         template:
           - "widget_icon"
           - "ulm_actions_card"
-        variables:
-          ulm_card_thermostat_enable_popup: "[[[ return variables.ulm_card_thermostat_enable_popup; ]]]"
+        variables: >
+          [[[
+            let vars = {};
+            vars.ulm_card_thermostat_enable_popup = variables.ulm_card_light_enable_popup;
+
+            if(variables.ulm_card_thermostat_enable_popup) {
+              vars.ulm_custom_popup = {
+                'template': 'popup_thermostat_temperature',
+                'popup_variables': {
+                  'ulm_popup_thermostat_entity': variables.ulm_custom_card_esh_room_climate_entity,
+                }
+              };
+            }
+            return vars;
+          ]]]
