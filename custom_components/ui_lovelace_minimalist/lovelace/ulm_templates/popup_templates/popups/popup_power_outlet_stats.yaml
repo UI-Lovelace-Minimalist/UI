@@ -49,11 +49,6 @@ popup_power_outlet_stats:
         type: "custom:button-card"
         template: "popup_header"
         entity: "[[[ return entity.entity_id ]]]"
-        name: >
-          [[[
-            console.log(this);
-            return "TEst"
-          ]]]
     content1:
       card:
         type: "grid"
