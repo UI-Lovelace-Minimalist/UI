@@ -14,6 +14,17 @@ hide:
 
 - weather-radar-card (download for HACS)
 
+##### How to use
+
+To enable this popup, add the followgin code to your card :
+
+```yaml
+  ulm_custom_popup:
+      template: "popup_weather_forecast"
+      popup_variables:
+          ulm_popup_weather_entity: weather.xxx
+```
+
 ## Credits
 
 - Designed by schumijo
