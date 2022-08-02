@@ -62,7 +62,6 @@ ulm_actions_card:
               }
             }
           ]]]
-
   hold_action:
     action: >
       [[[
@@ -125,7 +124,6 @@ ulm_actions_card:
               }
             }
           ]]]
-
   double_tap_action:
     action: >
       [[[
