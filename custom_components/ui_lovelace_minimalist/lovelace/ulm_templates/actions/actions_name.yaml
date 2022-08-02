@@ -53,6 +53,17 @@ ulm_actions_name:
               }
             }
           ]]]
+        entity: >
+          [[[
+            if (variables.ulm_custom_popup != null ){
+              let popup_config = variables.ulm_custom_popup;
+              if ((typeof popup_config === 'object') && 'entity' in popup_config) {
+                return popup_config.entity;
+              }
+            }
+
+            return (entity != null) ? entity.entity_id : null;
+          ]]]
         variables: >
           [[[
             if (variables.ulm_custom_popup != null ){
@@ -114,6 +125,17 @@ ulm_actions_name:
               }
             }
           ]]]
+        entity: >
+          [[[
+            if (variables.ulm_custom_popup != null ){
+              let popup_config = variables.ulm_custom_popup;
+              if ((typeof popup_config === 'object') && 'entity' in popup_config) {
+                return popup_config.entity;
+              }
+            }
+
+            return (entity != null) ? entity.entity_id : null;
+          ]]]
         variables: >
           [[[
             if (variables.ulm_custom_popup != null ){
@@ -174,6 +196,17 @@ ulm_actions_name:
                 return popup_config.template;
               }
             }
+          ]]]
+        entity: >
+          [[[
+            if (variables.ulm_custom_popup != null ){
+              let popup_config = variables.ulm_custom_popup;
+              if ((typeof popup_config === 'object') && 'entity' in popup_config) {
+                return popup_config.entity;
+              }
+            }
+
+            return (entity != null) ? entity.entity_id : null;
           ]]]
         variables: >
           [[[

@@ -9,5 +9,4 @@ popup_thermostat:
       card:
         type: "custom:button-card"
         template: "popup_thermostat_temperature"
-        variables:
-          ulm_popup_thermostat_entity: "[[[ return entity.entity_id ]]]"
+        entity: "[[[ return entity.entity_id ]]]"

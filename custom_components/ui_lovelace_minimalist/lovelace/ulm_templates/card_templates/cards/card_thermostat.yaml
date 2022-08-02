@@ -153,10 +153,7 @@ card_thermostat:
 
                   if(variables.ulm_card_thermostat_enable_popup) {
                     vars.ulm_custom_popup = {
-                      'template': 'popup_thermostat_temperature',
-                      'popup_variables': {
-                        'ulm_popup_thermostat_entity': entity.entity_id,
-                      }
+                      'template': 'popup_thermostat_temperature'
                     };
                   }
                   return vars;
@@ -193,10 +190,7 @@ card_thermostat:
 
                   if(variables.ulm_card_thermostat_enable_popup) {
                     vars.ulm_custom_popup = {
-                      'template': 'popup_thermostat_temperature',
-                      'popup_variables': {
-                        'ulm_popup_thermostat_entity': entity.entity_id,
-                      }
+                      'template': 'popup_thermostat_temperature'
                     };
                   }
                   return vars;
