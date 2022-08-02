@@ -67,7 +67,7 @@ popup_weather_forecast:
           ]]]
     content1:
       card:
-        type: vertical-stack
+        type: "vertical-stack"
         cards:
           - type: "custom:button-card"
             entity: "[[[ return variables.ulm_popup_weather_entity ]]]"
@@ -75,47 +75,47 @@ popup_weather_forecast:
             show_icon: false
             styles:
               grid:
-                - grid-template-areas: '"temp" "tempminmax'
-                - grid-template-columns: 1fr
-                - grid-template-rows: min-content min-content
+                - grid-template-areas: "'temp' 'tempminmax'"
+                - grid-template-columns: "1fr"
+                - grid-template-rows: "min-content min-content"
               card:
-                - background: none
-                - box-shadow: none
+                - background: "none"
+                - box-shadow: "none"
               custom_fields:
                 temp:
-                  - font-size: 60px
+                  - font-size: "60px"
             custom_fields:
               temp: "[[[ return states[variables.ulm_popup_weather_entity].attributes.temperature + '°' ]]]"
               tempminmax: "[[[ return 'Max. ' + states[variables.ulm_popup_weather_entity].attributes.forecast[0].temperature + '° Min. ' + states[variables.ulm_popup_weather_entity].attributes.forecast[0].templow + '°' ]]]"
-          - type: vertical-stack
+          - type: "vertical-stack"
             cards:
               - type: "custom:button-card"
-                template: popup_weather_row
+                template: "popup_weather_row"
                 entity: "[[[ return variables.ulm_popup_weather_entity ]]]"
                 variables:
                   ulm_popup_weather_entity_idx: 0
               - type: "custom:button-card"
-                tempalte: popup_weather_row
+                tempalte: "popup_weather_row"
                 entity: "[[[ return variables.ulm_popup_weather_entity ]]]"
                 variables:
                   ulm_popup_weather_entity_idx: 1
               - type: "custom:button-card"
-                tempalte: popup_weather_row
+                tempalte: "popup_weather_row"
                 entity: "[[[ return variables.ulm_popup_weather_entity ]]]"
                 variables:
                   ulm_popup_weather_entity_idx: 2
               - type: "custom:button-card"
-                tempalte: popup_weather_row
+                tempalte: "popup_weather_row"
                 entity: "[[[ return variables.ulm_popup_weather_entity ]]]"
                 variables:
                   ulm_popup_weather_entity_idx: 3
               - type: "custom:button-card"
-                tempalte: popup_weather_row
+                tempalte: "popup_weather_row"
                 entity: "[[[ return variables.ulm_popup_weather_entity ]]]"
                 variables:
                   ulm_popup_weather_entity_idx: 4
               - type: "custom:button-card"
-                tempalte: popup_weather_row
+                tempalte: "popup_weather_row"
                 entity: "[[[ return variables.ulm_popup_weather_entity ]]]"
                 variables:
                   ulm_popup_weather_entity_idx: 5
