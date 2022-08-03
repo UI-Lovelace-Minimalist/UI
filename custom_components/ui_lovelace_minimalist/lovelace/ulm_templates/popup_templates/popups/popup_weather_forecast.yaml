@@ -1,5 +1,9 @@
 ---
 popup_weather_forecast:
+  show_icon: false
+  show_name: false
+  show_label: false
+  show_units: false
   styles:
     grid:
       - grid-template-areas: "'header header' 'content1 content2' 'footer footer'"
@@ -42,10 +46,10 @@ popup_weather_forecast:
       card:
         type: "custom:button-card"
         template: "popup_header"
-        entity: "[[[ return variables.ulm_popup_weather_entity ]]]"
+        entity: "[[[ return entity.entity_id ]]]"
         icon: |
           [[[
-            var state = states[variables.ulm_popup_weather_entity].state;
+            var state = entity.state;
             var icon = {
               "clear-night": "mdi:weather-night",
               "cloudy": "mdi:weather-cloudy",
@@ -70,7 +74,7 @@ popup_weather_forecast:
         type: "vertical-stack"
         cards:
           - type: "custom:button-card"
-            entity: "[[[ return variables.ulm_popup_weather_entity ]]]"
+            entity: "[[[ return entity.entity_id ]]]"
             show_name: false
             show_icon: false
             styles:
@@ -85,38 +89,38 @@ popup_weather_forecast:
                 temp:
                   - font-size: "60px"
             custom_fields:
-              temp: "[[[ return states[variables.ulm_popup_weather_entity].attributes.temperature + '°' ]]]"
-              tempminmax: "[[[ return 'Max. ' + states[variables.ulm_popup_weather_entity].attributes.forecast[0].temperature + '° Min. ' + states[variables.ulm_popup_weather_entity].attributes.forecast[0].templow + '°' ]]]"
+              temp: "[[[ return entity.attributes.temperature + '°' ]]]"
+              tempminmax: "[[[ return 'Max. ' + entity.attributes.forecast[0].temperature + '° Min. ' + entity.attributes.forecast[0].templow + '°' ]]]"
           - type: "vertical-stack"
             cards:
               - type: "custom:button-card"
                 template: "popup_weather_row"
-                entity: "[[[ return variables.ulm_popup_weather_entity ]]]"
+                entity: "[[[ return entity.entity_id ]]]"
                 variables:
                   ulm_popup_weather_entity_idx: 0
               - type: "custom:button-card"
-                tempalte: "popup_weather_row"
-                entity: "[[[ return variables.ulm_popup_weather_entity ]]]"
+                template: "popup_weather_row"
+                entity: "[[[ return entity.entity_id ]]]"
                 variables:
                   ulm_popup_weather_entity_idx: 1
               - type: "custom:button-card"
-                tempalte: "popup_weather_row"
-                entity: "[[[ return variables.ulm_popup_weather_entity ]]]"
+                template: "popup_weather_row"
+                entity: "[[[ return entity.entity_id ]]]"
                 variables:
                   ulm_popup_weather_entity_idx: 2
               - type: "custom:button-card"
-                tempalte: "popup_weather_row"
-                entity: "[[[ return variables.ulm_popup_weather_entity ]]]"
+                template: "popup_weather_row"
+                entity: "[[[ return entity.entity_id ]]]"
                 variables:
                   ulm_popup_weather_entity_idx: 3
               - type: "custom:button-card"
-                tempalte: "popup_weather_row"
-                entity: "[[[ return variables.ulm_popup_weather_entity ]]]"
+                template: "popup_weather_row"
+                entity: "[[[ return entity.entity_id ]]]"
                 variables:
                   ulm_popup_weather_entity_idx: 4
               - type: "custom:button-card"
-                tempalte: "popup_weather_row"
-                entity: "[[[ return variables.ulm_popup_weather_entity ]]]"
+                template: "popup_weather_row"
+                entity: "[[[ return entity.entity_id ]]]"
                 variables:
                   ulm_popup_weather_entity_idx: 5
     buttons:
@@ -150,8 +154,7 @@ popup_weather_forecast:
                   card:
                     type: "custom:button-card"
                     template: "popup_weather_radar"
-                    variables:
-                      ulm_popup_weather_entity: "[[[ return variables.ulm_popup_weather_entity ]]]"
+                    entity: "[[[ return entity.entity_id ]]]"
     footer:
       card:
         type: "custom:button-card"

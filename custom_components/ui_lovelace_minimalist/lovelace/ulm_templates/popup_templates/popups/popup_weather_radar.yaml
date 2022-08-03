@@ -47,8 +47,7 @@ popup_weather_radar:
                   card:
                     type: "custom:button-card"
                     template: "popup_weather_forecast"
-                    variables:
-                      ulm_popup_weather_entity: "[[[ return variables.ulm_popup_weather_entity ]]]"
+                    entity: "[[[ return entity.entity_id; ]]]"
           item2:
             card:
               icon: "mdi:radar"

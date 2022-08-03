@@ -9,5 +9,4 @@ popup_weather:
       card:
         type: "custom:button-card"
         template: "popup_weather_forecast"
-        variables:
-          ulm_popup_weather_entity: "[[[ return entity.entity_id ]]]"
+        entity: "[[[ return entity.entity_id; ]]]"
