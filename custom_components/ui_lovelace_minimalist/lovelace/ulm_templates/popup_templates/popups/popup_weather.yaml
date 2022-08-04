@@ -1,0 +1,12 @@
+---
+popup_weather:
+  hold_action:
+    action: "fire-dom-event"
+    browser_mod:
+      command: "popup"
+      large: true
+      hide_header: true
+      card:
+        type: "custom:button-card"
+        template: "popup_weather_forecast"
+        entity: "[[[ return entity.entity_id; ]]]"
