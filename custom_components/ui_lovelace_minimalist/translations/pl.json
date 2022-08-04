@@ -6,25 +6,25 @@
                 "title": "Ustawienia UI Lovelace Minimalist",
                 "description": "",
                 "data": {
-                    "community_cards_enabled": "Enable the ability to configure community cards with this integrations, Does require github authentication!"
+                    "community_cards_enabled": "Włącz możliwość dodawania kart tworzonych przez społeczność. Wymaga uwierzytelnienia w serwisie GitHub!"
                 }
             },
             "device": {
-                "title": "Waiting for device activation"
+                "title": "Oczekiwanie na aktywację urządzenia"
             },
             "reauth_confirm": {
-                "title": "Reauthentication needed",
-                "description": "You need to reauthenticate with GitHub."
+                "title": "Wymagane jest ponowne uwierzytelnienie",
+                "description": "Musisz ponownie uwierzytelnić się w serwisie GitHub."
             }
         },
         "abort": {
             "single_instance_allowed": "Tylko jedna konfiguracja UI Lovelace Minimalist jest dozwolona.",
             "not_setup": "UI Lovelace Minimalist nie jest skonfigurowany.",
-            "github": "Could not authenticate with GitHub, try again later.",
-            "reauth_successful": "Reauthentication was successful."
+            "github": "Nie udało się uwierzytelnić w serwisie GitHub, spróbuj ponownie później.",
+            "reauth_successful": "Ponowne uwierzytelnienie zakończyło się sukcesem"
         },
         "progress": {
-            "wait_for_device": "1. Open {url} \n2.Paste the following key to authorize ULM: \n```\n{code}\n```\n"
+            "wait_for_device": "1. Otwórz {url} \n2.Wklej poniższy klucz, aby autoryzować ULM: \n```\n{code}\n```\n"
         }
     },
     "options": {
@@ -37,13 +37,13 @@
                     "sidepanel_enabled": "Utwórz nowy Dashboard w panelu bocznym.",
                     "sidepanel_icon": "Ikona w panelu bocznym",
                     "sidepanel_title": "Tytuł w panelu bocznym",
-                    "adaptive_ui_enabled": "Enable adaptive Dashboard with popup splitview",
-                    "adaptive_ui_title": "adaptive panel title",
-                    "adaptive_ui_icon": "adaptive panel icon",
+                    "adaptive_ui_enabled": "Włącz wyświetlanie Dashboardu w trybie adaptatywnym",
+                    "adaptive_ui_title": "tytuł panelu adaptatywnego",
+                    "adaptive_ui_icon": "ikona panelu adaptatywnego",
                     "theme": "Motyw",
                     "include_other_cards": "Dołącz zasoby wymagane przez niestandardowe karty.",
-                    "community_cards_enabled": "Enable the ability to configure community cards with this integrations, Does require github authentication!",
-                    "community_cards": "Select Community Cards you want to enable."
+                    "community_cards_enabled": "Włącz możliwość dodawania kart stworzonych przez społeczność. Wymaga uwierzytelnienia w serwisie GitHub!",
+                    "community_cards": "Wybierz karty społeczności, które chcesz włączyć."
                 }
             }
         },
@@ -52,9 +52,9 @@
             "not_setup": "UI Lovelace Minimalist nie jest skonfigurowany."
         },
         "error": {
-            "github_cards": "Something went wrong when fetching cards from Github.",
-            "ack": "You need to acknowledge all statements.",
-            "gh_token": "Github Token not set. Please re-install this integration to go throught the setup procedure. (No custom configuration will be lost)"
+            "github_cards": "Wystąpił błąd podczas pobierania kart z serwisu GitHub",
+            "ack": "Należy zaznaczyć wszystkie oświadczenia.",
+            "gh_token": "Token GitHub nie został ustawiony. Zainstaluj ponownie integrację, aby przejść przez proces konfiguracji. Żadna niestandardowa konfiguracja nie zostanie utracona."
         }
     }
 }

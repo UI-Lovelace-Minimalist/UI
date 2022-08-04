@@ -6,7 +6,7 @@
                 "title": "UI Lovelace Minimalist Settings",
                 "description": "",
                 "data": {
-                    "community_cards_enabled": "Enable the ability to configure community cards with this integrations, Does require github authentication!"
+                    "community_cards_enabled": "Enable the ability to configure community cards with this integrations, Does require GitHub authentication!"
                 }
             },
             "device": {
@@ -42,7 +42,7 @@
                     "adaptive_ui_icon": "adaptive panel icon",
                     "theme": "Theme",
                     "include_other_cards": "Include custom card resources it's depending on.",
-                    "community_cards_enabled": "Enable the ability to configure community cards with this integrations, Does require github authentication!",
+                    "community_cards_enabled": "Enable the ability to configure community cards with this integrations, Does require GitHub authentication!",
                     "community_cards": "Select Community Cards you want to enable."
                 }
             }
@@ -52,7 +52,7 @@
             "not_setup": "UI Lovelace Minimalist is not setup."
         },
         "error": {
-            "github_cards": "Something went wrong when fetching cards from Github.",
+            "github_cards": "Something went wrong when fetching cards from GitHub.",
             "ack": "You need to acknowledge all statements.",
             "gh_token": "Github Token not set. Please re-install this integration to go through the setup procedure. (No custom configuration will be lost)"
         }
