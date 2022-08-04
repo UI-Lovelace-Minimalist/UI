@@ -16,7 +16,7 @@ hide:
 
 ##### How to use
 
-To enable this popup, add the followgin code to your card :
+To enable this popup, add the following code to your card:
 
 ```yaml
   ulm_custom_popup:
