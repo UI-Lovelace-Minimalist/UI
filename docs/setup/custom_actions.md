@@ -127,9 +127,9 @@ template that should be loaded. The necessary configuration variables for the po
 the variable `popup_variables`.
 
 Usually the popup uses the same entity as the card that calls the popup. It is also possible to overwrite the entity
-for the popup. Therfore the entity can be set using the `entity` variable
-within the `ulm_custom_popup`. This `entity` variable is optional. It is also possible to disable the entity of the 
-custom popup it the `entity` variable within the `ulm_custom_popup is set to `none`.
+for the popup. Therefore the entity can be set using the `entity` variable
+within the `ulm_custom_popup`. This `entity` variable is optional. It is also possible to disable the entity of the
+custom popup it the `entity` variable within the `ulm_custom_popup is set to`none`.
 
 ```yaml
 - type: 'custom:button-card'
@@ -279,10 +279,9 @@ custom_card:
     aren't used internally anymore. The are only working on their appropriate cards as configuration option for the end user
     of the card. So the custom_popup variable should be used instead.
 
-
 ## For developers of custom popups
 
-Custom popups must be a `custom:button-card`. It is also recommended to disable the icon, name and label within the 
+Custom popups must be a `custom:button-card`. It is also recommended to disable the icon, name and label within the
 card configuration using
 
 ```yaml
@@ -291,4 +290,3 @@ show_name: false
 show_label: false
 show_units: false
 ```
-
