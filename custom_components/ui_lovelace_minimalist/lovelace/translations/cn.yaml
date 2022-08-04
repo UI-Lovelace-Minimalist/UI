@@ -10,3 +10,4 @@ ulm_language_variables:
     ulm_hello: "你好"
     ulm_volume: "体积"
     ulm_popups_color: "顏色"
+    ulm_radar: "雷达"
