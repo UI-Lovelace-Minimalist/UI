@@ -14,10 +14,14 @@ This is a `custom-card` that improves the original person card (`card_person`) b
 ## Credits
 
 Author: imswel - 2022
-Version: 1.0.0
+Version: 1.0.1
 
 ## Changelog
 
+<details>
+  <summary>1.0.1</summary>
+  Breaking change: removed variable for zones, instead load all zones automatically.
+</details>
 <details>
   <summary>1.0.0</summary>
   Initial release
