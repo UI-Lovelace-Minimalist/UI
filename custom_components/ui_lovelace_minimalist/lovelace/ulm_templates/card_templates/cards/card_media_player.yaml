@@ -48,7 +48,7 @@ card_media_player:
             if (!variables.ulm_card_media_player_collapsible) {
                 return "12px";
               } else {
-                return entity.state !== "off" ? "12px" : "0px";
+                return (entity.state === "off" || entity.state === "standby") ? "0px" : "12px";
               }
           ]]]
     card:
@@ -68,7 +68,7 @@ card_media_player:
             [[[
               if(variables.ulm_card_media_player_enable_controls) {
                 if(variables.ulm_card_media_player_collapsible){
-                  return entity.state === "off" ? "none" : "block";
+                return (entity.state === "off" || entity.state === "standby") ? "none" : "block";
                 }
                 return "block";
               }
@@ -79,7 +79,7 @@ card_media_player:
             [[[
               if(variables.ulm_card_media_player_enable_volume_slider) {
                 if(variables.ulm_card_media_player_collapsible){
-                  return entity.state === "off" ? "none" : "block";
+                return (entity.state === "off" || entity.state === "standby") ? "none" : "block";
                 }
                 return "block";
               }
@@ -97,7 +97,6 @@ card_media_player:
               variables: >
                 [[[
                   let vars = variables;
-
                   if(variables.ulm_card_media_player_enable_popup) {
                     vars.ulm_custom_popup = {
                       'template': 'popup_media_player_infos',
@@ -110,7 +109,7 @@ card_media_player:
                 ]]]
               icon: |
                 [[[
-                  var icon =  entity.attributes.icon || "mdi:speaker";
+                  var icon = entity.attributes.icon || "mdi:speaker";
                   if(entity.attributes.app_name){
                     var app = entity.attributes.app_name.toLowerCase();
                     var icon = {
@@ -152,7 +151,6 @@ card_media_player:
               variables: >
                 [[[
                   let vars = variables;
-
                   if(variables.ulm_card_media_player_enable_popup) {
                     vars.ulm_custom_popup = {
                       'template': 'popup_media_player_infos',
@@ -173,7 +171,14 @@ card_media_player:
                       return name;
                     ]]]
                 - operator: "template"
-                  value: "[[[ return entity.state != 'off' ]]]"
+                  value: "[[[ return entity.state == 'standby' ]]]"
+                  name: |
+                    [[[
+                      let name = variables.ulm_card_media_player_name || states[entity.entity_id].attributes.friendly_name;
+                      return name;
+                    ]]]
+                - operator: "template"
+                  value: "[[[ return entity.state != 'off'  || entity.state != 'standby']]]"
                   name: |
                     [[[
                       let name = variables.ulm_card_media_player_name || states[entity.entity_id].attributes.friendly_name;
@@ -274,7 +279,6 @@ card_media_player:
                         ? 'white'
                         : 'rgba(var(--color-theme), 0.9)'
                       ]]]
-
           item2:
             card:
               type: "custom:button-card"
@@ -304,6 +308,8 @@ card_media_player:
                 - value: "paused"
                   icon: "mdi:play"
                 - value: "off"
+                  icon: "mdi:play"
+                - value: "standby"
                   icon: "mdi:play"
               styles:
                 card:
