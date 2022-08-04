@@ -15,7 +15,7 @@ cards = (
     ('weather-radar-card', 'https://github.com/Makin-Things/weather-radar-card/releases/download/v2.0.6/weather-radar-card.js'),
     # for adaptive dashboard
     ('lovelace-layout-card', 'https://raw.githubusercontent.com/thomasloven/lovelace-layout-card/2.4.2/layout-card.js'),
-    ('lovelace-state-switch', 'https://raw.githubusercontent.com/thomasloven/lovelace-state-switch/1.9.5/state-switch.js'),
+    ('lovelace-state-switch', 'https://raw.githubusercontent.com/thomasloven/lovelace-state-switch/1.9.3/state-switch.js'),
 )
 
 for card, src in cards:
