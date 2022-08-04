@@ -7,17 +7,21 @@ hide:
 
 # Custom-card "Person"
 
-This is a `custom-card` that improves the original person card (`card_person`) by allowing the user to define as many areas as desired and adding a pop-up window inspired by the nice theme of [@matt8707](https://github.com/matt8707/hass-config)
+This is a `custom-card` that improves the original person card (`card_person`) by automatically using all zones and adding a pop-up window inspired by the nice theme of [@matt8707](https://github.com/matt8707/hass-config)
 
 ![Generic](../../assets/img/custom_card_imswel_person.gif)
 
 ## Credits
 
 Author: imswel - 2022
-Version: 1.0.0
+Version: 1.0.1
 
 ## Changelog
 
+<details>
+  <summary>1.0.1</summary>
+  Breaking change: removed variable for zones, instead load all zones automatically.
+</details>
 <details>
   <summary>1.0.0</summary>
   Initial release
@@ -52,9 +56,6 @@ This card needs the following to function correctly:
     ulm_card_imswel_person_gps_tracker: device_tracker.oneplus_6t
     ulm_card_imswel_person_findmy_script: script.find_my_oneplus_6t
     ulm_card_imswel_person_use_entity_picture: true
-    ulm_card_imswel_person_zones:
-      - zone.work
-      - zone.school
 ```
 
 #### Variables
@@ -95,11 +96,5 @@ This card needs the following to function correctly:
     <td>true or false</td>
     <td>no</td>
     <td>If true, shows the entity picture from your user instead of the icon. Default is false</td>
-  </tr>
-  <tr>
-    <td>ulm_card_imswel_person_zones</td>
-    <td>- zone.work<br>- zone.school</td>
-    <td>no</td>
-    <td>A list of zones (beside "home") to use for the card. You can set up as many zones as you want besides "home".</td>
   </tr>
 </table>
