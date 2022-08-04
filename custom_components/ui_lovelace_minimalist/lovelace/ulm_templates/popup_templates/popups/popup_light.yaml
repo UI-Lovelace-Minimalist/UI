@@ -9,5 +9,4 @@ popup_light:
       card:
         type: "custom:button-card"
         template: "popup_light_brightness"
-        variables:
-          ulm_popup_light_entity: "[[[ return entity.entity_id ]]]"
+        entity: "[[[ return entity.entity_id; ]]]"

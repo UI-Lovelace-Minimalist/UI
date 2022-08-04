@@ -55,8 +55,7 @@ popup_light_color_temp:
                   card:
                     type: "custom:button-card"
                     template: "popup_light_brightness"
-                    variables:
-                      ulm_popup_light_entity: "[[[ return variables.ulm_popup_light_entity ]]]"
+                    entity: "[[[ return entity.entity_id; ]]]"
           item2:
             card:
               icon: "mdi:sun-thermometer-outline"
@@ -80,5 +79,4 @@ popup_light_color_temp:
                   card:
                     type: "custom:button-card"
                     template: "popup_light_color"
-                    variables:
-                      ulm_popup_light_entity: "[[[ return variables.ulm_popup_light_entity ]]]"
+                    entity: "[[[ return entity.entity_id; ]]]"

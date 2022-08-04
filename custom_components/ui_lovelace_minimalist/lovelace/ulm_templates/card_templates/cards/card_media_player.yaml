@@ -99,10 +99,7 @@ card_media_player:
                   let vars = variables;
                   if(variables.ulm_card_media_player_enable_popup) {
                     vars.ulm_custom_popup = {
-                      'template': 'popup_media_player_infos',
-                      'popup_variables': {
-                        'ulm_popup_media_player_entity': entity.entity_id,
-                      }
+                      'template': 'popup_media_player_infos'
                     };
                   }
                   return vars;
@@ -153,10 +150,7 @@ card_media_player:
                   let vars = variables;
                   if(variables.ulm_card_media_player_enable_popup) {
                     vars.ulm_custom_popup = {
-                      'template': 'popup_media_player_infos',
-                      'popup_variables': {
-                        'ulm_popup_media_player_entity': entity.entity_id,
-                      }
+                      'template': 'popup_media_player_infos'
                     };
                   }
                   return vars;
@@ -256,8 +250,7 @@ card_media_player:
                   card:
                     type: "custom:button-card"
                     template: "popup_media_player_infos"
-                    variables:
-                      ulm_popup_media_player_entity: "[[[ return entity.entity_id ]]]"
+                    entity: "[[[ return entity.entity_id ]]]"
               tap_action:
                 action: "call-service"
                 service: "media_player.media_previous_track"
@@ -296,8 +289,7 @@ card_media_player:
                   card:
                     type: "custom:button-card"
                     template: "popup_media_player_infos"
-                    variables:
-                      ulm_popup_media_player_entity: "[[[ return entity.entity_id ]]]"
+                    entity: "[[[ return entity.entity_id; ]]]"
               tap_action:
                 action: "call-service"
                 service: "media_player.media_play_pause"
@@ -342,8 +334,7 @@ card_media_player:
                   card:
                     type: "custom:button-card"
                     template: "popup_media_player_infos"
-                    variables:
-                      ulm_popup_media_player_entity: "[[[ return entity.entity_id ]]]"
+                    entity: "[[[ return entity.entity_id; ]]]"
               tap_action:
                 action: "call-service"
                 service: "media_player.media_next_track"

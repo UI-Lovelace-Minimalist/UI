@@ -122,9 +122,14 @@ The implementation of the custom action now supports the configuration of indivi
 can be easily configured for each card.
 
 To enable a custom popup the variable `ulm_custom_popup` must be set within the card.
-This variable have two subvariables `template` and `popup_variables`. The template must be the name of the
+This variable have three subvariables `template`, `entity` and `popup_variables`. The template must be the name of the
 template that should be loaded. The necessary configuration variables for the popup can be configured in
 the variable `popup_variables`.
+
+Usually the popup uses the same entity as the card that calls the popup. It is also possible to overwrite the entity
+for the popup. Therefore the entity can be set using the `entity` variable
+within the `ulm_custom_popup`. This `entity` variable is optional. It is also possible to disable the entity of the
+custom popup it the `entity` variable within the `ulm_custom_popup is set to`none`.
 
 ```yaml
 - type: 'custom:button-card'
@@ -135,6 +140,7 @@ the variable `popup_variables`.
     ulm_card_power_outlet_name: Power Outlet Livingroom
     ulm_custom_popup:
       template: "popup_power_outlet_stats"
+      entity: switch.power_outlet_livingroom
       popup_variables:
         ulm_popup_power_outlet_sensor1: sensor.power_outlet_livingroom
         ulm_popup_power_outlet_sensor2: sensor.power_outlet_livingroom_consumption
@@ -151,7 +157,7 @@ This implementation allows the easy creation of custom popups that can be loaded
 !!! note "Light, Media Player, Thermostat"
 
     The `card_light`, `card_media_player` and `card_thermostat` uses a different approach. Therefore the popup can
-    be simply enabled by setting on of the variables  `ulm_card_light_enable_popup`, `ulm_card_thermostat_enable_popup`
+    be simply enabled by setting one of the variables  `ulm_card_light_enable_popup`, `ulm_card_thermostat_enable_popup`
     or  `ulm_card_media_player_enable_popup` to true.
 
 ## For developers
@@ -272,3 +278,15 @@ custom_card:
     The variables `ulm_card_light_enable_popup`, `ulm_card_thermostat_enable_popup` and  `ulm_card_media_player_enable_popup`
     aren't used internally anymore. The are only working on their appropriate cards as configuration option for the end user
     of the card. So the custom_popup variable should be used instead.
+
+## For developers of custom popups
+
+Custom popups must be a `custom:button-card`. It is also recommended to disable the icon, name and label within the
+card configuration using
+
+```yaml
+show_icon: false
+show_name: false
+show_label: false
+show_units: false
+```

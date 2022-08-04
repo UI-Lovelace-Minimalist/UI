@@ -1,5 +1,9 @@
 ---
 popup_media_player_infos:
+  show_icon: false
+  show_name: false
+  show_label: false
+  show_units: false
   triggers_update: "all"
   styles:
     grid:
@@ -51,7 +55,7 @@ popup_media_player_infos:
       card:
         type: "custom:button-card"
         template: "popup_header"
-        entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
+        entity: "[[[ return entity.entity_id; ]]]"
     content1:
       card:
         type: "custom:button-card"
@@ -66,12 +70,12 @@ popup_media_player_infos:
             - background: |
                 [[[
                   if(hass.themes.darkMode){
-                    return states[variables.ulm_popup_media_player_entity].state == 'playing' && states[variables.ulm_popup_media_player_entity].attributes.entity_picture != null
-                    ? ' center / cover url(' + states[variables.ulm_popup_media_player_entity].attributes.entity_picture + '), radial-gradient(circle, #333333 90%, grey 105% ,#333333 110%)'
+                    return entity.state == 'playing' && entity.attributes.entity_picture != null
+                    ? ' center / cover url(' + entity.attributes.entity_picture + '), radial-gradient(circle, #333333 90%, grey 105% ,#333333 110%)'
                     : ''
                   }else{
-                    return states[variables.ulm_popup_media_player_entity].state == 'playing' && states[variables.ulm_popup_media_player_entity].attributes.entity_picture != null
-                    ? ' center / cover url(' + states[variables.ulm_popup_media_player_entity].attributes.entity_picture + '), radial-gradient(circle, white 5%, grey 100% ,white 110%)'
+                    return entity.state == 'playing' && entity.attributes.entity_picture != null
+                    ? ' center / cover url(' + entity.attributes.entity_picture + '), radial-gradient(circle, white 5%, grey 100% ,white 110%)'
                     : ''
                   }
                 ]]]
@@ -104,11 +108,11 @@ popup_media_player_infos:
             card:
               type: "custom:button-card"
               template: "popup_button_app"
-              entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
+              entity: "[[[ return entity.entity_id; ]]]"
           picture:
             card:
               type: "custom:mini-media-player"
-              entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
+              entity: "[[[ return entity.entity_id; ]]]"
               artwork: "full-cover"
               hide:
                 name: true
@@ -128,7 +132,7 @@ popup_media_player_infos:
           media:
             card:
               type: "custom:mini-media-player"
-              entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
+              entity: "[[[ return entity.entity_id; ]]]"
               hide:
                 runtime: false
                 icon: true
@@ -161,7 +165,7 @@ popup_media_player_infos:
           control:
             card:
               type: "custom:mini-media-player"
-              entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
+              entity: "[[[ return entity.entity_id; ]]]"
               hide:
                 controls: true
                 icon: true
@@ -187,8 +191,6 @@ popup_media_player_infos:
             card:
               type: "custom:button-card"
               template: "list_2_items"
-              variables:
-                ulm_popup_media_player_entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
               styles:
                 card:
                   - background: "none"
@@ -202,8 +204,7 @@ popup_media_player_infos:
                   card:
                     type: "custom:button-card"
                     template: "popup_chip_controls"
-                    variables:
-                      ulm_popup_media_player_entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
+                    entity: "[[[ return entity.entity_id; ]]]"
                     styles:
                       card:
                         - background: "none"
@@ -213,7 +214,7 @@ popup_media_player_infos:
                   card:
                     type: "custom:button-card"
                     template: "popup_chip_volume"
-                    entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
+                    entity: "[[[ return entity.entity_id; ]]]"
                     styles:
                       card:
                         - background: "none"
@@ -227,8 +228,7 @@ popup_media_player_infos:
                         card:
                           type: "custom:button-card"
                           template: "popup_media_player_volume"
-                          variables:
-                            ulm_popup_media_player_entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
+                          entity: "[[[ return entity.entity_id; ]]]"
     footer:
       card:
         type: "custom:button-card"
@@ -242,16 +242,16 @@ popup_media_player_infos:
             card:
               type: "custom:button-card"
               template: "popup_button_power"
-              entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
+              entity: "[[[ return entity.entity_id; ]]]"
           item3:
             card:
               type: "custom:button-card"
               template: "popup_button_source"
-              entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
+              entity: "[[[ return entity.entity_id; ]]]"
     content2:
       card:
         type: "custom:my-slider"
-        entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
+        entity: "[[[ return entity.entity_id; ]]]"
         radius: "20px"
         rotate: 270
         containerHeight: "320px"

@@ -108,10 +108,7 @@ card_light:
                   let vars = variables;
                   if(variables.ulm_card_light_enable_popup) {
                     vars.ulm_custom_popup = {
-                      'template': 'popup_light_brightness',
-                      'popup_variables': {
-                        'ulm_popup_light_entity': entity.entity_id,
-                      }
+                      'template': 'popup_light_brightness'
                     };
                   }
                   return vars;
@@ -154,10 +151,7 @@ card_light:
                   let vars = variables;
                   if(variables.ulm_card_light_enable_popup) {
                     vars.ulm_custom_popup = {
-                      'template': 'popup_light_brightness',
-                      'popup_variables': {
-                        'ulm_popup_light_entity': entity.entity_id,
-                      }
+                      'template': 'popup_light_brightness'
                     };
                   }
                   return vars;
@@ -217,10 +211,10 @@ card_light:
           [[[
               var color = entity.attributes.rgb_color;
               if (entity.state == "unavailable"){
-                 return "rgba(var(--color-grey),1)";
+                return "rgba(var(--color-grey),1)";
               }
               else if (color && variables.ulm_card_light_enable_color){
-                 return "rgba(" + color + ",1)";
+                return "rgba(" + color + ",1)";
               }
               else{
                 return "rgba(var(--color-yellow),1)";
@@ -230,10 +224,10 @@ card_light:
           [[[
               var color = entity.attributes.rgb_color;
               if (entity.state == "unavailable"){
-                 return "rgba(var(--color-grey),0.2)";
+                return "rgba(var(--color-grey),0.2)";
               }
               else if (color && variables.ulm_card_light_enable_color){
-                 return "rgba(" + color + ",0.2)";
+                return "rgba(" + color + ",0.2)";
               }
               else{
                 return "rgba(var(--color-yellow),0.2)";
@@ -243,10 +237,10 @@ card_light:
           [[[
               var color = entity.attributes.rgb_color;
               if (entity.state == "unavailable"){
-                 return "rgba(var(--color-grey),1)";
+                return "rgba(var(--color-grey),1)";
               }
               else if (color && variables.ulm_card_light_enable_color){
-                 return "rgba(" + color + ",1)";
+                return "rgba(" + color + ",1)";
               }
               else{
                 return "rgba(var(--color-yellow),1)";
