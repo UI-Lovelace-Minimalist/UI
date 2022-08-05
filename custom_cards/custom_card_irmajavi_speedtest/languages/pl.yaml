@@ -1,0 +1,6 @@
+---
+ulm_custom_card_irmajavi_speedtest_language_variables:
+  variables:
+    ulm_custom_card_irmajavi_speedtest_speedtest: "Test prędkości Internetu"
+    ulm_custom_card_irmajavi_speedtest_download: "Prędkość pobierania"
+    ulm_custom_card_irmajavi_speedtest_upload: "Prędkość wysyłania"
