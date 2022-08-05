@@ -17,7 +17,7 @@ hide:
 - Full credit to user [bms on the forum](https://community.home-assistant.io/t/lovelace-ui-minimalist/322687/192), they created the design and base of it in full, EverythingSmartHome put it into a PR as the basis
 - beasthouse and basbruss on the EverythingSmartHome discord channel for emoji/humidity customization
 - mpeterson added support for a switch to control climate and also to remove the need to have an entity associated
-- Version: 2.1.0
+- Version: 2.1.1
 
 ## Changelog
 
@@ -39,6 +39,10 @@ Fixes text overflow issue over the climate button.
 <summary>2.1.0</summary>
 - It now uses the `ulm_actions_card` template, which allows the usage of the popups wherever custom actions are set as `popup`.
 - Allow overflowing label and text to the climate button area whenever there is no climate button.
+</details>
+<details>
+<summary>2.1.1</summary>
+Add support for the new popup framework while maintaining backwards compatibility with the old one.
 </details>
 
 ## Description

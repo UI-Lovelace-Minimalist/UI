@@ -1,0 +1,58 @@
+---
+popup_weather_radar:
+  template: "popup_weather_forecast"
+  styles:
+    grid:
+      - grid-template-areas: "'header' 'content2' 'buttons' 'footer'"
+      - grid-template-rows: "14vh 56vh 13vh 13vh"
+      - grid-template-columns: "1fr"
+    custom_fields:
+      content1:
+        - display: "none"
+  extra_styles: |
+    @media (max-width: 800px) {
+      #container {
+        grid-template-areas: "header" "content2" "buttons" "footer" !important;
+        grid-template-rows: 14vh 56vh 13vh 13vh !important;
+        grid-template-columns: 1fr !important;
+      }
+      #buttons {
+        display: block !important;
+        align-self: start !important;
+      }
+      #content1 {
+        display: none;
+      }
+  custom_fields:
+    buttons:
+      card:
+        type: "custom:button-card"
+        template: "list_2_items"
+        styles:
+          card:
+            - background: "none"
+        custom_fields:
+          item1:
+            card:
+              icon: "mdi:calendar-month"
+              type: "custom:button-card"
+              template:
+                - "popup_button"
+                - "popup_button_forecast"
+              tap_action:
+                action: "fire-dom-event"
+                browser_mod:
+                  command: "popup"
+                  hide_header: true
+                  card:
+                    type: "custom:button-card"
+                    template: "popup_weather_forecast"
+                    entity: "[[[ return entity.entity_id; ]]]"
+          item2:
+            card:
+              icon: "mdi:radar"
+              type: "custom:button-card"
+              template:
+                - "popup_button"
+                - "popup_button_selected"
+                - "popup_button_radar"

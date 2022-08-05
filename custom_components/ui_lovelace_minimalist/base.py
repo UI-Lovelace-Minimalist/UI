@@ -320,6 +320,7 @@ class UlmBase:
                 "simple-weather-card",
                 "lovelace-layout-card",
                 "lovelace-state-switch",
+                "weather-radar-card",
             ]
             for p in depenceny_resource_paths:
                 if not self.configuration.include_other_cards:

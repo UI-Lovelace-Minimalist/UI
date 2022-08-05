@@ -1,5 +1,9 @@
 ---
 popup_light_brightness:
+  show_icon: false
+  show_name: false
+  show_label: false
+  show_units: false
   styles:
     grid:
       - grid-template-areas: >
@@ -8,13 +12,13 @@ popup_light_brightness:
                 var brightness_modes = ["brightness", "hs", "color_temp", "rgb", "rgbw", "xy"];
                 var color_temp_modes = ["color_temp"];
                 var color_modes = ["hs", "rgb", "rgbw", "xy"];
-                if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => brightness_modes.includes(r))) {
+                if (entity.attributes.supported_color_modes.some(r => brightness_modes.includes(r))) {
                     contents.push("content1");
                 }
-                if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => color_temp_modes.includes(r))) {
+                if (entity.attributes.supported_color_modes.some(r => color_temp_modes.includes(r))) {
                     contents.push("content2");
                 }
-                if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => color_modes.includes(r))) {
+                if (entity.attributes.supported_color_modes.some(r => color_modes.includes(r))) {
                     contents.push("content3");
                 }
                 return "\"" + "header ".repeat(contents.length) + "\" " + "\"" + contents.join(" ") + "\" " + "\"" + "footer ".repeat(contents.length) + "\"";
@@ -26,13 +30,13 @@ popup_light_brightness:
                 var brightness_modes = ["brightness", "hs", "color_temp", "rgb", "rgbw", "xy"];
                 var color_temp_modes = ["color_temp"];
                 var color_modes = ["hs", "rgb", "rgbw", "xy"];
-                if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => brightness_modes.includes(r))) {
+                if (entity.attributes.supported_color_modes.some(r => brightness_modes.includes(r))) {
                     columns.push("1fr");
                 }
-                if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => color_temp_modes.includes(r))) {
+                if (entity.attributes.supported_color_modes.some(r => color_temp_modes.includes(r))) {
                     columns.push("1fr");
                 }
-                if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => color_modes.includes(r))) {
+                if (entity.attributes.supported_color_modes.some(r => color_modes.includes(r))) {
                     columns.push("2fr");
                 }
                 return columns.join(" ");
@@ -49,7 +53,7 @@ popup_light_brightness:
         - display: >
             [[[
                   var brightness_modes = ["brightness", "hs", "color_temp", "rgb", "rgbw", "xy"];
-                  if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => brightness_modes.includes(r))) {
+                  if (entity.attributes.supported_color_modes.some(r => brightness_modes.includes(r))) {
                       return "block";
                   }
                   return "none";
@@ -59,7 +63,7 @@ popup_light_brightness:
         - display: >
             [[[
                   var color_temp_modes = ["color_temp"];
-                  if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => color_temp_modes.includes(r))) {
+                  if (entity.attributes.supported_color_modes.some(r => color_temp_modes.includes(r))) {
                       return "block";
                   }
                   return "none";
@@ -69,7 +73,7 @@ popup_light_brightness:
         - display: >
             [[[
                   var color_modes = ["hs", "rgb", "rgbw", "xy"];
-                  if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => color_modes.includes(r))) {
+                  if (entity.attributes.supported_color_modes.some(r => color_modes.includes(r))) {
                       return "block";
                   }
                   return "none";
@@ -107,11 +111,11 @@ popup_light_brightness:
       card:
         type: "custom:button-card"
         template: "popup_header"
-        entity: "[[[ return variables.ulm_popup_light_entity ]]]"
+        entity: "[[[ return entity.entity_id ]]]"
     content1:
       card:
         type: "custom:my-slider"
-        entity: "[[[ return variables.ulm_popup_light_entity ]]]"
+        entity: "[[[ return entity.entity_id ]]]"
         radius: "20px"
         rotate: 270
         containerHeight: "320px"
@@ -123,12 +127,12 @@ popup_light_brightness:
         thumbWidth: "0px"
         mainSliderColor: >
           [[[
-              var color = states[variables.ulm_popup_light_entity].attributes.rgb_color;
-              if (states[variables.ulm_popup_light_entity].state == "unavailable"){
-                 return "rgba(var(--color-grey),1)";
+              var color = entity.attributes.rgb_color;
+              if (entity.state == "unavailable"){
+                return "rgba(var(--color-grey),1)";
               }
               else if (color){
-                 return "rgba(" + color + ",1)";
+                return "rgba(" + color + ",1)";
               }
               else{
                 return "rgba(var(--color-yellow),1)";
@@ -137,12 +141,12 @@ popup_light_brightness:
         mainSliderColorOff: "rgba(var(--color-theme),0.1)"
         secondarySliderColor: >
           [[[
-              var color = states[variables.ulm_popup_light_entity].attributes.rgb_color;
-              if (states[variables.ulm_popup_light_entity].state == "unavailable"){
-                 return "rgba(var(--color-grey),0.2)";
+              var color = entity.attributes.rgb_color;
+              if (entity.state == "unavailable"){
+                return "rgba(var(--color-grey),0.2)";
               }
               else if (color){
-                 return "rgba(" + color + ",0.2)";
+                return "rgba(" + color + ",0.2)";
               }
               else{
                 return "rgba(var(--color-yellow),0.2)";
@@ -167,11 +171,11 @@ popup_light_brightness:
     content2:
       card:
         type: "custom:my-slider"
-        entity: "[[[ return variables.ulm_popup_light_entity ]]]"
-        minBar: "[[[ return states[variables.ulm_popup_light_entity].attributes.min_mireds ]]]"
-        minSet: "[[[ return states[variables.ulm_popup_light_entity].attributes.min_mireds ]]]"
-        maxBar: "[[[ return states[variables.ulm_popup_light_entity].attributes.max_mireds ]]]"
-        maxSet: "[[[ return states[variables.ulm_popup_light_entity].attributes.max_mireds ]]]"
+        entity: "[[[ return entity.entity_id ]]]"
+        minBar: "[[[ return entity.attributes.min_mireds ]]]"
+        minSet: "[[[ return entity.attributes.min_mireds ]]]"
+        maxBar: "[[[ return entity.attributes.max_mireds ]]]"
+        maxSet: "[[[ return entity.attributes.max_mireds ]]]"
         function: "Warmth"
         radius: "20px"
         rotate: 270
@@ -222,13 +226,13 @@ popup_light_brightness:
                       var brightness_modes = ["brightness", "hs", "color_temp", "rgb", "rgbw", "xy"];
                       var color_temp_modes = ["color_temp"];
                       var color_modes = ["hs", "rgb", "rgbw", "xy"];
-                      if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => brightness_modes.includes(r))) {
+                      if (entity.attributes.supported_color_modes.some(r => brightness_modes.includes(r))) {
                           areas.push("item1");
                       }
-                      if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => color_temp_modes.includes(r))) {
+                      if (entity.attributes.supported_color_modes.some(r => color_temp_modes.includes(r))) {
                           areas.push("item2");
                       }
-                      if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => color_modes.includes(r))) {
+                      if (entity.attributes.supported_color_modes.some(r => color_modes.includes(r))) {
                           areas.push("item3");
                       }
                       return "\"" + areas.join(" ") + "\"";
@@ -239,13 +243,13 @@ popup_light_brightness:
                       var brightness_modes = ["brightness", "hs", "color_temp", "rgb", "rgbw", "xy"];
                       var color_temp_modes = ["color_temp"];
                       var color_modes = ["hs", "rgb", "rgbw", "xy"];
-                      if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => brightness_modes.includes(r))) {
+                      if (entity.attributes.supported_color_modes.some(r => brightness_modes.includes(r))) {
                           columns.push("1fr");
                       }
-                      if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => color_temp_modes.includes(r))) {
+                      if (entity.attributes.supported_color_modes.some(r => color_temp_modes.includes(r))) {
                           columns.push("1fr");
                       }
-                      if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => color_modes.includes(r))) {
+                      if (entity.attributes.supported_color_modes.some(r => color_modes.includes(r))) {
                           columns.push("1fr");
                       }
                       return columns.join(" ");
@@ -271,7 +275,7 @@ popup_light_brightness:
                   - display: >
                       [[[
                             var color_temp_modes = ["color_temp"];
-                            if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => color_temp_modes.includes(r))) {
+                            if (entity.attributes.supported_color_modes.some(r => color_temp_modes.includes(r))) {
                                 return "block";
                             }
                             return "none";
@@ -284,8 +288,7 @@ popup_light_brightness:
                   card:
                     type: "custom:button-card"
                     template: "popup_light_color_temp"
-                    variables:
-                      ulm_popup_light_entity: "[[[ return variables.ulm_popup_light_entity ]]]"
+                    entity: "[[[ return entity.entity_id; ]]]"
           item3:
             card:
               icon: "mdi:palette"
@@ -298,7 +301,7 @@ popup_light_brightness:
                   - display: >
                       [[[
                             var color_modes = ["hs", "rgb", "rgbw", "xy"];
-                            if (states[variables.ulm_popup_light_entity].attributes.supported_color_modes.some(r => color_modes.includes(r))) {
+                            if (entity.attributes.supported_color_modes.some(r => color_modes.includes(r))) {
                                 return "block";
                             }
                             return "none";
@@ -311,8 +314,7 @@ popup_light_brightness:
                   card:
                     type: "custom:button-card"
                     template: "popup_light_color"
-                    variables:
-                      ulm_popup_light_entity: "[[[ return variables.ulm_popup_light_entity ]]]"
+                    entity: "[[[ return entity.entity_id; ]]]"
     footer:
       card:
         type: "custom:button-card"
@@ -326,11 +328,11 @@ popup_light_brightness:
             card:
               type: "custom:button-card"
               template: "popup_button_power"
-              entity: "[[[ return variables.ulm_popup_light_entity ]]]"
+              entity: "[[[ return entity.entity_id ]]]"
     content3:
       card:
         type: "custom:light-entity-card"
-        entity: "[[[ return variables.ulm_popup_light_entity ]]]"
+        entity: "[[[ return entity.entity_id ]]]"
         persist_features: true
         brightness: false
         color_temp: false

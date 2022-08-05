@@ -1,6 +1,8 @@
 ---
 ### Card Graph ###
 card_graph:
+  template:
+    - "extended_card"
   variables:
     ulm_card_graph_color: "var(--info-color)"
     ulm_card_graph_name: "[[[ return entity.attributes.friendly_name; ]]]"
@@ -10,46 +12,17 @@ card_graph:
     ulm_card_graph_hours: 24
     ulm_card_graph_type: "fill"
     ulm_card_graph_points: "0.5"
-  show_icon: false
-  show_name: false
-  show_label: false
   triggers_update: "all"
-  styles:
-    grid:
-      - grid-template-areas: "'item1' 'item2'"
-      - grid-template-columns: "1fr"
-      - grid-template-rows: "min-content  min-content"
-    card:
-      - border-radius: "var(--border-radius)"
-      - box-shadow: "var(--box-shadow)"
-      - padding: "0px"
   custom_fields:
     item1:
       card:
         type: "custom:button-card"
         template:
           - "card_generic"
-        styles:
-          card:
-            - box-shadow: "none"
-            - border-radius: "var(--border-radius) var(--border-radius) 0px 0px"
-            - padding: "12px"
-        entity: "[[[ return entity.entity_id ]]]"
-        custom_fields:
-          item1:
-            card:
-              type: "custom:button-card"
-              custom_fields:
-                item1:
-                  card:
-                    type: "custom:button-card"
-                    entity: "[[[ return entity.entity_id ]]]"
-                    icon: "[[[ return variables.ulm_card_graph_icon; ]]]"
-                item2:
-                  card:
-                    type: "custom:button-card"
-                    entity: "[[[ return entity.entity_id ]]]"
-                    label: "[[[ return variables.ulm_card_graph_name ]]]"
+        variables:
+          ulm_card_generic_icon: "[[[ return variables.ulm_card_graph_icon; ]]]"
+          ulm_card_generic_name: "[[[ return variables.ulm_card_graph_name; ]]]"
+
     item2:
       card:
         type: "custom:mini-graph-card"

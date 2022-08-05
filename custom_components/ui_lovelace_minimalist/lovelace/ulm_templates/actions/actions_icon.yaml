@@ -1,15 +1,13 @@
 ---
 ### Actions icon ###
 ulm_actions_icon:
-  template:
-    - "ulm_custom_actions"
   tap_action:
     action: >
       [[[
-        var action = variables.ulm_icon_tap_action;
-        let domain = entity.entity_id.substr(0, entity.entity_id.indexOf("."));
+        var action = variables.ulm_icon_tap_action != null ? variables.ulm_icon_tap_action : 'toggle';
+        let domain = (entity != null) ? entity.entity_id.substr(0, entity.entity_id.indexOf(".")) : "";
 
-        if (domain == "binary_sensor" || domain == "sensor"){
+        if (domain == "binary_sensor" || domain == "sensor" || domain == ""){
           if (action == 'toggle')
             action = 'none';
         }
@@ -21,16 +19,21 @@ ulm_actions_icon:
           action = 'call-service'
         }
 
-        if (action == 'popup' && (variables.ulm_card_light_enable_popup || variables.ulm_card_media_player_enable_popup || variables.ulm_card_thermostat_enable_popup) ){
-          action = 'fire-dom-event'
+        if (action == 'popup' && (variables.ulm_custom_popup != null )){
+          let popup_config = variables.ulm_custom_popup;
+          if ((typeof popup_config === 'object') && 'template' in popup_config) {
+            action = 'fire-dom-event';
+          }
         }
+
         if (action == 'popup'){
           action = 'more-info'
         }
 
-        return action
+        return action;
       ]]]
     navigation_path: "[[[ return variables.ulm_icon_tap_action == 'navigate' ? variables.ulm_icon_tap_navigate_path : '/0' ]]]"
+    haptic: "[[[ return variables.ulm_icon_tap_haptic != null ? variables.ulm_icon_tap_haptic : 'none' ]]]"
     service: "input_select.select_option"
     service_data:
       option: "[[[ return variables.ulm_input_select_option ]]]"
@@ -52,19 +55,41 @@ ulm_actions_icon:
             if (variables.ulm_card_media_player_enable_popup){
               return 'popup_media_player_infos'
             }
-          ]]]
-        variables:
-          ulm_popup_light_entity: "[[[ return entity.entity_id ]]]"
-          ulm_popup_thermostat_entity: "[[[ return entity.entity_id ]]]"
-          ulm_popup_media_player_entity: "[[[ return entity.entity_id ]]]"
 
+            if (variables.ulm_custom_popup != null ){
+              let popup_config = variables.ulm_custom_popup;
+              if ((typeof popup_config === 'object') && 'template' in popup_config) {
+                return popup_config.template;
+              }
+            }
+          ]]]
+        entity: >
+          [[[
+            if (variables.ulm_custom_popup != null ){
+              let popup_config = variables.ulm_custom_popup;
+              if ((typeof popup_config === 'object') && 'entity' in popup_config) {
+                return popup_config.entity;
+              }
+            }
+
+            return (entity != null) ? entity.entity_id : null;
+          ]]]
+        variables: >
+          [[[
+            if (variables.ulm_custom_popup != null ){
+              let popup_config = variables.ulm_custom_popup;
+              if ((typeof popup_config === 'object') && 'popup_variables' in popup_config) {
+                return popup_config.popup_variables;
+              }
+            }
+          ]]]
   hold_action:
     action: >
       [[[
-        var action = variables.ulm_icon_hold_action;
-        let domain = entity.entity_id.substr(0, entity.entity_id.indexOf("."));
+        var action = variables.ulm_icon_hold_action != null ? variables.ulm_icon_hold_action : 'more_info';
+        let domain = (entity != null) ? entity.entity_id.substr(0, entity.entity_id.indexOf(".")) : "";
 
-        if (domain == "binary_sensor" || domain == "sensor"){
+        if (domain == "binary_sensor" || domain == "sensor" || domain == ""){
           if (action == 'toggle')
             action = 'none';
         }
@@ -76,16 +101,21 @@ ulm_actions_icon:
           action = 'call-service'
         }
 
-        if (action == 'popup' && (variables.ulm_card_light_enable_popup || variables.ulm_card_media_player_enable_popup || variables.ulm_card_thermostat_enable_popup) ){
-          action = 'fire-dom-event'
+        if (action == 'popup' && (variables.ulm_custom_popup != null )){
+          let popup_config = variables.ulm_custom_popup;
+          if ((typeof popup_config === 'object') && 'template' in popup_config) {
+            action = 'fire-dom-event';
+          }
         }
+
         if (action == 'popup'){
           action = 'more-info'
         }
 
-        return action
+        return action;
       ]]]
     navigation_path: "[[[ return variables.ulm_icon_hold_action == 'navigate' ? variables.ulm_icon_hold_navigate_path : '/0' ]]]"
+    haptic: "[[[ return variables.ulm_icon_hold_haptic != null ? variables.ulm_icon_hold_haptic : 'none' ]]]"
     service: "input_select.select_option"
     service_data:
       option: "[[[ return variables.ulm_input_select_option ]]]"
@@ -107,18 +137,41 @@ ulm_actions_icon:
             if (variables.ulm_card_media_player_enable_popup){
               return 'popup_media_player_infos'
             }
+
+            if (variables.ulm_custom_popup != null ){
+              let popup_config = variables.ulm_custom_popup;
+              if ((typeof popup_config === 'object') && 'template' in popup_config) {
+                return popup_config.template;
+              }
+            }
           ]]]
-        variables:
-          ulm_popup_light_entity: "[[[ return entity.entity_id ]]]"
-          ulm_popup_thermostat_entity: "[[[ return entity.entity_id ]]]"
-          ulm_popup_media_player_entity: "[[[ return entity.entity_id ]]]"
+        entity: >
+          [[[
+            if (variables.ulm_custom_popup != null ){
+              let popup_config = variables.ulm_custom_popup;
+              if ((typeof popup_config === 'object') && 'entity' in popup_config) {
+                return popup_config.entity;
+              }
+            }
+
+            return (entity != null) ? entity.entity_id : null;
+          ]]]
+        variables: >
+          [[[
+            if (variables.ulm_custom_popup != null ){
+              let popup_config = variables.ulm_custom_popup;
+              if ((typeof popup_config === 'object') && 'popup_variables' in popup_config) {
+                return popup_config.popup_variables;
+              }
+            }
+          ]]]
   double_tap_action:
     action: >
       [[[
-        var action = variables.ulm_icon_double_tap_action;
-        let domain = entity.entity_id.substr(0, entity.entity_id.indexOf("."));
+        var action = variables.ulm_icon_double_tap_action != null ? variables.ulm_icon_double_tap_action : 'adaptive';
+        let domain = (entity != null) ? entity.entity_id.substr(0, entity.entity_id.indexOf(".")) : "";
 
-        if (domain == "binary_sensor" || domain == "sensor"){
+        if (domain == "binary_sensor" || domain == "sensor" || domain == ""){
           if (action == 'toggle')
             action = 'none';
         }
@@ -133,13 +186,22 @@ ulm_actions_icon:
         if (action == 'popup' && (variables.ulm_card_light_enable_popup || variables.ulm_card_media_player_enable_popup || variables.ulm_card_thermostat_enable_popup) ){
           action = 'fire-dom-event'
         }
+
+        if (action == 'popup' && (variables.ulm_custom_popup != null )){
+          let popup_config = variables.ulm_custom_popup;
+          if ((typeof popup_config === 'object') && 'template' in popup_config) {
+            action = 'fire-dom-event';
+          }
+        }
+
         if (action == 'popup'){
           action = 'more-info'
         }
 
-        return action
+        return action;
       ]]]
     navigation_path: "[[[ return variables.ulm_icon_double_tap_action == 'navigate' ? variables.ulm_icon_double_tap_navigate_path : '/0' ]]]"
+    haptic: "[[[ return variables.ulm_icon_double_tap_haptic != null ? variables.ulm_icon_double_tap_haptic : 'none' ]]]"
     service: "input_select.select_option"
     service_data:
       option: "[[[ return variables.ulm_input_select_option ]]]"
@@ -152,17 +214,30 @@ ulm_actions_icon:
         type: "custom:button-card"
         template: >
           [[[
-            if (variables.ulm_card_light_enable_popup){
-              return 'popup_light_brightness'
-            }
-            if (variables.ulm_card_thermostat_enable_popup){
-              return 'popup_thermostat_temperature'
-            }
-            if (variables.ulm_card_media_player_enable_popup){
-              return 'popup_media_player_infos'
+            if (variables.ulm_custom_popup != null ){
+              let popup_config = variables.ulm_custom_popup;
+              if ((typeof popup_config === 'object') && 'template' in popup_config) {
+                return popup_config.template;
+              }
             }
           ]]]
-        variables:
-          ulm_popup_light_entity: "[[[ return entity.entity_id ]]]"
-          ulm_popup_thermostat_entity: "[[[ return entity.entity_id ]]]"
-          ulm_popup_media_player_entity: "[[[ return entity.entity_id ]]]"
+        entity: >
+          [[[
+            if (variables.ulm_custom_popup != null ){
+              let popup_config = variables.ulm_custom_popup;
+              if ((typeof popup_config === 'object') && 'entity' in popup_config) {
+                return popup_config.entity;
+              }
+            }
+
+            return (entity != null) ? entity.entity_id : null;
+          ]]]
+        variables: >
+          [[[
+            if (variables.ulm_custom_popup != null ){
+              let popup_config = variables.ulm_custom_popup;
+              if ((typeof popup_config === 'object') && 'popup_variables' in popup_config) {
+                return popup_config.popup_variables;
+              }
+            }
+          ]]]
