@@ -101,6 +101,38 @@ To define the path of `navigate` action, add one of the following depending on y
 
 ```
 
+## Call service action
+
+It is possible to call a service using the custom actions on the icon, name and card.
+
+To define the service and its data of `call-service` action, add one of the following
+variables depending on your action :
+
+- ulm_card_tap_service / ulm_card_tap_service_data
+- ulm_card_hold_service / ulm_card_hold_service_data
+- ulm_card_double_tap_service / ulm_card_double_tap_service_data
+- ulm_icon_tap_service / ulm_icon_tap_service_data
+- ulm_icon_hold_service / ulm_icon_hold_service_data
+- ulm_icon_double_tap_service / ulm_icon_double_tap_service_data
+- ulm_name_tap_service / ulm_name_tap_service_data
+- ulm_name_hold_service / ulm_name_hold_service_data
+- ulm_name_double_tap_service / ulm_name_double_tap_service_data
+
+The following configuration shows the configuration of a service call using the
+tap action.
+
+```yaml
+- type: "custom:button-card"
+  template: "card_cover"
+  entity: "cover.somfy_portail"
+  variables:
+    ulm_name_tap_action: "call-service"
+    ulm_name_tap_service: "light.toggle"
+    ulm_name_tap_service_data: 
+      entity_id: light.light_livingroom_2
+  
+```
+
 ## Overwrite custom actions
 
 When creating a dashboard, custom actions and the haptic feedback can be overwritten on your card definition.
@@ -237,12 +269,18 @@ custom_card:
           ulm_icon_tap_action: "[[[ return variables.ulm_icon_tap_action; ]]]"
           ulm_icon_tap_haptic: "[[[ return variables.ulm_icon_tap_haptic; ]]]"
           ulm_icon_tap_navigate_path: "[[[ return variables.ulm_icon_tap_navigate_path; ]]]"
+          ulm_icon_tap_service: "[[[ return variables.ulm_icon_tap_service; ]]]"
+          ulm_icon_tap_service_data: "[[[ return variables.ulm_icon_tap_service_data]]]"
           ulm_icon_hold_action: "[[[ return variables.ulm_icon_hold_action; ]]]"
           ulm_icon_hold_haptic: "[[[ return variables.ulm_icon_hold_haptic; ]]]"
           ulm_icon_hold_navigate_path: "[[[ return variables.ulm_icon_hold_navigate_path; ]]]"
+          ulm_icon_hold_service: "[[[ return variables.ulm_icon_hold_service; ]]]"
+          ulm_icon_hold_service_data: "[[[ return variables.ulm_icon_hold_service_data]]]"
           ulm_icon_double_tap_action: "[[[ return variables.ulm_icon_double_tap_action; ]]]"
           ulm_icon_double_tap_haptic: "[[[ return variables.ulm_icon_double_tap_haptic; ]]]"
           ulm_icon_double_tap_navigate_path: "[[[ return variables.ulm_icon_double_tap_navigate_path; ]]]"
+          ulm_icon_double_tap_service: "[[[ return variables.ulm_icon_double_tap_service; ]]]"
+          ulm_icon_double_tap_service_data: "[[[ return variables.ulm_icon_double_tap_service_data]]]"
           ulm_custom_popup: "[[[ return variables.ulm_custom_popup; ]]]"
     item2:
       card:
@@ -256,12 +294,18 @@ custom_card:
           ulm_name_tap_action: "[[[ return variables.ulm_name_tap_action; ]]]"
           ulm_name_tap_haptic: "[[[ return variables.ulm_name_tap_haptic; ]]]"
           ulm_name_tap_navigate_path: "[[[ return variables.ulm_name_tap_navigate_path; ]]]"
+          ulm_name_tap_service: "[[[ return variables.ulm_name_tap_service; ]]]"
+          ulm_name_tap_service_data: "[[[ return variables.ulm_name_tap_service_data]]]"
           ulm_name_hold_action: "[[[ return variables.ulm_name_hold_action; ]]]"
           ulm_name_hold_haptic: "[[[ return variables.ulm_name_hold_haptic; ]]]"
           ulm_name_hold_navigate_path: "[[[ return variables.ulm_name_hold_navigate_path; ]]]"
+          ulm_name_hold_service: "[[[ return variables.ulm_name_hold_service; ]]]"
+          ulm_name_hold_service_data: "[[[ return variables.ulm_name_hold_service_data]]]"
           ulm_name_double_tap_action: "[[[ return variables.ulm_name_double_tap_action; ]]]"
           ulm_name_double_tap_haptic: "[[[ return variables.ulm_name_double_tap_haptic; ]]]"
           ulm_name_double_tap_navigate_path: "[[[ return variables.ulm_name_double_tap_navigate_path; ]]]"
+          ulm_name_double_tap_service: "[[[ return variables.ulm_name_double_tap_service; ]]]"
+          ulm_name_double_tap_service_data: "[[[ return variables.ulm_name_double_tap_service_data]]]"
           ulm_custom_popup: "[[[ return variables.ulm_custom_popup; ]]]"
 
 ```
