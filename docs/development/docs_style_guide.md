@@ -58,7 +58,7 @@ Images, including screenshots, can help a reader better understand a concept. Ho
 
 #### Add the image link to content
 
-The Markdown code for including an image in a document is `![Image description which will be teh alt tag](../../assets/img/ulm_cards/example.png)`
+The Markdown code for including an image in a document is `![Image description which will be the alt tag](../../assets/img/ulm_cards/example.png)`
 
 ### Admonitions / Call-outs
 

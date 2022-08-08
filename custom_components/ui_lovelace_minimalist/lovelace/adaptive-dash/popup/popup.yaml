@@ -17,146 +17,126 @@ states:
   # light 1:
   #   type: "custom:button-card"
   #   template: "popup_light_brightness"
-  #   variables:
-  #     ulm_popup_light_entity:
+  #   entity:
   # light 2:
   #   type: "custom:button-card"
   #   template: "popup_light_brightness"
-  #   variables:
-  #     ulm_popup_light_entity:
+  #   entity:
   # light 3:
   #   type: "custom:button-card"
   #   template: "popup_light_brightness"
-  #   variables:
-  #     ulm_popup_light_entity:
+  #   entity:
   # light 4:
   #   type: "custom:button-card"
   #   template: "popup_light_brightness"
-  #   variables:
-  #     ulm_popup_light_entity:
+  #   entity:
   # light 5:
   #   type: "custom:button-card"
   #   template: "popup_light_brightness"
-  #   variables:
-  #     ulm_popup_light_entity:
+  #   entity:
   # light 6:
   #   type: "custom:button-card"
   #   template: "popup_light_brightness"
-  #   variables:
-  #     ulm_popup_light_entity:
+  #   entity:
   # light 7:
   #   type: "custom:button-card"
   #   template: "popup_light_brightness"
-  #   variables:
-  #     ulm_popup_light_entity:
+  #   entity:
   # light 8:
   #   type: "custom:button-card"
   #   template: "popup_light_brightness"
-  #   variables:
-  #     ulm_popup_light_entity:
+  #   entity:
   # light 9:
   #   type: "custom:button-card"
   #   template: "popup_light_brightness"
-  #   variables:
-  #     ulm_popup_light_entity:
+  #   entity:
   # light 10:
   #   type: "custom:button-card"
   #   template: "popup_light_brightness"
-  #   variables:
-  #     ulm_popup_light_entity:
+  #   entity:
   #
   ###  Mediaplayers
   # mediaplayer 1:
   #   type: "custom:button-card"
   #   template: "popup_media_player_infos"
-  #   variables:
-  #     ulm_popup_media_player_entity:
+  #   entity:
   # mediaplayer 2:
   #   type: "custom:button-card"
   #   template: "popup_media_player_infos"
-  #   variables:
-  #     ulm_popup_media_player_entity:
+  #   entity:
   # mediaplayer 3:
   #   type: "custom:button-card"
   #   template: "popup_media_player_infos"
-  #   variables:
-  #     ulm_popup_media_player_entity:
+  #   entity:
   # mediaplayer 4:
   #   type: "custom:button-card"
   #   template: "popup_media_player_infos"
-  #   variables:
-  #     ulm_popup_media_player_entity:
+  #   entity:
   # mediaplayer 5:
   #   type: "custom:button-card"
   #   template: "popup_media_player_infos"
-  #   variables:
-  #     ulm_popup_media_player_entity:
+  #   entity:
   #
   ### Thermostats
   # climate 1:
   #   type: "custom:button-card"
   #   template: "popup_thermostat_temperature"
-  #   variables:
-  #     ulm_popup_thermostat_entity:
+  #   entity:
   # climate 2:
   #   type: "custom:button-card"
   #   template: "popup_thermostat_temperature"
-  #   variables:
-  #     ulm_popup_thermostat_entity:
+  #   entity:
   # climate 3:
   #   type: "custom:button-card"
   #   template: "popup_thermostat_temperature"
-  #   variables:
-  #     ulm_popup_thermostat_entity:
+  #   entity:
   # climate 4:
   #   type: "custom:button-card"
   #   template: "popup_thermostat_temperature"
-  #   variables:
-  #     ulm_popup_thermostat_entity:
+  #   entity:
   # climate 5:
   #   type: "custom:button-card"
   #   template: "popup_thermostat_temperature"
-  #   variables:
-  #     ulm_popup_thermostat_entity:
+  #   entity:
   #
   ### Power
   # power 1:
   #   type: "custom:button-card"
   #   template: "popup_power_outlet_stats"
+  #   entity:
   #   variables:
-  #     ulm_popup_power_outlet_entity:
   #     ulm_popup_power_outlet_sensor1:
   #     ulm_popup_power_outlet_sensor2:
   #     ulm_popup_power_outlet_graph_sensor:
   # power 2:
   #   type: "custom:button-card"
   #   template: "popup_power_outlet_stats"
+  #   entity:
   #   variables:
-  #     ulm_popup_power_outlet_entity:
   #     ulm_popup_power_outlet_sensor1:
   #     ulm_popup_power_outlet_sensor2:
   #     ulm_popup_power_outlet_graph_sensor:
   # power 3:
   #   type: "custom:button-card"
   #   template: "popup_power_outlet_stats"
+  #   entity:
   #   variables:
-  #     ulm_popup_power_outlet_entity:
   #     ulm_popup_power_outlet_sensor1:
   #     ulm_popup_power_outlet_sensor2:
   #     ulm_popup_power_outlet_graph_sensor:
   # power 4:
   #   type: "custom:button-card"
   #   template: "popup_power_outlet_stats"
+  #   entity:
   #   variables:
-  #     ulm_popup_power_outlet_entity:
   #     ulm_popup_power_outlet_sensor1:
   #     ulm_popup_power_outlet_sensor2:
   #     ulm_popup_power_outlet_graph_sensor:
   # power 5:
   #   type: "custom:button-card"
   #   template: "popup_power_outlet_stats"
+  #   entity:
   #   variables:
-  #     ulm_popup_power_outlet_entity:
   #     ulm_popup_power_outlet_sensor1:
   #     ulm_popup_power_outlet_sensor2:
   #     ulm_popup_power_outlet_graph_sensor:

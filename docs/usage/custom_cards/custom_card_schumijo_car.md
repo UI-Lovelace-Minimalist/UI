@@ -8,7 +8,7 @@ hide:
 
 # Custom-card "Car"
 
-This is a `custom-card` to informations about your car.
+This is a `custom-card` to information about your car.
 
 ![Generic](../../assets/img/car.png)
 

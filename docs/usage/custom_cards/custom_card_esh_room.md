@@ -13,16 +13,36 @@ hide:
 
 ## Credits
 
-- Author: Everything Smart Home - 2022
-- Full credit to user [bms on the forum](https://community.home-assistant.io/t/lovelace-ui-minimalist/322687/192), they created it in full, I just put it into a PR as the basis
+- Authors: Everything Smart Home - 2022 and mpeterson
+- Full credit to user [bms on the forum](https://community.home-assistant.io/t/lovelace-ui-minimalist/322687/192), they created the design and base of it in full, EverythingSmartHome put it into a PR as the basis
 - beasthouse and basbruss on the EverythingSmartHome discord channel for emoji/humidity customization
-- Version: 1.0.0
+- mpeterson added support for a switch to control climate and also to remove the need to have an entity associated
+- Version: 2.1.1
 
 ## Changelog
 
 <details>
 <summary>1.0.0</summary>
 Initial release
+</details>
+<details>
+<summary>2.0.0</summary>
+Breaking changes!
+This change introduces two variables to allow the display of the card with no buttons, one for light, one for climate or both for light and climate.
+It also now allows the use of no entity at all.
+</details>
+<details>
+<summary>2.0.1</summary>
+Fixes text overflow issue over the climate button.
+</details>
+<details>
+<summary>2.1.0</summary>
+- It now uses the `ulm_actions_card` template, which allows the usage of the popups wherever custom actions are set as `popup`.
+- Allow overflowing label and text to the climate button area whenever there is no climate button.
+</details>
+<details>
+<summary>2.1.1</summary>
+Add support for the new popup framework while maintaining backwards compatibility with the old one.
 </details>
 
 ## Description
@@ -31,13 +51,17 @@ This is an alternative room card to the standard one that is more rectangular th
 
 ## Variables
 
-| Variable   | Default | Required | Notes                                                                                              |
-| ---------- | ------- | -------- | -------------------------------------------------------------------------------------------------- |
-| entity     |         | Yes      | The light entity to control                                                                        |
-| Name       |         | Yes      | Name of the room to display                                                                        |
-| icon       |         | Yes      | The icon to show                                                                                   |
-| tap_action |         | Yes      | The action to perform when tapping                                                                 |
-| label      |         | Yes      | The label to display information, this can be a template that returns a temperature or static text |
+| Variable                                     | Default | Required | Notes                                                                    |
+| -------------------------------------------- | ------- | -------- | ------------------------------------------------------------------------ |
+| entity                                       |         | No       | The entity to represent on the room icon                                 |
+| Name                                         |         | Yes      | Name of the room to display                                              |
+| icon                                         |         | No       | The icon to show                                                         |
+| tap_action                                   |         | No       | The action to perform when tapping                                       |
+| label                                        |         | No       | The label to display information, this can be a template or static text  |
+| ulm_custom_card_esh_room_light_entity        |         | No       | The entity to use for the light button                                   |
+| ulm_custom_card_esh_room_climate_entity      |         | No       | The entity to use for the climate button                                 |
+| ulm_card_light_enable_popup                  | `false` | No       | Enable `popup_light`                                                     |
+| ulm_card_thermostat_enable_popup             | `false` | No       | Enable `popup_thermostat`                                                |
 
 ## Usage
 
@@ -52,6 +76,9 @@ This is an alternative room card to the standard one that is more rectangular th
   tap_action:
     action: navigate
     navigation_path: "bathroom"
+  variables:
+    ulm_custom_card_esh_room_light_entity: light.bathroom_lights
+    ulm_custom_card_esh_room_climate_entity: climate.bathroom
   label: '[[[ return states["sensor.room_temperature"].state + "°C" ]]]'
 ```
 

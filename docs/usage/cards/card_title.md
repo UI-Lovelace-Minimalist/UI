@@ -9,7 +9,7 @@ hide:
 
 ![example-image](../../assets/img/ulm_cards/card_title.png){ width="500" }
 
-Titles (and optionally subtitles) are used to seperate different areas in your design. You can use only a title, only a subtitle or both at once.
+Titles (and optionally subtitles) are used to separate different areas in your design. You can use only a title, only a subtitle or both at once.
 
 ## Variables
 

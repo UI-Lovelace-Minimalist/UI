@@ -55,22 +55,22 @@ Version: 0.1.0
     printer_name: HP LaserJet MFP M28w
     cartridges:
       - label: "BK"
-        entity: sensor.printer_black_ink
+        entity_id: sensor.printer_black_ink
         color: "black"
       - label: "B"
-        entity: sensor.printer_photo_black_ink
+        entity_id: sensor.printer_photo_black_ink
         color: "black"
       - label: "Y"
-        entity: sensor.printer_yellow_ink
+        entity_id: sensor.printer_yellow_ink
         color: "rgba(var(--color-yellow), 1)"
       - label: "M"
-        entity: sensor.printer_magenta_ink
+        entity_id: sensor.printer_magenta_ink
         color: "#F84B7A"
       - label: "C"
-        entity: sensor.printer_cyan_ink
+        entity_id: sensor.printer_cyan_ink
         color: "#427EDE"
       - label: "PB"
-        entity: sensor.printer_photo_blue_ink
+        entity_id: sensor.printer_photo_blue_ink
         color: "#9272BE"
 ```
 

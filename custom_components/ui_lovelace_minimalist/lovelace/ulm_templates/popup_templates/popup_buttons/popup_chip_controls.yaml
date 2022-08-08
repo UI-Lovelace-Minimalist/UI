@@ -1,8 +1,6 @@
 ---
 popup_chip_controls:
   template: "chips"
-  variables:
-    ulm_popup_media_player_entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
   styles:
     card:
       - background: "none"
@@ -20,13 +18,13 @@ popup_chip_controls:
       card:
         type: "custom:button-card"
         template: "icon_controls"
-        entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
+        entity: "[[[ return entity.entity_id; ]]]"
         icon: "mdi:skip-previous"
         tap_action:
           action: "call-service"
           service: "media_player.media_previous_track"
           service_data:
-            entity_id: "[[[ return variables.ulm_popup_media_player_entity]]]"
+            entity_id: "[[[ return entity.entity_id; ]]]"
         styles:
           icon:
             - color: "rgba(var(--color-theme),0.5)"
@@ -34,7 +32,7 @@ popup_chip_controls:
       card:
         type: "custom:button-card"
         template: "icon_controls"
-        entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
+        entity: "[[[ return entity.entity_id; ]]]"
         icon: "mdi:play"
         state:
           - value: "playing"
@@ -43,18 +41,18 @@ popup_chip_controls:
           action: "call-service"
           service: "media_player.media_play_pause"
           service_data:
-            entity_id: "[[[ return variables.ulm_popup_media_player_entity]]]"
+            entity_id: "[[[ return entity.entity_id; ]]]"
     item3:
       card:
         type: "custom:button-card"
         template: "icon_controls"
-        entity: "[[[ return variables.ulm_popup_media_player_entity ]]]"
+        entity: "[[[ return entity.entity_id; ]]]"
         icon: "mdi:skip-next"
         tap_action:
           action: "call-service"
           service: "media_player.media_next_track"
           service_data:
-            entity_id: "[[[ return variables.ulm_popup_media_player_entity]]]"
+            entity_id: "[[[ return entity.entity_id; ]]]"
         styles:
           icon:
             - color: "rgba(var(--color-theme),0.5)"

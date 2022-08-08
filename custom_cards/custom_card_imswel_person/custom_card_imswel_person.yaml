@@ -35,7 +35,6 @@ custom_card_imswel_person:
     - "custom_popup_imswel_person"
   variables:
     ulm_card_imswel_person_use_entity_picture: false
-    ulm_card_imswel_person_zones: ""
   triggers_update: "all"
   show_entity_picture: "[[[ return variables.ulm_card_imswel_person_use_entity_picture ]]]"
   show_label: true
@@ -90,7 +89,9 @@ custom_card_imswel_person:
   custom_fields:
     notification: >
       [[[
-        var zones = variables.ulm_card_imswel_person_zones;
+        var zones = Object.values(states).filter((entity) =>
+                        entity.entity_id.startsWith("zone.")
+                    ).map((entity) => entity.entity_id);
         var person_location = states[variables.ulm_card_imswel_person_entity].state;
         if (person_location !== 'home'){
           for (const item of zones){

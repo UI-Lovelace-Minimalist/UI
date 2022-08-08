@@ -5,7 +5,7 @@
 ![hacs installs](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Flauwbier.nl%2Fhacs%2Fui_lovelace_minimalist)
 ![Downloads](https://img.shields.io/github/downloads/UI-Lovelace-Minimalist/UI/total)
 
-It's kind of hard to explain what this is, so let's call it a "theme" (in quotation marks). But one thing is for sure, it is very nice! Taking the exceptional work of tben as a basis, this repository is aimed to ease installation and maintainance of his wonderful work. You can use this interpretation of a SmartHomeUI more or less like a theme in HomeAssistant.
+It's kind of hard to explain what this is, so let's call it a "theme" (in quotation marks). But one thing is for sure, it is very nice! Taking the exceptional work of tben as a basis, this repository is aimed to ease installation and maintenance of his wonderful work. You can use this interpretation of a SmartHomeUI more or less like a theme in HomeAssistant.
 
 <img src="https://raw.githubusercontent.com/UI-Lovelace-Minimalist/UI/main/docs/assets/img/example_home.png" width="200"> <img src="https://raw.githubusercontent.com/UI-Lovelace-Minimalist/UI/main/docs/assets/img/example_temperature.png" width="200"> <img src="https://raw.githubusercontent.com/UI-Lovelace-Minimalist/UI/main/docs/assets/img/example_consumption.png" width="200"> <img src="https://raw.githubusercontent.com/UI-Lovelace-Minimalist/UI/main/docs/assets/img/example_localisation.png" width="200">
 
@@ -68,11 +68,11 @@ We can offer you in-depth instructions for installation, as well as for future u
 
 ## List of templates
 
-The actual version of this "theme" has 20 different cards, seven chips and other templates bundled into the download. We're sorry, but the list wouldn't fit into this readme. [Please see this page, where you can find an extensive list of templates with code examples, screenshots and explaination](https://ui-lovelace-minimalist.github.io/UI/usage/cards/card_battery/).
+The actual version of this "theme" has 20 different cards, seven chips and other templates bundled into the download. We're sorry, but the list wouldn't fit into this readme. [Please see this page, where you can find an extensive list of templates with code examples, screenshots and explanation](https://ui-lovelace-minimalist.github.io/UI/usage/cards/card_battery/).
 
 ## Custom cards
 
-The same goes for our `custom_cards`. As the number grows, the list would be to big for this readme, so we provide you with an overview page with pictures, code examples and additional informations. [Find the list here](https://ui-lovelace-minimalist.github.io/UI/usage/custom_cards/custom_card_bar_card/).
+The same goes for our `custom_cards`. As the number grows, the list would be to big for this readme, so we provide you with an overview page with pictures, code examples and additional information. [Find the list here](https://ui-lovelace-minimalist.github.io/UI/usage/custom_cards/custom_card_bar_card/).
 
 ### Credits & Contributors
 
@@ -80,7 +80,7 @@ The same goes for our `custom_cards`. As the number grows, the list would be to 
 - A lot of inspiration is taken from [7ahang’s work](https://www.behance.net/gallery/88433905/Redesign-Smart-Home) found on Behance.
 - Contributions from others in the HomeAssistant forum thread, you can find it here.
 - The technical part is realised mostly by taking advantage of the great work RomRaider did with his [button-card](https://github.com/custom-cards/button-card).
-- Code refactor, cleanup and maintainance by [schumijo](https://github.com/schumijo) and [paddy0174](https://github.com/Paddy0174) & [CM000n](https://github.com/CM000n).
+- Code refactor, cleanup and maintenance by [schumijo](https://github.com/schumijo) and [paddy0174](https://github.com/Paddy0174) & [CM000n](https://github.com/CM000n).
 - [dwainscheeren](https://github.com/dwainscheeren) for his inspiration to deliver themes via HACS.
 - Wiki by [paddy0174](https://github.com/Paddy0174).
 - Special thanks to clemalex and [schumijo](https://github.com/schumijo)for contributing their cards to the main repository.

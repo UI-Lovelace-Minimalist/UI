@@ -33,7 +33,6 @@ custom_card_paddy_welcome:
             } else {
               welcome = variables.ulm_hello;
             }
-
             return welcome + ',<br>' + user.name + '!';
           ]]]
         card_mod:
@@ -79,7 +78,7 @@ custom_card_paddy_welcome_with_weather:
               welcome = variables.ulm_morning;
             } else {
               welcome = variables.ulm_hello;
-
+            }
             return welcome + ',<br>' + user.name + '!';
           ]]]
         card_mod:
@@ -163,7 +162,7 @@ custom_card_paddy_welcome_with_news:
               welcome = variables.ulm_morning;
             } else {
               welcome = variables.ulm_hello;
-
+            }
             return welcome + ',<br>' + user.name + '!';
           ]]]
         card_mod:

@@ -5,43 +5,32 @@ card_room:
   variables:
     label_use_temperature: true
     label_use_brightness: false
-  color: "var(--google-grey-500)"
-  show_icon: true
-  show_name: true
-  show_label: true
-  size: "45%"
   double_tap_action:
     action: "call-service"
     service: "input_select.select_option"
     service_data:
       option: "[[[ return variables.ulm_input_select_option ]]]"
       entity_id: "[[[ return variables.ulm_input_select ]]]"
+  color: "var(--google-grey-500)"
+  size: "45%"
   aspect_ratio: "1/1"
+  show_icon: true
+  show_label: true
+  show_name: true
+  icon: "mdi:sofa-single"
   label: |-
     [[[
       if (variables.label_use_temperature) {
-        return (entity.attributes.current_temperature || entity.attributes.temperature || entity.state || '-') + (entity.attributes.unit_of_measurement || '°C');
-      } else if (variables.label_use_brightness) {
-        if (entity.state){
-          if (entity.state == "off"){
-            return variables.ulm_translation_state;
-          } else if (entity.state == "on"){
-            if (entity.attributes.brightness != null){
-              var bri = Math.round(entity.attributes.brightness / 2.55);
-              return (bri ? bri : "0") + "%";
-            } else {
-              return variables.ulm_translation_state;
-            }
-          }
-        } else {
-          return variables.ulm_translation_state;
-        }
-      } else {
-          return variables.ulm_translation_state;
+        return (entity?.attributes?.current_temperature || entity?.attributes?.temperature || entity?.state || '-') + (entity?.attributes?.unit_of_measurement || '°C');
+      } else if (variables.label_use_brightness && entity?.state == "on" && entity?.attributes?.brightness != null) {
+        let bri = Math.round(entity?.attributes?.brightness / 2.55);
+        return (bri ? bri : "0") + "%";
       }
+      return variables.ulm_translation_state;
     ]]]
   state:
-    - styles:
+    - value: "unavailable"
+      styles:
         custom_fields:
           notification:
             - border-radius: "50%"
@@ -56,23 +45,37 @@ card_room:
             - margin-left: "-35%"
             - line-height: 0
             - display: "grid"
-            - background-color: >
-                [[[
-                  return "rgba(var(--color-red),1)";
-                ]]]
-      value: "unavailable"
+            - background-color: "[[[ return 'rgba(var(--color-red),1)'; ]]]"
   styles:
-    card:
-      - border-radius: "20px"
-      - box-shadow: "var(--box-shadow)"
-      - padding: "5px"
-    grid:
-      - grid-template-areas: "'n n n i1' 'l l l i2' 'i i . i3' 'i i . i4'"
-      - grid-template-columns: "1fr 1fr 1fr 1fr"
-      - grid-template-rows: "1fr 1fr 1fr 1fr"
-      - justify-items: "center"
     icon:
       - color: "rgba(var(--color-theme),0.2)"
+    label:
+      - justify-self: "start"
+      - align-self: "start"
+      - font-weight: "bold"
+      - font-size: "14px"
+      - filter: "opacity(40%)"
+      - margin-left: "12px"
+      - max-width: "[[[ return `calc(100% - (12px + ${!variables?.entity_1 && !variables?.entity_2 ? 5 : 0}px))`; ]]]"
+      - text-overflow: "ellipsis"
+      - overflow: "hidden"
+      - margin-top: "[[[ return !variables?.entity_1 ? '-24%' : '-10%'; ]]]"
+    name:
+      - justify-self: "start"
+      - align-self: "end"
+      - font-weight: "bold"
+      - font-size: "18px"
+      - margin-left: "12px"
+      - margin-bottom: "[[[ return !variables?.entity_1 ? (!variables?.entity_2 ? '15.8%' : '24%') : '10%'; ]]]"
+      - max-width: "[[[ return `calc(100% - (12px + ${!variables?.entity_2 ? 5 : 0}px))`; ]]]"
+      - text-overflow: "ellipsis"
+      - overflow: "hidden"
+    state:
+      - justify-self: "start"
+      - font-weight: "bold"
+      - font-size: "12px"
+      - filter: "opacity(40%)"
+      - margin-left: "6px"
     img_cell:
       - background-color: "rgba(var(--color-theme),0.05)"
       - border-radius: "50%"
@@ -86,190 +89,138 @@ card_room:
       - transform: "translate(-50%,-50%)"
       - margin-top: "25%"
       - margin-left: "-25%"
-    name:
-      - justify-self: "start"
-      - align-self: "end"
-      - font-weight: "bold"
-      - font-size: "14px"
-      - margin-left: "12px"
-      - margin-bottom: "10%"
-    label:
-      - justify-self: "start"
-      - align-self: "start"
-      - font-weight: "bold"
-      - font-size: "12px"
-      - filter: "opacity(40%)"
-      - margin-left: "12px"
-      - margin-top: "-10%"
-    state:
-      - justify-self: "start"
-      - font-weight: "bold"
-      - font-size: "12px"
-      - filter: "opacity(40%)"
-      - margin-left: "6px"
+    grid:
+      - grid-template-areas: "[[[ return !variables?.entity_1 ? (!variables?.entity_2 ? `'n n n' 'l l i3' 'i i i4'` : `'n n i2' 'l l i3' 'i i i4'`) : `'n n n i1' 'l l l i2' 'i i . i3' 'i i . i4'`; ]]]"
+      - grid-template-columns: "[[[ return !variables?.entity_1 ? '1fr 1fr 1fr' : '1fr 1fr 1fr 1fr'; ]]]"
+      - grid-template-rows: "[[[ return !variables?.entity_1 ? '1fr 1fr 1fr' : '1fr 1fr 1fr 1fr'; ]]]"
+      - justify-items: "center"
+    card:
+      - border-radius: "20px"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "5px"
     custom_fields:
-      i1:
+      i1: &widget_icon_room_styling
         - border-radius: "50%"
         - width: "80%"
         - height: "80%"
         - line-height: 0
         - display: "grid"
-      i2:
-        - border-radius: "50%"
-        - width: "80%"
-        - height: "80%"
-        - line-height: 0
-        - display: "grid"
-      i3:
-        - border-radius: "50%"
-        - width: "80%"
-        - height: "80%"
-        - line-height: 0
-        - display: "grid"
-      i4:
-        - border-radius: "50%"
-        - width: "80%"
-        - height: "80%"
-        - line-height: 0
-        - display: "grid"
+      i2: *widget_icon_room_styling
+      i3: *widget_icon_room_styling
+      i4: *widget_icon_room_styling
   custom_fields:
     notification: >
       [[[
-        if (entity.state =='unavailable'){
-          return `<ha-icon icon="mdi:exclamation" style="width: 50%; height: 50%; color: var(--primary-background-color);"></ha-icon>`
+        if (entity?.state == 'unavailable'){
+          return '<ha-icon icon="mdi:exclamation" style="width: 50%; height: 50%; color: var(--primary-background-color);"></ha-icon>';
         }
       ]]]
+
     i1:
       card:
         type: "custom:button-card"
         template: >
           [[[
-            var templates = ['widget_icon_room'];
+            let templates = [ 'widget_icon_room' ];
             if (variables?.entity_1?.templates?.length) {
-              return ['widget_icon_room'].concat(variables.entity_1.templates);
+              templates.push(...variables.entity_1.templates);
             }
             return templates;
           ]]]
-        variables: "[[[ return variables.entity_1; ]]]"
-        entity: >
-          [[[
-            if (variables.entity_1.entity_id) {
-              return variables.entity_1.entity_id;
-            }
-          ]]]
+        variables: "[[[ return variables?.entity_1; ]]]"
         state:
           - operator: "template"
             value: "[[[ return !variables.entity_1; ]]]"
             styles:
               card:
                 - display: "none"
+        entity: "[[[ return variables?.entity_1?.entity_id; ]]]"
 
     i2:
       card:
         type: "custom:button-card"
         template: >
           [[[
-            var templates = ['widget_icon_room'];
+            let templates = [ 'widget_icon_room' ];
             if (variables?.entity_2?.templates?.length) {
-              return ['widget_icon_room'].concat(variables.entity_2.templates);
+              templates.push(...variables.entity_2.templates);
             }
             return templates;
           ]]]
-        variables: "[[[ return variables.entity_2; ]]]"
-        entity: >
-          [[[
-            if (variables?.entity_2?.entity_id) {
-              return variables.entity_2.entity_id;
-            }
-          ]]]
+        variables: "[[[ return variables?.entity_2; ]]]"
         state:
           - operator: "template"
             value: "[[[ return !variables.entity_2; ]]]"
             styles:
               card:
                 - display: "none"
+        entity: "[[[ return variables?.entity_2?.entity_id; ]]]"
 
     i3:
       card:
         type: "custom:button-card"
         template: >
           [[[
-            var templates = ['widget_icon_room'];
+            let templates = [ 'widget_icon_room' ];
             if (variables?.entity_3?.templates?.length) {
-              return ['widget_icon_room'].concat(variables.entity_3.templates);
+              templates.push(...variables.entity_3.templates);
             }
             return templates;
           ]]]
-        variables: "[[[ return variables.entity_3; ]]]"
-        entity: >
-          [[[
-            if (variables?.entity_3?.entity_id) {
-              return variables.entity_3.entity_id;
-            }
-          ]]]
+        variables: "[[[ return variables?.entity_3; ]]]"
         state:
           - operator: "template"
             value: "[[[ return !variables.entity_3; ]]]"
             styles:
               card:
                 - display: "none"
+        entity: "[[[ return variables?.entity_3?.entity_id; ]]]"
+
     i4:
       card:
         type: "custom:button-card"
         template: >
           [[[
-            var templates = ['widget_icon_room'];
+            let templates = [ 'widget_icon_room' ];
             if (variables?.entity_4?.templates?.length) {
-              return ['widget_icon_room'].concat(variables.entity_4.templates);
+              templates.push(...variables.entity_4.templates);
             }
             return templates;
           ]]]
-        variables: "[[[ return variables.entity_4; ]]]"
-        entity: >
-          [[[
-            if (variables?.entity_4?.entity_id) {
-              return variables.entity_4.entity_id;
-            }
-          ]]]
+        variables: "[[[ return variables?.entity_4; ]]]"
         state:
           - operator: "template"
             value: "[[[ return !variables.entity_4; ]]]"
             styles:
               card:
                 - display: "none"
+        entity: "[[[ return variables?.entity_4?.entity_id; ]]]"
 
 widget_icon_room:
   variables:
     tap_action:
       action: "toggle"
     hold_action:
-      action: "none"
+      action: "more-info"
   tap_action:
-    action: >
-      [[[ if (variables?.tap_action?.action) return variables.tap_action.action; else return 'none'; ]]]
+    action: "[[[ return variables?.tap_action?.action ? variables.tap_action.action : 'none'; ]]]"
     entity: "[[[ return variables.tap_action.entity; ]]]"
     navigation_path: "[[[ return variables.tap_action.navigation_path; ]]]"
     url_path: "[[[ return variables.tap_action.url_path; ]]]"
     service: "[[[ return variables.tap_action.service; ]]]"
     service_data: "[[[ return variables.tap_action.service_data; ]]]"
   hold_action:
-    action: >
-      [[[ if (variables?.hold_action?.action) return variables.hold_action.action; else return 'none'; ]]]
+    action: "[[[ return variables?.hold_action?.action ? variables.hold_action.action : 'none'; ]]]"
     entity: "[[[ return variables.hold_action.entity; ]]]"
     navigation_path: "[[[ return variables.hold_action.navigation_path; ]]]"
     url_path: "[[[ return variables.hold_action.url_path; ]]]"
     service: "[[[ return variables.hold_action.service; ]]]"
     service_data: "[[[ return variables.hold_action.service_data; ]]]"
+  size: "15px"
+  color: "var(--google-grey)"
   show_icon: true
   show_name: false
   styles:
-    grid:
-      - grid-template-areas: "'i'"
-    card:
-      - height: "100%"
-      - box-shadow: "none"
-      - padding: "0px"
-      - border-radius: "50%"
     icon:
       - width: "50%"
       - height: "50%"
@@ -278,5 +229,10 @@ widget_icon_room:
     img_cell:
       - border-radius: "50%"
       - background-color: "rgba(var(--color-theme),0.05)"
-  size: "15px"
-  color: "var(--google-grey)"
+    grid:
+      - grid-template-areas: "'i'"
+    card:
+      - height: "100%"
+      - box-shadow: "none"
+      - padding: "0px"
+      - border-radius: "50%"

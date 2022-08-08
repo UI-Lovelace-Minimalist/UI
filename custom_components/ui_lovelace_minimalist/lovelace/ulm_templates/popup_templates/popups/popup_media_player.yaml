@@ -9,5 +9,4 @@ popup_media_player:
       card:
         type: "custom:button-card"
         template: "popup_media_player_infos"
-        variables:
-          ulm_popup_media_player_entity: "[[[ return entity.entity_id ]]]"
+        entity: "[[[ return entity.entity_id; ]]]"
