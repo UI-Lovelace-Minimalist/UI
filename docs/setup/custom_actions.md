@@ -50,7 +50,7 @@ For each action a haptic feedback could be configured:
 ulm_custom_actions:
   variables:
     ulm_card_tap_haptic: "medium"
-    ulm_card_tap_haptic: "none"
+    ulm_card_hold_haptic: "none"
     ulm_card_double_tap_haptic: "none"
     ulm_icon_tap_haptic: "none"
     ulm_icon_hold_haptic: "none"
