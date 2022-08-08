@@ -34,10 +34,29 @@ ulm_actions_card:
       ]]]
     navigation_path: "[[[ return variables.ulm_card_tap_action == 'navigate' ? variables.ulm_card_tap_navigate_path : '/0' ]]]"
     haptic: "[[[ return variables.ulm_card_tap_haptic != null ? variables.ulm_card_tap_haptic : 'none' ]]]"
-    service: "input_select.select_option"
-    service_data:
-      option: "[[[ return variables.ulm_input_select_option ]]]"
-      entity_id: "[[[ return variables.ulm_input_select ]]]"
+    service: >
+        [[[
+          var action = variables.ulm_card_tap_action;
+
+          if (action == 'adaptive'){
+            return 'input_select.select_option';
+          }
+
+          return variables.ulm_card_tap_service;
+        ]]]
+    service_data: >
+        [[[
+          var action = variables.ulm_card_tap_action;
+
+          if (action == 'adaptive'){
+            return {
+              'option': variables.ulm_input_select_option,
+              'entity_id': variables.ulm_input_select
+            };
+          }
+
+          return variables.ulm_card_tap_service_data;
+        ]]]
     browser_mod:
       command: "popup"
       large: true
@@ -106,10 +125,29 @@ ulm_actions_card:
       ]]]
     navigation_path: "[[[ return variables.ulm_card_hold_action == 'navigate' ? variables.ulm_card_hold_navigate_path : '/0' ]]]"
     haptic: "[[[ return variables.ulm_card_hold_haptic != null ? variables.ulm_card_hold_haptic : 'none' ]]]"
-    service: "input_select.select_option"
-    service_data:
-      option: "[[[ return variables.ulm_input_select_option ]]]"
-      entity_id: "[[[ return variables.ulm_input_select ]]]"
+    service: >
+        [[[
+          var action = variables.ulm_card_hold_action;
+
+          if (action == 'adaptive'){
+            return 'input_select.select_option';
+          }
+
+          return variables.ulm_card_hold_service;
+        ]]]
+    service_data: >
+        [[[
+          var action = variables.ulm_card_hold_action;
+
+          if (action == 'adaptive'){
+            return {
+              'option': variables.ulm_input_select_option,
+              'entity_id': variables.ulm_input_select
+            };
+          }
+
+          return variables.ulm_card_hold_service_data;
+        ]]]
     browser_mod:
       command: "popup"
       large: true
@@ -178,10 +216,29 @@ ulm_actions_card:
       ]]]
     navigation_path: "[[[ return variables.ulm_card_double_tap_action == 'navigate' ? variables.ulm_card_double_tap_navigate_path : '/0' ]]]"
     haptic: "[[[ return variables.ulm_card_double_tap_haptic != null ? variables.ulm_card_double_tap_haptic : 'none' ]]]"
-    service: "input_select.select_option"
-    service_data:
-      option: "[[[ return variables.ulm_input_select_option ]]]"
-      entity_id: "[[[ return variables.ulm_input_select ]]]"
+    service: >
+        [[[
+          var action = variables.ulm_card_double_tap_action;
+
+          if (action == 'adaptive'){
+            return 'input_select.select_option';
+          }
+
+          return variables.ulm_card_double_tap_service;
+        ]]]
+    service_data: >
+        [[[
+          var action = variables.ulm_card_double_tap_action;
+
+          if (action == 'adaptive'){
+            return {
+              'option': variables.ulm_input_select_option,
+              'entity_id': variables.ulm_input_select
+            };
+          }
+
+          return variables.ulm_card_double_tap_service_data;
+        ]]]
     browser_mod:
       command: "popup"
       large: true
