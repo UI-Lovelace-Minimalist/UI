@@ -272,6 +272,7 @@ popup_light_brightness:
                 - "popup_button_color_temp"
               styles:
                 card:
+                  - overflow: "visible"
                   - display: >
                       [[[
                             var color_temp_modes = ["color_temp"];
