@@ -47,7 +47,7 @@ ulm_actions_icon:
     service_data: >
         [[[
           var action = variables.ulm_icon_tap_action;
-          
+
           if (action == 'adaptive'){
             return {
               'option': variables.ulm_input_select_option,
@@ -148,7 +148,7 @@ ulm_actions_icon:
     service_data: >
         [[[
           var action = variables.ulm_icon_hold_action;
-          
+
           if (action == 'adaptive'){
             return {
               'option': variables.ulm_input_select_option,
@@ -253,7 +253,7 @@ ulm_actions_icon:
     service_data: >
         [[[
           var action = variables.ulm_icon_double_tap_action;
-          
+
           if (action == 'adaptive'){
             return {
               'option': variables.ulm_input_select_option,

@@ -128,9 +128,9 @@ tap action.
   variables:
     ulm_name_tap_action: "call-service"
     ulm_name_tap_service: "light.toggle"
-    ulm_name_tap_service_data: 
+    ulm_name_tap_service_data:
       entity_id: light.light_livingroom_2
-  
+
 ```
 
 ## Overwrite custom actions
