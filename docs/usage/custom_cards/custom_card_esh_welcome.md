@@ -95,6 +95,7 @@ Do not use `triggers_update: "all"`! This will lead to unwanted behavior with th
       name: Lab
       color: "red"
 ```
+
 ## Customizations
 
 Single Line Text:
