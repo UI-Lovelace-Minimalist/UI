@@ -37,4 +37,3 @@ battery_info:
             text-anchor="middle" alignment-baseline="middle">
             ${battery}<tspan font-size="10">%</tspan></text></svg>`;}
       ]]]
-      
