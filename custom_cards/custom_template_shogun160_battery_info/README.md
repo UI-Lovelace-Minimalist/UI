@@ -30,8 +30,8 @@ This is an template to add the battery level to every ui minimalist card
 
 - type: 'custom:button-card'
     template:
-    - card_binary_sensor
-    - battery_info
+      - card_binary_sensor
+      - battery_info
     entity: binary_sensor.badezimmer_tuer_contact
     variables:
       ulm_show_last_changed: false
@@ -44,8 +44,8 @@ This is an template to add the battery level to every ui minimalist card
 
 - type: 'custom:button-card'
     template:
-    - card_binary_sensor
-    - battery_info
+      - card_binary_sensor
+      - battery_info
     entity: binary_sensor.badezimmer_tuer_contact
     variables:
       ulm_show_last_changed: false
