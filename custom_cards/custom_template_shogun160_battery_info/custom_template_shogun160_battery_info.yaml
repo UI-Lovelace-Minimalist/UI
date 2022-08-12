@@ -13,7 +13,7 @@ battery_info:
 
   custom_fields:
     info: |
-      [[[ 
+      [[[
           if (variables.ulm_battery_entity){
             const battery = Math.round((states[variables.ulm_battery_entity].state)/1);
             const radius = 20.5; const circumference = radius * 2 * Math.PI;
