@@ -1,5 +1,5 @@
 ---
-title: Custom Tempalte Battery Info
+title: Custom Template Battery Info
 hide:
   - toc
 ---
@@ -8,7 +8,7 @@ hide:
 
 # Custom Template "Battery Info"
 
-![example_batter_info_template](ui_minimalist_battery_info_example.png)
+<img width="249" alt="ui_minimalist_battery_info_example" src="https://user-images.githubusercontent.com/63370033/184395981-7fce5840-aa76-453d-8756-39b15e36d26c.png">
 
 ## Credits
 
