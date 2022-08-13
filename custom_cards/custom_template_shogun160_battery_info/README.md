@@ -14,6 +14,13 @@ hide:
 
 - Full credit to user [basbruss](https://github.com/basbruss), who created the design and base of it in his person card
 
+## Changelog
+
+<details>
+<summary>1.0.0</summary>
+Initial release
+</details>
+
 ## Description
 
 This is an template to add the battery level to every ui minimalist card
