@@ -41,7 +41,8 @@ hide:
 - type: "custom:button-card"
   template: card_media_player
   entity: media_player.livingroom_shield
-  name: Livingroom Nvidia Shield
+  variables:
+    ulm_card_media_player_name : Livingroom Nvidia Shield
 ```
 
 ??? note "Template Code"
