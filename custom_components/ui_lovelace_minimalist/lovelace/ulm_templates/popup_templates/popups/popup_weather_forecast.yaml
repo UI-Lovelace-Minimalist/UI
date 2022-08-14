@@ -16,16 +16,21 @@ popup_weather_forecast:
       - padding: "4%"
     custom_fields:
       header:
-        - align-self: "start"
+        - align-self: "absolute"
+        - padding-bottom: "6%"
       content1:
         - align-self: "center"
+        - padding-bottom: "6%"
+        - padding-right: "3%"
       content2:
         - align-self: "center"
+        - padding-top: "30px"
       buttons:
         - display: "none"
       footer:
-        - align-self: "end"
+        - align-self: "absolute"
         - margin-top: "25px"
+        - padding-top: "6%"
   extra_styles: |
     @media (max-width: 800px) {
       #container {
@@ -151,6 +156,19 @@ popup_weather_forecast:
                 browser_mod:
                   command: "popup"
                   hide_header: true
+                  style:
+                    .: |
+                      :host {
+                        --mdc-theme-surface: var(--primary-background-color);
+                        --secondary-background-color: var(--primary-background-color);
+                      }
+                    $: |
+                      .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
+                        border-radius: 0px;
+                      }
+                      :host .mdc-dialog .mdc-dialog__container .mdc-dialog__surface .mdc-dialog__content {
+                        padding: 20px 24px;
+                      }
                   card:
                     type: "custom:button-card"
                     template: "popup_weather_radar"
@@ -167,4 +185,12 @@ popup_weather_forecast:
     content2:
       card:
         type: "custom:weather-radar-card"
-        square_map: true
+        zoom_level: 9
+        data_source: RainViewer-Meteored
+        show_marker: true
+        card_mod:
+          style: |
+            ha-card {
+              height: 350px !important;
+              border-radius: 20px !important;
+            }
