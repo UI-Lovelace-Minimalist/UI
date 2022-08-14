@@ -112,6 +112,9 @@ popup_weather_forecast:
                 for (let forecast in entity.attributes.forecast) {
                     rows.push(generate_weather_row(index));
                     index++;
+                    if (index > 5) {
+                      break;
+                    }
                 }
                 return rows;
               ]]]
