@@ -334,3 +334,35 @@ show_name: false
 show_label: false
 show_units: false
 ```
+
+The usage of variables within the popup have some restrictions. Default variables of the popup don't work in the same
+way as for other custom button cards. The default variables -- defined in the variables section -- will always be overwritten by
+the custom actions caller.
+
+The following code won't work on custom popup cards:
+
+```yaml
+popup_weather_forecast:
+...
+  variables:
+    ulm_weather_popup_surpress_first_forecast: false
+...
+```
+
+Instead of using the variables section of the card the variables must be checked within a JavaScript template. The following
+code shows an example how to check and define a default value of custom popup variable:
+
+```yaml
+element: >
+  [[[
+    let surpress_first_forecast = ('ulm_weather_popup_surpress_first_forecast' in variables) ? variables.ulm_weather_popup_surpress_first_forecast : false;
+    
+    if (surpress_first_forecast) {
+      ...
+    }
+   
+    return surpress_first_forecast;
+  ]]]
+```
+
+The code checks if the variable is available before reading from the variabl and if the variable isn't available it will set a default value.

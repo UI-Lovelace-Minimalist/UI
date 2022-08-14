@@ -101,6 +101,7 @@ ulm_actions_icon:
                 return popup_config.popup_variables;
               }
             }
+            return {};
           ]]]
   hold_action:
     action: >
@@ -202,6 +203,7 @@ ulm_actions_icon:
                 return popup_config.popup_variables;
               }
             }
+            return {};
           ]]]
   double_tap_action:
     action: >
@@ -297,4 +299,5 @@ ulm_actions_icon:
                 return popup_config.popup_variables;
               }
             }
+            return {};
           ]]]
