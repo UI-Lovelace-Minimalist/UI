@@ -1,6 +1,8 @@
 ---
 ### Card Weather ###
 card_weather:
+  template:
+    - "ulm_actions_card_overlay"
   variables:
     ulm_card_weather_backdrop: false
     ulm_card_weather_primary_info: "extrema"

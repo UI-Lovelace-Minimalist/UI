@@ -242,6 +242,17 @@ Most of the internal card templates uses this option. Take a look into the code.
     --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_generic.yaml"
     ```
 
+### Use template `ulm_actions_card_overlay`
+
+If you implement a custom card that is based on another Lovelace card like the 
+(weather card)[https://ui-lovelace-minimalist.github.io/UI/usage/cards/card_weather/] you can simply enable custom
+card actions by using the template `ulm_actions_card_overlay` on the card. This template adds an overlay over the whole card and
+reaction on the tap, hold, double tap actions. It also enables the integration of custom popups for the card. 
+Actions of the underlying card will be disabled by this method.
+
+The (weather card)[https://ui-lovelace-minimalist.github.io/UI/usage/cards/card_weather/] gives you an example and 
+will show the usage of this method.
+
 ### Individual implementation
 
 The following script shows the usage off all necessary variables and template that will be used by the custom actions.
