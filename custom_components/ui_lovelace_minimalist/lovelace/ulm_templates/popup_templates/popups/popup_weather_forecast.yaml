@@ -92,37 +92,61 @@ popup_weather_forecast:
               temp: "[[[ return entity.attributes.temperature + '°' ]]]"
               tempminmax: "[[[ return 'Max. ' + entity.attributes.forecast[0].temperature + '° Min. ' + entity.attributes.forecast[0].templow + '°' ]]]"
           - type: "vertical-stack"
-            cards:
-              - type: "custom:button-card"
-                template: "popup_weather_row"
-                entity: "[[[ return entity.entity_id ]]]"
-                variables:
-                  ulm_popup_weather_entity_idx: 0
-              - type: "custom:button-card"
-                template: "popup_weather_row"
-                entity: "[[[ return entity.entity_id ]]]"
-                variables:
-                  ulm_popup_weather_entity_idx: 1
-              - type: "custom:button-card"
-                template: "popup_weather_row"
-                entity: "[[[ return entity.entity_id ]]]"
-                variables:
-                  ulm_popup_weather_entity_idx: 2
-              - type: "custom:button-card"
-                template: "popup_weather_row"
-                entity: "[[[ return entity.entity_id ]]]"
-                variables:
-                  ulm_popup_weather_entity_idx: 3
-              - type: "custom:button-card"
-                template: "popup_weather_row"
-                entity: "[[[ return entity.entity_id ]]]"
-                variables:
-                  ulm_popup_weather_entity_idx: 4
-              - type: "custom:button-card"
-                template: "popup_weather_row"
-                entity: "[[[ return entity.entity_id ]]]"
-                variables:
-                  ulm_popup_weather_entity_idx: 5
+            cards: >
+              [[[
+                let rows = [];
+
+                function generate_weather_row(index) {
+                    var row = {
+                      'type': 'custom:button-card',
+                      'template': 'popup_weather_row',
+                      'entity': entity.entity_id,
+                      'variables': {
+                        'ulm_popup_weather_entity_idx': index
+                      }
+                    };
+                    return row;
+                }
+                
+                let index = 0;
+                for (let forecast in entity.attributes.forecast) {
+                    rows.push(generate_weather_row(index));
+                    index++;
+                }
+                return rows;
+              ]]]
+            # Code above create following cards
+            # cards:
+            #   - type: "custom:button-card"
+            #     template: "popup_weather_row"
+            #     entity: "[[[ return entity.entity_id ]]]"
+            #     variables:
+            #       ulm_popup_weather_entity_idx: 0
+            #   - type: "custom:button-card"
+            #     template: "popup_weather_row"
+            #     entity: "[[[ return entity.entity_id ]]]"
+            #     variables:
+            #       ulm_popup_weather_entity_idx: 1
+            #   - type: "custom:button-card"
+            #     template: "popup_weather_row"
+            #     entity: "[[[ return entity.entity_id ]]]"
+            #     variables:
+            #       ulm_popup_weather_entity_idx: 2
+            #   - type: "custom:button-card"
+            #     template: "popup_weather_row"
+            #     entity: "[[[ return entity.entity_id ]]]"
+            #     variables:
+            #       ulm_popup_weather_entity_idx: 3
+            #   - type: "custom:button-card"
+            #     template: "popup_weather_row"
+            #     entity: "[[[ return entity.entity_id ]]]"
+            #     variables:
+            #       ulm_popup_weather_entity_idx: 4
+            #   - type: "custom:button-card"
+            #     template: "popup_weather_row"
+            #     entity: "[[[ return entity.entity_id ]]]"
+            #     variables:
+            #       ulm_popup_weather_entity_idx: 5
     buttons:
       card:
         type: "custom:button-card"
