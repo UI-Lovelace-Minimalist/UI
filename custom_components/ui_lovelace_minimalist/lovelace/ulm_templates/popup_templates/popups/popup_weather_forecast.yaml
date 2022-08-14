@@ -186,8 +186,8 @@ popup_weather_forecast:
       card:
         type: "custom:weather-radar-card"
         zoom_level: 9
-        data_source: RainViewer-Meteored
-        show_marker: true
+        data_source: "RainViewer-Meteored"
+        show_marker: "true"
         card_mod:
           style: |
             ha-card {
