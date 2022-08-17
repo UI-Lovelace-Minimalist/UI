@@ -1,0 +1,346 @@
+---
+popup_thermostat_preset:
+  show_icon: false
+  show_name: false
+  show_label: false
+  show_units: false
+  styles:
+    grid:
+      - grid-template-areas: "'header' 'content1' 'buttons' 'footer'"
+      - grid-template-rows: "16vh 42vh 14vh 14vh"
+      - grid-template-columns: "1fr"
+      - column-gap: "30px"
+    card:
+      - background: "var(--primary-background-color)"
+      - box-shadow: "none"
+      - padding: "4%"
+    custom_fields:
+      header:
+        - align-self: "start"
+      content1:
+        - align-self: "center"
+      buttons:
+        - align-self: "start"
+        - width: "50%"
+        - margin: "0 auto"
+      footer:
+        - align-self: "end"
+        - margin-top: "25px"
+  extra_styles: |
+    @media (max-width: 800px) {
+      #container {
+        grid-template-rows: 16vh 52vh 14vh 14vh !important;
+      }
+      #buttons {
+        width: 100% !important;
+      }
+  custom_fields:
+    header:
+      card:
+        type: "custom:button-card"
+        template: "popup_header"
+        entity: "[[[ return entity.entity_id ]]]"
+    content1:
+      card:
+        type: "thermostat"
+        entity: "[[[ return entity.entity_id ]]]"
+        card_mod:
+          style: |
+            ha-card {
+              background: none !important;
+              box-shadow: none !important;
+              padding: 0 0 20px 0 !important;
+            }
+            .more-info {
+              display: none;
+            }
+            #info {
+              display: none;
+            }
+            .type-thermostat {
+              --mode-color: rgb(var(--color-blue)) !important;
+            }
+    buttons:
+      card:
+        type: "custom:button-card"
+        styles:
+          grid:
+            - grid-template-areas: >
+                [[[
+                      var areas = [];
+                      if (entity.attributes.preset_modes.includes("none")) {
+                          areas.push("none");
+                      }
+                      if (entity.attributes.preset_modes.includes("away")) {
+                          areas.push("away");
+                      }
+                      if (entity.attributes.preset_modes.includes("comfort")) {
+                          areas.push("comfort");
+                      }
+                      if (entity.attributes.preset_modes.includes("home")) {
+                          areas.push("home");
+                      }
+                      if (entity.attributes.preset_modes.includes("sleep")) {
+                          areas.push("sleep");
+                      }
+                      if (entity.attributes.preset_modes.includes("activity")) {
+                          areas.push("activity");
+                      }
+                      return "\"" + areas.join(" ") + "\"";
+                ]]]
+            - grid-template-columns: >
+                [[[
+                      var columns = [];
+                      if (entity.attributes.preset_modes.includes("none")) {
+                          columns.push("1fr");
+                      }
+                      if (entity.attributes.preset_modes.includes("away")) {
+                          columns.push("1fr");
+                      }
+                      if (entity.attributes.preset_modes.includes("comfort")) {
+                          columns.push("1fr");
+                      }
+                      if (entity.attributes.preset_modes.includes("home")) {
+                          columns.push("1fr");
+                      }
+                      if (entity.attributes.preset_modes.includes("sleep")) {
+                          columns.push("1fr");
+                      }
+                      if (entity.attributes.preset_modes.includes("activity")) {
+                          columns.push("1fr");
+                      }
+                      return columns.join(" ");
+                ]]]
+            - grid-template-rows: "min-content"
+            - justify-items: "center"
+          card:
+            - box-shadow: "none"
+            - padding: "0px"
+            - border-radius: "21px"
+            - background-color: "rgba(var(--color-theme),0.1)"
+          custom_fields:
+            none:
+              - display: >
+                  [[[
+                    if (entity.attributes.preset_modes.includes("none")) {
+                        return "block";
+                    } else {
+                        return "none";
+                    }
+                  ]]]
+            away:
+              - display: >
+                  [[[
+                    if (entity.attributes.preset_modes.includes("away")) {
+                        return "block";
+                    } else {
+                        return "none";
+                    }
+                  ]]]
+            comfort:
+              - display: >
+                  [[[
+                    if (entity.attributes.preset_modes.includes("comfort")) {
+                        return "block";
+                    } else {
+                        return "none";
+                    }
+                  ]]]
+            home:
+              - display: >
+                  [[[
+                    if (entity.attributes.preset_modes.includes("home")) {
+                        return "block";
+                    } else {
+                        return "none";
+                    }
+                  ]]]
+            sleep:
+              - display: >
+                  [[[
+                    if (entity.attributes.preset_modes.includes("sleep")) {
+                        return "block";
+                    } else {
+                        return "none";
+                    }
+                  ]]]
+            activity:
+              - display: >
+                  [[[
+                    if (entity.attributes.preset_modes.includes("activity")) {
+                        return "block";
+                    } else {
+                        return "none";
+                    }
+                  ]]]
+        custom_fields:
+          none:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              template: "widget_icon"
+              icon: "mdi:toggle-switch-off-outline"
+              tap_action:
+                action: "call-service"
+                service: "climate.set_preset_mode"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+                  preset_mode: "none"
+              styles:
+                card:
+                  - background-color: "transparent"
+                  - height: "42px"
+                  - width: "42px"
+                  - border-radius: "50%"
+                  - box-shadow: "none"
+              state:
+                - value: "none"
+                  styles:
+                    card:
+                      - background-color: "var(--card-background-color)"
+                      - box-shadow: "var( --ha-card-box-shadow)"
+                      - transform: "scale(0.95)"
+          away:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              template: "widget_icon"
+              icon: "mdi:car"
+              tap_action:
+                action: "call-service"
+                service: "climate.set_preset_mode"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+                  preset_mode: "away"
+              styles:
+                card:
+                  - background-color: "transparent"
+                  - height: "42px"
+                  - width: "42px"
+                  - border-radius: "50%"
+                  - box-shadow: "none"
+              state:
+                - value: "away"
+                  styles:
+                    card:
+                      - background-color: "var(--card-background-color)"
+                      - box-shadow: "var( --ha-card-box-shadow)"
+                      - transform: "scale(0.95)"
+          comfort:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              template: "widget_icon"
+              icon: "mdi:car-seat-heater"
+              tap_action:
+                action: "call-service"
+                service: "climate.set_preset_mode"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+                  preset_mode: "comfort"
+              styles:
+                card:
+                  - background-color: "transparent"
+                  - height: "42px"
+                  - width: "42px"
+                  - border-radius: "50%"
+                  - box-shadow: "none"
+              state:
+                - value: "comfort"
+                  styles:
+                    card:
+                      - background-color: "var(--card-background-color)"
+                      - box-shadow: "var( --ha-card-box-shadow)"
+                      - transform: "scale(0.95)"
+          home:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              template: "widget_icon"
+              icon: "mdi:home"
+              tap_action:
+                action: "call-service"
+                service: "climate.set_preset_mode"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+                  preset_mode: "home"
+              styles:
+                card:
+                  - background-color: "transparent"
+                  - height: "42px"
+                  - width: "42px"
+                  - border-radius: "50%"
+                  - box-shadow: "none"
+              state:
+                - value: "home"
+                  styles:
+                    card:
+                      - background-color: "var(--card-background-color)"
+                      - box-shadow: "var( --ha-card-box-shadow)"
+                      - transform: "scale(0.95)"
+          sleep:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              template: "widget_icon"
+              icon: "mdi:sleep"
+              tap_action:
+                action: "call-service"
+                service: "climate.set_preset_mode"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+                  preset_mode: "sleep"
+              styles:
+                card:
+                  - background-color: "transparent"
+                  - height: "42px"
+                  - width: "42px"
+                  - border-radius: "50%"
+                  - box-shadow: "none"
+              state:
+                - value: "sleep"
+                  styles:
+                    card:
+                      - background-color: "var(--card-background-color)"
+                      - box-shadow: "var( --ha-card-box-shadow)"
+                      - transform: "scale(0.95)"
+          activity:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              template: "widget_icon"
+              icon: "mdi:ticket"
+              tap_action:
+                action: "call-service"
+                service: "climate.set_preset_mode"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+                  preset_mode: "activity"
+              styles:
+                card:
+                  - background-color: "transparent"
+                  - height: "42px"
+                  - width: "42px"
+                  - border-radius: "50%"
+                  - box-shadow: "none"
+              state:
+                - value: "activity"
+                  styles:
+                    card:
+                      - background-color: "var(--card-background-color)"
+                      - box-shadow: "var( --ha-card-box-shadow)"
+                      - transform: "scale(0.95)"
+    footer:
+      card:
+        type: "custom:button-card"
+        template: "popup_list_items"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template: "popup_button_back"
+          item2:
+            card:
+              type: "custom:button-card"
+              template: "popup_button_power"
+              entity: "[[[ return entity.entity_id ]]]"
