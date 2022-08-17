@@ -194,9 +194,8 @@ popup_thermostat_preset:
                   - border-radius: "50%"
                   - box-shadow: "none"
               state:
-#                - value: "none"
                 - operator: template
-                  value: "[[[ return entity.attributes.preset_mode == 'none' ]]]"
+                  value: "[[[ return entity.attributes.preset_mode == "none" ]]]"
                   styles:
                     card:
                       - background-color: "var(--card-background-color)"
@@ -222,9 +221,8 @@ popup_thermostat_preset:
                   - border-radius: "50%"
                   - box-shadow: "none"
               state:
-#                - value: "away"
                 - operator: template
-                  value: "[[[ return entity.attributes.preset_mode == 'away' ]]]"
+                  value: "[[[ return entity.attributes.preset_mode == "away" ]]]"
                   styles:
                     card:
                       - background-color: "var(--card-background-color)"
@@ -250,9 +248,8 @@ popup_thermostat_preset:
                   - border-radius: "50%"
                   - box-shadow: "none"
               state:
-#                - value: "comfort"
                 - operator: template
-                  value: "[[[ return entity.attributes.preset_mode == 'comfort' ]]]"
+                  value: "[[[ return entity.attributes.preset_mode == "comfort" ]]]"
                   styles:
                     card:
                       - background-color: "var(--card-background-color)"
@@ -278,9 +275,8 @@ popup_thermostat_preset:
                   - border-radius: "50%"
                   - box-shadow: "none"
               state:
-#                - value: "home"
                 - operator: template
-                  value: "[[[ return entity.attributes.preset_mode == 'home' ]]]"
+                  value: "[[[ return entity.attributes.preset_mode == "home" ]]]"
                   styles:
                     card:
                       - background-color: "var(--card-background-color)"
@@ -306,9 +302,8 @@ popup_thermostat_preset:
                   - border-radius: "50%"
                   - box-shadow: "none"
               state:
-#                - value: "sleep"
                 - operator: template
-                  value: "[[[ return entity.attributes.preset_mode == 'sleep' ]]]"
+                  value: "[[[ return entity.attributes.preset_mode == "sleep" ]]]"
                   styles:
                     card:
                       - background-color: "var(--card-background-color)"
@@ -334,9 +329,8 @@ popup_thermostat_preset:
                   - border-radius: "50%"
                   - box-shadow: "none"
               state:
-#                - value: "activity"
                 - operator: template
-                  value: "[[[ return entity.attributes.preset_mode == 'activity' ]]]"
+                  value: "[[[ return entity.attributes.preset_mode == "activity" ]]]"
                   styles:
                     card:
                       - background-color: "var(--card-background-color)"
