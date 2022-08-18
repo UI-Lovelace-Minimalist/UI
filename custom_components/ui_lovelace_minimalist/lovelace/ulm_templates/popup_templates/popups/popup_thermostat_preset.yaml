@@ -7,7 +7,7 @@ popup_thermostat_preset:
   styles:
     grid:
       - grid-template-areas: "'header' 'content1' 'buttons' 'footer'"
-      - grid-template-rows: "16vh 42vh 14vh 14vh"
+      - grid-template-rows: "16vh 32vh 14vh 14vh"
       - grid-template-columns: "1fr"
       - column-gap: "30px"
     card:
@@ -27,9 +27,9 @@ popup_thermostat_preset:
         - align-self: "end"
         - margin-top: "25px"
   extra_styles: |
-    @media (max-width: 800px) {
+    @media (max-width: 500px) {
       #container {
-        grid-template-rows: 16vh 52vh 14vh 14vh !important;
+        grid-template-rows: 16vh 42vh 14vh 14vh !important;
       }
       #buttons {
         width: 100% !important;
@@ -179,7 +179,7 @@ popup_thermostat_preset:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
               template: "widget_icon"
-              icon: "mdi:toggle-switch-off-outline"
+              icon: "mdi:toggle-switch-off"
               tap_action:
                 action: "call-service"
                 service: "climate.set_preset_mode"
@@ -194,8 +194,8 @@ popup_thermostat_preset:
                   - border-radius: "50%"
                   - box-shadow: "none"
               state:
-                - operator: template
-                  value: "[[[ return entity.attributes.preset_mode == "none" ]]]"
+                - operator: "template"
+                  value: '[[[ return entity.attributes.preset_mode == "none" ]]]'
                   styles:
                     card:
                       - background-color: "var(--card-background-color)"
@@ -206,7 +206,7 @@ popup_thermostat_preset:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
               template: "widget_icon"
-              icon: "mdi:car"
+              icon: "mdi:home-switch-outline"
               tap_action:
                 action: "call-service"
                 service: "climate.set_preset_mode"
@@ -221,8 +221,8 @@ popup_thermostat_preset:
                   - border-radius: "50%"
                   - box-shadow: "none"
               state:
-                - operator: template
-                  value: "[[[ return entity.attributes.preset_mode == "away" ]]]"
+                - operator: "template"
+                  value: '[[[ return entity.attributes.preset_mode == "away" ]]]'
                   styles:
                     card:
                       - background-color: "var(--card-background-color)"
@@ -233,7 +233,7 @@ popup_thermostat_preset:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
               template: "widget_icon"
-              icon: "mdi:car-seat-heater"
+              icon: "mdi:car-seat-cooler"
               tap_action:
                 action: "call-service"
                 service: "climate.set_preset_mode"
@@ -248,8 +248,8 @@ popup_thermostat_preset:
                   - border-radius: "50%"
                   - box-shadow: "none"
               state:
-                - operator: template
-                  value: "[[[ return entity.attributes.preset_mode == "comfort" ]]]"
+                - operator: "template"
+                  value: '[[[ return entity.attributes.preset_mode == "comfort" ]]]'
                   styles:
                     card:
                       - background-color: "var(--card-background-color)"
@@ -275,8 +275,8 @@ popup_thermostat_preset:
                   - border-radius: "50%"
                   - box-shadow: "none"
               state:
-                - operator: template
-                  value: "[[[ return entity.attributes.preset_mode == "home" ]]]"
+                - operator: "template"
+                  value: '[[[ return entity.attributes.preset_mode == "home" ]]]'
                   styles:
                     card:
                       - background-color: "var(--card-background-color)"
@@ -302,8 +302,8 @@ popup_thermostat_preset:
                   - border-radius: "50%"
                   - box-shadow: "none"
               state:
-                - operator: template
-                  value: "[[[ return entity.attributes.preset_mode == "sleep" ]]]"
+                - operator: "template"
+                  value: '[[[ return entity.attributes.preset_mode == "sleep" ]]]'
                   styles:
                     card:
                       - background-color: "var(--card-background-color)"
@@ -329,8 +329,8 @@ popup_thermostat_preset:
                   - border-radius: "50%"
                   - box-shadow: "none"
               state:
-                - operator: template
-                  value: "[[[ return entity.attributes.preset_mode == "activity" ]]]"
+                - operator: "template"
+                  value: '[[[ return entity.attributes.preset_mode == "activity" ]]]'
                   styles:
                     card:
                       - background-color: "var(--card-background-color)"
