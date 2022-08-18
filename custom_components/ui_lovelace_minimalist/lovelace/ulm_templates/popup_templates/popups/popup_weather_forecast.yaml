@@ -111,7 +111,7 @@ popup_weather_forecast:
                 }
 
                 let surpress_first_forecast = ('ulm_weather_popup_surpress_first_forecast' in variables) ? variables.ulm_weather_popup_surpress_first_forecast : false;
-                
+
                 let index = 0;
                 for (let forecast in entity.attributes.forecast) {
 

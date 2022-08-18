@@ -356,11 +356,11 @@ code shows an example how to check and define a default value of custom popup va
 element: >
   [[[
     let surpress_first_forecast = ('ulm_weather_popup_surpress_first_forecast' in variables) ? variables.ulm_weather_popup_surpress_first_forecast : false;
-    
+
     if (surpress_first_forecast) {
       ...
     }
-   
+
     return surpress_first_forecast;
   ]]]
 ```
