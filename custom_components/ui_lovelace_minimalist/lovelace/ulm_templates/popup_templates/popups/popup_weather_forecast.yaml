@@ -1,7 +1,8 @@
 ---
 popup_weather_forecast:
   variables:
-    ulm_weather_popup_surpress_first_forecast: false  show_icon: false
+    ulm_weather_popup_surpress_first_forecast: false
+  show_icon: false
   show_name: false
   show_label: false
   show_units: false
