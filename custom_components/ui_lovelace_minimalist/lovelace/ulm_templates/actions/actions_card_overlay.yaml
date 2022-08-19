@@ -14,7 +14,7 @@ ulm_actions_card_overlay:
         - left: "0px"
         - top: "0px"
         - height: "100%"
-        - width: "100"%
+        - width: "100%"
         - display: "grid"
         - z-index: 10
   custom_fields:
