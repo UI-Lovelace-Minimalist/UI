@@ -31,7 +31,7 @@ To enable this popup, add the following code to your card:
 | Variable                                  | Default | Required         | Notes                         |
 |-------------------------------------------|---------|------------------|-------------------------------|
 | entity                                    |         | :material-check: |                               |
-| ulm_weather_popup_surpress_first_forecast | false   | :material-close: | Surpress first forecast entry |
+| ulm_weather_popup_surpress_first_forecast | false   | :material-close: | Suppress first forecast entry |
 
 ## Credits
 
