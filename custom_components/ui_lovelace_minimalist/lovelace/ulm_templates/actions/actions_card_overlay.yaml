@@ -6,16 +6,16 @@ ulm_actions_card_overlay:
     - "ulm_actions_card"
   styles:
     grid:
-      - position: relative
+      - position: "relative"
       - z-index: 0
     custom_fields:
       actions_card_overlay:
-        - position: absolute
-        - left: 0px
-        - top: 0px
-        - height: 100%
-        - width: 100%
-        - display: grid
+        - position: "absolute"
+        - left: "0px"
+        - top: "0px"
+        - height: "100%"
+        - width: "100"%
+        - display: "grid"
         - z-index: 10
   custom_fields:
     actions_card_overlay:
@@ -29,8 +29,8 @@ ulm_actions_card_overlay:
         show_label: false
         styles:
           card:
-            - height: 100%
-            - background: none
+            - height: "100%"
+            - background: "none"
         variables:
           ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
           ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
