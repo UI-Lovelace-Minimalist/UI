@@ -230,9 +230,8 @@ card_esh_room:
                         if (color && variables.ulm_card_dynamic_color) {
                           return 'rgba(' + color + ', 0.3)';
                         }
-                        return 'rgba(var(--color-yellow), 0.2)';
                       }
-                      return 'rgba(var(--color-theme), 0.3)';
+                      return 'rgba(var(--color-yellow), 0.2)';
                     ]]]
           - value: "off"
             icon: "mdi:lightbulb-off"
