@@ -42,7 +42,7 @@ card_esh_room:
                 if (color && variables.ulm_card_dynamic_color) {
                   return 'rgba(' + color + ', 0.2)';
                 }
-                return 'var(--color-yellow-background)';
+                return 'rgba(var(--color-background-yellow), 0.2)';
               }
             }
             return 'var(--ha-card-background, var(--card-background-color, white))';
