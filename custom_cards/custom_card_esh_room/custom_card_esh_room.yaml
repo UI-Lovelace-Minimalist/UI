@@ -14,45 +14,95 @@ card_esh_room:
     ulm_custom_card_esh_room_climate_entity: null
     ulm_card_thermostat_enable_popup: false
     ulm_card_light_enable_popup: false
+    ulm_card_dynamic_color: false
   label: >-
     [[[
-        if (!entity) {
-          return "<br/>";
-        } else if (entity.state == "on"){
-          var bri = Math.round(entity.attributes.brightness / 2.55);
-          return (bri ? bri + "%" : variables.ulm_translation_state) ;
-        } else {
-          return variables.ulm_translation_state;
-        }
+      var label_entity = variables.ulm_custom_card_esh_room_light_entity
+        ? states[variables.ulm_custom_card_esh_room_light_entity]
+        : entity;
+      if (!label_entity) {
+        return "<br />";
+      } else if (label_entity.state == "on") {
+        var bri = Math.round(label_entity.attributes.brightness / 2.55);
+        return (bri ? bri + "%" : variables.ulm_translation_state);
+      } else {
+        return variables.ulm_translation_state;
+      }
     ]]]
   styles:
     card:
       - border-radius: "20px"
       - box-shadow: "var(--box-shadow)"
       - padding: "12px"
+      - background-color: >-
+          [[[
+            if (variables.ulm_custom_card_esh_room_light_entity) {
+              var color = states[variables.ulm_custom_card_esh_room_light_entity].attributes.rgb_color;
+              if (states[variables.ulm_custom_card_esh_room_light_entity].state == "on") {
+                if (color && variables.ulm_card_dynamic_color) {
+                  return 'rgba(' + color + ', 0.2)';
+                }
+                return 'rgba(var(--color-background-yellow), 0.2)';
+              }
+            }
+            return 'var(--ha-card-background, var(--card-background-color, white))';
+          ]]]
     grid:
       - grid-template-areas: >-
           [[[
             if (variables.ulm_custom_card_esh_room_light_entity && variables.ulm_custom_card_esh_room_climate_entity) {
-                return "'i light' 'n climate' 'l climate'";
+              return "'i light' 'n climate' 'l climate'";
             } else if (variables.ulm_custom_card_esh_room_light_entity) {
-                return "'i light' 'n n' 'l l'";
+              return "'i light' 'n n' 'l l'";
             } else if (variables.ulm_custom_card_esh_room_climate_entity) {
-                return "'i .' 'n climate' 'l climate'";
+              return "'i .' 'n climate' 'l climate'";
             } else {
-                return "'i .' 'n n' 'l l'";
+              return "'i .' 'n n' 'l l'";
             }
           ]]]
       - grid-template-columns: "1fr 1fr"
       - grid-template-rows: "min-content"
     icon:
-      - color: "rgba(var(--color-theme),0.2)"
+      - filter: >-
+          [[[
+            if (variables.ulm_custom_card_esh_room_light_entity
+                && states[variables.ulm_custom_card_esh_room_light_entity].state == "on"
+                && variables.ulm_card_dynamic_color) {
+              return "contrast(0.6) saturate(1.7)";
+            }
+          ]]]
+      - color: >-
+          [[[
+            if (variables.ulm_custom_card_esh_room_light_entity) {
+              var color = states[variables.ulm_custom_card_esh_room_light_entity].attributes.rgb_color;
+              if (states[variables.ulm_custom_card_esh_room_light_entity].state == "on") {
+                if (color && variables.ulm_card_dynamic_color) {
+                  return 'rgba(' + color + ', 1)';
+                }
+                return 'rgba(var(--color-yellow), 1)';
+              }
+            }
+            return 'rgba(var(--color-theme), 0.2)';
+          ]]]
     img_cell:
-      - background-color: "rgba(var(--color-theme),0.05)"
       - border-radius: "50%"
-      - place-self: "center"
+      - place-self: "flex-start"
       - width: "42px"
       - height: "42px"
+      - margin-left: "12px"
+      - background-color: >-
+          [[[
+            if (variables.ulm_custom_card_esh_room_light_entity) {
+              var color = states[variables.ulm_custom_card_esh_room_light_entity].attributes.rgb_color;
+              if (states[variables.ulm_custom_card_esh_room_light_entity].state == "on") {
+                if (color && variables.ulm_card_dynamic_color) {
+                  return 'rgba(' + color + ', 0.3)';
+                }
+                return 'rgba(var(--color-yellow), 0.2)';
+              }
+            }
+            return 'rgba(var(--color-theme), 0.05)';
+          ]]]
     name:
       - align-self: "end"
       - justify-self: "start"
@@ -62,25 +112,47 @@ card_esh_room:
       - margin-top: >-
           [[[
             if (variables.ulm_custom_card_esh_room_light_entity && variables.ulm_custom_card_esh_room_climate_entity) {
-                return "8px";
+              return "8px";
             } else if (variables.ulm_custom_card_esh_room_light_entity) {
-                return "12px";
+              return "12px";
             } else if (variables.ulm_custom_card_esh_room_climate_entity) {
-                return "8px";
+              return "8px";
             } else {
-                return "12px";
+              return "12px";
             }
           ]]]
       - max-width: >-
           [[[
             if (variables.ulm_custom_card_esh_room_light_entity && variables.ulm_custom_card_esh_room_climate_entity) {
-                return "85%";
+              return "85%";
             } else if (variables.ulm_custom_card_esh_room_light_entity) {
-                return "100%";
+              return "100%";
             } else if (variables.ulm_custom_card_esh_room_climate_entity) {
-                return "85%";
+              return "85%";
             } else {
-                return "100%";
+              return "100%";
+            }
+          ]]]
+      - color: >-
+          [[[
+            if (variables.ulm_custom_card_esh_room_light_entity) {
+              var color = states[variables.ulm_custom_card_esh_room_light_entity].attributes.rgb_color;
+              if (states[variables.ulm_custom_card_esh_room_light_entity].state == "on") {
+                if (color && variables.ulm_card_dynamic_color) {
+                  return 'rgba(' + color + ', 1)';
+                }
+                return 'rgba(var(color-yellow-text), 1)';
+              }
+              return 'rgba(var(--color-theme), 0.6)';
+            }
+            return 'rgba(var(--color-theme), 0.6)';
+          ]]]
+      - filter: >-
+          [[[
+            if (variables.ulm_custom_card_esh_room_light_entity
+                && states[variables.ulm_custom_card_esh_room_light_entity].state == "on"
+                && variables.ulm_card_dynamic_color) {
+              return "contrast(0.6) saturate(1.7)";
             }
           ]]]
     label:
@@ -93,25 +165,25 @@ card_esh_room:
       - margin-bottom: >-
           [[[
             if (variables.ulm_custom_card_esh_room_light_entity && variables.ulm_custom_card_esh_room_climate_entity) {
-                return "0px";
+              return "0px";
             } else if (variables.ulm_custom_card_esh_room_light_entity) {
-                return "3px";
+              return "3px";
             } else if (variables.ulm_custom_card_esh_room_climate_entity) {
-                return "0px";
+              return "0px";
             } else {
-                return "3px";
+              return "3px";
             }
           ]]]
       - max-width: >-
           [[[
             if (variables.ulm_custom_card_esh_room_light_entity && variables.ulm_custom_card_esh_room_climate_entity) {
-                return "85%";
+              return "85%";
             } else if (variables.ulm_custom_card_esh_room_light_entity) {
-                return "100%";
+              return "100%";
             } else if (variables.ulm_custom_card_esh_room_climate_entity) {
-                return "85%";
+              return "85%";
             } else {
-                return "100%";
+              return "100%";
             }
           ]]]
     state:
@@ -125,20 +197,20 @@ card_esh_room:
       light:
         - display: >
             [[[
-                  if (variables.ulm_custom_card_esh_room_light_entity) {
-                      return "block";
-                  } else {
-                      return "none";
-                  }
+              if (variables.ulm_custom_card_esh_room_light_entity) {
+                  return "block";
+              } else {
+                  return "none";
+              }
             ]]]
       climate:
         - display: >
             [[[
-                  if (variables.ulm_custom_card_esh_room_climate_entity) {
-                      return "block";
-                  } else {
-                      return "none";
-                  }
+              if (variables.ulm_custom_card_esh_room_climate_entity) {
+                return "block";
+              } else {
+                return "none";
+              }
             ]]]
   custom_fields:
     light:
@@ -150,9 +222,18 @@ card_esh_room:
             icon: "mdi:lightbulb"
             styles:
               icon:
-                - color: "rgba(var(--color-yellow),1)"
+                - color: "rgba(var(--color-yellow), 1)"
               img_cell:
-                - background-color: "rgba(var(--color-yellow), 0.2)"
+                - background-color: >-
+                    [[[
+                      if (variables.ulm_custom_card_esh_room_light_entity) {
+                        var color = states[variables.ulm_custom_card_esh_room_light_entity].attributes.rgb_color;
+                        if (color && variables.ulm_card_dynamic_color) {
+                          return 'rgba(' + color + ', 0.3)';
+                        }
+                      }
+                      return 'rgba(var(--color-yellow), 0.2)';
+                    ]]]
           - value: "off"
             icon: "mdi:lightbulb-off"
         type: "custom:button-card"
@@ -163,8 +244,7 @@ card_esh_room:
           [[[
             let vars = {};
             vars.ulm_card_light_enable_popup = variables.ulm_card_light_enable_popup;
-
-            if(variables.ulm_card_light_enable_popup) {
+            if (variables.ulm_card_light_enable_popup) {
               vars.ulm_custom_popup = {
                 'template': 'popup_light_brightness',
                 'popup_variables': {
@@ -174,7 +254,6 @@ card_esh_room:
             }
             return vars;
           ]]]
-
     climate:
       card:
         entity: "[[[ return variables.ulm_custom_card_esh_room_climate_entity ]]]"
@@ -235,8 +314,7 @@ card_esh_room:
           [[[
             let vars = {};
             vars.ulm_card_thermostat_enable_popup = variables.ulm_card_light_enable_popup;
-
-            if(variables.ulm_card_thermostat_enable_popup) {
+            if (variables.ulm_card_thermostat_enable_popup) {
               vars.ulm_custom_popup = {
                 'template': 'popup_thermostat_temperature',
                 'popup_variables': {
