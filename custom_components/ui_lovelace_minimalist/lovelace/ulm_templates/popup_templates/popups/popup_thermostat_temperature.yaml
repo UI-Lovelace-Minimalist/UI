@@ -68,46 +68,88 @@ popup_thermostat_temperature:
             - grid-template-areas: >
                 [[[
                       var areas = [];
-                      if (entity.attributes.hvac_modes.includes("auto")) {
-                          areas.push("auto");
-                      }
-                      if (entity.attributes.hvac_modes.includes("heat")) {
-                          areas.push("heat");
-                      }
-                      if (entity.attributes.hvac_modes.includes("cool")) {
-                          areas.push("cool");
-                      }
-                      if (entity.attributes.hvac_modes.includes("dry")) {
-                          areas.push("dry");
-                      }
-                      if (entity.attributes.hvac_modes.includes("fan_only")) {
-                          areas.push("fan_only");
-                      }
-                      if (entity.attributes.hvac_modes.includes("heat_cool")) {
-                          areas.push("heat_cool");
+                      if !(variables.ulm_popup_thermostat_preset_mode){
+                        if (entity.attributes.hvac_modes.includes("auto")) {
+                            areas.push("auto");
+                        }
+                        if (entity.attributes.hvac_modes.includes("heat")) {
+                            areas.push("heat");
+                        }
+                        if (entity.attributes.hvac_modes.includes("cool")) {
+                            areas.push("cool");
+                        }
+                        if (entity.attributes.hvac_modes.includes("dry")) {
+                            areas.push("dry");
+                        }
+                        if (entity.attributes.hvac_modes.includes("fan_only")) {
+                            areas.push("fan_only");
+                        }
+                        if (entity.attributes.hvac_modes.includes("heat_cool")) {
+                            areas.push("heat_cool");
+                        }
+                      } else {
+                        if (entity.attributes.preset_modes.includes("none")) {
+                            areas.push("none");
+                        }
+                        if (entity.attributes.preset_modes.includes("away")) {
+                            areas.push("away");
+                        }
+                        if (entity.attributes.preset_modes.includes("comfort")) {
+                            areas.push("comfort");
+                        }
+                        if (entity.attributes.preset_modes.includes("home")) {
+                            areas.push("home");
+                        }
+                        if (entity.attributes.preset_modes.includes("sleep")) {
+                            areas.push("sleep");
+                        }
+                        if (entity.attributes.preset_modes.includes("activity")) {
+                            areas.push("activity");
+                        }
                       }
                       return "\"" + areas.join(" ") + "\"";
                 ]]]
             - grid-template-columns: >
                 [[[
                       var columns = [];
-                      if (entity.attributes.hvac_modes.includes("auto")) {
-                          columns.push("1fr");
-                      }
-                      if (entity.attributes.hvac_modes.includes("heat")) {
-                          columns.push("1fr");
-                      }
-                      if (entity.attributes.hvac_modes.includes("cool")) {
-                          columns.push("1fr");
-                      }
-                      if (entity.attributes.hvac_modes.includes("dry")) {
-                          columns.push("1fr");
-                      }
-                      if (entity.attributes.hvac_modes.includes("fan_only")) {
-                          columns.push("1fr");
-                      }
-                      if (entity.attributes.hvac_modes.includes("heat_cool")) {
-                          columns.push("1fr");
+                      if !(variables.ulm_popup_thermostat_preset_mode){
+                        if (entity.attributes.hvac_modes.includes("auto")) {
+                            columns.push("1fr");
+                        }
+                        if (entity.attributes.hvac_modes.includes("heat")) {
+                            columns.push("1fr");
+                        }
+                        if (entity.attributes.hvac_modes.includes("cool")) {
+                            columns.push("1fr");
+                        }
+                        if (entity.attributes.hvac_modes.includes("dry")) {
+                            columns.push("1fr");
+                        }
+                        if (entity.attributes.hvac_modes.includes("fan_only")) {
+                            columns.push("1fr");
+                        }
+                        if (entity.attributes.hvac_modes.includes("heat_cool")) {
+                            columns.push("1fr");
+                        }
+                      } else {
+                        if (entity.attributes.preset_modes.includes("none")) {
+                            columns.push("1fr");
+                        }
+                        if (entity.attributes.preset_modes.includes("away")) {
+                            columns.push("1fr");
+                        }
+                        if (entity.attributes.preset_modes.includes("comfort")) {
+                            columns.push("1fr");
+                        }
+                        if (entity.attributes.preset_modes.includes("home")) {
+                            columns.push("1fr");
+                        }
+                        if (entity.attributes.preset_modes.includes("sleep")) {
+                            columns.push("1fr");
+                        }
+                        if (entity.attributes.preset_modes.includes("activity")) {
+                            columns.push("1fr");
+                        }
                       }
                       return columns.join(" ");
                 ]]]
@@ -168,6 +210,60 @@ popup_thermostat_temperature:
               - display: >
                   [[[
                     if (entity.attributes.hvac_modes.includes("heat_cool")) {
+                        return "block";
+                    } else {
+                        return "none";
+                    }
+                  ]]]
+            none:
+              - display: >
+                  [[[
+                    if (entity.attributes.preset_modes.includes("none")) {
+                        return "block";
+                    } else {
+                        return "none";
+                    }
+                  ]]]
+            away:
+              - display: >
+                  [[[
+                    if (entity.attributes.preset_modes.includes("away")) {
+                        return "block";
+                    } else {
+                        return "none";
+                    }
+                  ]]]
+            comfort:
+              - display: >
+                  [[[
+                    if (entity.attributes.preset_modes.includes("comfort")) {
+                        return "block";
+                    } else {
+                        return "none";
+                    }
+                  ]]]
+            home:
+              - display: >
+                  [[[
+                    if (entity.attributes.preset_modes.includes("home")) {
+                        return "block";
+                    } else {
+                        return "none";
+                    }
+                  ]]]
+            sleep:
+              - display: >
+                  [[[
+                    if (entity.attributes.preset_modes.includes("sleep")) {
+                        return "block";
+                    } else {
+                        return "none";
+                    }
+                  ]]]
+            activity:
+              - display: >
+                  [[[
+                    if (entity.attributes.preset_modes.includes("activity")) {
                         return "block";
                     } else {
                         return "none";
@@ -325,6 +421,168 @@ popup_thermostat_temperature:
                   - box-shadow: "none"
               state:
                 - value: "heat_cool"
+                  styles:
+                    card:
+                      - background-color: "var(--card-background-color)"
+                      - box-shadow: "var( --ha-card-box-shadow)"
+                      - transform: "scale(0.95)"
+          none:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              template: "widget_icon"
+              icon: "mdi:toggle-switch-off"
+              tap_action:
+                action: "call-service"
+                service: "climate.set_preset_mode"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+                  preset_mode: "none"
+              styles:
+                card:
+                  - background-color: "transparent"
+                  - height: "42px"
+                  - width: "42px"
+                  - border-radius: "50%"
+                  - box-shadow: "none"
+              state:
+                - operator: "template"
+                  value: "[[[ return entity.attributes.preset_mode == 'none' ]]]"
+                  styles:
+                    card:
+                      - background-color: "var(--card-background-color)"
+                      - box-shadow: "var( --ha-card-box-shadow)"
+                      - transform: "scale(0.95)"
+          away:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              template: "widget_icon"
+              icon: "mdi:home-switch-outline"
+              tap_action:
+                action: "call-service"
+                service: "climate.set_preset_mode"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+                  preset_mode: "away"
+              styles:
+                card:
+                  - background-color: "transparent"
+                  - height: "42px"
+                  - width: "42px"
+                  - border-radius: "50%"
+                  - box-shadow: "none"
+              state:
+                - operator: "template"
+                  value: "[[[ return entity.attributes.preset_mode == 'away' ]]]"
+                  styles:
+                    card:
+                      - background-color: "var(--card-background-color)"
+                      - box-shadow: "var( --ha-card-box-shadow)"
+                      - transform: "scale(0.95)"
+          comfort:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              template: "widget_icon"
+              icon: "mdi:car-seat-cooler"
+              tap_action:
+                action: "call-service"
+                service: "climate.set_preset_mode"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+                  preset_mode: "comfort"
+              styles:
+                card:
+                  - background-color: "transparent"
+                  - height: "42px"
+                  - width: "42px"
+                  - border-radius: "50%"
+                  - box-shadow: "none"
+              state:
+                - operator: "template"
+                  value: "[[[ return entity.attributes.preset_mode == 'comfort' ]]]"
+                  styles:
+                    card:
+                      - background-color: "var(--card-background-color)"
+                      - box-shadow: "var( --ha-card-box-shadow)"
+                      - transform: "scale(0.95)"
+          home:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              template: "widget_icon"
+              icon: "mdi:home"
+              tap_action:
+                action: "call-service"
+                service: "climate.set_preset_mode"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+                  preset_mode: "home"
+              styles:
+                card:
+                  - background-color: "transparent"
+                  - height: "42px"
+                  - width: "42px"
+                  - border-radius: "50%"
+                  - box-shadow: "none"
+              state:
+                - operator: "template"
+                  value: "[[[ return entity.attributes.preset_mode == 'home' ]]]"
+                  styles:
+                    card:
+                      - background-color: "var(--card-background-color)"
+                      - box-shadow: "var( --ha-card-box-shadow)"
+                      - transform: "scale(0.95)"
+          sleep:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              template: "widget_icon"
+              icon: "mdi:sleep"
+              tap_action:
+                action: "call-service"
+                service: "climate.set_preset_mode"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+                  preset_mode: "sleep"
+              styles:
+                card:
+                  - background-color: "transparent"
+                  - height: "42px"
+                  - width: "42px"
+                  - border-radius: "50%"
+                  - box-shadow: "none"
+              state:
+                - operator: "template"
+                  value: "[[[ return entity.attributes.preset_mode == 'sleep' ]]]"
+                  styles:
+                    card:
+                      - background-color: "var(--card-background-color)"
+                      - box-shadow: "var( --ha-card-box-shadow)"
+                      - transform: "scale(0.95)"
+          activity:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              template: "widget_icon"
+              icon: "mdi:ticket"
+              tap_action:
+                action: "call-service"
+                service: "climate.set_preset_mode"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+                  preset_mode: "activity"
+              styles:
+                card:
+                  - background-color: "transparent"
+                  - height: "42px"
+                  - width: "42px"
+                  - border-radius: "50%"
+                  - box-shadow: "none"
+              state:
+                - operator: "template"
+                  value: "[[[ return entity.attributes.preset_mode == 'activity' ]]]"
                   styles:
                     card:
                       - background-color: "var(--card-background-color)"
