@@ -1,6 +1,8 @@
 ---
 popup_weather_radar:
   template: "popup_weather_forecast"
+  variables:
+    ulm_weather_popup_surpress_first_forecast: false
   styles:
     grid:
       - grid-template-areas: "'header' 'content2' 'buttons' 'footer'"

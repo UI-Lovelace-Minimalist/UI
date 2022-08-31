@@ -104,6 +104,7 @@ ulm_actions_card:
                 return popup_config.popup_variables;
               }
             }
+            return {};
           ]]]
   hold_action:
     action: >
@@ -134,7 +135,7 @@ ulm_actions_card:
           action = 'more-info'
         }
 
-        return action
+        return action;
       ]]]
     navigation_path: "[[[ return variables.ulm_card_hold_action == 'navigate' ? variables.ulm_card_hold_navigate_path : '/0' ]]]"
     haptic: "[[[ return variables.ulm_card_hold_haptic != null ? variables.ulm_card_hold_haptic : 'none' ]]]"
@@ -208,6 +209,7 @@ ulm_actions_card:
                 return popup_config.popup_variables;
               }
             }
+            return {};
           ]]]
   double_tap_action:
     action: >
@@ -238,7 +240,7 @@ ulm_actions_card:
           action = 'more-info'
         }
 
-        return action
+        return action;
       ]]]
     navigation_path: "[[[ return variables.ulm_card_double_tap_action == 'navigate' ? variables.ulm_card_double_tap_navigate_path : '/0' ]]]"
     haptic: "[[[ return variables.ulm_card_double_tap_haptic != null ? variables.ulm_card_double_tap_haptic : 'none' ]]]"
@@ -312,4 +314,5 @@ ulm_actions_card:
                 return popup_config.popup_variables;
               }
             }
+            return {};
           ]]]
