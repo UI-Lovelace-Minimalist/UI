@@ -101,6 +101,38 @@ To define the path of `navigate` action, add one of the following depending on y
 
 ```
 
+## Call service action
+
+It is possible to call a service using the custom actions on the icon, name and card.
+
+To define the service and its data of `call-service` action, add one of the following
+variables depending on your action :
+
+- ulm_card_tap_service / ulm_card_tap_service_data
+- ulm_card_hold_service / ulm_card_hold_service_data
+- ulm_card_double_tap_service / ulm_card_double_tap_service_data
+- ulm_icon_tap_service / ulm_icon_tap_service_data
+- ulm_icon_hold_service / ulm_icon_hold_service_data
+- ulm_icon_double_tap_service / ulm_icon_double_tap_service_data
+- ulm_name_tap_service / ulm_name_tap_service_data
+- ulm_name_hold_service / ulm_name_hold_service_data
+- ulm_name_double_tap_service / ulm_name_double_tap_service_data
+
+The following configuration shows the configuration of a service call using the
+tap action.
+
+```yaml
+- type: "custom:button-card"
+  template: "card_cover"
+  entity: "cover.somfy_portail"
+  variables:
+    ulm_name_tap_action: "call-service"
+    ulm_name_tap_service: "light.toggle"
+    ulm_name_tap_service_data:
+      entity_id: light.light_livingroom_2
+
+```
+
 ## Overwrite custom actions
 
 When creating a dashboard, custom actions and the haptic feedback can be overwritten on your card definition.
@@ -210,6 +242,17 @@ Most of the internal card templates uses this option. Take a look into the code.
     --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_generic.yaml"
     ```
 
+### Use template `ulm_actions_card_overlay`
+
+If you implement a custom card that is based on another Lovelace card like the
+[weather card](https://ui-lovelace-minimalist.github.io/UI/usage/cards/card_weather/) you can simply enable custom
+card actions by using the template `ulm_actions_card_overlay` on the card. This template adds an overlay over the whole card and
+reaction on the tap, hold, double tap actions. It also enables the integration of custom popups for the card.
+Actions of the underlying card will be disabled by this method.
+
+The [weather card](https://ui-lovelace-minimalist.github.io/UI/usage/cards/card_weather/) gives you an example and
+will show the usage of this method.
+
 ### Individual implementation
 
 The following script shows the usage off all necessary variables and template that will be used by the custom actions.
@@ -237,12 +280,18 @@ custom_card:
           ulm_icon_tap_action: "[[[ return variables.ulm_icon_tap_action; ]]]"
           ulm_icon_tap_haptic: "[[[ return variables.ulm_icon_tap_haptic; ]]]"
           ulm_icon_tap_navigate_path: "[[[ return variables.ulm_icon_tap_navigate_path; ]]]"
+          ulm_icon_tap_service: "[[[ return variables.ulm_icon_tap_service; ]]]"
+          ulm_icon_tap_service_data: "[[[ return variables.ulm_icon_tap_service_data]]]"
           ulm_icon_hold_action: "[[[ return variables.ulm_icon_hold_action; ]]]"
           ulm_icon_hold_haptic: "[[[ return variables.ulm_icon_hold_haptic; ]]]"
           ulm_icon_hold_navigate_path: "[[[ return variables.ulm_icon_hold_navigate_path; ]]]"
+          ulm_icon_hold_service: "[[[ return variables.ulm_icon_hold_service; ]]]"
+          ulm_icon_hold_service_data: "[[[ return variables.ulm_icon_hold_service_data]]]"
           ulm_icon_double_tap_action: "[[[ return variables.ulm_icon_double_tap_action; ]]]"
           ulm_icon_double_tap_haptic: "[[[ return variables.ulm_icon_double_tap_haptic; ]]]"
           ulm_icon_double_tap_navigate_path: "[[[ return variables.ulm_icon_double_tap_navigate_path; ]]]"
+          ulm_icon_double_tap_service: "[[[ return variables.ulm_icon_double_tap_service; ]]]"
+          ulm_icon_double_tap_service_data: "[[[ return variables.ulm_icon_double_tap_service_data]]]"
           ulm_custom_popup: "[[[ return variables.ulm_custom_popup; ]]]"
     item2:
       card:
@@ -256,12 +305,18 @@ custom_card:
           ulm_name_tap_action: "[[[ return variables.ulm_name_tap_action; ]]]"
           ulm_name_tap_haptic: "[[[ return variables.ulm_name_tap_haptic; ]]]"
           ulm_name_tap_navigate_path: "[[[ return variables.ulm_name_tap_navigate_path; ]]]"
+          ulm_name_tap_service: "[[[ return variables.ulm_name_tap_service; ]]]"
+          ulm_name_tap_service_data: "[[[ return variables.ulm_name_tap_service_data]]]"
           ulm_name_hold_action: "[[[ return variables.ulm_name_hold_action; ]]]"
           ulm_name_hold_haptic: "[[[ return variables.ulm_name_hold_haptic; ]]]"
           ulm_name_hold_navigate_path: "[[[ return variables.ulm_name_hold_navigate_path; ]]]"
+          ulm_name_hold_service: "[[[ return variables.ulm_name_hold_service; ]]]"
+          ulm_name_hold_service_data: "[[[ return variables.ulm_name_hold_service_data]]]"
           ulm_name_double_tap_action: "[[[ return variables.ulm_name_double_tap_action; ]]]"
           ulm_name_double_tap_haptic: "[[[ return variables.ulm_name_double_tap_haptic; ]]]"
           ulm_name_double_tap_navigate_path: "[[[ return variables.ulm_name_double_tap_navigate_path; ]]]"
+          ulm_name_double_tap_service: "[[[ return variables.ulm_name_double_tap_service; ]]]"
+          ulm_name_double_tap_service_data: "[[[ return variables.ulm_name_double_tap_service_data]]]"
           ulm_custom_popup: "[[[ return variables.ulm_custom_popup; ]]]"
 
 ```
