@@ -96,18 +96,6 @@ Do not use `triggers_update: "all"`! This will lead to unwanted behavior with th
       color: "red"
 ```
 
-## Customizations
-
-Single Line Text:
-
-![Lewis](https://user-images.githubusercontent.com/51805396/184032046-383c63cc-a1a4-4d01-bcee-ae3f1d72c571.png)
-
-To change the header text from 2 lines to a single, continuous line (as seen above), you must replace line 119 in custom_card_esh_welcome.yaml with the following:
-
-```yaml
-            return welcome + ', '+ user.name + '!';
-```
-
 ## Template code
 
 ??? note "Template Code"
