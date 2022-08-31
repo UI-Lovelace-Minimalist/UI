@@ -10,6 +10,7 @@ minimalist-mobile:
   info-color: "var(--google-blue)"
   divider-color: "rgba(var(--color-theme),.12)"
   accent-color: "var(--google-yellow)"
+  ha-dialog-border-radius: "10px"
   card-mod-theme: "minimalist-mobile"
   card-mod-root: |
     app-toolbar {
