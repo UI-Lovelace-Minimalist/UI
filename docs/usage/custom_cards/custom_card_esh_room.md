@@ -13,7 +13,10 @@ hide:
 
 ## Credits
 
-- Authors: Everything Smart Home - 2022 and mpeterson
+- Authors:
+    - Everything Smart Home - 2022
+    - mpeterson
+    - rensknoors
 - Full credit to user [bms on the forum](https://community.home-assistant.io/t/lovelace-ui-minimalist/322687/192), they created the design and base of it in full, EverythingSmartHome put it into a PR as the basis
 - beasthouse and basbruss on the EverythingSmartHome discord channel for emoji/humidity customization
 - mpeterson added support for a switch to control climate and also to remove the need to have an entity associated
@@ -44,6 +47,10 @@ Fixes text overflow issue over the climate button.
 <summary>2.1.1</summary>
 Add support for the new popup framework while maintaining backwards compatibility with the old one.
 </details>
+<details>
+<summary>2.2.0</summary>
+Introduces a new variable that lets you set the card background to the color of a light entity.
+</details>
 
 ## Description
 
@@ -62,6 +69,7 @@ This is an alternative room card to the standard one that is more rectangular th
 | ulm_custom_card_esh_room_climate_entity      |         | No       | The entity to use for the climate button                                 |
 | ulm_card_light_enable_popup                  | `false` | No       | Enable `popup_light`                                                     |
 | ulm_card_thermostat_enable_popup             | `false` | No       | Enable `popup_thermostat`                                                |
+| ulm_card_ulm_card_dynamic_color              | `false` | No       | Enables dynamic background color (requires `ulm_custom_card_esh_room_light_entity`)       |
 
 ## Usage
 
