@@ -1,0 +1,7 @@
+---
+ulm_custom_card_irmajavi_speedtest_language_variables:
+  variables:
+    ## Latvian ##
+    ulm_custom_card_irmajavi_speedtest_speedtest: "Ātruma tests"
+    ulm_custom_card_irmajavi_speedtest_download: "lejuplādes ātrums"
+    ulm_custom_card_irmajavi_speedtest_upload: "augšupielādes ātrums"

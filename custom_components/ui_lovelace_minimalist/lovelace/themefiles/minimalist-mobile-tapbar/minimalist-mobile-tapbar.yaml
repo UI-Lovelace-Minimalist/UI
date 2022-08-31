@@ -14,6 +14,7 @@ minimalist-mobile-tapbar:
   header-height: "calc(var(--header-base-height) + env(safe-area-inset-bottom))"
   header-base-height: "70px"
   app-header-selection-bar-color: "transparent"
+  ha-dialog-border-radius: "10px"
 
   card-mod-view-yaml: |
     "*:first-child$": |
