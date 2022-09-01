@@ -1,0 +1,60 @@
+{
+    "title": "UI Lovelace Minimalist",
+    "config": {
+        "step": {
+            "user": {
+                "title": "UI Lovelace Minimalist nastavitve",
+                "description": "",
+                "data": {
+                    "community_cards_enabled": "Omogočite možnost konfiguriranja skupnih kartic s to integracijo, zahteva preverjanje pristnosti GitHub!"
+                }
+            },
+            "device": {
+                "title": "Čakanje na aktivacijo naprave"
+            },
+            "reauth_confirm": {
+                "title": "Potrebno ponovno preverjanje pristnosti",
+                "description": "Ponovno morate opraviti avtentikacijo z GitHubom."
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "Dovoljena je samo ena konfiguracija uporabniškega vmesnika Lovelace Minimalist.",
+            "not_setup": "UI Lovelace Minimalist ni nastavljen.",
+            "github": "Ni bilo mogoče preveriti pristnosti z GitHub, poskusite znova pozneje.",
+            "reauth_successful": "Ponovna avtentikacija je bila uspešna."
+        },
+        "progress": {
+            "wait_for_device": "1. Odpri {url} \n2.Za avtorizacijo prilepite naslednji ključ ULM: \n```\n{code}\n```\n"
+        }
+    },
+    "options": {
+        "step": {
+            "user": {
+                "title": "UI Lovelace Minimalist nastavitve",
+                "description": "",
+                "data": {
+                    "language": "Jezik",
+                    "sidepanel_enabled": "Omogoči ustvarjanje vnosa nadzorne plošče na stranski plošči.",
+                    "sidepanel_icon": "Ikona stranske plošče",
+                    "sidepanel_title": "Naslov stranske plošče",
+                    "adaptive_ui_enabled": "Omogoči prilagodljivo nadzorno ploščo s pojavnim razdeljenim pogledom",
+                    "adaptive_ui_title": "naslov prilagodljive plošče",
+                    "adaptive_ui_icon": "ikona prilagodljive plošče",
+                    "theme": "Tema",
+                    "include_other_cards": "Vključite vire kartice po meri, od katerih je odvisno.",
+                    "community_cards_enabled": "Omogočite možnost konfiguriranja skupnih kartic s to integracijo, zahteva preverjanje pristnosti GitHub!",
+                    "community_cards": "Izberite skupne kartice, ki jih želite omogočiti."
+                }
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "Dovoljena je samo ena konfiguracija uporabniškega vmesnika Lovelace Minimalist.",
+            "not_setup": "UI Lovelace Minimalist ni nastavljen."
+        },
+        "error": {
+            "github_cards": "Pri pridobivanju kartic iz GitHub je šlo nekaj narobe.",
+            "ack": "Vse izjave morate potrditi.",
+            "gh_token": "Žeton Github ni nastavljen. Znova namestite to integracijo, da opravite postopek namestitve. (Nobena konfiguracija po meri ne bo izgubljena)"
+        }
+    }
+}
