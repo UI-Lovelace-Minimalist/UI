@@ -17,93 +17,93 @@ states:
   # light 1:
   #   type: "custom:button-card"
   #   template: "popup_light_brightness"
-  #   entity:
+  #   entity: <your_entity>
   # light 2:
   #   type: "custom:button-card"
   #   template: "popup_light_brightness"
-  #   entity:
+  #   entity: <your_entity>
   # light 3:
   #   type: "custom:button-card"
   #   template: "popup_light_brightness"
-  #   entity:
+  #   entity: <your_entity>
   # light 4:
   #   type: "custom:button-card"
   #   template: "popup_light_brightness"
-  #   entity:
+  #   entity: <your_entity>
   # light 5:
   #   type: "custom:button-card"
   #   template: "popup_light_brightness"
-  #   entity:
+  #   entity: <your_entity>
   # light 6:
   #   type: "custom:button-card"
   #   template: "popup_light_brightness"
-  #   entity:
+  #   entity: <your_entity>
   # light 7:
   #   type: "custom:button-card"
   #   template: "popup_light_brightness"
-  #   entity:
+  #   entity: <your_entity>
   # light 8:
   #   type: "custom:button-card"
   #   template: "popup_light_brightness"
-  #   entity:
+  #   entity: <your_entity>
   # light 9:
   #   type: "custom:button-card"
   #   template: "popup_light_brightness"
-  #   entity:
+  #   entity: <your_entity>
   # light 10:
   #   type: "custom:button-card"
   #   template: "popup_light_brightness"
-  #   entity:
+  #   entity: <your_entity>
   #
   ###  Mediaplayers
   # mediaplayer 1:
   #   type: "custom:button-card"
   #   template: "popup_media_player_infos"
-  #   entity:
+  #   entity: <your_entity>
   # mediaplayer 2:
   #   type: "custom:button-card"
   #   template: "popup_media_player_infos"
-  #   entity:
+  #   entity: <your_entity>
   # mediaplayer 3:
   #   type: "custom:button-card"
   #   template: "popup_media_player_infos"
-  #   entity:
+  #   entity: <your_entity>
   # mediaplayer 4:
   #   type: "custom:button-card"
   #   template: "popup_media_player_infos"
-  #   entity:
+  #   entity: <your_entity>
   # mediaplayer 5:
   #   type: "custom:button-card"
   #   template: "popup_media_player_infos"
-  #   entity:
+  #   entity: <your_entity>
   #
   ### Thermostats
   # climate 1:
   #   type: "custom:button-card"
   #   template: "popup_thermostat_temperature"
-  #   entity:
+  #   entity: <your_entity>
   # climate 2:
   #   type: "custom:button-card"
   #   template: "popup_thermostat_temperature"
-  #   entity:
+  #   entity: <your_entity>
   # climate 3:
   #   type: "custom:button-card"
   #   template: "popup_thermostat_temperature"
-  #   entity:
+  #   entity: <your_entity>
   # climate 4:
   #   type: "custom:button-card"
   #   template: "popup_thermostat_temperature"
-  #   entity:
+  #   entity: <your_entity>
   # climate 5:
   #   type: "custom:button-card"
   #   template: "popup_thermostat_temperature"
-  #   entity:
+  #   entity: <your_entity>
   #
   ### Power
   # power 1:
   #   type: "custom:button-card"
   #   template: "popup_power_outlet_stats"
-  #   entity:
+  #   entity: <your_entity>
   #   variables:
   #     ulm_popup_power_outlet_sensor1:
   #     ulm_popup_power_outlet_sensor2:
@@ -111,7 +111,7 @@ states:
   # power 2:
   #   type: "custom:button-card"
   #   template: "popup_power_outlet_stats"
-  #   entity:
+  #   entity: <your_entity>
   #   variables:
   #     ulm_popup_power_outlet_sensor1:
   #     ulm_popup_power_outlet_sensor2:
@@ -119,7 +119,7 @@ states:
   # power 3:
   #   type: "custom:button-card"
   #   template: "popup_power_outlet_stats"
-  #   entity:
+  #   entity: <your_entity>
   #   variables:
   #     ulm_popup_power_outlet_sensor1:
   #     ulm_popup_power_outlet_sensor2:
@@ -127,7 +127,7 @@ states:
   # power 4:
   #   type: "custom:button-card"
   #   template: "popup_power_outlet_stats"
-  #   entity:
+  #   entity: <your_entity>
   #   variables:
   #     ulm_popup_power_outlet_sensor1:
   #     ulm_popup_power_outlet_sensor2:
@@ -135,7 +135,7 @@ states:
   # power 5:
   #   type: "custom:button-card"
   #   template: "popup_power_outlet_stats"
-  #   entity:
+  #   entity: <your_entity>
   #   variables:
   #     ulm_popup_power_outlet_sensor1:
   #     ulm_popup_power_outlet_sensor2:
