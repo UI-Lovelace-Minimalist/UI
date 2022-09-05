@@ -45,9 +45,11 @@ custom_card_bar_card:
         max: "[[[ return variables.ulm_custom_card_bar_card_max ]]]"
         style: |-
           bar-card-currentbar {
+            border-radius: 0px !important;
             right: 0;
           }
           bar-card-backgroundbar {
+            border-radius: 0px !important;
             right: 0;
           }
           #states {
