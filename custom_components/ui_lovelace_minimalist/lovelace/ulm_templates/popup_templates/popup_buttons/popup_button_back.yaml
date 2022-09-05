@@ -17,5 +17,4 @@ popup_button_back:
     action: "fire-dom-event"
     browser_mod:
       service: "browser_mod.close_popup"
-      data:
-        browser_id: "THIS"
+      data: {}
