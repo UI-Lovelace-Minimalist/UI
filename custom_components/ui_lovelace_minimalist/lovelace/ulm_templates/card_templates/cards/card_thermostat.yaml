@@ -16,6 +16,7 @@ card_thermostat:
     ulm_card_thermostat_enable_popup: false
     ulm_card_thermostat_fan_entity: null
     ulm_card_thermostat_minimum_temp_spread: 1
+    ulm_card_thermostat_preset_mode: false
   show_icon: false
   show_name: false
   show_label: false
@@ -153,7 +154,8 @@ card_thermostat:
 
                   if(variables.ulm_card_thermostat_enable_popup) {
                     vars.ulm_custom_popup = {
-                      'template': 'popup_thermostat_temperature'
+                      'template': 'popup_thermostat_temperature',
+                      'popup_variables': {'ulm_card_thermostat_preset_mode': variables.ulm_card_thermostat_preset_mode }
                     };
                   }
                   return vars;
@@ -190,7 +192,8 @@ card_thermostat:
 
                   if(variables.ulm_card_thermostat_enable_popup) {
                     vars.ulm_custom_popup = {
-                      'template': 'popup_thermostat_temperature'
+                      'template': 'popup_thermostat_temperature',
+                      'popup_variables': {'ulm_card_thermostat_preset_mode': variables.ulm_card_thermostat_preset_mode }
                     };
                   }
                   return vars;
