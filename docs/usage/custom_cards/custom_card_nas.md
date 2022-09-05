@@ -37,7 +37,7 @@ Fix card & add Screenshot
   variables:
     ulm_custom_card_nas_sensor: sensor.pinas_disk_use
     ulm_custom_card_nas_text: "HDD used"
-    ulm_custom_cad_nas_unit: %
+    ulm_custom_card_nas_unit: "%"
 ```
 
 ## Requirements
