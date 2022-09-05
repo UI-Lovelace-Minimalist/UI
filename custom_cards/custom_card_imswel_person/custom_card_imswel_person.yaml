@@ -111,104 +111,105 @@ custom_popup_imswel_person:
   tap_action:
     action: "fire-dom-event"
     browser_mod:
-      command: "popup"
-      title: "[[[ return states[variables.ulm_card_imswel_person_entity].attributes.friendly_name ]]]"
-      style:
-        $: >
-          [[[
-            if (hass.themes.theme.includes("desktop")){
-              var dialog = `
-                .mdc-dialog__surface{
-                  border-radius: var(--border-radius) !important;
-                }
-              `;
-            } else{
-              var dialog = "";
-            }
-            return `
-              *{
-                --secondary-background-color: none !important;
-              }
-              ${dialog}
-            `;
-          ]]]
-        hui-vertical-stack-card:
+      service: "browser_mod.popup"
+      data:
+        title: "[[[ return states[variables.ulm_card_imswel_person_entity].attributes.friendly_name ]]]"
+        style:
           $: >
-            button-card {
-              align-self: center;
-              padding: 0.2em 0 2.3em 0;
-            }
-            hui-entities-card{
-              padding: 0.8em 1.4em;
-            }
-          $hui-entities-card$: >
-            ha-card{
-              box-shadow: none;
-            }
-          $hui-history-graph-card$: >
-            .content {
-              padding: 0 2.4em !important;
-            }
-            ha-card{
-              box-shadow: none;
-            }
-          $hui-glance-card$: >
-            ha-card{
-              box-shadow: none;
-            }
-          $hui-map-card:
-            $: >
-              ha-icon-button {
-                color: rgba(var(--color-blue),1);
-              }
-            $ha-map:
-              $: >
-                .leaflet-control-attribution {
-                  display: none;
-                }
-                .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
-                  border: 2px solid rgba(var(--color-blue),0.4) !important;
-                }
-                .leaflet-bar a {
-                  background-color: rgba(var(--color-blue),0.2) !important;
-                  color: rgba(var(--color-blue),1) !important;
-                }
-                .leaflet-bar a:first-child {
-                  border-bottom: 2px solid rgba(var(--color-blue),0.4) !important;
-                }
-                .leaflet-pane.leaflet-tile-pane {
-                  filter: contrast(95%);
-                }
-      card:
-        type: "vertical-stack"
-        cards:
-          - type: "entities"
-            entities:
-              - entity: "[[[ return variables.ulm_card_imswel_person_entity; ]]]"
-                secondary_info: "last-changed"
-          - type: "history-graph"
-            entities:
-              - entity: "[[[ return variables.ulm_card_imswel_person_entity; ]]]"
-          - type: "glance"
-            show_state: false
-            entities:
-              - entity: "[[[ return variables.ulm_card_imswel_person_wifi_tracker; ]]]"
-                name: "WiFi"
-                icon: "mdi:wifi"
-                style: &state >
-                  state-badge{
-                    color: {{ 'rgba(var(--color-blue),1)' if is_state(config.entity, 'home') }};
-                    filter: {{ 'opacity(100%)' if is_state(config.entity, 'home') else 'opacity(40%)'}};
+            [[[
+              if (hass.themes.theme.includes("desktop")){
+                var dialog = `
+                  .mdc-dialog__surface{
+                    border-radius: var(--border-radius) !important;
                   }
-              - entity: "[[[ return variables.ulm_card_imswel_person_gps_tracker; ]]]"
-                name: "GPS"
-                icon: "mdi:map-marker"
-                style: *state
-          - type: "custom:button-card"
-            template:
-              - "find_my_phone_button"
-            entity: "[[[ return variables.ulm_card_imswel_person_findmy_script; ]]]"
-          - type: "map"
-            aspect_ratio: "12x10"
-            default_zoom: 16
-            entities: "[[[ return [variables.ulm_card_imswel_person_gps_tracker]; ]]]"
+                `;
+              } else{
+                var dialog = "";
+              }
+              return `
+                *{
+                  --secondary-background-color: none !important;
+                }
+                ${dialog}
+              `;
+            ]]]
+          hui-vertical-stack-card:
+            $: >
+              button-card {
+                align-self: center;
+                padding: 0.2em 0 2.3em 0;
+              }
+              hui-entities-card{
+                padding: 0.8em 1.4em;
+              }
+            $hui-entities-card$: >
+              ha-card{
+                box-shadow: none;
+              }
+            $hui-history-graph-card$: >
+              .content {
+                padding: 0 2.4em !important;
+              }
+              ha-card{
+                box-shadow: none;
+              }
+            $hui-glance-card$: >
+              ha-card{
+                box-shadow: none;
+              }
+            $hui-map-card:
+              $: >
+                ha-icon-button {
+                  color: rgba(var(--color-blue),1);
+                }
+              $ha-map:
+                $: >
+                  .leaflet-control-attribution {
+                    display: none;
+                  }
+                  .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
+                    border: 2px solid rgba(var(--color-blue),0.4) !important;
+                  }
+                  .leaflet-bar a {
+                    background-color: rgba(var(--color-blue),0.2) !important;
+                    color: rgba(var(--color-blue),1) !important;
+                  }
+                  .leaflet-bar a:first-child {
+                    border-bottom: 2px solid rgba(var(--color-blue),0.4) !important;
+                  }
+                  .leaflet-pane.leaflet-tile-pane {
+                    filter: contrast(95%);
+                  }
+        content:
+          type: "vertical-stack"
+          cards:
+            - type: "entities"
+              entities:
+                - entity: "[[[ return variables.ulm_card_imswel_person_entity; ]]]"
+                  secondary_info: "last-changed"
+            - type: "history-graph"
+              entities:
+                - entity: "[[[ return variables.ulm_card_imswel_person_entity; ]]]"
+            - type: "glance"
+              show_state: false
+              entities:
+                - entity: "[[[ return variables.ulm_card_imswel_person_wifi_tracker; ]]]"
+                  name: "WiFi"
+                  icon: "mdi:wifi"
+                  style: &state >
+                    state-badge{
+                      color: {{ 'rgba(var(--color-blue),1)' if is_state(config.entity, 'home') }};
+                      filter: {{ 'opacity(100%)' if is_state(config.entity, 'home') else 'opacity(40%)'}};
+                    }
+                - entity: "[[[ return variables.ulm_card_imswel_person_gps_tracker; ]]]"
+                  name: "GPS"
+                  icon: "mdi:map-marker"
+                  style: *state
+            - type: "custom:button-card"
+              template:
+                - "find_my_phone_button"
+              entity: "[[[ return variables.ulm_card_imswel_person_findmy_script; ]]]"
+            - type: "map"
+              aspect_ratio: "12x10"
+              default_zoom: 16
+              entities: "[[[ return [variables.ulm_card_imswel_person_gps_tracker]; ]]]"
