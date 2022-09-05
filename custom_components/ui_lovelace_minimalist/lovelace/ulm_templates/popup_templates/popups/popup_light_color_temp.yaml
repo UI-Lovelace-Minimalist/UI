@@ -50,25 +50,26 @@ popup_light_color_temp:
               tap_action:
                 action: "fire-dom-event"
                 browser_mod:
-                  command: "popup"
-                  hide_header: true
-                  style:
-                    .: |
-                      :host {
-                        --mdc-theme-surface: var(--primary-background-color);
-                        --secondary-background-color: var(--primary-background-color);
-                      }
-                    $: |
-                      .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
-                        border-radius: 0px;
-                      }
-                      :host .mdc-dialog .mdc-dialog__container .mdc-dialog__surface .mdc-dialog__content {
-                        padding: 20px 24px;
-                      }
-                  card:
-                    type: "custom:button-card"
-                    template: "popup_light_brightness"
-                    entity: "[[[ return entity.entity_id; ]]]"
+                  service: "browser_mod.popup"
+                  data:
+                    hide_header: true
+                    style:
+                      .: |
+                        :host {
+                          --mdc-theme-surface: var(--primary-background-color);
+                          --secondary-background-color: var(--primary-background-color);
+                        }
+                      $: |
+                        .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
+                          border-radius: 0px;
+                        }
+                        :host .mdc-dialog .mdc-dialog__container .mdc-dialog__surface .mdc-dialog__content {
+                          padding: 20px 24px;
+                        }
+                    content:
+                      type: "custom:button-card"
+                      template: "popup_light_brightness"
+                      entity: "[[[ return entity.entity_id; ]]]"
           item2:
             card:
               icon: "mdi:sun-thermometer-outline"
@@ -87,22 +88,23 @@ popup_light_color_temp:
               tap_action:
                 action: "fire-dom-event"
                 browser_mod:
-                  command: "popup"
-                  hide_header: true
-                  style:
-                    .: |
-                      :host {
-                        --mdc-theme-surface: var(--primary-background-color);
-                        --secondary-background-color: var(--primary-background-color);
-                      }
-                    $: |
-                      .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
-                        border-radius: 0px;
-                      }
-                      :host .mdc-dialog .mdc-dialog__container .mdc-dialog__surface .mdc-dialog__content {
-                        padding: 20px 24px;
-                      }
-                  card:
-                    type: "custom:button-card"
-                    template: "popup_light_color"
-                    entity: "[[[ return entity.entity_id; ]]]"
+                  service: "browser_mod.popup"
+                  data:
+                    hide_header: true
+                    style:
+                      .: |
+                        :host {
+                          --mdc-theme-surface: var(--primary-background-color);
+                          --secondary-background-color: var(--primary-background-color);
+                        }
+                      $: |
+                        .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
+                          border-radius: 0px;
+                        }
+                        :host .mdc-dialog .mdc-dialog__container .mdc-dialog__surface .mdc-dialog__content {
+                          padding: 20px 24px;
+                        }
+                    content:
+                      type: "custom:button-card"
+                      template: "popup_light_color"
+                      entity: "[[[ return entity.entity_id; ]]]"
