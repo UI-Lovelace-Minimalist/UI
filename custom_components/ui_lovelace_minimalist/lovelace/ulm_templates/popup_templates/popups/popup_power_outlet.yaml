@@ -7,7 +7,7 @@ popup_power_outlet:
       data:
         large: true
         hide_header: true
-        card:
+        content:
           type: "custom:button-card"
           template: "popup_power_outlet_stats"
           entity: "[[[ return entity.entity_id ]]]"

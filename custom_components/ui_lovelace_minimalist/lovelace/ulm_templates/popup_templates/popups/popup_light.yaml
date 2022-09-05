@@ -7,7 +7,7 @@ popup_light:
       data:
         large: true
         hide_header: true
-        card:
+        content:
           type: "custom:button-card"
           template: "popup_light_brightness"
           entity: "[[[ return entity.entity_id; ]]]"

@@ -7,7 +7,7 @@ popup_thermostat:
       data:
         large: true
         hide_header: true
-        card:
+        content:
           type: "custom:button-card"
           template: "popup_thermostat_temperature"
           entity: "[[[ return entity.entity_id ]]]"
