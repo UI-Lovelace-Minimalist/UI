@@ -13,6 +13,7 @@ popup_button:
       - box-shadow: "none"
       - border-radius: "none"
       - padding: "12px"
+      - overflow: "visible"
     icon:
       - color: "var(--primary-color)"
     img_cell:
@@ -27,3 +28,4 @@ popup_button:
       - font-weight: "bold"
       - font-size: "14px"
       - margin-top: "12px"
+      - overflow: "visible"

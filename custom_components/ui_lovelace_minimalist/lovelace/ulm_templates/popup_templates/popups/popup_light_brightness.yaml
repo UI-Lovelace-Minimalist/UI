@@ -219,6 +219,7 @@ popup_light_brightness:
         styles:
           card:
             - background: "none"
+            - overflow: "visible"
           grid:
             - grid-template-areas: >
                 [[[
