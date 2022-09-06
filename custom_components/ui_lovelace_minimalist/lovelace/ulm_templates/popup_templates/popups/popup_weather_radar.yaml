@@ -48,11 +48,10 @@ popup_weather_radar:
                   data:
                     hide_header: true
                     style: |
-                      :host {
-                        --popup-background-color: var(--primary-background-color);
-                        --popup-border-radius: 0px;
-                        --popup-padding: 20px 24px;
-                      }
+                      --popup-background-color: var(--primary-background-color);
+                      --popup-border-radius: 0px;
+                      --popup-padding-x: 24px;
+                      --popup-padding-y: 20px;
                     content:
                       type: "custom:button-card"
                       template: "popup_weather_forecast"
