@@ -35,94 +35,69 @@ ulm_actions_icon:
     navigation_path: "[[[ return variables.ulm_icon_tap_action == 'navigate' ? variables.ulm_icon_tap_navigate_path : '/0' ]]]"
     haptic: "[[[ return variables.ulm_icon_tap_haptic != null ? variables.ulm_icon_tap_haptic : 'none' ]]]"
     service: >
-        [[[
-          var action = variables.ulm_icon_tap_action;
+      [[[
+        var action = variables.ulm_icon_tap_action;
 
-          if (action == 'adaptive'){
-            return 'input_select.select_option';
-          }
+        if (action == 'adaptive'){
+          return 'input_select.select_option';
+        }
 
-          return variables.ulm_icon_tap_service;
-        ]]]
+        return variables.ulm_icon_tap_service;
+      ]]]
     service_data: >
-        [[[
-          var action = variables.ulm_icon_tap_action;
+      [[[
+        var action = variables.ulm_icon_tap_action;
 
-          if (action == 'adaptive'){
-            return {
-              'option': variables.ulm_input_select_option,
-              'entity_id': variables.ulm_input_select
-            };
-          }
+        if (action == 'adaptive'){
+          return {
+            'option': variables.ulm_input_select_option,
+            'entity_id': variables.ulm_input_select
+          };
+        }
 
-          return variables.ulm_icon_tap_service_data;
-        ]]]
+        return variables.ulm_icon_tap_service_data;
+      ]]]
     browser_mod:
-      command: "popup"
-      large: true
-      hide_header: true
-      style:
-        $: |
-          :host .mdc-dialog .mdc-dialog__container .mdc-dialog__surface .mdc-dialog__content {
-            padding: 20px 24px;
-          }
-          @media (max-width: 450px), (max-height: 500px) {
-            .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
-              border-radius: 0px;
-            }
-          }
-        .: |
-          @media (max-width: 450px), (max-height: 500px) {
-            ha-dialog {
-              --ha-card-border-radius: 0px;
-            }
-          }
-          :host {
-            --mdc-theme-surface: var(--primary-background-color);
-            --secondary-background-color: var(--primary-background-color);
-          }
-      card:
-        type: "custom:button-card"
-        template: >
-          [[[
-            if (variables.ulm_card_light_enable_popup){
-              return 'popup_light_brightness'
-            }
-            if (variables.ulm_card_thermostat_enable_popup){
-              return 'popup_thermostat_temperature'
-            }
-            if (variables.ulm_card_media_player_enable_popup){
-              return 'popup_media_player_infos'
-            }
-
-            if (variables.ulm_custom_popup != null ){
-              let popup_config = variables.ulm_custom_popup;
-              if ((typeof popup_config === 'object') && 'template' in popup_config) {
-                return popup_config.template;
+      service: "browser_mod.popup"
+      data:
+        large: true
+        hide_header: true
+        style: |
+          --popup-background-color: var(--primary-background-color);
+          --popup-border-radius: 0px;
+          --popup-padding-x: 24px;
+          --popup-padding-y: 20px;
+        content:
+          type: "custom:button-card"
+          template: >
+            [[[
+              if (variables.ulm_custom_popup != null ){
+                let popup_config = variables.ulm_custom_popup;
+                if ((typeof popup_config === 'object') && 'template' in popup_config) {
+                  return popup_config.template;
+                }
               }
-            }
-          ]]]
-        entity: >
-          [[[
-            if (variables.ulm_custom_popup != null ){
-              let popup_config = variables.ulm_custom_popup;
-              if ((typeof popup_config === 'object') && 'entity' in popup_config) {
-                return popup_config.entity;
+            ]]]
+          entity: >
+            [[[
+              if (variables.ulm_custom_popup != null ){
+                let popup_config = variables.ulm_custom_popup;
+                if ((typeof popup_config === 'object') && 'entity' in popup_config) {
+                  return popup_config.entity;
+                }
               }
-            }
-
-            return (entity != null) ? entity.entity_id : null;
-          ]]]
-        variables: >
-          [[[
-            if (variables.ulm_custom_popup != null ){
-              let popup_config = variables.ulm_custom_popup;
-              if ((typeof popup_config === 'object') && 'popup_variables' in popup_config) {
-                return popup_config.popup_variables;
+              return (entity != null) ? entity.entity_id : null;
+            ]]]
+          variables: >
+            [[[
+              if (variables.ulm_custom_popup != null ){
+                let popup_config = variables.ulm_custom_popup;
+                if ((typeof popup_config === 'object') && 'popup_variables' in popup_config) {
+                  return popup_config.popup_variables;
+                }
               }
-            }
-            return {};
-          ]]]
+              return {};
+            ]]]
   hold_action:
     action: >
       [[[
@@ -157,94 +132,70 @@ ulm_actions_icon:
     navigation_path: "[[[ return variables.ulm_icon_hold_action == 'navigate' ? variables.ulm_icon_hold_navigate_path : '/0' ]]]"
     haptic: "[[[ return variables.ulm_icon_hold_haptic != null ? variables.ulm_icon_hold_haptic : 'none' ]]]"
     service: >
-        [[[
-          var action = variables.ulm_icon_hold_action;
+      [[[
+        var action = variables.ulm_icon_hold_action;
 
-          if (action == 'adaptive'){
-            return 'input_select.select_option';
-          }
+        if (action == 'adaptive'){
+          return 'input_select.select_option';
+        }
 
-          return variables.ulm_icon_hold_service;
-        ]]]
+        return variables.ulm_icon_hold_service;
+      ]]]
     service_data: >
-        [[[
-          var action = variables.ulm_icon_hold_action;
+      [[[
+        var action = variables.ulm_icon_hold_action;
 
-          if (action == 'adaptive'){
-            return {
-              'option': variables.ulm_input_select_option,
-              'entity_id': variables.ulm_input_select
-            };
-          }
+        if (action == 'adaptive'){
+          return {
+            'option': variables.ulm_input_select_option,
+            'entity_id': variables.ulm_input_select
+          };
+        }
 
-          return variables.ulm_icon_hold_service_data;
-        ]]]
+        return variables.ulm_icon_hold_service_data;
+      ]]]
     browser_mod:
-      command: "popup"
-      large: true
-      hide_header: true
-      style:
-        $: |
-          :host .mdc-dialog .mdc-dialog__container .mdc-dialog__surface .mdc-dialog__content {
-            padding: 20px 24px;
-          }
-          @media (max-width: 450px), (max-height: 500px) {
-            .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
-              border-radius: 0px;
-            }
-          }
-        .: |
-          @media (max-width: 450px), (max-height: 500px) {
-            ha-dialog {
-              --ha-card-border-radius: 0px;
-            }
-          }
-          :host {
-            --mdc-theme-surface: var(--primary-background-color);
-            --secondary-background-color: var(--primary-background-color);
-          }
-      card:
-        type: "custom:button-card"
-        template: >
-          [[[
-            if (variables.ulm_card_light_enable_popup){
-              return 'popup_light_brightness'
-            }
-            if (variables.ulm_card_thermostat_enable_popup){
-              return 'popup_thermostat_temperature'
-            }
-            if (variables.ulm_card_media_player_enable_popup){
-              return 'popup_media_player_infos'
-            }
+      service: "browser_mod.popup"
+      data:
+        large: true
+        hide_header: true
+        style: |
+          --popup-background-color: var(--primary-background-color);
+          --popup-border-radius: 0px;
+          --popup-padding-x: 24px;
+          --popup-padding-y: 20px;
+        content:
+          type: "custom:button-card"
+          template: >
+            [[[
+              if (variables.ulm_custom_popup != null ){
+                let popup_config = variables.ulm_custom_popup;
+                if ((typeof popup_config === 'object') && 'template' in popup_config) {
+                  return popup_config.template;
+                }
+              }
+            ]]]
+          entity: >
+            [[[
+              if (variables.ulm_custom_popup != null ){
+                let popup_config = variables.ulm_custom_popup;
+                if ((typeof popup_config === 'object') && 'entity' in popup_config) {
+                  return popup_config.entity;
+                }
+              }
 
-            if (variables.ulm_custom_popup != null ){
-              let popup_config = variables.ulm_custom_popup;
-              if ((typeof popup_config === 'object') && 'template' in popup_config) {
-                return popup_config.template;
+              return (entity != null) ? entity.entity_id : null;
+            ]]]
+          variables: >
+            [[[
+              if (variables.ulm_custom_popup != null ){
+                let popup_config = variables.ulm_custom_popup;
+                if ((typeof popup_config === 'object') && 'popup_variables' in popup_config) {
+                  return popup_config.popup_variables;
+                }
               }
-            }
-          ]]]
-        entity: >
-          [[[
-            if (variables.ulm_custom_popup != null ){
-              let popup_config = variables.ulm_custom_popup;
-              if ((typeof popup_config === 'object') && 'entity' in popup_config) {
-                return popup_config.entity;
-              }
-            }
-
-            return (entity != null) ? entity.entity_id : null;
-          ]]]
-        variables: >
-          [[[
-            if (variables.ulm_custom_popup != null ){
-              let popup_config = variables.ulm_custom_popup;
-              if ((typeof popup_config === 'object') && 'popup_variables' in popup_config) {
-                return popup_config.popup_variables;
-              }
-            }
-            return {};
-          ]]]
+              return {};
+            ]]]
   double_tap_action:
     action: >
       [[[
@@ -283,81 +234,67 @@ ulm_actions_icon:
     navigation_path: "[[[ return variables.ulm_icon_double_tap_action == 'navigate' ? variables.ulm_icon_double_tap_navigate_path : '/0' ]]]"
     haptic: "[[[ return variables.ulm_icon_double_tap_haptic != null ? variables.ulm_icon_double_tap_haptic : 'none' ]]]"
     service: >
-        [[[
-          var action = variables.ulm_icon_double_tap_action;
+      [[[
+        var action = variables.ulm_icon_double_tap_action;
 
-          if (action == 'adaptive'){
-            return 'input_select.select_option';
-          }
+        if (action == 'adaptive'){
+          return 'input_select.select_option';
+        }
 
-          return variables.ulm_icon_double_tap_service;
-        ]]]
+        return variables.ulm_icon_double_tap_service;
+      ]]]
     service_data: >
-        [[[
-          var action = variables.ulm_icon_double_tap_action;
+      [[[
+        var action = variables.ulm_icon_double_tap_action;
 
-          if (action == 'adaptive'){
-            return {
-              'option': variables.ulm_input_select_option,
-              'entity_id': variables.ulm_input_select
-            };
-          }
+        if (action == 'adaptive'){
+          return {
+            'option': variables.ulm_input_select_option,
+            'entity_id': variables.ulm_input_select
+          };
+        }
 
-          return variables.ulm_icon_double_tap_service_data;
-        ]]]
+        return variables.ulm_icon_double_tap_service_data;
+      ]]]
     browser_mod:
-      command: "popup"
-      large: true
-      hide_header: true
-      style:
-        $: |
-          :host .mdc-dialog .mdc-dialog__container .mdc-dialog__surface .mdc-dialog__content {
-            padding: 20px 24px;
-          }
-          @media (max-width: 450px), (max-height: 500px) {
-            .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
-              border-radius: 0px;
-            }
-          }
-        .: |
-          @media (max-width: 450px), (max-height: 500px) {
-            ha-dialog {
-              --ha-card-border-radius: 0px;
-            }
-          }
-          :host {
-            --mdc-theme-surface: var(--primary-background-color);
-            --secondary-background-color: var(--primary-background-color);
-          }
-      card:
-        type: "custom:button-card"
-        template: >
-          [[[
-            if (variables.ulm_custom_popup != null ){
-              let popup_config = variables.ulm_custom_popup;
-              if ((typeof popup_config === 'object') && 'template' in popup_config) {
-                return popup_config.template;
+      service: "browser_mod.popup"
+      data:
+        large: true
+        hide_header: true
+        style: |
+          --popup-background-color: var(--primary-background-color);
+          --popup-border-radius: 0px;
+          --popup-padding-x: 24px;
+          --popup-padding-y: 20px;
+        content:
+          type: "custom:button-card"
+          template: >
+            [[[
+              if (variables.ulm_custom_popup != null ){
+                let popup_config = variables.ulm_custom_popup;
+                if ((typeof popup_config === 'object') && 'template' in popup_config) {
+                  return popup_config.template;
+                }
               }
-            }
-          ]]]
-        entity: >
-          [[[
-            if (variables.ulm_custom_popup != null ){
-              let popup_config = variables.ulm_custom_popup;
-              if ((typeof popup_config === 'object') && 'entity' in popup_config) {
-                return popup_config.entity;
+            ]]]
+          entity: >
+            [[[
+              if (variables.ulm_custom_popup != null ){
+                let popup_config = variables.ulm_custom_popup;
+                if ((typeof popup_config === 'object') && 'entity' in popup_config) {
+                  return popup_config.entity;
+                }
               }
-            }
 
-            return (entity != null) ? entity.entity_id : null;
-          ]]]
-        variables: >
-          [[[
-            if (variables.ulm_custom_popup != null ){
-              let popup_config = variables.ulm_custom_popup;
-              if ((typeof popup_config === 'object') && 'popup_variables' in popup_config) {
-                return popup_config.popup_variables;
+              return (entity != null) ? entity.entity_id : null;
+            ]]]
+          variables: >
+            [[[
+              if (variables.ulm_custom_popup != null ){
+                let popup_config = variables.ulm_custom_popup;
+                if ((typeof popup_config === 'object') && 'popup_variables' in popup_config) {
+                  return popup_config.popup_variables;
+                }
               }
-            }
-            return {};
-          ]]]
+              return {};
+            ]]]

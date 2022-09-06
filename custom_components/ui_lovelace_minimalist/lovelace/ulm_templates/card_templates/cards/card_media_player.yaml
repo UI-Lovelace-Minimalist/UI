@@ -244,13 +244,14 @@ card_media_player:
                       return variables.ulm_card_media_player_enable_popup ? "fire-dom-event" : "more-info";
                   ]]]
                 browser_mod:
-                  command: "popup"
-                  large: true
-                  hide_header: true
-                  card:
-                    type: "custom:button-card"
-                    template: "popup_media_player_infos"
-                    entity: "[[[ return entity.entity_id ]]]"
+                  service: "browser_mod.popup"
+                  data:
+                    large: true
+                    hide_header: true
+                    content:
+                      type: "custom:button-card"
+                      template: "popup_media_player_infos"
+                      entity: "[[[ return entity.entity_id ]]]"
               tap_action:
                 action: "call-service"
                 service: "media_player.media_previous_track"
@@ -283,13 +284,14 @@ card_media_player:
                       return variables.ulm_card_media_player_enable_popup ? "fire-dom-event" : "more-info";
                   ]]]
                 browser_mod:
-                  command: "popup"
-                  large: true
-                  hide_header: true
-                  card:
-                    type: "custom:button-card"
-                    template: "popup_media_player_infos"
-                    entity: "[[[ return entity.entity_id; ]]]"
+                  service: "browser_mod.popup"
+                  data:
+                    large: true
+                    hide_header: true
+                    content:
+                      type: "custom:button-card"
+                      template: "popup_media_player_infos"
+                      entity: "[[[ return entity.entity_id; ]]]"
               tap_action:
                 action: "call-service"
                 service: "media_player.media_play_pause"
@@ -328,13 +330,14 @@ card_media_player:
                       return variables.ulm_card_media_player_enable_popup ? "fire-dom-event" : "more-info";
                   ]]]
                 browser_mod:
-                  command: "popup"
-                  large: true
-                  hide_header: true
-                  card:
-                    type: "custom:button-card"
-                    template: "popup_media_player_infos"
-                    entity: "[[[ return entity.entity_id; ]]]"
+                  service: "browser_mod.popup"
+                  data:
+                    large: true
+                    hide_header: true
+                    content:
+                      type: "custom:button-card"
+                      template: "popup_media_player_infos"
+                      entity: "[[[ return entity.entity_id; ]]]"
               tap_action:
                 action: "call-service"
                 service: "media_player.media_next_track"

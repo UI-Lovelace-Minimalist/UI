@@ -24,6 +24,22 @@ card_binary_sensor:
                 - "blue"
               entity: "[[[ return entity.entity_id ]]]"
               icon: "[[[ return variables.ulm_card_binary_sensor_icon; ]]]"
+              variables: >
+                [[[
+                  let vars = variables;
+
+                  if(variables.ulm_outlet_power_enable_popup) {
+                    vars.ulm_custom_popup = {
+                      'template': 'popup_power_outlet_stats',
+                      'popup_variables': {
+                        'ulm_popup_power_outlet_sensor1': variables.ulm_popup_power_outlet_sensor1,
+                        'ulm_popup_power_outlet_sensor2': variables.ulm_popup_power_outlet_sensor2,
+                        'ulm_popup_power_outlet_graph_sensor': variables.ulm_popup_power_outlet_graph_sensor
+                      }
+                    };
+                  }
+                  return vars;
+                ]]]
           item2:
             card:
               type: "custom:button-card"
@@ -33,3 +49,19 @@ card_binary_sensor:
               name: "[[[ return variables.ulm_card_binary_sensor_name; ]]]"
               label: "[[[ return variables.ulm_translation_state;]]]"
               show_last_changed: "[[[ return variables.ulm_show_last_changed; ]]]"
+              variables: >
+                [[[
+                  let vars = variables;
+
+                  if(variables.ulm_outlet_power_enable_popup) {
+                    vars.ulm_custom_popup = {
+                      'template': 'popup_power_outlet_stats',
+                      'popup_variables': {
+                        'ulm_popup_power_outlet_sensor1': variables.ulm_popup_power_outlet_sensor1,
+                        'ulm_popup_power_outlet_sensor2': variables.ulm_popup_power_outlet_sensor2,
+                        'ulm_popup_power_outlet_graph_sensor': variables.ulm_popup_power_outlet_graph_sensor
+                      }
+                    };
+                  }
+                  return vars;
+                ]]]
