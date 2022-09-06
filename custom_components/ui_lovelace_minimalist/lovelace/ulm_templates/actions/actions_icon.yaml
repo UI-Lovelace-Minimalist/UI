@@ -66,21 +66,11 @@ ulm_actions_icon:
           --popup-background-color: var(--primary-background-color);
           --popup-border-radius: 0px;
           --popup-padding-x: 24px;
-                      --popup-padding-y: 20px;
+          --popup-padding-y: 20px;
         content:
           type: "custom:button-card"
           template: >
             [[[
-              if (variables.ulm_card_light_enable_popup){
-                return 'popup_light_brightness'
-              }
-              if (variables.ulm_card_thermostat_enable_popup){
-                return 'popup_thermostat_temperature'
-              }
-              if (variables.ulm_card_media_player_enable_popup){
-                return 'popup_media_player_infos'
-              }
-
               if (variables.ulm_custom_popup != null ){
                 let popup_config = variables.ulm_custom_popup;
                 if ((typeof popup_config === 'object') && 'template' in popup_config) {
@@ -96,7 +86,6 @@ ulm_actions_icon:
                   return popup_config.entity;
                 }
               }
-
               return (entity != null) ? entity.entity_id : null;
             ]]]
           variables: >
@@ -179,16 +168,6 @@ ulm_actions_icon:
           type: "custom:button-card"
           template: >
             [[[
-              if (variables.ulm_card_light_enable_popup){
-                return 'popup_light_brightness'
-              }
-              if (variables.ulm_card_thermostat_enable_popup){
-                return 'popup_thermostat_temperature'
-              }
-              if (variables.ulm_card_media_player_enable_popup){
-                return 'popup_media_player_infos'
-              }
-
               if (variables.ulm_custom_popup != null ){
                 let popup_config = variables.ulm_custom_popup;
                 if ((typeof popup_config === 'object') && 'template' in popup_config) {

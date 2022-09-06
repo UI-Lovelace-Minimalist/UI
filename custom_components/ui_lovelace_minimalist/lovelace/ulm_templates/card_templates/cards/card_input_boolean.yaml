@@ -20,9 +20,24 @@ card_input_boolean:
               type: "custom:button-card"
               template:
                 - "blue"
-
               entity: "[[[ return entity.entity_id ]]]"
               icon: "[[[ return variables.ulm_card_input_boolean_icon; ]]]"
+              variables: >
+                [[[
+                  let vars = variables;
+
+                  if(variables.ulm_outlet_power_enable_popup) {
+                    vars.ulm_custom_popup = {
+                      'template': 'popup_power_outlet_stats',
+                      'popup_variables': {
+                        'ulm_popup_power_outlet_sensor1': variables.ulm_popup_power_outlet_sensor1,
+                        'ulm_popup_power_outlet_sensor2': variables.ulm_popup_power_outlet_sensor2,
+                        'ulm_popup_power_outlet_graph_sensor': variables.ulm_popup_power_outlet_graph_sensor
+                      }
+                    };
+                  }
+                  return vars;
+                ]]]
           item2:
             card:
               type: "custom:button-card"
@@ -31,3 +46,19 @@ card_input_boolean:
               entity: "[[[ return entity.entity_id ]]]"
               name: "[[[ return variables.ulm_card_input_boolean_name; ]]]"
               label: "[[[ return variables.ulm_translation_state ]]]"
+              variables: >
+                [[[
+                  let vars = variables;
+
+                  if(variables.ulm_outlet_power_enable_popup) {
+                    vars.ulm_custom_popup = {
+                      'template': 'popup_power_outlet_stats',
+                      'popup_variables': {
+                        'ulm_popup_power_outlet_sensor1': variables.ulm_popup_power_outlet_sensor1,
+                        'ulm_popup_power_outlet_sensor2': variables.ulm_popup_power_outlet_sensor2,
+                        'ulm_popup_power_outlet_graph_sensor': variables.ulm_popup_power_outlet_graph_sensor
+                      }
+                    };
+                  }
+                  return vars;
+                ]]]
