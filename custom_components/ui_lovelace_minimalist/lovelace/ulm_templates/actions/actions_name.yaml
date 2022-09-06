@@ -62,12 +62,26 @@ ulm_actions_name:
       data:
         large: true
         hide_header: true
-        style: |
-          :host {
-            --popup-background-color: var(--primary-background-color);
-            --popup-border-radius: 0px;
-            --popup-padding: 20px 24px;
-          }
+        style:
+          $: |
+            :host .mdc-dialog .mdc-dialog__container .mdc-dialog__surface .mdc-dialog__content {
+              padding: 20px 24px;
+            }
+            @media (max-width: 450px), (max-height: 500px) {
+              .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
+                border-radius: 0px;
+              }
+            }
+          .: |
+            @media (max-width: 450px), (max-height: 500px) {
+              ha-dialog {
+                --ha-card-border-radius: 0px;
+              }
+            }
+            :host {
+              --mdc-theme-surface: var(--primary-background-color);
+              --secondary-background-color: var(--primary-background-color);
+            }
         content:
           type: "custom:button-card"
           template: >
@@ -161,12 +175,26 @@ ulm_actions_name:
       data:
         large: true
         hide_header: true
-        style: |
-          :host {
-            --popup-background-color: var(--primary-background-color);
-            --popup-border-radius: 0px;
-            --popup-padding: 20px 24px;
-          }
+        style:
+          $: |
+            :host .mdc-dialog .mdc-dialog__container .mdc-dialog__surface .mdc-dialog__content {
+              padding: 20px 24px;
+            }
+            @media (max-width: 450px), (max-height: 500px) {
+              .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
+                border-radius: 0px;
+              }
+            }
+          .: |
+            @media (max-width: 450px), (max-height: 500px) {
+              ha-dialog {
+                --ha-card-border-radius: 0px;
+              }
+            }
+            :host {
+              --mdc-theme-surface: var(--primary-background-color);
+              --secondary-background-color: var(--primary-background-color);
+            }
         content:
           type: "custom:button-card"
           template: >
@@ -260,12 +288,26 @@ ulm_actions_name:
       data:
         large: true
         hide_header: true
-        style: |
-          :host {
-            --popup-background-color: var(--primary-background-color);
-            --popup-border-radius: 0px;
-            --popup-padding: 20px 24px;
-          }
+        style:
+          $: |
+            :host .mdc-dialog .mdc-dialog__container .mdc-dialog__surface .mdc-dialog__content {
+              padding: 20px 24px;
+            }
+            @media (max-width: 450px), (max-height: 500px) {
+              .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
+                border-radius: 0px;
+              }
+            }
+          .: |
+            @media (max-width: 450px), (max-height: 500px) {
+              ha-dialog {
+                --ha-card-border-radius: 0px;
+              }
+            }
+            :host {
+              --mdc-theme-surface: var(--primary-background-color);
+              --secondary-background-color: var(--primary-background-color);
+            }
         content:
           type: "custom:button-card"
           template: >
