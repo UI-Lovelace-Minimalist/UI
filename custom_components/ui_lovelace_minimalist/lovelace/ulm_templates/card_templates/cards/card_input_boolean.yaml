@@ -30,9 +30,9 @@ card_input_boolean:
                     vars.ulm_custom_popup = {
                       'template': 'popup_power_outlet_stats',
                       'popup_variables': {
-                      'ulm_popup_power_outlet_sensor1': variables.ulm_popup_power_outlet_sensor1,
-                      'ulm_popup_power_outlet_sensor2': variables.ulm_popup_power_outlet_sensor2,
-                      'ulm_popup_power_outlet_graph_sensor': variables.ulm_popup_power_outlet_graph_sensor
+                        'ulm_popup_power_outlet_sensor1': variables.ulm_popup_power_outlet_sensor1,
+                        'ulm_popup_power_outlet_sensor2': variables.ulm_popup_power_outlet_sensor2,
+                        'ulm_popup_power_outlet_graph_sensor': variables.ulm_popup_power_outlet_graph_sensor
                       }
                     };
                   }
@@ -54,9 +54,9 @@ card_input_boolean:
                     vars.ulm_custom_popup = {
                       'template': 'popup_power_outlet_stats',
                       'popup_variables': {
-                      'ulm_popup_power_outlet_sensor1': variables.ulm_popup_power_outlet_sensor1,
-                      'ulm_popup_power_outlet_sensor2': variables.ulm_popup_power_outlet_sensor2,
-                      'ulm_popup_power_outlet_graph_sensor': variables.ulm_popup_power_outlet_graph_sensor
+                        'ulm_popup_power_outlet_sensor1': variables.ulm_popup_power_outlet_sensor1,
+                        'ulm_popup_power_outlet_sensor2': variables.ulm_popup_power_outlet_sensor2,
+                        'ulm_popup_power_outlet_graph_sensor': variables.ulm_popup_power_outlet_graph_sensor
                       }
                     };
                   }
