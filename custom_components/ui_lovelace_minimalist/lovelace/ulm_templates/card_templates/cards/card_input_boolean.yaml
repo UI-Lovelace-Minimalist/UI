@@ -8,6 +8,7 @@ card_input_boolean:
   variables:
     ulm_card_input_boolean_icon: "[[[ return entity.attributes.icon ]]]"
     ulm_card_input_boolean_name: "[[[ return entity.attributes.friendly_name ]]]"
+    ulm_outlet_power_enable_popup: false
   custom_fields:
     item1:
       card:

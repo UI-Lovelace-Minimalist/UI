@@ -7,6 +7,7 @@ card_generic:
   variables:
     ulm_card_generic_icon: "[[[ return entity.attributes.icon ]]]"
     ulm_card_generic_name: "[[[ return entity.attributes.friendly_name ]]]"
+    ulm_outlet_power_enable_popup: false
   custom_fields:
     item1:
       card:
