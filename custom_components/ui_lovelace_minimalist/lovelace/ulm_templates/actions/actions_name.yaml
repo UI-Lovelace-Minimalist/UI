@@ -18,7 +18,9 @@ ulm_actions_name:
         if (action == 'adaptive'){
           action = 'call-service'
         }
-
+        if (domain == "media_player" && action == 'toggle'){
+          action = 'call-service';
+        }
         if (action == 'popup' && (variables.ulm_custom_popup != null )){
           let popup_config = variables.ulm_custom_popup;
           if ((typeof popup_config === 'object') && 'template' in popup_config) {
@@ -42,7 +44,7 @@ ulm_actions_name:
           return 'input_select.select_option';
         }
         if(entity.entity_id.startsWith("media_player.")){
-          return 'media_player.media_play_pause;
+          return 'media_player.media_play_pause';
         }
         return variables.ulm_name_tap_service;
       ]]]
@@ -56,7 +58,12 @@ ulm_actions_name:
             'entity_id': variables.ulm_input_select
           };
         }
-
+        if(entity.entity_id.startsWith("media_player.")){
+          return {
+            'entity_id': entity.entity_id
+          };
+        }
+        }
         return variables.ulm_name_tap_service_data;
       ]]]
     browser_mod:
@@ -130,7 +137,9 @@ ulm_actions_name:
         if (action == 'adaptive'){
           action = 'call-service'
         }
-
+        if (domain == "media_player" && action == 'toggle'){
+          action = 'call-service';
+        }
         if (action == 'popup' && (variables.ulm_custom_popup != null )){
           let popup_config = variables.ulm_custom_popup;
           if ((typeof popup_config === 'object') && 'template' in popup_config) {
@@ -154,7 +163,7 @@ ulm_actions_name:
           return 'input_select.select_option';
         }
         if(entity.entity_id.startsWith("media_player.")){
-          return 'media_player.media_play_pause;
+          return 'media_player.media_play_pause';
         }
         return variables.ulm_name_hold_service;
       ]]]
@@ -168,7 +177,11 @@ ulm_actions_name:
             'entity_id': variables.ulm_input_select
           };
         }
-
+        if(entity.entity_id.startsWith("media_player.")){
+          return {
+            'entity_id': entity.entity_id
+          };
+        }
         return variables.ulm_card_name_service_data;
       ]]]
     browser_mod:
@@ -242,7 +255,9 @@ ulm_actions_name:
         if (action == 'adaptive'){
           action = 'call-service'
         }
-
+        if (domain == "media_player" && action == 'toggle'){
+          action = 'call-service';
+        }
         if (action == 'popup' && (variables.ulm_custom_popup != null )){
           let popup_config = variables.ulm_custom_popup;
           if ((typeof popup_config === 'object') && 'template' in popup_config){
@@ -266,7 +281,7 @@ ulm_actions_name:
           return 'input_select.select_option';
         }
         if(entity.entity_id.startsWith("media_player.")){
-          return 'media_player.media_play_pause;
+          return 'media_player.media_play_pause';
         }
         return variables.ulm_name_double_tap_service;
       ]]]
@@ -280,7 +295,11 @@ ulm_actions_name:
             'entity_id': variables.ulm_input_select
           };
         }
-
+        if(entity.entity_id.startsWith("media_player.")){
+          return {
+            'entity_id': entity.entity_id
+          };
+        }
         return variables.ulm_name_double_tap_service_data;
       ]]]
     browser_mod:
