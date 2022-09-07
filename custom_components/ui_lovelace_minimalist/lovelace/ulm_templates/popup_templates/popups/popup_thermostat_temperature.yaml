@@ -24,7 +24,7 @@ popup_thermostat_temperature:
         - width: "50%"
         - margin: "0 auto"
       footer:
-        - align-self: "end"
+        - align-self: "start"
         - margin-top: "25px"
   extra_styles: |
     @media (max-width: 800px) {

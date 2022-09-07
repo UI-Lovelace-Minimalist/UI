@@ -26,6 +26,7 @@ popup_media_player_infos:
         - justify-self: "center"
       content2:
         - align-self: "center"
+        - justify-self: "center"
       footer:
         - align-self: "start"
         - margin-top: "25px"
