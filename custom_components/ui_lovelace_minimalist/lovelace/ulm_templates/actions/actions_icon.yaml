@@ -41,7 +41,7 @@ ulm_actions_icon:
         if (action == 'adaptive'){
           return 'input_select.select_option';
         }
-        if(entity.entity_id.startsWith("media_player.")){
+        if(entity.entity_id.startsWith("media_player.") && action == 'toggle'){
           return 'media_player.media_play_pause;
         }
         return variables.ulm_icon_tap_service;
@@ -152,7 +152,7 @@ ulm_actions_icon:
         if (action == 'adaptive'){
           return 'input_select.select_option';
         }
-        if(entity.entity_id.startsWith("media_player.")){
+        if(entity.entity_id.startsWith("media_player.") && action == 'toggle'){
           return 'media_player.media_play_pause;
         }
         return variables.ulm_icon_hold_service;
@@ -268,7 +268,7 @@ ulm_actions_icon:
         if (action == 'adaptive'){
           return 'input_select.select_option';
         }
-        if(entity.entity_id.startsWith("media_player.")){
+        if(entity.entity_id.startsWith("media_player.") && action == 'toggle'){
           return 'media_player.media_play_pause;
         }
         return variables.ulm_icon_double_tap_service;
