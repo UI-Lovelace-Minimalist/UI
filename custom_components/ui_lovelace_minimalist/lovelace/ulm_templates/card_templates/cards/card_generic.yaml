@@ -17,6 +17,22 @@ card_generic:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
               icon: "[[[ return variables.ulm_card_generic_icon; ]]]"
+              variables: >
+                [[[
+                  let vars = variables;
+
+                  if(variables.ulm_outlet_power_enable_popup) {
+                    vars.ulm_custom_popup = {
+                      'template': 'popup_power_outlet_stats',
+                      'popup_variables': {
+                        'ulm_popup_power_outlet_sensor1': variables.ulm_popup_power_outlet_sensor1,
+                        'ulm_popup_power_outlet_sensor2': variables.ulm_popup_power_outlet_sensor2,
+                        'ulm_popup_power_outlet_graph_sensor': variables.ulm_popup_power_outlet_graph_sensor
+                      }
+                    };
+                  }
+                  return vars;
+                ]]]
               styles:
                 icon:
                   - color: "rgba(var(--color-theme),0.9)"
@@ -26,3 +42,19 @@ card_generic:
               entity: "[[[ return entity.entity_id ]]]"
               name: "[[[ return variables.ulm_translation_state_unit ]]]"
               label: "[[[ return variables.ulm_card_generic_name ]]]"
+              variables: >
+                [[[
+                  let vars = variables;
+
+                  if(variables.ulm_outlet_power_enable_popup) {
+                    vars.ulm_custom_popup = {
+                      'template': 'popup_power_outlet_stats',
+                      'popup_variables': {
+                        'ulm_popup_power_outlet_sensor1': variables.ulm_popup_power_outlet_sensor1,
+                        'ulm_popup_power_outlet_sensor2': variables.ulm_popup_power_outlet_sensor2,
+                        'ulm_popup_power_outlet_graph_sensor': variables.ulm_popup_power_outlet_graph_sensor
+                      }
+                    };
+                  }
+                  return vars;
+                ]]]
