@@ -3,8 +3,8 @@ popup_media_player_volume:
   template: "popup_media_player_infos"
   styles:
     grid:
-      - grid-template-areas: "'header' 'content2' 'buttons' 'footer'"
-      - grid-template-rows: "16vh 52vh 14vh 14vh;"
+      - grid-template-areas: "'header' 'content2' 'footer'"
+      - grid-template-rows: "16vh 52vh 28vh;"
       - grid-template-columns: "1fr"
     custom_fields:
       content1:
@@ -15,13 +15,9 @@ popup_media_player_volume:
   extra_styles: |
     @media (max-width: 800px) {
       #container {
-        grid-template-areas: "header" "content2" "buttons" "footer" !important;
-        grid-template-rows: 16vh 52vh 14vh 14vh !important;
+        grid-template-areas: "header" "content2" "footer" !important;
+        grid-template-rows: 16vh 56vh 28vh !important;
         grid-template-columns: 1fr !important;
-      }
-      #buttons {
-        display: block !important;
-        align-self: start !important;
       }
       #content1 {
         display: none;
@@ -36,31 +32,6 @@ popup_media_player_volume:
             card:
               type: "custom:button-card"
               template: "popup_button_back"
-              tap_action:
-                action: "fire-dom-event"
-                browser_mod:
-                  service: "browser_mod.popup"
-                  data:
-                    large: true
-                    hide_header: true
-                    content:
-                      type: "custom:button-card"
-                      template: "popup_media_player_infos"
-                      entity: "[[[ return entity.entity_id; ]]]"
-    buttons:
-      card:
-        type: "custom:button-card"
-        template: "list_2_items"
-        styles:
-          card:
-            - background: "none"
-        custom_fields:
-          item1:
-            card:
-              type: "custom:button-card"
-              template:
-                - "popup_button"
-                - "popup_button_playing"
               tap_action:
                 action: "fire-dom-event"
                 browser_mod:
@@ -89,10 +60,3 @@ popup_media_player_volume:
                       type: "custom:button-card"
                       template: "popup_media_player_infos"
                       entity: "[[[ return entity.entity_id; ]]]"
-          item2:
-            card:
-              type: "custom:button-card"
-              template:
-                - "popup_button"
-                - "popup_button_selected"
-                - "popup_button_volume"
