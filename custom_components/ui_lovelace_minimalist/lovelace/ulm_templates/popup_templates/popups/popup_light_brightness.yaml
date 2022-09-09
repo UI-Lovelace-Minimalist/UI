@@ -37,7 +37,7 @@ popup_light_brightness:
                     columns.push("1fr");
                 }
                 if (entity.attributes.supported_color_modes.some(r => color_modes.includes(r))) {
-                    columns.push("2fr");
+                    columns.push("1fr");
                 }
                 return columns.join(" ");
           ]]]
@@ -81,7 +81,7 @@ popup_light_brightness:
       buttons:
         - display: "none"
       footer:
-        - align-self: "end"
+        - align-self: "start"
         - margin-top: "25px"
   extra_styles: |
     @media (max-width: 800px) {
@@ -100,11 +100,6 @@ popup_light_brightness:
       #content3 {
         display: none !important;
       }
-      #card {
-        height: 100vh;
-        overflow: hidden;
-        position: fixed;
-      }
     }
   custom_fields:
     header:
@@ -114,104 +109,108 @@ popup_light_brightness:
         entity: "[[[ return entity.entity_id ]]]"
     content1:
       card:
-        type: "custom:my-slider"
+        type: "custom:my-slider-v2"
         entity: "[[[ return entity.entity_id ]]]"
-        radius: "20px"
-        rotate: 270
-        containerHeight: "320px"
-        width: "250px"
-        height: "100px"
-        top: "100px"
-        left: "17%"
-        thumbHorizontalPadding: "0px"
-        thumbWidth: "0px"
-        mainSliderColor: >
-          [[[
-              var color = entity.attributes.rgb_color;
-              if (entity.state == "unavailable"){
-                return "rgba(var(--color-grey),1)";
-              }
-              else if (color){
-                return "rgba(" + color + ",1)";
-              }
-              else{
-                return "rgba(var(--color-yellow),1)";
-              }
-          ]]]
-        mainSliderColorOff: "rgba(var(--color-theme),0.1)"
-        secondarySliderColor: >
-          [[[
-              var color = entity.attributes.rgb_color;
-              if (entity.state == "unavailable"){
-                return "rgba(var(--color-grey),0.2)";
-              }
-              else if (color){
-                return "rgba(" + color + ",0.2)";
-              }
-              else{
-                return "rgba(var(--color-yellow),0.2)";
-              }
-              ]]]
-        secondarySliderColorOff: "var(--color-theme)"
+        allowTapping: true
+        vertical: true
+        styles:
+          card:
+            - height: "280px"
+            - width: "100px"
+            - box-shadow: "none"
+            - background: "none"
+          container:
+            - border: "2px solid white"
+            - border-radius: "14px"
+            - Height: "280px"
+            - width: "100px"
+            - box-shadow: "none"
+          progress:
+            - background: >
+                [[[
+                    var color = entity.attributes.rgb_color;
+                    if (entity.state == "unavailable"){
+                    return "rgba(var(--color-grey),1)";
+                    }
+                    else if (entity.state == "off"){
+                    return "rgba(var(--color-theme),0.9)";
+                    }
+                    else if (color){
+                    return "rgba(" + color + ",1)";
+                    }
+                    else{
+                      return "rgba(var(--color-yellow),1)";
+                    }
+                ]]]
+          track:
+            - background: >
+                [[[
+                    var color = entity.attributes.rgb_color;
+                    if (entity.state == "unavailable"){
+                    return "rgba(var(--color-grey),0.2)";
+                    }
+                    else if (entity.state == "off"){
+                    return "rgba(var(--color-theme),0.09)";
+                    }
+                    else if (color){
+                    return "rgba(" + color + ",0.2)";
+                    }
+                    else{
+                      return "rgba(var(--color-yellow),0.2)";
+                    }
+                ]]]
+          thumb:
+            - width: "50px"
+            - height: "5px"
+            - background: "white"
+            - position: "center"
+            - margin-right: "25px"
+            - margin-left: "25px"
+            - border-radius: "0px 0px 10px 10px"
         card_mod:
-          style: |
-            ha-card {
-              background: none !important;
-              box-shadow: none !important;
-            }
-            .slider-container input[type="range"] {
-              position: revert !important;
-              border: 1px solid rgba(var(--color-theme),0.3) !important;
-            }
-            .slider-container {
-              display: flex;
-              justify-content: center;
-              align-items: center;
-            }
+          style:
+            .: |
+              :host {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: none;
+              }
     content2:
       card:
-        type: "custom:my-slider"
+        type: "custom:my-slider-v2"
         entity: "[[[ return entity.entity_id ]]]"
-        minBar: "[[[ return entity.attributes.min_mireds ]]]"
-        minSet: "[[[ return entity.attributes.min_mireds ]]]"
-        maxBar: "[[[ return entity.attributes.max_mireds ]]]"
-        maxSet: "[[[ return entity.attributes.max_mireds ]]]"
-        function: "Warmth"
-        radius: "20px"
-        rotate: 270
-        containerHeight: "320px"
-        width: "250px"
-        height: "100px"
-        thumbHorizontalPadding: "0px"
-        thumbWidth: "2%"
-        thumbHeight: "85px"
-        thumbColor: "#000"
-        mainSliderColor: "rgba(255, 255, 255, 0)"
-        mainSliderColorOff: "rgba(255, 255, 255, 0)"
+        colorMode: "temperature"
+        allowTapping: true
+        vertical: true
+        styles:
+          card:
+            - height: "280px"
+            - width: "100px"
+            - box-shadow: "none"
+            - background: "none"
+          container:
+            - border: "2px solid white"
+            - border-radius: "14px"
+            - Height: "280px"
+            - width: "100px"
+            - box-shadow: "none"
+            - background: "none"
+          thumb:
+            - width: "0px"
+          progress:
+            - background: "none"
+          track:
+            - background: "linear-gradient(180deg, #f3db6d, #fff, #c9f2fc)"
         card_mod:
-          style: |
-            ha-card {
-              background: none !important;
-              box-shadow: none !important;
-            }
-            .slider-container input[type="range"] {
-              position: revert !important;
-              border: 1px solid rgba(208, 208, 208, 1) !important;
-              background: linear-gradient(90deg, #c9f2fc, #fff, #f3db6d);
-              --thumb-top: 1px !important;
-            }
-            .slider-container input[type="range"]::-webkit-slider-thumb {
-              margin-top: 7px;
-              background-color: rgba(1, 1, 1, 0);
-            }
-            .slider-container input[type="range"]::-moz-range-thumb {
-              background-color: rgba(1, 1, 1, 0);
-            }
-            .slider-container {
-              display: flex;
-              justify-content: center;
-              align-items: center;
-            }
+          style:
+            .: |
+              :host {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: none;
+              }
     buttons:
       card:
         type: "custom:button-card"
@@ -251,7 +250,7 @@ popup_light_brightness:
                           columns.push("1fr");
                       }
                       if (entity.attributes.supported_color_modes.some(r => color_modes.includes(r))) {
-                          columns.push("1fr");
+                          columns.push("2fr");
                       }
                       return columns.join(" ");
                 ]]]
@@ -290,9 +289,22 @@ popup_light_brightness:
                     hide_header: true
                     style: |
                       --popup-background-color: var(--primary-background-color);
-                      --popup-border-radius: 0px;
+                      --popup-border-radius: 20px;
                       --popup-padding-x: 24px;
                       --popup-padding-y: 20px;
+                      --popup-max-width: auto
+                      --popup-min-width: 800px;
+                    card_mod:
+                      style:
+                        ha-dialog$: |
+                          @media (max-width: 800px){
+                            div.mdc-dialog__container {
+                              --mdc-dialog-min-width: 100vw;
+                              --mdc-dialog-max-width: 100vw;
+                              --mdc-dialog-min-height: 100%;
+                              --ha-dialog-border-radius: 0px;
+                            }
+                          }
                     content:
                       type: "custom:button-card"
                       template: "popup_light_color_temp"
@@ -322,9 +334,22 @@ popup_light_brightness:
                     hide_header: true
                     style: |
                       --popup-background-color: var(--primary-background-color);
-                      --popup-border-radius: 0px;
+                      --popup-border-radius: 20px;
                       --popup-padding-x: 24px;
                       --popup-padding-y: 20px;
+                      --popup-max-width: auto
+                      --popup-min-width: 800px;
+                    card_mod:
+                      style:
+                        ha-dialog$: |
+                          @media (max-width: 800px){
+                            div.mdc-dialog__container {
+                              --mdc-dialog-min-width: 100vw;
+                              --mdc-dialog-max-width: 100vw;
+                              --mdc-dialog-min-height: 100%;
+                              --ha-dialog-border-radius: 0px;
+                            }
+                          }
                     content:
                       type: "custom:button-card"
                       template: "popup_light_color"
