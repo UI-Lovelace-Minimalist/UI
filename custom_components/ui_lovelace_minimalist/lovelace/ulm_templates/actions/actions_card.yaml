@@ -18,7 +18,9 @@ ulm_actions_card:
         if (action == 'adaptive'){
           action = 'call-service'
         }
-
+        if (domain == "media_player" && action == 'toggle'){
+          action = 'call-service';
+        }
         if (action == 'popup' && (variables.ulm_custom_popup != null )){
           let popup_config = variables.ulm_custom_popup;
           if ((typeof popup_config === 'object') && 'template' in popup_config) {
@@ -41,7 +43,9 @@ ulm_actions_card:
         if (action == 'adaptive'){
           return 'input_select.select_option';
         }
-
+        if(entity.entity_id.startsWith("media_player.")){
+          return 'media_player.media_play_pause';
+        }
         return variables.ulm_card_tap_service;
       ]]]
     service_data: >
@@ -54,19 +58,35 @@ ulm_actions_card:
             'entity_id': variables.ulm_input_select
           };
         }
-
+        if(entity.entity_id.startsWith("media_player.")){
+          return {
+            'entity_id': entity.entity_id
+          };
+        }
         return variables.ulm_card_tap_service_data;
       ]]]
     browser_mod:
       service: "browser_mod.popup"
       data:
-        large: true
         hide_header: true
         style: |
           --popup-background-color: var(--primary-background-color);
-          --popup-border-radius: 0px;
+          --popup-border-radius: 20px;
           --popup-padding-x: 24px;
           --popup-padding-y: 20px;
+          --popup-max-width: auto
+          --popup-min-width: 800px;
+        card_mod:
+          style:
+            ha-dialog$: |
+              @media (max-width: 800px){
+                div.mdc-dialog__container {
+                  --mdc-dialog-min-width: 100vw;
+                  --mdc-dialog-max-width: 100vw;
+                  --mdc-dialog-min-height: 100%;
+                  --ha-dialog-border-radius: 0px;
+                }
+              }
         content:
           type: "custom:button-card"
           template: >
@@ -116,7 +136,9 @@ ulm_actions_card:
         if (action == 'adaptive'){
           action = 'call-service'
         }
-
+        if (domain == "media_player" && action == 'toggle'){
+          action = 'call-service';
+        }
         if (action == 'popup' && (variables.ulm_custom_popup != null )){
           let popup_config = variables.ulm_custom_popup;
           if ((typeof popup_config === 'object') && 'template' in popup_config) {
@@ -139,7 +161,9 @@ ulm_actions_card:
         if (action == 'adaptive'){
           return 'input_select.select_option';
         }
-
+        if(entity.entity_id.startsWith("media_player.")){
+          return 'media_player.media_play_pause';
+        }
         return variables.ulm_card_hold_service;
       ]]]
     service_data: >
@@ -152,19 +176,35 @@ ulm_actions_card:
             'entity_id': variables.ulm_input_select
           };
         }
-
+        if(entity.entity_id.startsWith("media_player.")){
+          return {
+            'entity_id': entity.entity_id
+          };
+        }
         return variables.ulm_card_hold_service_data;
       ]]]
     browser_mod:
       service: "browser_mod.popup"
       data:
-        large: true
         hide_header: true
         style: |
           --popup-background-color: var(--primary-background-color);
-          --popup-border-radius: 0px;
+          --popup-border-radius: 20px;
           --popup-padding-x: 24px;
           --popup-padding-y: 20px;
+          --popup-max-width: auto
+          --popup-min-width: 800px;
+        card_mod:
+          style:
+            ha-dialog$: |
+              @media (max-width: 800px){
+                div.mdc-dialog__container {
+                  --mdc-dialog-min-width: 100vw;
+                  --mdc-dialog-max-width: 100vw;
+                  --mdc-dialog-min-height: 100%;
+                  --ha-dialog-border-radius: 0px;
+                }
+              }
         content:
           type: "custom:button-card"
           template: >
@@ -214,7 +254,9 @@ ulm_actions_card:
         if (action == 'adaptive'){
           action = 'call-service'
         }
-
+        if (domain == "media_player" && action == 'toggle'){
+          action = 'call-service';
+        }
         if (action == 'popup' && (variables.ulm_custom_popup != null )){
           let popup_config = variables.ulm_custom_popup;
           if ((typeof popup_config === 'object') && 'template' in popup_config) {
@@ -237,7 +279,9 @@ ulm_actions_card:
         if (action == 'adaptive'){
           return 'input_select.select_option';
         }
-
+        if(entity.entity_id.startsWith("media_player.")){
+          return 'media_player.media_play_pause';
+        }
         return variables.ulm_card_double_tap_service;
       ]]]
     service_data: >
@@ -250,19 +294,35 @@ ulm_actions_card:
             'entity_id': variables.ulm_input_select
           };
         }
-
+        if(entity.entity_id.startsWith("media_player.")){
+          return {
+            'entity_id': entity.entity_id
+          };
+        }
         return variables.ulm_card_double_tap_service_data;
       ]]]
     browser_mod:
       service: "browser_mod.popup"
       data:
-        large: true
         hide_header: true
         style: |
           --popup-background-color: var(--primary-background-color);
-          --popup-border-radius: 0px;
+          --popup-border-radius: 20px;
           --popup-padding-x: 24px;
           --popup-padding-y: 20px;
+          --popup-max-width: auto
+          --popup-min-width: 800px;
+        card_mod:
+          style:
+            ha-dialog$: |
+              @media (max-width: 800px){
+                div.mdc-dialog__container {
+                  --mdc-dialog-min-width: 100vw;
+                  --mdc-dialog-max-width: 100vw;
+                  --mdc-dialog-min-height: 100%;
+                  --ha-dialog-border-radius: 0px;
+                }
+              }
         content:
           type: "custom:button-card"
           template: >

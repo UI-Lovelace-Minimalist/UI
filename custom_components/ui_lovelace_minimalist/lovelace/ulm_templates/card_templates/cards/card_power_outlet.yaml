@@ -9,6 +9,7 @@ card_power_outlet:
     ulm_card_power_outlet_consumption_sensor:
     ulm_card_power_outlet_name: "[[[ return entity.attributes.friendly_name ]]]"
     ulm_card_power_outlet_icon: "[[[ return entity.attributes.icon ]]]"
+    ulm_outlet_power_enable_popup: false
   triggers_update: "all"
   custom_fields:
     item1:

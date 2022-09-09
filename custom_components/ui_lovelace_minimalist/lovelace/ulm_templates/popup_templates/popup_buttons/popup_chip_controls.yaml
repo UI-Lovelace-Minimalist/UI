@@ -27,7 +27,14 @@ popup_chip_controls:
             entity_id: "[[[ return entity.entity_id; ]]]"
         styles:
           icon:
-            - color: "rgba(var(--color-theme),0.5)"
+            - color: >
+                [[[
+                  if(entity.state == 'playing'){
+                    return 'rgb(var(--color-theme)'
+                  } else {
+                    return 'rgba(var(--color-theme),0.5)'
+                  }
+                ]]]
     item2:
       card:
         type: "custom:button-card"
@@ -55,7 +62,14 @@ popup_chip_controls:
             entity_id: "[[[ return entity.entity_id; ]]]"
         styles:
           icon:
-            - color: "rgba(var(--color-theme),0.5)"
+            - color: >
+                [[[
+                  if(entity.state == 'playing'){
+                    return 'rgb(var(--color-theme)'
+                  } else {
+                    return 'rgba(var(--color-theme),0.5)'
+                  }
+                ]]]
 
 icon_controls:
   show_icon: true

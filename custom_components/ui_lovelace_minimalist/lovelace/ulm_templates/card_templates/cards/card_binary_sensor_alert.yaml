@@ -10,6 +10,7 @@ card_binary_sensor_alert:
     ulm_show_last_changed: false
     ulm_card_binary_sensor_alert_icon: "[[[ return entity.attributes.icon ]]]"
     ulm_card_binary_sensor_alert_name: "[[[ return entity.attributes.friendly_name ]]]"
+    ulm_outlet_power_enable_popup: false
   custom_fields:
     item1:
       card:

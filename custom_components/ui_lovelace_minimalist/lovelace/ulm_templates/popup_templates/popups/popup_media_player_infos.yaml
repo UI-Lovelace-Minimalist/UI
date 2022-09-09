@@ -7,15 +7,14 @@ popup_media_player_infos:
   triggers_update: "all"
   styles:
     grid:
-      - grid-template-areas: "'header' 'content1' 'footer'"
-      - grid-template-rows: "14vh 56vh 16vh"
-      - row-gap: "2.5%"
+      - grid-template-areas: "'header header' 'content1 content2' 'footer footer'"
+      - grid-template-rows: "16vh 56vh 14vh"
+      - grid-template-columns: "2fr 1fr"
     card:
       - background: "var(--primary-background-color)"
       - box-shadow: "none"
       - padding: "0% 2% 2% 2%"
       - border-radius: "none"
-      - height: "100vh"
     custom_fields:
       header:
         - align-self: "start"
@@ -24,27 +23,20 @@ popup_media_player_infos:
         - background-color: "var(--card-background-color)"
         - border-radius: "var(--border-radius)"
         - box-shadow: "var(--box-shadow)"
-        - width: "100%"
-        - max-width: "400px"
         - justify-self: "center"
       content2:
-        - display: "none"
-      buttons:
-        - display: "none"
+        - align-self: "center"
+        - justify-self: "center"
       footer:
-        - align-self: "end"
+        - align-self: "start"
         - margin-top: "25px"
         - padding-bottom: "4%"
   extra_styles: |
     @media (max-width: 800px) {
       #container {
         grid-template-areas: "header" "content1" "footer" !important;
-        grid-template-rows: 14vh 56vh 16vh !important;
+        grid-template-rows: 16vh 56vh 28vh !important;
         grid-template-columns: 1fr !important;
-      }
-      #buttons {
-        display: block !important;
-        align-self: start !important;
       }
       #content2 {
         display: none;
@@ -228,9 +220,22 @@ popup_media_player_infos:
                           hide_header: true
                           style: |
                             --popup-background-color: var(--primary-background-color);
-                            --popup-border-radius: 0px;
+                            --popup-border-radius: 20px;
                             --popup-padding-x: 24px;
                             --popup-padding-y: 20px;
+                            --popup-max-width: auto
+                            --popup-min-width: 800px;
+                          card_mod:
+                            style:
+                              ha-dialog$: |
+                                @media (max-width: 800px){
+                                  div.mdc-dialog__container {
+                                    --mdc-dialog-min-width: 100vw;
+                                    --mdc-dialog-max-width: 100vw;
+                                    --mdc-dialog-min-height: 100%;
+                                    --ha-dialog-border-radius: 0px;
+                                  }
+                                }
                           content:
                             type: "custom:button-card"
                             template: "popup_media_player_volume"
@@ -256,33 +261,39 @@ popup_media_player_infos:
               entity: "[[[ return entity.entity_id; ]]]"
     content2:
       card:
-        type: "custom:my-slider"
+        type: "custom:my-slider-v2"
         entity: "[[[ return entity.entity_id; ]]]"
-        radius: "20px"
-        rotate: 270
-        containerHeight: "320px"
-        width: "250px"
-        height: "100px"
-        top: "100px"
-        left: "17%"
-        thumbHorizontalPadding: "0px"
-        thumbWidth: "0px"
-        mainSliderColor: "rgba(var(--color-theme),0.1)"
-        mainSliderColorOff: "rgba(var(--color-theme),0.1)"
-        secondarySliderColor: "var(--color-theme)"
-        secondarySliderColorOff: "var(--color-theme)"
+        allowTapping: true
+        vertical: true
+        styles:
+          card:
+            - height: "30vh"
+            - width: "calc(30vh / 2.8)"
+            - box-shadow: "none"
+            - background: "none"
+          container:
+            - border: "2px solid white"
+            - border-radius: "14px"
+            - height: "30vh"
+            - width: "calc(30vh / 2.8)"
+            - box-shadow: "none"
+          thumb:
+            - width: "50px"
+            - height: "5px"
+            - background: "white"
+            - position: "center"
+            - margin-left: "calc(30vh / 2.8 / 2 - 25px)"
+            - border-radius: "0px 0px 10px 10px"
+          progress:
+            - background: "rgba(var(--color-theme),0.9)"
+          track:
+            - background: "rgba(var(--color-theme),0.09)"
         card_mod:
-          style: |
-            ha-card {
-              background: none !important;
-              box-shadow: none !important;
-            }
-            .slider-container input[type="range"] {
-              position: revert !important;
-              border: 1px solid rgba(var(--color-theme),0.3) !important;
-            }
-            .slider-container {
-              display: flex;
-              justify-content: center;
-              align-items: center;
-            }
+          style:
+            .: |
+              :host {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: none;
+              }
