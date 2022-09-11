@@ -107,7 +107,7 @@ popup_light_brightness:
     header:
       card:
         type: "custom:button-card"
-        template: "popup_header"
+        template: "popup_header_light"
         entity: "[[[ return entity.entity_id ]]]"
     content1:
       card:
