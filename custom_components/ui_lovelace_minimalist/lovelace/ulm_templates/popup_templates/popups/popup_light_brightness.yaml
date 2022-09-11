@@ -44,10 +44,11 @@ popup_light_brightness:
     card:
       - background: "var(--primary-background-color)"
       - box-shadow: "none"
-      - padding: "0% 2% 2% 2%"
+      - padding: "0%"
     custom_fields:
       header:
-        - align-self: "start"
+        - align-self: "center"
+        - margin-bottom: "4px"
       content1:
         - align-self: "center"
         - display: >
@@ -81,8 +82,8 @@ popup_light_brightness:
       buttons:
         - display: "none"
       footer:
-        - align-self: "start"
-        - margin-top: "25px"
+        - align-self: "absolute"
+        - margin-top: "12px"
   extra_styles: |
     @media (max-width: 800px) {
       #container {
@@ -93,6 +94,7 @@ popup_light_brightness:
       #buttons {
         display: block !important;
         align-self: start !important;
+        margin-left: 14px;
       }
       #content2 {
         display: none !important;
