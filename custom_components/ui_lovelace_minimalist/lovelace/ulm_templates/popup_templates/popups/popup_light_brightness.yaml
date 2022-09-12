@@ -44,10 +44,11 @@ popup_light_brightness:
     card:
       - background: "var(--primary-background-color)"
       - box-shadow: "none"
-      - padding: "0% 2% 2% 2%"
+      - padding: "0%"
     custom_fields:
       header:
-        - align-self: "start"
+        - align-self: "center"
+        - margin-bottom: "4px"
       content1:
         - align-self: "center"
         - display: >
@@ -81,8 +82,8 @@ popup_light_brightness:
       buttons:
         - display: "none"
       footer:
-        - align-self: "start"
-        - margin-top: "25px"
+        - align-self: "absolute"
+        - margin-top: "12px"
   extra_styles: |
     @media (max-width: 800px) {
       #container {
@@ -93,6 +94,7 @@ popup_light_brightness:
       #buttons {
         display: block !important;
         align-self: start !important;
+        margin-left: 14px;
       }
       #content2 {
         display: none !important;
@@ -105,7 +107,7 @@ popup_light_brightness:
     header:
       card:
         type: "custom:button-card"
-        template: "popup_header"
+        template: "popup_header_light"
         entity: "[[[ return entity.entity_id ]]]"
     content1:
       card:
@@ -250,7 +252,7 @@ popup_light_brightness:
                           columns.push("1fr");
                       }
                       if (entity.attributes.supported_color_modes.some(r => color_modes.includes(r))) {
-                          columns.push("2fr");
+                          columns.push("1fr");
                       }
                       return columns.join(" ");
                 ]]]
