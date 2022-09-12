@@ -7,8 +7,6 @@ card_person:
   variables:
     ulm_card_person_use_entity_picture: false
     ulm_card_person_icon: "mdi:face-man"
-    ulm_card_person_zone1: ""
-    ulm_card_person_zone2: ""
     ulm_address: ""
   triggers_update: "all"
   tap_action:
@@ -61,17 +59,17 @@ card_person:
   custom_fields:
     notification: >
       [[[
-        if (states[variables.ulm_card_person_entity].state !== 'home') {
-          if (states[variables.ulm_card_person_zone1]?.attributes?.persons.includes(variables.ulm_card_person_entity)) {
-            var icon = states[variables.ulm_card_person_zone1].attributes.icon !== null ? states[variables.ulm_card_person_zone1].attributes.icon : 'mdi:help-circle'
-            return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
-          } else if (states[variables.ulm_card_person_zone2]?.attributes?.persons.includes(variables.ulm_card_person_entity)) {
-            var icon = states[variables.ulm_card_person_zone2].attributes.icon !== null ? states[variables.ulm_card_person_zone2].attributes.icon : 'mdi:help-circle'
-            return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
-          } else {
-            return '<ha-icon icon="mdi:home-minus" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
-          }
+        if (states[variables.ulm_card_person_entity].state == 'home') {
+            return '<ha-icon icon="mdi:home-variant" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
         } else {
-          return '<ha-icon icon="mdi:home-variant" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+            for (let st in states) {
+                if (st.startsWith("zone.")) {
+                    if (states[st]?.attributes?.persons.includes(variables.ulm_card_person_entity)) {
+                        var icon = states[st].attributes.icon !== null ? states[st].attributes.icon : 'mdi:help-circle';
+                        return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+                    }
+                }
+            }
         }
+        return '<ha-icon icon="mdi:home-minus" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
       ]]]
