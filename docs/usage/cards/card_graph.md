@@ -17,7 +17,7 @@ The `card_graph` shows an entity with the actual state and a *min-graph-card* in
 |----------|---------|------------------|-------------------|
 | entity      |         | :material-check: | Your entity_id for the temperature sensor |
 | ulm_card_graph_color     |         | :material-close: | This is to adjust your color value. Use a CSS variable from HA or set a color value (eg. #FFFFFF) |
-| ulm_card_graph_name      |         | :material-close: | Enable background |
+| ulm_card_graph_name      |         | :material-close: | Set graph name |
 | ulm_card_graph_icon    |         | :material-close: | Set custom icon |
 | ulm_card_graph_entity      |         | :material-check: | Your entity_id for the temperature sensor |
 | ulm_card_graph_entity2      |         | :material-close: | Your entity_id for the second temperature sensor |
