@@ -61,7 +61,7 @@ popup_cover:
             - box-shadow: "none"
             - background: "none"
           container:
-            - border: 2px solid white
+            - border: "2px solid white"
             - border-radius: "14px"
             - Height: "280px"
             - width: "100px"
