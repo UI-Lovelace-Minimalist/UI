@@ -1,3 +1,4 @@
+---
 custom_card_drealine_roomview:
   template:
     - "custom_card_drealine_roomview_style_root"
@@ -610,7 +611,7 @@ custom_card_drealine_roomview_count_sensors:
 custom_card_drealine_roomview_style_root:
   styles:
     grid:
-      - grid-template-areas: '"header" "sensors" "devices"'
+      - grid-template-areas: "'header' 'sensors' 'devices'"
       - grid-template-columns: "1fr"
       - grid-template-rows: "min-content  min-content"
       - row-gap: "6px"
@@ -622,7 +623,7 @@ custom_card_drealine_roomview_style_root:
 custom_card_drealine_roomview_conf_header_root:
   styles:
     grid:
-      - grid-template-areas: '"header_card"'
+      - grid-template-areas: "'header_card'"
       - grid-template-columns: "1fr"
       - grid-template-rows: "min-content"
       - column-gap: "7px"
@@ -673,7 +674,7 @@ custom_card_drealine_roomview_conf_devices:
       - color: "rgba(var(--color-theme),0.9)"
       - height: "40px"
     grid:
-      - grid-template-areas: '"i"'
+      - grid-template-areas: "'i'"
     card:
       - box-shadow: "none"
       - padding: "0px"
@@ -757,7 +758,7 @@ custom_card_drealine_roomview_conf_header:
       - width: "42px"
       - height: "42px"
     grid:
-      - grid-template-areas: '"i n" "i l"'
+      - grid-template-areas: "'i n' 'i l'"
       - grid-template-columns: "min-content auto"
       - grid-template-rows: "min-content"
       - position: "relative"
@@ -790,7 +791,7 @@ custom_card_drealine_roomview_conf_icons_sensors:
       - height: "auto"
       - width: "35px"
     grid:
-      - grid-template-areas: '"i"'
+      - grid-template-areas: "'i'"
       - grid-template-columns: "1fr"
     card:
       - background: "transparent"
