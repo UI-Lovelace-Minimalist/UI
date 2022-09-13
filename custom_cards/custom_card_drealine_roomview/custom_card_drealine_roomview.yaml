@@ -367,10 +367,8 @@ custom_card_drealine_roomview:
                 - "custom_card_drealine_roomview_conf_devices"
               icon: |
                 [[[
-
                 var count_unavailable = 0;
                 var count_entity = 0;
-
                 if (states[variables.group_lights]){
                   if (states[variables.group_lights].attributes['entity_id']){
                     states[variables.group_lights].attributes['entity_id'].forEach(function(entity){
@@ -384,7 +382,6 @@ custom_card_drealine_roomview:
                     }
                   }
                   else return "mdi:exclamation"
-
                   var state_lights = states[variables.group_lights].state;
                   if (state_lights == 'on') return "mdi:lightbulb-group";
                   else if (state_lights == 'off') return "mdi:lightbulb-group-off";
@@ -403,7 +400,6 @@ custom_card_drealine_roomview:
                 [[[
                 var count_unavailable = 0;
                 var count_entity = 0;
-
                 if (states[variables.group_windows_shutters]){
                   if (states[variables.group_windows_shutters].attributes['entity_id']){
                     states[variables.group_windows_shutters].attributes['entity_id'].forEach(function(entity){
@@ -417,7 +413,6 @@ custom_card_drealine_roomview:
                     }
                   }
                   else return "mdi:exclamation"
-
                   var state_windows = states[variables.group_windows_shutters].state;
                   if (state_windows == 'on') return "mdi:window-shutter-open";
                   else if (state_windows == 'off') return "mdi:window-shutter";
@@ -435,10 +430,8 @@ custom_card_drealine_roomview:
                 - "custom_card_drealine_roomview_conf_devices"
               icon: >
                 [[[
-
                 var count_unavailable = 0;
                 var count_entity = 0;
-
                 if (states[variables.group_outlets]){
                   if (states[variables.group_outlets].attributes['entity_id']){
                     states[variables.group_outlets].attributes['entity_id'].forEach(function(entity){
