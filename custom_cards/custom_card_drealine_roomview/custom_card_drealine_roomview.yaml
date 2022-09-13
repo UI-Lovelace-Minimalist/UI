@@ -3,22 +3,22 @@ custom_card_drealine_roomview:
   template:
     - "custom_card_drealine_roomview_style_root"
   variables:
-    group_lights: 
-    group_motions: 
-    group_doors: 
-    group_windows: 
-    group_outlets: 
-    group_tv: 
-    group_water: 
+    group_lights:
+    group_motions:
+    group_doors:
+    group_windows:
+    group_outlets:
+    group_tv:
+    group_water:
     group_windows_shutters:
-    temperature: 
+    temperature:
     humidity:
   triggers_update: "all"
   group_expand: true
   custom_fields:
     header:
       card:
-        template: 
+        template:
           - "custom_card_drealine_roomview_conf_header_root"
         type: "custom:button-card"
         custom_fields:
@@ -29,7 +29,7 @@ custom_card_drealine_roomview:
                 ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
                 ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
                 ulm_card_tap_navigate_path: "[[[ return variables.ulm_card_tap_navigate_path; ]]]"
-              styles:  
+              styles:
                 custom_fields:
                   warning:
                     - display: |
@@ -119,8 +119,8 @@ custom_card_drealine_roomview:
                       if(states[groups[i]].state == "on"){
                         count_if_show_box_sensors += 1;
                       }
-                    } 
-                    
+                    }
+
                   }
                   if (count_if_show_box_sensors >= 1){
                     return "auto";
@@ -148,7 +148,7 @@ custom_card_drealine_roomview:
                           });
                         }
                       }
-                    } 
+                    }
                     if (count_if_show_box_sensors >= 1){
                       return "auto";
                     }
@@ -159,7 +159,7 @@ custom_card_drealine_roomview:
                   ]]]
             doors:
               - display: |
-                  [[[ 
+                  [[[
                     if (variables.group_doors){
                       return "auto";
                     }
@@ -168,9 +168,9 @@ custom_card_drealine_roomview:
                       return "none";
                     }
                   ]]]
-            windows: 
+            windows:
               - display: |
-                  [[[ 
+                  [[[
                     if (variables.group_windows){
                       return "auto";
                     }
@@ -181,7 +181,7 @@ custom_card_drealine_roomview:
                   ]]]
             motions:
               - display: |
-                  [[[ 
+                  [[[
                     if (variables.group_motions){
                       return "auto";
                     }
@@ -192,7 +192,7 @@ custom_card_drealine_roomview:
                   ]]]
             water:
               - display: |
-                  [[[ 
+                  [[[
                     if (variables.group_water){
                       return "auto";
                     }
@@ -257,7 +257,7 @@ custom_card_drealine_roomview:
                 custom_fields:
                   count_batteries:
                     - display: |
-                        [[[ 
+                        [[[
                           var count_alert = 0;
                           var groups = [variables.group_lights, variables.group_motions,variables.group_doors,
                           variables.group_windows, variables.group_outlets, variables.group_water];
@@ -378,7 +378,7 @@ custom_card_drealine_roomview:
                       }
                     });
                     if (count_entity == count_unavailable){
-                      return "mdi:lightbulb-alert"; 
+                      return "mdi:lightbulb-alert";
                     }
                   }
                   else return "mdi:exclamation"
@@ -391,10 +391,10 @@ custom_card_drealine_roomview:
                 }
                 ]]]
               entity: "[[[ return variables.group_lights ]]]"
-              type: "custom:button-card"         
+              type: "custom:button-card"
           windows_shutters:
             card:
-              template: 
+              template:
                 - "custom_card_drealine_roomview_conf_devices"
               icon: >
                 [[[
@@ -409,7 +409,7 @@ custom_card_drealine_roomview:
                       }
                     });
                     if (count_entity == count_unavailable){
-                      return "mdi:window-shutter-alert"; 
+                      return "mdi:window-shutter-alert";
                     }
                   }
                   else return "mdi:exclamation"
@@ -426,7 +426,7 @@ custom_card_drealine_roomview:
               type: "custom:button-card"
           outlets:
             card:
-              template: 
+              template:
                 - "custom_card_drealine_roomview_conf_devices"
               icon: >
                 [[[
@@ -441,7 +441,7 @@ custom_card_drealine_roomview:
                       }
                     });
                     if (count_entity == count_unavailable){
-                      return "mdi:exclamation-thick"; 
+                      return "mdi:exclamation-thick";
                     }
                   }
                   var group_outlets = states[variables.group_outlets].state;
@@ -457,13 +457,13 @@ custom_card_drealine_roomview:
               type: "custom:button-card"
           tv:
             card:
-              template: 
+              template:
                 - "custom_card_drealine_roomview_conf_devices"
               icon: >
                 [[[
                   var count_unavailable = 0;
                   var count_entity = 0;
-                  
+
                   if (states[variables.group_tv]){
                     if (states[variables.group_tv].attributes['entity_id']){
                       states[variables.group_tv].attributes['entity_id'].forEach(function(entity){
@@ -473,7 +473,7 @@ custom_card_drealine_roomview:
                         }
                       });
                       if (count_entity == count_unavailable){
-                        return "mdi:exclamation-thick"; 
+                        return "mdi:exclamation-thick";
                       }
                     }
                     var group_tv = states[variables.group_tv].state;
@@ -495,7 +495,7 @@ custom_card_drealine_roomview:
             windows_shutters:
               - flex: "auto"
               - display: |
-                  [[[ 
+                  [[[
                     if (variables.group_windows_shutters){
                       return "auto";
                     }
@@ -504,10 +504,10 @@ custom_card_drealine_roomview:
                       return "none";
                     }
                   ]]]
-            outlets: 
+            outlets:
               - flex: "auto"
               - display: |
-                  [[[ 
+                  [[[
                     if (variables.group_outlets){
                       return "auto";
                     }
@@ -519,7 +519,7 @@ custom_card_drealine_roomview:
             tv:
               - flex: "auto"
               - display: |
-                  [[[ 
+                  [[[
                     if (variables.group_tv){
                       return "auto";
                     }
@@ -571,7 +571,7 @@ custom_card_drealine_roomview_count_sensors:
         - color: "white"
         - background-color: "rgba(var(--color-blue),0.75)"
         - display: |
-            [[[ 
+            [[[
               if ((entity !== undefined && states[entity.entity_id].state == 'on')){
                 return "auto";
               }
@@ -591,7 +591,7 @@ custom_card_drealine_roomview_count_sensors:
                   count++;
                 }
               });
-            } 
+            }
           }
           return count;
         ]]]
@@ -654,7 +654,7 @@ custom_card_drealine_roomview_conf_devices:
           - background-color: "rgba(var(--color-yellow), 0.2)"
         card:
           - background-color: "rgba(var(--color-background-yellow),var(--opacity-bg))"
-      value: "on"    
+      value: "on"
   styles:
     icon:
       - color: "rgba(var(--color-theme),0.9)"
@@ -681,7 +681,7 @@ custom_card_drealine_roomview_conf_devices:
         - background-color: "rgba(var(--color-blue),0.75)"
         - color: "white"
         - display: |
-            [[[ 
+            [[[
               if ((entity !== undefined && states[entity.entity_id].state == 'on')){
                 return "auto";
               }
@@ -700,7 +700,7 @@ custom_card_drealine_roomview_conf_devices:
                 if(states[entity] && states[entity].state == 'on'){
                   count++;
                 }
-              }); 
+              });
             }
           }
           return count;
