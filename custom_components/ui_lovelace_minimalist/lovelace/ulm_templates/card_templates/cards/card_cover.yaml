@@ -111,7 +111,7 @@ card_cover:
                         } else if (variables.ulm_card_cover_gate){
                           var icon = "mdi:gate";
                         } else
-                          var icon = "mdi:window-shutter";
+                          var icon = "mdi:roller-shade-closed";
                       } else
                         if (variables.ulm_card_curtain_display_collapse_expand){
                           var icon = "mdi:curtains";
@@ -120,7 +120,7 @@ card_cover:
                         } else if (variables.ulm_card_cover_gate){
                           var icon = "mdi:gate-open";
                         }else
-                          var icon = "mdi:window-shutter-open";
+                          var icon = "mdi:roller-shade";
                     } else {
                       if (states[entity.entity_id].attributes.current_position == 0){
                         if (variables.ulm_card_curtain_display_collapse_expand){
@@ -130,7 +130,7 @@ card_cover:
                         } else if(variables.ulm_card_cover_gate){
                           var icon = "mdi:gate";
                         } else
-                          var icon = "mdi:window-shutter";
+                          var icon = "mdi:roller-shade-closed";
                       } else
                         if (variables.ulm_card_curtain_display_collapse_expand){
                           var icon = "mdi:curtains";
@@ -140,7 +140,7 @@ card_cover:
                           var icon = "mdi:gate-open";
                         }
                         else
-                          var icon = "mdi:window-shutter-open";
+                          var icon = "mdi:roller-shade";
                     }
                     return icon ;
                 ]]]
