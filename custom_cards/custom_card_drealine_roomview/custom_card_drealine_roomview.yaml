@@ -15,7 +15,6 @@ custom_card_drealine_roomview:
     humidity:
   triggers_update: "all"
   group_expand: true
-  
   custom_fields:
     header:
       card:
@@ -536,8 +535,6 @@ custom_card_drealine_roomview:
                       return "none";
                     }
                   ]]]
-
-                  
 custom_card_drealine_roomview_conf_devices_root:
   styles:
     grid:
@@ -548,7 +545,6 @@ custom_card_drealine_roomview_conf_devices_root:
       - box-shadow: "none"
       - padding: "0px"
       - border-radius: "0%"
-
 custom_card_drealine_roomview_style_count_batteries:
   styles:
     custom_fields:
@@ -564,7 +560,6 @@ custom_card_drealine_roomview_style_count_batteries:
         - line-height: "13px"
         - color: "white"
         - background-color: "rgba(var(--color-blue),0.75)"
-
 custom_card_drealine_roomview_count_sensors:
   group_expand: true
   show_name: false
@@ -607,7 +602,6 @@ custom_card_drealine_roomview_count_sensors:
           }
           return count;
         ]]]
-
 custom_card_drealine_roomview_style_root:
   styles:
     grid:
@@ -645,7 +639,6 @@ custom_card_drealine_roomview_conf_sensors:
       - height: "auto"
       - align-items: "center"
       - border-radius: "0%"
-
 custom_card_drealine_roomview_conf_devices:
   group_expand: true
   color: "var(--google-grey)"
@@ -719,8 +712,6 @@ custom_card_drealine_roomview_conf_devices:
           }
           return count;
         ]]]
-
-
 custom_card_drealine_roomview_conf_header:
   color: "var(--google-grey)"
   show_icon: true
@@ -778,8 +769,6 @@ custom_card_drealine_roomview_conf_header:
         - font-size: "12px"
         - line-height: "14px"
         - background-color: "rgba(var(--color-red),1)"
-
-        
 custom_card_drealine_roomview_conf_icons_sensors:
   show_name: false
   styles:
