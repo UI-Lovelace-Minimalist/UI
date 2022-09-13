@@ -91,6 +91,7 @@ icon_more_info_new:
                 ulm_custom_popup: "[[[ return variables.ulm_custom_popup; ]]]"
               styles:
                 card:
+                  - overflow: "visible"
                   - padding: "6px"
                   - margin-left: "-6px"
                   - background-color: "rgba(0,0,0,0)"
