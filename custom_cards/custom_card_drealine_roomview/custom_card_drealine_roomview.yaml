@@ -1,6 +1,6 @@
 custom_card_drealine_roomview:
   template:
-    - custom_card_drealine_roomview_style_root
+    - "custom_card_drealine_roomview_style_root"
   variables:
     group_lights: 
     group_motions: 
@@ -19,8 +19,8 @@ custom_card_drealine_roomview:
     header:
       card:
         template: 
-          - custom_card_drealine_roomview_conf_header_root
-        type: custom:button-card
+          - "custom_card_drealine_roomview_conf_header_root"
+        type: "custom:button-card"
         custom_fields:
           header_card:
             card:
@@ -88,13 +88,13 @@ custom_card_drealine_roomview:
                   return humidity;
                 ]]]
               template:
-                - custom_card_drealine_roomview_conf_header
-                - ulm_actions_card
-              type: custom:button-card
+                - "custom_card_drealine_roomview_conf_header"
+                - "ulm_actions_card"
+              type: "custom:button-card"
     sensors:
       card:
         template:
-          - custom_card_drealine_roomview_conf_sensors
+          - "custom_card_drealine_roomview_conf_sensors"
         styles:
           card:
             - display: |
@@ -201,14 +201,14 @@ custom_card_drealine_roomview:
                       return "none";
                     }
                   ]]]
-        type: custom:button-card
+        type: "custom:button-card"
         custom_fields:
           doors:
             card:
               template:
-                - custom_card_drealine_roomview_conf_icons_sensors
-                - custom_card_drealine_roomview_count_sensors
-              icon: mdi:door-open
+                - "custom_card_drealine_roomview_conf_icons_sensors"
+                - "custom_card_drealine_roomview_count_sensors"
+              icon: "mdi:door-open"
               entity: "[[[ return variables.group_doors ]]]"
               styles:
                 card:
@@ -221,13 +221,13 @@ custom_card_drealine_roomview:
                           return "none";
                         }
                       ]]]
-              type: custom:button-card
+              type: "custom:button-card"
           battery:
             card:
               template:
-                - custom_card_drealine_roomview_conf_icons_sensors
-                - custom_card_drealine_roomview_style_count_batteries
-              icon: mdi:battery-20
+                - "custom_card_drealine_roomview_conf_icons_sensors"
+                - "custom_card_drealine_roomview_style_count_batteries"
+              icon: "mdi:battery-20"
               styles:
                 card:
                   - display: >-
@@ -300,13 +300,13 @@ custom_card_drealine_roomview:
                       }
                       return battery;
                     ]]]
-              type: custom:button-card
+              type: "custom:button-card"
           windows:
             card:
               template:
-                - custom_card_drealine_roomview_conf_icons_sensors
-                - custom_card_drealine_roomview_count_sensors
-              icon: mdi:window-closed-variant
+                - "custom_card_drealine_roomview_conf_icons_sensors"
+                - "custom_card_drealine_roomview_count_sensors"
+              icon: "mdi:window-closed-variant"
               entity: "[[[ return variables.group_windows ]]]"
               styles:
                 card:
@@ -319,12 +319,12 @@ custom_card_drealine_roomview:
                           return "none";
                         }
                       ]]]
-              type: custom:button-card
+              type: "custom:button-card"
           motions:
             card:
               template:
-                - custom_card_drealine_roomview_conf_icons_sensors
-              icon: mdi:motion-sensor
+                - "custom_card_drealine_roomview_conf_icons_sensors"
+              icon: "mdi:motion-sensor"
               entity: "[[[ return variables.group_motions ]]]"
               styles:
                 card:
@@ -337,12 +337,12 @@ custom_card_drealine_roomview:
                           return "none";
                         }
                       ]]]
-              type: custom:button-card
+              type: "custom:button-card"
           water:
             card:
               template:
-                - custom_card_drealine_roomview_conf_icons_sensors
-              icon: mdi:water
+                - "custom_card_drealine_roomview_conf_icons_sensors"
+              icon: "mdi:water"
               entity: "[[[ return variables.group_water ]]]"
               styles:
                 card:
@@ -355,16 +355,16 @@ custom_card_drealine_roomview:
                           return "none";
                         }
                       ]]]
-                type: custom:button-card
+                type: "custom:button-card"
     devices:
       card:
-        template: custom_card_drealine_roomview_conf_devices_root
-        type: custom:button-card
+        template: "custom_card_drealine_roomview_conf_devices_root"
+        type: "custom:button-card"
         custom_fields:
           lights:
             card:
               template:
-                - custom_card_drealine_roomview_conf_devices
+                - "custom_card_drealine_roomview_conf_devices"
               icon: |
                 [[[
 
@@ -394,11 +394,11 @@ custom_card_drealine_roomview:
                 }
                 ]]]
               entity: "[[[ return variables.group_lights ]]]"
-              type: custom:button-card         
+              type: "custom:button-card"         
           windows_shutters:
             card:
               template: 
-                - custom_card_drealine_roomview_conf_devices
+                - "custom_card_drealine_roomview_conf_devices"
               icon: >
                 [[[
                 var count_unavailable = 0;
@@ -428,11 +428,11 @@ custom_card_drealine_roomview:
                 }
                 ]]]
               entity: "[[[ return variables.group_windows_shutters ]]]"
-              type: custom:button-card
+              type: "custom:button-card"
           outlets:
             card:
               template: 
-                - custom_card_drealine_roomview_conf_devices
+                - "custom_card_drealine_roomview_conf_devices"
               icon: >
                 [[[
 
@@ -461,11 +461,11 @@ custom_card_drealine_roomview:
                 }
                 ]]]
               entity: "[[[ return variables.group_outlets ]]]"
-              type: custom:button-card
+              type: "custom:button-card"
           tv:
             card:
               template: 
-                - custom_card_drealine_roomview_conf_devices
+                - "custom_card_drealine_roomview_conf_devices"
               icon: >
                 [[[
                   var count_unavailable = 0;
@@ -493,14 +493,14 @@ custom_card_drealine_roomview:
                   }
                 ]]]
               entity: "[[[ return variables.group_tv ]]]"
-              type: custom:button-card
+              type: "custom:button-card"
         styles:
           custom_fields:
             lights:
-              - flex: auto
-              - display: auto
+              - flex: "auto"
+              - display: "auto"
             windows_shutters:
-              - flex: auto
+              - flex: "auto"
               - display: |
                   [[[ 
                     if (variables.group_windows_shutters){
@@ -512,7 +512,7 @@ custom_card_drealine_roomview:
                     }
                   ]]]
             outlets: 
-              - flex: auto
+              - flex: "auto"
               - display: |
                   [[[ 
                     if (variables.group_outlets){
@@ -524,7 +524,7 @@ custom_card_drealine_roomview:
                     }
                   ]]]
             tv:
-              - flex: auto
+              - flex: "auto"
               - display: |
                   [[[ 
                     if (variables.group_tv){
@@ -540,29 +540,29 @@ custom_card_drealine_roomview:
 custom_card_drealine_roomview_conf_devices_root:
   styles:
     grid:
-      - display: flex
-      - gap: 2%
-      - flex-wrap: wrap
+      - display: "flex"
+      - gap: "2%"
+      - flex-wrap: "wrap"
     card:
-      - box-shadow: none
-      - padding: 0px
-      - border-radius: 0%
+      - box-shadow: "none"
+      - padding: "0px"
+      - border-radius: "0%"
 
 custom_card_drealine_roomview_style_count_batteries:
   styles:
     custom_fields:
       count_batteries:
-        - border-radius: 50%
-        - position: absolute
-        - left: 58%
-        - top: 5%
-        - height: 13px
-        - width: 13px
-        - font-weight: 900
-        - font-size: 10px
-        - line-height: 13px
-        - color: white
-        - background-color: rgba(var(--color-blue),0.75)
+        - border-radius: "50%"
+        - position: "absolute"
+        - left: "58%"
+        - top: "5%"
+        - height: "13px"
+        - width: "13px"
+        - font-weight: "900"
+        - font-size: "10px"
+        - line-height: "13px"
+        - color: "white"
+        - background-color: "rgba(var(--color-blue),0.75)"
 
 custom_card_drealine_roomview_count_sensors:
   group_expand: true
@@ -570,17 +570,17 @@ custom_card_drealine_roomview_count_sensors:
   styles:
     custom_fields:
       number_of_sensors:
-        - border-radius: 50%
-        - position: absolute
-        - left: 58%
-        - top: 5%
-        - height: 13px
-        - width: 13px
-        - font-weight: 900
-        - font-size: 10px
-        - line-height: 13px
-        - color: white
-        - background-color: rgba(var(--color-blue),0.75)
+        - border-radius: "50%"
+        - position: "absolute"
+        - left: "58%"
+        - top: "5%"
+        - height: "13px"
+        - width: "13px"
+        - font-weight: "900"
+        - font-size: "10px"
+        - line-height: "13px"
+        - color: "white"
+        - background-color: "rgba(var(--color-blue),0.75)"
         - display: |
             [[[ 
               if ((entity !== undefined && states[entity.entity_id].state == 'on')){
@@ -611,88 +611,88 @@ custom_card_drealine_roomview_style_root:
   styles:
     grid:
       - grid-template-areas: '"header" "sensors" "devices"'
-      - grid-template-columns: 1fr
-      - grid-template-rows: min-content  min-content
-      - row-gap: 6px
+      - grid-template-columns: "1fr"
+      - grid-template-rows: "min-content  min-content"
+      - row-gap: "6px"
     card:
-      - border-radius: 20px
-      - box-shadow: var(--box-shadow)
-      - padding: 12px
+      - border-radius: "20px"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
 
 custom_card_drealine_roomview_conf_header_root:
   styles:
     grid:
       - grid-template-areas: '"header_card"'
-      - grid-template-columns: 1fr
-      - grid-template-rows: min-content
-      - column-gap: 7px
+      - grid-template-columns: "1fr"
+      - grid-template-rows: "min-content"
+      - column-gap: "7px"
     card:
-      - box-shadow: none
-      - padding: 0px
+      - box-shadow: "none"
+      - padding: "0px"
 
 custom_card_drealine_roomview_conf_sensors:
   styles:
     grid:
-      - display: flex
-      - justify-content: center
-      - flex-wrap: wrap
-      - align-content: center
+      - display: "flex"
+      - justify-content: "center"
+      - flex-wrap: "wrap"
+      - align-content: "center"
     card:
-      - box-shadow: none
-      - padding: 0px
-      - margin: 0px
-      - height: auto
-      - align-items: center
-      - border-radius: 0%
+      - box-shadow: "none"
+      - padding: "0px"
+      - margin: "0px"
+      - height: "auto"
+      - align-items: "center"
+      - border-radius: "0%"
 
 custom_card_drealine_roomview_conf_devices:
   group_expand: true
-  color: var(--google-grey)
+  color: "var(--google-grey)"
   tap_action:
-    action: none
+    action: "none"
   double_tap_action:
-    action: toggle
-  size: 20px
+    action: "toggle"
+  size: "20px"
   show_icon: true
   show_name: false
   state:
     - styles:
         icon:
-          - color: 'rgba(var(--color-yellow),1)'
+          - color: "rgba(var(--color-yellow),1)"
         label:
-          - color: 'rgba(var(--color-yellow-text),1)'
+          - color: "rgba(var(--color-yellow-text),1)"
         name:
-          - color: 'rgba(var(--color-yellow-text),1)'
+          - color: "rgba(var(--color-yellow-text),1)"
         img_cell:
-          - background-color: 'rgba(var(--color-yellow), 0.2)'
+          - background-color: "rgba(var(--color-yellow), 0.2)"
         card:
-          - background-color: 'rgba(var(--color-background-yellow),var(--opacity-bg))'
-      value: 'on'    
+          - background-color: "rgba(var(--color-background-yellow),var(--opacity-bg))"
+      value: "on"    
   styles:
     icon:
       - color: "rgba(var(--color-theme),0.9)"
-      - height: 40px
+      - height: "40px"
     grid:
       - grid-template-areas: '"i"'
     card:
-      - box-shadow: none
-      - padding: 0px
+      - box-shadow: "none"
+      - padding: "0px"
       - background-color: "rgba(var(--color-theme),0.05)"
-      - border-radius: 14px
-      - min-width: 40px
+      - border-radius: "14px"
+      - min-width: "40px"
     custom_fields:
       number_of_devices:
-        - border-radius: 50%
-        - position: absolute
-        - left: 50.5%
-        - top: 24%
-        - height: 13px
-        - width: 13px
-        - font-size: 10px
-        - font-weight: 900
-        - line-height: 13px
-        - background-color: rgba(var(--color-blue),0.75)
-        - color: white
+        - border-radius: "50%"
+        - position: "absolute"
+        - left: "50.5%"
+        - top: "24%"
+        - height: "13px"
+        - width: "13px"
+        - font-size: "10px"
+        - font-weight: "900"
+        - line-height: "13px"
+        - background-color: "rgba(var(--color-blue),0.75)"
+        - color: "white"
         - display: |
             [[[ 
               if ((entity !== undefined && states[entity.entity_id].state == 'on')){
@@ -721,11 +721,11 @@ custom_card_drealine_roomview_conf_devices:
 
 
 custom_card_drealine_roomview_conf_header:
-  color: var(--google-grey)
+  color: "var(--google-grey)"
   show_icon: true
   show_name: true
   show_label: true
-  size: 20px
+  size: "20px"
   custom_fields:
     warning: |
       [[[
@@ -734,49 +734,49 @@ custom_card_drealine_roomview_conf_header:
   styles:
     icon:
       - color: "rgba(var(--color-theme),0.2)"
-      - transform: scale(1.2)
+      - transform: "scale(1.2)"
     label:
-      - justify-self: start
-      - align-self: start
-      - font-weight: bold
-      - font-size: 12px
-      - filter: opacity(50%)
-      - margin-left: 10px
+      - justify-self: "start"
+      - align-self: "start"
+      - font-weight: "bold"
+      - font-size: "12px"
+      - filter: "opacity(50%)"
+      - margin-left: "10px"
     name:
-      - align-self: start
-      - justify-self: start
-      - font-weight: bold
-      - font-size: 12px
-      - margin-top: 2px
-      - margin-left: 10px
-      - filter: opacity(50%)
+      - align-self: "start"
+      - justify-self: "start"
+      - font-weight: "bold"
+      - font-size: "12px"
+      - margin-top: "2px"
+      - margin-left: "10px"
+      - filter: "opacity(50%)"
     img_cell:
       - background-color: "rgba(var(--color-theme),0.05)"
-      - border-radius: 50%
-      - place-self: center
-      - width: 42px
-      - height: 42px
+      - border-radius: "50%"
+      - place-self: "center"
+      - width: "42px"
+      - height: "42px"
     grid:
       - grid-template-areas: '"i n" "i l"'
-      - grid-template-columns: min-content auto
-      - grid-template-rows: min-content
-      - position: relative
+      - grid-template-columns: "min-content auto"
+      - grid-template-rows: "min-content"
+      - position: "relative"
     card:
-      - border-radius: 21px 8px 8px 21px
-      - box-shadow: none
-      - padding: 0px
+      - border-radius: "21px 8px 8px 21px"
+      - box-shadow: "none"
+      - padding: "0px"
     custom_fields:
       warning:
-        - border-radius: 50%
-        - position: absolute
-        - left: 28px
-        - top: 0px
-        - height: 16px
-        - width: 16px
-        - border: 2px solid var(--card-background-color)
-        - font-size: 12px
-        - line-height: 14px
-        - background-color: rgba(var(--color-red),1)
+        - border-radius: "50%"
+        - position: "absolute"
+        - left: "28px"
+        - top: "0px"
+        - height: "16px"
+        - width: "16px"
+        - border: "2px solid var(--card-background-color)"
+        - font-size: "12px"
+        - line-height: "14px"
+        - background-color: "rgba(var(--color-red),1)"
 
         
 custom_card_drealine_roomview_conf_icons_sensors:
@@ -784,14 +784,14 @@ custom_card_drealine_roomview_conf_icons_sensors:
   styles:
     icon:
       - color: "rgba(var(--color-theme),0.9)"
-      - transform: scale(1)
-      - width: 20px
+      - transform: "scale(1)"
+      - width: "20px"
     img_cell:
-      - height: auto
-      - width: 35px
+      - height: "auto"
+      - width: "35px"
     grid:
       - grid-template-areas: '"i"'
-      - grid-template-columns: 1fr
+      - grid-template-columns: "1fr"
     card:
-      - background: transparent
-      - box-shadow: none
+      - background: "transparent"
+      - box-shadow: "none"
