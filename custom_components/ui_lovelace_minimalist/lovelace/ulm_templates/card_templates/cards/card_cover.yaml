@@ -221,7 +221,27 @@ card_cover:
               type: "custom:button-card"
               template: "widget_icon"
               state:
-                - value: "closed"
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.attributes.current_position == "0";
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.state == "closing";
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.state == "opening";
+                    ]]]
                   styles:
                     icon:
                       - color: "rgba(var(--color-theme),0.4)"
@@ -249,13 +269,33 @@ card_cover:
                 service: "cover.stop_cover"
                 service_data:
                   entity_id: "[[[ return entity.entity_id ]]]"
-              icon: "mdi:pause"
+              icon: "mdi:stop"
           item3:
             card:
               type: "custom:button-card"
               template: "widget_icon"
               state:
-                - value: "open"
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.attributes.current_position == "100";
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.state == "closing";
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.state == "opening";
+                    ]]]
                   styles:
                     icon:
                       - color: "rgba(var(--color-theme),0.4)"
