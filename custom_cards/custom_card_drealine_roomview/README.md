@@ -8,6 +8,8 @@ hide:
 
 # Custom-card "Drealine RoomView"
 
+![Drealine RoomView 1](../../docs/assets/img/custom_card_drealine_roomview_1.png)
+
 ## Credits
 
 - Author: Drealine - 2022
