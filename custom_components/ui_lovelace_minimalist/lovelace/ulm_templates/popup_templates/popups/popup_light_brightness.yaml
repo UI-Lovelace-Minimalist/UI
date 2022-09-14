@@ -218,8 +218,16 @@ popup_light_brightness:
         styles:
           card:
             - background: "none"
-            - overflow: "visible"
+            - margin-left: >
+                [[[
+                      var color_temp_modes = ["color_temp"];
+                      if (entity.attributes.supported_color_modes.some(r => color_temp_modes.includes(r))) {
+                          return "0px";
+                      }
+                      return "6px";
+                ]]]
           grid:
+            - align-items: "initial"
             - grid-template-areas: >
                 [[[
                       var areas = [];
@@ -272,7 +280,6 @@ popup_light_brightness:
                 - "popup_button_color_temp"
               styles:
                 card:
-                  - overflow: "visible"
                   - display: >
                       [[[
                             var color_temp_modes = ["color_temp"];

@@ -172,6 +172,8 @@ popup_weather_forecast:
         styles:
           card:
             - background: "none"
+          grid:
+            - align-items: "initial"
         custom_fields:
           item1:
             card:
