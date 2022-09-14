@@ -27,6 +27,7 @@ Initial release
 - type: "custom:button-card"
   template: "custom_card_drealine_roomview"
   variables:
+    icon: "mdi:home-variant-outline"
     name: "Entrée"
     group_lights:
     group_motions: 
@@ -38,7 +39,6 @@ Initial release
     group_windows_shutters:
     temperature: 
     humidity:
-    icon: "mdi:home-variant-outline"
 ```
 
 ## Requirements
@@ -55,9 +55,15 @@ No requirements at the moment.
 <th>Explanation</th>
 </tr>
 <tr>
+<td>Icon</td>
+<td>mdi:bedroom</td>
+<td>no</td>
+<td>Icon of the card</td>
+</tr>
+<tr>
 <td>Name</td>
 <td>Text</td>
-<td>yes</td>
+<td>no</td>
 <td>Title for the card (it's not showing, just for more readble)</td>
 </tr>
 <tr>
@@ -67,34 +73,58 @@ No requirements at the moment.
 <td>Any groups that contain lights</td>
 </tr>
 <tr>
-<td>entity_id</td>
-<td>sensor.speedtest_download</td>
-<td>yes</td>
-<td>Entity sensor of choice</td>
+<td>group_motions</td>
+<td>group.motions</td>
+<td>no</td>
+<td>Any groups that contain motions sensors</td>
 </tr>
 <tr>
-<td>icon</td>
-<td>mdi:cpu-64-bit</td>
+<td>group_doors</td>
+<td>group.doors</td>
 <td>no</td>
-<td>mdi icon you want to be exposed in the img_cell, '' will return entity.attributes.icon </td>
+<td>Any groups that contain doors sensors</td>
 </tr>
 <tr>
-<td>name</td>
-<td>name for the used sensor</td>
+<td>group_windows</td>
+<td>group.windows</td>
 <td>no</td>
-<td>'' will return entity.attributes.friendly_name</td>
+<td>Any groups that contain windows sensors</td>
 </tr>
 <tr>
-<td>color</td>
-<td>green, blue, yellow, red or grey</td>
+<td>group_outlets</td>
+<td>group.outlets</td>
 <td>no</td>
-<td>if you don't use the color variable it will choice a random color</td>
+<td>Any groups that contain outlets</td>
 </tr>
 <tr>
-<td>max_value</td>
-<td>10, 300, ...</td>
+<td>group_tv</td>
+<td>group.tv</td>
 <td>no</td>
-<td>Maximum value of the sensor. Default will be 100</td>
+<td>Any groups that contain TV's</td>
+</tr>
+<tr>
+<td>group_water</td>
+<td>group.water</td>
+<td>no</td>
+<td>Any groups that contain water sensors</td>
+</tr>
+<tr>
+<td>group_windows_shutters</td>
+<td>group.windows_shutters</td>
+<td>no</td>
+<td>Any groups that contain windows shutters</td>
+</tr>
+<tr>
+<td>temperature</td>
+<td>entity.temperature_saloon</td>
+<td>no</td>
+<td>Temperature sensor or the room</td>
+</tr>
+<tr>
+<td>humidity</td>
+<td>entity.humidity_saloon</td>
+<td>no</td>
+<td>Humidity sensor or the room</td>
 </tr>
 </table>
 
