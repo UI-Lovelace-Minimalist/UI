@@ -355,7 +355,7 @@ custom_card_drealine_roomview:
                           return "none";
                         }
                       ]]]
-                type: "custom:button-card"
+              type: "custom:button-card"
     devices:
       card:
         template: "custom_card_drealine_roomview_conf_devices_root"
