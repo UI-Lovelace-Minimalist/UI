@@ -8,14 +8,9 @@ hide:
 
 # Custom-card "Drealine RoomView"
 
-![Apexcharts radialBar](../../docs/assets/img/custom_card_apexcharts_radialBar.png)
-![Apexcharts line](../../docs/assets/img/custom_card_apexcharts_line.png)
-![Apexcharts Donut](../../docs/assets/img/custom_card_apexcharts_donut.png)
-
 ## Credits
 
-- Author: AndyVRD - 2022
-- Credits to benm7
+- Author: Drealine - 2022
 - Version: 1.0.0
 
 ## Changelog
