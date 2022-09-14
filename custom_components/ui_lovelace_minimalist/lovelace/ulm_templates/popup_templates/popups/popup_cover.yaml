@@ -142,7 +142,6 @@ popup_cover:
               icon: "mdi:arrow-up"
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
-              name: "Openen"
               template:
                 - "popup_button"
                 - "popup_button_cover_open"
