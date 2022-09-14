@@ -100,10 +100,25 @@ popup_cover:
               icon: "mdi:arrow-down"
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
-              name: "Sluiten"
               template:
                 - "popup_button"
-                - "popup_button_close"
+                - "popup_button_cover_close"
+              styles:
+                img_cell:
+                  - background-color: >
+                      [[[
+                          if (entity.state === "closing"){
+                              return "rgba(var(--color-theme),0.2)"
+                          }
+                          if (entity.state === "opening"){
+                              return "rgba(var(--color-theme),0.2)"
+                          }
+                          if (entity.attributes.current_position == "100"){
+                              return "var(--card-background-color)"
+                          } else {
+                            return "var(--card-background-color)"
+                          }
+                      ]]]
               tap_action:
                 action: "call-service"
                 service: "cover.close_cover"
@@ -114,9 +129,9 @@ popup_cover:
               icon: "mdi:stop"
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
-              name: "Stop"
               template:
                 - "popup_button"
+                - "popup_button_cover_stop"
               tap_action:
                 action: "call-service"
                 service: "cover.stop_cover"
@@ -130,7 +145,23 @@ popup_cover:
               name: "Openen"
               template:
                 - "popup_button"
-                - "popup_button_open"
+                - "popup_button_cover_open"
+              styles:
+                img_cell:
+                  - background-color: >
+                      [[[
+                          if (entity.state === "closing"){
+                              return "rgba(var(--color-theme),0.2)"
+                          }
+                          if (entity.state === "opening"){
+                              return "rgba(var(--color-theme),0.2)"
+                          }
+                          if (entity.attributes.current_position == "100"){
+                              return "rgba(var(--color-theme),0.2)"
+                          } else {
+                          return "var(--card-background-color)"
+                          }
+                      ]]]
               tap_action:
                 action: "call-service"
                 service: "cover.open_cover"
@@ -151,39 +182,3 @@ popup_cover:
               type: "custom:button-card"
               template: "popup_button_power"
               entity: "[[[ return entity.entity_id ]]]"
-
-popup_button_open:
-  styles:
-    img_cell:
-      - background-color: >
-          [[[
-              if (entity.state === "closing"){
-                  return "rgba(var(--color-theme),0.2)"
-              }
-              if (entity.state === "opening"){
-                  return "rgba(var(--color-theme),0.2)"
-              }
-              if (entity.attributes.current_position == "100"){
-                  return "rgba(var(--color-theme),0.2)"
-              } else {
-              return "var(--card-background-color)"
-              }
-          ]]]
-
-popup_button_close:
-  styles:
-    img_cell:
-      - background-color: >
-          [[[
-              if (entity.state === "closing"){
-                  return "rgba(var(--color-theme),0.2)"
-              }
-              if (entity.state === "opening"){
-                  return "rgba(var(--color-theme),0.2)"
-              }
-              if (entity.attributes.current_position == "100"){
-                  return "var(--card-background-color)"
-              } else {
-                return "var(--card-background-color)"
-              }
-          ]]]

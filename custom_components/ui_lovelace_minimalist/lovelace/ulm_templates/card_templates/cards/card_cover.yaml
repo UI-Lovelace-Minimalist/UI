@@ -181,6 +181,16 @@ card_cover:
             card:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
+              variables: >
+                [[[
+                  let vars = variables;
+                  if(variables.ulm_card_cover_enable_popup) {
+                    vars.ulm_custom_popup = {
+                      'template': 'popup_cover'
+                    };
+                  }
+                  return vars;
+                ]]]
               name: "[[[ return variables.ulm_card_cover_name ]]]"
               label: >-
                 [[[
