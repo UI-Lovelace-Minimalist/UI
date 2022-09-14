@@ -2,6 +2,3 @@
 popup_button_cover_close:
   template: "ulm_translation_engine"
   name: "[[[ return variables.ulm_translation_close_cover; ]]]"
-  styles:
-    card:
-      - overflow: "visible"
