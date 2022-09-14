@@ -55,16 +55,16 @@ No requirements at the moment.
 <th>Explanation</th>
 </tr>
 <tr>
-<td>chart_type</td>
-<td>line, scatter, pie, donut or radialBar</td>
+<td>Name</td>
+<td>Text</td>
 <td>yes</td>
-<td>The chart type you want to display</td>
+<td>Title for the card (it's not showing, just for more readble)</td>
 </tr>
 <tr>
-<td>graph_span</td>
-<td>1h, 12min, 1d, 1h25, 10sec, ...</td>
+<td>group_lights</td>
+<td>group.lights</td>
 <td>no</td>
-<td>The span of the graph as a time interval</td>
+<td>Any groups that contain lights</td>
 </tr>
 <tr>
 <td>entity_id</td>
