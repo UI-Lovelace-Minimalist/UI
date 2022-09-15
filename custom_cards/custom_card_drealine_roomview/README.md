@@ -31,14 +31,14 @@ Initial release
     icon: "mdi:home-variant-outline"
     name: "Entrée"
     group_lights:
-    group_motions: 
-    group_doors: 
-    group_windows: 
-    group_outlets: 
-    group_tv: 
-    group_water: 
+    group_motions:
+    group_doors:
+    group_windows:
+    group_outlets:
+    group_tv:
+    group_water:
     group_windows_shutters:
-    temperature: 
+    temperature:
     humidity:
 ```
 
@@ -65,7 +65,7 @@ No requirements at the moment.
 <td>Name</td>
 <td>Text</td>
 <td>no</td>
-<td>Title for the card (it's not showing, just for more readble)</td>
+<td>Title for the card (it's not showing, just for more readable)</td>
 </tr>
 <tr>
 <td>group_lights</td>
