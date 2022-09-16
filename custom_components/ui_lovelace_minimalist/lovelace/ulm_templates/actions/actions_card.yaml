@@ -43,7 +43,7 @@ ulm_actions_card:
         if (action == 'adaptive'){
           return 'input_select.select_option';
         }
-        if(entity.entity_id.startsWith("media_player.")){
+        if((entity != null) && entity.entity_id.startsWith("media_player.")){
           return 'media_player.media_play_pause';
         }
         return variables.ulm_card_tap_service;
@@ -58,7 +58,7 @@ ulm_actions_card:
             'entity_id': variables.ulm_input_select
           };
         }
-        if(entity.entity_id.startsWith("media_player.")){
+        if((entity != null) && entity.entity_id.startsWith("media_player.")){
           return {
             'entity_id': entity.entity_id
           };
@@ -74,8 +74,7 @@ ulm_actions_card:
           --popup-border-radius: 20px;
           --popup-padding-x: 24px;
           --popup-padding-y: 20px;
-          --popup-max-width: auto
-          --popup-min-width: 800px;
+          --popup-min-width: 1000px;
         card_mod:
           style:
             ha-dialog$: |
@@ -161,7 +160,7 @@ ulm_actions_card:
         if (action == 'adaptive'){
           return 'input_select.select_option';
         }
-        if(entity.entity_id.startsWith("media_player.")){
+        if((entity != null) && entity.entity_id.startsWith("media_player.")){
           return 'media_player.media_play_pause';
         }
         return variables.ulm_card_hold_service;
@@ -176,7 +175,7 @@ ulm_actions_card:
             'entity_id': variables.ulm_input_select
           };
         }
-        if(entity.entity_id.startsWith("media_player.")){
+        if((entity != null) && entity.entity_id.startsWith("media_player.")){
           return {
             'entity_id': entity.entity_id
           };
@@ -192,8 +191,7 @@ ulm_actions_card:
           --popup-border-radius: 20px;
           --popup-padding-x: 24px;
           --popup-padding-y: 20px;
-          --popup-max-width: auto
-          --popup-min-width: 800px;
+          --popup-min-width: 1000px;
         card_mod:
           style:
             ha-dialog$: |
@@ -279,7 +277,7 @@ ulm_actions_card:
         if (action == 'adaptive'){
           return 'input_select.select_option';
         }
-        if(entity.entity_id.startsWith("media_player.")){
+        if((entity != null) && entity.entity_id.startsWith("media_player.")){
           return 'media_player.media_play_pause';
         }
         return variables.ulm_card_double_tap_service;
@@ -294,7 +292,7 @@ ulm_actions_card:
             'entity_id': variables.ulm_input_select
           };
         }
-        if(entity.entity_id.startsWith("media_player.")){
+        if((entity != null) && entity.entity_id.startsWith("media_player.")){
           return {
             'entity_id': entity.entity_id
           };
@@ -310,8 +308,7 @@ ulm_actions_card:
           --popup-border-radius: 20px;
           --popup-padding-x: 24px;
           --popup-padding-y: 20px;
-          --popup-max-width: auto
-          --popup-min-width: 800px;
+          --popup-min-width: 1000px;
         card_mod:
           style:
             ha-dialog$: |

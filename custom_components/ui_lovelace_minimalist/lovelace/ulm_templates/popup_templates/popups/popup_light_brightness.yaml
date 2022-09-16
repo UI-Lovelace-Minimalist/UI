@@ -44,10 +44,11 @@ popup_light_brightness:
     card:
       - background: "var(--primary-background-color)"
       - box-shadow: "none"
-      - padding: "0% 2% 2% 2%"
+      - padding: "0%"
     custom_fields:
       header:
-        - align-self: "start"
+        - align-self: "center"
+        - margin-bottom: "4px"
       content1:
         - align-self: "center"
         - display: >
@@ -81,8 +82,8 @@ popup_light_brightness:
       buttons:
         - display: "none"
       footer:
-        - align-self: "start"
-        - margin-top: "25px"
+        - align-self: "absolute"
+        - margin-top: "12px"
   extra_styles: |
     @media (max-width: 800px) {
       #container {
@@ -105,7 +106,7 @@ popup_light_brightness:
     header:
       card:
         type: "custom:button-card"
-        template: "popup_header"
+        template: "popup_header_light"
         entity: "[[[ return entity.entity_id ]]]"
     content1:
       card:
@@ -218,8 +219,16 @@ popup_light_brightness:
         styles:
           card:
             - background: "none"
-            - overflow: "visible"
+            - margin-left: >
+                [[[
+                      var color_temp_modes = ["color_temp"];
+                      if (entity.attributes.supported_color_modes.some(r => color_temp_modes.includes(r))) {
+                          return "0px";
+                      }
+                      return "6px";
+                ]]]
           grid:
+            - align-items: "initial"
             - grid-template-areas: >
                 [[[
                       var areas = [];
@@ -250,7 +259,7 @@ popup_light_brightness:
                           columns.push("1fr");
                       }
                       if (entity.attributes.supported_color_modes.some(r => color_modes.includes(r))) {
-                          columns.push("2fr");
+                          columns.push("1fr");
                       }
                       return columns.join(" ");
                 ]]]
@@ -272,7 +281,6 @@ popup_light_brightness:
                 - "popup_button_color_temp"
               styles:
                 card:
-                  - overflow: "visible"
                   - display: >
                       [[[
                             var color_temp_modes = ["color_temp"];

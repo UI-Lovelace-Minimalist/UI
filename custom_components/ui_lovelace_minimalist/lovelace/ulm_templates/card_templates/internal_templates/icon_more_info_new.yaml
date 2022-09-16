@@ -59,9 +59,6 @@ icon_more_info_new:
                 ulm_icon_double_tap_service: "[[[ return variables.ulm_icon_double_tap_service; ]]]"
                 ulm_icon_double_tap_service_data: "[[[ return variables.ulm_icon_double_tap_service_data]]]"
                 ulm_custom_popup: "[[[ return variables.ulm_custom_popup; ]]]"
-              styles:
-                card:
-                  - overflow: "visible"
           item2:
             card:
               type: "custom:button-card"
@@ -91,9 +88,14 @@ icon_more_info_new:
                 ulm_custom_popup: "[[[ return variables.ulm_custom_popup; ]]]"
               styles:
                 card:
+                  - overflow: "visible"
                   - padding: "6px"
                   - margin-left: "-6px"
                   - background-color: "rgba(0,0,0,0)"
+                label:
+                  - overflow: "visible"
+                name:
+                  - overflow: "visible"
                 custom_fields:
                   notification:
                     - display: "none"

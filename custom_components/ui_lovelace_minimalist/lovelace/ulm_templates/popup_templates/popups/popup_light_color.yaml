@@ -39,6 +39,15 @@ popup_light_color:
         styles:
           card:
             - background: "none"
+            - overflow: "visible"
+            - margin-left: >
+                [[[
+                    var color_temp_modes = ["color_temp"];
+                    if (entity.attributes.supported_color_modes.some(r => color_temp_modes.includes(r))) {
+                        return "0px";
+                    }
+                    return "6px";
+                ]]]
         custom_fields:
           item1:
             card:

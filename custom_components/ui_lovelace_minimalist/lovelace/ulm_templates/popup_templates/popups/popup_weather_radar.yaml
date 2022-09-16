@@ -15,7 +15,7 @@ popup_weather_radar:
     @media (max-width: 800px) {
       #container {
         grid-template-areas: "header" "content2" "buttons" "footer" !important;
-        grid-template-rows: 14vh 56vh 13vh 13vh !important;
+        grid-template-rows: 10vh 56vh 13vh 13vh !important;
         grid-template-columns: 1fr !important;
       }
       #buttons {
@@ -33,6 +33,8 @@ popup_weather_radar:
         styles:
           card:
             - background: "none"
+          grid:
+            - align-items: "initial"
         custom_fields:
           item1:
             card:

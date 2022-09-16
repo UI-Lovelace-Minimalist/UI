@@ -63,7 +63,6 @@ ulm_actions_name:
             'entity_id': entity.entity_id
           };
         }
-        }
         return variables.ulm_name_tap_service_data;
       ]]]
     browser_mod:
@@ -75,8 +74,7 @@ ulm_actions_name:
           --popup-border-radius: 20px;
           --popup-padding-x: 24px;
           --popup-padding-y: 20px;
-          --popup-max-width: auto
-          --popup-min-width: 800px;
+          --popup-min-width: 1000px;
         card_mod:
           style:
             ha-dialog$: |
@@ -193,8 +191,7 @@ ulm_actions_name:
           --popup-border-radius: 20px;
           --popup-padding-x: 24px;
           --popup-padding-y: 20px;
-          --popup-max-width: auto
-          --popup-min-width: 800px;
+          --popup-min-width: 1000px;
         card_mod:
           style:
             ha-dialog$: |
@@ -311,8 +308,7 @@ ulm_actions_name:
           --popup-border-radius: 20px;
           --popup-padding-x: 24px;
           --popup-padding-y: 20px;
-          --popup-max-width: auto
-          --popup-min-width: 800px;
+          --popup-min-width: 1000px;
         card_mod:
           style:
             ha-dialog$: |

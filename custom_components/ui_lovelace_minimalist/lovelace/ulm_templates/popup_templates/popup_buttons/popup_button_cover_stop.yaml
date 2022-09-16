@@ -1,0 +1,4 @@
+---
+popup_button_cover_stop:
+  template: "ulm_translation_engine"
+  name: "[[[ return variables.ulm_translation_stop_cover; ]]]"
