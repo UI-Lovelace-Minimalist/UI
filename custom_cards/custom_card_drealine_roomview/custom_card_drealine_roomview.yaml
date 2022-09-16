@@ -1,0 +1,778 @@
+---
+custom_card_drealine_roomview:
+  template:
+    - "custom_card_drealine_roomview_style_root"
+  variables:
+    group_lights:
+    group_motions:
+    group_doors:
+    group_windows:
+    group_outlets:
+    group_tv:
+    group_water:
+    group_windows_shutters:
+    temperature:
+    humidity:
+  triggers_update: "all"
+  group_expand: true
+  custom_fields:
+    header:
+      card:
+        template:
+          - "custom_card_drealine_roomview_conf_header_root"
+        type: "custom:button-card"
+        custom_fields:
+          header_card:
+            card:
+              variables:
+                ulm_card_tap_action: "[[[ return variables.ulm_card_tap_action; ]]]"
+                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
+                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
+                ulm_card_tap_navigate_path: "[[[ return variables.ulm_card_tap_navigate_path; ]]]"
+              styles:
+                custom_fields:
+                  warning:
+                    - display: |
+                        [[[
+                          var groups = [variables.group_lights, variables.group_motions,variables.group_doors,
+                          variables.group_windows, variables.group_outlets, variables.group_water];
+                          var arrayLength = groups.length;
+                          var count_unavailable = 0;
+                          for (var i = 0; i < arrayLength; i++){
+                            if(states[groups[i]]){
+                              if (states[groups[i]].attributes['entity_id']){
+                                states[groups[i]].attributes['entity_id'].forEach(function(entity){
+                                  if(states[entity] && states[entity].state == 'unavailable'){
+                                    count_unavailable += 1;
+                                  }
+                                });
+                              }
+                              else
+                              {
+                                if (states[groups[i]].state == 'unavailable'){
+                                  count_unavailable += 1;
+                                }
+                              }
+                            }
+                          }
+                          if (count_unavailable >= 1){
+                            return "auto";
+                          }
+                          else{
+                            return "none";
+                          }
+                        ]]]
+              icon: "[[[ return variables.icon ]]]"
+              name: |
+                [[[
+                  var temperature = '';
+                  temperature += '<ha-icon icon="mdi:thermometer" style="width: 17px; height: 17px; color: grey,1);"></ha-icon>';
+                  if (states[variables.temperature]){
+                    temperature += states[variables.temperature].state + states[variables.temperature].attributes.unit_of_measurement
+                  }
+                  else{
+                    temperature = "N/A"
+                  }
+                  return temperature;
+                ]]]
+              label: |
+                [[[
+                  var humidity = '';
+                  humidity += '<ha-icon icon="mdi:water-percent" style="width: 17px; height: 17px; color: grey,1);"></ha-icon>';
+                  if (states[variables.humidity]){
+                    humidity += states[variables.humidity].state + states[variables.humidity].attributes.unit_of_measurement
+                  }
+                  else{
+                    humidity = "N/A"
+                  }
+                  return humidity;
+                ]]]
+              template:
+                - "custom_card_drealine_roomview_conf_header"
+                - "ulm_actions_card"
+              type: "custom:button-card"
+    sensors:
+      card:
+        template:
+          - "custom_card_drealine_roomview_conf_sensors"
+        styles:
+          card:
+            - display: |
+                [[[
+                  var groups = [variables.group_lights, variables.group_motions,variables.group_doors,
+                  variables.group_windows, variables.group_outlets, variables.group_water];
+                  var arrayLength = groups.length;
+                  var count_if_show_box_sensors = 0;
+                  for (var i = 0; i < arrayLength; i++) {
+                    if(states[groups[i]]){
+                      if (states[groups[i]].attributes['entity_id']){
+                        states[groups[i]].attributes['entity_id'].forEach(function(entity){
+                          if(states[entity] && states[entity].attributes.battery <= 20){
+                            count_if_show_box_sensors += 1;
+                          }
+                        });
+                      }
+                    }
+                  }
+                  for (var i = 0; i < arrayLength; i++) {
+                    if(states[groups[i]]){
+                      if(states[groups[i]].state == "on"){
+                        count_if_show_box_sensors += 1;
+                      }
+                    }
+
+                  }
+                  if (count_if_show_box_sensors >= 1){
+                    return "auto";
+                  }
+                  else
+                  {
+                    return "none";
+                  }
+                ]]]
+          custom_fields:
+            battery:
+              - display: |
+                  [[[
+                    var groups = [variables.group_lights, variables.group_motions,variables.group_doors,
+                    variables.group_windows, variables.group_outlets, variables.group_water];
+                    var arrayLength = groups.length;
+                    var count_if_show_box_sensors = 0;
+                    for (var i = 0; i < arrayLength; i++) {
+                      if(states[groups[i]]){
+                        if (states[groups[i]].attributes['entity_id']){
+                          states[groups[i]].attributes['entity_id'].forEach(function(entity){
+                            if(states[entity] && states[entity].attributes.battery <= 20){
+                              count_if_show_box_sensors += 1;
+                            }
+                          });
+                        }
+                      }
+                    }
+                    if (count_if_show_box_sensors >= 1){
+                      return "auto";
+                    }
+                    else
+                    {
+                      return "none";
+                    }
+                  ]]]
+            doors:
+              - display: |
+                  [[[
+                    if (variables.group_doors){
+                      return "auto";
+                    }
+                    else
+                    {
+                      return "none";
+                    }
+                  ]]]
+            windows:
+              - display: |
+                  [[[
+                    if (variables.group_windows){
+                      return "auto";
+                    }
+                    else
+                    {
+                      return "none";
+                    }
+                  ]]]
+            motions:
+              - display: |
+                  [[[
+                    if (variables.group_motions){
+                      return "auto";
+                    }
+                    else
+                    {
+                      return "none";
+                    }
+                  ]]]
+            water:
+              - display: |
+                  [[[
+                    if (variables.group_water){
+                      return "auto";
+                    }
+                    else
+                    {
+                      return "none";
+                    }
+                  ]]]
+        type: "custom:button-card"
+        custom_fields:
+          doors:
+            card:
+              template:
+                - "custom_card_drealine_roomview_conf_icons_sensors"
+                - "custom_card_drealine_roomview_count_sensors"
+              icon: "mdi:door-open"
+              entity: "[[[ return variables.group_doors ]]]"
+              styles:
+                card:
+                  - display: >-
+                      [[[
+                        if (variables.group_doors && states[variables.group_doors].state == 'on'){
+                          return "auto";
+                        }
+                        else{
+                          return "none";
+                        }
+                      ]]]
+              type: "custom:button-card"
+          battery:
+            card:
+              template:
+                - "custom_card_drealine_roomview_conf_icons_sensors"
+                - "custom_card_drealine_roomview_style_count_batteries"
+              icon: "mdi:battery-20"
+              styles:
+                card:
+                  - display: >-
+                      [[[
+                        var count_alert = 0;
+                        var groups = [variables.group_lights, variables.group_motions,variables.group_doors,
+                        variables.group_windows, variables.group_outlets, variables.group_water];
+                        var arrayLength = groups.length;
+                        for (var i = 0; i < arrayLength; i++) {
+                          if(states[groups[i]]){
+                            if (states[groups[i]].attributes['entity_id']){
+                              states[groups[i]].attributes['entity_id'].forEach(function(entity){
+                                if(states[entity] && states[entity].attributes.battery <= 20){
+                                  count_alert += 1;
+                                }
+                              });
+                            }
+                          }
+                        }
+                        if (count_alert >= 1){
+                          return "auto";
+                        }
+                        else{
+                          return "none";
+                        }
+                      ]]]
+                custom_fields:
+                  count_batteries:
+                    - display: |
+                        [[[
+                          var count_alert = 0;
+                          var groups = [variables.group_lights, variables.group_motions,variables.group_doors,
+                          variables.group_windows, variables.group_outlets, variables.group_water];
+                          var arrayLength = groups.length;
+                          for (var i = 0; i < arrayLength; i++) {
+                            if(states[groups[i]]){
+                              if (states[groups[i]].attributes['entity_id']){
+                                states[groups[i]].attributes['entity_id'].forEach(function(entity){
+                                  if(states[entity] && states[entity].attributes.battery <= 20){
+                                    count_alert += 1;
+                                  }
+                                });
+                              }
+                            }
+                          }
+                          if (count_alert >= 1){
+                            return "auto";
+                          }
+                          else{
+                            return "none";
+                          }
+                        ]]]
+              custom_fields:
+                count_batteries: |
+                    [[[
+                      var battery = 0;
+                      var groups = [variables.group_lights, variables.group_motions,variables.group_doors,
+                      variables.group_windows, variables.group_outlets, variables.group_water];
+                      var arrayLength = groups.length;
+                      for (var i = 0; i < arrayLength; i++) {
+                        if(states[groups[i]]){
+                          if (states[groups[i]].attributes['entity_id']){
+                            states[groups[i]].attributes['entity_id'].forEach(function(entity){
+                              if(states[entity] && states[entity].attributes.battery <= 20){
+                                battery += 1;
+                              }
+                            });
+                          }
+                        }
+                      }
+                      return battery;
+                    ]]]
+              type: "custom:button-card"
+          windows:
+            card:
+              template:
+                - "custom_card_drealine_roomview_conf_icons_sensors"
+                - "custom_card_drealine_roomview_count_sensors"
+              icon: "mdi:window-closed-variant"
+              entity: "[[[ return variables.group_windows ]]]"
+              styles:
+                card:
+                  - display: >-
+                      [[[
+                        if (variables.group_windows && states[variables.group_windows].state == 'on'){
+                          return "auto";
+                        }
+                        else{
+                          return "none";
+                        }
+                      ]]]
+              type: "custom:button-card"
+          motions:
+            card:
+              template:
+                - "custom_card_drealine_roomview_conf_icons_sensors"
+              icon: "mdi:motion-sensor"
+              entity: "[[[ return variables.group_motions ]]]"
+              styles:
+                card:
+                  - display: >-
+                      [[[
+                        if (variables.group_motions && states[variables.group_motions].state == 'on'){
+                          return "auto";
+                        }
+                        else{
+                          return "none";
+                        }
+                      ]]]
+              type: "custom:button-card"
+          water:
+            card:
+              template:
+                - "custom_card_drealine_roomview_conf_icons_sensors"
+              icon: "mdi:water"
+              entity: "[[[ return variables.group_water ]]]"
+              styles:
+                card:
+                  - display: >-
+                      [[[
+                        if (variables.group_water && states[variables.group_water].state == 'on'){
+                          return "auto";
+                        }
+                        else{
+                          return "none";
+                        }
+                      ]]]
+              type: "custom:button-card"
+    devices:
+      card:
+        template: "custom_card_drealine_roomview_conf_devices_root"
+        type: "custom:button-card"
+        custom_fields:
+          lights:
+            card:
+              template:
+                - "custom_card_drealine_roomview_conf_devices"
+              icon: |
+                [[[
+                var count_unavailable = 0;
+                var count_entity = 0;
+                if (states[variables.group_lights]){
+                  if (states[variables.group_lights].attributes['entity_id']){
+                    states[variables.group_lights].attributes['entity_id'].forEach(function(entity){
+                      count_entity += 1;
+                      if(states[entity] && states[entity].state == 'unavailable'){
+                        count_unavailable += 1;
+                      }
+                    });
+                    if (count_entity == count_unavailable){
+                      return "mdi:lightbulb-alert";
+                    }
+                  }
+                  else return "mdi:exclamation"
+                  var state_lights = states[variables.group_lights].state;
+                  if (state_lights == 'on') return "mdi:lightbulb-group";
+                  else if (state_lights == 'off') return "mdi:lightbulb-group-off";
+                }
+                else{
+                  return "mdi:lightbulb-group-off"
+                }
+                ]]]
+              entity: "[[[ return variables.group_lights ]]]"
+              type: "custom:button-card"
+          windows_shutters:
+            card:
+              template:
+                - "custom_card_drealine_roomview_conf_devices"
+              icon: >
+                [[[
+                var count_unavailable = 0;
+                var count_entity = 0;
+                if (states[variables.group_windows_shutters]){
+                  if (states[variables.group_windows_shutters].attributes['entity_id']){
+                    states[variables.group_windows_shutters].attributes['entity_id'].forEach(function(entity){
+                      count_entity += 1;
+                      if(states[entity] && states[entity].state == 'unavailable'){
+                        count_unavailable += 1;
+                      }
+                    });
+                    if (count_entity == count_unavailable){
+                      return "mdi:window-shutter-alert";
+                    }
+                  }
+                  else return "mdi:exclamation"
+                  var state_windows = states[variables.group_windows_shutters].state;
+                  if (state_windows == 'on') return "mdi:window-shutter-open";
+                  else if (state_windows == 'off') return "mdi:window-shutter";
+                  else return "mdi:exclamation"
+                }
+                else{
+                  return "mdi:window-shutter"
+                }
+                ]]]
+              entity: "[[[ return variables.group_windows_shutters ]]]"
+              type: "custom:button-card"
+          outlets:
+            card:
+              template:
+                - "custom_card_drealine_roomview_conf_devices"
+              icon: >
+                [[[
+                var count_unavailable = 0;
+                var count_entity = 0;
+                if (states[variables.group_outlets]){
+                  if (states[variables.group_outlets].attributes['entity_id']){
+                    states[variables.group_outlets].attributes['entity_id'].forEach(function(entity){
+                      count_entity += 1;
+                      if(states[entity] && states[entity].state == 'unavailable'){
+                        count_unavailable += 1;
+                      }
+                    });
+                    if (count_entity == count_unavailable){
+                      return "mdi:exclamation-thick";
+                    }
+                  }
+                  var group_outlets = states[variables.group_outlets].state;
+                  if (group_outlets == 'on') return "mdi:power-plug";
+                  else if (group_outlets == 'off') return "mdi:power-plug-off";
+                  else return "mdi:exclamation"
+                }
+                else{
+                  return "mdi:power-plug-off"
+                }
+                ]]]
+              entity: "[[[ return variables.group_outlets ]]]"
+              type: "custom:button-card"
+          tv:
+            card:
+              template:
+                - "custom_card_drealine_roomview_conf_devices"
+              icon: >
+                [[[
+                  var count_unavailable = 0;
+                  var count_entity = 0;
+
+                  if (states[variables.group_tv]){
+                    if (states[variables.group_tv].attributes['entity_id']){
+                      states[variables.group_tv].attributes['entity_id'].forEach(function(entity){
+                        count_entity += 1;
+                        if(states[entity] && states[entity].state == 'unavailable'){
+                          count_unavailable += 1;
+                        }
+                      });
+                      if (count_entity == count_unavailable){
+                        return "mdi:exclamation-thick";
+                      }
+                    }
+                    var group_tv = states[variables.group_tv].state;
+                    if (group_tv == 'on') return "mdi:television";
+                    else if (group_tv == 'off') return "mdi:television-off";
+                    else return "mdi:exclamation"
+                  }
+                  else{
+                    return "mdi:television-off"
+                  }
+                ]]]
+              entity: "[[[ return variables.group_tv ]]]"
+              type: "custom:button-card"
+        styles:
+          custom_fields:
+            lights:
+              - flex: "auto"
+              - display: "auto"
+            windows_shutters:
+              - flex: "auto"
+              - display: |
+                  [[[
+                    if (variables.group_windows_shutters){
+                      return "auto";
+                    }
+                    else
+                    {
+                      return "none";
+                    }
+                  ]]]
+            outlets:
+              - flex: "auto"
+              - display: |
+                  [[[
+                    if (variables.group_outlets){
+                      return "auto";
+                    }
+                    else
+                    {
+                      return "none";
+                    }
+                  ]]]
+            tv:
+              - flex: "auto"
+              - display: |
+                  [[[
+                    if (variables.group_tv){
+                      return "auto";
+                    }
+                    else
+                    {
+                      return "none";
+                    }
+                  ]]]
+custom_card_drealine_roomview_conf_devices_root:
+  styles:
+    grid:
+      - display: "flex"
+      - gap: "2%"
+      - flex-wrap: "wrap"
+    card:
+      - box-shadow: "none"
+      - padding: "0px"
+      - border-radius: "0%"
+custom_card_drealine_roomview_style_count_batteries:
+  styles:
+    custom_fields:
+      count_batteries:
+        - border-radius: "50%"
+        - position: "absolute"
+        - left: "58%"
+        - top: "5%"
+        - height: "13px"
+        - width: "13px"
+        - font-weight: "900"
+        - font-size: "10px"
+        - line-height: "13px"
+        - color: "white"
+        - background-color: "rgba(var(--color-blue),0.75)"
+custom_card_drealine_roomview_count_sensors:
+  group_expand: true
+  show_name: false
+  styles:
+    custom_fields:
+      number_of_sensors:
+        - border-radius: "50%"
+        - position: "absolute"
+        - left: "58%"
+        - top: "5%"
+        - height: "13px"
+        - width: "13px"
+        - font-weight: "900"
+        - font-size: "10px"
+        - line-height: "13px"
+        - color: "white"
+        - background-color: "rgba(var(--color-blue),0.75)"
+        - display: |
+            [[[
+              if ((entity !== undefined && states[entity.entity_id].state == 'on')){
+                return "auto";
+              }
+              else
+              {
+                return "none";
+              }
+            ]]]
+  custom_fields:
+    number_of_sensors: |
+        [[[
+          var count = 0;
+          if(entity !== undefined){
+            if (states[entity.entity_id].attributes['entity_id']){
+              states[entity.entity_id].attributes['entity_id'].forEach(function(entity){
+                if(states[entity] && states[entity].state == 'on'){
+                  count++;
+                }
+              });
+            }
+          }
+          return count;
+        ]]]
+custom_card_drealine_roomview_style_root:
+  styles:
+    grid:
+      - grid-template-areas: "'header' 'sensors' 'devices'"
+      - grid-template-columns: "1fr"
+      - grid-template-rows: "min-content  min-content"
+      - row-gap: "6px"
+    card:
+      - border-radius: "20px"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
+custom_card_drealine_roomview_conf_header_root:
+  styles:
+    grid:
+      - grid-template-areas: "'header_card'"
+      - grid-template-columns: "1fr"
+      - grid-template-rows: "min-content"
+      - column-gap: "7px"
+    card:
+      - box-shadow: "none"
+      - padding: "0px"
+custom_card_drealine_roomview_conf_sensors:
+  styles:
+    grid:
+      - display: "flex"
+      - justify-content: "center"
+      - flex-wrap: "wrap"
+      - align-content: "center"
+    card:
+      - box-shadow: "none"
+      - padding: "0px"
+      - margin: "0px"
+      - height: "auto"
+      - align-items: "center"
+      - border-radius: "0%"
+custom_card_drealine_roomview_conf_devices:
+  group_expand: true
+  color: "var(--google-grey)"
+  tap_action:
+    action: "none"
+  double_tap_action:
+    action: "toggle"
+  size: "20px"
+  show_icon: true
+  show_name: false
+  state:
+    - styles:
+        icon:
+          - color: "rgba(var(--color-yellow),1)"
+        label:
+          - color: "rgba(var(--color-yellow-text),1)"
+        name:
+          - color: "rgba(var(--color-yellow-text),1)"
+        img_cell:
+          - background-color: "rgba(var(--color-yellow), 0.2)"
+        card:
+          - background-color: "rgba(var(--color-background-yellow),var(--opacity-bg))"
+      value: "on"
+  styles:
+    icon:
+      - color: "rgba(var(--color-theme),0.9)"
+      - height: "40px"
+    grid:
+      - grid-template-areas: "'i'"
+    card:
+      - box-shadow: "none"
+      - padding: "0px"
+      - background-color: "rgba(var(--color-theme),0.05)"
+      - border-radius: "14px"
+      - min-width: "40px"
+    custom_fields:
+      number_of_devices:
+        - border-radius: "50%"
+        - position: "absolute"
+        - left: "50.5%"
+        - top: "24%"
+        - height: "13px"
+        - width: "13px"
+        - font-size: "10px"
+        - font-weight: "900"
+        - line-height: "13px"
+        - background-color: "rgba(var(--color-blue),0.75)"
+        - color: "white"
+        - display: |
+            [[[
+              if ((entity !== undefined && states[entity.entity_id].state == 'on')){
+                return "auto";
+              }
+              else
+              {
+                return "none";
+              }
+            ]]]
+  custom_fields:
+    number_of_devices: |
+        [[[
+          var count = 0;
+          if(entity !== undefined){
+            if (states[entity.entity_id].attributes['entity_id']){
+              states[entity.entity_id].attributes['entity_id'].forEach(function(entity){
+                if(states[entity] && states[entity].state == 'on'){
+                  count++;
+                }
+              });
+            }
+          }
+          return count;
+        ]]]
+custom_card_drealine_roomview_conf_header:
+  color: "var(--google-grey)"
+  show_icon: true
+  show_name: true
+  show_label: true
+  size: "20px"
+  custom_fields:
+    warning: |
+      [[[
+        return `<ha-icon icon="mdi:exclamation-thick" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`
+      ]]]
+  styles:
+    icon:
+      - color: "rgba(var(--color-theme),0.2)"
+      - transform: "scale(1.2)"
+    label:
+      - justify-self: "start"
+      - align-self: "start"
+      - font-weight: "bold"
+      - font-size: "12px"
+      - filter: "opacity(50%)"
+      - margin-left: "10px"
+    name:
+      - align-self: "start"
+      - justify-self: "start"
+      - font-weight: "bold"
+      - font-size: "12px"
+      - margin-top: "2px"
+      - margin-left: "10px"
+      - filter: "opacity(50%)"
+    img_cell:
+      - background-color: "rgba(var(--color-theme),0.05)"
+      - border-radius: "50%"
+      - place-self: "center"
+      - width: "42px"
+      - height: "42px"
+    grid:
+      - grid-template-areas: "'i n' 'i l'"
+      - grid-template-columns: "min-content auto"
+      - grid-template-rows: "min-content"
+      - position: "relative"
+    card:
+      - border-radius: "21px 8px 8px 21px"
+      - box-shadow: "none"
+      - padding: "0px"
+    custom_fields:
+      warning:
+        - border-radius: "50%"
+        - position: "absolute"
+        - left: "28px"
+        - top: "0px"
+        - height: "16px"
+        - width: "16px"
+        - border: "2px solid var(--card-background-color)"
+        - font-size: "12px"
+        - line-height: "14px"
+        - background-color: "rgba(var(--color-red),1)"
+custom_card_drealine_roomview_conf_icons_sensors:
+  show_name: false
+  styles:
+    icon:
+      - color: "rgba(var(--color-theme),0.9)"
+      - transform: "scale(1)"
+      - width: "20px"
+    img_cell:
+      - height: "auto"
+      - width: "35px"
+    grid:
+      - grid-template-areas: "'i'"
+      - grid-template-columns: "1fr"
+    card:
+      - background: "transparent"
+      - box-shadow: "none"
