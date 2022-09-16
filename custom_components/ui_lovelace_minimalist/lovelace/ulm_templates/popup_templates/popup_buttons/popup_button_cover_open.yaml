@@ -1,0 +1,4 @@
+---
+popup_button_cover_open:
+  template: "ulm_translation_engine"
+  name: "[[[ return variables.ulm_translation_open_cover; ]]]"
