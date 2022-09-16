@@ -37,9 +37,10 @@ popup_light_color_temp:
         type: "custom:button-card"
         template: "list_3_items"
         styles:
+          grid:
+            - align-items: "initial"
           card:
             - background: "none"
-            - overflow: "visible"
             - margin-left: >
                 [[[
                     var color_temp_modes = ["color_temp"];
