@@ -94,7 +94,6 @@ popup_light_brightness:
       #buttons {
         display: block !important;
         align-self: start !important;
-        margin-left: 14px;
       }
       #content2 {
         display: none !important;

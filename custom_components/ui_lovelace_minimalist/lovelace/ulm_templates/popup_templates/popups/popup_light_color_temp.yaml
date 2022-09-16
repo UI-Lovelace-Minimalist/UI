@@ -24,7 +24,6 @@ popup_light_color_temp:
       #buttons {
         display: block !important;
         align-self: start !important;
-        margin-left: 14px;
       }
       #content1 {
         display: none;
