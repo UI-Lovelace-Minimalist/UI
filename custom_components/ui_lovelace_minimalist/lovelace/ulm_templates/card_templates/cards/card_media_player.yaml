@@ -55,7 +55,6 @@ card_media_player:
       - border-radius: "var(--border-radius)"
       - box-shadow: "var(--box-shadow)"
       - padding: "12px"
-      - background-blend-mode: "multiply"
       - background: |
           [[[
             return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null

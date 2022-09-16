@@ -1,0 +1,54 @@
+---
+popup_header_light:
+  template:
+    - "popup_button"
+    - "ulm_translation_engine"
+  label: |-
+    [[[
+      if (entity.state == 'off') {
+        return variables.ulm_translation_state;
+      } else {
+        return variables.ulm_translation_state + ' • ' + Math.round(states[entity.entity_id].attributes.brightness / 2.55) + '%';
+      }
+    ]]]
+  show_name: true
+  show_label: true
+  styles:
+    grid:
+      - grid-template-areas: "'i' 'n' 'l'"
+      - grid-template-columns: "auto"
+      - grid-template-rows: "min-content min-content min-content"
+    label:
+      - justify-self: "center"
+      - font-weight: "bold"
+      - font-size: "12px"
+      - filter: "opacity(40%)"
+    icon:
+      - color: >
+          [[[
+            var color = entity.attributes.rgb_color;
+            if(entity.state == "on"){
+              if(color){
+                return "rgba(" + color + ",1)";
+              } else {
+                return "rgba(var(--color-yellow),1)";
+              }
+            } else {
+              return "var(--color-theme)";
+            }
+          ]]]
+    img_cell:
+      - left: "2px"
+      - background-color: >
+          [[[
+            var color = entity.attributes.rgb_color;
+            if(entity.state == "on"){
+              if(color){
+                return "rgba(" + color + ",0.2)";
+              } else {
+                return "rgba(var(--color-yellow),0.2)";
+              }
+            } else {
+              return "var(--card-background-color)";
+            }
+          ]]]
