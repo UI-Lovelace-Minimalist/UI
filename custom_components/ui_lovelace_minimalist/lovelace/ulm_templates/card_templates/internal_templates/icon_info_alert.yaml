@@ -8,7 +8,14 @@ icon_info_alert:
   show_name: true
   state:
     - operator: "template"
-      value: "[[[ if (entity.state == 'unavailable' || entity.state == 'on'){ return true; } ]]]"
+      value: >
+        [[[
+          var check_state = 'on';
+          if (variables.ulm_icon_alert_invert_state) {
+            check_state = 'off';
+          }
+          if (entity.state == 'unavailable' || entity.state == check_state){ return true; }
+        ]]]
       styles:
         icon:
           - color: "rgba(var(--color-blue),1)"
@@ -75,7 +82,11 @@ icon_info_alert:
   custom_fields:
     notification: >
       [[[
-        if (entity.state =="unavailable" || entity.state == "on"){
+        var check_state = 'on';
+          if (variables.ulm_icon_alert_invert_state) {
+            check_state = 'off';
+          }
+        if (entity.state == "unavailable" || entity.state == check_state){
           return `<ha-icon icon="mdi:exclamation" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`
         }
       ]]]

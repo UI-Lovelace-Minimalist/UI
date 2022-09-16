@@ -44,7 +44,7 @@ Table of content from the WIKI
   <p>
     <a href="https://ui-lovelace-minimalist.github.io/UI/usage/cards/card_battery/">&raquo;&nbsp;Cards</a><br>
     <a href="https://ui-lovelace-minimalist.github.io/UI/usage/chips/chip_alarm/">&raquo;&nbsp;Chips</a><br>
-    <a href="https://ui-lovelace-minimalist.github.io/UI/usage/popups/popup_aircondition/">&raquo;&nbsp;Popups</a><br>
+    <a href="https//ui-lovelace-minimalist.github.io/UI/usage/popups/popup_light/">&raquo;&nbsp;Popups</a><br>
     <a href="https://ui-lovelace-minimalist.github.io/UI/usage/custom_cards/custom_card_bar_card/">&raquo;&nbsp;Custom-Cards</a><br>
   </p>
 </td>

@@ -7,8 +7,6 @@ card_person:
   variables:
     ulm_card_person_use_entity_picture: false
     ulm_card_person_icon: "mdi:face-man"
-    ulm_card_person_zone1: ""
-    ulm_card_person_zone2: ""
     ulm_address: ""
   triggers_update: "all"
   tap_action:
@@ -18,19 +16,23 @@ card_person:
   show_name: true
   label: >
     [[[
-      if (variables.ulm_address){
-        return states[variables.ulm_address].state
-      } else {
-        let state = states[variables.ulm_card_person_entity].state;
-        let option = ["home", "not_home", "unavailable", "unknown"]
-        return (option.includes(state)) ? variables.ulm_translation_state : (states["zone."+state]?.attributes?.friendly_name || state)
+      var eta = ""
+      if (variables.ulm_card_person_eta && states[variables.ulm_card_person_entity].state != 'home'){
+        eta = " | " + states[variables.ulm_card_person_eta].state + " "+states[variables.ulm_card_person_eta].attributes.unit_of_measurement;
       }
+      if (variables.ulm_address){
+        return states[variables.ulm_address].state + eta
+      }
+      let state = states[variables.ulm_card_person_entity].state;
+      let option = ["home", "not_home", "unavailable", "unknown"]
+      return (option.includes(state)) ? variables.ulm_translation_state + eta : state + eta
     ]]]
   name: "[[[ return states[variables.ulm_card_person_entity].attributes.friendly_name ]]]"
   entity: "[[[ return variables.ulm_card_person_entity; ]]]"
   icon: "[[[ return variables.ulm_card_person_icon; ]]]"
   show_entity_picture: "[[[ return variables.ulm_card_person_use_entity_picture ]]]"
-  entity_picture: "[[[ return variables.ulm_card_person_use_entity_picture ? states[variables.ulm_card_person_entity].attributes.entity_picture\
+  entity_picture:
+    "[[[ return variables.ulm_card_person_use_entity_picture ? states[variables.ulm_card_person_entity].attributes.entity_picture\
     \ : null ]]]"
   styles:
     icon:
@@ -58,20 +60,41 @@ card_person:
             [[[
               return (states[variables.ulm_card_person_entity].state !== 'home') ? "rgba(var(--color-green),1)" : "rgba(var(--color-blue),1)";
             ]]]
+      info:
+        - position: "absolute"
+        - right: "6px"
+        - top: "6px"
+        - width: "25px"
+        - height: "25px"
   custom_fields:
     notification: >
       [[[
-        if (states[variables.ulm_card_person_entity].state !== 'home') {
-          if (states[variables.ulm_card_person_zone1]?.attributes?.persons.includes(variables.ulm_card_person_entity)) {
-            var icon = states[variables.ulm_card_person_zone1].attributes.icon !== null ? states[variables.ulm_card_person_zone1].attributes.icon : 'mdi:help-circle'
-            return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
-          } else if (states[variables.ulm_card_person_zone2]?.attributes?.persons.includes(variables.ulm_card_person_entity)) {
-            var icon = states[variables.ulm_card_person_zone2].attributes.icon !== null ? states[variables.ulm_card_person_zone2].attributes.icon : 'mdi:help-circle'
-            return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
-          } else {
-            return '<ha-icon icon="mdi:home-minus" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
-          }
+        if (states[variables.ulm_card_person_entity].state == 'home') {
+            return '<ha-icon icon="mdi:home-variant" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
         } else {
-          return '<ha-icon icon="mdi:home-variant" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+            for (let st in states) {
+                if (st.startsWith("zone.")) {
+                    if (states[st]?.attributes?.persons.includes(variables.ulm_card_person_entity)) {
+                        var icon = states[st].attributes.icon !== null ? states[st].attributes.icon : 'mdi:help-circle';
+                        return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+                    }
+                }
+            }
+        }
+        return '<ha-icon icon="mdi:home-minus" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+      ]]]
+    info: |
+      [[[
+        if(variables.ulm_card_person_battery){
+        const battery = Math.round(states[variables.ulm_card_person_battery].state/1);
+        const radius = 20.5; const circumference = radius * 2 * Math.PI;
+        return `<svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="${radius}"
+        stroke="green" stroke-width="3" fill="none"
+        style="transform: rotate(-90deg); transform-origin: 50% 50%;
+        stroke-dasharray: ${circumference};
+        stroke-dashoffset: ${circumference - battery / 100 * circumference};" />
+        <text x="50%" y="54%" fill="var(--primary-text-color)" font-size="16" font-weight= "bold"
+        text-anchor="middle" alignment-baseline="middle">
+        ${battery}<tspan font-size="10">%</tspan></text></svg>`;
         }
       ]]]
