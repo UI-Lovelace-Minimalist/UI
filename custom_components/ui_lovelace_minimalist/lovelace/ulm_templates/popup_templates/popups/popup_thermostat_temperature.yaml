@@ -166,7 +166,7 @@ popup_thermostat_temperature:
             auto:
               - display: >
                   [[[
-                    if (entity.attributes.hvac_modes.includes("auto") && !variables.ulm_card_thermostat_preset_mode) {
+                    if (!variables.ulm_card_thermostat_preset_mode && entity.attributes.hvac_modes.includes("auto")) {
                         return "block";
                     } else {
                         return "none";
@@ -175,7 +175,7 @@ popup_thermostat_temperature:
             heat:
               - display: >
                   [[[
-                    if (entity.attributes.hvac_modes.includes("heat") && !variables.ulm_card_thermostat_preset_mode) {
+                    if (!variables.ulm_card_thermostat_preset_mode && entity.attributes.hvac_modes.includes("heat")) {
                         return "block";
                     } else {
                         return "none";
@@ -184,7 +184,7 @@ popup_thermostat_temperature:
             cool:
               - display: >
                   [[[
-                    if (entity.attributes.hvac_modes.includes("cool") && !variables.ulm_card_thermostat_preset_mode) {
+                    if (!variables.ulm_card_thermostat_preset_mode && entity.attributes.hvac_modes.includes("cool") ) {
                         return "block";
                     } else {
                         return "none";
@@ -193,7 +193,7 @@ popup_thermostat_temperature:
             dry:
               - display: >
                   [[[
-                    if (entity.attributes.hvac_modes.includes("dry") && !variables.ulm_card_thermostat_preset_mode) {
+                    if ( !variables.ulm_card_thermostat_preset_mode && entity.attributes.hvac_modes.includes("dry")) {
                         return "block";
                     } else {
                         return "none";
@@ -202,7 +202,7 @@ popup_thermostat_temperature:
             fan_only:
               - display: >
                   [[[
-                    if (entity.attributes.hvac_modes.includes("fan_only") && !variables.ulm_card_thermostat_preset_mode) {
+                    if (!variables.ulm_card_thermostat_preset_mode && entity.attributes.hvac_modes.includes("fan_only")) {
                         return "block";
                     } else {
                         return "none";
@@ -211,7 +211,7 @@ popup_thermostat_temperature:
             heat_cool:
               - display: >
                   [[[
-                    if (entity.attributes.hvac_modes.includes("heat_cool") && !variables.ulm_card_thermostat_preset_mode) {
+                    if (!variables.ulm_card_thermostat_preset_mode && entity.attributes.hvac_modes.includes("heat_cool")) {
                         return "block";
                     } else {
                         return "none";
@@ -220,7 +220,7 @@ popup_thermostat_temperature:
             none:
               - display: >
                   [[[
-                    if (entity.attributes.preset_modes.includes("none") && variables.ulm_card_thermostat_preset_mode) {
+                    if (variables.ulm_card_thermostat_preset_mode && entity.attributes.preset_modes.includes("none")) {
                         return "block";
                     } else {
                         return "none";
@@ -229,7 +229,7 @@ popup_thermostat_temperature:
             away:
               - display: >
                   [[[
-                    if (entity.attributes.preset_modes.includes("away") && variables.ulm_card_thermostat_preset_mode) {
+                    if (variables.ulm_card_thermostat_preset_mode && entity.attributes.preset_modes.includes("away")) {
                         return "block";
                     } else {
                         return "none";
@@ -238,7 +238,7 @@ popup_thermostat_temperature:
             comfort:
               - display: >
                   [[[
-                    if (entity.attributes.preset_modes.includes("comfort") && variables.ulm_card_thermostat_preset_mode) {
+                    if (variables.ulm_card_thermostat_preset_mode && entity.attributes.preset_modes.includes("comfort")) {
                         return "block";
                     } else {
                         return "none";
@@ -247,7 +247,7 @@ popup_thermostat_temperature:
             home:
               - display: >
                   [[[
-                    if (entity.attributes.preset_modes.includes("home") && variables.ulm_card_thermostat_preset_mode) {
+                    if (variables.ulm_card_thermostat_preset_mode && entity.attributes.preset_modes.includes("home")) {
                         return "block";
                     } else {
                         return "none";
@@ -256,7 +256,7 @@ popup_thermostat_temperature:
             sleep:
               - display: >
                   [[[
-                    if (entity.attributes.preset_modes.includes("sleep") && variables.ulm_card_thermostat_preset_mode) {
+                    if (variables.ulm_card_thermostat_preset_mode && entity.attributes.preset_modes.includes("sleep")) {
                         return "block";
                     } else {
                         return "none";
@@ -265,7 +265,7 @@ popup_thermostat_temperature:
             activity:
               - display: >
                   [[[
-                    if (entity.attributes.preset_modes.includes("activity") && variables.ulm_card_thermostat_preset_mode) {
+                    if (variables.ulm_card_thermostat_preset_mode && entity.attributes.preset_modes.includes("activity")) {
                         return "block";
                     } else {
                         return "none";
