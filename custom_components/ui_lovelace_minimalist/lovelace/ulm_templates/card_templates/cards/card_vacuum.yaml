@@ -36,11 +36,11 @@ card_vacuum:
             let map = "'item1' 'map' 'item2'"
             if(variables.ulm_card_vacuum_camera != ""){
               if(variables.ulm_card_vacuum_camera_toggle){
-                if(['cleaning','mopping'].includes(entity.state.toLowerCase())){
-                  return map
-                } else {
-                return map
+                if(entity.state.toLowerCase() === 'cleaning' || entity.state.toLowerCase() === 'mopping'){
+                  return map;
                 }
+              } else {
+                 return map;
               }
             }
             return "'item1' 'item2'"
@@ -51,11 +51,11 @@ card_vacuum:
             let map = "repeat(3, min-content)"
             if(variables.ulm_card_vacuum_camera != ""){
               if(variables.ulm_card_vacuum_camera_toggle){
-                if(['cleaning','mopping'].includes(entity.state.toLowerCase())){
-                  return map
-                } else {
-                return map
+                if(entity.state.toLowerCase() === 'cleaning' || entity.state.toLowerCase() === 'mopping'){
+                  return map;
                 }
+              } else {
+                 return map;
               }
             }
             return "repeat(2, min-content)"
@@ -78,11 +78,11 @@ card_vacuum:
               let map = "block"
               if(variables.ulm_card_vacuum_camera != ""){
                 if(variables.ulm_card_vacuum_camera_toggle){
-                  if(['cleaning','mopping'].includes(entity.state.toLowerCase())){
-                    return map
-                  } else {
-                  return map
+                  if(entity.state.toLowerCase() === 'cleaning' || entity.state.toLowerCase() === 'mopping'){
+                    return map;
                   }
+                } else {
+                  return map;
                 }
               }
               return "none"
