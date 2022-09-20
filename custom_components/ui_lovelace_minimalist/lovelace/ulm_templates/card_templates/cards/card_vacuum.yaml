@@ -38,9 +38,10 @@ card_vacuum:
               if(variables.ulm_card_vacuum_camera_toggle){
                 if(['cleaning','mopping'].includes(entity.state.toLowerCase())){
                   return map
+                } else {
+                return map
                 }
               }
-              return map
             }
             return "'item1' 'item2'"
           ]]]
@@ -52,9 +53,10 @@ card_vacuum:
               if(variables.ulm_card_vacuum_camera_toggle){
                 if(['cleaning','mopping'].includes(entity.state.toLowerCase())){
                   return map
+                } else {
+                return map
                 }
               }
-              return map
             }
             return "repeat(2, min-content)"
           ]]]
@@ -78,9 +80,10 @@ card_vacuum:
                 if(variables.ulm_card_vacuum_camera_toggle){
                   if(['cleaning','mopping'].includes(entity.state.toLowerCase())){
                     return map
+                  } else {
+                  return map
                   }
                 }
-                return map
               }
               return "none"
             ]]]
