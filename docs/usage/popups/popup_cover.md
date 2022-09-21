@@ -5,7 +5,7 @@ hide:
 ---
 <!-- markdownlint-disable MD046 -->
 
-### Thermostat popup
+### Cover popup
 
 ![Phone](../../assets/img/popup_cover.png){ width="500" }
 
