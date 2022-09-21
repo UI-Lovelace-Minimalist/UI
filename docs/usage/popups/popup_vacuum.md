@@ -36,4 +36,4 @@ For example :
 
 ## Credits
 
-- Designed by AndyVRD
+- Designed by Basbruss
