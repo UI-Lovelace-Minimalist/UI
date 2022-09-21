@@ -97,17 +97,6 @@ card_vacuum:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
               icon: "[[[ return variables.ulm_card_vacuum_icon ]]]"
-              variables: >
-                [[[
-                  let vars = variables;
-                  if(variables.ulm_card_vacuum_enable_popup) {
-                    vars.ulm_custom_popup = {
-                      'template': 'popup_vacuum_map',
-                      'popup_variables': {'ulm_card_vacuum_camera': variables.ulm_card_vacuum_camera }
-                    };
-                  }
-                  return vars;
-                ]]]
               styles:
                 icon:
                   - color: >
@@ -123,17 +112,6 @@ card_vacuum:
             card:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
-              variables: >
-                [[[
-                  let vars = variables;
-                  if(variables.ulm_card_vacuum_enable_popup) {
-                    vars.ulm_custom_popup = {
-                      'template': 'popup_vacuum_map',
-                      'popup_variables': {'ulm_card_vacuum_camera': variables.ulm_card_vacuum_camera }
-                    };
-                  }
-                  return vars;
-                ]]]
               name: "[[[ return variables.ulm_card_vacuum_name ]]]"
               label: >
                 [[[
