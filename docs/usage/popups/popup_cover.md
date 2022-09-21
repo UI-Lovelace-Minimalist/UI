@@ -27,7 +27,7 @@ For example :
 ```yaml
 - type: "custom:button-card"
   template: card_cover
-  entity: climate.garage
+  entity: cover.garage
   variables:
     ulm_card_cover_enable_popup: true
 ```
