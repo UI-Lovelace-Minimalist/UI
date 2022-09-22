@@ -1,5 +1,5 @@
 ---
-popup_thermostat:
+popup_vacuum:
   hold_action:
     action: "fire-dom-event"
     browser_mod:
