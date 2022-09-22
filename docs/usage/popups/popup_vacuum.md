@@ -10,6 +10,12 @@ hide:
 ![Phone](../../assets/img/popup_vacuum.PNG){ width="300" }
 ![Phone](../../assets/img/popup_vacuum_no_camera.PNG){ width="300" }
 
+#### Requirements
+
+This popup does not work without the following card from HACS:
+
+- [Vacuum Card](https://github.com/denysdovhan/vacuum-card) (download from HACS)
+
 ##### Card compatibility
 
 This popup is displayed using ``popup`` and it is compatible with the following cards/chips :
