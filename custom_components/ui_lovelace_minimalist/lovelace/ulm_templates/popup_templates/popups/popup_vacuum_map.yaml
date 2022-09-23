@@ -1,0 +1,68 @@
+---
+popup_vacuum_map:
+  show_icon: false
+  show_name: false
+  show_label: false
+  show_units: false
+  variables:
+    ulm_card_vacuum_camera: "[[[ return variables.ulm_card_vacuum_camera; ]]]"
+  styles:
+    grid:
+      - grid-template-areas: "'header' 'content1' 'footer'"
+      - grid-template-rows: "16vh 56vh 14vh"
+      - grid-template-columns: "1fr"
+    card:
+      - background: "var(--primary-background-color)"
+      - box-shadow: "none"
+      - padding: "2%"
+    custom_fields:
+      header:
+        - align-self: "start"
+      content1:
+        - align-self: "center"
+        - justify-self: "center"
+        - max-width: "40vh"
+      footer:
+        - align-self: "start"
+  extra_styles: |
+    @media (max-width: 800px) {
+      #container {
+        grid-template-rows: 16vh 56vh 14vh !important;
+      }
+  custom_fields:
+    header:
+      card:
+        type: "custom:button-card"
+        template: "popup_header"
+        entity: "[[[ return entity.entity_id ]]]"
+    content1:
+      card:
+        type: "custom:vacuum-card"
+        entity: "[[[ return entity.entity_id ]]]"
+        image: "default"
+        compact_view: false
+        map: "[[[ return variables.ulm_card_vacuum_camera !='' ? variables.ulm_card_vacuum_camera : 'null'; ]]]"
+        card_mod:
+          style: |
+            ha-card {
+              box-shadow: "none" !important;
+              --vc-background: var(--secondary-background-color);
+              --vc-toolbar-background: var(--secondary-background-color);
+              --vc-icon-color: var(--primary-color);
+              --vc-toolbar-icon-color: var(--primary-color);
+              max-height: "56vh" !important
+              }
+    footer:
+      card:
+        type: "custom:button-card"
+        template: "popup_list_items"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template: "popup_button_back"
+          item2:
+            card:
+              type: "custom:button-card"
+              template: "popup_button_power"
+              entity: "[[[ return entity.entity_id ]]]"
