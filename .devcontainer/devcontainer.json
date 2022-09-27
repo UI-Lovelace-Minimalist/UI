@@ -14,7 +14,13 @@
     "ryanluker.vscode-coverage-gutters",
     "visualstudioexptteam.vscodeintellicode",
     "redhat.vscode-yaml",
-    "esbenp.prettier-vscode"
+    "esbenp.prettier-vscode",
+    "MS-CEINTL.vscode-language-pack-en-GB",
+    "naumovs.color-highlight",
+    "ms-azuretools.vscode-docker",
+    "keesschollaart.vscode-home-assistant",
+    "sugatoray.jinja-extension-pack",
+    "lukas-tr.materialdesignicons-intellisense"
   ],
   "settings": {
     "files.eol": "\n",

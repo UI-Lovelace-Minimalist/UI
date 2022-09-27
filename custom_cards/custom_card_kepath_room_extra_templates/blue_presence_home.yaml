@@ -1,0 +1,16 @@
+---
+blue_presence_home:
+  state:
+    - styles:
+        icon:
+          - color: "rgba(var(--color-blue),1)"
+        label:
+          - color: "rgba(var(--color-blue-text),1)"
+        name:
+          - color: "rgba(var(--color-blue-text),1)"
+        img_cell:
+          - background-color: "rgba(var(--color-blue), 0.2)"
+        card:
+          - background-color: "rgba(var(--color-background-blue), var(--opacity-bg))"
+      id: "home"
+      value: "home"

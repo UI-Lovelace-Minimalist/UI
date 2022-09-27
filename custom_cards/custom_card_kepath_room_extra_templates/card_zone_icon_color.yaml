@@ -1,0 +1,70 @@
+---
+card_zone_icon_color:
+  state:
+    - styles:
+        icon:
+          - color: "rgba(var(--color-green),1)"
+        label:
+          - color: "rgba(var(--color-green-text),1)"
+        name:
+          - color: "rgba(var(--color-green-text),1)"
+        img_cell:
+          - background-color: "rgba(var(--color-green), 0.2)"
+        card:
+          - background-color: "rgba(var(--color-background-green), var(--opacity-bg))"
+      value: "home"
+      id: "home"
+  styles:
+    icon:
+      - color: "rgba(var(--color-red),1)"
+    label:
+      - color: "rgba(var(--color-red-text),1)"
+    name:
+      - color: "rgba(var(--color-red-text),1)"
+    img_cell:
+      - background-color: "rgba(var(--color-red), 0.2)"
+  tooltip: >
+    [[[
+      return entity.attributes.friendly_name
+    ]]]
+  icon: >
+    [[[
+      var personplace = entity.state.replace(" ", "_").toLowerCase()
+
+      if (personplace == "home") {
+        return entity.attributes.icon;
+      } else if (personplace == "bloxham_school") {
+        return "mdi:school";
+      } else if (personplace == "repl_group") {
+        return "mdi:office-building";
+      } else if (personplace == "tudor_hall_school") {
+        return "mdi:human-male-board";
+
+      } else if (personplace == "jus_parents") {
+        return "mdi:alpha-p-circle";
+      } else if (personplace == "hollys_house") {
+        return "mdi:alpha-h-circle";
+      } else if (personplace == "kevs_parents") {
+        return "mdi:alpha-p-box";
+      } else if (personplace == "louises_house") {
+        return "mdi:alpha-l-box";
+
+      } else if (personplace == "gym") {
+        return "mdi:run";
+      } else if (personplace == "whittlebury_spa") {
+        return "mdi:spa";
+      } else if (personplace == "sandy_balls") {
+        return "mdi:basketball";
+
+      } else if (personplace == "martin_della") {
+        return "mdi:airport";
+      } else if (personplace == "jason_beer") {
+        return "mdi:glass-mug-variant";
+
+      } else if (personplace == "kks_house") {
+        return "mdi:diamond-stone";
+
+      } else {
+        return "mdi:account-cancel";
+      }
+    ]]]

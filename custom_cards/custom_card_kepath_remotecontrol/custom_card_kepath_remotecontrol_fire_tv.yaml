@@ -1,0 +1,2018 @@
+---
+########################################################
+#####  AMAZON FIRESTICK CARDS                      #####
+########################################################
+
+# card_remotecontrol_firestick_group_power:
+#   type: "custom:button-card"
+#   variables:
+#     entity_id:
+#     background_color: "rgba(var(--color-grey), 0.1)"
+#   template:
+#     # - "ulm_custom_card_kepath_remotecontrol_language_variables"
+
+#     - "layout_group"
+#   custom_fields:
+#     group1:
+#       card:
+#           type: "custom:button-card"
+#           variables:
+#             entity_id: "[[[ return variables.entity_id ]]]"
+#             background_color: "[[[ return variables.background_color ]]]"
+#           template:
+#             - "vars_remotecontrol_firestick_group_power"
+#             - "card_remotecontrol_group_power"
+
+vars_remotecontrol_firestick_group_power:
+  variables:
+    cell1:
+      button:
+        entity_id:
+        background_color:
+        templates:
+          - "red_text"
+          - "power_state_button_style"
+        icon:
+          name: "mdi:power"
+          color:
+          size:
+        tooltip: "[[[ return variables.ulm_custom_card_kepath_remotecontrol_power ]]]"
+        actions:
+          tap:
+            more_info_entity_id:
+            action: "service-adb-command"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "success"
+            harmony:
+              device:
+              delay:
+          double_tap:
+            more_info_entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "none"
+            harmony:
+              device:
+              delay:
+          hold:
+            more_info_entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "none"
+            repeat:
+            harmony:
+              device:
+              delay:
+    cell2:
+      button:
+        entity_id:
+        background_color:
+        templates:
+        icon:
+          name: "mdi:import"
+          color:
+          size:
+        tooltip: "[[[ return variables.ulm_custom_card_kepath_remotecontrol_input]]]"
+        actions:
+          tap:
+            more_info_entity_id:
+            action: "none"
+            service: "call-service"
+            command:
+            haptic: "success"
+            harmony:
+              device:
+              delay:
+          double_tap:
+            more_info_entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "none"
+            harmony:
+              device:
+              delay:
+          hold:
+            more_info_entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "none"
+            repeat:
+            harmony:
+              device:
+              delay:
+
+vars_remotecontrol_firestick_group_home:
+  variables:
+    cell1:
+      button:
+        entity_id:
+        background_color:
+        templates:
+        icon:
+          name: "mdi:arrow-u-left-top-bold"
+          color:
+          size:
+        tooltip: "[[[ return variables.ulm_custom_card_kepath_remotecontrol_back ]]]"
+        actions:
+          tap:
+            more_info_entity_id:
+            action: "none"
+            service: "call-service"
+            command: "BACK"
+            haptic: "success"
+            harmony:
+              device:
+              delay:
+          double_tap:
+            more_info_entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "none"
+            harmony:
+              device:
+              delay:
+          hold:
+            more_info_entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "none"
+            repeat:
+            harmony:
+              device:
+              delay:
+    cell2:
+      button:
+        entity_id:
+        background_color:
+        templates:
+        icon:
+          name: "mdi:home"
+          color:
+          size:
+        tooltip: "[[[ return variables.ulm_custom_card_kepath_remotecontrol_home ]]]"
+        actions:
+          tap:
+            more_info_entity_id:
+            action: "none"
+            service: "call-service"
+            command: "HOME"
+            haptic: "success"
+            harmony:
+              device:
+              delay:
+          double_tap:
+            more_info_entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "none"
+            harmony:
+              device:
+              delay:
+          hold:
+            more_info_entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "none"
+            repeat:
+            harmony:
+              device:
+              delay:
+    cell3:
+      button:
+        entity_id:
+        background_color:
+        templates:
+        icon:
+          name: "mdi:menu"
+          color:
+          size:
+        tooltip: "[[[ return variables.ulm_custom_card_kepath_remotecontrol_menu ]]]"
+        actions:
+          tap:
+            more_info_entity_id:
+            action: "none"
+            service: "call-service"
+            command: "MENU"
+            haptic: "success"
+            harmony:
+              device:
+              delay:
+          double_tap:
+            more_info_entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "none"
+            harmony:
+              device:
+              delay:
+          hold:
+            more_info_entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "none"
+            repeat:
+            harmony:
+              device:
+              delay:
+
+vars_remotecontrol_firestick_group_play:
+  variables:
+    cell1:
+      button:
+        entity_id:
+        background_color:
+        templates:
+        icon:
+          name: "mdi:rewind"
+          color:
+          size:
+        tooltip: "[[[ return variables.ulm_custom_card_kepath_remotecontrol_rewind ]]]"
+        actions:
+          tap:
+            more_info_entity_id:
+            action: "none"
+            service: "call-service"
+            command: "input keyevent 89"
+            haptic: "success"
+            harmony:
+              device:
+              delay:
+          double_tap:
+            more_info_entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "none"
+            harmony:
+              device:
+              delay:
+          hold:
+            more_info_entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "selection"
+            repeat: 200
+            harmony:
+              device:
+              delay:
+    cell2:
+      button:
+        entity_id:
+        background_color:
+        templates:
+          - "play_button_style"
+        icon:
+          name:
+          color:
+          size:
+        tooltip: "[[[ return variables.ulm_custom_card_kepath_remotecontrol_play ]]]"
+        actions:
+          tap:
+            more_info_entity_id:
+            action: "none"
+            service: "call-service"
+            command: "input keyevent 85"
+            haptic: "success"
+            harmony:
+              device:
+              delay:
+          double_tap:
+            more_info_entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "none"
+            harmony:
+              device:
+              delay:
+          hold:
+            more_info_entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "none"
+            repeat:
+            harmony:
+              device:
+              delay:
+    cell3:
+      button:
+        entity_id:
+        background_color:
+        templates:
+        icon:
+          name: "mdi:fast-forward"
+          color:
+          size:
+        tooltip: "[[[ return variables.ulm_custom_card_kepath_remotecontrol_fast_forward ]]]"
+        actions:
+          tap:
+            more_info_entity_id:
+            action: "none"
+            service: "call-service"
+            command: "input keyevent 90"
+            haptic: "success"
+            harmony:
+              device:
+              delay:
+          double_tap:
+            more_info_entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "none"
+            harmony:
+              device:
+              delay:
+          hold:
+            more_info_entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "selection"
+            repeat: 200
+            harmony:
+              device:
+              delay:
+
+vars_remotecontrol_firestick_group_arrow_select:
+  variables:
+    cell1:
+      button:
+        entity_id:
+        background_color:
+        templates:
+          - "blue_text"
+        icon:
+          name: "mdi:arrow-up-bold"
+          color:
+          size:
+        tooltip: "[[[ return variables.ulm_custom_card_kepath_remotecontrol_arrow_up ]]]"
+        actions:
+          tap:
+            more_info_entity_id:
+            action: "none"
+            service: "call-service"
+            command: "UP"
+            haptic: "none"
+            harmony:
+              device:
+              delay:
+          double_tap:
+            more_info_entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            haptic: "selection"
+            repeat: 200
+            harmony:
+              device:
+              delay:
+          hold:
+            more_info_entity_id:
+            action: "more-info"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "none"
+            repeat:
+            harmony:
+              device:
+              delay:
+    cell2:
+      button:
+        entity_id:
+        background_color:
+        templates:
+          - "blue_text"
+        icon:
+          name: "mdi:arrow-left-bold"
+          color:
+          size:
+        tooltip: "[[[ return variables.ulm_custom_card_kepath_remotecontrol_arrow_left ]]]"
+        actions:
+          tap:
+            more_info_entity_id:
+            action: "none"
+            service: "call-service"
+            command: "LEFT"
+            haptic: "none"
+            harmony:
+              device:
+              delay:
+          double_tap:
+            more_info_entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "none"
+            harmony:
+              device:
+              delay:
+          hold:
+            more_info_entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "selection"
+            repeat: 200
+            harmony:
+              device:
+              delay:
+    cell3:
+      button:
+        entity_id:
+        background_color:
+        templates:
+          - "blue_text"
+        icon:
+          name: "mdi:circle-slice-8"
+          color:
+          size:
+        tooltip: "[[[ return variables.ulm_custom_card_kepath_remotecontrol_select ]]]"
+        actions:
+          tap:
+            more_info_entity_id:
+            action: "none"
+            service: "call-service"
+            command: "input keyevent 23"
+            haptic: "none"
+            harmony:
+              device:
+              delay:
+          double_tap:
+            more_info_entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "none"
+            harmony:
+              device:
+              delay:
+          hold:
+            more_info_entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "none"
+            repeat:
+            harmony:
+              device:
+              delay:
+    cell4:
+      button:
+        entity_id:
+        background_color:
+        templates:
+          - "blue_text"
+        icon:
+          name: "mdi:arrow-right-bold"
+          color:
+          size:
+        tooltip: "[[[ return variables.ulm_custom_card_kepath_remotecontrol_arrow_right ]]]"
+        actions:
+          tap:
+            more_info_entity_id:
+            action: "none"
+            service: "call-service"
+            command: "RIGHT"
+            haptic: "none"
+            harmony:
+              device:
+              delay:
+          double_tap:
+            more_info_entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "none"
+            harmony:
+              device:
+              delay:
+          hold:
+            more_info_entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "selection"
+            repeat: 200
+            harmony:
+              device:
+              delay:
+    cell5:
+      button:
+        entity_id:
+        background_color:
+        templates:
+          - "blue_text"
+        icon:
+          name: "mdi:arrow-down-bold"
+          color:
+          size:
+        tooltip: "[[[ return variables.ulm_custom_card_kepath_remotecontrol_arrow_down ]]]"
+        actions:
+          tap:
+            more_info_entity_id:
+            action: "none"
+            service: "call-service"
+            command: "DOWN"
+            haptic: "none"
+            harmony:
+              device:
+              delay:
+          double_tap:
+            more_info_entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "none"
+            harmony:
+              device:
+              delay:
+          hold:
+            more_info_entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "selection"
+            repeat: 200
+            harmony:
+              device:
+              delay:
+
+vars_remotecontrol_firestick_group_volume:
+  variables:
+    row1:
+      button:
+        entity_id:
+        background_color:
+        templates:
+          - "green_text"
+        icon:
+          name: "mdi:volume-plus"
+          color:
+          size:
+        tooltip: "[[[ return variables.ulm_custom_card_kepath_remotecontrol_volume_up ]]]"
+        actions:
+          tap:
+            more_info_entity_id:
+            action: "none"
+            service: "call-service"
+            command: "input keyevent 89"
+            haptic: "none"
+            harmony:
+              device:
+              delay:
+          double_tap:
+            more_info_entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "none"
+            harmony:
+              device:
+              delay:
+          hold:
+            more_info_entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "selection"
+            repeat: 200
+            harmony:
+              device:
+              delay:
+    row2:
+      button:
+        entity_id:
+        background_color:
+        templates:
+          - "green_text"
+        icon:
+          name: "mdi:volume-minus"
+          color:
+          size:
+        tooltip: "[[[ return variables.ulm_custom_card_kepath_remotecontrol_volume_down ]]]"
+        actions:
+          tap:
+            more_info_entity_id:
+            action: "none"
+            service: "call-service"
+            command: "input keyevent 85"
+            haptic: "none"
+            harmony:
+              device:
+              delay:
+          double_tap:
+            more_info_entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "none"
+            harmony:
+              device:
+              delay:
+          hold:
+            more_info_entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "selection"
+            repeat: 200
+            harmony:
+              device:
+              delay:
+    row3:
+      button:
+        entity_id:
+        background_color:
+        templates:
+          - "volume_mute_button_style"
+        icon:
+          name: "mdi:volume-off"
+          color:
+          size:
+        tooltip: "[[[ return variables.ulm_custom_card_kepath_remotecontrol_volume_mute ]]]"
+        actions:
+          tap:
+            more_info_entity_id:
+            action: "none"
+            service: "call-service"
+            command: "input keyevent 90"
+            haptic: "none"
+            harmony:
+              device:
+              delay:
+          double_tap:
+            more_info_entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "none"
+            harmony:
+              device:
+              delay:
+          hold:
+            more_info_entity_id:
+            action: "more-info"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "none"
+            repeat:
+            harmony:
+              device:
+              delay:
+
+vars_remotecontrol_firestick_group_channel_selector:
+  variables:
+    doublerow1:
+      button:
+        entity_id:
+        background_color:
+        templates:
+          - "green_text"
+        icon:
+          name: "mdi:chevron-up"
+          color:
+          size:
+        name: "Ch"
+        tooltip: "[[[ return variables.ulm_custom_card_kepath_remotecontrol_channel_up ]]]"
+        actions:
+          tap:
+            more_info_entity_id:
+            action: "none"
+            service: "call-service"
+            command: "input keyevent 89"
+            haptic: "none"
+            harmony:
+              device:
+              delay:
+          double_tap:
+            more_info_entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "none"
+            harmony:
+              device:
+              delay:
+          hold:
+            more_info_entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "selection"
+            repeat:
+            harmony:
+              device:
+              delay:
+    doublerow2:
+      button:
+        entity_id:
+        background_color:
+        templates:
+          - "green_text"
+        icon:
+          name: "mdi:chevron-down"
+          color:
+          size:
+        name: "Ch"
+        tooltip: "[[[ return variables.ulm_custom_card_kepath_remotecontrol_channel_down ]]]"
+        actions:
+          tap:
+            more_info_entity_id:
+            action: "none"
+            service: "call-service"
+            command: "input keyevent 85"
+            haptic: "none"
+            harmony:
+              device:
+              delay:
+          double_tap:
+            more_info_entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "none"
+            harmony:
+              device:
+              delay:
+          hold:
+            more_info_entity_id:
+            action: "none"
+            service: "androidtv.adb_command"
+            command:
+            haptic: "selection"
+            repeat:
+            harmony:
+              device:
+              delay:
+
+vars_remotecontrol_firestick_group_numbers:
+  variables:
+    row1:
+      entity_id:
+      background_color:
+      cell1:
+        button:
+          entity_id:
+          background_color:
+          templates:
+            - "blue_text"
+          icon:
+            name: "mdi:numeric-1-circle-outline"
+            color:
+            size:
+          tooltip: "[[[ return variables.ulm_custom_card_kepath_remotecontrol_number_1 ]]]"
+          actions:
+            tap:
+              more_info_entity_id:
+              action: "none"
+              service: "call-service"
+              command: "input keyevent 89"
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            double_tap:
+              more_info_entity_id:
+              action: "none"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            hold:
+              more_info_entity_id:
+              action: "more-info"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              repeat:
+              harmony:
+                device:
+                delay:
+      cell2:
+        button:
+          entity_id:
+          background_color:
+          templates:
+            - "blue_text"
+          icon:
+            name: "mdi:numeric-2-circle-outline"
+            color:
+            size:
+          tooltip: "[[[ return variables.ulm_custom_card_kepath_remotecontrol_number_2 ]]]"
+          actions:
+            tap:
+              more_info_entity_id:
+              action: "none"
+              service: "call-service"
+              command: "input keyevent 89"
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            double_tap:
+              more_info_entity_id:
+              action: "none"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            hold:
+              more_info_entity_id:
+              action: "more-info"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              repeat:
+              harmony:
+                device:
+                delay:
+      cell3:
+        button:
+          entity_id:
+          background_color:
+          templates:
+            - "blue_text"
+          icon:
+            name: "mdi:numeric-3-circle-outline"
+            color:
+            size:
+          tooltip: "[[[ return variables.ulm_custom_card_kepath_remotecontrol_number_3 ]]]"
+          actions:
+            tap:
+              more_info_entity_id:
+              action: "none"
+              service: "call-service"
+              command: "input keyevent 89"
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            double_tap:
+              more_info_entity_id:
+              action: "none"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            hold:
+              more_info_entity_id:
+              action: "more-info"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              repeat:
+              harmony:
+                device:
+                delay:
+    row2:
+      entity_id:
+      background_color:
+      cell1:
+        button:
+          entity_id:
+          background_color:
+          templates:
+            - "blue_text"
+          icon:
+            name: "mdi:numeric-4-circle-outline"
+            color:
+            size:
+          tooltip: "[[[ return variables.ulm_custom_card_kepath_remotecontrol_number_4 ]]]"
+          actions:
+            tap:
+              more_info_entity_id:
+              action: "none"
+              service: "call-service"
+              command: "input keyevent 89"
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            double_tap:
+              more_info_entity_id:
+              action: "none"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            hold:
+              more_info_entity_id:
+              action: "more-info"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              repeat:
+              harmony:
+                device:
+                delay:
+      cell2:
+        button:
+          entity_id:
+          background_color:
+          templates:
+            - "blue_text"
+          icon:
+            name: "mdi:numeric-5-circle-outline"
+            color:
+            size:
+          tooltip: "[[[ return variables.ulm_custom_card_kepath_remotecontrol_number_5 ]]]"
+          actions:
+            tap:
+              more_info_entity_id:
+              action: "none"
+              service: "call-service"
+              command: "input keyevent 89"
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            double_tap:
+              more_info_entity_id:
+              action: "none"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            hold:
+              more_info_entity_id:
+              action: "more-info"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              repeat:
+              harmony:
+                device:
+                delay:
+      cell3:
+        button:
+          entity_id:
+          background_color:
+          templates:
+            - "blue_text"
+          icon:
+            name: "mdi:numeric-6-circle-outline"
+            color:
+            size:
+          tooltip: "[[[ return variables.ulm_custom_card_kepath_remotecontrol_number_6 ]]]"
+          actions:
+            tap:
+              more_info_entity_id:
+              action: "none"
+              service: "call-service"
+              command: "input keyevent 89"
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            double_tap:
+              more_info_entity_id:
+              action: "none"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            hold:
+              more_info_entity_id:
+              action: "more-info"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              repeat:
+              harmony:
+                device:
+                delay:
+    row3:
+      entity_id:
+      background_color:
+      cell1:
+        button:
+          entity_id:
+          background_color:
+          templates:
+            - "blue_text"
+          icon:
+            name: "mdi:numeric-7-circle-outline"
+            color:
+            size:
+          tooltip: "[[[ return variables.ulm_custom_card_kepath_remotecontrol_number_7 ]]]"
+          actions:
+            tap:
+              more_info_entity_id:
+              action: "none"
+              service: "call-service"
+              command: "input keyevent 89"
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            double_tap:
+              more_info_entity_id:
+              action: "none"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            hold:
+              more_info_entity_id:
+              action: "more-info"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              repeat:
+              harmony:
+                device:
+                delay:
+      cell2:
+        button:
+          entity_id:
+          background_color:
+          templates:
+            - "blue_text"
+          icon:
+            name: "mdi:numeric-8-circle-outline"
+            color:
+            size:
+          tooltip: "[[[ return variables.ulm_custom_card_kepath_remotecontrol_number_8 ]]]"
+          actions:
+            tap:
+              more_info_entity_id:
+              action: "none"
+              service: "call-service"
+              command: "input keyevent 89"
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            double_tap:
+              more_info_entity_id:
+              action: "none"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            hold:
+              more_info_entity_id:
+              action: "more-info"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              repeat:
+              harmony:
+                device:
+                delay:
+      cell3:
+        button:
+          entity_id:
+          background_color:
+          templates:
+            - "blue_text"
+          icon:
+            name: "mdi:numeric-9-circle-outline"
+            color:
+            size:
+          tooltip: "[[[ return variables.ulm_custom_card_kepath_remotecontrol_number_9 ]]]"
+          actions:
+            tap:
+              more_info_entity_id:
+              action: "none"
+              service: "call-service"
+              command: "input keyevent 89"
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            double_tap:
+              more_info_entity_id:
+              action: "none"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            hold:
+              more_info_entity_id:
+              action: "more-info"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              repeat:
+              harmony:
+                device:
+                delay:
+    row4:
+      entity_id:
+      background_color:
+      cell1:
+        button:
+          entity_id:
+          background_color:
+          templates:
+            - "blue_text"
+          icon:
+            name: "mdi:numeric-0-circle-outline"
+            color:
+            size:
+          tooltip: "[[[ return variables.ulm_custom_card_kepath_remotecontrol_number_0 ]]]"
+          actions:
+            tap:
+              more_info_entity_id:
+              action: "none"
+              service: "call-service"
+              command: "input keyevent 89"
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            double_tap:
+              more_info_entity_id:
+              action: "none"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            hold:
+              more_info_entity_id:
+              action: "more-info"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              repeat:
+              harmony:
+                device:
+                delay:
+
+vars_remotecontrol_firestick_group_apps:
+  variables:
+    row1:
+      entity_id:
+      background_color:
+      cell1:
+        button:
+          entity_id:
+          background_color: "#FFFFFF"
+          templates:
+          icon:
+            name: "si:netflix"
+            color: "#E50914"
+            size:
+          tooltip: "Netflix"
+          actions:
+            tap:
+              more_info_entity_id:
+              action: "none"
+              service: "call-service"
+              command: "input keyevent 89"
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            double_tap:
+              more_info_entity_id:
+              action: "none"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            hold:
+              more_info_entity_id:
+              action: "more-info"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              repeat:
+              harmony:
+                device:
+                delay:
+      cell2:
+        button:
+          entity_id:
+          background_color: "#00A8E1"
+          templates:
+          icon:
+            name: "si:prime"
+            color: "#FFFFFF"
+            size: "90%"
+          tooltip: "Amazon Prime"
+          actions:
+            tap:
+              more_info_entity_id:
+              action: "none"
+              service: "call-service"
+              command: "input keyevent 89"
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            double_tap:
+              more_info_entity_id:
+              action: "none"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            hold:
+              more_info_entity_id:
+              action: "more-info"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              repeat:
+              harmony:
+                device:
+                delay:
+      cell3:
+        button:
+          entity_id:
+          background_color: "#0000FF"
+          templates:
+          icon:
+            name: "phu:disney-plus"
+            color: "#FFFFFF"
+            size:
+          tooltip:
+          actions:
+            tap:
+              more_info_entity_id:
+              action: "none"
+              service: "call-service"
+              command: "input keyevent 89"
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            double_tap:
+              more_info_entity_id:
+              action: "none"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            hold:
+              more_info_entity_id:
+              action: "more-info"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              repeat:
+              harmony:
+                device:
+                delay:
+      cell4:
+        button:
+          entity_id:
+          background_color: "#FFFFFF"
+          templates:
+          icon:
+            name: "si:youtube"
+            color: "#FF0000"
+            size: "85%"
+          tooltip: "YouTube"
+          actions:
+            tap:
+              more_info_entity_id:
+              action: "none"
+              service: "call-service"
+              command: "input keyevent 89"
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            double_tap:
+              more_info_entity_id:
+              action: "none"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            hold:
+              more_info_entity_id:
+              action: "more-info"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              repeat:
+              harmony:
+                device:
+                delay:
+    row2:
+      entity_id:
+      background_color:
+      cell1:
+        button:
+          entity_id:
+          background_color: "#434343"
+          templates:
+          icon:
+            name: "si:plex"
+            color: "#E5A00D"
+            size:
+          tooltip: "Plex"
+          actions:
+            tap:
+              more_info_entity_id:
+              action: "none"
+              service: "call-service"
+              command: "input keyevent 89"
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            double_tap:
+              more_info_entity_id:
+              action: "none"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            hold:
+              more_info_entity_id:
+              action: "more-info"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              repeat:
+              harmony:
+                device:
+                delay:
+      cell2:
+        button:
+          entity_id:
+          background_color: "#434343"
+          templates:
+          icon:
+            name: "si:spotify"
+            color: "#1DB954"
+            size:
+          tooltip: "Spotify"
+          actions:
+            tap:
+              more_info_entity_id:
+              action: "none"
+              service: "call-service"
+              command: "input keyevent 89"
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            double_tap:
+              more_info_entity_id:
+              action: "none"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            hold:
+              more_info_entity_id:
+              action: "more-info"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              repeat:
+              harmony:
+                device:
+                delay:
+      cell3:
+        button:
+          entity_id:
+          background_color: "#434343"
+          templates:
+          icon:
+            name: "si:appletv"
+            color: "#FFFFFF"
+            size: "85%"
+          tooltip: "Apple TV"
+          actions:
+            tap:
+              more_info_entity_id:
+              action: "none"
+              service: "call-service"
+              command: "input keyevent 89"
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            double_tap:
+              more_info_entity_id:
+              action: "none"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            hold:
+              more_info_entity_id:
+              action: "more-info"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              repeat:
+              harmony:
+                device:
+                delay:
+      cell4:
+        button:
+          entity_id:
+          background_color: "#434343"
+          templates:
+          icon:
+            name: "si:bbciplayer"
+            color: "#F54997"
+            size:
+          tooltip: "BBC iPlayer"
+          actions:
+            tap:
+              more_info_entity_id:
+              action: "none"
+              service: "call-service"
+              command: "input keyevent 89"
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            double_tap:
+              more_info_entity_id:
+              action: "none"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            hold:
+              more_info_entity_id:
+              action: "more-info"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              repeat:
+              harmony:
+                device:
+                delay:
+    row3:
+      entity_id:
+      background_color:
+      cell1:
+        button:
+          entity_id:
+          background_color: "#434343"
+          templates:
+          icon:
+            name: "si:ubiquiti"
+            color: "#0559C9"
+            size:
+          tooltip: "Unifi Protect"
+          actions:
+            tap:
+              more_info_entity_id:
+              action: "none"
+              service: "call-service"
+              command: "input keyevent 89"
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            double_tap:
+              more_info_entity_id:
+              action: "none"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            hold:
+              more_info_entity_id:
+              action: "more-info"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              repeat:
+              harmony:
+                device:
+                delay:
+      cell2:
+        button:
+          entity_id:
+          background_color: "#FFFFFF"
+          templates:
+          icon:
+            name: "si:youtubemusic"
+            color: "#FF0000"
+            size:
+          tooltip: "YouTube Music"
+          actions:
+            tap:
+              more_info_entity_id:
+              action: "none"
+              service: "call-service"
+              command: "input keyevent 89"
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            double_tap:
+              more_info_entity_id:
+              action: "none"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            hold:
+              more_info_entity_id:
+              action: "more-info"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              repeat:
+              harmony:
+                device:
+                delay:
+      cell3:
+        button:
+          entity_id:
+          background_color: "#FFFFFF"
+          templates:
+          icon:
+            name: "si:applemusic"
+            color: "#FA243C"
+            size:
+          tooltip: "Apple Music"
+          actions:
+            tap:
+              more_info_entity_id:
+              action: "none"
+              service: "call-service"
+              command: "input keyevent 89"
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            double_tap:
+              more_info_entity_id:
+              action: "none"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            hold:
+              more_info_entity_id:
+              action: "more-info"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              repeat:
+              harmony:
+                device:
+                delay:
+      cell4:
+        button:
+          entity_id:
+          background_color: "#FFFFFF"
+          templates:
+          icon:
+            name: "si:googleplay"
+            color: "#414141"
+            size:
+          tooltip: "Google Play"
+          actions:
+            tap:
+              more_info_entity_id:
+              action: "none"
+              service: "call-service"
+              command: "input keyevent 89"
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            double_tap:
+              more_info_entity_id:
+              action: "none"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            hold:
+              more_info_entity_id:
+              action: "more-info"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              repeat:
+              harmony:
+                device:
+                delay:
+    row4:
+      entity_id:
+      background_color:
+      cell1:
+        button:
+          entity_id:
+          background_color: "#F15B2A"
+          templates:
+          icon:
+            name: "si:pluralsight"
+            color: "#FFFFFF"
+            size:
+          tooltip: "Pluralsight"
+          actions:
+            tap:
+              more_info_entity_id:
+              action: "none"
+              service: "call-service"
+              command: "input keyevent 89"
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            double_tap:
+              more_info_entity_id:
+              action: "none"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            hold:
+              more_info_entity_id:
+              action: "more-info"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              repeat:
+              harmony:
+                device:
+                delay:
+      cell2:
+        button:
+          entity_id:
+          background_color: "#9146FF"
+          templates:
+          icon:
+            name: "si:twitch"
+            color: "#FFFFFF"
+            size:
+          tooltip: "Twitch"
+          actions:
+            tap:
+              more_info_entity_id:
+              action: "none"
+              service: "call-service"
+              command: "input keyevent 89"
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            double_tap:
+              more_info_entity_id:
+              action: "none"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            hold:
+              more_info_entity_id:
+              action: "more-info"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              repeat:
+              harmony:
+                device:
+                delay:
+      cell3:
+        button:
+          entity_id:
+          background_color: "#FFFFFF"
+          templates:
+          icon:
+            name: "si:ted"
+            color: "#E62B1E"
+            size: "85%"
+          tooltip: "TED"
+          actions:
+            tap:
+              more_info_entity_id:
+              action: "none"
+              service: "call-service"
+              command: "input keyevent 89"
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            double_tap:
+              more_info_entity_id:
+              action: "none"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            hold:
+              more_info_entity_id:
+              action: "more-info"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              repeat:
+              harmony:
+                device:
+                delay:
+      cell4:
+        button:
+          entity_id:
+          background_color: "#FF8800"
+          templates:
+          icon:
+            name: "si:vlcmediaplayer"
+            color: "#FFFFFF"
+            size:
+          tooltip: "VLC Media Player"
+          actions:
+            tap:
+              more_info_entity_id:
+              action: "none"
+              service: "call-service"
+              command: "input keyevent 89"
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            double_tap:
+              more_info_entity_id:
+              action: "none"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              harmony:
+                device:
+                delay:
+            hold:
+              more_info_entity_id:
+              action: "more-info"
+              service: "androidtv.adb_command"
+              command:
+              haptic: "none"
+              repeat:
+              harmony:
+                device:
+                delay:
+
+vars_adb_androidtv_firetv_constants:
+  variables:
+    firetv_keycode:
+      KEY_BACK: 4
+      KEY_BLUE: 186
+      KEY_CENTER: 23
+      KEY_COMPONENT1: 249
+      KEY_COMPONENT2: 250
+      KEY_COMPOSITE1: 247
+      KEY_COMPOSITE2: 248
+      KEY_DOWN: 20
+      KEY_END: 123
+      KEY_ENTER: 66
+      KEY_ESCAPE: 111
+      KEY_FAST_FORWARD: 90
+      KEY_GREEN: 184
+      KEY_HDMI1: 243
+      KEY_HDMI2: 244
+      KEY_HDMI3: 245
+      KEY_HDMI4: 246
+      KEY_HOME: 3
+      KEY_INPUT: 178
+      KEY_LEFT: 21
+      KEY_MENU: 82
+      KEY_MOVE_HOME: 122
+      KEY_MUTE: 164
+      KEY_NEXT: 87
+      KEY_PAIRING: 225
+      KEY_PAUSE: 127
+      KEY_PLAY: 126
+      KEY_PLAY_PAUSE: 85
+      KEY_POWER: 26
+      KEY_PREVIOUS: 88
+      KEY_RED: 183
+      KEY_RESUME: 224
+      KEY_REWIND: 89
+      KEY_RIGHT: 22
+      KEY_SAT: 237
+      KEY_SEARCH: 84
+      KEY_SETTINGS: 176
+      KEY_SLEEP: 223
+      KEY_SPACE: 62
+      KEY_STOP: 86
+      KEY_SUSPEND: 276
+      KEY_SYSDOWN: 281
+      KEY_SYSLEFT: 282
+      KEY_SYSRIGHT: 283
+      KEY_SYSUP: 280
+      KEY_TEXT: 233
+      KEY_TOP: 122
+      KEY_UP: 19
+      KEY_VGA: 251
+      KEY_VOLUME_DOWN: 25
+      KEY_VOLUME_UP: 24
+      KEY_WAKEUP: 224
+      KEY_YELLOW: 185
+      KEY_0: 7
+      KEY_1: 8
+      KEY_2: 9
+      KEY_3: 10
+      KEY_4: 11
+      KEY_5: 12
+      KEY_6: 13
+      KEY_7: 14
+      KEY_8: 15
+      KEY_9: 16
+      KEY_A: 29
+      KEY_B: 30
+      KEY_C: 31
+      KEY_D: 32
+      KEY_E: 33
+      KEY_F: 34
+      KEY_G: 35
+      KEY_H: 36
+      KEY_I: 37
+      KEY_J: 38
+      KEY_K: 39
+      KEY_L: 40
+      KEY_M: 41
+      KEY_N: 42
+      KEY_O: 43
+      KEY_P: 44
+      KEY_Q: 45
+      KEY_R: 46
+      KEY_S: 47
+      KEY_T: 48
+      KEY_U: 49
+      KEY_V: 50
+      KEY_W: 51
+      KEY_X: 52
+      KEY_Y: 53
+      KEY_Z: 54
+    firetv_source:
+      APP_AE_TV: "com.aetn.aetv.watch"
+      APP_AMAZON_PRIME_VIDEO: "com.amazon.avod.thirdpartyclient"
+      APP_AMAZON_VIDEO: "com.amazon.avod"
+      APP_APPLE_TV_PLUS: "com.apple.atve.android.appletv"
+      APP_APPLE_TV_PLUS_FIRETV: "com.apple.atve.amazon.appletv"
+      APP_APPLE_TV_PLUS_SONY: "com.apple.atve.sony.appletv"
+      APP_ATV_LAUNCHER: "com.google.android.tvlauncher"
+
+      APP_BBC_IPLAYER: "com.nvidia.bbciplayer"
+      APP_BELL_FIBE: "com.quickplay.android.bellmediaplayer"
+      APP_CBC_GEM: "ca.cbc.android.cbctv"
+      APP_COMEDY_CENTRAL: "com.vmn.android.comedycentral"
+      APP_CRAVE: "ca.bellmedia.cravetv"
+      APP_DAILYMOTION: "com.dailymotion.dailymotion"
+      APP_DEEZER: "deezer.android.tv"
+      APP_DISNEY_PLUS: "com.disney.disneyplus"
+      APP_DISNEY_PLUS_HOTSTAR: "in.startv.hotstar"
+      APP_DS_PHOTO: "com.synology.dsphoto"
+      APP_DS_VIDEO: "com.synology.dsvideo"
+      APP_ES_FILE_EXPLORER: "com.estrongs.android.pop"
+      APP_FACEBOOK: "com.facebook.katana"
+      APP_FAWESOME: "com.future.moviesByFawesomeAndroidTV"
+      APP_FIREFOX: "org.mozilla.tv.firefox"
+      APP_FIRETV_PACKAGE_LAUNCHER: "com.amazon.tv.launcher"
+      APP_FIRETV_PACKAGE_SETTINGS: "com.amazon.tv.settings"
+      APP_FIRETV_STORE: "com.amazon.venezia"
+      APP_FOOD_NETWORK_GO: "tv.accedo.foodnetwork"
+      APP_FRANCE_TV: "fr.francetv.pluzz"
+      APP_GLOBAL_TV: "com.shawmedia.smglobal"
+      APP_GOOGLE_CAST: "com.google.android.apps.mediashell"
+      APP_GOOGLE_TV_LAUNCHER: "com.google.android.apps.tv.launcherx"
+      APP_HAYSTACK_NEWS: "com.haystack.android"
+      APP_HBO_GO: "eu.hbogo.androidtv.production"
+      APP_HBO_GO_2: "com.HBO"
+      APP_HOICHOI: "com.viewlift.hoichoi"
+      APP_HULU: "com.hulu.plus"
+      APP_HUNGAMA_PLAY: "com.hungama.movies.tv"
+      APP_IMDB_TV: "com.amazon.imdb.tv.android.app"
+      APP_IPTV: "ru.iptvremote.android.iptv"
+      APP_IPTV_SMARTERS_PRO: "com.nst.iptvsmarterstvbox"
+
+      APP_ITV_HUB: "air.ITVMobilePlayer"
+      APP_JELLYFIN_TV: "org.jellyfin.androidtv"
+      APP_JIO_CINEMA: "com.jio.media.stb.ondemand"
+      APP_KODI: "org.xbmc.kodi"
+      APP_LIVE_CHANNELS: "com.google.android.tv"
+      APP_MIJN_RADIO: "org.samsonsen.nederlandse.radio.holland.nl"
+      APP_MOLOTOV: "tv.molotov.app"
+      APP_MRMC: "tv.mrmc.mrmc"
+      APP_MRMC_LITE: "tv.mrmc.mrmc.lite"
+      APP_MX_PLAYER: "com.mxtech.videoplayer.ad"
+
+      APP_MY_FIVE: "com.channel5.my5"
+      APP_NETFLIX: "com.netflix.ninja"
+      APP_NLZIET: "nl.nlziet"
+      APP_NOS: "nl.nos.app"
+      APP_NPO: "nl.uitzendinggemist"
+      APP_OCS: "com.orange.ocsgo"
+      APP_PLAY_GAMES: "com.google.android.play.games"
+      APP_PLAY_MUSIC: "com.google.android.music"
+      APP_PLAY_STORE: "com.android.vending"
+      APP_PLAY_VIDEOS: "com.google.android.videos"
+      APP_PLEX: "com.plexapp.android"
+
+      APP_PLURALSIGHT: "com.pluralsight"
+      APP_PRIME_VIDEO: "com.amazon.amazonvideo.livingroom"
+      APP_PRIME_VIDEO_FIRETV: "com.amazon.firebat"
+      APP_SETTINGS: "com.android.tv.settings"
+      APP_SMART_YOUTUBE_TV: "com.liskovsoft.videomanager"
+      APP_SONY_ACTION_MENU: "com.sony.dtv.scrums.action"
+      APP_SONY_ALBUM: "com.sony.dtv.osat.album"
+      APP_SONY_BRAVIA_SYNC_MENU: "com.sony.dtv.braviasyncmenu"
+      APP_SONY_BRAVIA_TUTORIALS: "com.sony.dtv.bravialifehack"
+      APP_SONY_DISCOVER: "com.sony.dtv.discovery"
+      APP_SONY_HELP: "com.sony.dtv.smarthelp"
+      APP_SONY_INTERNET_BROWSER: "com.vewd.core.integration.dia"
+      APP_SONY_LIV: "com.sonyliv"
+      APP_SONY_MUSIC: "com.sony.dtv.osat.music"
+      APP_SONY_SCREEN_MIRRORING: "com.sony.dtv.networkapp.wifidirect"
+      APP_SONY_SELECT: "com.sony.dtv.sonyselect"
+      APP_SONY_TIMERS: "com.sony.dtv.timers"
+      APP_SONY_TV: "com.sony.dtv.tvx"
+      APP_SONY_VIDEO: "com.sony.dtv.osat.video"
+      APP_SPORT1: "de.sport1.firetv.video"
+      APP_SPOTIFY: "com.spotify.tv.android"
+      APP_STEAM_LINK: "com.valvesoftware.steamlink"
+      APP_SYFY: "com.amazon.webapps.nbc.syfy"
+      APP_T2: "tv.perception.clients.tv.android"
+      APP_TED: "com.ted.android.tv"
+      APP_TUNEIN: "tunein.player"
+      APP_TVHEADEND: "de.cyberdream.dreamepg.tvh.tv.player"
+      APP_TWITCH: "tv.twitch.android.app"
+      APP_TWITCH_FIRETV: "tv.twitch.android.viewer"
+
+      APP_UNIFI_PROTECT: "com.ubnt.unifi.protect"
+      APP_VEVO: "com.vevo.tv"
+      APP_VH1: "com.mtvn.vh1android"
+      APP_VIMEO: "com.vimeo.android.videoapp"
+      APP_VLC: "org.videolan.vlc"
+      APP_VOYO: "com.phonegap.voyo"
+      APP_VRV: "com.ellation.vrv"
+      APP_WAIPU_TV: "de.exaring.waipu.firetv.live"
+      APP_WATCH_TNT: "com.turner.tnt.android.networkapp"
+      APP_YOUTUBE: "com.google.android.youtube.tv"
+      APP_YOUTUBE_FIRETV: "com.amazon.firetv.youtube"
+      APP_YOUTUBE_KIDS: "com.google.android.youtube.tvkids"
+      APP_YOUTUBE_KIDS_FIRETV: "com.amazon.firetv.youtube.kids"
+      APP_YOUTUBE_MUSIC: "com.google.android.youtube.tvmusic"
+      APP_YOUTUBE_TV: "com.google.android.youtube.tvunplugged"
+      APP_ZEE5: "com.graymatrix.did"
+      APP_ZIGGO_GO_TV: "com.ziggo.tv"

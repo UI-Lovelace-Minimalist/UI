@@ -1,0 +1,54 @@
+---
+card_room_mower_state:
+  state:
+    - operator: "template"
+      value: >
+        [[[
+          return (entity.state == 'mowing' || entity.state == 'edgecut')
+        ]]]
+      styles:
+        icon:
+          - color: "rgba(var(--color-green),1)"
+        label:
+          - color: "rgba(var(--color-green-text),1)"
+        name:
+          - color: "rgba(var(--color-green-text),1)"
+        img_cell:
+          - background-color: "rgba(var(--color-green), 0.2)"
+    - operator: "template"
+      value: >
+        [[[
+          return (entity.state == 'docked' || entity.state == 'returning' || entity.state == 'starting')
+        ]]]
+      styles:
+        icon:
+          - color: "rgba(var(--color-blue),1)"
+        label:
+          - color: "rgba(var(--color-blue-text),1)"
+        name:
+          - color: "rgba(var(--color-blue-text),1)"
+        img_cell:
+          - background-color: "rgba(var(--color-blue), 0.2)"
+    - operator: "=="
+      value: "rain_delay"
+      id: "rain_delay"
+      icon: "mdi:weather-rainy"
+      styles:
+        icon:
+          - color: "rgba(var(--color-yellow),1)"
+        label:
+          - color: "rgba(var(--color-yellow-text),1)"
+        name:
+          - color: "rgba(var(--color-yellow-text),1)"
+        img_cell:
+          - background-color: "rgba(var(--color-yellow), 0.2)"
+    - operator: "default"
+      styles:
+        icon:
+          - color: "rgba(var(--color-red),1)"
+        label:
+          - color: "rgba(var(--color-red-text),1)"
+        name:
+          - color: "rgba(var(--color-red-text),1)"
+        img_cell:
+          - background-color: "rgba(var(--color-red), 0.2)"
