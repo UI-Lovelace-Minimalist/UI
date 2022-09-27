@@ -24,6 +24,10 @@ hide:
 <summary>1.0.0</summary>
 Initial release
 </details>
+<details>
+<summary>1.0.1</summary>
+Fix for UI Minimalist v1.0.1.
+</details>
 
 ## Usage
 

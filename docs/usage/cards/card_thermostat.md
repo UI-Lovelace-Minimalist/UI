@@ -25,7 +25,7 @@ This card merges the following one :
 - custom `custom_card_httpedo13_thermostat_with_buttons_collapse` by httpedo13
 
 !!! warning
-    This card has backward compatibilty with older template except custom names and icons. It means variables like `ulm_card_XXX_name` and `ulm_card_XXX_icon` must be replaced by `ulm_card_thermostat_name` and `ulm_card_thermostat_icon`.
+    This card has backward compatibility with older template except custom names and icons. It means variables like `ulm_card_XXX_name` and `ulm_card_XXX_icon` must be replaced by `ulm_card_thermostat_name` and `ulm_card_thermostat_icon`.
     To use `popup_thermostat` you need to set the variable `ulm_card_thermostat_enable_popup` to `true`. This is a different approach as the other `popup_cards` use.
 
 ## Variables
@@ -42,7 +42,7 @@ This card merges the following one :
 | ulm_card_thermostat_enable_display_temperature  | `false`           | :material-close: | Display  current temperature on top right | |
 | ulm_card_thermostat_enable_horizontal           | `false`           | :material-close: | Enable horizontal card| Need `ulm_card_thermostat_enable_controls: true` |
 | ulm_card_thermostat_enable_popup                | `false`           | :material-close: | Enable `popup_thermostat` | |
-| ulm_card_thermostat_fan_entity                  | `null`            | :material-close: | `fan` entity for climate if seperate entity | |
+| ulm_card_thermostat_fan_entity                  | `null`            | :material-close: | `fan` entity for climate if separate entity | |
 | ulm_card_thermostat_minimum_temp_spread         | `1`               | :material-close: | Minimum temperature spread between low and high temperature when in `heat_cool` mode | |
 
 ## Usage

@@ -11,7 +11,7 @@ hide:
 ![example-image](../../assets/img/ulm_cards/card_weather.png){ width="500" }
 
 This is a card based on simple-weather-card to show your weather.
-[simple-weather-card](https://github.com/kalkih/simple-weather-card) lovelace ressources must be installed for this one!
+[simple-weather-card](https://github.com/kalkih/simple-weather-card) lovelace resources must be installed for this one!
 
 ## Variables
 

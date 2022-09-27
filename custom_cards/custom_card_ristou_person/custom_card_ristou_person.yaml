@@ -4,6 +4,8 @@ custom_card_ristou_person:
   template:
     - "ulm_translation_engine"
     - "ulm_custom_card_ristou_person_language_variables"
+    - "icon_more_info_new"
+    - "ulm_actions_card"
   variables:
     ulm_custom_card_ristou_name: "[[[ return entity.attributes.friendly_name ]]]"
     ulm_custom_card_ristou_icon: "[[[ return entity.attributes.icon ]]]"

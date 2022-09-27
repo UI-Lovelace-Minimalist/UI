@@ -6,7 +6,7 @@ site_url: "https://ui-lovelace-minimalist.github.io/UI/"
 # Repository
 repo_url: "https://github.com/UI-Lovelace-Minimalist/UI"
 repo_name: "UI-Lovelace-Minimalist/UI"
-edit_uri: "edit/dev/docs"
+edit_uri: "blob/main/docs"
 
 # https://pythonrepo.com/repo/lukasgeiter-mkdocs-awesome-pages-plugin-python-documentation
 nav:

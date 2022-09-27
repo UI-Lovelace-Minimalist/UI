@@ -82,7 +82,7 @@ The best place to start adding your personal cards is in `adaptive-dash/views/ma
 
     All files use CSS grids. By giving each card an own grid-area we can control there place in the dashboard. For more information on how `grid-areas` do work check this [amazing guide](https://css-tricks.com/snippets/css/complete-guide-grid/).
 
-When you are familiar with CSS grids you can start to alter the `grid-template-areas` to your personal perference.
+When you are familiar with CSS grids you can start to alter the `grid-template-areas` to your personal preference.
 
 ### Adding Cards
 
@@ -106,7 +106,7 @@ To put card_light to the area: `card1`; you have to paste in the code as in your
 ```
 
 ```yaml
-# Example of a card_light assiged to area card1
+# Example of a card_light assigned to area card1
 - view_layout:
     grid-area: "card1"
   type: "custom:button-card"
@@ -119,6 +119,9 @@ To put card_light to the area: `card1`; you have to paste in the code as in your
 ```
 
 Do this for all placeholders. You can always use less cards by deleting placeholders or add more cards by adding new areas under the `grid-template-areas`.
+
+For adapting the action use `adaptive` within the corresponding custom actions' variables. Take a look in the
+[custom actions](https://ui-lovelace-minimalist.github.io/UI/setup/custom_actions/) section within this docs.
 
 ### Adding popups on the right-side
 
@@ -161,11 +164,10 @@ states:
   light 1:
     type: "custom:button-card"
     template: "popup_light_brightness"
-    variables:
-      ulm_popup_light_entity: "<your_entity>"
+    entity: "<your_entity>"
 ```
 
-You can also add any other card by copying its yaml code in without the hypen `(-)`
+You can also add any other card by copying its yaml code in without the hyphen `(-)`
 
 ```yaml
 states:
@@ -173,8 +175,7 @@ states:
   light 1:
     type: "custom:button-card"
     template: "popup_light_brightness"
-    variables:
-      ulm_popup_light_entity: "<your_entity>"
+    entity: "<your_entity>"
   card 1:
     type: "custom:button-card"
     template: "<your_template>"

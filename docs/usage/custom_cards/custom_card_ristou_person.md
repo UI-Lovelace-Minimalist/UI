@@ -8,14 +8,9 @@ hide:
 
 # Custom Card Ristou Person
 
-<table>
-    <tbody>
-        <tr>
-            <td><img src="../../assets/img/custom_card_ristou_person/custom_card_ristou_person_light.png"></td>
-            <td><img src="../../assets/img/custom_card_ristou_person/custom_card_ristou_person_dark.png"></td>
-        </tr>
-    </tbody>
-</table>
+| Light | Dark |
+|---------|----|
+| ![light](../../assets/img/custom_card_ristou_person/custom_card_ristou_person_light.png) | ![dark](../../assets/img/custom_card_ristou_person/custom_card_ristou_person_dark.png) |
 
 ## Credits
 
@@ -25,6 +20,14 @@ hide:
 ## Changelog
 
 <details>
+<summary>1.0.1</summary>
+
+- Fixed image path on documentation
+- Added new template on card ( `icon_more_info_new` & `ulm_actions_card` )
+
+</details>
+
+<details>
 <summary>1.0.0</summary>
 Initial release
 </details>
@@ -32,18 +35,19 @@ Initial release
 ## Description
 
 The `custom_card_ristou_person` shows if a person is `home` or `not_home`. If you have setup other zones, it will show these as well (e.g `work`, `school`, `doctor`, etc... ).
-Work
+
 Showing driving state is also possible with a binary sensor.
 
-In addition, this card can display a map (either static or using buit in map) in a second row.
+In addition, this card can display a map (either static or using built in map) in a second row.
 
 ## Icon style
 
 As the main icon of this card you can choose the following set up
+
 | Variables | UI |
 |---------|----|
-| ulm_custom_card_ristou_use_badge: `true` <br> ulm_custom_card_ristou_use_entity_picture: `false`| ![face_icon_badge](../../assets/img/custom_card_ristou_person/custom_card_ristou_person_face_icon_badge.png) |
-| ulm_custom_card_ristou_use_badge: `true` <br> ulm_custom_card_ristou_use_entity_picture: `true`| ![picture_badge](../../assets/img/custom_card_ristou_person/custom_card_ristou_person_picture_badge.png) |
+| ulm_custom_card_ristou_use_badge: `true` <br> ulm_custom_card_ristou_use_entity_picture: `false` | ![face_icon_badge](../../assets/img/custom_card_ristou_person/custom_card_ristou_person_face_icon_badge.png) |
+| ulm_custom_card_ristou_use_badge: `true` <br> ulm_custom_card_ristou_use_entity_picture: `true` | ![picture_badge](../../assets/img/custom_card_ristou_person/custom_card_ristou_person_picture_badge.png) |
 | ulm_custom_card_ristou_use_badge: `false` <br> ulm_custom_card_ristou_use_entity_picture: `false` | ![icon_only](../../assets/img/custom_card_ristou_person/custom_card_ristou_person_icon_only.png) |
 
 ## map style
@@ -57,7 +61,7 @@ As the main icon of this card you can choose the following set up
 ## About Static maps
 
 The advantage of static map is that it is easy to custom and non-draggable.
-For instance when you scroll down and you accidently press first on map card.
+For instance when you scroll down and you accidentally press first on map card.
 
 I choose map box for the following reasons:
 
@@ -66,7 +70,7 @@ I choose map box for the following reasons:
 - Add many custom markers, I decided to represent my current location , home, and work.
 - Possibility to remove attribution and logo.
 
-URL can be direclty used inside a camera entity using dynamic markers as explain [here](https://www.home-assistant.io/examples/google_maps_card/)
+URL can be directly used inside a camera entity using dynamic markers as explain [here](https://www.home-assistant.io/examples/google_maps_card/)
 
 below is an example of the url I use for mapbox:
 
@@ -86,7 +90,7 @@ built in map is not always rendering properly. I observed 2 issues:
 ### Static map
 
 Static map can be blurry if ratio does not fit card width.
-In my case I used developper tool to find out exact width of the card (which is 466px) and then I ajusted the heigh to my needs.
+In my case I used developer tool to find out exact width of the card (which is 466px) and then I adjusted the height to my needs.
 
 ## Variables
 
@@ -94,7 +98,7 @@ In my case I used developper tool to find out exact width of the card (which is 
 |----------|---------|------------------|-------------------|
 | entity     |  | ✔️ | person entity |
 | ulm_custom_card_ristou_use_entity_picture     | false | ❌ | If you set this to true, the card shows the entity picture from your user, otherwise (set to false) shows the icon. Default is false. |
-| ulm_custom_card_ristou_use_badge     | true | ❌ | Show a notification badge on the icon. if set to false and not sing entity picture, then icon will be dinamically displayed to (Home, Away, Known place, or CAR) |
+| ulm_custom_card_ristou_use_badge     | true | ❌ | Show a notification badge on the icon. if set to false and not sing entity picture, then icon will be dynamically displayed to (Home, Away, Known place, or CAR) |
 | ulm_custom_card_ristou_map_enable     |false| ❌ | Display built in map as a second row |
 | ulm_custom_card_ristou_map_aspect_ratio     |16:5| ❌ | Display built in map as a second row |
 | ulm_custom_card_ristou_map_hours_to_show     |24| ❌ | Display built in map as a second row |

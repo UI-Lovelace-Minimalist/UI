@@ -3,7 +3,6 @@
 card_media_player:
   template:
     - "icon_more_info_new"
-    - "ulm_actions_card"
     - "ulm_translation_engine"
   variables:
     ulm_card_media_player_name: "[[[ return entity.attributes.friendly_name ]]]"
@@ -49,14 +48,13 @@ card_media_player:
             if (!variables.ulm_card_media_player_collapsible) {
                 return "12px";
               } else {
-                return entity.state !== "off" ? "12px" : "0px";
+                return (entity.state === "off" || entity.state === "standby") ? "0px" : "12px";
               }
           ]]]
     card:
       - border-radius: "var(--border-radius)"
       - box-shadow: "var(--box-shadow)"
       - padding: "12px"
-      - background-blend-mode: "multiply"
       - background: |
           [[[
             return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
@@ -69,7 +67,7 @@ card_media_player:
             [[[
               if(variables.ulm_card_media_player_enable_controls) {
                 if(variables.ulm_card_media_player_collapsible){
-                  return entity.state === "off" ? "none" : "block";
+                return (entity.state === "off" || entity.state === "standby") ? "none" : "block";
                 }
                 return "block";
               }
@@ -80,7 +78,7 @@ card_media_player:
             [[[
               if(variables.ulm_card_media_player_enable_volume_slider) {
                 if(variables.ulm_card_media_player_collapsible){
-                  return entity.state === "off" ? "none" : "block";
+                return (entity.state === "off" || entity.state === "standby") ? "none" : "block";
                 }
                 return "block";
               }
@@ -95,13 +93,19 @@ card_media_player:
             card:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
-              variables:
-                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
-                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
-                ulm_card_media_player_enable_popup: "[[[ return variables.ulm_card_media_player_enable_popup; ]]]"
+              variables: >
+                [[[
+                  let vars = variables;
+                  if(variables.ulm_card_media_player_enable_popup) {
+                    vars.ulm_custom_popup = {
+                      'template': 'popup_media_player_infos'
+                    };
+                  }
+                  return vars;
+                ]]]
               icon: |
                 [[[
-                  var icon =  entity.attributes.icon || "mdi:speaker";
+                  var icon = entity.attributes.icon || "mdi:speaker";
                   if(entity.attributes.app_name){
                     var app = entity.attributes.app_name.toLowerCase();
                     var icon = {
@@ -113,6 +117,7 @@ card_media_player:
                       "oto music": "mdi:music-circle",
                       "pandora": "mdi:pandora",
                       "netflix": "mdi:netflix",
+                      "hulu": "mdi:hulu",
                       "bluetooth audio": "mdi:bluetooth"
                     }
                   }
@@ -139,10 +144,16 @@ card_media_player:
             card:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
-              variables:
-                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
-                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
-                ulm_card_media_player_enable_popup: "[[[ return variables.ulm_card_media_player_enable_popup; ]]]"
+              variables: >
+                [[[
+                  let vars = variables;
+                  if(variables.ulm_card_media_player_enable_popup) {
+                    vars.ulm_custom_popup = {
+                      'template': 'popup_media_player_infos'
+                    };
+                  }
+                  return vars;
+                ]]]
               label: "[[[ return variables.ulm_translation_state ]]]"
               state:
                 - operator: "template"
@@ -153,7 +164,14 @@ card_media_player:
                       return name;
                     ]]]
                 - operator: "template"
-                  value: "[[[ return entity.state != 'off' ]]]"
+                  value: "[[[ return entity.state == 'standby' ]]]"
+                  name: |
+                    [[[
+                      let name = variables.ulm_card_media_player_name || states[entity.entity_id].attributes.friendly_name;
+                      return name;
+                    ]]]
+                - operator: "template"
+                  value: "[[[ return entity.state != 'off'  || entity.state != 'standby']]]"
                   name: |
                     [[[
                       let name = variables.ulm_card_media_player_name || states[entity.entity_id].attributes.friendly_name;
@@ -225,14 +243,14 @@ card_media_player:
                       return variables.ulm_card_media_player_enable_popup ? "fire-dom-event" : "more-info";
                   ]]]
                 browser_mod:
-                  command: "popup"
-                  large: true
-                  hide_header: true
-                  card:
-                    type: "custom:button-card"
-                    template: "popup_media_player_infos"
-                    variables:
-                      ulm_popup_media_player_entity: "[[[ return entity.entity_id ]]]"
+                  service: "browser_mod.popup"
+                  data:
+                    large: true
+                    hide_header: true
+                    content:
+                      type: "custom:button-card"
+                      template: "popup_media_player_infos"
+                      entity: "[[[ return entity.entity_id ]]]"
               tap_action:
                 action: "call-service"
                 service: "media_player.media_previous_track"
@@ -254,7 +272,6 @@ card_media_player:
                         ? 'white'
                         : 'rgba(var(--color-theme), 0.9)'
                       ]]]
-
           item2:
             card:
               type: "custom:button-card"
@@ -266,14 +283,14 @@ card_media_player:
                       return variables.ulm_card_media_player_enable_popup ? "fire-dom-event" : "more-info";
                   ]]]
                 browser_mod:
-                  command: "popup"
-                  large: true
-                  hide_header: true
-                  card:
-                    type: "custom:button-card"
-                    template: "popup_media_player_infos"
-                    variables:
-                      ulm_popup_media_player_entity: "[[[ return entity.entity_id ]]]"
+                  service: "browser_mod.popup"
+                  data:
+                    large: true
+                    hide_header: true
+                    content:
+                      type: "custom:button-card"
+                      template: "popup_media_player_infos"
+                      entity: "[[[ return entity.entity_id; ]]]"
               tap_action:
                 action: "call-service"
                 service: "media_player.media_play_pause"
@@ -284,6 +301,8 @@ card_media_player:
                 - value: "paused"
                   icon: "mdi:play"
                 - value: "off"
+                  icon: "mdi:play"
+                - value: "standby"
                   icon: "mdi:play"
               styles:
                 card:
@@ -310,14 +329,14 @@ card_media_player:
                       return variables.ulm_card_media_player_enable_popup ? "fire-dom-event" : "more-info";
                   ]]]
                 browser_mod:
-                  command: "popup"
-                  large: true
-                  hide_header: true
-                  card:
-                    type: "custom:button-card"
-                    template: "popup_media_player_infos"
-                    variables:
-                      ulm_popup_media_player_entity: "[[[ return entity.entity_id ]]]"
+                  service: "browser_mod.popup"
+                  data:
+                    large: true
+                    hide_header: true
+                    content:
+                      type: "custom:button-card"
+                      template: "popup_media_player_infos"
+                      entity: "[[[ return entity.entity_id; ]]]"
               tap_action:
                 action: "call-service"
                 service: "media_player.media_next_track"

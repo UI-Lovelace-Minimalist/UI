@@ -8,7 +8,7 @@ hide:
 
 # Custom-card "Gauge"
 
-The `custom_card_mpse_gauge` is used present a value in form of a gauge. The card can handle two gauges so it would be easy to adapt the card to that if required. I prefered the minimal look.
+The `custom_card_mpse_gauge` is used present a value in form of a gauge. The card can handle two gauges so it would be easy to adapt the card to that if required. I preferred the minimal look.
 
 ![Printer](../../assets/img/custom_gauge.png)
 
@@ -51,7 +51,7 @@ Uses this card: <https://github.com/custom-cards/dual-gauge-card> which can be i
 <td>ulm_card_mpse_gauge_min</td>
 <td>0</td>
 <td>no</td>
-<td>Minium value, defaults to 0.</td>
+<td>Minimum value, defaults to 0.</td>
 </tr>
 <tr>
 <td>ulm_card_mpse_gauge_max</td>

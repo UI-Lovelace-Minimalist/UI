@@ -10,3 +10,4 @@ ulm_language_variables:
     ulm_hello: "Ahoj"
     ulm_volume: "Volume"
     ulm_popups_color: "Farba"
+    ulm_radar: "Radar"

@@ -27,3 +27,6 @@ popup_button:
       - font-weight: "bold"
       - font-size: "14px"
       - margin-top: "12px"
+      - white-space: "initial"
+      - text-overflow: "initial"
+      - overflow: "initial"

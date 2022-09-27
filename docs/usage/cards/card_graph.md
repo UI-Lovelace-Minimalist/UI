@@ -15,21 +15,24 @@ The `card_graph` shows an entity with the actual state and a *min-graph-card* in
 
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
-| ulm_card_graph_color     |         | :material-close: | This is to adjust your color value. Use a CSS varible from HA or set a color value (eg. #FFFFFF) |
-| ulm_card_graph_name      |         | :material-close: | Enable background |
+| entity      |         | :material-check: | Your entity_id for the temperature sensor |
+| ulm_card_graph_color     |         | :material-close: | This is to adjust your color value. Use a CSS variable from HA or set a color value (eg. #FFFFFF) |
+| ulm_card_graph_name      |         | :material-close: | Set graph name |
 | ulm_card_graph_icon    |         | :material-close: | Set custom icon |
 | ulm_card_graph_entity      |         | :material-check: | Your entity_id for the temperature sensor |
 | ulm_card_graph_entity2      |         | :material-close: | Your entity_id for the second temperature sensor |
-| ulm_card_graph_color2      |         | :material-close: | This is to adjust your color value of the second graph. Use a CSS varible from HA or set a color value (eg. #FFFFFF) |
-| ulm_card_graph_type      | fill | :material-close: | This is to change the appearence of the graph. Default is fill, but line, bar are valid options. |
+| ulm_card_graph_color2      |         | :material-close: | This is to adjust your color value of the second graph. Use a CSS variable from HA or set a color value (eg. #FFFFFF) |
+| ulm_card_graph_type      | fill | :material-close: | This is to change the appearance of the graph. Default is fill, but line, bar are valid options. |
 | ulm_card_graph_hours      |  24 | :material-close: | How much time should the graph cover, default is 24 hours. |
 | ulm_card_graph_points      | 0.5 | :material-close: | Specify amount of data points the graph should display for each hour. A larger number results in a more detailed graph. |
+| ulm_card_graph_group_by | interval | :material-close: | Specify type of grouping of data, dynamic interval, date or hour. |
 
 ## Usage
 
 ```yaml
   - type: 'custom:button-card'
     template: card_graph
+    entity: sensor.livingroom_temperature
     variables:
       ulm_card_graph_color: "var(--google-blue)"
       ulm_card_graph_name: Temperature Livingroom
@@ -38,6 +41,7 @@ The `card_graph` shows an entity with the actual state and a *min-graph-card* in
       ulm_card_graph_entity2: sensor.bedgroom_temperature
       ulm_card_graph_type: fill
       ulm_card_graph_hours: 24
+      ulm_card_graph_group_by: interval
 ```
 
 ??? note "Template Code"

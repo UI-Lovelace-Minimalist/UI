@@ -10,7 +10,7 @@ hide:
 ![Image title](../../assets/img/ulm_cards/room-card.png){ width="500" }
 
 This is the `room-card`, used to show the state of single room in a quick glance.
-The card has support for 4 subicons at the right side of the card. These can be configured using custom colors and tap actions.
+The card has support for up to 4 subicons at the right side of the card. These can be configured using custom colors and tap actions.
 
 ## Variables
 
@@ -33,7 +33,7 @@ The card has support for 4 subicons at the right side of the card. These can be 
 
 | Variable                               | Default         | Required         | Notes          | Requirement |
 |----------------------------------------|-----------------|------------------|----------------|-------------|
-| entity_id                              |                 | :material-check: | The entity_id of the status icon | |
+| entity_id                              |                 | :material-close: | The entity_id of the status icon | |
 | templates                              |                 | :material-close: | List of the additional button card templates to apply to this icon | |
 | tap_action                             |                 | :material-close: | tap_action for the icon (see button card documentation for options) |  |
 | hold_action                            |                 | :material-close: | tap_action for the icon (see button card documentation for options) |  |

@@ -1,0 +1,111 @@
+---
+popup_weather_row:
+  template:
+    - "icon"
+  show_name: false
+  styles:
+    grid:
+      - grid-template-areas: "'i date templow tempmax'"
+      - grid-template-columns: "1fr 2fr 1fr 1fr"
+      - grid-template-rows: "min-content min-content min-content min-content"
+    card:
+      - padding: "2px 0px"
+    icon:
+      - color: >
+          [[[
+            var state = entity.attributes.forecast[variables.ulm_popup_weather_entity_idx].condition;
+            var icon = {
+              "clear-night": "rgba(var(--color-yellow),1)",
+              "cloudy": "rgba(var(--color-blue),1)",
+              "exceptional": "rgba(var(--color-red),1)",
+              "fog": "rgba(var(--color-grey),1)",
+              "hail": "rgba(var(--color-blue),1)",
+              "lightning": "rgba(var(--color-blue),1)",
+              "lightning-rainy": "rgba(var(--color-blue),1)",
+              "partlycloudy": "rgba(var(--color-yellow),1)",
+              "pouring": "rgba(var(--color-grey),1)",
+              "rainy": "rgba(var(--color-blue),1)",
+              "snowy": "rgba(var(--color-blue),1)",
+              "snowy-rainy": "rgba(var(--color-blue),1)",
+              "sunny": "rgba(var(--color-yellow),1)",
+              "windy": "rgba(var(--color-grey),1)",
+              "default": "rgba(var(--color-grey),1)",
+              }
+            return (icon[state] || icon["default"]);
+          ]]]
+    img_cell:
+      - background-color: >
+          [[[
+            var state = entity.attributes.forecast[variables.ulm_popup_weather_entity_idx].condition;
+            var icon = {
+              "clear-night": "rgba(var(--color-yellow),0.2)",
+              "cloudy": "rgba(var(--color-blue),0.2)",
+              "exceptional": "rgba(var(--color-red),0.2)",
+              "fog": "rgba(var(--color-grey),0.2)",
+              "hail": "rgba(var(--color-blue),0.2)",
+              "lightning": "rgba(var(--color-blue),0.2)",
+              "lightning-rainy": "rgba(var(--color-blue),0.2)",
+              "partlycloudy": "rgba(var(--color-yellow),0.2)",
+              "pouring": "rgba(var(--color-grey),0.2)",
+              "rainy": "rgba(var(--color-blue),0.2)",
+              "snowy": "rgba(var(--color-blue),0.2)",
+              "snowy-rainy": "rgba(var(--color-blue),0.2)",
+              "sunny": "rgba(var(--color-yellow),0.2)",
+              "windy": "rgba(var(--color-grey),0.2)",
+              "default": "rgba(var(--color-grey),0.2)",
+              }
+            return (icon[state] || icon["default"]);
+          ]]]
+      - height: "36px"
+      - width: "36px"
+    custom_fields:
+      date:
+        - text-align: "left"
+        - text-transform: "capitalize"
+      templow:
+        - background-color: "rgba(var(--color-blue), 1)"
+        - color: "white"
+        - border-radius: "15px"
+        - height: "30px"
+        - vertical-align: "middle"
+        - line-height: "30px"
+        - width: "90%"
+      tempmax:
+        - background-color: "rgba(var(--color-red), 1)"
+        - color: "white"
+        - border-radius: "15px"
+        - height: "30px"
+        - vertical-align: "middle"
+        - line-height: "30px"
+        - width: "90%"
+  custom_fields:
+    date: |
+      [[[
+        const userLocale = navigator.languages && navigator.languages.length ? navigator.languages[0] : navigator.language;
+        const date = new Date(entity.attributes.forecast[variables.ulm_popup_weather_entity_idx].datetime);
+        return date.toLocaleDateString(userLocale, {weekday: 'long',});
+      ]]]
+    templow: "[[[ return entity.attributes.forecast[variables.ulm_popup_weather_entity_idx].templow + '°' ]]]"
+    tempmax: "[[[ return entity.attributes.forecast[variables.ulm_popup_weather_entity_idx].temperature + '°' ]]]"
+  icon: |
+    [[[
+      var state = entity.attributes.forecast[variables.ulm_popup_weather_entity_idx].condition;
+      var icon = {
+        "clear-night": "mdi:weather-night",
+        "cloudy": "mdi:weather-cloudy",
+        "exceptional": "mdi:weather-sunny-alert",
+        "fog": "mdi:weather-fog",
+        "hail": "mdi:weather-hail",
+        "lightning": "mdi:weather-lightning",
+        "lightning-rainy": "mdi:weather-lightning-rainy",
+        "partlycloudy": "mdi:weather-partly-cloudy",
+        "pouring": "mdi:weather-pouring",
+        "rainy": "mdi:weather-rainy",
+        "snowy": "mdi:weather-snowy",
+        "snowy-rainy": "mdi:weather-snowy-rainy",
+        "sunny": "mdi:weather-sunny",
+        "windy": "mdi:weather-windy",
+        "default": "mdi:crosshairs-question"
+        }
+      return (icon[state] || icon["default"]);
+    ]]]

@@ -20,7 +20,9 @@ This wiki is intended to help you install and use the wonderful “theme” UI-L
 
 ## Youtube video on how to setup UI Minimalist
 
-[![Minimalist UI](https://img.youtube.com/vi/A0fMt8IRKoI/hqdefault.jpg){ width="400" }](https://www.youtube.com/watch?v=A0fMt8IRKoI)
+<figure class="video_container">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/A0fMt8IRKoI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</figure>
 
 ## What is "Ui-Lovelace-Minimalist"
 
@@ -40,7 +42,7 @@ This is a living project and all input is very welcome! If you configured and de
 - A lot of inspiration is taken from [7ahang’s work](https://www.behance.net/gallery/88433905/Redesign-Smart-Home) found on Behance.
 - Contributions from others in the HomeAssistant forum thread, you can find it here.
 - The technical part is realised mostly by taking advantage of the great work RomRaider did with his [button-card](https://github.com/custom-cards/button-card).
-- Code refactor, cleanup and maintainance by [schumijo](https://github.com/schumijo) and [paddy0174](https://github.com/Paddy0174) & [CM000n](https://github.com/CM000n).
+- Code refactor, cleanup and maintenance by [schumijo](https://github.com/schumijo) and [paddy0174](https://github.com/Paddy0174) & [CM000n](https://github.com/CM000n).
 - [dwainscheeren](https://github.com/dwainscheeren) for his inspiration to deliver themes via HACS.
 - Wiki by [paddy0174](https://github.com/Paddy0174).
 - Special thanks to clemalex and [schumijo](https://github.com/schumijo)for contributing their cards to the main repository.

@@ -3,7 +3,6 @@
 card_light:
   template:
     - "icon_more_info_new"
-    - "ulm_actions_card"
     - "ulm_translation_engine"
   variables:
     ulm_card_light_name: "[[[ return entity.attributes.friendly_name ]]]"
@@ -104,10 +103,16 @@ card_light:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
               icon: "[[[ return variables.ulm_card_light_icon ]]]"
-              variables:
-                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
-                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
-                ulm_card_light_enable_popup: "[[[ return variables.ulm_card_light_enable_popup; ]]]"
+              variables: >
+                [[[
+                  let vars = variables;
+                  if(variables.ulm_card_light_enable_popup) {
+                    vars.ulm_custom_popup = {
+                      'template': 'popup_light_brightness'
+                    };
+                  }
+                  return vars;
+                ]]]
               styles:
                 icon:
                   - color: >
@@ -141,10 +146,16 @@ card_light:
             card:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
-              variables:
-                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
-                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
-                ulm_card_light_enable_popup: "[[[ return variables.ulm_card_light_enable_popup; ]]]"
+              variables: >
+                [[[
+                  let vars = variables;
+                  if(variables.ulm_card_light_enable_popup) {
+                    vars.ulm_custom_popup = {
+                      'template': 'popup_light_brightness'
+                    };
+                  }
+                  return vars;
+                ]]]
               name: "[[[ return variables.ulm_card_light_name ]]]"
               label: >-
                 [[[
@@ -200,10 +211,10 @@ card_light:
           [[[
               var color = entity.attributes.rgb_color;
               if (entity.state == "unavailable"){
-                 return "rgba(var(--color-grey),1)";
+                return "rgba(var(--color-grey),1)";
               }
               else if (color && variables.ulm_card_light_enable_color){
-                 return "rgba(" + color + ",1)";
+                return "rgba(" + color + ",1)";
               }
               else{
                 return "rgba(var(--color-yellow),1)";
@@ -213,10 +224,10 @@ card_light:
           [[[
               var color = entity.attributes.rgb_color;
               if (entity.state == "unavailable"){
-                 return "rgba(var(--color-grey),0.2)";
+                return "rgba(var(--color-grey),0.2)";
               }
               else if (color && variables.ulm_card_light_enable_color){
-                 return "rgba(" + color + ",0.2)";
+                return "rgba(" + color + ",0.2)";
               }
               else{
                 return "rgba(var(--color-yellow),0.2)";
@@ -226,10 +237,10 @@ card_light:
           [[[
               var color = entity.attributes.rgb_color;
               if (entity.state == "unavailable"){
-                 return "rgba(var(--color-grey),1)";
+                return "rgba(var(--color-grey),1)";
               }
               else if (color && variables.ulm_card_light_enable_color){
-                 return "rgba(" + color + ",1)";
+                return "rgba(" + color + ",1)";
               }
               else{
                 return "rgba(var(--color-yellow),1)";

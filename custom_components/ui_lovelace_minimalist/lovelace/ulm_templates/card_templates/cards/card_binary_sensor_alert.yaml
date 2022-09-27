@@ -5,12 +5,12 @@ card_binary_sensor_alert:
     - "icon_more_info_alert"
     - "blue"
     - "ulm_translation_engine"
-    - "ulm_actions_card"
   show_last_changed: false
   variables:
     ulm_show_last_changed: false
     ulm_card_binary_sensor_alert_icon: "[[[ return entity.attributes.icon ]]]"
     ulm_card_binary_sensor_alert_name: "[[[ return entity.attributes.friendly_name ]]]"
+    ulm_outlet_power_enable_popup: false
   custom_fields:
     item1:
       card:
@@ -23,20 +23,46 @@ card_binary_sensor_alert:
               type: "custom:button-card"
               template:
                 - "blue"
-              variables:
-                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
-                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
               entity: "[[[ return entity.entity_id ]]]"
               icon: "[[[ return variables.ulm_card_binary_sensor_alert_icon; ]]]"
+              variables: >
+                [[[
+                  let vars = variables;
+
+                  if(variables.ulm_outlet_power_enable_popup) {
+                    vars.ulm_custom_popup = {
+                      'template': 'popup_power_outlet_stats',
+                      'popup_variables': {
+                        'ulm_popup_power_outlet_sensor1': variables.ulm_popup_power_outlet_sensor1,
+                        'ulm_popup_power_outlet_sensor2': variables.ulm_popup_power_outlet_sensor2,
+                        'ulm_popup_power_outlet_graph_sensor': variables.ulm_popup_power_outlet_graph_sensor
+                      }
+                    };
+                  }
+                  return vars;
+                ]]]
           item2:
             card:
               type: "custom:button-card"
               template:
                 - "blue_no_card"
-              variables:
-                ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
-                ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
               entity: "[[[ return entity.entity_id ]]]"
               name: "[[[ return variables.ulm_card_binary_sensor_alert_name; ]]]"
               label: "[[[ return variables.ulm_translation_state;]]]"
               show_last_changed: "[[[ return variables.ulm_show_last_changed; ]]]"
+              variables: >
+                [[[
+                  let vars = variables;
+
+                  if(variables.ulm_outlet_power_enable_popup) {
+                    vars.ulm_custom_popup = {
+                      'template': 'popup_power_outlet_stats',
+                      'popup_variables': {
+                        'ulm_popup_power_outlet_sensor1': variables.ulm_popup_power_outlet_sensor1,
+                        'ulm_popup_power_outlet_sensor2': variables.ulm_popup_power_outlet_sensor2,
+                        'ulm_popup_power_outlet_graph_sensor': variables.ulm_popup_power_outlet_graph_sensor
+                      }
+                    };
+                  }
+                  return vars;
+                ]]]

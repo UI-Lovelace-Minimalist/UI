@@ -83,7 +83,7 @@ custom_card_paddy_temperature
 
 ### Order
 
-To make reading the definitions easier, we use the following structure in our defintions in button_card_templates.yaml:
+To make reading the definitions easier, we use the following structure in our definitions in button_card_templates.yaml:
 
 ```yaml
 name:
@@ -115,7 +115,7 @@ name:
         template:
 ```
 
-Feel free to delete defintions, that you don’t use or need.
+Feel free to delete definitions, that you don’t use or need.
 
 !!! info ""
 
