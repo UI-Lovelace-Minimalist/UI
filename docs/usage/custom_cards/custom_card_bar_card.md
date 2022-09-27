@@ -27,6 +27,10 @@ Initial release.
 <summary>0.1.1</summary>
 Fix for UI Minimalist v1.0.1.
 </details>
+<details>
+<summary>0.1.2</summary>
+Fix border radius
+</details>
 
 ## Requirements
 

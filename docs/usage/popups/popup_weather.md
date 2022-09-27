@@ -21,9 +21,17 @@ To enable this popup, add the following code to your card:
 ```yaml
   ulm_custom_popup:
       template: "popup_weather_forecast"
+      entity: weather.xxx
       popup_variables:
-          ulm_popup_weather_entity: weather.xxx
+          ulm_weather_popup_surpress_first_forecast: false
 ```
+
+## Variables
+
+| Variable                                  | Default | Required         | Notes                         |
+|-------------------------------------------|---------|------------------|-------------------------------|
+| entity                                    |         | :material-check: |                               |
+| ulm_weather_popup_surpress_first_forecast | false   | :material-close: | Suppress first forecast entry |
 
 ## Credits
 

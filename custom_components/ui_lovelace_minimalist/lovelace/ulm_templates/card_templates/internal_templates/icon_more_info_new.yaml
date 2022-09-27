@@ -61,7 +61,13 @@ icon_more_info_new:
                 ulm_custom_popup: "[[[ return variables.ulm_custom_popup; ]]]"
               styles:
                 card:
-                  - overflow: "visible"
+                  - overflow: >
+                      [[[
+                        if (entity.state == "unavailable"){
+                          return "visible"
+                        }
+                        return "hidden"
+                      ]]]
           item2:
             card:
               type: "custom:button-card"
@@ -91,9 +97,14 @@ icon_more_info_new:
                 ulm_custom_popup: "[[[ return variables.ulm_custom_popup; ]]]"
               styles:
                 card:
+                  - overflow: "visible"
                   - padding: "6px"
                   - margin-left: "-6px"
                   - background-color: "rgba(0,0,0,0)"
+                # label:
+                #   - overflow: "visible"
+                # name:
+                #   - overflow: "visible"
                 custom_fields:
                   notification:
                     - display: "none"

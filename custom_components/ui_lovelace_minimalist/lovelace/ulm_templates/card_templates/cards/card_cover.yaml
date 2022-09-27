@@ -4,6 +4,7 @@ card_cover:
   template:
     - "icon_more_info_new"
     - "ulm_translation_engine"
+  show_last_changed: false
   variables:
     ulm_card_cover_name: "[[[ return entity.attributes.friendly_name ]]]"
     ulm_card_cover_display_left_right: false
@@ -14,6 +15,7 @@ card_cover:
     ulm_card_cover_enable_slider: false
     ulm_card_cover_enable_horizontal: false
     ulm_card_cover_enable_popup: false
+    ulm_show_last_changed: false
   show_icon: false
   show_name: false
   show_label: false
@@ -89,6 +91,16 @@ card_cover:
             card:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
+              variables: >
+                [[[
+                  let vars = variables;
+                  if(variables.ulm_card_cover_enable_popup) {
+                    vars.ulm_custom_popup = {
+                      'template': 'popup_cover'
+                    };
+                  }
+                  return vars;
+                ]]]
               icon: |
                 [[[
                     var icon = "mdi:help-circle";
@@ -101,7 +113,7 @@ card_cover:
                         } else if (variables.ulm_card_cover_gate){
                           var icon = "mdi:gate";
                         } else
-                          var icon = "mdi:window-shutter";
+                          var icon = "mdi:roller-shade-closed";
                       } else
                         if (variables.ulm_card_curtain_display_collapse_expand){
                           var icon = "mdi:curtains";
@@ -110,7 +122,7 @@ card_cover:
                         } else if (variables.ulm_card_cover_gate){
                           var icon = "mdi:gate-open";
                         }else
-                          var icon = "mdi:window-shutter-open";
+                          var icon = "mdi:roller-shade";
                     } else {
                       if (states[entity.entity_id].attributes.current_position == 0){
                         if (variables.ulm_card_curtain_display_collapse_expand){
@@ -120,7 +132,7 @@ card_cover:
                         } else if(variables.ulm_card_cover_gate){
                           var icon = "mdi:gate";
                         } else
-                          var icon = "mdi:window-shutter";
+                          var icon = "mdi:roller-shade-closed";
                       } else
                         if (variables.ulm_card_curtain_display_collapse_expand){
                           var icon = "mdi:curtains";
@@ -130,7 +142,7 @@ card_cover:
                           var icon = "mdi:gate-open";
                         }
                         else
-                          var icon = "mdi:window-shutter-open";
+                          var icon = "mdi:roller-shade";
                     }
                     return icon ;
                 ]]]
@@ -171,6 +183,16 @@ card_cover:
             card:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
+              variables: >
+                [[[
+                  let vars = variables;
+                  if(variables.ulm_card_cover_enable_popup) {
+                    vars.ulm_custom_popup = {
+                      'template': 'popup_cover'
+                    };
+                  }
+                  return vars;
+                ]]]
               name: "[[[ return variables.ulm_card_cover_name ]]]"
               label: >-
                 [[[
@@ -191,6 +213,7 @@ card_cover:
                     return variables.ulm_translation_state;
                   }
                 ]]]
+              show_last_changed: "[[[ return variables.ulm_show_last_changed; ]]]"
     item2:
       card:
         type: "custom:button-card"
@@ -201,7 +224,27 @@ card_cover:
               type: "custom:button-card"
               template: "widget_icon"
               state:
-                - value: "closed"
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.attributes.current_position == "0";
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.state == "closing";
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.state == "opening";
+                    ]]]
                   styles:
                     icon:
                       - color: "rgba(var(--color-theme),0.4)"
@@ -229,13 +272,33 @@ card_cover:
                 service: "cover.stop_cover"
                 service_data:
                   entity_id: "[[[ return entity.entity_id ]]]"
-              icon: "mdi:pause"
+              icon: "mdi:stop"
           item3:
             card:
               type: "custom:button-card"
               template: "widget_icon"
               state:
-                - value: "open"
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.attributes.current_position == "100";
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.state == "closing";
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.state == "opening";
+                    ]]]
                   styles:
                     icon:
                       - color: "rgba(var(--color-theme),0.4)"

@@ -1,0 +1,12 @@
+---
+popup_vacuum:
+  hold_action:
+    action: "fire-dom-event"
+    browser_mod:
+      service: "browser_mod.popup"
+      data:
+        hide_header: true
+        content:
+          type: "custom:button-card"
+          template: "popup_vacuum_map"
+          entity: "[[[ return entity.entity_id ]]]"

@@ -12,8 +12,9 @@ card_vacuum:
     ulm_card_vacuum_icon: "[[[ return entity.attributes.icon ]]]"
     ulm_card_vacuum_room:
     ulm_card_vacuum_room_icon: "[[[ return entity.attributes.icon ]]]"
-    ulm_card_vacuum_camera:
-    ulm_card_vacuum_camera_toggle:
+    ulm_card_vacuum_camera: ""
+    ulm_card_vacuum_enable_popup: false
+    ulm_card_vacuum_camera_toggle: false
     ulm_card_vacuum_light_color: >
       [[[
         var state = entity.state.toLowerCase();
@@ -27,29 +28,37 @@ card_vacuum:
         }
         return (colors[state] || colors["default"]);
       ]]]
-    ulm_card_vacuum_camera_display: >
-      [[[
-        if (variables?.ulm_card_vacuum_camera){
-          if (variables?.ulm_card_vacuum_camera_toggle) {
-            if (entity.state.toLowerCase() === 'cleaning'){
-              return "true";
-            }
-          } else {
-            return "true";
-          }
-        }
-      ]]]
   triggers_update: "all"
   styles:
     grid:
       - grid-template-areas: >
           [[[
-            return variables.ulm_card_vacuum_camera_display ? "'item1' 'item3' 'item2'" : "'item1' 'item2'";
+            let map = "'item1' 'map' 'item2'"
+            if(variables.ulm_card_vacuum_camera != ""){
+              if(variables.ulm_card_vacuum_camera_toggle){
+                if(entity.state.toLowerCase() === 'cleaning' || entity.state.toLowerCase() === 'mopping'){
+                  return map;
+                }
+              } else {
+                 return map;
+              }
+            }
+            return "'item1' 'item2'"
           ]]]
       - grid-template-columns: "1fr"
       - grid-template-rows: >
           [[[
-            return variables.ulm_card_vacuum_camera_display ? "repeat(3, min-content)" : "repeat(2, min-content)";
+            let map = "repeat(3, min-content)"
+            if(variables.ulm_card_vacuum_camera != ""){
+              if(variables.ulm_card_vacuum_camera_toggle){
+                if(entity.state.toLowerCase() === 'cleaning' || entity.state.toLowerCase() === 'mopping'){
+                  return map;
+                }
+              } else {
+                 return map;
+              }
+            }
+            return "repeat(2, min-content)"
           ]]]
       - row-gap: "12px"
     card:
@@ -63,10 +72,20 @@ card_vacuum:
               }
           ]]]
     custom_fields:
-      item3:
+      map:
         - display: >
             [[[
-              return variables.ulm_card_vacuum_camera_display ? "block" : "none";
+              let map = "block"
+              if(variables.ulm_card_vacuum_camera != ""){
+                if(variables.ulm_card_vacuum_camera_toggle){
+                  if(entity.state.toLowerCase() === 'cleaning' || entity.state.toLowerCase() === 'mopping'){
+                    return map;
+                  }
+                } else {
+                  return map;
+                }
+              }
+              return "none"
             ]]]
   custom_fields:
     item1:
@@ -78,6 +97,17 @@ card_vacuum:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
               icon: "[[[ return variables.ulm_card_vacuum_icon ]]]"
+              variables: >
+                [[[
+                  let vars = variables;
+                  if(variables.ulm_card_vacuum_enable_popup) {
+                    vars.ulm_custom_popup = {
+                      'template': 'popup_vacuum_map',
+                      'popup_variables': {'ulm_card_vacuum_camera': variables.ulm_card_vacuum_camera }
+                    };
+                  }
+                  return vars;
+                ]]]
               styles:
                 icon:
                   - color: >
@@ -93,6 +123,17 @@ card_vacuum:
             card:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
+              variables: >
+                [[[
+                  let vars = variables;
+                  if(variables.ulm_card_vacuum_enable_popup) {
+                    vars.ulm_custom_popup = {
+                      'template': 'popup_vacuum_map',
+                      'popup_variables': {'ulm_card_vacuum_camera': variables.ulm_card_vacuum_camera }
+                    };
+                  }
+                  return vars;
+                ]]]
               name: "[[[ return variables.ulm_card_vacuum_name ]]]"
               label: >
                 [[[
@@ -104,6 +145,20 @@ card_vacuum:
                   }
                   return label;
                 ]]]
+    map:
+      card:
+        type: "custom:button-card"
+        show_name: false
+        show_icon: false
+        show_label: false
+        entity: "[[[ return variables.ulm_card_vacuum_camera ]]]"
+        show_entity_picture: "true"
+        styles:
+          card:
+            - box-shadow: "none"
+          icon:
+            - border-radius: "20px"
+            - width: "100%"
     item2:
       card:
         type: "custom:button-card"
@@ -126,7 +181,7 @@ card_vacuum:
               icon: "mdi:play"
               state:
                 - operator: "template"
-                  value: "[[[ return entity.state.toLowerCase() === 'cleaning' ]]]"
+                  value: "[[[ return ['cleaning','mopping'].includes(entity.state.toLowerCase()) ]]]"
                   icon: "mdi:stop"
                   tap_action:
                     action: "call-service"
@@ -137,7 +192,7 @@ card_vacuum:
                 action: "call-service"
                 service: >
                   [[[
-                    return entity.state.toLowerCase() === 'cleaning' ? "vacuum.stop" : "vacuum.start";
+                    return ['cleaning','mopping'].includes(entity.state.toLowerCase()) ? "vacuum.stop" : "vacuum.start";
                   ]]]
                 service_data:
                   entity_id: "[[[ return entity.entity_id ]]]"
@@ -175,10 +230,3 @@ card_vacuum:
                 service: "script.turn_on"
                 service_data:
                   entity_id: "[[[ return variables.ulm_card_vacuum_room ]]]"
-    item3:
-      card:
-        type: "picture-entity"
-        camera_view: "live"
-        entity: "[[[ return variables.ulm_card_vacuum_camera ]]]"
-        show_name: false
-        show_state: false

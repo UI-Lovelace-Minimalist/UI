@@ -1,0 +1,46 @@
+---
+### Overlay to enable custom actions card over other cards ###
+ulm_actions_card_overlay:
+  template:
+    - "ulm_custom_actions"
+    - "ulm_actions_card"
+  styles:
+    grid:
+      - position: "relative"
+      - z-index: 0
+    custom_fields:
+      actions_card_overlay:
+        - position: "absolute"
+        - left: "0px"
+        - top: "0px"
+        - height: "100%"
+        - width: "100%"
+        - display: "grid"
+        - z-index: 10
+  custom_fields:
+    actions_card_overlay:
+      card:
+        type: "custom:button-card"
+        template:
+          - "ulm_actions_card"
+        entity: "[[[ return (entity != null) ? entity.entity_id : null; ]]]"
+        show_icon: false
+        show_name: false
+        show_label: false
+        styles:
+          card:
+            - height: "100%"
+            - background: "none"
+        variables:
+          ulm_input_select_option: "[[[ return variables.ulm_input_select_option; ]]]"
+          ulm_input_select: "[[[ return variables.ulm_input_select; ]]]"
+          ulm_card_tap_action: "[[[ return variables.ulm_card_tap_action; ]]]"
+          ulm_card_tap_haptic: "[[[ return variables.ulm_card_tap_haptic; ]]]"
+          ulm_card_tap_navigate_path: "[[[ return variables.ulm_card_tap_navigate_path; ]]]"
+          ulm_card_hold_action: "[[[ return variables.ulm_card_hold_action; ]]]"
+          ulm_card_hold_haptic: "[[[ return variables.ulm_card_hold_haptic; ]]]"
+          ulm_card_hold_navigate_path: "[[[ return variables.ulm_card_hold_navigate_path; ]]]"
+          ulm_card_double_tap_action: "[[[ return variables.ulm_card_double_tap_action; ]]]"
+          ulm_card_double_tap_haptic: "[[[ return variables.ulm_card_double_tap_haptic; ]]]"
+          ulm_card_double_tap_navigate_path: "[[[ return variables.ulm_card_double_tap_navigate_path; ]]]"
+          ulm_custom_popup: "[[[ return variables.ulm_custom_popup; ]]]"

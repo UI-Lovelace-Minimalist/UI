@@ -12,6 +12,7 @@ minimalist-ios-tapbar:
   info-color: "var(--google-blue)"
   divider-color: "rgba(var(--color-theme),.12)"
   accent-color: "var(--google-yellow)"
+  ha-dialog-border-radius: "10px"
   card-mod-theme: "minimalist-ios-tapbar"
   card-mod-root: |
     app-toolbar {
