@@ -240,6 +240,7 @@ card_esh_room:
         template:
           - "widget_icon"
           - "ulm_actions_card"
+          - "ulm_custom_actions"
         variables: >
           [[[
             let vars = {};
@@ -310,6 +311,7 @@ card_esh_room:
         template:
           - "widget_icon"
           - "ulm_actions_card"
+          - "ulm_custom_actions"
         variables: >
           [[[
             let vars = {};
