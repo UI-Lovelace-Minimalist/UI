@@ -22,6 +22,9 @@ popup_media_player_volume:
       #content1 {
         display: none;
       }
+      #content3 {
+        display: none;
+      }
   custom_fields:
     footer:
       card:
