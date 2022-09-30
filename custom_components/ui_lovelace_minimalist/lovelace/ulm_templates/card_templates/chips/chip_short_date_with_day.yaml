@@ -1,0 +1,20 @@
+---
+chip_short_date_with_day:
+  template: "chips"
+  variables:
+    ulm_language: >
+      [[[
+        return hass["language"];
+      ]]]
+  triggers_update: "all"
+  label: |
+    [[[
+      var locale = variables.ulm_language;
+      let dt = new Intl.DateTimeFormat(locale , {
+        weekday: "short",
+        day: "numeric",
+        month: "short"
+      });
+      let formatted_date = dt.format(Date.now())
+      return formatted_date
+    ]]]
