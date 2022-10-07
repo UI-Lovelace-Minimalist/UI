@@ -15,7 +15,7 @@ If you want to alight cards to the center, right. Or only 1 card on the right it
 
     ```yaml
     # Card in the Center
-    horizontal_stack:
+    - type: horizontal-stack
       cards:
         - type: "custom:button-card"
           color_type: blank-card
@@ -34,7 +34,7 @@ If you want to alight cards to the center, right. Or only 1 card on the right it
 
     ```yaml
     # Card in the Center
-    horizontal_stack:
+    - type: horizontal-stack
       cards:
         - type: "custom:button-card"
           color_type: blank-card
@@ -50,7 +50,7 @@ If you want to alight cards to the center, right. Or only 1 card on the right it
 
     ```yaml
     # Card in the Center
-    horizontal_stack:
+    - type: horizontal-stack
       cards:
         - type: custom:button-card
           template: chip_icon_label
