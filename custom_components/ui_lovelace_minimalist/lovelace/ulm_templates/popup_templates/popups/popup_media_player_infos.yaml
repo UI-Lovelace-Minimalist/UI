@@ -15,7 +15,6 @@ popup_media_player_infos:
       - box-shadow: "none"
       - padding: "0% 2% 2% 2%"
       - border-radius: "none"
-      - min-height: "80vh"
     custom_fields:
       header:
         - align-self: "start"
