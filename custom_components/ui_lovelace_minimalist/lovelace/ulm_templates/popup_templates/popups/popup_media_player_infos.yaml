@@ -33,6 +33,7 @@ popup_media_player_infos:
       footer:
         - align-self: "start"
         - padding-bottom: "2%"
+        - padding-top: "12px"
   extra_styles: |
     @media (max-width: 800px) {
       #container {
