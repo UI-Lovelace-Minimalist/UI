@@ -11,18 +11,18 @@ popup_media_player_source:
       footer:
         - align-self: "absolute"
         - margin-top: "12px"
-        - z-index: "1000"
       content1:
         - display: "none"
       content2:
         - display: "none"
       content3:
         - display: "grid"
-        - overflow: "auto"
+        - overflow-x: "hidden"
         - justify-self: "center"
         - align-self: "start"
         - max-height: "56vh"
         - padding-bottom: "12px"
+        - max-width: "42vh"
   extra_styles: |
     @media (max-width: 800px) {
       #container {
@@ -82,7 +82,7 @@ popup_media_player_source:
             card:
               type: "custom:button-card"
               template: "popup_button_volume"
-              icon:
+              icon: "mdi:volume-high"
               entity: "[[[ return entity.entity_id; ]]]"
               tap_action:
                 action: "fire-dom-event"

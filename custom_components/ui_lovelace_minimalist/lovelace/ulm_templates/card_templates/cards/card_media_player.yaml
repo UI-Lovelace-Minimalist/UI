@@ -397,6 +397,7 @@ card_media_player:
               type: "custom:button-card"
               template: "widget_icon"
               icon: "mdi:playlist-music"
+              entity: "[[[ return entity.entity_id; ]]]"
               styles:
                 card:
                   - background-color: |
@@ -415,7 +416,7 @@ card_media_player:
               hold_action:
                 action: >
                   [[[
-                      return variables.ulm_card_media_player_enable_popup && entity.attributes.source_list ? "fire-dom-event" : "more-info";
+                      return variables.ulm_card_media_player_enable_popup && entity.attributes?.source_list ? "fire-dom-event" : "more-info";
                   ]]]
                 browser_mod:
                   service: "browser_mod.popup"
@@ -429,7 +430,7 @@ card_media_player:
               tap_action:
                 action: >
                   [[[
-                      return variables.ulm_card_media_player_enable_popup && entity.attributes.source_list ? "fire-dom-event" : "more-info";
+                      return variables.ulm_card_media_player_enable_popup && entity.attributes?.source_list ? "fire-dom-event" : "more-info";
                   ]]]
                 browser_mod:
                   service: "browser_mod.popup"

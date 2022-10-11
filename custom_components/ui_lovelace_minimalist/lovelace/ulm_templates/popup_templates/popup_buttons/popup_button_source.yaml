@@ -14,7 +14,10 @@ popup_button_source:
       - box-shadow: "none"
       - border: "1px solid rgba(var(--color-theme),0.25)"
   tap_action:
-    action: "fire-dom-event"
+    action: >
+      [[[
+          return entity.attributes?.source_list ? "fire-dom-event" : "more-info";
+      ]]]
     browser_mod:
       service: "browser_mod.popup"
       data:

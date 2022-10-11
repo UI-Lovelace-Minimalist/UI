@@ -321,9 +321,9 @@ popup_media_player_infos:
               return row;
             }
 
-            let source_list = entity.attributes.source_list;
+            let source_list = entity.attributes?.source_list;
 
-            let length_list = source_list.length
+            let length_list = source_list?.length
             let index = 0;
             for (let source in source_list){
               rows.push(generate_source_items(index));
