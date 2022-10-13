@@ -73,7 +73,9 @@ custom_card_irmajavi_speedtest:
         type: "custom:button-card"
         tap_action:
           action: "call-service"
-          service: "speedtestdotnet.speedtest"
+          service: "homeassistant.update_entity"
+          service_data:
+            entity_id: sensor.speedtest_download
         color: "var(--google-grey)"
         show_icon: true
         show_label: false
