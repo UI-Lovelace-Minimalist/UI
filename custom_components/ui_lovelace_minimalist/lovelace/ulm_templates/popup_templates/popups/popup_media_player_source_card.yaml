@@ -1,0 +1,18 @@
+---
+popup_media_player_source_card:
+  template: "popup_media_player_source"
+  custom_fields:
+    footer:
+      card:
+        type: "custom:button-card"
+        template: "popup_list_items"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template: "popup_button_back"
+              tap_action:
+                action: "fire-dom-event"
+                browser_mod:
+                  service: "browser_mod.close_popup"
+                  data: {}
