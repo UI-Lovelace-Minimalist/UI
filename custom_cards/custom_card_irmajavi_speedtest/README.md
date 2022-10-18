@@ -25,6 +25,7 @@ Version: 1.0.0
 Changed from speedtestdotnet.speedtest service to update entity service from Home Assistant due to announced deprecation of the speedtest service.
 
 </details>
+
 ## Changelog
 
 <details>
