@@ -75,7 +75,10 @@ custom_card_irmajavi_speedtest:
           action: "call-service"
           service: "homeassistant.update_entity"
           service_data:
-            entity_id: "sensor.speedtest_download"
+            entity_id:  >-
+                [[[ return
+                    variables.ulm_custom_card_irmajavi_speedtest_download_speed_entity;
+                ]]]
         color: "var(--google-grey)"
         show_icon: true
         show_label: false
