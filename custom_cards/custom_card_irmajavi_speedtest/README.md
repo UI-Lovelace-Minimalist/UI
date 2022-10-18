@@ -23,6 +23,10 @@ Version: 1.0.0
 <summary>1.0.0</summary>
 Initial release
 </details>
+<details>
+<summary>1.0.1</summary>
+Use homeassistant.update_entity instead of deprecated speedtest service
+</details>
 
 ## Requirements
 
