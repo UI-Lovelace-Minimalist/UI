@@ -17,7 +17,7 @@ This is a `custom-card` to display the results from the `Speedtest.net` integrat
 Author: irmajavi - 2022
 Version: 1.0.0
 
-<h2 style="color: red">Braking changes</h2>
+<h2 style="color: red">Breaking changes</h2>
 
 <details style="color: red">
   <summary>1.1.0</summary>
