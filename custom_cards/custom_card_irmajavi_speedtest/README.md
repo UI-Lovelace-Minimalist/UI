@@ -36,6 +36,7 @@ template: custom_card_irmajavi_speedtest
 variables:
   ulm_custom_card_irmajavi_speedtest_download_speed_entity: sensor.speedtest_download
   ulm_custom_card_irmajavi_speedtest_upload_speed_entity: sensor.speedtest_upload
+  ulm_custom_card_irmajavi_speedtest_ping_entity: sensor.speedtest_ping
   ulm_custom_card_irmajavi_speedtest_color: blue
   ulm_custom_card_irmajavi_speedtest_router_name: router_name
   ulm_custom_card_irmajavi_speedtest_router_model: router_model
@@ -82,6 +83,12 @@ variables:
     <td>sensor.test3</td>
     <td>Yes</td>
     <td>The download sensor created by the integration</td>
+  </tr>
+  <tr>
+    <td>ulm_custom_card_irmajavi_speedtest_ping_entity</td>
+    <td>sensor.test4</td>
+    <td>Yes</td>
+    <td>The ping sensor created by the integration</td>
   </tr>
 </tbody>
 </table>
