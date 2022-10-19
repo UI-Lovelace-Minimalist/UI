@@ -17,7 +17,21 @@ This is a `custom-card` to display the results from the `Speedtest.net` integrat
 Author: irmajavi - 2022
 Version: 1.0.0
 
+<h2 style="color: red">Breaking changes</h2>
+
+<details style="color: red">
+  <summary>1.1.0</summary>
+
+Changed from speedtestdotnet.speedtest service to update entity service from Home Assistant due to announced deprecation of the speedtest service.
+
+</details>
+
 ## Changelog
+
+<details>
+<summary>1.1.0</summary>
+The variable ulm_custom_card_irmajavi_speedtest_download_speed_entity is now used to trigger an update of all the speedtest sensors.
+</details>
 
 <details>
 <summary>1.0.0</summary>
