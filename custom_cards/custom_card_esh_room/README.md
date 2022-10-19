@@ -69,7 +69,7 @@ This is an alternative room card to the standard one that is more rectangular th
 | ulm_custom_card_esh_room_climate_entity      |         | No       | The entity to use for the climate button                                 |
 | ulm_card_light_enable_popup                  | `false` | No       | Enable `popup_light`                                                     |
 | ulm_card_thermostat_enable_popup             | `false` | No       | Enable `popup_thermostat`                                                |
-| ulm_card_ulm_card_dynamic_color              | `false` | No       | Enables dynamic background color (requires `ulm_custom_card_esh_room_light_entity`)       |
+| ulm_card_dynamic_color                       | `false` | No       | Enables dynamic background color (requires `ulm_custom_card_esh_room_light_entity`)       |
 
 ## Usage
 
