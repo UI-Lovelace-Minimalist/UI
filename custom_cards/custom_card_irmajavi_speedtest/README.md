@@ -37,10 +37,6 @@ The variable ulm_custom_card_irmajavi_speedtest_download_speed_entity is now use
 <summary>1.0.0</summary>
 Initial release
 </details>
-<details>
-<summary>1.0.1</summary>
-Use homeassistant.update_entity instead of deprecated speedtest service
-</details>
 
 ## Requirements
 
