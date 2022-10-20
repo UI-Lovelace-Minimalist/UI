@@ -79,6 +79,10 @@ popup_light_brightness:
                   }
                   return "none";
             ]]]
+      content4:
+        - display: "none"
+      content5:
+        - display: "none"
       buttons:
         - display: "none"
       footer:
@@ -93,7 +97,7 @@ popup_light_brightness:
       }
       #buttons {
         display: block !important;
-        align-self: start !important;
+        align-self: center !important;
       }
       #content2 {
         display: none !important;
@@ -101,6 +105,11 @@ popup_light_brightness:
       #content3 {
         display: none !important;
       }
+      #content4 {
+        display: none !important;
+      }
+      #content5 {
+        display: none !important;
     }
   custom_fields:
     header:
@@ -365,7 +374,21 @@ popup_light_brightness:
     footer:
       card:
         type: "custom:button-card"
-        template: "popup_list_items"
+        template: >
+          [[[
+            if(entity.attributes?.effect_list || variables?.ulm_card_light_color_palette){
+              return 'list_3_items';
+            }
+            return 'popup_list_items'
+          ]]]
+        styles:
+          grid:
+            - align-items: "initial"
+          card:
+            - background: "none"
+          custom_fields:
+            item3:
+              - display: "[[[return (entity.attributes?.effect_list || variables?.ulm_card_light_color_palette) ? 'block' : 'none'  ]]]"
         custom_fields:
           item1:
             card:
@@ -376,6 +399,13 @@ popup_light_brightness:
               type: "custom:button-card"
               template: "popup_button_power"
               entity: "[[[ return entity.entity_id ]]]"
+          item3:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              template: "popup_button_light_more_options"
+              variables:
+                ulm_card_light_color_palette: "[[[ return variables?.ulm_card_light_color_palette ]]]"
     content3:
       card:
         type: "custom:light-entity-card"
@@ -396,3 +426,68 @@ popup_light_brightness:
               box-shadow: none !important;
               padding: 10px 0 10px 0 !important;
             }
+    content4:
+      card:
+        type: "vertical-stack"
+        cards: >
+          [[[
+            let rows = [];
+            function generate_effect_items(index) {
+              var row = {
+                'type': 'custom:button-card',
+                'template': 'popup_light_effect_row',
+                'entity': entity.entity_id,
+                'variables': {
+                  'ulm_popup_light_effect_entity_idx': index
+                }
+              };
+              return row;
+            }
+
+            let effect_list = entity.attributes?.effect_list;
+
+            let length_list = effect_list?.length
+            let index = 0;
+            for (let effect in effect_list){
+              rows.push(generate_effect_items(index));
+              index++
+
+              if(index >= length_list){
+                break;
+              }
+            }
+            return rows;
+          ]]]
+    content5:
+      card:
+        type: "vertical-stack"
+        cards: >
+          [[[
+            let rows = [];
+
+            function generate_option_items(index) {
+              var row = {
+                'type': 'custom:button-card',
+                'template': 'popup_light_palette_row',
+                'entity': variables?.ulm_card_light_color_palette,
+                'variables': {
+                  'ulm_popup_light_palette_entity_idx': index
+                }
+              };
+              return row;
+            }
+
+            let option_list = states[variables?.ulm_card_light_color_palette]?.attributes?.options;
+
+            let length_list = option_list?.length
+            let index = 0;
+            for (let option in option_list){
+              rows.push(generate_option_items(index));
+              index++
+
+              if(index >= length_list){
+                break;
+              }
+            }
+            return rows;
+          ]]]
