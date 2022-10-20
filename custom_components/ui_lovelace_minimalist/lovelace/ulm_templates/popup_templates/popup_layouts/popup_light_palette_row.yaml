@@ -1,27 +1,6 @@
 ---
 popup_light_palette_row:
-  show_icon: false
-  show_name: true
-  show_label: false
-  extra_styles: |
-    ha-card:hover {
-      background-color: var(--primary-background-color);
-    }
-  styles:
-    grid:
-      - grid-template-areas: "n"
-    card:
-      - padding: "2px 0px"
-      - height: "42px"
-      - border-radius: "10px"
-      - width: "40vh"
-    name:
-      - align-self: "center"
-      - justify-self: "start"
-      - font-weight: "bold"
-      - font-size: "14px"
-      - margin-left: "12px"
-      - margin-right: "12px"
+  template: "popup_row_layout"
   name: >
     [[[
       var name = entity.attributes.options[variables.ulm_popup_light_palette_entity_idx];
