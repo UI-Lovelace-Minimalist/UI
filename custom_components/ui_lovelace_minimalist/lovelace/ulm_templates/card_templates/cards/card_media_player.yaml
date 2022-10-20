@@ -14,6 +14,7 @@ card_media_player:
     ulm_card_media_player_player_controls_entity: "[[[ return entity.entity_id ]]]"
     ulm_card_media_player_enable_popup: false
     ulm_card_media_player_more_info: false
+    ulm_card_media_player_power_button: false
   triggers_update: "all"
   show_icon: false
   show_name: false
@@ -62,6 +63,11 @@ card_media_player:
             : ''
           ]]]
     custom_fields:
+      power:
+        - display: "[[[ return variables.ulm_card_media_player_power_button ? 'block' : 'none']]]"
+        - position: "absolute"
+        - top: "12px"
+        - right: "12px"
       item2:
         - display: |
             [[[
@@ -85,6 +91,32 @@ card_media_player:
               return "none";
             ]]]
   custom_fields:
+    power:
+      card:
+        type: "custom:button-card"
+        entity: "[[[ return entity.entity_id ]]]"
+        template: "widget_icon"
+        icon: "mdi:power"
+        tap_action:
+          action: "toggle"
+        styles:
+          img_cell:
+            - width: "42px"
+            - heigth: "42px"
+          card:
+            - background-color: |
+                [[[
+                  return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
+                  ? 'rgba(0, 0, 0, 0.2)'
+                  : 'rgba(var(--color-theme),0.05)'
+                ]]]
+          icon:
+            - color: |
+                [[[
+                  return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
+                  ? 'white'
+                  : 'rgba(var(--color-theme), 0.9)'
+                ]]]
     item1:
       card:
         type: "custom:button-card"
@@ -225,7 +257,7 @@ card_media_player:
     item2:
       card:
         type: "custom:button-card"
-        template: "list_3_items"
+        template: "list_4_items"
         styles:
           card:
             - padding: "0px"
@@ -293,16 +325,18 @@ card_media_player:
                       entity: "[[[ return entity.entity_id; ]]]"
               tap_action:
                 action: "call-service"
-                service: "media_player.media_play_pause"
+                service: "[[[ return (entity.attributes?.media_duration > 0) ? 'media_player.media_play_pause' : entity.state =='playing' ? 'media_player.media_stop' : 'media_player.media_play']]]"
                 service_data:
                   entity_id: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
-              icon: "mdi:pause"
+              icon: "[[[ return (entity.attributes?.media_duration > 0) ? 'mdi:pause' : 'mdi:stop' ]]]"
               state:
                 - value: "paused"
                   icon: "mdi:play"
                 - value: "off"
                   icon: "mdi:play"
                 - value: "standby"
+                  icon: "mdi:play"
+                - value: "idle"
                   icon: "mdi:play"
               styles:
                 card:
@@ -358,6 +392,73 @@ card_media_player:
                         ? 'white'
                         : 'rgba(var(--color-theme), 0.9)'
                       ]]]
+          item4:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              icon: "mdi:playlist-music"
+              entity: "[[[ return entity.entity_id; ]]]"
+              styles:
+                card:
+                  - background-color: |
+                      [[[
+                        return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
+                        ? 'rgba(0, 0, 0, 0.2)'
+                        : 'rgba(var(--color-theme),0.05)'
+                      ]]]
+                icon:
+                  - color: |
+                      [[[
+                        return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
+                        ? 'white'
+                        : 'rgba(var(--color-theme), 0.9)'
+                      ]]]
+              hold_action:
+                action: >
+                  [[[
+                      return variables.ulm_card_media_player_enable_popup && entity.attributes?.source_list ? "fire-dom-event" : "more-info";
+                  ]]]
+                browser_mod:
+                  service: "browser_mod.popup"
+                  data:
+                    large: true
+                    hide_header: true
+                    content:
+                      type: "custom:button-card"
+                      template: "popup_media_player_source_card"
+                      entity: "[[[ return entity.entity_id; ]]]"
+              tap_action:
+                action: >
+                  [[[
+                      return variables.ulm_card_media_player_enable_popup && entity.attributes?.source_list ? "fire-dom-event" : "more-info";
+                  ]]]
+                browser_mod:
+                  service: "browser_mod.popup"
+                  data:
+                    large: true
+                    hide_header: true
+                    style: |
+                      --popup-background-color: var(--primary-background-color);
+                      --popup-border-radius: 20px;
+                      --popup-padding-x: 24px;
+                      --popup-padding-y: 20px;
+                      --popup-max-width: auto
+                      --popup-min-width: 800px;
+                    card_mod:
+                      style:
+                        ha-dialog$: |
+                          @media (max-width: 800px){
+                            div.mdc-dialog__container {
+                              --mdc-dialog-min-width: 100vw;
+                              --mdc-dialog-max-width: 100vw;
+                              --mdc-dialog-min-height: 100%;
+                              --ha-dialog-border-radius: 0px;
+                            }
+                          }
+                    content:
+                      type: "custom:button-card"
+                      template: "popup_media_player_source_card"
+                      entity: "[[[ return entity.entity_id; ]]]"
     item3:
       card:
         type: "custom:my-slider"

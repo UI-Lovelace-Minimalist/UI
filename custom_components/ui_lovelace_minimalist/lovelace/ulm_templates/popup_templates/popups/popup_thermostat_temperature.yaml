@@ -64,7 +64,7 @@ popup_thermostat_temperature:
       card:
         type: "custom:button-card"
         variables:
-          ulm_card_thermostat_preset_mode: "[[[ return variables.ulm_card_thermostat_preset_mode; ]]]"
+          ulm_card_thermostat_preset_mode: "[[[ return variables?.ulm_card_thermostat_preset_mode; ]]]"
         styles:
           grid:
             - grid-template-areas: >
