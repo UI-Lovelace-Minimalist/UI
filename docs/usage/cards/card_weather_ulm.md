@@ -17,7 +17,7 @@ This is a card to show your weather without usage of custom resources.
 | Variable                            | Default  | Required         | Notes                                 |
 | ----------------------------------- | -------- | ---------------- | ------------------------------------- |
 | entity                              |          | :material-check: | your weather entity                   |
-| ulm_card_weather_ulm_enable_popup   | `false`  | :material-close: |                                       |   
+| ulm_card_weather_ulm_enable_popup   | `false`  | :material-close: |                                       |
 
 ## Usage
 
