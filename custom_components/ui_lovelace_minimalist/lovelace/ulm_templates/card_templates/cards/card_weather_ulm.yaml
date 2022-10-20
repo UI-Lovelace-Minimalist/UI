@@ -1,3 +1,5 @@
+---
+### Card Weather ULM ###
 card_weather_ulm:
   template:
     - "icon_more_info_new"
@@ -145,10 +147,10 @@ card_weather_ulm:
               show_units: false
               show_name: false
               custom_fields:
-                val: "[[[ return entity.attributes.humidity + '%' ]]]"
+                item: "[[[ return entity.attributes.humidity + '%' ]]]"
               styles:
                 grid:
-                  - grid-template-areas: "'i val'"
+                  - grid-template-areas: "'i item'"
                   - grid-template-columns: "40% 60%"
                 card:
                   - box-shadow: "none"
@@ -162,7 +164,7 @@ card_weather_ulm:
                 img_cell:
                   - justify-content: "right"
                 custom_fields:
-                  val:
+                  item:
                     - text-align: "left"
                     - font-size: 1rem
               size: "20px"
@@ -179,10 +181,10 @@ card_weather_ulm:
               show_units: false
               show_name: false
               custom_fields:
-                val: "[[[ return entity.attributes.temperature + entity.attributes.temperature_unit ]]]"
+                item: "[[[ return entity.attributes.temperature + entity.attributes.temperature_unit ]]]"
               styles:
                 grid:
-                  - grid-template-areas: "'i val'"
+                  - grid-template-areas: "'i item'"
                   - grid-template-columns: "45% 55%"
                 card:
                   - box-shadow: "none"
@@ -196,7 +198,7 @@ card_weather_ulm:
                 img_cell:
                   - justify-content: "right"
                 custom_fields:
-                  val:
+                  item:
                     - text-align: "left"
                     - font-size: 1rem
               size: "20px"
