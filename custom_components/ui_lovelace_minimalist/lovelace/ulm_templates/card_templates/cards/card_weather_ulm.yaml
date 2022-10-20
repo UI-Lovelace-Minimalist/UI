@@ -166,7 +166,7 @@ card_weather_ulm:
                 custom_fields:
                   item:
                     - text-align: "left"
-                    - font-size: 1rem
+                    - font-size: "1rem"
               size: "20px"
               color: "var(--google-grey)"
           item2:
@@ -200,6 +200,6 @@ card_weather_ulm:
                 custom_fields:
                   item:
                     - text-align: "left"
-                    - font-size: 1rem
+                    - font-size: "1rem"
               size: "20px"
               color: "var(--google-grey)"
