@@ -11,17 +11,18 @@ popup_media_player_row:
     grid:
       - grid-template-areas: "n"
     card:
-      - padding: "2px 0px"
+      - padding: "2px 12px"
       - height: "42px"
-      - border-radius: "10px"
+      - background: "none"
+      - border: "1px rgba(var(--color-theme),0.2) solid"
       - width: "40vh"
     name:
       - align-self: "center"
-      - justify-self: "start"
+      - justify-self: "center"
       - font-weight: "bold"
       - font-size: "14px"
-      - margin-left: "12px"
-      - margin-right: "12px"
+      - text-transform: "capitalize"
+      - color: "rgba(var(--color-theme),0.5)"
   name: >
     [[[
       var name = entity.attributes.source_list[variables.ulm_popup_media_entity_idx];
@@ -32,7 +33,10 @@ popup_media_player_row:
       value: "[[[ return entity.attributes.source == entity.attributes.source_list[variables.ulm_popup_media_entity_idx]; ]]]"
       styles:
         card:
-          - background-color: "rgba(var(--color-theme),0.2)"
+          - background-color: "rgba(var(--color-blue),0.1)"
+          - border: "none"
+        name:
+          - color: "rgba(var(--color-blue),1)"
   tap_action:
     action: "call-service"
     service: "media_player.select_source"
