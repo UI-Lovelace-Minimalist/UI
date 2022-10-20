@@ -11,7 +11,10 @@ popup_light_palette_row:
       value: "[[[ return entity.state == entity.attributes.options[variables.ulm_popup_light_palette_entity_idx]; ]]]"
       styles:
         card:
-          - background-color: "rgba(var(--color-theme),0.2)"
+          - background-color: "rgba(var(--color-blue),0.1)"
+          - border: "none"
+        name:
+          - color: "rgba(var(--color-blue),1)"
   tap_action:
     action: "call-service"
     service: "select.select_option"
