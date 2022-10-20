@@ -10,7 +10,7 @@ hide:
 
 ![example-image](../../assets/img/ulm_cards/card_weather_ulm.png){ width="500" }
 
-This is a card to show your weather without usage of custom ressources.
+This is a card to show your weather without usage of custom resources.
 
 ## Variables
 
