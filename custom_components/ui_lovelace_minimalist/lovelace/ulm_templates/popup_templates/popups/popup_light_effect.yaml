@@ -222,7 +222,7 @@ popup_light_effect:
         label: "[[[ return 'total: ' + entity?.attributes?.effect_list?.length ]]]"
         styles:
           card:
-            - padding-bottom: "12px"
+            - margin-bottom: "12px"
             - background: "none"
           img_cell:
             - background: "var(--card-background-color)"
@@ -242,7 +242,7 @@ popup_light_effect:
         label: "[[[ return 'total: ' + states[variables?.ulm_card_light_color_palette]?.attributes?.options?.length ]]]"
         styles:
           card:
-            - padding-bottom: "12px"
+            - margin-bottom: "12px"
             - background: "none"
           img_cell:
             - background: "var(--card-background-color)"
