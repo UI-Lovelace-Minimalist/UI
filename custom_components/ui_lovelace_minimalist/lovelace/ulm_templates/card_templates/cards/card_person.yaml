@@ -74,7 +74,7 @@ card_person:
         } else {
             for (let st in states) {
                 if (st.startsWith("zone.")) {
-                    if (states[st]?.attributes?.persons.includes(variables.ulm_card_person_entity)) {
+                    if (states[st]?.attributes?.persons?.includes(variables.ulm_card_person_entity) && !states[st]?.attributes?.passive) {
                         var icon = states[st].attributes.icon !== null ? states[st].attributes.icon : 'mdi:help-circle';
                         return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
                     }

@@ -11,6 +11,7 @@ ulm_translation_engine:
     ulm_translation_close_cover: "[[[ return hass.resources[hass['language']]['ui.dialogs.more_info_control.cover.close_cover']; ]]]"
     ulm_translation_stop_cover: "[[[ return hass.resources[hass['language']]['ui.dialogs.more_info_control.cover.stop_cover']; ]]]"
     ulm_translation_open_cover: "[[[ return hass.resources[hass['language']]['ui.dialogs.more_info_control.cover.open_cover']; ]]]"
+    ulm_translation_more_options: "[[[ return hass.resources[hass['language']]['ui.panel.lovelace.editor.edit_card.options']; ]]]"
     ulm_translation_hour: >
       [[[
         var number = hass.resources[hass['language']]["ui.duration.hour"];

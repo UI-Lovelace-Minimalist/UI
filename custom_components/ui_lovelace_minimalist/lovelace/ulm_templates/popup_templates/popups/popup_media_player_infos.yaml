@@ -27,10 +27,12 @@ popup_media_player_infos:
       content2:
         - align-self: "center"
         - justify-self: "center"
+      content3:
+        - display: "none"
       footer:
         - align-self: "start"
-        - margin-top: "25px"
-        - padding-bottom: "4%"
+        - padding-bottom: "2%"
+        - padding-top: "12px"
   extra_styles: |
     @media (max-width: 800px) {
       #container {
@@ -41,6 +43,8 @@ popup_media_player_infos:
       #content2 {
         display: none;
       }
+      #content3 {
+        display: none;
     }
   custom_fields:
     header:
@@ -297,3 +301,36 @@ popup_media_player_infos:
                 align-items: center;
                 background: none;
               }
+    content3:
+      card:
+        type: "vertical-stack"
+        cards: >
+          [[[
+            let rows = [];
+
+            function generate_source_items(index) {
+              var row = {
+                'type': 'custom:button-card',
+                'template': 'popup_media_player_row',
+                'entity': entity.entity_id,
+                'variables': {
+                  'ulm_popup_media_entity_idx': index
+                }
+              };
+              return row;
+            }
+
+            let source_list = entity.attributes?.source_list;
+
+            let length_list = source_list?.length
+            let index = 0;
+            for (let source in source_list){
+              rows.push(generate_source_items(index));
+              index++
+
+              if(index >= length_list){
+                break;
+              }
+            }
+            return rows;
+          ]]]

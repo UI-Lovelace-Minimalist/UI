@@ -4,22 +4,26 @@ popup_media_player_volume:
   styles:
     grid:
       - grid-template-areas: "'header' 'content2' 'footer'"
-      - grid-template-rows: "16vh 52vh 28vh;"
+      - grid-template-rows: "16vh 56vh 14vh;"
       - grid-template-columns: "1fr"
     custom_fields:
       content1:
         - display: "none"
       content2:
-        - display: "block"
+        - display: "grid"
         - align-self: "start"
+        - height: "56vh"
   extra_styles: |
     @media (max-width: 800px) {
       #container {
         grid-template-areas: "header" "content2" "footer" !important;
-        grid-template-rows: 16vh 56vh 28vh !important;
+        grid-template-rows: 16vh 56vh 14vh !important;
         grid-template-columns: 1fr !important;
       }
       #content1 {
+        display: none;
+      }
+      #content3 {
         display: none;
       }
   custom_fields:
@@ -43,8 +47,7 @@ popup_media_player_volume:
                       --popup-border-radius: 20px;
                       --popup-padding-x: 24px;
                       --popup-padding-y: 20px;
-                      --popup-max-width: auto
-                      --popup-min-width: 800px;
+                      --popup-min-width: 1000px;
                     card_mod:
                       style:
                         ha-dialog$: |
