@@ -98,3 +98,9 @@ This card needs the following to function correctly:
     <td>If true, shows the entity picture from your user instead of the icon. Default is false</td>
   </tr>
 </table>
+
+??? note "Template Code"
+
+    ```yaml title="custom_card_imswel_person.yaml"
+    --8<-- "custom_cards/custom_card_imswel_person/custom_card_imswel_person.yaml"
+    ```
