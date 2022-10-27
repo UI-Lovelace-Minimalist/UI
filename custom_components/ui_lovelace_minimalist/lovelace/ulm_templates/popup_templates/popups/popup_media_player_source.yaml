@@ -20,14 +20,14 @@ popup_media_player_source:
         - overflow-x: "hidden"
         - justify-self: "center"
         - align-self: "start"
-        - max-height: "56vh"
+        - height: "56vh"
         - padding-bottom: "12px"
         - max-width: "42vh"
   extra_styles: |
     @media (max-width: 800px) {
       #container {
         grid-template-areas: "header" "content3" "footer" !important;
-        grid-template-rows: 16vh max-content 14vh !important;
+        grid-template-rows: 16vh 56vh 14vh !important;
         grid-template-columns: 1fr !important;
       }
       #content1 {

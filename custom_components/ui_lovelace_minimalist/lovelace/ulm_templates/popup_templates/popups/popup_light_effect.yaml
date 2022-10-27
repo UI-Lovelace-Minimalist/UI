@@ -1,6 +1,8 @@
 ---
 popup_light_effect:
-  template: "popup_light_brightness"
+  template:
+    - "popup_light_brightness"
+    - "ulm_language_variables"
   styles:
     grid:
       - grid-template-areas: >
@@ -219,10 +221,10 @@ popup_light_effect:
         entity: "[[[ return entity.entity_id; ]]]"
         icon: "mdi:auto-fix"
         name: "[[[ return hass.resources[hass['language']]['ui.card.light.effect']; ]]]"
-        label: "[[[ return 'total: ' + entity?.attributes?.effect_list?.length ]]]"
+        label: "[[[ return variables.ulm_popup_total + ': ' + entity?.attributes?.effect_list?.length ]]]"
         styles:
           card:
-            - padding-bottom: "12px"
+            - margin-bottom: "12px"
             - background: "none"
           img_cell:
             - background: "var(--card-background-color)"
@@ -234,15 +236,12 @@ popup_light_effect:
         type: "custom:button-card"
         template:
           - "icon_info"
-          - "ulm_language_variables"
-        variables:
-          ulm_card_light_color_palette: "[[[ return variables?.ulm_card_light_color_palette ]]]"
         icon: "mdi:palette"
-        name: "[[[ return variables?.ulm_popups_color; ]]]"
-        label: "[[[ return 'total: ' + states[variables?.ulm_card_light_color_palette]?.attributes?.options?.length ]]]"
+        name: "[[[ return variables.ulm_popups_color; ]]]"
+        label: "[[[ return variables.ulm_popup_total + ': ' + states[variables?.ulm_card_light_color_palette]?.attributes?.options?.length ]]]"
         styles:
           card:
-            - padding-bottom: "12px"
+            - margin-bottom: "12px"
             - background: "none"
           img_cell:
             - background: "var(--card-background-color)"
