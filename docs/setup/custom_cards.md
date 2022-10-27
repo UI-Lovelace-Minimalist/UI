@@ -47,7 +47,7 @@ You don't need to do any extra inclusion in your dashboard yaml via `!include`, 
 !!! tip "Reloading"
 
     Once you have added new custom_cards, you can always reload that folder via Home Assistant and add the new cards to the config.
-    Just go to `"Configuration" --> "Settings"` in Home Assistant and press the `"UI_LOVELACE_MINIMALIST"` button within the "YAML configuration reloading" section.
+    Just go to `"Developer Tools"` in Home Assistant and press the `"UI_LOVELACE_MINIMALIST"` button within the "YAML configuration   reloading" section.
 
 ### Develop your own Custom-cards
 
