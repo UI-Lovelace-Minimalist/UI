@@ -15,6 +15,8 @@ minimalist-mobile-tapbar:
   header-base-height: "70px"
   app-header-selection-bar-color: "transparent"
   ha-dialog-border-radius: "10px"
+  # fix added border-lines in 2022.11
+  ha-card-border-width: "0px"
 
   card-mod-view-yaml: |
     "*:first-child$": |
