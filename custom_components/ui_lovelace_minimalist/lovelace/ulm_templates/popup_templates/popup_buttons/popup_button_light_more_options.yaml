@@ -1,10 +1,10 @@
 ---
-popup_button_source:
+popup_button_light_more_options:
   template:
     - "popup_button"
     - "ulm_translation_engine"
-  icon: "mdi:playlist-music"
-  name: "[[[ return variables.ulm_translation_source ]]]"
+  name: "[[[ return variables.ulm_translation_more_options; ]]]"
+  icon: "mdi:dots-horizontal-circle-outline"
   styles:
     name:
       - text-transform: "uppercase"
@@ -14,10 +14,7 @@ popup_button_source:
       - box-shadow: "none"
       - border: "1px solid rgba(var(--color-theme),0.25)"
   tap_action:
-    action: >
-      [[[
-          return entity.attributes?.source_list ? "fire-dom-event" : "more-info";
-      ]]]
+    action: "fire-dom-event"
     browser_mod:
       service: "browser_mod.popup"
       data:
@@ -42,5 +39,15 @@ popup_button_source:
               }
         content:
           type: "custom:button-card"
-          template: "popup_media_player_source"
-          entity: "[[[ return entity.entity_id ]]]"
+          template: >
+            [[[
+              if(entity.attributes?.effect_list){
+                return 'popup_light_effect'
+              }
+              if(variables?.ulm_card_light_color_palette){
+                return 'popup_light_palette'
+              }
+            ]]]
+          entity: "[[[ return entity.entity_id; ]]]"
+          variables:
+            ulm_card_light_color_palette: "[[[ return variables?.ulm_card_light_color_palette ]]]"
