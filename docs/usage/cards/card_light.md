@@ -48,7 +48,7 @@ To use `popup_light` you need to set the variable `ulm_card_light_enable_popup` 
 | ulm_card_light_force_background_color | `false`         | :material-close: | Force background light color even in light theme       |                                               |
 | ulm_card_light_enable_popup           | `false`         | :material-close: | Enable `popup_light`                                   |                                               |
 | ulm_card_light_enable_popup_tap       | `false`         | :material-close: | Enable `popup_light` on simple icon tap                |                                               |
-
+| ulm_card_light_color_palette          |                 | :material-close: | Add `select` entity to control color palette               |                                               |
 ## Usage
 
 ```yaml
