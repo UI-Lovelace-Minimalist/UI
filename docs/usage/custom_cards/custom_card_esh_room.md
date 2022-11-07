@@ -67,6 +67,8 @@ This is an alternative room card to the standard one that is more rectangular th
 | label                                        |         | No       | The label to display information, this can be a template or static text  |
 | ulm_custom_card_esh_room_light_entity        |         | No       | The entity to use for the light button                                   |
 | ulm_custom_card_esh_room_climate_entity      |         | No       | The entity to use for the climate button                                 |
+| ulm_card_esh_room_light_icon_on              |         | No       | Customize the light ON icon                                              |
+| ulm_card_esh_room_light_icon_off             |         | No       | Customize the light OFF icon                                             |
 | ulm_card_light_enable_popup                  | `false` | No       | Enable `popup_light`                                                     |
 | ulm_card_thermostat_enable_popup             | `false` | No       | Enable `popup_thermostat`                                                |
 | ulm_card_dynamic_color                       | `false` | No       | Enables dynamic background color (requires `ulm_custom_card_esh_room_light_entity`)       |
