@@ -13,6 +13,9 @@ minimalist-ios-tapbar:
   divider-color: "rgba(var(--color-theme),.12)"
   accent-color: "var(--google-yellow)"
   ha-dialog-border-radius: "10px"
+  # fix added border-lines in 2022.11
+  ha-card-border-width: "0px"
+
   card-mod-theme: "minimalist-ios-tapbar"
   card-mod-root: |
     app-toolbar {

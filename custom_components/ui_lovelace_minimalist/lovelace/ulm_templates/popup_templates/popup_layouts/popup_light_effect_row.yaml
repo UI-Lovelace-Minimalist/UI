@@ -1,0 +1,24 @@
+---
+popup_light_effect_row:
+  template: "popup_row_layout"
+  name: >
+    [[[
+      var attribute = entity.attributes.effect_list[variables.ulm_popup_light_effect_entity_idx].toString()
+      var name = (attribute.includes("@") >= 1) ? attribute.substr(0, attribute.indexOf("@")) : attribute;
+      return name;
+    ]]]
+  state:
+    - operator: "template"
+      value: "[[[ return entity.attributes.effect == entity.attributes.effect_list[variables.ulm_popup_light_effect_entity_idx]; ]]]"
+      styles:
+        card:
+          - background-color: "rgba(var(--color-blue),0.1)"
+          - border: "none"
+        name:
+          - color: "rgba(var(--color-blue),1)"
+  tap_action:
+    action: "call-service"
+    service: "light.turn_on"
+    service_data:
+      entity_id: "[[[ return entity.entity_id; ]]]"
+      effect: "[[[ return entity.attributes.effect_list[variables.ulm_popup_light_effect_entity_idx]; ]]]"

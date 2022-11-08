@@ -15,6 +15,8 @@ card_esh_room:
     ulm_card_thermostat_enable_popup: false
     ulm_card_light_enable_popup: false
     ulm_card_dynamic_color: false
+    ulm_card_esh_room_light_icon_on: "mdi:lightbulb"
+    ulm_card_esh_room_light_icon_off: "mdi:lightbulb-off"
   label: >-
     [[[
       var label_entity = variables.ulm_custom_card_esh_room_light_entity
@@ -219,7 +221,7 @@ card_esh_room:
         name: "[[[ return name ]]]"
         state:
           - value: "on"
-            icon: "mdi:lightbulb"
+            icon: "[[[ return variables.ulm_card_esh_room_light_icon_on; ]]]"
             styles:
               icon:
                 - color: "rgba(var(--color-yellow), 1)"
@@ -235,7 +237,7 @@ card_esh_room:
                       return 'rgba(var(--color-yellow), 0.2)';
                     ]]]
           - value: "off"
-            icon: "mdi:lightbulb-off"
+            icon: "[[[ return variables.ulm_card_esh_room_light_icon_off; ]]]"
         type: "custom:button-card"
         template:
           - "widget_icon"

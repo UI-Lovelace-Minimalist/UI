@@ -39,7 +39,7 @@ custom_card_eraycetinay_lock:
   state:
     - operator: "template"
       value: |
-        [[[ return entity.state == ("unlocked" || "open"); ]]]
+        [[[ return entity.state == ("unlocked" || "open" || "opened"); ]]]
       styles:
         icon:
           - color: "rgba(var(--color-yellow),1)"
@@ -47,7 +47,7 @@ custom_card_eraycetinay_lock:
           - background-color: "rgba(var(--color-yellow), 0.2)"
     - operator: "template"
       value: |
-        [[[ return entity.state == "locked"; ]]]
+        [[[ return entity.state == "locked" || "closed"; ]]]
       styles:
         icon:
           - color: "rgba(var(--color-green),1)"

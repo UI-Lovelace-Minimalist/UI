@@ -69,3 +69,9 @@ Initial release.
 <td>Label of your choice</td>
 </tr>
 </table>
+
+??? note "Template Code"
+
+    ```yaml title="custom_card_camera.yaml"
+    --8<-- "custom_cards/custom_card_camera/custom_card_camera.yaml"
+    ```
