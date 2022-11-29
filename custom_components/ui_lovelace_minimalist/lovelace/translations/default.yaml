@@ -1,6 +1,7 @@
 ---
 ulm_translation_engine:
   variables:
+    ulm_language: "Default"
     ulm_translation_back: "[[[ return hass.resources[hass['language']]['ui.common.back']; ]]]"
     ulm_translation_brightness: "[[[ return hass.resources[hass['language']]['ui.card.light.brightness']; ]]]"
     ulm_translation_color_temperature: "[[[ return hass.resources[hass['language']]['ui.card.light.color_temperature']; ]]]"

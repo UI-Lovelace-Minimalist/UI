@@ -1,6 +1,7 @@
 ---
 ulm_language_variables:
   variables:
+    ulm_language: "Svenska"
     ulm_currency: "kr"
     ulm_updates_available: "Uppdatering tillgänglig!"
     ulm_no_updates_available: "Ingen uppdatering tillgänglig"

@@ -1,6 +1,7 @@
 ---
 ulm_language_variables:
   variables:
+    ulm_language: "Português"
     ulm_currency: "€"
     ulm_updates_available: "Updates available!"
     ulm_no_updates_available: "No updates available"

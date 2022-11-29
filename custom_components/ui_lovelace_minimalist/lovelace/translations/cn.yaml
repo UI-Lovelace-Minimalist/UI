@@ -1,6 +1,7 @@
 ---
 ulm_language_variables:
   variables:
+    ulm_language: "中國人"
     ulm_currency: "￥"
     ulm_updates_available: "有更新!"
     ulm_no_updates_available: "无更新"

@@ -1,6 +1,7 @@
 ---
 ulm_language_variables:
   variables:
+    ulm_language: "Slovenský"
     ulm_currency: "€"
     ulm_updates_available: "Aktualizácia k dispozícii!"
     ulm_no_updates_available: "Nie je k dispozícii žiadna aktualizácia"
