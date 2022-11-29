@@ -1,6 +1,7 @@
 ---
 ulm_language_variables:
   variables:
+    ulm_language_code: "cs"
     ulm_language: "Čeština"
     ulm_currency: "Kč"
     ulm_updates_available: "Aktualizace k dispozici!"

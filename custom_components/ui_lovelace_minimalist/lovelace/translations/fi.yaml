@@ -1,6 +1,7 @@
 ---
 ulm_language_variables:
   variables:
+    ulm_language_code: "fi"
     ulm_language: "Suomalainen"
     ulm_currency: "€"
     ulm_updates_available: "Päivityksiä saatavilla!"

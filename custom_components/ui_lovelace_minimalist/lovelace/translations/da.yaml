@@ -1,6 +1,7 @@
 ---
 ulm_language_variables:
   variables:
+    ulm_language_code: "da"
     ulm_language: "Dansk"
     ulm_currency: "kr"
     ulm_updates_available: "Opdatering tilgængelig"

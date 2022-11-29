@@ -1,6 +1,7 @@
 ---
 ulm_language_variables:
   variables:
+    ulm_language_code: "ru"
     ulm_language: "Русский"
     ulm_currency: "RUB"
     ulm_updates_available: "Доступны обновления!"

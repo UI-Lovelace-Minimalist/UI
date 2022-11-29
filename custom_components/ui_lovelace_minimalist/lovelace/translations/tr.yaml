@@ -1,6 +1,7 @@
 ---
 ulm_language_variables:
   variables:
+    ulm_language_code: "tr"
     ulm_language: "Türk"
     ulm_currency: "TRY"
     ulm_updates_available: "Güncellemeler var!"
