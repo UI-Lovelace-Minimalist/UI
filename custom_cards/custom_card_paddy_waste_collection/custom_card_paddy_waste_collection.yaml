@@ -3,8 +3,8 @@ custom_card_paddy_waste_collection:
   template:
     - "card_generic_swap"
   variables:
-    ulm_card_generic_swap_name: "[[[ return variables.ulm_custom_card_paddy_waste_collection_name; ]]]"
-    ulm_card_generic_swap_icon: "[[[ return variables.ulm_custom_card_paddy_waste_collection_icon; ]]]"
+    ulm_card_generic_swap_name: "[[[ return entity.name; ]]]"
+    ulm_card_generic_swap_icon: "[[[ return entity.icon; ]]]"
   state:
     - operator: "template"
       value: "[[[ return states[entity.entity_id].attributes.daysTo == 0; ]]]"
