@@ -30,7 +30,6 @@ Fix for UI Minimalist v1.0.1.
 Fixed the bug where card doesn't show at all
 </details>
 
-
 ## Usage
 
 ```yaml
