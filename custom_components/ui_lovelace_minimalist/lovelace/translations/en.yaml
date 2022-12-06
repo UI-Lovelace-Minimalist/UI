@@ -15,3 +15,8 @@ ulm_language_variables:
     ulm_popups_color: "Color"
     ulm_radar: "Radar"
     ulm_popup_total: "Total"
+
+card_cover_language_variables:
+  variables:
+    ulm_card_cover_closed: "Closed"
+    ulm_card_cover_open: "Open"

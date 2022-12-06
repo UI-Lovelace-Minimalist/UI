@@ -4,15 +4,19 @@ card_cover:
   template:
     - "icon_more_info_new"
     - "ulm_translation_engine"
+    - "card_cover_language_variables"
   show_last_changed: false
   variables:
     ulm_card_cover_name: "[[[ return entity.attributes.friendly_name ]]]"
+    ulm_card_invert_percent: false
     ulm_card_cover_display_left_right: false
     ulm_card_curtain_display_collapse_expand: false
-    ulm_card_cover_garage: false
+    ulm_card_cover_garage_small: false
+    ulm_card_cover_garage_large: false
     ulm_card_cover_gate: false
     ulm_card_cover_enable_controls: false
     ulm_card_cover_enable_slider: false
+    ulm_card_cover_enable_tilt: false
     ulm_card_cover_enable_horizontal: false
     ulm_card_cover_enable_popup: false
     ulm_show_last_changed: false
@@ -38,6 +42,9 @@ card_cover:
                   if ( variables.ulm_card_cover_enable_slider) {
                       areas.push("item3 item3");
                   }
+                  if ( variables.ulm_card_cover_enable_tilt) {
+                    areas.push("item4 item4");
+                }
               }
                 return "\"" + areas.join("\" \"") + "\"";
           ]]]
@@ -55,6 +62,9 @@ card_cover:
                   if ( variables.ulm_card_cover_enable_slider) {
                       rows.push("min-content");
                   }
+                  if ( variables.ulm_card_cover_enable_tilt) {
+                    rows.push("min-content");
+                }
                 }
                 return rows.join(" ");
           ]]]
@@ -82,6 +92,15 @@ card_cover:
                       return "none";
                   }
             ]]]
+      item4:
+      - display: >
+          [[[
+                if (variables.ulm_card_cover_enable_tilt) {
+                    return "block";
+                } else {
+                    return "none";
+                }
+          ]]]
   custom_fields:
     item1:
       card:
@@ -108,7 +127,9 @@ card_cover:
                       if (states[entity.entity_id].state == "closed"){
                         if (variables.ulm_card_curtain_display_collapse_expand){
                           var icon = "mdi:curtains-closed";
-                        } else if (variables.ulm_card_cover_garage){
+                        } else if (variables.ulm_card_cover_garage_small){
+                          var icon = "mdi:garage";
+                        } else if (variables.ulm_card_cover_garage_large){
                           var icon = "mdi:garage-variant";
                         } else if (variables.ulm_card_cover_gate){
                           var icon = "mdi:gate";
@@ -117,7 +138,9 @@ card_cover:
                       } else
                         if (variables.ulm_card_curtain_display_collapse_expand){
                           var icon = "mdi:curtains";
-                        } else if (variables.ulm_card_cover_garage){
+                        } else if (variables.ulm_card_cover_garage_small){
+                          var icon = "mdi:garage-open";
+                        } else if (variables.ulm_card_cover_garage_large){
                           var icon = "mdi:garage-open-variant";
                         } else if (variables.ulm_card_cover_gate){
                           var icon = "mdi:gate-open";
@@ -127,7 +150,9 @@ card_cover:
                       if (states[entity.entity_id].attributes.current_position == 0){
                         if (variables.ulm_card_curtain_display_collapse_expand){
                           var icon = "mdi:curtains-closed";
-                        } else if (variables.ulm_card_cover_garage){
+                        } else if (variables.ulm_card_cover_garage_small){
+                          var icon = "mdi:garage";
+                        } else if (variables.ulm_card_cover_garage_large){
                           var icon = "mdi:garage-variant";
                         } else if(variables.ulm_card_cover_gate){
                           var icon = "mdi:gate";
@@ -136,7 +161,9 @@ card_cover:
                       } else
                         if (variables.ulm_card_curtain_display_collapse_expand){
                           var icon = "mdi:curtains";
-                        } else if(variables.ulm_card_cover_garage){
+                        } else if(variables.ulm_card_cover_garage_small){
+                          var icon = "mdi:garage-open";
+                        } else if(variables.ulm_card_cover_garage_large){
                           var icon = "mdi:garage-open-variant";
                         } else if(variables.ulm_card_cover_gate){
                           var icon = "mdi:gate-open";
@@ -194,9 +221,9 @@ card_cover:
                   return vars;
                 ]]]
               name: "[[[ return variables.ulm_card_cover_name ]]]"
-              label: >-
+              label: >
                 [[[
-                    if (entity.state !="unavailable"){
+                  if (entity.state != "unavailable"){
                       if (typeof states[entity.entity_id].attributes.current_position === "undefined"){
                         if (states[entity.entity_id].state == "closed"){
                           return variables.ulm_translation_state;
@@ -206,7 +233,17 @@ card_cover:
                         if (states[entity.entity_id].attributes.current_position == 0){
                           return variables.ulm_translation_state;
                         } else {
-                          return variables.ulm_translation_state + " • " + (states[entity.entity_id].attributes.current_position) + "%" ;
+                          var position = states[entity.entity_id].attributes.current_position;
+                          if (variables.ulm_card_invert_percent == True){
+                            if (position == 100){
+                              var state = variables.ulm_card_cover_closed;
+                            } else {
+                              var state = variables.ulm_card_cover_open;
+                            } 
+                            return state + " • " + (100 - position) + "%" ;
+                          } else {
+                            return variables.ulm_translation_state + " • " + position + "%" ;
+                          }
                         }
                       }
                   } else {
@@ -352,3 +389,88 @@ card_cover:
             border-radius: 14px;
             box-shadow: none;
           }
+    item4:
+    card:
+      type: "custom:button-card"
+      template: "list_3_items"
+      custom_fields:
+        item1:
+          card:
+            type: "custom:button-card"
+            template: "widget_icon"
+            state:
+              - operator: "template"
+                value: >
+                  [[[
+                    return entity.attributes.current_tilt_position == "0";
+                  ]]]
+                styles:
+                  icon:
+                    - color: "rgba(var(--color-theme),0.4)"
+              - operator: "template"
+                value: >
+                  [[[
+                    return entity.state == "closing";
+                  ]]]
+                styles:
+                  icon:
+                    - color: "rgba(var(--color-theme),0.4)"
+              - operator: "template"
+                value: >
+                  [[[
+                    return entity.state == "opening";
+                  ]]]
+                styles:
+                  icon:
+                    - color: "rgba(var(--color-theme),0.4)"
+            tap_action:
+              action: "call-service"
+              service: "cover.close_cover_tilt"
+              service_data:
+                entity_id: "[[[ return entity.entity_id ]]]"
+            icon: "mdi:arrow-bottom-left" 
+        item2:
+          card:
+            type: "custom:button-card"
+            template: "widget_icon"
+            tap_action:
+              action: "call-service"
+              service: "cover.stop_cover_tilt"
+              service_data:
+                entity_id: "[[[ return entity.entity_id ]]]"
+            icon: "mdi:stop"
+        item3:
+          card:
+            type: "custom:button-card"
+            template: "widget_icon"
+            state:
+              - operator: "template"
+                value: >
+                  [[[
+                    return entity.attributes.current_tilt_position == "100";
+                  ]]]
+                styles:
+                  icon:
+                    - color: "rgba(var(--color-theme),0.4)"
+              - operator: "template"
+                value: >
+                  [[[
+                    return entity.state == "closing";
+                  ]]]
+                styles:
+                  icon:
+                    - color: "rgba(var(--color-theme),0.4)"
+              - operator: "template"
+                value: >
+                  [[[
+                    return entity.state == "opening";
+                  ]]]
+                styles:
+                  icon:
+                    - color: "rgba(var(--color-theme),0.4)"
+            tap_action:
+              action: "call-service"
+              service: "cover.open_cover_tilt"
+              service_data:
+                entity_id: "[[[ return entity.entity_id ]]]"
+            icon: "mdi:arrow-top-right"
