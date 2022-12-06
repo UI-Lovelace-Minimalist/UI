@@ -43,7 +43,7 @@ card_cover:
                       areas.push("item3 item3");
                   }
                   if ( variables.ulm_card_cover_enable_tilt) {
-                    areas.push("item4 item4");
+                      areas.push("item4 item4");
                 }
               }
                 return "\"" + areas.join("\" \"") + "\"";
@@ -63,7 +63,7 @@ card_cover:
                       rows.push("min-content");
                   }
                   if ( variables.ulm_card_cover_enable_tilt) {
-                    rows.push("min-content");
+                      rows.push("min-content");
                 }
                 }
                 return rows.join(" ");
@@ -95,11 +95,11 @@ card_cover:
       item4:
       - display: >
           [[[
-                if (variables.ulm_card_cover_enable_tilt) {
-                    return "block";
-                } else {
-                    return "none";
-                }
+                  if (variables.ulm_card_cover_enable_tilt) {
+                      return "block";
+                  } else {
+                      return "none";
+                  }
           ]]]
   custom_fields:
     item1:
@@ -390,87 +390,87 @@ card_cover:
             box-shadow: none;
           }
     item4:
-    card:
-      type: "custom:button-card"
-      template: "list_3_items"
-      custom_fields:
-        item1:
-          card:
-            type: "custom:button-card"
-            template: "widget_icon"
-            state:
-              - operator: "template"
-                value: >
-                  [[[
-                    return entity.attributes.current_tilt_position == "0";
-                  ]]]
-                styles:
-                  icon:
-                    - color: "rgba(var(--color-theme),0.4)"
-              - operator: "template"
-                value: >
-                  [[[
-                    return entity.state == "closing";
-                  ]]]
-                styles:
-                  icon:
-                    - color: "rgba(var(--color-theme),0.4)"
-              - operator: "template"
-                value: >
-                  [[[
-                    return entity.state == "opening";
-                  ]]]
-                styles:
-                  icon:
-                    - color: "rgba(var(--color-theme),0.4)"
-            tap_action:
-              action: "call-service"
-              service: "cover.close_cover_tilt"
-              service_data:
-                entity_id: "[[[ return entity.entity_id ]]]"
-            icon: "mdi:arrow-bottom-left" 
-        item2:
-          card:
-            type: "custom:button-card"
-            template: "widget_icon"
-            tap_action:
-              action: "call-service"
-              service: "cover.stop_cover_tilt"
-              service_data:
-                entity_id: "[[[ return entity.entity_id ]]]"
-            icon: "mdi:stop"
-        item3:
-          card:
-            type: "custom:button-card"
-            template: "widget_icon"
-            state:
-              - operator: "template"
-                value: >
-                  [[[
-                    return entity.attributes.current_tilt_position == "100";
-                  ]]]
-                styles:
-                  icon:
-                    - color: "rgba(var(--color-theme),0.4)"
-              - operator: "template"
-                value: >
-                  [[[
-                    return entity.state == "closing";
-                  ]]]
-                styles:
-                  icon:
-                    - color: "rgba(var(--color-theme),0.4)"
-              - operator: "template"
-                value: >
-                  [[[
-                    return entity.state == "opening";
-                  ]]]
-                styles:
-                  icon:
-                    - color: "rgba(var(--color-theme),0.4)"
-            tap_action:
-              action: "call-service"
-              service: "cover.open_cover_tilt"
-              service_data:
-                entity_id: "[[[ return entity.entity_id ]]]"
-            icon: "mdi:arrow-top-right"
+      card:
+        type: "custom:button-card"
+        template: "list_3_items"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              state:
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.attributes.current_tilt_position == "0";
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.state == "closing";
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.state == "opening";
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
+              tap_action:
+                action: "call-service"
+                service: "cover.close_cover_tilt"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+              icon: "mdi:arrow-bottom-left" 
+          item2:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              tap_action:
+                action: "call-service"
+                service: "cover.stop_cover_tilt"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+              icon: "mdi:stop"
+          item3:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              state:
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.attributes.current_tilt_position == "100";
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.state == "closing";
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.state == "opening";
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
+              tap_action:
+                action: "call-service"
+                service: "cover.open_cover_tilt"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+              icon: "mdi:arrow-top-right"
