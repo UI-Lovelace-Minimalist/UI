@@ -1,4 +1,5 @@
 ---
+### Card Fan ###
 custom_card_saxel_fan:
   template:
     - "custom_card_saxel_fan_common"
@@ -57,26 +58,66 @@ custom_card_saxel_fan_blue:
 # Common template, don't use
 custom_card_saxel_fan_common:
   variables:
+    ulm_card_fan_slider_temp_attribute: "temp"
+    ulm_card_fan_slider_hum_attribute: "hum"
+    always_show_attributes: false
     collapsable: true
     mainSliderColor:
     secondarySliderColor:
+    ulm_show_button: true
+    ulm_button_icon: "mdi:rotate-3d-variant"
+    ulm_button_service: "fan.oscillate"
     oscillate_attribute: "oscillate"
   template:
     - "ulm_translation_engine"
+    - "ulm_language_variables"
     - "icon_info_bg"
   hold_action:
     action: "more-info"
   label: |-
     [[[
-      if (entity.state === 'on') {
-        return `${entity.attributes.percentage}%`;
+      if (entity.state != 'unavailable') {
+          if (variables.ulm_card_fan_slider_temp_attribute != False) {
+              var temp = Math.round(entity.attributes[variables.ulm_card_fan_slider_temp_attribute]);
+              let temp_str = ' • ' + (temp ? temp : '0') + '°C';
+          } else {
+              let temp_str = ''
+          }
+          if (variables.ulm_card_fan_slider_hum_attribute != False) {
+              var hum = Math.round(entity.attributes[variables.ulm_card_fan_slider_hum_attribute]);
+              let hum_str = ' • ' + (hum ? hum : '0') + '%';
+          } else {
+              let hum_str = ''
+          }
+
+          if (entity.state == 'off') {
+              if (variables.always_show_attributes == true) {
+                  return variables.ulm_off + temp_str + hum_str
+              } else {
+                  return variables.ulm_off
+              }
+          } else if (entity.state == 'on') {
+              if (entity.attributes.percentage != null) {
+                  var per = entity.attributes.percentage;
+                  return (per ? per : '0') + '%' + temp_str + hum_str;
+              } else {
+                  return variables.ulm_on
+              }
+          }
+
       } else {
-        return variables.ulm_translation_state;
+          return variables.ulm_unavailable;
       }
     ]]]
   styles:
     grid:
-      - grid-template-areas: "'i n n' 'i l l' 'slider slider button'"
+      - grid-template-areas: >
+          [[[
+            if (!variables.ulm_show_button) {
+              return "'i n n' 'i l l' 'slider slider slider'"
+            } else {
+              return "'i n n' 'i l l' 'slider slider button'"
+          ]]]
       - grid-template-columns: "min-content 2fr 1fr"
       - grid-template-rows: "min-content min-content min-content"
     custom_fields:
@@ -133,11 +174,11 @@ custom_card_saxel_fan_common:
             state: "[[[ return variables.collapsable ? 'on' : entity.state; ]]]"
         card:
           type: "custom:button-card"
-          icon: "mdi:rotate-3d-variant"
+          icon: "[[[ return variables.ulm_button_icon ]]]"
           entity: "[[[ return entity.entity_id ]]]"
           tap_action:
             action: "call-service"
-            service: "fan.oscillate"
+            service: "[[[ return variables.ulm_button_service ]]]"
             service_data:
               entity_id: "[[[ return entity.entity_id; ]]]"
               oscillating: "[[[ return !entity.attributes[variables.oscillate_attribute] ]]]"
