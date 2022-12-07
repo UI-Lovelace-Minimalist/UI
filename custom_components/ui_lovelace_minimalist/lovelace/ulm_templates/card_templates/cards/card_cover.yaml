@@ -27,46 +27,46 @@ card_cover:
     grid:
       - grid-template-areas: >
           [[[
-                var areas = [];
-                if (variables.ulm_card_cover_enable_horizontal) {
-                  if ( variables.ulm_card_cover_enable_slider) {
-                      return "\"item1 item3\"";
-                  } else {
-                    return "\"item1 item2\"";
-                  }
+            var areas = [];
+            if (variables.ulm_card_cover_enable_horizontal) {
+                if (variables.ulm_card_cover_enable_slider) {
+                    return "\"item1 item3\"";
                 } else {
-                  areas.push("item1 item1");
-                  if ( variables.ulm_card_cover_enable_controls) {
-                      areas.push("item2 item2");
-                  }
-                  if ( variables.ulm_card_cover_enable_slider) {
-                      areas.push("item3 item3");
-                  }
-                  if ( variables.ulm_card_cover_enable_tilt) {
-                      areas.push("item4 item4");
+                    return "\"item1 item2\"";
                 }
-              }
-                return "\"" + areas.join("\" \"") + "\"";
+            } else {
+                areas.push("item1 item1");
+                if (variables.ulm_card_cover_enable_controls) {
+                    areas.push("item2 item2");
+                }
+                if (variables.ulm_card_cover_enable_slider) {
+                    areas.push("item3 item3");
+                }
+                if (variables.ulm_card_cover_enable_tilt) {
+                    areas.push("item4 item4");
+                }
+            }
+            return "\"" + areas.join("\" \"") + "\"";
           ]]]
       - grid-template-columns: "1fr 1fr"
       - grid-template-rows: >
           [[[
-                var rows = [];
-                rows.push("min-content");
-                if (variables.ulm_card_cover_enable_horizontal) {
-                  return "min-content";
-                } else {
-                  if ( variables.ulm_card_cover_enable_controls) {
-                      rows.push("min-content");
-                  }
-                  if ( variables.ulm_card_cover_enable_slider) {
-                      rows.push("min-content");
-                  }
-                  if ( variables.ulm_card_cover_enable_tilt) {
-                      rows.push("min-content");
+            var rows = [];
+            rows.push("min-content");
+            if (variables.ulm_card_cover_enable_horizontal) {
+                return "min-content";
+            } else {
+                if (variables.ulm_card_cover_enable_controls) {
+                    rows.push("min-content");
                 }
+                if (variables.ulm_card_cover_enable_slider) {
+                    rows.push("min-content");
                 }
-                return rows.join(" ");
+                if (variables.ulm_card_cover_enable_tilt) {
+                    rows.push("min-content");
+                }
+            }
+            return rows.join(" ");
           ]]]
       - row-gap: "12px"
     card:
@@ -77,29 +77,29 @@ card_cover:
       item2:
         - display: >
             [[[
-                  if (variables.ulm_card_cover_enable_controls) {
-                      return "block";
-                  } else {
-                      return "none";
-                  }
+              if (variables.ulm_card_cover_enable_controls) {
+                  return "block";
+              } else {
+                  return "none";
+              }
             ]]]
       item3:
         - display: >
             [[[
-                  if (variables.ulm_card_cover_enable_slider) {
-                      return "block";
-                  } else {
-                      return "none";
-                  }
+              if (variables.ulm_card_cover_enable_slider) {
+                  return "block";
+              } else {
+                  return "none";
+              }
             ]]]
       item4:
       - display: >
           [[[
-                  if (variables.ulm_card_cover_enable_tilt) {
-                      return "block";
-                  } else {
-                      return "none";
-                  }
+            if (variables.ulm_card_cover_enable_tilt) {
+                return "block";
+            } else {
+                return "none";
+            }
           ]]]
   custom_fields:
     item1:
@@ -113,98 +113,97 @@ card_cover:
               variables: >
                 [[[
                   let vars = variables;
-                  if(variables.ulm_card_cover_enable_popup) {
-                    vars.ulm_custom_popup = {
-                      'template': 'popup_cover'
-                    };
+                  if (variables.ulm_card_cover_enable_popup) {
+                      vars.ulm_custom_popup = {
+                          'template': 'popup_cover'
+                      };
                   }
                   return vars;
                 ]]]
               icon: |
                 [[[
-                    var icon = "mdi:help-circle";
-                    if (typeof states[entity.entity_id].attributes.current_position === "undefined"){
-                      if (states[entity.entity_id].state == "closed"){
-                        if (variables.ulm_card_curtain_display_collapse_expand){
-                          var icon = "mdi:curtains-closed";
-                        } else if (variables.ulm_card_cover_garage_small){
-                          var icon = "mdi:garage";
-                        } else if (variables.ulm_card_cover_garage_large){
-                          var icon = "mdi:garage-variant";
-                        } else if (variables.ulm_card_cover_gate){
-                          var icon = "mdi:gate";
-                        } else
-                          var icon = "mdi:roller-shade-closed";
+                  var icon = "mdi:help-circle";
+                  if (typeof states[entity.entity_id].attributes.current_position === "undefined") {
+                      if (states[entity.entity_id].state == "closed") {
+                          if (variables.ulm_card_curtain_display_collapse_expand) {
+                              var icon = "mdi:curtains-closed";
+                          } else if (variables.ulm_card_cover_garage_small) {
+                              var icon = "mdi:garage";
+                          } else if (variables.ulm_card_cover_garage_large) {
+                              var icon = "mdi:garage-variant";
+                          } else if (variables.ulm_card_cover_gate) {
+                              var icon = "mdi:gate";
+                          } else
+                              var icon = "mdi:roller-shade-closed";
                       } else
-                        if (variables.ulm_card_curtain_display_collapse_expand){
+                      if (variables.ulm_card_curtain_display_collapse_expand) {
                           var icon = "mdi:curtains";
-                        } else if (variables.ulm_card_cover_garage_small){
+                      } else if (variables.ulm_card_cover_garage_small) {
                           var icon = "mdi:garage-open";
-                        } else if (variables.ulm_card_cover_garage_large){
+                      } else if (variables.ulm_card_cover_garage_large) {
                           var icon = "mdi:garage-open-variant";
-                        } else if (variables.ulm_card_cover_gate){
+                      } else if (variables.ulm_card_cover_gate) {
                           var icon = "mdi:gate-open";
-                        }else
-                          var icon = "mdi:roller-shade";
-                    } else {
-                      if (states[entity.entity_id].attributes.current_position == 0){
-                        if (variables.ulm_card_curtain_display_collapse_expand){
-                          var icon = "mdi:curtains-closed";
-                        } else if (variables.ulm_card_cover_garage_small){
-                          var icon = "mdi:garage";
-                        } else if (variables.ulm_card_cover_garage_large){
-                          var icon = "mdi:garage-variant";
-                        } else if(variables.ulm_card_cover_gate){
-                          var icon = "mdi:gate";
-                        } else
-                          var icon = "mdi:roller-shade-closed";
                       } else
-                        if (variables.ulm_card_curtain_display_collapse_expand){
-                          var icon = "mdi:curtains";
-                        } else if(variables.ulm_card_cover_garage_small){
-                          var icon = "mdi:garage-open";
-                        } else if(variables.ulm_card_cover_garage_large){
-                          var icon = "mdi:garage-open-variant";
-                        } else if(variables.ulm_card_cover_gate){
-                          var icon = "mdi:gate-open";
-                        }
-                        else
                           var icon = "mdi:roller-shade";
-                    }
-                    return icon ;
+                  } else {
+                      if (states[entity.entity_id].attributes.current_position == 0) {
+                          if (variables.ulm_card_curtain_display_collapse_expand) {
+                              var icon = "mdi:curtains-closed";
+                          } else if (variables.ulm_card_cover_garage_small) {
+                              var icon = "mdi:garage";
+                          } else if (variables.ulm_card_cover_garage_large) {
+                              var icon = "mdi:garage-variant";
+                          } else if (variables.ulm_card_cover_gate) {
+                              var icon = "mdi:gate";
+                          } else
+                              var icon = "mdi:roller-shade-closed";
+                      } else
+                      if (variables.ulm_card_curtain_display_collapse_expand) {
+                          var icon = "mdi:curtains";
+                      } else if (variables.ulm_card_cover_garage_small) {
+                          var icon = "mdi:garage-open";
+                      } else if (variables.ulm_card_cover_garage_large) {
+                          var icon = "mdi:garage-open-variant";
+                      } else if (variables.ulm_card_cover_gate) {
+                          var icon = "mdi:gate-open";
+                      } else
+                          var icon = "mdi:roller-shade";
+                  }
+                  return icon;
                 ]]]
               styles:
                 icon:
                   - color: >
                       [[[
-                          if (typeof states[entity.entity_id].attributes.current_position === "undefined"){
-                            if (states[entity.entity_id].state == "closed"){
-                              return 'rgba(var(--color-theme),0.2)';
+                        if (typeof states[entity.entity_id].attributes.current_position === "undefined") {
+                            if (states[entity.entity_id].state == "closed") {
+                                return 'rgba(var(--color-theme),0.2)';
                             } else
-                              return 'rgba(var(--color-blue),1)'
-                          } else {
-                            if (states[entity.entity_id].attributes.current_position == 0){
-                              return 'rgba(var(--color-theme),0.2)';
+                                return 'rgba(var(--color-blue),1)'
+                        } else {
+                            if (states[entity.entity_id].attributes.current_position == 0) {
+                                return 'rgba(var(--color-theme),0.2)';
                             } else {
-                              return 'rgba(var(--color-blue),1)'
+                                return 'rgba(var(--color-blue),1)'
                             }
-                          }
+                        }
                       ]]]
                 img_cell:
                   - background-color: >
                       [[[
-                          if (typeof states[entity.entity_id].attributes.current_position === "undefined"){
-                            if (states[entity.entity_id].state == "closed"){
-                              return 'rgba(var(--color-theme),0.05)';
+                        if (typeof states[entity.entity_id].attributes.current_position === "undefined") {
+                            if (states[entity.entity_id].state == "closed") {
+                                return 'rgba(var(--color-theme),0.05)';
                             } else
-                              return 'rgba(var(--color-blue),0.2)';
-                          } else {
-                            if (states[entity.entity_id].attributes.current_position == 0){
-                              return 'rgba(var(--color-theme),0.05)';
+                                return 'rgba(var(--color-blue),0.2)';
+                        } else {
+                            if (states[entity.entity_id].attributes.current_position == 0) {
+                                return 'rgba(var(--color-theme),0.05)';
                             } else {
-                              return 'rgba(var(--color-blue),0.2)';
+                                return 'rgba(var(--color-blue),0.2)';
                             }
-                          }
+                        }
                       ]]]
           item2:
             card:
@@ -223,31 +222,31 @@ card_cover:
               name: "[[[ return variables.ulm_card_cover_name ]]]"
               label: >
                 [[[
-                  if (entity.state != "unavailable"){
-                      if (typeof states[entity.entity_id].attributes.current_position === "undefined"){
-                        if (states[entity.entity_id].state == "closed"){
-                          return variables.ulm_translation_state;
-                        } else
-                          return variables.ulm_translation_state;
+                  if (entity.state != "unavailable") {
+                      if (typeof states[entity.entity_id].attributes.current_position === "undefined") {
+                          if (states[entity.entity_id].state == "closed") {
+                              return variables.ulm_translation_state;
+                          } else
+                              return variables.ulm_translation_state;
                       } else {
-                        if (states[entity.entity_id].attributes.current_position == 0){
-                          return variables.ulm_translation_state;
-                        } else {
-                          var position = states[entity.entity_id].attributes.current_position;
-                          if (variables.ulm_card_invert_percent == True){
-                            if (position == 100){
-                              var state = variables.ulm_card_cover_closed;
-                            } else {
-                              var state = variables.ulm_card_cover_open;
-                            } 
-                            return state + " • " + (100 - position) + "%" ;
+                          if (states[entity.entity_id].attributes.current_position == 0) {
+                              return variables.ulm_translation_state;
                           } else {
-                            return variables.ulm_translation_state + " • " + position + "%" ;
+                              var position = states[entity.entity_id].attributes.current_position;
+                              if (variables.ulm_card_invert_percent == True) {
+                                  if (position == 100) {
+                                      var state = variables.ulm_card_cover_closed;
+                                  } else {
+                                      var state = variables.ulm_card_cover_open;
+                                  }
+                                  return state + " • " + (100 - position) + "%";
+                              } else {
+                                  return variables.ulm_translation_state + " • " + position + "%";
+                              }
                           }
-                        }
                       }
                   } else {
-                    return variables.ulm_translation_state;
+                      return variables.ulm_translation_state;
                   }
                 ]]]
               show_last_changed: "[[[ return variables.ulm_show_last_changed; ]]]"
@@ -293,10 +292,10 @@ card_cover:
               icon: >-
                 [[[
                   if (variables.ulm_card_cover_display_left_right){
-                    return "mdi:arrow-left";
+                      return "mdi:arrow-left";
                   }
                   if (variables.ulm_card_curtain_display_collapse_expand || variables.ulm_card_cover_gate){
-                    return "mdi:arrow-collapse-horizontal";
+                      return "mdi:arrow-collapse-horizontal";
                   }
                   return "mdi:arrow-down";
                 ]]]
@@ -347,10 +346,10 @@ card_cover:
               icon: >-
                 [[[
                   if (variables.ulm_card_cover_display_left_right){
-                    return "mdi:arrow-right";
+                      return "mdi:arrow-right";
                   }
                   if (variables.ulm_card_curtain_display_collapse_expand || variables.ulm_card_cover_gate){
-                    return "mdi:arrow-expand-horizontal";
+                      return "mdi:arrow-expand-horizontal";
                   }
                   return "mdi:arrow-up";
                 ]]]
@@ -362,21 +361,21 @@ card_cover:
         height: "42px"
         mainSliderColor: >
           [[[
-              if (entity.state == "unavailable"){
+            if (entity.state == "unavailable"){
                 return "rgba(var(--color-grey),1)";
-              }
-              else{
+            }
+            else{
                 return "rgba(var(--color-blue),1)";
-              }
+            }
           ]]]
         secondarySliderColor: >
           [[[
-              if (entity.state == "unavailable"){
+            if (entity.state == "unavailable"){
                 return "rgba(var(--color-grey),0.2)";
-              }
-              else{
+            }
+            else{
                 return "rgba(var(--color-blue),0.2)";
-              }
+            }
           ]]]
         mainSliderColorOff: "rgba(var(--color-theme),0.05)"
         secondarySliderColorOff: "rgba(var(--color-theme),0.05)"
@@ -428,7 +427,7 @@ card_cover:
                 service: "cover.close_cover_tilt"
                 service_data:
                   entity_id: "[[[ return entity.entity_id ]]]"
-              icon: "mdi:arrow-bottom-left" 
+              icon: "mdi:arrow-bottom-left"
           item2:
             card:
               type: "custom:button-card"

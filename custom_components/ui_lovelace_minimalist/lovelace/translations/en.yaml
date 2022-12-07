@@ -20,4 +20,3 @@ card_cover_language_variables:
   variables:
     ulm_card_cover_closed: "Closed"
     ulm_card_cover_open: "Open"
-
