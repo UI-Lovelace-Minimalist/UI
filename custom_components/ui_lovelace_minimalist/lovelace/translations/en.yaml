@@ -18,5 +18,7 @@ ulm_language_variables:
 
 card_cover_language_variables:
   variables:
-    ulm_card_cover_closed: "Closed"
-    ulm_card_cover_open: "Open"
+    ulm_translation_cover_closed: "Closed"
+    ulm_translation__cover_open: "Open"
+    ulm_translation_cover_tilt_left: "Tilt Left"
+    ulm_translation_cover_tilt_right: "Tilt Right"

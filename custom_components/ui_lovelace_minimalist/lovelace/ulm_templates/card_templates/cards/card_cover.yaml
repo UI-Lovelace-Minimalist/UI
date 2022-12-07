@@ -235,9 +235,9 @@ card_cover:
                               var position = states[entity.entity_id].attributes.current_position;
                               if (variables.ulm_card_invert_percent == True) {
                                   if (position == 100) {
-                                      var state = variables.ulm_card_cover_closed;
+                                      var state = variables.ulm_translation_cover_closed;
                                   } else {
-                                      var state = variables.ulm_card_cover_open;
+                                      var state = variables.ulm_translation_cover_open;
                                   }
                                   return state + " • " + (100 - position) + "%";
                               } else {
