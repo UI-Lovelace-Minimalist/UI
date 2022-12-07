@@ -93,14 +93,14 @@ card_cover:
               }
             ]]]
       item4:
-      - display: >
-          [[[
-            if (variables.ulm_card_cover_enable_tilt) {
-                return "block";
-            } else {
-                return "none";
-            }
-          ]]]
+        - display: >
+            [[[
+              if (variables.ulm_card_cover_enable_tilt) {
+                  return "block";
+              } else {
+                  return "none";
+              }
+            ]]]
   custom_fields:
     item1:
       card:
