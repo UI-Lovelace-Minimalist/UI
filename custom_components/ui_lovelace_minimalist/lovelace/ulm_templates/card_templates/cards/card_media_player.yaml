@@ -49,7 +49,7 @@ card_media_player:
             }
             if (variables.ulm_card_media_player_enable_volume_buttons){
               rows = rows + " min-content";
-            }           
+            }
             return rows;
           ]]]
       - row-gap: |-
@@ -136,7 +136,7 @@ card_media_player:
                   ? 'white'
                   : 'rgba(var(--color-theme), 0.9)'
                 ]]]
-    item1: # Entity Button
+    item1:
       card:
         type: "custom:button-card"
         custom_fields:
@@ -273,7 +273,7 @@ card_media_player:
                   - background: "none"
                   - border-radius: "0"
                   - box-shadow: "none"
-    item2: # Controls
+    item2:
       card:
         type: "custom:button-card"
         template: "list_4_items"
@@ -480,7 +480,7 @@ card_media_player:
                       type: "custom:button-card"
                       template: "popup_media_player_source_card"
                       entity: "[[[ return entity.entity_id; ]]]"
-    item3: # Volume Slider
+    item3:
       card:
         type: "custom:my-slider"
         entity: "[[[ return entity.entity_id ]]]"
@@ -510,7 +510,7 @@ card_media_player:
             background-color: transparent;
             box-shadow: none;
           }
-      item4: # Volume Control Buttons
+      item4:
         card:
           type: "custom:button-card"
           template: "list_3_items"
