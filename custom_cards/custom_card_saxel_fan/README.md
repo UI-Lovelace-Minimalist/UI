@@ -124,7 +124,7 @@ This card needs the following to function correctly:
     <td>ulm_button_service</td>
     <td>fan.toggle</td>
     <td>no</td>
-    <td>Name ofthe Service Call on button press. Default: fan.oscillate</td>
+    <td>Name of the Service Call on button press. Default: fan.oscillate</td>
   </tr>
   <tr>
     <td>oscillate_attribute</td>
