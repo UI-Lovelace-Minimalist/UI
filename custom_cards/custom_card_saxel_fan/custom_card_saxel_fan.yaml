@@ -57,34 +57,35 @@ custom_card_saxel_fan_blue:
 
 # Common template, don't use
 custom_card_saxel_fan_common:
-  variables:
-    ulm_card_fan_slider_temp_attribute: "temp"
-    ulm_card_fan_slider_hum_attribute: "hum"
-    always_show_attributes: false
-    collapsable: true
-    mainSliderColor:
-    secondarySliderColor:
-    ulm_show_button: true
-    ulm_button_icon: "mdi:rotate-3d-variant"
-    ulm_button_service: "fan.oscillate"
-    oscillate_attribute: "oscillate"
   template:
     - "ulm_translation_engine"
     - "ulm_language_variables"
     - "icon_info_bg"
+  variables:
+    mainSliderColor:
+    secondarySliderColor:
+    ulm_card_fan_horizontal: false
+    collapsable: true
+    ulm_card_fan_temp_attribute: "temp"
+    ulm_card_fan_hum_attribute: "hum"
+    always_show_attributes: false
+    ulm_show_button: true
+    ulm_button_icon: "mdi:rotate-3d-variant"
+    ulm_button_service: "fan.oscillate"
+    oscillate_attribute: "oscillate"
   hold_action:
     action: "more-info"
   label: |-
     [[[
       if (entity.state != 'unavailable') {
           if (variables.ulm_card_fan_slider_temp_attribute != False) {
-              var temp = Math.round(entity.attributes[variables.ulm_card_fan_slider_temp_attribute]);
+              var temp = Math.round(entity.attributes[variables.ulm_card_fan_temp_attribute]);
               let temp_str = ' • ' + (temp ? temp : '0') + '°C';
           } else {
               let temp_str = ''
           }
           if (variables.ulm_card_fan_slider_hum_attribute != False) {
-              var hum = Math.round(entity.attributes[variables.ulm_card_fan_slider_hum_attribute]);
+              var hum = Math.round(entity.attributes[variables.ulm_card_fan_hum_attribute]);
               let hum_str = ' • ' + (hum ? hum : '0') + '%';
           } else {
               let hum_str = ''
@@ -113,13 +114,35 @@ custom_card_saxel_fan_common:
     grid:
       - grid-template-areas: >
           [[[
-            if (!variables.ulm_show_button) {
-              return "'i n n' 'i l l' 'slider slider slider'"
+            if (!variables.ulm_card_fan_horizontal) {
+              if (!variables.ulm_show_button) {
+                return "'i n n slider slider slider' 'i l l . slider slider slider'"
+              } else {
+                return "'i n n slider slider button' 'i l l . slider slider button'"
+              }
             } else {
-              return "'i n n' 'i l l' 'slider slider button'"
+              if (!variables.ulm_show_button) {
+                return "'i n n' 'i l l' 'slider slider slider'"
+              } else {
+                return "'i n n' 'i l l' 'slider slider button'"
+            }
           ]]]
-      - grid-template-columns: "min-content 2fr 1fr"
-      - grid-template-rows: "min-content min-content min-content"
+      - grid-template-columns: >
+          [[[
+            if (!variables.ulm_card_fan_horizontal) {
+              return "min-content 2fr 1fr 1fr 1fr 1fr"
+            } else {
+              return "min-content 2fr 1fr"
+            }
+          ]]]
+      - grid-template-rows:
+          [[[
+            if (!variables.ulm_card_fan_horizontal) {
+              return "min-content min-content"
+            } else {
+              return "min-content min-content min-content"
+            }
+          ]]]
     custom_fields:
       slider:
         - margin-top: |-
