@@ -109,6 +109,12 @@ This card needs the following to function correctly:
     <td>true/false if the fan speed row should collapse when the fan is turned off. Default: true</td>
   </tr>
   <tr>
+    <td>ulm_card_fan_horizontal</td>
+    <td>true</td>
+    <td>no</td>
+    <td>Single Line Horizontal Control. Collapsable MUST be false for this currently. Default: false</td>
+  </tr>
+  <tr>
     <td>ulm_show_button</td>
     <td>false</td>
     <td>no</td>

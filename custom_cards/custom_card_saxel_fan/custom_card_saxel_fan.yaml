@@ -135,7 +135,7 @@ custom_card_saxel_fan_common:
               return "min-content 2fr 1fr"
             }
           ]]]
-      - grid-template-rows:
+      - grid-template-rows: >
           [[[
             if (!variables.ulm_card_fan_horizontal) {
               return "min-content min-content"
