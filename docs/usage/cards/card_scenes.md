@@ -30,9 +30,11 @@ This card is part of the Welcome Scenes card and can be used separately to only 
 | _entity_id  |     | :material-close: | Support almost all types of entities <br> Scenes do always show as off |
 | _icon |    | :material-close: | The icon to show |
 | _name  |      | :material-close: | The name to show|
-| _color  |  Random    | :material-close: | Color of the icon <br> Can choose between: `blue`, `red`, `green`, `yellow`, `pink`, `purple` <br> If not specified, it will take a random color  |
+| _color  |  Random    | :material-close: | Color of the icon <br> Can choose between: `blue`, `red`, `green`, `yellow`, `pink`, `purple` or pass a css variable such as `var(--google-blue)` or a `rgb`/`rgba` like `rgba(var(--rgb-google-red), 1)` or a hex color code <br> If not specified, it will take a random color  |
+| _bg_color  |  _color    | :material-close: | Color of the background <br> Can choose between same options as _color and add transparency if recognized (in color list or css variable or hex code) <br> If not specified, it will take same color as icon with 80% of transparency  |
 | _state  | `on` or `playing`    | :material-close: | Define `input_select` state or give manual state for pill to be full |
 | _nav_path |     | :material-close:  | Navigate to another view <br> *Overrides other types of actions*
+| _forced  | `true`    | :material-close: | Force `state` value and corresponding design of the pill |
 
 ## Usage
 
@@ -42,18 +44,20 @@ This card is part of the Welcome Scenes card and can be used separately to only 
 
 ```yaml
 - type: "custom:button-card"
-  template: "card_scenes_welcome"
+  template: "card_scenes"
   variables:
     entity_1:
       entity_id: "<YOUR_ENTITY>"
       icon: "mdi:YOUR_ICON" #OPTIONAL
       name: "YOUR_NAME" #OPTIONAL
       color: "blue"
+      bg_color: rgba(var(--rgb-google-red), 1)
+      forced: true
     entity_2:
       entity_id: "<YOUR_ENTITY>"
       icon: "mdi:YOUR_ICON" #OPTIONAL
       name: "YOUR_NAME" #OPTIONAL
-      color: "red"
+      color: "var(--google-blue)"
     entity_3:
       entity_id: "<YOUR_ENTITY>"
       icon: "mdi:YOUR_ICON" #OPTIONAL
@@ -85,11 +89,11 @@ This card is part of the Welcome Scenes card and can be used separately to only 
 
     ```yaml
     - type: "custom:button-card"
-      template: "card_scenes_welcome"
+      template: "card_scenes"
     ```
 
 ??? note "Template Code"
 
     ```yaml title="card_welcome_scenes.yaml"
-    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_scenes_welcome.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_scenes.yaml"
     ```
