@@ -26,6 +26,7 @@ The `card_graph` shows an entity with the actual state and a *min-graph-card* in
 | ulm_card_graph_hours      |  24 | :material-close: | How much time should the graph cover, default is 24 hours. |
 | ulm_card_graph_points      | 0.5 | :material-close: | Specify amount of data points the graph should display for each hour. A larger number results in a more detailed graph. |
 | ulm_card_graph_group_by | interval | :material-close: | Specify type of grouping of data, dynamic interval, date or hour. |
+| ulm_card_graph_line_width | 3 | :material-close: | This is to adjust the line width of the graphs. |
 
 ## Usage
 
@@ -42,6 +43,7 @@ The `card_graph` shows an entity with the actual state and a *min-graph-card* in
       ulm_card_graph_type: fill
       ulm_card_graph_hours: 24
       ulm_card_graph_group_by: interval
+      ulm_card_graph_line_width: 3
 ```
 
 ??? note "Template Code"
