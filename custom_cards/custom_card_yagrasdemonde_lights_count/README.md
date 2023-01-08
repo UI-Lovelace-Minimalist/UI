@@ -1,5 +1,5 @@
 ---
-title: Counter Lights/Covers Card Custom-card
+title: Counter Lights/Covers/Windows Card Custom-card
 hide:
   - toc
 ---
@@ -8,27 +8,31 @@ hide:
 
 # Custom-card "Counter Lights/Cover Card"
 
-This is a `custom-card` to display number of lights on or covers open.
+This is a `custom-card` to display number of lights on or covers and windows open.
 
 ![Screenshot light mode](../../docs/assets/img/screenshot_light_count_lights.png)
+![Screenshot light mode 2](https://user-images.githubusercontent.com/83352171/211215563-7a6db228-07dc-4ca2-995c-980afcf39d48.png)
+
 ![Screenshot dark mode](../../docs/assets/img/screenshot_dark_count_lights.png)
+![Screenshot dark mode 2](https://user-images.githubusercontent.com/83352171/211215510-884a1013-44b5-49e4-9734-6c101b270f92.png)
+
 
 ## Credits
 
 Author: yagrasdemonde - 04/2022
 
-Version: 1.0.0
+Version: 1.0.1
 
 ## Changelog
 
 <details>
-<summary>1.0.0</summary>
-Initial release.
+<summary>1.0.1</summary>
+Feature improvements.
 </details>
 
 ## Requirements
 
-This card needs sensor counting lights/covers you want:
+This card needs sensor counting lights/covers/windows you want:
 
 ```yaml
 template:
@@ -54,6 +58,15 @@ template:
               states.cover.livingroom2,
               ] %}
           {{ covers | selectattr('state','eq','open') | list | count }}
+      - name: "windows open"
+        unique_id: windows_open
+        icon: mdi:window-open
+        state: >
+          {% set binary_sensors = [
+              states.binary_sensor.window1,
+              states.binary_sensor.window2,
+              ] %}
+          {{ binary_sensors | selectattr('state','eq','on') | list | count }}
 ```
 
 ## Usage
@@ -75,6 +88,17 @@ For covers
   variables:
     ulm_custom_card_yagrasdemonde_lights_count_type: "cover"
     ulm_custom_card_yagrasdemonde_lights_count_icon_off: "mdi:window-shutter"
+    ulm_custom_card_yagrasdemonde_lights_count_color: "blue"
+```
+
+For windows
+```yaml
+- type: "custom:button-card"
+  template: custom_card_yagrasdemonde_lights_count
+  entity: sensor.windows_open
+  variables:
+    ulm_custom_card_yagrasdemonde_lights_count_icon_off: "mdi:window-open"
+    ulm_custom_card_yagrasdemonde_lights_count_type: "cover"
     ulm_custom_card_yagrasdemonde_lights_count_color: "blue"
 ```
 
