@@ -56,6 +56,20 @@ template:
           {{ covers | selectattr('state','eq','open') | list | count }}
 ```
 
+### Using Groups
+
+If you want a group entity instead of a single explicit.
+
+```yaml
+template:
+  - sensor:
+      - name: "All Lights on"
+        unique_id: sensor_all_lights_on
+        icon: mdi:lightbulb-on-outline
+        state: >
+          {{ expand('group.all_lights') |  selectattr('state','eq','on') | list | count }
+```
+
 ## Usage
 
 For lights
