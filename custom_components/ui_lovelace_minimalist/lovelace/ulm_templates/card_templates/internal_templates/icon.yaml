@@ -1,11 +1,34 @@
 ---
 ### Icon ###
 icon:
+  variables:
+    ulm_notification_state: ""
+    ulm_notification_icon: "mdi:exclamation"
+    ulm_notification_color: "rgba(var(--color-red),1)"
+    ulm_notification_bg_color: "var(--primary-background-color)"
   color: "var(--google-grey)"
   show_icon: true
   show_label: false
   show_name: false
   state:
+    - styles:
+        custom_fields:
+          notification_custom:
+            - border-radius: "50%"
+            - position: "absolute"
+            - left: "24px"
+            - top: "-2px"
+            - height: "16px"
+            - width: "16px"
+            - border: "2px solid var(--card-background-color)"
+            - font-size: "12px"
+            - line-height: "14px"
+            - background-color: >
+                [[[
+                  return variables.ulm_notification_bg_color;
+                ]]]
+      value: "[[[ return entity.state == variables.ulm_notification_state ]]]"
+      operator: "template"
     - styles:
         custom_fields:
           notification:
@@ -41,6 +64,12 @@ icon:
       - box-shadow: "none"
       - padding: "0px"
   custom_fields:
+    notification_custom: >
+      [[[
+        if (entity.state ==variables.ulm_notification_state){
+          return `<ha-icon icon=${variables.ulm_notification_icon} style="width: 12px; height: 12px; color: ${variables.ulm_notification_color};"></ha-icon>`
+        }
+      ]]]
     notification: >
       [[[
         if (entity.state =="unavailable"){
