@@ -13,6 +13,7 @@ card_graph:
     ulm_card_graph_type: "fill"
     ulm_card_graph_points: "0.5"
     ulm_card_graph_group_by: "interval"
+    ulm_card_graph_line_width: 5
   triggers_update: "all"
   custom_fields:
     item1:
@@ -53,6 +54,7 @@ card_graph:
         hours_to_show: "[[[ return variables.ulm_card_graph_hours; ]]]"
         points_per_hour: "[[[ return variables.ulm_card_graph_points; ]]]"
         group_by: "[[[ return variables.ulm_card_graph_group_by; ]]]"
+        line_width: "[[[ return variables.ulm_card_graph_line_width; ]]]"
         style: |
           ha-card {
             box-shadow: none;
