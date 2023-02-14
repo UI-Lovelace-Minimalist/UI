@@ -10,8 +10,6 @@ card_cover:
     ulm_card_cover_name: "[[[ return entity.attributes.friendly_name ]]]"
     ulm_card_invert_percent: false
     ulm_card_cover_display_left_right: false
-    ulm_card_curtain_display_collapse_expand: false
-    ulm_card_cover_garage_small: false
     ulm_card_cover_garage_large: false
     ulm_card_cover_gate: false
     ulm_card_cover_enable_controls: false
@@ -20,6 +18,7 @@ card_cover:
     ulm_card_cover_enable_horizontal: false
     ulm_card_cover_enable_popup: false
     ulm_show_last_changed: false
+    ulm_card_cover_icon: false
   show_icon: false
   show_name: false
   show_label: false
@@ -120,57 +119,43 @@ card_cover:
                   }
                   return vars;
                 ]]]
-              icon: |
+              icon: >
                 [[[
-                  var icon = "mdi:help-circle";
-                  if (typeof states[entity.entity_id].attributes.current_position === "undefined") {
-                      if (states[entity.entity_id].state == "closed") {
-                          if (variables.ulm_card_curtain_display_collapse_expand) {
-                              var icon = "mdi:curtains-closed";
-                          } else if (variables.ulm_card_cover_garage_small) {
-                              var icon = "mdi:garage";
-                          } else if (variables.ulm_card_cover_garage_large) {
-                              var icon = "mdi:garage-variant";
-                          } else if (variables.ulm_card_cover_gate) {
-                              var icon = "mdi:gate";
-                          } else
-                              var icon = "mdi:roller-shade-closed";
-                      } else
-                      if (variables.ulm_card_curtain_display_collapse_expand) {
-                          var icon = "mdi:curtains";
-                      } else if (variables.ulm_card_cover_garage_small) {
-                          var icon = "mdi:garage-open";
-                      } else if (variables.ulm_card_cover_garage_large) {
-                          var icon = "mdi:garage-open-variant";
-                      } else if (variables.ulm_card_cover_gate) {
-                          var icon = "mdi:gate-open";
-                      } else
-                          var icon = "mdi:roller-shade";
-                  } else {
-                      if (states[entity.entity_id].attributes.current_position == 0) {
-                          if (variables.ulm_card_curtain_display_collapse_expand) {
-                              var icon = "mdi:curtains-closed";
-                          } else if (variables.ulm_card_cover_garage_small) {
-                              var icon = "mdi:garage";
-                          } else if (variables.ulm_card_cover_garage_large) {
-                              var icon = "mdi:garage-variant";
-                          } else if (variables.ulm_card_cover_gate) {
-                              var icon = "mdi:gate";
-                          } else
-                              var icon = "mdi:roller-shade-closed";
-                      } else
-                      if (variables.ulm_card_curtain_display_collapse_expand) {
-                          var icon = "mdi:curtains";
-                      } else if (variables.ulm_card_cover_garage_small) {
-                          var icon = "mdi:garage-open";
-                      } else if (variables.ulm_card_cover_garage_large) {
-                          var icon = "mdi:garage-open-variant";
-                      } else if (variables.ulm_card_cover_gate) {
-                          var icon = "mdi:gate-open";
-                      } else
-                          var icon = "mdi:roller-shade";
+                  var icon = entity.attributes.icon || "mdi:help-circle";
+                  var icon_state = {
+                    "open": "open",
+                    "opening": "open",
+                    "closed": "closed",
+                    "closing": "closed"
+                  };
+                  if(entity.attributes?.device_class){
+                    var device_class = entity.attributes?.device_class;
                   }
-                  return icon;
+                  var icon_open = {
+                    "awning": "mdi:window-open",
+                    "blind": "mdi:blinds-open",
+                    "curtain": "mdi:curtains",
+                    "damper": "mdi:circle-outline",
+                    "door": "mdi:door-open",
+                    "garage": variables.ulm_card_cover_garage_large ? "mdi:garage-open-variant" : "mdi:garage-open",
+                    "gate": "mdi:gate-open",
+                    "shade": "mdi:roller-shade",
+                    "shutter": "mdi:window-shutter-open",
+                    "window": "mdi:window-open",
+                  };
+                  var icon_closed = {
+                    "awning": "mdi:window-closed",
+                    "blind": "mdi:blinds",
+                    "curtain": "mdi:curtains-closed",
+                    "damper": "mdi:circle-slice-8",
+                    "door": "mdi:door-closed",
+                    "garage": variables.ulm_card_cover_garage_large ? "mdi:garage-variant" : "mdi:garage",
+                    "gate": "mdi:gate",
+                    "shade": "mdi:roller-shade-closed",
+                    "shutter": "mdi:window-shutter",
+                    "window": "mdi:window-closed",
+                  };
+                  return variables.ulm_card_cover_icon || (icon_state[entity.state]=='open' ? icon_open[device_class] : icon_closed[device_class]) || icon
                 ]]]
               styles:
                 icon:
@@ -233,7 +218,7 @@ card_cover:
                               return variables.ulm_translation_state;
                           } else {
                               var position = states[entity.entity_id].attributes.current_position;
-                              if (variables.ulm_card_invert_percent == True) {
+                              if (variables.ulm_card_invert_percent) {
                                   if (position == 100) {
                                       var state = variables.ulm_translation_cover_closed;
                                   } else {
