@@ -18,6 +18,7 @@ The `card_navigate` is for navigating inside your HA dashboard(s).
 | ulm_card_navigate_path     |         | :material-check: | The path to your lovelace dashboard |
 | ulm_card_navigate_title |   | :material-check: | Title to show for the link |
 | ulm_card_navigate_icon |   | :material-check: | Icon to show |
+| ulm_card_navigate_color |  Blue | No | Color of Icon |
 
 ## Usage
 
@@ -28,6 +29,7 @@ The `card_navigate` is for navigating inside your HA dashboard(s).
     ulm_card_navigate_path: /ui-lovelace-minimalist/media
     ulm_card_navigate_title: Media
     ulm_card_navigate_icon: mdi:television
+    ulm_card_navigate_color: var(--color-red)
 ```
 
 ??? note "Template Code"
