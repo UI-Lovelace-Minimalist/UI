@@ -24,18 +24,26 @@ This is done by:
 
     Check if you have applied the Minimalist theme. Go to User_profile --> theme
 
+??? info "Weird border lines after updating to HA `2022.11.0`"
+
+    1. Check in Minimalist version `v1.1.6` or higher is installed
+    2. Check in `config/themes/` if this line is added to the minimalist theme files:
+    ```yaml
+        # fix added border-lines in 2022.11
+        ha-card-border-width: "0px"
+    ```
+    3. Go to the affected dashboard on a PC and hit `C` on your keyboard. Then select `reload Themes`.
+    <img width="520" alt="image" src="https://user-images.githubusercontent.com/68892092/200546088-86babad3-7737-4df5-87f0-3469ad301e4a.png">
+
 ??? info "Custom element doesn't exist"
 
     1. Check if you did install all [dependencies](https://ui-lovelace-minimalist.github.io/UI/setup/download/#prerequisites_1) or checked the box to let UI-Minimalist them.
-    2. Clear your cache by clicking `CTRL + F5` on Windows or `SHIFT + reload` on Mac
+    2. (additional) If the dependencies are installed manually check if all [resources](https://my.home-assistant.io/redirect/lovelace_resources/) are added right.
+    3. Clear your cache by clicking `CTRL + F5` on Windows or `SHIFT + reload` on Mac.
 
 ??? info "Popups do not show up"
 
-    1.  Check if you have installed Browser_mod correctly by adding to your `configuration.yaml` file:
-
-        ```yaml
-        browser_mod:
-        ```
+    1.  Check if you have installed [Browser_mod V2](https://github.com/thomasloven/hass-browser_mod#installation-instructions) correctly.
     2.  Check if you followed the card specific way to enable popups <br>
         *This is either with adding a template or setting a variable to `true`*
 
