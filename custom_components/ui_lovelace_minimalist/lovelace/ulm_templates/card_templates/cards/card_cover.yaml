@@ -7,15 +7,17 @@ card_cover:
   show_last_changed: false
   variables:
     ulm_card_cover_name: "[[[ return entity.attributes.friendly_name ]]]"
+    ulm_card_invert_percent: false
     ulm_card_cover_display_left_right: false
-    ulm_card_curtain_display_collapse_expand: false
-    ulm_card_cover_garage: false
+    ulm_card_cover_garage_large: false
     ulm_card_cover_gate: false
     ulm_card_cover_enable_controls: false
     ulm_card_cover_enable_slider: false
+    ulm_card_cover_enable_tilt: false
     ulm_card_cover_enable_horizontal: false
     ulm_card_cover_enable_popup: false
     ulm_show_last_changed: false
+    ulm_card_cover_icon: false
   show_icon: false
   show_name: false
   show_label: false
@@ -23,40 +25,46 @@ card_cover:
     grid:
       - grid-template-areas: >
           [[[
-                var areas = [];
-                if (variables.ulm_card_cover_enable_horizontal) {
-                  if ( variables.ulm_card_cover_enable_slider) {
-                      return "\"item1 item3\"";
-                  } else {
-                    return "\"item1 item2\"";
-                  }
+            var areas = [];
+            if (variables.ulm_card_cover_enable_horizontal) {
+                if (variables.ulm_card_cover_enable_slider) {
+                    return "\"item1 item3\"";
                 } else {
-                  areas.push("item1 item1");
-                  if ( variables.ulm_card_cover_enable_controls) {
-                      areas.push("item2 item2");
-                  }
-                  if ( variables.ulm_card_cover_enable_slider) {
-                      areas.push("item3 item3");
-                  }
-              }
-                return "\"" + areas.join("\" \"") + "\"";
+                    return "\"item1 item2\"";
+                }
+            } else {
+                areas.push("item1 item1");
+                if (variables.ulm_card_cover_enable_controls) {
+                    areas.push("item2 item2");
+                }
+                if (variables.ulm_card_cover_enable_slider) {
+                    areas.push("item3 item3");
+                }
+                if (variables.ulm_card_cover_enable_tilt) {
+                    areas.push("item4 item4");
+                }
+            }
+            return "\"" + areas.join("\" \"") + "\"";
           ]]]
       - grid-template-columns: "1fr 1fr"
       - grid-template-rows: >
           [[[
-                var rows = [];
-                rows.push("min-content");
-                if (variables.ulm_card_cover_enable_horizontal) {
-                  return "min-content";
-                } else {
-                  if ( variables.ulm_card_cover_enable_controls) {
-                      rows.push("min-content");
-                  }
-                  if ( variables.ulm_card_cover_enable_slider) {
-                      rows.push("min-content");
-                  }
+            var rows = [];
+            rows.push("min-content");
+            if (variables.ulm_card_cover_enable_horizontal) {
+                return "min-content";
+            } else {
+                if (variables.ulm_card_cover_enable_controls) {
+                    rows.push("min-content");
                 }
-                return rows.join(" ");
+                if (variables.ulm_card_cover_enable_slider) {
+                    rows.push("min-content");
+                }
+                if (variables.ulm_card_cover_enable_tilt) {
+                    rows.push("min-content");
+                }
+            }
+            return rows.join(" ");
           ]]]
       - row-gap: "12px"
     card:
@@ -67,20 +75,29 @@ card_cover:
       item2:
         - display: >
             [[[
-                  if (variables.ulm_card_cover_enable_controls) {
-                      return "block";
-                  } else {
-                      return "none";
-                  }
+              if (variables.ulm_card_cover_enable_controls) {
+                  return "block";
+              } else {
+                  return "none";
+              }
             ]]]
       item3:
         - display: >
             [[[
-                  if (variables.ulm_card_cover_enable_slider) {
-                      return "block";
-                  } else {
-                      return "none";
-                  }
+              if (variables.ulm_card_cover_enable_slider) {
+                  return "block";
+              } else {
+                  return "none";
+              }
+            ]]]
+      item4:
+        - display: >
+            [[[
+              if (variables.ulm_card_cover_enable_tilt) {
+                  return "block";
+              } else {
+                  return "none";
+              }
             ]]]
   custom_fields:
     item1:
@@ -94,90 +111,103 @@ card_cover:
               variables: >
                 [[[
                   let vars = variables;
-                  if(variables.ulm_card_cover_enable_popup) {
-                    vars.ulm_custom_popup = {
-                      'template': 'popup_cover'
-                    };
+                  if (variables.ulm_card_cover_enable_popup) {
+                      vars.ulm_custom_popup = {
+                          'template': 'popup_cover'
+                      };
                   }
                   return vars;
                 ]]]
-              icon: |
+              icon: >
                 [[[
-                    var icon = "mdi:help-circle";
-                    if (typeof states[entity.entity_id].attributes.current_position === "undefined"){
-                      if (states[entity.entity_id].state == "closed"){
-                        if (variables.ulm_card_curtain_display_collapse_expand){
-                          var icon = "mdi:curtains-closed";
-                        } else if (variables.ulm_card_cover_garage){
-                          var icon = "mdi:garage-variant";
-                        } else if (variables.ulm_card_cover_gate){
-                          var icon = "mdi:gate";
-                        } else
-                          var icon = "mdi:roller-shade-closed";
-                      } else
-                        if (variables.ulm_card_curtain_display_collapse_expand){
-                          var icon = "mdi:curtains";
-                        } else if (variables.ulm_card_cover_garage){
-                          var icon = "mdi:garage-open-variant";
-                        } else if (variables.ulm_card_cover_gate){
-                          var icon = "mdi:gate-open";
-                        }else
-                          var icon = "mdi:roller-shade";
-                    } else {
-                      if (states[entity.entity_id].attributes.current_position == 0){
-                        if (variables.ulm_card_curtain_display_collapse_expand){
-                          var icon = "mdi:curtains-closed";
-                        } else if (variables.ulm_card_cover_garage){
-                          var icon = "mdi:garage-variant";
-                        } else if(variables.ulm_card_cover_gate){
-                          var icon = "mdi:gate";
-                        } else
-                          var icon = "mdi:roller-shade-closed";
-                      } else
-                        if (variables.ulm_card_curtain_display_collapse_expand){
-                          var icon = "mdi:curtains";
-                        } else if(variables.ulm_card_cover_garage){
-                          var icon = "mdi:garage-open-variant";
-                        } else if(variables.ulm_card_cover_gate){
-                          var icon = "mdi:gate-open";
-                        }
-                        else
-                          var icon = "mdi:roller-shade";
-                    }
-                    return icon ;
+                  var icon = entity.attributes.icon || "mdi:help-circle";
+                  var icon_state = {
+                    "open": "open",
+                    "opening": "open",
+                    "closed": "closed",
+                    "closing": "closed"
+                  };
+                  if(entity.attributes?.device_class){
+                    var device_class = entity.attributes?.device_class;
+                  }
+                  var icon_open = {
+                    "awning": "mdi:window-open",
+                    "blind": "mdi:blinds-open",
+                    "curtain": "mdi:curtains",
+                    "damper": "mdi:circle-outline",
+                    "door": "mdi:door-open",
+                    "garage": variables.ulm_card_cover_garage_large ? "mdi:garage-open-variant" : "mdi:garage-open",
+                    "gate": "mdi:gate-open",
+                    "shade": "mdi:roller-shade",
+                    "shutter": "mdi:window-shutter-open",
+                    "window": "mdi:window-open",
+                  };
+                  var icon_closed = {
+                    "awning": "mdi:window-closed",
+                    "blind": "mdi:blinds",
+                    "curtain": "mdi:curtains-closed",
+                    "damper": "mdi:circle-slice-8",
+                    "door": "mdi:door-closed",
+                    "garage": variables.ulm_card_cover_garage_large ? "mdi:garage-variant" : "mdi:garage",
+                    "gate": "mdi:gate",
+                    "shade": "mdi:roller-shade-closed",
+                    "shutter": "mdi:window-shutter",
+                    "window": "mdi:window-closed",
+                  };
+                  return variables.ulm_card_cover_icon || (icon_state[entity.state]=='open' ? icon_open[device_class] : icon_closed[device_class]) || icon
                 ]]]
               styles:
                 icon:
                   - color: >
                       [[[
-                          if (typeof states[entity.entity_id].attributes.current_position === "undefined"){
-                            if (states[entity.entity_id].state == "closed"){
-                              return 'rgba(var(--color-theme),0.2)';
-                            } else
-                              return 'rgba(var(--color-blue),1)'
+                        if (typeof entity === "undefined") {
+                          if (states[entity.entity_id].state == "closed") {
+                            return 'rgba(var(--color-theme),0.2)';
                           } else {
-                            if (states[entity.entity_id].attributes.current_position == 0){
-                              return 'rgba(var(--color-theme),0.2)';
-                            } else {
-                              return 'rgba(var(--color-blue),1)'
-                            }
+                            return 'rgba(var(--color-blue),1)'
                           }
+                        }
+
+                        if (variables.ulm_card_invert_percent){
+                          if (entity.attributes.current_position == 100) {
+                            return 'rgba(var(--color-theme),0.2)';
+                          } else {
+                            return 'rgba(var(--color-blue),1)'
+                          }
+                        }
+
+                        if (entity == 0) {
+                          return 'rgba(var(--color-theme),0.2)';
+                        } else {
+                          return 'rgba(var(--color-blue),1)'
+                        }
+                        return 'rgba(var(--color-theme),0.2)'
                       ]]]
                 img_cell:
                   - background-color: >
                       [[[
-                          if (typeof states[entity.entity_id].attributes.current_position === "undefined"){
-                            if (states[entity.entity_id].state == "closed"){
-                              return 'rgba(var(--color-theme),0.05)';
-                            } else
-                              return 'rgba(var(--color-blue),0.2)';
+                        if (typeof entity === "undefined") {
+                          if (states[entity.entity_id].state == "closed") {
+                            return 'rgba(var(--color-theme),0.05)';
                           } else {
-                            if (states[entity.entity_id].attributes.current_position == 0){
-                              return 'rgba(var(--color-theme),0.05)';
-                            } else {
-                              return 'rgba(var(--color-blue),0.2)';
-                            }
+                            return 'rgba(var(--color-blue),0.2)'
                           }
+                        }
+
+                        if (variables.ulm_card_invert_percent){
+                          if (entity.attributes.current_position == 100) {
+                            return 'rgba(var(--color-theme),0.05)';
+                          } else {
+                            return 'rgba(var(--color-blue),0.2)'
+                          }
+                        }
+
+                        if (entity == 0) {
+                          return 'rgba(var(--color-theme),0.05)';
+                        } else {
+                          return 'rgba(var(--color-blue),0.2)'
+                        }
+                        return 'rgba(var(--color-theme),0.05)'
                       ]]]
           item2:
             card:
@@ -194,24 +224,37 @@ card_cover:
                   return vars;
                 ]]]
               name: "[[[ return variables.ulm_card_cover_name ]]]"
-              label: >-
+              label: >
                 [[[
-                    if (entity.state !="unavailable"){
-                      if (typeof states[entity.entity_id].attributes.current_position === "undefined"){
-                        if (states[entity.entity_id].state == "closed"){
-                          return variables.ulm_translation_state;
-                        } else
-                          return variables.ulm_translation_state;
-                      } else {
-                        if (states[entity.entity_id].attributes.current_position == 0){
-                          return variables.ulm_translation_state;
-                        } else {
-                          return variables.ulm_translation_state + " • " + (states[entity.entity_id].attributes.current_position) + "%" ;
-                        }
-                      }
-                  } else {
+                  var position = states[entity.entity_id]?.attributes?.current_position;
+                  var invert = {
+                    "closed": hass.resources[hass['language']]['component.cover.state._.open'],
+                    "closing": hass.resources[hass['language']]['component.cover.state._.opening'],
+                    "open": hass.resources[hass['language']]['component.cover.state._.closed'],
+                    "opening": hass.resources[hass['language']]['component.cover.state._.closing']
+                  };
+
+                  if(["unknown", "unavailable"].includes(entity.state)){
                     return variables.ulm_translation_state;
                   }
+
+
+                  if(variables.ulm_card_invert_percent && typeof entity !== "undefined"){
+                    if(position == 0){
+                      return invert[entity.state] + " • " + (100 - position) + "%";
+                    } else {
+                      return invert[entity.state]
+                    }
+                  }
+
+                  if (typeof entity !== "undefined"){
+                    if (entity == 0) {
+                      return variables.ulm_translation_state;
+                    } else {
+                      return variables.ulm_translation_state + " • " + position + "%";
+                    }
+                  }
+                  return variables.ulm_translation_state;
                 ]]]
               show_last_changed: "[[[ return variables.ulm_show_last_changed; ]]]"
     item2:
@@ -256,10 +299,11 @@ card_cover:
               icon: >-
                 [[[
                   if (variables.ulm_card_cover_display_left_right){
-                    return "mdi:arrow-left";
+                      return "mdi:arrow-left";
                   }
-                  if (variables.ulm_card_curtain_display_collapse_expand || variables.ulm_card_cover_gate){
-                    return "mdi:arrow-collapse-horizontal";
+                  var device_class = entity.attributes?.device_class;
+                  if (device_class == 'curtain' || device_class == 'gate'){
+                      return "mdi:arrow-collapse-horizontal";
                   }
                   return "mdi:arrow-down";
                 ]]]
@@ -310,10 +354,11 @@ card_cover:
               icon: >-
                 [[[
                   if (variables.ulm_card_cover_display_left_right){
-                    return "mdi:arrow-right";
+                      return "mdi:arrow-right";
                   }
-                  if (variables.ulm_card_curtain_display_collapse_expand || variables.ulm_card_cover_gate){
-                    return "mdi:arrow-expand-horizontal";
+                  var device_class = entity.attributes?.device_class;
+                  if (device_class == 'curtain' || device_class == 'gate'){
+                      return "mdi:arrow-expand-horizontal";
                   }
                   return "mdi:arrow-up";
                 ]]]
@@ -325,21 +370,21 @@ card_cover:
         height: "42px"
         mainSliderColor: >
           [[[
-              if (entity.state == "unavailable"){
+            if (entity.state == "unavailable"){
                 return "rgba(var(--color-grey),1)";
-              }
-              else{
+            }
+            else{
                 return "rgba(var(--color-blue),1)";
-              }
+            }
           ]]]
         secondarySliderColor: >
           [[[
-              if (entity.state == "unavailable"){
+            if (entity.state == "unavailable"){
                 return "rgba(var(--color-grey),0.2)";
-              }
-              else{
+            }
+            else{
                 return "rgba(var(--color-blue),0.2)";
-              }
+            }
           ]]]
         mainSliderColorOff: "rgba(var(--color-theme),0.05)"
         secondarySliderColorOff: "rgba(var(--color-theme),0.05)"
@@ -352,3 +397,88 @@ card_cover:
             border-radius: 14px;
             box-shadow: none;
           }
+    item4:
+      card:
+        type: "custom:button-card"
+        template: "list_3_items"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              state:
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.attributes.current_tilt_position == "0";
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.state == "closing";
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.state == "opening";
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
+              tap_action:
+                action: "call-service"
+                service: "cover.close_cover_tilt"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+              icon: "mdi:arrow-bottom-left"
+          item2:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              tap_action:
+                action: "call-service"
+                service: "cover.stop_cover_tilt"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+              icon: "mdi:stop"
+          item3:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              state:
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.attributes.current_tilt_position == "100";
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.state == "closing";
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.state == "opening";
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
+              tap_action:
+                action: "call-service"
+                service: "cover.open_cover_tilt"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+              icon: "mdi:arrow-top-right"

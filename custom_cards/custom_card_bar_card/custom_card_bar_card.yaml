@@ -22,6 +22,7 @@ custom_card_bar_card:
           - "card_generic"
         variables:
           ulm_card_generic_name: "[[[ return variables.ulm_custom_card_bar_card_name != '' ? variables.ulm_custom_card_bar_card_name : '' ]]]"
+          ulm_card_generic_icon: "[[[ return variables.ulm_custom_card_bar_card_icon != '' ? variables.ulm_custom_card_bar_card_icon : '' ]]]"
         styles:
           card:
             - box-shadow: "none"

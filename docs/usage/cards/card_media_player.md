@@ -27,6 +27,8 @@ hide:
 | ulm_card_media_player_enable_art             | false   |                  | Enable album picture on background              |
 | ulm_card_media_player_enable_controls        | false   |                  | Enable controls below the title                 |
 | ulm_card_media_player_enable_volume_slider   | false   |                  | Enable volume slider below controls             |
+| ulm_card_media_player_enable_volume_buttons  | false   |                  | Enable volume buttons below controls            |
+| ulm_card_media_player_enable_volume_adjust  | 5       |                  | Volume Adjust Amount - if not set then 1 for TV and 5 for Speaker |
 | ulm_card_media_player_collapsible            | false   |                  | Controls are collapsible when state is off      |
 | ulm_card_media_player_player_controls_entity | entity  |                  | Change the controlled entity                    |
 | ulm_card_media_player_enable_popup           | false   |                  | Enable pop-up                                   |
