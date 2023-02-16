@@ -114,6 +114,13 @@ custom_popup_imswel_person:
       service: "browser_mod.popup"
       data:
         title: "[[[ return states[variables.ulm_card_imswel_person_entity].attributes.friendly_name ]]]"
+        size: >
+          [[[
+            const mediaQuery = window.matchMedia('(max-width: 800px)')
+            if (mediaQuery.matches) {
+              return 'fullscreen'
+            }
+          ]]]
         style:
           $: >
             [[[
