@@ -439,7 +439,7 @@ popup_thermostat_temperature:
                 service: "climate.set_preset_mode"
                 service_data:
                   entity_id: "[[[ return entity.entity_id ]]]"
-                  preset_mode: "[[[ return entity.attributes.preset_mode.includes('none') ? 'none' : 'None' ]]]"
+                  preset_mode: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.includes('none') ? 'none' : 'None'} ]]]"
               styles:
                 card:
                   - background-color: "transparent"
@@ -449,7 +449,7 @@ popup_thermostat_temperature:
                   - box-shadow: "none"
               state:
                 - operator: "template"
-                  value: "[[[ return entity.attributes.preset_mode.toString().toLowerCase() == 'none' ]]]"
+                  value: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.toString().toLowerCase() == 'none'} ]]]"
                   styles:
                     card:
                       - background-color: "var(--card-background-color)"
@@ -466,7 +466,7 @@ popup_thermostat_temperature:
                 service: "climate.set_preset_mode"
                 service_data:
                   entity_id: "[[[ return entity.entity_id ]]]"
-                  preset_mode: "[[[ return entity.attributes.preset_mode.includes('away') ? 'away' : 'Away' ]]]"
+                  preset_mode: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.includes('away') ? 'away' : 'Away'} ]]]"
               styles:
                 card:
                   - background-color: "transparent"
@@ -476,7 +476,7 @@ popup_thermostat_temperature:
                   - box-shadow: "none"
               state:
                 - operator: "template"
-                  value: "[[[ return entity.attributes.preset_mode.toString().toLowerCase() == 'away' ]]]"
+                  value: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.toString().toLowerCase() == 'away'} ]]]"
                   styles:
                     card:
                       - background-color: "var(--card-background-color)"
@@ -493,7 +493,7 @@ popup_thermostat_temperature:
                 service: "climate.set_preset_mode"
                 service_data:
                   entity_id: "[[[ return entity.entity_id ]]]"
-                  preset_mode: "[[[ return entity.attributes.preset_mode.includes('comfort') ? 'comfort' : 'Comfort' ]]]"
+                  preset_mode: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.includes('comfort') ? 'comfort' : 'Comfort'} ]]]"
               styles:
                 card:
                   - background-color: "transparent"
@@ -503,7 +503,7 @@ popup_thermostat_temperature:
                   - box-shadow: "none"
               state:
                 - operator: "template"
-                  value: "[[[ return entity.attributes.preset_mode.toString().toLowerCase() == 'comfort' ]]]"
+                  value: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.toString().toLowerCase() == 'comfort'} ]]]"
                   styles:
                     card:
                       - background-color: "var(--card-background-color)"
@@ -520,7 +520,7 @@ popup_thermostat_temperature:
                 service: "climate.set_preset_mode"
                 service_data:
                   entity_id: "[[[ return entity.entity_id ]]]"
-                  preset_mode: "[[[ return entity.attributes.preset_mode.includes('home') ? 'home' : 'Home' ]]]"
+                  preset_mode: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.includes('home') ? 'home' : 'Home'} ]]]"
               styles:
                 card:
                   - background-color: "transparent"
@@ -530,7 +530,7 @@ popup_thermostat_temperature:
                   - box-shadow: "none"
               state:
                 - operator: "template"
-                  value: "[[[ return entity.attributes.preset_mode.toString().toLowerCase() == 'home' ]]]"
+                  value: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.toString().toLowerCase() == 'home'} ]]]"
                   styles:
                     card:
                       - background-color: "var(--card-background-color)"
@@ -547,7 +547,7 @@ popup_thermostat_temperature:
                 service: "climate.set_preset_mode"
                 service_data:
                   entity_id: "[[[ return entity.entity_id ]]]"
-                  preset_mode: "[[[ return entity.attributes.preset_mode.includes('sleep') ? 'sleep' : 'Sleep' ]]]"
+                  preset_mode: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.includes('sleep') ? 'sleep' : 'Sleep'} ]]]"
               styles:
                 card:
                   - background-color: "transparent"
@@ -557,7 +557,7 @@ popup_thermostat_temperature:
                   - box-shadow: "none"
               state:
                 - operator: "template"
-                  value: "[[[ return entity.attributes.preset_mode.toString().toLowerCase() == 'sleep' ]]]"
+                  value: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.toString().toLowerCase() == 'sleep'} ]]]"
                   styles:
                     card:
                       - background-color: "var(--card-background-color)"
@@ -574,7 +574,7 @@ popup_thermostat_temperature:
                 service: "climate.set_preset_mode"
                 service_data:
                   entity_id: "[[[ return entity.entity_id ]]]"
-                  preset_mode: "[[[ return entity.attributes.preset_mode.includes('activity') ? 'activity' : 'Activity' ]]]"
+                  preset_mode: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.includes('activity') ? 'activity' : 'Activity'} ]]]"
               styles:
                 card:
                   - background-color: "transparent"
@@ -584,7 +584,7 @@ popup_thermostat_temperature:
                   - box-shadow: "none"
               state:
                 - operator: "template"
-                  value: "[[[ return entity.attributes.preset_mode.toString().toLowerCase() == 'activity' ]]]"
+                  value: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.toString().toLowerCase() == 'activity'} ]]]"
                   styles:
                     card:
                       - background-color: "var(--card-background-color)"
