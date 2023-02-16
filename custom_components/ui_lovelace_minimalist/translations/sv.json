@@ -1,0 +1,60 @@
+{
+    "title": "UI Lovelace Minimalist",
+    "config": {
+        "step": {
+            "user": {
+                "title": "UI Lovelace Minimalist Inställningar",
+                "description": "",
+                "data": {
+                    "community_cards_enabled": "Aktivera möjligheten att konfigurera community kort med dessa integrationer, kräver GitHub-autentisering!"
+                }
+            },
+            "device": {
+                "title": "Väntar på enhetesaktivering"
+            },
+            "reauth_confirm": {
+                "title": "Återautentisering behövs",
+                "description": "Du måste autentisera på nytt med GitHub."
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "Endast en enda konfiguration av UI Lovelace Minimalist är tillåten.",
+            "not_setup": "UI Lovelace Minimalist är inte konfigurerat.",
+            "github": "Det gick inte att autentisera med GitHub, försök igen senare.",
+            "reauth_successful": "Återautentiseringen lyckades."
+        },
+        "progress": {
+            "wait_for_device": "1. Öppna {url} \n2.Klistra in följande nyckel för att auktorisera ULM: \n```\n{code}\n```\n"
+        }
+    },
+    "options": {
+        "step": {
+            "user": {
+                "title": "UI Lovelace Minimalist Inställningar",
+                "description": "",
+                "data": {
+                    "language": "Språk",
+                    "sidepanel_enabled": "Lägg till UI Lovelace Minimalist i sidopanelen",
+                    "sidepanel_icon": "Sidopanelsikon",
+                    "sidepanel_title": "Sidopanelstitel",
+                    "adaptive_ui_enabled": "Aktivera adaptiv Dashboard med popup-delad vy",
+                    "adaptive_ui_title": "Adaptiv paneltitel",
+                    "adaptive_ui_icon": "Adaptiv panelikon",
+                    "theme": "Tema",
+                    "include_other_cards": "Inkludera anpassade kortresurser som det beror på.",
+                    "community_cards_enabled": "Aktivera möjligheten att konfigurera community kort med dessa integrationer, kräver GitHub-autentisering!",
+                    "community_cards": "Välj Community Kort som du vill aktivera."
+                }
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "Endast en enda konfiguration av UI Lovelace Minimalist är tillåten.",
+            "not_setup": "UI Lovelace Minimalist är inte konfigurerat."
+        },
+        "error": {
+            "github_cards": "Något gick fel vid hämtning av kort från GitHub.",
+            "ack": "Du måste bekräfta alla uttalande.",
+            "gh_token": "Github Token inte inställt. Installera om denna integration för att gå igenom installationsproceduren. (Ingen anpassad konfiguration kommer att gå förlorad)"
+        }
+    }
+}
