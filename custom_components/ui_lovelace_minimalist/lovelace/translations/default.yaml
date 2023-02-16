@@ -61,13 +61,31 @@ ulm_translation_engine:
           let lang = hass["language"];
           let domain = entity.entity_id.substr(0, entity.entity_id.indexOf("."));
           var translation = hass.resources[lang]["component." + domain + ".state._." + state]
+          const now = new Date();
+          const timestamp = (new Date(state)).getTime();
+          const nowTimeStamp = now.getTime();
+          const microSecondsDiff = Math.round(timestamp - nowTimeStamp);
+          const daysDiff = Math.round(microSecondsDiff / (1000 * 60 * 60  * 24));
+          const hoursDiff = Math.round(microSecondsDiff / (1000 * 60 * 60));
+          const minutesDiff = Math.round(microSecondsDiff / (1000 * 60));
+          const secondsDiff = Math.round(microSecondsDiff / (1000));
+          const formatter = new Intl.RelativeTimeFormat(lang, { numeric: 'auto' });
+          var scale = 'day'
+          var diff = 'daysDiff'
+          if (Math.abs(secondsDiff) < 60){ scale = 'second'; diff = secondsDiff }
+          else if (Math.abs(minutesDiff) < 60){ scale = 'minute'; diff = minutesDiff }
+          else if (Math.abs(hoursDiff) < 24){ scale = 'hour'; diff = hoursDiff }
+
           if (def.includes(state)) {
             var translation = hass.resources[lang]["state.default." + state ];
           }
           else if (domain == "binary_sensor" && d_class != ''){
             var translation = hass.resources[lang]["component." + domain + ".state." + d_class + "." + state]
           }
-          return translation ? translation : state;
+          else if (d_class == 'timestamp'){
+            var translation = formatter.format(diff, scale)
+          }
+          return translation ? translation.charAt(0).toUpperCase() + translation.slice(1) : state;
         }
       ]]]
     ulm_translation_state_reverse: >
@@ -96,6 +114,21 @@ ulm_translation_engine:
           let lang = hass["language"];
           let domain = entity.entity_id.substr(0, entity.entity_id.indexOf("."));
           let unit = entity.attributes.unit_of_measurement != null ? " " + entity.attributes.unit_of_measurement : "";
+          const now = new Date();
+          const timestamp = (new Date(state)).getTime();
+          const nowTimeStamp = now.getTime();
+          const microSecondsDiff = Math.round(timestamp - nowTimeStamp);
+          const daysDiff = Math.round(microSecondsDiff / (1000 * 60 * 60  * 24));
+          const hoursDiff = Math.round(microSecondsDiff / (1000 * 60 * 60));
+          const minutesDiff = Math.round(microSecondsDiff / (1000 * 60));
+          const secondsDiff = Math.round(microSecondsDiff / (1000));
+          const formatter = new Intl.RelativeTimeFormat(lang, { numeric: 'auto' });
+
+          var scale = 'day'
+          var diff = 'daysDiff'
+          if (Math.abs(secondsDiff) < 60){ scale = 'second'; diff = secondsDiff }
+          else if (Math.abs(minutesDiff) < 60){ scale = 'minute'; diff = minutesDiff }
+          else if (Math.abs(hoursDiff) < 24){ scale = 'hour'; diff = hoursDiff }
 
           if(hass.resources[lang]["component." + domain + ".state._." + state]){
           var translation = hass.resources[lang]["component." + domain + ".state._." + state] + unit
@@ -115,7 +148,10 @@ ulm_translation_engine:
               var translation = (entity.attributes.source) + ' • ' +  ( Math.round(entity.attributes.volume_level / 0.01)) + '%' ;
             }
           }
-          return translation ? translation : state;
+          else if (d_class == 'timestamp'){
+            var translation = formatter.format(diff, scale);
+          }
+          return translation ? translation.charAt(0).toUpperCase() + translation.slice(1) : state;
         }
       ]]]
     ulm_translation_statistics: "[[[ return hass.resources[hass['language']]['ui.components.statistic-picker.statistic']; ]]]"
