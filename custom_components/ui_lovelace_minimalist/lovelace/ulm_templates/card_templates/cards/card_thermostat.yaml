@@ -231,7 +231,7 @@ card_thermostat:
                         return 0;
                       } else {
                         const unit = hass.config.unit_system.temperature
-                        const step = entity.attributes.target_temp_step || (unit == '°F' ? 1.0 : 0.5)
+                        const step = variables.ulm_card_thermostat_temp_step || entity.attributes.target_temp_step || (unit == '°F' ? 1.0 : 0.5)
                         const new_temp =  (parseFloat(entity.attributes.target_temp_high) - step)
                         return (new_temp - variables.ulm_card_thermostat_minimum_temp_spread < entity.attributes.target_temp_low ? new_temp - variables.ulm_card_thermostat_minimum_temp_spread : entity.attributes.target_temp_low);
                       }
@@ -242,7 +242,7 @@ card_thermostat:
                         return 0;
                       } else {
                         const unit = hass.config.unit_system.temperature
-                        const step = entity.attributes.target_temp_step || (unit == '°F' ? 1.0 : 0.5)
+                        const step = variables.ulm_card_thermostat_temp_step || entity.attributes.target_temp_step || (unit == '°F' ? 1.0 : 0.5)
                         return (parseFloat(entity.attributes.target_temp_high) - step)
                       }
                     ]]]
@@ -252,7 +252,7 @@ card_thermostat:
                         return 0;
                       } else {
                         const unit = hass.config.unit_system.temperature
-                        const step = entity.attributes.target_temp_step || (unit == '°F' ? 1.0 : 0.5)
+                        const step = variables.ulm_card_thermostat_temp_step || entity.attributes.target_temp_step || (unit == '°F' ? 1.0 : 0.5)
                         return (parseFloat(states[entity.entity_id].attributes.temperature) - step)
                       }
                     ]]]
@@ -309,7 +309,7 @@ card_thermostat:
                         return 0;
                       } else {
                         const unit = hass.config.unit_system.temperature
-                        const step = entity.attributes.target_temp_step || (unit == '°F' ? 1.0 : 0.5)
+                        const step = variables.ulm_card_thermostat_temp_step || entity.attributes.target_temp_step || (unit == '°F' ? 1.0 : 0.5)
                         return (parseFloat(entity.attributes.target_temp_high) + step)
                       }
                     ]]]
@@ -319,7 +319,7 @@ card_thermostat:
                         return 0;
                       } else {
                         const unit = hass.config.unit_system.temperature
-                        const step = entity.attributes.target_temp_step || (unit == '°F' ? 1.0 : 0.5)
+                        const step = variables.ulm_card_thermostat_temp_step || entity.attributes.target_temp_step || (unit == '°F' ? 1.0 : 0.5)
                         return (parseFloat(states[entity.entity_id].attributes.temperature) + step)
                       }
                     ]]]
@@ -354,7 +354,7 @@ card_thermostat:
                   target_temp_low: |
                     [[[
                       const unit = hass.config.unit_system.temperature
-                      const step = entity.attributes.target_temp_step || (unit == '°F' ? 1.0 : 0.5)
+                      const step = variables.ulm_card_thermostat_temp_step || entity.attributes.target_temp_step || (unit == '°F' ? 1.0 : 0.5)
                       return (parseFloat(entity.attributes.target_temp_low) - step)
                     ]]]
                   target_temp_high: "[[[ return entity.attributes.target_temp_high ]]]"
@@ -400,13 +400,13 @@ card_thermostat:
                   target_temp_low: |
                     [[[
                       const unit = hass.config.unit_system.temperature
-                      const step = entity.attributes.target_temp_step || (unit == '°F' ? 1.0 : 0.5)
+                      const step = variables.ulm_card_thermostat_temp_step || entity.attributes.target_temp_step || (unit == '°F' ? 1.0 : 0.5)
                       return (parseFloat(entity.attributes.target_temp_low) + step)
                     ]]]
                   target_temp_high: |
                     [[[
                       const unit = hass.config.unit_system.temperature
-                      const step = entity.attributes.target_temp_step || (unit == '°F' ? 1.0 : 0.5)
+                      const step = variables.ulm_card_thermostat_temp_step || entity.attributes.target_temp_step || (unit == '°F' ? 1.0 : 0.5)
                       const new_temp = (parseFloat(entity.attributes.target_temp_low) + step)
                       return (new_temp + variables.ulm_card_thermostat_minimum_temp_spread > entity.attributes.target_temp_high ? new_temp + variables.ulm_card_thermostat_minimum_temp_spread : entity.attributes.target_temp_high)
                     ]]]

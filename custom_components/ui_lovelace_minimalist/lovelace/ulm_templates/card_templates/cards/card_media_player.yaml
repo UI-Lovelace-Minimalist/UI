@@ -10,6 +10,8 @@ card_media_player:
     ulm_card_media_player_enable_art: false
     ulm_card_media_player_enable_controls: false
     ulm_card_media_player_enable_volume_slider: false
+    ulm_card_media_player_enable_volume_buttons: false
+    ulm_card_media_player_enable_volume_adjust: false
     ulm_card_media_player_collapsible: false
     ulm_card_media_player_player_controls_entity: "[[[ return entity.entity_id ]]]"
     ulm_card_media_player_enable_popup: false
@@ -30,6 +32,9 @@ card_media_player:
             if (variables.ulm_card_media_player_enable_volume_slider){
               areas = areas + " 'item3'";
             }
+            if (variables.ulm_card_media_player_enable_volume_buttons){
+              areas = areas + " 'item4'";
+            }
             return areas;
           ]]]
       - grid-template-columns: "1fr"
@@ -40,6 +45,9 @@ card_media_player:
               rows = rows + " min-content";
             }
             if (variables.ulm_card_media_player_enable_volume_slider){
+              rows = rows + " min-content";
+            }
+            if (variables.ulm_card_media_player_enable_volume_buttons){
               rows = rows + " min-content";
             }
             return rows;
@@ -83,6 +91,17 @@ card_media_player:
         - display: |
             [[[
               if(variables.ulm_card_media_player_enable_volume_slider) {
+                if(variables.ulm_card_media_player_collapsible){
+                return (entity.state === "off" || entity.state === "standby") ? "none" : "block";
+                }
+                return "block";
+              }
+              return "none";
+            ]]]
+      item4:
+        - display: |
+            [[[
+              if(variables.ulm_card_media_player_enable_volume_buttons) {
                 if(variables.ulm_card_media_player_collapsible){
                 return (entity.state === "off" || entity.state === "standby") ? "none" : "block";
                 }
@@ -330,6 +349,8 @@ card_media_player:
                   entity_id: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
               icon: "[[[ return (entity.attributes?.media_duration > 0) ? 'mdi:pause' : 'mdi:stop' ]]]"
               state:
+                - value: "playing"
+                  icon: "mdi:pause"
                 - value: "paused"
                   icon: "mdi:play"
                 - value: "off"
@@ -489,3 +510,175 @@ card_media_player:
             background-color: transparent;
             box-shadow: none;
           }
+    item4:
+      card:
+        type: "custom:button-card"
+        template: "list_3_items"
+        styles:
+          card:
+            - padding: "0px"
+            - background: "none"
+            - border-radius: "0"
+            - box-shadow: "none"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              entity: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
+              hold_action:
+                action: >
+                  [[[
+                      return variables.ulm_card_media_player_enable_popup ? "fire-dom-event" : "more-info";
+                  ]]]
+                browser_mod:
+                  service: "browser_mod.popup"
+                  data:
+                    large: true
+                    hide_header: true
+                    content:
+                      type: "custom:button-card"
+                      template: "popup_media_player_infos"
+                      entity: "[[[ return entity.entity_id; ]]]"
+              tap_action:
+                action: "call-service"
+                service: "media_player.volume_mute"
+                service_data:
+                  entity_id: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
+                  is_volume_muted: "[[[ return (states[entity.entity_id].attributes.is_volume_muted) ? false : true; ]]]"
+              icon: "mdi:volume-mute"
+              styles:
+                card:
+                  - background-color: |
+                      [[[
+                        return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
+                        ? 'rgba(0, 0, 0, 0.2)'
+                        : 'rgba(var(--color-theme),0.05)'
+                      ]]]
+                icon:
+                  - color: |
+                      [[[
+                        return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
+                        ? 'white'
+                        : 'rgba(var(--color-theme), 0.9)'
+                      ]]]
+          item2:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              entity: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
+              hold_action:
+                action: >
+                  [[[
+                      return variables.ulm_card_media_player_enable_popup ? "fire-dom-event" : "more-info";
+                  ]]]
+                browser_mod:
+                  service: "browser_mod.popup"
+                  data:
+                    large: true
+                    hide_header: true
+                    content:
+                      type: "custom:button-card"
+                      template: "popup_media_player_infos"
+                      entity: "[[[ return entity.entity_id; ]]]"
+              tap_action:
+                action: "call-service"
+                service: "media_player.volume_set"
+                service_data:
+                  entity_id: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
+                  volume_level: |
+                    [[[
+                      var volume = states[entity.entity_id].attributes.volume_level;
+                      if (variables.ulm_card_media_player_enable_volume_adjust) {
+                          volume = states[entity.entity_id].attributes.volume_level + ulm_card_media_player_enable_volume_adjust;
+                      } else {
+                          if (states[entity.entity_id].attributes.device_class === "tv") {
+                              volume = states[entity.entity_id].attributes.volume_level - 0.01;
+                          }
+                          if (states[entity.entity_id].attributes.device_class === "speaker") {
+                              volume = states[entity.entity_id].attributes.volume_level - 0.05;
+                          }
+                          if (states[entity.entity_id].attributes.device_class === "receiver") {
+                              volume = states[entity.entity_id].attributes.volume_level - 0.025;
+                          } else {
+                              volume = states[entity.entity_id].attributes.volume_level - 0.025;
+                          }
+                      }
+                      return volume;
+                    ]]]
+              icon: "mdi:volume-minus"
+              styles:
+                card:
+                  - background-color: |
+                      [[[
+                        return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
+                        ? 'rgba(0, 0, 0, 0.2)'
+                        : 'rgba(var(--color-theme),0.05)'
+                      ]]]
+                icon:
+                  - color: |
+                      [[[
+                        return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
+                        ? 'white'
+                        : 'rgba(var(--color-theme), 0.9)'
+                      ]]]
+          item3:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              entity: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
+              hold_action:
+                action: >
+                  [[[
+                      return variables.ulm_card_media_player_enable_popup ? "fire-dom-event" : "more-info";
+                  ]]]
+                browser_mod:
+                  service: "browser_mod.popup"
+                  data:
+                    large: true
+                    hide_header: true
+                    content:
+                      type: "custom:button-card"
+                      template: "popup_media_player_infos"
+                      entity: "[[[ return entity.entity_id; ]]]"
+              tap_action:
+                action: "call-service"
+                service: "media_player.volume_set"
+                service_data:
+                  entity_id: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
+                  volume_level: |
+                    [[[
+                      var volume = states[entity.entity_id].attributes.volume_level;
+                      if (variables.ulm_card_media_player_enable_volume_adjust) {
+                          volume = states[entity.entity_id].attributes.volume_level + ulm_card_media_player_enable_volume_adjust;
+                      } else {
+                          if (states[entity.entity_id].attributes.device_class === "tv") {
+                              volume = states[entity.entity_id].attributes.volume_level + 0.01;
+                          }
+                          if (states[entity.entity_id].attributes.device_class === "speaker") {
+                              volume = states[entity.entity_id].attributes.volume_level + 0.05;
+                          }
+                          if (states[entity.entity_id].attributes.device_class === "receiver") {
+                              volume = states[entity.entity_id].attributes.volume_level + 0.025;
+                          } else {
+                              volume = states[entity.entity_id].attributes.volume_level + 0.025;
+                          }
+                      }
+                      return volume;
+                    ]]]
+              icon: "mdi:volume-plus"
+              styles:
+                card:
+                  - background-color: |
+                      [[[
+                        return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
+                        ? 'rgba(0, 0, 0, 0.2)'
+                        : 'rgba(var(--color-theme),0.05)'
+                      ]]]
+                icon:
+                  - color: |
+                      [[[
+                        return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
+                        ? 'white'
+                        : 'rgba(var(--color-theme), 0.9)'
+                      ]]]

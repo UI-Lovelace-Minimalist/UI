@@ -78,6 +78,13 @@ This card needs the following to function correctly:
 <td>Overwrites the sensor name</td>
 </tr>
 <tr>
+<td>ulm_custom_card_bar_card_icon</td>
+<td>"mdi:icon"</td>
+<td>no</td>
+<td>Sensor Icon</td>
+<td>Overwrites the sensor icon</td>
+</tr>
+<tr>
 <td>ulm_custom_card_bar_card_value</td>
 <td>true / false</td>
 <td>no</td>

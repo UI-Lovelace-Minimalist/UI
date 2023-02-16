@@ -109,6 +109,13 @@ ulm_custom_card_schumijo_ca_popup:
     browser_mod:
       service: "browser_mod.popup"
       data:
+        size: >
+          [[[
+            const mediaQuery = window.matchMedia('(max-width: 800px)')
+            if (mediaQuery.matches) {
+              return 'fullscreen'
+            }
+          ]]]
         title: "Map"
         style:
           $: >

@@ -29,6 +29,7 @@ card_weather:
         primary_info: "[[[ return variables.ulm_card_weather_primary_info ]]]"
         secondary_info: "[[[ return variables.ulm_card_weather_secondary_info ]]]"
         backdrop: "[[[ return variables.ulm_card_weather_backdrop ]]]"
+        custom: "[[[ return variables.ulm_card_weather_custom ]]]"
         style: |
           ha-card {
             border-radius: 14px;
