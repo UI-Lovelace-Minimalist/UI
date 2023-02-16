@@ -10,8 +10,8 @@
 -->
 
 - This PR fixes or closes issue: fixes #
-- This PR is related to issue: 
-- Link to documentation pull request: 
+- This PR is related to issue:
+- Link to documentation pull request:
 
 ## Checklist
 <!--
@@ -24,7 +24,5 @@
 - [ ] The code change is tested and works locally.
 - [ ] There is no commented out code in this PR.
 - [ ] I have followed the [contribution guidelines](https://github.com/UI-Lovelace-Minimalist/UI/blob/main/.github/CONTRIBUTING.md)
-    - [ ] This PR is for a custom-card or documentation change and therefore directed to the `main` branch. 
-    - [ ] This PR is for a official card or any other directly to the integration related change and therefore directed to the `release` branch. 
-
-
+    - [ ] This PR is for a custom-card or documentation change and therefore directed to the `main` branch.
+    - [ ] This PR is for a official card or any other directly to the integration related change and therefore directed to the `release` branch.
