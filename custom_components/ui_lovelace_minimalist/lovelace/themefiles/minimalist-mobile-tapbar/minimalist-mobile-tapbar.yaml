@@ -33,15 +33,6 @@ minimalist-mobile-tapbar:
         width: 97%;
       }
     .: |
-      @media (orientation: portrait) {
-        a.menu-link[target="_blank"], ha-button-menu, ha-menu-button, [main-title] {
-          display: none !important;
-        }
-        app-toolbar {
-          padding-right: 0px;
-          padding-left: 0px;
-        }
-      }
       ha-app-layout{
         transform: initial;
         padding: 0 !important;
