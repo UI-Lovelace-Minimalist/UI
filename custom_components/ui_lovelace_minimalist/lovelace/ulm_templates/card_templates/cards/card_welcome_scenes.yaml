@@ -243,7 +243,7 @@ card_scenes_pill_welcome:
     - operator: "template"
       value: >
         [[[
-          return (entity.state !== 'on' && entity.state !== 'playing' && entity.state != variables?.state)
+          return (entity?.state !== 'on' && entity?.state !== 'playing' && entity?.state != variables?.state)
         ]]]
       styles:
         card:
@@ -341,7 +341,7 @@ card_scenes_pill_welcome:
           - operator: "template"
             value: >
               [[[
-                return (entity.state !== 'on' && entity.state !== 'playing' && entity.state != variables?.state)
+                return (entity?.state !== 'on' && entity?.state !== 'playing' && entity?.state != variables?.state)
               ]]]
             styles:
               card:
@@ -400,13 +400,13 @@ card_scenes_pill_welcome:
             - font-weight: "bold"
             - font-size: "9.5px"
             - padding-bottom: "7px"
-            - overflow: "[[[return (entity.state !== 'on' && entity.state !== 'playing' && entity.state != variables?.state) ? 'visible' : 'hidden']]]"
+            - overflow: "[[[return (entity?.state !== 'on' && entity?.state !== 'playing' && entity?.state != variables?.state) ? 'visible' : 'hidden']]]"
           card:
             - box-shadow: "none"
             - padding: "0px 5px 5px 5px"
             - margin-top: "-5px"
             - border-radius: "50px"
-            - overflow: "[[[return (entity.state !== 'on' && entity.state !== 'playing' && entity.state != variables?.state) ? 'visible' : 'hidden']]]"
+            - overflow: "[[[return (entity?.state !== 'on' && entity?.state !== 'playing' && entity?.state != variables?.state) ? 'visible' : 'hidden']]]"
 card_topbar_welcome:
   show_icon: false
   show_name: false

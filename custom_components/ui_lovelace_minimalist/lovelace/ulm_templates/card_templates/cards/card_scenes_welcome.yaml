@@ -65,7 +65,7 @@ card_scenes_welcome:
       - grid-template-areas: >
           [[[
             var pills = []
-            const entities = [variables.entity_1.entity_id, variables.entity_2.entity_id, variables.entity_3.entity_id, variables.entity_4.entity_id, variables.entity_5.entity_id, variables.entity_6.entity_id, variables.entity_7.entity_id]
+            const entities = [variables.entity_1?.entity_id, variables.entity_2?.entity_id, variables.entity_3?.entity_id, variables.entity_4?.entity_id, variables.entity_5?.entity_id, variables.entity_6?.entity_id, variables.entity_7?.entity_id]
             function entity_check(item) {
                 if (item != "") {
                     pills.push("item" + (pills.length+1))

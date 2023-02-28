@@ -70,42 +70,42 @@ popup_thermostat_temperature:
             - grid-template-areas: >
                 [[[
                       var areas = [];
-                      if (variables.ulm_card_thermostat_preset_mode){
-                        if (entity.attributes.preset_modes.toString().toLowerCase().includes("none")) {
+                      if (variables?.ulm_card_thermostat_preset_mode){
+                        if (entity.attributes?.preset_modes.toString().toLowerCase().includes("none")) {
                             areas.push("none");
                         }
-                        if (entity.attributes.preset_modes.toString().toLowerCase().includes("away")) {
+                        if (entity.attributes?.preset_modes.toString().toLowerCase().includes("away")) {
                             areas.push("away");
                         }
-                        if (entity.attributes.preset_modes.toString().toLowerCase().includes("comfort")) {
+                        if (entity.attributes?.preset_modes.toString().toLowerCase().includes("comfort")) {
                             areas.push("comfort");
                         }
-                        if (entity.attributes.preset_modes.toString().toLowerCase().includes("home")) {
+                        if (entity.attributes?.preset_modes.toString().toLowerCase().includes("home")) {
                             areas.push("home");
                         }
-                        if (entity.attributes.preset_modes.toString().toLowerCase().includes("sleep")) {
+                        if (entity.attributes?.preset_modes.toString().toLowerCase().includes("sleep")) {
                             areas.push("sleep");
                         }
-                        if (entity.attributes.preset_modes.toString().toLowerCase().includes("activity")) {
+                        if (entity.attributes?.preset_modes.toString().toLowerCase().includes("activity")) {
                             areas.push("activity");
                         }
                       } else {
-                        if (entity.attributes.hvac_modes.toString().toLowerCase().includes("auto")) {
+                        if (entity.attributes?.hvac_modes.toString().toLowerCase().includes("auto")) {
                             areas.push("auto");
                         }
-                        if (entity.attributes.hvac_modes.toString().toLowerCase().includes("heat")) {
+                        if (entity.attributes?.hvac_modes.toString().toLowerCase().includes("heat")) {
                             areas.push("heat");
                         }
-                        if (entity.attributes.hvac_modes.toString().toLowerCase().includes("cool")) {
+                        if (entity.attributes?.hvac_modes.toString().toLowerCase().includes("cool")) {
                             areas.push("cool");
                         }
-                        if (entity.attributes.hvac_modes.toString().toLowerCase().includes("dry")) {
+                        if (entity.attributes?.hvac_modes.toString().toLowerCase().includes("dry")) {
                             areas.push("dry");
                         }
-                        if (entity.attributes.hvac_modes.toString().toLowerCase().includes("fan_only")) {
+                        if (entity.attributes?.hvac_modes.toString().toLowerCase().includes("fan_only")) {
                             areas.push("fan_only");
                         }
-                        if (entity.attributes.hvac_modes.toString().toLowerCase().includes("heat_cool")) {
+                        if (entity.attributes?.hvac_modes.toString().toLowerCase().includes("heat_cool")) {
                             areas.push("heat_cool");
                         }
                       }
@@ -114,42 +114,42 @@ popup_thermostat_temperature:
             - grid-template-columns: >
                 [[[
                       var columns = [];
-                      if (variables.ulm_card_thermostat_preset_mode){
-                        if (entity.attributes.preset_modes.toString().toLowerCase().includes("none")) {
+                      if (variables?.ulm_card_thermostat_preset_mode){
+                        if (entity.attributes?.preset_modes.toString().toLowerCase().includes("none")) {
                             columns.push("1fr");
                         }
-                        if (entity.attributes.preset_modes.toString().toLowerCase().includes("away")) {
+                        if (entity.attributes?.preset_modes.toString().toLowerCase().includes("away")) {
                             columns.push("1fr");
                         }
-                        if (entity.attributes.preset_modes.toString().toLowerCase().includes("comfort")) {
+                        if (entity.attributes?.preset_modes.toString().toLowerCase().includes("comfort")) {
                             columns.push("1fr");
                         }
-                        if (entity.attributes.preset_modes.toString().toLowerCase().includes("home")) {
+                        if (entity.attributes?.preset_modes.toString().toLowerCase().includes("home")) {
                             columns.push("1fr");
                         }
-                        if (entity.attributes.preset_modes.toString().toLowerCase().includes("sleep")) {
+                        if (entity.attributes?.preset_modes.toString().toLowerCase().includes("sleep")) {
                             columns.push("1fr");
                         }
-                        if (entity.attributes.preset_modes.toString().toLowerCase().includes("activity")) {
+                        if (entity.attributes?.preset_modes.toString().toLowerCase().includes("activity")) {
                             columns.push("1fr");
                         }
                       } else {
-                        if (entity.attributes.hvac_modes.toString().toLowerCase().includes("auto")) {
+                        if (entity.attributes?.hvac_modes.toString().toLowerCase().includes("auto")) {
                             columns.push("1fr");
                         }
-                        if (entity.attributes.hvac_modes.toString().toLowerCase().includes("heat")) {
+                        if (entity.attributes?.hvac_modes.toString().toLowerCase().includes("heat")) {
                             columns.push("1fr");
                         }
-                        if (entity.attributes.hvac_modes.toString().toLowerCase().includes("cool")) {
+                        if (entity.attributes?.hvac_modes.toString().toLowerCase().includes("cool")) {
                             columns.push("1fr");
                         }
-                        if (entity.attributes.hvac_modes.toString().toLowerCase().includes("dry")) {
+                        if (entity.attributes?.hvac_modes.toString().toLowerCase().includes("dry")) {
                             columns.push("1fr");
                         }
-                        if (entity.attributes.hvac_modes.toString().toLowerCase().includes("fan_only")) {
+                        if (entity.attributes?.hvac_modes.toString().toLowerCase().includes("fan_only")) {
                             columns.push("1fr");
                         }
-                        if (entity.attributes.hvac_modes.toString().toLowerCase().includes("heat_cool")) {
+                        if (entity.attributes?.hvac_modes.toString().toLowerCase().includes("heat_cool")) {
                             columns.push("1fr");
                         }
                       }
@@ -166,7 +166,7 @@ popup_thermostat_temperature:
             auto:
               - display: >
                   [[[
-                    if (!variables.ulm_card_thermostat_preset_mode && entity.attributes.hvac_modes.toString().toLowerCase().includes("auto")) {
+                    if (!variables?.ulm_card_thermostat_preset_mode && entity.attributes?.hvac_modes.toString().toLowerCase().includes("auto")) {
                         return "block";
                     } else {
                         return "none";
@@ -175,7 +175,7 @@ popup_thermostat_temperature:
             heat:
               - display: >
                   [[[
-                    if (!variables.ulm_card_thermostat_preset_mode && entity.attributes.hvac_modes.toString().toLowerCase().includes("heat")) {
+                    if (!variables?.ulm_card_thermostat_preset_mode && entity.attributes?.hvac_modes.toString().toLowerCase().includes("heat")) {
                         return "block";
                     } else {
                         return "none";
@@ -184,7 +184,7 @@ popup_thermostat_temperature:
             cool:
               - display: >
                   [[[
-                    if (!variables.ulm_card_thermostat_preset_mode && entity.attributes.hvac_modes.toString().toLowerCase().includes("cool") ) {
+                    if (!variables?.ulm_card_thermostat_preset_mode && entity.attributes?.hvac_modes.toString().toLowerCase().includes("cool") ) {
                         return "block";
                     } else {
                         return "none";
@@ -193,7 +193,7 @@ popup_thermostat_temperature:
             dry:
               - display: >
                   [[[
-                    if ( !variables.ulm_card_thermostat_preset_mode && entity.attributes.hvac_modes.toString().toLowerCase().includes("dry")) {
+                    if ( !variables?.ulm_card_thermostat_preset_mode && entity.attributes?.hvac_modes.toString().toLowerCase().includes("dry")) {
                         return "block";
                     } else {
                         return "none";
@@ -202,7 +202,7 @@ popup_thermostat_temperature:
             fan_only:
               - display: >
                   [[[
-                    if (!variables.ulm_card_thermostat_preset_mode && entity.attributes.hvac_modes.toString().toLowerCase().includes("fan_only")) {
+                    if (!variables?.ulm_card_thermostat_preset_mode && entity.attributes?.hvac_modes.toString().toLowerCase().includes("fan_only")) {
                         return "block";
                     } else {
                         return "none";
@@ -211,7 +211,7 @@ popup_thermostat_temperature:
             heat_cool:
               - display: >
                   [[[
-                    if (!variables.ulm_card_thermostat_preset_mode && entity.attributes.hvac_modes.toString().toLowerCase().includes("heat_cool")) {
+                    if (!variables?.ulm_card_thermostat_preset_mode && entity.attributes?.hvac_modes.toString().toLowerCase().includes("heat_cool")) {
                         return "block";
                     } else {
                         return "none";
@@ -220,7 +220,7 @@ popup_thermostat_temperature:
             none:
               - display: >
                   [[[
-                    if (variables.ulm_card_thermostat_preset_mode && entity.attributes.preset_modes.toString().toLowerCase().includes("none")) {
+                    if (variables?.ulm_card_thermostat_preset_mode && entity.attributes?.preset_modes.toString().toLowerCase().includes("none")) {
                         return "block";
                     } else {
                         return "none";
@@ -229,7 +229,7 @@ popup_thermostat_temperature:
             away:
               - display: >
                   [[[
-                    if (variables.ulm_card_thermostat_preset_mode && entity.attributes.preset_modes.toString().toLowerCase().includes("away")) {
+                    if (variables?.ulm_card_thermostat_preset_mode && entity.attributes?.preset_modes.toString().toLowerCase().includes("away")) {
                         return "block";
                     } else {
                         return "none";
@@ -238,7 +238,7 @@ popup_thermostat_temperature:
             comfort:
               - display: >
                   [[[
-                    if (variables.ulm_card_thermostat_preset_mode && entity.attributes.preset_modes.toString().toLowerCase().includes("comfort")) {
+                    if (variables?.ulm_card_thermostat_preset_mode && entity.attributes?.preset_modes.toString().toLowerCase().includes("comfort")) {
                         return "block";
                     } else {
                         return "none";
@@ -247,7 +247,7 @@ popup_thermostat_temperature:
             home:
               - display: >
                   [[[
-                    if (variables.ulm_card_thermostat_preset_mode && entity.attributes.preset_modes.toString().toLowerCase().includes("home")) {
+                    if (variables?.ulm_card_thermostat_preset_mode && entity.attributes?.preset_modes.toString().toLowerCase().includes("home")) {
                         return "block";
                     } else {
                         return "none";
@@ -256,7 +256,7 @@ popup_thermostat_temperature:
             sleep:
               - display: >
                   [[[
-                    if (variables.ulm_card_thermostat_preset_mode && entity.attributes.preset_modes.toString().toLowerCase().includes("sleep")) {
+                    if (variables?.ulm_card_thermostat_preset_mode && entity.attributes?.preset_modes.toString().toLowerCase().includes("sleep")) {
                         return "block";
                     } else {
                         return "none";
@@ -265,7 +265,7 @@ popup_thermostat_temperature:
             activity:
               - display: >
                   [[[
-                    if (variables.ulm_card_thermostat_preset_mode && entity.attributes.preset_modes.toString().toLowerCase().includes("activity")) {
+                    if (variables?.ulm_card_thermostat_preset_mode && entity.attributes?.preset_modes.toString().toLowerCase().includes("activity")) {
                         return "block";
                     } else {
                         return "none";
@@ -439,7 +439,7 @@ popup_thermostat_temperature:
                 service: "climate.set_preset_mode"
                 service_data:
                   entity_id: "[[[ return entity.entity_id ]]]"
-                  preset_mode: "[[[ return entity.attributes.preset_mode.includes('none') ? 'none' : 'None' ]]]"
+                  preset_mode: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.includes('none') ? 'none' : 'None'} ]]]"
               styles:
                 card:
                   - background-color: "transparent"
@@ -449,7 +449,7 @@ popup_thermostat_temperature:
                   - box-shadow: "none"
               state:
                 - operator: "template"
-                  value: "[[[ return entity.attributes.preset_mode.toString().toLowerCase() == 'none' ]]]"
+                  value: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.toString().toLowerCase() == 'none'} ]]]"
                   styles:
                     card:
                       - background-color: "var(--card-background-color)"
@@ -466,7 +466,7 @@ popup_thermostat_temperature:
                 service: "climate.set_preset_mode"
                 service_data:
                   entity_id: "[[[ return entity.entity_id ]]]"
-                  preset_mode: "[[[ return entity.attributes.preset_mode.includes('away') ? 'away' : 'Away' ]]]"
+                  preset_mode: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.includes('away') ? 'away' : 'Away'} ]]]"
               styles:
                 card:
                   - background-color: "transparent"
@@ -476,7 +476,7 @@ popup_thermostat_temperature:
                   - box-shadow: "none"
               state:
                 - operator: "template"
-                  value: "[[[ return entity.attributes.preset_mode.toString().toLowerCase() == 'away' ]]]"
+                  value: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.toString().toLowerCase() == 'away'} ]]]"
                   styles:
                     card:
                       - background-color: "var(--card-background-color)"
@@ -493,7 +493,7 @@ popup_thermostat_temperature:
                 service: "climate.set_preset_mode"
                 service_data:
                   entity_id: "[[[ return entity.entity_id ]]]"
-                  preset_mode: "[[[ return entity.attributes.preset_mode.includes('comfort') ? 'comfort' : 'Comfort' ]]]"
+                  preset_mode: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.includes('comfort') ? 'comfort' : 'Comfort'} ]]]"
               styles:
                 card:
                   - background-color: "transparent"
@@ -503,7 +503,7 @@ popup_thermostat_temperature:
                   - box-shadow: "none"
               state:
                 - operator: "template"
-                  value: "[[[ return entity.attributes.preset_mode.toString().toLowerCase() == 'comfort' ]]]"
+                  value: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.toString().toLowerCase() == 'comfort'} ]]]"
                   styles:
                     card:
                       - background-color: "var(--card-background-color)"
@@ -520,7 +520,7 @@ popup_thermostat_temperature:
                 service: "climate.set_preset_mode"
                 service_data:
                   entity_id: "[[[ return entity.entity_id ]]]"
-                  preset_mode: "[[[ return entity.attributes.preset_mode.includes('home') ? 'home' : 'Home' ]]]"
+                  preset_mode: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.includes('home') ? 'home' : 'Home'} ]]]"
               styles:
                 card:
                   - background-color: "transparent"
@@ -530,7 +530,7 @@ popup_thermostat_temperature:
                   - box-shadow: "none"
               state:
                 - operator: "template"
-                  value: "[[[ return entity.attributes.preset_mode.toString().toLowerCase() == 'home' ]]]"
+                  value: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.toString().toLowerCase() == 'home'} ]]]"
                   styles:
                     card:
                       - background-color: "var(--card-background-color)"
@@ -547,7 +547,7 @@ popup_thermostat_temperature:
                 service: "climate.set_preset_mode"
                 service_data:
                   entity_id: "[[[ return entity.entity_id ]]]"
-                  preset_mode: "[[[ return entity.attributes.preset_mode.includes('sleep') ? 'sleep' : 'Sleep' ]]]"
+                  preset_mode: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.includes('sleep') ? 'sleep' : 'Sleep'} ]]]"
               styles:
                 card:
                   - background-color: "transparent"
@@ -557,7 +557,7 @@ popup_thermostat_temperature:
                   - box-shadow: "none"
               state:
                 - operator: "template"
-                  value: "[[[ return entity.attributes.preset_mode.toString().toLowerCase() == 'sleep' ]]]"
+                  value: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.toString().toLowerCase() == 'sleep'} ]]]"
                   styles:
                     card:
                       - background-color: "var(--card-background-color)"
@@ -574,7 +574,7 @@ popup_thermostat_temperature:
                 service: "climate.set_preset_mode"
                 service_data:
                   entity_id: "[[[ return entity.entity_id ]]]"
-                  preset_mode: "[[[ return entity.attributes.preset_mode.includes('activity') ? 'activity' : 'Activity' ]]]"
+                  preset_mode: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.includes('activity') ? 'activity' : 'Activity'} ]]]"
               styles:
                 card:
                   - background-color: "transparent"
@@ -584,7 +584,7 @@ popup_thermostat_temperature:
                   - box-shadow: "none"
               state:
                 - operator: "template"
-                  value: "[[[ return entity.attributes.preset_mode.toString().toLowerCase() == 'activity' ]]]"
+                  value: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.toString().toLowerCase() == 'activity'} ]]]"
                   styles:
                     card:
                       - background-color: "var(--card-background-color)"
