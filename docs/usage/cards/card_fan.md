@@ -14,7 +14,6 @@ Shows state of the fan and, if available, percentage and humidity in %.
 This is a new card based off of the Sexel Fan Custom Card.
 Rather than deprecate and many breaking changes on that card for users, this new card can be used as an alternative.
 
-
 #### Light theme
 
 ![Light theme](../../assets/img/custom_fan_light_theme.png)
@@ -22,7 +21,6 @@ Rather than deprecate and many breaking changes on that card for users, this new
 #### Dark theme
 
 ![Dark theme](../../assets/img/custom_fan_dark_theme.png)
-
 
 ## Variables
 
@@ -78,6 +76,7 @@ Rather than deprecate and many breaking changes on that card for users, this new
 </table>
 
 ### Others
+
     ulm_card_fan_enable_slider: false
     ulm_card_fan_slider_min: 0
     ulm_card_fan_slider_max: 100
@@ -86,7 +85,6 @@ Rather than deprecate and many breaking changes on that card for users, this new
     ulm_card_fan_button_service: "fan.oscillate"
     ulm_card_fan_temp_attribute: false #"temp"
     ulm_card_fan_hum_attribute: false #"hum"
-
 
 ## Usage
 
