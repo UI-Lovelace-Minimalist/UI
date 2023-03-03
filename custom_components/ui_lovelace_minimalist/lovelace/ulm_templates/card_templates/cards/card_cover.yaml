@@ -234,7 +234,7 @@ card_cover:
                     "opening": hass.resources[hass['language']]['component.cover.state._.closing']
                   };
 
-                  if(["unknown", "unavailable"].includes(entity.state)){
+                  if(["unknown", "unavailable"].includes(entity.state || position === undefined)){
                     return variables.ulm_translation_state;
                   }
 
