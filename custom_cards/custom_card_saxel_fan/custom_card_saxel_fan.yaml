@@ -78,13 +78,13 @@ custom_card_saxel_fan_common:
   label: |-
     [[[
       if (entity.state != 'unavailable') {
-          if (variables.ulm_card_fan_slider_temp_attribute != False) {
+          if (variables.ulm_card_fan_slider_temp_attribute != false) {
               var temp = Math.round(entity.attributes[variables.ulm_card_fan_temp_attribute]);
               let temp_str = ' • ' + (temp ? temp : '0') + '°C';
           } else {
               let temp_str = ''
           }
-          if (variables.ulm_card_fan_slider_hum_attribute != False) {
+          if (variables.ulm_card_fan_slider_hum_attribute != false) {
               var hum = Math.round(entity.attributes[variables.ulm_card_fan_hum_attribute]);
               let hum_str = ' • ' + (hum ? hum : '0') + '%';
           } else {
