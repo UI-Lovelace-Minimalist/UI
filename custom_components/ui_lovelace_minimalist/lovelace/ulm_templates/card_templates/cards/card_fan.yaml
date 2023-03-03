@@ -17,8 +17,8 @@ card_fan:
     ulm_card_fan_enable_button: false
     ulm_card_fan_button_icon: "mdi:rotate-3d-variant"
     ulm_card_fan_button_service: "fan.oscillate"
-    ulm_card_fan_temp_attribute: false #"temp"
-    ulm_card_fan_hum_attribute: false #"hum"
+    ulm_card_fan_temp_attribute: false # "temp"
+    ulm_card_fan_hum_attribute: false # "hum"
   show_icon: false
   show_name: false
   show_label: false
