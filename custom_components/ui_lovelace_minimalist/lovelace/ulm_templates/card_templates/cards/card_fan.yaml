@@ -264,6 +264,7 @@ card_fan:
                 service: "[[[ return variables.ulm_card_fan_button_service ]]]"
                 service_data:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                  oscillating: "[[[ return !entity.attributes[oscillate] ]]]"
               state:
                 - value: "on"
                   styles:
