@@ -62,7 +62,7 @@ Rather than deprecate and many breaking changes on that card for users, this new
     <td>true/false if the fan speed row should collapse when the fan is turned off. Default: false</td>
   </tr>
   <tr>
-    <td>ulm_card_fan_enable_color</td>
+    <td>ulm_card_fan_color</td>
     <td>blue</td>
     <td>no</td>
     <td>Custom Color for the Card. default: false - no color</td>
