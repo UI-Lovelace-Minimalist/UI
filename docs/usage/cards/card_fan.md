@@ -94,7 +94,7 @@ Rather than deprecate and many breaking changes on that card for users, this new
   entity: fan.bedroom
   variables:
     ulm_card_fan_enable_slider: true
-    ulm_card_fan_enable_color: "blue"
+    ulm_card_fan_color: "blue"
     ulm_card_fan_force_background_color: true
 ```
 
