@@ -37,7 +37,7 @@ Fix card & add Screenshot
   variables:
     ulm_custom_card_nas_sensor: sensor.pinas_disk_use
     ulm_custom_card_nas_text: "HDD used"
-    ulm_custom_card_nas_unit: "%"
+    ulm_custom_cad_nas_unit: %
 ```
 
 ## Requirements
@@ -69,7 +69,7 @@ n/a
 <td>ulm_custom_card_nas_unit</td>
 <td>%</td>
 <td>yes</td>
-  <td>The unit to show after your sensors state (use empty string to show nothing eg. "")</td>
+<td>The unit to show after your sensors state</td>
 </tr>
 </table>
 
