@@ -17,6 +17,7 @@ card_fan:
     ulm_card_fan_enable_button: false
     ulm_card_fan_button_icon: "mdi:rotate-3d-variant"
     ulm_card_fan_button_service: "fan.oscillate"
+    ulm_card_fan_oscillate_attribute: "oscillate"
     ulm_card_fan_temp_attribute: false # "temp"
     ulm_card_fan_hum_attribute: false # "hum"
   show_icon: false
@@ -264,8 +265,12 @@ card_fan:
                 service: "[[[ return variables.ulm_card_fan_button_service ]]]"
                 service_data:
                   entity_id: "[[[ return entity.entity_id ]]]"
-                  oscillating: "[[[ return !entity.attributes[oscillate] ]]]"
+                  oscillating: "[[[ return !entity.attributes[variables.ulm_card_fan_oscillate_attribute] ]]]"
               state:
+                - value: off
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.2)"
                 - value: "on"
                   styles:
                     icon:
@@ -284,3 +289,29 @@ card_fan:
                                 return 'rgba(var(--color-' + color + '),0.2)';
                               }
                           ]]]
+                - operator: "template"
+                  value: "[[[ return entity.state === 'on' && entity.attributes[variables.ulm_card_fan_oscillate_attribute]; ]]]"
+                  styles:
+                    card:
+                      - background-color: "rgba(250, 250, 250, 1)"
+                    icon:
+                      - color: "rgba(61, 90, 254, 1)"
+                    label:
+                      - color: "rgba(250, 250, 250, 1)"
+                    name:
+                      - color: "rgba(250, 250, 250, 1)"
+                    img_cell:
+                      - background-color: "rgba(250, 250, 250, 0.2)"
+                - operator: "template"
+                  value: "[[[ return entity.state === 'on' && !entity.attributes[variables.ulm_card_fan_oscillate_attribute]; ]]]"
+                  styles:
+                    card:
+                      - background-color: "rgba(61, 90, 254, 1)"
+                    icon:
+                      - color: "rgba(250, 250, 250, 1)"
+                    label:
+                      - color: "rgba(250, 250, 250, 1)"
+                    name:
+                      - color: "rgba(250, 250, 250, 1)"
+                    img_cell:
+                      - background-color: "rgba(250, 250, 250, 0.2)"
