@@ -78,17 +78,15 @@ custom_card_saxel_fan_common:
   label: |-
     [[[
       if (entity.state != 'unavailable') {
-          if (variables.ulm_card_fan_slider_temp_attribute != false) {
+          let temp_str = '';
+          if (variables.ulm_card_fan_temp_attribute) {
               var temp = Math.round(entity.attributes[variables.ulm_card_fan_temp_attribute]);
-              let temp_str = ' • ' + (temp ? temp : '0') + '°C';
-          } else {
-              let temp_str = ''
+              temp_str = ' • ' + (temp ? temp : '0') + '°C';
           }
-          if (variables.ulm_card_fan_slider_hum_attribute != false) {
+          let hum_str = '';
+          if (variables.ulm_card_fan_hum_attribute) {
               var hum = Math.round(entity.attributes[variables.ulm_card_fan_hum_attribute]);
-              let hum_str = ' • ' + (hum ? hum : '0') + '%';
-          } else {
-              let hum_str = ''
+              hum_str = ' • ' + (hum ? hum : '0') + '%';
           }
 
           if (entity.state == 'off') {
@@ -100,12 +98,12 @@ custom_card_saxel_fan_common:
           } else if (entity.state == 'on') {
               if (entity.attributes.percentage != null) {
                   var per = entity.attributes.percentage;
-                  return (per ? per : '0') + '%' + temp_str + hum_str;
+                  let per_str = (per ? per : '0') + '%';
+                  return per_str + temp_str + hum_str;
               } else {
                   return variables.ulm_on
               }
           }
-
       } else {
           return variables.ulm_unavailable;
       }
