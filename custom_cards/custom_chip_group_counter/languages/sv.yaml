@@ -1,0 +1,18 @@
+---
+custom_chip_group_counter_language_variables:
+  variables:
+    custom_chip_group_counter_light_zero: "Inga lampor"
+    custom_chip_group_counter_light_one: "En lampa"
+    custom_chip_group_counter_light_multiple: "{count} lampor"
+
+    custom_chip_group_counter_media_player_zero: "Inga mediaspelare"
+    custom_chip_group_counter_media_player_one: "En mediaspelare"
+    custom_chip_group_counter_media_player_multiple: "{count} mediaspelare"
+
+    custom_chip_group_counter_speaker_zero: "Inga högtalare"
+    custom_chip_group_counter_speaker_one: "En högtalare"
+    custom_chip_group_counter_speaker_multiple: "{count} högtalare"
+
+    custom_chip_group_counter_television_zero: "Inga TV:ar"
+    custom_chip_group_counter_television_one: "En TV"
+    custom_chip_group_counter_television_multiple: "{count} TV:ar"
