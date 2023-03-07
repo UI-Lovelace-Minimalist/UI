@@ -5,6 +5,12 @@ custom_card_speedtest_shogun160:
   show_name: false
   show_label: false
   variables:
+    ulm_custom_card_speedtest_download_speed_color: "var(--google-yellow)"
+    ulm_custom_card_speedtest_download_speed_max: 100
+    ulm_custom_card_speedtest_upload_speed_color: "var(--google-blue)"
+    ulm_custom_card_speedtest_upload_speed_max: 40
+    ulm_custom_card_speedtest_ping_color: "var(--google-green)"
+    ulm_custom_card_speedtest_ping_max: 85
     ulm_custom_card_speedtest_round: false
   tap_action:
     action: "call-service"
