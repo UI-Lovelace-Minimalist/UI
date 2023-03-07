@@ -6,7 +6,7 @@ custom_card_speedtest_shogun160:
   show_label: false
   variables:
     ulm_custom_card_speedtest_round: false
-  tap_action: 
+  tap_action:
     action: "call-service"
     service: "homeassistant.update_entity"
     service_data:
@@ -81,7 +81,7 @@ custom_card_speedtest_shogun160:
           item2:
             card:
               type: "custom:button-card"
-              tap_action: 
+              tap_action:
                 action: "none"
               show_last_changed: false
               show_label: true
@@ -194,7 +194,7 @@ custom_card_speedtest_shogun160:
           item2:
             card:
               type: "custom:button-card"
-              tap_action: 
+              tap_action:
                 action: "none"
               show_last_changed: false
               show_label: true
@@ -261,7 +261,7 @@ custom_card_speedtest_shogun160:
               series:
                 - entity: "[[[ return variables.ulm_custom_card_speedtest_ping_entity]]]"
                   color: "[[[ return variables.ulm_custom_card_speedtest_ping_color ]]]"
-                  max: "[[[ return variables.ulm_custom_card_speedtest_ping_max ]]]" 
+                  max: "[[[ return variables.ulm_custom_card_speedtest_ping_max ]]]"
                   show:
                     legend_value: false
               apex_config:
@@ -307,7 +307,7 @@ custom_card_speedtest_shogun160:
           item2:
             card:
               type: "custom:button-card"
-              tap_action: 
+              tap_action:
                 action: "none"
               show_last_changed: false
               show_label: true
