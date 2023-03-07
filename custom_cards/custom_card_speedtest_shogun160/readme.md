@@ -19,7 +19,7 @@ Initial release
 
 ## Description
 
-This is an template to add the battery level to every ui minimalist card
+This is a custom card to display download, upload and ping speed by using apexchart.
 
 ## Variables
 
