@@ -10,10 +10,10 @@ custom_card_speedtest_shogun160:
     action: "call-service"
     service: "homeassistant.update_entity"
     service_data:
-        entity_id:
-          - "[[[ return variables.ulm_custom_card_speedtest_download_speed_entity]]]"
-          - "[[[ return variables.ulm_custom_card_speedtest_upload_speed_entity]]]"
-          - "[[[ return variables.ulm_custom_card_speedtest_ping_entity]]]"
+      entity_id:
+        - "[[[ return variables.ulm_custom_card_speedtest_download_speed_entity]]]"
+        - "[[[ return variables.ulm_custom_card_speedtest_upload_speed_entity]]]"
+        - "[[[ return variables.ulm_custom_card_speedtest_ping_entity]]]"
   styles:
     card:
       - box-shadow: "var(--box-shadow)"
@@ -22,7 +22,7 @@ custom_card_speedtest_shogun160:
     item1:
       card:
         type: "custom:button-card"
-        template: list_2_items_1_row
+        template: "list_2_items_1_row"
         styles:
           card:
             - box-shadow: "none"
@@ -31,7 +31,7 @@ custom_card_speedtest_shogun160:
           item1:
             card:
               type: "custom:apexcharts-card"
-              chart_type: radialBar
+              chart_type: "radialBar"
               series:
                 - entity: "[[[ return variables.ulm_custom_card_speedtest_download_speed_entity]]]"
                   color: "[[[ return variables.ulm_custom_card_speedtest_download_speed_color ]]]"
@@ -45,20 +45,20 @@ custom_card_speedtest_shogun160:
                     startAngle: -108
                     endAngle: 108
                     hollow:
-                      size: 85%
+                      size: "85%"
                     dataLabels:
                       name:
                         show: false
                       value:
                         show: false
                     track:
-                      strokeWidth: 75%
+                      strokeWidth: "75%"
                       margin: 0
                 fill:
-                  type: gradient
+                  type: "gradient"
                   gradient:
-                    shade: light
-                    type: horizontal
+                    shade: "light"
+                    type: "horizontal"
                     shadeIntensity: 0.3
                     inverseColors: false
                     opacityFrom: 1
@@ -82,7 +82,7 @@ custom_card_speedtest_shogun160:
             card:
               type: "custom:button-card"
               tap_action: 
-                action: none
+                action: "none"
               show_last_changed: false
               show_label: true
               show_name: true
@@ -135,7 +135,7 @@ custom_card_speedtest_shogun160:
     item2:
       card:
         type: "custom:button-card"
-        template: list_2_items_1_row
+        template: "list_2_items_1_row"
         styles:
           card:
             - box-shadow: "none"
@@ -143,8 +143,8 @@ custom_card_speedtest_shogun160:
         custom_fields:
           item1:
             card:
-              type: custom:apexcharts-card
-              chart_type: radialBar
+              type: "custom:apexcharts-card"
+              chart_type: "radialBar"
               series:
                 - entity: "[[[ return variables.ulm_custom_card_speedtest_upload_speed_entity]]]"
                   color: "[[[ return variables.ulm_custom_card_speedtest_upload_speed_color ]]]"
@@ -158,20 +158,20 @@ custom_card_speedtest_shogun160:
                     startAngle: -108
                     endAngle: 108
                     hollow:
-                      size: 85%
+                      size: "85%"
                     dataLabels:
                       name:
                         show: false
                       value:
                         show: false
                     track:
-                      strokeWidth: 75%
+                      strokeWidth: "75%"
                       margin: 0
                 fill:
-                  type: gradient
+                  type: "gradient"
                   gradient:
-                    shade: light
-                    type: horizontal
+                    shade: "light"
+                    type: "horizontal"
                     shadeIntensity: 0.3
                     inverseColors: false
                     opacityFrom: 1
@@ -195,7 +195,7 @@ custom_card_speedtest_shogun160:
             card:
               type: "custom:button-card"
               tap_action: 
-                action: none
+                action: "none"
               show_last_changed: false
               show_label: true
               show_name: true
@@ -248,7 +248,7 @@ custom_card_speedtest_shogun160:
     item3:
       card:
         type: "custom:button-card"
-        template: list_2_items_1_row
+        template: "list_2_items_1_row"
         styles:
           card:
             - box-shadow: "none"
@@ -256,8 +256,8 @@ custom_card_speedtest_shogun160:
         custom_fields:
           item1:
             card:
-              type: custom:apexcharts-card
-              chart_type: radialBar
+              type: "custom:apexcharts-card"
+              chart_type: "radialBar"
               series:
                 - entity: "[[[ return variables.ulm_custom_card_speedtest_ping_entity]]]"
                   color: "[[[ return variables.ulm_custom_card_speedtest_ping_color ]]]"
@@ -271,20 +271,20 @@ custom_card_speedtest_shogun160:
                     startAngle: -108
                     endAngle: 108
                     hollow:
-                      size: 85%
+                      size: "85%"
                     dataLabels:
                       name:
                         show: false
                       value:
                         show: false
                     track:
-                      strokeWidth: 75%
+                      strokeWidth: "75%"
                       margin: 0
                 fill:
-                  type: gradient
+                  type: "gradient"
                   gradient:
-                    shade: light
-                    type: horizontal
+                    shade: "light"
+                    type: "horizontal"
                     shadeIntensity: 0.3
                     inverseColors: false
                     opacityFrom: 1
@@ -308,7 +308,7 @@ custom_card_speedtest_shogun160:
             card:
               type: "custom:button-card"
               tap_action: 
-                action: none
+                action: "none"
               show_last_changed: false
               show_label: true
               show_name: true
@@ -362,20 +362,20 @@ list_2_items_1_row:
       - grid-template-areas: "'item1' 'item2'"
       - grid-template-columns: "1fr"
       - grid-template-rows: "min-content min-content"
-      - grid: relative
+      - grid: "relative"
     card:
       - padding: "0px"
       - height: "100px"
     img_cell:
       - border-radius: "0%"
-      - background-color: transparent
+      - background-color: "transparent"
     custom_fields:
       item1:
-        - position: absolute
+        - position: "absolute"
         - top: "-2%"
         - place-self: "center"
       item2:
-        - position: absolute
+        - position: "absolute"
         - top: "15%"
         - place-self: "center"
         - width: "115%"
