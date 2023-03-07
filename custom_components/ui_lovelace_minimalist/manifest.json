@@ -1,21 +1,21 @@
 {
   "domain": "ui_lovelace_minimalist",
   "name": "UI Lovelace Minimalist",
-  "documentation": "https://ui-lovelace-minimalist.github.io/UI/",
-  "issue_tracker": "https://github.com/UI-Lovelace-Minimalist/UI/issues",
+  "codeowners": [
+    "@stokkie90"
+  ],
+  "config_flow": true,
   "dependencies": [
     "lovelace",
     "http",
     "frontend"
   ],
-  "config_flow": true,
-  "codeowners": [
-    "@stokkie90"
-  ],
+  "documentation": "https://ui-lovelace-minimalist.github.io/UI/",
+  "iot_class": "calculated",
+  "issue_tracker": "https://github.com/UI-Lovelace-Minimalist/UI/issues",
   "requirements": [
     "aiofiles==0.8.0",
     "aiogithubapi>=22.2.4"
   ],
-  "version": "0.0.1",
-  "iot_class": "calculated"
+  "version": "0.0.1"
 }
