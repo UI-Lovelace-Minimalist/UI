@@ -6,8 +6,8 @@ card_cover:
     - "ulm_translation_engine"
   variables:
     ulm_card_cover_name: "[[[ return entity.attributes.friendly_name ]]]"
-    ulm_card_cover_icon: false # "[[[ return entity.attributes.icon ]]]"
-    ulm_card_cover_color: false
+    ulm_card_cover_icon: false
+    ulm_card_cover_color: "blue"
     ulm_card_invert_percent: false
     ulm_card_cover_display_left_right: false
     ulm_card_cover_garage_large: false

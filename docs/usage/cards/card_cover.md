@@ -31,6 +31,9 @@ With the `cover-card` you have the state of your cover. Optionally, on the secon
 | ulm_card_cover_enable_horizontal       | `false`         | :material-close: | Enable horizontal card                 | Need `ulm_card_cover_enable_controls: true` or `ulm_card_cover_enable_slider: true` |
 | ulm_card_cover_enable_tilt             | `false`         | :material-close: | Display angled buttons for Venetian blind tilt  |             |
 | ulm_card_cover_enable_popup            | `false`         | :material-close: | Enable `popup_cover`                   |             |
+| ulm_card_cover_slider_min            | `0`         | :material-close: | Set Minimum Slider Value                   |             |
+| ulm_card_cover_slider_min            | `100`         | :material-close: | Set Maximum Slider Value                   |             |
+| ulm_card_cover_color            | `blue`         | :material-close: | Set Custom Color                   |             |
 
 ## Usage
 
@@ -41,6 +44,7 @@ With the `cover-card` you have the state of your cover. Optionally, on the secon
   variables:
     ulm_card_cover_enable_controls: true
     ulm_card_cover_enable_slider: true
+    ulm_card_cover_color: "green"
 ```
 
 ??? note "Template Code"
