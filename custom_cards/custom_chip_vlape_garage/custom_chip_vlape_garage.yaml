@@ -1,0 +1,29 @@
+---
+### custom_chip_vlape_garage ###
+chip_garage:
+  template:
+    - "chip_icon_label"
+    - "ulm_translation_engine"
+  label: "[[[ return variables.ulm_translation_state ]]]"
+  icon: |
+    [[[
+      var state = entity.state.toLowerCase();
+      var garage_icon = {
+        "default": "mdi:garage",
+        "closed": "mdi:garage",
+        "open": "mdi:garage-open"
+      }
+      return (garage_icon[state] || garage_icon["default"]);
+    ]]]
+  styles:
+    icon:
+      - color: |
+          [[[
+            var state = entity.state.toLowerCase();
+            var garage_color = {
+              "default": "var(--google-green)",
+              "closed": "var(--google-green)",
+              "open": "var(--google-red)"
+            }
+            return (garage_color[state] || garage_color["default"]);
+          ]]]
