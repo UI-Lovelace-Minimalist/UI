@@ -30,11 +30,12 @@ This cards show a chip with custom text representing how many entities in a grou
 ## Variables
 
 | Variable                                    | Default                  | Required | Notes                                                                                              |
-| ------------------------------------------- | ------------------------ | -------- | -------------------------------------------------------------------------------------------------- | --- |
+| ------------------------------------------- | ------------------------ | -------- | -------------------------------------------------------------------------------------------------- |
+| entity                                      |                          | Yes      | Hide chip if no entities are active.                                                               |
 | ulm_custom_chip_group_counter_hide_if_zero  | false                    | No       | Hide chip if no entities are active.                                                               |
 | ulm_custom_chip_group_counter_type          | light                    | No       | Specify the type of entities, used for translation                                                 |
 | ulm_custom_chip_group_counter_count_state   | on                       | No       | States that should be counted                                                                      |
-| ulm_custom_chip_group_counter_color         | yellow                   | Yes      | Color of the icon <br> Can choose between: `blue`, `red`, `green`, `yellow`, `pink`, `purple` <br> |     |
+| ulm_custom_chip_group_counter_color         | yellow                   | Yes      | Color of the icon <br> Can choose between: `blue`, `red`, `green`, `yellow`, `pink`, `purple` <br> |
 | ulm_custom_chip_group_counter_icon_zero     | mdi:lightbulb-outline    | No       | Icon when no entity's state is satisfied                                                           |
 | ulm_custom_chip_group_counter_icon_one      | mdi:lightbulb-on-outline | No       | Icon when one entity's state is satisfied                                                          |
 | ulm_custom_chip_group_counter_icon_multiple | mdi:lightbulb-on-outline | No       | Icon when multiple entities state is satisfied                                                     |
@@ -58,7 +59,7 @@ This configuration can be used if you have a sensor that should represent the st
 ```yaml
 - type: 'custom:button-card'
   template: 'custom_card_group_counter_chip'
-  entity: 'lights.all'
+  entity: 'light.all'
   variables:
       ulm_custom_chip_group_counter_entities_active: 'sensor.lights_on'
 ```
@@ -68,7 +69,7 @@ This configuration can be used if you have a sensor that should represent the st
 ```yaml
 - type: 'custom:button-card'
   template: 'custom_card_group_counter_chip'
-  entity: 'lights.all'
+  entity: 'light.all'
   variables:
       ulm_custom_card_group_counter_chip_hide_if_zero: true
       ulm_custom_card_group_counter_chip_type: speaker
