@@ -290,6 +290,9 @@ card_light:
       card:
         type: "custom:button-card"
         template: "list_3_items"
+        styles:
+          card:
+            - background: "none"
         custom_fields:
           item1:
             card:
