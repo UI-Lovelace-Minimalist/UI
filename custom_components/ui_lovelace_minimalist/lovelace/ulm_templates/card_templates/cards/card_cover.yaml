@@ -9,6 +9,7 @@ card_cover:
     ulm_card_cover_icon: false
     ulm_card_cover_color: "blue"
     ulm_card_invert_percent: false
+    ulm_card_cover_invert_percent: false
     ulm_card_cover_display_left_right: false
     ulm_card_cover_garage_large: false
     ulm_card_cover_gate: false
@@ -91,7 +92,7 @@ card_cover:
         - display: >
             [[[
               if (variables.ulm_card_cover_enable_slider) {
-                  if (variables.ulm_card_cover_enable_horizontal && (variables.ulm_card_cover_enable_controls) {
+                  if (variables.ulm_card_cover_enable_horizontal && variables.ulm_card_cover_enable_controls) {
                     return "none";
                   }
                   return "block";
@@ -172,46 +173,38 @@ card_cover:
                 icon:
                   - color: >
                       [[[
-                        if (variables.ulm_card_cover_color) {
-                          var color = variables.ulm_card_cover_color;
-
-                          if (typeof entity === "undefined") {
-                            if (states[entity.entity_id].state != "closed") {
-                                return 'rgba(var(--color-' + color + '),1)';
-                            }
-                            return 'rgba(var(--color-theme),0.2)';
-                          }
-
-                          if (entity.attributes.current_position == 100) {
-                            if (!variables.ulm_card_invert_percent) {
+                        var color = variables.ulm_card_cover_color;
+                        if (variables.ulm_card_invert_percent || variables.ulm_card_cover_invert_percent) {
+                            if (entity.attributes.current_position == 100) {
                                 return 'rgba(var(--color-theme),0.2)';
                             }
-                          }
                           return 'rgba(var(--color-' + color + '),1)';
                         }
-                        return 'rgba(var(--color-theme),0.2)';
+
+                        if (typeof entity !== "undefined") {
+                          if (states[entity.entity_id].state != "closed") {
+                              return 'rgba(var(--color-' + color + '),1)';
+                          }
+                          return 'rgba(var(--color-theme),0.2)';
+                        }
                       ]]]
                 img_cell:
                   - background-color: >
                       [[[
-                        if (variables.ulm_card_cover_color) {
-                          var color = variables.ulm_card_cover_color;
-
-                          if (typeof entity === "undefined") {
-                            if (states[entity.entity_id].state != "closed") {
-                              return 'rgba(var(--color-' + color + '),0.2)';
+                        var color = variables.ulm_card_cover_color;
+                        if (variables.ulm_card_invert_percent || variables.ulm_card_cover_invert_percent) {
+                            if (entity.attributes.current_position == 100) {
+                                return 'rgba(var(--color-theme),0.05)';
                             }
-                            return 'rgba(var(--color-theme),0.05)';
-                          }
-
-                          if (entity.attributes.current_position == 100) {
-                            if (!variables.ulm_card_invert_percent) {
-                              return 'rgba(var(--color-theme),0.05)';
-                            }
-                          }
                           return 'rgba(var(--color-' + color + '),0.2)';
                         }
-                        return 'rgba(var(--color-theme),0.05)';
+
+                        if (typeof entity !== "undefined") {
+                          if (states[entity.entity_id].state != "closed") {
+                              return 'rgba(var(--color-' + color + '),0.2)';
+                          }
+                          return 'rgba(var(--color-theme),0.05)';
+                        }
                       ]]]
           item2:
             card:
@@ -238,16 +231,16 @@ card_cover:
                     "opening": hass.resources[hass['language']]['component.cover.state._.closing']
                   };
 
-                  if(["unknown", "unavailable"].includes(entity.state)  || position === undefined) {
-                    return variables.ulm_translation_state;
-                  }
-
-                  if (variables.ulm_card_invert_percent && typeof entity !== "undefined") {
+                  if ((variables.ulm_card_invert_percent || variables.ulm_card_cover_invert_percent) && typeof entity !== "undefined") {
                     if (position == 0) {
                       return invert[entity.state] + " • " + (100 - position) + "%";
                     } else {
                       return invert[entity.state];
                     }
+                  }
+
+                  if(["unknown", "unavailable", "closed"].includes(entity.state)  || position === undefined) {
+                    return variables.ulm_translation_state;
                   }
 
                   if (typeof entity !== "undefined") {
@@ -375,23 +368,37 @@ card_cover:
         maxSet: "[[[ return variables.ulm_card_cover_slider_max ]]]"
         mainSliderColor: >
           [[[
-            if (entity.state != "unavailable") {
-              if (variables.ulm_card_cover_color) {
-                var color = variables.ulm_card_cover_color;
-                return 'rgba(var(--color-' + color + '),0.8)';
-              }
+            var color = variables.ulm_card_cover_color;
+            if (variables.ulm_card_invert_percent || variables.ulm_card_cover_invert_percent) {
+                if (entity.attributes.current_position == 100) {
+                    return 'rgba(var(--color-theme),0.05)';
+                }
+              return 'rgba(var(--color-' + color + '),0.8)';
             }
-            return "rgba(var(--color-grey),0.8)";
+
+            if (typeof entity !== "undefined") {
+              if (states[entity.entity_id].state != "closed") {
+                  return 'rgba(var(--color-' + color + '),0.8)';
+              }
+              return 'rgba(var(--color-theme),0.05)';
+            }
           ]]]
         secondarySliderColor: >
           [[[
-            if (entity.state != "unavailable") {
-              if (variables.ulm_card_cover_color) {
-                var color = variables.ulm_card_cover_color;
-                return 'rgba(var(--color-' + color + '),0.1)';
-              }
+            var color = variables.ulm_card_cover_color;
+            if (variables.ulm_card_invert_percent || variables.ulm_card_cover_invert_percent) {
+                if (entity.attributes.current_position == 100) {
+                    return 'rgba(var(--color-theme),0.05)';
+                }
+              return 'rgba(var(--color-' + color + '),0.1)';
             }
-            return "rgba(var(--color-grey),0.1)";
+
+            if (typeof entity !== "undefined") {
+              if (states[entity.entity_id].state != "closed") {
+                  return 'rgba(var(--color-' + color + '),0.1)';
+              }
+              return 'rgba(var(--color-theme),0.05)';
+            }
           ]]]
         mainSliderColorOff: "rgba(var(--color-theme),0.05)"
         secondarySliderColorOff: "rgba(var(--color-theme),0.05)"
