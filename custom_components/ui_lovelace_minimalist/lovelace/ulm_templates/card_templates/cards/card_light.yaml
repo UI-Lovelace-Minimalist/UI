@@ -17,9 +17,9 @@ card_light:
     ulm_card_light_enable_slider_minSet: 0
     ulm_card_light_enable_slider_maxSet: 100
     ulm_card_light_enable_buttons: false
-    ulm_card_light_brightness_low: 2
-    ulm_card_light_brightness_medium: 128
-    ulm_card_light_brightness_high: 255
+    ulm_card_light_brightness_low: 1
+    ulm_card_light_brightness_medium: 50
+    ulm_card_light_brightness_high: 100
     ulm_card_light_enable_popup: false
     ulm_card_light_enable_popup_tap: false
   show_icon: false
@@ -35,9 +35,9 @@ card_light:
                   if (variables.ulm_card_light_enable_color) {
                     if (variables.ulm_card_light_force_background_color || hass.themes.darkMode) {
                       if (color) {
-                        return 'rgba(' + color + ',var(--opacity-bg))';
+                        return 'rgba(' + color + ',0.1)';
                       } else {
-                        return 'rgba(var(--color-yellow),var(--opacity-bg))';
+                        return 'rgba(var(--color-yellow),0.1)';
                       }
                     }
                   }
@@ -288,32 +288,39 @@ card_light:
           }
     item3:
       card:
-        type: "horizontal-stack"
-        cards:
-          - type: "custom:button-card"
-            template: "widget_icon"
-            tap_action:
-              action: "call-service"
-              service: "light.turn_on"
-              service_data:
-                entity_id: "[[[ return entity.entity_id ]]]"
-                brightness: "[[[ return variables.ulm_card_light_brightness_low ]]]"
-            icon: "mdi:lightbulb-on-10"
-          - type: "custom:button-card"
-            template: "widget_icon"
-            tap_action:
-              action: "call-service"
-              service: "light.turn_on"
-              service_data:
-                entity_id: "[[[ return entity.entity_id ]]]"
-                brightness: "[[[ return variables.ulm_card_light_brightness_medium ]]]"
-            icon: "mdi:lightbulb-on-50"
-          - type: "custom:button-card"
-            template: "widget_icon"
-            tap_action:
-              action: "call-service"
-              service: "light.turn_on"
-              service_data:
-                entity_id: "[[[ return entity.entity_id ]]]"
-                brightness: "[[[ return variables.ulm_card_light_brightness_high ]]]"
-            icon: "mdi:lightbulb-on"
+        type: "custom:button-card"
+        template: "list_3_items"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              tap_action:
+                action: "call-service"
+                service: "light.turn_on"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+                  brightness_pct: "[[[ return variables.ulm_card_light_brightness_low ]]]"
+              icon: "mdi:lightbulb-on-10"
+          item2:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              tap_action:
+                action: "call-service"
+                service: "light.turn_on"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+                  brightness_pct: "[[[ return variables.ulm_card_light_brightness_medium ]]]"
+              icon: "mdi:lightbulb-on-50"
+          item3:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              tap_action:
+                action: "call-service"
+                service: "light.turn_on"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+                  brightness_pct: "[[[ return variables.ulm_card_light_brightness_high ]]]"
+              icon: "mdi:lightbulb-on"
