@@ -109,6 +109,30 @@ This card needs the following to function correctly:
     <td>true/false if the fan speed row should collapse when the fan is turned off. Default: true</td>
   </tr>
   <tr>
+    <td>ulm_card_fan_horizontal</td>
+    <td>true</td>
+    <td>no</td>
+    <td>Single Line Horizontal Control. Collapsible MUST be false for this currently. Default: false</td>
+  </tr>
+  <tr>
+    <td>ulm_show_button</td>
+    <td>false</td>
+    <td>no</td>
+    <td>Set to false to remove the Button and have a full width Slider. Default: true</td>
+  </tr>
+  <tr>
+    <td>ulm_button_icon</td>
+    <td>mdi:button</td>
+    <td>no</td>
+    <td>Set the icon for the Button. Default: mdi:rotate-3d-variant</td>
+  </tr>
+  <tr>
+    <td>ulm_button_service</td>
+    <td>fan.toggle</td>
+    <td>no</td>
+    <td>Name of the Service Call on button press. Default: fan.oscillate</td>
+  </tr>
+  <tr>
     <td>oscillate_attribute</td>
     <td>oscillate</td>
     <td>no</td>
