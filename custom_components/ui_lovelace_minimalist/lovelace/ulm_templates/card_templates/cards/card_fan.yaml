@@ -169,14 +169,14 @@ card_fan:
                           [[[
                               if (variables.ulm_card_fan_force_background_color) {
                                   return 'rgb(250,250,250)';
-                                }
+                              }
                           ]]]
                     label:
                       - color: >
                           [[[
                               if (variables.ulm_card_fan_force_background_color) {
                                   return 'rgb(250,250,250)';
-                                }
+                              }
                           ]]]
     item2:
       card:
@@ -190,14 +190,14 @@ card_fan:
             - grid-template-areas: >
                 [[[
                     if (variables.ulm_card_fan_enable_button) {
-                      return "'slider button'"
+                      return "'slider button'";
                     }
                     return "'slider'";
                 ]]]
             - grid-template-columns: >
                 [[[
                     if (variables.ulm_card_fan_enable_button) {
-                      return "2fr 1fr"
+                      return "2fr 1fr";
                     }
                     return "1fr";
                 ]]]
@@ -224,7 +224,7 @@ card_fan:
                   var color = variables.ulm_card_fan_color;
 
                   if (entity.state != "off") {
-                    if(variables.ulm_card_fan_force_background_color){
+                    if (variables.ulm_card_fan_force_background_color) {
                       return 'rgb(250,250,250)';
                     }
                     return 'rgba(var(--color-' + color + '),0.8)';
@@ -235,7 +235,7 @@ card_fan:
                 [[[
                   var color = variables.ulm_card_fan_color;
                   if (entity.state != "off") {
-                    if(variables.ulm_card_fan_force_background_color){
+                    if (variables.ulm_card_fan_force_background_color) {
                       return 'rgba(var(--color-' + color + '),0.3)';
                     }
                     return 'rgba(var(--color-' + color + '),0.1)';
@@ -274,11 +274,11 @@ card_fan:
                       - background-color: >
                           [[[
                             var color = variables.ulm_card_fan_color;
-                            if(variables.ulm_card_fan_force_background_color){
-                              if(hass.themes.darkMode){
-                                return 'rgba(var(--color-' + color + '),0.2)'
+                            if (variables.ulm_card_fan_force_background_color) {
+                              if (hass.themes.darkMode) {
+                                return 'rgba(var(--color-' + color + '),0.2)';
                               }
-                              return 'rgba(250, 250, 250,0.3)'
+                              return 'rgba(250, 250, 250,0.3)';
                             }
                               return 'rgba(var(--color-theme),0.05)';
                           ]]]
@@ -286,11 +286,11 @@ card_fan:
                       - color: >
                           [[[
                             var color = variables.ulm_card_fan_color;
-                            if(variables.ulm_card_fan_force_background_color){
-                              if(hass.themes.darkMode){
-                                return 'rgba(var(--color-' + color + '),1)'
+                            if (variables.ulm_card_fan_force_background_color) {
+                              if (hass.themes.darkMode) {
+                                return 'rgba(var(--color-' + color + '),1)';
                               }
-                              return 'rgba(250, 250, 250,1)'
+                              return 'rgba(250, 250, 250,1)';
                             }
                               return 'rgba(var(--color-theme),0.9)';
                           ]]]
@@ -301,8 +301,8 @@ card_fan:
                       - background-color: >
                           [[[
                             var color = variables.ulm_card_fan_color;
-                            if(variables.ulm_card_fan_force_background_color){
-                              return 'rgba(250, 250, 250, 1)'
+                            if (variables.ulm_card_fan_force_background_color) {
+                              return 'rgba(250, 250, 250, 1)';
                             }
                               return 'rgba(var(--color-' + color + '),0.2)';
                           ]]]

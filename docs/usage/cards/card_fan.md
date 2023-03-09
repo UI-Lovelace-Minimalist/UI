@@ -65,13 +65,19 @@ Rather than deprecate and many breaking changes on that card for users, this new
     <td>ulm_card_fan_color</td>
     <td>blue</td>
     <td>no</td>
-    <td>Custom Color for the Card. default: false - no color</td>
+    <td>Custom Color for the Card. default: "blue"</td>
   </tr>
   <tr>
     <td>ulm_card_fan_force_background_color</td>
     <td>true</td>
     <td>no</td>
-    <td>true/false if the card should force the bckgrund colour, not just in dark mode. Default: false</td>
+    <td>true/false if the card should force the background color, not just in dark mode."</td>
+  </tr>
+  <tr>
+    <td>ulm_card_fan_enable_button</td>
+    <td>true</td>
+    <td>no</td>
+    <td>true/false if the card should show a button next to the slider for turning Oscillation on/off."</td>
   </tr>
 </table>
 
@@ -81,10 +87,8 @@ Rather than deprecate and many breaking changes on that card for users, this new
     ulm_card_fan_slider_min: 0
     ulm_card_fan_slider_max: 100
     ulm_card_fan_enable_button: false
-    ulm_card_fan_button_icon: "mdi:rotate-3d-variant"
-    ulm_card_fan_button_service: "fan.oscillate"
-    ulm_card_fan_temp_attribute: false #"temp"
-    ulm_card_fan_hum_attribute: false #"hum"
+    ulm_card_fan_temp_attribute: "temp"
+    ulm_card_fan_hum_attribute: "hum"
 
 ## Usage
 
