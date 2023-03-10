@@ -7,6 +7,8 @@ card_weather:
     ulm_card_weather_backdrop: false
     ulm_card_weather_primary_info: "extrema"
     ulm_card_weather_secondary_info: "precipitation"
+    ulm_card_weather_custom:
+      - temp: '[[[ return entity.attributes.temperature ]]]'
   show_icon: false
   show_name: false
   show_label: false
