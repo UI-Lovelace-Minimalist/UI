@@ -44,7 +44,8 @@ To use `popup_light` you need to set the variable `ulm_card_light_enable_popup` 
 | ulm_card_light_enable_collapse        | `false`         | :material-close: | Collapse slider when off                               | Need `ulm_card_light_enable_slider: true`     |
 | ulm_card_light_enable_horizontal      | `false`         | :material-close: | Enable horizontal card                                 |                                               |
 | ulm_card_light_enable_horizontal_wide | `false`         | :material-close: | Wider slider                                           | Need `ulm_card_light_enable_horizontal: true` |
-| ulm_card_light_enable_color           | `false`         | :material-close: | Enable icon and label light color                      |                                               |
+| ulm_card_light_color           | `yellow`         | :material-close: | Set a manual color from the theme for icon, slider and background                      |                                               |
+| ulm_card_light_enable_color           | `false`         | :material-close: | Enable icon and label light color from the light itself.                       |  Overrides `ulm_card_light_color`                                             |
 | ulm_card_light_force_background_color | `false`         | :material-close: | Force background light color even in light theme       |                                               |
 | ulm_card_light_enable_popup           | `false`         | :material-close: | Enable `popup_light`                                   |                                               |
 | ulm_card_light_enable_popup_tap       | `false`         | :material-close: | Enable `popup_light` on simple icon tap                |                                               |
