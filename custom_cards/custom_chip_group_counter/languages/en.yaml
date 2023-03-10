@@ -1,0 +1,18 @@
+---
+custom_chip_group_counter_language_variables:
+  variables:
+    custom_chip_group_counter_light_zero: "No lights"
+    custom_chip_group_counter_light_one: "One light"
+    custom_chip_group_counter_light_multiple: "{count} lights"
+
+    custom_chip_group_counter_media_player_zero: "No media players"
+    custom_chip_group_counter_media_player_one: "One media player"
+    custom_chip_group_counter_media_player_multiple: "{count} media players"
+
+    custom_chip_group_counter_speaker_zero: "No speakers"
+    custom_chip_group_counter_speaker_one: "One speaker"
+    custom_chip_group_counter_speaker_multiple: "{count} speakers"
+
+    custom_chip_group_counter_television_zero: "No TVs"
+    custom_chip_group_counter_television_one: "One TV"
+    custom_chip_group_counter_television_multiple: "{count} TVs"
