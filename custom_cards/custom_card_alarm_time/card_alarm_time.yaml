@@ -82,7 +82,7 @@ card_alarm_time:
                       [[[
                         var color = variables.ulm_card_alarm_time_color;
                         if (typeof entity !== "undefined") {
-                          if (states[entity.entity_id].state != "off") {
+                          if (entity.state != "off") {
                               return 'rgba(var(--color-' + color + '),1)';
                           }
                         }
@@ -93,7 +93,7 @@ card_alarm_time:
                       [[[
                         var color = variables.ulm_card_alarm_time_color;
                         if (typeof entity !== "undefined") {
-                          if (states[entity.entity_id].state != "off") {
+                          if (entity.state != "off") {
                               return 'rgba(var(--color-' + color + '),0.2)';
                           }
                         }
@@ -116,9 +116,19 @@ card_alarm_time:
                 - value: "on"
                   styles:
                     name:
-                      - color: "[[[ return 'rgba(var(--color-blue-text),1)' ]]]"
+                      - color: >
+                          [[[
+                            if (variables.ulm_card_alarm_time_force_background_color) {
+                              return 'rgb(250,250,250)';
+                            }
+                          ]]]
                     label:
-                      - color: "[[[ return 'rgba(var(--color-blue-text),1)' ]]]"
+                      - color: >
+                          [[[
+                            if (variables.ulm_card_alarm_time_force_background_color) {
+                              return 'rgb(250,250,250)';
+                            }
+                          ]]]
     item2:
       card:
         type: "custom:button-card"
@@ -219,3 +229,28 @@ card_alarm_time:
                       return formattedTime;
                     ]]]
               icon: "mdi:plus"
+              styles:
+                card:
+                  - background-color: >
+                      [[[
+                        if (!hass.themes.darkMode && entity.state == "on") {
+                            return 'rgba(250, 250, 250,0.8)';
+                        }
+                        return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+                icon:
+                  - color: >
+                      [[[
+                        if (!hass.themes.darkMode) {
+                          var color_set = variables.mui_card_light_enable_color ? entity.attributes.rgb_color : variables.mui_card_light_color;
+                          var color = 'rgba(var(--color-' + color_set + '),1)';
+                          if (variables.mui_card_light_enable_color) {
+                            color = 'rgba(' + color_set + ',1)';
+                          }
+                          if (entity.state != "on") {
+                            return 'rgba(var(--color-theme),0.2)';
+                          }
+                          return color;
+                        }
+                        return 'rgba(var(--color-theme),0.9)';
+                      ]]]
