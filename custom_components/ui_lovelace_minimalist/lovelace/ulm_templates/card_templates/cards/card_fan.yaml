@@ -109,7 +109,7 @@ card_fan:
                 icon:
                   - color: >
                       [[[
-                          if (entity.state != "off") {
+                          if (entity.state == "on") {
                             if (variables.ulm_card_fan_color) {
                               var color = variables.ulm_card_fan_color;
                               return 'rgba(var(--color-' + color + '),1)';
@@ -121,7 +121,7 @@ card_fan:
                 img_cell:
                   - background-color: >
                       [[[
-                          if (entity.state != "off") {
+                          if (entity.state == "on") {
                             if (variables.ulm_card_fan_color) {
                               var color = variables.ulm_card_fan_color;
                               return 'rgba(var(--color-' + color + '),0.2)';
@@ -223,7 +223,7 @@ card_fan:
                 [[[
                   var color = variables.ulm_card_fan_color;
 
-                  if (entity.state != "off") {
+                  if (entity.state == "on") {
                     if (variables.ulm_card_fan_force_background_color) {
                       return 'rgb(250,250,250)';
                     }
@@ -234,7 +234,7 @@ card_fan:
               secondarySliderColor: >
                 [[[
                   var color = variables.ulm_card_fan_color;
-                  if (entity.state != "off") {
+                  if (entity.state == "on") {
                     if (variables.ulm_card_fan_force_background_color) {
                       return 'rgba(var(--color-' + color + '),0.3)';
                     }
