@@ -10,6 +10,7 @@ card_alarm_time:
     ulm_card_alarm_time_horizontal: false
     ulm_card_alarm_time_collapse: false
     ulm_card_alarm_time_color: "blue"
+    ulm_card_alarm_time_force_background_color: false
     ulm_card_alarm_time_step: 15
   show_icon: false
   show_name: false
@@ -20,11 +21,9 @@ card_alarm_time:
         card:
           - background-color: >
               [[[
-                var color = variables.ulm_card_alarm_time_color;
-                if (typeof entity !== "undefined") {
-                  if (states[entity.entity_id].state != "off") {
-                      return 'rgba(var(--color-' + color + '),var(--opacity-bg))';
-                  }
+                if (variables.ulm_card_alarm_time_force_background_color || hass.themes.darkMode) {
+                  var color = variables.ulm_card_alarm_time_color;
+                  return 'rgba(var(--color-' + color + '),var(--opacity-bg))';
                 }
               ]]]
   styles:
@@ -125,6 +124,8 @@ card_alarm_time:
         type: "custom:button-card"
         template: "list_3_items"
         styles:
+          card:
+            - background: "none"
           grid:
             - grid-template-areas: >
                 [[[
