@@ -197,23 +197,6 @@ card_light:
                   }
                   return label;
                 ]]]
-              state:
-                - value: "on"
-                  styles:
-                    name:
-                      - color: >
-                          [[[
-                            if (variables.ulm_card_light_force_background_color) {
-                              return 'rgb(250,250,250)';
-                            }
-                          ]]]
-                    label:
-                      - color: >
-                          [[[
-                            if (variables.ulm_card_light_force_background_color) {
-                              return 'rgb(250,250,250)';
-                            }
-                          ]]]
     item2:
       card:
         type: "custom:my-slider"
