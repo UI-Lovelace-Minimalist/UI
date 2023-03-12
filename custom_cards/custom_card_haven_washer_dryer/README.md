@@ -8,30 +8,30 @@ hide:
 
 # Custom-card "Washer-Dryer"
 
-<img src="img/custom_card_haven_washer_dryer_off.png" alt="Washer Dryer off" width="375px" heigth="267px" />
+<img src="img/custom_card_haven_washer_dryer_off.png" alt="Washer Dryer off" width="375px" height="267px" />
 
 Small layout when the washmachine or dryer is turned off (ulm_custom_card_washer_dryer_power === "off")
 
-<img src="img/custom_card_haven_washer_dryer_ready.png" alt="Washer Dryer Ready" width="375px" heigth="321px" />
+<img src="img/custom_card_haven_washer_dryer_ready.png" alt="Washer Dryer Ready" width="375px" height="321px" />
 
-When the washing machine or dryer is turned on the posible stages of the washer or dryer become visible (The dryer has no different stages so the stages remain closed)
+When the washing machine or dryer is turned on the possible stages of the washer or dryer become visible (The dryer has no different stages so the stages remain closed)
 
-<img src="img/custom_card_haven_washer_dryer_remote_control.png" alt="Washer Dryer Remote Control" width="375px" heigth="428px" />
+<img src="img/custom_card_haven_washer_dryer_remote_control.png" alt="Washer Dryer Remote Control" width="375px" height="428px" />
 
-When the washing machine or dryer is set to smart control (ulm_custom_card_washer_dryer_remote_control === "true"), you can start the washing machine or dryer from you app, or you can start the washing machine or dryer using automation. The buttons will reflect this stage change. 
+When the washing machine or dryer is set to smart control (ulm_custom_card_washer_dryer_remote_control === "true"), you can start the washing machine or dryer from you app, or you can start the washing machine or dryer using automation. The buttons will reflect this stage change.
 
-<img src="img/custom_card_haven_washer_dryer_timer.png" alt="Washer Dryer Timer" width="375px" heigth="535px" />
+<img src="img/custom_card_haven_washer_dryer_timer.png" alt="Washer Dryer Timer" width="375px" height="535px" />
 
 When you want to start the washing machine or dryer at a specific time (through automation) you can turn on the timer (press the icon and the ulm_custom_card_washer_dryer_delayed_start === "on") and set the time to start (use the up and down buttons of click on the time to set ulm_custom_card_washer_dryer_delayed_starttime (Time only))
 
-<img src="img/custom_card_haven_washer_dryer_running.png" alt="Washer Dryer Running" width="375px" heigth="321px" />
+<img src="img/custom_card_haven_washer_dryer_running.png" alt="Washer Dryer Running" width="375px" height="321px" />
 
 When the washing machine or dryer is running you can use the label to show the remaining time
 
 
 !! Attention !!
 
-This custom card is build based on a Samsung Washing machine and Dryer and based on the SmartThings Custom integration (installable using HACS: https://github.com/veista/smartthings). Other Washing machines or Dryers could work with this custom card, but might require some template sensors to support the same terminology. 
+This custom card is build based on a Samsung Washing machine and Dryer and based on the SmartThings Custom integration (installable using HACS: https://github.com/veista/smartthings). Other Washing machines or Dryers could work with this custom card, but might require some template sensors to support the same terminology.
 
 ## Credits
 
@@ -147,21 +147,21 @@ switch:
 
 ### Main parameters
 
-| Variable                                       | Example                                                         | Required | Explanation                                   |
-| ---------------------------------------------- | --------------------------------------------------------------- | -------- | --------------------------------------------- |
-| ulm_custom_card_washer_dryer_power             | switch.washingmachine_switch                                    | yes      | Is the washing machine or dryer turned on?                                           |
-| ulm_custom_card_washer_dryer_remote_control    | sensor.washingmachine_remote_control                            | no       | Can we control the washing machine or dryer remotely                                      |
-| ulm_custom_card_washer_dryer_machine_state     | sensor.washingmachine_machine_state                             | no       | What is the current state of washing machine or dryer: none, run or pause                  |
-| ulm_custom_card_washer_dryer_job_state         | sensor.washingmachine_job_state                                 | no       | What is the current step in the program, weightSensing, wash, rinse, spin or drying    |
-| ulm_custom_card_washer_dryer_job_dryer         | true or false                                                   | no       | Not every washing machine is capable of dryer too                                           |
-| ulm_custom_card_washer_dryer_delayed_start     | input_boolean.washingmachine_latest_start                       | no       | Turn on the ability to start the washing machine of dryer at a specific time           |
-| ulm_custom_card_washer_dryer_delayed_starttime | input_datetime.washingmachine_latest_starttime                  | no       | What time should the washing machine or dryer start                                         |
-| ulm_custom_card_washer_dryer_label_idle        | Any text, for example the number of runs                        | no       | What label to show when the washing machine or dryer is idle                              |
-| ulm_custom_card_washer_dryer_label_running     | Any text, for example the remaining time of the current program | no       | What label to show when the washing machine or dryer is running                           |
-| ulm_custom_card_washer_dryer_label_configuring | Any text, for example, the end result of all the settings       | no       | What label to show when the washing machine or dryer is being configured                  |
-| ulm_custom_card_washer_dryer_start_switch      | A collection of setting to change a value or start an action    | no       | This contains all the paramters to start the washing machine or dryer (See the next table) |
-| ulm_custom_card_washer_dryer_pause_switch      | A collection of setting to change a value or start an action    | no       | This contains all the paramters to pause the washing machine or dryer (See the next table) |
-| ulm_custom_card_washer_dryer_stop_switch       | A collection of setting to change a value or start an action    | no       | This contains all the paramters to stop the washing machine or dryer (See the next table) |
+| Variable                                       | Example                                                         | Required | Explanation                                             |
+| ---------------------------------------------- | --------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------- |
+| ulm_custom_card_washer_dryer_power             | switch.washingmachine_switch                                    | yes      | Is the washing machine or dryer turned on?                                                     |
+| ulm_custom_card_washer_dryer_remote_control    | sensor.washingmachine_remote_control                            | no       | Can we control the washing machine or dryer remotely                                          |
+| ulm_custom_card_washer_dryer_machine_state     | sensor.washingmachine_machine_state                             | no       | What is the current state of washing machine or dryer: none, run or pause                    |
+| ulm_custom_card_washer_dryer_job_state         | sensor.washingmachine_job_state                                 | no       | What is the current step in the program, weightSensing, wash, rinse, spin or drying              |
+| ulm_custom_card_washer_dryer_job_dryer         | true or false                                                   | no       | Not every washing machine is capable of dryer too                                               |
+| ulm_custom_card_washer_dryer_delayed_start     | input_boolean.washingmachine_latest_start                       | no       | Turn on the ability to start the washing machine of dryer at a specific time                     |
+| ulm_custom_card_washer_dryer_delayed_starttime | input_datetime.washingmachine_latest_starttime                  | no       | What time should the washing machine or dryer start                                             |
+| ulm_custom_card_washer_dryer_label_idle        | Any text, for example the number of runs                        | no       | What label to show when the washing machine or dryer is idle                                |
+| ulm_custom_card_washer_dryer_label_running     | Any text, for example the remaining time of the current program | no       | What label to show when the washing machine or dryer is running                             |
+| ulm_custom_card_washer_dryer_label_configuring | Any text, for example, the end result of all the settings       | no       | What label to show when the washing machine or dryer is being configured                    |
+| ulm_custom_card_washer_dryer_start_switch      | A collection of setting to change a value or start an action    | no       | This contains all the parameters to start the washing machine or dryer (See the next table) |
+| ulm_custom_card_washer_dryer_pause_switch      | A collection of setting to change a value or start an action    | no       | This contains all the parameters to pause the washing machine or dryer (See the next table) |
+| ulm_custom_card_washer_dryer_stop_switch       | A collection of setting to change a value or start an action    | no       | This contains all the parameters to stop the washing machine or dryer (See the next table)       |
 
 ### Parameters specific for the start, pause and stop of the washing machine of dryer
 

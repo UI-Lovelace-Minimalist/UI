@@ -20,7 +20,7 @@ custom_card_haven_washer_dryer:
       action: "none"
     ulm_custom_card_washer_dryer_stop_switch:
       action: "none"
-  triggers_update: all
+  triggers_update: "all"
   show_icon: false
   show_label: false
   show_name: false
@@ -94,13 +94,13 @@ custom_card_haven_washer_dryer:
         type: "custom:button-card"
         styles:
           card:
-            - box-shadow: none
+            - box-shadow: "none"
             - padding: "0px"
         template:
-          - icon_info
-          - blue_on
+          - "icon_info"
+          - "blue_on"
         tap_action:
-          action: more-info
+          action: "more-info"
         entity: "[[[ return variables.ulm_custom_card_washer_dryer_power; ]]]"
         label: >
           [[[
@@ -157,13 +157,13 @@ custom_card_haven_washer_dryer:
             - padding: "0px"
             - margin-top: "12px"
             - border-radius: "var(--border-radius)"
-            - pointer-events: none
+            - pointer-events: "none"
             - background-color: "rgba(var(--color-theme), 0.05)"
-            - justify-items: center
+            - justify-items: "center"
           grid:
-            - justify-items: center
+            - justify-items: "center"
           img_cell:
-            - justify-items: center
+            - justify-items: "center"
           custom_fields:
             item5:
               - display: >
@@ -174,77 +174,77 @@ custom_card_haven_washer_dryer:
         custom_fields:
           item1:
             card:
-              type: custom:button-card
-              icon: mdi:scale
-              template: custom_card_haven_washer_dryer_state
+              type: "custom:button-card"
+              icon: "mdi:scale"
+              template: "custom_card_haven_washer_dryer_state"
               entity: "[[[ return variables.ulm_custom_card_washer_dryer_job_state; ]]]"
               state:
                 - value: "weightSensing"
                   styles:
                     icon:
-                      - transform: scale(1.2)
-                      - color: black
+                      - transform: "scale(1.2)"
+                      - color: "black"
                     card:
                       - background-color: "white"
           item2:
             card:
-              type: custom:button-card
-              icon: mdi:waves
-              template: custom_card_haven_washer_dryer_state
+              type: "custom:button-card"
+              icon: "mdi:waves"
+              template: "custom_card_haven_washer_dryer_state"
               entity: "[[[ return variables.ulm_custom_card_washer_dryer_job_state; ]]]"
               state:
                 - value: "wash"
                   styles:
                     icon:
-                      - transform: scale(1.2)
-                      - color: black
+                      - transform: "scale(1.2)"
+                      - color: "black"
                     card:
                       - background-color: "white"
           item3:
             card:
-              type: custom:button-card
-              icon: mdi:water
-              template: custom_card_haven_washer_dryer_state
+              type: "custom:button-card"
+              icon: "mdi:water"
+              template: "custom_card_haven_washer_dryer_state"
               entity: "[[[ return variables.ulm_custom_card_washer_dryer_job_state; ]]]"
               state:
                 - value: "rinse"
                   styles:
                     icon:
-                      - transform: scale(1.2)
-                      - color: black
+                      - transform: "scale(1.2)"
+                      - color: "black"
                     card:
                       - background-color: "white"
           item4:
             card:
-              type: custom:button-card
-              icon: mdi:fan
-              template: custom_card_haven_washer_dryer_state
+              type: "custom:button-card"
+              icon: "mdi:fan"
+              template: "custom_card_haven_washer_dryer_state"
               entity: "[[[ return variables.ulm_custom_card_washer_dryer_job_state; ]]]"
               state:
                 - value: "spin"
                   styles:
                     icon:
-                      - transform: scale(1.2)
-                      - color: black
+                      - transform: "scale(1.2)"
+                      - color: "black"
                     card:
                       - background-color: "white"
           item5:
             card:
-              type: custom:button-card
-              icon: mdi:tumble-dryer
-              template: custom_card_haven_washer_dryer_state
+              type: "custom:button-card"
+              icon: "mdi:tumble-dryer"
+              template: "custom_card_haven_washer_dryer_state"
               entity: "[[[ return variables.ulm_custom_card_washer_dryer_job_state ]]]"
               state:
                 - value: "drying"
                   styles:
                     icon:
-                      - transform: scale(1.2)
-                      - color: black
+                      - transform: "scale(1.2)"
+                      - color: "black"
                     card:
                       - background-color: "white"
     row3:
       card:
-        type: 'custom:button-card'
+        type: "custom:button-card"
         template: >
           [[[ return variables.ulm_custom_card_washer_dryer_delayed_start
                 && variables.ulm_custom_card_washer_dryer_delayed_starttime ? "list_3_items" : "list_2_items"; ]]]
@@ -268,7 +268,7 @@ custom_card_haven_washer_dryer:
               icon: "mdi:play"
               tap_action:
                 action: >
-                  [[[ 
+                  [[[
                     if (states[variables.ulm_custom_card_washer_dryer_machine_state] !== undefined
                       && states[variables.ulm_custom_card_washer_dryer_machine_state].state === "run") {
                       return variables.ulm_custom_card_washer_dryer_pause_switch?.action ? variables.ulm_custom_card_washer_dryer_pause_switch.action : "none";
@@ -278,28 +278,28 @@ custom_card_haven_washer_dryer:
                   ]]]
                 entity: "[[[ return variables.ulm_custom_card_washer_dryer_start_switch.entity; ]]]"
                 navigation_path: >
-                  [[[ 
+                  [[[
                     return (states[variables.ulm_custom_card_washer_dryer_machine_state] !== undefined
                       && states[variables.ulm_custom_card_washer_dryer_machine_state].state === "run")
                       ? variables.ulm_custom_card_washer_dryer_pause_switch?.navigation_path
                       : variables.ulm_custom_card_washer_dryer_start_switch?.navigation_path; 
                   ]]]
                 url_path: >
-                  [[[ 
+                  [[[
                     return (states[variables.ulm_custom_card_washer_dryer_machine_state] !== undefined
                       && states[variables.ulm_custom_card_washer_dryer_machine_state].state === "run")
                       ? variables.ulm_custom_card_washer_dryer_pause_switch?.url_path
                       : variables.ulm_custom_card_washer_dryer_start_switch?.url_path;
                   ]]]
                 service: >
-                  [[[ 
+                  [[[
                     return (states[variables.ulm_custom_card_washer_dryer_machine_state] !== undefined
                       && states[variables.ulm_custom_card_washer_dryer_machine_state].state === "run")
                       ?  variables.ulm_custom_card_washer_dryer_pause_switch?.service
                       : variables.ulm_custom_card_washer_dryer_start_switch?.service;
                   ]]]
                 service_data: >
-                  [[[ 
+                  [[[
                     return (states[variables.ulm_custom_card_washer_dryer_machine_state] !== undefined
                       && states[variables.ulm_custom_card_washer_dryer_machine_state].state === "run")
                       ? variables.ulm_custom_card_washer_dryer_pause_switch?.service_data
@@ -386,7 +386,7 @@ custom_card_haven_washer_dryer:
               entity: "[[[ return variables.ulm_custom_card_washer_dryer_delayed_start; ]]]"
     row4:
       card:
-        type: 'custom:button-card'
+        type: "custom:button-card"
         styles:
           card:
             - padding: "0px"
@@ -499,7 +499,6 @@ custom_card_haven_washer_dryer:
                         return "00:00:00";
                       }
                     ]]]
-
           item3:
             card:
               type: "custom:button-card"
@@ -536,21 +535,21 @@ custom_card_haven_washer_dryer_state:
   show_name: false
   size: "20px"
   tap_action:
-    action: none
+    action: "none"
   styles:
     card:
-      - box-shadow: none
+      - box-shadow: "none"
       - padding: "0px"
-      - border-radius: 50%
+      - border-radius: "50%"
       - place-self: "center"
       - height: "42px"
       - width: "42px"
-      - pointer-events: auto
-      - background-color: transparent
+      - pointer-events: "auto"
+      - background-color: "transparent"
     grid:
-      - grid-template-areas: '"i"'
+      - grid-template-areas: "'i'"
     icon:
-      - color: var(--google-grey)
+      - color: "var(--google-grey)"
 
 custom_card_haven_washer_dryer_delayed_text:
   tap_action:
