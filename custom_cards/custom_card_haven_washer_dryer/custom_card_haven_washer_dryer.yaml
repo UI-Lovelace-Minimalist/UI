@@ -562,4 +562,3 @@ custom_card_haven_washer_dryer_delayed_text:
       - color: "rgba(var(--color-theme),0.9)"
   size: "20px"
   color: "var(--google-grey)"
-
