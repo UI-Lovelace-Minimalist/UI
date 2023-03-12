@@ -28,7 +28,6 @@ When you want to start the washing machine or dryer at a specific time (through 
 
 When the washing machine or dryer is running you can use the label to show the remaining time
 
-
 !! Attention !!
 
 This custom card is build based on a Samsung Washing machine and Dryer and based on the SmartThings Custom integration (installable using HACS: https://github.com/veista/smartthings). Other Washing machines or Dryers could work with this custom card, but might require some template sensors to support the same terminology.
@@ -125,7 +124,6 @@ When creating a command-line switch, you need to replace the following items:
 | PAT Token | The same PAT Token you've created during the installation of the SmartThings integration |
 
 For every action you need to create an other command-line switch
-
 
 Please ensure the capabilities of you machine before creating command-line switches
 

@@ -282,7 +282,7 @@ custom_card_haven_washer_dryer:
                     return (states[variables.ulm_custom_card_washer_dryer_machine_state] !== undefined
                       && states[variables.ulm_custom_card_washer_dryer_machine_state].state === "run")
                       ? variables.ulm_custom_card_washer_dryer_pause_switch?.navigation_path
-                      : variables.ulm_custom_card_washer_dryer_start_switch?.navigation_path; 
+                      : variables.ulm_custom_card_washer_dryer_start_switch?.navigation_path;
                   ]]]
                 url_path: >
                   [[[
@@ -420,11 +420,8 @@ custom_card_haven_washer_dryer:
                         var minutes = "0" + date.getMinutes();
                         // Seconds part from the timestamp
                         var seconds = "0" + date.getSeconds();
-  
                         // Will display time in 10:30:23 format
-                        var formattedTime = hours + ":" + minutes.substr(-2) + ":" + seconds.substr(-2);
-  
-                        return formattedTime;
+                        return hours + ":" + minutes.substr(-2) + ":" + seconds.substr(-2);
                       } else {
                         return "00:00:00";
                       }
@@ -458,11 +455,8 @@ custom_card_haven_washer_dryer:
                         var minutes = "0" + date.getMinutes();
                         // Seconds part from the timestamp
                         var seconds = "0" + date.getSeconds();
-
                         // Will display time in 10:30:23 format
-                        var formattedTime = hours + ":" + minutes.substr(-2) + ":" + seconds.substr(-2);
-
-                        return formattedTime;
+                        return  hours + ":" + minutes.substr(-2) + ":" + seconds.substr(-2);
                       } else {
                         return "00:00:00";
                       }
@@ -490,11 +484,8 @@ custom_card_haven_washer_dryer:
                         var minutes = "0" + date.getMinutes();
                         // Seconds part from the timestamp
                         var seconds = "0" + date.getSeconds();
-
                         // Will display time in 10:30:23 format
-                        var formattedTime = hours + ":" + minutes.substr(-2) + ":" + seconds.substr(-2);
-
-                        return formattedTime;
+                        return hours + ":" + minutes.substr(-2) + ":" + seconds.substr(-2);
                       } else {
                         return "00:00:00";
                       }
@@ -515,15 +506,12 @@ custom_card_haven_washer_dryer:
                         && states[variables.ulm_custom_card_washer_dryer_delayed_starttime].attributes !== undefined
                         && states[variables.ulm_custom_card_washer_dryer_delayed_starttime].attributes.timestamp !== undefined) {
                         var timestamp = states[variables.ulm_custom_card_washer_dryer_delayed_starttime].attributes.timestamp
-
                         let unix_timestamp = timestamp - 2700;
                         var date = new Date(unix_timestamp * 1000);
                         var hours = date.getHours();
                         var minutes = "0" + date.getMinutes();
                         var seconds = "0" + date.getSeconds();
-                        var formattedTime = hours + ":" + minutes.substr(-2) + ":" + seconds.substr(-2);
-
-                        return formattedTime;
+                        return hours + ":" + minutes.substr(-2) + ":" + seconds.substr(-2);
                       } else {
                         return "00:00:00";
                       }
