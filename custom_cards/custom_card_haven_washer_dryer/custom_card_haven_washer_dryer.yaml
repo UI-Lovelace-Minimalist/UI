@@ -150,8 +150,10 @@ custom_card_haven_washer_dryer:
       card:
         type: "custom:button-card"
         template: >
-          [[[ return variables.ulm_custom_card_washer_dryer_job_dryer
-                    && String(variables.ulm_custom_card_washer_dryer_job_dryer) === "true" ? "list_5_items" : "list_4_items"; ]]]
+          [[[
+            return variables.ulm_custom_card_washer_dryer_job_dryer
+              && String(variables.ulm_custom_card_washer_dryer_job_dryer) === "true" ? "list_5_items" : "list_4_items";
+          ]]]
         styles:
           card:
             - padding: "0px"
@@ -246,8 +248,10 @@ custom_card_haven_washer_dryer:
       card:
         type: "custom:button-card"
         template: >
-          [[[ return variables.ulm_custom_card_washer_dryer_delayed_start
-                && variables.ulm_custom_card_washer_dryer_delayed_starttime ? "list_3_items" : "list_2_items"; ]]]
+          [[[
+            return variables.ulm_custom_card_washer_dryer_delayed_start
+              && variables.ulm_custom_card_washer_dryer_delayed_starttime ? "list_3_items" : "list_2_items";
+          ]]]
         styles:
           card:
             - padding: "0px"
