@@ -146,11 +146,13 @@ custom_card_haven_washer:
             }
 
             var label = states[variables.ulm_custom_card_washer_power].state;
+            label = variables["ulm_" + label] ?? label;
 
             if (!!variables.ulm_custom_card_washer_machine_state
               && !!states[variables.ulm_custom_card_washer_machine_state]
               && !!states[variables.ulm_custom_card_washer_machine_state].state) {
-              label += " • " + states[variables.ulm_custom_card_washer_machine_state].state;
+              var state = states[variables.ulm_custom_card_washer_machine_state].state;
+              label += " • " + variables["ulm_" + state] ?? state;
             }
 
             return label;
