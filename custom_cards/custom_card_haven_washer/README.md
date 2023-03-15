@@ -26,7 +26,7 @@ When you want to start the washer, dryer or dishwasher at a specific time (throu
 
 <img src="img/custom_card_haven_washer_running.png" alt="Washer Dryer Running" width="375px" height="430px" />
 
-When the washer, dryer or dishwasher is running you can use the running label variable (ulm_custom_card_washer_label_running) to show the remaining time. The dryer can't be paused so the button is diabled.
+When the washer, dryer or dishwasher is running you can use the running label variable (ulm_custom_card_washer_label_running) to show the remaining time. The dryer can't be paused so the button is disabled.
 
 !! Attention !!
 
