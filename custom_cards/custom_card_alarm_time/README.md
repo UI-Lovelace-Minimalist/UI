@@ -1,6 +1,7 @@
 ---
 title: Alarm Time Custom-card
 ---
+
 <!-- markdownlint-disable MD046 -->
 
 # Custom-card "Alarm Time Card"
@@ -12,9 +13,10 @@ This card is useful for setting alarms (e.g. wakeup alarm), as you can modify th
 
 Author: benbur - 2023
 Version: 1.0.0
-Original Input_Datetime Card:
-  Author: sildehoop - 2022
-  Version: 1.0.0
+
+This is built largely on top of the original Input_Datetime Card:
+Author: sildehoop - 2022
+Version: 1.0.0
 
 ## Changelog
 
@@ -39,7 +41,6 @@ Initial Release
 
 Input DateTime Helper
 Input Boolean
-
 
 ## Template code
 

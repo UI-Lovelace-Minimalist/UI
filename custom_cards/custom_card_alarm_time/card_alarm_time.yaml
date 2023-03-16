@@ -242,9 +242,9 @@ card_alarm_time:
                   - color: >
                       [[[
                         if (!hass.themes.darkMode) {
-                          var color_set = variables.mui_card_light_enable_color ? entity.attributes.rgb_color : variables.mui_card_light_color;
+                          var color_set = variables.ulm_card_light_enable_color ? entity.attributes.rgb_color : variables.ulm_card_light_color;
                           var color = 'rgba(var(--color-' + color_set + '),1)';
-                          if (variables.mui_card_light_enable_color) {
+                          if (variables.ulm_card_light_enable_color) {
                             color = 'rgba(' + color_set + ',1)';
                           }
                           if (entity.state != "on") {
