@@ -61,7 +61,7 @@ card_alarm_time:
       item2:
         - display: >
             [[[
-              if (entity.state != 'off') {
+              if (entity.state != "off") {
                   return "block";
               }
               return "none";
@@ -176,7 +176,7 @@ card_alarm_time:
               type: "custom:button-card"
               template: "widget_icon"
               tap_action:
-                action: call-service
+                action: "call-service"
                 service: "input_datetime.set_datetime"
                 service_data:
                   entity_id: "[[[ return variables.ulm_card_alarm_time_datetime ]]]"
@@ -200,7 +200,7 @@ card_alarm_time:
                 - "widget_icon"
               entity: "[[[ return variables.ulm_card_alarm_time_datetime ]]]"
               tap_action:
-                action: more-info
+                action: "more-info"
               show_icon: false
               show_label: true
               label: "[[[ return states[variables.ulm_card_alarm_time_datetime].state ]]]"
@@ -212,7 +212,7 @@ card_alarm_time:
               type: "custom:button-card"
               template: "widget_icon"
               tap_action:
-                action: call-service
+                action: "call-service"
                 service: "input_datetime.set_datetime"
                 service_data:
                   entity_id: "[[[ return variables.ulm_card_alarm_time_datetime ]]]"
