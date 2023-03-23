@@ -95,7 +95,7 @@ custom_card_sisimomo_printer:
             } else {
               errorArray.push(`cartridges.[${index}].color: You must provide a value.`);
             }
-            
+
             // Confirm that the entity_id is provided, is a valid entity_id, a integer and a value between 0 and 100 inclusively.
             if (cartridge.entity_id === undefined) {
               errorArray.push(`cartridges.[${index}].entity_id: You must provide a value.`);
@@ -117,7 +117,7 @@ custom_card_sisimomo_printer:
               </ul>
             </div>`;
           }
-          
+
           if (toner_info_available) {
             return '<div class="wrapper">' +
               variables.cartridges.map(cartridge => {
