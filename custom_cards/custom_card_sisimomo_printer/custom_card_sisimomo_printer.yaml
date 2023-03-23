@@ -46,7 +46,7 @@ custom_card_sisimomo_printer:
             - "--mdc-ripple-press-opacity": 0.12
             - cursor: "pointer"
           label:
-            - text-transform: capitalize
+            - text-transform: "capitalize"
     cartridges: |
       [[[
         // Source: https://stackoverflow.com/a/56266358
@@ -153,9 +153,11 @@ custom_card_sisimomo_printer:
               }).join("") +
             '</div>';
           } else {
-            return `<div class="info-unavailable">
+            return `
+              <div class="info-unavailable">
                 Toner Information Unavailable
-              </div>`;
+              </div>
+            `;
           }
         } else {
 
