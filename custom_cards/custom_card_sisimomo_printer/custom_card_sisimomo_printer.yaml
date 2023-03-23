@@ -122,18 +122,34 @@ custom_card_sisimomo_printer:
             return '<div class="wrapper">' +
               variables.cartridges.map(cartridge => {
                 if (cartridge.type === "unicolor") {
-                  return `<div class="label">${cartridge.label}</div>
-                    <div class="container-bar">
-                      <div class="bar" style="background-color: ${cartridge.color};width: ${states[cartridge.entity_id].state}%;"></div>
-                    </div>
-                  <div class="state">${states[cartridge.entity_id].state}%</div>`;
+                  cartridge.bar_style = `
+                    background-color: ${cartridge.color};
+                    width: ${states[cartridge.entity_id].state}%;
+                  `;
                 } else if (cartridge.type === "tricolor") {
-                  return `<div class="label">${cartridge.label}</div>
-                    <div class="container-bar">
-                      <div class="bar" style="background: linear-gradient(180deg, ${cartridge.color[0]}, ${cartridge.color[0]} 33%, ${cartridge.color[1]} 33%, ${cartridge.color[1]} 66%, ${cartridge.color[2]} 66%, ${cartridge.color[2]});width: ${states[cartridge.entity_id].state}%;"></div>
-                    </div>
-                  <div class="state">${states[cartridge.entity_id].state}%</div>`;
+                  cartridge.bar_style = `
+                    background: linear-gradient(
+                      180deg,
+                      ${cartridge.color[0]},
+                      ${cartridge.color[0]} 33%,
+                      ${cartridge.color[1]} 33%,
+                      ${cartridge.color[1]} 66%,
+                      ${cartridge.color[2]} 66%,
+                      ${cartridge.color[2]}
+                    );
+                    width: ${states[cartridge.entity_id].state}%;
+                  `;
                 }
+
+                // Removes unnecessary whitespace from inline CSS
+                cartridge.bar_style = cartridge.bar_style.replace(/\s+/g, '')
+                return `
+                  <div class="label">${cartridge.label}</div>
+                  <div class="container-bar">
+                    <div class="bar" style="${cartridge.bar_style}"></div>
+                  </div>
+                  <div class="state">${states[cartridge.entity_id].state}%</div>
+                `;
               }).join("") +
             '</div>';
           } else {
