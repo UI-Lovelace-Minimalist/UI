@@ -38,6 +38,7 @@ Contributors:
   - Changed `text-transform` of label to capitalize
   - Changed `ulm_unavailable` to `ulm_translation_unavailable`
   - Removed some unnecessary inline stylings
+  - Fixed the handling of unavailable and idle state styling
 </details>
 
 ## Card options
