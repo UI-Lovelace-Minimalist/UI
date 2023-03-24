@@ -18,27 +18,30 @@ Author: [Sisimomo](https://github.com/sisimomo) (based on [hiddevanbrussel pictu
 Version: 0.1.0
 
 Contributors:
-  - [ByteFloater](https://github.com/bytefloater) Version 0.2.0
+
+- [ByteFloater](https://github.com/bytefloater) Version 0.2.0
 
 ## Changelog
 
 <details open>
   <summary>0.1.0 - Initial Release</summary>
-  
-  - Initial release
+
+- Initial release
+
 </details>
 <details open>
   <summary>0.2.0 - Added additional cases</summary>
 
-  - Added support for other cartridge types (tricolor)
-  - Added further error checking for previously uncaught states
-  - Added support for the IPP 'unavailable' state
-  - Added CSS for better theming of error screens
-  - Added card string translation files 
-  - Changed `text-transform` of label to capitalize
-  - Changed `ulm_unavailable` to `ulm_translation_unavailable`
-  - Removed some unnecessary inline stylings
-  - Fixed the handling of unavailable and idle state styling
+- Added support for other cartridge types (tricolor)
+- Added further error checking for previously uncaught states
+- Added support for the IPP 'unavailable' state
+- Added CSS for better theming of error screens
+- Added card string translation files
+- Changed `text-transform` of label to capitalize
+- Changed `ulm_unavailable` to `ulm_translation_unavailable`
+- Removed some unnecessary inline stylings
+- Fixed the handling of unavailable and idle state styling
+
 </details>
 
 ## Card options
@@ -66,6 +69,7 @@ Contributors:
 ## Usage
 
 ### Unicolor Printers
+
 ```yaml
 - type: "custom:button-card"
   template: "custom_card_sisimomo_printer"
@@ -100,6 +104,7 @@ Contributors:
 ```
 
 ### Tricolor Printers
+
 ```yaml
 - type: "custom:button-card"
   template: custom_card_sisimomo_printer

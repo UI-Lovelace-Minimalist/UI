@@ -1,6 +1,6 @@
 ---
 custom_card_sisimomo_printer:
-  template: 
+  template:
     - "ulm_translation_engine"
     - "ulm_language_variables"
   variables:
@@ -75,7 +75,7 @@ custom_card_sisimomo_printer:
             } else if (!valid_cartridge_types.includes(cartridge.type)) {
                 errorArray.push(`cartridges.[${index}].type: You must provide a valid cartridge type`);
             }
-            
+
             // Confirm that the color is provided and is valid color css.
             if (cartridge.color !== undefined) {
               if (cartridge.type === 'unicolor') {
