@@ -477,12 +477,14 @@ custom_card_haven_washer:
                 - operator: "template"
                   value: >
                     [[[
-                      return (!variables.ulm_custom_card_washer_start_action?.action
-                        || (!!variables.ulm_custom_card_washer_start_action?.action
-                          && variables.ulm_custom_card_washer_start_action.action === "none")
-                        || !variables.ulm_custom_card_washer_pause_action?.action
-                        || (!!variables.ulm_custom_card_washer_pause_action?.action
-                          && variables.ulm_custom_card_washer_pause_action.action === "none"));
+                      return ((states[variables.ulm_custom_card_washer_machine_state].state !== "run"
+                          && (!variables.ulm_custom_card_washer_start_action?.action
+                            || (!!variables.ulm_custom_card_washer_start_action?.action
+                              && variables.ulm_custom_card_washer_start_action.action === "none")))
+                        || (states[variables.ulm_custom_card_washer_machine_state].state === "run"
+                          && (!variables.ulm_custom_card_washer_pause_action?.action
+                            || (!!variables.ulm_custom_card_washer_pause_action?.action
+                              && variables.ulm_custom_card_washer_pause_action.action === "none"))));
                     ]]]
                   styles:
                     icon:
@@ -548,8 +550,7 @@ custom_card_haven_washer:
                   time: >
                     [[[
                       if (!!variables.ulm_custom_card_washer_delayed_starttime
-                        && !!states[variables.ulm_custom_card_washer_delayed_starttime]
-                        && !!states[variables.ulm_custom_card_washer_delayed_starttime].attributes?.timestamp) {
+                        && !!states[variables.ulm_custom_card_washer_delayed_starttime]?.attributes) {
                         var timestamp = states[variables.ulm_custom_card_washer_delayed_starttime].attributes.timestamp
 
                         let unix_timestamp = timestamp - 4500;
@@ -581,8 +582,7 @@ custom_card_haven_washer:
                   time: >
                     [[[
                       if (!!variables.ulm_custom_card_washer_delayed_starttime
-                        && !!states[variables.ulm_custom_card_washer_delayed_starttime]
-                        && !!states[variables.ulm_custom_card_washer_delayed_starttime].attributes?.timestamp) {
+                        && !!states[variables.ulm_custom_card_washer_delayed_starttime]?.attributes) {
                         var timestamp = states[variables.ulm_custom_card_washer_delayed_starttime].attributes.timestamp
 
                         let unix_timestamp = timestamp - 3540;
@@ -609,8 +609,7 @@ custom_card_haven_washer:
                   time: >
                     [[[
                       if (!!variables.ulm_custom_card_washer_delayed_starttime
-                        && !!states[variables.ulm_custom_card_washer_delayed_starttime]
-                        && !!states[variables.ulm_custom_card_washer_delayed_starttime].attributes?.timestamp) {
+                        && !!states[variables.ulm_custom_card_washer_delayed_starttime]?.attributes) {
                         var timestamp = states[variables.ulm_custom_card_washer_delayed_starttime].attributes.timestamp
 
                         let unix_timestamp = timestamp - 3660;
@@ -642,14 +641,19 @@ custom_card_haven_washer:
                   time: >
                     [[[
                       if (!!variables.ulm_custom_card_washer_delayed_starttime
-                        && !!states[variables.ulm_custom_card_washer_delayed_starttime]
-                        && !!states[variables.ulm_custom_card_washer_delayed_starttime].attributes?.timestamp) {
+                        && !!states[variables.ulm_custom_card_washer_delayed_starttime]?.attributes) {
                         var timestamp = states[variables.ulm_custom_card_washer_delayed_starttime].attributes.timestamp
                         let unix_timestamp = timestamp - 2700;
+                        // Create a new JavaScript Date object based on the timestamp
+                        // multiplied by 1000 so that the argument is in milliseconds, not seconds.
                         var date = new Date(unix_timestamp * 1000);
+                        // Hours part from the timestamp
                         var hours = date.getHours();
+                        // Minutes part from the timestamp
                         var minutes = "0" + date.getMinutes();
+                        // Seconds part from the timestamp
                         var seconds = "0" + date.getSeconds();
+                        // Will display time in 10:30:23 format
                         return hours + ":" + minutes.substr(-2) + ":" + seconds.substr(-2);
                       } else {
                         return "00:00:00";
