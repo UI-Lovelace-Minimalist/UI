@@ -19,12 +19,12 @@ card_vacuum:
       [[[
         var state = entity.state.toLowerCase();
         var colors = {
-          "cleaning": "rgba(var(--color-blue)",
-          "paused": "rgba(var(--color-green)",
-          "mopping": "rgba(var(--color-yellow)",
-          "returning": "rgba(var(--color-purple)",
-          "error": "rgba(var(--color-red)",
-          "default": "rgba(var(--color-theme)"
+          "cleaning": "blue",
+          "paused": "green",
+          "mopping": "yellow",
+          "returning": "purple",
+          "error": "red",
+          "default": "theme"
         }
         return (colors[state] || colors["default"]);
       ]]]
@@ -112,12 +112,20 @@ card_vacuum:
                 icon:
                   - color: >
                       [[[
-                        return variables.ulm_card_vacuum_light_color + ", 1)";
+                        var color = variables.ulm_card_vacuum_light_color;
+                        if(color == 'theme' || !variables.ulm_active_state){
+                          return 'rgba(var(--color-theme),0.2)';
+                        }
+                        return 'rgba(var(--color-' + color + '),1)';
                       ]]]
                 img_cell:
                   - background-color: >
                       [[[
-                        return variables.ulm_card_vacuum_light_color + ", 0.05)";
+                        var color = variables.ulm_card_vacuum_light_color;
+                        if(color == 'theme' || !variables.ulm_active_state){
+                          return 'rgba(var(--color-theme),0.05)';
+                        }
+                        return 'rgba(var(--color-' + color + '),0.2)';
                       ]]]
           item2:
             card:

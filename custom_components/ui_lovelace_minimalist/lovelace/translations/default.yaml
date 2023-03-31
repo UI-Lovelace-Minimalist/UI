@@ -12,6 +12,11 @@ ulm_translation_engine:
     ulm_translation_stop_cover: "[[[ return hass.resources[hass['language']]['ui.dialogs.more_info_control.cover.stop_cover']; ]]]"
     ulm_translation_open_cover: "[[[ return hass.resources[hass['language']]['ui.dialogs.more_info_control.cover.open_cover']; ]]]"
     ulm_translation_more_options: "[[[ return hass.resources[hass['language']]['ui.panel.lovelace.editor.edit_card.options']; ]]]"
+    ulm_active_state: >
+      [[[
+        let active = ['disarmed','off','closed','not_home','standby','idle','docked','unknown','unavailable']
+        return !active.includes(entity.state)
+      ]]]
     ulm_translation_hour: >
       [[[
         var number = hass.resources[hass['language']]["ui.duration.hour"];
