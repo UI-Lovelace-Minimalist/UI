@@ -142,7 +142,7 @@ custom_card_sisimomo_printer:
                 }
 
                 // Removes unnecessary whitespace from inline CSS
-                cartridge.bar_style = cartridge.bar_style.replace(/\s+/g, '')
+                cartridge.bar_style = cartridge.bar_style.replace(/\s{2,}/g, '')
                 return `
                   <div class="label">${cartridge.label}</div>
                   <div class="container-bar">
