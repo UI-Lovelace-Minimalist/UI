@@ -40,7 +40,7 @@ card_power_outlet:
                   - color: >
                       [[[
                         var color = variables.ulm_card_power_outlet_color;
-                        if (entity.state === 'on'){
+                        if (variables.ulm_active_state){
                           return 'rgba(var(--color-' + color + '),1)';
                         }
                         return 'rgba(var(--color-theme),0.2)';
@@ -49,7 +49,7 @@ card_power_outlet:
                   - background-color: >
                       [[[
                         var color = variables.ulm_card_power_outlet_color;
-                        if (entity.state === 'on'){
+                        if (variables.ulm_active_state){
                           return 'rgba(var(--color-' + color + '),0.2)';
                         }
                         return 'rgba(var(--color-theme),0.05)';
