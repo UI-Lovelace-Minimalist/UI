@@ -17,6 +17,7 @@ card_media_player:
     ulm_card_media_player_enable_popup: false
     ulm_card_media_player_more_info: false
     ulm_card_media_player_power_button: false
+    ulm_card_media_player_color: "blue"
   triggers_update: "all"
   show_icon: false
   show_name: false
@@ -178,16 +179,26 @@ card_media_player:
                 icon:
                   - color: |
                       [[[
+                        var color = variables.ulm_card_media_player_color;
+                        var active_color = 'rgba(var(--color-theme),0.2)'
+                        if (variables.ulm_active_state){
+                          active_color = 'rgba(var(--color-' + color + '),1)';
+                        }
                         return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
                         ? 'white'
-                        : 'rgba(var(--color-theme), 0.2)'
+                        : active_color
                       ]]]
                 img_cell:
                   - background-color: |
                       [[[
+                        var color = variables.ulm_card_media_player_color;
+                        var active_color = 'rgba(var(--color-theme),0.05)'
+                        if (variables.ulm_active_state){
+                          active_color = 'rgba(var(--color-' + color + '),0.2)';
+                        }
                         return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
                         ? 'rgba(0, 0, 0, 0.2)'
-                        : 'rgba(var(--color-theme), 0.05)'
+                        : active_color
                       ]]]
                 card:
                   - background: "none"
