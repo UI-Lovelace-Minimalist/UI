@@ -193,6 +193,30 @@ card_alarm_time:
                       return formattedTime;
                     ]]]
               icon: "mdi:minus"
+              styles:
+                card:
+                  - background-color: >
+                      [[[
+                        if (!hass.themes.darkMode && variables.mui_card_alarm_time_force_background_color) {
+                          if (entity.state != "off") {
+                            return 'rgba(250,250,250,0.8)';
+                          }
+                        }
+                        return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+                icon:
+                  - color: >
+                      [[[
+                        if (!hass.themes.darkMode && variables.mui_card_alarm_time_force_background_color) {
+                          if (entity.state != "off") {
+                            var color_set = variables.ulm_card_alarm_time_color;
+                            var color = 'rgba(var(--color-' + color_set + '),1)';
+                            return color;
+                          }
+                        }
+                        return 'rgba(var(--color-theme),0.9)';
+                      ]]]
+
           item2:
             card:
               type: "custom:button-card"
@@ -207,6 +231,29 @@ card_alarm_time:
               styles:
                 grid:
                   - grid-template-areas: "'l'"
+                card:
+                  - background-color: >
+                      [[[
+                        if (!hass.themes.darkMode && variables.mui_card_alarm_time_force_background_color) {
+                          if (entity.state != "off") {
+                            return 'rgba(250,250,250,0.8)';
+                          }
+                        }
+                        return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+                icon:
+                  - color: >
+                      [[[
+                        if (!hass.themes.darkMode && variables.mui_card_alarm_time_force_background_color) {
+                          if (entity.state != "off") {
+                            var color_set = variables.ulm_card_alarm_time_color;
+                            var color = 'rgba(var(--color-' + color_set + '),1)';
+                            return color;
+                          }
+                        }
+                        return 'rgba(var(--color-theme),0.9)';
+                      ]]]
+
           item3:
             card:
               type: "custom:button-card"
@@ -233,24 +280,22 @@ card_alarm_time:
                 card:
                   - background-color: >
                       [[[
-                        if (!hass.themes.darkMode && entity.state == "on") {
-                            return 'rgba(250, 250, 250,0.8)';
+                        if (!hass.themes.darkMode && variables.mui_card_alarm_time_force_background_color) {
+                          if (entity.state != "off") {
+                            return 'rgba(250,250,250,0.8)';
+                          }
                         }
                         return 'rgba(var(--color-theme),0.05)';
                       ]]]
                 icon:
                   - color: >
                       [[[
-                        if (!hass.themes.darkMode) {
-                          var color_set = variables.ulm_card_light_enable_color ? entity.attributes.rgb_color : variables.ulm_card_light_color;
-                          var color = 'rgba(var(--color-' + color_set + '),1)';
-                          if (variables.ulm_card_light_enable_color) {
-                            color = 'rgba(' + color_set + ',1)';
+                        if (!hass.themes.darkMode && variables.mui_card_alarm_time_force_background_color) {
+                          if (entity.state != "off") {
+                            var color_set = variables.ulm_card_alarm_time_color;
+                            var color = 'rgba(var(--color-' + color_set + '),1)';
+                            return color;
                           }
-                          if (entity.state != "on") {
-                            return 'rgba(var(--color-theme),0.2)';
-                          }
-                          return color;
                         }
                         return 'rgba(var(--color-theme),0.9)';
                       ]]]
