@@ -1,6 +1,11 @@
 ---
 custom_card_sisimomo_printer:
-  template: "ulm_language_variables"
+  template:
+    - "ulm_translation_engine"
+    - "ulm_language_variables"
+  variables:
+    printer_name: "[[[ entity.attributes.friendly_name; ]]]"
+    ulm_idle: "idle"
   show_icon: false
   show_label: false
   show_name: false
@@ -24,18 +29,24 @@ custom_card_sisimomo_printer:
         type: "custom:button-card"
         template: |
           [[[
-            return entity.state.toLowerCase() != variables.ulm_idle && entity.state.toLowerCase() != variables.ulm_unavailable ? [ "icon_info", "blue_no_state" ] : [ "icon_info" ];
+            return (
+              entity.state.toLowerCase() != variables.ulm_idle.toLowerCase()
+              && entity.state.toLowerCase() != variables.ulm_translation_unavailable.toLowerCase()
+              ? [ "icon_info", "blue_no_state" ] : [ "icon_info" ]
+            );
           ]]]
         tap_action:
           action: "more-info"
         label: "[[[ return entity.state; ]]]"
-        name: "[[[ return variables.printer_name !== undefined ? variables.printer_name : entity.attributes.friendly_name; ]]]"
+        name: "[[[ return variables.printer_name; ]]]"
         entity: "[[[ return entity.entity_id; ]]]"
         styles:
           card:
             - padding: "0"
             - "--mdc-ripple-press-opacity": 0.12
             - cursor: "pointer"
+          label:
+            - text-transform: "capitalize"
     cartridges: |
       [[[
         // Source: https://stackoverflow.com/a/56266358
@@ -45,25 +56,53 @@ custom_card_sisimomo_printer:
           return s.color !== '';
         }
 
+        let toner_info_available = true;
         if (variables.cartridges !== undefined ? Array.isArray(variables.cartridges) && variables.cartridges.length > 0 : false) {
           let errorArray = [];
           variables.cartridges.forEach(cartridge => {
             let index = variables.cartridges.indexOf(cartridge);
+            let valid_cartridge_types = ['unicolor', 'tricolor']
+
             // Confirm that the label is provided.
             if (cartridge.label === undefined) {
               errorArray.push(`cartridges.[${index}].label: You must provide a value.`);
             }
-            // Confirm that the color is provided and is a valid color css.
-            if (cartridge.color === undefined) {
-              errorArray.push(`cartridges.[${index}].color: You must provide a value.`);
-            } else if (!isColor(cartridge.color)) {
-              errorArray.push(`cartridges.[${index}].color: You must provide a valid css color value.`);
+
+            // Confirm that a valid cartridge type is provided, if not default to 'unicolor'
+            // for backwards compatibility with older configuration files
+            if (cartridge.type === undefined) {
+                cartridge.type = 'unicolor'
+            } else if (!valid_cartridge_types.includes(cartridge.type)) {
+                errorArray.push(`cartridges.[${index}].type: You must provide a valid cartridge type`);
             }
+
+            // Confirm that the color is provided and is valid color css.
+            if (cartridge.color !== undefined) {
+              if (cartridge.type === 'unicolor') {
+                if (typeof cartridge.color === 'string' || cartridge.color instanceof String ? !isColor(cartridge.color) : false) {
+                  errorArray.push(`cartridges.[${index}].color: You must provide a single valid CSS color value.`);
+                }
+              } else if (Array.isArray(cartridge.color) && cartridge.color.length === 3 ? cartridge.type === 'tricolor' : false) {
+                cartridge.color.forEach(color => {
+                  let col_index = cartridge.color.indexOf(color);
+                  if (!isColor(String(color))) {
+                    errorArray.push(`cartridges.[${index}].color.[${col_index}]: You must provide a single valid CSS color value.`);
+                  }
+                });
+              } else {
+                errorArray.push(`cartridges.[${index}].color: Invalid combination of colour and type.`);
+              }
+            } else {
+              errorArray.push(`cartridges.[${index}].color: You must provide a value.`);
+            }
+
             // Confirm that the entity_id is provided, is a valid entity_id, a integer and a value between 0 and 100 inclusively.
             if (cartridge.entity_id === undefined) {
               errorArray.push(`cartridges.[${index}].entity_id: You must provide a value.`);
             } else if (states[cartridge.entity_id] === undefined) {
               errorArray.push(`cartridges.[${index}].entity_id: You must provide a existing entity_id.`);
+            } else if (String(states[cartridge.entity_id].state).toLowerCase() === String(variables.ulm_translation_unavailable).toLowerCase()) {
+              toner_info_available = false;
             } else if (isNaN(states[cartridge.entity_id].state) || typeof states[cartridge.entity_id].state === "boolean") {
               errorArray.push(`cartridges.[${index}].entity_id: You must provide a entity representing an integer.`);
             } else if (states[cartridge.entity_id].state < 0 || states[cartridge.entity_id].state > 100) {
@@ -71,29 +110,61 @@ custom_card_sisimomo_printer:
             }
           });
           if (errorArray.length > 0) {
-            return `<div style="padding: 1em;background-color: rgba(219, 68, 55, 0.75);white-space: normal;">
-              ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
-              <ul style="list-style: none;padding-left: 0;">
-                ${errorArray.map(error => `<li style="margin-top: 0.5em;">${error}</li>`).join("")}
+            return `<div class="error-container">
+              <b>Configuration Error:</b>
+              <ul>
+                ${errorArray.map(error => `<li>${error}</li>`).join("")}
               </ul>
-              ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
             </div>`;
           }
 
-          return '<div class="wrapper">' +
-            variables.cartridges.map(cartridge => {
-              return `<div class="label">${cartridge.label}</div>
-                <div class="container-bar">
-                  <div class="bar" style="background-color: ${cartridge.color};width: ${states[cartridge.entity_id].state}%;"></div>
-                </div>
-              <div class="state">${states[cartridge.entity_id].state}%</div>`;
-            }).join("") +
-          '</div>';
+          if (toner_info_available) {
+            return '<div class="wrapper">' +
+              variables.cartridges.map(cartridge => {
+                if (cartridge.type === "unicolor") {
+                  cartridge.bar_style = `
+                    background-color: ${cartridge.color};
+                    width: ${states[cartridge.entity_id].state}%;
+                  `;
+                } else if (cartridge.type === "tricolor") {
+                  cartridge.bar_style = `
+                    background: linear-gradient(
+                      180deg,
+                      ${cartridge.color[0]},
+                      ${cartridge.color[0]} 33%,
+                      ${cartridge.color[1]} 33%,
+                      ${cartridge.color[1]} 66%,
+                      ${cartridge.color[2]} 66%,
+                      ${cartridge.color[2]}
+                    );
+                    width: ${states[cartridge.entity_id].state}%;
+                  `;
+                }
+
+                // Removes unnecessary whitespace from inline CSS
+                cartridge.bar_style = cartridge.bar_style.replace(/\s{2,}/g, '')
+                return `
+                  <div class="label">${cartridge.label}</div>
+                  <div class="container-bar">
+                    <div class="bar" style="${cartridge.bar_style}"></div>
+                  </div>
+                  <div class="state">${states[cartridge.entity_id].state}%</div>
+                `;
+              }).join("") +
+            '</div>';
+          } else {
+            return `
+              <div class="info-unavailable">
+                Toner Information Unavailable
+              </div>
+            `;
+          }
         } else {
 
         }
       ]]]
   style: |
+    /* Cartridge CSS */
     div#cartridges .wrapper {
       display: grid;
       grid-template-columns: auto 1fr auto;
@@ -119,4 +190,33 @@ custom_card_sisimomo_printer:
     div#cartridges .wrapper > .state {
       filter: opacity(40%);
       font-size: medium;
+    }
+
+    /* Error CSS */
+    div#cartridges .error-container {
+      text-align: left;
+      font-size: 75%;
+      font-family: var(--code-font-family, monospace);
+      padding: 10px;
+      background-color: rgba(219, 68, 55, 0.75);
+      margin-top:10px;
+      border-radius:8px;
+    }
+    div#cartridges .error-container ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      white-space: normal !important;
+    }
+    div#cartridges .error-container ul li {
+      margin-top: 0.5em;
+    }
+    div#cartridges .info-unavailable {
+      padding: 1em;
+      white-space: normal;
+      margin-top:10px;
+      border-radius:8px;
+      opacity: 60%;
     }
