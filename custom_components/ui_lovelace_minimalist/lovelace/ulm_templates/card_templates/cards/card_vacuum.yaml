@@ -15,6 +15,7 @@ card_vacuum:
     ulm_card_vacuum_camera: ""
     ulm_card_vacuum_enable_popup: false
     ulm_card_vacuum_camera_toggle: false
+    ulm_card_vacuum_force_background_color: false
     ulm_card_vacuum_light_color: >
       [[[
         var state = entity.state.toLowerCase();
@@ -29,6 +30,20 @@ card_vacuum:
         return (colors[state] || colors["default"]);
       ]]]
   triggers_update: "all"
+  state:
+    - operator: "template"
+      value: "[[[ return variables.ulm_active_state ]]]"
+      styles:
+        card:
+          - background-color: >
+              [[[
+                  if (variables.ulm_card_vacuum_light_color) {
+                    if (variables.ulm_card_vacuum_force_background_color || hass.themes.darkMode) {
+                      var color = variables.ulm_card_vacuum_light_color;
+                      return 'rgba(var(--color-' + color + '),var(--opacity-bg))';
+                    }
+                  }
+              ]]]
   styles:
     grid:
       - grid-template-areas: >
@@ -153,6 +168,24 @@ card_vacuum:
                   }
                   return label;
                 ]]]
+              state:
+                - operator: "template"
+                  value: "[[[ return variables.ulm_active_state ]]]"
+                  styles:
+                    name:
+                      - color: >
+                          [[[
+                              if (variables.ulm_card_vacuum_force_background_color) {
+                                  return 'rgb(250,250,250)';
+                              }
+                          ]]]
+                    label:
+                      - color: >
+                          [[[
+                              if (variables.ulm_card_vacuum_force_background_color) {
+                                  return 'rgb(250,250,250)';
+                              }
+                          ]]]
     map:
       card:
         type: "custom:button-card"
@@ -187,6 +220,32 @@ card_vacuum:
               template: "widget_icon"
               entity: "[[[ return entity.entity_id ]]]"
               icon: "mdi:play"
+              styles:
+                card:
+                  - background-color: >
+                      [[[
+                        if(!hass.themes.darkMode && variables.ulm_card_vacuum_force_background_color && variables.ulm_active_state){
+                          return 'rgb(250,250,250)'
+                        }
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        var color = variables.ulm_card_vacuum_light_color;
+                        if (variables.ulm_card_vacuum_force_background_color && variables.ulm_active_state) {
+                          return 'rgba(var(--color-' + color + '),0.2)';
+                        }
+                          return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+                icon:
+                  - color: >
+                      [[[
+                        var color = variables.ulm_card_vacuum_light_color;
+                        if (variables.ulm_card_vacuum_force_background_color && variables.ulm_active_state) {
+                          return 'rgba(var(--color-' + color + '),1)';
+                        }
+                          return 'rgba(var(--color-theme),0.9)';
+                      ]]]
               state:
                 - operator: "template"
                   value: "[[[ return ['cleaning','mopping'].includes(entity.state.toLowerCase()) ]]]"
@@ -210,6 +269,32 @@ card_vacuum:
               template: "widget_icon"
               entity: "[[[ return entity.entity_id ]]]"
               icon: "mdi:home-map-marker"
+              styles:
+                card:
+                  - background-color: >
+                      [[[
+                        if(!hass.themes.darkMode && variables.ulm_card_vacuum_force_background_color && variables.ulm_active_state){
+                          return 'rgb(250,250,250)'
+                        }
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        var color = variables.ulm_card_vacuum_light_color;
+                        if (variables.ulm_card_vacuum_force_background_color && variables.ulm_active_state) {
+                          return 'rgba(var(--color-' + color + '),0.2)';
+                        }
+                          return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+                icon:
+                  - color: >
+                      [[[
+                        var color = variables.ulm_card_vacuum_light_color;
+                        if (variables.ulm_card_vacuum_force_background_color && variables.ulm_active_state) {
+                          return 'rgba(var(--color-' + color + '),1)';
+                        }
+                          return 'rgba(var(--color-theme),0.9)';
+                      ]]]
               tap_action:
                 action: "call-service"
                 service: "vacuum.return_to_base"
@@ -221,7 +306,32 @@ card_vacuum:
               template: "widget_icon"
               entity: "[[[ return entity.entity_id ]]]"
               icon: "mdi:map-marker"
-              state:
+              styles:
+                card:
+                  - background-color: >
+                      [[[
+                        if(!hass.themes.darkMode && variables.ulm_card_vacuum_force_background_color && variables.ulm_active_state){
+                          return 'rgb(250,250,250)'
+                        }
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        var color = variables.ulm_card_vacuum_light_color;
+                        if (variables.ulm_card_vacuum_force_background_color && variables.ulm_active_state) {
+                          return 'rgba(var(--color-' + color + '),0.2)';
+                        }
+                          return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+                icon:
+                  - color: >
+                      [[[
+                        var color = variables.ulm_card_vacuum_light_color;
+                        if (variables.ulm_card_vacuum_force_background_color && variables.ulm_active_state) {
+                          return 'rgba(var(--color-' + color + '),1)';
+                        }
+                          return 'rgba(var(--color-theme),0.9)';
+                      ]]]
               tap_action:
                 action: "call-service"
                 service: "vacuum.locate"
@@ -233,6 +343,32 @@ card_vacuum:
               template: "widget_icon"
               entity: "[[[ return variables.ulm_card_vacuum_room ]]]"
               icon: "[[[ return variables.ulm_card_vacuum_room_icon ]]]"
+              styles:
+                card:
+                  - background-color: >
+                      [[[
+                        if(!hass.themes.darkMode && variables.ulm_card_vacuum_force_background_color && variables.ulm_active_state){
+                          return 'rgb(250,250,250)'
+                        }
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        var color = variables.ulm_card_vacuum_light_color;
+                        if (variables.ulm_card_vacuum_force_background_color && variables.ulm_active_state) {
+                          return 'rgba(var(--color-' + color + '),0.2)';
+                        }
+                          return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+                icon:
+                  - color: >
+                      [[[
+                        var color = variables.ulm_card_vacuum_light_color;
+                        if (variables.ulm_card_vacuum_force_background_color && variables.ulm_active_state) {
+                          return 'rgba(var(--color-' + color + '),1)';
+                        }
+                          return 'rgba(var(--color-theme),0.9)';
+                      ]]]
               tap_action:
                 action: "call-service"
                 service: "script.turn_on"
