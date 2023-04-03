@@ -1,0 +1,100 @@
+---
+### Custom Chip Group Counter ###
+custom_chip_group_counter:
+  template:
+    - "chips"
+    - "custom_chip_group_counter_language_variables"
+  variables:
+    ulm_custom_chip_group_counter_icon_zero: "mdi:lightbulb-outline"
+    ulm_custom_chip_group_counter_icon_one: "mdi:lightbulb-on-outline"
+    ulm_custom_chip_group_counter_icon_multiple: "mdi:lightbulb-on-outline"
+    ulm_custom_chip_group_counter_color: "yellow"
+    ulm_custom_chip_group_counter_count_state: "on"
+    ulm_custom_chip_group_counter_type: "light"
+    ulm_custom_chip_group_counter_hide_if_zero: false
+  tap_action:
+    action: "toggle"
+  triggers_update: "all"
+  show_icon: true
+  icon: |
+    [[[
+      let entities_active = 0;
+      if(variables.ulm_custom_chip_group_counter_entities_active) {
+        entities_active = states[variables.ulm_custom_chip_group_counter_entities_active].state;
+      } else {
+        entities_active = states[
+          entity.entity_id
+        ].attributes.entity_id.filter((child_entity_id) => {
+          return variables.ulm_custom_chip_group_counter_count_state.includes(states[child_entity_id]?.state);
+        }).length;
+      }
+
+      if (entities_active == 0) {
+        return variables.ulm_custom_chip_group_counter_icon_zero;
+      } else if (entities_active == 1) {
+        return variables.ulm_custom_chip_group_counter_icon_one;
+      } else {
+        return variables.ulm_custom_chip_group_counter_icon_multiple;
+      }
+    ]]]
+  label: |
+    [[[
+      let entities_active = 0;
+      if(variables.ulm_custom_chip_group_counter_entities_active) {
+        entities_active = states[variables.ulm_custom_chip_group_counter_entities_active].state;
+      } else {
+        entities_active = states[
+          entity.entity_id
+        ].attributes.entity_id.filter((child_entity_id) => {
+          return variables.ulm_custom_chip_group_counter_count_state.includes(states[child_entity_id]?.state);
+        }).length;
+      }
+
+      const type = variables.ulm_custom_chip_group_counter_type;
+      const plural_typ = entities_active == 0 ? "zero" : entities_active == 1 ? "one" : "multiple";
+      const translation_path = `custom_chip_group_counter_${type}_${plural_typ}`
+      return variables[translation_path].replace('{count}', entities_active);
+    ]]]
+  styles:
+    card:
+      - display: |
+          [[[
+            let entities_active = 0;
+            if(variables.ulm_custom_chip_group_counter_entities_active) {
+              entities_active = states[variables.ulm_custom_chip_group_counter_entities_active].state;
+            } else {
+              entities_active = states[
+                entity.entity_id
+              ].attributes.entity_id.filter((child_entity_id) => {
+                return variables.ulm_custom_chip_group_counter_count_state.includes(states[child_entity_id]?.state);
+              }).length;
+            }
+
+            if(variables.ulm_custom_chip_group_counter_hide_if_zero && entities_active == 0){
+              return "none";
+            }
+            return "block";
+          ]]]
+    grid:
+      - grid-template-areas: "'i l'"
+    icon:
+      - color: |
+          [[[
+            let entities_active = 0;
+            if(variables.ulm_custom_chip_group_counter_entities_active) {
+              entities_active = states[variables.ulm_custom_chip_group_counter_entities_active].state;
+            } else {
+              entities_active = states[
+                entity.entity_id
+              ].attributes.entity_id.filter((child_entity_id) => {
+                return variables.ulm_custom_chip_group_counter_count_state.includes(states[child_entity_id]?.state);
+              }).length;
+            }
+
+            if (entities_active == 0) {
+              return 'rgba(var(--color-theme),0.2)';
+            }
+            else {
+              return 'rgba(var(--color-' + variables.ulm_custom_chip_group_counter_color + '),1)';
+            }
+          ]]]
