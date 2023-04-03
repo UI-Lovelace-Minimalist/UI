@@ -35,15 +35,19 @@ This custom card is build based on a Samsung Washer and Dryer and based on the S
 ## Credits
 
 - Author: Cruguah - 2023
-- Version: 1.0.0
+- Version: 1.0.1
 
 - Thanks to rphlwnk for sharing his code of his washing machine card
 
 ## Changelog
 
 <details>
-<summary>1.0.0</summary>
-Initial release
+  <summary>1.0.1</summary>
+  Small bug fix resolving issue #1230
+</details>
+<details>
+  <summary>1.0.0</summary>
+  Initial release
 </details>
 
 ## Usage
