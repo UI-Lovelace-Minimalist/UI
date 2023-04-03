@@ -24,7 +24,8 @@ card_fan:
   show_name: false
   show_label: false
   state:
-    - value: "on"
+    - operator: "template"
+      value: "[[[ return variables.ulm_active_state ]]]"
       styles:
         card:
           - background-color: >
@@ -162,7 +163,8 @@ card_fan:
                     return variables.ulm_translation_off + temp_str + hum_str;
                 ]]]
               state:
-                - value: "on"
+                - operator: "template"
+                  value: "[[[ return variables.ulm_active_state ]]]"
                   styles:
                     name:
                       - color: >
@@ -273,12 +275,16 @@ card_fan:
                     card:
                       - background-color: >
                           [[[
+                            if(!hass.themes.darkMode && variables.ulm_card_light_force_background_color){
+                              return 'rgb(250,250,250)'
+                            }
+                          ]]]
+                    img_cell:
+                      - background-color: >
+                          [[[
                             var color = variables.ulm_card_fan_color;
                             if (variables.ulm_card_fan_force_background_color) {
-                              if (hass.themes.darkMode) {
-                                return 'rgba(var(--color-' + color + '),0.2)';
-                              }
-                              return 'rgba(250, 250, 250,0.3)';
+                              return 'rgba(var(--color-' + color + '),0.2)';
                             }
                               return 'rgba(var(--color-theme),0.05)';
                           ]]]
@@ -287,17 +293,14 @@ card_fan:
                           [[[
                             var color = variables.ulm_card_fan_color;
                             if (variables.ulm_card_fan_force_background_color) {
-                              if (hass.themes.darkMode) {
-                                return 'rgba(var(--color-' + color + '),1)';
-                              }
-                              return 'rgba(250, 250, 250,1)';
+                              return 'rgba(var(--color-' + color + '),1)';
                             }
                               return 'rgba(var(--color-theme),0.9)';
                           ]]]
                 - operator: "template"
                   value: "[[[ return entity.state === 'on' && entity.attributes[variables.ulm_card_fan_oscillate_attribute]; ]]]"
                   styles:
-                    card:
+                    img_cell:
                       - background-color: >
                           [[[
                             var color = variables.ulm_card_fan_color;

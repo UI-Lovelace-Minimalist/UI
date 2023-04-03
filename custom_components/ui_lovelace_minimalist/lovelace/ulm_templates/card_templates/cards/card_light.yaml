@@ -27,7 +27,8 @@ card_light:
   show_name: false
   show_label: false
   state:
-    - value: "on"
+    - operator: "template"
+      value: "[[[ return variables.ulm_active_state ]]]"
       styles:
         card:
           - background-color: >
@@ -197,6 +198,24 @@ card_light:
                   }
                   return label;
                 ]]]
+              state:
+                - operator: "template"
+                  value: "[[[ return variables.ulm_active_state ]]]"
+                  styles:
+                    name:
+                      - color: >
+                          [[[
+                              if (variables.ulm_card_light_force_background_color) {
+                                  return 'rgb(250,250,250)';
+                              }
+                          ]]]
+                    label:
+                      - color: >
+                          [[[
+                              if (variables.ulm_card_light_force_background_color) {
+                                  return 'rgb(250,250,250)';
+                              }
+                          ]]]
     item2:
       card:
         type: "custom:my-slider"
@@ -275,17 +294,31 @@ card_light:
                 card:
                   - background-color: >
                       [[[
-                        if (!hass.themes.darkMode && variables.ulm_card_light_force_background_color) {
-                          if (variables.ulm_card_light_enable_color && entity.state != "off") {
-                            return 'rgba(250, 250, 250,0.8)';
+                        if(!hass.themes.darkMode && variables.ulm_card_light_force_background_color){
+                          if (entity.state != "off"){
+                            return 'rgb(250,250,250)'
                           }
                         }
-                        return 'rgba(var(--color-theme),0.05)';
+                        return 'rgba(var(--color-theme),0.05)'
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        if (variables.ulm_card_light_force_background_color) {
+                          if (entity.state != "off") {
+                            var color_set = variables.ulm_card_light_enable_color ? entity.attributes.rgb_color : variables.ulm_card_light_color;
+                            var color = 'rgba(var(--color-' + color_set + '),0.2)'
+                            if (variables.ulm_card_light_enable_color) {
+                              color = 'rgba(' + color_set + ',0.2)';
+                            }
+                            return color;
+                          }
+                        }
                       ]]]
                 icon:
                   - color: >
                       [[[
-                        if (!hass.themes.darkMode && variables.ulm_card_light_force_background_color) {
+                        if (variables.ulm_card_light_force_background_color) {
                           if (entity.state != "off") {
                             var color_set = variables.ulm_card_light_enable_color ? entity.attributes.rgb_color : variables.ulm_card_light_color;
                             var color = 'rgba(var(--color-' + color_set + '),1)';
@@ -308,21 +341,36 @@ card_light:
             card:
               type: "custom:button-card"
               template: "widget_icon"
+              entity: "[[[ return entity.entity_id ]]]"
               styles:
                 card:
                   - background-color: >
                       [[[
-                        if (!hass.themes.darkMode && variables.ulm_card_light_force_background_color) {
-                          if (variables.ulm_card_light_enable_color && entity.state != "off") {
-                            return 'rgba(250, 250, 250,0.8)';
+                        if(!hass.themes.darkMode && variables.ulm_card_light_force_background_color){
+                          if (entity.state != "off"){
+                            return 'rgb(250,250,250)'
                           }
                         }
-                        return 'rgba(var(--color-theme),0.05)';
+                        return 'rgba(var(--color-theme),0.05)'
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        if (variables.ulm_card_light_force_background_color) {
+                          if (entity.state != "off") {
+                            var color_set = variables.ulm_card_light_enable_color ? entity.attributes.rgb_color : variables.ulm_card_light_color;
+                            var color = 'rgba(var(--color-' + color_set + '),0.2)'
+                            if (variables.ulm_card_light_enable_color) {
+                              color = 'rgba(' + color_set + ',0.2)';
+                            }
+                            return color;
+                          }
+                        }
                       ]]]
                 icon:
                   - color: >
                       [[[
-                        if (!hass.themes.darkMode && variables.ulm_card_light_force_background_color) {
+                        if (variables.ulm_card_light_force_background_color) {
                           if (entity.state != "off") {
                             var color_set = variables.ulm_card_light_enable_color ? entity.attributes.rgb_color : variables.ulm_card_light_color;
                             var color = 'rgba(var(--color-' + color_set + '),1)';
@@ -345,21 +393,36 @@ card_light:
             card:
               type: "custom:button-card"
               template: "widget_icon"
+              entity: "[[[ return entity.entity_id ]]]"
               styles:
                 card:
                   - background-color: >
                       [[[
-                        if (!hass.themes.darkMode && variables.ulm_card_light_force_background_color) {
-                          if (variables.ulm_card_light_enable_color && entity.state != "off") {
-                            return 'rgba(250, 250, 250,0.8)';
+                        if(!hass.themes.darkMode && variables.ulm_card_light_force_background_color){
+                          if (entity.state != "off"){
+                            return 'rgb(250,250,250)'
                           }
                         }
-                        return 'rgba(var(--color-theme),0.05)';
+                        return 'rgba(var(--color-theme),0.05)'
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        if (variables.ulm_card_light_force_background_color) {
+                          if (entity.state != "off") {
+                            var color_set = variables.ulm_card_light_enable_color ? entity.attributes.rgb_color : variables.ulm_card_light_color;
+                            var color = 'rgba(var(--color-' + color_set + '),0.2)'
+                            if (variables.ulm_card_light_enable_color) {
+                              color = 'rgba(' + color_set + ',0.2)';
+                            }
+                            return color;
+                          }
+                        }
                       ]]]
                 icon:
                   - color: >
                       [[[
-                        if (!hass.themes.darkMode && variables.ulm_card_light_force_background_color) {
+                        if (variables.ulm_card_light_force_background_color) {
                           if (entity.state != "off") {
                             var color_set = variables.ulm_card_light_enable_color ? entity.attributes.rgb_color : variables.ulm_card_light_color;
                             var color = 'rgba(var(--color-' + color_set + '),1)';

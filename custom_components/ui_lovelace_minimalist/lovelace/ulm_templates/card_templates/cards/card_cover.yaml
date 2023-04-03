@@ -21,10 +21,25 @@ card_cover:
     ulm_card_cover_enable_horizontal: false
     ulm_card_cover_enable_popup: false
     ulm_show_last_changed: false
+    ulm_card_cover_force_background_color: false
   show_icon: false
   show_name: false
   show_label: false
   show_last_changed: false
+  state:
+    - operator: "template"
+      value: "[[[ return variables.ulm_active_state ]]]"
+      styles:
+        card:
+          - background-color: >
+              [[[
+                  if (variables.ulm_card_cover_color) {
+                    if (variables.ulm_card_cover_force_background_color || hass.themes.darkMode) {
+                      var color = variables.ulm_card_cover_color;
+                      return 'rgba(var(--color-' + color + '),var(--opacity-bg))';
+                    }
+                  }
+              ]]]
   styles:
     grid:
       - grid-template-areas: >
@@ -253,15 +268,66 @@ card_cover:
                   return variables.ulm_translation_state;
                 ]]]
               show_last_changed: "[[[ return variables.ulm_show_last_changed; ]]]"
+              state:
+                - operator: "template"
+                  value: "[[[ return variables.ulm_active_state ]]]"
+                  styles:
+                    name:
+                      - color: >
+                          [[[
+                              if (variables.ulm_card_cover_force_background_color) {
+                                  return 'rgb(250,250,250)';
+                              }
+                          ]]]
+                    label:
+                      - color: >
+                          [[[
+                              if (variables.ulm_card_cover_force_background_color) {
+                                  return 'rgb(250,250,250)';
+                              }
+                          ]]]
     item2:
       card:
         type: "custom:button-card"
         template: "list_3_items"
+        styles:
+          card:
+            - background: "none"
         custom_fields:
           item1:
             card:
               type: "custom:button-card"
               template: "widget_icon"
+              entity: "[[[ return entity.entity_id ]]]"
+              styles:
+                card:
+                  - background-color: >
+                      [[[
+                        if(!hass.themes.darkMode && variables.ulm_card_cover_force_background_color){
+                          if (variables.ulm_active_state){
+                            return 'rgb(250,250,250)'
+                          }
+                        }
+                        return 'rgba(var(--color-theme),0.05)'
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        if (variables.ulm_card_cover_force_background_color && variables.ulm_active_state) {
+                          var color = variables.ulm_card_cover_color;
+                          return 'rgba(var(--color-' + color + '),0.2)';
+                        }
+                        return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+                icon:
+                  - color: >
+                      [[[
+                        if (variables.ulm_card_cover_force_background_color && variables.ulm_active_state) {
+                          var color = variables.ulm_card_cover_color;
+                          return 'rgba(var(--color-' + color + '),1)';
+                        }
+                        return 'rgba(var(--color-theme),0.9)';
+                      ]]]
               state:
                 - operator: "template"
                   value: >
@@ -307,6 +373,36 @@ card_cover:
             card:
               type: "custom:button-card"
               template: "widget_icon"
+              entity: "[[[ return entity.entity_id ]]]"
+              styles:
+                card:
+                  - background-color: >
+                      [[[
+                        if(!hass.themes.darkMode && variables.ulm_card_cover_force_background_color){
+                          if (variables.ulm_active_state){
+                            return 'rgb(250,250,250)'
+                          }
+                        }
+                        return 'rgba(var(--color-theme),0.05)'
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        if (variables.ulm_card_cover_force_background_color && variables.ulm_active_state) {
+                          var color = variables.ulm_card_cover_color;
+                          return 'rgba(var(--color-' + color + '),0.2)';
+                        }
+                        return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+                icon:
+                  - color: >
+                      [[[
+                        if (variables.ulm_card_cover_force_background_color && variables.ulm_active_state) {
+                          var color = variables.ulm_card_cover_color;
+                          return 'rgba(var(--color-' + color + '),1)';
+                        }
+                        return 'rgba(var(--color-theme),0.9)';
+                      ]]]
               tap_action:
                 action: "call-service"
                 service: "cover.stop_cover"
@@ -317,6 +413,36 @@ card_cover:
             card:
               type: "custom:button-card"
               template: "widget_icon"
+              entity: "[[[ return entity.entity_id ]]]"
+              styles:
+                card:
+                  - background-color: >
+                      [[[
+                        if(!hass.themes.darkMode && variables.ulm_card_cover_force_background_color){
+                          if (variables.ulm_active_state){
+                            return 'rgb(250,250,250)'
+                          }
+                        }
+                        return 'rgba(var(--color-theme),0.05)'
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        if (variables.ulm_card_cover_force_background_color && variables.ulm_active_state) {
+                          var color = variables.ulm_card_cover_color;
+                          return 'rgba(var(--color-' + color + '),0.2)';
+                        }
+                        return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+                icon:
+                  - color: >
+                      [[[
+                        if (variables.ulm_card_cover_force_background_color && variables.ulm_active_state) {
+                          var color = variables.ulm_card_cover_color;
+                          return 'rgba(var(--color-' + color + '),1)';
+                        }
+                        return 'rgba(var(--color-theme),0.9)';
+                      ]]]
               state:
                 - operator: "template"
                   value: >
@@ -373,12 +499,18 @@ card_cover:
                 if (entity.attributes.current_position == 100) {
                     return 'rgba(var(--color-theme),0.05)';
                 }
+              if (variables.ulm_card_cover_force_background_color) {
+                return 'rgb(250,250,250)';
+              }
               return 'rgba(var(--color-' + color + '),0.8)';
             }
 
             if (typeof entity !== "undefined") {
               if (states[entity.entity_id].state != "closed") {
-                  return 'rgba(var(--color-' + color + '),0.8)';
+                if (variables.ulm_card_cover_force_background_color) {
+                  return 'rgb(250,250,250)';
+                }
+                return 'rgba(var(--color-' + color + '),0.8)';
               }
               return 'rgba(var(--color-theme),0.05)';
             }
@@ -390,12 +522,18 @@ card_cover:
                 if (entity.attributes.current_position == 100) {
                     return 'rgba(var(--color-theme),0.05)';
                 }
+              if (variables.ulm_card_cover_force_background_color) {
+                return 'rgba(var(--color-' + color + '),0.3)';
+              }
               return 'rgba(var(--color-' + color + '),0.1)';
             }
 
             if (typeof entity !== "undefined") {
               if (states[entity.entity_id].state != "closed") {
-                  return 'rgba(var(--color-' + color + '),0.1)';
+                if (variables.ulm_card_cover_force_background_color) {
+                  return 'rgba(var(--color-' + color + '),0.3)';
+                }
+                return 'rgba(var(--color-' + color + '),0.1)';
               }
               return 'rgba(var(--color-theme),0.05)';
             }
@@ -415,11 +553,44 @@ card_cover:
       card:
         type: "custom:button-card"
         template: "list_3_items"
+        styles:
+          card:
+            - background: "none"
         custom_fields:
           item1:
             card:
               type: "custom:button-card"
               template: "widget_icon"
+              entity: "[[[ return entity.entity_id ]]]"
+              styles:
+                card:
+                  - background-color: >
+                      [[[
+                        if(!hass.themes.darkMode && variables.ulm_card_cover_force_background_color){
+                          if (variables.ulm_active_state){
+                            return 'rgb(250,250,250)'
+                          }
+                        }
+                        return 'rgba(var(--color-theme),0.05)'
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        if (variables.ulm_card_cover_force_background_color && variables.ulm_active_state) {
+                          var color = variables.ulm_card_cover_color;
+                          return 'rgba(var(--color-' + color + '),0.2)';
+                        }
+                        return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+                icon:
+                  - color: >
+                      [[[
+                        if (variables.ulm_card_cover_force_background_color && variables.ulm_active_state) {
+                          var color = variables.ulm_card_cover_color;
+                          return 'rgba(var(--color-' + color + '),1)';
+                        }
+                        return 'rgba(var(--color-theme),0.9)';
+                      ]]]
               state:
                 - operator: "template"
                   value: >
@@ -455,6 +626,36 @@ card_cover:
             card:
               type: "custom:button-card"
               template: "widget_icon"
+              entity: "[[[ return entity.entity_id ]]]"
+              styles:
+                card:
+                  - background-color: >
+                      [[[
+                        if(!hass.themes.darkMode && variables.ulm_card_cover_force_background_color){
+                          if (variables.ulm_active_state){
+                            return 'rgb(250,250,250)'
+                          }
+                        }
+                        return 'rgba(var(--color-theme),0.05)'
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        if (variables.ulm_card_cover_force_background_color && variables.ulm_active_state) {
+                          var color = variables.ulm_card_cover_color;
+                          return 'rgba(var(--color-' + color + '),0.2)';
+                        }
+                        return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+                icon:
+                  - color: >
+                      [[[
+                        if (variables.ulm_card_cover_force_background_color && variables.ulm_active_state) {
+                          var color = variables.ulm_card_cover_color;
+                          return 'rgba(var(--color-' + color + '),1)';
+                        }
+                        return 'rgba(var(--color-theme),0.9)';
+                      ]]]
               tap_action:
                 action: "call-service"
                 service: "cover.stop_cover_tilt"
@@ -465,6 +666,36 @@ card_cover:
             card:
               type: "custom:button-card"
               template: "widget_icon"
+              entity: "[[[ return entity.entity_id ]]]"
+              styles:
+                card:
+                  - background-color: >
+                      [[[
+                        if(!hass.themes.darkMode && variables.ulm_card_cover_force_background_color){
+                          if (variables.ulm_active_state){
+                            return 'rgb(250,250,250)'
+                          }
+                        }
+                        return 'rgba(var(--color-theme),0.05)'
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        if (variables.ulm_card_cover_force_background_color && variables.ulm_active_state) {
+                          var color = variables.ulm_card_cover_color;
+                          return 'rgba(var(--color-' + color + '),0.2)';
+                        }
+                        return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+                icon:
+                  - color: >
+                      [[[
+                        if (variables.ulm_card_cover_force_background_color && variables.ulm_active_state) {
+                          var color = variables.ulm_card_cover_color;
+                          return 'rgba(var(--color-' + color + '),1)';
+                        }
+                        return 'rgba(var(--color-theme),0.9)';
+                      ]]]
               state:
                 - operator: "template"
                   value: >
