@@ -105,7 +105,15 @@ card_media_player:
             ]]]
       item3:
         - border-radius: "14px"
-        - background-color: "[[[return variables.ulm_card_media_player_enable_art ? 'transparent' : 'rgb(250,250,250)' ;]]]"
+        - background-color: >
+            [[[
+              if(variables.ulm_card_media_player_enable_art){
+                return 'transparent'
+              }
+              if(!hass.themes.darkMode){
+                return 'rgb(250,250,250)' ;
+              }
+            ]]]
         - display: |
             [[[
               if(variables.ulm_card_media_player_enable_volume_slider) {
@@ -239,7 +247,7 @@ card_media_player:
                 card:
                   - background: >
                       [[[
-                        if(!variables.ulm_card_media_player_enable_art && variables.ulm_card_media_player_force_background_color){
+                        if(!variables.ulm_card_media_player_enable_art && variables.ulm_card_media_player_force_background_color && !hass.themes.darkMode){
                           return 'rgb(250,250,250)'
                         }
                         return 'none'
