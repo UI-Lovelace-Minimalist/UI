@@ -25,6 +25,67 @@ Version: 1.0.0
 Initial Release
 </details>
 
+## Variables
+
+<table>
+<tr>
+<th>Variable</th>
+<th>Example</th>
+<th>Required</th>
+<th>Default</th>
+<th>Explanation</th>
+</tr>
+<tr>
+<td>ulm_card_alarm_time_name</td>
+<td>'Morning Alarm'</td>
+<td>no</td>
+<td></td>
+<td>Set Custom Name</td>
+</tr>
+<tr>
+<td>ulm_card_alarm_time_icon</td>
+<td>'mdi:alarm'</td>
+<td>no</td>
+<td></td>
+<td>Set Custom Icon</td>
+</tr>
+<tr>
+<td>ulm_card_alarm_time_color</td>
+<td>'green'</td>
+<td>no</td>
+<td>'blue'</td>
+<td>Set Custom Color for Card Elements</td>
+</tr>
+<tr>
+<td>ulm_card_alarm_time_force_background_color</td>
+<td>true</td>
+<td>no</td>
+<td>false</td>
+<td>Force Background Color in Light Mode/td>
+</tr>
+<tr>
+<td>ulm_card_alarm_time_collapse</td>
+<td>true</td>
+<td>no</td>
+<td>false</td>
+<td>Make card collapsible when off</td>
+</tr>
+<tr>
+<td>ulm_card_alarm_time_horizontal</td>
+<td>true</td>
+<td>no</td>
+<td>false</td>
+<td>Horizontal Mode for the Card</td>
+</tr>
+<tr>
+<td>ulm_card_alarm_time_step</td>
+<td>'30'</td>
+<td>no</td>
+<td>15</td>
+<td>Set Adjust Time (minutes)</td>
+</tr>
+</table>
+
 ## Usage
 
 ```yaml
