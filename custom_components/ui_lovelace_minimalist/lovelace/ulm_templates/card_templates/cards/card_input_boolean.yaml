@@ -9,6 +9,19 @@ card_input_boolean:
     ulm_card_input_boolean_name: "[[[ return entity.attributes.friendly_name ]]]"
     ulm_outlet_power_enable_popup: false
     ulm_card_input_boolean_color: "blue"
+    ulm_card_input_boolean_force_background_color: false
+  state:
+    - operator: "template"
+      value: "[[[ return variables.ulm_active_state ]]]"
+      styles:
+        card:
+          - background-color: >
+              [[[
+                if (variables.ulm_card_input_boolean_force_background_color || hass.themes.darkMode) {
+                  var color = variables.ulm_card_input_boolean_color;
+                  return 'rgba(var(--color-' + color + '),var(--opacity-bg))';
+                }
+              ]]]
   custom_fields:
     item1:
       card:
@@ -76,3 +89,21 @@ card_input_boolean:
                   }
                   return vars;
                 ]]]
+              state:
+                - operator: "template"
+                  value: "[[[ return variables.ulm_active_state ]]]"
+                  styles:
+                    name:
+                      - color: >
+                          [[[
+                              if (variables.ulm_card_input_boolean_force_background_color) {
+                                  return 'rgb(250,250,250)';
+                              }
+                          ]]]
+                    label:
+                      - color: >
+                          [[[
+                              if (variables.ulm_card_input_boolean_force_background_color) {
+                                  return 'rgb(250,250,250)';
+                              }
+                          ]]]
