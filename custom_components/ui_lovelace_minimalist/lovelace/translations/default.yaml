@@ -14,8 +14,8 @@ ulm_translation_engine:
     ulm_translation_more_options: "[[[ return hass.resources[hass['language']]['ui.panel.lovelace.editor.edit_card.options']; ]]]"
     ulm_active_state: >
       [[[
-        let active = ['disarmed','off','closed','not_home','standby','idle','docked','unknown','unavailable']
-        return !active.includes(entity.state)
+        let not_active = ['disarmed','off','closed','not_home','standby','idle','docked','unknown','unavailable','paused']
+        return !not_active.includes(entity.state)
       ]]]
     ulm_translation_hour: >
       [[[
