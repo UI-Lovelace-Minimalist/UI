@@ -9,7 +9,7 @@ hide:
 
 ![example-image](../../assets/img/ulm_cards/card_battery.png){ width="500" }
 
-Charging animation if `ulm_card_battery_charging_animation` is tue:
+Charging animation if `ulm_card_battery_charging_animation` is true:
 
 <img src="https://user-images.githubusercontent.com/63370033/224753515-2dd8ca0e-42b9-4385-add9-4a1c42addaca.gif" width="475" />
 
