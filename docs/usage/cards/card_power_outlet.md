@@ -19,6 +19,8 @@ This is the `power-outlet-card`. It shows you the state of a power outlet, and i
 | ulm_card_power_outlet_name |   | :material-close: | Set custom Name |
 | ulm_card_power_outlet_icon |   | :material-close: | Set custom Icon |
 |ulm_card_power_outlet_consumption_sensor|  | :material-close: | If you set this sensor, the `power-outlet-card` shows the energy consumption next to the state. |
+| ulm_card_power_outlet_color            | `yellow`         | :material-close: | Set Custom Color                   |             |
+| ulm_card_power_outlet_force_background_color           | `false`         | :material-close: | Set `ulm_card_power_outlet_color` as background color in active state `                  |             |
 
 ## Usage
 

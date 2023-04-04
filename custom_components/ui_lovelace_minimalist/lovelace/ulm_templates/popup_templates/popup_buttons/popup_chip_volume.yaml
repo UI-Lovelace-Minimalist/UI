@@ -5,8 +5,8 @@ popup_chip_volume:
   icon: "mdi:volume-high"
   label: >
     [[[
-      let level = entity.attributes.volume_level
-      return level * 100 + '%'
+      let level = entity.attributes.volume_level;
+      return Math.round(level * 100) + '%';
     ]]]
   styles:
     card:

@@ -3,26 +3,35 @@
 card_power_outlet:
   template:
     - "icon_more_info_new"
-    - "yellow"
     - "ulm_translation_engine"
   variables:
     ulm_card_power_outlet_consumption_sensor:
     ulm_card_power_outlet_name: "[[[ return entity.attributes.friendly_name ]]]"
     ulm_card_power_outlet_icon: "[[[ return entity.attributes.icon ]]]"
     ulm_outlet_power_enable_popup: false
+    ulm_card_power_outlet_color: "yellow"
+    ulm_card_power_outlet_force_background_color: false
+  state:
+    - operator: "template"
+      value: "[[[ return variables.ulm_active_state ]]]"
+      styles:
+        card:
+          - background-color: >
+              [[[
+                if (variables.ulm_card_power_outlet_force_background_color || hass.themes.darkMode) {
+                  var color = variables.ulm_card_power_outlet_color;
+                  return 'rgba(var(--color-' + color + '),var(--opacity-bg))';
+                }
+              ]]]
   triggers_update: "all"
   custom_fields:
     item1:
       card:
         type: "custom:button-card"
-        template:
-          - "yellow"
         custom_fields:
           item1:
             card:
               type: "custom:button-card"
-              template:
-                - "yellow"
               entity: "[[[ return entity.entity_id ]]]"
               icon: "[[[ return variables.ulm_card_power_outlet_icon ]]]"
               variables: >
@@ -39,11 +48,28 @@ card_power_outlet:
                   }
                   return vars;
                 ]]]
+              styles:
+                icon:
+                  - color: >
+                      [[[
+                        var color = variables.ulm_card_power_outlet_color;
+                        if (variables.ulm_active_state){
+                          return 'rgba(var(--color-' + color + '),1)';
+                        }
+                        return 'rgba(var(--color-theme),0.2)';
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        var color = variables.ulm_card_power_outlet_color;
+                        if (variables.ulm_active_state){
+                          return 'rgba(var(--color-' + color + '),0.2)';
+                        }
+                        return 'rgba(var(--color-theme),0.05)';
+                      ]]]
           item2:
             card:
               type: "custom:button-card"
-              template:
-                - "yellow_no_card"
               entity: "[[[ return entity.entity_id ]]]"
               name: "[[[ return variables.ulm_card_power_outlet_name ]]]"
               label: |-
@@ -68,3 +94,21 @@ card_power_outlet:
                   }
                   return vars;
                 ]]]
+              state:
+                - operator: "template"
+                  value: "[[[ return variables.ulm_active_state ]]]"
+                  styles:
+                    name:
+                      - color: >
+                          [[[
+                              if (variables.ulm_card_power_outlet_force_background_color) {
+                                  return 'rgb(250,250,250)';
+                              }
+                          ]]]
+                    label:
+                      - color: >
+                          [[[
+                              if (variables.ulm_card_power_outlet_force_background_color) {
+                                  return 'rgb(250,250,250)';
+                              }
+                          ]]]

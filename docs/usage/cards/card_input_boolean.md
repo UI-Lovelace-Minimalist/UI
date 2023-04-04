@@ -18,6 +18,8 @@ The `input-boolean-card` is to switch an `input_boolean` on or off.
 | entity     |         | :material-check: |                   |
 | ulm_card_input_boolean_name |   | :material-close: | Set custom Name |
 | ulm_card_input_boolean_icon |   | :material-close: | Set custom Icon |
+| ulm_card_input_boolean_color            | `blue`         | :material-close: | Set Custom Color                   |             |
+| ulm_card_input_boolean_force_background_color           | `false`         | :material-close: | Set `ulm_card_input_boolean_color` as background color in active state `                  |             |
 
 ## Usage
 

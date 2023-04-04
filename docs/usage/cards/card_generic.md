@@ -18,6 +18,8 @@ This is the `generic-card` to display values from a sensor, eg. to show humidity
 | entity     |         | :material-check: |                   |
 | ulm_card_generic_name |   | :material-close: | Set custom Name |
 | ulm_card_generic_icon |   | :material-close: | Set custom Icon |
+| ulm_card_generic_color            | `blue`         | :material-close: | Set Custom Color                   |             |
+| ulm_card_generic_force_background_color           | `false`         | :material-close: | Set `ulm_card_generic_color` as background color in active state `                  |             |
 
 ## Usage
 
