@@ -7,7 +7,7 @@ hide:
 
 ## Description
 
-![example-image](../../assets/img/ulm_cards/card_battery.png)
+![example-image](../../assets/img/ulm_cards/card_battery.png){ width="500" }
 
 Charging animation if `ulm_card_battery_charging_animation` is tue:
 
