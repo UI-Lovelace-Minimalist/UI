@@ -13,8 +13,6 @@ Charging animation if `ulm_card_battery_charging_animation` is tue:
 
 <img src="https://user-images.githubusercontent.com/63370033/224753515-2dd8ca0e-42b9-4385-add9-4a1c42addaca.gif" width="475" />
 
-
-
 The `battery-card` is a slightly enhanced `generic-card`, that can indicate whether and how a device is being charged and colors the icon based on the battery level.
 
 ## Variables
