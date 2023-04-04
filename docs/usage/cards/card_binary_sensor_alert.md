@@ -20,6 +20,8 @@ The `binary-sensor-card` is to show the state (on/off, open/close, etc.) of a bi
 | ulm_card_binary_sensor_alert_name |   | :material-close: | Set custom Name |
 | ulm_card_binary_sensor_alert_icon |   | :material-close: | Set custom Icon |
 | ulm_icon_alert_invert_state | false | :material-close: | Invert the alert state logic so an alert is shown when the sensor is "off" |
+| ulm_card_binary_sensor_alert_color            | `blue`         | :material-close: | Set Custom Color                   |             |
+| ulm_card_binary_sensor_alert_force_background_color           | `false`         | :material-close: | Set `ulm_card_binary_sensor_alert_color` as background color in active state `                  |             |
 
 !!! Warning "⚠️ Breaking Change `v1.0.1`"
 

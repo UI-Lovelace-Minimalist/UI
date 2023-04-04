@@ -16,7 +16,7 @@ card_vacuum:
     ulm_card_vacuum_enable_popup: false
     ulm_card_vacuum_camera_toggle: false
     ulm_card_vacuum_force_background_color: false
-    ulm_card_vacuum_light_color: >
+    ulm_card_vacuum_color: >
       [[[
         var state = entity.state.toLowerCase();
         var colors = {
@@ -37,9 +37,9 @@ card_vacuum:
         card:
           - background-color: >
               [[[
-                  if (variables.ulm_card_vacuum_light_color) {
+                  if (variables.ulm_card_vacuum_color) {
                     if (variables.ulm_card_vacuum_force_background_color || hass.themes.darkMode) {
-                      var color = variables.ulm_card_vacuum_light_color;
+                      var color = variables.ulm_card_vacuum_color;
                       return 'rgba(var(--color-' + color + '),var(--opacity-bg))';
                     }
                   }
@@ -83,7 +83,7 @@ card_vacuum:
       - background-color: >
           [[[
             if(hass.themes.darkMode){
-              return "variables.ulm_card_vacuum_light_color" + ", 0.1)";
+              return "variables.ulm_card_vacuum_color" + ", 0.1)";
               }
           ]]]
     custom_fields:
@@ -127,7 +127,7 @@ card_vacuum:
                 icon:
                   - color: >
                       [[[
-                        var color = variables.ulm_card_vacuum_light_color;
+                        var color = variables.ulm_card_vacuum_color;
                         if(color == 'theme' || !variables.ulm_active_state){
                           return 'rgba(var(--color-theme),0.2)';
                         }
@@ -136,7 +136,7 @@ card_vacuum:
                 img_cell:
                   - background-color: >
                       [[[
-                        var color = variables.ulm_card_vacuum_light_color;
+                        var color = variables.ulm_card_vacuum_color;
                         if(color == 'theme' || !variables.ulm_active_state){
                           return 'rgba(var(--color-theme),0.05)';
                         }
@@ -231,7 +231,7 @@ card_vacuum:
                 img_cell:
                   - background-color: >
                       [[[
-                        var color = variables.ulm_card_vacuum_light_color;
+                        var color = variables.ulm_card_vacuum_color;
                         if (variables.ulm_card_vacuum_force_background_color && variables.ulm_active_state) {
                           return 'rgba(var(--color-' + color + '),0.2)';
                         }
@@ -240,7 +240,7 @@ card_vacuum:
                 icon:
                   - color: >
                       [[[
-                        var color = variables.ulm_card_vacuum_light_color;
+                        var color = variables.ulm_card_vacuum_color;
                         if (variables.ulm_card_vacuum_force_background_color && variables.ulm_active_state) {
                           return 'rgba(var(--color-' + color + '),1)';
                         }
@@ -280,7 +280,7 @@ card_vacuum:
                 img_cell:
                   - background-color: >
                       [[[
-                        var color = variables.ulm_card_vacuum_light_color;
+                        var color = variables.ulm_card_vacuum_color;
                         if (variables.ulm_card_vacuum_force_background_color && variables.ulm_active_state) {
                           return 'rgba(var(--color-' + color + '),0.2)';
                         }
@@ -289,7 +289,7 @@ card_vacuum:
                 icon:
                   - color: >
                       [[[
-                        var color = variables.ulm_card_vacuum_light_color;
+                        var color = variables.ulm_card_vacuum_color;
                         if (variables.ulm_card_vacuum_force_background_color && variables.ulm_active_state) {
                           return 'rgba(var(--color-' + color + '),1)';
                         }
@@ -317,7 +317,7 @@ card_vacuum:
                 img_cell:
                   - background-color: >
                       [[[
-                        var color = variables.ulm_card_vacuum_light_color;
+                        var color = variables.ulm_card_vacuum_color;
                         if (variables.ulm_card_vacuum_force_background_color && variables.ulm_active_state) {
                           return 'rgba(var(--color-' + color + '),0.2)';
                         }
@@ -326,7 +326,7 @@ card_vacuum:
                 icon:
                   - color: >
                       [[[
-                        var color = variables.ulm_card_vacuum_light_color;
+                        var color = variables.ulm_card_vacuum_color;
                         if (variables.ulm_card_vacuum_force_background_color && variables.ulm_active_state) {
                           return 'rgba(var(--color-' + color + '),1)';
                         }
@@ -354,7 +354,7 @@ card_vacuum:
                 img_cell:
                   - background-color: >
                       [[[
-                        var color = variables.ulm_card_vacuum_light_color;
+                        var color = variables.ulm_card_vacuum_color;
                         if (variables.ulm_card_vacuum_force_background_color && variables.ulm_active_state) {
                           return 'rgba(var(--color-' + color + '),0.2)';
                         }
@@ -363,7 +363,7 @@ card_vacuum:
                 icon:
                   - color: >
                       [[[
-                        var color = variables.ulm_card_vacuum_light_color;
+                        var color = variables.ulm_card_vacuum_color;
                         if (variables.ulm_card_vacuum_force_background_color && variables.ulm_active_state) {
                           return 'rgba(var(--color-' + color + '),1)';
                         }

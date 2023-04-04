@@ -34,6 +34,8 @@ hide:
 | ulm_card_media_player_enable_popup           | false   |                  | Enable pop-up                                   |
 | ulm_card_media_player_more_info              | false   |                  | Displays artist and album info in the sub-label |
 | ulm_card_media_player_power_button           | false   |                  | Show power button                               |
+| ulm_card_media_player_color            | `blue`         | :material-close: | Set Custom Color                   |             |
+| ulm_card_media_player_force_background_color           | `false`         | :material-close: | Set `ulm_card_media_player_color` as background color in active state `                  |             |
 
 !!! note
   To use `popup_media_player` you need to set the variable `ulm_card_media_player_enable_popup` to `true`. This is a different approach as the other `popup_cards` use.

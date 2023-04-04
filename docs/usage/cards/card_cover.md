@@ -34,6 +34,7 @@ With the `cover-card` you have the state of your cover. Optionally, on the secon
 | ulm_card_cover_slider_min            | `0`         | :material-close: | Set Minimum Slider Value                   |             |
 | ulm_card_cover_slider_max            | `100`         | :material-close: | Set Maximum Slider Value                   |             |
 | ulm_card_cover_color            | `blue`         | :material-close: | Set Custom Color                   |             |
+| ulm_card_cover_force_background_color           | `false`         | :material-close: | Set `ulm_card_cover_color` as background color in active state `                  |             |
 
 ## Usage
 
