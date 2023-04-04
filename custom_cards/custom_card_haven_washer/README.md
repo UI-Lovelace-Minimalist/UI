@@ -8,23 +8,23 @@ hide:
 
 # Custom-card "Washer"
 
-<img src="img/custom_card_haven_washer_off.png" alt="Washer Dryer off" width="375px" height="267px" />
+![Washer Dryer off](../../assets/img/custom_card_haven_washer_off.png){ width="375" height="267" }
 
 Small layout when the washer, dryer or dishwasher is turned off (ulm_custom_card_washer_power === "off"). It shows the content of the idle label variable (ulm_custom_card_washer_label_idle)
 
-<img src="img/custom_card_haven_washer_ready.png" alt="Washer Dryer Ready" width="375px" height="321px" />
+![Washer Dryer Ready](../../assets/img/custom_card_haven_washer_ready.png){ width="375" height="321" }
 
 When the washer, dryer or dishwasher is turned on the possible (job) stages of machine become visible (In this example the dryer has no different (job) stages so the stages remain closed)
 
-<img src="img/custom_card_haven_washer_remote_control.png" alt="Washer Dryer Remote Control" width="375px" height="428px" />
+![Washer Dryer Remote Control](../../assets/img/custom_card_haven_washer_remote_control.png){ width="375" height="428" }
 
 When the washer, dryer or dishwasher is set to smart control (ulm_custom_card_washer_remote_control === "true"), you can start the machine from you app, or you can start it using automation. The buttons will reflect this stage change.
 
-<img src="img/custom_card_haven_washer_timer.png" alt="Washer Dryer Timer" width="375px" height="535px" />
+![Washer Dryer Timer](../../assets/img/custom_card_haven_washer_timer.png){ width="375" height="535" }
 
 When you want to start the washer, dryer or dishwasher at a specific time (through automation) you can turn on the timer (press the icon and the ulm_custom_card_washer_delayed_start === "on") and set the time to start (use the up and down buttons of click on the time to set ulm_custom_card_washer_delayed_starttime (Time only)). It shows the content of the configuration label variable (ulm_custom_card_washer_label_configuring)
 
-<img src="img/custom_card_haven_washer_running.png" alt="Washer Dryer Running" width="375px" height="430px" />
+![Washer Dryer Running](../../assets/img/custom_card_haven_washer_running.png){ width="375" height="430" }
 
 When the washer, dryer or dishwasher is running you can use the running label variable (ulm_custom_card_washer_label_running) to show the remaining time. The dryer can't be paused so the button is disabled.
 
