@@ -35,15 +35,15 @@ minimalist-ios-tapbar:
       div#view{
         transform: initial;
         padding: 0 !important;
-        margin-bottom: var(--header-height) !important;
+        margin: 0 !important;
         width: 100%;
         height: 100% !important;
       }
       div.header {
         top: auto;
-        bottom: 0;
+        bottom: 0 !important;
         box-shadow: var(--footer-shadow);
-        position: fixed;
+        position: fixed !important;
         height: var(--header-height) !important;
       }
       div.toolbar {
