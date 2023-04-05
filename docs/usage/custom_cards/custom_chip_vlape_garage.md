@@ -28,9 +28,9 @@ Initial release
 ## Usage
 
 ```yaml
-- type: 'custom:button-card'
-        template: chip_garage
-        entity: cover.garage_door
+  - type: 'custom:button-card'
+    template: chip_garage
+    entity: cover.garage_door
 ```
 
 ## Requirements
