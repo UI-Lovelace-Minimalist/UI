@@ -642,7 +642,7 @@ card_media_player:
             if(variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null){
               return 'rgba(0, 0, 0, 0.5)'
             }
-            if (variables.ulm_card_media_player_force_background_color) {
+            if (variables.ulm_card_media_player_force_background_color && variables.ulm_active_state) {
               return 'rgb(250,250,250)';
             }
             return 'rgba(var(--color-' + color + '),1)'

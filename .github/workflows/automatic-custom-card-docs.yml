@@ -5,7 +5,7 @@ on:
   push:
     # Should only run on "dev" when new cards are submitted via PR
     branches: ["main"]
-    paths: ["custom_cards/*/README.md"]
+    paths: ["custom_cards/*/README.md", "docs/"]
 
 jobs:
   docit:
