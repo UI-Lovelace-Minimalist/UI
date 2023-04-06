@@ -11,8 +11,10 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - uses: "actions/checkout@v2"
+        with:
+          node-version: "16.x"
       - uses: "actions/setup-python@v2"
         with:
-          python-version: "3.x"
+          python-version: "3.11"
       - run: "pip install mkdocs-material mkdocs-awesome-pages-plugin"
       - run: "mkdocs gh-deploy --force"
