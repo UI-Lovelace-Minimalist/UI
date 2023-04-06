@@ -1,5 +1,5 @@
 ---
-minimalist-mobile:
+minimalist-mobile-tapbar:
   # Journal
   state-icon-color: "rgb(var(--color-theme))"
   border-radius: "20px"
@@ -10,14 +10,14 @@ minimalist-mobile:
   info-color: "var(--google-blue)"
   divider-color: "rgba(var(--color-theme),.12)"
   accent-color: "var(--google-yellow)"
+  card-mod-theme: "minimalist-mobile-tapbar"
+  header-height: "calc(var(--header-base-height) + env(safe-area-inset-bottom))"
+  header-base-height: "70px"
+  app-header-selection-bar-color: "transparent"
   ha-dialog-border-radius: "10px"
   # fix added border-lines in 2022.11
   ha-card-border-width: "0px"
-  card-mod-theme: "minimalist-mobile"
-  card-mod-root: |
-    .header {
-      display: none;
-    }
+
   card-mod-view-yaml: |
     "*:first-child$": |
       #columns .column > * {
@@ -25,10 +25,53 @@ minimalist-mobile:
         padding-right: 5px;
         padding-bottom: 5px;
       }
+
+  # Move navbar
+  card-mod-root-yaml: |
+    ha-tabs$: |
+      #tabsContent {
+        width: 97%;
+      }
+    .: |
+      .header {
+        top: auto !important;
+        bottom: 0px !important;
+        box-shadow: var(--footer-shadow);
+        height: var(--header-height) !important;
+      }
+      .toolbar {
+        height: var(--header-base-height) !important;
+        padding-bottom: env(safe-area-inset-bottom) !important;
+      }
+      #view {
+        margin-top: calc(-1 * var(--header-height)) !important;
+        padding-bottom: var(--header-height);
+      }
+      ha-tabs {
+        --paper-tabs-selection-bar-color: var(--header-tab-indicator-color);
+        --mdc-icon-size: 26px;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 10px;
+        height:50px !important;
+      }
+      paper-tab[aria-selected=true] {
+        color: var(--header-active-tab-color);
+        background-color: var(--header-active-tab-bg-color);
+      }
+      paper-tab {
+        color: var(--header-all-tabs-color);
+        border-radius: 25px;
+        height:50px;
+        /*width: calc(100% / 4);
+        padding: 0;*/
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+  # Color themes
   modes:
     light:
-      # text
-      primary-text-color: "#212121"
       # main interface colors
       primary-color: "#434343"
       google-red: "#F54436"
@@ -58,14 +101,21 @@ minimalist-mobile:
       color-pink-text: "var(--primary-text-color)"
       color-purple-text: "var(--primary-text-color)"
       opacity-bg: "1"
+      # Header / Footer
+      header-active-tab-color: "rgb(var(--color-blue))"
+      header-active-tab-bg-color: "rgba(var(--color-blue), .3)"
+      header-all-tabs-color: "var(--paper-item-icon-color)"
+      header-tab-indicator-color: "rgba(0, 0, 0, 0)"
+      app-header-text-color: "var(--primary-text-color)"
+      app-header-background-color: "var( --ha-card-background, var(--card-background-color, white) )"
+      paper-tabs-selection-bar-color: "var(--primary-text-color)"
+      footer-shadow: "0px -1px 3px 0px rgba(0,0,0,0.12)"
       # background and sidebar
       card-background-color: "#FAFAFA"
       primary-background-color: "#EFEFEF"
       secondary-background-color: "#EFEFEF"
-      # header
-      app-header-text-color: "var(--primary-text-color)"
-      app-header-background-color: "var(--primary-background-color)"
-      # paper-tabs-selection-bar-color: "var(--primary-text-color)"
+      # text
+      primary-text-color: "#212121"
       # slider
       slider-color: "rgb(var(--color-blue))"
       slider-bar-color: "rgba(var(--color-blue),0.38)"
@@ -73,16 +123,14 @@ minimalist-mobile:
       box-shadow: "0px 2px 4px 0px rgba(0,0,0,0.16)"
       ha-card-box-shadow: "var(--box-shadow)"
       # sidebar
-      sidebar-selected-text-color: "var(--google-red)"
-      sidebar-selected-icon-color: "var(--google-red)"
+      sidebar-selected-text-color: "rgb(var(--color-blue))"
+      sidebar-selected-icon-color: "rgb(var(--color-blue))"
       sidebar-text-color: "#80868b"
       # switch
-      switch-checked-color: "var(--google-blue)"
+      switch-checked-color: "rgb(var(--color-blue))"
       # media player
-      mini-media-player-accent-color: "var(--google-blue)"
+      mini-media-player-accent-color: "rgb(var(--color-blue))"
     dark:
-      # text
-      primary-text-color: "#DDDDDD"
       # main interface colors
       primary-color: "#89B3F8"
       google-red: "#F18B82"
@@ -99,6 +147,7 @@ minimalist-mobile:
       color-purple: "102, 31, 255"
       color-grey: "187, 187, 187"
       color-pink: "233, 30, 99"
+      color-amber: "255, 145, 1"
       color-background-yellow: "var(--color-yellow)"
       color-background-blue: "var(--color-blue)"
       color-background-green: "var(--color-green)"
@@ -112,19 +161,26 @@ minimalist-mobile:
       color-pink-text: "var(--color-pink)"
       color-purple-text: "var(--color-purple)"
       opacity-bg: "0.1"
-      # floating button text color
-      mdc-theme-on-secondary: "var(--card-background-color)"
+      # Header / Footer
+      header-active-tab-color: "rgb(var(--color-amber))"
+      header-active-tab-bg-color: "rgba(var(--color-amber), .3)"
+      header-all-tabs-color: "var(--paper-item-icon-color)"
+      header-tab-indicator-color: "rgba(0, 0, 0, 0)"
+      app-header-text-color: "var(--primary-text-color)"
+      app-header-background-color: "var( --ha-card-background, var(--card-background-color, rgb(29, 29, 29)) )"
+      paper-tabs-selection-bar-color: "var(--primary-text-color)"
+      footer-shadow: "0px -1px 3px 0px rgba(0,0,0,0.12)"
       # background and sidebar
       card-background-color: "#1D1D1D"
       primary-background-color: "#121212"
       secondary-background-color: "#121212"
-      # header
-      app-header-text-color: "var(--primary-text-color)"
-      app-header-background-color: "var(--primary-background-color)"
-      paper-tabs-selection-bar-color: "var(--primary-text-color)"
+      # text
+      primary-text-color: "#DDDDDD"
+      # floating button text color
+      mdc-theme-on-secondary: "var(--card-background-color)"
       # Sidebar
-      sidebar-selected-text-color: "rgb(var(--color-blue))"
-      sidebar-selected-icon-color: "rgb(var(--color-blue))"
+      sidebar-selected-text-color: "rgb(var(--color-amber))"
+      sidebar-selected-icon-color: "rgb(var(--color-amber))"
       # Slider
       slider-color: "rgb(var(--color-blue))"
       slider-bar-color: "rgba(var(--color-blue),0.38)"
