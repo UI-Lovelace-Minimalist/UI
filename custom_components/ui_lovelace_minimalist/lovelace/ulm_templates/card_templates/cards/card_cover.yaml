@@ -59,8 +59,18 @@ card_cover:
               }
 
               if (variables.ulm_card_cover_enable_horizontal) {
-                  areas = areas.slice(0, 2);
-                  return "\"" + areas.join(" ") + "\"";
+                  var hor_areas = areas.slice(0, 2);
+
+                  if (areas.length < 3) {
+                    return "\"" + hor_areas.join(" ") + "\" ";
+                  }
+
+                  var ver_areas = []
+                  ver_areas.push(areas.slice(2, 3) + " " + areas.slice(2,3));
+                  if (areas.length == 4) {
+                    ver_areas.push(areas.slice(3, 4) + " " + areas.slice(3,4));
+                  }
+                  return "\"" + hor_areas.join(" ") + "\" " + "\"" + ver_areas.join("\" \"") + "\"";
               }
               return "\"" + areas.join("\" \"") + "\"";
           ]]]
@@ -73,9 +83,6 @@ card_cover:
           ]]]
       - grid-template-rows: >
           [[[
-              if (variables.ulm_card_cover_enable_horizontal) {
-                  return "min-content";
-              }
               var rows = [];
               rows.push("min-content");
               if (variables.ulm_card_cover_enable_controls) {
@@ -86,6 +93,11 @@ card_cover:
               }
               if (variables.ulm_card_cover_enable_tilt) {
                   rows.push("min-content");
+              }
+              if (variables.ulm_card_cover_enable_horizontal) {
+                  if (rows.length > 1) {
+                    rows.pop()
+                  }
               }
               return rows.join(" ");
           ]]]
@@ -108,9 +120,6 @@ card_cover:
         - display: >
             [[[
               if (variables.ulm_card_cover_enable_slider) {
-                  if (variables.ulm_card_cover_enable_horizontal && variables.ulm_card_cover_enable_controls) {
-                    return "none";
-                  }
                   return "block";
               } else {
                   return "none";
@@ -120,9 +129,6 @@ card_cover:
         - display: >
             [[[
               if (variables.ulm_card_cover_enable_tilt) {
-                  if (variables.ulm_card_cover_enable_horizontal && (variables.ulm_card_cover_enable_controls || variables.ulm_card_cover_enable_slider)) {
-                      return "none";
-                  }
                   return "block";
               } else {
                   return "none";
