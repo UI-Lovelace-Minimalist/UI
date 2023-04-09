@@ -34,7 +34,7 @@ card_cover:
           - background-color: >
               [[[
                   if (variables.ulm_card_cover_color) {
-                    if (variables.ulm_card_cover_force_background_color || hass.themes.darkMode) {
+                    if (variables.ulm_card_cover_force_background_color) {
                       var color = variables.ulm_card_cover_color;
                       return 'rgba(var(--color-' + color + '),var(--opacity-bg))';
                     }

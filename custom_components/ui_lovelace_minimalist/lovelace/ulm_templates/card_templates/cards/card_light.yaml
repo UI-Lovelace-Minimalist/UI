@@ -38,7 +38,7 @@ card_light:
                 if(variables.ulm_card_light_enable_color){
                   color = 'rgba(' + color_set + ',var(--opacity-bg))'
                 }
-                if (variables.ulm_card_light_force_background_color || hass.themes.darkMode) {
+                if (variables.ulm_card_light_force_background_color) {
                   return color
                 }
               ]]]
