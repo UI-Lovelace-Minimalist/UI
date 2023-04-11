@@ -46,6 +46,8 @@ minimalist-ios-tapbar:
         margin: 0 !important;
         width: 100%;
         height: 100% !important;
+        margin-top: calc(-1 * var(--header-height)) !important;
+        padding-bottom: var(--header-height) !important;
       }
       .header {
         top: auto !important;
