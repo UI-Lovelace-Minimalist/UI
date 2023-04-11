@@ -18,6 +18,10 @@ minimalist-mobile:
     .header {
       display: none;
     }
+    #view {
+      margin: 0 !important;
+      height: 100% !important;
+    }
   card-mod-view-yaml: |
     "*:first-child$": |
       #columns .column > * {
