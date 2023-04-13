@@ -17,7 +17,7 @@ card_generic_swap:
         card:
           - background-color: >
               [[[
-                if (variables.ulm_card_generic_swap_force_background_color || hass.themes.darkMode) {
+                if (variables.ulm_card_generic_swap_force_background_color) {
                   var color = variables.ulm_card_generic_swap_color;
                   return 'rgba(var(--color-' + color + '),var(--opacity-bg))';
                 }
