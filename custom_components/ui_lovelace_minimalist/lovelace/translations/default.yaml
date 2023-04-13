@@ -16,7 +16,10 @@ ulm_translation_engine:
       [[[
         if (typeof(entity) !== 'undefined' && entity !== undefined){
           let not_active = ['disarmed','off','closed','not_home','standby','idle','docked','unknown','unavailable','paused']
-          return !not_active.includes(entity.state)
+          function containsNumbers(str) {
+            return /\d/.test(str);
+          }
+          return (!not_active.includes(entity.state) && !containsNumbers(entity.state))
         }
       ]]]
     ulm_translation_hour: >

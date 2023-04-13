@@ -17,7 +17,7 @@ card_input_boolean:
         card:
           - background-color: >
               [[[
-                if (variables.ulm_card_input_boolean_force_background_color || hass.themes.darkMode) {
+                if (variables.ulm_card_input_boolean_force_background_color) {
                   var color = variables.ulm_card_input_boolean_color;
                   return 'rgba(var(--color-' + color + '),var(--opacity-bg))';
                 }

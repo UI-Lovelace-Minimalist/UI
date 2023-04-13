@@ -14,6 +14,7 @@ card_graph:
     ulm_card_graph_points: "0.5"
     ulm_card_graph_group_by: "interval"
     ulm_card_graph_line_width: 5
+    ulm_card_graph_icon_color: ""
   triggers_update: "all"
   custom_fields:
     item1:
@@ -24,7 +25,33 @@ card_graph:
         variables:
           ulm_card_generic_icon: "[[[ return variables.ulm_card_graph_icon; ]]]"
           ulm_card_generic_name: "[[[ return variables.ulm_card_graph_name; ]]]"
-
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              custom_fields:
+                item1:
+                  card:
+                    type: "custom:button-card"
+                    styles:
+                      icon:
+                        - color: >
+                            [[[
+                              var color = variables.ulm_card_graph_icon_color;
+                              if (variables.ulm_card_graph_icon_color){
+                                return 'rgba(var(--color-' + color + '),1)';
+                              }
+                              return 'rgba(var(--color-theme),0.2)';
+                            ]]]
+                      img_cell:
+                        - background-color: >
+                            [[[
+                              var color = variables.ulm_card_graph_icon_color;
+                              if (variables.ulm_card_graph_icon_color){
+                                return 'rgba(var(--color-' + color + '),0.2)';
+                              }
+                              return 'rgba(var(--color-theme),0.05)';
+                            ]]]
     item2:
       card:
         type: "custom:mini-graph-card"
