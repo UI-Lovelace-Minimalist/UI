@@ -20,7 +20,7 @@ minimalist-mobile:
     }
     #view {
       margin: 0 !important;
-      height: 100% !important;
+      height: 100vh !important;
     }
   card-mod-view-yaml: |
     "*:first-child$": |
