@@ -31,7 +31,7 @@ card_fan:
           - background-color: >
               [[[
                   if (variables.ulm_card_fan_color) {
-                    if (variables.ulm_card_fan_force_background_color || hass.themes.darkMode) {
+                    if (variables.ulm_card_fan_force_background_color) {
                       var color = variables.ulm_card_fan_color;
                       return 'rgba(var(--color-' + color + '),var(--opacity-bg))';
                     }
