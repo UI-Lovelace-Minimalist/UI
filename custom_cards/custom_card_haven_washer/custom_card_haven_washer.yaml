@@ -88,7 +88,7 @@ custom_card_haven_washer:
                 && states[variables.ulm_custom_card_washer_power].state === "on"
                 && !!variables.ulm_custom_card_washer_remote_control
                 && !!states[variables.ulm_custom_card_washer_remote_control]?.state
-                && (states[variables.ulm_custom_card_washer_remote_control].state) === "true") ? "block" : "none";
+                && states[variables.ulm_custom_card_washer_remote_control].state === "true") ? "block" : "none";
             ]]]
       row4:
         - display: >
