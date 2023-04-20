@@ -9,9 +9,9 @@ custom_card_haven_washer:
     ulm_custom_card_washer_machine_state:
     ulm_custom_card_washer_machine_stop_state: "stop"
     ulm_custom_card_washer_job_state:
-    ulm_custom_card_washer_label_idle:
-    ulm_custom_card_washer_label_configuring:
-    ulm_custom_card_washer_label_running:
+    ulm_custom_card_washer_label_idle: "idle"
+    ulm_custom_card_washer_label_configuring: "configure"
+    ulm_custom_card_washer_label_running: "run"
     ulm_custom_card_washer_delayed_start:
     ulm_custom_card_washer_delayed_starttime:
     ulm_custom_card_washer_job_states:
