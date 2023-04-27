@@ -297,6 +297,9 @@ card_scenes_pill_welcome:
               }
               else if(entity.entity_id.startsWith("input_select.")){
                 return "input_select.select_option"
+              }
+              else if(entity.entity_id.startsWith("script.")){
+                return entity.entity_id
               } else {
                 return "homeassistant.toggle"
               }
@@ -304,6 +307,9 @@ card_scenes_pill_welcome:
           navigation_path: "[[[ return variables?.nav_path; ]]]"
           service_data: |
             [[[
+              if (variables.service_data){
+                return variables.service_data
+              }
               var obj;
               if( entity.entity_id.startsWith("input_select.") )
                 obj = { entity_id: entity.entity_id, option: variables.state };
@@ -379,12 +385,18 @@ card_scenes_pill_welcome:
               }
               else if(entity.entity_id.startsWith("input_select.")){
                 return "input_select.select_option"
+              }
+              else if(entity.entity_id.startsWith("script.")){
+                return entity.entity_id
               } else {
                 return "homeassistant.toggle"
               }
             ]]]
           service_data: |
             [[[
+              if (variables.service_data){
+                return variables.service_data
+              }
               var obj;
               if( entity.entity_id.startsWith("input_select.") )
                 obj = { entity_id: entity.entity_id, option: variables.state };
