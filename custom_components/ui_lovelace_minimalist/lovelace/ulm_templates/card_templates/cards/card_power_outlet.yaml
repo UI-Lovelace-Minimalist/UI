@@ -18,7 +18,7 @@ card_power_outlet:
         card:
           - background-color: >
               [[[
-                if (variables.ulm_card_power_outlet_force_background_color || hass.themes.darkMode) {
+                if (variables.ulm_card_power_outlet_force_background_color) {
                   var color = variables.ulm_card_power_outlet_color;
                   return 'rgba(var(--color-' + color + '),var(--opacity-bg))';
                 }
