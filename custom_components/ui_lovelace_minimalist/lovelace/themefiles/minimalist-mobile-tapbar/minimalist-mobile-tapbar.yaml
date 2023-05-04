@@ -36,9 +36,9 @@ minimalist-mobile-tapbar:
       div#view{
         transform: initial;
         padding: 0 !important;
-        position: fixed !important;
         margin: 0 !important;
         width: 100%;
+        padding-bottom: var(--header-height) !important;
       }
       .header {
         top: auto !important;
@@ -51,8 +51,7 @@ minimalist-mobile-tapbar:
         padding-bottom: env(safe-area-inset-bottom) !important;
       }
       #view {
-        margin-top: calc(-1 * var(--header-height)) !important;
-        padding-bottom: var(--header-height);
+        padding-top: calc(-1 * var(--header-height)) !important;
       }
       ha-tabs {
         --paper-tabs-selection-bar-color: var(--header-tab-indicator-color);

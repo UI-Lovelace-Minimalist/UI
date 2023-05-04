@@ -19,7 +19,7 @@ minimalist-mobile:
       display: none;
     }
     #view {
-      margin: 0 !important;
+      padding: 0 !important;
       height: 100vh !important;
     }
   card-mod-view-yaml: |
