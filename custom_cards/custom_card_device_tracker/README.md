@@ -7,7 +7,7 @@ hide:
 
 ## Description
 
-![example-image](../../docs/assets/img/ulm_cards/custom_card_device_tracker.png){ width="500" }
+![example-image](../../docs/assets/img/custom_card_device_tracker.png){ width="500" }
 
 The `custom_card_device_tracker` displays presence state of a device according to the provided entity.
 It allow to display the state of two tracker for this device
