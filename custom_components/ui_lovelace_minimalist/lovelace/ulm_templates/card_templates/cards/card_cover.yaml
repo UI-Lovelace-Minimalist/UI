@@ -45,34 +45,54 @@ card_cover:
     grid:
       - grid-template-areas: >
           [[[
-              var areas = [];
-              areas.push("item1");
-
-              if (variables.ulm_card_cover_enable_controls) {
-                areas.push("item2");
-              }
-              if (variables.ulm_card_cover_enable_slider) {
-                  areas.push("item3");
-              }
-              if (variables.ulm_card_cover_enable_tilt) {
-                areas.push("item4");
-              }
-
               if (variables.ulm_card_cover_enable_horizontal) {
-                  var hor_areas = areas.slice(0, 2);
 
-                  if (areas.length < 3) {
-                    return "\"" + hor_areas.join(" ") + "\" ";
+                  var hor_area = ["item1"];
+                  var ver_area = [];
+
+                  if (variables.ulm_card_cover_enable_controls) {
+                    if (variables.ulm_card_cover_enable_horizontal == "controls" || variables.ulm_card_cover_enable_horizontal == true) {
+                      hor_area.push("item2");
+                    } else {
+                      ver_area.push("item2" + " " + "item2");
+                    }
+                  }
+                  if (variables.ulm_card_cover_enable_slider) {
+                    if (variables.ulm_card_cover_enable_horizontal == "slider") {
+                      hor_area.push("item3");
+                    } else {
+                      ver_area.push("item3" + " " + "item3");
+                    }
+                  }
+                  if (variables.ulm_card_cover_enable_tilt) {
+                    if (variables.ulm_card_cover_enable_horizontal == "tilt") {
+                      hor_area.push("item4");
+                    } else {
+                      ver_area.push("item4" + " " + "item4");
+                    }
                   }
 
-                  var ver_areas = []
-                  ver_areas.push(areas.slice(2, 3) + " " + areas.slice(2,3));
-                  if (areas.length == 4) {
-                    ver_areas.push(areas.slice(3, 4) + " " + areas.slice(3,4));
+                  if (ver_area.length < 1) {
+                    return "\"" + hor_area.join(" ") + "\" ";
+                  } else {
+                    return "\"" + hor_area.join(" ") + "\" " + "\"" + ver_area.join("\" \"") + "\"";
                   }
-                  return "\"" + hor_areas.join(" ") + "\" " + "\"" + ver_areas.join("\" \"") + "\"";
+              } else {
+                  var areas = [];
+                  areas.push("item1");
+
+                  if (variables.ulm_card_cover_enable_controls) {
+                    areas.push("item2");
+                  }
+                  if (variables.ulm_card_cover_enable_slider) {
+                      areas.push("item3");
+                  }
+                  if (variables.ulm_card_cover_enable_tilt) {
+                    areas.push("item4");
+                  }
+
+                  return "\"" + areas.join("\" \"") + "\"";
               }
-              return "\"" + areas.join("\" \"") + "\"";
           ]]]
       - grid-template-columns: >
           [[[
