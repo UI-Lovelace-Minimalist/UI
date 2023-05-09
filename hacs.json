@@ -1,7 +1,7 @@
 {
   "name": "UI Lovelace Minimalist",
   "render_readme": true,
-  "homeassistant": "2023.4.0b5",
+  "homeassistant": "2023.4.3",
   "zip_release": true,
   "filename": "ui_lovelace_minimalist.zip"
 }

@@ -16,7 +16,10 @@ ulm_translation_engine:
       [[[
         if (typeof(entity) !== 'undefined' && entity !== undefined){
           let not_active = ['disarmed','off','closed','not_home','standby','idle','docked','unknown','unavailable','paused']
-          return !not_active.includes(entity.state)
+          function containsNumbers(str) {
+            return /\d/.test(str);
+          }
+          return (!not_active.includes(entity.state) && !containsNumbers(entity.state))
         }
       ]]]
     ulm_translation_hour: >
@@ -67,7 +70,7 @@ ulm_translation_engine:
           let def = ["unknown", "unavailable"];
           let lang = hass["language"];
           let domain = entity.entity_id.substr(0, entity.entity_id.indexOf("."));
-          var translation = hass.resources[lang]["component." + domain + ".state._." + state]
+          var translation = hass.resources[lang]["component." + domain + ".entity_component._.state." + state]
           const now = new Date();
           const timestamp = (new Date(state)).getTime();
           const nowTimeStamp = now.getTime();
@@ -87,7 +90,7 @@ ulm_translation_engine:
             var translation = hass.resources[lang]["state.default." + state ];
           }
           else if (domain == "binary_sensor" && d_class != ''){
-            var translation = hass.resources[lang]["component." + domain + ".state." + d_class + "." + state]
+            var translation = hass.resources[lang]["component." + domain + ".entity_component." + d_class + ".state." + state]
           }
           else if (d_class == 'timestamp'){
             var translation = formatter.format(diff, scale)
@@ -137,8 +140,8 @@ ulm_translation_engine:
           else if (Math.abs(minutesDiff) < 60){ scale = 'minute'; diff = minutesDiff }
           else if (Math.abs(hoursDiff) < 24){ scale = 'hour'; diff = hoursDiff }
 
-          if(hass.resources[lang]["component." + domain + ".state._." + state]){
-          var translation = hass.resources[lang]["component." + domain + ".state._." + state] + unit
+          if(hass.resources[lang]["component." + domain + ".entity_component._.state." + state]){
+          var translation = hass.resources[lang]["component." + domain + ".entity_component._.state." + state] + unit
           } else {
           var translation =  state + unit;
           }
@@ -146,11 +149,11 @@ ulm_translation_engine:
             var translation = hass.resources[lang]["state.default." + state ];
           }
           else if (domain == "binary_sensor" && d_class != ''){
-            var translation = hass.resources[lang]["component." + domain + ".state." + d_class + "." + state]
+            var translation = hass.resources[lang]["component." + domain + ".entity_component." + d_class + ".state." + state]
           }
           else if (domain == "media_player" && d_class != ''){
             if (state == 'idle' || state == 'paused')
-              var translation = hass.resources[lang]["component." + domain + ".state." + state];
+              var translation = hass.resources[lang]["component." + domain + ".entity_component._.state." + state];
             else {
               var translation = (entity.attributes.source) + ' • ' +  ( Math.round(entity.attributes.volume_level / 0.01)) + '%' ;
             }
