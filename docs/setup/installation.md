@@ -20,17 +20,20 @@ Now you can configure the Integration, you can do this also after it's installed
 
 ![hacs_integration_config](../assets/img/setup/hacs_integration_config.png)
 
-- Language: Will set the language for the Integration.
-- Side panel enabled: If you want to add an Entry in the Side Panel for the auto generated Dashboard. (Still under heavy development!)
-- Side panel title: Will set the title for the Lovelace Dashboard in the Sidebar.
-- Side panel icon: Which icon to put in front of the Title.
-- Theme: Choose a theme of your choice (Note: Both themes will be installed anyway and can be customized later if needed.)
+- *Language*: Will set the language for the Integration.
+- *Enable creation of a Dashboard entry in the Side panel*: If you want to add an Entry in the Side Panel for the auto generated Dashboard. (Still under heavy development!)
+- *Side panel title*: Will set the title for the Lovelace Dashboard in the Sidebar.
+- *Side panel icon*: Which icon to put in front of the Title.
+- *Enable adaptive Dashboard with popup splitview*: Creates an entry for the [adaptive dashboard](adaptive_dash.md)
+- *Adaptive panel title*: Will set the title for the adaptive dashboard in the Sidebar.
+- *Adaptive panel icon*: Which icon to put in front of the adaptive dashboard sidebar entry.
+- *Theme*: Choose a theme of your choice (Note: Both themes will be installed anyway and can be customized later if needed.)
 
 !!! note ""
 
     Currently, it may happen that themes are not automatically selected correctly for you in all cases automatically. Please make sure that the minimalist theme is correctly selected in your Home Assistant settings (click on your profile picture in Home Assistant, bottom left).
 
-- Theme path: Make sure this is set to the same path as is configured in your `configuration.yaml` (default: `themes/`)
+- *Theme path*: Make sure this is set to the same path as is configured in your `configuration.yaml` (default: `themes/`)
 
 !!! note ""
 
@@ -43,7 +46,7 @@ Now you can configure the Integration, you can do this also after it's installed
 
     You will also need to change your user theme to the chosen theme or else no visual modifications will work.
 
-- Include Custom Cards: This will make sure almost all dependency cards are included and configured for you.
+- *Include Custom Cards*: This will make sure almost all dependency cards are included and configured for you.
 
 !!! danger ""
 
@@ -59,6 +62,8 @@ Now you can configure the Integration, you can do this also after it's installed
 | [`light-entity-card`](https://github.com/ljmerza/light-entity-card)     |
 | [`auto-entities`](https://github.com/thomasloven/lovelace-auto-entities)|
 | [`simple-weather-card`](https://github.com/kalkih/simple-weather-card)  |
+
+- *Select Community Cards you want to enable*: Selected [custom cards](custom_cards.md) will be downloaded automatically to enable usage. Requires a GitHub account. Restart or reload your configuration after toggling this setting. If needed, a notification will appear, indicating that GitHub needs to be set up. You will be prompted to go to your integrations and to reconfigure this integration. Selecting "reconfigure" on your Lovelace Minimalist UI integration, the GitHub-Login-flow will start. You might need to restart HomeAssistant, when your selected community cards change.
 
 Hit submit and in the Sidebar a new Dashboard entry should appear.
 A new file for the dashboard configuration, with a small example, where you can generate your own layout should have been created under that location:
