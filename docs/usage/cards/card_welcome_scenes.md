@@ -36,6 +36,7 @@ This is a card which shows the basic needs for your dashboard. This card can gen
 | _color  |  Random    | :material-close: | Color of the icon <br> Can choose between: `blue`, `red`, `green`, `yellow`, `pink`, `purple` <br> If not specified, it will take a random color  |
 | _state  | `on` or `playing`    | :material-close: | Define `input_select` state or give manual state for pill to be full |
 | _nav_path |     | :material-close:  | Navigate to another view <br> *Overrides other types of actions*
+| _service_data |     | :material-close:  | Data to be passed through to data_service. Useful for running scripts with custom fields/parameters
 
 ## Requirement Collapse Function
 
