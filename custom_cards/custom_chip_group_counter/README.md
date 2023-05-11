@@ -48,7 +48,7 @@ The entities active within the group will only go one level down. If you have a 
 
 ```yaml
 - type: 'custom:button-card'
-  template: 'custom_card_group_counter_chip'
+  template: 'custom_chip_group_counter'
   entity: 'lights.living_room'
 ```
 
@@ -58,7 +58,7 @@ This configuration can be used if you have a sensor that should represent the st
 
 ```yaml
 - type: 'custom:button-card'
-  template: 'custom_card_group_counter_chip'
+  template: 'custom_chip_group_counter'
   entity: 'light.all'
   variables:
       ulm_custom_chip_group_counter_entities_active: 'sensor.lights_on'
@@ -68,18 +68,18 @@ This configuration can be used if you have a sensor that should represent the st
 
 ```yaml
 - type: 'custom:button-card'
-  template: 'custom_card_group_counter_chip'
+  template: 'custom_chip_group_counter'
   entity: 'light.all'
   variables:
-      ulm_custom_card_group_counter_chip_hide_if_zero: true
-      ulm_custom_card_group_counter_chip_type: speaker
-      ulm_custom_card_group_counter_chip_count_state:
+      ulm_custom_chip_group_counter_hide_if_zero: true
+      ulm_custom_chip_group_counter_type: speaker
+      ulm_custom_chip_group_counter_count_state:
           - 'playing'
           - 'buffering'
-      ulm_custom_card_group_counter_chip_color: green
-      ulm_custom_card_group_counter_chip_icon_zero: 'mdi:speaker'
-      ulm_custom_card_group_counter_chip_icon_one: 'mdi:speaker'
-      ulm_custom_card_group_counter_chip_icon_multiple: 'mdi:speaker-multiple'
+      ulm_custom_chip_group_counter_color: green
+      ulm_custom_chip_group_counter_icon_zero: 'mdi:speaker'
+      ulm_custom_chip_group_counter_icon_one: 'mdi:speaker'
+      ulm_custom_chip_group_counter_icon_multiple: 'mdi:speaker-multiple'
 ```
 
 ## Template code
