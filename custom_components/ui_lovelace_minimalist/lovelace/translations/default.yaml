@@ -81,7 +81,7 @@ ulm_translation_engine:
           const secondsDiff = Math.round(microSecondsDiff / (1000));
           const formatter = new Intl.RelativeTimeFormat(lang, { numeric: 'auto' });
           var scale = 'day'
-          var diff = 'daysDiff'
+          var diff = daysDiff
           if (Math.abs(secondsDiff) < 60){ scale = 'second'; diff = secondsDiff }
           else if (Math.abs(minutesDiff) < 60){ scale = 'minute'; diff = minutesDiff }
           else if (Math.abs(hoursDiff) < 24){ scale = 'hour'; diff = hoursDiff }
@@ -135,7 +135,7 @@ ulm_translation_engine:
           const formatter = new Intl.RelativeTimeFormat(lang, { numeric: 'auto' });
 
           var scale = 'day'
-          var diff = 'daysDiff'
+          var diff = daysDiff
           if (Math.abs(secondsDiff) < 60){ scale = 'second'; diff = secondsDiff }
           else if (Math.abs(minutesDiff) < 60){ scale = 'minute'; diff = minutesDiff }
           else if (Math.abs(hoursDiff) < 24){ scale = 'hour'; diff = hoursDiff }
