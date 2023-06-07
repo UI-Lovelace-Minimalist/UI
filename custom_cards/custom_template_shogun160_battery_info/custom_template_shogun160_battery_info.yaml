@@ -18,7 +18,7 @@ battery_info:
             const battery = Math.round((states[variables.ulm_battery_entity].state)/1);
             const radius = 20.5; const circumference = radius * 2 * Math.PI;
             return `<svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="${radius}"
-            stroke="green" stroke-width="3" fill="none"
+            stroke="green" stroke-width="3" fill="var(--card-background-color)"
             style="transform: rotate(-90deg); transform-origin: 50% 50%;
             stroke-dasharray: ${circumference};
             stroke-dashoffset: ${circumference - battery / 100 * circumference};" />
@@ -29,7 +29,7 @@ battery_info:
             const battery = Math.round((entity.attributes.battery || entity.attributes.battery_level)/1);
             const radius = 20.5; const circumference = radius * 2 * Math.PI;
             return `<svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="${radius}"
-            stroke="green" stroke-width="3" fill="none"
+            stroke="green" stroke-width="3" fill="var(--card-background-color)"
             style="transform: rotate(-90deg); transform-origin: 50% 50%;
             stroke-dasharray: ${circumference};
             stroke-dashoffset: ${circumference - battery / 100 * circumference};" />
