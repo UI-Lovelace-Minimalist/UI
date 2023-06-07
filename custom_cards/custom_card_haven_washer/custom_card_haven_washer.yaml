@@ -7,10 +7,11 @@ custom_card_haven_washer:
     ulm_custom_card_washer_power:
     ulm_custom_card_washer_remote_control:
     ulm_custom_card_washer_machine_state:
+    ulm_custom_card_washer_machine_stop_state: "stop"
     ulm_custom_card_washer_job_state:
-    ulm_custom_card_washer_label_idle:
-    ulm_custom_card_washer_label_configuring:
-    ulm_custom_card_washer_label_running:
+    ulm_custom_card_washer_label_idle: "idle"
+    ulm_custom_card_washer_label_configuring: "configure"
+    ulm_custom_card_washer_label_running: "run"
     ulm_custom_card_washer_delayed_start:
     ulm_custom_card_washer_delayed_starttime:
     ulm_custom_card_washer_job_states:
@@ -87,7 +88,7 @@ custom_card_haven_washer:
                 && states[variables.ulm_custom_card_washer_power].state === "on"
                 && !!variables.ulm_custom_card_washer_remote_control
                 && !!states[variables.ulm_custom_card_washer_remote_control]?.state
-                && String(states[variables.ulm_custom_card_washer_remote_control].state) === "true") ? "block" : "none";
+                && states[variables.ulm_custom_card_washer_remote_control].state === "true") ? "block" : "none";
             ]]]
       row4:
         - display: >
@@ -97,7 +98,7 @@ custom_card_haven_washer:
                 && states[variables.ulm_custom_card_washer_power].state === "on"
                 && !!variables.ulm_custom_card_washer_remote_control
                 && !!states[variables.ulm_custom_card_washer_remote_control]?.state
-                && String(states[variables.ulm_custom_card_washer_remote_control].state) === "true"
+                && states[variables.ulm_custom_card_washer_remote_control].state === "true"
                 && !!variables.ulm_custom_card_washer_delayed_start
                 && !!states[variables.ulm_custom_card_washer_delayed_start]?.state
                 && states[variables.ulm_custom_card_washer_delayed_start].state === "on"
@@ -119,14 +120,14 @@ custom_card_haven_washer:
               && states[variables.ulm_custom_card_washer_power].state === "on") {
               if (!!variables.ulm_custom_card_washer_machine_state
                 && !!states[variables.ulm_custom_card_washer_machine_state]?.state
-                && ["run", "pause"].indexOf(states[variables.ulm_custom_card_washer_machine_state].state) >= 0) {
+                && states[variables.ulm_custom_card_washer_machine_state].state !== variables.ulm_custom_card_washer_machine_stop_state) {
                 if (!!variables.ulm_custom_card_washer_label_running) {
                   return variables.ulm_custom_card_washer_label_running;
                 }
               } else {
                 if (!!variables.ulm_custom_card_washer_remote_control
                   && !!states[variables.ulm_custom_card_washer_remote_control]?.state
-                  && String(states[variables.ulm_custom_card_washer_remote_control].state) === "true"
+                  && states[variables.ulm_custom_card_washer_remote_control].state === "true"
                   && !!variables.ulm_custom_card_washer_delayed_start
                   && !!states[variables.ulm_custom_card_washer_delayed_start]?.state
                   && states[variables.ulm_custom_card_washer_delayed_start].state === "on") {
@@ -433,55 +434,55 @@ custom_card_haven_washer:
                 action: >
                   [[[
                     if (!!states[variables.ulm_custom_card_washer_machine_state]?.state
-                      && states[variables.ulm_custom_card_washer_machine_state].state === "run") {
-                      return variables.ulm_custom_card_washer_pause_action?.action ?? "none";
-                    } else {
+                      && states[variables.ulm_custom_card_washer_machine_state].state === variables.ulm_custom_card_washer_machine_stop_state) {
                       return variables.ulm_custom_card_washer_start_action?.action ?? "none";
+                    } else {
+                      return variables.ulm_custom_card_washer_pause_action?.action ?? "none";
                     }
                   ]]]
                 entity: "[[[ return variables.ulm_custom_card_washer_start_action.entity; ]]]"
                 navigation_path: >
                   [[[
                     return (!!states[variables.ulm_custom_card_washer_machine_state]?.state
-                      && states[variables.ulm_custom_card_washer_machine_state].state === "run")
-                      ? variables.ulm_custom_card_washer_pause_action?.navigation_path
-                      : variables.ulm_custom_card_washer_start_action?.navigation_path;
+                      && states[variables.ulm_custom_card_washer_machine_state].state === variables.ulm_custom_card_washer_machine_stop_state)
+                      ? variables.ulm_custom_card_washer_start_action?.navigation_path
+                      : variables.ulm_custom_card_washer_pause_action?.navigation_path;
                   ]]]
                 url_path: >
                   [[[
                     return (!!states[variables.ulm_custom_card_washer_machine_state]?.state
-                      && states[variables.ulm_custom_card_washer_machine_state].state === "run")
-                      ? variables.ulm_custom_card_washer_pause_action?.url_path
-                      : variables.ulm_custom_card_washer_start_action?.url_path;
+                      && states[variables.ulm_custom_card_washer_machine_state].state === variables.ulm_custom_card_washer_machine_stop_state)
+                      ? variables.ulm_custom_card_washer_start_action?.url_path
+                      : variables.ulm_custom_card_washer_pause_action?.url_path;
                   ]]]
                 service: >
                   [[[
                     return (!!states[variables.ulm_custom_card_washer_machine_state]?.state
-                      && states[variables.ulm_custom_card_washer_machine_state].state === "run")
-                      ?  variables.ulm_custom_card_washer_pause_action?.service
-                      : variables.ulm_custom_card_washer_start_action?.service;
+                      && states[variables.ulm_custom_card_washer_machine_state].state === variables.ulm_custom_card_washer_machine_stop_state)
+                      ? variables.ulm_custom_card_washer_start_action?.service
+                      :  variables.ulm_custom_card_washer_pause_action?.service;
                   ]]]
                 service_data: >
                   [[[
                     return (!!states[variables.ulm_custom_card_washer_machine_state]?.state
-                      && states[variables.ulm_custom_card_washer_machine_state].state === "run")
-                      ? variables.ulm_custom_card_washer_pause_action?.service_data
-                      : variables.ulm_custom_card_washer_start_action?.service_data;
+                      && states[variables.ulm_custom_card_washer_machine_state].state === variables.ulm_custom_card_washer_machine_stop_state)
+                      ? variables.ulm_custom_card_washer_start_action?.service_data
+                      : variables.ulm_custom_card_washer_pause_action?.service_data;
                   ]]]
               icon: >
                 [[[
                   return (!!states[variables.ulm_custom_card_washer_machine_state]?.state
-                    && states[variables.ulm_custom_card_washer_machine_state].state === "run") ? "mdi:pause" : "mdi:play";
+                    && states[variables.ulm_custom_card_washer_machine_state].state === variables.ulm_custom_card_washer_machine_stop_state) ? "mdi:play" : "mdi:pause";
                 ]]]
               state:
                 - operator: "template"
                   value: >
                     [[[
-                      return ((states[variables.ulm_custom_card_washer_machine_state].state !== "run"
+                      return ((states[variables.ulm_custom_card_washer_machine_state].state === variables.ulm_custom_card_washer_machine_stop_state
                           && (!variables.ulm_custom_card_washer_start_action?.action
                             || (!!variables.ulm_custom_card_washer_start_action?.action
                               && variables.ulm_custom_card_washer_start_action.action === "none")))
-                        || (states[variables.ulm_custom_card_washer_machine_state].state === "run"
+                        || (states[variables.ulm_custom_card_washer_machine_state].state !== variables.ulm_custom_card_washer_machine_stop_state
                           && (!variables.ulm_custom_card_washer_pause_action?.action
                             || (!!variables.ulm_custom_card_washer_pause_action?.action
                               && variables.ulm_custom_card_washer_pause_action.action === "none"))));
@@ -497,8 +498,9 @@ custom_card_haven_washer:
               tap_action:
                 action: >
                   [[[
-                    return (!!states[variables.ulm_custom_card_washer_machine_state]?.state
-                      && states[variables.ulm_custom_card_washer_machine_state].state === "run"
+                    return (!!variables.ulm_custom_card_washer_machine_state
+                      && !!states[variables.ulm_custom_card_washer_machine_state]?.state
+                      && states[variables.ulm_custom_card_washer_machine_state].state !== variables.ulm_custom_card_washer_machine_stop_state
                       && variables.ulm_custom_card_washer_stop_action?.action) ?? "none";
                   ]]]
                 entity: "[[[ return variables.ulm_custom_card_washer_stop_action.entity; ]]]"
@@ -513,7 +515,7 @@ custom_card_haven_washer:
                     [[[
                       return ((!!variables.ulm_custom_card_washer_machine_state
                           && !!states[variables.ulm_custom_card_washer_machine_state]?.state
-                          && states[variables.ulm_custom_card_washer_machine_state].state === "stop")
+                          && states[variables.ulm_custom_card_washer_machine_state].state === variables.ulm_custom_card_washer_machine_stop_state)
                         || !variables.ulm_custom_card_washer_stop_action?.action
                         || (!!variables.ulm_custom_card_washer_stop_action?.action
                           && variables.ulm_custom_card_washer_stop_action.action === "none"));
@@ -528,6 +530,26 @@ custom_card_haven_washer:
               template:
                 - "widget_icon"
                 - "green_on"
+              tap_action:
+                action: >
+                  [[[
+                    return (!!variables.ulm_custom_card_washer_machine_state
+                      && !!states[variables.ulm_custom_card_washer_machine_state]?.state
+                      && states[variables.ulm_custom_card_washer_machine_state].state === variables.ulm_custom_card_washer_machine_stop_state)
+                        ? "toggle"
+                        : "none";
+                  ]]]
+              state:
+                - operator: "template"
+                  value: >
+                    [[[
+                      return (!!variables.ulm_custom_card_washer_machine_state
+                        && !!states[variables.ulm_custom_card_washer_machine_state]?.state
+                        && states[variables.ulm_custom_card_washer_machine_state].state !== variables.ulm_custom_card_washer_machine_stop_state);
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.2)"
               entity: "[[[ return variables.ulm_custom_card_washer_delayed_start; ]]]"
     row4:
       card:

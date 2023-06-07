@@ -33,7 +33,7 @@ card_person_info:
         return `Driving - ${variables.ulm_translation_state}`;
       } else {
         let state = states[variables.ulm_card_person_entity].state;
-        return hass.resources[hass["language"]]["component.person" + ".state._." + state] ? hass.resources[hass["language"]]["component.person" + ".state._." + state] : state;
+        return hass.resources[hass["language"]]["component.person.entity_component._.state." + state] ? hass.resources[hass["language"]]["component.person.entity_component._.state." + state] : state;
       }
     ]]]
   name: "[[[ return states[variables.ulm_card_person_entity].attributes.friendly_name ]]]"

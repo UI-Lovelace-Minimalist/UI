@@ -24,9 +24,9 @@ Initial release
 
 ## Images
 
-![Heat_pump](Heat_pump.PNG)
+![Heat_pump](../../docs/assets/img/Heat_pump.PNG)
 
-![Heat_pump_gif](heat_pump.gif)
+![Heat_pump_gif](../../docs/assets/img/heat_pump.gif)
 
 ## Usage
 
