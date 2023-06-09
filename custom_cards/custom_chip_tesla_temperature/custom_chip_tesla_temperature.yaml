@@ -19,7 +19,7 @@ custom_chip_tesla_temperature:
       var label = "Set " + convertTemperature(set_temp) + "°" + " / Current " + convertTemperature(inside_temp) + "°";
       return label;
     ]]]
-      
+
   icon: |
     [[[
       var preset = states[variables.ulm_chip_hvac].attributes.preset_mode;
@@ -33,4 +33,3 @@ custom_chip_tesla_temperature:
         }
       return (icon[preset] || icon["default"]);
     ]]]
-
