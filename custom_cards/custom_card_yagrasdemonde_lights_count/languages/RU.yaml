@@ -1,0 +1,9 @@
+---
+ulm_custom_card_yagrasdemonde_lights_count_language_variables:
+  variables:
+    ulm_custom_card_yagrasdemonde_lights_count_light_0: "Свет отключен"
+    ulm_custom_card_yagrasdemonde_lights_count_light_1: "1 лампа включена"
+    ulm_custom_card_yagrasdemonde_lights_count_light_many: "лампы включены"
+    ulm_custom_card_yagrasdemonde_lights_count_cover_0: "Нет открытых ворот"
+    ulm_custom_card_yagrasdemonde_lights_count_cover_1: "1 ворота открыты"
+    ulm_custom_card_yagrasdemonde_lights_count_cover_many: "ворот открыты"
