@@ -1,0 +1,35 @@
+---
+custom_chip_tesla_temperature:
+  template:
+    - "chip_icon_label"
+    - "ulm_translation_engine"
+  variables:
+    ulm_card_enable_popup: false
+  triggers_update: "all"
+  label: |
+    [[[
+      function convertTemperature(temp) {
+        if (parseFloat(temp) == temp && Math.floor(temp) != temp) {
+            return parseFloat(temp).toFixed(1);
+        }
+        return temp;
+      }
+      var set_temp = states[variables.ulm_chip_hvac].attributes.temperature;
+      var inside_temp = states[variables.ulm_chip_hvac].attributes.current_temperature;
+      var label = "Set " + convertTemperature(set_temp) + "°" + " / Current " + convertTemperature(inside_temp) + "°";
+      return label;
+    ]]]
+
+  icon: |
+    [[[
+      var preset = states[variables.ulm_chip_hvac].attributes.preset_mode;
+      var icon = {
+        "Normal": "mdi:thermometer",
+        "Defrost": "mdi:snowflake-melt",
+        "Keep On": "mdi:heat-wave",
+        "Dog Mode": "mdi:dog-side",
+        "Camp Mode": "mdi:campfire",
+        "default": "mdi:thermometer"
+        }
+      return (icon[preset] || icon["default"]);
+    ]]]
