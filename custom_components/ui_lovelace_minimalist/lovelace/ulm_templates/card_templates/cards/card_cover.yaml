@@ -14,6 +14,7 @@ card_cover:
     ulm_card_cover_garage_large: false
     ulm_card_cover_gate: false
     ulm_card_cover_enable_controls: false
+    ulm_card_cover_favorite_percentage: null
     ulm_card_cover_enable_slider: false
     ulm_card_cover_slider_min: 0
     ulm_card_cover_slider_max: 100
@@ -44,24 +45,54 @@ card_cover:
     grid:
       - grid-template-areas: >
           [[[
-              var areas = [];
-              areas.push("item1");
-
-              if (variables.ulm_card_cover_enable_controls) {
-                areas.push("item2");
-              }
-              if (variables.ulm_card_cover_enable_slider) {
-                  areas.push("item3");
-              }
-              if (variables.ulm_card_cover_enable_tilt) {
-                areas.push("item4");
-              }
-
               if (variables.ulm_card_cover_enable_horizontal) {
-                  areas = areas.slice(0, 2);
-                  return "\"" + areas.join(" ") + "\"";
+
+                  var hor_area = ["item1"];
+                  var ver_area = [];
+
+                  if (variables.ulm_card_cover_enable_controls) {
+                    if (variables.ulm_card_cover_enable_horizontal == "controls" || variables.ulm_card_cover_enable_horizontal == true) {
+                      hor_area.push("item2");
+                    } else {
+                      ver_area.push("item2" + " " + "item2");
+                    }
+                  }
+                  if (variables.ulm_card_cover_enable_slider) {
+                    if (variables.ulm_card_cover_enable_horizontal == "slider") {
+                      hor_area.push("item3");
+                    } else {
+                      ver_area.push("item3" + " " + "item3");
+                    }
+                  }
+                  if (variables.ulm_card_cover_enable_tilt) {
+                    if (variables.ulm_card_cover_enable_horizontal == "tilt") {
+                      hor_area.push("item4");
+                    } else {
+                      ver_area.push("item4" + " " + "item4");
+                    }
+                  }
+
+                  if (ver_area.length < 1) {
+                    return "\"" + hor_area.join(" ") + "\" ";
+                  } else {
+                    return "\"" + hor_area.join(" ") + "\" " + "\"" + ver_area.join("\" \"") + "\"";
+                  }
+              } else {
+                  var areas = [];
+                  areas.push("item1");
+
+                  if (variables.ulm_card_cover_enable_controls) {
+                    areas.push("item2");
+                  }
+                  if (variables.ulm_card_cover_enable_slider) {
+                      areas.push("item3");
+                  }
+                  if (variables.ulm_card_cover_enable_tilt) {
+                    areas.push("item4");
+                  }
+
+                  return "\"" + areas.join("\" \"") + "\"";
               }
-              return "\"" + areas.join("\" \"") + "\"";
           ]]]
       - grid-template-columns: >
           [[[
@@ -72,9 +103,6 @@ card_cover:
           ]]]
       - grid-template-rows: >
           [[[
-              if (variables.ulm_card_cover_enable_horizontal) {
-                  return "min-content";
-              }
               var rows = [];
               rows.push("min-content");
               if (variables.ulm_card_cover_enable_controls) {
@@ -85,6 +113,11 @@ card_cover:
               }
               if (variables.ulm_card_cover_enable_tilt) {
                   rows.push("min-content");
+              }
+              if (variables.ulm_card_cover_enable_horizontal) {
+                  if (rows.length > 1) {
+                    rows.pop()
+                  }
               }
               return rows.join(" ");
           ]]]
@@ -107,9 +140,6 @@ card_cover:
         - display: >
             [[[
               if (variables.ulm_card_cover_enable_slider) {
-                  if (variables.ulm_card_cover_enable_horizontal && variables.ulm_card_cover_enable_controls) {
-                    return "none";
-                  }
                   return "block";
               } else {
                   return "none";
@@ -119,9 +149,6 @@ card_cover:
         - display: >
             [[[
               if (variables.ulm_card_cover_enable_tilt) {
-                  if (variables.ulm_card_cover_enable_horizontal && (variables.ulm_card_cover_enable_controls || variables.ulm_card_cover_enable_slider)) {
-                      return "none";
-                  }
                   return "block";
               } else {
                   return "none";
@@ -289,10 +316,20 @@ card_cover:
     item2:
       card:
         type: "custom:button-card"
-        template: "list_3_items"
+        template: "[[[ return (variables.ulm_card_cover_favorite_percentage) ? 'list_4_items' : 'list_3_items' ]]]"
         styles:
           card:
             - background: "none"
+          custom_fields:
+            item4:
+              - display: >
+                  [[[
+                    if (variables.ulm_card_cover_favorite_percentage) {
+                        return "block";
+                    } else {
+                        return "none";
+                    }
+                  ]]]
         custom_fields:
           item1:
             card:
@@ -484,6 +521,47 @@ card_cover:
                   }
                   return "mdi:arrow-up";
                 ]]]
+          item4:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              entity: "[[[ return entity.entity_id ]]]"
+              styles:
+                card:
+                  - background-color: >
+                      [[[
+                        if(!hass.themes.darkMode && variables.ulm_card_cover_force_background_color){
+                          if (variables.ulm_active_state){
+                            return 'rgb(250,250,250)'
+                          }
+                        }
+                        return 'rgba(var(--color-theme),0.05)'
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        if (variables.ulm_card_cover_force_background_color && variables.ulm_active_state) {
+                          var color = variables.ulm_card_cover_color;
+                          return 'rgba(var(--color-' + color + '),0.2)';
+                        }
+                        return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+                icon:
+                  - color: >
+                      [[[
+                        if (variables.ulm_card_cover_force_background_color && variables.ulm_active_state) {
+                          var color = variables.ulm_card_cover_color;
+                          return 'rgba(var(--color-' + color + '),1)';
+                        }
+                        return 'rgba(var(--color-theme),0.9)';
+                      ]]]
+              tap_action:
+                action: "call-service"
+                service: "cover.set_cover_position"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+                  position: "[[[ return variables.ulm_card_cover_favorite_percentage ]]]"
+              icon: "mdi:star"
     item3:
       card:
         type: "custom:my-slider"

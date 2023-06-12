@@ -3,7 +3,6 @@
 card_binary_sensor:
   template:
     - "icon_more_info_new"
-    - "blue"
     - "ulm_translation_engine"
   show_last_changed: false
   variables:
