@@ -66,7 +66,7 @@ custom_card_imswel_medias_library:
     card:
       - padding: "0px"
       - background-image: >
-          [[[ 
+          [[[
             return entity === undefined || `url(${states[entity.entity_id].attributes.data[variables.ulm_custom_card_imswel_medias_index].fanart})`;
           ]]]
       - border: "none"
@@ -135,7 +135,7 @@ custom_card_imswel_medias_upcoming:
           return "au cinéma"
         }
       }
-      
+
       function formatDate(date){
         var weekday = variables.ulm_custom_card_imswel_weekday;
         var now = new Date();
@@ -172,7 +172,7 @@ custom_card_imswel_medias_upcoming:
       } else{
         var data = entity.attributes?.data;
         var platform = variables.ulm_custom_card_imswel_medias_platform;
-        
+
         if(platform == "radarr"){
           return `${data[variables.ulm_custom_card_imswel_medias_index].title}`;
         } else if(platform =="sonarr"){
@@ -197,7 +197,7 @@ custom_card_imswel_medias_upcoming:
       - grid-template-rows: "auto repeat(2, min-content) 8px"
     card:
       - background-image: >
-          [[[ 
+          [[[
             return entity === undefined || `url(${states[entity.entity_id].attributes.data[variables.ulm_custom_card_imswel_medias_index].poster})`;
           ]]]
       - border: "none"

@@ -27,13 +27,13 @@ Initial release
 </details>
 
 ## Requirements
+
 This card needs the following to function correctly:
 | Component                                                                                 | Required                           |
 | ----------------------------------------------------------------------------------------- | ---------------------------------- |
 |[Plex Recently Added](https://github.com/NemesisRE/sensor.plex_recently_added)             | Yes for **`Media Library Card`**   |
 |[Radarr Upcoming Media](https://github.com/custom-components/sensor.radarr_upcoming_media) | Yes for **`Media Upcoming Card`**  |
 |[Sonarr Upcoming Media](https://github.com/custom-components/sensor.sonarr_upcoming_media) | Yes for **`Media Upcoming Card`**  |
-
 
 ## Usage
 
@@ -51,9 +51,10 @@ This card needs the following to function correctly:
   variables:
     ulm_custom_card_imswel_medias_index: 1
 ```
+
 <br>
 
-**Medias Upcoming Card** for [Radarr Upcoming Media](https://github.com/custom-components/sensor.radarr_upcoming_media) & [Sonarr Upcoming Media](https://github.com/custom-components/sensor.sonarr_upcoming_media) :
+**Media Upcoming Card** for [Radarr Upcoming Media](https://github.com/custom-components/sensor.radarr_upcoming_media) & [Sonarr Upcoming Media](https://github.com/custom-components/sensor.sonarr_upcoming_media) :
 
 ![example-image-radarr](../../docs/assets/img/custom_card_imswel_medias/medias_upcoming_radarr.png)
 ![example-image-sonarr](../../docs/assets/img/custom_card_imswel_medias/medias_upcoming_sonarr.png)<br>
