@@ -12,6 +12,7 @@ These are some `custom-card` for your plex, radarr and sonarr media libraries.
 
 ![example-image-radarr](../../docs/assets/img/custom_card_imswel_medias/medias_upcoming_radarr.png)
 ![example-image-sonarr](../../docs/assets/img/custom_card_imswel_medias/medias_upcoming_sonarr.png)
+<br>
 ![example-image-plex](../../docs/assets/img/custom_card_imswel_medias/medias_library_plex.png)
 
 
@@ -50,8 +51,7 @@ This card needs the following to function correctly:
   variables:
     ulm_custom_card_imswel_medias_index: 1
 ```
-
-<br><br>
+<br>
 
 **Medias Upcoming Card** for [Radarr Upcoming Media](https://github.com/custom-components/sensor.radarr_upcoming_media) & [Sonarr Upcoming Media](https://github.com/custom-components/sensor.sonarr_upcoming_media) :
 | Variable                              | Default | Required | Notes                                                                                                    |
