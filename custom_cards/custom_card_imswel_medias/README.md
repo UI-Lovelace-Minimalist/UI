@@ -1,12 +1,12 @@
 ---
-title: Custom Card Medias
+title: Custom Card Media
 hide:
   - toc
 ---
 
 <!-- markdownlint-disable MD046 -->
 
-# Custom Card "Medias"
+# Custom Card "Media"
 
 These are some `custom-card` for your plex, radarr and sonarr media libraries.
 
