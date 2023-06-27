@@ -1,0 +1,13 @@
+---
+# EN.yaml for custom_card_imswel_medias
+custom_card_imswel_medias_language_variables:
+  variables:
+    ulm_custom_card_imswel_recentlyadded: "Recently added"
+    ulm_custom_card_imswel_in_theaters: "in theathers"
+    ulm_custom_card_imswel_weekday: >
+      [[[
+        return ["Sunday","Monday","Thuesday","Wednesday","Thursday","Friday","Saturday"];
+      ]]]
+    ulm_custom_card_imswel_today: "Today"
+    ulm_custom_card_imswel_tommorow: "Tommorow"
+    ulm_custom_card_imswel_locale: "en-US"
