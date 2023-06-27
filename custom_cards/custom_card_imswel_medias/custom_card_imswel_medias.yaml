@@ -132,7 +132,7 @@ custom_card_imswel_medias_upcoming:
         if(release.includes("Available")){
           return ""
         } else if (release.includes("In Theaters")){
-          return "au cinéma"
+          return variables.ulm_custom_card_imswel_in_theaters;
         }
       }
 
