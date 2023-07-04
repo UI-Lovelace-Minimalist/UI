@@ -27,11 +27,11 @@ The `custom_card_person_info_small` is based on `card_person_info`.
 | ulm_card_person_driving_entity               |                      | :material-close: | Set a binary sensor that depicts when this person is driving                                                                                    |
 | ulm_card_person_battery_entity               |                      | :material-close: | Set a battery level sensor                                                                                                                      |
 | ulm_card_person_battery_state_entity         |                      | :material-close: | Set a battery state sensor (eg the battery state sensor from the home assistant companion app will have the states "charging" or "discharging") |
-| ulm_card_battery_battery_level_danger        | 15 			            | :material-close: | Changes the color of the Icon, if the battery level falls below the provided value. Must be higher than ulm_card_battery_battery_level_waring
+| ulm_card_battery_battery_level_danger        | 15                | :material-close: | Changes the color of the Icon, if the battery level falls below the provided value. Must be higher than ulm_card_battery_battery_level_waring
 | ulm_card_battery_battery_level_waring        | 30                   | :material-close: | Changes the color of the Icon, if the battery level falls below the provided value.
-| ulm_card_battery_color_battery_level_danger	 | var(--google-red)		| :material-close: | Color of icon if battery level is within the 'danger' zone.
-| ulm_card_battery_color_battery_level_warning | var(--google-yellow)	|	:material-close: | Color of icon if battery level is within the 'warning' zone.
-| ulm_card_battery_color_battery_level_ok	     | var(--google-green)  |	:material-close: | Color of icon if battery level is not within the 'danger' or 'warning' zone.
+| ulm_card_battery_color_battery_level_danger  | var(--google-red)  | :material-close: | Color of icon if battery level is within the 'danger' zone.
+| ulm_card_battery_color_battery_level_warning | var(--google-yellow) | :material-close: | Color of icon if battery level is within the 'warning' zone.
+| ulm_card_battery_color_battery_level_ok      | var(--google-green)  | :material-close: | Color of icon if battery level is not within the 'danger' or 'warning' zone.
 
 ## Usage
 

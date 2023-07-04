@@ -24,7 +24,7 @@ card_person_info_small:
     entity: "[[[ return variables.ulm_card_person_entity; ]]]"
   hold_action:
     action: "more-info"
-    entity: "[[[ return variables.ulm_card_person_battery_entity; ]]]"    
+    entity: "[[[ return variables.ulm_card_person_battery_entity; ]]]"
   show_label: true
   show_name: true
   label: >
@@ -85,7 +85,7 @@ card_person_info_small:
             ]]]
       battery:
         - width: "30px"
-        - height: "30px" 
+        - height: "30px"
         - place-self: "end"
         - align-self: "center"
         - background-color: "rgba(var(--primary-background-color), 0.5)"
@@ -117,7 +117,7 @@ card_person_info_small:
           let battery_level = states[variables.ulm_card_person_battery_entity]?.state;
           battery_level = Number(battery_level);
           let charging = states[variables.ulm_card_person_battery_state_entity]?.state.toLowerCase() === "charging";
-          
+
           var infix = charging ? "-charging" : ""
           let icon = "mdi:help-circle-outline";
           if (battery_level == 100) {
@@ -128,7 +128,7 @@ card_person_info_small:
             icon = "mdi:battery-off";
           } else {
             icon = "mdi:battery" + infix + "-" + Math.floor(battery_level / 10) * 10;
-          } 
+          }
 
           let color = variables.ulm_card_battery_color_battery_level_ok;
           if (battery_level !== "unavailable") {
@@ -139,11 +139,10 @@ card_person_info_small:
             } else {
               color = variables.ulm_card_battery_color_battery_level_ok;
             }
-          }          
+          }
 
           return `
             <ha-icon icon="${icon}" style="height: 27px; width: 27px; color: ${color};"></ha-icon>
           `;
         }
       ]]]
-
