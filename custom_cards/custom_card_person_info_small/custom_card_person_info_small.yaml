@@ -63,7 +63,7 @@ card_person_info_small:
     label:
       - place-self: "center"
       - margin-left: 0
-      - text-transform: capitalize
+      - text-transform: "capitalize"
     custom_fields:
       notification:
         - position: "absolute"
