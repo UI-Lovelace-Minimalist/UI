@@ -2,6 +2,8 @@
 title: Person Info Card
 ---
 
+<!-- markdownlint-disable MD046 -->
+
 ## Description
 
 ![Person Info](../../docs/assets/img/custom_card_person_info_small_dark.png)
