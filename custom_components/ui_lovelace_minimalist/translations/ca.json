@@ -6,7 +6,7 @@
                 "title": "configuració de UI Lovelace Minimalist",
                 "description": "",
                 "data": {
-                    "community_cards_enabled": "Activa la possiblitat de configurar comunity cards amb aquesta integració. Requereix autenticació GitHub!"
+                    "community_cards_enabled": "Activa la possiblitat de configurar targetes de comunitat amb aquesta integració. Requereix autenticació GitHub!"
                 }
             },
             "device": {
@@ -41,9 +41,9 @@
                     "adaptive_ui_title": "Títol del panell adaptatiu",
                     "adaptive_ui_icon": "Icona del panell adaptatiu",
                     "theme": "Tema",
-                    "include_other_cards": "Incloure recursos de tarjetes personalitzades depen de",
-                    "community_cards_enabled": "activar la possibilitat de configurar tarjetes de comunitat amb aquesta integració, Requereix autenticació GitHub!",
-                    "community_cards": "Selecciona les Tarjetes de comunitat que vols activar."
+                    "include_other_cards": "Incloure recursos de targetes personalitzades depen de",
+                    "community_cards_enabled": "activar la possibilitat de configurar targetes de comunitat amb aquesta integració, Requereix autenticació GitHub!",
+                    "community_cards": "Selecciona les targetes de comunitat que vols activar."
                 }
             }
         },
@@ -52,7 +52,7 @@
             "not_setup": "UI Lovelace Minimalist no està preparat."
         },
         "error": {
-            "github_cards": "Alguna cosa ha anat malament al obtenir tarjetes de GitHub.",
+            "github_cards": "Alguna cosa ha anat malament al obtenir targetes de GitHub.",
             "ack": "Has de reconeixer tots els estaments.",
             "gh_token": "No s'ha establert el token de Github. Si et plau, reinstal·la aquesta integració per seguir amb el procés de configuració. (No es perdrà cap configuració personalitzada)"
         }
