@@ -269,8 +269,8 @@ icon_info_updates:
     value_template: "{{ value_json.update_available }}"
     json_attributes:
       - update_available
-      - newest_version
-      - current_version
+      - latest_version
+      - installed_version
 
 - sensor:
     name: core_updates
