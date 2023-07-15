@@ -56,9 +56,9 @@ This card needs the following to function correctly:
   template: custom_card_imswel_person
   variables:
     ulm_card_imswel_person_entity: person.john
-    ulm_card_imswel_person_wifi_tracker: device_tracker.wifi_oneplus_6t
-    ulm_card_imswel_person_gps_tracker: device_tracker.oneplus_6t
-    ulm_card_imswel_person_findmy_script: script.find_my_oneplus_6t
+    ulm_card_imswel_person_wifi_tracker: device_tracker.my_phone_wifi
+    ulm_card_imswel_person_gps_tracker: device_tracker.my_phone
+    ulm_card_imswel_person_findmy_script: script.find_my_phone
     ulm_card_imswel_person_use_entity_picture: true
 ```
 
