@@ -103,7 +103,8 @@ This card needs the following to function correctly:
   </tr>
 </table>
 
-#### Phone finder script exemple
+#### Phone finder script example
+
 ```yaml
 find_my_phone:
   sequence:
