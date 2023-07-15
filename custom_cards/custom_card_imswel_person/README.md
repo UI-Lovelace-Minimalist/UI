@@ -103,6 +103,26 @@ This card needs the following to function correctly:
   </tr>
 </table>
 
+#### Phone finder script exemple
+```yaml
+find_my_phone:
+  sequence:
+  - service: notify.mobile_app_my_android
+    data:
+      message: command_volume_level
+      data:
+        media_stream: alarm_stream
+        command: 20
+  - service: notify.mobile_app_my_android
+    data:
+      message: Home Assistant is searching your phone !
+      data:
+        ttl: 0
+        priority: high
+        channel: alarm_stream
+  mode: single
+```
+
 ??? note "Template Code"
 
     ```yaml title="custom_card_imswel_person.yaml"
