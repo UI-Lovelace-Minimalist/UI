@@ -100,7 +100,7 @@ custom_popup_imswel_person:
   tap_action:
     action: "fire-dom-event"
     browser_mod:
-      service: browser_mod.popup
+      service: "browser_mod.popup"
       data:
         title: "[[[ return states[variables.ulm_card_imswel_person_entity].attributes.friendly_name ]]]"
         size: >
@@ -133,7 +133,7 @@ custom_popup_imswel_person:
               entities:
                 - entity: "[[[ return variables.ulm_card_imswel_person_entity; ]]]"
                   name: "‎"
-            - type: horizontal-stack
+            - type: "horizontal-stack"
               cards:
                 - type: "custom:button-card"
                   template: "custom_card_imswel_person_glance_icon"
@@ -181,7 +181,7 @@ custom_card_imswel_person_glance_icon:
       styles:
         icon:
           - color: "[[[ return `rgba(var(--color-${variables.color}), 1)`; ]]]"
-        img_cell: 
+        img_cell:
           - background-color: "[[[ return `rgba(var(--color-${variables.color}), 0.2)`; ]]]"
   styles:
     icon:
