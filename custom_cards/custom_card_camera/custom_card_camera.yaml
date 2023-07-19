@@ -44,6 +44,7 @@ custom_card_camera:
           card:
             - box-shadow: "none"
             - padding: "0"
+            - --mdc-ripple-press-opacity: 0
           name:
             - align-self: "end"
             - justify-self: "start"
@@ -70,5 +71,6 @@ custom_card_camera:
         entity: "[[[ return entity.entity_id ]]]"
         show_name: false
         show_state: false
+        aspect_ratio: "[[[ return variables.ulm_custom_card_camera_aspect_ratio; ]]]"
   tap_action:
     action: "more-info"
