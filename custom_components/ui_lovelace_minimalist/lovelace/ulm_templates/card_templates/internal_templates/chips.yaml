@@ -19,7 +19,14 @@ chips:
       - grid-template-areas: "'l'"
     card:
       - border-radius: "18px"
-      - box-shadow: "var(--box-shadow)"
+      - box-shadow: >
+          [[[
+            if (hass.themes.darkMode){
+              return "0px 2px 4px 0px rgba(0,0,0,0.80)";
+            } else {
+              return "var(--box-shadow)";
+            }
+          ]]]
       - height: "36px"
       - width: "auto"
       - padding-left: "6px"
