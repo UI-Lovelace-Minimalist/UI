@@ -14,10 +14,14 @@ This is a `custom-card` that improves the original person card (`card_person`) b
 ## Credits
 
 Author: imswel - 2022
-Version: 1.0.1
+Version: 1.0.2
 
 ## Changelog
 
+<details>
+  <summary>1.0.2</summary>
+  UI fix and improvement.
+</details>
 <details>
   <summary>1.0.1</summary>
   Breaking change: removed variable for zones, instead load all zones automatically.
@@ -52,9 +56,9 @@ This card needs the following to function correctly:
   template: custom_card_imswel_person
   variables:
     ulm_card_imswel_person_entity: person.john
-    ulm_card_imswel_person_wifi_tracker: device_tracker.wifi_oneplus_6t
-    ulm_card_imswel_person_gps_tracker: device_tracker.oneplus_6t
-    ulm_card_imswel_person_findmy_script: script.find_my_oneplus_6t
+    ulm_card_imswel_person_wifi_tracker: device_tracker.my_phone_wifi
+    ulm_card_imswel_person_gps_tracker: device_tracker.my_phone
+    ulm_card_imswel_person_findmy_script: script.find_my_phone
     ulm_card_imswel_person_use_entity_picture: true
 ```
 
@@ -75,19 +79,19 @@ This card needs the following to function correctly:
   </tr>
   <tr>
     <td>ulm_card_imswel_person_wifi_tracker</td>
-    <td>device_tracker.wifi_oneplus_6t</td>
+    <td>device_tracker.my_phone_wifi</td>
     <td>yes</td>
     <td>A device_tracker entity of the person based on wifi</td>
   </tr>
   <tr>
     <td>ulm_card_imswel_person_gps_tracker</td>
-    <td>device_tracker.oneplus_6t</td>
+    <td>device_tracker.my_phone</td>
     <td>yes</td>
     <td>A device_tracker entity of the person based on location</td>
   </tr>
   <tr>
     <td>ulm_card_imswel_person_findmy_script</td>
-    <td>script.find_my_oneplus_6t</td>
+    <td>script.find_my_phone</td>
     <td>yes</td>
     <td>A script entity that make ring your phone</td>
   </tr>
@@ -98,6 +102,27 @@ This card needs the following to function correctly:
     <td>If true, shows the entity picture from your user instead of the icon. Default is false</td>
   </tr>
 </table>
+
+#### Phone finder script example
+
+```yaml
+find_my_phone:
+  sequence:
+  - service: notify.mobile_app_my_android
+    data:
+      message: command_volume_level
+      data:
+        media_stream: alarm_stream
+        command: 20
+  - service: notify.mobile_app_my_android
+    data:
+      message: Home Assistant is searching your phone !
+      data:
+        ttl: 0
+        priority: high
+        channel: alarm_stream
+  mode: single
+```
 
 ??? note "Template Code"
 
