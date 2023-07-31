@@ -14,17 +14,11 @@ chip_icon_double_state:
       }
       var state1 = "";
       if (states[variables.ulm_chip_icon_double_state_entity_1].state){
-        var state1 = states[variables.ulm_chip_icon_double_state_entity_1].state;
-        if (states[variables.ulm_chip_icon_double_state_entity_1].attributes.unit_of_measurement){
-          state1 += states[variables.ulm_chip_icon_double_state_entity_1].attributes.unit_of_measurement;
-        }
+        var state1 = helpers.localize(states[variables.ulm_chip_icon_double_state_entity_1])
       }
       var state2 = "";
       if (states[variables.ulm_chip_icon_double_state_entity_2].state){
-        var state2 = states[variables.ulm_chip_icon_double_state_entity_2].state;
-        if (states[variables.ulm_chip_icon_double_state_entity_2].attributes.unit_of_measurement){
-          state2 += states[variables.ulm_chip_icon_double_state_entity_2].attributes.unit_of_measurement;
-        }
+        var state2 = helpers.localize(states[variables.ulm_chip_icon_double_state_entity_2])
       }
       return icon + " " + state1 + " • " + state2;
     ]]]

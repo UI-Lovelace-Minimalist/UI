@@ -203,7 +203,7 @@ card_thermostat:
                 [[[
                     var label = variables.ulm_translation_state;
                     if((entity.attributes.temperature || entity.attributes.target_temp_high != null) && !variables.ulm_card_thermostat_enable_display_temperature){
-                      return variables.ulm_translation_hvac;
+                      return variables.ulm_translation_state;
                     }
                     return label;
                 ]]]

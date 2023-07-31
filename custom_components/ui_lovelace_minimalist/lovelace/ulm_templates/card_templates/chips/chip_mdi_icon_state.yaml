@@ -7,15 +7,13 @@ chip_mdi_icon_state:
     entity: "[[[ return variables.ulm_chip_mdi_icon_state_entity ]]]"
   triggers_update: "all"
   show_icon: true
+  entity: "[[[ return variables.ulm_chip_mdi_icon_state_entity ]]]"
   icon: "[[[ return variables.ulm_chip_mdi_icon_state_icon ]]]"
   label: |
     [[[
       var state = "";
       if (states[variables.ulm_chip_mdi_icon_state_entity].state){
-        var state = states[variables.ulm_chip_mdi_icon_state_entity].state;
-        if (states[variables.ulm_chip_mdi_icon_state_entity].attributes.unit_of_measurement){
-          state += states[variables.ulm_chip_mdi_icon_state_entity].attributes.unit_of_measurement;
-        }
+        var state = helpers.localize(entity)
       }
       return state;
     ]]]
