@@ -4,10 +4,10 @@ chip_mdi_icon_state:
   template: "chips"
   tap_action:
     action: "more-info"
-    entity: "[[[ return variables.ulm_chip_mdi_icon_state_entity ]]]"
-  triggers_update: "all"
-  show_icon: true
   entity: "[[[ return variables.ulm_chip_mdi_icon_state_entity ]]]"
+  triggers_update:
+    - "[[[ return variables.ulm_chip_mdi_icon_state_entity ]]]"
+  show_icon: true
   icon: "[[[ return variables.ulm_chip_mdi_icon_state_icon ]]]"
   label: |
     [[[

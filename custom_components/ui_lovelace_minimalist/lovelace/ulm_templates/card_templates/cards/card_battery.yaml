@@ -16,7 +16,9 @@ card_battery:
     ulm_card_battery_color_battery_level_warning: "var(--google-yellow)"
     ulm_card_battery_color_battery_level_ok: "var(--google-green)"
     ulm_outlet_power_enable_popup: false
-  triggers_update: "all"
+  triggers_update:
+    - "[[[ return variables?.ulm_card_battery_battery_state_entity_id ]]]"
+    - "[[[ return variables?.ulm_card_battery_charger_type_entity_id ]]]"
   custom_fields:
     item1:
       card:

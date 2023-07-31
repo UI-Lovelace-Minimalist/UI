@@ -4,7 +4,9 @@ chip_power_consumption:
   template:
     - "chips"
     - "ulm_translation_engine"
-  triggers_update: "all"
+  triggers_update:
+    - "[[[ return variables.ulm_chip_electric_price ]]]"
+    - "[[[ return variables.ulm_chip_electric_consumption ]]]"
   label: |
     [[[
       var amount = variables.ulm_chip_electric_price != "" ? true : false

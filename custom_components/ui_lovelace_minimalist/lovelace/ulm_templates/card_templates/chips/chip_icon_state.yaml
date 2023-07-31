@@ -2,7 +2,8 @@
 ### Chip Icon State ###
 chip_icon_state:
   template: "chips"
-  triggers_update: "all"
+  triggers_update:
+    - "[[[ return variables.ulm_chip_icon_state_entity ]]]"
   label: |
     [[[
       var icon = "❔";

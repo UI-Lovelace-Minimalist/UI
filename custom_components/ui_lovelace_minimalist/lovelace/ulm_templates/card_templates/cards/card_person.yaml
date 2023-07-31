@@ -8,7 +8,10 @@ card_person:
     ulm_card_person_use_entity_picture: false
     ulm_card_person_icon: "mdi:face-man"
     ulm_address: ""
-  triggers_update: "all"
+  triggers_update:
+    - "[[[ return variables.ulm_card_person_entity ]]]"
+    - "[[[ return variables.ulm_card_person_eta ]]]"
+    - "[[[ return variables.ulm_address ]]]"
   tap_action:
     action: "more-info"
   show_label: true
@@ -17,6 +20,8 @@ card_person:
     [[[
       let translation = helpers.localize(entity)
       var eta = ""
+      if (variables.ulm_card_person_eta && states[variables.ulm_card_person_entity].state != 'home'){
+        eta = " | " + helpers.localize(states[variables.ulm_card_person_eta]);
       if (variables.ulm_card_person_eta && entity.state != 'home'){
         eta = " | " + helpers.localize(states[variables.ulm_card_person_eta]);
       }
