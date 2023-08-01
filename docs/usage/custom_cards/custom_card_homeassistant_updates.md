@@ -81,6 +81,8 @@ This card needs additional template sensors and binary_sensor updaters to work, 
 </tr>
 </table>
 
+<<<<<<< Updated upstream
+
 ## Template code
 
 ```yaml
@@ -263,44 +265,56 @@ icon_info_updates:
 ## Template sensors code
 
 ```yaml
-- sensor:
-    name: supervisor updates
-    command: 'curl http://supervisor/supervisor/info -H "Authorization: Bearer $(printenv SUPERVISOR_TOKEN)" | jq ''{"latest_version":.data.version_latest,"installed_version":.data.version,"update_available":.data.update_available}'''
-    value_template: "{{ value_json.update_available }}"
-    json_attributes:
-      - update_available
-      - latest_version
-      - installed_version
-
-- sensor:
+sensor:
+  - platform: command_line
     name: core_updates
     command: 'curl http://supervisor/core/info -H "Authorization: Bearer $(printenv SUPERVISOR_TOKEN)" | jq ''{"latest_version":.data.version_latest,"installed_version":.data.version,"update_available":.data.update_available}'''
-    value_template: "{{ value_json.update_available }}"
+    value_template: '{{ value_json.update_available }}'
     scan_interval: 600
     json_attributes:
       - update_available
       - latest_version
       - installed_version
 
-- sensor:
+  - platform: command_line
+    name: supervisor_updates
+    command: 'curl http://supervisor/supervisor/info -H "Authorization: Bearer $(printenv SUPERVISOR_TOKEN)" | jq ''{"latest_version":.data.version_latest,"installed_version":.data.version,"update_available":.data.update_available}'''
+    value_template: '{{ value_json.update_available }}'
+    scan_interval: 600
+    json_attributes:
+      - update_available
+      - latest_version
+      - installed_version
+
+  - platform: command_line
     name: os_updates
     command: 'curl http://supervisor/os/info -H "Authorization: Bearer $(printenv SUPERVISOR_TOKEN)" | jq ''{"latest_version":.data.version_latest,"installed_version":.data.version,"update_available":.data.update_available}'''
-    value_template: "{{ value_json.update_available }}"
+    value_template: '{{ value_json.update_available }}'
     scan_interval: 600
     json_attributes:
       - update_available
       - latest_version
       - installed_version
 
-- sensor:
+  - platform: command_line
     name: addons_updates
     command: 'curl http://supervisor/addons -H "Authorization: Bearer $(printenv SUPERVISOR_TOKEN)" | jq ''{"addons":[.data.addons[] | select(.update_available)]}'''
-    value_template: "{{ value_json.addons | length }}"
+    value_template: '{{ value_json.addons | length }}'
     scan_interval: 600
     unit_of_measurement: pending update(s)
     json_attributes:
       - addons
 
+binary_sensor:
+  - platform: template
+    sensors:
+      updater_core:
+        friendly_name: Core
+        device_class: problem
+        value_template: "{{ states('sensor.core_updates') }}"
+        attribute_templates:
+          installed_version: "{{ state_attr('sensor.core_updates', 'installed_version') }}"
+          latest_version: "{{ state_attr('sensor.core_updates', 'latest_version') }}"
 =======
 ??? note "Template Code"
 >>>>>>> Stashed changes
