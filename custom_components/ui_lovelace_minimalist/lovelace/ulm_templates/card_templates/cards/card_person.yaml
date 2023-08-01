@@ -20,13 +20,11 @@ card_person:
     [[[
       let translation = helpers.localize(entity)
       var eta = ""
-      if (variables.ulm_card_person_eta && states[variables.ulm_card_person_entity].state != 'home'){
-        eta = " | " + helpers.localize(states[variables.ulm_card_person_eta]);
       if (variables.ulm_card_person_eta && entity.state != 'home'){
         eta = " | " + helpers.localize(states[variables.ulm_card_person_eta]);
       }
       if (variables.ulm_address){
-        return helpers.localize(states[variables.ulm_address]) + eta
+        return helpers.localize(states[variables.ulm_address]) + eta;
       }
       return translation + eta
     ]]]

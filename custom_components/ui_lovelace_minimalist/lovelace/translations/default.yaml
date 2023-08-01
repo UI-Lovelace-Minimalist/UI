@@ -48,6 +48,10 @@ ulm_translation_engine:
       [[[
         if (typeof(entity) !== 'undefined' && entity !== undefined){
           let device_class = entity.attributes.device_class;
+          let lang = hass["language"];
+          let action = entity.attributes.hvac_action;
+          let domain = entity.entity_id.substr(0, entity.entity_id.indexOf("."));
+          let mode =  hass.resources[lang]["state_attributes." + domain + ".hvac_action." + action];
           if(variables.ulm_show_last_changed){
             return helpers.relativeTime(entity.last_changed, true)
           }
@@ -56,7 +60,7 @@ ulm_translation_engine:
           }
           if(entity.entity_id.startsWith("climate.")){
             return helpers.localize(entity, entity.attributes.current_temperature) + ' • ' +
-            helpers.localize(entity) + ((entity.state !='off' && mode !== undefined) ? ' (' + helpers.localize(entity, entity.attributes.hvac_action) + ')' : '');
+            helpers.localize(entity) + ((entity.state !='off' && mode !== undefined) ? ' (' + mode + ')' : '');
           }
           return helpers.localize(entity)
         }
