@@ -9,7 +9,7 @@ hide:
 
 ![example-image](../../assets/img/ulm_cards/card_graph.png){ width="500" }
 
-The `card_graph` shows an entity with the actual state and a *min-graph-card* integrated. This can be used for a thermostat to show the actual temperature and the history. It now supports dual graphs as well as bar style graphs.
+The `card_graph` shows an entity with the actual state and a *mini-graph-card* integrated. This can be used for a thermostat to show the actual temperature and the history. It now supports dual graphs as well as bar style graphs.
 
 ## Variables
 
