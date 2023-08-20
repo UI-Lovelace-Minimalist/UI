@@ -113,6 +113,12 @@ custom_popup_imswel_person:
         style: >
           --popup-padding-x: 0px;
           --popup-padding-y: 0px;
+        card_mod:
+          style:
+            ha-dialog: >
+              .content .container{
+                padding: 0 !important;
+              }
         content:
           type: "vertical-stack"
           cards:
@@ -154,7 +160,6 @@ custom_popup_imswel_person:
                   ha-card{
                     box-shadow: none;
                     border-radius: 0px;
-                    margin-bottom: -4px;
                   }
                 ha-map:
                   $: >
