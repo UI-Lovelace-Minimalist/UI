@@ -119,6 +119,7 @@ card_room:
     i1:
       card:
         type: "custom:button-card"
+        icon: "[[[ return variables?.entity_1?.icon ]]]"
         template: >
           [[[
             let templates = [ 'widget_icon_room' ];
@@ -139,6 +140,7 @@ card_room:
     i2:
       card:
         type: "custom:button-card"
+        icon: "[[[ return variables?.entity_2?.icon ]]]"
         template: >
           [[[
             let templates = [ 'widget_icon_room' ];
@@ -159,6 +161,7 @@ card_room:
     i3:
       card:
         type: "custom:button-card"
+        icon: "[[[ return variables?.entity_3?.icon ]]]"
         template: >
           [[[
             let templates = [ 'widget_icon_room' ];
@@ -179,6 +182,7 @@ card_room:
     i4:
       card:
         type: "custom:button-card"
+        icon: "[[[ return variables?.entity_4?.icon ]]]"
         template: >
           [[[
             let templates = [ 'widget_icon_room' ];
