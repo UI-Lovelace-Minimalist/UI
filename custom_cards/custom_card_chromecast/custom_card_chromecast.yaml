@@ -9,7 +9,7 @@ card_media_player_chromecast:
     - "icon_info"
     - "blue_not_unavailable"
     - "ulm_translation_engine"
-  label: "[[[ return variables.ulm_translation_state_unit ]]]"
+  label: "[[[ return variables.ulm_translation_state ]]]"
 card_media_player_chromecast_with_controls:
   variables:
     ulm_card_media_player_with_controls_name: "No name set"

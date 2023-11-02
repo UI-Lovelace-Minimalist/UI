@@ -71,7 +71,7 @@ card_generic:
             card:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
-              name: "[[[ return variables.ulm_translation_state_unit ]]]"
+              name: "[[[ return variables.ulm_translation_state ]]]"
               label: "[[[ return variables.ulm_card_generic_name ]]]"
               variables: >
                 [[[

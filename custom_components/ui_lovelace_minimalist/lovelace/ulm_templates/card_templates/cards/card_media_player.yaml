@@ -19,7 +19,6 @@ card_media_player:
     ulm_card_media_player_power_button: false
     ulm_card_media_player_force_background_color: false
     ulm_card_media_player_color: "blue"
-  triggers_update: "all"
   show_icon: false
   show_name: false
   show_label: false

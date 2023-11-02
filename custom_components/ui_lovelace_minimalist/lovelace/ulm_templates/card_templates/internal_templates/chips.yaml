@@ -13,6 +13,7 @@ chips:
       - padding: "0px 6px"
       - font-weight: "bold"
       - font-size: "14px"
+      - line-height: "100%"
     img_cell:
       - width: "24px"
     grid:
