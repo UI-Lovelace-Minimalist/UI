@@ -11,7 +11,7 @@ jobs:
   docit:
     runs-on: "ubuntu-latest"
     steps:
-      - uses: "actions/checkout@v2"
+      - uses: "actions/checkout@v3"
         with:
           fetch-depth: 0
       - name: "Copy and rename README.md files"
@@ -24,14 +24,14 @@ jobs:
             cp "${dirname}/$filename" "./docs/usage/custom_cards/${foldername}.md"
           done
       - name: "Find and replace asset paths"
-        uses: "jacobtomlinson/gha-find-replace@v2"
+        uses: "jacobtomlinson/gha-find-replace@v3"
         with:
           find: "../../docs/assets/img"
           replace: "../../assets/img"
           include: "docs/usage/custom_cards/**"
           regex: true
       - name: "Create Pull Request"
-        uses: "peter-evans/create-pull-request@v3"
+        uses: "peter-evans/create-pull-request@v5"
         with:
           token: "${{ secrets.GITHUB_TOKEN }}"
           branch: "automated_custom_card_docs"

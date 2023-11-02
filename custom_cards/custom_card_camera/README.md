@@ -20,6 +20,10 @@ Version: 1.0.0
 ## Changelog
 
 <details>
+<summary>1.0.1</summary>
+Added variable to passthough aspect ratio to the picture entity card. Fix minor issues with title.
+</details>
+<details>
 <summary>1.0.0</summary>
 Initial release.
 </details>
@@ -35,6 +39,7 @@ Initial release.
     ulm_custom_card_camera_title: true
     ulm_custom_card_camera_name: "name"
     ulm_custom_card_camera_label: "label"
+    ulm_custom_card_camera_aspect_ratio: '16:9'
 ```
 
 ## Variables
@@ -67,6 +72,13 @@ Initial release.
 <td>no</td>
 <td></td>
 <td>Label of your choice</td>
+</tr>
+<tr>
+<td>ulm_custom_card_camera_aspect_ratio</td>
+<td>'16:9'</td>
+<td>no</td>
+<td></td>
+<td>Aspect ratio of camera entity</td>
 </tr>
 </table>
 
