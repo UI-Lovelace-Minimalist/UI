@@ -22,4 +22,4 @@ jobs:
           ruby-version: 2.7
           bundler-cache: true
       - name: "\U0001F680 Run pre-commit"
-        uses: "pre-commit/action@v3"
+        uses: "pre-commit/action@v3.0.0"
