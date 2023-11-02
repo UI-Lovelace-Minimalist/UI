@@ -444,15 +444,6 @@ card_topbar_welcome:
         styles:
           grid:
             - grid-template-areas: "'i'"
-          card:
-            - box-shadow: >
-                [[[
-                  if (hass.themes.darkMode){
-                    return "0px 2px 4px 0px rgba(0,0,0,0.80)";
-                  } else {
-                    return "var(--box-shadow)";
-                  }
-                ]]]
         state:
           - value: "on"
             icon: "mdi:chevron-down"
@@ -475,14 +466,6 @@ card_topbar_welcome:
         styles:
           card:
             - width: "100px"
-            - box-shadow: >
-                [[[
-                  if (hass.themes.darkMode){
-                    return "0px 2px 4px 0px rgba(0,0,0,0.80)";
-                  } else {
-                    return "var(--box-shadow)";
-                  }
-                ]]]
     item3:
       card:
         type: "custom:button-card"
@@ -495,14 +478,6 @@ card_topbar_welcome:
         styles:
           card:
             - align-self: "end"
-            - box-shadow: >
-                [[[
-                  if (hass.themes.darkMode){
-                    return "0px 2px 4px 0px rgba(0,0,0,0.80)";
-                  } else {
-                    return "var(--box-shadow)";
-                  }
-                ]]]
 # auto-entities
 card_scenes_welcome_auto:
   show_icon: false
