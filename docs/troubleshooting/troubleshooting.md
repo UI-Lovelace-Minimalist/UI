@@ -73,7 +73,7 @@ This is done by:
 
     2. First make sure your configuration file has the setting:
     ```yaml
-    lovalace:
+    lovelace:
       mode: storage
     ```
     3. In case it still shows that error. go to `https://homeassistant.local/config/system_health` and search for what is under: Dashboard -> Mode. if that is on `auto-gen`.
