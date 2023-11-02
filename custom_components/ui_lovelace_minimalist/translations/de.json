@@ -57,5 +57,13 @@
             "ack": "You need to acknowledge all statements.",
             "gh_token": "Github Token not set. Please re-install this integration to go throught the setup procedure. (No custom configuration will be lost)"
         }
+    },
+    "services": {
+        "reload": {
+            "description": "Neu laden der Dashboard-Konfiguration für UI Lovelace Minimalist."
+        },
+        "installed": {
+            "description": "Ändern Sie den installierten Schlüssel in der globalen Konfiguration für UI Lovelace Minimalist."
+        }
     }
 }
