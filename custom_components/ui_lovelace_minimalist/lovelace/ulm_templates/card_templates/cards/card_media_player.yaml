@@ -11,7 +11,7 @@ card_media_player:
     ulm_card_media_player_enable_controls: false
     ulm_card_media_player_enable_volume_slider: false
     ulm_card_media_player_enable_volume_buttons: false
-    ulm_card_media_player_enable_volume_adjust: false
+    ulm_card_media_player_enable_volume_adjust: 0
     ulm_card_media_player_collapsible: false
     ulm_card_media_player_player_controls_entity: "[[[ return entity.entity_id ]]]"
     ulm_card_media_player_enable_popup: false
@@ -19,7 +19,6 @@ card_media_player:
     ulm_card_media_player_power_button: false
     ulm_card_media_player_force_background_color: false
     ulm_card_media_player_color: "blue"
-  triggers_update: "all"
   show_icon: false
   show_name: false
   show_label: false
@@ -769,8 +768,8 @@ card_media_player:
                   volume_level: |
                     [[[
                       var volume = states[entity.entity_id].attributes.volume_level;
-                      if (variables.ulm_card_media_player_enable_volume_adjust) {
-                          volume = states[entity.entity_id].attributes.volume_level + ulm_card_media_player_enable_volume_adjust;
+                      if (variables.ulm_card_media_player_enable_volume_adjust != 0) {
+                          volume = states[entity.entity_id].attributes.volume_level - variables.ulm_card_media_player_enable_volume_adjust;
                       } else {
                           if (states[entity.entity_id].attributes.device_class === "tv") {
                               volume = states[entity.entity_id].attributes.volume_level - 0.01;
@@ -849,8 +848,8 @@ card_media_player:
                   volume_level: |
                     [[[
                       var volume = states[entity.entity_id].attributes.volume_level;
-                      if (variables.ulm_card_media_player_enable_volume_adjust) {
-                          volume = states[entity.entity_id].attributes.volume_level + ulm_card_media_player_enable_volume_adjust;
+                      if (variables.ulm_card_media_player_enable_volume_adjust != 0) {
+                          volume = states[entity.entity_id].attributes.volume_level + variables.ulm_card_media_player_enable_volume_adjust;
                       } else {
                           if (states[entity.entity_id].attributes.device_class === "tv") {
                               volume = states[entity.entity_id].attributes.volume_level + 0.01;

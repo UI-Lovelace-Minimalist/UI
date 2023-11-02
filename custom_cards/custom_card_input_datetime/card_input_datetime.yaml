@@ -155,7 +155,7 @@ widget_text:
   show_icon: false
   show_label: true
   show_name: false
-  label: "[[[ return variables.ulm_translation_state_unit ]]]"
+  label: "[[[ return variables.ulm_translation_state ]]]"
   styles:
     grid:
       - grid-template-areas: "'l'"

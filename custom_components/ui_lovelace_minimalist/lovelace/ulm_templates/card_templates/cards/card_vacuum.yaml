@@ -29,7 +29,8 @@ card_vacuum:
         }
         return (colors[state] || colors["default"]);
       ]]]
-  triggers_update: "all"
+  triggers_update:
+    - "[[[ return variables.ulm_card_vacuum_camera ]]]"
   state:
     - operator: "template"
       value: "[[[ return variables.ulm_active_state ]]]"

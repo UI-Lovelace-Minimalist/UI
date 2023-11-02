@@ -15,7 +15,8 @@ card_graph:
     ulm_card_graph_group_by: "interval"
     ulm_card_graph_line_width: 5
     ulm_card_graph_icon_color: ""
-  triggers_update: "all"
+  triggers_update:
+    - "[[[ return variables.ulm_card_graph_entity2 ]]]"
   custom_fields:
     item1:
       card:

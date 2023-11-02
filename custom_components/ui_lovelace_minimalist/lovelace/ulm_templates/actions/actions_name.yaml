@@ -176,7 +176,7 @@ ulm_actions_name:
             'entity_id': entity.entity_id
           };
         }
-        return variables.ulm_card_name_service_data;
+        return variables.ulm_name_hold_service_data;
       ]]]
     browser_mod:
       service: "browser_mod.popup"

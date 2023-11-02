@@ -712,7 +712,7 @@ custom_card_haven_washer_delayed_text:
   show_icon: false
   show_label: true
   show_name: false
-  label: "[[[ return variables.ulm_translation_state_unit ]]]"
+  label: "[[[ return variables.ulm_translation_state ]]]"
   styles:
     state:
       - color: "rgba(var(--color-theme),0.9)"

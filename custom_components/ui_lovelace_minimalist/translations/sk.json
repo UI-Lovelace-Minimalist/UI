@@ -56,5 +56,13 @@
             "ack": "Musíte potvrdiť všetky vyhlásenia.",
             "gh_token": "Github Token nie je nastavený. Ak chcete prejsť procesom nastavenia, znova nainštalujte túto integráciu. (Žiadna vlastná konfigurácia sa nestratí)"
         }
+    },
+    "services": {
+        "reload": {
+            "description": "Znovu načítajte konfiguráciu dashboardu pre používateľské rozhranie Lovelace Minimalist."
+        },
+        "installed": {
+            "description": "Zmeňte nainštalovaný kľúč v globálnej konfigurácii pre používateľské rozhranie Lovelace Minimalist."
+        }
     }
 }
