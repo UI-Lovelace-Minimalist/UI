@@ -1,41 +1,13 @@
 ---
-find_my_phone_button:
-  template:
-    - "ulm_custom_card_imswel_person_language_variables"
-  tap_action:
-    action: "toggle"
-  icon: "mdi:volume-high"
-  name: "[[[ return variables.ulm_custom_card_imswel_person_findmy; ]]]"
-  size: "1.4em"
-  styles:
-    icon:
-      - color: "rgba(var(--color-blue),1)"
-    name:
-      - font-size: "1.06em"
-      - letterspacing: "0.015em"
-    grid:
-      - grid-template-areas: "'i n'"
-      - grid-column-gap: "0.3em"
-    card:
-      - color: "rgba(var(--color-blue),1)"
-      - background: "rgba(var(--color-blue),0.2"
-      - border-radius: "0.6em"
-      - padding: "1em 1.4em"
-      - width: "max-content"
-      - font-size: "1.06em"
-      - font-weight: "500"
-      - letter-spacing: "0.015em"
-      - box-shadow: "none"
-
 custom_card_imswel_person:
   template:
-    - "icon_info_bg"
     - "ulm_translation_engine"
+    - "icon_info_bg"
     - "ulm_custom_card_imswel_person_language_variables"
     - "custom_popup_imswel_person"
   variables:
     ulm_card_imswel_person_use_entity_picture: false
-  triggers_update: "all"
+  triggers_update: "[[[ return variables.ulm_card_imswel_person_entity ]]]"
   show_entity_picture: "[[[ return variables.ulm_card_imswel_person_use_entity_picture ]]]"
   show_label: true
   show_name: true
@@ -50,9 +22,19 @@ custom_card_imswel_person:
     ]]]
   label: >
     [[[
-      let state = states[variables.ulm_card_imswel_person_entity].state
-      let option = ["home", "not_home", "unavailable", "unknown"]
-      return (option.includes(state)) ? variables.ulm_translation_state : state;
+      let state = states[variables.ulm_card_imswel_person_entity].state;
+      let option = ["home", "not_home", "unavailable", "unknown"];
+      if (option.includes(state)){
+        if (state == "home"){
+          return variables.ulm_custom_card_imswel_person_home;
+        } else if (state == "not_home"){
+          return variables.ulm_custom_card_imswel_person_not_home;
+        } else{
+          return variables.ulm_translation_unavailable;
+        }
+      } else{
+        return state;
+      }
     ]]]
   name: "[[[ return states[variables.ulm_card_imswel_person_entity].attributes.friendly_name ]]]"
   entity: "[[[ return variables.ulm_card_imswel_person_entity; ]]]"
@@ -80,7 +62,11 @@ custom_card_imswel_person:
         - line-height: "14px"
         - background-color: >
             [[[
-              if (states[variables.ulm_card_imswel_person_entity].state == 'home') {
+              let state = states[variables.ulm_card_imswel_person_entity].state;
+              let option = ["unavailable", "unknown"];
+              if (option.includes(state)){
+                return "rgba(var(--color-red),1)";
+              } else if (state == 'home') {
                 return "rgba(var(--color-blue),1)";
               } else {
                 return "rgba(var(--color-green),1)";
@@ -89,21 +75,24 @@ custom_card_imswel_person:
   custom_fields:
     notification: >
       [[[
-        var zones = Object.values(states).filter((entity) =>
-                        entity.entity_id.startsWith("zone.")
-                    ).map((entity) => entity.entity_id);
+        var zones = Object.values(states).filter((entity) => entity.entity_id.startsWith("zone.")).map((entity) => entity.entity_id);
         var person_location = states[variables.ulm_card_imswel_person_entity].state;
-        if (person_location !== 'home'){
-          for (const item of zones){
-            if (person_location == states[item]?.attributes?.friendly_name){
-              var icon = (states[item].attributes.icon !== null) ? states[item].attributes.icon : 'mdi:help-circle';
-              return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
-            } else if (person_location == 'not_home'){
-              return '<ha-icon icon="mdi:home-minus" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+        let option = ["unavailable", "unknown"];
+        if (option.includes(person_location)){
+          return '<ha-icon icon="mdi:alert" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+        } else{
+          if (person_location == "home"){
+            return '<ha-icon icon="mdi:home-variant" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+          } else{
+            for (const item of zones){
+              if (person_location == states[item]?.attributes?.friendly_name){
+                var icon = (states[item].attributes.icon !== null) ? states[item].attributes.icon : 'mdi:help-circle';
+                return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+              } else if (person_location == 'not_home'){
+                return '<ha-icon icon="mdi:home-minus" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+              }
             }
           }
-        } else{
-          return '<ha-icon icon="mdi:home-variant" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
         }
       ]]]
 
@@ -116,107 +105,151 @@ custom_popup_imswel_person:
         title: "[[[ return states[variables.ulm_card_imswel_person_entity].attributes.friendly_name ]]]"
         size: >
           [[[
-            const mediaQuery = window.matchMedia('(max-width: 800px)')
+            const mediaQuery = window.matchMedia("(max-width: 800px)")
             if (mediaQuery.matches) {
-              return 'fullscreen'
+              return "fullscreen";
             }
           ]]]
-        style:
-          $: >
-            [[[
-              if (hass.themes.theme.includes("desktop")){
-                var dialog = `
-                  .mdc-dialog__surface{
-                    border-radius: var(--border-radius) !important;
-                  }
-                `;
-              } else{
-                var dialog = "";
+        style: >
+          --popup-padding-x: 0px;
+          --popup-padding-y: 0px;
+        card_mod:
+          style:
+            ha-dialog: >
+              .content .container{
+                padding: 0 !important;
               }
-              return `
-                *{
-                  --secondary-background-color: none !important;
-                }
-                ${dialog}
-              `;
-            ]]]
-          hui-vertical-stack-card:
-            $: >
-              button-card {
-                align-self: center;
-                padding: 0.2em 0 2.3em 0;
-              }
-              hui-entities-card{
-                padding: 0.8em 1.4em;
-              }
-            $hui-entities-card$: >
-              ha-card{
-                box-shadow: none;
-              }
-            $hui-history-graph-card$: >
-              .content {
-                padding: 0 2.4em !important;
-              }
-              ha-card{
-                box-shadow: none;
-              }
-            $hui-glance-card$: >
-              ha-card{
-                box-shadow: none;
-              }
-            $hui-map-card:
-              $: >
-                ha-icon-button {
-                  color: rgba(var(--color-blue),1);
-                }
-              $ha-map:
-                $: >
-                  .leaflet-control-attribution {
-                    display: none;
-                  }
-                  .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
-                    border: 2px solid rgba(var(--color-blue),0.4) !important;
-                  }
-                  .leaflet-bar a {
-                    background-color: rgba(var(--color-blue),0.2) !important;
-                    color: rgba(var(--color-blue),1) !important;
-                  }
-                  .leaflet-bar a:first-child {
-                    border-bottom: 2px solid rgba(var(--color-blue),0.4) !important;
-                  }
-                  .leaflet-pane.leaflet-tile-pane {
-                    filter: contrast(95%);
-                  }
         content:
           type: "vertical-stack"
           cards:
             - type: "entities"
+              style: >
+                ha-card{
+                  box-shadow: none;
+                }
               entities:
                 - entity: "[[[ return variables.ulm_card_imswel_person_entity; ]]]"
                   secondary_info: "last-changed"
             - type: "history-graph"
+              style: >
+                ha-card{
+                  box-shadow: none;
+                }
+              hours_to_show: 8
               entities:
                 - entity: "[[[ return variables.ulm_card_imswel_person_entity; ]]]"
-            - type: "glance"
-              show_state: false
-              entities:
-                - entity: "[[[ return variables.ulm_card_imswel_person_wifi_tracker; ]]]"
+                  name: "‎"
+            - type: "horizontal-stack"
+              cards:
+                - type: "custom:button-card"
+                  template: "custom_card_imswel_person_glance_icon"
+                  entity: "[[[ return variables.ulm_card_imswel_person_wifi_tracker; ]]]"
                   name: "WiFi"
                   icon: "mdi:wifi"
-                  style: &state >
-                    state-badge{
-                      color: {{ 'rgba(var(--color-blue),1)' if is_state(config.entity, 'home') }};
-                      filter: {{ 'opacity(100%)' if is_state(config.entity, 'home') else 'opacity(40%)'}};
-                    }
-                - entity: "[[[ return variables.ulm_card_imswel_person_gps_tracker; ]]]"
+                - type: "custom:button-card"
+                  template: "custom_card_imswel_person_glance_icon"
+                  entity: "[[[ return variables.ulm_card_imswel_person_gps_tracker; ]]]"
                   name: "GPS"
                   icon: "mdi:map-marker"
-                  style: *state
             - type: "custom:button-card"
-              template:
-                - "find_my_phone_button"
+              template: "custom_card_imswel_person_findmy_button"
               entity: "[[[ return variables.ulm_card_imswel_person_findmy_script; ]]]"
             - type: "map"
-              aspect_ratio: "12x10"
+              style:
+                .: >
+                  ha-card{
+                    box-shadow: none;
+                    border-radius: 0px;
+                  }
+                ha-map:
+                  $: >
+                    .leaflet-control-attribution {
+                      display: none;
+                    }
+              aspect_ratio: "90%"
               default_zoom: 16
               entities: "[[[ return [variables.ulm_card_imswel_person_gps_tracker]; ]]]"
+
+custom_card_imswel_person_glance_icon:
+  variables:
+    color: "green"
+    state: "home"
+  tap_action:
+    action: "none"
+  triggers_update: "[[[ return entity.entity_id; ]]]"
+  show_label: false
+  show_state: false
+  size: "20px"
+  state:
+    - operator: "template"
+      value: "[[[ return entity.state == variables.state; ]]]"
+      styles:
+        icon:
+          - color: "[[[ return `rgba(var(--color-${variables.color}), 1)`; ]]]"
+        img_cell:
+          - background-color: "[[[ return `rgba(var(--color-${variables.color}), 0.2)`; ]]]"
+  styles:
+    icon:
+      - color: "rgba(var(--color-theme),0.2)"
+    name:
+      - margin-bottom: "12px"
+      - justify-self: "center"
+      - align-self: "start"
+      - font-weight: "regular"
+      - font-size: "14px"
+    img_cell:
+      - background-color: "rgba(var(--color-theme),0.05)"
+      - border-radius: "50%"
+      - place-self: "center"
+      - width: "42px"
+      - height: "42px"
+    grid:
+      - grid-template-areas: "'n' 'i'"
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "none"
+
+custom_card_imswel_person_findmy_button:
+  template:
+    - "ulm_custom_card_imswel_person_language_variables"
+  tap_action:
+    action: "toggle"
+  icon: "mdi:volume-high"
+  size: "1.4em"
+  name: "[[[ return variables.ulm_custom_card_imswel_person_findmy; ]]]"
+  styles:
+    icon:
+      - color: "rgba(var(--color-theme),0.4)"
+    name:
+      - font-size: "1.06em"
+      - letterspacing: "0.015em"
+      - color: "rgba(var(--color-theme),1)"
+      - filter: "opacity(60%)"
+    img_cell:
+      - margin-right: "4px"
+    grid:
+      - grid-template-areas: "'i n'"
+      - grid-column-gap: "0.3em"
+    card:
+      - border-radius: "var(--border-radius)"
+      - padding: "1em 1.4em"
+      - margin: "16px auto"
+      - width: "100%"
+      - font-size: "1.06em"
+      - box-shadow: "none"
+      - border: "1px solid rgba(var(--color-theme),0.4)"
+  extra_styles: >
+    :host{
+      align-self: center !important;
+    }
+    ha-card:hover{
+      background: rgba(var(--color-blue),0.2);
+      border: 1px solid rgba(var(--color-blue),0.1) !important;
+    }
+    ha-card:hover #name{
+      color: rgba(var(--color-blue),1) !important;
+      filter: opacity(100%) !important;
+    }
+    ha-card:hover #icon{
+      color: rgba(var(--color-blue),1) !important;
+    }
