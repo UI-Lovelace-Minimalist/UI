@@ -16,7 +16,7 @@ The `binary-sensor-card` is to show the state (on/off, open/close, etc.) of a bi
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
 | entity     |         | :material-check: |                   |
-| ulm_show_last_changed |   | :material-close: | `true` or `false` |
+| ulm_card_binary_sensor_show_last_changed |   | :material-close: | `true` or `false` |
 | ulm_card_binary_sensor_name |   | :material-close: | Set custom Name |
 | ulm_card_binary_sensor_icon |   | :material-close: | Set custom Icon |
 | ulm_card_binary_sensor_color            | `blue`         | :material-close: | Set Custom Color                   |             |
