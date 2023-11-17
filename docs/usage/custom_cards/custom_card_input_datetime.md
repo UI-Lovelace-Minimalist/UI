@@ -27,7 +27,7 @@ Initial release
 - type: "custom:button-card"
   template:
     - card_input_datetime
-  entity: input_number.YOUR_INPUT_NUMBER_ENTITY
+  entity: input_datetime.YOUR_INPUT_DATETIME_ENTITY
   variables:
     ulm_card_input_datetime_name: "YOUR_NAME"
 ```
