@@ -32,6 +32,7 @@ Add related logs for the problem
 
 **Related Card Config**
 Add the card config from `ui-lovelace.yaml` with the related problem
+
 ```yaml
 paste the yaml code here
 ```
