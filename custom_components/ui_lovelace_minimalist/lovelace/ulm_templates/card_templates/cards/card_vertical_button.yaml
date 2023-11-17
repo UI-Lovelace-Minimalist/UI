@@ -80,6 +80,8 @@ card_vertical_button:
           return "vacuum.toggle";
         if( entity.entity_id.startsWith("script.") )
           return "script.toggle";
+        if( entity.entity_id.startsWith("button.") )
+          return "button.press";
         // If we need to support other entities we can add these options here.
         return "";
       ]]]
