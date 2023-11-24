@@ -283,28 +283,24 @@ card_scenes_pill_welcome:
             [[[
               if(variables?.nav_path){
                 return "navigate"
-              } else {
-                return "call-service"
               }
+              return "call-service"
             ]]]
           service: >
             [[[
-              if(typeof(entity) !== 'undefined' && entity !== undefined){
-                if(entity.entity_id.startsWith("scene.")){
-                  return "scene.turn_on"
-                }
-                if(entity.entity_id.startsWith("media_player.")){
-                  return "media_player.media_play_pause"
-                }
-                if(entity.entity_id.startsWith("input_select.")){
-                  return "input_select.select_option"
-                }
-                if(entity.entity_id.startsWith("script.")){
-                  return entity.entity_id
-                }
-              } else {
-                return "homeassistant.toggle"
+              if(entity?.entity_id.startsWith("scene.")){
+                return "scene.turn_on"
               }
+              if(entity?.entity_id.startsWith("media_player.")){
+                return "media_player.media_play_pause"
+              }
+              if(entity?.entity_id.startsWith("input_select.")){
+                return "input_select.select_option"
+              }
+              if(entity?.entity_id.startsWith("script.")){
+                return entity.entity_id
+              }
+              return "homeassistant.toggle"
             ]]]
           navigation_path: "[[[ return variables?.nav_path; ]]]"
           service_data: |
@@ -374,29 +370,26 @@ card_scenes_pill_welcome:
             [[[
               if(variables?.nav_path){
                 return "navigate"
-              } else {
-                return "call-service"
               }
+              return "call-service"
             ]]]
           navigation_path: "[[[ return variables?.nav_path; ]]]"
           service: >
             [[[
-              if(typeof(entity) !== 'undefined' && entity !== undefined){
-                if(entity.entity_id.startsWith("scene.")){
-                  return "scene.turn_on"
-                }
-                if(entity.entity_id.startsWith("media_player.")){
-                  return "media_player.media_play_pause"
-                }
-                if(entity.entity_id.startsWith("input_select.")){
-                  return "input_select.select_option"
-                }
-                if(entity.entity_id.startsWith("script.")){
-                  return entity.entity_id
-                }
-              } else {
-                return "homeassistant.toggle"
+              if(entity?.entity_id.startsWith("scene.")){
+                return "scene.turn_on"
               }
+              if(entity?.entity_id.startsWith("media_player.")){
+                return "media_player.media_play_pause"
+              }
+              if(entity?.entity_id.startsWith("input_select.")){
+                return "input_select.select_option"
+              }
+              if(entity?.entity_id.startsWith("script.")){
+                return entity.entity_id
+              }
+              return "homeassistant.toggle"
+            ]]]
           service_data: |
             [[[
               if (variables.service_data){
