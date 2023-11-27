@@ -6,35 +6,35 @@ card_esh_welcome:
     entity_1:
       color: >
         [[[
-          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var colors = "[[[ return variables.entity_1.color]]]";
           var color = colors[Math.floor(Math.random() * colors.length)];
           return color;
         ]]]
     entity_2:
       color: >
         [[[
-          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var colors = "[[[ return variables.entity_2.color]]]";
           var color = colors[Math.floor(Math.random() * colors.length)];
           return color;
         ]]]
     entity_3:
       color: >
         [[[
-          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var colors = "[[[ return variables.entity_3.color]]]";
           var color = colors[Math.floor(Math.random() * colors.length)];
           return color;
         ]]]
     entity_4:
       color: >
         [[[
-          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var colors = "[[[ return variables.entity_4.color]]]";
           var color = colors[Math.floor(Math.random() * colors.length)];
           return color;
         ]]]
     entity_5:
       color: >
         [[[
-          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var colors = "[[[ return variables.entity_5.color]]]";
           var color = colors[Math.floor(Math.random() * colors.length)];
           return color;
         ]]]
@@ -334,10 +334,10 @@ card_esh_welcome_pill_nav:
         icon: "[[[ return variables.entity?.icon ]]]"
         styles:
           icon:
-            - color: "[[[ return `rgba(var(--color-${variables.entity?.color}), 1)`;]]]"
+            - color: "[[[ return `rgba(var(--rgb-${variables.entity?.color}-color), 1)`;]]]"
             - width: "[[[ return (20 * (1+(5-Math.max(variables.number_of_nav_pills, 3))*0.25)) + 'px'; ]]]"
           img_cell:
-            - background-color: "[[[ return `rgba(var(--color-${variables.entity?.color}), 0.20)`;]]]"
+            - background-color: "[[[ return `rgba(var(--rgb-${variables.entity?.color}-color), 0.20)`;]]]"
             - border-radius: "50%"
             - width: "[[[ return (42 * (1+(5-Math.max(variables.number_of_nav_pills, 3))*0.25)) + 'px'; ]]]"
             - height: "[[[ return (42 * (1+(5-Math.max(variables.number_of_nav_pills, 3))*0.25)) + 'px'; ]]]"
