@@ -12,3 +12,14 @@ grey_on:
           - background-color: "rgba(var(--color-grey), 0.2)"
       value: "on"
       id: "on"
+    - styles:
+        icon:
+          - color: "rgba(var(--color-grey),1)"
+        label:
+          - color: "rgba(var(--color-grey-text),1)"
+        name:
+          - color: "rgba(var(--color-grey-text),1)"
+        img_cell:
+          - background-color: "rgba(var(--color-grey), 0.2)"
+      value: "playing"
+      id: "playing"

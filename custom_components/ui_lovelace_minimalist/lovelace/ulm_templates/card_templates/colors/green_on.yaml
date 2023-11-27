@@ -14,6 +14,19 @@ green_on:
           - background-color: "rgba(var(--color-background-green), var(--opacity-bg))"
       value: "on"
       id: "on"
+    - styles:
+        icon:
+          - color: "rgba(var(--color-green),1)"
+        label:
+          - color: "rgba(var(--color-green-text),1)"
+        name:
+          - color: "rgba(var(--color-green-text),1)"
+        img_cell:
+          - background-color: "rgba(var(--color-green), 0.2)"
+        card:
+          - background-color: "rgba(var(--color-background-green), var(--opacity-bg))"
+      value: "playing"
+      id: "playing"
 
 # Legacy
 green:
