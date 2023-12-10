@@ -297,6 +297,9 @@ card_scenes_pill_welcome:
               if(entity?.entity_id.startsWith("input_select.")){
                 return "input_select.select_option"
               }
+              if(entity?.entity_id.startsWith("select.")){
+                return "select.select_option"
+              }
               if(entity?.entity_id.startsWith("script.")){
                 return entity.entity_id
               }
@@ -311,6 +314,8 @@ card_scenes_pill_welcome:
               var obj;
               if(typeof(entity) !== 'undefined' && entity !== undefined){
                 if( entity?.entity_id.startsWith("input_select.") )
+                  obj = { entity_id: entity?.entity_id, option: variables.state };
+                else if( entity?.entity_id.startsWith("select.") )
                   obj = { entity_id: entity?.entity_id, option: variables.state };
                 else
                   obj = { entity_id: entity?.entity_id };
@@ -385,6 +390,9 @@ card_scenes_pill_welcome:
               if(entity?.entity_id.startsWith("input_select.")){
                 return "input_select.select_option"
               }
+              if(entity?.entity_id.startsWith("elect.")){
+                return "select.select_option"
+              }
               if(entity?.entity_id.startsWith("script.")){
                 return entity.entity_id
               }
@@ -398,6 +406,8 @@ card_scenes_pill_welcome:
               var obj;
               if(typeof(entity) !== 'undefined' && entity !== undefined){
                 if( entity?.entity_id.startsWith("input_select.") )
+                  obj = { entity_id: entity?.entity_id, option: variables.state };
+                else if( entity?.entity_id.startsWith("select.") )
                   obj = { entity_id: entity?.entity_id, option: variables.state };
                 else
                   obj = { entity_id: entity?.entity_id };
