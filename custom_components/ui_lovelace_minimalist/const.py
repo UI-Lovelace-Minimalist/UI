@@ -38,6 +38,7 @@ LANGUAGES = {
     "Swedish": "sv",
     "Turkish": "tr",
     "Russian": "ru",
+    "Ukrainian": "uk",
 }
 
 CONF_LANGUAGE = "language"
@@ -57,10 +58,10 @@ CONF_LANGUAGES = [
     "Portuguese",
     "Portuguese (Brazil)",
     "Slovenian",
-    "Slovak",
     "Swedish",
     "Turkish",
     "Russian",
+    "Ukrainian",
 ]
 CONF_SIDEPANEL_ENABLED = "sidepanel_enabled"
 CONF_SIDEPANEL_TITLE = "sidepanel_title"
