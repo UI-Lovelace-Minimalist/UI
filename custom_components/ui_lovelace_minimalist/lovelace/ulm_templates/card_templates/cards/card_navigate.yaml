@@ -15,7 +15,7 @@ card_navigate:
     icon:
       - color: >
           [[[
-            let color = variables.ulm_card_navigate_colour;
+            let color = variables.ulm_card_navigate_color;
             return "rgba(" + color + ",0.7)"
           ]]]
     label:
