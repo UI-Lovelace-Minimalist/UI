@@ -47,7 +47,7 @@ This card has backward compatibility with older template except custom name. It 
   variables:
     ulm_card_cover_enable_controls: true
     ulm_card_cover_enable_slider: true
-    ulm_card_cver_favorite_percentage: 45
+    ulm_card_cover_favorite_percentage: 45
     ulm_card_cover_color: "green"
 ```
 
