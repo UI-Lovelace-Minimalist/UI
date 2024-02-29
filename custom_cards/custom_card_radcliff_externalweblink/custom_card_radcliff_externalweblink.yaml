@@ -1,0 +1,60 @@
+---
+custom_card_radcliff_externalweblink:
+  template:
+    - "ulm_language_variables"
+    - "icon_only"
+  tap_action:
+    action: url
+    url_path: "[[[ return variables.ulm_custom_card_radcliff_externalweblink_linkurl ]]]"
+  show_icon: true
+  show_label: true
+  show_name: true
+  icon: >
+    [[[
+      if (variables.ulm_custom_card_radcliff_externalweblink_linkicon === undefined)
+      {
+        variables.ulm_custom_card_radcliff_externalweblink_linkicon = 'mdi:link-circle-outline';
+      }
+      return variables.ulm_custom_card_radcliff_externalweblink_linkicon
+    ]]]
+  name: "[[[ return variables.ulm_custom_card_radcliff_externalweblink_linkname ]]]"
+  styles:
+    icon:
+    - color: >
+        [[[
+          if (variables.ulm_custom_card_radcliff_externalweblink_iconcolor === undefined)
+          {
+            variables.ulm_custom_card_radcliff_externalweblink_iconcolor = 'var(--color-blue)';
+          }
+          return 'rgba(' + variables.ulm_custom_card_radcliff_externalweblink_iconcolor + ', 1)'
+          
+        ]]]
+    name:
+      - align-self: "center"
+      - justify-self: "start"
+      - font-weight: "bold"
+      - font-size: "1rem"
+      - margin-left: "12px"
+      - filter: "opacity(100%)"
+    img_cell:
+    - background-color: >
+        [[[
+          if (variables.ulm_custom_card_radcliff_externalweblink_iconbg === undefined)
+          {
+            if (variables.ulm_custom_card_radcliff_externalweblink_iconcolor === undefined)
+            {
+              variables.ulm_custom_card_radcliff_externalweblink_iconbg = 'var(--color-blue)';
+            }
+            else
+            {
+              return 'rgba(' + variables.ulm_custom_card_radcliff_externalweblink_iconcolor + ', 0.2)'
+            }
+          }
+          return 'rgba(' + variables.ulm_custom_card_radcliff_externalweblink_iconbg + ', 0.2)'
+        ]]]
+    grid:
+      - grid-template-areas: "'i n'"
+      - grid-template-columns: "min-content min-content"
+      - grid-template-rows: "min-content"
+  
+  
