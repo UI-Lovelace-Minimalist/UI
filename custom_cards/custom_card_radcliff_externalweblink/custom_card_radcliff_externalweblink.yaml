@@ -4,7 +4,7 @@ custom_card_radcliff_externalweblink:
     - "ulm_language_variables"
     - "icon_only"
   tap_action:
-    action: url
+    action: "url"
     url_path: "[[[ return variables.ulm_custom_card_radcliff_externalweblink_linkurl ]]]"
   show_icon: true
   show_label: true
@@ -20,7 +20,7 @@ custom_card_radcliff_externalweblink:
   name: "[[[ return variables.ulm_custom_card_radcliff_externalweblink_linkname ]]]"
   styles:
     icon:
-    - color: >
+      - color: >
         [[[
           if (variables.ulm_custom_card_radcliff_externalweblink_iconcolor === undefined)
           {
@@ -37,7 +37,7 @@ custom_card_radcliff_externalweblink:
       - margin-left: "12px"
       - filter: "opacity(100%)"
     img_cell:
-    - background-color: >
+      - background-color: >
         [[[
           if (variables.ulm_custom_card_radcliff_externalweblink_iconbg === undefined)
           {
@@ -56,5 +56,4 @@ custom_card_radcliff_externalweblink:
       - grid-template-areas: "'i n'"
       - grid-template-columns: "min-content min-content"
       - grid-template-rows: "min-content"
-  
   
