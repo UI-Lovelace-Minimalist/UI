@@ -163,60 +163,61 @@ custom_card_sisimomo_printer:
 
         }
       ]]]
-  style: |
-    /* Cartridge CSS */
-    div#cartridges .wrapper {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      grid-gap: 1rem;
-      padding: 12px 8px 8px 8px;
-    }
-    div#cartridges .wrapper > *:nth-child(3n-2), .wrapper > *:nth-child(3n) {
-      place-self: center start;
-    }
-    div#cartridges .wrapper > .label {
-      filter: opacity(70%);
-      font-size: medium;
-    }
-    div#cartridges .wrapper > .container-bar {
-      position: relative;
-      border-radius: 4px;
-      border: 0.01rem solid rgba(var(--color-theme),.35);
-    }
-    div#cartridges .wrapper > .container-bar .bar {
-      height: 20px;
-      border-radius: 4px;
-    }
-    div#cartridges .wrapper > .state {
-      filter: opacity(40%);
-      font-size: medium;
-    }
+  card_mod:
+    style: |
+      /* Cartridge CSS */
+      div#cartridges .wrapper {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        grid-gap: 1rem;
+        padding: 12px 8px 8px 8px;
+      }
+      div#cartridges .wrapper > *:nth-child(3n-2), .wrapper > *:nth-child(3n) {
+        place-self: center start;
+      }
+      div#cartridges .wrapper > .label {
+        filter: opacity(70%);
+        font-size: medium;
+      }
+      div#cartridges .wrapper > .container-bar {
+        position: relative;
+        border-radius: 4px;
+        border: 0.01rem solid rgba(var(--color-theme),.35);
+      }
+      div#cartridges .wrapper > .container-bar .bar {
+        height: 20px;
+        border-radius: 4px;
+      }
+      div#cartridges .wrapper > .state {
+        filter: opacity(40%);
+        font-size: medium;
+      }
 
-    /* Error CSS */
-    div#cartridges .error-container {
-      text-align: left;
-      font-size: 75%;
-      font-family: var(--code-font-family, monospace);
-      padding: 10px;
-      background-color: rgba(219, 68, 55, 0.75);
-      margin-top:10px;
-      border-radius:8px;
-    }
-    div#cartridges .error-container ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      overflow-wrap: break-word;
-      word-wrap: break-word;
-      white-space: normal !important;
-    }
-    div#cartridges .error-container ul li {
-      margin-top: 0.5em;
-    }
-    div#cartridges .info-unavailable {
-      padding: 1em;
-      white-space: normal;
-      margin-top:10px;
-      border-radius:8px;
-      opacity: 60%;
-    }
+      /* Error CSS */
+      div#cartridges .error-container {
+        text-align: left;
+        font-size: 75%;
+        font-family: var(--code-font-family, monospace);
+        padding: 10px;
+        background-color: rgba(219, 68, 55, 0.75);
+        margin-top:10px;
+        border-radius:8px;
+      }
+      div#cartridges .error-container ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        white-space: normal !important;
+      }
+      div#cartridges .error-container ul li {
+        margin-top: 0.5em;
+      }
+      div#cartridges .info-unavailable {
+        padding: 1em;
+        white-space: normal;
+        margin-top:10px;
+        border-radius:8px;
+        opacity: 60%;
+      }

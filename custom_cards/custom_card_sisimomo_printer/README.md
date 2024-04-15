@@ -20,6 +20,7 @@ Version: 0.1.0
 Contributors:
 
 - [ByteFloater](https://github.com/bytefloater) Version 0.2.0
+- [JStaegerino](https://github.com/JStaegerino) Version 0.3.0
 
 ## Changelog
 
@@ -41,6 +42,13 @@ Contributors:
 - Changed `ulm_unavailable` to `ulm_translation_unavailable`
 - Removed some unnecessary inline stylings
 - Fixed the handling of unavailable and idle state styling
+
+</details>
+
+<details open>
+  <summary>0.3.0 - fixed for card-mod</summary>
+  
+- fixed for card-mode
 
 </details>
 
