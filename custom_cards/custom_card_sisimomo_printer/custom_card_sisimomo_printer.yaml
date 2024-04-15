@@ -192,7 +192,6 @@ custom_card_sisimomo_printer:
         filter: opacity(40%);
         font-size: medium;
       }
-
       /* Error CSS */
       div#cartridges .error-container {
         text-align: left;
