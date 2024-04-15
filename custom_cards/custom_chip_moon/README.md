@@ -25,7 +25,6 @@ Custom-Chip `Moon` is a chip which shows the phases of the moon. To do this, you
 Initial release
 </details>
 
-
 ## Variables
 
 | Variable | Default | Required         | Notes             |
