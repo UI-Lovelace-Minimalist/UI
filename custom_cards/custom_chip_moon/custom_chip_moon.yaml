@@ -23,3 +23,4 @@ chip_moon:
   styles:
     grid:
       - grid-template-areas: "'i'"
+      
