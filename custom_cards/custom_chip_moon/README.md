@@ -30,7 +30,7 @@ Initial release
 
 | Variable | Default | Required         | Notes             |
 |----------|---------|------------------|-------------------|
-| ulm_chip_moon    |  `true` | :material-check: |       This is the moon sensor            |
+| ulm_chip_moon | `true` | :material-check: | This is the moon sensor |
 
 ## Usage
 
