@@ -20,6 +20,7 @@ custom_card_paddy_waste_collection:
             - border: "2px solid var(--card-background-color)"
             - font-size: "12px"
             - line-height: "14px"
+            - z-index: "1"
             - background-color: >
                 [[[
                   return "rgba(var(--color-red),1)";
@@ -38,6 +39,7 @@ custom_card_paddy_waste_collection:
             - border: "2px solid var(--card-background-color)"
             - font-size: "12px"
             - line-height: "14px"
+            - z-index: "1"
             - background-color: >
                 [[[
                   return "rgba(var(--color-red),1)";
@@ -55,6 +57,7 @@ custom_card_paddy_waste_collection:
             - border: "2px solid var(--card-background-color)"
             - font-size: "12px"
             - line-height: "14px"
+            - z-index: "1"
             - background-color: >
                 [[[
                   return "rgba(var(--color-red),1)";

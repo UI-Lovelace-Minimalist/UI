@@ -6,7 +6,10 @@ chip_temperature:
     - "ulm_actions_card"
   variables:
     ulm_card_weather_enable_popup: false
-  triggers_update: "all"
+  triggers_update:
+    - "[[[ return variables.ulm_chip_temperature_weather ]]]"
+    - "[[[ return variables.ulm_chip_temperature_outside ]]]"
+    - "[[[ return variables.ulm_chip_temperature_inside ]]]"
   label: |
     [[[
       var state = states[variables.ulm_chip_temperature_weather].state;

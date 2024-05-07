@@ -107,7 +107,7 @@ custom_card_irmajavi_entities:
 custom_widget_irmajavi:
   show_label: true
   show_icon: false
-  label: "[[[ return variables.ulm_translation_state_unit ]]]"
+  label: "[[[ return variables.ulm_translation_state ]]]"
   styles:
     name:
       - justify-self: "center"
