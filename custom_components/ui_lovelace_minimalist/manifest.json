@@ -1,8 +1,8 @@
 {
   "domain": "ui_lovelace_minimalist",
-  "name": "UI Lovelace Minimalist",
+  "name": "UI Lovelace Minimalist - Reborn",
   "codeowners": [
-    "@stokkie90"
+    "@TomHart"
   ],
   "config_flow": true,
   "dependencies": [
