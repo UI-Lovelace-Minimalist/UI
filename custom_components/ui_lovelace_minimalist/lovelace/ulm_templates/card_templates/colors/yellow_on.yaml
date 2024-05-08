@@ -1,7 +1,7 @@
 ---
 yellow_on:
   state:
-    - styles:
+    - styles: &style
         icon:
           - color: "rgba(var(--color-yellow),1)"
         label:
@@ -12,21 +12,14 @@ yellow_on:
           - background-color: "rgba(var(--color-yellow), 0.2)"
         card:
           - background-color: "rgba(var(--color-background-yellow),var(--opacity-bg))"
-      value: "on"
       id: "on"
-    - styles:
-        icon:
-          - color: "rgba(var(--color-yellow),1)"
-        label:
-          - color: "rgba(var(--color-yellow-text),1)"
-        name:
-          - color: "rgba(var(--color-yellow-text),1)"
-        img_cell:
-          - background-color: "rgba(var(--color-yellow), 0.2)"
-        card:
-          - background-color: "rgba(var(--color-background-yellow),var(--opacity-bg))"
-      value: "playing"
+      value: "on"
+    - <<: *style
       id: "playing"
+      value: "playing"
+    - <<: *style
+      id: "heat"
+      value: "heat"
 
 # Legacy
 yellow:

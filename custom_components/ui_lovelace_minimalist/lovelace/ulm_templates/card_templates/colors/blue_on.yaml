@@ -1,7 +1,7 @@
 ---
 blue_on:
   state:
-    - styles:
+    - styles: &style
         icon:
           - color: "rgba(var(--color-blue),1)"
         label:
@@ -14,19 +14,12 @@ blue_on:
           - background-color: "rgba(var(--color-background-blue), var(--opacity-bg))"
       id: "on"
       value: "on"
-    - styles:
-        icon:
-          - color: "rgba(var(--color-blue),1)"
-        label:
-          - color: "rgba(var(--color-blue-text),1)"
-        name:
-          - color: "rgba(var(--color-blue-text),1)"
-        img_cell:
-          - background-color: "rgba(var(--color-blue), 0.2)"
-        card:
-          - background-color: "rgba(var(--color-background-blue), var(--opacity-bg))"
+    - <<: *style
       id: "playing"
       value: "playing"
+    - <<: *style
+      id: "heat"
+      value: "heat"
 
 # Legacy
 blue:

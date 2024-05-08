@@ -2,7 +2,7 @@
 ### Yellow No Card ###
 yellow_no_card:
   state:
-    - styles:
+    - styles: &style
         icon:
           - color: "rgba(var(--color-yellow),1)"
         label:
@@ -13,5 +13,11 @@ yellow_no_card:
           - background-color: "rgba(var(--color-yellow), 0.2)"
         card:
           - background-color: "rgba(0,0,0,0)"
-      value: "on"
       id: "on"
+      value: "on"
+    - <<: *style
+      id: "playing"
+      value: "playing"
+    - <<: *style
+      id: "heat"
+      value: "heat"

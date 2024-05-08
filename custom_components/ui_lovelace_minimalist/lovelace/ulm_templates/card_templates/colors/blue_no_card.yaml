@@ -2,7 +2,7 @@
 ### Blue No Card ###
 blue_no_card:
   state:
-    - styles:
+    - styles: &style
         icon:
           - color: "rgba(var(--color-blue),1)"
         label:
@@ -15,3 +15,9 @@ blue_no_card:
           - background-color: "rgba(0,0,0,0)"
       id: "on"
       value: "on"
+    - <<: *style
+      id: "playing"
+      value: "playing"
+    - <<: *style
+      id: "heat"
+      value: "heat"
