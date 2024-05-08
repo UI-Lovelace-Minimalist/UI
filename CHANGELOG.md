@@ -1,5 +1,7 @@
 # UI-Lovelace-Minimalist CHANGELOG
 
+Test
+
 ## Version 1.0.0-beta.11
 
 ### 🚀 Features
