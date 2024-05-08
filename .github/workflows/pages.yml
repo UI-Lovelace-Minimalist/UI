@@ -18,7 +18,7 @@ jobs:
         # Or use mhausenblas/mkdocs-deploy-gh-pages@nomaterial to build without the mkdocs-material theme
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          EXTRA_PACKAGES: mkdocs-awesome-pages-plugin"
+          EXTRA_PACKAGES: mkdocs-awesome-pages-plugin
           # GITHUB_DOMAIN: github.myenterprise.com
 #          REQUIREMENTS: folder/requirements.txt
 
