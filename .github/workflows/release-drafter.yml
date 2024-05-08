@@ -5,12 +5,16 @@ on:
   push:
     branches: ["main", "release"]
 
+permissions:
+  contents: read
+
 jobs:
   draft_release:
     name: "Release Drafter"
     runs-on: "ubuntu-latest"
     permissions:
-      issues: write
+      contents: write
+      pull-requests: write
     steps:
       - name: "Run release-drafter"
         uses: "release-drafter/release-drafter@v6"
