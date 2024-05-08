@@ -25,7 +25,7 @@ Version: 0.0.3
     <h4>Contributor: <a href="https://github.com/sisimomo">Sisimomo</a> - 2022-06-14</h4>
     <li>Now can displays a warning when the battery is low.</li>
     <li>Now can displays a warning when the door is lock but the door is still open.</li>
-    <li>Code refactoring to fit <a href="https://ui-lovelace-minimalist.github.io/UI/development/custom_cards/#order">framework structure</a>.</li>
+    <li>Code refactoring to fit <a href="https://ui-lovelace-minimalist-reborn.github.io/UI/development/custom_cards/#order">framework structure</a>.</li>
     <li>Documentation clean up.</li>
     <li>Code clean up.</li>
   </ul>

@@ -18,7 +18,7 @@
             }
         },
         "abort": {
-            "single_instance_allowed": "Det er kun tilladt med én installation af UI Lovelace Minimalist",
+            "single_instance_allowed": "Det er kun tilladt med én installation af UI Lovelace Minimalist Reborn",
             "not_setup": "UI Lovelace Minimalist er ikke konfigureret.",
             "github": "Could not authenticate with GitHub, try again later.",
             "reauth_successful": "Reauthentication was successful."
@@ -48,7 +48,7 @@
             }
         },
         "abort": {
-            "single_instance_allowed": "Det er kun tilladt med én installation af UI Lovelace Minimalist",
+            "single_instance_allowed": "Det er kun tilladt med én installation af UI Lovelace Minimalist Reborn",
             "not_setup": "UI Lovelace Minimalist er ikke konfigureret."
         },
         "error": {

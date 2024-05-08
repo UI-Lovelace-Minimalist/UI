@@ -60,7 +60,7 @@
     },
     "services": {
         "reload": {
-            "description": "Neuladen der Dashboardkonfiguration für UI Lovelace Minimalist"
+            "description": "Neuladen der Dashboardkonfiguration für UI Lovelace Minimalist Reborn"
         },
         "installed": {
             "description": "Änderung des installierten Schlüssels in der globalen Konfiguration für UI Lovelace Minimalist."

@@ -32,7 +32,7 @@ To find this Integration on HACS we first need to add the UI Lovelace Minimalist
 3. Search for "UI Lovelace Minimalist Reborn" and click "Download this Repository with HACS"
 4. Select the version (will auto select latest)
 5. Now we need to restart home-assistant under [![Open your Home Assistant instance and show your server controls.](https://my.home-assistant.io/badges/server_controls.svg)](https://my.home-assistant.io/redirect/server_controls/)
-6. Wait until Home assistant is restarted and Continue to ["Install Integration"](https://ui-lovelace-minimalist.github.io/UI/setup/installation/#install-integration).
+6. Wait until Home assistant is restarted and Continue to ["Install Integration"](https://ui-lovelace-minimalist-reborn.github.io/UI/setup/installation/#install-integration).
 
 ---
 
@@ -72,4 +72,4 @@ Unpack the file and move the folder it contains called `ui_lovelace_minimalist_r
 `/config/custom_components/`
 
 If this folder does not exist in your configuration directory, create it.
-Then you have to restart your Home Assistant and can follow the step ["Install Integration"](https://ui-lovelace-minimalist.github.io/UI/setup/installation/#install-integration).
+Then you have to restart your Home Assistant and can follow the step ["Install Integration"](https://ui-lovelace-minimalist-reborn.github.io/UI/setup/installation/#install-integration).

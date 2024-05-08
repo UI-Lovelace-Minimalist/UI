@@ -1,6 +1,6 @@
 ---
 reload:
-  description: "Reload dashboard configuration for UI Lovelace Minimalist"
+  description: "Reload dashboard configuration for UI Lovelace Minimalist Reborn"
 
 installed:
-  description: "Change the installed key in global config for UI Lovelace Minimalist"
+  description: "Change the installed key in global config for UI Lovelace Minimalist Reborn"

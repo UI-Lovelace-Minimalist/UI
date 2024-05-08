@@ -27,7 +27,7 @@ jobs:
           zip ui_lovelace_minimalist_reborn.zip -r ./
 
       - name: "Upload zip to release"
-        uses: "svenstaro/upload-release-action@v1-release"
+        uses: "svenstaro/upload-release-action@v2"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           file: "./custom_components/ui_lovelace_minimalist_reborn/ui_lovelace_minimalist_reborn.zip"

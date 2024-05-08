@@ -3,7 +3,7 @@
     "config": {
         "step": {
             "user": {
-                "title": "Configuration de UI Lovelace Minimalist",
+                "title": "Configuration de UI Lovelace Minimalist Reborn",
                 "description": "",
                 "data": {
                     "community_cards_enabled": "Activer la possibilité de configurer des cartes communautaires avec cette intégration, nécessite une authentification github!"
@@ -30,7 +30,7 @@
     "options": {
         "step": {
             "user": {
-                "title": "Configuration de UI Lovelace Minimalist",
+                "title": "Configuration de UI Lovelace Minimalist Reborn",
                 "description": "",
                 "data": {
                     "language": "Langue",

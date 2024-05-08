@@ -10,7 +10,7 @@ To get this theme with all the button templates working make sure at least the g
 
 ### YAML Mode
 
-As described in the [installation step](https://ui-lovelace-minimalist.github.io/UI/setup/installation/#install-integration), we have already created a small sample dashboard for you, whose file is called `ui-lovelace.yaml` in the following directory when setting up the integration:
+As described in the [installation step](https://ui-lovelace-minimalist-reborn.github.io/UI/setup/installation/#install-integration), we have already created a small sample dashboard for you, whose file is called `ui-lovelace.yaml` in the following directory when setting up the integration:
 
 ```yaml
 config
@@ -42,6 +42,6 @@ button_card_templates: !include_dir_merge_named "custom_components/ui_lovelace_m
 
 ## Custom Cards
 
-This integration also allows you to add your own Custom Button Cards. These cards are not part of the HACS installation and must be downloaded separately from the repo as needed. You can find an overview of the cards [here](https://ui-lovelace-minimalist.github.io/UI/usage/custom_cards/custom_card_bar_card/) in our wiki. The cards themselves for the download are on our repo [here](https://github.com/UI-Lovelace-Minimalist/UI/tree/main/custom_cards).
+This integration also allows you to add your own Custom Button Cards. These cards are not part of the HACS installation and must be downloaded separately from the repo as needed. You can find an overview of the cards [here](https://ui-lovelace-minimalist-reborn.github.io/UI/usage/custom_cards/custom_card_bar_card/) in our wiki. The cards themselves for the download are on our repo [here](https://github.com/UI-Lovelace-Minimalist/UI/tree/main/custom_cards).
 
-To find some more detailed instructions to include the custom-cards to your dashboard take a look on [this page](https://ui-lovelace-minimalist.github.io/UI/setup/custom_cards/).
+To find some more detailed instructions to include the custom-cards to your dashboard take a look on [this page](https://ui-lovelace-minimalist-reborn.github.io/UI/setup/custom_cards/).

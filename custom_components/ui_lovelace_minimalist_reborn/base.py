@@ -357,7 +357,7 @@ class UlmBase:
     async def configure_dashboard(self) -> bool:
         """Configure the ULM Dashboards."""
 
-        dashboard_url = "ui-lovelace-minimalist"
+        dashboard_url = "ui-lovelace-minimalist-reborn"
         dashboard_config = {
             "mode": "yaml",
             "icon": self.configuration.sidepanel_icon,
@@ -389,7 +389,7 @@ class UlmBase:
                 )
             else:
                 if dashboard_url in self.hass.data["lovelace"]["dashboards"]:
-                    async_remove_panel(self.hass, "ui-lovelace-minimalist")
+                    async_remove_panel(self.hass, "ui-lovelace-minimalist-reborn")
 
             if self.configuration.adaptive_ui_enabled:
                 self.hass.data["lovelace"]["dashboards"][

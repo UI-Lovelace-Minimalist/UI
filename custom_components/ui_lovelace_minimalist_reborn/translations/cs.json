@@ -3,7 +3,7 @@
     "config": {
         "step": {
             "user": {
-                "title": "Nastavení UI Lovelace Minimalist",
+                "title": "Nastavení UI Lovelace Minimalist Reborn",
                 "description": "",
                 "data": {
                     "community_cards_enabled": "Enable the ability to configure community cards with this integrations, Does require github authentication!"
@@ -30,7 +30,7 @@
     "options": {
         "step": {
             "user": {
-                "title": "Nastavení UI Lovelace Minimalist",
+                "title": "Nastavení UI Lovelace Minimalist Reborn",
                 "description": "",
                 "data": {
                     "language": "Jazyk",

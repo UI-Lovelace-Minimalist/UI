@@ -10,7 +10,7 @@
     "http",
     "frontend"
   ],
-  "documentation": "https://ui-lovelace-minimalist.github.io/UI/",
+  "documentation": "https://ui-lovelace-minimalist-reborn.github.io/UI/",
   "iot_class": "calculated",
   "issue_tracker": "https://github.com/UI-Lovelace-Minimalist/UI/issues",
   "requirements": [

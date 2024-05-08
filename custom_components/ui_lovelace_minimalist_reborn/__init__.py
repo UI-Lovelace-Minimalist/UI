@@ -131,7 +131,7 @@ async def async_remove_entry(hass: HomeAssistant, config_entry: ConfigEntry):
     # TODO cleanup:
     #  - themes
     #  - blueprints
-    frontend.async_remove_panel(hass, "ui-lovelace-minimalist")
+    frontend.async_remove_panel(hass, "ui-lovelace-minimalist-reborn")
 
 
 async def async_reload_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> None:

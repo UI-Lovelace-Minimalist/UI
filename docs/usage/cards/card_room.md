@@ -58,7 +58,7 @@ If you want to tweak this card a little bit more, below are some examples. The f
     icon: mdi:shower-head
     tap_action:
       action: navigate
-      navigation_path: '/ui-lovelace-minimalist/bathroom'
+      navigation_path: '/ui-lovelace-minimalist-reborn/bathroom'
     variables:
       label_use_temperature: false
       label_use_brightness: true

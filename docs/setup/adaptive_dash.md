@@ -121,7 +121,7 @@ To put card_light to the area: `card1`; you have to paste in the code as in your
 Do this for all placeholders. You can always use less cards by deleting placeholders or add more cards by adding new areas under the `grid-template-areas`.
 
 For adapting the action use `adaptive` within the corresponding custom actions' variables. Take a look in the
-[custom actions](https://ui-lovelace-minimalist.github.io/UI/setup/custom_actions/) section within this docs.
+[custom actions](https://ui-lovelace-minimalist-reborn.github.io/UI/setup/custom_actions/) section within this docs.
 
 ### Adding popups on the right-side
 

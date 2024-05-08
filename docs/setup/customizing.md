@@ -31,7 +31,7 @@ You can customize your dashboard like any other YAML-based lovelace dashboard.
 
 !!! warning ""
     UI-mode is not yet supported
-So first let add some cards. These can be found on the [Wiki](https://ui-lovelace-minimalist.github.io/UI/usage/cards/card_battery/). As an example we will add the [`card_light`](https://ui-lovelace-minimalist.github.io/UI/usage/cards/card_light/) and [`card_vacuum`](https://ui-lovelace-minimalist.github.io/UI/usage/cards/card_vacuum/) next to each other with help of a `horizontal-stack`. Please read carefully the wiki-page of each of the cards to understand their specific variables.
+So first let add some cards. These can be found on the [Wiki](https://ui-lovelace-minimalist-reborn.github.io/UI/usage/cards/card_battery/). As an example we will add the [`card_light`](https://ui-lovelace-minimalist-reborn.github.io/UI/usage/cards/card_light/) and [`card_vacuum`](https://ui-lovelace-minimalist-reborn.github.io/UI/usage/cards/card_vacuum/) next to each other with help of a `horizontal-stack`. Please read carefully the wiki-page of each of the cards to understand their specific variables.
 
 ```yaml
 ---
@@ -132,7 +132,7 @@ lovelace:
 !!! note ""
     You don't need to add the first dashboard which is installed with the integration
 
-As mentioned on the [configuration page](https://ui-lovelace-minimalist.github.io/UI/setup/configuration/) you need to add a line of code to load in all Minimalist card templates. <br>
+As mentioned on the [configuration page](https://ui-lovelace-minimalist-reborn.github.io/UI/setup/configuration/) you need to add a line of code to load in all Minimalist card templates. <br>
 The start of each new dashboard file should therefore, look like this:
 
 ```yaml

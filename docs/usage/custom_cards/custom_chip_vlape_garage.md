@@ -15,7 +15,7 @@ INSERT IMAGES
 ## Credits
 
 Author: Vincent Lape - 2023
-Credits: THe basis of this chip was derived from built-in [Alarm chip](https://ui-lovelace-minimalist.github.io/UI/usage/chips/chip_alarm/)
+Credits: THe basis of this chip was derived from built-in [Alarm chip](https://ui-lovelace-minimalist-reborn.github.io/UI/usage/chips/chip_alarm/)
 Version: 1.0.0
 
 ## Changelog

@@ -12,7 +12,7 @@ It's kind of hard to explain what this is, so let's call it a "theme" (in quotat
 ## Wiki for documentation
 
 We have setup an extensive Wiki for our documentation. It is more comfortable for you to read and for us to handle, than this file and gives our documentation the right framework to grow.
-Take a look here: [https://ui-lovelace-minimalist.github.io/UI/](https://ui-lovelace-minimalist.github.io/UI/)
+Take a look here: [https://ui-lovelace-minimalist-reborn.github.io/UI/](https://ui-lovelace-minimalist-reborn.github.io/UI/)
 
 Table of content from the WIKI
 <br>
@@ -35,24 +35,24 @@ Table of content from the WIKI
 <tr>
 <td style="vertical-align: top;">
   <p>
-    <a href="https://ui-lovelace-minimalist.github.io/UI/setup/download/">&raquo;&nbsp;Download</a><br>
-    <a href="https://ui-lovelace-minimalist.github.io/UI/setup/installation/">&raquo;&nbsp;Installation</a><br>
-    <a href="https://ui-lovelace-minimalist.github.io/UI/setup/configuration/">&raquo;&nbsp;Configuration</a><br>
+    <a href="https://ui-lovelace-minimalist-reborn.github.io/UI/setup/download/">&raquo;&nbsp;Download</a><br>
+    <a href="https://ui-lovelace-minimalist-reborn.github.io/UI/setup/installation/">&raquo;&nbsp;Installation</a><br>
+    <a href="https://ui-lovelace-minimalist-reborn.github.io/UI/setup/configuration/">&raquo;&nbsp;Configuration</a><br>
   </p>
 </td>
 <td style="vertical-align: top;">
   <p>
-    <a href="https://ui-lovelace-minimalist.github.io/UI/usage/cards/card_battery/">&raquo;&nbsp;Cards</a><br>
-    <a href="https://ui-lovelace-minimalist.github.io/UI/usage/chips/chip_alarm/">&raquo;&nbsp;Chips</a><br>
-    <a href="https//ui-lovelace-minimalist.github.io/UI/usage/popups/popup_light/">&raquo;&nbsp;Popups</a><br>
-    <a href="https://ui-lovelace-minimalist.github.io/UI/usage/custom_cards/custom_card_bar_card/">&raquo;&nbsp;Custom-Cards</a><br>
+    <a href="https://ui-lovelace-minimalist-reborn.github.io/UI/usage/cards/card_battery/">&raquo;&nbsp;Cards</a><br>
+    <a href="https://ui-lovelace-minimalist-reborn.github.io/UI/usage/chips/chip_alarm/">&raquo;&nbsp;Chips</a><br>
+    <a href="https//ui-lovelace-minimalist-reborn.github.io/UI/usage/popups/popup_light/">&raquo;&nbsp;Popups</a><br>
+    <a href="https://ui-lovelace-minimalist-reborn.github.io/UI/usage/custom_cards/custom_card_bar_card/">&raquo;&nbsp;Custom-Cards</a><br>
   </p>
 </td>
 <td style="vertical-align: top;">
   <p>
-    <a href="https://ui-lovelace-minimalist.github.io/UI/development/card_style_guide/">&raquo;&nbsp;Card Style Guide</a><br>
-    <a href="https://ui-lovelace-minimalist.github.io/UI/development/docs_style_guide/">&raquo;&nbsp;Docs Style Guide</a><br>
-    <a href="https://ui-lovelace-minimalist.github.io/UI/development/custom_cards/">&raquo;&nbsp;Custom-Cards</a><br>
+    <a href="https://ui-lovelace-minimalist-reborn.github.io/UI/development/card_style_guide/">&raquo;&nbsp;Card Style Guide</a><br>
+    <a href="https://ui-lovelace-minimalist-reborn.github.io/UI/development/docs_style_guide/">&raquo;&nbsp;Docs Style Guide</a><br>
+    <a href="https://ui-lovelace-minimalist-reborn.github.io/UI/development/custom_cards/">&raquo;&nbsp;Custom-Cards</a><br>
   </p>
 </td>
 </tr>
@@ -62,17 +62,17 @@ Table of content from the WIKI
 
 We can offer you in-depth instructions for installation, as well as for future updates or from a previous version. Check our WIKI for more info:
 
-- [Download](https://ui-lovelace-minimalist.github.io/UI/setup/download/)
-- [Installation](https://ui-lovelace-minimalist.github.io/UI/setup/installation/)
-- [Configuration](https://ui-lovelace-minimalist.github.io/UI/setup/configuration/)
+- [Download](https://ui-lovelace-minimalist-reborn.github.io/UI/setup/download/)
+- [Installation](https://ui-lovelace-minimalist-reborn.github.io/UI/setup/installation/)
+- [Configuration](https://ui-lovelace-minimalist-reborn.github.io/UI/setup/configuration/)
 
 ## List of templates
 
-The actual version of this "theme" has 20 different cards, seven chips and other templates bundled into the download. We're sorry, but the list wouldn't fit into this readme. [Please see this page, where you can find an extensive list of templates with code examples, screenshots and explanation](https://ui-lovelace-minimalist.github.io/UI/usage/cards/card_battery/).
+The actual version of this "theme" has 20 different cards, seven chips and other templates bundled into the download. We're sorry, but the list wouldn't fit into this readme. [Please see this page, where you can find an extensive list of templates with code examples, screenshots and explanation](https://ui-lovelace-minimalist-reborn.github.io/UI/usage/cards/card_battery/).
 
 ## Custom cards
 
-The same goes for our `custom_cards`. As the number grows, the list would be to big for this readme, so we provide you with an overview page with pictures, code examples and additional information. [Find the list here](https://ui-lovelace-minimalist.github.io/UI/usage/custom_cards/custom_card_bar_card/).
+The same goes for our `custom_cards`. As the number grows, the list would be to big for this readme, so we provide you with an overview page with pictures, code examples and additional information. [Find the list here](https://ui-lovelace-minimalist-reborn.github.io/UI/usage/custom_cards/custom_card_bar_card/).
 
 ### Credits & Contributors
 

@@ -14,7 +14,7 @@ hide:
 ## Credits
 
 - Author: Everything Smart Home - 2022
-- Credits to the [welcome scenes card](https://ui-lovelace-minimalist.github.io/UI/usage/cards/card_welcome_scenes/) as the basis
+- Credits to the [welcome scenes card](https://ui-lovelace-minimalist-reborn.github.io/UI/usage/cards/card_welcome_scenes/) as the basis
 - Version: 1.1.0
 
 ## Changelog
@@ -25,7 +25,7 @@ hide:
     <h4>Contributor: <a href="https://github.com/sisimomo">Sisimomo</a> - 2022-06-12</h4>
     <li>Now support from 0-5 navigation pill.</li>
     <li>Added dynamic nav pill size.</li>
-    <li>Code refactoring to fit <a href="https://ui-lovelace-minimalist.github.io/UI/development/custom_cards/#order">framework structure</a>.</li>
+    <li>Code refactoring to fit <a href="https://ui-lovelace-minimalist-reborn.github.io/UI/development/custom_cards/#order">framework structure</a>.</li>
     <li>Code clean up.</li>
   </ul>
 </details>
@@ -37,7 +37,7 @@ Initial release
 
 ## Description
 
-This is a welcome card based on the [welcome scenes card](https://ui-lovelace-minimalist.github.io/UI/usage/cards/card_welcome_scenes/) but replaces the scenes for page navigation instead.
+This is a welcome card based on the [welcome scenes card](https://ui-lovelace-minimalist-reborn.github.io/UI/usage/cards/card_welcome_scenes/) but replaces the scenes for page navigation instead.
 
 ## Variables
 

@@ -9,7 +9,7 @@ chips_icon:
 chips_return:
   template: "chip_back"
   variables:
-    ulm_chip_back_path: "/ui-lovelace-minimalist/home"
+    ulm_chip_back_path: "/ui-lovelace-minimalist-reborn/home"
 
 chips_localisation_present:
   template: "chip_presence_detection"
