@@ -84,7 +84,7 @@ The same goes for our `custom_cards`. As the number grows, the list would be to 
 - [dwainscheeren](https://github.com/dwainscheeren) for his inspiration to deliver themes via HACS.
 - Wiki by [paddy0174](https://github.com/Paddy0174).
 - Special thanks to clemalex and [schumijo](https://github.com/schumijo)for contributing their cards to the main repository.
-- [stokkie90](https://github.com/stokkie90) for implementing most of the HACS functionalities.
+- [TomHart](https://github.com/TomHart) for implementing most of the HACS functionalities.
 - And of course [all the others](https://github.com/UI-Lovelace-Minimalist/UI/graphs/contributors) who cannot be named here due to space limitations.
 
 ❤️ Thank you so much for helping to keep this UI awesome

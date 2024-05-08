@@ -13,7 +13,7 @@ TV = TypeVar("TV")
 PACKAGE_NAME = "custom_components.ui_lovelace_minimalist_reborn"
 
 ATTRIBUTION = "Data provided by http://jsonplaceholder.typicode.com/"
-ISSUE_URL = "https://github.com/stokkie90/ui-lovelace-minimalist/issues"
+ISSUE_URL = "https://github.com/TomHart/UI-Lovelace-Minimal-Playing/releases/issues"
 
 GITHUB_REPO = "UI-Lovelace-Minimalist/UI"
 COMMUNITY_CARDS_FOLDER = "custom_cards"

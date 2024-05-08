@@ -37,7 +37,7 @@ So first let add some cards. These can be found on the [Wiki](https://ui-lovelac
 ---
 button_card_templates: !include_dir_merge_named "../../custom_components/ui_lovelace_minimalist_reborn/__ui_minimalist__/ulm_templates/"
 
-title: "UI Lovelace Minimalist"
+title: "UI Lovelace Minimalist Reborn"
 theme: "minimalist-desktop"
 background: "var(--background-image)"
 # views: !include_dir_merge_list "views/"

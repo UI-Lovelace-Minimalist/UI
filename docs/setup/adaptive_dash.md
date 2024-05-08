@@ -223,7 +223,7 @@ To make the new view visible you have to add some entry to `adaptive-dash/adapti
 ??? note "Add an extra view example (click to open)"
 
     ```yaml
-    title: "UI Lovelace Minimalist"
+    title: "UI Lovelace Minimalist Reborn"
     theme: "minimalist-desktop"
     background: "var(--background-image)"
     views:
