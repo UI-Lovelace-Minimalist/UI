@@ -36,24 +36,9 @@ template:
       - name: "lights on"
         unique_id: lights_on
         icon: mdi:lightbulb-on-outline
-        state: >
-          {% set lights = [
-              states.light.living_room,
-              states.light.bedroom,
-              states.light.bathroom,
-              states.switch.kitchen,
-              ] %}
-          {{ lights | selectattr('state','eq','on') | list | count }}
       - name: "covers open"
         unique_id: covers_open
         icon: mdi:window-shutter-open
-        state: >
-          {% set covers = [
-              states.cover.bedroom,
-              states.cover.livingroom1,
-              states.cover.livingroom2,
-              ] %}
-          {{ covers | selectattr('state','eq','open') | list | count }}
 ```
 
 ## Usage
