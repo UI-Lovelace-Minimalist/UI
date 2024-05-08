@@ -10,6 +10,8 @@ jobs:
   labeler:
     name: "Labeler"
     runs-on: "ubuntu-latest"
+    permissions:
+      issues: write
     steps:
       - name: "⤵️ Check out code from GitHub"
         uses: "actions/checkout@v3"
