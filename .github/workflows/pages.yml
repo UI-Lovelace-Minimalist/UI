@@ -4,7 +4,7 @@ name: "Pages"
 on:
   push:
     # Should only run on "main" since we dont want any "dev" changes in our docs before release
-    branches: ["main"]
+    branches: [ "main" ]
 
 jobs:
   deploy:
@@ -13,8 +13,17 @@ jobs:
       issues: write
     steps:
       - uses: "actions/checkout@v4"
-      - uses: "actions/setup-python@v5"
-        with:
-          python-version: "3.11"
-      - run: "pip install mkdocs-material mkdocs-awesome-pages-plugin"
-      - run: "mkdocs gh-deploy --force"
+      - name: Deploy docs
+        uses: mhausenblas/mkdocs-deploy-gh-pages@master
+        # Or use mhausenblas/mkdocs-deploy-gh-pages@nomaterial to build without the mkdocs-material theme
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#          EXTRA_PACKAGES: build-base
+          # GITHUB_DOMAIN: github.myenterprise.com
+#          REQUIREMENTS: folder/requirements.txt
+
+#      - uses: "actions/setup-python@v5"
+#        with:
+#          python-version: "3.11"
+#      - run: "pip install mkdocs-material mkdocs-awesome-pages-plugin"
+#      - run: "mkdocs gh-deploy --force"
