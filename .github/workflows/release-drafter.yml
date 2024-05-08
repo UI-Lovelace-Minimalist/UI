@@ -9,6 +9,8 @@ jobs:
   draft_release:
     name: "Release Drafter"
     runs-on: "ubuntu-latest"
+    permissions:
+      issues: write
     steps:
       - name: "Run release-drafter"
         uses: "release-drafter/release-drafter@v6"
