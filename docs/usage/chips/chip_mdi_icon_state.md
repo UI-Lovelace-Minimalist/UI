@@ -33,5 +33,5 @@ This `chip` displays an icon using [mdi](https://materialdesignicons.com/) and `
 ??? note "Template Code"
 
     ```yaml title="chip_mdi_icon_state.yaml"
-    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/chips/chip_mdi_icon_state.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist_reborn/lovelace/ulm_templates/card_templates/chips/chip_mdi_icon_state.yaml"
     ```

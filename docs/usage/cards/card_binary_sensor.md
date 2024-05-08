@@ -44,5 +44,5 @@ The `binary-sensor-card` is to show the state (on/off, open/close, etc.) of a bi
 ??? note "Template Code"
 
     ```yaml title="card_binary_sensor.yaml"
-    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_binary_sensor.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist_reborn/lovelace/ulm_templates/card_templates/cards/card_binary_sensor.yaml"
     ```

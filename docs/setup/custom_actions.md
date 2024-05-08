@@ -10,7 +10,7 @@ This 'theme' do offer support for customizing actions. Tap, double-tap and hold 
 
 ![actions](../assets/img/actions.png)
 
-To change the normal behaviour of tap_action, double_tap_action and hold_action, edit `custom_actions.yaml` file located under `/config/ui_lovelace_minimalist/custom_actions/`.
+To change the normal behaviour of tap_action, double_tap_action and hold_action, edit `custom_actions.yaml` file located under `/config/ui_lovelace_minimalist_reborn/custom_actions/`.
 
 ```yaml
 ---
@@ -74,8 +74,8 @@ https://github.com/custom-cards/button-card)) are :
 
 !!! tip "Reloading"
 
-    Once you have edited `custom_actions.yaml` file, you must reload `"UI LOVELACE MINIMALIST"` configuration.
-    Just go to `"Configuration" --> "Settings"` in Home Assistant and press the `"UI_LOVELACE_MINIMALIST"` button within the "YAML configuration reloading" section.
+    Once you have edited `custom_actions.yaml` file, you must reload `"UI LOVELACE MINIMALIST REBORN"` configuration.
+    Just go to `"Configuration" --> "Settings"` in Home Assistant and press the `"UI_LOVELACE_MINIMALIST REBORN"` button within the "YAML configuration reloading" section.
 
 ## Navigate action
 
@@ -225,7 +225,7 @@ The already available **Graph card** (`card_graph`) is an example for this imple
 ??? note "Graph card as example"
 
     ```yaml title="card_binary_sensor_alert.yaml"
-    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/2-line_cards/card_graph.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist_reborn/lovelace/ulm_templates/card_templates/2-line_cards/card_graph.yaml"
     ```
 
 ### Use template `icon_more_info_new` or `icon_more_info_alert`
@@ -239,7 +239,7 @@ Most of the internal card templates uses this option. Take a look into the code.
 ??? note "Generic card as example"
 
     ```yaml title="card_binary_sensor_alert.yaml"
-    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_generic.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist_reborn/lovelace/ulm_templates/card_templates/cards/card_generic.yaml"
     ```
 
 ### Use template `ulm_actions_card_overlay`

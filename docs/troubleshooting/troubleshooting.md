@@ -10,7 +10,7 @@ hide:
 Most times reloading the integration and emptying the cache can resolve most problems. <br>
 This is done by:
 
-1. Hit `C` and click reload `Ui_lovelace_minimalist`
+1. Hit `C` and click reload `ui_lovelace_minimalist_reborn`
 2. Clear your cache by clicking `CTRL + F5` on Windows or `SHIFT + reload` on Mac
 
 ### Most common errors
@@ -52,7 +52,7 @@ This is done by:
     1. Check if you placed the custom_card in the right directory
     ```yaml
     config
-        └── ui_lovelace_minimalist
+        └── ui_lovelace_minimalist_reborn
             ├── custom_cards
             |   ├── custom_card_1
             |   |   ├── custom_card_1.yaml
@@ -62,7 +62,7 @@ This is done by:
             |       └── EN.yaml
             └── dashboard
     ```
-    2. Hit `C` and click reload `Ui_lovelace_minimalist`
+    2. Hit `C` and click reload `ui_lovelace_minimalist_reborn`
     3. Reload dashboard by clicking the three dots in the upper-right corner and click refresh
 
 ??? info "HACS Frontend resources are not showing up in `https://homeassistant.local/config/lovelace/resources`"

@@ -11,7 +11,7 @@ You can find your ui-minimalist-lovelace file here:
 
 ```yaml
 config
-└── ui_lovelace_minimalist
+└── ui_lovelace_minimalist_reborn
     ├── custom_cards
     └── dashboard
         └── ui-lovelace.yaml
@@ -22,7 +22,7 @@ It should look like this:
 ??? note "ui-lovelace.yaml"
 
     ```yaml
-    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ui-lovelace.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist_reborn/lovelace/ui-lovelace.yaml"
     ```
 
 ## How to customize the dashboard
@@ -35,7 +35,7 @@ So first let add some cards. These can be found on the [Wiki](https://ui-lovelac
 
 ```yaml
 ---
-button_card_templates: !include_dir_merge_named "../../custom_components/ui_lovelace_minimalist/__ui_minimalist__/ulm_templates/"
+button_card_templates: !include_dir_merge_named "../../custom_components/ui_lovelace_minimalist_reborn/__ui_minimalist__/ulm_templates/"
 
 title: "UI Lovelace Minimalist"
 theme: "minimalist-desktop"
@@ -107,7 +107,7 @@ For the first dashboard we did all the configuration for you. To add a second on
 
 ```yaml
 config
-└── ui_lovelace_minimalist
+└── ui_lovelace_minimalist_reborn
     ├── custom_cards
     └── dashboard
         └── ui-lovelace.yaml
@@ -126,7 +126,7 @@ lovelace:
       title: Minimalist 2
       icon: mdi:flower
       show_in_sidebar: true
-      filename: ui_lovelace_minimalist/dashboard/ui-lovelace_2.yaml
+      filename: ui_lovelace_minimalist_reborn/dashboard/ui-lovelace_2.yaml
 ```
 
 !!! note ""
@@ -137,7 +137,7 @@ The start of each new dashboard file should therefore, look like this:
 
 ```yaml
 ---
-button_card_templates: !include_dir_merge_named "../../custom_components/ui_lovelace_minimalist/__ui_minimalist__/ulm_templates/"
+button_card_templates: !include_dir_merge_named "../../custom_components/ui_lovelace_minimalist_reborn/__ui_minimalist__/ulm_templates/"
 
 title: "My new dashboard"
 theme: "minimalist-desktop"

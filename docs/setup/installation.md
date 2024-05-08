@@ -20,7 +20,7 @@ Or you can use the My Home Assistant Button below.
 
     Currently the settings are not stored between initial setup and the settings after installation. After installation the settings drop back to their default values. This bug is reported and looked at.
 
-[![Open your Home Assistant instance and start setting up a new integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=ui_lovelace_minimalist){ height="250" }
+[![Open your Home Assistant instance and start setting up a new integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=ui_lovelace_minimalist_reborn){ height="250" }
 
 Now you can configure the Integration, you can do this also after it's installed!
 
@@ -76,7 +76,7 @@ A new file for the dashboard configuration, with a small example, where you can 
 
 ```yaml
 config
-└── ui_lovelace_minimalist
+└── ui_lovelace_minimalist_reborn
     ├── custom_cards
     └── dashboard
         └── ui-lovelace.yaml

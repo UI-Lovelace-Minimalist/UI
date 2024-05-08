@@ -48,5 +48,5 @@ This is a card to control your Robot-vacuum. It has support for all vacuums whic
 ??? note "Template Code"
 
     ```yaml title="card_vacuum.yaml"
-    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_vacuum.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist_reborn/lovelace/ulm_templates/card_templates/cards/card_vacuum.yaml"
     ```

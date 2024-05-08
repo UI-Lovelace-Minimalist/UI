@@ -61,7 +61,7 @@ We have also added a folder with all the needed files to customizing your new da
 
 ```yaml
 config
-└── ui_lovelace_minimalist
+└── ui_lovelace_minimalist_reborn
     ├── custom_cards
     └── dashboard
         └── ui-lovelace.yaml

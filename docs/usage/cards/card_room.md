@@ -92,5 +92,5 @@ If you want to tweak this card a little bit more, below are some examples. The f
 ??? note "Template Code"
 
     ```yaml title="card_room.yaml"
-    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_room.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist_reborn/lovelace/ulm_templates/card_templates/cards/card_room.yaml"
     ```

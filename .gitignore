@@ -1,13 +1,13 @@
 
 custom_components/*
-/ui_lovelace-minimalist
-ui_lovelace_minimalist/
+/ui_lovelace_minimalist_reborn
+ui_lovelace_minimalist_reborn/
 /themes/
 
-!custom_components/ui_lovelace_minimalist
+!custom_components/ui_lovelace_minimalist_reborn
 !custom_components/__init__.py
-custom_components/ui_lovelace_minimalist/__pycache__
-custom_components/ui_lovelace_minimalist/.installed
+custom_components/ui_lovelace_minimalist_reborn/__pycache__
+custom_components/ui_lovelace_minimalist_reborn/.installed
 
 .DS_Store
 __pycache__

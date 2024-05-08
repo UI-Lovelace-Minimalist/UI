@@ -54,5 +54,5 @@ This card has backward compatibility with older template except custom name. It 
 ??? note "Template Code"
 
     ```yaml title="card_cover_buttons.yaml"
-    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_cover.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist_reborn/lovelace/ulm_templates/card_templates/cards/card_cover.yaml"
     ```

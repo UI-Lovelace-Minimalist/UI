@@ -70,7 +70,7 @@ markdown_extensions:
   - "pymdownx.details"
   - "pymdownx.inlinehilite"
   - pymdownx.snippets:
-      base_path: [".", "custom_components/ui_lovelace_minimalist"]
+      base_path: [".", "custom_components/ui_lovelace_minimalist_reborn"]
       check_paths: true
   - "pymdownx.critic"
   - "pymdownx.caret"

@@ -1,16 +1,16 @@
-"""Constants for UI Lovelace Minimalist."""
+"""Constants for UI Lovelace Minimalist Reborn."""
 from typing import TypeVar
 
 # Base component constants
-NAME = "UI Lovelace Minimalist"
-DOMAIN = "ui_lovelace_minimalist"
+NAME = "UI Lovelace Minimalist Reborn"
+DOMAIN = "ui_lovelace_minimalist_reborn"
 DOMAIN_DATA = f"{DOMAIN}_data"
 VERSION = "0.0.1"
 CLIENT_ID = "c1603968d9d29a2492df"
 
 TV = TypeVar("TV")
 
-PACKAGE_NAME = "custom_components.ui_lovelace_minimlist"
+PACKAGE_NAME = "custom_components.ui_lovelace_minimalist_reborn"
 
 ATTRIBUTION = "Data provided by http://jsonplaceholder.typicode.com/"
 ISSUE_URL = "https://github.com/stokkie90/ui-lovelace-minimalist/issues"

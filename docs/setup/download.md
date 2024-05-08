@@ -65,9 +65,9 @@ To find and install these using HACS, first add them as [custom repositories](ht
 
 ### Download Release File
 
-Go to the [release page](https://github.com/UI-Lovelace-Minimalist/UI/releases) and download the `ui_lovelace_minimalist.zip` attached to the latest release.
+Go to the [release page](https://github.com/UI-Lovelace-Minimalist/UI/releases) and download the `ui_lovelace_minimalist_reborn.zip` attached to the latest release.
 
-Unpack the file and move the folder it contains called `ui_lovelace_minimalist` to the following directory of your Home Assistant configuration:
+Unpack the file and move the folder it contains called `ui_lovelace_minimalist_reborn` to the following directory of your Home Assistant configuration:
 
 `/config/custom_components/`
 

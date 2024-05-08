@@ -14,7 +14,7 @@ As described in the [installation step](https://ui-lovelace-minimalist.github.io
 
 ```yaml
 config
-└── ui_lovelace_minimalist
+└── ui_lovelace_minimalist_reborn
     ├── custom_cards
     └── dashboard
         └── ui-lovelace.yaml
@@ -26,7 +26,7 @@ However, if you want to use your own, possibly already existing, dashboard file,
 
 ```yaml
 # Button cards location
-button_card_templates: !include_dir_merge_named "custom_components/ui_lovelace_minimalist/__ui_minimalist__/ulm_templates/"
+button_card_templates: !include_dir_merge_named "custom_components/ui_lovelace_minimalist_reborn/__ui_minimalist__/ulm_templates/"
 ```
 
 !!! note ""

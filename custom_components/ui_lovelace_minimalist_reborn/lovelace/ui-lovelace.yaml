@@ -1,5 +1,5 @@
 ---
-button_card_templates: !include_dir_merge_named "../../custom_components/ui_lovelace_minimalist/__ui_minimalist__/ulm_templates/"
+button_card_templates: !include_dir_merge_named "../../custom_components/ui_lovelace_minimalist_reborn/__ui_minimalist__/ulm_templates/"
 
 title: "UI Lovelace Minimalist"
 theme: "minimalist-desktop"

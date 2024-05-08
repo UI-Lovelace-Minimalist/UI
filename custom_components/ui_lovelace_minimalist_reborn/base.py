@@ -337,12 +337,12 @@ class UlmBase:
             if self.configuration.include_other_cards:
                 for c in depenceny_resource_paths:
                     add_extra_js_url(
-                        self.hass, f"/ui_lovelace_minimalist/cards/{c}/{c}.js"
+                        self.hass, f"/ui_lovelace_minimalist_reborn/cards/{c}/{c}.js"
                     )
 
             # Register
             self.hass.http.register_static_path(
-                "/ui_lovelace_minimalist/cards",
+                "/ui_lovelace_minimalist_reborn/cards",
                 self.hass.config.path(f"{self.integration_dir}/cards"),
                 True,
             )
@@ -362,7 +362,7 @@ class UlmBase:
             "mode": "yaml",
             "icon": self.configuration.sidepanel_icon,
             "title": self.configuration.sidepanel_title,
-            "filename": "ui_lovelace_minimalist/dashboard/ui-lovelace.yaml",
+            "filename": "ui_lovelace_minimalist_reborn/dashboard/ui-lovelace.yaml",
             "show_in_sidebar": True,
             "require_admin": False,
         }
@@ -372,7 +372,7 @@ class UlmBase:
             "mode": "yaml",
             "icon": self.configuration.adaptive_ui_icon,
             "title": self.configuration.adaptive_ui_title,
-            "filename": "ui_lovelace_minimalist/dashboard/adaptive-dash/adaptive-ui.yaml",
+            "filename": "ui_lovelace_minimalist_reborn/dashboard/adaptive-dash/adaptive-ui.yaml",
             "show_in_sidebar": True,
             "require_admin": False,
         }
@@ -508,7 +508,7 @@ class UlmBase:
 
                 self.reload_configuration()
 
-            # Register servcie ui_lovelace_minimalist.reload
+            # Register servcie ui_lovelace_minimalist_reborn.reload
             self.hass.services.async_register(DOMAIN, "reload", handle_reload)
 
         except Exception as exception:

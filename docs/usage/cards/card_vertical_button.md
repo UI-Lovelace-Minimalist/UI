@@ -39,5 +39,5 @@ The variable `ulm_card_vertical_button_state` needs to be used together with inp
 ??? note "Template Code"
 
     ```yaml title="card_vertical_button.yaml"
-    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_vertical_button.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist_reborn/lovelace/ulm_templates/card_templates/cards/card_vertical_button.yaml"
     ```

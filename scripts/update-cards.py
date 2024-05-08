@@ -24,7 +24,7 @@ for card, src in cards:
         r = requests.get(src, allow_redirects=True)
         r.raise_for_status()
 
-        open(f"custom_components/ui_lovelace_minimalist/cards/{card}/{card}.js", 'wb').write(r.content)
+        open(f"custom_components/ui_lovelace_minimalist_reborn/cards/{card}/{card}.js", 'wb').write(r.content)
     except Exception as e:
         print(f"ERROR: {e}")
         exit(1)

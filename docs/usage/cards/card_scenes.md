@@ -91,5 +91,5 @@ This card is part of the Welcome Scenes card and can be used separately to only 
 ??? note "Template Code"
 
     ```yaml title="card_welcome_scenes.yaml"
-    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_scenes_welcome.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist_reborn/lovelace/ulm_templates/card_templates/cards/card_scenes_welcome.yaml"
     ```

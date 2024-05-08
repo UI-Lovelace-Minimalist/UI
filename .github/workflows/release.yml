@@ -23,14 +23,14 @@ jobs:
 
       - name: "Create zip"
         run: |
-          cd custom_components/ui_lovelace_minimalist
-          zip ui_lovelace_minimalist.zip -r ./
+          cd custom_components/ui_lovelace_minimalist_reborn
+          zip ui_lovelace_minimalist_reborn.zip -r ./
 
       - name: "Upload zip to release"
         uses: "svenstaro/upload-release-action@v1-release"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          file: "./custom_components/ui_lovelace_minimalist/ui_lovelace_minimalist.zip"
-          asset_name: "ui_lovelace_minimalist.zip"
+          file: "./custom_components/ui_lovelace_minimalist_reborn/ui_lovelace_minimalist_reborn.zip"
+          asset_name: "ui_lovelace_minimalist_reborn.zip"
           tag: "${{ github.ref }}"
           overwrite: true
