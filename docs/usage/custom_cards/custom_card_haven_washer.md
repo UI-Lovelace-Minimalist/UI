@@ -170,6 +170,7 @@ template:
   - sensor:
       - unique_id: washer_remaining_time
         name: "Remaining Time"
+
 ```
 
 ## Additional: Control the washing machine of dryer remotely
