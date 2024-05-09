@@ -15,7 +15,7 @@ PACKAGE_NAME = "custom_components.ui_lovelace_minimalist_reborn"
 ATTRIBUTION = "Data provided by http://jsonplaceholder.typicode.com/"
 ISSUE_URL = "https://github.com/TomHart/UI-Lovelace-Minimal-Playing/releases/issues"
 
-GITHUB_REPO = "UI-Lovelace-Minimalist/UI"
+GITHUB_REPO = "TomHart/UI-Lovelace-Minimal-Playing"
 COMMUNITY_CARDS_FOLDER = "custom_cards"
 
 LANGUAGES = {
@@ -98,7 +98,7 @@ CONF_COMMUNITY_CARDS_ALL = [
 # Defaults
 DEFAULT_NAME = DOMAIN
 DEFAULT_LANGUAGE = "English (GB)"
-DEFAULT_SIDEPANEL_ENABLED = True
+DEFAULT_SIDEPANEL_ENABLED = False
 DEFAULT_SIDEPANEL_TITLE = NAME
 DEFAULT_SIDEPANEL_ICON = "mdi:flower"
 DEFAULT_SIDEPANEL_ADV_ENABLED = False
