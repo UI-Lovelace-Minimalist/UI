@@ -110,7 +110,7 @@ sensor:
     value_template: >-
       {% if value.daysTo == 0 %}
       HEUTE
-      {% elif value.daysTo == 1 %}
+      {% elsif value.daysTo == 1 %}
       MORGEN
       {% else %}
       in {{value.daysTo}} Tagen

@@ -1,4 +1,4 @@
-# Contributing to UI Lovelace Minimalist
+# Contributing to UI Lovelace Minimalist Reborn
 
 >This is a living project and all input is very welcome! If you configured and designed  a card, that you would like to share, please feel free to do so! We are happy to include your contribution so others can use it as well!
 
@@ -20,12 +20,12 @@ These are mostly adaptations and or bugfixes to official cards and their documen
 
 All pull requests need to be checked and approved by at least one admin.
 
-You can find [here](https://ui-lovelace-minimalist.github.io/UI/development/custom_cards/) instructions to develop your own "Custom-cards".
+You can find [here](https://ui-lovelace-minimalist-reborn.github.io/UI/development/custom_cards/) instructions to develop your own "Custom-cards".
 
 ## Guidelines
 
 All the YAML and documentation files need to follow some guidelines to provide consistency.
-These are the most important *guidelines*, click [here](https://ui-lovelace-minimalist.github.io/UI/development/custom_cards/) for the wiki.
+These are the most important *guidelines*, click [here](https://ui-lovelace-minimalist-reborn.github.io/UI/development/custom_cards/) for the wiki.
 
 ### Style and Qualtiy guidelines
 

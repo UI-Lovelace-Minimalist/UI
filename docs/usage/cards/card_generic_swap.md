@@ -32,5 +32,5 @@ This is a `generic-card` with swapped label and name.
 ??? note "Template Code"
 
     ```yaml title="card_generic_swap.yaml"
-    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_generic_swap.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist_reborn/lovelace/ulm_templates/card_templates/cards/card_generic_swap.yaml"
     ```

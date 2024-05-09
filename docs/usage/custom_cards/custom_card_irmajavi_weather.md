@@ -33,10 +33,6 @@ In your `configuration.yaml` you need to create a new sensor in order to use the
   sensors:
     date_long:
       friendly_name: "Date and Day of week"
-      value_template: >
-        {% set months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Agu", "Sep", "Oct", "Nov", "Dic"] %}
-        {% set days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] %}
-        {{ months[now().month-1] }}.{{ now().day }}th. {{ days[now().weekday()] }}
 ```
 
 ## Usage

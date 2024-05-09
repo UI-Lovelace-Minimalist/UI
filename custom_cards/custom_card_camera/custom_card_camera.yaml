@@ -11,7 +11,7 @@ custom_card_camera:
       - padding: |-
           [[[
             if(variables.ulm_custom_card_camera_title)
-              return "12px";
+              return "2% 0 0 0";
             else
               return "0px";
           ]]]
@@ -21,8 +21,8 @@ custom_card_camera:
       - width: "42px"
       - height: "42px"
     grid:
-      - grid-template-areas: "'i item1' 'i item1' 'item2 item2'"
-      - grid-template-columns: "min-content auto"
+      - grid-template-areas: "'item1' 'item2' 'buttons'"
+      - grid-template-columns: "auto"
       - grid-template-rows: "min-content min-content min-content"
       - row-gap: |-
           [[[
@@ -75,5 +75,203 @@ custom_card_camera:
         show_name: false
         show_state: false
         aspect_ratio: "[[[ return variables.ulm_custom_card_camera_aspect_ratio; ]]]"
+    buttons:
+      card:
+        type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            state:
+              - operator: "template"
+                value: "[[[ return !variables.btn_left; ]]]"
+                styles:
+                  card:
+                    - display: "none"
+            template: card_script
+            variables:
+              ulm_card_script_title: ""
+              ulm_card_script_icon: "mdi:arrow-left"
+            tap_action: >
+              [[[
+                let tap = {
+                  action: 'none'
+                };
+
+                if (!variables?.btn_left?.entity_id) {
+                  return tap;
+                }
+
+                if (variables.btn_left.entity_id.indexOf('button.') === 0) {
+                  tap = {
+                    action: 'call-service',
+                    service: 'button.press',
+                    service_data: {
+                      entity_id: variables.btn_left.entity_id
+                    }
+                  };
+                }
+
+                if (variables.btn_left.entity_id.indexOf('camera.') === 0) {
+                  tap = {
+                    action: 'call-service',
+                    service: 'onvif.ptz',
+                    data: {
+                      pan: !variables?.ptz_flip ? 'LEFT' : 'RIGHT'
+                    },
+                    target: {
+                      entity_id: variables.btn_left.entity_id
+                    }
+                  };
+                }
+
+                console.log(tap);
+                return tap;
+              ]]]
+          - type: "custom:button-card"
+            color_type: blank-card
+          - type: "custom:button-card"
+            state:
+              - operator: "template"
+                value: "[[[ return !variables.btn_up; ]]]"
+                styles:
+                  card:
+                    - display: "none"
+            template: card_script
+            variables:
+              ulm_card_script_title: ""
+              ulm_card_script_icon: "mdi:arrow-up"
+            tap_action: >
+              [[[
+                let tap = {
+                  action: 'none'
+                };
+
+                if (!variables?.btn_up?.entity_id) {
+                  return tap;
+                }
+
+                if (variables.btn_up.entity_id.indexOf('button.') === 0) {
+                  tap = {
+                    action: 'call-service',
+                    service: 'button.press',
+                    service_data: {
+                      entity_id: variables.btn_up.entity_id
+                    }
+                  };
+                }
+
+                if (variables.btn_up.entity_id.indexOf('camera.') === 0) {
+                  tap = {
+                    action: 'call-service',
+                    service: 'onvif.ptz',
+                    data: {
+                      tilt: !variables?.ptz_flip ? 'UP' : 'DOWN'
+                    },
+                    target: {
+                      entity_id: variables.btn_up.entity_id
+                    }
+                  };
+                }
+
+                console.log(tap);
+                return tap;
+              ]]]
+          - type: "custom:button-card"
+            color_type: blank-card
+          - type: "custom:button-card"
+            state:
+              - operator: "template"
+                value: "[[[ return !variables.btn_right; ]]]"
+                styles:
+                  card:
+                    - display: "none"
+            template: card_script
+            variables:
+              ulm_card_script_title: ""
+              ulm_card_script_icon: "mdi:arrow-right"
+            tap_action: >
+              [[[
+                let tap = {
+                  action: 'none'
+                };
+
+                if (!variables?.btn_right?.entity_id) {
+                  return tap;
+                }
+
+                if (variables.btn_right.entity_id.indexOf('button.') === 0) {
+                  tap = {
+                    action: 'call-service',
+                    service: 'button.press',
+                    service_data: {
+                      entity_id: variables.btn_right.entity_id
+                    }
+                  };
+                }
+
+                if (variables.btn_right.entity_id.indexOf('camera.') === 0) {
+                  tap = {
+                    action: 'call-service',
+                    service: 'onvif.ptz',
+                    data: {
+                      pan: !variables?.ptz_flip ? 'RIGHT' : 'LEFT'
+                    },
+                    target: {
+                      entity_id: variables.btn_right.entity_id
+                    }
+                  };
+                }
+
+                console.log(tap);
+                return tap;
+              ]]]
+          - type: "custom:button-card"
+            color_type: blank-card
+          - type: "custom:button-card"
+            state:
+              - operator: "template"
+                value: "[[[ return !variables.btn_down; ]]]"
+                styles:
+                  card:
+                    - display: "none"
+            template: card_script
+            variables:
+              ulm_card_script_title: ""
+              ulm_card_script_icon: "mdi:arrow-down"
+            tap_action: >
+              [[[
+                let tap = {
+                  action: 'none'
+                };
+
+                if (!variables?.btn_down?.entity_id) {
+                  return tap;
+                }
+
+                if (variables.btn_down.entity_id.indexOf('button.') === 0) {
+                  tap = {
+                    action: 'call-service',
+                    service: 'button.press',
+                    service_data: {
+                      entity_id: variables.btn_down.entity_id
+                    }
+                  };
+                }
+
+                if (variables.btn_down.entity_id.indexOf('camera.') === 0) {
+                  tap = {
+                    action: 'call-service',
+                    service: 'onvif.ptz',
+                    data: {
+                      tilt: !variables?.ptz_flip ? 'DOWN' : 'UP'
+                    },
+                    target: {
+                      entity_id: variables.btn_down.entity_id
+                    }
+                  };
+                }
+
+                console.log(tap);
+                return tap;
+              ]]]
   tap_action:
     action: "more-info"

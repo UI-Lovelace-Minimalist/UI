@@ -12,7 +12,7 @@ lovelace:
 logger:
   default: "info"
   logs:
-    custom_components.ui_lovelace_minimalist: "debug"
+    custom_components.ui_lovelace_minimalist_reborn: "debug"
 
 browser_mod:
 virtual:

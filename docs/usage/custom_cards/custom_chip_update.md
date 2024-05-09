@@ -21,7 +21,7 @@ Initial release
   template: chip_update
   entity: group.updates
   variables:
-    ulm_chip_update_path: '/ui-lovelace-minimalist/system'
+    ulm_chip_update_path: '/ui-lovelace-minimalist-reborn/system'
 ```
 
 ## Variables
@@ -41,7 +41,7 @@ Initial release
 </tr>
 <tr>
 <td>ulm_chip_update_path</td>
-<td>/ui-lovelace-minimalist/system</td>
+<td>/ui-lovelace-minimalist-reborn/system</td>
 <td>yes</td>
 <td>path to navigate</td>
 </tr>

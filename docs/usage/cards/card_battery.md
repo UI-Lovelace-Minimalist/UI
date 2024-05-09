@@ -47,5 +47,5 @@ The `battery-card` is a slightly enhanced `generic-card`, that can indicate whet
 ??? note "Template Code"
 
     ```yaml title="card_battery.yaml"
-    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_battery.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist_reborn/lovelace/ulm_templates/card_templates/cards/card_battery.yaml"
     ```

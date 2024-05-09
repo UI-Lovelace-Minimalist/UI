@@ -34,5 +34,5 @@ This `chip` is a menu button with an icon using [mdi](https://materialdesignicon
 ??? note "Template Code"
 
     ```yaml title="chip_navigate.yaml"
-    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/chips/chip_navigate.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist_reborn/lovelace/ulm_templates/card_templates/chips/chip_navigate.yaml"
     ```

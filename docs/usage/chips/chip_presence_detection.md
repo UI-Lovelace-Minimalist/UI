@@ -31,5 +31,5 @@ This `chip` shows you the actual presence in your home. Shows residents and gues
 ??? note "Template Code"
 
     ```yaml title="chip_presence_detection.yaml"
-    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/chips/chip_presence_detection.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist_reborn/lovelace/ulm_templates/card_templates/chips/chip_presence_detection.yaml"
     ```

@@ -68,5 +68,5 @@ To use `popup_light` you need to set the variable `ulm_card_light_enable_popup` 
 ??? note "Template Code"
 
     ```yaml title="card_light.yaml"
-    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_light.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist_reborn/lovelace/ulm_templates/card_templates/cards/card_light.yaml"
     ```

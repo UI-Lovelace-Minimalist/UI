@@ -199,7 +199,7 @@ Here is one example, on how you can extend this (actually every) card. In the en
                   template: vertical_buttons
                   tap_action:
                     action: navigate
-                    navigation_path: /ui-lovelace-minimalist/living
+                    navigation_path: /ui-lovelace-minimalist-reborn/living
                   icon: "mdi:sofa"
                   name: Living
                   label: Livingroom
@@ -207,7 +207,7 @@ Here is one example, on how you can extend this (actually every) card. In the en
                   template: vertical_buttons
                   tap_action:
                     action: navigate
-                    navigation_path: /ui-lovelace-minimalist/working
+                    navigation_path: /ui-lovelace-minimalist-reborn/working
                   icon: "mdi:factory"
                   name: Working
                   label: Office
@@ -215,7 +215,7 @@ Here is one example, on how you can extend this (actually every) card. In the en
                   template: vertical_buttons
                   tap_action:
                     action: navigate
-                    navigation_path: /ui-lovelace-minimalist/sleeping
+                    navigation_path: /ui-lovelace-minimalist-reborn/sleeping
                   icon: "mdi:bed-king-outline"
                   name: Sleeping
                   label: Bedroom
@@ -223,7 +223,7 @@ Here is one example, on how you can extend this (actually every) card. In the en
                   template: vertical_buttons
                   tap_action:
                     action: navigate
-                    navigation_path: /ui-lovelace-minimalist/climate
+                    navigation_path: /ui-lovelace-minimalist-reborn/climate
                   icon: "mdi:air-conditioner"
                   name: Air Conditioning
                   label: Livingroom

@@ -97,12 +97,12 @@ This "theme" is designed with an open structure in mind, that's why it is possib
 `Custom-cards` are `cards`, that don't fit everywhere and therefore are not part of the standard installation, but can be easily added, if needed. Take an air-condition card. Not everybody has an air-condition. So why include this `card` as a default? And that's why we did a structure and system for `custom-cards`. Easily added, but only when needed!
 And the best thing is: everybody can develop a cool `card` and can (not have to) share it afterwards with the community (hint, hint, the support thread is [here](https://community.home-assistant.io/t/lovelace-ui-minimalist/322687)).
 
-See a complete list of already included `custom-cards` in our [wiki](https://ui-lovelace-minimalist.github.io/UI/usage/custom_cards/custom_card_bar_card/).
+See a complete list of already included `custom-cards` in our [wiki](https://ui-lovelace-minimalist-reborn.github.io/UI/usage/custom_cards/custom_card_bar_card/).
 
-Find information on how to develop a `custom-card` [here](https://ui-lovelace-minimalist.github.io/UI/development/custom_cards/).
+Find information on how to develop a `custom-card` [here](https://ui-lovelace-minimalist-reborn.github.io/UI/development/custom_cards/).
 
 ### Extend with your own code
 
 As we tried to be as modular as possible (and useful), it is easy to enhance or extend the code, we provide with your own definitions. That means for you, you can inherit every template to enhance it only with functions, you really want. No need to copy full blocks of code - just inherit and enhance only where changes are needed.
 
-We provided some instructions in our wiki, see [this page](https://ui-lovelace-minimalist.netlify.app/usage/changing_template).
+We provided some instructions in our wiki, see [this page](https://ui-lovelace-minimalist-reborn.netlify.app/usage/changing_template).

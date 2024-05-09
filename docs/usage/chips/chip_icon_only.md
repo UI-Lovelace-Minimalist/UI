@@ -29,5 +29,5 @@ This `chip` displays just an icon.
 ??? note "Template Code"
 
     ```yaml title="chip_icon_only.yaml"
-    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/chips/chip_icon_only.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist_reborn/lovelace/ulm_templates/card_templates/chips/chip_icon_only.yaml"
     ```

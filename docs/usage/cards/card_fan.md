@@ -105,5 +105,5 @@ Rather than deprecate and many breaking changes on that card for users, this new
 ??? note "Template Code"
 
     ```yaml title="card_fan.yaml"
-    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_fan.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist_reborn/lovelace/ulm_templates/card_templates/cards/card_fan.yaml"
     ```

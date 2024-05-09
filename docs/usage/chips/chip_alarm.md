@@ -28,5 +28,5 @@ Alarm `chip` that displays alarm armed and disarmed state with colored icon.
 ??? note "Template Code"
 
     ```yaml title="chip_alarm.yaml"
-    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/chips/chip_alarm.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist_reborn/lovelace/ulm_templates/card_templates/chips/chip_alarm.yaml"
     ```

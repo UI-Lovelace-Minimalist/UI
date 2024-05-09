@@ -11,7 +11,7 @@ You can find your ui-minimalist-lovelace file here:
 
 ```yaml
 config
-└── ui_lovelace_minimalist
+└── ui_lovelace_minimalist_reborn
     ├── custom_cards
     └── dashboard
         └── ui-lovelace.yaml
@@ -22,7 +22,7 @@ It should look like this:
 ??? note "ui-lovelace.yaml"
 
     ```yaml
-    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ui-lovelace.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist_reborn/lovelace/ui-lovelace.yaml"
     ```
 
 ## How to customize the dashboard
@@ -31,13 +31,13 @@ You can customize your dashboard like any other YAML-based lovelace dashboard.
 
 !!! warning ""
     UI-mode is not yet supported
-So first let add some cards. These can be found on the [Wiki](https://ui-lovelace-minimalist.github.io/UI/usage/cards/card_battery/). As an example we will add the [`card_light`](https://ui-lovelace-minimalist.github.io/UI/usage/cards/card_light/) and [`card_vacuum`](https://ui-lovelace-minimalist.github.io/UI/usage/cards/card_vacuum/) next to each other with help of a `horizontal-stack`. Please read carefully the wiki-page of each of the cards to understand their specific variables.
+So first let add some cards. These can be found on the [Wiki](https://ui-lovelace-minimalist-reborn.github.io/UI/usage/cards/card_battery/). As an example we will add the [`card_light`](https://ui-lovelace-minimalist-reborn.github.io/UI/usage/cards/card_light/) and [`card_vacuum`](https://ui-lovelace-minimalist-reborn.github.io/UI/usage/cards/card_vacuum/) next to each other with help of a `horizontal-stack`. Please read carefully the wiki-page of each of the cards to understand their specific variables.
 
 ```yaml
 ---
-button_card_templates: !include_dir_merge_named "../../custom_components/ui_lovelace_minimalist/__ui_minimalist__/ulm_templates/"
+button_card_templates: !include_dir_merge_named "../../custom_components/ui_lovelace_minimalist_reborn/__ui_minimalist__/ulm_templates/"
 
-title: "UI Lovelace Minimalist"
+title: "UI Lovelace Minimalist Reborn"
 theme: "minimalist-desktop"
 background: "var(--background-image)"
 # views: !include_dir_merge_list "views/"
@@ -107,7 +107,7 @@ For the first dashboard we did all the configuration for you. To add a second on
 
 ```yaml
 config
-└── ui_lovelace_minimalist
+└── ui_lovelace_minimalist_reborn
     ├── custom_cards
     └── dashboard
         └── ui-lovelace.yaml
@@ -126,18 +126,18 @@ lovelace:
       title: Minimalist 2
       icon: mdi:flower
       show_in_sidebar: true
-      filename: ui_lovelace_minimalist/dashboard/ui-lovelace_2.yaml
+      filename: ui_lovelace_minimalist_reborn/dashboard/ui-lovelace_2.yaml
 ```
 
 !!! note ""
     You don't need to add the first dashboard which is installed with the integration
 
-As mentioned on the [configuration page](https://ui-lovelace-minimalist.github.io/UI/setup/configuration/) you need to add a line of code to load in all Minimalist card templates. <br>
+As mentioned on the [configuration page](https://ui-lovelace-minimalist-reborn.github.io/UI/setup/configuration/) you need to add a line of code to load in all Minimalist card templates. <br>
 The start of each new dashboard file should therefore, look like this:
 
 ```yaml
 ---
-button_card_templates: !include_dir_merge_named "../../custom_components/ui_lovelace_minimalist/__ui_minimalist__/ulm_templates/"
+button_card_templates: !include_dir_merge_named "../../custom_components/ui_lovelace_minimalist_reborn/__ui_minimalist__/ulm_templates/"
 
 title: "My new dashboard"
 theme: "minimalist-desktop"

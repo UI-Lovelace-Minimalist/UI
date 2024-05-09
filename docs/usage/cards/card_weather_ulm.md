@@ -32,5 +32,5 @@ This is a card to show your weather without usage of custom resources.
 ??? note "Template Code"
 
     ```yaml title="card_weather.yaml"
-    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_weather_ulm.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist_reborn/lovelace/ulm_templates/card_templates/cards/card_weather_ulm.yaml"
     ```

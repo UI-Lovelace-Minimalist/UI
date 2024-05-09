@@ -4,17 +4,23 @@ name: "Pages"
 on:
   push:
     # Should only run on "main" since we dont want any "dev" changes in our docs before release
-    branches: ["main"]
+    branches: [ "main" ]
 
 jobs:
   deploy:
     runs-on: "ubuntu-latest"
     steps:
-      - uses: "actions/checkout@v3"
-        with:
-          node-version: "16.x"
-      - uses: "actions/setup-python@v4"
-        with:
-          python-version: "3.11"
-      - run: "pip install mkdocs-material mkdocs-awesome-pages-plugin"
-      - run: "mkdocs gh-deploy --force"
+      - uses: "actions/checkout@v4"
+      - name: Deploy docs
+        uses: mhausenblas/mkdocs-deploy-gh-pages@master
+        # Or use mhausenblas/mkdocs-deploy-gh-pages@nomaterial to build without the mkdocs-material theme
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # GITHUB_DOMAIN: github.myenterprise.com
+          REQUIREMENTS: requirements_dev.txt
+
+#      - uses: "actions/setup-python@v5"
+#        with:
+#          python-version: "3.11"
+#      - run: "pip install mkdocs-material mkdocs-awesome-pages-plugin"
+#      - run: "mkdocs gh-deploy --force"

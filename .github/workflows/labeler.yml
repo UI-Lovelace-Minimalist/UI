@@ -10,10 +10,12 @@ jobs:
   labeler:
     name: "Labeler"
     runs-on: "ubuntu-latest"
+    permissions:
+      issues: write
     steps:
       - name: "⤵️ Check out code from GitHub"
-        uses: "actions/checkout@v3"
+        uses: "actions/checkout@v4"
       - name: "\U0001F680 Run Labeler"
-        uses: "crazy-max/ghaction-github-labeler@v4"
+        uses: "crazy-max/ghaction-github-labeler@v5"
         with:
           skip-delete: false

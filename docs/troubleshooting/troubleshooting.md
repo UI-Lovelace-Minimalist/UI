@@ -10,14 +10,14 @@ hide:
 Most times reloading the integration and emptying the cache can resolve most problems. <br>
 This is done by:
 
-1. Hit `C` and click reload `Ui_lovelace_minimalist`
+1. Hit `C` and click reload `ui_lovelace_minimalist_reborn`
 2. Clear your cache by clicking `CTRL + F5` on Windows or `SHIFT + reload` on Mac
 
 ### Most common errors
 
 ??? info "Not everything is loaded after installation"
 
-    1. Check if you have installed all dependencies of this [list](https://ui-lovelace-minimalist.github.io/UI/setup/download/#prerequisites_1).
+    1. Check if you have installed all dependencies of this [list](https://ui-lovelace-minimalist-reborn.github.io/UI/setup/download/#prerequisites_1).
     2. Clear your cache by clicking `CTRL + F5` on Windows or `SHIFT + reload` on Mac
 
 ??? info "The theme looks off/weird"
@@ -37,7 +37,7 @@ This is done by:
 
 ??? info "Custom element doesn't exist"
 
-    1. Check if you did install all [dependencies](https://ui-lovelace-minimalist.github.io/UI/setup/download/#prerequisites_1) or checked the box to let UI-Minimalist them.
+    1. Check if you did install all [dependencies](https://ui-lovelace-minimalist-reborn.github.io/UI/setup/download/#prerequisites_1) or checked the box to let UI-Minimalist them.
     2. (additional) If the dependencies are installed manually check if all resources are added right. [![Open your Home Assistant instance and show your dashboard resources.](https://my.home-assistant.io/badges/lovelace_resources.svg)](https://my.home-assistant.io/redirect/lovelace_resources/)
     3. Clear your cache by clicking `CTRL + F5` on Windows or `SHIFT + reload` on Mac.
 
@@ -52,7 +52,7 @@ This is done by:
     1. Check if you placed the custom_card in the right directory
     ```yaml
     config
-        └── ui_lovelace_minimalist
+        └── ui_lovelace_minimalist_reborn
             ├── custom_cards
             |   ├── custom_card_1
             |   |   ├── custom_card_1.yaml
@@ -62,7 +62,7 @@ This is done by:
             |       └── EN.yaml
             └── dashboard
     ```
-    2. Hit `C` and click reload `Ui_lovelace_minimalist`
+    2. Hit `C` and click reload `ui_lovelace_minimalist_reborn`
     3. Reload dashboard by clicking the three dots in the upper-right corner and click refresh
 
 ??? info "HACS Frontend resources are not showing up in `https://homeassistant.local/config/lovelace/resources`"

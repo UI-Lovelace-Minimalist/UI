@@ -170,10 +170,7 @@ template:
   - sensor:
       - unique_id: washer_remaining_time
         name: "Remaining Time"
-        state: >-
-          {% set rem_h = (as_timestamp(states.sensor.washer_completion_time.state) - as_timestamp(now())) | timestamp_custom("%-H", false) %}
-          {% set rem_m = (as_timestamp(states.sensor.washer_completion_time.state) - as_timestamp(now())) | timestamp_custom("%-M", false) %}
-          {% if int(rem_h) > 0.9 %} {{ rem_h }} hour(s) and {{ rem_m }} minute(s)  {% else %} {{ rem_m }} minute(s) {% endif %}
+
 ```
 
 ## Additional: Control the washing machine of dryer remotely

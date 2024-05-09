@@ -62,5 +62,5 @@ This card merges the following one :
 ??? note "Template Code"
 
     ```yaml title="card_thermostat.yaml"
-    --8<-- "custom_components/ui_lovelace_minimalist/lovelace/ulm_templates/card_templates/cards/card_thermostat.yaml"
+    --8<-- "custom_components/ui_lovelace_minimalist_reborn/lovelace/ulm_templates/card_templates/cards/card_thermostat.yaml"
     ```
