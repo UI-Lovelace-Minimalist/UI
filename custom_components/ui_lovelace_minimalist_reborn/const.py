@@ -6,7 +6,8 @@ NAME = "UI Lovelace Minimalist Reborn"
 DOMAIN = "ui_lovelace_minimalist_reborn"
 DOMAIN_DATA = f"{DOMAIN}_data"
 VERSION = "0.0.1"
-CLIENT_ID = "c1603968d9d29a2492df"
+# CLIENT_ID = "c1603968d9d29a2492df"
+CLIENT_ID = "Ov23liMdXkm5yblwZxDH"
 
 TV = TypeVar("TV")
 
