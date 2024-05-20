@@ -30,6 +30,7 @@ hide:
 | ulm_card_media_player_enable_volume_buttons  | false   |                  | Enable volume buttons below controls            |
 | ulm_card_media_player_enable_volume_adjust  | 5       |                  | Volume Adjust Amount - if not set then 1 for TV and 5 for Speaker |
 | ulm_card_media_player_collapsible            | false   |                  | Controls are collapsible when state is off      |
+| ulm_card_media_player_idle_off               | false   |                  | If true "idle" states will count as "off" for collapse |
 | ulm_card_media_player_player_controls_entity | entity  |                  | Change the controlled entity                    |
 | ulm_card_media_player_enable_popup           | false   |                  | Enable pop-up                                   |
 | ulm_card_media_player_more_info              | false   |                  | Displays artist and album info in the sub-label |
