@@ -9,3 +9,4 @@ custom_card_eraycetinay_lock_language_variables:
     ulm_custom_card_eraycetinay_lock_jammed: "jammed"
     ulm_custom_card_eraycetinay_lock_locked_and_opened: "The door is locked but still open."
     ulm_custom_card_eraycetinay_lock_battery_is_at: "Battery is at"
+    ulm_custom_card_eraycetinay_lock_battery_is_low: "Battery is low"
