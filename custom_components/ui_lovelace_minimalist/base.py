@@ -222,6 +222,17 @@ class UlmBase:
             raise Exception(_exception)
         return None
 
+    def list_dirs(self) -> list:
+        """Create directory list."""
+
+        self.log.debug("Create directory list")
+
+        dir_list = []
+        for entry in os.scandir(self.community_cards_dir):
+            if entry.is_dir():
+                dir_list.append(entry.path)
+        return dir_list
+
     async def fetch_cards(self) -> None:
         """Fetch list of cards."""
         response = await self.async_github_api_method(
@@ -252,9 +263,7 @@ class UlmBase:
                 )
             )
         elif self.configuration.community_cards_enabled:
-            existing_cards = [
-                f.path for f in os.scandir(self.community_cards_dir) if f.is_dir()
-            ]
+            existing_cards = await self.hass.async_add_executor_job(self.list_dirs)
             for e in existing_cards:
                 card_dir = os.path.basename(e)
                 # Delete unselected folders
