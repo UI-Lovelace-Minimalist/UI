@@ -1,11 +1,12 @@
 """Constants for UI Lovelace Minimalist."""
+
 from typing import TypeVar
 
 # Base component constants
 NAME = "UI Lovelace Minimalist"
 DOMAIN = "ui_lovelace_minimalist"
 DOMAIN_DATA = f"{DOMAIN}_data"
-VERSION = "0.0.1"
+VERSION = "0.0.2"
 CLIENT_ID = "c1603968d9d29a2492df"
 
 TV = TypeVar("TV")
@@ -15,7 +16,7 @@ PACKAGE_NAME = "custom_components.ui_lovelace_minimlist"
 ATTRIBUTION = "Data provided by http://jsonplaceholder.typicode.com/"
 ISSUE_URL = "https://github.com/stokkie90/ui-lovelace-minimalist/issues"
 
-GITHUB_REPO = "UI-Lovelace-Minimalist/UI"
+GITHUB_REPO = "wilbiev/UI"
 COMMUNITY_CARDS_FOLDER = "custom_cards"
 
 LANGUAGES = {
