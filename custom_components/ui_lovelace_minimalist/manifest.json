@@ -2,7 +2,7 @@
   "domain": "ui_lovelace_minimalist",
   "name": "UI Lovelace Minimalist",
   "codeowners": [
-    "@stokkie90"
+    "@stokkie90, @wilbiev"
   ],
   "config_flow": true,
   "dependencies": [
@@ -17,5 +17,5 @@
     "aiofiles==0.8.0",
     "aiogithubapi>=22.2.4"
   ],
-  "version": "0.0.1"
+  "version": "0.0.2"
 }

@@ -1,0 +1,14 @@
+---
+ulm_custom_card_wilbiev_entities_language_variables:
+  variables:
+    ulm_custom_card_wilbiev_entities_0: "Inactive"
+    ulm_custom_card_wilbiev_entities_1: "Manual"
+    ulm_custom_card_wilbiev_entities_2: "Automatic"
+    ulm_custom_card_wilbiev_entities_3: "Delay"
+    ulm_custom_card_wilbiev_entities_on: "On"
+    ulm_custom_card_wilbiev_entities_off: "Off"
+    ulm_custom_card_wilbiev_entities_available: "Available"
+    ulm_custom_card_wilbiev_entities_unavailable: "Unavailable"
+    ulm_custom_card_wilbiev_entities_idle: "Idle"
+    ulm_custom_card_wilbiev_entities_open: "Open"
+    ulm_custom_card_wilbiev_entities_closed: "Closed"

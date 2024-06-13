@@ -1,5 +1,5 @@
 ---
-custom_card_mpse_printer:
+custom_card_wilbiev_printer:
   show_icon: false
   show_name: false
   show_label: false
@@ -23,7 +23,7 @@ custom_card_mpse_printer:
           ]]]
         template:
           - "icon_info"
-          - "custom_card_mpse_printer_blue"
+          - "custom_card_wilbiev_printer_blue"
         styles:
           card:
             - padding: "12px"
@@ -33,7 +33,7 @@ custom_card_mpse_printer:
         type: "custom:bar-card"
         height: "20px"
         positions:
-          name: off
+          name: "BK"
           value: "inside"
           icon: off
           indicator: off
@@ -93,7 +93,7 @@ custom_card_mpse_printer:
             bar-card-backgroundbar{
               display: none;
             }
-              bar-card-name{
+            bar-card-name{
               width: 2rem;
               margin-right: 40px !important;
             }
@@ -204,7 +204,8 @@ custom_card_mpse_printer:
             #states{
               padding: 0 16px 16px 16px;
             }
-custom_card_mpse_printer_blue:
+
+custom_card_wilbiev_printer_blue:
   state:
     - styles:
         icon:
@@ -220,5 +221,5 @@ custom_card_mpse_printer_blue:
       operator: "template"
       value: >
         [[[
-          return entity.state!="idle" ? true : false
+          return entity.state!="unavailable" ? true : false
         ]]]

@@ -1,0 +1,103 @@
+---
+### WILBIEV VERTICAL CARD ###
+custom_card_wilbiev_vertical:
+  variables:
+    ulm_custom_card_wilbiev_vertical_color: "blue"
+    ulm_custom_card_wilbiev_vertical_state: "on"
+    ulm_custom_card_wilbiev_vertical_force_color: false
+  show_label: true
+  label: ""
+  name: |
+    [[[
+      if( entity.entity_id.startsWith("input_select.") )
+        return variables.ulm_custom_card_wilbiev_vertical_state;
+      else if( entity.entity_id.startsWith("input_boolean.") )
+        return "";
+      else if( entity.entity_id.startsWith("button.") )
+        return "";
+      return entity.state;
+    ]]]
+  styles:
+    icon:
+      - color: "rgba(var(--color-theme),0.2)"
+    label:
+      - justify-self: "center"
+      - align-self: "start"
+      - font-weight: "bolder"
+      - font-size: "12px"
+      - filter: "opacity(40%)"
+    name:
+      - margin-top: "10px"
+      - justify-self: "center"
+      - font-weight: "bold"
+      - font-size: "14px"
+    img_cell:
+      - background-color: "rgba(var(--color-theme),0.05)"
+      - border-radius: "50%"
+      - place-self: "center"
+      - width: "42px"
+      - height: "42px"
+    grid:
+      - grid-template-areas: "'i' 'n' 'l'"
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "10px 0px 8px 0px"
+  size: "20px"
+  state:
+    - operator: "template"
+      value: |
+        [[[
+          if( variables.ulm_custom_card_wilbiev_vertical_force_color )
+            return true;
+          return entity.state == variables.ulm_custom_card_wilbiev_vertical_state;
+        ]]]
+      styles:
+        icon:
+          - color: "[[[ return `rgba(var(--color-${variables.ulm_custom_card_wilbiev_vertical_color}), 1)`; ]]]"
+        label:
+          - color: "[[[ return `rgba(var(--color-${variables.ulm_custom_card_wilbiev_vertical_color}-text), 1)`; ]]]"
+        name:
+          - color: "[[[ return `rgba(var(--color-${variables.ulm_custom_card_wilbiev_vertical_color}-text), 1)`; ]]]"
+        img_cell:
+          - background-color: "[[[ return `rgba(var(--color-${variables.ulm_custom_card_wilbiev_vertical_color}), 0.2)`; ]]]"
+        card:
+          - background-color: "[[[ return `rgba(var(--color-background-${variables.ulm_custom_card_wilbiev_vertical_color}), var(--opacity-bg))`; ]]]"
+  tap_action:
+    action: "call-service"
+    service: |
+      [[[
+        if( entity.entity_id.startsWith("input_select.") )
+          return "input_select.select_option";
+        if( entity.entity_id.startsWith("input_boolean.") )
+          return "input_boolean.toggle";
+        if( entity.entity_id.startsWith("switch.") )
+          return "switch.toggle";
+        if( entity.entity_id.startsWith("valve.") )
+          return "valve.toggle";
+        if( entity.entity_id.startsWith("light.") )
+          return "light.toggle";
+        if( entity.entity_id.startsWith("automation.") )
+          return "automation.toggle";
+        if( entity.entity_id.startsWith("input_button.") )
+          return "input_button.press";
+        if( entity.entity_id.startsWith("fan.") )
+          return "fan.toggle";
+        if( entity.entity_id.startsWith("vacuum.") )
+          return "vacuum.toggle";
+        if( entity.entity_id.startsWith("script.") )
+          return "script.toggle";
+        if( entity.entity_id.startsWith("button.") )
+          return "button.press";
+        // If we need to support other entities we can add these options here.
+        return "";
+      ]]]
+    service_data: |
+      [[[
+        var obj;
+        if( entity.entity_id.startsWith("input_select.") )
+          obj = { entity_id: entity.entity_id, option: variables.ulm_custom_card_wilbiev_vertical_state };
+        else
+          obj = { entity_id: entity.entity_id };
+        return obj;
+      ]]]
