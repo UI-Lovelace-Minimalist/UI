@@ -136,6 +136,13 @@ async def async_remove_entry(hass: HomeAssistant, config_entry: ConfigEntry):
     async_remove_panel(hass, "ui-lovelace-minimalist")
 
 
+async def async_reload_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> None:
+    """Reload Integration."""
+    _LOGGER.debug("Reload the config entry")
+
+    await async_setup_entry(hass, config_entry)
+
+
 async def config_entry_update_listener(
     hass: HomeAssistant, config_entry: ConfigEntry
 ) -> None:
