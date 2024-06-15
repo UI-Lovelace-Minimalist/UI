@@ -2,30 +2,20 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Python: Attach Local",
-      "type": "python",
-      "request": "attach",
-      "port": 5678,
-      "host": "localhost",
-      "pathMappings": [
-        {
-          "localRoot": "${workspaceFolder}",
-          "remoteRoot": "."
-        }
-      ]
+      "name": "Python: Module",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "path.to.module",
+      "args": ["run_example --arg <arg>"],
+      "justMyCode": true
     },
     {
-      "name": "Python: Attach Remote",
-      "type": "python",
-      "request": "attach",
-      "port": 5678,
-      "host": "homeassistant.local",
-      "pathMappings": [
-        {
-          "localRoot": "${workspaceFolder}",
-          "remoteRoot": "/usr/src/homeassistant"
-        }
-      ]
+      "name": "Python: Current File",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "justMyCode": true
     }
   ]
 }
