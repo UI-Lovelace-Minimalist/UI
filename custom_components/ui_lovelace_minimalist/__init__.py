@@ -6,9 +6,7 @@ import logging
 from typing import Any
 
 from aiogithubapi import AIOGitHubAPIException, GitHubAPI
-
 from homeassistant.components.frontend import async_remove_panel
-
 from homeassistant.config_entries import SOURCE_IMPORT, ConfigEntry
 from homeassistant.core import Config, HomeAssistant
 from homeassistant.helpers.aiohttp_client import async_get_clientsession

@@ -17,7 +17,6 @@ from aiogithubapi import (
     GitHubNotModifiedException,
     GitHubRatelimitException,
 )
-
 from homeassistant.components.frontend import add_extra_js_url, async_remove_panel
 from homeassistant.components.lovelace import _register_panel
 from homeassistant.components.lovelace.dashboard import LovelaceYAML
@@ -415,9 +414,9 @@ class UlmBase:
                 async_remove_panel(self.hass, "ui-lovelace-minimalist")
 
             if self.configuration.adaptive_ui_enabled:
-                self.hass.data["lovelace"]["dashboards"][adv_dashboard_url] = (
-                    LovelaceYAML(self.hass, adv_dashboard_url, adv_dashboard_config)
-                )
+                self.hass.data["lovelace"]["dashboards"][
+                    adv_dashboard_url
+                ] = LovelaceYAML(self.hass, adv_dashboard_url, adv_dashboard_config)
 
                 _register_panel(
                     self.hass, adv_dashboard_url, "yaml", adv_dashboard_config, True
