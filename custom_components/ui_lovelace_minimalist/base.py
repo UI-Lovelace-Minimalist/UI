@@ -1,7 +1,9 @@
 """Base UI Lovelace Minimalist class."""
+
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass, field
+from functools import partial
 import logging
 import os
 import pathlib
@@ -85,7 +87,7 @@ class UlmConfiguration:
 
     def to_json(self) -> str:
         """Return a json string."""
-        return asdict(self)
+        return str(asdict(self))
 
     def update_from_dict(self, data: dict) -> None:
         """Set attributes from dicts."""
@@ -159,7 +161,9 @@ class UlmBase:
 
         try:
             await self.hass.async_add_executor_job(_write_file)
-        except BaseException as error:  # lgtm [py/catch-base-exception] pylint: disable=broad-except
+        except (
+            BaseException
+        ) as error:  # lgtm [py/catch-base-exception] pylint: disable=broad-except
             self.log.error(f"Could not write data to {file_path} - {error}")
             return False
 
@@ -208,13 +212,25 @@ class UlmBase:
             raise exception
         except GitHubException as exception:
             _exception = exception
-        except BaseException as exception:  # lgtm [py/catch-base-exception] pylint: disable=broad-except
-            self.log.exception(exception)
+        except (
+            BaseException
+        ) as exception:  # lgtm [py/catch-base-exception] pylint: disable=broad-except
             _exception = exception
 
         if raise_exception and _exception is not None:
             raise Exception(_exception)
         return None
+
+    def list_dirs(self) -> list:
+        """Create directory list."""
+
+        self.log.debug("Create directory list")
+
+        dir_list = []
+        for entry in os.scandir(self.community_cards_dir):
+            if entry.is_dir():
+                dir_list.append(entry.path)
+        return dir_list
 
     async def fetch_cards(self) -> None:
         """Fetch list of cards."""
@@ -240,11 +256,13 @@ class UlmBase:
             not self.configuration.community_cards_enabled
             or self.configuration.community_cards == []
         ):
-            shutil.rmtree(f"{self.community_cards_dir}/", ignore_errors=True)
+            self.hass.async_add_executor_job(
+                partial(
+                    shutil.rmtree, f"{self.community_cards_dir}/", ignore_errors=True
+                )
+            )
         elif self.configuration.community_cards_enabled:
-            existing_cards = [
-                f.path for f in os.scandir(self.community_cards_dir) if f.is_dir()
-            ]
+            existing_cards = await self.hass.async_add_executor_job(self.list_dirs)
             for e in existing_cards:
                 card_dir = os.path.basename(e)
                 # Delete unselected folders
@@ -252,12 +270,16 @@ class UlmBase:
                     self.log.debug(
                         f"Deleting community card folder {card_dir}, not selected anymore."
                     )
-                    shutil.rmtree(e, ignore_errors=True)
+                    self.hass.async_add_executor_job(
+                        partial(shutil.rmtree, e, ignore_errors=True)
+                    )
                 if card_dir not in self.configuration.all_community_cards:
                     self.log.debug(
                         f"Deleting community card folder {card_dir}, that is not existing anymore on Github."
                     )
-                    shutil.rmtree(e, ignore_errors=True)
+                    self.hass.async_add_executor_job(
+                        partial(shutil.rmtree, e, ignore_errors=True)
+                    )
 
             for card in self.configuration.community_cards:
                 if card not in self.configuration.all_community_cards:
@@ -302,6 +324,7 @@ class UlmBase:
     async def configure_plugins(self) -> bool:
         """Configure the Plugins ULM depends on."""
         self.log.debug("Checking Dependencies.")
+        self.log.info("Setup ULM Plugins")
 
         try:
             if not os.path.exists(
@@ -328,11 +351,10 @@ class UlmBase:
                         self.log.error(
                             f'HACS Frontend repo "{p}" is not installed, See Integration Configuration.'
                         )
-                else:
-                    if os.path.exists(self.hass.config.path(f"www/community/{p}")):
-                        _LOGGER.error(
-                            f'HACS Frontend repo "{p}" is already installed, Remove it or disable include custom cards'
-                        )
+                elif os.path.exists(self.hass.config.path(f"www/community/{p}")):
+                    _LOGGER.error(
+                        f'HACS Frontend repo "{p}" is already installed, Remove it or disable include custom cards'
+                    )
 
             if self.configuration.include_other_cards:
                 for c in depenceny_resource_paths:
@@ -356,6 +378,7 @@ class UlmBase:
 
     async def configure_dashboard(self) -> bool:
         """Configure the ULM Dashboards."""
+        self.log.info("Setup ULM Dashboard")
 
         dashboard_url = "ui-lovelace-minimalist"
         dashboard_config = {
@@ -387,9 +410,8 @@ class UlmBase:
                 _register_panel(
                     self.hass, dashboard_url, "yaml", dashboard_config, True
                 )
-            else:
-                if dashboard_url in self.hass.data["lovelace"]["dashboards"]:
-                    async_remove_panel(self.hass, "ui-lovelace-minimalist")
+            elif dashboard_url in self.hass.data["lovelace"]["dashboards"]:
+                async_remove_panel(self.hass, "ui-lovelace-minimalist")
 
             if self.configuration.adaptive_ui_enabled:
                 self.hass.data["lovelace"]["dashboards"][
@@ -399,9 +421,8 @@ class UlmBase:
                 _register_panel(
                     self.hass, adv_dashboard_url, "yaml", adv_dashboard_config, True
                 )
-            else:
-                if adv_dashboard_url in self.hass.data["lovelace"]["dashboards"]:
-                    async_remove_panel(self.hass, "adaptive-dash")
+            elif adv_dashboard_url in self.hass.data["lovelace"]["dashboards"]:
+                async_remove_panel(self.hass, "adaptive-dash")
 
         except Exception as exception:
             self.log.error(exception)
@@ -415,12 +436,21 @@ class UlmBase:
         self.log.info("Setup ULM Configuration")
 
         try:
-
             # Cleanup
-            shutil.rmtree(
-                self.hass.config.path(f"{DOMAIN}/configs"), ignore_errors=True
+            self.hass.async_add_executor_job(
+                partial(
+                    shutil.rmtree,
+                    self.hass.config.path(f"{DOMAIN}/configs"),
+                    ignore_errors=True,
+                )
             )
-            shutil.rmtree(self.hass.config.path(f"{DOMAIN}/addons"), ignore_errors=True)
+            self.hass.async_add_executor_job(
+                partial(
+                    shutil.rmtree,
+                    self.hass.config.path(f"{DOMAIN}/addons"),
+                    ignore_errors=True,
+                )
+            )
             # Create config dir
             os.makedirs(self.hass.config.path(f"{DOMAIN}/dashboard"), exist_ok=True)
             os.makedirs(self.hass.config.path(f"{DOMAIN}/custom_cards"), exist_ok=True)
@@ -435,7 +465,8 @@ class UlmBase:
                 language = LANGUAGES[self.configuration.language]
 
                 # Copy default language file over to config dir
-                shutil.copy2(
+                self.hass.async_add_executor_job(
+                    shutil.copy2,
                     f"{self.integration_dir}/lovelace/translations/default.yaml",
                     f"{self.templates_dir}/default.yaml",
                 )
@@ -444,7 +475,8 @@ class UlmBase:
                     if not os.path.exists(
                         self.hass.config.path(f"{DOMAIN}/dashboard/ui-lovelace.yaml")
                     ):
-                        shutil.copy2(
+                        self.hass.async_add_executor_job(
+                            shutil.copy2,
                             f"{self.integration_dir}/lovelace/ui-lovelace.yaml",
                             self.hass.config.path(
                                 f"{DOMAIN}/dashboard/ui-lovelace.yaml"
@@ -455,7 +487,8 @@ class UlmBase:
                     if not os.path.exists(
                         self.hass.config.path(f"{DOMAIN}/dashboard/adaptive-dash")
                     ):
-                        shutil.copytree(
+                        self.hass.async_add_executor_job(
+                            shutil.copytree,
                             f"{self.integration_dir}/lovelace/adaptive-dash",
                             self.hass.config.path(f"{DOMAIN}/dashboard/adaptive-dash"),
                         )
@@ -463,42 +496,56 @@ class UlmBase:
                 if not os.path.exists(
                     self.hass.config.path(
                         f"{DOMAIN}/custom_actions/custom_actions.yaml"
-                    )
+                    ),
                 ):
-                    shutil.copy2(
+                    self.hass.async_add_executor_job(
+                        shutil.copy2,
                         f"{self.integration_dir}/lovelace/custom_actions.yaml",
                         self.hass.config.path(
                             f"{DOMAIN}/custom_actions/custom_actions.yaml"
                         ),
                     )
                 # Copy chosen language file over to config dir
-                shutil.copy2(
+                self.hass.async_add_executor_job(
+                    shutil.copy2,
                     f"{self.integration_dir}/lovelace/translations/{language}.yaml",
                     f"{self.templates_dir}/language.yaml",
                 )
                 # Copy over cards from integration
-                shutil.copytree(
-                    f"{self.integration_dir}/lovelace/ulm_templates",
-                    f"{self.templates_dir}",
-                    dirs_exist_ok=True,
+                self.hass.async_add_executor_job(
+                    partial(
+                        shutil.copytree,
+                        f"{self.integration_dir}/lovelace/ulm_templates",
+                        f"{self.templates_dir}",
+                        dirs_exist_ok=True,
+                    ),
                 )
                 # Copy over manually installed custom_cards from user
-                shutil.copytree(
-                    self.hass.config.path(f"{DOMAIN}/custom_cards"),
-                    f"{self.templates_dir}/custom_cards",
-                    dirs_exist_ok=True,
+                self.hass.async_add_executor_job(
+                    partial(
+                        shutil.copytree,
+                        self.hass.config.path(f"{DOMAIN}/custom_cards"),
+                        f"{self.templates_dir}/custom_cards",
+                        dirs_exist_ok=True,
+                    ),
                 )
                 # Copy over manually installed custom_actions from user
-                shutil.copytree(
-                    self.hass.config.path(f"{DOMAIN}/custom_actions"),
-                    f"{self.templates_dir}/custom_actions",
-                    dirs_exist_ok=True,
+                self.hass.async_add_executor_job(
+                    partial(
+                        shutil.copytree,
+                        self.hass.config.path(f"{DOMAIN}/custom_actions"),
+                        f"{self.templates_dir}/custom_actions",
+                        dirs_exist_ok=True,
+                    ),
                 )
                 # Copy over themes to defined themes folder
-                shutil.copytree(
-                    f"{self.integration_dir}/lovelace/themefiles",
-                    self.hass.config.path(f"{self.configuration.theme_path}/"),
-                    dirs_exist_ok=True,
+                self.hass.async_add_executor_job(
+                    partial(
+                        shutil.copytree,
+                        f"{self.integration_dir}/lovelace/themefiles",
+                        self.hass.config.path(f"{self.configuration.theme_path}/"),
+                        dirs_exist_ok=True,
+                    ),
                 )
 
             self.hass.bus.async_fire("ui_lovelace_minimalist_reload")
@@ -520,18 +567,25 @@ class UlmBase:
 
     def reload_configuration(self):
         """Reload Configuration."""
+        self.log.info("Reload ULM Configuration")
         if os.path.exists(self.hass.config.path(f"{DOMAIN}/custom_cards")):
             # Copy over manually installed custom_cards from user
-            shutil.copytree(
-                self.hass.config.path(f"{DOMAIN}/custom_cards"),
-                f"{self.templates_dir}/custom_cards",
-                dirs_exist_ok=True,
+            self.hass.async_add_executor_job(
+                partial(
+                    shutil.copytree,
+                    self.hass.config.path(f"{DOMAIN}/custom_cards"),
+                    f"{self.templates_dir}/custom_cards",
+                    dirs_exist_ok=True,
+                ),
             )
         if os.path.exists(self.hass.config.path(f"{DOMAIN}/custom_actions")):
             # Copy over manually installed custom_actions from user
-            shutil.copytree(
-                self.hass.config.path(f"{DOMAIN}/custom_actions"),
-                f"{self.templates_dir}/custom_actions",
-                dirs_exist_ok=True,
+            self.hass.async_add_executor_job(
+                partial(
+                    shutil.copytree,
+                    self.hass.config.path(f"{DOMAIN}/custom_actions"),
+                    f"{self.templates_dir}/custom_actions",
+                    dirs_exist_ok=True,
+                ),
             )
         self.hass.bus.async_fire("ui_lovelace_minimalist_reload")

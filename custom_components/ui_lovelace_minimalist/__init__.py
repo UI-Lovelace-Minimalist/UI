@@ -1,13 +1,14 @@
 """Custom Integration to setup UI Lovelace Minimalist."""
+
 from __future__ import annotations
 
 import logging
 from typing import Any
 
 from aiogithubapi import AIOGitHubAPIException, GitHubAPI
-from homeassistant.components import frontend
+from homeassistant.components.frontend import async_remove_panel
 from homeassistant.config_entries import SOURCE_IMPORT, ConfigEntry
-from homeassistant.core import Config, HomeAssistant
+from homeassistant.core import HomeAssistant
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.loader import async_get_integration
 
@@ -64,7 +65,6 @@ async def async_initialize_integration(
 
     ulm.integration = integration
     ulm.version = integration.version
-    ulm.session = clientsession
     ulm.hass = hass
     ulm.system.running = True
     ulm.githubapi = GitHubAPI(
@@ -89,11 +89,10 @@ async def async_initialize_integration(
             await ulm.fetch_cards()
             await ulm.configure_community_cards()
 
-        if (
-            not await ulm.configure_ulm()
-            or not await ulm.configure_plugins()
-            or not await ulm.configure_dashboard()
-        ):
+        ResponseConfigure = await ulm.configure_ulm()
+        ResponsePlugins = await ulm.configure_plugins()
+        ResponseDashboard = await ulm.configure_dashboard()
+        if not ResponseConfigure or not ResponsePlugins or not ResponseDashboard:
             return False
 
         ulm.enable_ulm()
@@ -112,7 +111,7 @@ async def async_initialize_integration(
     return True
 
 
-async def async_setup(hass: HomeAssistant, config: Config):
+async def async_setup(hass: HomeAssistant, config: dict):
     """Set up this integration using UI."""
     return await async_initialize_integration(hass=hass, config=config)
 
@@ -120,7 +119,7 @@ async def async_setup(hass: HomeAssistant, config: Config):
 async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> bool:
     """Set up this integration using UI."""
 
-    config_entry.add_update_listener(async_reload_entry)
+    config_entry.add_update_listener(config_entry_update_listener)
     return await async_initialize_integration(hass=hass, config_entry=config_entry)
 
 
@@ -131,7 +130,7 @@ async def async_remove_entry(hass: HomeAssistant, config_entry: ConfigEntry):
     # TODO cleanup:
     #  - themes
     #  - blueprints
-    frontend.async_remove_panel(hass, "ui-lovelace-minimalist")
+    async_remove_panel(hass, "ui-lovelace-minimalist")
 
 
 async def async_reload_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> None:
@@ -139,3 +138,19 @@ async def async_reload_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> 
     _LOGGER.debug("Reload the config entry")
 
     await async_setup_entry(hass, config_entry)
+
+
+async def config_entry_update_listener(
+    hass: HomeAssistant, config_entry: ConfigEntry
+) -> None:
+    """Update listener, called when the config entry options are changed."""
+    _LOGGER.debug("Start config_entry_update async_reload")
+
+    await hass.config_entries.async_reload(config_entry.entry_id)
+
+
+async def async_unload_entry(hass: HomeAssistant, config_entry: ConfigEntry):
+    """Unload Integration."""
+    _LOGGER.debug("Unload the config entry")
+
+    return await async_initialize_integration(hass=hass, config_entry=config_entry)
