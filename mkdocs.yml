@@ -24,6 +24,10 @@ nav:
       - Card Style Guide: "development/card_style_guide.md"
       - Docs Style Guide: "development/docs_style_guide.md"
       - Custom-Cards: "development/custom_cards.md"
+  - Tips & Tricks:
+      - Custom Popups: "tips/custom_popups.md"
+      - Custom Styling: "tips/custom_styling.md"
+      - Templating: "tips/templating.md"
   - Troubleshooting/FAQ:
       - FAQ: "troubleshooting/troubleshooting.md"
 
