@@ -1,0 +1,68 @@
+{
+    "title": "UI Lovelace Minimalist",
+    "config": {
+        "step": {
+            "user": {
+                "title": "UI Lovelace Minimalist 设置",
+                "description": "",
+                "data": {
+                    "community_cards_enabled": "允许通过此集成配置社区卡片，此功能需要 GitHub 验证！"
+                }
+            },
+            "device": {
+                "title": "等待设备验证"
+            },
+            "reauth_confirm": {
+                "title": "需要重新验证",
+                "description": "您需要重新验证 GitHub。"
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "该集成已经配置过了，且只能配置一次。",
+            "not_setup": "UI Lovelace Minimalist 还未配置。",
+            "github": "无法验证 GitHub，请稍后再试。",
+            "reauth_successful": "重新验证成功。"
+        },
+        "progress": {
+            "wait_for_device": "1. 访问 {url} \n2. 粘贴以下密钥以授权本集成: \n```\n{code}\n```\n"
+        }
+    },
+    "options": {
+        "step": {
+            "user": {
+                "title": "UI Lovelace Minimalist 设置",
+                "description": "",
+                "data": {
+                    "language": "语言",
+                    "sidepanel_enabled": "在侧边栏创建一个仪表盘入口",
+                    "sidepanel_icon": "侧边栏图标",
+                    "sidepanel_title": "侧边栏标题",
+                    "adaptive_ui_enabled": "在拆分视图中启用自适应仪表盘",
+                    "adaptive_ui_title": "自适应面板标题",
+                    "adaptive_ui_icon": "自适应面板图标",
+                    "theme": "主题",
+                    "include_other_cards": "包含它依赖的自定义卡片资源",
+                    "community_cards_enabled": "允许通过此集成配置社区卡片，此功能需要 GitHub 验证！",
+                    "community_cards": "选择你想启用的社区卡片。"
+                }
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "该集成已经配置过了，且只能配置一次。",
+            "not_setup": "UI Lovelace Minimalist 未完成配置。"
+        },
+        "error": {
+            "github_cards": "从 GitHub 获取卡片时发生错误。",
+            "ack": "你需要填写所有参数。",
+            "gh_token": "未设置 GitHub 密钥。请重新安装本集成以完成设置。（不会丢失任何自定义配置）"
+        }
+    },
+    "services": {
+        "reload": {
+            "description": "为 UI Lovelace Minimalist 重载仪表盘配置。"
+        },
+        "installed": {
+            "description": "为 UI Lovelace Minimalist 更改全局配置中的已安装密钥."
+        }
+    }
+}
