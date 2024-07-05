@@ -117,3 +117,4 @@ You can also replace 🌡️ and 💧 with any desired Emoji, and sensor.room_te
     ```yaml title="custom_card_esh_room.yaml"
     --8<-- "custom_cards/custom_card_esh_room/custom_card_esh_room.yaml"
     ```
+    
