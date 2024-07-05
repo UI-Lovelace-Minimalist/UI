@@ -13,7 +13,7 @@ from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.loader import async_get_integration
 
 from .base import UlmBase
-from .const import DOMAIN, NAME, DOMAIN_DATA
+from .const import DOMAIN, DOMAIN_DATA, NAME
 from .enums import ConfigurationType, UlmDisabledReason
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
