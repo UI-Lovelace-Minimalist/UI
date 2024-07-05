@@ -348,10 +348,8 @@ card_esh_room:
           ]]]
     cover:
       card:
-        entity: >
-          [[[ return variables.ulm_custom_card_esh_room_cover_entity ]]]
-        name: >
-          "[[[ return name ]]]"
+        entity: "[[[ return variables.ulm_custom_card_esh_room_cover_entity ]]]"
+        name: "[[[ return name ]]]"
         type: "custom:button-card"
         styles:
           card:
@@ -378,8 +376,7 @@ card_esh_room:
           ]]]
         state:
           - value: "open"
-            icon: >
-              [[[ return variables.ulm_card_esh_room_cover_icon_open; ]]]
+            icon: "[[[ return variables.ulm_card_esh_room_cover_icon_open; ]]]"
             styles:
               icon:
                 - color: "rgba(var(--color-yellow), 1)"
@@ -387,5 +384,4 @@ card_esh_room:
                 - background-color: >-
                     [[[ return 'rgba(var(--color-yellow), 0.2)'; ]]]
           - value: "closed"
-            icon: >
-              [[[ return variables.ulm_card_esh_room_cover_icon; ]]]
+            icon: "[[[ return variables.ulm_card_esh_room_cover_icon; ]]]"
