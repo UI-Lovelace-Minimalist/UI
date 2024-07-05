@@ -67,11 +67,8 @@ This is an alternative room card to the standard one that is more rectangular th
 | label                                        |         | No       | The label to display information, this can be a template or static text  |
 | ulm_custom_card_esh_room_light_entity        |         | No       | The entity to use for the light button                                   |
 | ulm_custom_card_esh_room_climate_entity      |         | No       | The entity to use for the climate button                                 |
-| ulm_custom_card_esh_room_cover_entity        |         | No       | The entity to use for single cover or covers state                       |
 | ulm_card_esh_room_light_icon_on              |         | No       | Customize the light ON icon                                              |
 | ulm_card_esh_room_light_icon_off             |         | No       | Customize the light OFF icon                                             |
-| ulm_card_esh_room_cover_icon_open            |         | No       | Customize the cover OPEN icon                                            |
-| ulm_card_esh_room_cover_icon                 |         | No       | Customize the cover CLOSED icon                                          |
 | ulm_card_light_enable_popup                  | `false` | No       | Enable `popup_light`                                                     |
 | ulm_card_thermostat_enable_popup             | `false` | No       | Enable `popup_thermostat`                                                |
 | ulm_card_dynamic_color                       | `false` | No       | Enables dynamic background color (requires `ulm_custom_card_esh_room_light_entity`)       |
@@ -92,7 +89,6 @@ This is an alternative room card to the standard one that is more rectangular th
   variables:
     ulm_custom_card_esh_room_light_entity: light.bathroom_lights
     ulm_custom_card_esh_room_climate_entity: climate.bathroom
-    ulm_custom_card_esh_room_cover_entity: group.living_room_covers
   label: '[[[ return states["sensor.room_temperature"].state + "°C" ]]]'
 ```
 
