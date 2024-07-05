@@ -352,7 +352,7 @@ card_esh_room:
           [[[ return variables.ulm_custom_card_esh_room_cover_entity ]]]
         name: >
           "[[[ return name ]]]"
-        type: custom:button-card
+        type: "custom:button-card"
         styles:
           card:
             - margin-top: "5px"
