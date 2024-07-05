@@ -59,6 +59,7 @@ In order to function correctly, the UI Lovelace Mininmalist "Theme" requires som
 - [My Cards Bundle](https://github.com/AnthonMS/my-cards) by AnthonMS\*\*
 - [Light Entity Card](https://github.com/ljmerza/light-entity-card) by Leonardo Merza
 - [auto-entities](https://github.com/thomasloven/lovelace-auto-entities) by Thomas Lovén
+- [simple-weather-card](https://github.com/kalkih/simple-weather-card) by Karl Kihlström
 - [weather-radar-card](https://github.com/Makin-Things/weather-radar-card) by Makin-Things
 - [lovelace-layout-card](https://github.com/thomasloven/lovelace-layout-card) by Thomas Lovén
 - [lovelace-state-swtch](https://github.com/thomasloven/lovelace-state-switch) by Thomas Lovén
