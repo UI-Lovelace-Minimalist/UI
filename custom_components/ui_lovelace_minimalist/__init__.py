@@ -13,7 +13,7 @@ from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.loader import async_get_integration
 
 from .base import UlmBase
-from .const import DOMAIN, NAME
+from .const import DOMAIN, DOMAIN_DATA, NAME
 from .enums import ConfigurationType, UlmDisabledReason
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
@@ -113,13 +113,26 @@ async def async_initialize_integration(
 
 async def async_setup(hass: HomeAssistant, config: dict):
     """Set up this integration using UI."""
-    return await async_initialize_integration(hass=hass, config=config)
+    if config.get(DOMAIN) is None:
+        # We get here if the integration is set up using config flow
+        return True
+
+    hass.data.setdefault(DOMAIN_DATA, config[DOMAIN])
+    hass.async_create_task(
+        hass.config_entries.flow.async_init(
+            DOMAIN, context={"source": SOURCE_IMPORT}, data=hass.data[DOMAIN_DATA]
+        )
+    )
+    # Return boolean to indicate that initialization was successful.
+    return True
 
 
 async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> bool:
     """Set up this integration using UI."""
 
-    config_entry.add_update_listener(config_entry_update_listener)
+    config_entry.async_on_unload(
+        config_entry.add_update_listener(config_entry_update_listener)
+    )
     return await async_initialize_integration(hass=hass, config_entry=config_entry)
 
 
@@ -131,13 +144,6 @@ async def async_remove_entry(hass: HomeAssistant, config_entry: ConfigEntry):
     #  - themes
     #  - blueprints
     async_remove_panel(hass, "ui-lovelace-minimalist")
-
-
-async def async_reload_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> None:
-    """Reload Integration."""
-    _LOGGER.debug("Reload the config entry")
-
-    await async_setup_entry(hass, config_entry)
 
 
 async def config_entry_update_listener(
