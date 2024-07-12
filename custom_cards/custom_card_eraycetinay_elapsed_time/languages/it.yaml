@@ -1,0 +1,10 @@
+ulm_custom_card_eraycetinay_elapsed_time_language_variables:
+  variables:
+    custom_card_eraycetinay_elapsed_time_day: "giorno"
+    custom_card_eraycetinay_elapsed_time_days: "giorni"
+    custom_card_eraycetinay_elapsed_time_hour: "ora"
+    custom_card_eraycetinay_elapsed_time_hours: "ore"
+    custom_card_eraycetinay_elapsed_time_minute: "minuto"
+    custom_card_eraycetinay_elapsed_time_minutes: "minuti"
+    custom_card_eraycetinay_elapsed_time_ago: "fa"
+    custom_card_eraycetinay_elapsed_time_justnow: "ora"
