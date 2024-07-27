@@ -77,6 +77,7 @@ card_flower:
               type: "custom:flower-card"
               entity: "[[[ return variables.ulm_card_flower_entity ]]]"
               species: "[[[ return variables.ulm_card_flower_species ]]]"
+              show_bars: "[[[ return variables.ulm_card_flower_show_bars ]]]"
               card_mod:
                 style: |
                   ha-card{
