@@ -14,7 +14,7 @@ This is a `custom-card` to display a plant entity. Shows state of the plant and 
 
 ## Credits
 
-- Author: schumijo - 2021 
+- Author: schumijo - 2021
 - Update 2.0.0 : Ashino - 2024
 - Version: 2.0.0
 
