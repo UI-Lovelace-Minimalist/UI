@@ -6,25 +6,25 @@
                 "title": "UI Lovelace Minimalist Instellingen",
                 "description": "",
                 "data": {
-                    "community_cards_enabled": "Enable the ability to configure community cards with this integrations, Does require github authentication!"
+                    "community_cards_enabled": "Activeer de mogelijkheid om community cards in te stellen via deze integratie. GitHub authenticatie vereist!"
                 }
             },
             "device": {
-                "title": "Waiting for device activation"
+                "title": "Aan het wachten op apparaat activatie"
             },
             "reauth_confirm": {
-                "title": "Reauthentication needed",
-                "description": "You need to reauthenticate with GitHub."
+                "title": "Opnieuw verifiëren vereist",
+                "description": "Je zult je opnieuw moeten verifiëren via GitHub."
             }
         },
         "abort": {
             "single_instance_allowed": "Enkel een installatie van UI Lovelace Minimalist is toegestaan.",
             "not_setup": "UI Lovelace Minimalist is niet juist ingesteld.",
-            "github": "Could not authenticate with GitHub, try again later.",
-            "reauth_successful": "Reauthentication was successful."
+            "github": "Authenticatie met GitHub mislukt, probeer het later opnieuw.",
+            "reauth_successful": "Nieuwe authenticatie is gelukt!"
         },
         "progress": {
-            "wait_for_device": "1. Open {url} \n2.Paste the following key to authorize ULM: \n```\n{code}\n```\n"
+            "wait_for_device": "1. Open {url} \n2. Gebruik de volgende sleutel om te autoriseren bij ULM: \n```\n{code}\n```\n"
         }
     },
     "options": {
@@ -34,16 +34,16 @@
                 "description": "",
                 "data": {
                     "language": "Taal",
-                    "sidepanel_enabled": "Een Dashboard aan de zijbalk toevoegen",
+                    "sidepanel_enabled": "Dashboard aan zijbalk toevoegen",
                     "sidepanel_icon": "Dashboard icon",
                     "sidepanel_title": "Dashboard titel",
-                    "adaptive_ui_enabled": "Een adaptive Dashboard aan de zijbalk toevoegen",
+                    "adaptive_ui_enabled": "Adaptive Dashboard aan zijbalk toevoegen",
                     "adaptive_ui_title": "adaptive dashboard titel",
                     "adaptive_ui_icon": "adaptive dashboard icon",
                     "theme": "Thema",
                     "include_other_cards": "'Frontend' repositories toevoegen die nodig zijn",
-                    "community_cards_enabled": "Enable the ability to configure community cards with this integrations, Does require github authentication!",
-                    "community_cards": "Select Community Cards you want to enable."
+                    "community_cards_enabled": "Activeer de mogelijkheid om community cards in te stellen via deze integratie. GitHub authenticatie vereist!",
+                    "community_cards": "Selecteer welke Community Card je wilt activeren."
                 }
             }
         },
@@ -52,9 +52,9 @@
             "not_setup": "UI Lovelace Minimalist is niet juist ingesteld."
         },
         "error": {
-            "github_cards": "Something went wrong when fetching cards from Github.",
-            "ack": "You need to acknowledge all statements.",
-            "gh_token": "Github Token not set. Please re-install this integration to go throught the setup procedure. (No custom configuration will be lost)"
+            "github_cards": "Ophalen van kaarten via GitHub is mislukt.",
+            "ack": "Je moet alles accepteren.",
+            "gh_token": "GitHub Token is niet ingesteld. Installeer de integratie opnieuw. (Custom configuraties gaan niet verloren)"
         }
     },
     "services": {
