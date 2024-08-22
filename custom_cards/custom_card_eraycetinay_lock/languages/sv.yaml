@@ -1,11 +1,12 @@
 ---
 custom_card_eraycetinay_lock_language_variables:
   variables:
-    custom_card_eraycetinay_lock_locked: "låst"
-    custom_card_eraycetinay_lock_unlocked: "olåst"
-    custom_card_eraycetinay_lock_locking: "låser"
-    custom_card_eraycetinay_lock_unlocking: "låser upp"
-    custom_card_eraycetinay_lock_unavailable: "otillgängligt"
-    custom_card_eraycetinay_lock_jammed: "fastnat"
-    custom_card_eraycetinay_lock_locked_and_opened: "Dörren är låst men fortfarande öppen."
-    custom_card_eraycetinay_lock_battery_is_at: "Batterinivån är"
+    ulm_custom_card_eraycetinay_lock_locked: "låst"
+    ulm_custom_card_eraycetinay_lock_unlocked: "olåst"
+    ulm_custom_card_eraycetinay_lock_locking: "låser"
+    ulm_custom_card_eraycetinay_lock_unlocking: "låser upp"
+    ulm_custom_card_eraycetinay_lock_unavailable: "otillgängligt"
+    ulm_custom_card_eraycetinay_lock_jammed: "fastnat"
+    ulm_custom_card_eraycetinay_lock_locked_and_opened: "Dörren är låst men fortfarande öppen."
+    ulm_custom_card_eraycetinay_lock_battery_is_at: "Batterinivån är"
+    ulm_custom_card_eraycetinay_lock_battery_is_low: "Batteriet är lågt"

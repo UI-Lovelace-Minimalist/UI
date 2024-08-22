@@ -107,6 +107,20 @@ Version: 0.0.3
     <td>no</td>
     <td>Displays a warning when the door is lock but the door is still open.</td>
   </tr>
+  <tr>
+    <td>ulm_custom_card_eraycetinay_lock_battery_sensor_binary</td>
+    <td>true</td>
+    <td>false</td>
+    <td>no</td>
+    <td>Set to true if using a binary battery sensor. Will ignore battery_warning percentage settings</td>
+  </tr>
+  <tr>
+    <td>ulm_custom_card_eraycetinay_lock_battery_sensor_binary_low_state</td>
+    <td>off</td>
+    <td>on</td>
+    <td>no</td>
+    <td>Set whether the binary sensor turns to on or off when in low state</td>
+  </tr>
 </table>
 
 ??? note "Template Code"
