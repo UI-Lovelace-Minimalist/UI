@@ -401,7 +401,7 @@ card_cover:
                       return "mdi:arrow-left";
                   }
                   var device_class = entity.attributes?.device_class;
-                  if (device_class == 'curtain' || device_class == 'gate') {
+                  if (device_class == 'curtain' || device_class == 'gate' || device_class == 'awning') {
                       return "mdi:arrow-collapse-horizontal";
                   }
                   return "mdi:arrow-down";
@@ -516,7 +516,7 @@ card_cover:
                       return "mdi:arrow-right";
                   }
                   var device_class = entity.attributes?.device_class;
-                  if (device_class == 'curtain' || device_class == 'gate') {
+                  if (device_class == 'curtain' || device_class == 'gate' || device_class == 'awning') {
                       return "mdi:arrow-expand-horizontal";
                   }
                   return "mdi:arrow-up";
