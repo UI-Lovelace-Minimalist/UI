@@ -83,8 +83,9 @@ card_graph:
         points_per_hour: "[[[ return variables.ulm_card_graph_points; ]]]"
         group_by: "[[[ return variables.ulm_card_graph_group_by; ]]]"
         line_width: "[[[ return variables.ulm_card_graph_line_width; ]]]"
-        style: |
-          ha-card {
-            box-shadow: none;
-            border-radius: var(--border-radius);
-          }
+        card_mod:
+          style: |
+            ha-card {
+              box-shadow: none;
+              border-radius: var(--border-radius);
+            }
