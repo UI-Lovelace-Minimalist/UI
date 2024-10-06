@@ -331,9 +331,9 @@ card_light:
                         return 'rgba(var(--color-theme),0.9)';
                       ]]]
               tap_action:
-                action: "call-service"
-                service: "light.turn_on"
-                service_data:
+                action: "perform-action"
+                perform_action: "light.turn_on"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
                   brightness_pct: "[[[ return variables.ulm_card_light_brightness_low ]]]"
               icon: "mdi:lightbulb-on-10"
@@ -383,9 +383,9 @@ card_light:
                         return 'rgba(var(--color-theme),0.9)';
                       ]]]
               tap_action:
-                action: "call-service"
-                service: "light.turn_on"
-                service_data:
+                action: "perform-action"
+                perform_action: "light.turn_on"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
                   brightness_pct: "[[[ return variables.ulm_card_light_brightness_medium ]]]"
               icon: "mdi:lightbulb-on-50"
@@ -435,9 +435,9 @@ card_light:
                         return 'rgba(var(--color-theme),0.9)';
                       ]]]
               tap_action:
-                action: "call-service"
-                service: "light.turn_on"
-                service_data:
+                action: "perform-action"
+                perform_action: "light.turn_on"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
                   brightness_pct: "[[[ return variables.ulm_card_light_brightness_high ]]]"
               icon: "mdi:lightbulb-on"
