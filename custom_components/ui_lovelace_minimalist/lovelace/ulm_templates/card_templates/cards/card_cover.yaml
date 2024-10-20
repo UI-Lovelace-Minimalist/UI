@@ -560,6 +560,7 @@ card_cover:
                 perform_action: "cover.set_cover_position"
                 target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   position: "[[[ return variables.ulm_card_cover_favorite_percentage ]]]"
               icon: "mdi:star"
     item3:

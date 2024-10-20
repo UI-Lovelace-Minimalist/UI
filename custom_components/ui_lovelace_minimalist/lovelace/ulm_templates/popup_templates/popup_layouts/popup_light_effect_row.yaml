@@ -21,4 +21,5 @@ popup_light_effect_row:
     perform_action: "light.turn_on"
     target:
       entity_id: "[[[ return entity.entity_id; ]]]"
+    data:
       effect: "[[[ return entity.attributes.effect_list[variables.ulm_popup_light_effect_entity_idx]; ]]]"

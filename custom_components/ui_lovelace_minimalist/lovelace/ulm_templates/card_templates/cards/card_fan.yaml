@@ -267,6 +267,7 @@ card_fan:
                 perform_action: "[[[ return variables.ulm_card_fan_button_service ]]]"
                 target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   oscillating: "[[[ return !entity.attributes[variables.ulm_card_fan_oscillate_attribute] ]]]"
               state:
                 - operator: "template"

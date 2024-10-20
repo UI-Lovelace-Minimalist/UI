@@ -20,4 +20,5 @@ popup_media_player_row:
     perform_action: "media_player.select_source"
     target:
       entity_id: "[[[ return entity.entity_id; ]]]"
+    data:
       source: "[[[ return entity.attributes.source_list[variables.ulm_popup_media_entity_idx]; ]]]"

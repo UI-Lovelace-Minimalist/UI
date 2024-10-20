@@ -20,4 +20,5 @@ popup_button_airconditionner:
     perform_action: "climate.set_hvac_mode"
     target:
       entity_id: "climate.hvac"
+    data:
       hvac_mode: "[[[ return variables.ulm_popup_button_airconditionner_state ]]]"

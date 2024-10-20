@@ -283,6 +283,7 @@ popup_thermostat_temperature:
                 perform_action: "climate.set_hvac_mode"
                 target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   hvac_mode: "auto"
               styles:
                 card:
@@ -309,6 +310,7 @@ popup_thermostat_temperature:
                 perform_action: "climate.set_hvac_mode"
                 target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   hvac_mode: "heat"
               styles:
                 card:
@@ -335,6 +337,7 @@ popup_thermostat_temperature:
                 perform_action: "climate.set_hvac_mode"
                 target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   hvac_mode: "cool"
               styles:
                 card:
@@ -361,6 +364,7 @@ popup_thermostat_temperature:
                 perform_action: "climate.set_hvac_mode"
                 target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   hvac_mode: "dry"
               styles:
                 card:
@@ -387,6 +391,7 @@ popup_thermostat_temperature:
                 perform_action: "climate.set_hvac_mode"
                 target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   hvac_mode: "fan_only"
               styles:
                 card:
@@ -413,6 +418,7 @@ popup_thermostat_temperature:
                 perform_action: "climate.set_hvac_mode"
                 target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   hvac_mode: "heat_cool"
               styles:
                 card:
@@ -439,6 +445,7 @@ popup_thermostat_temperature:
                 perform_action: "climate.set_preset_mode"
                 target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   preset_mode: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.includes('none') ? 'none' : 'None'} ]]]"
               styles:
                 card:
@@ -466,6 +473,7 @@ popup_thermostat_temperature:
                 perform_action: "climate.set_preset_mode"
                 target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   preset_mode: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.includes('away') ? 'away' : 'Away'} ]]]"
               styles:
                 card:
@@ -493,6 +501,7 @@ popup_thermostat_temperature:
                 perform_action: "climate.set_preset_mode"
                 target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   preset_mode: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.includes('comfort') ? 'comfort' : 'Comfort'} ]]]"
               styles:
                 card:
@@ -520,6 +529,7 @@ popup_thermostat_temperature:
                 perform_action: "climate.set_preset_mode"
                 target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   preset_mode: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.includes('home') ? 'home' : 'Home'} ]]]"
               styles:
                 card:
@@ -547,6 +557,7 @@ popup_thermostat_temperature:
                 perform_action: "climate.set_preset_mode"
                 target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   preset_mode: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.includes('sleep') ? 'sleep' : 'Sleep'} ]]]"
               styles:
                 card:
@@ -574,6 +585,7 @@ popup_thermostat_temperature:
                 perform_action: "climate.set_preset_mode"
                 target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   preset_mode: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.includes('activity') ? 'activity' : 'Activity'} ]]]"
               styles:
                 card:

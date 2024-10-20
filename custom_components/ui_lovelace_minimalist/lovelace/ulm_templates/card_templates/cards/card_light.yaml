@@ -335,6 +335,7 @@ card_light:
                 perform_action: "light.turn_on"
                 target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   brightness_pct: "[[[ return variables.ulm_card_light_brightness_low ]]]"
               icon: "mdi:lightbulb-on-10"
           item2:
@@ -387,6 +388,7 @@ card_light:
                 perform_action: "light.turn_on"
                 target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   brightness_pct: "[[[ return variables.ulm_card_light_brightness_medium ]]]"
               icon: "mdi:lightbulb-on-50"
           item3:
@@ -439,5 +441,6 @@ card_light:
                 perform_action: "light.turn_on"
                 target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   brightness_pct: "[[[ return variables.ulm_card_light_brightness_high ]]]"
               icon: "mdi:lightbulb-on"

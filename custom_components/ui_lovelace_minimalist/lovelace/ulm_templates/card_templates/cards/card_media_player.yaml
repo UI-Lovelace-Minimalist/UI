@@ -704,6 +704,7 @@ card_media_player:
                 perform_action: "media_player.volume_mute"
                 target:
                   entity_id: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
+                data:
                   is_volume_muted: "[[[ return (states[entity.entity_id].attributes.is_volume_muted) ? false : true; ]]]"
               icon: "mdi:volume-mute"
               styles:
@@ -765,6 +766,7 @@ card_media_player:
                 perform_action: "media_player.volume_set"
                 target:
                   entity_id: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
+                data:
                   volume_level: |
                     [[[
                       var volume = states[entity.entity_id].attributes.volume_level;
@@ -845,6 +847,7 @@ card_media_player:
                 perform_action: "media_player.volume_set"
                 target:
                   entity_id: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
+                data:
                   volume_level: |
                     [[[
                       var volume = states[entity.entity_id].attributes.volume_level;

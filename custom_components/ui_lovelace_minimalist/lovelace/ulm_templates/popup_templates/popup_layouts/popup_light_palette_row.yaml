@@ -20,4 +20,5 @@ popup_light_palette_row:
     perform_action: "select.select_option"
     target:
       entity_id: "[[[ return entity.entity_id; ]]]"
+    data:
       option: "[[[ return entity.attributes.options[variables.ulm_popup_light_palette_entity_idx]; ]]]"

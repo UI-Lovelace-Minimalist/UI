@@ -9,8 +9,9 @@ card_room:
     action: "perform-action"
     perform_action: "input_select.select_option"
     target:
-      option: "[[[ return variables.ulm_input_select_option ]]]"
       entity_id: "[[[ return variables.ulm_input_select ]]]"
+    data:
+      option: "[[[ return variables.ulm_input_select_option ]]]"
   color: "var(--google-grey-500)"
   size: "45%"
   aspect_ratio: "1/1"

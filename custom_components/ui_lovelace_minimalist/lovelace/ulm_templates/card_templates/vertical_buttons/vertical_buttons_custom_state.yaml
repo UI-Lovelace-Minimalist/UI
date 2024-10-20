@@ -30,4 +30,5 @@ vertical_buttons_custom_state:
     perform_action: "input_select.select_option"
     target:
       entity_id: "[[[ return entity.entity_id ]]]"
+    data:
       option: "[[[ return variables.state ]]]"
