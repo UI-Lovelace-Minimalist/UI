@@ -1,0 +1,60 @@
+{
+    "title": "UI Lovelace Minimalist",
+    "config": {
+        "step": {
+            "user": {
+                "title": "Ustawienia UI Lovelace Minimalist",
+                "description": "",
+                "data": {
+                    "community_cards_enabled": "Włącz możliwość dodawania kart tworzonych przez społeczność. Wymaga uwierzytelnienia w serwisie GitHub!"
+                }
+            },
+            "device": {
+                "title": "Oczekiwanie na aktywację urządzenia"
+            },
+            "reauth_confirm": {
+                "title": "Wymagane jest ponowne uwierzytelnienie",
+                "description": "Musisz ponownie uwierzytelnić się w serwisie GitHub."
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "Tylko jedna konfiguracja UI Lovelace Minimalist jest dozwolona.",
+            "not_setup": "UI Lovelace Minimalist nie jest skonfigurowany.",
+            "github": "Nie udało się uwierzytelnić w serwisie GitHub, spróbuj ponownie później.",
+            "reauth_successful": "Ponowne uwierzytelnienie zakończyło się sukcesem"
+        },
+        "progress": {
+            "wait_for_device": "1. Otwórz {url} \n2.Wklej poniższy klucz, aby autoryzować ULM: \n```\n{code}\n```\n"
+        }
+    },
+    "options": {
+        "step": {
+            "user": {
+                "title": "Ustawienia UI Lovelace Minimalist",
+                "description": "",
+                "data": {
+                    "language": "Język",
+                    "sidepanel_enabled": "Utwórz nowy Dashboard w panelu bocznym.",
+                    "sidepanel_icon": "Ikona w panelu bocznym",
+                    "sidepanel_title": "Tytuł w panelu bocznym",
+                    "adaptive_ui_enabled": "Włącz wyświetlanie Dashboardu w trybie adaptatywnym",
+                    "adaptive_ui_title": "tytuł panelu adaptatywnego",
+                    "adaptive_ui_icon": "ikona panelu adaptatywnego",
+                    "theme": "Motyw",
+                    "include_other_cards": "Dołącz zasoby wymagane przez niestandardowe karty.",
+                    "community_cards_enabled": "Włącz możliwość dodawania kart stworzonych przez społeczność. Wymaga uwierzytelnienia w serwisie GitHub!",
+                    "community_cards": "Wybierz karty społeczności, które chcesz włączyć."
+                }
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "Tylko jedna konfiguracja UI Lovelace Minimalist jest dozwolona.",
+            "not_setup": "UI Lovelace Minimalist nie jest skonfigurowany."
+        },
+        "error": {
+            "github_cards": "Wystąpił błąd podczas pobierania kart z serwisu GitHub",
+            "ack": "Należy zaznaczyć wszystkie oświadczenia.",
+            "gh_token": "Token GitHub nie został ustawiony. Zainstaluj ponownie integrację, aby przejść przez proces konfiguracji. Żadna niestandardowa konfiguracja nie zostanie utracona."
+        }
+    }
+}

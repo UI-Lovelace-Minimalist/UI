@@ -1,0 +1,13 @@
+---
+popup_item4_back_toggle:
+  template: "popup_list_items"
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        template: "popup_button_back"
+    item2:
+      card:
+        type: "custom:button-card"
+        template: "popup_button_power"
+        entity: "[[[ return variables.popup_item4_back_toggle_entity ]]]"

@@ -1,0 +1,25 @@
+---
+popup_row_layout:
+  show_icon: false
+  show_name: true
+  show_label: false
+  extra_styles: |
+    ha-card:hover {
+      background-color: var(--primary-background-color);
+    }
+  styles:
+    grid:
+      - grid-template-areas: "n"
+    card:
+      - padding: "2px 12px"
+      - height: "42px"
+      - background: "none"
+      - border: "1px rgba(var(--color-theme),0.2) solid"
+      - width: "40vh"
+    name:
+      - align-self: "center"
+      - justify-self: "center"
+      - font-weight: "bold"
+      - font-size: "14px"
+      - text-transform: "capitalize"
+      - color: "rgba(var(--color-theme),0.5)"

@@ -1,0 +1,192 @@
+---
+popup_power_outlet_stats:
+  show_icon: false
+  show_name: false
+  show_label: false
+  show_units: false
+  styles:
+    grid:
+      - grid-template-areas: "'header header' 'content1 content1' 'content2 content3' 'footer footer'"
+      - grid-template-rows: "16vh 12vh 44vh 14vh"
+      - grid-template-columns: "1fr 1fr"
+      - column-gap: "30px"
+    card:
+      - background: "var(--primary-background-color)"
+      - box-shadow: "none"
+      - padding: "4%"
+    custom_fields:
+      header:
+        - align-self: "start"
+      content1:
+        - align-self: "start"
+      content2:
+        - align-self: "start"
+      content3:
+        - align-self: "start"
+      buttons:
+        - display: "none"
+      footer:
+        - align-self: "end"
+        - margin-top: "25px"
+  extra_styles: |
+    @media (max-width: 800px) {
+      #container {
+        grid-template-areas: "header" "content1" "content2" "buttons" "footer" !important;
+        grid-template-rows: 16vh 12vh 40vh 14vh 14vh !important;
+        grid-template-columns: 1fr !important;
+      }
+      #buttons {
+        display: block !important;
+        align-self: start !important;
+      }
+      #content3 {
+        display: none;
+      }
+    }
+  custom_fields:
+    header:
+      card:
+        type: "custom:button-card"
+        template: "popup_header"
+        entity: "[[[ return entity.entity_id ]]]"
+    content1:
+      card:
+        type: "grid"
+        columns: 2
+        square: false
+        cards:
+          - type: "custom:button-card"
+            entity: "[[[ return variables.ulm_popup_power_outlet_sensor1 ]]]"
+            label: >
+              [[[ return states[variables.ulm_popup_power_outlet_sensor1].state + states[variables.ulm_popup_power_outlet_sensor1].attributes.unit_of_measurement
+              ]]]
+            template:
+              - "icon_info_bg"
+            styles:
+              card:
+                - max-width: "300px"
+              icon:
+                - color: "var(--color-theme)"
+            extra_styles: |
+              @media (min-width: 800px) {
+                ha-card {
+                  margin-left: calc(100% - 300px) !important;
+                }
+              }
+          - type: "custom:button-card"
+            entity: "[[[ return variables.ulm_popup_power_outlet_sensor2 ]]]"
+            label: >
+              [[[ return states[variables.ulm_popup_power_outlet_sensor2].state + states[variables.ulm_popup_power_outlet_sensor2].attributes.unit_of_measurement
+              ]]]
+            template:
+              - "icon_info_bg"
+            styles:
+              card:
+                - max-width: "300px"
+              icon:
+                - color: "var(--color-theme)"
+    content2:
+      card:
+        type: "custom:mini-graph-card"
+        entities:
+          - entity: "[[[ return variables.ulm_popup_power_outlet_graph_sensor ]]]"
+        line_color: "var(--info-color)"
+        height: 276
+        hours_to_show: 168
+        show:
+          name: false
+          icon: false
+          leg"end": false
+          state: false
+        card_mod:
+          style: |
+            ha-card {
+              box-shadow: "none" !important;
+              border-radius: var(--border-radius) !important;
+              margin-bottom: 37px !important;
+            }
+    buttons:
+      card:
+        type: "custom:button-card"
+        template: "list_2_items"
+        styles:
+          card:
+            - background: "none"
+          grid:
+            - align-items: "initial"
+        custom_fields:
+          item1:
+            card:
+              icon: "mdi:chart-line"
+              type: "custom:button-card"
+              template:
+                - "popup_button"
+                - "popup_button_selected"
+                - "popup_button_stats"
+          item2:
+            card:
+              icon: "mdi:history"
+              type: "custom:button-card"
+              template:
+                - "popup_button"
+                - "popup_button_history"
+              tap_action:
+                action: "fire-dom-event"
+                browser_mod:
+                  service: "browser_mod.popup"
+                  data:
+                    hide_header: true
+                    style: |
+                      --popup-background-color: var(--primary-background-color);
+                      --popup-border-radius: 20px;
+                      --popup-padding-x: 24px;
+                      --popup-padding-y: 20px;
+                      --popup-max-width: auto
+                      --popup-min-width: 800px;
+                    size: >
+                      [[[
+                        const mediaQuery = window.matchMedia('(max-width: 800px)')
+                        if (mediaQuery.matches) {
+                          return 'fullscreen'
+                        }
+                      ]]]
+                    content:
+                      type: "custom:button-card"
+                      template: "popup_power_outlet_history"
+                      entity: "[[[ return entity.entity_id ]]]"
+                      variables:
+                        ulm_popup_power_outlet_sensor1: "[[[ return variables.ulm_popup_power_outlet_sensor1 ]]]"
+                        ulm_popup_power_outlet_sensor2: "[[[ return variables.ulm_popup_power_outlet_sensor2 ]]]"
+                        ulm_popup_power_outlet_graph_sensor: "[[[ return variables.ulm_popup_power_outlet_graph_sensor ]]]"
+    footer:
+      card:
+        type: "custom:button-card"
+        template: "popup_list_items"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template: "popup_button_back"
+          item2:
+            card:
+              type: "custom:button-card"
+              template: "popup_button_power"
+              entity: "[[[ return entity.entity_id ]]]"
+    content3:
+      card:
+        type: "logbook"
+        entities:
+          - "[[[ return entity.entity_id ]]]"
+        card_mod:
+          style: |
+            ha-card {
+              box-shadow: none !important;
+              background: none !important;
+              height: 257px !important;
+            }
+            ha-logbook {
+              height: 242px !important;
+            }
+            state-badge {
+              background: red !important;
+            }

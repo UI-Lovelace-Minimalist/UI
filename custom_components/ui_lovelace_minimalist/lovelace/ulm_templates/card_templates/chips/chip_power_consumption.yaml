@@ -1,0 +1,18 @@
+---
+### Chip Power Consumption ###
+chip_power_consumption:
+  template:
+    - "chips"
+    - "ulm_translation_engine"
+  triggers_update:
+    - "[[[ return variables.ulm_chip_electric_price ]]]"
+    - "[[[ return variables.ulm_chip_electric_consumption ]]]"
+  label: |
+    [[[
+      var amount = variables.ulm_chip_electric_price != "" ? true : false
+      if (amount){
+        return "⚡ " +  states[variables.ulm_chip_electric_price].state + variables.ulm_translation_currency;
+      } else {
+        return "⚡ " +  helpers.localize(states[variables.ulm_chip_electric_consumption]);
+      }
+    ]]]

@@ -1,0 +1,205 @@
+---
+### Card Weather ULM ###
+card_weather_ulm:
+  template:
+    - "icon_more_info_new"
+    - "ulm_translation_engine"
+  variables:
+    ulm_card_weather_ulm_enable_popup: false
+    ulm_weather_popup_surpress_first_forecast: false
+  show_icon: false
+  show_name: false
+  show_label: false
+  styles:
+    grid:
+      - grid-template-areas: "'item1' 'item2'"
+      - grid-template-columns: "1fr"
+      - grid-template-rows: "1fr 1fr"
+      - row-gap: "12px"
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              icon: |
+                [[[
+                  var state = entity.state;
+                  var icon = {
+                    "clear-night": "mdi:weather-night",
+                    "cloudy": "mdi:weather-cloudy",
+                    "exceptional": "mdi:weather-sunny-alert",
+                    "fog": "mdi:weather-fog",
+                    "hail": "mdi:weather-hail",
+                    "lightning": "mdi:weather-lightning",
+                    "lightning-rainy": "mdi:weather-lightning-rainy",
+                    "partlycloudy": "mdi:weather-partly-cloudy",
+                    "pouring": "mdi:weather-pouring",
+                    "rainy": "mdi:weather-rainy",
+                    "snowy": "mdi:weather-snowy",
+                    "snowy-rainy": "mdi:weather-snowy-rainy",
+                    "sunny": "mdi:weather-sunny",
+                    "windy": "mdi:weather-windy",
+                    "default": "mdi:crosshairs-question"
+                    }
+                  return (icon[state] || icon["default"]);
+                ]]]
+              variables: >
+                [[[
+                  let vars = variables;
+
+                  if(variables.ulm_card_weather_ulm_enable_popup) {
+                    vars.ulm_custom_popup = {
+                      'template': 'popup_weather_forecast',
+                      'popup_variables': {'ulm_weather_popup_surpress_first_forecast': variables.ulm_weather_popup_surpress_first_forecast}
+                    };
+                  }
+                  return vars;
+                ]]]
+              styles:
+                icon:
+                  - color: >
+                      [[[
+                        var state = entity.state;
+                        var icon = {
+                          "clear-night": "rgba(var(--color-yellow),1)",
+                          "cloudy": "rgba(var(--color-blue),1)",
+                          "exceptional": "rgba(var(--color-red),1)",
+                          "fog": "rgba(var(--color-grey),1)",
+                          "hail": "rgba(var(--color-blue),1)",
+                          "lightning": "rgba(var(--color-blue),1)",
+                          "lightning-rainy": "rgba(var(--color-blue),1)",
+                          "partlycloudy": "rgba(var(--color-yellow),1)",
+                          "pouring": "rgba(var(--color-grey),1)",
+                          "rainy": "rgba(var(--color-blue),1)",
+                          "snowy": "rgba(var(--color-blue),1)",
+                          "snowy-rainy": "rgba(var(--color-blue),1)",
+                          "sunny": "rgba(var(--color-yellow),1)",
+                          "windy": "rgba(var(--color-grey),1)",
+                          "default": "rgba(var(--color-grey),1)",
+                          }
+                        return (icon[state] || icon["default"]);
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        var state = entity.state;
+                        var icon = {
+                          "clear-night": "rgba(var(--color-yellow),0.2)",
+                          "cloudy": "rgba(var(--color-blue),0.2)",
+                          "exceptional": "rgba(var(--color-red),0.2)",
+                          "fog": "rgba(var(--color-grey),0.2)",
+                          "hail": "rgba(var(--color-blue),0.2)",
+                          "lightning": "rgba(var(--color-blue),0.2)",
+                          "lightning-rainy": "rgba(var(--color-blue),0.2)",
+                          "partlycloudy": "rgba(var(--color-yellow),0.2)",
+                          "pouring": "rgba(var(--color-grey),0.2)",
+                          "rainy": "rgba(var(--color-blue),0.2)",
+                          "snowy": "rgba(var(--color-blue),0.2)",
+                          "snowy-rainy": "rgba(var(--color-blue),0.2)",
+                          "sunny": "rgba(var(--color-yellow),0.2)",
+                          "windy": "rgba(var(--color-grey),0.2)",
+                          "default": "rgba(var(--color-grey),0.2)",
+                          }
+                        return (icon[state] || icon["default"]);
+                      ]]]
+          item2:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              show_state: true
+              styles:
+                grid:
+                  - grid-template-areas: "'i n' 'i s'"
+              variables: >
+                [[[
+                  let vars = variables;
+
+                  if(variables.ulm_card_weather_ulm_enable_popup) {
+                    vars.ulm_custom_popup = {
+                      'template': 'popup_weather_forecast',
+                      'popup_variables': {'ulm_weather_popup_surpress_first_forecast': variables.ulm_weather_popup_surpress_first_forecast}
+                    };
+                  }
+                  return vars;
+                ]]]
+    item2:
+      card:
+        type: "custom:button-card"
+        template: "list_2_items"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              icon: "mdi:water"
+              tap_action:
+                action: "none"
+              layout: "icon_state"
+              show_state: false
+              show_units: false
+              show_name: false
+              custom_fields:
+                item: "[[[ return entity.attributes.humidity + '%' ]]]"
+              styles:
+                grid:
+                  - grid-template-areas: "'i item'"
+                  - grid-template-columns: "40% 60%"
+                card:
+                  - box-shadow: "none"
+                  - padding: "0px"
+                  - background-color: "rgba(var(--color-theme),0.05)"
+                  - border-radius: "14px"
+                  - place-self: "center"
+                  - height: "42px"
+                icon:
+                  - color: "rgba(var(--color-theme),0.9)"
+                img_cell:
+                  - justify-content: "right"
+                custom_fields:
+                  item:
+                    - text-align: "left"
+                    - font-size: "1rem"
+              size: "20px"
+              color: "var(--google-grey)"
+          item2:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              icon: "mdi:thermometer"
+              tap_action:
+                action: "none"
+              layout: "icon_state"
+              show_state: false
+              show_units: false
+              show_name: false
+              custom_fields:
+                item: "[[[ return entity.attributes.temperature + entity.attributes.temperature_unit ]]]"
+              styles:
+                grid:
+                  - grid-template-areas: "'i item'"
+                  - grid-template-columns: "45% 55%"
+                card:
+                  - box-shadow: "none"
+                  - padding: "0px"
+                  - background-color: "rgba(var(--color-theme),0.05)"
+                  - border-radius: "14px"
+                  - place-self: "center"
+                  - height: "42px"
+                icon:
+                  - color: "rgba(var(--color-theme),0.9)"
+                img_cell:
+                  - justify-content: "right"
+                custom_fields:
+                  item:
+                    - text-align: "left"
+                    - font-size: "1rem"
+              size: "20px"
+              color: "var(--google-grey)"

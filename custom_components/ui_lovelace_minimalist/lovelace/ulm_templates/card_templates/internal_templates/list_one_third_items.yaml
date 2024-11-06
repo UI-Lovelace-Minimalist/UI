@@ -1,0 +1,12 @@
+---
+### List One Third Items ###
+list_one_third_items:
+  styles:
+    grid:
+      - grid-template-areas: "'item1 item2'"
+      - grid-template-columns: "2fr 1fr"
+      - grid-template-rows: "min-content"
+      - column-gap: "7px"
+    card:
+      - box-shadow: "none"
+      - padding: "0px"

@@ -1,0 +1,4 @@
+---
+popup_button_playing:
+  icon: "mdi:play-circle"
+  name: "Playback"

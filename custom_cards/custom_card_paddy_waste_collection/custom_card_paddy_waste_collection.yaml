@@ -1,0 +1,100 @@
+---
+custom_card_paddy_waste_collection:
+  template:
+    - "card_generic_swap"
+  variables:
+    ulm_card_generic_swap_name: "[[[ return entity.name; ]]]"
+    ulm_card_generic_swap_icon: "[[[ return entity.icon; ]]]"
+  state:
+    - operator: "template"
+      value: "[[[ return states[entity.entity_id].attributes.daysTo == 0; ]]]"
+      styles:
+        custom_fields:
+          notification:
+            - border-radius: "50%"
+            - position: "absolute"
+            - left: "38px"
+            - top: "8px"
+            - height: "16px"
+            - width: "16px"
+            - border: "2px solid var(--card-background-color)"
+            - font-size: "12px"
+            - line-height: "14px"
+            - z-index: "1"
+            - background-color: >
+                [[[
+                  return "rgba(var(--color-red),1)";
+                ]]]
+    - operator: "template"
+      value: "[[[ return states[entity.entity_id].attributes.daysTo == 1; ]]]"
+      styles:
+        custom_fields:
+          notification:
+            - border-radius: "50%"
+            - position: "absolute"
+            - left: "38px"
+            - top: "8px"
+            - height: "16px"
+            - width: "16px"
+            - border: "2px solid var(--card-background-color)"
+            - font-size: "12px"
+            - line-height: "14px"
+            - z-index: "1"
+            - background-color: >
+                [[[
+                  return "rgba(var(--color-red),1)";
+                ]]]
+    - value: "unavailable"
+      styles:
+        custom_fields:
+          notification:
+            - border-radius: "50%"
+            - position: "absolute"
+            - left: "38px"
+            - top: "8px"
+            - height: "16px"
+            - width: "16px"
+            - border: "2px solid var(--card-background-color)"
+            - font-size: "12px"
+            - line-height: "14px"
+            - z-index: "1"
+            - background-color: >
+                [[[
+                  return "rgba(var(--color-red),1)";
+                ]]]
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        template:
+          - "icon_more_info"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              state:
+                - operator: "template"
+                  value: "[[[ return states[entity.entity_id].attributes.daysTo == 0; ]]]"
+                  styles:
+                    img_cell:
+                      - background-color: "rgba(var(--color-red),0.5)"
+                    icon:
+                      - color: "rgba(var(--color-red),1)"
+                - operator: "template"
+                  value: "[[[ return states[entity.entity_id].attributes.daysTo == 1; ]]]"
+                  styles:
+                    img_cell:
+                      - background-color: "rgba(var(--color-red),0.05)"
+                    icon:
+                      - color: "rgba(var(--color-red),1)"
+          item2:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+    notification: >
+      [[[
+        if (entity.state == 'unavailable' || states[entity.entity_id].attributes.daysTo == 0 || states[entity.entity_id].attributes.daysTo == 1){
+          return '<ha-icon icon="mdi:exclamation" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>'
+        }
+      ]]]

@@ -1,0 +1,31 @@
+---
+### Card Title ###
+card_title:
+  tap_action:
+    action: "none"
+  show_icon: false
+  show_label: true
+  show_name: true
+  styles:
+    card:
+      - background-color: "rgba(0,0,0,0)"
+      - box-shadow: "none"
+      - height: "auto"
+      - width: "auto"
+      - margin-top: "6px"
+      - margin-left: "18px"
+      - margin-bottom: "0px"
+      - padding: "6px"
+    grid:
+      - grid-template-areas: "'n' 'l'"
+      - grid-template-columns: "1fr"
+      - grid-template-rows: "min-content min-content"
+    name:
+      - justify-self: "start"
+      - font-weight: "bold"
+      - font-size: "1.5rem"
+    label:
+      - justify-self: "start"
+      - font-weight: "bold"
+      - font-size: "1rem"
+      - opacity: "0.4"

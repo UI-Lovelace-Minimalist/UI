@@ -1,0 +1,51 @@
+---
+custom_card_nas:
+  template:
+    - "blue_no_state"
+  tap_action:
+    action: "more-info"
+    entity: "[[[ return variables.ulm_custom_card_nas_sensor; ]]]"
+  show_icon: true
+  show_label: true
+  show_name: true
+  icon: |-
+    [[[
+       return "mdi:nas";
+    ]]]
+  label: |-
+    [[[
+       return variables.ulm_custom_card_nas_text + " " + states[variables.ulm_custom_card_nas_sensor].state + variables.ulm_custom_card_nas_unit;
+    ]]]
+  name: |-
+    [[[
+       return "Nas";
+    ]]]
+  size: "20px"
+  styles:
+    label:
+      - justify-self: "start"
+      - align-self: "start"
+      - font-weight: "bolder"
+      - font-size: "12px"
+      - filter: "opacity(40%)"
+      - margin-left: "12px"
+    name:
+      - align-self: "end"
+      - justify-self: "start"
+      - font-weight: "bold"
+      - font-size: "14px"
+      - margin-left: "12px"
+      - filter: "opacity(100%)"
+    img_cell:
+      - border-radius: "50%"
+      - place-self: "center"
+      - width: "42px"
+      - height: "42px"
+    grid:
+      - grid-template-areas: "'i n' 'i l'"
+      - grid-template-columns: "min-content auto"
+      - grid-template-rows: "min-content min-content"
+    card:
+      - border-radius: "20px"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"

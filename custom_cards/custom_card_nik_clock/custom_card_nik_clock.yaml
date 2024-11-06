@@ -1,0 +1,55 @@
+---
+custom_card_nik_clock:
+  triggers_update: "all"
+  variables:
+    ulm_custom_card_nik_clock_switch:
+    ulm_custom_card_nik_clock_switch_enable: false
+    ulm_language: >
+      [[[
+        return hass["language"];
+      ]]]
+  show_icon: false
+  show_name: true
+  show_state: false
+  show_label: true
+  name: >
+    [[[
+      const time = new Date();
+      let hour = time.getHours();
+      let minute = (time.getMinutes()<10?'0':'') + time.getMinutes()
+      return hour + ":" + minute;
+    ]]]
+  layout: "vertical"
+  label: >
+    [[[
+      const event = new Date();
+      const options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      var locale = variables.ulm_language;
+      let formatted_date = event.toLocaleDateString(locale, options);
+      return formatted_date;
+    ]]]
+  tap_action:
+    action: >
+      [[[
+          if (variables.ulm_custom_card_nik_clock_switch_enable){
+            return 'call-service'
+          }
+          else{
+            return 'none'
+          }
+      ]]]
+    service: "input_boolean.toggle"
+    service_data:
+      entity_id: "[[[ return variables.ulm_custom_card_nik_clock_switch ]]]"
+  styles:
+    card:
+      - background-color: "transparent"
+      - height: "100px"
+      - box-shadow: "none"
+    name:
+      - font-size: "290%"
+      - font-weight: "bold"
+      - justify-self: "center"
+    label:
+      - justify-self: "center"
+      - font-size: "110%"

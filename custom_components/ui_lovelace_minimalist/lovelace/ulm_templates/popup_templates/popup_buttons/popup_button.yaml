@@ -1,0 +1,32 @@
+---
+popup_button:
+  color: "var(--primary-color)"
+  show_icon: true
+  show_name: true
+  styles:
+    grid:
+      - grid-template-areas: "'i' 'n'"
+      - grid-template-columns: "auto"
+      - grid-template-rows: "min-content min-content"
+    card:
+      - background: "none"
+      - box-shadow: "none"
+      - border-radius: "none"
+      - padding: "12px"
+    icon:
+      - color: "var(--primary-color)"
+    img_cell:
+      - background-color: "var(--card-background-color)"
+      - border-radius: "50%"
+      - place-self: "center"
+      - width: "42px"
+      - height: "42px"
+      - box-shadow: "var(--ha-card-box-shadow)"
+    name:
+      - justify-self: "center"
+      - font-weight: "bold"
+      - font-size: "14px"
+      - margin-top: "12px"
+      - white-space: "initial"
+      - text-overflow: "initial"
+      - overflow: "initial"

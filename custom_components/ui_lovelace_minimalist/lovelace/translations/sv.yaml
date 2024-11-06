@@ -1,0 +1,14 @@
+---
+ulm_language_variables:
+  variables:
+    ulm_currency: "kr"
+    ulm_updates_available: "Uppdatering tillgänglig!"
+    ulm_no_updates_available: "Ingen uppdatering tillgänglig"
+    ulm_morning: "God morgon"
+    ulm_afternoon: "God eftermiddag"
+    ulm_evening: "God kväll"
+    ulm_hello: "Hej"
+    ulm_volume: "Volym"
+    ulm_popups_color: "Färg"
+    ulm_radar: "Radar"
+    ulm_popup_total: "Total"

@@ -1,0 +1,14 @@
+---
+ulm_language_variables:
+  variables:
+    ulm_currency: "RUB"
+    ulm_updates_available: "Доступны обновления!"
+    ulm_no_updates_available: "Нет доступных обновлений"
+    ulm_morning: "Доброе утро"
+    ulm_afternoon: "Добрый день"
+    ulm_evening: "Добрый вечер"
+    ulm_hello: "Здравствуйте"
+    ulm_volume: "Объем"
+    ulm_popups_color: "Цвет"
+    ulm_radar: "Pадар"
+    ulm_popup_total: "Всего"

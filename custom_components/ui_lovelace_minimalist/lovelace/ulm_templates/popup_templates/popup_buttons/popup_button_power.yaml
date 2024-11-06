@@ -1,0 +1,18 @@
+---
+popup_button_power:
+  template:
+    - "popup_button"
+    - "ulm_translation_engine"
+  icon: "mdi:power"
+  name: "[[[ return variables.ulm_translation_state; ]]]"
+  styles:
+    name:
+      - text-transform: "uppercase"
+      - color: "rgba(var(--color-theme),0.5)"
+    icon:
+      - color: "var(--card-background-color)"
+    img_cell:
+      - background-color: "var(--primary-color)"
+      - box-shadow: "none"
+  tap_action:
+    action: "toggle"

@@ -1,0 +1,255 @@
+---
+custom_card_imswel_person:
+  template:
+    - "ulm_translation_engine"
+    - "icon_info_bg"
+    - "ulm_custom_card_imswel_person_language_variables"
+    - "custom_popup_imswel_person"
+  variables:
+    ulm_card_imswel_person_use_entity_picture: false
+  triggers_update: "[[[ return variables.ulm_card_imswel_person_entity ]]]"
+  show_entity_picture: "[[[ return variables.ulm_card_imswel_person_use_entity_picture ]]]"
+  show_label: true
+  show_name: true
+  icon: "mdi:face-man"
+  entity_picture: >
+    [[[
+      if (variables.ulm_card_imswel_person_use_entity_picture == true){
+        return states[variables.ulm_card_imswel_person_entity].attributes.entity_picture;
+      } else{
+        return null;
+      }
+    ]]]
+  label: >
+    [[[
+      let state = states[variables.ulm_card_imswel_person_entity].state;
+      let option = ["home", "not_home", "unavailable", "unknown"];
+      if (option.includes(state)){
+        if (state == "home"){
+          return variables.ulm_custom_card_imswel_person_home;
+        } else if (state == "not_home"){
+          return variables.ulm_custom_card_imswel_person_not_home;
+        } else{
+          return variables.ulm_translation_unavailable;
+        }
+      } else{
+        return state;
+      }
+    ]]]
+  name: "[[[ return states[variables.ulm_card_imswel_person_entity].attributes.friendly_name ]]]"
+  entity: "[[[ return variables.ulm_card_imswel_person_entity; ]]]"
+  styles:
+    icon:
+      - color: "rgba(var(--color-theme), 0.9)"
+      - width: >
+          [[[
+            if (variables.ulm_card_imswel_person_use_entity_picture == true){
+              return "42px";
+            } else {
+              return "20px";
+            }
+          ]]]
+    custom_fields:
+      notification:
+        - border-radius: "50%"
+        - position: "absolute"
+        - left: "38px"
+        - top: "8px"
+        - height: "16px"
+        - width: "16px"
+        - border: "2px solid var(--card-background-color)"
+        - font-size: "12px"
+        - line-height: "14px"
+        - background-color: >
+            [[[
+              let state = states[variables.ulm_card_imswel_person_entity].state;
+              let option = ["unavailable", "unknown"];
+              if (option.includes(state)){
+                return "rgba(var(--color-red),1)";
+              } else if (state == 'home') {
+                return "rgba(var(--color-blue),1)";
+              } else {
+                return "rgba(var(--color-green),1)";
+              }
+            ]]]
+  custom_fields:
+    notification: >
+      [[[
+        var zones = Object.values(states).filter((entity) => entity.entity_id.startsWith("zone.")).map((entity) => entity.entity_id);
+        var person_location = states[variables.ulm_card_imswel_person_entity].state;
+        let option = ["unavailable", "unknown"];
+        if (option.includes(person_location)){
+          return '<ha-icon icon="mdi:alert" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+        } else{
+          if (person_location == "home"){
+            return '<ha-icon icon="mdi:home-variant" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+          } else{
+            for (const item of zones){
+              if (person_location == states[item]?.attributes?.friendly_name){
+                var icon = (states[item].attributes.icon !== null) ? states[item].attributes.icon : 'mdi:help-circle';
+                return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+              } else if (person_location == 'not_home'){
+                return '<ha-icon icon="mdi:home-minus" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+              }
+            }
+          }
+        }
+      ]]]
+
+custom_popup_imswel_person:
+  tap_action:
+    action: "fire-dom-event"
+    browser_mod:
+      service: "browser_mod.popup"
+      data:
+        title: "[[[ return states[variables.ulm_card_imswel_person_entity].attributes.friendly_name ]]]"
+        size: >
+          [[[
+            const mediaQuery = window.matchMedia("(max-width: 800px)")
+            if (mediaQuery.matches) {
+              return "fullscreen";
+            }
+          ]]]
+        style: >
+          --popup-padding-x: 0px;
+          --popup-padding-y: 0px;
+        card_mod:
+          style:
+            ha-dialog: >
+              .content .container{
+                padding: 0 !important;
+              }
+        content:
+          type: "vertical-stack"
+          cards:
+            - type: "entities"
+              style: >
+                ha-card{
+                  box-shadow: none;
+                }
+              entities:
+                - entity: "[[[ return variables.ulm_card_imswel_person_entity; ]]]"
+                  secondary_info: "last-changed"
+            - type: "history-graph"
+              style: >
+                ha-card{
+                  box-shadow: none;
+                }
+              hours_to_show: 8
+              entities:
+                - entity: "[[[ return variables.ulm_card_imswel_person_entity; ]]]"
+                  name: "‎"
+            - type: "horizontal-stack"
+              cards:
+                - type: "custom:button-card"
+                  template: "custom_card_imswel_person_glance_icon"
+                  entity: "[[[ return variables.ulm_card_imswel_person_wifi_tracker; ]]]"
+                  name: "WiFi"
+                  icon: "mdi:wifi"
+                - type: "custom:button-card"
+                  template: "custom_card_imswel_person_glance_icon"
+                  entity: "[[[ return variables.ulm_card_imswel_person_gps_tracker; ]]]"
+                  name: "GPS"
+                  icon: "mdi:map-marker"
+            - type: "custom:button-card"
+              template: "custom_card_imswel_person_findmy_button"
+              entity: "[[[ return variables.ulm_card_imswel_person_findmy_script; ]]]"
+            - type: "map"
+              style:
+                .: >
+                  ha-card{
+                    box-shadow: none;
+                    border-radius: 0px;
+                  }
+                ha-map:
+                  $: >
+                    .leaflet-control-attribution {
+                      display: none;
+                    }
+              aspect_ratio: "90%"
+              default_zoom: 16
+              entities: "[[[ return [variables.ulm_card_imswel_person_gps_tracker]; ]]]"
+
+custom_card_imswel_person_glance_icon:
+  variables:
+    color: "green"
+    state: "home"
+  tap_action:
+    action: "none"
+  triggers_update: "[[[ return entity.entity_id; ]]]"
+  show_label: false
+  show_state: false
+  size: "20px"
+  state:
+    - operator: "template"
+      value: "[[[ return entity.state == variables.state; ]]]"
+      styles:
+        icon:
+          - color: "[[[ return `rgba(var(--color-${variables.color}), 1)`; ]]]"
+        img_cell:
+          - background-color: "[[[ return `rgba(var(--color-${variables.color}), 0.2)`; ]]]"
+  styles:
+    icon:
+      - color: "rgba(var(--color-theme),0.2)"
+    name:
+      - margin-bottom: "12px"
+      - justify-self: "center"
+      - align-self: "start"
+      - font-weight: "regular"
+      - font-size: "14px"
+    img_cell:
+      - background-color: "rgba(var(--color-theme),0.05)"
+      - border-radius: "50%"
+      - place-self: "center"
+      - width: "42px"
+      - height: "42px"
+    grid:
+      - grid-template-areas: "'n' 'i'"
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "none"
+
+custom_card_imswel_person_findmy_button:
+  template:
+    - "ulm_custom_card_imswel_person_language_variables"
+  tap_action:
+    action: "toggle"
+  icon: "mdi:volume-high"
+  size: "1.4em"
+  name: "[[[ return variables.ulm_custom_card_imswel_person_findmy; ]]]"
+  styles:
+    icon:
+      - color: "rgba(var(--color-theme),0.4)"
+    name:
+      - font-size: "1.06em"
+      - letterspacing: "0.015em"
+      - color: "rgba(var(--color-theme),1)"
+      - filter: "opacity(60%)"
+    img_cell:
+      - margin-right: "4px"
+    grid:
+      - grid-template-areas: "'i n'"
+      - grid-column-gap: "0.3em"
+    card:
+      - border-radius: "var(--border-radius)"
+      - padding: "1em 1.4em"
+      - margin: "16px auto"
+      - width: "100%"
+      - font-size: "1.06em"
+      - box-shadow: "none"
+      - border: "1px solid rgba(var(--color-theme),0.4)"
+  extra_styles: >
+    :host{
+      align-self: center !important;
+    }
+    ha-card:hover{
+      background: rgba(var(--color-blue),0.2);
+      border: 1px solid rgba(var(--color-blue),0.1) !important;
+    }
+    ha-card:hover #name{
+      color: rgba(var(--color-blue),1) !important;
+      filter: opacity(100%) !important;
+    }
+    ha-card:hover #icon{
+      color: rgba(var(--color-blue),1) !important;
+    }

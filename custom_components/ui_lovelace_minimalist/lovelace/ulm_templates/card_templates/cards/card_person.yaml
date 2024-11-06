@@ -1,0 +1,101 @@
+---
+### Card Person ###
+card_person:
+  template:
+    - "icon_info_bg"
+    - "ulm_translation_engine"
+  variables:
+    ulm_card_person_use_entity_picture: false
+    ulm_card_person_icon: "mdi:face-man"
+    ulm_address: ""
+  triggers_update:
+    - "[[[ return variables.ulm_card_person_entity ]]]"
+    - "[[[ return variables.ulm_card_person_eta ]]]"
+    - "[[[ return variables.ulm_address ]]]"
+  tap_action:
+    action: "more-info"
+  show_label: true
+  show_name: true
+  label: >
+    [[[
+      let translation = helpers.localize(entity)
+      var eta = ""
+      if (variables.ulm_card_person_eta && entity.state != 'home'){
+        eta = " | " + helpers.localize(states[variables.ulm_card_person_eta]);
+      }
+      if (variables.ulm_address){
+        return helpers.localize(states[variables.ulm_address]) + eta;
+      }
+      return translation + eta
+    ]]]
+  name: "[[[ return entity.attributes.friendly_name ]]]"
+  entity: "[[[ return variables.ulm_card_person_entity; ]]]"
+  icon: "[[[ return variables.ulm_card_person_icon; ]]]"
+  show_entity_picture: "[[[ return variables.ulm_card_person_use_entity_picture ]]]"
+  entity_picture:
+    "[[[ return variables.ulm_card_person_use_entity_picture ? entity.attributes.entity_picture\
+    \ : null ]]]"
+  styles:
+    icon:
+      - color: "rgba(var(--color-theme),0.9)"
+      - width: >
+          [[[
+            return !variables.ulm_card_person_use_entity_picture ? "20px" : "42px";
+          ]]]
+      - place-self: >
+          [[[
+            return !variables.ulm_card_person_use_entity_picture ? "center" : "stretch stretch";
+          ]]]
+    custom_fields:
+      notification:
+        - border-radius: "50%"
+        - position: "absolute"
+        - left: "38px"
+        - top: "8px"
+        - height: "16px"
+        - width: "16px"
+        - border: "2px solid var(--card-background-color)"
+        - font-size: "12px"
+        - line-height: "14px"
+        - background-color: >
+            [[[
+              return (entity.state !== 'home') ? "rgba(var(--color-green),1)" : "rgba(var(--color-blue),1)";
+            ]]]
+      info:
+        - position: "absolute"
+        - right: "6px"
+        - top: "6px"
+        - width: "25px"
+        - height: "25px"
+  custom_fields:
+    notification: >
+      [[[
+        if (entity.state == 'home') {
+            return '<ha-icon icon="mdi:home-variant" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+        } else {
+            for (let st in states) {
+                if (st.startsWith("zone.")) {
+                    if (states[st]?.attributes?.persons?.includes(entity.state) && !states[st]?.attributes?.passive) {
+                        var icon = states[st].attributes.icon !== null ? states[st].attributes.icon : 'mdi:help-circle';
+                        return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+                    }
+                }
+            }
+        }
+        return '<ha-icon icon="mdi:home-minus" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+      ]]]
+    info: |
+      [[[
+        if(variables.ulm_card_person_battery){
+        const battery = Math.round(states[variables.ulm_card_person_battery].state/1);
+        const radius = 20.5; const circumference = radius * 2 * Math.PI;
+        return `<svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="${radius}"
+        stroke="green" stroke-width="3" fill="none"
+        style="transform: rotate(-90deg); transform-origin: 50% 50%;
+        stroke-dasharray: ${circumference};
+        stroke-dashoffset: ${circumference - battery / 100 * circumference};" />
+        <text x="50%" y="54%" fill="var(--primary-text-color)" font-size="16" font-weight= "bold"
+        text-anchor="middle" alignment-baseline="middle">
+        ${battery}<tspan font-size="10">%</tspan></text></svg>`;
+        }
+      ]]]

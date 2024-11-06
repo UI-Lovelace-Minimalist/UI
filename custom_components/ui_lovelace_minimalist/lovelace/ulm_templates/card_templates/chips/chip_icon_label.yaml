@@ -1,0 +1,23 @@
+---
+## Chips Icon Label ###
+chip_icon_label:
+  template: "chips"
+  show_icon: true
+  size: "100%"
+  styles:
+    card:
+      - padding-top: "6px"
+      - padding-button: "6px"
+      - padding-left: "12px"
+    grid:
+      - grid-template-areas: "'i l'"
+      - grid-template-columns: "max_content auto"
+      - grid-template-rows: "min-content"
+    img_cell:
+      - place-self: "center"
+      - width: "14px"
+      - height: "24px"
+    label:
+      - font-size: "12px"
+      - margin-left: "0px"
+      - margin-top: "0px"

@@ -1,0 +1,90 @@
+---
+### Card Graph ###
+card_graph:
+  template:
+    - "extended_card"
+  variables:
+    ulm_card_graph_color: "var(--info-color)"
+    ulm_card_graph_name: "[[[ return entity.attributes.friendly_name; ]]]"
+    ulm_card_graph_icon: "[[[ return entity.attributes.icon ]]]"
+    ulm_card_graph_color2: "var(--info-color)"
+    ulm_card_graph_entity2: ""
+    ulm_card_graph_hours: 24
+    ulm_card_graph_type: "fill"
+    ulm_card_graph_points: "0.5"
+    ulm_card_graph_group_by: "interval"
+    ulm_card_graph_line_width: 5
+    ulm_card_graph_icon_color: ""
+  triggers_update:
+    - "[[[ return variables.ulm_card_graph_entity2 ]]]"
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        template:
+          - "card_generic"
+        variables:
+          ulm_card_generic_icon: "[[[ return variables.ulm_card_graph_icon; ]]]"
+          ulm_card_generic_name: "[[[ return variables.ulm_card_graph_name; ]]]"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              custom_fields:
+                item1:
+                  card:
+                    type: "custom:button-card"
+                    styles:
+                      icon:
+                        - color: >
+                            [[[
+                              var color = variables.ulm_card_graph_icon_color;
+                              if (variables.ulm_card_graph_icon_color){
+                                return 'rgba(var(--color-' + color + '),1)';
+                              }
+                              return 'rgba(var(--color-theme),0.2)';
+                            ]]]
+                      img_cell:
+                        - background-color: >
+                            [[[
+                              var color = variables.ulm_card_graph_icon_color;
+                              if (variables.ulm_card_graph_icon_color){
+                                return 'rgba(var(--color-' + color + '),0.2)';
+                              }
+                              return 'rgba(var(--color-theme),0.05)';
+                            ]]]
+    item2:
+      card:
+        type: "custom:mini-graph-card"
+        entities: >
+          [[[
+            var ent = [];
+            ent.push(variables.ulm_card_graph_entity);
+            if(variables.ulm_card_graph_entity2 != "")
+              ent.push(variables.ulm_card_graph_entity2);
+            return ent;
+          ]]]
+        line_color: >
+          [[[
+            var col = [];
+            col.push(variables.ulm_card_graph_color);
+            if(variables.ulm_card_graph_color2 != "")
+              col.push(variables.ulm_card_graph_color2);
+            return col;
+          ]]]
+        show:
+          name: false
+          icon: false
+          legend: false
+          state: false
+          graph: "[[[ return variables.ulm_card_graph_type=='fill'?'line':variables.ulm_card_graph_type; ]]]"
+          fill: "[[[ return variables.ulm_card_graph_type=='fill'?true:false; ]]]"
+        hours_to_show: "[[[ return variables.ulm_card_graph_hours; ]]]"
+        points_per_hour: "[[[ return variables.ulm_card_graph_points; ]]]"
+        group_by: "[[[ return variables.ulm_card_graph_group_by; ]]]"
+        line_width: "[[[ return variables.ulm_card_graph_line_width; ]]]"
+        style: |
+          ha-card {
+            box-shadow: none;
+            border-radius: var(--border-radius);
+          }

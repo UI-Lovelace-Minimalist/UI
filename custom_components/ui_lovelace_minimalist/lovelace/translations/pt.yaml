@@ -1,0 +1,14 @@
+---
+ulm_language_variables:
+  variables:
+    ulm_currency: "€"
+    ulm_updates_available: "Updates available!"
+    ulm_no_updates_available: "No updates available"
+    ulm_morning: "Bom dia"
+    ulm_afternoon: "Boa tarde"
+    ulm_evening: "Boa noite"
+    ulm_hello: "Olá"
+    ulm_volume: "Volume"
+    ulm_popups_color: "Cor"
+    ulm_radar: "Radar"
+    ulm_popup_total: "Total"

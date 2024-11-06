@@ -1,0 +1,17 @@
+---
+ulm_language_variables:
+  variables:
+    ulm_currency: "kr"
+    ulm_updates_available: "Opdatering tilgængelig"
+    ulm_no_updates_available: "Ingen opdateringer"
+    ulm_ophaling: "Affalds afhentning!"
+    ulm_geen_ophaling: "Ingen afhentninger"
+    ulm_volgende_ophaling: "Næste afhentning"
+    ulm_morning: "God morgen"
+    ulm_afternoon: "God eftermiddag"
+    ulm_evening: "God aften"
+    ulm_hello: "Hej"
+    ulm_volume: "Volumen"
+    ulm_popups_color: "Farve"
+    ulm_radar: "Radar"
+    ulm_popup_total: "Total"

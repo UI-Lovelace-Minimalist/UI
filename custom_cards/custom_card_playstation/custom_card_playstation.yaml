@@ -1,0 +1,45 @@
+---
+card_ps4:
+  template:
+    - "icon_info_bg"
+    - "ulm_translation_engine"
+  label: "[[[ return variables.ulm_translation_state ]]]"
+  styles:
+    icon:
+      - color: "rgba(var(--color-theme),0.2)"
+    img_cell:
+      - background-color: "rgba(var(--color-theme),0.05)"
+  state:
+    - value: "idle"
+      styles:
+        icon:
+          - color: "rgba(var(--color-blue),1)"
+        img_cell:
+          - background-color: "rgba(var(--color-blue), 0.2)"
+    - value: "standby"
+      styles:
+        icon:
+          - color: "rgba(var(--color-theme),0.2)"
+        img_cell:
+          - background-color: "rgba(var(--color-theme),0.05)"
+    - operator: "template"
+      value: "[[[ return entity.state !='unknown' ]]]"
+      name: "[[[ return entity.attributes.media_title; ]]]"
+      label: "[[[ return entity.attributes.friendly_name; ]]]"
+      styles:
+        label:
+          - color: "white"
+          - filter: "opacity(100%)"
+        img_cell:
+          - background-color: "none"
+        icon:
+          - color: "white"
+        name:
+          - color: "white"
+        card:
+          - background-blend-mode: "multiply"
+          - background: >
+              [[[
+                var image = entity.attributes.entity_picture;
+                return 'center / cover url(' + image + ') rgba(0, 0, 0, 0.15)';
+              ]]]

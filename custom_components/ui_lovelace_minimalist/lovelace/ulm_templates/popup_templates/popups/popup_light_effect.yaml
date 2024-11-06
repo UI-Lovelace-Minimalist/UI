@@ -1,0 +1,246 @@
+---
+popup_light_effect:
+  template:
+    - "popup_light_brightness"
+    - "ulm_language_variables"
+  styles:
+    grid:
+      - grid-template-areas: >
+          [[[
+            if(entity.attributes?.effect_list && variables?.ulm_card_light_color_palette){
+              return "'header header' 'title_effect title_palette' 'content4 content5'  'footer footer'"
+            }
+            if(entity.attributes?.effect_list){
+              return "'header' 'content4'  'footer'"
+            }
+            return "'header' 'content5'  'footer'"
+          ]]]
+      - grid-template-columns: >
+          [[[
+            if(entity.attributes?.effect_list && variables?.ulm_card_light_color_palette){
+              return '1fr 1fr'
+            }
+            return '1fr'
+          ]]]
+      - grid-template-rows: >
+          [[[
+            if(entity.attributes?.effect_list && variables?.ulm_card_light_color_palette){
+              return "16vh min-content calc(56vh - 54px) 14vh"
+            }
+            return "16vh 56vh 14vh"
+          ]]]
+      - column-gap: "30px"
+    custom_fields:
+      content1:
+        - display: "none"
+      content2:
+        - display: "none"
+      content3:
+        - display: "none"
+      content4:
+        - display: >
+            [[[
+              if(entity.attributes?.effect_list){
+                return 'grid'
+              }
+              return 'none'
+            ]]]
+        - overflow-x: "hidden"
+        - justify-self: "center"
+        - align-self: "start"
+        - height: "[[[ return (entity.attributes?.effect_list && variables?.ulm_card_light_color_palette)? 'calc(56vh - 54px)' : '56vh' ]]]"
+        - padding-bottom: "12px"
+        - max-width: "42vh"
+      content5:
+        - display: >
+            [[[
+              if(variables?.ulm_card_light_color_palette){
+                return 'grid'
+              }
+              return 'none'
+            ]]]
+        - overflow-x: "hidden"
+        - justify-self: "center"
+        - align-self: "start"
+        - height: "[[[ return (entity.attributes?.effect_list && variables?.ulm_card_light_color_palette)? 'calc(56vh - 54px)' : '56vh' ]]]"
+        - padding-bottom: "12px"
+        - max-width: "42vh"
+      title_effect:
+        - display: >
+            [[[
+              if(entity.attributes?.effect_list && variables?.ulm_card_light_color_palette){
+                return 'block'
+              }
+              return 'none'
+            ]]]
+      title_palette:
+        - display: >
+            [[[
+              if(entity.attributes?.effect_list && variables?.ulm_card_light_color_palette){
+                return 'block'
+              }
+              return 'none'
+            ]]]
+  extra_styles: |
+    @media (max-width: 800px) {
+      #container {
+        grid-template-areas: "header" "content4" "buttons" "footer" !important;
+        grid-template-rows: 16vh 52vh 14vh 14vh !important;
+        grid-template-columns: 1fr !important;
+      }
+      #buttons {
+        display: block !important;
+        align-self: center !important;
+      }
+      #content1 {
+        display: none;
+      }
+      #content2 {
+        display: none;
+      }
+      #content3 {
+        display: none;
+      }
+      #content4 {
+        height: 52vh !important;
+      }
+      #content5 {
+        display: none !important;
+      }
+      #title_effect {
+        display: none !important;
+      }
+      #title_palette {
+        display: none !important;
+      }
+  custom_fields:
+    footer:
+      card:
+        type: "custom:button-card"
+        template: "popup_list_items"
+        styles:
+          custom_fields:
+            item3:
+              - display: "none"
+    buttons:
+      card:
+        type: "custom:button-card"
+        template: "list_3_items"
+        variables:
+          ulm_card_light_color_palette: "[[[ return variables?.ulm_card_light_color_palette ]]]"
+        styles:
+          card:
+            - margin-left: "6px"
+          custom_fields:
+            item3:
+              - display: "none"
+          grid:
+            - align-items: "initial"
+            - grid-template-areas: >
+                [[[
+                      var areas = [];
+                      if (entity.attributes.effect_list){
+                          areas.push("item1");
+                      }
+                      if (variables?.ulm_card_light_color_palette) {
+                          areas.push("item2");
+                      }
+                      return "\"" + areas.join(" ") + "\"";
+                ]]]
+            - grid-template-columns: >
+                [[[
+                      var columns = [];
+                      if (entity.attributes.effect_list) {
+                          columns.push("1fr");
+                      }
+                      if (variables?.ulm_card_light_color_palette) {
+                          columns.push("1fr");
+                      }
+                      return columns.join(" ");
+                ]]]
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template:
+                - "popup_button"
+                - "popup_button_selected"
+              icon: "mdi:auto-fix"
+              name: "[[[ return hass.resources[hass['language']]['ui.card.light.effect']; ]]]"
+          item2:
+            card:
+              icon: "mdi:palette"
+              type: "custom:button-card"
+              template:
+                - "popup_button"
+                - "popup_button_color"
+              styles:
+                card:
+                  - display: >
+                      [[[;
+                            if (variables?.ulm_card_light_color_palette) {
+                                return "block";
+                            }
+                            return "none";
+                      ]]]
+              tap_action:
+                action: "fire-dom-event"
+                browser_mod:
+                  service: "browser_mod.popup"
+                  data:
+                    hide_header: true
+                    style: |
+                      --popup-background-color: var(--primary-background-color);
+                      --popup-border-radius: 20px;
+                      --popup-padding-x: 24px;
+                      --popup-padding-y: 20px;
+                      --popup-max-width: auto
+                      --popup-min-width: 800px;
+                    size: >
+                      [[[
+                        const mediaQuery = window.matchMedia('(max-width: 800px)')
+                        if (mediaQuery.matches) {
+                          return 'fullscreen'
+                        }
+                      ]]]
+                    content:
+                      type: "custom:button-card"
+                      template: "popup_light_palette"
+                      entity: "[[[ return entity.entity_id; ]]]"
+                      variables:
+                        ulm_card_light_color_palette: "[[[ return variables?.ulm_card_light_color_palette ]]]"
+    title_effect:
+      card:
+        type: "custom:button-card"
+        template:
+          - "icon_info"
+        entity: "[[[ return entity.entity_id; ]]]"
+        icon: "mdi:auto-fix"
+        name: "[[[ return hass.resources[hass['language']]['ui.card.light.effect']; ]]]"
+        label: "[[[ return variables.ulm_popup_total + ': ' + entity?.attributes?.effect_list?.length ]]]"
+        styles:
+          card:
+            - margin-bottom: "12px"
+            - background: "none"
+          img_cell:
+            - background: "var(--card-background-color)"
+          icon:
+            - color: "var(--primary-text-color)"
+        custom_fields:
+    title_palette:
+      card:
+        type: "custom:button-card"
+        template:
+          - "icon_info"
+        icon: "mdi:palette"
+        name: "[[[ return variables.ulm_popups_color; ]]]"
+        label: "[[[ return variables.ulm_popup_total + ': ' + states[variables?.ulm_card_light_color_palette]?.attributes?.options?.length ]]]"
+        styles:
+          card:
+            - margin-bottom: "12px"
+            - background: "none"
+          img_cell:
+            - background: "var(--card-background-color)"
+          icon:
+            - color: "var(--primary-text-color)"
+        custom_fields:

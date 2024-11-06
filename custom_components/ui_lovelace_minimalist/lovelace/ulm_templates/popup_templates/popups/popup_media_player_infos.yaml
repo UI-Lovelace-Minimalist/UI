@@ -1,0 +1,332 @@
+---
+popup_media_player_infos:
+  show_icon: false
+  show_name: false
+  show_label: false
+  show_units: false
+  triggers_update: "all"
+  styles:
+    grid:
+      - grid-template-areas: "'header header' 'content1 content2' 'footer footer'"
+      - grid-template-rows: "16vh 56vh 14vh"
+      - grid-template-columns: "2fr 1fr"
+    card:
+      - background: "var(--primary-background-color)"
+      - box-shadow: "none"
+      - padding: "0% 2% 2% 2%"
+      - border-radius: "none"
+    custom_fields:
+      header:
+        - align-self: "start"
+      content1:
+        - align-self: "center"
+        - background-color: "var(--card-background-color)"
+        - border-radius: "var(--border-radius)"
+        - box-shadow: "var(--box-shadow)"
+        - justify-self: "center"
+      content2:
+        - align-self: "center"
+        - justify-self: "center"
+      content3:
+        - display: "none"
+      footer:
+        - align-self: "start"
+        - padding-bottom: "2%"
+        - padding-top: "12px"
+  extra_styles: |
+    @media (max-width: 800px) {
+      #container {
+        grid-template-areas: "header" "content1" "footer" !important;
+        grid-template-rows: 16vh 56vh 28vh !important;
+        grid-template-columns: 1fr !important;
+      }
+      #content2 {
+        display: none;
+      }
+      #content3 {
+        display: none;
+    }
+  custom_fields:
+    header:
+      card:
+        type: "custom:button-card"
+        template: "popup_header"
+        entity: "[[[ return entity.entity_id; ]]]"
+    content1:
+      card:
+        type: "custom:button-card"
+        show_icon: false
+        show_name: false
+        show_label: false
+        styles:
+          grid:
+            - grid-template-areas: "'app' 'picture' 'media' 'control' 'bar'"
+          card:
+            - background-blend-mode: "soft-light"
+            - background: |
+                [[[
+                  if(hass.themes.darkMode){
+                    return entity.state == 'playing' && entity.attributes.entity_picture != null
+                    ? ' center / cover url(' + entity.attributes.entity_picture + '), radial-gradient(circle, #333333 90%, grey 105% ,#333333 110%)'
+                    : ''
+                  }else{
+                    return entity.state == 'playing' && entity.attributes.entity_picture != null
+                    ? ' center / cover url(' + entity.attributes.entity_picture + '), radial-gradient(circle, white 5%, grey 100% ,white 110%)'
+                    : ''
+                  }
+                ]]]
+            - box-shadow: "none"
+            - padding: "1%"
+          custom_fields:
+            app:
+              - justify-self: "start"
+              - align-self: "start"
+            picture:
+              - margin-left: "auto"
+              - margin-right: "auto"
+              - background: "none"
+              - box-shadow: "none"
+            media:
+              - background: "none"
+              - box-shadow: "none"
+              - width: "calc(100vw - 60px)"
+              - max-width: "370px"
+            control:
+              - background: "none"
+              - box-shadow: "none"
+            bar:
+              - align-self: "start"
+              - background: "none"
+              - box-shadow: "none"
+              - margin-bottom: "12px"
+        custom_fields:
+          app:
+            card:
+              type: "custom:button-card"
+              template: "popup_button_app"
+              entity: "[[[ return entity.entity_id; ]]]"
+          picture:
+            card:
+              type: "custom:mini-media-player"
+              entity: "[[[ return entity.entity_id; ]]]"
+              artwork: "full-cover"
+              hide:
+                name: true
+                icon: true
+                info: true
+                volume: true
+                progress: true
+                controls: true
+                source: true
+                power: true
+              card_mod:
+                style: |
+                  ha-card{
+                    width: 25vh !important;
+                    height: 25vh !important;
+                  }
+          media:
+            card:
+              type: "custom:mini-media-player"
+              entity: "[[[ return entity.entity_id; ]]]"
+              hide:
+                runtime: false
+                icon: true
+                volume: true
+                controls: true
+                source: true
+                power: true
+                name: true
+              card_mod:
+                style: |
+                  ha-card {
+                    background: none !important;
+                    box-shadow: none !important;
+                  }
+                  .mmp__bg{
+                    background: none !important;
+                  }
+                  .entity__info{
+                    width: 100% !important;
+                    text-align: center !important;
+                  }
+                  .entity__info__media {
+                    font-weight: bold !important;
+                    font-size: 14px !important;
+                    color: var(--primary-text-color) !important;
+                  }
+                  :host {
+                    --paper-progress-active-color: blue !important;
+                  }
+          control:
+            card:
+              type: "custom:mini-media-player"
+              entity: "[[[ return entity.entity_id; ]]]"
+              hide:
+                controls: true
+                icon: true
+                name: true
+                info: true
+                volume: true
+                power: true
+                progress: true
+                source: true
+              card_mod:
+                style: |
+                  ha-card {
+                    background: none !important;
+                    box-shadow: none !important;
+                    width: 50% !important;
+                    margin-left: 6px !important;
+                    margin-right: 6px !important;
+                  }
+                  .mmp__bg{
+                    background: none !important;
+                  }
+          bar:
+            card:
+              type: "custom:button-card"
+              template: "list_2_items"
+              styles:
+                card:
+                  - background: "none"
+                  - box-shadow: "none"
+                  - padding: "0px"
+                grid:
+                  - display: "flex"
+                  - justify-content: "center"
+              custom_fields:
+                item1:
+                  card:
+                    type: "custom:button-card"
+                    template: "popup_chip_controls"
+                    entity: "[[[ return entity.entity_id; ]]]"
+                    styles:
+                      card:
+                        - background: "none"
+                        - box-shadow: "none"
+                        - padding: "0px"
+                item2:
+                  card:
+                    type: "custom:button-card"
+                    template: "popup_chip_volume"
+                    entity: "[[[ return entity.entity_id; ]]]"
+                    styles:
+                      card:
+                        - background: "none"
+                        - box-shadow: "none"
+                        - padding: "0"
+                    tap_action:
+                      action: "fire-dom-event"
+                      browser_mod:
+                        service: "browser_mod.popup"
+                        data:
+                          hide_header: true
+                          style: |
+                            --popup-background-color: var(--primary-background-color);
+                            --popup-border-radius: 20px;
+                            --popup-padding-x: 24px;
+                            --popup-padding-y: 20px;
+                            --popup-max-width: auto
+                            --popup-min-width: 800px;
+                          size: >
+                            [[[
+                              const mediaQuery = window.matchMedia('(max-width: 800px)')
+                              if (mediaQuery.matches) {
+                                return 'fullscreen'
+                              }
+                            ]]]
+                          content:
+                            type: "custom:button-card"
+                            template: "popup_media_player_volume"
+                            entity: "[[[ return entity.entity_id; ]]]"
+    footer:
+      card:
+        type: "custom:button-card"
+        template: "popup_list_items"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template: "popup_button_back"
+          item2:
+            card:
+              type: "custom:button-card"
+              template: "popup_button_power"
+              entity: "[[[ return entity.entity_id; ]]]"
+          item3:
+            card:
+              type: "custom:button-card"
+              template: "popup_button_source"
+              entity: "[[[ return entity.entity_id; ]]]"
+    content2:
+      card:
+        type: "custom:my-slider-v2"
+        entity: "[[[ return entity.entity_id; ]]]"
+        allowTapping: true
+        vertical: true
+        styles:
+          card:
+            - height: "30vh"
+            - width: "calc(30vh / 2.8)"
+            - box-shadow: "none"
+            - background: "none"
+          container:
+            - border: "2px solid white"
+            - border-radius: "14px"
+            - height: "30vh"
+            - width: "calc(30vh / 2.8)"
+            - box-shadow: "none"
+          thumb:
+            - width: "50px"
+            - height: "5px"
+            - background: "white"
+            - position: "center"
+            - margin-left: "calc(30vh / 2.8 / 2 - 25px)"
+            - border-radius: "0px 0px 10px 10px"
+          progress:
+            - background: "rgba(var(--color-theme),0.9)"
+          track:
+            - background: "rgba(var(--color-theme),0.09)"
+        card_mod:
+          style:
+            .: |
+              :host {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: none;
+              }
+    content3:
+      card:
+        type: "vertical-stack"
+        cards: >
+          [[[
+            let rows = [];
+
+            function generate_source_items(index) {
+              var row = {
+                'type': 'custom:button-card',
+                'template': 'popup_media_player_row',
+                'entity': entity.entity_id,
+                'variables': {
+                  'ulm_popup_media_entity_idx': index
+                }
+              };
+              return row;
+            }
+
+            let source_list = entity.attributes?.source_list;
+
+            let length_list = source_list?.length
+            let index = 0;
+            for (let source in source_list){
+              rows.push(generate_source_items(index));
+              index++
+
+              if(index >= length_list){
+                break;
+              }
+            }
+            return rows;
+          ]]]

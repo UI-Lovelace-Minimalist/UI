@@ -1,0 +1,17 @@
+---
+ulm_language_variables:
+  variables:
+    ulm_currency: "€"
+    ulm_updates_available: "¡Actualización disponible!"
+    ulm_no_updates_available: "No hay actualizaciones"
+    ulm_ophaling: "¡Recogida de basura!"
+    ulm_geen_ophaling: "Sin recogida"
+    ulm_volgende_ophaling: "Próxima recogida"
+    ulm_morning: "Buenos días"
+    ulm_afternoon: "Buenas tardes"
+    ulm_evening: "Buenas noches"
+    ulm_hello: "Hola"
+    ulm_volume: "Volumen"
+    ulm_popups_color: "Color"
+    ulm_radar: "Radar"
+    ulm_popup_total: "Total"

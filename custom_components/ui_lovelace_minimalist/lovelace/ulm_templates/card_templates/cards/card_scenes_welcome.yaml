@@ -1,0 +1,219 @@
+---
+card_scenes_welcome:
+  show_icon: false
+  show_name: true
+  show_label: false
+  variables:
+    entity_1:
+      entity_id: ""
+      color: >
+        [[[
+          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
+    entity_2:
+      entity_id: ""
+      color: >
+        [[[
+          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
+    entity_3:
+      entity_id: ""
+      color: >
+        [[[
+          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
+    entity_4:
+      entity_id: ""
+      color: >
+        [[[
+          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
+    entity_5:
+      entity_id: ""
+      color: >
+        [[[
+          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
+    entity_6:
+      entity_id: ""
+      color: >
+        [[[
+          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
+    entity_7:
+      entity_id: ""
+      color: >
+        [[[
+          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
+  styles:
+    grid:
+      - grid-template-areas: >
+          [[[
+            var pills = []
+            const entities = [variables.entity_1?.entity_id, variables.entity_2?.entity_id, variables.entity_3?.entity_id, variables.entity_4?.entity_id, variables.entity_5?.entity_id, variables.entity_6?.entity_id, variables.entity_7?.entity_id]
+            function entity_check(item) {
+                if (item != "") {
+                    pills.push("item" + (pills.length+1))
+                }
+            }
+            entities.forEach(entity_check)
+            return pills.join(" ")
+          ]]]
+      - display: "flex"
+      - grid-template-rows: "min-content"
+      - justify-content: "space-evenly"
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
+      - overflow: "visible"
+    custom_fields:
+      item1:
+        - display: "[[[ return (variables.entity_1.entity_id != '') ? 'block' : 'none' ]]]"
+      item2:
+        - display: "[[[ return (variables.entity_2.entity_id != '') ? 'block' : 'none' ]]]"
+      item3:
+        - display: "[[[ return (variables.entity_3.entity_id != '') ? 'block' : 'none' ]]]"
+      item4:
+        - display: "[[[ return (variables.entity_4.entity_id != '') ? 'block' : 'none' ]]]"
+      item5:
+        - display: "[[[ return (variables.entity_5.entity_id != '') ? 'block' : 'none' ]]]"
+      item6:
+        - display: "[[[ return (variables.entity_6.entity_id != '') ? 'block' : 'none' ]]]"
+      item7:
+        - display: "[[[ return (variables.entity_7.entity_id != '') ? 'block' : 'none' ]]]"
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        template: "card_scenes_pill_welcome"
+        variables: "[[[ return variables.entity_1; ]]]"
+        entity: "[[[ return variables.entity_1.entity_id ]]]"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_1.entity_id ]]]"
+              icon: "[[[ return variables.entity_1.icon ]]]"
+          item2:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_1.entity_id ]]]"
+              name: "[[[ return variables.entity_1.name ]]]"
+    item2:
+      card:
+        type: "custom:button-card"
+        template: "card_scenes_pill_welcome"
+        variables: "[[[ return variables.entity_2; ]]]"
+        entity: "[[[ return variables.entity_2.entity_id ]]]"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_2.entity_id ]]]"
+              icon: "[[[ return variables.entity_2.icon ]]]"
+          item2:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_2.entity_id ]]]"
+              name: "[[[ return variables.entity_2.name ]]]"
+    item3:
+      card:
+        type: "custom:button-card"
+        template: "card_scenes_pill_welcome"
+        variables: "[[[ return variables.entity_3; ]]]"
+        entity: "[[[ return variables.entity_3.entity_id ]]]"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_3.entity_id ]]]"
+              icon: "[[[ return variables.entity_3.icon ]]]"
+          item2:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_3.entity_id ]]]"
+              name: "[[[ return variables.entity_3.name ]]]"
+    item4:
+      card:
+        type: "custom:button-card"
+        template: "card_scenes_pill_welcome"
+        variables: "[[[ return variables.entity_4; ]]]"
+        entity: "[[[ return variables.entity_4.entity_id ]]]"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_4.entity_id ]]]"
+              icon: "[[[ return variables.entity_4.icon ]]]"
+          item2:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_4.entity_id ]]]"
+              name: "[[[ return variables.entity_4.name ]]]"
+    item5:
+      card:
+        type: "custom:button-card"
+        template: "card_scenes_pill_welcome"
+        variables: "[[[ return variables.entity_5; ]]]"
+        entity: "[[[ return variables.entity_5.entity_id ]]]"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_5.entity_id ]]]"
+              icon: "[[[ return variables.entity_5.icon ]]]"
+          item2:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_5.entity_id ]]]"
+              name: "[[[ return variables.entity_5.name ]]]"
+    item6:
+      card:
+        type: "custom:button-card"
+        template: "card_scenes_pill_welcome"
+        variables: "[[[ return variables.entity_6; ]]]"
+        entity: "[[[ return variables.entity_6.entity_id ]]]"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_6.entity_id ]]]"
+              icon: "[[[ return variables.entity_6.icon ]]]"
+          item2:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_6.entity_id ]]]"
+              name: "[[[ return variables.entity_6.name ]]]"
+    item7:
+      card:
+        type: "custom:button-card"
+        template: "card_scenes_pill_welcome"
+        variables: "[[[ return variables.entity_7; ]]]"
+        entity: "[[[ return variables.entity_7.entity_id ]]]"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_7.entity_id ]]]"
+              icon: "[[[ return variables.entity_7.icon ]]]"
+          item2:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_7.entity_id ]]]"
+              name: "[[[ return variables.entity_7.name ]]]"

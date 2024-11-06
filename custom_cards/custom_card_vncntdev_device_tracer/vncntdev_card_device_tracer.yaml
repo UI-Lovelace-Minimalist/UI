@@ -1,0 +1,51 @@
+---
+custom_card_vncntdev_device_tracker:
+  template: "card_generic"
+  variables:
+    custom_card_vncntdev_device_tracker_name:
+    custom_card_vncntdev_device_tracker_status_as_name: false
+    custom_card_vncntdev_device_tracker_icon: "mdi:server"
+    custom_card_vncntdev_device_tracker_color_online: "var(--google-green)"
+    custom_card_vncntdev_device_tracker_color_offline: "var(--google-red)"
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        template:
+          - "icon_more_info"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              icon: "[[[return variables.custom_card_vncntdev_device_tracker_icon]]]"
+              styles:
+                icon:
+                  - color: >
+                      [[[
+                          return (entity.state == "not_home" || entity.state == "off") ?
+                          variables.custom_card_vncntdev_device_tracker_color_offline:
+                          variables.custom_card_vncntdev_device_tracker_color_online;
+                      ]]]
+          item2:
+            card:
+              type: "custom:button-card"
+              name: |
+                [[[
+                    if (!variables.custom_card_vncntdev_device_tracker_status_as_name) {
+                      return variables.custom_card_vncntdev_device_tracker_name !== null?
+                      variables.custom_card_vncntdev_device_tracker_name:
+                      entity.attributes.friendly_name;
+                    } else {
+                      return (entity.state == "not_home" || entity.state == "off") ? "Offline" : "Online";
+                    }
+                ]]]
+              label: |
+                [[[
+                    if (variables.custom_card_vncntdev_device_tracker_status_as_name) {
+                      return variables.custom_card_vncntdev_device_tracker_name !== null?
+                      variables.custom_card_vncntdev_device_tracker_name:
+                      entity.attributes.friendly_name;
+                    } else {
+                      return (entity.state == "not_home" || entity.state == "off") ? "Offline" : "Online";
+                    }
+                ]]]

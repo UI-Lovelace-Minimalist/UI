@@ -1,0 +1,14 @@
+---
+ulm_language_variables:
+  variables:
+    ulm_currency: "TRY"
+    ulm_updates_available: "Güncellemeler var!"
+    ulm_no_updates_available: "Güncelleme yok"
+    ulm_morning: "Günaydın"
+    ulm_afternoon: "İyi günler"
+    ulm_evening: "İyi akşamlar"
+    ulm_hello: "Hello"
+    ulm_volume: "Cilt"
+    ulm_popups_color: "Renk"
+    ulm_radar: "Radar"
+    ulm_popup_total: "Total"

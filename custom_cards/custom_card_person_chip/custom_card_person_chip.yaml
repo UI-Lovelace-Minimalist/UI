@@ -1,0 +1,30 @@
+---
+custom_card_person_chip:
+  template:
+    - "chips"
+    - "ulm_translation_engine"
+  show_icon: true
+  triggers_update: "all"
+  icon: "mdi:face-man"
+  entity: "[[[ return variables.ulm_custom_card_person_chip_entity; ]]]"
+  tap_action:
+    action: "more-info"
+    entity: "[[[ return variables.ulm_custom_card_person_chip_entity; ]]]"
+  label: >
+    [[[
+      let state = states[variables.ulm_custom_card_person_chip_entity].state;
+      return hass.resources[hass["language"]]["component.person.entity_component._.state." + state] || state;
+    ]]]
+  show_entity_picture: true
+  entity_picture: "[[[ return states[variables.ulm_custom_card_person_chip_entity].attributes.entity_picture ]]]"
+  styles:
+    img_cell:
+      - background-color: "rgba(var(--color-theme),0.05)"
+      - border-radius: "50%"
+      - height: "24px"
+    icon:
+      - color: "rgba(var(--color-theme),0.9)"
+      - width: "24px"
+      - place-self: "stretch stretch"
+    grid:
+      - grid-template-areas: "'i l'"

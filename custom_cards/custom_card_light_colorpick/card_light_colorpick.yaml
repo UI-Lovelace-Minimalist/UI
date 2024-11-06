@@ -1,0 +1,118 @@
+---
+card_light_colorpick:
+  template:
+    - "ulm_translation_engine"
+  variables:
+    ulm_card_light_colorpick_name: "[[[ return entity.attributes.friendly_name ]]]"
+    ulm_card_light_colorpick_transition: 1
+  show_icon: false
+  show_name: false
+  show_label: false
+  state:
+    - operator: "template"
+      value: "[[[ return entity.state == 'on' ]]]"
+      styles:
+        card:
+          - background-color: "rgba(var(--color-background-yellow),var(--opacity-bg))"
+        grid:
+          - row-gap: "12px"
+  styles:
+    grid:
+      - grid-template-areas: |
+          "item1 item2"
+          "item3 item3"
+      - grid-template-columns: "1fr 1fr"
+      - grid-template-rows: "min-content min-content"
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        template:
+          - "icon_info"
+          - "yellow_slider"
+        entity: "[[[ return entity.entity_id ]]]"
+        label: >-
+          [[[
+            var label = variables.ulm_translation_state
+            if (entity.attributes.brightness != null && entity.state == 'on'){
+              var bri = Math.round(entity.attributes.brightness / 2.55);
+              var label = (bri ? bri : "0") + "%";
+            }
+            return label;
+          ]]]
+        name: "[[[ return variables.ulm_card_light_slider_horizontal_name ]]]"
+        styles:
+          card:
+            - box-shadow: "none"
+            - border-radius: "var(--border-radius) var(--border-radius) var(--border-radius) var(--border-radius)"
+            - padding: "0px"
+    item2:
+      card:
+        type: "custom:my-slider"
+        entity: "[[[ return entity.entity_id ]]]"
+        radius: "14px"
+        height: "42px"
+        mainSliderColor: "rgba(var(--color-yellow),1)"
+        secondarySliderColor: "rgba(var(--color-yellow),0.2)"
+        mainSliderColorOff: "rgba(var(--color-theme),0.05)"
+        secondarySliderColorOff: "rgba(var(--color-theme),0.05)"
+        thumbHorizontalPadding: "0px"
+        thumbVerticalPadding: "0px"
+        thumbWidth: "0px"
+        card_mod:
+        style: |
+          ha-card {
+            border-radius: 14px;
+            box-shadow: none;
+          }
+    item3:
+      card:
+        type: "conditional"
+        conditions:
+          - entity: "[[[ return entity.entity_id ]]]"
+            state: "on"
+        card:
+          type: "custom:rgb-light-card"
+          entity: "[[[ return entity.entity_id ]]]"
+          justify: "around"
+          colors:
+            - rgb_color:
+                - 255
+                - 255
+                - 255
+              icon_color: "rgba(255, 255, 255, 0.8)"
+              transition: "[[[ return variables.ulm_card_light_colorpick_transition; ]]]"
+            - rgb_color:
+                - 245
+                - 68
+                - 54
+              icon_color: "rgba(245, 68, 54, 0.8)"
+              transition: "[[[ return variables.ulm_card_light_colorpick_transition; ]]]"
+            - rgb_color:
+                - 51
+                - 102
+                - 204
+              icon_color: "rgba(51, 102, 204, 0.8)"
+              transition: "[[[ return variables.ulm_card_light_colorpick_transition; ]]]"
+            - rgb_color:
+                - 51
+                - 204
+                - 51
+              icon_color: "rgba(51, 204, 51, 0.8)"
+              transition: "[[[ return variables.ulm_card_light_colorpick_transition; ]]]"
+            - rgb_color:
+                - 255
+                - 0
+                - 255
+              icon_color: "rgba(255, 0, 255, 0.8)"
+              transition: "[[[ return variables.ulm_card_light_colorpick_transition; ]]]"
+            - rgb_color:
+                - 0
+                - 255
+                - 255
+              icon_color: "rgba(0, 255, 255, 0.8)"
+              transition: "[[[ return variables.ulm_card_light_colorpick_transition; ]]]"

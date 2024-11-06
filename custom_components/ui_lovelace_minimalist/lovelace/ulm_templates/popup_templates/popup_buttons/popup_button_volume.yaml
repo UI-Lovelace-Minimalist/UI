@@ -1,0 +1,17 @@
+---
+popup_button_volume:
+  template:
+    - "popup_button"
+    - "ulm_language_variables"
+  icon: "mdi:volume-high"
+  name: "[[[ return variables.ulm_volume; ]]]"
+  styles:
+    name:
+      - text-transform: "uppercase"
+      - color: "rgba(var(--color-theme),0.5)"
+    img_cell:
+      - background: "none"
+      - box-shadow: "none"
+      - border: "1px solid rgba(var(--color-theme),0.25)"
+  tap_action:
+    action: "more_info"

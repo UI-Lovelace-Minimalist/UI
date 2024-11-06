@@ -1,0 +1,172 @@
+---
+card_input_datetime:
+  show_name: false
+  show_icon: false
+  variables:
+    ulm_card_input_datetime_name: "n/a"
+  triggers_update: "all"
+  styles:
+    grid:
+      - grid-template-areas: "'item1' 'item2'"
+      - grid-template-columns: "1fr"
+      - grid-template-rows: "min-content  min-content"
+      - row-gap: "12px"
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        template:
+          - "icon_info"
+          - "ulm_translation_engine"
+          - "input_datetime"
+        tap_action:
+          action: "more-info"
+        entity: "[[[ return entity.entity_id ]]]"
+        name: "[[[ return variables.ulm_card_input_datetime_name ]]]"
+    item2:
+      card:
+        type: "custom:button-card"
+        template: "list_3_items"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              tap_action:
+                action: "call-service"
+                service: "input_datetime.set_datetime"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+                  time: >
+                    [[[
+                      var timestamp = entity.attributes.timestamp
+
+                      let unix_timestamp = timestamp - 4500;
+                      // Create a new JavaScript Date object based on the timestamp
+                      // multiplied by 1000 so that the argument is in milliseconds, not seconds.
+                      var date = new Date(unix_timestamp * 1000);
+                      // Hours part from the timestamp
+                      var hours = date.getHours();
+                      // Minutes part from the timestamp
+                      var minutes = "0" + date.getMinutes();
+                      // Seconds part from the timestamp
+                      var seconds = "0" + date.getSeconds();
+
+                      // Will display time in 10:30:23 format
+                      var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+
+                      return formattedTime;
+                    ]]]
+              icon: "mdi:arrow-down"
+          item2:
+            card:
+              type: "custom:button-card"
+              template: "widget_text"
+              entity: "[[[ return entity.entity_id ]]]"
+              tap_action:
+                action: "call-service"
+                service: "input_datetime.set_datetime"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+                  time: >
+                    [[[
+                      var timestamp = entity.attributes.timestamp
+
+                      let unix_timestamp = timestamp - 3540;
+                      // Create a new JavaScript Date object based on the timestamp
+                      // multiplied by 1000 so that the argument is in milliseconds, not seconds.
+                      var date = new Date(unix_timestamp * 1000);
+                      // Hours part from the timestamp
+                      var hours = date.getHours();
+                      // Minutes part from the timestamp
+                      var minutes = "0" + date.getMinutes();
+                      // Seconds part from the timestamp
+                      var seconds = "0" + date.getSeconds();
+
+                      // Will display time in 10:30:23 format
+                      var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+
+                      return formattedTime;
+                    ]]]
+              hold_action:
+                action: "call-service"
+                service: "input_datetime.set_datetime"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+                  time: >
+                    [[[
+                      var timestamp = entity.attributes.timestamp
+
+                      let unix_timestamp = timestamp - 3660;
+                      // Create a new JavaScript Date object based on the timestamp
+                      // multiplied by 1000 so that the argument is in milliseconds, not seconds.
+                      var date = new Date(unix_timestamp * 1000);
+                      // Hours part from the timestamp
+                      var hours = date.getHours();
+                      // Minutes part from the timestamp
+                      var minutes = "0" + date.getMinutes();
+                      // Seconds part from the timestamp
+                      var seconds = "0" + date.getSeconds();
+
+                      // Will display time in 10:30:23 format
+                      var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+
+                      return formattedTime;
+                    ]]]
+
+          item3:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              tap_action:
+                action: "call-service"
+                service: "input_datetime.set_datetime"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+                  time: >
+                    [[[
+                      var timestamp = entity.attributes.timestamp
+
+                      let unix_timestamp = timestamp - 2700;
+                      var date = new Date(unix_timestamp * 1000);
+                      var hours = date.getHours();
+                      var minutes = "0" + date.getMinutes();
+                      var seconds = "0" + date.getSeconds();
+                      var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+
+                      return formattedTime;
+                    ]]]
+              icon: "mdi:arrow-up"
+
+input_datetime:
+  tap_action:
+    action: "more-info"
+  show_last_changed: true
+
+widget_text:
+  tap_action:
+    action: "toggle"
+  template:
+    - "ulm_translation_engine"
+  show_icon: false
+  show_label: true
+  show_name: false
+  label: "[[[ return variables.ulm_translation_state ]]]"
+  styles:
+    grid:
+      - grid-template-areas: "'l'"
+    card:
+      - box-shadow: "none"
+      - padding: "0px"
+      - background-color: "rgba(var(--color-theme),0.05)"
+      - border-radius: "14px"
+      - place-self: "center"
+      - height: "42px"
+    state:
+      - color: "rgba(var(--color-theme),0.9)"
+  size: "20px"
+  color: "var(--google-grey)"

@@ -1,0 +1,729 @@
+---
+custom_card_haven_washer:
+  template:
+    - "ulm_language_variables"
+    - "ulm_translation_engine"
+  variables:
+    ulm_custom_card_washer_power:
+    ulm_custom_card_washer_remote_control:
+    ulm_custom_card_washer_machine_state:
+    ulm_custom_card_washer_machine_stop_state: "stop"
+    ulm_custom_card_washer_job_state:
+    ulm_custom_card_washer_label_idle: "idle"
+    ulm_custom_card_washer_label_configuring: "configure"
+    ulm_custom_card_washer_label_running: "run"
+    ulm_custom_card_washer_delayed_start:
+    ulm_custom_card_washer_delayed_starttime:
+    ulm_custom_card_washer_job_states:
+      state1:
+        name:
+        icon:
+      state2:
+        name:
+        icon:
+      state3:
+        name:
+        icon:
+      state4:
+        name:
+        icon:
+      state5:
+        name:
+        icon:
+    ulm_custom_card_washer_start_action:
+      action: "none"
+    ulm_custom_card_washer_pause_action:
+      action: "none"
+    ulm_custom_card_washer_stop_action:
+      action: "none"
+  triggers_update: "all"
+  show_icon: false
+  show_label: false
+  show_name: false
+  show_state: false
+  show_last_changed: false
+  show_entity_picture: false
+  styles:
+    grid:
+      - grid-template-areas: >
+          [[[
+            var rows = ["\'row1\'"];
+
+            if (!!variables.ulm_custom_card_washer_job_state) {
+              rows.push("\'row2\'");
+            }
+
+            if (!!variables.ulm_custom_card_washer_remote_control) {
+              rows.push("\'row3\'");
+            }
+
+            if (!!variables.ulm_custom_card_washer_delayed_start
+              && !!variables.ulm_custom_card_washer_delayed_starttime) {
+              rows.push("\'row4\'");
+            }
+
+            return rows.join(" ");
+          ]]]
+      - grid-template-columns: "1fr"
+      - grid-template-rows: "min-content"
+      - row-gap: "0px"
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
+    custom_fields:
+      row2:
+        - display: >
+            [[[
+              return (!!variables.ulm_custom_card_washer_job_state
+                && !!variables.ulm_custom_card_washer_power
+                && !!states[variables.ulm_custom_card_washer_power]?.state
+                && states[variables.ulm_custom_card_washer_power].state === "on") ? "block" : "none";
+            ]]]
+      row3:
+        - display: >
+            [[[
+              return (!!variables.ulm_custom_card_washer_power
+                && !!states[variables.ulm_custom_card_washer_power]?.state
+                && states[variables.ulm_custom_card_washer_power].state === "on"
+                && !!variables.ulm_custom_card_washer_remote_control
+                && !!states[variables.ulm_custom_card_washer_remote_control]?.state
+                && states[variables.ulm_custom_card_washer_remote_control].state === "true") ? "block" : "none";
+            ]]]
+      row4:
+        - display: >
+            [[[
+              return (!!variables.ulm_custom_card_washer_power
+                && !!states[variables.ulm_custom_card_washer_power]?.state
+                && states[variables.ulm_custom_card_washer_power].state === "on"
+                && !!variables.ulm_custom_card_washer_remote_control
+                && !!states[variables.ulm_custom_card_washer_remote_control]?.state
+                && states[variables.ulm_custom_card_washer_remote_control].state === "true"
+                && !!variables.ulm_custom_card_washer_delayed_start
+                && !!states[variables.ulm_custom_card_washer_delayed_start]?.state
+                && states[variables.ulm_custom_card_washer_delayed_start].state === "on"
+                && !!variables.ulm_custom_card_washer_delayed_starttime) ? "block" : "none";
+            ]]]
+  custom_fields:
+    row1:
+      card:
+        type: "custom:button-card"
+        template:
+          - "icon_info"
+          - "blue_on"
+        tap_action:
+          action: "more-info"
+        label: >
+          [[[
+            if (!!variables.ulm_custom_card_washer_power
+              && !!states[variables.ulm_custom_card_washer_power]?.state
+              && states[variables.ulm_custom_card_washer_power].state === "on") {
+              if (!!variables.ulm_custom_card_washer_machine_state
+                && !!states[variables.ulm_custom_card_washer_machine_state]?.state
+                && states[variables.ulm_custom_card_washer_machine_state].state !== variables.ulm_custom_card_washer_machine_stop_state) {
+                if (!!variables.ulm_custom_card_washer_label_running) {
+                  return variables.ulm_custom_card_washer_label_running;
+                }
+              } else {
+                if (!!variables.ulm_custom_card_washer_remote_control
+                  && !!states[variables.ulm_custom_card_washer_remote_control]?.state
+                  && states[variables.ulm_custom_card_washer_remote_control].state === "true"
+                  && !!variables.ulm_custom_card_washer_delayed_start
+                  && !!states[variables.ulm_custom_card_washer_delayed_start]?.state
+                  && states[variables.ulm_custom_card_washer_delayed_start].state === "on") {
+                  if (!!variables.ulm_custom_card_washer_label_configuring) {
+                    return variables.ulm_custom_card_washer_label_configuring;
+                  }
+                } else {
+                  if (!!variables.ulm_custom_card_washer_label_idle) {
+                    return variables.ulm_custom_card_washer_label_idle;
+                  }
+                }
+              }
+            } else {
+              if (!!variables.ulm_custom_card_washer_label_idle) {
+                return variables.ulm_custom_card_washer_label_idle;
+              }
+            }
+
+            var label = states[variables.ulm_custom_card_washer_power].state;
+            label = variables["ulm_" + label] ?? label;
+
+            if (!!variables.ulm_custom_card_washer_machine_state
+              && !!states[variables.ulm_custom_card_washer_machine_state]
+              && !!states[variables.ulm_custom_card_washer_machine_state].state) {
+              var state = states[variables.ulm_custom_card_washer_machine_state].state;
+              label += " • " + variables["ulm_" + state] ?? state;
+            }
+
+            return label;
+          ]]]
+        entity: "[[[ return variables.ulm_custom_card_washer_power; ]]]"
+        styles:
+          card:
+            - box-shadow: "none"
+            - padding: "0px"
+    row2:
+      card:
+        type: "custom:button-card"
+        styles:
+          img_cell:
+            - justify-items: "center"
+          grid:
+            - grid-template-areas: >
+                [[[
+                  var items = [];
+
+                  if (!!variables.ulm_custom_card_washer_job_states) {
+                    if (!!variables.ulm_custom_card_washer_job_states.state1?.name
+                      && !!variables.ulm_custom_card_washer_job_states.state1?.icon) {
+                      items.push("item1");
+                    }
+                    if (!!variables.ulm_custom_card_washer_job_states.state2?.name
+                      && !!variables.ulm_custom_card_washer_job_states.state2?.icon) {
+                      items.push("item2");
+                    }
+                    if (!!variables.ulm_custom_card_washer_job_states.state3?.name
+                      && !!variables.ulm_custom_card_washer_job_states.state3?.icon) {
+                      items.push("item3");
+                    }
+                    if (!!variables.ulm_custom_card_washer_job_states.state4?.name
+                      && !!variables.ulm_custom_card_washer_job_states.state4?.icon) {
+                      items.push("item4");
+                    }
+                    if (!!variables.ulm_custom_card_washer_job_states.state5?.name
+                      && !!variables.ulm_custom_card_washer_job_states.state5?.icon) {
+                      items.push("item5");
+                    }
+                  }
+
+                  return "\'" + items.join(" ") + "\'";
+                ]]]
+            - grid-template-columns: >
+                [[[
+                  var columns = [];
+
+                  if (!!variables.ulm_custom_card_washer_job_states) {
+                    if (!!variables.ulm_custom_card_washer_job_states.state1?.name
+                      && !!variables.ulm_custom_card_washer_job_states.state1?.icon) {
+                      columns.push("1fr");
+                    }
+                    if (!!variables.ulm_custom_card_washer_job_states.state2?.name
+                      && !!variables.ulm_custom_card_washer_job_states.state2?.icon) {
+                      columns.push("1fr");
+                    }
+                    if (!!variables.ulm_custom_card_washer_job_states.state3?.name
+                      && !!variables.ulm_custom_card_washer_job_states.state3?.icon) {
+                      columns.push("1fr");
+                    }
+                    if (!!variables.ulm_custom_card_washer_job_states.state4?.name
+                      && !!variables.ulm_custom_card_washer_job_states.state4?.icon) {
+                      columns.push("1fr");
+                    }
+                    if (!!variables.ulm_custom_card_washer_job_states.state5?.name
+                      && !!variables.ulm_custom_card_washer_job_states.state5?.icon) {
+                      columns.push("1fr");
+                    }
+                  }
+
+                  return columns.join(" ");
+                ]]]
+            - grid-template-rows: "min-content"
+            - column-gap: "7px"
+            - justify-items: "center"
+          card:
+            - padding: "0px"
+            - box-shadow: "none"
+            - margin-top: "12px"
+            - border-radius: "var(--border-radius)"
+            - pointer-events: "none"
+            - background-color: "rgba(var(--color-theme), 0.05)"
+            - justify-items: "center"
+          custom_fields:
+            item1:
+              - display: >
+                  [[[
+                    return (!!variables.ulm_custom_card_washer_job_states?.state1
+                      && !!variables.ulm_custom_card_washer_job_states.state1.name
+                      && !!variables.ulm_custom_card_washer_job_states.state1.icon) ? "block" : "none";
+                  ]]]
+            item2:
+              - display: >
+                  [[[
+                    return (!!variables.ulm_custom_card_washer_job_states?.state2
+                      && !!variables.ulm_custom_card_washer_job_states.state2.name
+                      && !!variables.ulm_custom_card_washer_job_states.state2.icon) ? "block" : "none";
+                  ]]]
+            item3:
+              - display: >
+                  [[[
+                    return (!!variables.ulm_custom_card_washer_job_states?.state3
+                      && !!variables.ulm_custom_card_washer_job_states.state3.name
+                      && !!variables.ulm_custom_card_washer_job_states.state3.icon) ? "block" : "none";
+                  ]]]
+            item4:
+              - display: >
+                  [[[
+                    return (!!variables.ulm_custom_card_washer_job_states?.state4
+                      && !!variables.ulm_custom_card_washer_job_states.state4.name
+                      && !!variables.ulm_custom_card_washer_job_states.state4.icon) ? "block" : "none";
+                  ]]]
+            item5:
+              - display: >
+                  [[[
+                    return (!!variables.ulm_custom_card_washer_job_states?.state5
+                      && !!variables.ulm_custom_card_washer_job_states.state5.name
+                      && !!variables.ulm_custom_card_washer_job_states.state5.icon) ? "block" : "none";
+                  ]]]
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template: "custom_card_haven_washer_state"
+              icon: >
+                [[[
+                  return (!!variables.ulm_custom_card_washer_job_states?.state1
+                    && !!variables.ulm_custom_card_washer_job_states.state1.icon)
+                      ? variables.ulm_custom_card_washer_job_states.state1.icon
+                      : "mdi:cancel";
+                ]]]
+              state:
+                - value: >
+                    [[[
+                      return (!!variables.ulm_custom_card_washer_job_states?.state1
+                        && !!variables.ulm_custom_card_washer_job_states.state1.name)
+                          ? variables.ulm_custom_card_washer_job_states.state1.name
+                          : "unknown";
+                    ]]]
+                  styles:
+                    icon:
+                      - transform: "scale(1.2)"
+                      - color: "black"
+                    card:
+                      - background-color: "white"
+              entity: "[[[ return variables.ulm_custom_card_washer_job_state; ]]]"
+          item2:
+            card:
+              type: "custom:button-card"
+              template: "custom_card_haven_washer_state"
+              icon: >
+                [[[
+                  return (!!variables.ulm_custom_card_washer_job_states?.state2
+                    && !!variables.ulm_custom_card_washer_job_states.state2.icon)
+                      ? variables.ulm_custom_card_washer_job_states.state2.icon
+                      : "mdi:cancel";
+                ]]]
+              state:
+                - value: >
+                    [[[
+                      return (!!variables.ulm_custom_card_washer_job_states?.state2
+                        && !!variables.ulm_custom_card_washer_job_states.state2.name)
+                          ? variables.ulm_custom_card_washer_job_states.state2.name
+                          : "unknown";
+                    ]]]
+                  styles:
+                    icon:
+                      - transform: "scale(1.2)"
+                      - color: "black"
+                    card:
+                      - background-color: "white"
+              entity: "[[[ return variables.ulm_custom_card_washer_job_state; ]]]"
+          item3:
+            card:
+              type: "custom:button-card"
+              template: "custom_card_haven_washer_state"
+              icon: >
+                [[[
+                  return (!!variables.ulm_custom_card_washer_job_states?.state3
+                    && !!variables.ulm_custom_card_washer_job_states.state3.icon)
+                      ? variables.ulm_custom_card_washer_job_states.state3.icon
+                      : "mdi:cancel";
+                ]]]
+              state:
+                - value: >
+                    [[[
+                      return (!!variables.ulm_custom_card_washer_job_states?.state3
+                        && !!variables.ulm_custom_card_washer_job_states.state3.name)
+                          ? variables.ulm_custom_card_washer_job_states.state3.name
+                          : "unknown";
+                    ]]]
+                  styles:
+                    icon:
+                      - transform: "scale(1.2)"
+                      - color: "black"
+                    card:
+                      - background-color: "white"
+              entity: "[[[ return variables.ulm_custom_card_washer_job_state; ]]]"
+          item4:
+            card:
+              type: "custom:button-card"
+              template: "custom_card_haven_washer_state"
+              icon: >
+                [[[
+                  return (!!variables.ulm_custom_card_washer_job_states?.state4
+                    && !!variables.ulm_custom_card_washer_job_states.state4.icon)
+                      ? variables.ulm_custom_card_washer_job_states.state4.icon
+                      : "mdi:cancel";
+                ]]]
+              state:
+                - value: >
+                    [[[
+                      return (!!variables.ulm_custom_card_washer_job_states?.state4
+                        && !!variables.ulm_custom_card_washer_job_states.state4.name)
+                          ? variables.ulm_custom_card_washer_job_states.state4.name
+                          : "unknown";
+                    ]]]
+                  styles:
+                    icon:
+                      - transform: "scale(1.2)"
+                      - color: "black"
+                    card:
+                      - background-color: "white"
+              entity: "[[[ return variables.ulm_custom_card_washer_job_state; ]]]"
+          item5:
+            card:
+              type: "custom:button-card"
+              template: "custom_card_haven_washer_state"
+              icon: >
+                [[[
+                  return (!!variables.ulm_custom_card_washer_job_states?.state5
+                    && !!variables.ulm_custom_card_washer_job_states.state5.icon)
+                      ? variables.ulm_custom_card_washer_job_states.state5.icon
+                      : "mdi:cancel";
+                ]]]
+              state:
+                - value: >
+                    [[[
+                      return (!!variables.ulm_custom_card_washer_job_states?.state5
+                        && !!variables.ulm_custom_card_washer_job_states.state5.name)
+                          ? variables.ulm_custom_card_washer_job_states.state5.name
+                          : "unknown";
+                    ]]]
+                  styles:
+                    icon:
+                      - transform: "scale(1.2)"
+                      - color: "black"
+                    card:
+                      - background-color: "white"
+              entity: "[[[ return variables.ulm_custom_card_washer_job_state ]]]"
+    row3:
+      card:
+        type: "custom:button-card"
+        template: >
+          [[[
+            return !!variables.ulm_custom_card_washer_delayed_start
+              && !!variables.ulm_custom_card_washer_delayed_starttime ? "list_3_items" : "list_2_items";
+          ]]]
+        styles:
+          card:
+            - padding: "0px"
+            - margin-top: "12px"
+          custom_fields:
+            item3:
+              - display: >
+                  [[[
+                    return (!!variables.ulm_custom_card_washer_delayed_start
+                      && !!variables.ulm_custom_card_washer_delayed_starttime) ? "block" : "none";
+                  ]]]
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              tap_action:
+                action: >
+                  [[[
+                    if (!!states[variables.ulm_custom_card_washer_machine_state]?.state
+                      && states[variables.ulm_custom_card_washer_machine_state].state === variables.ulm_custom_card_washer_machine_stop_state) {
+                      return variables.ulm_custom_card_washer_start_action?.action ?? "none";
+                    } else {
+                      return variables.ulm_custom_card_washer_pause_action?.action ?? "none";
+                    }
+                  ]]]
+                entity: "[[[ return variables.ulm_custom_card_washer_start_action.entity; ]]]"
+                navigation_path: >
+                  [[[
+                    return (!!states[variables.ulm_custom_card_washer_machine_state]?.state
+                      && states[variables.ulm_custom_card_washer_machine_state].state === variables.ulm_custom_card_washer_machine_stop_state)
+                      ? variables.ulm_custom_card_washer_start_action?.navigation_path
+                      : variables.ulm_custom_card_washer_pause_action?.navigation_path;
+                  ]]]
+                url_path: >
+                  [[[
+                    return (!!states[variables.ulm_custom_card_washer_machine_state]?.state
+                      && states[variables.ulm_custom_card_washer_machine_state].state === variables.ulm_custom_card_washer_machine_stop_state)
+                      ? variables.ulm_custom_card_washer_start_action?.url_path
+                      : variables.ulm_custom_card_washer_pause_action?.url_path;
+                  ]]]
+                service: >
+                  [[[
+                    return (!!states[variables.ulm_custom_card_washer_machine_state]?.state
+                      && states[variables.ulm_custom_card_washer_machine_state].state === variables.ulm_custom_card_washer_machine_stop_state)
+                      ? variables.ulm_custom_card_washer_start_action?.service
+                      :  variables.ulm_custom_card_washer_pause_action?.service;
+                  ]]]
+                service_data: >
+                  [[[
+                    return (!!states[variables.ulm_custom_card_washer_machine_state]?.state
+                      && states[variables.ulm_custom_card_washer_machine_state].state === variables.ulm_custom_card_washer_machine_stop_state)
+                      ? variables.ulm_custom_card_washer_start_action?.service_data
+                      : variables.ulm_custom_card_washer_pause_action?.service_data;
+                  ]]]
+              icon: >
+                [[[
+                  return (!!states[variables.ulm_custom_card_washer_machine_state]?.state
+                    && states[variables.ulm_custom_card_washer_machine_state].state === variables.ulm_custom_card_washer_machine_stop_state) ? "mdi:play" : "mdi:pause";
+                ]]]
+              state:
+                - operator: "template"
+                  value: >
+                    [[[
+                      return ((states[variables.ulm_custom_card_washer_machine_state].state === variables.ulm_custom_card_washer_machine_stop_state
+                          && (!variables.ulm_custom_card_washer_start_action?.action
+                            || (!!variables.ulm_custom_card_washer_start_action?.action
+                              && variables.ulm_custom_card_washer_start_action.action === "none")))
+                        || (states[variables.ulm_custom_card_washer_machine_state].state !== variables.ulm_custom_card_washer_machine_stop_state
+                          && (!variables.ulm_custom_card_washer_pause_action?.action
+                            || (!!variables.ulm_custom_card_washer_pause_action?.action
+                              && variables.ulm_custom_card_washer_pause_action.action === "none"))));
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.2)"
+              entity: "[[[ return variables.ulm_custom_card_washer_machine_state; ]]]"
+          item2:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              tap_action:
+                action: >
+                  [[[
+                    return (!!variables.ulm_custom_card_washer_machine_state
+                      && !!states[variables.ulm_custom_card_washer_machine_state]?.state
+                      && states[variables.ulm_custom_card_washer_machine_state].state !== variables.ulm_custom_card_washer_machine_stop_state
+                      && variables.ulm_custom_card_washer_stop_action?.action) ?? "none";
+                  ]]]
+                entity: "[[[ return variables.ulm_custom_card_washer_stop_action.entity; ]]]"
+                navigation_path: "[[[ return variables.ulm_custom_card_washer_stop_action.navigation_path; ]]]"
+                url_path: "[[[ return variables.ulm_custom_card_washer_stop_action.url_path; ]]]"
+                service: "[[[ return variables.ulm_custom_card_washer_stop_action.service; ]]]"
+                service_data: "[[[ return variables.ulm_custom_card_washer_stop_action.service_data; ]]]"
+              icon: "mdi:stop"
+              state:
+                - operator: "template"
+                  value: >
+                    [[[
+                      return ((!!variables.ulm_custom_card_washer_machine_state
+                          && !!states[variables.ulm_custom_card_washer_machine_state]?.state
+                          && states[variables.ulm_custom_card_washer_machine_state].state === variables.ulm_custom_card_washer_machine_stop_state)
+                        || !variables.ulm_custom_card_washer_stop_action?.action
+                        || (!!variables.ulm_custom_card_washer_stop_action?.action
+                          && variables.ulm_custom_card_washer_stop_action.action === "none"));
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.2)"
+              entity: "[[[ return variables.ulm_custom_card_washer_machine_state ]]]"
+          item3:
+            card:
+              type: "custom:button-card"
+              template:
+                - "widget_icon"
+                - "green_on"
+              tap_action:
+                action: >
+                  [[[
+                    return (!!variables.ulm_custom_card_washer_machine_state
+                      && !!states[variables.ulm_custom_card_washer_machine_state]?.state
+                      && states[variables.ulm_custom_card_washer_machine_state].state === variables.ulm_custom_card_washer_machine_stop_state)
+                        ? "toggle"
+                        : "none";
+                  ]]]
+              state:
+                - operator: "template"
+                  value: >
+                    [[[
+                      return (!!variables.ulm_custom_card_washer_machine_state
+                        && !!states[variables.ulm_custom_card_washer_machine_state]?.state
+                        && states[variables.ulm_custom_card_washer_machine_state].state !== variables.ulm_custom_card_washer_machine_stop_state);
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.2)"
+              entity: "[[[ return variables.ulm_custom_card_washer_delayed_start; ]]]"
+    row4:
+      card:
+        type: "custom:button-card"
+        template: "list_3_items"
+        styles:
+          card:
+            - padding: "0px"
+            - margin-top: "12px"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              tap_action:
+                action: "call-service"
+                service: "input_datetime.set_datetime"
+                service_data:
+                  entity_id: "[[[ return variables.ulm_custom_card_washer_delayed_starttime; ]]]"
+                  time: >
+                    [[[
+                      if (!!variables.ulm_custom_card_washer_delayed_starttime
+                        && !!states[variables.ulm_custom_card_washer_delayed_starttime]?.attributes) {
+                        var timestamp = states[variables.ulm_custom_card_washer_delayed_starttime].attributes.timestamp
+
+                        let unix_timestamp = timestamp - 4500;
+                        // Create a new JavaScript Date object based on the timestamp
+                        // multiplied by 1000 so that the argument is in milliseconds, not seconds.
+                        var date = new Date(unix_timestamp * 1000);
+                        // Hours part from the timestamp
+                        var hours = date.getHours();
+                        // Minutes part from the timestamp
+                        var minutes = "0" + date.getMinutes();
+                        // Seconds part from the timestamp
+                        var seconds = "0" + date.getSeconds();
+                        // Will display time in 10:30:23 format
+                        return hours + ":" + minutes.substr(-2) + ":" + seconds.substr(-2);
+                      } else {
+                        return "00:00:00";
+                      }
+                    ]]]
+              icon: "mdi:arrow-down"
+          item2:
+            card:
+              type: "custom:button-card"
+              template: "custom_card_haven_washer_delayed_text"
+              tap_action:
+                action: "call-service"
+                service: "input_datetime.set_datetime"
+                service_data:
+                  entity_id: "[[[ return variables.ulm_custom_card_washer_delayed_starttime; ]]]"
+                  time: >
+                    [[[
+                      if (!!variables.ulm_custom_card_washer_delayed_starttime
+                        && !!states[variables.ulm_custom_card_washer_delayed_starttime]?.attributes) {
+                        var timestamp = states[variables.ulm_custom_card_washer_delayed_starttime].attributes.timestamp
+
+                        let unix_timestamp = timestamp - 3540;
+                        // Create a new JavaScript Date object based on the timestamp
+                        // multiplied by 1000 so that the argument is in milliseconds, not seconds.
+                        var date = new Date(unix_timestamp * 1000);
+                        // Hours part from the timestamp
+                        var hours = date.getHours();
+                        // Minutes part from the timestamp
+                        var minutes = "0" + date.getMinutes();
+                        // Seconds part from the timestamp
+                        var seconds = "0" + date.getSeconds();
+                        // Will display time in 10:30:23 format
+                        return  hours + ":" + minutes.substr(-2) + ":" + seconds.substr(-2);
+                      } else {
+                        return "00:00:00";
+                      }
+                    ]]]
+              hold_action:
+                action: "call-service"
+                service: "input_datetime.set_datetime"
+                service_data:
+                  entity_id: "[[[ variables.ulm_custom_card_washer_delayed_starttime ]]]"
+                  time: >
+                    [[[
+                      if (!!variables.ulm_custom_card_washer_delayed_starttime
+                        && !!states[variables.ulm_custom_card_washer_delayed_starttime]?.attributes) {
+                        var timestamp = states[variables.ulm_custom_card_washer_delayed_starttime].attributes.timestamp
+
+                        let unix_timestamp = timestamp - 3660;
+                        // Create a new JavaScript Date object based on the timestamp
+                        // multiplied by 1000 so that the argument is in milliseconds, not seconds.
+                        var date = new Date(unix_timestamp * 1000);
+                        // Hours part from the timestamp
+                        var hours = date.getHours();
+                        // Minutes part from the timestamp
+                        var minutes = "0" + date.getMinutes();
+                        // Seconds part from the timestamp
+                        var seconds = "0" + date.getSeconds();
+                        // Will display time in 10:30:23 format
+                        return hours + ":" + minutes.substr(-2) + ":" + seconds.substr(-2);
+                      } else {
+                        return "00:00:00";
+                      }
+                    ]]]
+              entity: "[[[ return variables.ulm_custom_card_washer_delayed_starttime; ]]]"
+          item3:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              tap_action:
+                action: "call-service"
+                service: "input_datetime.set_datetime"
+                service_data:
+                  entity_id: "[[[ return variables.ulm_custom_card_washer_delayed_starttime ]]]"
+                  time: >
+                    [[[
+                      if (!!variables.ulm_custom_card_washer_delayed_starttime
+                        && !!states[variables.ulm_custom_card_washer_delayed_starttime]?.attributes) {
+                        var timestamp = states[variables.ulm_custom_card_washer_delayed_starttime].attributes.timestamp
+                        let unix_timestamp = timestamp - 2700;
+                        // Create a new JavaScript Date object based on the timestamp
+                        // multiplied by 1000 so that the argument is in milliseconds, not seconds.
+                        var date = new Date(unix_timestamp * 1000);
+                        // Hours part from the timestamp
+                        var hours = date.getHours();
+                        // Minutes part from the timestamp
+                        var minutes = "0" + date.getMinutes();
+                        // Seconds part from the timestamp
+                        var seconds = "0" + date.getSeconds();
+                        // Will display time in 10:30:23 format
+                        return hours + ":" + minutes.substr(-2) + ":" + seconds.substr(-2);
+                      } else {
+                        return "00:00:00";
+                      }
+                    ]]]
+              icon: "mdi:arrow-up"
+
+custom_card_haven_washer_state:
+  show_icon: true
+  show_name: false
+  tap_action:
+    action: "none"
+  size: "20px"
+  styles:
+    card:
+      - box-shadow: "none"
+      - padding: "0px"
+      - border-radius: "50%"
+      - place-self: "center"
+      - height: "42px"
+      - width: "42px"
+      - pointer-events: "auto"
+      - background-color: "transparent"
+    grid:
+      - grid-template-areas: "'i'"
+    icon:
+      - color: "var(--google-grey)"
+
+custom_card_haven_washer_delayed_text:
+  template:
+    - "ulm_translation_engine"
+  tap_action:
+    action: "toggle"
+  show_icon: false
+  show_label: true
+  show_name: false
+  label: "[[[ return variables.ulm_translation_state ]]]"
+  styles:
+    state:
+      - color: "rgba(var(--color-theme),0.9)"
+    grid:
+      - grid-template-areas: "'l'"
+    card:
+      - box-shadow: "none"
+      - padding: "0px"
+      - background-color: "rgba(var(--color-theme),0.05)"
+      - border-radius: "14px"
+      - place-self: "center"
+      - height: "42px"
+  size: "20px"
+  color: "var(--google-grey)"

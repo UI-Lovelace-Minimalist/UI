@@ -1,0 +1,807 @@
+---
+### Card Cover ###
+card_cover:
+  template:
+    - "icon_more_info_new"
+    - "ulm_translation_engine"
+  variables:
+    ulm_card_cover_name: "[[[ return entity.attributes.friendly_name ]]]"
+    ulm_card_cover_icon: false
+    ulm_card_cover_color: "blue"
+    ulm_card_invert_percent: false
+    ulm_card_cover_invert_percent: false
+    ulm_card_cover_display_left_right: false
+    ulm_card_cover_garage_large: false
+    ulm_card_cover_gate: false
+    ulm_card_cover_enable_controls: false
+    ulm_card_cover_favorite_percentage: null
+    ulm_card_cover_enable_slider: false
+    ulm_card_cover_slider_min: 0
+    ulm_card_cover_slider_max: 100
+    ulm_card_cover_enable_tilt: false
+    ulm_card_cover_enable_horizontal: false
+    ulm_card_cover_enable_popup: false
+    ulm_card_cover_show_last_changed: false
+    ulm_card_cover_force_background_color: false
+  show_icon: false
+  show_name: false
+  show_label: false
+  show_last_changed: false
+  state:
+    - operator: "template"
+      value: "[[[ return variables.ulm_active_state ]]]"
+      styles:
+        card:
+          - background-color: >
+              [[[
+                  if (variables.ulm_card_cover_color) {
+                    if (variables.ulm_card_cover_force_background_color) {
+                      var color = variables.ulm_card_cover_color;
+                      return 'rgba(var(--color-' + color + '),var(--opacity-bg))';
+                    }
+                  }
+              ]]]
+  styles:
+    grid:
+      - grid-template-areas: >
+          [[[
+              if (variables.ulm_card_cover_enable_horizontal) {
+
+                  var hor_area = ["item1"];
+                  var ver_area = [];
+
+                  if (variables.ulm_card_cover_enable_controls) {
+                    if (variables.ulm_card_cover_enable_horizontal == "controls" || variables.ulm_card_cover_enable_horizontal == true) {
+                      hor_area.push("item2");
+                    } else {
+                      ver_area.push("item2" + " " + "item2");
+                    }
+                  }
+                  if (variables.ulm_card_cover_enable_slider) {
+                    if (variables.ulm_card_cover_enable_horizontal == "slider") {
+                      hor_area.push("item3");
+                    } else {
+                      ver_area.push("item3" + " " + "item3");
+                    }
+                  }
+                  if (variables.ulm_card_cover_enable_tilt) {
+                    if (variables.ulm_card_cover_enable_horizontal == "tilt") {
+                      hor_area.push("item4");
+                    } else {
+                      ver_area.push("item4" + " " + "item4");
+                    }
+                  }
+
+                  if (ver_area.length < 1) {
+                    return "\"" + hor_area.join(" ") + "\" ";
+                  } else {
+                    return "\"" + hor_area.join(" ") + "\" " + "\"" + ver_area.join("\" \"") + "\"";
+                  }
+              } else {
+                  var areas = [];
+                  areas.push("item1");
+
+                  if (variables.ulm_card_cover_enable_controls) {
+                    areas.push("item2");
+                  }
+                  if (variables.ulm_card_cover_enable_slider) {
+                      areas.push("item3");
+                  }
+                  if (variables.ulm_card_cover_enable_tilt) {
+                    areas.push("item4");
+                  }
+
+                  return "\"" + areas.join("\" \"") + "\"";
+              }
+          ]]]
+      - grid-template-columns: >
+          [[[
+              if (variables.ulm_card_cover_enable_horizontal) {
+                  return "1fr 1fr";
+              }
+              return "1fr";
+          ]]]
+      - grid-template-rows: >
+          [[[
+              var rows = [];
+              rows.push("min-content");
+              if (variables.ulm_card_cover_enable_controls) {
+                  rows.push("min-content");
+              }
+              if (variables.ulm_card_cover_enable_slider) {
+                  rows.push("min-content");
+              }
+              if (variables.ulm_card_cover_enable_tilt) {
+                  rows.push("min-content");
+              }
+              if (variables.ulm_card_cover_enable_horizontal) {
+                  if (rows.length > 1) {
+                    rows.pop()
+                  }
+              }
+              return rows.join(" ");
+          ]]]
+      - row-gap: "12px"
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
+    custom_fields:
+      item2:
+        - display: >
+            [[[
+              if (variables.ulm_card_cover_enable_controls) {
+                  return "block";
+              } else {
+                  return "none";
+              }
+            ]]]
+      item3:
+        - display: >
+            [[[
+              if (variables.ulm_card_cover_enable_slider) {
+                  return "block";
+              } else {
+                  return "none";
+              }
+            ]]]
+      item4:
+        - display: >
+            [[[
+              if (variables.ulm_card_cover_enable_tilt) {
+                  return "block";
+              } else {
+                  return "none";
+              }
+            ]]]
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              variables: >
+                [[[
+                  let vars = variables;
+                  if (variables.ulm_card_cover_enable_popup) {
+                      vars.ulm_custom_popup = {
+                          'template': 'popup_cover'
+                      };
+                  }
+                  return vars;
+                ]]]
+              icon: >
+                [[[
+                  var icon = entity.attributes.icon || "mdi:help-circle";
+                  var icon_state = {
+                    "open": "open",
+                    "opening": "open",
+                    "closed": "closed",
+                    "closing": "closed"
+                  };
+                  if(entity.attributes?.device_class){
+                    var device_class = entity.attributes?.device_class;
+                  }
+                  var icon_open = {
+                    "awning": "mdi:window-open",
+                    "blind": "mdi:blinds-open",
+                    "curtain": "mdi:curtains",
+                    "damper": "mdi:circle-outline",
+                    "door": "mdi:door-open",
+                    "garage": variables.ulm_card_cover_garage_large ? "mdi:garage-open-variant" : "mdi:garage-open",
+                    "gate": "mdi:gate-open",
+                    "shade": "mdi:roller-shade",
+                    "shutter": "mdi:window-shutter-open",
+                    "window": "mdi:window-open",
+                  };
+                  var icon_closed = {
+                    "awning": "mdi:window-closed",
+                    "blind": "mdi:blinds",
+                    "curtain": "mdi:curtains-closed",
+                    "damper": "mdi:circle-slice-8",
+                    "door": "mdi:door-closed",
+                    "garage": variables.ulm_card_cover_garage_large ? "mdi:garage-variant" : "mdi:garage",
+                    "gate": "mdi:gate",
+                    "shade": "mdi:roller-shade-closed",
+                    "shutter": "mdi:window-shutter",
+                    "window": "mdi:window-closed",
+                  };
+                  return variables.ulm_card_cover_icon || (icon_state[entity.state]=='open' ? icon_open[device_class] : icon_closed[device_class]) || icon
+                ]]]
+              styles:
+                icon:
+                  - color: >
+                      [[[
+                        var color = variables.ulm_card_cover_color;
+                        if (variables.ulm_card_invert_percent || variables.ulm_card_cover_invert_percent) {
+                            if (entity.attributes.current_position == 100) {
+                                return 'rgba(var(--color-theme),0.2)';
+                            }
+                          return 'rgba(var(--color-' + color + '),1)';
+                        }
+
+                        if (typeof entity !== "undefined") {
+                          if (states[entity.entity_id].state != "closed") {
+                              return 'rgba(var(--color-' + color + '),1)';
+                          }
+                          return 'rgba(var(--color-theme),0.2)';
+                        }
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        var color = variables.ulm_card_cover_color;
+                        if (variables.ulm_card_invert_percent || variables.ulm_card_cover_invert_percent) {
+                            if (entity.attributes.current_position == 100) {
+                                return 'rgba(var(--color-theme),0.05)';
+                            }
+                          return 'rgba(var(--color-' + color + '),0.2)';
+                        }
+
+                        if (typeof entity !== "undefined") {
+                          if (states[entity.entity_id].state != "closed") {
+                              return 'rgba(var(--color-' + color + '),0.2)';
+                          }
+                          return 'rgba(var(--color-theme),0.05)';
+                        }
+                      ]]]
+          item2:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              variables: >
+                [[[
+                  let vars = variables;
+                  if(variables.ulm_card_cover_enable_popup) {
+                    vars.ulm_custom_popup = {
+                      'template': 'popup_cover'
+                    };
+                  }
+                  return vars;
+                ]]]
+              name: "[[[ return variables.ulm_card_cover_name ]]]"
+              label: >
+                [[[
+                  var position = states[entity.entity_id]?.attributes?.current_position;
+                  var invert = {
+                    "closed": hass.resources[hass['language']]['component.cover.state._.open'],
+                    "closing": hass.resources[hass['language']]['component.cover.state._.opening'],
+                    "open": hass.resources[hass['language']]['component.cover.state._.closed'],
+                    "opening": hass.resources[hass['language']]['component.cover.state._.closing']
+                  };
+
+                  if ((variables.ulm_card_invert_percent || variables.ulm_card_cover_invert_percent) && typeof entity !== "undefined") {
+                    if (position == 0) {
+                      return invert[entity.state] + " • " + (100 - position) + "%";
+                    } else {
+                      return invert[entity.state];
+                    }
+                  }
+
+                  if(["unknown", "unavailable", "closed"].includes(entity.state)  || position === undefined) {
+                    return variables.ulm_translation_state;
+                  }
+
+                  if (typeof entity !== "undefined") {
+                    if (entity == 0) {
+                      return variables.ulm_translation_state;
+                    } else {
+                      return variables.ulm_translation_state + " • " + position + "%";
+                    }
+                  }
+                  return variables.ulm_translation_state;
+                ]]]
+              show_last_changed: "[[[ return variables.ulm_card_cover_show_last_changed; ]]]"
+              state:
+                - operator: "template"
+                  value: "[[[ return variables.ulm_active_state ]]]"
+                  styles:
+                    name:
+                      - color: >
+                          [[[
+                              if (variables.ulm_card_cover_force_background_color) {
+                                  return 'rgb(250,250,250)';
+                              }
+                          ]]]
+                    label:
+                      - color: >
+                          [[[
+                              if (variables.ulm_card_cover_force_background_color) {
+                                  return 'rgb(250,250,250)';
+                              }
+                          ]]]
+    item2:
+      card:
+        type: "custom:button-card"
+        template: "[[[ return (variables.ulm_card_cover_favorite_percentage) ? 'list_4_items' : 'list_3_items' ]]]"
+        styles:
+          card:
+            - background: "none"
+          custom_fields:
+            item4:
+              - display: >
+                  [[[
+                    if (variables.ulm_card_cover_favorite_percentage) {
+                        return "block";
+                    } else {
+                        return "none";
+                    }
+                  ]]]
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              entity: "[[[ return entity.entity_id ]]]"
+              styles:
+                card:
+                  - background-color: >
+                      [[[
+                        if(!hass.themes.darkMode && variables.ulm_card_cover_force_background_color){
+                          if (variables.ulm_active_state){
+                            return 'rgb(250,250,250)'
+                          }
+                        }
+                        return 'rgba(var(--color-theme),0.05)'
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        if (variables.ulm_card_cover_force_background_color && variables.ulm_active_state) {
+                          var color = variables.ulm_card_cover_color;
+                          return 'rgba(var(--color-' + color + '),0.2)';
+                        }
+                        return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+                icon:
+                  - color: >
+                      [[[
+                        if (variables.ulm_card_cover_force_background_color && variables.ulm_active_state) {
+                          var color = variables.ulm_card_cover_color;
+                          return 'rgba(var(--color-' + color + '),1)';
+                        }
+                        return 'rgba(var(--color-theme),0.9)';
+                      ]]]
+              state:
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.attributes.current_position == "0";
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.state == "closing";
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.state == "opening";
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
+              tap_action:
+                action: "call-service"
+                service: "cover.close_cover"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+              icon: >
+                [[[
+                  if (variables.ulm_card_cover_display_left_right) {
+                      return "mdi:arrow-left";
+                  }
+                  var device_class = entity.attributes?.device_class;
+                  if (device_class == 'curtain' || device_class == 'gate' || device_class == 'awning') {
+                      return "mdi:arrow-collapse-horizontal";
+                  }
+                  return "mdi:arrow-down";
+                ]]]
+          item2:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              entity: "[[[ return entity.entity_id ]]]"
+              styles:
+                card:
+                  - background-color: >
+                      [[[
+                        if(!hass.themes.darkMode && variables.ulm_card_cover_force_background_color){
+                          if (variables.ulm_active_state){
+                            return 'rgb(250,250,250)'
+                          }
+                        }
+                        return 'rgba(var(--color-theme),0.05)'
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        if (variables.ulm_card_cover_force_background_color && variables.ulm_active_state) {
+                          var color = variables.ulm_card_cover_color;
+                          return 'rgba(var(--color-' + color + '),0.2)';
+                        }
+                        return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+                icon:
+                  - color: >
+                      [[[
+                        if (variables.ulm_card_cover_force_background_color && variables.ulm_active_state) {
+                          var color = variables.ulm_card_cover_color;
+                          return 'rgba(var(--color-' + color + '),1)';
+                        }
+                        return 'rgba(var(--color-theme),0.9)';
+                      ]]]
+              tap_action:
+                action: "call-service"
+                service: "cover.stop_cover"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+              icon: "mdi:stop"
+          item3:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              entity: "[[[ return entity.entity_id ]]]"
+              styles:
+                card:
+                  - background-color: >
+                      [[[
+                        if(!hass.themes.darkMode && variables.ulm_card_cover_force_background_color){
+                          if (variables.ulm_active_state){
+                            return 'rgb(250,250,250)'
+                          }
+                        }
+                        return 'rgba(var(--color-theme),0.05)'
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        if (variables.ulm_card_cover_force_background_color && variables.ulm_active_state) {
+                          var color = variables.ulm_card_cover_color;
+                          return 'rgba(var(--color-' + color + '),0.2)';
+                        }
+                        return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+                icon:
+                  - color: >
+                      [[[
+                        if (variables.ulm_card_cover_force_background_color && variables.ulm_active_state) {
+                          var color = variables.ulm_card_cover_color;
+                          return 'rgba(var(--color-' + color + '),1)';
+                        }
+                        return 'rgba(var(--color-theme),0.9)';
+                      ]]]
+              state:
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.attributes.current_position == "100";
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.state == "closing";
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.state == "opening";
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
+              tap_action:
+                action: "call-service"
+                service: "cover.open_cover"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+              icon: >-
+                [[[
+                  if (variables.ulm_card_cover_display_left_right) {
+                      return "mdi:arrow-right";
+                  }
+                  var device_class = entity.attributes?.device_class;
+                  if (device_class == 'curtain' || device_class == 'gate' || device_class == 'awning') {
+                      return "mdi:arrow-expand-horizontal";
+                  }
+                  return "mdi:arrow-up";
+                ]]]
+          item4:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              entity: "[[[ return entity.entity_id ]]]"
+              styles:
+                card:
+                  - background-color: >
+                      [[[
+                        if(!hass.themes.darkMode && variables.ulm_card_cover_force_background_color){
+                          if (variables.ulm_active_state){
+                            return 'rgb(250,250,250)'
+                          }
+                        }
+                        return 'rgba(var(--color-theme),0.05)'
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        if (variables.ulm_card_cover_force_background_color && variables.ulm_active_state) {
+                          var color = variables.ulm_card_cover_color;
+                          return 'rgba(var(--color-' + color + '),0.2)';
+                        }
+                        return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+                icon:
+                  - color: >
+                      [[[
+                        if (variables.ulm_card_cover_force_background_color && variables.ulm_active_state) {
+                          var color = variables.ulm_card_cover_color;
+                          return 'rgba(var(--color-' + color + '),1)';
+                        }
+                        return 'rgba(var(--color-theme),0.9)';
+                      ]]]
+              tap_action:
+                action: "call-service"
+                service: "cover.set_cover_position"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+                  position: "[[[ return variables.ulm_card_cover_favorite_percentage ]]]"
+              icon: "mdi:star"
+    item3:
+      card:
+        type: "custom:my-slider"
+        entity: "[[[ return entity.entity_id ]]]"
+        radius: "14px"
+        height: "42px"
+        minSet: "[[[ return variables.ulm_card_cover_slider_min ]]]"
+        maxSet: "[[[ return variables.ulm_card_cover_slider_max ]]]"
+        mainSliderColor: >
+          [[[
+            var color = variables.ulm_card_cover_color;
+            if (variables.ulm_card_invert_percent || variables.ulm_card_cover_invert_percent) {
+                if (entity.attributes.current_position == 100) {
+                    return 'rgba(var(--color-theme),0.05)';
+                }
+              if (variables.ulm_card_cover_force_background_color) {
+                return 'rgb(250,250,250)';
+              }
+              return 'rgba(var(--color-' + color + '),0.8)';
+            }
+
+            if (typeof entity !== "undefined") {
+              if (states[entity.entity_id].state != "closed") {
+                if (variables.ulm_card_cover_force_background_color) {
+                  return 'rgb(250,250,250)';
+                }
+                return 'rgba(var(--color-' + color + '),0.8)';
+              }
+              return 'rgba(var(--color-theme),0.05)';
+            }
+          ]]]
+        secondarySliderColor: >
+          [[[
+            var color = variables.ulm_card_cover_color;
+            if (variables.ulm_card_invert_percent || variables.ulm_card_cover_invert_percent) {
+                if (entity.attributes.current_position == 100) {
+                    return 'rgba(var(--color-theme),0.05)';
+                }
+              if (variables.ulm_card_cover_force_background_color) {
+                return 'rgba(var(--color-' + color + '),0.3)';
+              }
+              return 'rgba(var(--color-' + color + '),0.1)';
+            }
+
+            if (typeof entity !== "undefined") {
+              if (states[entity.entity_id].state != "closed") {
+                if (variables.ulm_card_cover_force_background_color) {
+                  return 'rgba(var(--color-' + color + '),0.3)';
+                }
+                return 'rgba(var(--color-' + color + '),0.1)';
+              }
+              return 'rgba(var(--color-theme),0.05)';
+            }
+          ]]]
+        mainSliderColorOff: "rgba(var(--color-theme),0.05)"
+        secondarySliderColorOff: "rgba(var(--color-theme),0.05)"
+        thumbHorizontalPadding: "0px"
+        thumbVerticalPadding: "0px"
+        thumbWidth: "0px"
+        card_mod:
+        style: |
+          ha-card {
+            border-radius: 14px;
+            box-shadow: none;
+          }
+    item4:
+      card:
+        type: "custom:button-card"
+        template: "list_3_items"
+        styles:
+          card:
+            - background: "none"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              entity: "[[[ return entity.entity_id ]]]"
+              styles:
+                card:
+                  - background-color: >
+                      [[[
+                        if(!hass.themes.darkMode && variables.ulm_card_cover_force_background_color){
+                          if (variables.ulm_active_state){
+                            return 'rgb(250,250,250)'
+                          }
+                        }
+                        return 'rgba(var(--color-theme),0.05)'
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        if (variables.ulm_card_cover_force_background_color && variables.ulm_active_state) {
+                          var color = variables.ulm_card_cover_color;
+                          return 'rgba(var(--color-' + color + '),0.2)';
+                        }
+                        return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+                icon:
+                  - color: >
+                      [[[
+                        if (variables.ulm_card_cover_force_background_color && variables.ulm_active_state) {
+                          var color = variables.ulm_card_cover_color;
+                          return 'rgba(var(--color-' + color + '),1)';
+                        }
+                        return 'rgba(var(--color-theme),0.9)';
+                      ]]]
+              state:
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.attributes.current_tilt_position == "0";
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.state == "closing";
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.state == "opening";
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
+              tap_action:
+                action: "call-service"
+                service: "cover.close_cover_tilt"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+              icon: "mdi:arrow-bottom-left"
+          item2:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              entity: "[[[ return entity.entity_id ]]]"
+              styles:
+                card:
+                  - background-color: >
+                      [[[
+                        if(!hass.themes.darkMode && variables.ulm_card_cover_force_background_color){
+                          if (variables.ulm_active_state){
+                            return 'rgb(250,250,250)'
+                          }
+                        }
+                        return 'rgba(var(--color-theme),0.05)'
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        if (variables.ulm_card_cover_force_background_color && variables.ulm_active_state) {
+                          var color = variables.ulm_card_cover_color;
+                          return 'rgba(var(--color-' + color + '),0.2)';
+                        }
+                        return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+                icon:
+                  - color: >
+                      [[[
+                        if (variables.ulm_card_cover_force_background_color && variables.ulm_active_state) {
+                          var color = variables.ulm_card_cover_color;
+                          return 'rgba(var(--color-' + color + '),1)';
+                        }
+                        return 'rgba(var(--color-theme),0.9)';
+                      ]]]
+              tap_action:
+                action: "call-service"
+                service: "cover.stop_cover_tilt"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+              icon: "mdi:stop"
+          item3:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              entity: "[[[ return entity.entity_id ]]]"
+              styles:
+                card:
+                  - background-color: >
+                      [[[
+                        if(!hass.themes.darkMode && variables.ulm_card_cover_force_background_color){
+                          if (variables.ulm_active_state){
+                            return 'rgb(250,250,250)'
+                          }
+                        }
+                        return 'rgba(var(--color-theme),0.05)'
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        if (variables.ulm_card_cover_force_background_color && variables.ulm_active_state) {
+                          var color = variables.ulm_card_cover_color;
+                          return 'rgba(var(--color-' + color + '),0.2)';
+                        }
+                        return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+                icon:
+                  - color: >
+                      [[[
+                        if (variables.ulm_card_cover_force_background_color && variables.ulm_active_state) {
+                          var color = variables.ulm_card_cover_color;
+                          return 'rgba(var(--color-' + color + '),1)';
+                        }
+                        return 'rgba(var(--color-theme),0.9)';
+                      ]]]
+              state:
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.attributes.current_tilt_position == "100";
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.state == "closing";
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
+                - operator: "template"
+                  value: >
+                    [[[
+                      return entity.state == "opening";
+                    ]]]
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-theme),0.4)"
+              tap_action:
+                action: "call-service"
+                service: "cover.open_cover_tilt"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+              icon: "mdi:arrow-top-right"

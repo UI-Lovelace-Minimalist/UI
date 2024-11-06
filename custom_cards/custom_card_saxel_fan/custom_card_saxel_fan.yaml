@@ -1,0 +1,227 @@
+---
+### Card Fan ###
+custom_card_saxel_fan:
+  template:
+    - "custom_card_saxel_fan_common"
+    - "blue"
+  variables:
+    mainSliderColor: "rgba(var(--color-blue),1)"
+    secondarySliderColor: "rgba(var(--color-blue),0.2)"
+  custom_fields:
+    button:
+      card:
+        card:
+          template:
+            - "[[[ return entity.state === 'on' && entity.attributes[variables.oscillate_attribute] ? 'blue' : 'widget_icon']]]"
+
+custom_card_saxel_fan_blue:
+  template:
+    - "custom_card_saxel_fan_common"
+    - "custom_template_saxel_blue"
+  variables:
+    mainSliderColor: "rgba(250, 250, 250,1)"
+    secondarySliderColor: "rgba(250,250,250,0.2)"
+  custom_fields:
+    button:
+      card:
+        card:
+          template:
+            - "widget_icon"
+          state:
+            - operator: "template"
+              value: "[[[ return entity.state === 'on' && entity.attributes[variables.oscillate_attribute]; ]]]"
+              styles:
+                card:
+                  - background-color: "rgba(250, 250, 250, 1)"
+                icon:
+                  - color: "rgba(61, 90, 254, 1)"
+                label:
+                  - color: "rgba(250, 250, 250, 1)"
+                name:
+                  - color: "rgba(250, 250, 250, 1)"
+                img_cell:
+                  - background-color: "rgba(250, 250, 250, 0.2)"
+            - operator: "template"
+              value: "[[[ return entity.state === 'on' && !entity.attributes[variables.oscillate_attribute]; ]]]"
+              styles:
+                card:
+                  - background-color: "rgba(61, 90, 254, 1)"
+                icon:
+                  - color: "rgba(250, 250, 250, 1)"
+                label:
+                  - color: "rgba(250, 250, 250, 1)"
+                name:
+                  - color: "rgba(250, 250, 250, 1)"
+                img_cell:
+                  - background-color: "rgba(250, 250, 250, 0.2)"
+
+# Common template, don't use
+custom_card_saxel_fan_common:
+  template:
+    - "ulm_translation_engine"
+    - "ulm_language_variables"
+    - "icon_info_bg"
+  variables:
+    mainSliderColor:
+    secondarySliderColor:
+    ulm_card_fan_horizontal: false
+    collapsable: true
+    ulm_card_fan_temp_attribute: "temp"
+    ulm_card_fan_hum_attribute: "hum"
+    always_show_attributes: false
+    ulm_show_button: true
+    ulm_button_icon: "mdi:rotate-3d-variant"
+    ulm_button_service: "fan.oscillate"
+    oscillate_attribute: "oscillate"
+  hold_action:
+    action: "more-info"
+  label: |-
+    [[[
+      if (entity.state != 'unavailable') {
+          let temp_str = '';
+          if (variables.ulm_card_fan_temp_attribute) {
+              var temp = Math.round(entity.attributes[variables.ulm_card_fan_temp_attribute]);
+              temp_str = ' • ' + (temp ? temp : '0') + '°C';
+          }
+          let hum_str = '';
+          if (variables.ulm_card_fan_hum_attribute) {
+              var hum = Math.round(entity.attributes[variables.ulm_card_fan_hum_attribute]);
+              hum_str = ' • ' + (hum ? hum : '0') + '%';
+          }
+
+          if (entity.state == 'off') {
+              if (variables.always_show_attributes == true) {
+                  return variables.ulm_off + temp_str + hum_str
+              } else {
+                  return variables.ulm_off
+              }
+          } else if (entity.state == 'on') {
+              if (entity.attributes.percentage != null) {
+                  var per = entity.attributes.percentage;
+                  let per_str = (per ? per : '0') + '%';
+                  return per_str + temp_str + hum_str;
+              } else {
+                  return variables.ulm_on
+              }
+          }
+      } else {
+          return variables.ulm_unavailable;
+      }
+    ]]]
+  styles:
+    grid:
+      - grid-template-areas: >
+          [[[
+            if (!variables.ulm_card_fan_horizontal) {
+              if (!variables.ulm_show_button) {
+                return "'i n n slider slider slider' 'i l l . slider slider slider'"
+              } else {
+                return "'i n n slider slider button' 'i l l . slider slider button'"
+              }
+            } else {
+              if (!variables.ulm_show_button) {
+                return "'i n n' 'i l l' 'slider slider slider'"
+              } else {
+                return "'i n n' 'i l l' 'slider slider button'"
+            }
+          ]]]
+      - grid-template-columns: >
+          [[[
+            if (!variables.ulm_card_fan_horizontal) {
+              return "min-content 2fr 1fr 1fr 1fr 1fr"
+            } else {
+              return "min-content 2fr 1fr"
+            }
+          ]]]
+      - grid-template-rows: >
+          [[[
+            if (!variables.ulm_card_fan_horizontal) {
+              return "min-content min-content"
+            } else {
+              return "min-content min-content min-content"
+            }
+          ]]]
+    custom_fields:
+      slider:
+        - margin-top: |-
+            [[[
+              if (!variables.collapsable) {
+                return "12px";
+              } else {
+                return entity.state === "on" ? "12px" : "0px";
+              }
+            ]]]
+      button:
+        - margin: |-
+            [[[
+              if (!variables.collapsable) {
+                return "12px 0px 0px 12px";
+              } else {
+                return entity.state === "on" ? "12px 0px 0px 12px" : "0px";
+              }
+            ]]]
+  custom_fields:
+    slider:
+      card:
+        type: "conditional"
+        conditions:
+          - entity: "[[[ return entity.entity_id ]]]"
+            state: "[[[ return variables.collapsable ? 'on' : entity.state; ]]]"
+        card:
+          type: "custom:my-slider"
+          entity: "[[[ return entity.entity_id ]]]"
+          step: "[[[ return typeof states[entity.entity_id].attributes.percentage_step === 'undefined' ? 1 : parseInt(states[entity.entity_id].attributes.percentage_step); ]]]"
+          radius: "14px"
+          height: "42px"
+          mainSliderColor: "[[[return variables.mainSliderColor]]]"
+          secondarySliderColor: "[[[return variables.secondarySliderColor]]]"
+          mainSliderColorOff: "rgba(var(--color-theme),0.05)"
+          secondarySliderColorOff: "rgba(var(--color-theme),0.05)"
+          thumbHorizontalPadding: "0px"
+          thumbVerticalPadding: "0px"
+          thumbWidth: "0px"
+          card_mod:
+            style: |-
+              ha-card {
+                box-shadow: none;
+                border-radius: 14px;
+                background-color: #3d5afe02;
+              }
+    button:
+      card:
+        type: "conditional"
+        conditions:
+          - entity: "[[[ return entity.entity_id ]]]"
+            state: "[[[ return variables.collapsable ? 'on' : entity.state; ]]]"
+        card:
+          type: "custom:button-card"
+          icon: "[[[ return variables.ulm_button_icon ]]]"
+          entity: "[[[ return entity.entity_id ]]]"
+          tap_action:
+            action: "call-service"
+            service: "[[[ return variables.ulm_button_service ]]]"
+            service_data:
+              entity_id: "[[[ return entity.entity_id; ]]]"
+              oscillating: "[[[ return !entity.attributes[variables.oscillate_attribute] ]]]"
+          template:
+            - "widget_icon"
+          state:
+            - value: off
+              styles:
+                icon:
+                  - color: "rgba(var(--color-theme),0.2)"
+
+custom_template_saxel_blue:
+  state:
+    - value: "on"
+      styles:
+        card:
+          - background-color: "rgba(61, 90, 254, 1)"
+        icon:
+          - color: "rgba(250, 250, 250, 1)"
+        label:
+          - color: "rgba(250, 250, 250, 1)"
+        name:
+          - color: "rgba(250, 250, 250, 1)"
+        img_cell:
+          - background-color: "rgba(250, 250, 250, 0.2)"

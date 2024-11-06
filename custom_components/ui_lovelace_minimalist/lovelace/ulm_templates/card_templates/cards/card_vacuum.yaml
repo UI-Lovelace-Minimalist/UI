@@ -1,0 +1,377 @@
+---
+### Card Vacuum ###
+card_vacuum:
+  show_name: false
+  show_icon: false
+  show_label: false
+  template:
+    - "icon_more_info_new"
+    - "ulm_translation_engine"
+  variables:
+    ulm_card_vacuum_name: "[[[ return entity.attributes.friendly_name ]]]"
+    ulm_card_vacuum_icon: "[[[ return entity.attributes.icon ]]]"
+    ulm_card_vacuum_room:
+    ulm_card_vacuum_room_icon: "[[[ return entity.attributes.icon ]]]"
+    ulm_card_vacuum_camera: ""
+    ulm_card_vacuum_enable_popup: false
+    ulm_card_vacuum_camera_toggle: false
+    ulm_card_vacuum_force_background_color: false
+    ulm_card_vacuum_color: >
+      [[[
+        var state = entity.state.toLowerCase();
+        var colors = {
+          "cleaning": "blue",
+          "paused": "green",
+          "mopping": "yellow",
+          "returning": "purple",
+          "error": "red",
+          "default": "theme"
+        }
+        return (colors[state] || colors["default"]);
+      ]]]
+  triggers_update:
+    - "[[[ return variables.ulm_card_vacuum_camera ]]]"
+  state:
+    - operator: "template"
+      value: "[[[ return variables.ulm_active_state ]]]"
+      styles:
+        card:
+          - background-color: >
+              [[[
+                  if (variables.ulm_card_vacuum_color) {
+                    if (variables.ulm_card_vacuum_force_background_color) {
+                      var color = variables.ulm_card_vacuum_color;
+                      return 'rgba(var(--color-' + color + '),var(--opacity-bg))';
+                    }
+                  }
+              ]]]
+  styles:
+    grid:
+      - grid-template-areas: >
+          [[[
+            let map = "'item1' 'map' 'item2'"
+            if(variables.ulm_card_vacuum_camera != ""){
+              if(variables.ulm_card_vacuum_camera_toggle){
+                if(entity.state.toLowerCase() === 'cleaning' || entity.state.toLowerCase() === 'mopping'){
+                  return map;
+                }
+              } else {
+                 return map;
+              }
+            }
+            return "'item1' 'item2'"
+          ]]]
+      - grid-template-columns: "1fr"
+      - grid-template-rows: >
+          [[[
+            let map = "repeat(3, min-content)"
+            if(variables.ulm_card_vacuum_camera != ""){
+              if(variables.ulm_card_vacuum_camera_toggle){
+                if(entity.state.toLowerCase() === 'cleaning' || entity.state.toLowerCase() === 'mopping'){
+                  return map;
+                }
+              } else {
+                 return map;
+              }
+            }
+            return "repeat(2, min-content)"
+          ]]]
+      - row-gap: "12px"
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
+      - background-color: >
+          [[[
+            if(hass.themes.darkMode){
+              return "variables.ulm_card_vacuum_color" + ", 0.1)";
+              }
+          ]]]
+    custom_fields:
+      map:
+        - display: >
+            [[[
+              let map = "block"
+              if(variables.ulm_card_vacuum_camera != ""){
+                if(variables.ulm_card_vacuum_camera_toggle){
+                  if(entity.state.toLowerCase() === 'cleaning' || entity.state.toLowerCase() === 'mopping'){
+                    return map;
+                  }
+                } else {
+                  return map;
+                }
+              }
+              return "none"
+            ]]]
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              icon: "[[[ return variables.ulm_card_vacuum_icon ]]]"
+              variables: >
+                [[[
+                  let vars = variables;
+                  if(variables.ulm_card_vacuum_enable_popup) {
+                    vars.ulm_custom_popup = {
+                      'template': 'popup_vacuum_map',
+                      'popup_variables': {'ulm_card_vacuum_camera': variables.ulm_card_vacuum_camera }
+                    };
+                  }
+                  return vars;
+                ]]]
+              styles:
+                icon:
+                  - color: >
+                      [[[
+                        var color = variables.ulm_card_vacuum_color;
+                        if(color == 'theme' || !variables.ulm_active_state){
+                          return 'rgba(var(--color-theme),0.2)';
+                        }
+                        return 'rgba(var(--color-' + color + '),1)';
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        var color = variables.ulm_card_vacuum_color;
+                        if(color == 'theme' || !variables.ulm_active_state){
+                          return 'rgba(var(--color-theme),0.05)';
+                        }
+                        return 'rgba(var(--color-' + color + '),0.2)';
+                      ]]]
+          item2:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              variables: >
+                [[[
+                  let vars = variables;
+                  if(variables.ulm_card_vacuum_enable_popup) {
+                    vars.ulm_custom_popup = {
+                      'template': 'popup_vacuum_map',
+                      'popup_variables': {'ulm_card_vacuum_camera': variables.ulm_card_vacuum_camera }
+                    };
+                  }
+                  return vars;
+                ]]]
+              name: "[[[ return variables.ulm_card_vacuum_name ]]]"
+              label: >
+                [[[
+                  let label = entity.attributes.friendly_name
+                  if(variables.ulm_card_vacuum_label){
+                    label = variables.ulm_card_vacuum_label;
+                  } else {
+                    label = variables.ulm_translation_state;
+                  }
+                  return label;
+                ]]]
+              state:
+                - operator: "template"
+                  value: "[[[ return variables.ulm_active_state ]]]"
+                  styles:
+                    name:
+                      - color: >
+                          [[[
+                              if (variables.ulm_card_vacuum_force_background_color) {
+                                  return 'rgb(250,250,250)';
+                              }
+                          ]]]
+                    label:
+                      - color: >
+                          [[[
+                              if (variables.ulm_card_vacuum_force_background_color) {
+                                  return 'rgb(250,250,250)';
+                              }
+                          ]]]
+    map:
+      card:
+        type: "custom:button-card"
+        show_name: false
+        show_icon: false
+        show_label: false
+        entity: "[[[ return variables.ulm_card_vacuum_camera ]]]"
+        show_entity_picture: "true"
+        styles:
+          card:
+            - box-shadow: "none"
+          icon:
+            - border-radius: "20px"
+            - width: "100%"
+    item2:
+      card:
+        type: "custom:button-card"
+        template: >
+          [[[ return variables.ulm_card_vacuum_room ? "list_4_items" : "list_3_items"; ]]]
+        styles:
+          card:
+            - background: "none"
+            - border-radius: "0"
+          custom_fields:
+            item4:
+              - display: >
+                  [[[ return variables.ulm_card_vacuum_room ? "block" : "none"; ]]]
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              entity: "[[[ return entity.entity_id ]]]"
+              icon: "mdi:play"
+              styles:
+                card:
+                  - background-color: >
+                      [[[
+                        if(!hass.themes.darkMode && variables.ulm_card_vacuum_force_background_color && variables.ulm_active_state){
+                          return 'rgb(250,250,250)'
+                        }
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        var color = variables.ulm_card_vacuum_color;
+                        if (variables.ulm_card_vacuum_force_background_color && variables.ulm_active_state) {
+                          return 'rgba(var(--color-' + color + '),0.2)';
+                        }
+                          return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+                icon:
+                  - color: >
+                      [[[
+                        var color = variables.ulm_card_vacuum_color;
+                        if (variables.ulm_card_vacuum_force_background_color && variables.ulm_active_state) {
+                          return 'rgba(var(--color-' + color + '),1)';
+                        }
+                          return 'rgba(var(--color-theme),0.9)';
+                      ]]]
+              state:
+                - operator: "template"
+                  value: "[[[ return ['cleaning','mopping'].includes(entity.state.toLowerCase()) ]]]"
+                  icon: "mdi:stop"
+                  tap_action:
+                    action: "call-service"
+                    service: "vacuum.stop"
+                    service_data:
+                      entity_id: "[[[ return entity.entity_id ]]]"
+              tap_action:
+                action: "call-service"
+                service: >
+                  [[[
+                    return ['cleaning','mopping'].includes(entity.state.toLowerCase()) ? "vacuum.stop" : "vacuum.start";
+                  ]]]
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+          item2:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              entity: "[[[ return entity.entity_id ]]]"
+              icon: "mdi:home-map-marker"
+              styles:
+                card:
+                  - background-color: >
+                      [[[
+                        if(!hass.themes.darkMode && variables.ulm_card_vacuum_force_background_color && variables.ulm_active_state){
+                          return 'rgb(250,250,250)'
+                        }
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        var color = variables.ulm_card_vacuum_color;
+                        if (variables.ulm_card_vacuum_force_background_color && variables.ulm_active_state) {
+                          return 'rgba(var(--color-' + color + '),0.2)';
+                        }
+                          return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+                icon:
+                  - color: >
+                      [[[
+                        var color = variables.ulm_card_vacuum_color;
+                        if (variables.ulm_card_vacuum_force_background_color && variables.ulm_active_state) {
+                          return 'rgba(var(--color-' + color + '),1)';
+                        }
+                          return 'rgba(var(--color-theme),0.9)';
+                      ]]]
+              tap_action:
+                action: "call-service"
+                service: "vacuum.return_to_base"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+          item3:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              entity: "[[[ return entity.entity_id ]]]"
+              icon: "mdi:map-marker"
+              styles:
+                card:
+                  - background-color: >
+                      [[[
+                        if(!hass.themes.darkMode && variables.ulm_card_vacuum_force_background_color && variables.ulm_active_state){
+                          return 'rgb(250,250,250)'
+                        }
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        var color = variables.ulm_card_vacuum_color;
+                        if (variables.ulm_card_vacuum_force_background_color && variables.ulm_active_state) {
+                          return 'rgba(var(--color-' + color + '),0.2)';
+                        }
+                          return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+                icon:
+                  - color: >
+                      [[[
+                        var color = variables.ulm_card_vacuum_color;
+                        if (variables.ulm_card_vacuum_force_background_color && variables.ulm_active_state) {
+                          return 'rgba(var(--color-' + color + '),1)';
+                        }
+                          return 'rgba(var(--color-theme),0.9)';
+                      ]]]
+              tap_action:
+                action: "call-service"
+                service: "vacuum.locate"
+                service_data:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+          item4:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              entity: "[[[ return variables.ulm_card_vacuum_room ]]]"
+              icon: "[[[ return variables.ulm_card_vacuum_room_icon ]]]"
+              styles:
+                card:
+                  - background-color: >
+                      [[[
+                        if(!hass.themes.darkMode && variables.ulm_card_vacuum_force_background_color && variables.ulm_active_state){
+                          return 'rgb(250,250,250)'
+                        }
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        var color = variables.ulm_card_vacuum_color;
+                        if (variables.ulm_card_vacuum_force_background_color && variables.ulm_active_state) {
+                          return 'rgba(var(--color-' + color + '),0.2)';
+                        }
+                          return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+                icon:
+                  - color: >
+                      [[[
+                        var color = variables.ulm_card_vacuum_color;
+                        if (variables.ulm_card_vacuum_force_background_color && variables.ulm_active_state) {
+                          return 'rgba(var(--color-' + color + '),1)';
+                        }
+                          return 'rgba(var(--color-theme),0.9)';
+                      ]]]
+              tap_action:
+                action: "call-service"
+                service: "script.turn_on"
+                service_data:
+                  entity_id: "[[[ return variables.ulm_card_vacuum_room ]]]"

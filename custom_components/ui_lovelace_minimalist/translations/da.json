@@ -1,0 +1,68 @@
+{
+    "title": "UI Lovelace Minimalist",
+    "config": {
+        "step": {
+            "user": {
+                "title": "UI Lovelace Minimalist Indstillinger",
+                "description": "",
+                "data": {
+                    "community_cards_enabled": "Enable the ability to configure community cards with this integrations, Does require github authentication!"
+                }
+            },
+            "device": {
+                "title": "Waiting for device activation"
+            },
+            "reauth_confirm": {
+                "title": "Reauthentication needed",
+                "description": "You need to reauthenticate with GitHub."
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "Det er kun tilladt med én installation af UI Lovelace Minimalist",
+            "not_setup": "UI Lovelace Minimalist er ikke konfigureret.",
+            "github": "Could not authenticate with GitHub, try again later.",
+            "reauth_successful": "Reauthentication was successful."
+        },
+        "progress": {
+            "wait_for_device": "1. Open {url} \n2.Paste the following key to authorize ULM: \n```\n{code}\n```\n"
+        }
+    },
+    "options": {
+        "step": {
+            "user": {
+                "title": "UI Lovelace Minimalist Indstillinger",
+                "description": "",
+                "data": {
+                    "language": "Sprog",
+                    "sidepanel_enabled": "Vis Dashboard i sidepanelet.",
+                    "sidepanel_icon": "Sidepanel icon",
+                    "sidepanel_title": "Sidepanel titel",
+                    "adaptive_ui_enabled": "Aktivér adaptiv Dashboard med popup opdelt visning",
+                    "adaptive_ui_title": "adaptiv panel titel",
+                    "adaptive_ui_icon": "adaptiv panel ikon",
+                    "theme": "Tema",
+                    "include_other_cards": "Inkludér de nødvendige 'custom card' ressourcer.",
+                    "community_cards_enabled": "Enable the ability to configure community cards with this integrations, Does require github authentication!",
+                    "community_cards": "Select Community Cards you want to enable."
+                }
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "Det er kun tilladt med én installation af UI Lovelace Minimalist",
+            "not_setup": "UI Lovelace Minimalist er ikke konfigureret."
+        },
+        "error": {
+            "github_cards": "Something went wrong when fetching cards from Github.",
+            "ack": "You need to acknowledge all statements.",
+            "gh_token": "Github Token not set. Please re-install this integration to go throught the setup procedure. (No custom configuration will be lost)"
+        }
+    },
+    "services": {
+        "reload": {
+            "description": "Genindlæs dashboard-konfiguration til UI Lovelace Minimalist."
+        },
+        "installed": {
+            "description": "Skift den installerede nøgle i global konfiguration for UI Lovelace Minimalist."
+        }
+    }
+}

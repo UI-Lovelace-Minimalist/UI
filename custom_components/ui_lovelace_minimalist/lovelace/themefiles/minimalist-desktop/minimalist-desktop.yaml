@@ -1,0 +1,133 @@
+---
+minimalist-desktop:
+  # Journal
+  state-icon-color: "rgb(var(--color-theme))"
+  border-radius: "20px"
+  ha-card-border-radius: "var(--border-radius)"
+  error-color: "var(--google-red)"
+  warning-color: "var(--google-yellow)"
+  success-color: "var(--google-green)"
+  info-color: "var(--google-blue)"
+  divider-color: "rgba(var(--color-theme),.12)"
+  accent-color: "var(--google-yellow)"
+  ha-dialog-border-radius: "10px"
+  # fix added border-lines in 2022.11
+  ha-card-border-width: "0px"
+
+  card-mod-theme: "minimalist-desktop"
+  card-mod-view-yaml: |
+    "*:first-child$": |
+      #columns .column > * {
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-bottom: 5px;
+      }
+  modes:
+    light:
+      # text
+      primary-text-color: "#212121"
+      # main interface colors
+      primary-color: "#434343"
+      google-red: "#F54436"
+      google-green: "#01C852"
+      google-yellow: "#FF9101"
+      google-blue: "#3D5AFE"
+      google-violet: "#661FFF"
+      google-grey: "#BBBBBB"
+      color-red: "245, 68, 54"
+      color-green: "1, 200, 82"
+      color-yellow: "255, 145, 1"
+      color-blue: "61, 90, 254"
+      color-purple: "102, 31, 255"
+      color-grey: "187, 187, 187"
+      color-pink: "233, 30, 99"
+      color-theme: "51,51,51"
+      color-background-yellow: "250, 250, 250"
+      color-background-blue: "250, 250, 250"
+      color-background-green: "250, 250, 250"
+      color-background-red: "250, 250, 250"
+      color-background-pink: "250, 250, 250"
+      color-background-purple: "250, 250, 250"
+      color-yellow-text: "var(--primary-text-color)"
+      color-blue-text: "var(--primary-text-color)"
+      color-green-text: "var(--primary-text-color)"
+      color-red-text: "var(--primary-text-color)"
+      color-pink-text: "var(--primary-text-color)"
+      color-purple-text: "var(--primary-text-color)"
+      opacity-bg: "1"
+      # background and sidebar
+      card-background-color: "#FAFAFA"
+      primary-background-color: "#EFEFEF"
+      secondary-background-color: "#EFEFEF"
+      # header
+      app-header-text-color: "var(--primary-text-color)"
+      app-header-background-color: "var(--primary-background-color)"
+      # paper-tabs-selection-bar-color: "var(--primary-text-color)"
+      # slider
+      slider-color: "rgb(var(--color-blue))"
+      slider-bar-color: "rgba(var(--color-blue),0.38)"
+      # cards
+      box-shadow: "0px 2px 4px 0px rgba(0,0,0,0.16)"
+      ha-card-box-shadow: "var(--box-shadow)"
+      # sidebar
+      sidebar-selected-text-color: "var(--google-red)"
+      sidebar-selected-icon-color: "var(--google-red)"
+      sidebar-text-color: "#80868b"
+      # switch
+      switch-checked-color: "var(--google-blue)"
+      # media player
+      mini-media-player-accent-color: "var(--google-blue)"
+    dark:
+      # text
+      primary-text-color: "#DDDDDD"
+      # main interface colors
+      primary-color: "#89B3F8"
+      google-red: "#F18B82"
+      google-green: "#80C994"
+      google-yellow: "#FCD663"
+      google-blue: "#89B3F8"
+      google-violet: "#BB86FC"
+      google-grey: "#BBBBBB"
+      color-red: "241, 139, 130"
+      color-green: "128, 201, 148"
+      color-yellow: "252, 214, 99"
+      color-blue: "137, 179, 248"
+      color-theme: "221,221,221"
+      color-purple: "102, 31, 255"
+      color-grey: "187, 187, 187"
+      color-pink: "233, 30, 99"
+      color-background-yellow: "var(--color-yellow)"
+      color-background-blue: "var(--color-blue)"
+      color-background-green: "var(--color-green)"
+      color-background-red: "var(--color-red)"
+      color-background-pink: "var(--color-pink)"
+      color-background-purple: "var(--color-purple)"
+      color-yellow-text: "var(--color-yellow)"
+      color-blue-text: "var(--color-blue)"
+      color-green-text: "var(--color-green)"
+      color-red-text: "var(--color-red)"
+      color-pink-text: "var(--color-pink)"
+      color-purple-text: "var(--color-purple)"
+      opacity-bg: "0.1"
+      # floating button text color
+      mdc-theme-on-secondary: "var(--card-background-color)"
+      # background and sidebar
+      card-background-color: "#1D1D1D"
+      primary-background-color: "#121212"
+      secondary-background-color: "#121212"
+      # header
+      app-header-text-color: "var(--primary-text-color)"
+      app-header-background-color: "var(--primary-background-color)"
+      paper-tabs-selection-bar-color: "var(--primary-text-color)"
+      # Sidebar
+      sidebar-selected-text-color: "rgb(var(--color-blue))"
+      sidebar-selected-icon-color: "rgb(var(--color-blue))"
+      # Slider
+      slider-color: "rgb(var(--color-blue))"
+      slider-bar-color: "rgba(var(--color-blue),0.38)"
+      # card
+      box-shadow: "none"
+      # media player
+      mini-media-player-accent-color: "var(--google-blue)"
+      # Journal
+      state-icon-color: "rgb(var(--color-theme))"

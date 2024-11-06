@@ -1,0 +1,250 @@
+---
+widget_icon_state:
+  tap_action:
+    action: "none"
+  layout: "icon_state"
+  show_state: true
+  show_units: false
+  styles:
+    grid:
+      - grid-template-areas: "'i s' 'n n'"
+      - grid-template-columns: "45% 55%"
+    card:
+      - box-shadow: "none"
+      - padding: "0px"
+      - background-color: "rgba(var(--color-theme),0.05)"
+      - border-radius: "14px"
+      - place-self: "center"
+      - height: "42px"
+    name:
+      - font-weight: "bold"
+      - font-size: "10px"
+      - filter: "opacity(40%)"
+      - margin-bottom: "2px"
+    state:
+      - justify-self: "start"
+      - margin-left: "5px"
+      - font-size: "18px"
+      - font-weight: 600
+    icon:
+      - color: "rgba(var(--color-theme),0.9)"
+    img_cell:
+      - justify-content: "right"
+  size: "20px"
+  color: "var(--google-grey)"
+
+car:
+  template:
+    - "icon_info"
+  tap_action:
+    action: "more-info"
+  show_name: true
+  show_last_changed: true
+  name: "[[[ return variables.ulm_card_schumijo_car_name ]]]"
+  entity: "[[[ return entity.entity_id ]]]"
+  icon: "mdi:car"
+  styles:
+    icon:
+      - color: "rgba(var(--color-theme),0.9)"
+      - width: "20px"
+      - place-self: "center"
+    custom_fields:
+      tracker:
+        - border-radius: "50%"
+        - position: "absolute"
+        - left: "30px"
+        - top: "-2px"
+        - height: "16px"
+        - width: "16px"
+        - border: "2px solid var(--card-background-color)"
+        - font-size: "12px"
+        - line-height: "14px"
+        - background-color: >
+            [[[
+              if (states[variables.ulm_card_schumijo_car_tracker].state != 'home'){
+                return "rgba(var(--color-green),1)";
+              } else {
+                return "rgba(var(--color-blue),1)";
+              }
+            ]]]
+      lock:
+        - border-radius: "50%"
+        - position: "absolute"
+        - left: "30px"
+        - top: "24px"
+        - height: "16px"
+        - width: "16px"
+        - border: "2px solid var(--card-background-color)"
+        - font-size: "12px"
+        - line-height: "14px"
+        - background-color: >
+            [[[
+              if (states[variables.ulm_card_schumijo_car_lock].state != 'locked'){
+                return "rgba(var(--color-red),1)";
+              } else {
+                return "rgba(var(--color-blue),1)";
+              }
+            ]]]
+  custom_fields:
+    tracker: >
+      [[[
+        if (states[variables.ulm_card_schumijo_car_tracker].state != 'home'){
+          return '<ha-icon icon="mdi:road-variant" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+        } else {
+          return '<ha-icon icon="mdi:home-variant" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+        }
+      ]]]
+    lock: >
+      [[[
+        if (states[variables.ulm_card_schumijo_car_lock].state != 'locked'){
+          return '<ha-icon icon="mdi:lock-open" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+        } else {
+          return '<ha-icon icon="mdi:lock" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+        }
+      ]]]
+
+ulm_custom_card_schumijo_ca_popup:
+  tap_action:
+    action: "fire-dom-event"
+    browser_mod:
+      service: "browser_mod.popup"
+      data:
+        size: >
+          [[[
+            const mediaQuery = window.matchMedia('(max-width: 800px)')
+            if (mediaQuery.matches) {
+              return 'fullscreen'
+            }
+          ]]]
+        title: "Map"
+        style:
+          $: >
+            [[[
+              if (hass.themes.theme.includes("desktop")){
+                var dialog = `
+                  .mdc-dialog__surface{
+                    border-radius: var(--border-radius) !important;
+                  }
+                `;
+              } else{
+                var dialog = "";
+              }
+              return `
+                *{
+                  --secondary-background-color: none !important;
+                }
+                ${dialog}
+              `;
+            ]]]
+          hui-vertical-stack-card:
+            $: >
+              button-card {
+                align-self: center;
+                padding: 0.2em 0 2.3em 0;
+              }
+              hui-entities-card{
+                padding: 0.8em 1.4em;
+              }
+            $hui-entities-card$: >
+              ha-card{
+                box-shadow: none;
+              }
+            $hui-history-graph-card$: >
+              .content {
+                padding: 0 2.4em !important;
+              }
+              ha-card{
+                box-shadow: none;
+              }
+            $hui-glance-card$: >
+              ha-card{
+                box-shadow: none;
+              }
+            $hui-map-card:
+              $: >
+                ha-icon-button {
+                  color: rgba(var(--color-blue),1);
+                }
+              $ha-map:
+                $: >
+                  .leaflet-control-attribution {
+                    display: none;
+                  }
+                  .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
+                    border: 2px solid rgba(var(--color-blue),0.4) !important;
+                  }
+                  .leaflet-bar a {
+                    background-color: rgba(var(--color-blue),0.2) !important;
+                    color: rgba(var(--color-blue),1) !important;
+                  }
+                  .leaflet-bar a:first-child {
+                    border-bottom: 2px solid rgba(var(--color-blue),0.4) !important;
+                  }
+                  .leaflet-pane.leaflet-tile-pane {
+                    filter: contrast(95%);
+                  }
+        content:
+          type: "map"
+          aspect_ratio: "12:10"
+          default_zoom: 16
+          entities: "[[[ return [variables.ulm_card_schumijo_car_tracker]; ]]]"
+
+custom_card_schumijo_car:
+  template:
+    - "ulm_custom_card_schumijo_car_language_variables"
+  variables:
+    ulm_card_schumijo_car_name: "n/a"
+  show_icon: false
+  show_name: false
+  show_label: false
+  styles:
+    grid:
+      - grid-template-areas: "'item1' 'item2'"
+      - grid-template-columns: "1fr"
+      - grid-template-rows: "min-content min-content"
+      - row-gap: "12px"
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        template:
+          - "car"
+          - "ulm_custom_card_schumijo_ca_popup"
+        entity: "[[[ return variables.ulm_card_schumijo_car_tracker ]]]"
+        variables:
+          ulm_card_schumijo_car_tracker: "[[[ return variables.ulm_card_schumijo_car_tracker ]]]"
+          ulm_card_schumijo_car_name: "[[[ return variables.ulm_card_schumijo_car_name ]]]"
+          ulm_card_schumijo_car_lock: "[[[ return variables.ulm_card_schumijo_car_lock ]]]"
+    item2:
+      card:
+        template: "list_2_items"
+        type: "custom:button-card"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon_state"
+              entity: "[[[ return variables.ulm_card_schumijo_car_energy_level ]]]"
+              state_display: >
+                [[[
+                  return parseFloat(states[variables.ulm_card_schumijo_car_energy_level].state).toFixed(0);
+                ]]]
+              name:
+                "[[[ return states[variables.ulm_card_schumijo_car_energy_level].attributes.unit_of_measurement + ' ' + variables.ulm_custom_card_schumijo_car_energy_level\
+                \ ]]]"
+          item2:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon_state"
+              entity: "[[[ return variables.ulm_card_schumijo_car_range ]]]"
+              state_display: >
+                [[[
+                  return parseFloat(states[variables.ulm_card_schumijo_car_range].state).toFixed(0);
+                ]]]
+              name:
+                "[[[ return states[variables.ulm_card_schumijo_car_range].attributes.unit_of_measurement + ' ' + variables.ulm_custom_card_schumijo_car_range\
+                \ ]]]"

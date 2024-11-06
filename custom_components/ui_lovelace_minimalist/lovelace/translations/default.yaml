@@ -1,0 +1,237 @@
+---
+ulm_translation_engine:
+  variables:
+    ulm_translation_back: "[[[ return hass.resources[hass['language']]['ui.common.back']; ]]]"
+    ulm_translation_brightness: "[[[ return hass.resources[hass['language']]['ui.card.light.brightness']; ]]]"
+    ulm_translation_color_temperature: "[[[ return hass.resources[hass['language']]['ui.card.light.color_temperature']; ]]]"
+    ulm_translation_status: "[[[ return hass.resources[hass['language']]['ui.dialogs.more_info_control.vacuum.status']; ]]]"
+    ulm_translation_scenes: "[[[ return hass.resources[hass['language']]['ui.dialogs.quick-bar.commands.reload.scene']; ]]]"
+    ulm_translation_source: "[[[ return hass.resources[hass['language']]['ui.card.media_player.source']; ]]]"
+    ulm_translation_history: "[[[ return hass.resources[hass['language']]['ui.dialogs.more_info_control.history']; ]]]"
+    ulm_translation_close_cover: "[[[ return hass.resources[hass['language']]['ui.dialogs.more_info_control.cover.close_cover']; ]]]"
+    ulm_translation_stop_cover: "[[[ return hass.resources[hass['language']]['ui.dialogs.more_info_control.cover.stop_cover']; ]]]"
+    ulm_translation_open_cover: "[[[ return hass.resources[hass['language']]['ui.dialogs.more_info_control.cover.open_cover']; ]]]"
+    ulm_translation_more_options: "[[[ return hass.resources[hass['language']]['ui.panel.lovelace.editor.edit_card.options']; ]]]"
+    ulm_active_state: >
+      [[[
+        if (typeof(entity) !== 'undefined' && entity !== undefined){
+          let not_active = ['disarmed','off','closed','not_home','standby','idle','docked','unknown','unavailable','paused']
+          function containsNumbers(str) {
+            return /\d/.test(str);
+          }
+          return (!not_active.includes(entity.state) && !containsNumbers(entity.state))
+        }
+      ]]]
+    ulm_translation_off: "[[[ return hass.resources[hass['language']]['state.default.off']; ]]]"
+    ulm_translation_on: "[[[ return hass.resources[hass['language']]['state.default.on']; ]]]"
+    ulm_translation_state: >
+      [[[
+        if (typeof(entity) !== 'undefined' && entity !== undefined){
+          let device_class = entity.attributes.device_class;
+          let lang = hass["language"];
+          let action = entity.attributes.hvac_action;
+          let domain = entity.entity_id.substr(0, entity.entity_id.indexOf("."));
+          let mode =  hass.resources[lang]["state_attributes." + domain + ".hvac_action." + action];
+          if(variables.ulm_show_last_changed){
+            return helpers.relativeTime(entity.last_changed, true)
+          }
+          if(device_class == 'timestamp'){
+            return helpers.relativeTime(entity.state, true)
+          }
+          if(entity.entity_id.startsWith("climate.")){
+            return helpers.localize(entity, entity.attributes.current_temperature) + ' • ' +
+            helpers.localize(entity) + ((entity.state !='off' && mode !== undefined) ? ' (' + mode + ')' : '');
+          }
+          return helpers.localize(entity)
+        }
+      ]]]
+    ulm_translation_state_reverse: >
+      [[[
+        if (typeof(entity) !== 'undefined' && entity !== undefined){
+          let state = entity.state;
+          let def = ["unknown", "unavailable"];
+          let lang = hass["language"];
+          if (state === "on"){
+            var translation = hass.resources[lang]["state.default.off"];
+          } else if (state === "off"){
+            var translation = hass.resources[lang]["state.default.on"];
+          }
+          if (def.includes(state)) {
+            var translation = hass.resources[lang]["state.default." + state ];
+          }
+          return translation ? translation : state;
+        }
+      ]]]
+    ulm_translation_statistics: "[[[ return hass.resources[hass['language']]['ui.components.statistic-picker.statistic']; ]]]"
+    ulm_translation_unavailable: "[[[ return hass.resources[hass['language']]['state.default.unavailable']; ]]]"
+    ulm_translation_currency: >
+      [[[
+        var hasscurrency = hass.config["currency"];
+        var currency =
+        { "AFA": "؋",
+          "ALL": "Lek",
+          "DZD": "دج",
+          "AOA": "Kz",
+          "ARS": "$",
+          "AMD": "֏",
+          "AWG": "ƒ",
+          "AUD": "$",
+          "AZN": "m",
+          "BSD": "B$",
+          "BHD": ".د.ب",
+          "BDT": "৳",
+          "BBD": "Bds$",
+          "BYR": "Br",
+          "BEF": "fr",
+          "BZD": "$",
+          "BMD": "$",
+          "BTN": "Nu.",
+          "BTC": "฿",
+          "BOB": "Bs.",
+          "BAM": "KM",
+          "BWP": "P",
+          "BRL": "R$",
+          "GBP": "£",
+          "BND": "B$",
+          "BGN": "Лв.",
+          "BIF": "FBu",
+          "KHR": "KHR",
+          "CAD": "$",
+          "CVE": "$",
+          "KYD": "$",
+          "XOF": "CFA",
+          "XAF": "FCFA",
+          "XPF": "₣",
+          "CLP": "$",
+          "CNY": "¥",
+          "COP": "$",
+          "KMF": "CF",
+          "CDF": "FC",
+          "CRC": "₡",
+          "HRK": "kn",
+          "CUC": "$, CUC",
+          "CZK": "Kč",
+          "DKK": "Kr.",
+          "DJF": "Fdj",
+          "DOP": "$",
+          "XCD": "$",
+          "EGP": "ج.م",
+          "ERN": "Nfk",
+          "EEK": "kr",
+          "ETB": "Nkf",
+          "EUR": "€",
+          "FKP": "£",
+          "FJD": "FJ$",
+          "GMD": "D",
+          "GEL": "ლ",
+          "DEM": "DM",
+          "GHS": "GH₵",
+          "GIP": "£",
+          "GRD": "₯, Δρχ, Δρ",
+          "GTQ": "Q",
+          "GNF": "FG",
+          "GYD": "$",
+          "HTG": "G",
+          "HNL": "L",
+          "HKD": "$",
+          "HUF": "Ft",
+          "ISK": "kr",
+          "INR": "₹",
+          "IDR": "Rp",
+          "IRR": "﷼",
+          "IQD": "د.ع",
+          "ILS": "₪",
+          "ITL": "L,£",
+          "JMD": "J$",
+          "JPY": "¥",
+          "JOD": "ا.د",
+          "KZT": "лв",
+          "KES": "KSh",
+          "KWD": "ك.د",
+          "KGS": "лв",
+          "LAK": "₭",
+          "LVL": "Ls",
+          "LBP": "£",
+          "LSL": "L",
+          "LRD": "$",
+          "LYD": "د.ل",
+          "LTL": "Lt",
+          "MOP": "$",
+          "MKD": "ден",
+          "MGA": "Ar",
+          "MWK": "MK",
+          "MYR": "RM",
+          "MVR": "Rf",
+          "MRO": "MRU",
+          "MUR": "₨",
+          "MXN": "$",
+          "MDL": "L",
+          "MNT": "₮",
+          "MAD": "MAD",
+          "MZM": "MT",
+          "MMK": "K",
+          "NAD": "$",
+          "NPR": "₨",
+          "ANG": "ƒ",
+          "TWD": "$",
+          "NZD": "$",
+          "NIO": "C$",
+          "NGN": "₦",
+          "KPW": "₩",
+          "NOK": "kr",
+          "OMR": ".ع.ر",
+          "PKR": "₨",
+          "PAB": "B/.",
+          "PGK": "K",
+          "PYG": "₲",
+          "PEN": "S/.",
+          "PHP": "₱",
+          "PLN": "zł",
+          "QAR": "ق.ر",
+          "RON": "lei",
+          "RUB": "₽",
+          "RWF": "FRw",
+          "SVC": "₡",
+          "WST": "SAT",
+          "SAR": "﷼",
+          "RSD": "din",
+          "SCR": "SRe",
+          "SLL": "Le",
+          "SGD": "$",
+          "SKK": "Sk",
+          "SBD": "Si$",
+          "SOS": "Sh.so.",
+          "ZAR": "R",
+          "KRW": "₩",
+          "XDR": "SDR",
+          "LKR": "Rs",
+          "SHP": "£",
+          "SDG": ".س.ج",
+          "SRD": "$",
+          "SZL": "E",
+          "SEK": "kr",
+          "CHF": "CHf",
+          "SYP": "LS",
+          "STD": "Db",
+          "TJS": "SM",
+          "TZS": "TSh",
+          "THB": "฿",
+          "TOP": "$",
+          "TTD": "$",
+          "TND": "ت.د",
+          "TRY": "₺",
+          "TMT": "T",
+          "UGX": "USh",
+          "UAH": "₴",
+          "AED": "إ.د",
+          "UYU": "$",
+          "USD": "$",
+          "UZS": "лв",
+          "VUV": "VT",
+          "VEF": "Bs",
+          "VND": "₫",
+          "YER": "﷼",
+          "ZMK": "ZK"
+        }
+        return currency[hasscurrency];
+      ]]]

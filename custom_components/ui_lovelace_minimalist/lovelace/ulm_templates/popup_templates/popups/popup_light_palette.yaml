@@ -1,0 +1,124 @@
+---
+popup_light_palette:
+  template: "popup_light_effect"
+  extra_styles: |
+    @media (max-width: 800px) {
+      #container {
+        grid-template-areas: "header" "content5" "buttons" "footer" !important;
+        grid-template-rows: 16vh 52vh 14vh 14vh !important;
+        grid-template-columns: 1fr !important;
+      }
+      #buttons {
+        display: block !important;
+        align-self: center !important;
+      }
+      #content1 {
+        display: none;
+      }
+      #content2 {
+        display: none;
+      }
+      #content3 {
+        display: none;
+      }
+      #content4 {
+        display: none !important;
+      }
+      #content5 {
+        height: 52vh !important;
+      }
+      #title_effect {
+        display: none !important;
+      }
+      #title_palette {
+        display: none !important;
+      }
+  custom_fields:
+    buttons:
+      card:
+        type: "custom:button-card"
+        template: "list_3_items"
+        variables:
+          ulm_card_light_color_palette: "[[[ return variables?.ulm_card_light_color_palette ]]]"
+        styles:
+          custom_fields:
+            item3:
+              - display: "none"
+          grid:
+            - align-items: "initial"
+            - grid-template-areas: >
+                [[[
+                      var areas = [];
+                      if (entity.attributes.effect_list){
+                          areas.push("item1");
+                      }
+                      if (variables?.ulm_card_light_color_palette) {
+                          areas.push("item2");
+                      }
+                      return "\"" + areas.join(" ") + "\"";
+                ]]]
+            - grid-template-columns: >
+                [[[
+                      var columns = [];
+                      if (entity.attributes.effect_list) {
+                          columns.push("1fr");
+                      }
+                      if (variables?.ulm_card_light_color_palette) {
+                          columns.push("1fr");
+                      }
+                      return columns.join(" ");
+                ]]]
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template:
+                - "popup_button"
+              icon: "mdi:auto-fix"
+              name: "[[[ return hass.resources[hass['language']]['ui.card.light.effect']; ]]]"
+              styles:
+                card:
+                  - display: >
+                      [[[;
+                            if (entity.attributes?.effect_list) {
+                                return "block";
+                            }
+                            return "none";
+                      ]]]
+              tap_action:
+                action: "fire-dom-event"
+                browser_mod:
+                  service: "browser_mod.popup"
+                  data:
+                    hide_header: true
+                    style: |
+                      --popup-background-color: var(--primary-background-color);
+                      --popup-border-radius: 20px;
+                      --popup-padding-x: 24px;
+                      --popup-padding-y: 20px;
+                      --popup-max-width: auto
+                      --popup-min-width: 800px;
+                    size: >
+                      [[[
+                        const mediaQuery = window.matchMedia('(max-width: 800px)')
+                        if (mediaQuery.matches) {
+                          return 'fullscreen'
+                        }
+                      ]]]
+                    content:
+                      type: "custom:button-card"
+                      template: "popup_light_effect"
+                      entity: "[[[ return entity.entity_id; ]]]"
+                      variables:
+                        ulm_card_light_color_palette: "[[[ return variables?.ulm_card_light_color_palette ]]]"
+          item2:
+            card:
+              icon: "mdi:palette"
+              type: "custom:button-card"
+              template:
+                - "popup_button"
+                - "popup_button_color"
+                - "popup_button_selected"
+              styles:
+                card:
+                  - display: "block"

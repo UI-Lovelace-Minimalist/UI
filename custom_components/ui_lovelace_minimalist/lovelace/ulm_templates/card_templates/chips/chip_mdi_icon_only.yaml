@@ -1,0 +1,14 @@
+---
+### Chip Mdi Icon Only ###
+chip_mdi_icon_only:
+  template: "chips"
+  tap_action:
+    action: "more-info"
+    entity: "[[[ return variables.ulm_chip_mdi_icon_only_entity ]]]"
+  show_icon: true
+  icon: "[[[ return variables.ulm_chip_mdi_icon_only_icon ]]]"
+  styles:
+    grid:
+      - grid-template-areas: "'i'"
+    icon:
+      - color: "[[[ return variables.ulm_chip_mdi_icon_only_icon_color; ]]]"

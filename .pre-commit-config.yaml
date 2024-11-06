@@ -1,0 +1,119 @@
+---
+ci:
+  autofix_commit_msg: |
+    [pre-commit.ci] auto fixes from pre-commit.com hooks
+    for more information, see https://pre-commit.ci
+  autofix_prs: true
+  autoupdate_branch: "release"
+  autoupdate_commit_msg: "[pre-commit.ci] pre-commit autoupdate"
+  autoupdate_schedule: "weekly"
+  skip: []
+  submodules: false
+
+repos:
+  - repo: "https://github.com/pre-commit/pre-commit-hooks"
+    rev: "v4.2.0"
+    hooks:
+      - id: "check-executables-have-shebangs"
+      - id: "check-json"
+      - id: "check-merge-conflict"
+      - id: "check-yaml"
+        args: ["--unsafe"]
+      - id: "detect-private-key"
+      - id: "no-commit-to-branch"
+      - id: "requirements-txt-fixer"
+      - id: "debug-statements"
+      - id: "end-of-file-fixer"
+        exclude: "^custom_componenents/ui_lovelace_minimalist/cards/"
+      - id: "trailing-whitespace"
+        exclude: "^custom_componenents/ui_lovelace_minimalist/cards/"
+      - id: "mixed-line-ending"
+
+  - repo: "https://github.com/adrienverge/yamllint.git"
+    rev: "v1.26.3"
+    hooks:
+      - id: "yamllint"
+        args: ["--format", "parsable", "--strict"]
+        # exclude: ".pre-commit-config.yaml"
+        exclude: |
+          (?x)^(
+              .pre-commit-config.yaml
+          )$
+
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.31.1
+    hooks:
+      - id: markdownlint
+        args: ["--fix"]
+
+  - repo: "https://github.com/jumanjihouse/pre-commit-hook-yamlfmt"
+    rev: "0.1.1"
+    hooks:
+      - id: "yamlfmt"
+        args:
+          [
+            "--mapping",
+            "2",
+            "--sequence",
+            "4",
+            "--offset",
+            "2",
+            "--preserve-quotes",
+          ]
+        exclude: ".*"
+
+  - repo: "https://github.com/mattlqx/pre-commit-search-and-replace"
+    rev: "v1.0.5"
+    hooks:
+      - id: "search-and-replace"
+
+  - repo: "https://github.com/asottile/pyupgrade"
+    rev: "v2.31.1"
+    hooks:
+      - id: "pyupgrade"
+        args: ["--py39-plus"]
+
+  - repo: https://github.com/pycqa/isort
+    rev: 5.12.0
+    hooks:
+      - id: isort
+
+  - repo: "https://github.com/psf/black"
+    rev: "22.3.0"
+    hooks:
+      - id: "black"
+        args:
+          - "--safe"
+          - "--quiet"
+        <<: &python-files-with-tests
+          files: '^((custom_components|tests)/.+)?[^/]+\.py$'
+
+  - repo: "https://github.com/PyCQA/flake8"
+    rev: "4.0.1"
+    hooks:
+      - id: "flake8"
+        additional_dependencies:
+          - "flake8-docstrings==1.6.0"
+          - "pydocstyle==6.1.1"
+        <<: &python-files
+          files: '^(custom_components/.+)?[^/]+\.py$'
+
+  - repo: "https://github.com/PyCQA/bandit"
+    rev: "1.7.4"
+    hooks:
+      - id: "bandit"
+        args:
+          - "--quiet"
+          - "--format=custom"
+          # - "--configfile=bandit.yaml"
+        <<: *python-files-with-tests
+  - repo: https://github.com/codespell-project/codespell.git
+    rev: "v2.1.0"
+    hooks:
+      - id: codespell
+        files: "(.*.md|translations/en.json)"
+        name: codespell
+        description: Checks for common misspellings in text files.
+        entry: codespell
+        language: python
+        types: [text]

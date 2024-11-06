@@ -1,0 +1,13 @@
+---
+popup_light:
+  hold_action:
+    action: "fire-dom-event"
+    browser_mod:
+      service: "browser_mod.popup"
+      data:
+        large: true
+        hide_header: true
+        content:
+          type: "custom:button-card"
+          template: "popup_light_brightness"
+          entity: "[[[ return entity.entity_id; ]]]"

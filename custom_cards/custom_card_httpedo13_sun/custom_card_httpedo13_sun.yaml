@@ -1,0 +1,39 @@
+---
+custom_card_httpedo13_sun:
+  show_icon: false
+  show_name: false
+  show_label: false
+  variables:
+    darkMode: "[[[ return hass.themes.darkMode; ]]]"
+    language: "[[[ return hass.language; ]]]"
+    showAzimuth: false
+    showElevation: false
+    timeFormat: "24h"
+    title:
+  tap-action:
+    action: "none"
+  styles:
+    grid:
+      - grid-template-areas: "'item1'"
+      - grid-template-columns: "1fr"
+      - grid-template-rows: "min-content"
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
+  custom_fields:
+    item1:
+      card:
+        type: "custom:sun-card"
+        darkMode: "[[[ return variables.darkMode; ]]]"
+        language: "[[[ return variables.language; ]]]"
+        showAzimuth: "[[[ return variables.showAzimuth; ]]]"
+        showElevation: "[[[ return variables.showElevation; ]]]"
+        timeFormat: "[[[ return variables.timeFormat; ]]]"
+        title: "[[[ return variables.title; ]]]"
+        card_mod:
+        style: |
+          ha-card.type-custom-sun-card {
+            border-radius: 14px;
+            box-shadow: none;
+          }

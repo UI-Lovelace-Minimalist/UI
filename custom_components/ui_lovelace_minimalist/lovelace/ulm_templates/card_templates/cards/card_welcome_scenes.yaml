@@ -1,0 +1,544 @@
+---
+card_welcome_scenes:
+  variables:
+    ulm_weather: "[[[ return variables.ulm_weather]]]"
+    ulm_language: "[[[ return hass['language']; ]]]"
+    entity_1:
+      entity_id: ""
+      color: >
+        [[[
+          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
+    entity_2:
+      entity_id: ""
+      color: >
+        [[[
+          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
+    entity_3:
+      entity_id: ""
+      color: >
+        [[[
+          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
+    entity_4:
+      entity_id: ""
+      color: >
+        [[[
+          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
+    entity_5:
+      entity_id: ""
+      color: >
+        [[[
+          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
+    entity_6:
+      entity_id: ""
+      color: >
+        [[[
+          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
+    entity_7:
+      entity_id: ""
+      color: >
+        [[[
+          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
+  template:
+    - "ulm_language_variables"
+    - "ulm_translation_engine"
+  show_icon: false
+  show_name: false
+  show_label: true
+  styles:
+    grid:
+      - grid-template-areas: >
+          [[[
+            if(variables.ulm_card_welcome_scenes_collapse && states[variables.ulm_card_welcome_scenes_collapse].state == 'on'){
+              return "\'item1\' \'item2\' ";
+            } else {
+              return "\'item1\' \'item2\' \'item3\' \'item4\'";
+            }
+          ]]]
+      - grid-template-columns: "1fr"
+      - grid-template-rows: "min-content min-content"
+      - row-gap: "0px"
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "10px"
+    custom_fields:
+      item3:
+        - display: >
+            [[[
+              if(variables.ulm_card_welcome_scenes_collapse && states[variables.ulm_card_welcome_scenes_collapse].state == 'on'){
+                return "none";
+              } else {
+                return "block";
+              }
+            ]]]
+      item4:
+        - display: >
+            [[[
+              if(variables.ulm_card_welcome_scenes_collapse && states[variables.ulm_card_welcome_scenes_collapse].state == 'on'){
+                return "none";
+              } else {
+                return "block";
+              }
+            ]]]
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        template: "card_topbar_welcome"
+        variables:
+          ulm_card_welcome_scenes_collapse: "[[[ return variables.ulm_card_welcome_scenes_collapse ]]]"
+          ulm_weather: "[[[ return variables.ulm_weather]]]"
+          ulm_language: "[[[ return variables.ulm_language ]]]"
+        styles:
+          card:
+            - border-radius: "none"
+            - box-shadow: "none"
+            - padding: "4px"
+    item2:
+      card:
+        type: "custom:button-card"
+        show_icon: false
+        show_label: false
+        show_name: true
+        show_entity_picture: false
+        name: |
+          [[[
+            var today = new Date();
+            var time = today.getHours()
+            let welcome = '';
+            if (time >= '18'){
+              welcome = variables.ulm_evening;
+            } else if (time >= '12'){
+              welcome = variables.ulm_afternoon;
+            } else if (time >= '5'){
+              welcome = variables.ulm_morning;
+            } else {
+              welcome = variables.ulm_hello;
+            }
+            return welcome + ', ' + '   <br>' + user.name + '!';
+          ]]]
+        styles:
+          name:
+            - align-self: "start"
+            - justify-self: "start"
+            - font-weight: "bold"
+            - font-size: "24px"
+            - margin-left: "16px"
+          grid:
+            - grid-template-areas: "'i n' 'i l'"
+            - grid-template-columns: "min-content auto"
+            - grid-template-rows: "min-content min-content"
+            - text-align: "start"
+          card:
+            - box-shadow: "none"
+            - padding-bottom: "8px"
+    item3:
+      card:
+        type: "custom:button-card"
+        show_icon: true
+        show_label: true
+        show_name: true
+        show_entity_picture: false
+        name: "[[[ return variables.ulm_translation_scenes ]]]"
+        icon: "mdi:dots-vertical"
+        styles:
+          icon:
+            - height: "20px"
+            - filter: "opacity(50%)"
+          name:
+            - align-self: "start"
+            - justify-self: "start"
+            - font-weight: "bold"
+            - font-size: "18px"
+            - margin-left: "16px"
+          grid:
+            - grid-template-areas: "'n i'"
+            - grid-template-columns: "6fr 1fr"
+            - grid-template-rows: "min-content min-content"
+            - text-align: "start"
+          card:
+            - box-shadow: "none"
+            - padding-bottom: "0px"
+            - bottom: "10px"
+    item4:
+      card:
+        type: "custom:button-card"
+        template: >
+          [[[
+            if(variables?.entity_1?.entity_id != ""){
+              return 'card_scenes_welcome'
+            } else {
+              return 'card_scenes_welcome_auto'
+            }
+          ]]]
+        styles:
+          card:
+            - border-radius: "none"
+            - box-shadow: "none"
+            - padding: "4px"
+        variables:
+          entity_1: "[[[ return variables.entity_1]]]"
+          entity_2: "[[[ return variables.entity_2]]]"
+          entity_3: "[[[ return variables.entity_3]]]"
+          entity_4: "[[[ return variables.entity_4]]]"
+          entity_5: "[[[ return variables.entity_5]]]"
+          entity_6: "[[[ return variables.entity_6]]]"
+          entity_7: "[[[ return variables.entity_7]]]"
+card_title_welcome:
+  tap_action:
+    action: "none"
+  show_icon: false
+  show_label: true
+  show_name: true
+  styles:
+    card:
+      - background-color: "rgba(0,0,0,0)"
+      - box-shadow: "none"
+      - height: "auto"
+      - width: "auto"
+      - margin-top: "-10px"
+      - margin-left: "16px"
+      - margin-bottom: "-15px"
+    grid:
+      - grid-template-areas: "'n' 'l'"
+      - grid-template-columns: "1fr"
+      - grid-template-rows: "min-content min-content"
+    name:
+      - justify-self: "start"
+      - font-weight: "bold"
+      - font-size: "20px"
+    label:
+      - justify-self: "start"
+      - font-weight: "bold"
+      - font-size: "1rem"
+      - opacity: "0.4"
+
+# pill
+card_scenes_pill_welcome:
+  show_icon: false
+  show_label: false
+  show_name: false
+  state:
+    - operator: "template"
+      value: >
+        [[[
+          return (entity?.state !== 'on' && entity?.state !== 'playing' && entity?.state != variables?.state)
+        ]]]
+      styles:
+        card:
+          - overflow: "visible"
+          - box-shadow: "none"
+  styles:
+    grid:
+      - grid-template-areas: "'item1' 'item2'"
+      - grid-template-columns: "min-content"
+      - grid-template-rows: "1fr 1fr"
+      - row-gap: "12px"
+      - justify-items: "center"
+      - column-gap: "auto"
+    card:
+      - border-radius: "50px"
+      - place-self: "center"
+      - width: "52px"
+      - height: "84px"
+      - box-shadow: >
+          [[[
+            if (hass.themes.darkMode){
+              return "0px 2px 4px 0px rgba(0,0,0,0.80)";
+            } else {
+              return "var(--box-shadow)";
+            }
+          ]]]
+  color: "var(--google-grey)"
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        show_icon: true
+        show_label: false
+        show_name: false
+        tap_action:
+          action: >
+            [[[
+              if(variables?.nav_path){
+                return "navigate"
+              }
+              return "call-service"
+            ]]]
+          service: >
+            [[[
+              if(entity?.entity_id.startsWith("scene.")){
+                return "scene.turn_on"
+              }
+              if(entity?.entity_id.startsWith("media_player.")){
+                return "media_player.media_play_pause"
+              }
+              if(entity?.entity_id.startsWith("input_select.")){
+                return "input_select.select_option"
+              }
+              if(entity?.entity_id.startsWith("script.")){
+                return entity.entity_id
+              }
+              return "homeassistant.toggle"
+            ]]]
+          navigation_path: "[[[ return variables?.nav_path; ]]]"
+          service_data: |
+            [[[
+              if (variables.service_data){
+                return variables.service_data
+              }
+              var obj;
+              if(typeof(entity) !== 'undefined' && entity !== undefined){
+                if( entity?.entity_id.startsWith("input_select.") )
+                  obj = { entity_id: entity?.entity_id, option: variables.state };
+                else
+                  obj = { entity_id: entity?.entity_id };
+                return obj;
+              }
+            ]]]
+        styles:
+          grid:
+            - grid-template-areas: "i"
+          icon:
+            - color: >
+                [[[
+                  var color = variables?.color
+                  if(hass.themes.darkMode){var color = "#FAFAFA";}
+                  return `rgba(var(--color-${color}), 1)`;
+                ]]]
+            - width: "20px"
+          img_cell:
+            - background-color: >
+                [[[
+                  var color = variables?.color
+                  var opacity = '0.20'
+                  if(hass.themes.darkMode){var opacity = '1'}
+                  return `rgba(var(--color-${color}), ${opacity})`;
+                ]]]
+            - border-radius: "50%"
+            - width: "42px"
+            - height: "42px"
+          card:
+            - box-shadow: "none"
+            - border-radius: "50px"
+            - padding: "5px"
+        state:
+          - operator: "template"
+            value: >
+              [[[
+                return (entity?.state !== 'on' && entity?.state !== 'playing' && entity?.state != variables?.state)
+              ]]]
+            styles:
+              card:
+                - overflow: "visible"
+                - box-shadow: >
+                    [[[
+                      if (hass.themes.darkMode){
+                        return "0px 2px 4px 0px rgba(0,0,0,0.80)";
+                      } else {
+                        return "var(--box-shadow)";
+                      }
+                    ]]]
+    item2:
+      card:
+        type: "custom:button-card"
+        show_icon: false
+        show_label: false
+        tap_action:
+          action: >
+            [[[
+              if(variables?.nav_path){
+                return "navigate"
+              }
+              return "call-service"
+            ]]]
+          navigation_path: "[[[ return variables?.nav_path; ]]]"
+          service: >
+            [[[
+              if(entity?.entity_id.startsWith("scene.")){
+                return "scene.turn_on"
+              }
+              if(entity?.entity_id.startsWith("media_player.")){
+                return "media_player.media_play_pause"
+              }
+              if(entity?.entity_id.startsWith("input_select.")){
+                return "input_select.select_option"
+              }
+              if(entity?.entity_id.startsWith("script.")){
+                return entity.entity_id
+              }
+              return "homeassistant.toggle"
+            ]]]
+          service_data: |
+            [[[
+              if (variables.service_data){
+                return variables.service_data
+              }
+              var obj;
+              if(typeof(entity) !== 'undefined' && entity !== undefined){
+                if( entity?.entity_id.startsWith("input_select.") )
+                  obj = { entity_id: entity?.entity_id, option: variables.state };
+                else
+                  obj = { entity_id: entity?.entity_id };
+                return obj;
+              }
+            ]]]
+        styles:
+          grid:
+            - grid-template-areas: "n"
+          name:
+            - justify-self: "center"
+            - font-weight: "bold"
+            - font-size: "9.5px"
+            - padding-bottom: "7px"
+            - overflow: "[[[return (entity?.state !== 'on' && entity?.state !== 'playing' && entity?.state != variables?.state) ? 'visible' : 'hidden']]]"
+          card:
+            - box-shadow: "none"
+            - padding: "0px 5px 5px 5px"
+            - margin-top: "-5px"
+            - border-radius: "50px"
+            - overflow: "[[[return (entity?.state !== 'on' && entity?.state !== 'playing' && entity?.state != variables?.state) ? 'visible' : 'hidden']]]"
+card_topbar_welcome:
+  show_icon: false
+  show_name: false
+  show_label: false
+  styles:
+    grid:
+      - grid-template-areas: "item1 item2 item3"
+      - justify-content: "space-between"
+      - display: "flex"
+    card:
+      - border-radius: "none"
+      - box-shadow: "none"
+      - padding: "12px"
+      - background: "none"
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        template: "chips"
+        entity: "[[[ return variables.ulm_card_welcome_scenes_collapse ]]]"
+        icon: "mdi:chevron-up"
+        show_icon: true
+        styles:
+          grid:
+            - grid-template-areas: "'i'"
+        state:
+          - value: "on"
+            icon: "mdi:chevron-down"
+            styles:
+              icon:
+                - color: "rgb(var(--color-theme))"
+        tap_action:
+          action: "call-service"
+          service: "input_boolean.toggle"
+          service_data:
+            entity_id: "[[[ return variables.ulm_card_welcome_scenes_collapse ]]]"
+    item2:
+      card:
+        type: "custom:button-card"
+        template: "chip_weather_date"
+        entity: "[[[ return variables.ulm_weather]]]"
+        variables:
+          ulm_weather: "[[[ return variables.ulm_weather ]]]"
+          ulm_language: "[[[ return variables.ulm_language ]]]"
+        styles:
+          card:
+            - width: "100px"
+    item3:
+      card:
+        type: "custom:button-card"
+        tap_action:
+          action: "navigate"
+          navigation_path: "/config/dashboard"
+        template: "chip_mdi_icon_only"
+        variables:
+          ulm_chip_mdi_icon_only_icon: "mdi:cog-outline"
+        styles:
+          card:
+            - align-self: "end"
+# auto-entities
+card_scenes_welcome_auto:
+  show_icon: false
+  show_name: true
+  show_label: false
+  variables:
+    colors: >
+      [[[
+        var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+        var color = colors[Math.floor(Math.random() * colors.length)];
+        return color;
+      ]]]
+  styles:
+    grid:
+      - grid-template-areas: "item1"
+      - display: "flex"
+      - justify-content: "center"
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
+  custom_fields:
+    item1:
+      card:
+        type: "custom:auto-entities"
+        card:
+          type: "grid"
+          columns: 5
+          square: false
+        card_param: "cards"
+        sort:
+          count: 5
+        filter:
+          include:
+            - domain: "light"
+              options:
+                type: "custom:button-card"
+                template: "card_scenes_pill_welcome"
+                custom_fields:
+                  item1:
+                    card:
+                      type: "custom:button-card"
+                      entity: "this.entity_id"
+                      styles:
+                        icon:
+                          - color: >
+                              [[[
+                                var color = variables.colors
+                                if(hass.themes.darkMode){var color = "#FAFAFA";}
+                                return `rgba(var(--color-${color}), 1)`;
+                              ]]]
+                          - width: "20px"
+                        img_cell:
+                          - background-color: >
+                              [[[
+                                var color = variables.colors
+                                var opacity = '0.20'
+                                if(hass.themes.darkMode){var opacity = '1'}
+                                return `rgba(var(--color-${color}), ${opacity})`;
+                              ]]]
+                  item2:
+                    card:
+                      type: "custom:button-card"
+                      entity: "this.entity_id"

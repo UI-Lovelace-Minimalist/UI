@@ -1,0 +1,17 @@
+---
+ulm_language_variables:
+  variables:
+    ulm_currency: "$"
+    ulm_updates_available: "Updates available!"
+    ulm_no_updates_available: "No updates available"
+    ulm_ophaling: "Garbage collection!"
+    ulm_geen_ophaling: "No collections"
+    ulm_volgende_ophaling: "Next collections"
+    ulm_morning: "Good morning"
+    ulm_afternoon: "Good afternoon"
+    ulm_evening: "Good evening"
+    ulm_hello: "Hello"
+    ulm_volume: "Volume"
+    ulm_popups_color: "Color"
+    ulm_radar: "Radar"
+    ulm_popup_total: "Total"

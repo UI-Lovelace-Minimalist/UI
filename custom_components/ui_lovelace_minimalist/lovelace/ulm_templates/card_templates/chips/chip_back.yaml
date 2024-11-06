@@ -1,0 +1,17 @@
+---
+### Chip Back ###
+chip_back:
+  template: "chips"
+  variables:
+    ulm_chip_back_path: >
+      [[[
+        return hass["panelUrl"];
+      ]]]
+  tap_action:
+    action: "navigate"
+    navigation_path: "[[[ return variables.ulm_chip_back_path; ]]]"
+  show_icon: true
+  icon: "mdi:arrow-left"
+  styles:
+    grid:
+      - grid-template-areas: "'i'"

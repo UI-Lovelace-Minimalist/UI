@@ -1,0 +1,60 @@
+{
+    "title": "UI Lovelace Minimalist",
+    "config": {
+        "step": {
+            "user": {
+                "title": "Настройки UI Lovelace Minimalist",
+                "description": "",
+                "data": {
+                    "community_cards_enabled": "Включите возможность настройки карточек сообщества с этой интеграцией. Требуется аутентификация github!"
+                }
+            },
+            "device": {
+                "title": "Ожидание активации устройства"
+            },
+            "reauth_confirm": {
+                "title": "Требуется повторная аутентификация",
+                "description": "Вам необходимо пройти повторную аутентификацию gitHub."
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "Допустима только одна конфигурация UI Lovelace Minimalist.",
+            "not_setup": "UI Lovelace Minimalist не установлена.",
+            "github": "Не удалось пройти аутентификацию с помощью GitHub. Повторите попытку позже.",
+            "reauth_successful": "Повторная аутентификация прошла успешно."
+        },
+        "progress": {
+            "wait_for_device": "1. Откройте ссылку {url} \n2.Вставьте следующий ключ для авторизации ULM: \n```\n{code}\n```\n"
+        }
+    },
+    "options": {
+        "step": {
+            "user": {
+                "title": "Настройки UI Lovelace Minimalist",
+                "description": "",
+                "data": {
+                    "language": "Язык",
+                    "sidepanel_enabled": "Создайте новую Панель инструментов на боковой панели.",
+                    "sidepanel_icon": "Значок боковой панели",
+                    "sidepanel_title": "Название боковой панели",
+                    "adaptive_ui_enabled": "Включить адаптивную панель с разделенным всплывающим окном",
+                    "adaptive_ui_title": "Название адаптивной панели",
+                    "adaptive_ui_icon": "Значок адаптивной панели",
+                    "theme": "Тема",
+                    "include_other_cards": "Включите ресурсы, необходимые для пользовательских карт.",
+                    "community_cards_enabled": "Включите возможность настройки карточек сообщества с этой интеграцией. Требуется аутентификация github!",
+                    "community_cards": "Выберите карты сообщества, которые вы хотите включить."
+                }
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "Допустима только одна конфигурация UI Lovelace Minimalist.",
+            "not_setup": "UI Lovelace Minimalist не установлена."
+        },
+        "error": {
+            "github_cards": "Что-то пошло не так при загрузке карточек с github.",
+            "ack": "Вы должны подтвердить все пункты.",
+            "gh_token": "Токен Github не установлен. Пожалуйста, переустановите эту интеграцию, чтобы пройти процедуру установки. (Никакая пользовательская конфигурация не будет потеряна)"
+        }
+    }
+}

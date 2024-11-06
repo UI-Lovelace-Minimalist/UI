@@ -1,0 +1,6 @@
+---
+ulm_custom_card_imswel_person_language_variables:
+  variables:
+    ulm_custom_card_imswel_person_home: "W domu"
+    ulm_custom_card_imswel_person_not_home: "Poza domem"
+    ulm_custom_card_imswel_person_findmy: "Znajdź mój telefon"

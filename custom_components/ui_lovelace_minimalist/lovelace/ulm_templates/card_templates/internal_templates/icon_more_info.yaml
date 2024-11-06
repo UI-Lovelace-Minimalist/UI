@@ -1,0 +1,41 @@
+---
+### Icon More Info ###
+icon_more_info:
+  show_icon: false
+  show_name: false
+  show_label: false
+  template:
+    - "list_2_items"
+  styles:
+    grid:
+      - grid-template-columns: "min-content auto"
+      - column-gap: "0px"
+    card:
+      - background-color: "rgba(0,0,0,0)"
+  hold_action:
+    action: "more-info"
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        entity: "[[[ return entity.entity_id ]]]"
+        template:
+          - "icon"
+        styles:
+          card:
+            - overflow: "visible"
+        tap_action:
+          action: "more-info"
+    item2:
+      card:
+        type: "custom:button-card"
+        show_icon: false
+        entity: "[[[ return entity.entity_id ]]]"
+        template:
+          - "icon_info"
+        styles:
+          card:
+            - padding: "6px"
+            - margin-left: "-6px"
+            - background-color: "rgba(0,0,0,0)"
+        custom_fields:

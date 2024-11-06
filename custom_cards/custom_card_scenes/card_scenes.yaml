@@ -1,0 +1,243 @@
+---
+card_scenes:
+  show_icon: false
+  show_name: false
+  show_label: false
+  variables:
+    entity_1:
+      entity_id:
+      icon: "mdi:help-circle-outline"
+      icon_color: "gray"
+      name: "n/a"
+      bg_color: "gray"
+    entity_2:
+      entity_id:
+      icon: "mdi:help-circle-outline"
+      icon_color: "gray"
+      name: "n/a"
+      bg_color: "gray"
+    entity_3:
+      entity_id:
+      icon: "mdi:help-circle-outline"
+      icon_color: "gray"
+      name: "n/a"
+      bg_color: "gray"
+    entity_4:
+      entity_id:
+      icon: "mdi:help-circle-outline"
+      icon_color: "gray"
+      name: "n/a"
+      bg_color: "gray"
+    entity_5:
+      entity_id:
+      icon: "mdi:help-circle-outline"
+      icon_color: "gray"
+      name: "n/a"
+      bg_color: "gray"
+  styles:
+    grid:
+      - grid-template-areas: "'item1 item2 item3 item4 item5'"
+      - grid-template-columns: "1fr 1fr 1fr 1fr 1fr"
+      - grid-template-rows: "min-content"
+      - justify-items: "center"
+      - column-gap: "auto"
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        template: "card_scenes_pill"
+        entity: "[[[ return variables.entity_1.entity_id ]]]"
+        icon: "[[[ return variables.entity_1.icon ]]]"
+        name: "[[[ return variables.entity_1.name ]]]"
+        variables:
+          color_icon: "[[[ return variables.entity_1.icon_color ]]]"
+          color_bg: "[[[ return variables.entity_1.bg_color ]]]"
+        tap_action:
+          action: "call-service"
+          service: |
+            [[[
+              let domain = variables.entity_1.entity_id.substr(0, variables.entity_1.entity_id.indexOf("."));
+              if (domain == "automation") {
+                return "automation.trigger"
+              } else {
+                return "homeassistant.turn_on"
+              }
+            ]]]
+          service_data:
+            entity_id: "[[[ return variables.entity_1.entity_id ]]]"
+    item2:
+      card:
+        type: "custom:button-card"
+        template: "card_scenes_pill"
+        entity: "[[[ return variables.entity_2.entity_id ]]]"
+        icon: "[[[ return variables.entity_2.icon ]]]"
+        name: "[[[ return variables.entity_2.name ]]]"
+        variables:
+          color_icon: "[[[ return variables.entity_2.icon_color ]]]"
+          color_bg: "[[[ return variables.entity_2.bg_color ]]]"
+        tap_action:
+          action: "call-service"
+          service: |
+            [[[
+              let domain = variables.entity_2.entity_id.substr(0, variables.entity_2.entity_id.indexOf("."));
+              if (domain == "automation") {
+                return "automation.trigger"
+              } else {
+                return "homeassistant.turn_on"
+              }
+            ]]]
+          service_data:
+            entity_id: "[[[ return variables.entity_2.entity_id ]]]"
+    item3:
+      card:
+        type: "custom:button-card"
+        template: "card_scenes_pill"
+        entity: "[[[ return variables.entity_3.entity_id ]]]"
+        icon: "[[[ return variables.entity_3.icon ]]]"
+        name: "[[[ return variables.entity_3.name ]]]"
+        variables:
+          color_icon: "[[[ return variables.entity_3.icon_color ]]]"
+          color_bg: "[[[ return variables.entity_3.bg_color ]]]"
+        tap_action:
+          action: "call-service"
+          service: |
+            [[[
+              let domain = variables.entity_3.entity_id.substr(0, variables.entity_3.entity_id.indexOf("."));
+              if (domain == "automation") {
+                return "automation.trigger"
+              } else {
+                return "homeassistant.turn_on"
+              }
+            ]]]
+          service_data:
+            entity_id: "[[[ return variables.entity_3.entity_id ]]]"
+    item4:
+      card:
+        type: "custom:button-card"
+        template: "card_scenes_pill"
+        entity: "[[[ return variables.entity_4.entity_id ]]]"
+        icon: "[[[ return variables.entity_4.icon ]]]"
+        name: "[[[ return variables.entity_4.name ]]]"
+        variables:
+          color_icon: "[[[ return variables.entity_4.icon_color ]]]"
+          color_bg: "[[[ return variables.entity_4.bg_color ]]]"
+        tap_action:
+          action: "call-service"
+          service: |
+            [[[
+              let domain = variables.entity_4.entity_id.substr(0, variables.entity_4.entity_id.indexOf("."));
+              if (domain == "automation") {
+                return "automation.trigger"
+              } else {
+                return "homeassistant.turn_on"
+              }
+            ]]]
+          service_data:
+            entity_id: "[[[ return variables.entity_4.entity_id ]]]"
+    item5:
+      card:
+        type: "custom:button-card"
+        template: "card_scenes_pill"
+        entity: "[[[ return variables.entity_5.entity_id ]]]"
+        icon: "[[[ return variables.entity_5.icon ]]]"
+        name: "[[[ return variables.entity_5.name ]]]"
+        variables:
+          color_icon: "[[[ return variables.entity_5.icon_color ]]]"
+          color_bg: "[[[ return variables.entity_5.bg_color ]]]"
+        tap_action:
+          action: "call-service"
+          service: |
+            [[[
+              let domain = variables.entity_5.entity_id.substr(0, variables.entity_5.entity_id.indexOf("."));
+              if (domain == "automation") {
+                return "automation.trigger"
+              } else {
+                return "homeassistant.turn_on"
+              }
+            ]]]
+          service_data:
+            entity_id: "[[[ return variables.entity_5.entity_id ]]]"
+
+card_scenes_pill:
+  show_icon: true
+  show_label: false
+  show_name: true
+  variables:
+    color_icon: "gray"
+    color_bg: "gray"
+  styles:
+    grid:
+      - grid-template-areas: "'i' 'n'"
+      - grid-template-columns: "min-content"
+      - grid-template-rows: "1fr 1fr"
+      - row-gap: "12px"
+      - justify-items: "center"
+      - column-gap: "auto"
+    card:
+      - box-shadow: "none"
+      - padding: "5px"
+      - box-shadow: >
+          [[[
+            if (hass.themes.darkMode){
+              return "0px 2px 4px 0px rgba(0,0,0,0.80)";
+            } else {
+              return "var(--box-shadow)";
+            }
+          ]]]
+      - border-radius: "50px"
+      - place-self: "center"
+      - width: "52px"
+      - height: "84px"
+    icon:
+      - color: >
+          [[[
+            var color = [variables.color_icon];
+            if (color == "gray"){
+              var color = "rgba(var(--color-theme),0.20)";
+            } else if(color == "yellow"){
+              var color = "rgba(var(--color-yellow),1)";
+            } else if(color == "blue"){
+              var color = "rgba(var(--color-blue),1)";
+            } else if(color == "purple"){
+              var color = "rgba(var(--color-purple),1)";
+            } else if(color == "green"){
+              var color = "rgba(var(--color-green),1)";
+            } else if(color == "red"){
+              var color = "rgba(var(--color-red),1)";
+            }
+            return color;
+          ]]]
+    img_cell:
+      - background-color: >
+          [[[
+            var color = [variables.color_bg];
+            if (color == "gray"){
+              var color = "rgba(var(--color-theme),0.05)";
+            } else if(color == "yellow"){
+              var color = "rgba(var(--color-yellow),0.20)";
+            } else if(color == "blue"){
+              var color = "rgba(var(--color-blue),0.20)";
+            } else if(color == "purple"){
+              var color = "rgba(var(--color-purple),0.20)";
+            } else if(color == "green"){
+              var color = "rgba(var(--color-green),0.20)";
+            } else if(color == "red"){
+              var color = "rgba(var(--color-red),0.20)";
+            }
+            return color;
+          ]]]
+      - border-radius: "50%"
+      - width: "42px"
+      - height: "42px"
+    name:
+      - font-weight: "bold"
+      - font-size: "9.5px"
+      - width: "33px"
+      - padding-bottom: "7px"
+    state:
+      - color: "rgba(var(--color-theme),0.9)"
+  color: "var(--google-grey)"

@@ -1,0 +1,322 @@
+---
+custom_card_nik_nas:
+  template:
+    - "ulm_translation_engine"
+  variables:
+    entity_1:
+      entity_id:
+      icon: "[[[ return entity.attributes.icon ]]]"
+      name: "[[[ return entity.attributes.friendly_name ]]]"
+      color: >
+        [[[
+          var colors = ["yellow", "blue", "red", "green"];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
+    entity_2:
+      entity_id:
+      icon: "[[[ return entity.attributes.icon  ]]]"
+      name: "[[[ return entity.attributes.friendly_name ]]]"
+      color: >
+        [[[
+          var colors = ["yellow", "blue", "red", "green"];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
+    entity_3:
+      entity_id:
+      icon: "[[[ return entity.attributes.icon  ]]]"
+      name: "[[[ return entity.attributes.friendly_name ]]]"
+      color: >
+        [[[
+          var colors = ["yellow", "blue", "red","green"];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
+    entity_4:
+      entity_id:
+      icon: "[[[ return entity.attributes.icon  ]]]"
+      name: "[[[ return entity.attributes.friendly_name ]]]"
+      color: >
+        [[[
+          var colors = ["yellow", "blue", "red","green"];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
+  show_name: false
+  show_state: false
+  show_label: false
+  show_icon: false
+  show_last_changed: false
+  show_entity_picture: false
+  styles:
+    grid:
+      - grid-template-areas: >
+          [[[
+            var areas = [];
+            if (entity.state == "off" || entity.state == "unavailable") {
+                areas.push("item5");
+                return "\"" + areas.join("\" \"") + "\"";
+            } else {
+                areas.push("item4 item4");
+                areas.push("item1 radial");
+                areas.push("item2 radial");
+                areas.push("item3 radial");
+                return "\"" + areas.join("\" \"") + "\"";
+            }
+          ]]]
+      - grid-template-columns: >
+          [[[
+            if (entity.state == "off" || entity.state == "unavailable") {
+                return "1fr";
+            } else {
+                return "35% 65%";
+            }
+          ]]]
+      - grid-template-rows: >
+          [[[
+            if (entity.state == "off" || entity.state == "unavailable") {
+                return "min-content";
+            } else {
+                return "1fr";
+            }
+          ]]]
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
+    custom_fields:
+      item1:
+        - display: >
+            [[[
+              if (entity.state == "off" || entity.state == "unavailable") {
+                  return "none";
+              } else {
+                  return "block";
+              }
+            ]]]
+      item2:
+        - display: >
+            [[[
+              if (entity.state == "off" || entity.state == "unavailable") {
+                  return "none";
+              } else {
+                  return "block";
+              }
+            ]]]
+      item3:
+        - display: >
+            [[[
+              if (entity.state == "off" || entity.state == "unavailable") {
+                  return "none";
+              } else {
+                  return "block";
+              }
+            ]]]
+      item4:
+        - display: >
+            [[[
+              if (entity.state == "off" || entity.state == "unavailable") {
+                  return "none";
+              } else {
+                  return "block";
+              }
+            ]]]
+      item5:
+        - display: >
+            [[[
+              if (entity.state == "off" || entity.state == "unavailable") {
+                  return "block";
+              } else {
+                  return "none";
+              }
+            ]]]
+      radial:
+        - display: >
+            [[[
+              if (entity.state == "off" || entity.state == "unavailable") {
+                  return "none";
+              } else {
+                  return "block";
+              }
+            ]]]
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        entity: "[[[ return variables.entity_1.entity_id ]]]"
+        template: "card_generic_swap"
+        variables:
+          ulm_card_generic_swap_name: "[[[ return variables.entity_1.name ]]]"
+          ulm_card_generic_swap_icon: "[[[ return variables.entity_1.icon ]]]"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              custom_fields:
+                item1:
+                  card:
+                    type: "custom:button-card"
+                    styles:
+                      icon:
+                        - color: "[[[ return `rgba(var(--color-${variables.entity_1.color}), 1)`;]]]"
+                      img_cell:
+                        - background-color: "[[[ return `rgba(var(--color-${variables.entity_1.color}), 0.20)`;]]]"
+        styles:
+          card:
+            - box-shadow: "none"
+            - border-radius: "none"
+            - padding-top: "1px"
+            - padding-bottom: "1px"
+    item2:
+      card:
+        type: "custom:button-card"
+        entity: "[[[ return variables.entity_2.entity_id ]]]"
+        template: "card_generic_swap"
+        variables:
+          ulm_card_generic_swap_name: "[[[ return variables.entity_2.name ]]]"
+          ulm_card_generic_swap_icon: "[[[ return variables.entity_2.icon ]]]"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              custom_fields:
+                item1:
+                  card:
+                    type: "custom:button-card"
+                    styles:
+                      icon:
+                        - color: "[[[ return `rgba(var(--color-${variables.entity_2.color}), 1)`;]]]"
+                      img_cell:
+                        - background-color: "[[[ return `rgba(var(--color-${variables.entity_2.color}), 0.20)`;]]]"
+        styles:
+          card:
+            - box-shadow: "none"
+            - border-radius: "none"
+            - padding-top: "1px"
+            - padding-bottom: "1px"
+    item3:
+      card:
+        type: "custom:button-card"
+        entity: "[[[ return variables.entity_3.entity_id ]]]"
+        template: "card_generic_swap"
+        variables:
+          ulm_card_generic_swap_name: "[[[ return variables.entity_3.name ]]]"
+          ulm_card_generic_swap_icon: "[[[ return variables.entity_3.icon ]]]"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              custom_fields:
+                item1:
+                  card:
+                    type: "custom:button-card"
+                    styles:
+                      icon:
+                        - color: "[[[ return `rgba(var(--color-${variables.entity_3.color}), 1)`;]]]"
+                      img_cell:
+                        - background-color: "[[[ return `rgba(var(--color-${variables.entity_3.color}), 0.20)`;]]]"
+        styles:
+          card:
+            - box-shadow: "none"
+            - border-radius: "none"
+            - padding-top: "1px"
+            - padding-bottom: "1px"
+    item4:
+      card:
+        type: "horizontal-stack"
+        cards:
+          - type: "custom:button-card"
+            template: "card_input_boolean"
+            entity: "[[[ return entity.entity_id]]]"
+            variables:
+              ulm_card_input_boolean_name: "[[[ return variables.ulm_translation_status ]]]"
+              ulm_card_input_boolean_icon: "mdi:nas"
+            styles:
+              card:
+                - background-color: "transparent"
+                - box-shadow: "none"
+                - border: "2px solid var(--google-grey)"
+            tap_action:
+              action: "more-info"
+
+          - type: "custom:button-card"
+            template: "card_generic_swap"
+            entity: "[[[ return variables.entity_4.entity_id ]]]"
+            variables:
+              ulm_card_generic_swap_name: "[[[ return variables.entity_4.name ]]]"
+              ulm_card_generic_swap_icon: "[[[ return variables.entity_4.icon ]]]"
+            custom_fields:
+              item1:
+                card:
+                  type: "custom:button-card"
+                  custom_fields:
+                    item1:
+                      card:
+                        type: "custom:button-card"
+                        styles:
+                          icon:
+                            - color: "[[[ return `rgba(var(--color-${variables.entity_4.color}), 1)`;]]]"
+                          img_cell:
+                            - background-color: "[[[ return `rgba(var(--color-${variables.entity_4.color}), 0.20)`;]]]"
+            styles:
+              card:
+                - background-color: "transparent"
+                - box-shadow: "none"
+                - border: "2px solid var(--google-grey)"
+            tap_action:
+              action: "none"
+    item5:
+      card:
+        type: "custom:button-card"
+        template: "card_input_boolean"
+        entity: "[[[ return entity.entity_id]]]"
+        variables:
+          ulm_card_input_boolean_name: "[[[ return variables.ulm_translation_status ]]]"
+          ulm_card_input_boolean_icon: "mdi:nas"
+        styles:
+          card:
+            - background-color: "transparent"
+            - box-shadow: "none"
+            - border: "2px solid var(--google-grey)"
+        tap_action:
+          action: "more-info"
+    radial:
+      card:
+        type: "custom:apexcharts-card"
+        graph_span: "[[[ return variables.graph_span ]]]"
+        chart_type: "[[[ return variables.chart_type ]]]"
+        style: |
+          ha-card {
+            border-radius: "var(--border-radius)";
+            box-shadow: none;
+            padding-left: 10px;
+            padding-bottom: 0px;
+          }
+        header:
+          show: false
+        apex_config:
+          title:
+            floating: false
+            align: "top"
+            style:
+              fontSize: "2px"
+              fontWeight: "bold"
+          chart:
+            foreColor: "rgb(148,148,148)"
+            offsetY: 5
+          legend:
+            show: false
+        series:
+          - entity: "[[[ return variables.entity_1.entity_id ]]]"
+            name: "[[[ return variables.entity_1.name ]]]"
+            color: "[[[ return `var(--google-${variables.entity_1.color})`;]]]"
+            max: "[[[ return variables.entity_1.max_value ]]]"
+          - entity: "[[[ return variables.entity_2.entity_id ]]]"
+            name: "[[[ return variables.entity_2.name ]]]"
+            color: "[[[ return `var(--google-${variables.entity_2.color})`;]]]"
+            max: "[[[ return variables.entity_2.max_value ]]]"
+          - entity: "[[[ return variables.entity_3.entity_id ]]]"
+            name: "[[[ return variables.entity_3.name ]]]"
+            color: "[[[ return `var(--google-${variables.entity_3.color})`;]]]"
+            max: "[[[ return variables.entity_3.max_value ]]]"

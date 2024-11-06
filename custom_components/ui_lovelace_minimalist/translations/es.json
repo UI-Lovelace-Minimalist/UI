@@ -1,0 +1,60 @@
+{
+    "title": "UI Lovelace Minimalist",
+    "config": {
+        "step": {
+            "user": {
+                "title": "Configuración de UI Lovelace Minimalist",
+                "description": "",
+                "data": {
+                    "community_cards_enabled": "Activar la posibilidad de configurar las tarjetas de la comunidad con esta integración. ¡Requiere autenticación en GitHub!"
+                }
+            },
+            "device": {
+                "title": "Esperando la activación del dispositivo"
+            },
+            "reauth_confirm": {
+                "title": "Se necesita reautenticación",
+                "description": "Tienes que volver a autentificarte en GitHub."
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "Solo se permite una única configuración de UI Lovelace Minimalist.",
+            "not_setup": "UI Lovelace Minimalist no está configurado.",
+            "github": "No se ha podido autentificar con GitHub, inténtalo más tarde.",
+            "reauth_successful": "La reautenticación se ha realizado con éxito."
+        },
+        "progress": {
+            "wait_for_device": "1. Abre {url} \n2.Pega la siguiente clave para autorizar a ULM: \n```\n{code}\n```\n"
+        }
+    },
+    "options": {
+        "step": {
+            "user": {
+                "title": "Configuración de UI Lovelace Minimalist",
+                "description": "",
+                "data": {
+                    "language": "Idioma",
+                    "sidepanel_enabled": "Crear un nuevo panel en el panel lateral.",
+                    "sidepanel_icon": "Icono del panel lateral",
+                    "sidepanel_title": "Título del panel lateral",
+                    "adaptive_ui_enabled": "Activar panel adaptable con vista dividida emergente",
+                    "adaptive_ui_title": "título del panel adaptable",
+                    "adaptive_ui_icon": "icono del panel adaptable",
+                    "theme": "Tema",
+                    "include_other_cards": "Incluir recursos de tarjetas personalizadas necesarias.",
+                    "community_cards_enabled": "Activar la posibilidad de configurar las tarjetas de la comunidad con esta integración. ¡Requiere autenticación en GitHub!",
+                    "community_cards": "Selecciona las tarjetas de la comunidad que quieres activar."
+                }
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "Solo se permite una única configuración de UI Lovelace Minimalist.",
+            "not_setup": "UI Lovelace Minimalist no está configurado."
+        },
+        "error": {
+            "github_cards": "Algo ha ido mal al obtener las tarjetas de Github.",
+            "ack": "Debes aceptar todas las declaraciones.",
+            "gh_token": "El token de Github no está configurado. Por favor, vuelve a instalar esta integración para pasar por el procedimiento de configuración. (No se perderá ninguna configuración personalizada)"
+        }
+    }
+}

@@ -1,0 +1,121 @@
+---
+popup_light_color:
+  template: "popup_light_brightness"
+  styles:
+    grid:
+      - grid-template-areas: "'header' 'content3' 'buttons' 'footer'"
+      - grid-template-rows: "16vh 52vh 14vh 14vh;"
+      - grid-template-columns: "1fr"
+    custom_fields:
+      content1:
+        - display: "none"
+      content2:
+        - display: "none"
+      content3:
+        - display: "block"
+        - align-self: "center"
+  extra_styles: |
+    @media (max-width: 800px) {
+      #container {
+        grid-template-areas: "header" "content3" "buttons" "footer" !important;
+        grid-template-rows: 16vh 52vh 14vh 14vh !important;
+        grid-template-columns: 1fr !important;
+      }
+      #buttons {
+        display: block !important;
+        align-self: start !important;
+      }
+      #content1 {
+        display: none;
+      }
+      #content2 {
+        display: none;
+      }
+  custom_fields:
+    buttons:
+      card:
+        type: "custom:button-card"
+        template: "list_3_items"
+        styles:
+          card:
+            - background: "none"
+            - overflow: "visible"
+            - margin-left: >
+                [[[
+                    var color_temp_modes = ["color_temp"];
+                    if (entity.attributes.supported_color_modes.some(r => color_temp_modes.includes(r))) {
+                        return "0px";
+                    }
+                    return "6px";
+                ]]]
+        custom_fields:
+          item1:
+            card:
+              icon: "mdi:lightbulb-on"
+              type: "custom:button-card"
+              template:
+                - "popup_button"
+                - "popup_button_brightness"
+              tap_action:
+                action: "fire-dom-event"
+                browser_mod:
+                  service: "browser_mod.popup"
+                  data:
+                    hide_header: true
+                    style: |
+                      --popup-background-color: var(--primary-background-color);
+                      --popup-border-radius: 20px;
+                      --popup-padding-x: 24px;
+                      --popup-padding-y: 20px;
+                      --popup-max-width: auto
+                      --popup-min-width: 800px;
+                    size: >
+                      [[[
+                        const mediaQuery = window.matchMedia('(max-width: 800px)')
+                        if (mediaQuery.matches) {
+                          return 'fullscreen'
+                        }
+                      ]]]
+                    content:
+                      type: "custom:button-card"
+                      template: "popup_light_brightness"
+                      entity: "[[[ return entity.entity_id; ]]]"
+          item2:
+            card:
+              icon: "mdi:sun-thermometer-outline"
+              type: "custom:button-card"
+              template:
+                - "popup_button"
+                - "popup_button_color_temp"
+              tap_action:
+                action: "fire-dom-event"
+                browser_mod:
+                  service: "browser_mod.popup"
+                  data:
+                    hide_header: true
+                    style: |
+                      --popup-background-color: var(--primary-background-color);
+                      --popup-border-radius: 20px;
+                      --popup-padding-x: 24px;
+                      --popup-padding-y: 20px;
+                      --popup-max-width: auto
+                      --popup-min-width: 800px;
+                    size: >
+                      [[[
+                        const mediaQuery = window.matchMedia('(max-width: 800px)')
+                        if (mediaQuery.matches) {
+                          return 'fullscreen'
+                        }
+                      ]]]
+                    content:
+                      type: "custom:button-card"
+                      template: "popup_light_color_temp"
+                      entity: "[[[ return entity.entity_id; ]]]"
+          item3:
+            card:
+              icon: "mdi:palette"
+              type: "custom:button-card"
+              template:
+                - "popup_button"
+                - "popup_button_selected"
+                - "popup_button_color"

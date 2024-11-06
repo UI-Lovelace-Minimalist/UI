@@ -1,0 +1,16 @@
+---
+### Chip Navigate ###
+chip_navigate:
+  template: "chips"
+  tap_action:
+    action: "navigate"
+    navigation_path: "[[[ return variables.ulm_chip_navigate_path; ]]]"
+  show_icon: true
+  icon: "[[[ return variables.ulm_chip_navigate_icon; ]]]"
+  styles:
+    grid:
+      - grid-template-areas: "'i l'"
+    icon:
+      - color: "[[[ return variables.ulm_chip_navigate_icon_color; ]]]"
+    label:
+      - color: "[[[ return variables.ulm_chip_navigate_label_color; ]]]"

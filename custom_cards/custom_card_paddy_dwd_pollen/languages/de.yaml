@@ -1,0 +1,10 @@
+---
+custom_card_paddy_dwd_pollen_language_variables:
+  variables:
+    custom_card_paddy_dwd_pollen_6: "hoch"
+    custom_card_paddy_dwd_pollen_5: "mittel bis hoch"
+    custom_card_paddy_dwd_pollen_4: "mittel"
+    custom_card_paddy_dwd_pollen_3: "gering bis mittel"
+    custom_card_paddy_dwd_pollen_2: "gering"
+    custom_card_paddy_dwd_pollen_1: "keine bis gering"
+    custom_card_paddy_dwd_pollen_none: "keine"

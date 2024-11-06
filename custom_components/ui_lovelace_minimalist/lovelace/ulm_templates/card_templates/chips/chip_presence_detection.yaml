@@ -1,0 +1,15 @@
+---
+### Chip Presence Detection ###
+chip_presence_detection:
+  template: "chips"
+  triggers_update:
+    - "[[[ return variables.ulm_chip_presence_counter_residents ]]]"
+    - "[[[ return variables.ulm_chip_presence_counter_guests ]]]"
+  label: |
+    [[[
+      if (!!variables.ulm_chip_presence_counter_guests) {
+        return "🏠 " +  states[variables.ulm_chip_presence_counter_residents].state + " / " + states[variables.ulm_chip_presence_counter_guests].state;
+      } else {
+        return "🏠 " +  states[variables.ulm_chip_presence_counter_residents].state;
+      }
+    ]]]

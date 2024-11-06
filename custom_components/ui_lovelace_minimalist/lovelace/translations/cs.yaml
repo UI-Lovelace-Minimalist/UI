@@ -1,0 +1,14 @@
+---
+ulm_language_variables:
+  variables:
+    ulm_currency: "Kč"
+    ulm_updates_available: "Aktualizace k dispozici!"
+    ulm_no_updates_available: "Nejsou k dispozici žádné aktualizace"
+    ulm_morning: "Dobré ráno"
+    ulm_afternoon: "Dobré odpoledne"
+    ulm_evening: "Dobrý večer"
+    ulm_hello: "Ahoj"
+    ulm_volume: "Hlasitost"
+    ulm_popups_color: "Barva"
+    ulm_radar: "Radar"
+    ulm_popup_total: "Total"

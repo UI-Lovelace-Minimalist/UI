@@ -1,0 +1,44 @@
+---
+name: "Automatic custom_cards docs"
+
+on:
+  push:
+    # Should only run on "dev" when new cards are submitted via PR
+    branches: ["main"]
+    paths: ["custom_cards/*/README.md", "docs/"]
+
+jobs:
+  docit:
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: "actions/checkout@v3"
+        with:
+          fetch-depth: 0
+      - name: "Copy and rename README.md files"
+        run: |
+          find ./custom_cards/ -type f -name "README.md" | while read fname; do
+            dirname=`dirname "$fname"`
+            foldername=`basename "$dirname"`
+            filename=`basename "$fname"`
+            newname=`echo "$dirname" | sed -e "s/ /_/g"`
+            cp "${dirname}/$filename" "./docs/usage/custom_cards/${foldername}.md"
+          done
+      - name: "Find and replace asset paths"
+        uses: "jacobtomlinson/gha-find-replace@v3"
+        with:
+          find: "../../docs/assets/img"
+          replace: "../../assets/img"
+          include: "docs/usage/custom_cards/**"
+          regex: true
+      - name: "Create Pull Request"
+        uses: "peter-evans/create-pull-request@v5"
+        with:
+          token: "${{ secrets.GITHUB_TOKEN }}"
+          branch: "automated_custom_card_docs"
+          delete-branch: true
+          commit-message: "Update docs"
+          committer: "GitHub <noreply@github.com>"
+          title: "[Action] Update custom_cards docs"
+          labels: ":memo: documentation"
+          body: |
+            Update custom_cards docs due to latest changes.

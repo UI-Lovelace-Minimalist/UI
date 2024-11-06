@@ -1,0 +1,13 @@
+# NL.yaml for custom_card_wsly_pollen
+---
+custom_card_wsly_pollen_language_variables:
+  variables:
+    custom_card_wsly_pollen_none: "Geen"
+    custom_card_wsly_pollen_very_low: "Zeer laag"
+    custom_card_wsly_pollen_low: "Laag"
+    custom_card_wsly_pollen_medium: "Gemiddeld"
+    custom_card_wsly_pollen_high: "Hoog"
+    custom_card_wsly_pollen_very_high: "Extreem hoog"
+    custom_card_wsly_pollen_tree_name: "Bomen"
+    custom_card_wsly_pollen_grass_name: "Grassen"
+    custom_card_wsly_pollen_weed_name: "Kruiden"

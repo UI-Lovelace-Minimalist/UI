@@ -1,0 +1,485 @@
+---
+popup_light_brightness:
+  show_icon: false
+  show_name: false
+  show_label: false
+  show_units: false
+  styles:
+    grid:
+      - grid-template-areas: >
+          [[[
+                var contents = [];
+                var brightness_modes = ["brightness", "hs", "color_temp", "rgb", "rgbw", "xy"];
+                var color_temp_modes = ["color_temp"];
+                var color_modes = ["hs", "rgb", "rgbw", "xy"];
+                if (entity.attributes.supported_color_modes.some(r => brightness_modes.includes(r))) {
+                    contents.push("content1");
+                }
+                if (entity.attributes.supported_color_modes.some(r => color_temp_modes.includes(r))) {
+                    contents.push("content2");
+                }
+                if (entity.attributes.supported_color_modes.some(r => color_modes.includes(r))) {
+                    contents.push("content3");
+                }
+                return "\"" + "header ".repeat(contents.length) + "\" " + "\"" + contents.join(" ") + "\" " + "\"" + "footer ".repeat(contents.length) + "\"";
+          ]]]
+      - grid-template-rows: "16vh 56vh 14vh"
+      - grid-template-columns: >
+          [[[
+                var columns = [];
+                var brightness_modes = ["brightness", "hs", "color_temp", "rgb", "rgbw", "xy"];
+                var color_temp_modes = ["color_temp"];
+                var color_modes = ["hs", "rgb", "rgbw", "xy"];
+                if (entity.attributes.supported_color_modes.some(r => brightness_modes.includes(r))) {
+                    columns.push("1fr");
+                }
+                if (entity.attributes.supported_color_modes.some(r => color_temp_modes.includes(r))) {
+                    columns.push("1fr");
+                }
+                if (entity.attributes.supported_color_modes.some(r => color_modes.includes(r))) {
+                    columns.push("1fr");
+                }
+                return columns.join(" ");
+          ]]]
+    card:
+      - background: "var(--primary-background-color)"
+      - box-shadow: "none"
+      - padding: "0%"
+    custom_fields:
+      header:
+        - align-self: "center"
+        - margin-bottom: "4px"
+      content1:
+        - align-self: "center"
+        - display: >
+            [[[
+                  var brightness_modes = ["brightness", "hs", "color_temp", "rgb", "rgbw", "xy"];
+                  if (entity.attributes.supported_color_modes.some(r => brightness_modes.includes(r))) {
+                      return "block";
+                  }
+                  return "none";
+            ]]]
+      content2:
+        - align-self: "center"
+        - display: >
+            [[[
+                  var color_temp_modes = ["color_temp"];
+                  if (entity.attributes.supported_color_modes.some(r => color_temp_modes.includes(r))) {
+                      return "block";
+                  }
+                  return "none";
+            ]]]
+      content3:
+        - align-self: "center"
+        - display: >
+            [[[
+                  var color_modes = ["hs", "rgb", "rgbw", "xy"];
+                  if (entity.attributes.supported_color_modes.some(r => color_modes.includes(r))) {
+                      return "block";
+                  }
+                  return "none";
+            ]]]
+      content4:
+        - display: "none"
+      content5:
+        - display: "none"
+      buttons:
+        - display: "none"
+      footer:
+        - align-self: "absolute"
+        - margin-top: "12px"
+  extra_styles: |
+    @media (max-width: 800px) {
+      #container {
+        grid-template-areas: "header" "content1" "buttons" "footer" !important;
+        grid-template-rows: 16vh 52vh 14vh 14vh !important;
+        grid-template-columns: 1fr !important;
+      }
+      #buttons {
+        display: block !important;
+        align-self: center !important;
+      }
+      #content2 {
+        display: none !important;
+      }
+      #content3 {
+        display: none !important;
+      }
+      #content4 {
+        display: none !important;
+      }
+      #content5 {
+        display: none !important;
+    }
+  custom_fields:
+    header:
+      card:
+        type: "custom:button-card"
+        template: "popup_header_light"
+        entity: "[[[ return entity.entity_id ]]]"
+    content1:
+      card:
+        type: "custom:my-slider-v2"
+        entity: "[[[ return entity.entity_id ]]]"
+        allowTapping: true
+        vertical: true
+        styles:
+          card:
+            - height: "280px"
+            - width: "100px"
+            - box-shadow: "none"
+            - background: "none"
+          container:
+            - border: "2px solid white"
+            - border-radius: "14px"
+            - Height: "280px"
+            - width: "100px"
+            - box-shadow: "none"
+          progress:
+            - background: >
+                [[[
+                    var color = entity.attributes.rgb_color;
+                    if (entity.state == "unavailable"){
+                    return "rgba(var(--color-grey),1)";
+                    }
+                    else if (entity.state == "off"){
+                    return "rgba(var(--color-theme),0.9)";
+                    }
+                    else if (color){
+                    return "rgba(" + color + ",1)";
+                    }
+                    else{
+                      return "rgba(var(--color-yellow),1)";
+                    }
+                ]]]
+          track:
+            - background: >
+                [[[
+                    var color = entity.attributes.rgb_color;
+                    if (entity.state == "unavailable"){
+                    return "rgba(var(--color-grey),0.2)";
+                    }
+                    else if (entity.state == "off"){
+                    return "rgba(var(--color-theme),0.09)";
+                    }
+                    else if (color){
+                    return "rgba(" + color + ",0.2)";
+                    }
+                    else{
+                      return "rgba(var(--color-yellow),0.2)";
+                    }
+                ]]]
+          thumb:
+            - width: "50px"
+            - height: "5px"
+            - background: "white"
+            - position: "center"
+            - margin-right: "25px"
+            - margin-left: "25px"
+            - border-radius: "0px 0px 10px 10px"
+        card_mod:
+          style:
+            .: |
+              :host {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: none;
+              }
+    content2:
+      card:
+        type: "custom:my-slider-v2"
+        entity: "[[[ return entity.entity_id ]]]"
+        colorMode: "temperature"
+        allowTapping: true
+        vertical: true
+        styles:
+          card:
+            - height: "280px"
+            - width: "100px"
+            - box-shadow: "none"
+            - background: "none"
+          container:
+            - border: "2px solid white"
+            - border-radius: "14px"
+            - Height: "280px"
+            - width: "100px"
+            - box-shadow: "none"
+            - background: "none"
+          thumb:
+            - width: "0px"
+          progress:
+            - background: "none"
+          track:
+            - background: "linear-gradient(180deg, #f3db6d, #fff, #c9f2fc)"
+        card_mod:
+          style:
+            .: |
+              :host {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: none;
+              }
+    buttons:
+      card:
+        type: "custom:button-card"
+        template: "list_3_items"
+        styles:
+          card:
+            - background: "none"
+            - margin-left: >
+                [[[
+                      var color_temp_modes = ["color_temp"];
+                      if (entity.attributes.supported_color_modes.some(r => color_temp_modes.includes(r))) {
+                          return "0px";
+                      }
+                      return "6px";
+                ]]]
+          grid:
+            - align-items: "initial"
+            - grid-template-areas: >
+                [[[
+                      var areas = [];
+                      var brightness_modes = ["brightness", "hs", "color_temp", "rgb", "rgbw", "xy"];
+                      var color_temp_modes = ["color_temp"];
+                      var color_modes = ["hs", "rgb", "rgbw", "xy"];
+                      if (entity.attributes.supported_color_modes.some(r => brightness_modes.includes(r))) {
+                          areas.push("item1");
+                      }
+                      if (entity.attributes.supported_color_modes.some(r => color_temp_modes.includes(r))) {
+                          areas.push("item2");
+                      }
+                      if (entity.attributes.supported_color_modes.some(r => color_modes.includes(r))) {
+                          areas.push("item3");
+                      }
+                      return "\"" + areas.join(" ") + "\"";
+                ]]]
+            - grid-template-columns: >
+                [[[
+                      var columns = [];
+                      var brightness_modes = ["brightness", "hs", "color_temp", "rgb", "rgbw", "xy"];
+                      var color_temp_modes = ["color_temp"];
+                      var color_modes = ["hs", "rgb", "rgbw", "xy"];
+                      if (entity.attributes.supported_color_modes.some(r => brightness_modes.includes(r))) {
+                          columns.push("1fr");
+                      }
+                      if (entity.attributes.supported_color_modes.some(r => color_temp_modes.includes(r))) {
+                          columns.push("1fr");
+                      }
+                      if (entity.attributes.supported_color_modes.some(r => color_modes.includes(r))) {
+                          columns.push("1fr");
+                      }
+                      return columns.join(" ");
+                ]]]
+        custom_fields:
+          item1:
+            card:
+              icon: "mdi:lightbulb-on"
+              type: "custom:button-card"
+              template:
+                - "popup_button"
+                - "popup_button_selected"
+                - "popup_button_brightness"
+          item2:
+            card:
+              icon: "mdi:sun-thermometer-outline"
+              type: "custom:button-card"
+              template:
+                - "popup_button"
+                - "popup_button_color_temp"
+              styles:
+                card:
+                  - display: >
+                      [[[
+                            var color_temp_modes = ["color_temp"];
+                            if (entity.attributes.supported_color_modes.some(r => color_temp_modes.includes(r))) {
+                                return "block";
+                            }
+                            return "none";
+                      ]]]
+              tap_action:
+                action: "fire-dom-event"
+                browser_mod:
+                  service: "browser_mod.popup"
+                  data:
+                    hide_header: true
+                    style: |
+                      --popup-background-color: var(--primary-background-color);
+                      --popup-border-radius: 20px;
+                      --popup-padding-x: 24px;
+                      --popup-padding-y: 20px;
+                      --popup-max-width: auto
+                      --popup-min-width: 800px;
+                    size: >
+                      [[[
+                        const mediaQuery = window.matchMedia('(max-width: 800px)')
+                        if (mediaQuery.matches) {
+                          return 'fullscreen'
+                        }
+                      ]]]
+                    content:
+                      type: "custom:button-card"
+                      template: "popup_light_color_temp"
+                      entity: "[[[ return entity.entity_id; ]]]"
+          item3:
+            card:
+              icon: "mdi:palette"
+              type: "custom:button-card"
+              template:
+                - "popup_button"
+                - "popup_button_color"
+              styles:
+                card:
+                  - display: >
+                      [[[
+                            var color_modes = ["hs", "rgb", "rgbw", "xy"];
+                            if (entity.attributes.supported_color_modes.some(r => color_modes.includes(r))) {
+                                return "block";
+                            }
+                            return "none";
+                      ]]]
+              tap_action:
+                action: "fire-dom-event"
+                browser_mod:
+                  service: "browser_mod.popup"
+                  data:
+                    hide_header: true
+                    style: |
+                      --popup-background-color: var(--primary-background-color);
+                      --popup-border-radius: 20px;
+                      --popup-padding-x: 24px;
+                      --popup-padding-y: 20px;
+                      --popup-max-width: auto
+                      --popup-min-width: 800px;
+                    size: >
+                      [[[
+                        const mediaQuery = window.matchMedia('(max-width: 800px)')
+                        if (mediaQuery.matches) {
+                          return 'fullscreen'
+                        }
+                      ]]]
+                    content:
+                      type: "custom:button-card"
+                      template: "popup_light_color"
+                      entity: "[[[ return entity.entity_id; ]]]"
+    footer:
+      card:
+        type: "custom:button-card"
+        template: >
+          [[[
+            if(entity.attributes?.effect_list || variables?.ulm_card_light_color_palette){
+              return 'list_3_items';
+            }
+            return 'popup_list_items'
+          ]]]
+        styles:
+          grid:
+            - align-items: "initial"
+          card:
+            - background: "none"
+          custom_fields:
+            item3:
+              - display: "[[[return (entity.attributes?.effect_list || variables?.ulm_card_light_color_palette) ? 'block' : 'none'  ]]]"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template: "popup_button_back"
+          item2:
+            card:
+              type: "custom:button-card"
+              template: "popup_button_power"
+              entity: "[[[ return entity.entity_id ]]]"
+          item3:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              template: "popup_button_light_more_options"
+              variables:
+                ulm_card_light_color_palette: "[[[ return variables?.ulm_card_light_color_palette ]]]"
+    content3:
+      card:
+        type: "custom:light-entity-card"
+        entity: "[[[ return entity.entity_id ]]]"
+        persist_features: true
+        brightness: false
+        color_temp: false
+        white_value: false
+        hide_header: true
+        effects_list: false
+        smooth_color_wheel: true
+        consolidate_entities: true
+        child_card: true
+        card_mod:
+          style: |
+            ha-card {
+              background: none !important;
+              box-shadow: none !important;
+              padding: 10px 0 10px 0 !important;
+            }
+    content4:
+      card:
+        type: "vertical-stack"
+        cards: >
+          [[[
+            let rows = [];
+            function generate_effect_items(index) {
+              var row = {
+                'type': 'custom:button-card',
+                'template': 'popup_light_effect_row',
+                'entity': entity.entity_id,
+                'variables': {
+                  'ulm_popup_light_effect_entity_idx': index
+                }
+              };
+              return row;
+            }
+
+            let effect_list = entity.attributes?.effect_list;
+
+            let length_list = effect_list?.length
+            let index = 0;
+            for (let effect in effect_list){
+              rows.push(generate_effect_items(index));
+              index++
+
+              if(index >= length_list){
+                break;
+              }
+            }
+            return rows;
+          ]]]
+    content5:
+      card:
+        type: "vertical-stack"
+        cards: >
+          [[[
+            let rows = [];
+
+            function generate_option_items(index) {
+              var row = {
+                'type': 'custom:button-card',
+                'template': 'popup_light_palette_row',
+                'entity': variables?.ulm_card_light_color_palette,
+                'variables': {
+                  'ulm_popup_light_palette_entity_idx': index
+                }
+              };
+              return row;
+            }
+
+            let option_list = states[variables?.ulm_card_light_color_palette]?.attributes?.options;
+
+            let length_list = option_list?.length
+            let index = 0;
+            for (let option in option_list){
+              rows.push(generate_option_items(index));
+              index++
+
+              if(index >= length_list){
+                break;
+              }
+            }
+            return rows;
+          ]]]

@@ -1,0 +1,17 @@
+---
+ulm_language_variables:
+  variables:
+    ulm_currency: "€"
+    ulm_updates_available: "Updates beschikbaar!"
+    ulm_no_updates_available: "Geen updates beschikbaar"
+    ulm_ophaling: "Huisvuilophaling!"
+    ulm_geen_ophaling: "Geen ophalingen"
+    ulm_volgende_ophaling: "Volgende ophalingen"
+    ulm_morning: "Goedemorgen"
+    ulm_afternoon: "Goedemiddag"
+    ulm_evening: "Goedenavond"
+    ulm_hello: "Hallo"
+    ulm_volume: "Volume"
+    ulm_popups_color: "Kleur"
+    ulm_radar: "Radar"
+    ulm_popup_total: "Totaal"

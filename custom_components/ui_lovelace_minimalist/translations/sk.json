@@ -1,0 +1,68 @@
+{
+    "title": "UI Lovelace Minimalist",
+    "config": {
+        "step": {
+            "user": {
+                "title": "Nastavenie UI Lovelace Minimalist",
+                "description": "",
+                "data": {
+                    "community_cards_enabled": "Povoľte možnosť konfigurovať komunitné karty s touto integráciou, vyžaduje overenie github!"
+                }
+            },
+            "device": {
+                "title": "Čaká sa na aktiváciu zariadenia"
+            },
+            "reauth_confirm": {
+                "title": "Je potrebná opätovná autentifikácia",
+                "description": "Musíte sa znova overiť pomocou GitHub."
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "Je dovolená iba jediná konfigurácia UI Lovelace Minimalist.",
+            "not_setup": "UI Lovelace Minimalist nie je nastavená.",
+            "github": "Could not authenticate with GitHub, try again later.",
+            "reauth_successful": "Opätovná autentifikácia bola úspešná."
+        },
+        "progress": {
+            "wait_for_device": "1. Otvoriť {url} \n2.Vložte nasledujúci kľúč na autorizáciu ULM: \n```\n{code}\n```\n"
+        }
+    },
+    "options": {
+        "step": {
+            "user": {
+                "title": "Nastavenie UI Lovelace Minimalist",
+                "description": "",
+                "data": {
+                    "language": "Jazyk",
+                    "sidepanel_enabled": "Zobraziť v postrannom paneli",
+                    "sidepanel_icon": "Ikona v postrannom paneli",
+                    "sidepanel_title": "Názov v postrannom paneli",
+                    "adaptive_ui_enabled": "Povoliť adaptívny informačný panel s vyskakovacím rozdeleným zobrazením",
+                    "adaptive_ui_title": "názov adaptívneho panela",
+                    "adaptive_ui_icon": "ikona adaptívneho panela",
+                    "theme": "Téma",
+                    "include_other_cards": "Do zdrojov zahrnúť vlastné karty potrebné pre túto integráciu.",
+                    "community_cards_enabled": "Povoľte možnosť konfigurovať komunitné karty s touto integráciou, vyžaduje overenie github!",
+                    "community_cards": "Vyberte karty komunity, ktoré chcete povoliť."
+                }
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "Je dovolená iba jediná konfigurácia UI Lovelace Minimalist.",
+            "not_setup": "UI Lovelace Minimalist nie je nastavená."
+        },
+        "error": {
+            "github_cards": "Pri načítavaní kariet z Githubu sa vyskytla chyba.",
+            "ack": "Musíte potvrdiť všetky vyhlásenia.",
+            "gh_token": "Github Token nie je nastavený. Ak chcete prejsť procesom nastavenia, znova nainštalujte túto integráciu. (Žiadna vlastná konfigurácia sa nestratí)"
+        }
+    },
+    "services": {
+        "reload": {
+            "description": "Znovu načítajte konfiguráciu dashboardu pre používateľské rozhranie Lovelace Minimalist."
+        },
+        "installed": {
+            "description": "Zmeňte nainštalovaný kľúč v globálnej konfigurácii pre používateľské rozhranie Lovelace Minimalist."
+        }
+    }
+}

@@ -1,0 +1,176 @@
+---
+card_person_info:
+  template:
+    - "icon_info_bg"
+    - "ulm_translation_engine"
+  variables:
+    ulm_card_person_use_entity_picture: false
+    ulm_card_person_zone1: ""
+    ulm_card_person_zone2: ""
+    ulm_address: ""
+    ulm_address_locality: ""
+    ulm_card_person_driving_entity: ""
+    ulm_card_person_battery_entity: ""
+    ulm_card_person_battery_state_entity: ""
+    ulm_card_person_commute_entity: ""
+    ulm_card_person_cummute_icon: "mdi:car"
+    ulm_multiline: true
+  triggers_update: "all"
+  tap_action:
+    action: "more-info"
+    entity: "[[[ return variables.ulm_card_person_entity; ]]]"
+  show_label: true
+  show_name: true
+  label: >
+    [[[
+      if (variables.ulm_address){
+        return states[variables.ulm_address].state;
+      } else if (variables.ulm_address_locality){
+        return states[variables.ulm_address_locality].attributes.Locality;
+      }
+      else if (states[variables.ulm_card_person_driving_entity]?.state === "on") {
+        let state = states[variables.ulm_card_person_entity].state;
+        return `Driving - ${variables.ulm_translation_state}`;
+      } else {
+        let state = states[variables.ulm_card_person_entity].state;
+        return hass.resources[hass["language"]]["component.person.entity_component._.state." + state] ? hass.resources[hass["language"]]["component.person.entity_component._.state." + state] : state;
+      }
+    ]]]
+  name: "[[[ return states[variables.ulm_card_person_entity].attributes.friendly_name ]]]"
+  entity: "[[[ return variables.ulm_card_person_entity; ]]]"
+  icon: "mdi:face-man"
+  show_entity_picture: "[[[ return variables.ulm_card_person_use_entity_picture ]]]"
+  entity_picture:
+    "[[[ return variables.ulm_card_person_use_entity_picture != false ? states[variables.ulm_card_person_entity].attributes.entity_picture\
+    \ : null ]]]"
+  styles:
+    grid:
+      - grid-template-areas: >
+          [[[
+            return variables.ulm_multiline
+              ? "'i n' 'i l' 'battery commute'"
+              : "'i n battery' 'i l commute'"
+          ]]]
+      - grid-template-columns: >
+          [[[
+            return variables.ulm_multiline
+              ? "min-content auto"
+              : "min-content auto min-content"
+          ]]]
+      - grid-template-rows: "min-content min-content"
+    icon:
+      - color: "rgba(var(--color-theme),0.9)"
+      - width: >
+          [[[
+            if (variables.ulm_card_person_use_entity_picture !== true){
+              return "20px";
+            } else {
+              return "42px";
+            }
+          ]]]
+      - place-self: >
+          [[[
+            if (variables.ulm_card_person_use_entity_picture !== true){
+              return "center";
+            } else {
+              return "stretch stretch";
+            }
+          ]]]
+    custom_fields:
+      notification:
+        - border-radius: "50%"
+        - position: "absolute"
+        - left: "38px"
+        - top: "8px"
+        - height: "16px"
+        - width: "16px"
+        - border: "2px solid var(--card-background-color)"
+        - font-size: "12px"
+        - line-height: "14px"
+        - background-color: >
+            [[[
+              if (states[variables.ulm_card_person_driving_entity]?.state === "on") {
+                return "rgba(var(--color-red),1)";
+              } else if (states[variables.ulm_card_person_entity].state !== 'home') {
+                return "rgba(var(--color-green),1)";
+              } else {
+                return "rgba(var(--color-blue),1)";
+              }
+            ]]]
+      battery:
+        - align-self: "middle"
+        - justify-self: "start"
+        - display: "flex"
+        - align-items: "center"
+        - margin-top: >
+            [[[
+              return variables.ulm_multiline ? "6px" : "0";
+            ]]]
+        - font-size: "12px"
+      commute:
+        - align-self: "middle"
+        - justify-self: "end"
+        - display: "flex"
+        - align-items: "center"
+        - margin-top: "6px"
+        - font-size: "12px"
+
+  custom_fields:
+    notification: >
+      [[[
+        if (states[variables.ulm_card_person_driving_entity]?.state === "on") {
+          var icon = 'mdi:car'
+          return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+        } else if (states[variables.ulm_card_person_entity].state !== 'home') {
+          if (states[variables.ulm_card_person_entity].state === states[variables.ulm_card_person_zone1]?.attributes?.friendly_name) {
+            var icon = states[variables.ulm_card_person_zone1].attributes.icon !== null ? states[variables.ulm_card_person_zone1].attributes.icon : 'mdi:help-circle'
+            return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+          } else if (states[variables.ulm_card_person_entity].state === states[variables.ulm_card_person_zone2]?.attributes?.friendly_name) {
+            var icon = states[variables.ulm_card_person_zone2].attributes.icon !== null ? states[variables.ulm_card_person_zone2].attributes.icon : 'mdi:help-circle'
+            return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+          } else {
+            return '<ha-icon icon="mdi:home-minus" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+          }
+        } else {
+          return '<ha-icon icon="mdi:home-variant" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+        }
+      ]]]
+    battery: >
+      [[[
+        if (states[variables.ulm_card_person_battery_entity]?.state) {
+          var battery = states[variables.ulm_card_person_battery_entity]?.state;
+          var charging = states[variables.ulm_card_person_battery_state_entity]?.state.toLowerCase() === "charging";
+          var iconBase = charging ? "mdi:battery-charging" : "mdi:battery"
+          var roundedBattery = Math.ceil(battery / 10) * 10;
+          var icon = roundedBattery === 100 ? iconBase : `${iconBase}-${roundedBattery}`;
+          var foo = "mdi:battery"
+          var color = "rgba(var(--color-green),1)";
+          if (battery <= 50) {
+            color = "rgba(var(--color-yellow),1)"
+          } else if (battery <= 25) {
+            color = "rgba(var(--color-red),1)"
+          }
+          return `
+            <ha-icon icon="${icon}" style="width: 16px; height: 16px; font-size: 14px; color: ${color}; margin: 0 2px 0 0"></ha-icon>
+            <span style="padding-top: 6px;">${battery}%</span>
+          `;
+        }
+      ]]]
+    commute: >
+      [[[
+        if (states[variables.ulm_card_person_commute_entity]?.state) {
+          var icon = variables.ulm_card_person_commute_icon || "mdi:car";
+          var commute = states[variables.ulm_card_person_commute_entity]?.state;
+          var color = "rgba(var(--color-green),1)";
+          if (commute >= 30) {
+            color = "rgba(var(--color-yellow),1)"
+          }
+          if (commute >= 60) {
+            color = "rgba(var(--color-red),1)"
+          }
+          return `
+            <ha-icon icon="${icon}" style="width: 16px; height: 16px; font-size: 14px; color: ${color}; margin: 0 2px 0 0"></ha-icon>
+            <span style="padding-top: 6px;">${commute} min</span>
+          `;
+        }
+      ]]]

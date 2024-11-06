@@ -1,0 +1,144 @@
+---
+### Cards ###
+generic:
+  template: "card_generic"
+
+light:
+  template: "card_light"
+
+light_slider:
+  template: "card_light_slider"
+  variables:
+    ulm_card_light_slider_name: "[[[ return variables.name ]]]"
+
+binary_sensor:
+  template: "card_binary_sensor"
+
+outlet:
+  template: "card_power_outlet"
+
+# thermostat:
+# template: card_thermostat
+
+cover_buttons:
+  template: "card_cover_buttons"
+  variables:
+    ulm_card_cover_buttons_name:
+    ulm_card_cover_buttons_entity:
+
+graph:
+  template: "card_graph"
+  variables:
+    ulm_card_graph_color: "var(--google-blue)"
+    ulm_card_graph_name: "Default name"
+    ulm_card_graph_entity: "[[[ return entity.entity_id ]]]"
+
+media:
+  template: "card_media_player"
+
+battery:
+  template: "card_battery"
+  variables:
+    ulm_card_battery_attribute: "battery"
+
+media_mini_album:
+  template: "card_media_player_with_cover"
+
+media_buttons:
+  template: "card_media_player_controls"
+  variables:
+    ulm_card_media_player_controls_entity: "[[[ return variables.entity ]]]"
+    ulm_card_media_player_controls_name: "[[[ return variables.name ]]]"
+
+### Card renaming ###
+# Template name: card_cover_with_buttons --> card_cover_buttons
+# Template name: card_media_player_with_control --> card_media_player_art
+# Template name: card_media_player_with_controls --> card_media_player_controls
+
+card_cover_with_buttons:
+  template: "card_cover_buttons"
+  variables:
+    ulm_card_cover_buttons_name: "[[[ return variables.ulm_card_cover_with_buttons_name ]]]"
+    ulm_card_cover_buttons_entity: "[[[ return variables.ulm_card_cover_with_buttons_entity ]]]"
+
+card_media_player_with_control:
+  template: "card_media_player_art"
+  entity: "[[[ return entity.entity_id ]]]"
+  name: "[[[ return entity.attributes.friendly_name ]]]"   # this will pass true the friendly name because you cannot pass true the `name:`
+
+card_media_player_with_controls:
+  template: "card_media_player_controls"
+  variables:
+    ulm_card_media_player_controls_entity: "[[[ return variables.ulm_card_media_player_with_controls_name ]]]"
+    ulm_card_media_player_controls_name: "[[[ return variables.ulm_card_media_player_with_controls_entity ]]]"
+
+### NEW CARD_LIGHT ALL IN ONE ###
+card_light_slider:
+  template: "card_light"
+  variables:
+    ulm_card_light_enable_slider: true
+card_light_slider_collapse:
+  template: "card_light"
+  variables:
+    ulm_card_light_enable_collapse: true
+    ulm_card_light_enable_slider: true
+card_light_slider_horizontal:
+  template: "card_light"
+  variables:
+    ulm_card_light_enable_slider: true
+    ulm_card_light_enable_horizontal: true
+card_light_color:
+  template: "card_light"
+  variables:
+    ulm_card_light_enable_color: false
+card_light_horizontal_color:
+  template: "card_light"
+  variables:
+    ulm_card_light_enable_horizontal: true
+    ulm_card_light_enable_color: false
+card_light_slider_color:
+  template: "card_light"
+  variables:
+    ulm_card_light_enable_slider: true
+    ulm_card_light_enable_color: false
+card_light_slider_collapse_color:
+  template: "card_light"
+  variables:
+    ulm_card_light_enable_collapse: true
+    ulm_card_light_enable_slider: true
+    ulm_card_light_enable_color: false
+
+### NEW CARD_THERMOSTAT ALL IN ONE ###
+custom_card_heat_pump:
+  template: "card_thermostat"
+  variables:
+    ulm_card_thermostat_enable_controls: true
+    ulm_card_thermostat_enable_hvac_modes: true
+custom_card_mpse_thermostat:
+  template: "card_thermostat"
+  variables:
+    ulm_card_thermostat_enable_controls: true
+custom_card_httpedo13_thermostat:
+  template: "card_thermostat"
+  variables:
+    ulm_card_thermostat_enable_display_temperature: true
+    ulm_card_thermostat_enable_background_color: true
+custom_card_httpedo13_thermostat_with_buttons:
+  template: "card_thermostat"
+  variables:
+    ulm_card_thermostat_enable_display_temperature: true
+    ulm_card_thermostat_enable_controls: true
+    ulm_card_thermostat_enable_background_color: true
+custom_card_httpedo13_thermostat_with_buttons_collapse:
+  template: "card_thermostat"
+  variables:
+    ulm_card_thermostat_enable_display_temperature: true
+    ulm_card_thermostat_enable_controls: true
+    ulm_card_thermostat_enable_collapse: true
+    ulm_card_thermostat_enable_background_color: true
+
+### NEW CARD_COVER ALL IN ONE ###
+card_cover_buttons:
+  template: "card_cover"
+  variables:
+    ulm_card_cover_enable_controls: true

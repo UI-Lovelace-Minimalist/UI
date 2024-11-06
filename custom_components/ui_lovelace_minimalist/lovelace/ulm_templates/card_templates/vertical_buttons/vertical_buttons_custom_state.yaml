@@ -1,0 +1,33 @@
+---
+### Vertical Buttons Custom State ###
+vertical_buttons_custom_state:
+  template: "vertical_buttons"
+  variables:
+    state: "default"
+    # blue, red, green, yellow, purple, pink
+    color: "blue"
+  show_last_changed: false
+  name: "[[[ return variables.state ]]]"
+  styles:
+    name:
+      - text-transform: "capitalize"
+  state:
+    - operator: "template"
+      value: "[[[ return entity.state == variables.state ]]]"
+      styles:
+        icon:
+          - color: "[[[ return `rgba(var(--color-${variables.color}), 1)`; ]]]"
+        label:
+          - color: "[[[ return `rgba(var(--color-${variables.color}-text), 1)`; ]]]"
+        name:
+          - color: "[[[ return `rgba(var(--color-${variables.color}-text), 1)`; ]]]"
+        img_cell:
+          - background-color: "[[[ return `rgba(var(--color-${variables.color}), 0.2)`; ]]]"
+        card:
+          - background-color: "[[[ return `rgba(var(--color-background-${variables.color}), var(--opacity-bg))`; ]]]"
+  tap_action:
+    action: "call-service"
+    service: "input_select.select_option"
+    service_data:
+      entity_id: "[[[ return entity.entity_id ]]]"
+      option: "[[[ return variables.state ]]]"

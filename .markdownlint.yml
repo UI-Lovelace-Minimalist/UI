@@ -1,0 +1,56 @@
+---
+# Base Markdownlint configuration
+# Extended Markdownlint configuration in doc/.markdownlint/
+default: true
+
+MD001: false
+
+MD024:
+  allow_different_nesting: true
+
+MD025: false
+
+MD028: false
+
+first-header-h1: false
+
+no-bare-urls: false
+
+header-style:
+  style: "atx"
+
+ul-style:
+  style: "dash"
+
+ul-indent:
+  indent: 4
+
+no-trailing-spaces: false
+
+line-length: false
+
+no-duplicate-header:
+  allow_different_nesting: true
+
+no-trailing-punctuation:
+  punctuation: ".,;:!。，；：！？"
+
+ol-prefix:
+  style: "ordered"
+
+no-inline-html: false
+
+hr-style:
+  style: "---"
+
+no-emphasis-as-heading: false
+
+first-line-h1: false
+
+code-block-style:
+  style: ["fenced"]
+
+proper-names:
+  names: []
+
+code_blocks: false

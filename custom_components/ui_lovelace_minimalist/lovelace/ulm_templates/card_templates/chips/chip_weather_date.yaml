@@ -1,0 +1,39 @@
+---
+chip_weather_date:
+  template: "chips"
+  entity: "[[[ return variables.ulm_weather]]]"
+  variables:
+    ulm_language: >
+      [[[
+        return hass["language"];
+      ]]]
+  triggers_update:
+    - "[[[ return variables.ulm_weather ]]]"
+  tap_action:
+    action: "more-info"
+  label: |
+    [[[
+      const event = new Date();
+      const options = {month: 'short', day: 'numeric' };
+      var locale = variables.ulm_language;
+      let formatted_date = event.toLocaleDateString(locale, options);
+      var state = states[variables.ulm_weather].state;
+      var icon = {
+        "clear-night": "🌙",
+        "cloudy": "☁️",
+        "exceptional": "🌞",
+        "fog": "🌫️",
+        "hail": "⛈️",
+        "lightning": "⚡",
+        "lightning-rainy": "⛈️",
+        "partlycloudy": "⛅",
+        "pouring": "🌧️",
+        "rainy": "💧",
+        "snowy": "❄️",
+        "snowy-rainy": "🌨️",
+        "sunny": "☀️",
+        "windy": "🌪️",
+        "default": "🌡️"
+        }
+      return (icon[state] || icon["default"]) + ' ' + formatted_date
+    ]]]

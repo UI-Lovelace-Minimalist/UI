@@ -1,0 +1,9 @@
+---
+popup_button_selected:
+  tap_action:
+    action: "none"
+  styles:
+    icon:
+      - color: "rgba(var(--color-blue),1)"
+    img_cell:
+      - background-color: "rgba(var(--color-blue), 0.2)"

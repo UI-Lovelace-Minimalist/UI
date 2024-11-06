@@ -1,0 +1,166 @@
+---
+### Card Battery ###
+card_battery:
+  template:
+    - "icon_more_info_new"
+    - "ulm_translation_engine"
+  variables:
+    ulm_card_battery_name: "[[[ return entity.attributes.friendly_name ]]]"
+    ulm_card_battery_attribute:
+    ulm_card_battery_battery_state_entity_id:
+    ulm_card_battery_charger_type_entity_id:
+    ulm_card_battery_charging_animation: false
+    ulm_card_battery_battery_level_danger:
+    ulm_card_battery_battery_level_warning:
+    ulm_card_battery_color_battery_level_danger: "var(--google-red)"
+    ulm_card_battery_color_battery_level_warning: "var(--google-yellow)"
+    ulm_card_battery_color_battery_level_ok: "var(--google-green)"
+    ulm_outlet_power_enable_popup: false
+  triggers_update:
+    - "[[[ return variables?.ulm_card_battery_battery_state_entity_id ]]]"
+    - "[[[ return variables?.ulm_card_battery_charger_type_entity_id ]]]"
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              variables: >
+                [[[
+                  let vars = variables;
+
+                  if(variables.ulm_outlet_power_enable_popup) {
+                    vars.ulm_custom_popup = {
+                      'template': 'popup_power_outlet_stats',
+                      'popup_variables': {
+                        'ulm_popup_power_outlet_sensor1': variables.ulm_popup_power_outlet_sensor1,
+                        'ulm_popup_power_outlet_sensor2': variables.ulm_popup_power_outlet_sensor2,
+                        'ulm_popup_power_outlet_graph_sensor': variables.ulm_popup_power_outlet_graph_sensor
+                      }
+                    };
+                  }
+                  return vars;
+                ]]]
+              icon: |
+                [[[
+                  // Get battery level
+                  const battery_level = variables.ulm_card_battery_attribute !== null ?
+                    states[entity.entity_id].attributes[variables.ulm_card_battery_attribute] :
+                    states[entity.entity_id].state;
+                  // Generate icon infix
+                  let infix = "";
+                  if (variables.ulm_card_battery_charger_type_entity_id == null) {
+                    // Check wether the battery state is charging
+                    infix = variables.ulm_card_battery_battery_state_entity_id !== null &&
+                      variables.ulm_card_battery_charging_animation === false &&
+                      states[variables.ulm_card_battery_battery_state_entity_id].state.toLowerCase() === "charging" ?
+                      "-charging" : ""
+                  } else {
+                    // Select the infix based on the entity charging state
+                    switch (states[variables.ulm_card_battery_charger_type_entity_id].state.toLowerCase()) {
+                      case "wireless":
+                        infix = "-charging-wireless";
+                        break;
+                      case "charging":
+                        infix = "-charging";
+                        break;
+                      case "ac":
+                        infix = "-charging";
+                        break;
+                      case "usb":
+                        infix = "-charging";
+                        break;
+                      default:
+                        infix = "";
+                    }
+                  }
+                  // Generate the icon based on the battery_level
+                  let icon = "mdi:help-circle-outline";
+                  if (battery_level == 100) {
+                    icon = "mdi:battery";
+                  } else if (battery_level < 10) {
+                    icon = "mdi:battery" + infix + "-outline";
+                  } else if (battery_level == "unknown" || battery_level == "unavailable") {
+                    icon = "mdi:battery-off";
+                  } else {
+                    icon = "mdi:battery" + infix + "-" + Math.floor(battery_level / 10) * 10;
+                  }
+                  return icon;
+                ]]]
+              extra_styles: |
+                @keyframes charge {
+                  0%, 80% { clip-path: inset(0 0 0 0); }
+                  10% { clip-path: polygon(0% 0%, 0% 100%, 34% 100%, 34% 40%, 66% 40%, 66% 66%, 34% 66%, 34% 100%, 100% 100%, 100% 0%); }
+                  20% { clip-path: polygon(0% 0%, 0% 100%, 34% 100%, 34% 40%, 66% 40%, 66% 62%, 34% 62%, 34% 100%, 100% 100%, 100% 0%); }
+                  30% { clip-path: polygon(0% 0%, 0% 100%, 34% 100%, 34% 40%, 66% 40%, 66% 58%, 34% 58%, 34% 100%, 100% 100%, 100% 0%); }
+                  40% { clip-path: polygon(0% 0%, 0% 100%, 34% 100%, 34% 40%, 66% 40%, 66% 54%, 34% 54%, 34% 100%, 100% 100%, 100% 0%); }
+                  50% { clip-path: polygon(0% 0%, 0% 100%, 34% 100%, 34% 40%, 66% 40%, 66% 50%, 34% 50%, 34% 100%, 100% 100%, 100% 0%); }
+                  60% { clip-path: polygon(0% 0%, 0% 100%, 34% 100%, 34% 40%, 66% 40%, 66% 46%, 34% 46%, 34% 100%, 100% 100%, 100% 0%); }
+                  70% { clip-path: polygon(0% 0%, 0% 100%, 34% 100%, 34% 40%, 66% 40%, 66% 40%, 34% 40%, 34% 100%, 100% 100%, 100% 0%); }
+                }
+              styles:
+                icon:
+                  - color: |
+                      [[[
+                        const battery_level = variables.ulm_card_battery_attribute !== null ?
+                          states[entity.entity_id].attributes[variables.ulm_card_battery_attribute] :
+                          states[entity.entity_id].state;
+                        // Get the color based on battery_level
+                        let color = "rgba(var(--color-theme), 0.9)";
+                        if (battery_level !== "unavailable" && (variables.ulm_card_battery_battery_level_danger !== null || variables.ulm_card_battery_battery_level_warning !== null)) {
+                          if (battery_level <= variables.ulm_card_battery_battery_level_danger) {
+                            color = variables.ulm_card_battery_color_battery_level_danger;
+                          } else if (battery_level <= variables.ulm_card_battery_battery_level_warning) {
+                            color = variables.ulm_card_battery_color_battery_level_warning;
+                          } else if (battery_level == "unknown" || battery_level == "unavailable") {
+                            color = variables.ulm_card_battery_color_battery_level_danger;
+                          } else {
+                            color = variables.ulm_card_battery_color_battery_level_ok;
+                          }
+                        }
+                        return color;
+                      ]]]
+                  - animation: |
+                      [[[
+                        if (variables.ulm_card_battery_battery_state_entity_id !== null &&
+                          variables.ulm_card_battery_charging_animation === true &&
+                          states[variables.ulm_card_battery_battery_state_entity_id].state.toLowerCase() === "charging"){
+                            return "charge 3s linear infinite"
+                          }
+                        return "none"
+                      ]]]
+          item2:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              name: "[[[ return variables.ulm_card_battery_name ]]]"
+              variables: >
+                [[[
+                  let vars = variables;
+
+                  if(variables.ulm_outlet_power_enable_popup) {
+                    vars.ulm_custom_popup = {
+                      'template': 'popup_power_outlet_stats',
+                      'popup_variables': {
+                        'ulm_popup_power_outlet_sensor1': variables.ulm_popup_power_outlet_sensor1,
+                        'ulm_popup_power_outlet_sensor2': variables.ulm_popup_power_outlet_sensor2,
+                        'ulm_popup_power_outlet_graph_sensor': variables.ulm_popup_power_outlet_graph_sensor
+                      }
+                    };
+                  }
+                  return vars;
+                ]]]
+              label: |
+                [[[
+                  const battery_level = variables.ulm_card_battery_attribute !== null
+                    ? states[entity.entity_id].attributes[variables.ulm_card_battery_attribute]
+                    : states[entity.entity_id].state;
+                  return battery_level + "%";
+                  if(battery_level == "unknown")
+                  { return variables.ulm_translation_state; }
+                  else
+                  { return battery_level + "%"; }
+                ]]]

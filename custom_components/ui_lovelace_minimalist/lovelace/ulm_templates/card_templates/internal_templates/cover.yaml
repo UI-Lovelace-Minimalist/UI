@@ -1,0 +1,46 @@
+---
+### Cover ###
+cover:
+  tap_action:
+    action: "more-info"
+  icon: |
+    [[[
+        var icon = "mdi:help-circle";
+        if (typeof states[entity.entity_id].attributes.current_position === "undefined"){
+          if (states[entity.entity_id].state == "closed"){
+            var icon = "mdi:window-shutter";
+          } else
+            var icon = "mdi:window-shutter-open";
+        } else {
+          if (states[entity.entity_id].attributes.current_position == 0){
+            var icon = "mdi:window-shutter";
+          } else
+            var icon = "mdi:window-shutter-open";
+        }
+        return icon ;
+    ]]]
+  label: >-
+    [[[
+        var icon = "mdi:help-circle";
+        if (typeof states[entity.entity_id].attributes.current_position === "undefined"){
+          if (states[entity.entity_id].state == "closed"){
+            return variables.ulm_translation_state;
+          } else
+            return variables.ulm_translation_state;
+        } else {
+          if (states[entity.entity_id].attributes.current_position == 0){
+            return variables.ulm_translation_state;
+          } else {
+            return variables.ulm_translation_state + " • " + (states[entity.entity_id].attributes.current_position) + "%" ;
+          }
+        }
+        return icon ;
+    ]]]
+  state:
+    - operator: "template"
+      value: "[[[ return states[entity.entity_id].attributes.current_position != 0; ]]]"
+      styles:
+        icon:
+          - color: "rgba(var(--color-blue),1)"
+        img_cell:
+          - background-color: "rgba(var(--color-blue),0.2)"

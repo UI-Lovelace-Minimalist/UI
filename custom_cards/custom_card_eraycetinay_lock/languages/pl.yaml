@@ -1,0 +1,12 @@
+---
+custom_card_eraycetinay_lock_language_variables:
+  variables:
+    ulm_custom_card_eraycetinay_lock_locked: "zamknięty"
+    ulm_custom_card_eraycetinay_lock_unlocked: "otwarty"
+    ulm_custom_card_eraycetinay_lock_locking: "zamykanie"
+    ulm_custom_card_eraycetinay_lock_unlocking: "otwieranie"
+    ulm_custom_card_eraycetinay_lock_unavailable: "niedostępny"
+    ulm_custom_card_eraycetinay_lock_jammed: "zacięty"
+    ulm_custom_card_eraycetinay_lock_locked_and_opened: "Drzwi są zamknięte, ale nadal otwarte."
+    ulm_custom_card_eraycetinay_lock_battery_is_at: "Bateria jest na"
+    ulm_custom_card_eraycetinay_lock_battery_is_low: "Bateria jest słaba"

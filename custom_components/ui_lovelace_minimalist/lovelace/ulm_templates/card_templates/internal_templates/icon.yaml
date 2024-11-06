@@ -1,0 +1,50 @@
+---
+### Icon ###
+icon:
+  color: "var(--google-grey)"
+  show_icon: true
+  show_label: false
+  show_name: false
+  state:
+    - styles:
+        custom_fields:
+          notification:
+            - border-radius: "50%"
+            - position: "absolute"
+            - left: "24px"
+            - top: "-2px"
+            - height: "16px"
+            - width: "16px"
+            - border: "2px solid var(--card-background-color)"
+            - font-size: "12px"
+            - line-height: "14px"
+            - background-color: >
+                [[[
+                  return "rgba(var(--color-red),1)";
+                ]]]
+      value: "unavailable"
+  styles:
+    icon:
+      - color: "rgba(var(--color-theme),0.2)"
+    img_cell:
+      - background-color: "rgba(var(--color-theme),0.05)"
+      - border-radius: "50%"
+      - place-self: "center"
+      - width: "42px"
+      - height: "42px"
+    grid:
+      - grid-template-areas: "'i'"
+      - grid-template-columns: "min-content"
+      - grid-template-rows: "min-content"
+    card:
+      - border-radius: "21px"
+      - box-shadow: "none"
+      - padding: "0px"
+  custom_fields:
+    notification: >
+      [[[
+        if (entity.state =="unavailable"){
+          return `<ha-icon icon="mdi:exclamation" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`
+        }
+      ]]]
+  size: "20px"

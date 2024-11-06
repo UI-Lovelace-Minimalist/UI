@@ -1,0 +1,60 @@
+{
+    "title": "UI Lovelace Minimalist",
+    "config": {
+        "step": {
+            "user": {
+                "title": "configuració de UI Lovelace Minimalist",
+                "description": "",
+                "data": {
+                    "community_cards_enabled": "Activa la possiblitat de configurar targetes de comunitat amb aquesta integració. Requereix autenticació GitHub!"
+                }
+            },
+            "device": {
+                "title": "Esperant l'activació del dispositiu"
+            },
+            "reauth_confirm": {
+                "title": "Cal reautenticació",
+                "description": "Necessites reautenticar-te amb GitHub."
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "Només es permet una única configuració de UI Lovelace Minimalist.",
+            "not_setup": "UI Lovelace Minimalist no està preparat.",
+            "github": "No s'ha pogut autenticar amb GitHub, prova-ho més tard.",
+            "reauth_successful": "Reautenticació amb èxit."
+        },
+        "progress": {
+            "wait_for_device": "1. Obrir {url} \n2.Enganxa la clau següent per autoritzar ULM: \n```\n{code}\n```\n"
+        }
+    },
+    "options": {
+        "step": {
+            "user": {
+                "title": "Configuració de UI Lovelace Minimalist",
+                "description": "",
+                "data": {
+                    "language": "Idioma",
+                    "sidepanel_enabled": "Activa la creació d'una entrada al Dasboard en el panell lateral.",
+                    "sidepanel_icon": "Icona del panell lateral",
+                    "sidepanel_title": "Títol del panell lateral",
+                    "adaptive_ui_enabled": "Activar el Dashboard adaptatiu amb popup de vistes dividides",
+                    "adaptive_ui_title": "Títol del panell adaptatiu",
+                    "adaptive_ui_icon": "Icona del panell adaptatiu",
+                    "theme": "Tema",
+                    "include_other_cards": "Incloure recursos de targetes personalitzades depen de",
+                    "community_cards_enabled": "activar la possibilitat de configurar targetes de comunitat amb aquesta integració, Requereix autenticació GitHub!",
+                    "community_cards": "Selecciona les targetes de comunitat que vols activar."
+                }
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "Només es permet una única configuració de UI Lovelace Minimalist.",
+            "not_setup": "UI Lovelace Minimalist no està preparat."
+        },
+        "error": {
+            "github_cards": "Alguna cosa ha anat malament al obtenir targetes de GitHub.",
+            "ack": "Has de reconeixer tots els estaments.",
+            "gh_token": "No s'ha establert el token de Github. Si et plau, reinstal·la aquesta integració per seguir amb el procés de configuració. (No es perdrà cap configuració personalitzada)"
+        }
+    }
+}

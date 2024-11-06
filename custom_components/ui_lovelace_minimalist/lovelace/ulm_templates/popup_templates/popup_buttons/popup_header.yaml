@@ -1,0 +1,22 @@
+---
+popup_header:
+  template:
+    - "popup_button"
+    - "ulm_translation_engine"
+  show_name: true
+  show_label: true
+  styles:
+    grid:
+      - grid-template-areas: "'i' 'n' 'l'"
+      - grid-template-columns: "auto"
+      - grid-template-rows: "min-content min-content min-content"
+    label:
+      - justify-self: "center"
+      - font-weight: "bold"
+      - font-size: "12px"
+      - filter: "opacity(40%)"
+    name:
+      - margin-top: "6px"
+    icon:
+      - color: "var(--color-theme)"
+  label: "[[[ return variables.ulm_translation_state; ]]]"

@@ -1,0 +1,13 @@
+# EN.yaml for custom_card_wsly_pollen
+---
+custom_card_wsly_pollen_language_variables:
+  variables:
+    custom_card_wsly_pollen_none: "None"
+    custom_card_wsly_pollen_very_low: "Very low"
+    custom_card_wsly_pollen_low: "Low"
+    custom_card_wsly_pollen_medium: "Medium"
+    custom_card_wsly_pollen_high: "High"
+    custom_card_wsly_pollen_very_high: "Very high"
+    custom_card_wsly_pollen_tree_name: "Trees"
+    custom_card_wsly_pollen_grass_name: "Grass"
+    custom_card_wsly_pollen_weed_name: "Weeds"

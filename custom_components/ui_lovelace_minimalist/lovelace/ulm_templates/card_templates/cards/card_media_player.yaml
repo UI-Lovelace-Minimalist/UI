@@ -1,0 +1,903 @@
+---
+### Card Media Player ###
+card_media_player:
+  template:
+    - "icon_more_info_new"
+    - "ulm_translation_engine"
+  variables:
+    ulm_card_media_player_name: "[[[ return entity.attributes.friendly_name ]]]"
+    ulm_card_media_player_icon: false
+    ulm_card_media_player_enable_art: false
+    ulm_card_media_player_enable_controls: false
+    ulm_card_media_player_enable_volume_slider: false
+    ulm_card_media_player_enable_volume_buttons: false
+    ulm_card_media_player_enable_volume_adjust: 0
+    ulm_card_media_player_collapsible: false
+    ulm_card_media_player_player_controls_entity: "[[[ return entity.entity_id ]]]"
+    ulm_card_media_player_enable_popup: false
+    ulm_card_media_player_more_info: false
+    ulm_card_media_player_power_button: false
+    ulm_card_media_player_force_background_color: false
+    ulm_card_media_player_color: "blue"
+  show_icon: false
+  show_name: false
+  show_label: false
+  state:
+    - operator: "template"
+      value: "[[[ return variables.ulm_active_state && !variables.ulm_card_media_player_enable_art ]]]"
+      styles:
+        card:
+          - background-color: >
+              [[[
+                  if (variables.ulm_card_media_player_color) {
+                    if (variables.ulm_card_media_player_force_background_color) {
+                      var color = variables.ulm_card_media_player_color;
+                      return 'rgba(var(--color-' + color + '),var(--opacity-bg))';
+                    }
+                  }
+              ]]]
+  styles:
+    grid:
+      - grid-template-areas: |
+          [[[
+            var areas = "'item1'";
+            if (variables.ulm_card_media_player_enable_controls){
+              areas = areas + " 'item2'";
+            }
+            if (variables.ulm_card_media_player_enable_volume_slider){
+              areas = areas + " 'item3'";
+            }
+            if (variables.ulm_card_media_player_enable_volume_buttons){
+              areas = areas + " 'item4'";
+            }
+            return areas;
+          ]]]
+      - grid-template-columns: "1fr"
+      - grid-template-rows: |
+          [[[
+            var rows = "min-content";
+            if (variables.ulm_card_media_player_enable_controls){
+              rows = rows + " min-content";
+            }
+            if (variables.ulm_card_media_player_enable_volume_slider){
+              rows = rows + " min-content";
+            }
+            if (variables.ulm_card_media_player_enable_volume_buttons){
+              rows = rows + " min-content";
+            }
+            return rows;
+          ]]]
+      - row-gap: |-
+          [[[
+            if (!variables.ulm_card_media_player_collapsible) {
+                return "12px";
+              } else {
+                return (entity.state === "off" || entity.state === "standby") ? "0px" : "12px";
+              }
+          ]]]
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
+      - background: |
+          [[[
+            return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
+            ? 'center / cover url(' + states[entity.entity_id].attributes.entity_picture + ') rgba(0, 0, 0, 0.15)'
+            : ''
+          ]]]
+    custom_fields:
+      power:
+        - display: "[[[ return variables.ulm_card_media_player_power_button ? 'block' : 'none']]]"
+        - position: "absolute"
+        - top: "12px"
+        - right: "12px"
+      item2:
+        - display: |
+            [[[
+              if(variables.ulm_card_media_player_enable_controls) {
+                if(variables.ulm_card_media_player_collapsible){
+                return (entity.state === "off" || entity.state === "standby") ? "none" : "block";
+                }
+                return "block";
+              }
+              return "none";
+            ]]]
+      item3:
+        - border-radius: "14px"
+        - background-color: >
+            [[[
+              if(variables.ulm_card_media_player_enable_art){
+                return 'transparent'
+              }
+              if(!hass.themes.darkMode){
+                return 'rgb(250,250,250)' ;
+              }
+            ]]]
+        - display: |
+            [[[
+              if(variables.ulm_card_media_player_enable_volume_slider) {
+                if(variables.ulm_card_media_player_collapsible){
+                return (entity.state === "off" || entity.state === "standby") ? "none" : "block";
+                }
+                return "block";
+              }
+              return "none";
+            ]]]
+      item4:
+        - display: |
+            [[[
+              if(variables.ulm_card_media_player_enable_volume_buttons) {
+                if(variables.ulm_card_media_player_collapsible){
+                return (entity.state === "off" || entity.state === "standby") ? "none" : "block";
+                }
+                return "block";
+              }
+              return "none";
+            ]]]
+  custom_fields:
+    power:
+      card:
+        type: "custom:button-card"
+        entity: "[[[ return entity.entity_id ]]]"
+        template: "widget_icon"
+        icon: "mdi:power"
+        tap_action:
+          action: "toggle"
+        styles:
+          card:
+            - background-color: |
+                [[[
+                  if(variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null){
+                    return 'rgba(0, 0, 0, 0.2)'
+                  }
+                  if(!hass.themes.darkMode && variables.ulm_card_media_player_force_background_color){
+                    if (variables.ulm_active_state){
+                      return 'rgb(250,250,250)'
+                    }
+                  }
+                  return 'rgba(var(--color-theme),0.05)'
+                ]]]
+          img_cell:
+            - width: "42px"
+            - heigth: "42px"
+            - background-color: >
+                [[[
+                  if (variables.ulm_card_media_player_force_background_color && variables.ulm_active_state && !variables.ulm_card_media_player_enable_art) {
+                    var color = variables.ulm_card_media_player_color;
+                    return 'rgba(var(--color-' + color + '),0.2)';
+                  }
+                  return 'rgba(var(--color-theme),0.05)';
+                ]]]
+          icon:
+            - color: |
+                [[[
+                  if(variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null){
+                    return 'white'
+                  }
+                  if (variables.ulm_card_media_player_force_background_color && variables.ulm_active_state) {
+                    var color = variables.ulm_card_media_player_color;
+                    return 'rgba(var(--color-' + color + '),1)';
+                  }
+                  return 'rgba(var(--color-theme),0.9)';
+                ]]]
+    item1:
+      card:
+        type: "custom:button-card"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              variables: >
+                [[[
+                  let vars = variables;
+                  if(variables.ulm_card_media_player_enable_popup) {
+                    vars.ulm_custom_popup = {
+                      'template': 'popup_media_player_infos'
+                    };
+                  }
+                  return vars;
+                ]]]
+              icon: |
+                [[[
+                  var icon = entity.attributes.icon || "mdi:speaker";
+                  if(entity.attributes.app_name){
+                    var app = entity.attributes.app_name.toLowerCase();
+                    var icon = {
+                      "spotify": "mdi:spotify",
+                      "google podcasts": "mdi:google-podcast",
+                      "plex": "mdi:plex",
+                      "soundcloud": "mdi:soundcloud",
+                      "youtube music": "mdi:youtube",
+                      "oto music": "mdi:music-circle",
+                      "pandora": "mdi:pandora",
+                      "netflix": "mdi:netflix",
+                      "hulu": "mdi:hulu",
+                      "bluetooth audio": "mdi:bluetooth"
+                    }
+                  }
+                  return variables.ulm_card_media_player_icon || icon[app];
+                ]]]
+              styles:
+                icon:
+                  - color: |
+                      [[[
+                        var color = variables.ulm_card_media_player_color;
+                        var active_color = 'rgba(var(--color-theme),0.2)'
+                        if (variables.ulm_active_state){
+                          active_color = 'rgba(var(--color-' + color + '),1)';
+                        }
+                        return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
+                        ? 'white'
+                        : active_color
+                      ]]]
+                img_cell:
+                  - background-color: |
+                      [[[
+                        var color = variables.ulm_card_media_player_color;
+                        var active_color = 'rgba(var(--color-theme),0.05)'
+                        if (variables.ulm_active_state){
+                          active_color = 'rgba(var(--color-' + color + '),0.2)';
+                        }
+                        return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
+                        ? 'rgba(0, 0, 0, 0.2)'
+                        : active_color
+                      ]]]
+                card:
+                  - background: >
+                      [[[
+                        if(!variables.ulm_card_media_player_enable_art && variables.ulm_card_media_player_force_background_color && !hass.themes.darkMode){
+                          return 'rgb(250,250,250)'
+                        }
+                        return 'none'
+                      ]]]
+          item2:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              variables: >
+                [[[
+                  let vars = variables;
+                  if(variables.ulm_card_media_player_enable_popup) {
+                    vars.ulm_custom_popup = {
+                      'template': 'popup_media_player_infos'
+                    };
+                  }
+                  return vars;
+                ]]]
+              label: "[[[ return variables.ulm_translation_state ]]]"
+              state:
+                - operator: "template"
+                  value: "[[[ return entity.state == 'off' ]]]"
+                  name: |
+                    [[[
+                      let name = variables.ulm_card_media_player_name || states[entity.entity_id].attributes.friendly_name;
+                      return name;
+                    ]]]
+                - operator: "template"
+                  value: "[[[ return entity.state == 'standby' ]]]"
+                  name: |
+                    [[[
+                      let name = variables.ulm_card_media_player_name || states[entity.entity_id].attributes.friendly_name;
+                      return name;
+                    ]]]
+                - operator: "template"
+                  value: "[[[ return entity.state != 'off'  || entity.state != 'standby']]]"
+                  name: |
+                    [[[
+                      let name = variables.ulm_card_media_player_name || states[entity.entity_id].attributes.friendly_name;
+                      if(states[entity.entity_id].attributes.media_title){
+                          name = states[entity.entity_id].attributes.media_title;
+                      }
+                      return name;
+                    ]]]
+                  label: |
+                    [[[
+                      let label = variables.ulm_translation_on;
+                      if (variables.ulm_card_media_player_more_info && states[entity.entity_id].attributes.media_artist
+                          && states[entity.entity_id].attributes.media_album_name) {
+                          label = states[entity.entity_id].attributes.media_artist + " • " + states[entity.entity_id].attributes.media_album_name;
+                      } else if(states[entity.entity_id].attributes.media_album_name) {
+                          label = states[entity.entity_id].attributes.media_album_name;
+                      } else if (states[entity.entity_id].attributes.media_artist) {
+                          label = states[entity.entity_id].attributes.media_artist
+                      }
+                      return label;
+                    ]]]
+              styles:
+                label:
+                  - opacity: "1"
+                  - filter: "opacity(100%)"
+                  - text-shadow: |
+                      [[[
+                        return variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null
+                        ? '0 0 black'
+                        : 'none'
+                      ]]]
+                  - color: |
+                      [[[
+                        if(variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null){
+                          return 'white'
+                        }
+                        if (variables.ulm_card_media_player_force_background_color && variables.ulm_active_state){
+                          return 'rgba(250,250,250,0.5)'
+                        }
+                        return 'rgba(var(--color-theme), .5)'
+                      ]]]
+                name:
+                  - color: |
+                      [[[
+                        if(variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null){
+                          return 'white'
+                        }
+                        if (variables.ulm_card_media_player_force_background_color && variables.ulm_active_state){
+                          return 'rgb(250,250,250)'
+                        }
+                        return'rgba(var(--color-theme), 1)'
+                      ]]]
+                  - text-shadow: "0 0 black"
+                card:
+                  - padding: "0px"
+                  - background: "none"
+                  - border-radius: "0"
+                  - box-shadow: "none"
+    item2:
+      card:
+        type: "custom:button-card"
+        template: "list_4_items"
+        styles:
+          card:
+            - padding: "0px"
+            - background: "none"
+            - border-radius: "0"
+            - box-shadow: "none"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              hold_action:
+                action: >
+                  [[[
+                      return variables.ulm_card_media_player_enable_popup ? "fire-dom-event" : "more-info";
+                  ]]]
+                browser_mod:
+                  service: "browser_mod.popup"
+                  data:
+                    large: true
+                    hide_header: true
+                    content:
+                      type: "custom:button-card"
+                      template: "popup_media_player_infos"
+                      entity: "[[[ return entity.entity_id ]]]"
+              tap_action:
+                action: "call-service"
+                service: "media_player.media_previous_track"
+                service_data:
+                  entity_id: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
+              icon: "mdi:skip-previous"
+              entity: "[[[ return entity.entity_id ]]]"
+              styles:
+                card:
+                  - background-color: |
+                      [[[
+                        if(variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null){
+                          return 'rgba(0, 0, 0, 0.2)'
+                        }
+                        if(!hass.themes.darkMode && variables.ulm_card_media_player_force_background_color){
+                          if (variables.ulm_active_state){
+                            return 'rgb(250,250,250)'
+                          }
+                        }
+                        return 'rgba(var(--color-theme),0.05)'
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        if (variables.ulm_card_media_player_force_background_color && variables.ulm_active_state && !variables.ulm_card_media_player_enable_art) {
+                          var color = variables.ulm_card_media_player_color;
+                          return 'rgba(var(--color-' + color + '),0.2)';
+                        }
+                        return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+                icon:
+                  - color: |
+                      [[[
+                        if(variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null){
+                          return 'white'
+                        }
+                        if (variables.ulm_card_media_player_force_background_color && variables.ulm_active_state) {
+                          var color = variables.ulm_card_media_player_color;
+                          return 'rgba(var(--color-' + color + '),1)';
+                        }
+                        return 'rgba(var(--color-theme),0.9)';
+                      ]]]
+          item2:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              entity: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
+              hold_action:
+                action: >
+                  [[[
+                      return variables.ulm_card_media_player_enable_popup ? "fire-dom-event" : "more-info";
+                  ]]]
+                browser_mod:
+                  service: "browser_mod.popup"
+                  data:
+                    large: true
+                    hide_header: true
+                    content:
+                      type: "custom:button-card"
+                      template: "popup_media_player_infos"
+                      entity: "[[[ return entity.entity_id; ]]]"
+              tap_action:
+                action: "call-service"
+                service: "[[[ return (entity.attributes?.media_duration > 0) ? 'media_player.media_play_pause' : entity.state =='playing' ? 'media_player.media_stop' : 'media_player.media_play']]]"
+                service_data:
+                  entity_id: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
+              icon: "[[[ return (entity.attributes?.media_duration > 0) ? 'mdi:pause' : 'mdi:stop' ]]]"
+              state:
+                - value: "playing"
+                  icon: "mdi:pause"
+                - value: "paused"
+                  icon: "mdi:play"
+                - value: "off"
+                  icon: "mdi:play"
+                - value: "standby"
+                  icon: "mdi:play"
+                - value: "idle"
+                  icon: "mdi:play"
+              styles:
+                card:
+                  - background-color: |
+                      [[[
+                        if(variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null){
+                          return 'rgba(0, 0, 0, 0.2)'
+                        }
+                        if(!hass.themes.darkMode && variables.ulm_card_media_player_force_background_color){
+                          if (variables.ulm_active_state){
+                            return 'rgb(250,250,250)'
+                          }
+                        }
+                        return 'rgba(var(--color-theme),0.05)'
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        if (variables.ulm_card_media_player_force_background_color && variables.ulm_active_state && !variables.ulm_card_media_player_enable_art) {
+                          var color = variables.ulm_card_media_player_color;
+                          return 'rgba(var(--color-' + color + '),0.2)';
+                        }
+                        return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+                icon:
+                  - color: |
+                      [[[
+                        if(variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null){
+                          return 'white'
+                        }
+                        if (variables.ulm_card_media_player_force_background_color && variables.ulm_active_state) {
+                          var color = variables.ulm_card_media_player_color;
+                          return 'rgba(var(--color-' + color + '),1)';
+                        }
+                        return 'rgba(var(--color-theme),0.9)';
+                      ]]]
+          item3:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              hold_action:
+                action: >
+                  [[[
+                      return variables.ulm_card_media_player_enable_popup ? "fire-dom-event" : "more-info";
+                  ]]]
+                browser_mod:
+                  service: "browser_mod.popup"
+                  data:
+                    large: true
+                    hide_header: true
+                    content:
+                      type: "custom:button-card"
+                      template: "popup_media_player_infos"
+                      entity: "[[[ return entity.entity_id; ]]]"
+              tap_action:
+                action: "call-service"
+                service: "media_player.media_next_track"
+                service_data:
+                  entity_id: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
+              icon: "mdi:skip-next"
+              styles:
+                card:
+                  - background-color: |
+                      [[[
+                        if(variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null){
+                          return 'rgba(0, 0, 0, 0.2)'
+                        }
+                        if(!hass.themes.darkMode && variables.ulm_card_media_player_force_background_color){
+                          if (variables.ulm_active_state){
+                            return 'rgb(250,250,250)'
+                          }
+                        }
+                        return 'rgba(var(--color-theme),0.05)'
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        if (variables.ulm_card_media_player_force_background_color && variables.ulm_active_state && !variables.ulm_card_media_player_enable_art) {
+                          var color = variables.ulm_card_media_player_color;
+                          return 'rgba(var(--color-' + color + '),0.2)';
+                        }
+                        return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+                icon:
+                  - color: |
+                      [[[
+                        if(variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null){
+                          return 'white'
+                        }
+                        if (variables.ulm_card_media_player_force_background_color && variables.ulm_active_state) {
+                          var color = variables.ulm_card_media_player_color;
+                          return 'rgba(var(--color-' + color + '),1)';
+                        }
+                        return 'rgba(var(--color-theme),0.9)';
+                      ]]]
+          item4:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              icon: "mdi:playlist-music"
+              entity: "[[[ return entity.entity_id; ]]]"
+              styles:
+                card:
+                  - background-color: |
+                      [[[
+                        if(variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null){
+                          return 'rgba(0, 0, 0, 0.2)'
+                        }
+                        if(!hass.themes.darkMode && variables.ulm_card_media_player_force_background_color){
+                          if (variables.ulm_active_state){
+                            return 'rgb(250,250,250)'
+                          }
+                        }
+                        return 'rgba(var(--color-theme),0.05)'
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        if (variables.ulm_card_media_player_force_background_color && variables.ulm_active_state && !variables.ulm_card_media_player_enable_art) {
+                          var color = variables.ulm_card_media_player_color;
+                          return 'rgba(var(--color-' + color + '),0.2)';
+                        }
+                        return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+                icon:
+                  - color: |
+                      [[[
+                        if(variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null){
+                          return 'white'
+                        }
+                        if (variables.ulm_card_media_player_force_background_color && variables.ulm_active_state) {
+                          var color = variables.ulm_card_media_player_color;
+                          return 'rgba(var(--color-' + color + '),1)';
+                        }
+                        return 'rgba(var(--color-theme),0.9)';
+                      ]]]
+              hold_action:
+                action: >
+                  [[[
+                      return variables.ulm_card_media_player_enable_popup && entity.attributes?.source_list ? "fire-dom-event" : "more-info";
+                  ]]]
+                browser_mod:
+                  service: "browser_mod.popup"
+                  data:
+                    large: true
+                    hide_header: true
+                    content:
+                      type: "custom:button-card"
+                      template: "popup_media_player_source_card"
+                      entity: "[[[ return entity.entity_id; ]]]"
+              tap_action:
+                action: >
+                  [[[
+                      return variables.ulm_card_media_player_enable_popup && entity.attributes?.source_list ? "fire-dom-event" : "more-info";
+                  ]]]
+                browser_mod:
+                  service: "browser_mod.popup"
+                  data:
+                    large: true
+                    hide_header: true
+                    style: |
+                      --popup-background-color: var(--primary-background-color);
+                      --popup-border-radius: 20px;
+                      --popup-padding-x: 24px;
+                      --popup-padding-y: 20px;
+                      --popup-max-width: auto
+                      --popup-min-width: 800px;
+                    card_mod:
+                      style:
+                        ha-dialog$: |
+                          @media (max-width: 800px){
+                            div.mdc-dialog__container {
+                              --mdc-dialog-min-width: 100vw;
+                              --mdc-dialog-max-width: 100vw;
+                              --mdc-dialog-min-height: 100%;
+                              --ha-dialog-border-radius: 0px;
+                            }
+                          }
+                    content:
+                      type: "custom:button-card"
+                      template: "popup_media_player_source_card"
+                      entity: "[[[ return entity.entity_id; ]]]"
+    item3:
+      card:
+        type: "custom:my-slider"
+        entity: "[[[ return entity.entity_id ]]]"
+        radius: "14px"
+        height: "42px"
+        mainSliderColor: |
+          [[[
+            var color = variables.ulm_card_media_player_color;
+            if(variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null){
+              return 'rgba(0, 0, 0, 0.5)'
+            }
+            if (variables.ulm_card_media_player_force_background_color && variables.ulm_active_state) {
+              return 'rgb(250,250,250)';
+            }
+            return 'rgba(var(--color-' + color + '),1)'
+          ]]]
+        secondarySliderColor: |
+          [[[
+            var color = variables.ulm_card_media_player_color;
+            if(variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null){
+              return 'rgba(0, 0, 0, 0.3)'
+            }
+            if (variables.ulm_card_media_player_force_background_color) {
+              return 'rgba(var(--color-' + color + '),0.3)';
+            }
+            return 'rgba(var(--color-' + color + '),0.2)'
+          ]]]
+        mainSliderColorOff: "rgba(var(--color-theme),0.05)"
+        secondarySliderColorOff: "rgba(var(--color-theme),0.05)"
+        thumbHorizontalPadding: "0px"
+        thumbVerticalPadding: "0px"
+        thumbWidth: "0px"
+        card_mod:
+          style: |
+            ha-card {
+              border-radius: 14px;
+              background-color: transparent;
+              box-shadow: none;
+            }
+    item4:
+      card:
+        type: "custom:button-card"
+        template: "list_3_items"
+        styles:
+          card:
+            - padding: "0px"
+            - background: "none"
+            - border-radius: "0"
+            - box-shadow: "none"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              entity: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
+              hold_action:
+                action: >
+                  [[[
+                      return variables.ulm_card_media_player_enable_popup ? "fire-dom-event" : "more-info";
+                  ]]]
+                browser_mod:
+                  service: "browser_mod.popup"
+                  data:
+                    large: true
+                    hide_header: true
+                    content:
+                      type: "custom:button-card"
+                      template: "popup_media_player_infos"
+                      entity: "[[[ return entity.entity_id; ]]]"
+              tap_action:
+                action: "call-service"
+                service: "media_player.volume_mute"
+                service_data:
+                  entity_id: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
+                  is_volume_muted: "[[[ return (states[entity.entity_id].attributes.is_volume_muted) ? false : true; ]]]"
+              icon: "mdi:volume-mute"
+              styles:
+                card:
+                  - background-color: |
+                      [[[
+                        if(variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null){
+                          return 'rgba(0, 0, 0, 0.2)'
+                        }
+                        if(!hass.themes.darkMode && variables.ulm_card_media_player_force_background_color){
+                          if (variables.ulm_active_state){
+                            return 'rgb(250,250,250)'
+                          }
+                        }
+                        return 'rgba(var(--color-theme),0.05)'
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        if (variables.ulm_card_media_player_force_background_color && variables.ulm_active_state && !variables.ulm_card_media_player_enable_art) {
+                          var color = variables.ulm_card_media_player_color;
+                          return 'rgba(var(--color-' + color + '),0.2)';
+                        }
+                        return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+                icon:
+                  - color: |
+                      [[[
+                        if(variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null){
+                          return 'white'
+                        }
+                        if (variables.ulm_card_media_player_force_background_color && variables.ulm_active_state) {
+                          var color = variables.ulm_card_media_player_color;
+                          return 'rgba(var(--color-' + color + '),1)';
+                        }
+                        return 'rgba(var(--color-theme),0.9)';
+                      ]]]
+          item2:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              entity: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
+              hold_action:
+                action: >
+                  [[[
+                      return variables.ulm_card_media_player_enable_popup ? "fire-dom-event" : "more-info";
+                  ]]]
+                browser_mod:
+                  service: "browser_mod.popup"
+                  data:
+                    large: true
+                    hide_header: true
+                    content:
+                      type: "custom:button-card"
+                      template: "popup_media_player_infos"
+                      entity: "[[[ return entity.entity_id; ]]]"
+              tap_action:
+                action: "call-service"
+                service: "media_player.volume_set"
+                service_data:
+                  entity_id: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
+                  volume_level: |
+                    [[[
+                      var volume = states[entity.entity_id].attributes.volume_level;
+                      if (variables.ulm_card_media_player_enable_volume_adjust != 0) {
+                          volume = states[entity.entity_id].attributes.volume_level - variables.ulm_card_media_player_enable_volume_adjust;
+                      } else {
+                          if (states[entity.entity_id].attributes.device_class === "tv") {
+                              volume = states[entity.entity_id].attributes.volume_level - 0.01;
+                          }
+                          if (states[entity.entity_id].attributes.device_class === "speaker") {
+                              volume = states[entity.entity_id].attributes.volume_level - 0.05;
+                          }
+                          if (states[entity.entity_id].attributes.device_class === "receiver") {
+                              volume = states[entity.entity_id].attributes.volume_level - 0.025;
+                          } else {
+                              volume = states[entity.entity_id].attributes.volume_level - 0.025;
+                          }
+                      }
+                      return volume;
+                    ]]]
+              icon: "mdi:volume-minus"
+              styles:
+                card:
+                  - background-color: |
+                      [[[
+                        if(variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null){
+                          return 'rgba(0, 0, 0, 0.2)'
+                        }
+                        if(!hass.themes.darkMode && variables.ulm_card_media_player_force_background_color){
+                          if (variables.ulm_active_state){
+                            return 'rgb(250,250,250)'
+                          }
+                        }
+                        return 'rgba(var(--color-theme),0.05)'
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        if (variables.ulm_card_media_player_force_background_color && variables.ulm_active_state && !variables.ulm_card_media_player_enable_art) {
+                          var color = variables.ulm_card_media_player_color;
+                          return 'rgba(var(--color-' + color + '),0.2)';
+                        }
+                        return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+                icon:
+                  - color: |
+                      [[[
+                        if(variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null){
+                          return 'white'
+                        }
+                        if (variables.ulm_card_media_player_force_background_color && variables.ulm_active_state) {
+                          var color = variables.ulm_card_media_player_color;
+                          return 'rgba(var(--color-' + color + '),1)';
+                        }
+                        return 'rgba(var(--color-theme),0.9)';
+                      ]]]
+          item3:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              entity: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
+              hold_action:
+                action: >
+                  [[[
+                      return variables.ulm_card_media_player_enable_popup ? "fire-dom-event" : "more-info";
+                  ]]]
+                browser_mod:
+                  service: "browser_mod.popup"
+                  data:
+                    large: true
+                    hide_header: true
+                    content:
+                      type: "custom:button-card"
+                      template: "popup_media_player_infos"
+                      entity: "[[[ return entity.entity_id; ]]]"
+              tap_action:
+                action: "call-service"
+                service: "media_player.volume_set"
+                service_data:
+                  entity_id: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
+                  volume_level: |
+                    [[[
+                      var volume = states[entity.entity_id].attributes.volume_level;
+                      if (variables.ulm_card_media_player_enable_volume_adjust != 0) {
+                          volume = states[entity.entity_id].attributes.volume_level + variables.ulm_card_media_player_enable_volume_adjust;
+                      } else {
+                          if (states[entity.entity_id].attributes.device_class === "tv") {
+                              volume = states[entity.entity_id].attributes.volume_level + 0.01;
+                          }
+                          if (states[entity.entity_id].attributes.device_class === "speaker") {
+                              volume = states[entity.entity_id].attributes.volume_level + 0.05;
+                          }
+                          if (states[entity.entity_id].attributes.device_class === "receiver") {
+                              volume = states[entity.entity_id].attributes.volume_level + 0.025;
+                          } else {
+                              volume = states[entity.entity_id].attributes.volume_level + 0.025;
+                          }
+                      }
+                      return volume;
+                    ]]]
+              icon: "mdi:volume-plus"
+              styles:
+                card:
+                  - background-color: |
+                      [[[
+                        if(variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null){
+                          return 'rgba(0, 0, 0, 0.2)'
+                        }
+                        if(!hass.themes.darkMode && variables.ulm_card_media_player_force_background_color){
+                          if (variables.ulm_active_state){
+                            return 'rgb(250,250,250)'
+                          }
+                        }
+                        return 'rgba(var(--color-theme),0.05)'
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        if (variables.ulm_card_media_player_force_background_color && variables.ulm_active_state && !variables.ulm_card_media_player_enable_art) {
+                          var color = variables.ulm_card_media_player_color;
+                          return 'rgba(var(--color-' + color + '),0.2)';
+                        }
+                        return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+                icon:
+                  - color: |
+                      [[[
+                        if(variables.ulm_card_media_player_enable_art && states[entity.entity_id].attributes.entity_picture != null){
+                          return 'white'
+                        }
+                        if (variables.ulm_card_media_player_force_background_color && variables.ulm_active_state) {
+                          var color = variables.ulm_card_media_player_color;
+                          return 'rgba(var(--color-' + color + '),1)';
+                        }
+                        return 'rgba(var(--color-theme),0.9)';
+                      ]]]

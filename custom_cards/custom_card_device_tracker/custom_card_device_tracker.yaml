@@ -1,0 +1,92 @@
+---
+custom_card_device_tracker:
+  template:
+    - "icon_info_bg"
+    - "ulm_translation_engine"
+  tap_action:
+    action: "more-info"
+  show_label: true
+  show_name: true
+  label: "[[[ return variables.ulm_translation_state ]]]"
+  entity: "[[[ return entity; ]]]"
+  icon: "[[[ return variables.ulm_custom_card_device_tracker_icon; ]]]"
+  styles:
+    icon:
+      - color: >
+          [[[
+              return entity.state === "not_home" ?
+              "rgba(var(--color-theme),0.9)":
+              "rgba(var(--color-green),1)";
+          ]]]
+    custom_fields:
+      tracker_1:
+        - border-radius: "50%"
+        - position: "absolute"
+        - left: "38px"
+        - top: "8px"
+        - height: "16px"
+        - width: "16px"
+        - border: "2px solid var(--card-background-color)"
+        - font-size: "12px"
+        - line-height: "14px"
+        - background-color: >
+            [[[
+              if (variables.ulm_custom_card_device_tracker_tracker_1_entity) {
+                if (states[variables.ulm_custom_card_device_tracker_tracker_1_entity].state !== 'home') {
+                  return "rgba(var(--color-green),1)";
+                } else {
+                  return "rgba(var(--color-blue),1)";
+                }
+              }
+            ]]]
+      tracker_2:
+        - border-radius: "50%"
+        - position: "absolute"
+        - left: "38px"
+        - top: "38px"
+        - height: "16px"
+        - width: "16px"
+        - border: "2px solid var(--card-background-color)"
+        - font-size: "12px"
+        - line-height: "14px"
+        - background-color: >
+            [[[
+              if (variables.ulm_custom_card_device_tracker_tracker_2_entity) {
+                if (states[variables.ulm_custom_card_device_tracker_tracker_2_entity].state !== 'home') {
+                  return "rgba(var(--color-green),1)";
+                } else {
+                  return "rgba(var(--color-blue),1)";
+                }
+              }
+            ]]]
+  custom_fields:
+    tracker_1: >
+      [[[
+        if (variables.ulm_custom_card_device_tracker_tracker_1_entity) {
+          let state = states[variables.ulm_custom_card_device_tracker_tracker_1_entity].state;
+          let icon = state === 'home' ? 'mdi:home-variant' : 'mdi:home-minus';
+          let type = variables.ulm_custom_card_device_tracker_tracker_1_type
+
+          if (type == 'bluetooth') {
+            icon = state === 'home' ? 'mdi:bluetooth': 'mdi:bluetooth-off';
+          } else if (type == 'lan') {
+            icon = state === 'home' ? 'mdi:lan-connect' : 'mdi:lan-disconnect';
+          }
+          return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+        }
+      ]]]
+    tracker_2: >
+      [[[
+        if (variables.ulm_custom_card_device_tracker_tracker_2_entity) {
+          let state = states[variables.ulm_custom_card_device_tracker_tracker_2_entity].state;
+          let icon = state === 'home' ? 'mdi:home-variant' : 'mdi:home-minus';
+          let type = variables.ulm_custom_card_device_tracker_tracker_2_type
+
+          if (type == 'bluetooth') {
+            icon = state === 'home' ? 'mdi:bluetooth': 'mdi:bluetooth-off';
+          } else if (type == 'lan') {
+            icon = state === 'home' ? 'mdi:lan-connect' : 'mdi:lan-disconnect';
+          }
+          return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+        }
+      ]]]

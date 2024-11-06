@@ -1,0 +1,49 @@
+---
+popup_button_light_more_options:
+  template:
+    - "popup_button"
+    - "ulm_translation_engine"
+  name: "[[[ return variables.ulm_translation_more_options; ]]]"
+  icon: "mdi:dots-horizontal-circle-outline"
+  styles:
+    name:
+      - text-transform: "uppercase"
+      - color: "rgba(var(--color-theme),0.5)"
+    img_cell:
+      - background: "none"
+      - box-shadow: "none"
+      - border: "1px solid rgba(var(--color-theme),0.25)"
+  tap_action:
+    action: "fire-dom-event"
+    browser_mod:
+      service: "browser_mod.popup"
+      data:
+        hide_header: true
+        style: |
+          --popup-background-color: var(--primary-background-color);
+          --popup-border-radius: 20px;
+          --popup-padding-x: 24px;
+          --popup-padding-y: 20px;
+          --popup-max-width: auto
+          --popup-min-width: 800px;
+        size: >
+          [[[
+            const mediaQuery = window.matchMedia('(max-width: 800px)')
+            if (mediaQuery.matches) {
+              return 'fullscreen'
+            }
+          ]]]
+        content:
+          type: "custom:button-card"
+          template: >
+            [[[
+              if(entity.attributes?.effect_list){
+                return 'popup_light_effect'
+              }
+              if(variables?.ulm_card_light_color_palette){
+                return 'popup_light_palette'
+              }
+            ]]]
+          entity: "[[[ return entity.entity_id; ]]]"
+          variables:
+            ulm_card_light_color_palette: "[[[ return variables?.ulm_card_light_color_palette ]]]"

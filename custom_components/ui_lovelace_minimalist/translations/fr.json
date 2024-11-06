@@ -1,0 +1,60 @@
+{
+    "title": "UI Lovelace Minimalist",
+    "config": {
+        "step": {
+            "user": {
+                "title": "Configuration de UI Lovelace Minimalist",
+                "description": "",
+                "data": {
+                    "community_cards_enabled": "Activer la possibilité de configurer des cartes communautaires avec cette intégration, nécessite une authentification github!"
+                }
+            },
+            "device": {
+                "title": "En attente d'activation de l'appareil"
+            },
+            "reauth_confirm": {
+                "title": "Réauthentification requise",
+                "description": "Vous devez vous authentifier à nouveau avec GitHub."
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "Une seule instance UI Lovelace Minimalist est autorisée.",
+            "not_setup": "UI Lovelace Minimalist n'est pas configuré.",
+            "github": "Impossible de s'authentifier avec GitHub, réessayez plus tard.",
+            "reauth_successful": "La réauthentification a réussi."
+        },
+        "progress": {
+            "wait_for_device": "1. Ouvrir {url} \n2.Collez la clé suivante pour autoriser ULM: \n```\n{code}\n```\n"
+        }
+    },
+    "options": {
+        "step": {
+            "user": {
+                "title": "Configuration de UI Lovelace Minimalist",
+                "description": "",
+                "data": {
+                    "language": "Langue",
+                    "sidepanel_enabled": "Activer le tableau de bord dans la barre latérale.",
+                    "sidepanel_icon": "Icône dans la barre latérale",
+                    "sidepanel_title": "Titre dans la barre latérale",
+                    "adaptive_ui_enabled": "Activer le tableau de bord adaptatif avec vue splittée",
+                    "adaptive_ui_title": "Titre du TdB adaptatif dans la barre latérale",
+                    "adaptive_ui_icon": "Icône du TdB adaptatif dans la barre latérale",
+                    "theme": "Thème",
+                    "include_other_cards": "Inclure les custom-cards dépendantes.",
+                    "community_cards_enabled": "Activer la possibilité de configurer des cartes communautaires avec cette intégration, nécessite une authentification github!",
+                    "community_cards": "Sélectionnez les cartes communautaires que vous souhaitez activer."
+                }
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "Une seule instance UI Lovelace Minimalist est autorisée.",
+            "not_setup": "UI Lovelace Minimalist n'est pas configuré."
+        },
+        "error": {
+            "github_cards": "Une erreur s'est produite lors de la récupération des cartes de Github.",
+            "ack": "Vous devez confirmer toutes les déclarations.",
+            "gh_token": "Jeton Github non défini. Veuillez réinstaller cette intégration pour recommencer la procédure d'installation. (Aucune configuration personnalisée ne sera perdue)"
+        }
+    }
+}

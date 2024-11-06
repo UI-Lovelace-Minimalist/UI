@@ -1,0 +1,32 @@
+---
+### Icon Only ###
+icon_only:
+  color: "var(--google-grey)"
+  show_icon: true
+  show_label: true
+  show_name: false
+  styles:
+    icon:
+      - color: "rgba(var(--color-theme),0.2)"
+    label:
+      - justify-self: "start"
+      - align-self: "start"
+      - font-weight: "bold"
+      - font-size: "12px"
+      - filter: "opacity(40%)"
+      - margin-left: "12px"
+    img_cell:
+      - background-color: "rgba(var(--color-theme),0.05)"
+      - border-radius: "50%"
+      - place-self: "center"
+      - width: "42px"
+      - height: "42px"
+    grid:
+      - grid-template-areas: "'i l'"
+      - grid-template-columns: "min-content auto"
+      - grid-template-rows: "min-content"
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
+  size: "20px"

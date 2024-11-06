@@ -1,0 +1,14 @@
+---
+ulm_language_variables:
+  variables:
+    ulm_currency: "€"
+    ulm_updates_available: "Päivityksiä saatavilla!"
+    ulm_no_updates_available: "Ei päivityksiä saatavilla"
+    ulm_morning: "Hyvää huomenta"
+    ulm_afternoon: "Hyvää päivää"
+    ulm_evening: "Hyvää iltaa"
+    ulm_hello: "Hei"
+    ulm_volume: "Äänenvoimakkuus"
+    ulm_popups_color: "Väri"
+    ulm_radar: "Tutka"
+    ulm_popup_total: "Yhteensä"
