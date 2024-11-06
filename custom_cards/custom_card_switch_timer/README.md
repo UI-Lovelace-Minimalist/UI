@@ -38,7 +38,7 @@ Author: gh0stblizz4rd - 2024 Version 1.0.0
   icon: "mdi:fan"
   variables:
     ulm_custom_card_switch_timer_timer_entity: switch_timer.roof_fan_switch
-	ulm_custom_card_switch_timer_power_sensor: sensor.roof_fan_active_power
+    ulm_custom_card_switch_timer_power_sensor: sensor.roof_fan_active_power
   entity: switch.roof_fan_switch
 ```
 
