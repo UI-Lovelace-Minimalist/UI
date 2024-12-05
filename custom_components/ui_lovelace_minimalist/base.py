@@ -365,10 +365,13 @@ class UlmBase:
 
             # Register
             await self.hass.http.async_register_static_paths(
-                [StaticPathConfig(
-                    "/ui_lovelace_minimalist/cards",
-                    self.hass.config.path(f"{self.integration_dir}/cards"),
-                    True)]
+                [
+                    StaticPathConfig(
+                        "/ui_lovelace_minimalist/cards",
+                        self.hass.config.path(f"{self.integration_dir}/cards"),
+                        True,
+                    )
+                ]
             )
 
         except Exception as exception:
