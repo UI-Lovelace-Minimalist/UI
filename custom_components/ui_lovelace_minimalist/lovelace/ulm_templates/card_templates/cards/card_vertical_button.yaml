@@ -59,8 +59,8 @@ card_vertical_button:
         card:
           - background-color: "[[[ return `rgba(var(--color-background-${variables.ulm_card_vertical_button_color}), var(--opacity-bg))`; ]]]"
   tap_action:
-    action: "call-service"
-    service: |
+    action: "perform-action"
+    perform_action: |
       [[[
         if( entity.entity_id.startsWith("input_select.") )
           return "input_select.select_option";
@@ -85,7 +85,7 @@ card_vertical_button:
         // If we need to support other entities we can add these options here.
         return "";
       ]]]
-    service_data: |
+    target: |
       [[[
         var obj;
         if( entity.entity_id.startsWith("input_select.") )

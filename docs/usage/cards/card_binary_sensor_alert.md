@@ -30,6 +30,13 @@ The `binary-sensor-card` is to show the state (on/off, open/close, etc.) of a bi
     variables:
       ulm_show_last_changed: true
     ```
+!!! Warning "⚠️ Breaking Change `v1.3.8`"
+
+    `ulm_show_last_changed` is renamed to `ulm_card_binary_sensor_show_last_changed`:
+    ```yaml
+    variables:
+      ulm_card_binary_sensor_show_last_changed: true
+    ```
 
 ## Usage
 
@@ -38,7 +45,7 @@ The `binary-sensor-card` is to show the state (on/off, open/close, etc.) of a bi
   template: card_binary_sensor_alert
   variables:
     ulm_card_binary_sensor_alert: true
-    ulm_show_last_changed: true
+    ulm_card_binary_sensor_show_last_changed: true
   entity: binary_sensor.garage_door
 ```
 

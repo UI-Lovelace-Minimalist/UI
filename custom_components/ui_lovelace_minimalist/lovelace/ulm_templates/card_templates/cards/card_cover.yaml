@@ -391,9 +391,9 @@ card_cover:
                     icon:
                       - color: "rgba(var(--color-theme),0.4)"
               tap_action:
-                action: "call-service"
-                service: "cover.close_cover"
-                service_data:
+                action: "perform-action"
+                perform_action: "cover.close_cover"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
               icon: >
                 [[[
@@ -441,9 +441,9 @@ card_cover:
                         return 'rgba(var(--color-theme),0.9)';
                       ]]]
               tap_action:
-                action: "call-service"
-                service: "cover.stop_cover"
-                service_data:
+                action: "perform-action"
+                perform_action: "cover.stop_cover"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
               icon: "mdi:stop"
           item3:
@@ -506,9 +506,9 @@ card_cover:
                     icon:
                       - color: "rgba(var(--color-theme),0.4)"
               tap_action:
-                action: "call-service"
-                service: "cover.open_cover"
-                service_data:
+                action: "perform-action"
+                perform_action: "cover.open_cover"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
               icon: >-
                 [[[
@@ -556,10 +556,11 @@ card_cover:
                         return 'rgba(var(--color-theme),0.9)';
                       ]]]
               tap_action:
-                action: "call-service"
-                service: "cover.set_cover_position"
-                service_data:
+                action: "perform-action"
+                perform_action: "cover.set_cover_position"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   position: "[[[ return variables.ulm_card_cover_favorite_percentage ]]]"
               icon: "mdi:star"
     item3:
@@ -695,9 +696,9 @@ card_cover:
                     icon:
                       - color: "rgba(var(--color-theme),0.4)"
               tap_action:
-                action: "call-service"
-                service: "cover.close_cover_tilt"
-                service_data:
+                action: "perform-action"
+                perform_action: "cover.close_cover_tilt"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
               icon: "mdi:arrow-bottom-left"
           item2:
@@ -735,9 +736,9 @@ card_cover:
                         return 'rgba(var(--color-theme),0.9)';
                       ]]]
               tap_action:
-                action: "call-service"
-                service: "cover.stop_cover_tilt"
-                service_data:
+                action: "perform-action"
+                perform_action: "cover.stop_cover_tilt"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
               icon: "mdi:stop"
           item3:
@@ -800,8 +801,8 @@ card_cover:
                     icon:
                       - color: "rgba(var(--color-theme),0.4)"
               tap_action:
-                action: "call-service"
-                service: "cover.open_cover_tilt"
-                service_data:
+                action: "perform-action"
+                perform_action: "cover.open_cover_tilt"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
               icon: "mdi:arrow-top-right"

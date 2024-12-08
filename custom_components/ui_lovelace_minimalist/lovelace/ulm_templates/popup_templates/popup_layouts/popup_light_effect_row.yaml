@@ -17,8 +17,9 @@ popup_light_effect_row:
         name:
           - color: "rgba(var(--color-blue),1)"
   tap_action:
-    action: "call-service"
-    service: "light.turn_on"
-    service_data:
+    action: "perform-action"
+    perform_action: "light.turn_on"
+    target:
       entity_id: "[[[ return entity.entity_id; ]]]"
+    data:
       effect: "[[[ return entity.attributes.effect_list[variables.ulm_popup_light_effect_entity_idx]; ]]]"

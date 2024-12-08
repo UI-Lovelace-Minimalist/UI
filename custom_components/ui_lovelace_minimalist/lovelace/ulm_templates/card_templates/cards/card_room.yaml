@@ -6,11 +6,12 @@ card_room:
     label_use_temperature: true
     label_use_brightness: false
   double_tap_action:
-    action: "call-service"
-    service: "input_select.select_option"
-    service_data:
-      option: "[[[ return variables.ulm_input_select_option ]]]"
+    action: "perform-action"
+    perform_action: "input_select.select_option"
+    target:
       entity_id: "[[[ return variables.ulm_input_select ]]]"
+    data:
+      option: "[[[ return variables.ulm_input_select_option ]]]"
   color: "var(--google-grey-500)"
   size: "45%"
   aspect_ratio: "1/1"
@@ -207,15 +208,15 @@ widget_icon_room:
     entity: "[[[ return variables.tap_action.entity; ]]]"
     navigation_path: "[[[ return variables.tap_action.navigation_path; ]]]"
     url_path: "[[[ return variables.tap_action.url_path; ]]]"
-    service: "[[[ return variables.tap_action.service; ]]]"
-    service_data: "[[[ return variables.tap_action.service_data; ]]]"
+    perform_action: "[[[ return variables.tap_action.service; ]]]"
+    target: "[[[ return variables.tap_action.service_data; ]]]"
   hold_action:
     action: "[[[ return variables?.hold_action?.action ? variables.hold_action.action : 'none'; ]]]"
     entity: "[[[ return variables.hold_action.entity; ]]]"
     navigation_path: "[[[ return variables.hold_action.navigation_path; ]]]"
     url_path: "[[[ return variables.hold_action.url_path; ]]]"
-    service: "[[[ return variables.hold_action.service; ]]]"
-    service_data: "[[[ return variables.hold_action.service_data; ]]]"
+    perform_action: "[[[ return variables.hold_action.service; ]]]"
+    target: "[[[ return variables.hold_action.service_data; ]]]"
   size: "15px"
   color: "var(--google-grey)"
   show_icon: true

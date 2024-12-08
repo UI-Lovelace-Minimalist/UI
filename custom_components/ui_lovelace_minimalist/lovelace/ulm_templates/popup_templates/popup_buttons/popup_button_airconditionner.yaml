@@ -16,8 +16,9 @@ popup_button_airconditionner:
           - transform: "scale(0.95)"
       value: "[[[ return variables.ulm_popup_button_airconditionner_state ]]]"
   tap_action:
-    action: "call-service"
-    service: "climate.set_hvac_mode"
-    service_data:
+    action: "perform-action"
+    perform_action: "climate.set_hvac_mode"
+    target:
       entity_id: "climate.hvac"
+    data:
       hvac_mode: "[[[ return variables.ulm_popup_button_airconditionner_state ]]]"

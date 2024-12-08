@@ -284,9 +284,9 @@ card_scenes_pill_welcome:
               if(variables?.nav_path){
                 return "navigate"
               }
-              return "call-service"
+              return "perform-action"
             ]]]
-          service: >
+          perform_action: >
             [[[
               if(entity?.entity_id.startsWith("scene.")){
                 return "scene.turn_on"
@@ -303,7 +303,7 @@ card_scenes_pill_welcome:
               return "homeassistant.toggle"
             ]]]
           navigation_path: "[[[ return variables?.nav_path; ]]]"
-          service_data: |
+          target: |
             [[[
               if (variables.service_data){
                 return variables.service_data
@@ -371,10 +371,10 @@ card_scenes_pill_welcome:
               if(variables?.nav_path){
                 return "navigate"
               }
-              return "call-service"
+              return "perform-action"
             ]]]
           navigation_path: "[[[ return variables?.nav_path; ]]]"
-          service: >
+          perform_action: >
             [[[
               if(entity?.entity_id.startsWith("scene.")){
                 return "scene.turn_on"
@@ -390,7 +390,7 @@ card_scenes_pill_welcome:
               }
               return "homeassistant.toggle"
             ]]]
-          service_data: |
+          target: |
             [[[
               if (variables.service_data){
                 return variables.service_data
@@ -451,9 +451,9 @@ card_topbar_welcome:
               icon:
                 - color: "rgb(var(--color-theme))"
         tap_action:
-          action: "call-service"
-          service: "input_boolean.toggle"
-          service_data:
+          action: "perform-action"
+          perform_action: "input_boolean.toggle"
+          target:
             entity_id: "[[[ return variables.ulm_card_welcome_scenes_collapse ]]]"
     item2:
       card:

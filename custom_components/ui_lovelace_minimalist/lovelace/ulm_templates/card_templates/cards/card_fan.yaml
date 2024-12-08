@@ -263,10 +263,11 @@ card_fan:
               icon: "[[[ return variables.ulm_card_fan_button_icon ]]]"
               entity: "[[[ return entity.entity_id ]]]"
               tap_action:
-                action: "call-service"
-                service: "[[[ return variables.ulm_card_fan_button_service ]]]"
-                service_data:
+                action: "perform-action"
+                perform_action: "[[[ return variables.ulm_card_fan_button_service ]]]"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   oscillating: "[[[ return !entity.attributes[variables.ulm_card_fan_oscillate_attribute] ]]]"
               state:
                 - operator: "template"

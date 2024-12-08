@@ -279,10 +279,11 @@ popup_thermostat_temperature:
               template: "widget_icon"
               icon: "mdi:autorenew"
               tap_action:
-                action: "call-service"
-                service: "climate.set_hvac_mode"
-                service_data:
+                action: "perform-action"
+                perform_action: "climate.set_hvac_mode"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   hvac_mode: "auto"
               styles:
                 card:
@@ -305,10 +306,11 @@ popup_thermostat_temperature:
               template: "widget_icon"
               icon: "mdi:fire"
               tap_action:
-                action: "call-service"
-                service: "climate.set_hvac_mode"
-                service_data:
+                action: "perform-action"
+                perform_action: "climate.set_hvac_mode"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   hvac_mode: "heat"
               styles:
                 card:
@@ -331,10 +333,11 @@ popup_thermostat_temperature:
               template: "widget_icon"
               icon: "mdi:snowflake"
               tap_action:
-                action: "call-service"
-                service: "climate.set_hvac_mode"
-                service_data:
+                action: "perform-action"
+                perform_action: "climate.set_hvac_mode"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   hvac_mode: "cool"
               styles:
                 card:
@@ -357,10 +360,11 @@ popup_thermostat_temperature:
               template: "widget_icon"
               icon: "mdi:water"
               tap_action:
-                action: "call-service"
-                service: "climate.set_hvac_mode"
-                service_data:
+                action: "perform-action"
+                perform_action: "climate.set_hvac_mode"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   hvac_mode: "dry"
               styles:
                 card:
@@ -383,10 +387,11 @@ popup_thermostat_temperature:
               template: "widget_icon"
               icon: "mdi:fan"
               tap_action:
-                action: "call-service"
-                service: "climate.set_hvac_mode"
-                service_data:
+                action: "perform-action"
+                perform_action: "climate.set_hvac_mode"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   hvac_mode: "fan_only"
               styles:
                 card:
@@ -409,10 +414,11 @@ popup_thermostat_temperature:
               template: "widget_icon"
               icon: "mdi:sun-snowflake"
               tap_action:
-                action: "call-service"
-                service: "climate.set_hvac_mode"
-                service_data:
+                action: "perform-action"
+                perform_action: "climate.set_hvac_mode"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   hvac_mode: "heat_cool"
               styles:
                 card:
@@ -435,10 +441,11 @@ popup_thermostat_temperature:
               template: "widget_icon"
               icon: "mdi:toggle-switch-off"
               tap_action:
-                action: "call-service"
-                service: "climate.set_preset_mode"
-                service_data:
+                action: "perform-action"
+                perform_action: "climate.set_preset_mode"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   preset_mode: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.includes('none') ? 'none' : 'None'} ]]]"
               styles:
                 card:
@@ -462,10 +469,11 @@ popup_thermostat_temperature:
               template: "widget_icon"
               icon: "mdi:home-switch-outline"
               tap_action:
-                action: "call-service"
-                service: "climate.set_preset_mode"
-                service_data:
+                action: "perform-action"
+                perform_action: "climate.set_preset_mode"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   preset_mode: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.includes('away') ? 'away' : 'Away'} ]]]"
               styles:
                 card:
@@ -489,10 +497,11 @@ popup_thermostat_temperature:
               template: "widget_icon"
               icon: "mdi:car-seat-cooler"
               tap_action:
-                action: "call-service"
-                service: "climate.set_preset_mode"
-                service_data:
+                action: "perform-action"
+                perform_action: "climate.set_preset_mode"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   preset_mode: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.includes('comfort') ? 'comfort' : 'Comfort'} ]]]"
               styles:
                 card:
@@ -516,10 +525,11 @@ popup_thermostat_temperature:
               template: "widget_icon"
               icon: "mdi:home"
               tap_action:
-                action: "call-service"
-                service: "climate.set_preset_mode"
-                service_data:
+                action: "perform-action"
+                perform_action: "climate.set_preset_mode"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   preset_mode: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.includes('home') ? 'home' : 'Home'} ]]]"
               styles:
                 card:
@@ -543,10 +553,11 @@ popup_thermostat_temperature:
               template: "widget_icon"
               icon: "mdi:sleep"
               tap_action:
-                action: "call-service"
-                service: "climate.set_preset_mode"
-                service_data:
+                action: "perform-action"
+                perform_action: "climate.set_preset_mode"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   preset_mode: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.includes('sleep') ? 'sleep' : 'Sleep'} ]]]"
               styles:
                 card:
@@ -570,10 +581,11 @@ popup_thermostat_temperature:
               template: "widget_icon"
               icon: "mdi:ticket"
               tap_action:
-                action: "call-service"
-                service: "climate.set_preset_mode"
-                service_data:
+                action: "perform-action"
+                perform_action: "climate.set_preset_mode"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   preset_mode: "[[[ if ('preset_mode' in entity.attributes) {return entity.attributes.preset_mode.includes('activity') ? 'activity' : 'Activity'} ]]]"
               styles:
                 card:

@@ -16,8 +16,9 @@ popup_light_palette_row:
         name:
           - color: "rgba(var(--color-blue),1)"
   tap_action:
-    action: "call-service"
-    service: "select.select_option"
-    service_data:
+    action: "perform-action"
+    perform_action: "select.select_option"
+    target:
       entity_id: "[[[ return entity.entity_id; ]]]"
+    data:
       option: "[[[ return entity.attributes.options[variables.ulm_popup_light_palette_entity_idx]; ]]]"
