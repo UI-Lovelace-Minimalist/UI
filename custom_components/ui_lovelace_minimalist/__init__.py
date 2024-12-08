@@ -113,18 +113,7 @@ async def async_initialize_integration(
 
 async def async_setup(hass: HomeAssistant, config: dict):
     """Set up this integration using UI."""
-    if config.get(DOMAIN) is None:
-        # We get here if the integration is set up using config flow
-        return True
-
-    hass.data.setdefault(DOMAIN_DATA, config[DOMAIN])
-    hass.async_create_task(
-        hass.config_entries.flow.async_init(
-            DOMAIN, context={"source": SOURCE_IMPORT}, data=hass.data[DOMAIN_DATA]
-        )
-    )
-    # Return boolean to indicate that initialization was successful.
-    return True
+    return await async_initialize_integration(hass=hass, config=config)
 
 
 async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> bool:
@@ -144,6 +133,13 @@ async def async_remove_entry(hass: HomeAssistant, config_entry: ConfigEntry):
     #  - themes
     #  - blueprints
     async_remove_panel(hass, "ui-lovelace-minimalist")
+
+
+async def async_reload_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> None:
+    """Reload Integration."""
+    _LOGGER.debug("Reload the config entry")
+
+    await async_setup_entry(hass, config_entry)
 
 
 async def config_entry_update_listener(
