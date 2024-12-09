@@ -82,6 +82,11 @@ card_vertical_button:
           return "script.toggle";
         if( entity.entity_id.startsWith("button.") )
           return "button.press";
+        if( entity.entity_id.startsWith("lock.") )
+          if(entity.state == "locked")
+            return "lock.unlock";
+          else
+            return "lock.lock";
         // If we need to support other entities we can add these options here.
         return "";
       ]]]
