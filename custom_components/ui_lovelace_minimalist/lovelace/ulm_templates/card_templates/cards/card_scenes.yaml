@@ -1,0 +1,428 @@
+---
+card_scenes:
+  show_icon: false
+  show_name: true
+  show_label: false
+  variables:
+    entity_1:
+      entity_id: ""
+      color: >
+        [[[
+          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
+    entity_2:
+      entity_id: ""
+      color: >
+        [[[
+          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
+    entity_3:
+      entity_id: ""
+      color: >
+        [[[
+          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
+    entity_4:
+      entity_id: ""
+      color: >
+        [[[
+          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
+    entity_5:
+      entity_id: ""
+      color: >
+        [[[
+          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
+    entity_6:
+      entity_id: ""
+      color: >
+        [[[
+          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
+    entity_7:
+      entity_id: ""
+      color: >
+        [[[
+          var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          return color;
+        ]]]
+  styles:
+    grid:
+      - grid-template-areas: >
+          [[[
+            var pills = []
+            const entities = [variables.entity_1.entity_id, variables.entity_2.entity_id, variables.entity_3.entity_id, variables.entity_4.entity_id, variables.entity_5.entity_id, variables.entity_6.entity_id, variables.entity_7.entity_id]
+            function entity_check(item) {
+                if (item != "") {
+                    pills.push("item" + (pills.length+1))
+                }
+            }
+            entities.forEach(entity_check)
+            return pills.join(" ")
+          ]]]
+      - display: "flex"
+      - grid-template-rows: "min-content"
+      - justify-content: "space-evenly"
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
+      - overflow: "visible"
+    custom_fields:
+      item1:
+        - display: "[[[ return (variables.entity_1.entity_id != '') ? 'block' : 'none' ]]]"
+      item2:
+        - display: "[[[ return (variables.entity_2.entity_id != '') ? 'block' : 'none' ]]]"
+      item3:
+        - display: "[[[ return (variables.entity_3.entity_id != '') ? 'block' : 'none' ]]]"
+      item4:
+        - display: "[[[ return (variables.entity_4.entity_id != '') ? 'block' : 'none' ]]]"
+      item5:
+        - display: "[[[ return (variables.entity_5.entity_id != '') ? 'block' : 'none' ]]]"
+      item6:
+        - display: "[[[ return (variables.entity_6.entity_id != '') ? 'block' : 'none' ]]]"
+      item7:
+        - display: "[[[ return (variables.entity_7.entity_id != '') ? 'block' : 'none' ]]]"
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        template: "card_scenes_pill"
+        variables: "[[[ return variables.entity_1; ]]]"
+        entity: "[[[ return variables.entity_1.entity_id ]]]"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_1.entity_id ]]]"
+              icon: "[[[ return variables.entity_1.icon ]]]"
+          item2:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_1.entity_id ]]]"
+              name: "[[[ return variables.entity_1.name ]]]"
+    item2:
+      card:
+        type: "custom:button-card"
+        template: "card_scenes_pill"
+        variables: "[[[ return variables.entity_2; ]]]"
+        entity: "[[[ return variables.entity_2.entity_id ]]]"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_2.entity_id ]]]"
+              icon: "[[[ return variables.entity_2.icon ]]]"
+          item2:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_2.entity_id ]]]"
+              name: "[[[ return variables.entity_2.name ]]]"
+    item3:
+      card:
+        type: "custom:button-card"
+        template: "card_scenes_pill"
+        variables: "[[[ return variables.entity_3; ]]]"
+        entity: "[[[ return variables.entity_3.entity_id ]]]"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_3.entity_id ]]]"
+              icon: "[[[ return variables.entity_3.icon ]]]"
+          item2:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_3.entity_id ]]]"
+              name: "[[[ return variables.entity_3.name ]]]"
+    item4:
+      card:
+        type: "custom:button-card"
+        template: "card_scenes_pill"
+        variables: "[[[ return variables.entity_4; ]]]"
+        entity: "[[[ return variables.entity_4.entity_id ]]]"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_4.entity_id ]]]"
+              icon: "[[[ return variables.entity_4.icon ]]]"
+          item2:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_4.entity_id ]]]"
+              name: "[[[ return variables.entity_4.name ]]]"
+    item5:
+      card:
+        type: "custom:button-card"
+        template: "card_scenes_pill"
+        variables: "[[[ return variables.entity_5; ]]]"
+        entity: "[[[ return variables.entity_5.entity_id ]]]"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_5.entity_id ]]]"
+              icon: "[[[ return variables.entity_5.icon ]]]"
+          item2:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_5.entity_id ]]]"
+              name: "[[[ return variables.entity_5.name ]]]"
+    item6:
+      card:
+        type: "custom:button-card"
+        template: "card_scenes_pill"
+        variables: "[[[ return variables.entity_6; ]]]"
+        entity: "[[[ return variables.entity_6.entity_id ]]]"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_6.entity_id ]]]"
+              icon: "[[[ return variables.entity_6.icon ]]]"
+          item2:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_6.entity_id ]]]"
+              name: "[[[ return variables.entity_6.name ]]]"
+    item7:
+      card:
+        type: "custom:button-card"
+        template: "card_scenes_pill"
+        variables: "[[[ return variables.entity_7; ]]]"
+        entity: "[[[ return variables.entity_7.entity_id ]]]"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_7.entity_id ]]]"
+              icon: "[[[ return variables.entity_7.icon ]]]"
+          item2:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return variables.entity_7.entity_id ]]]"
+              name: "[[[ return variables.entity_7.name ]]]"
+
+card_scenes_pill:
+  show_icon: false
+  show_label: false
+  show_name: false
+  state:
+    - operator: "template"
+      value: >
+        [[[
+          if (variables?.forced == true) {
+            return false
+          } else {
+            return (entity.state !== 'on' && entity.state !== 'playing' && entity.state != variables?.state)
+          }
+        ]]]
+      styles:
+        card:
+          - overflow: "visible"
+          - box-shadow: "none"
+  styles:
+    grid:
+      - grid-template-areas: "'item1' 'item2'"
+      - grid-template-columns: "min-content"
+      - grid-template-rows: "1fr 1fr"
+      - row-gap: "12px"
+      - justify-items: "center"
+      - column-gap: "auto"
+    card:
+      - border-radius: "50px"
+      - place-self: "center"
+      - width: "52px"
+      - height: "84px"
+      - box-shadow: >
+          [[[
+            if (hass.themes.darkMode){
+              return "0px 2px 4px 0px rgba(0,0,0,0.80)";
+            } else {
+              return "var(--box-shadow)";
+            }
+          ]]]
+  color: "var(--google-grey)"
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        show_icon: true
+        show_label: false
+        show_name: false
+        tap_action:
+          action: >
+            [[[
+              if(variables?.nav_path){
+                return "navigate"
+              } else {
+                return "call-service"
+              }
+            ]]]
+          service: >
+            [[[
+              if(entity.entity_id.startsWith("scene.")){
+                return "scene.turn_on"
+              }
+              else if(entity.entity_id.startsWith("media_player.")){
+                return "media_player.media_play_pause"
+              }
+              else if(entity.entity_id.startsWith("input_select.")){
+                return "input_select.select_option"
+              } else {
+                return "homeassistant.toggle"
+              }
+            ]]]
+          navigation_path: "[[[ return variables?.nav_path; ]]]"
+          service_data: |
+            [[[
+              var obj;
+              if( entity.entity_id.startsWith("input_select.") )
+                obj = { entity_id: entity.entity_id, option: variables.state };
+              else
+                obj = { entity_id: entity.entity_id };
+              return obj;
+            ]]]
+        styles:
+          grid:
+            - grid-template-areas: "i"
+          icon:
+            - color: >
+                [[[
+                  var color = variables?.color
+                  var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+                  if (colors.indexOf(color) > -1) {
+                    return `rgba(var(--color-${color}), 1)`;
+                  } else {
+                    if (color.startsWith('var')) {
+                      color = getComputedStyle(document.body).getPropertyValue(color.match(/\(([^)]+)\)/)[1]);
+                    }
+                    if (/^\d/.test(color)) {
+                      return `rgb(${color})`;
+                    } else {
+                      return `${color}`;
+                    }
+                  }
+                ]]]
+            - width: "20px"
+          img_cell:
+            - background-color: >
+                [[[
+                  var color = variables?.color
+                  var colors = ['yellow', 'blue', 'red', 'purple','green', 'pink'];
+                  if (variables?.bg_color) {
+                    color = variables.bg_color
+                  }
+
+                  var opacity = 0.2
+                  if (colors.indexOf(color) > -1) {
+                    return `rgba(var(--color-${color}), ${opacity})`;
+                  } else {
+                    if (color.startsWith('var')) {
+                      color = getComputedStyle(document.body).getPropertyValue(color.match(/\(([^)]+)\)/)[1]);
+                    }
+                    if (/^\d/.test(color)) {
+                      return `rgba(${color}, ${opacity})`;
+                    } else if (color.startsWith('#') && color.length == 7) {
+                      return `${color}14`;
+                    } else {
+                      return `${color}`;
+                    }
+                  }
+                ]]]
+            - border-radius: "50%"
+            - width: "42px"
+            - height: "42px"
+          card:
+            - box-shadow: "none"
+            - border-radius: "50px"
+            - padding: "5px"
+        state:
+          - operator: "template"
+            value: >
+              [[[
+                if (variables?.forced == true) {
+                  return false
+                } else {
+                  return (entity.state !== 'on' && entity.state !== 'playing' && entity.state != variables?.state)
+                }
+              ]]]
+            styles:
+              card:
+                - overflow: "visible"
+                - box-shadow: >
+                    [[[
+                      if (hass.themes.darkMode){
+                        return "0px 2px 4px 0px rgba(0,0,0,0.80)";
+                      } else {
+                        return "var(--box-shadow)";
+                      }
+                    ]]]
+    item2:
+      card:
+        type: "custom:button-card"
+        show_icon: false
+        show_label: false
+        tap_action:
+          action: >
+            [[[
+              if(variables?.nav_path){
+                return "navigate"
+              } else {
+                return "call-service"
+              }
+            ]]]
+          navigation_path: "[[[ return variables?.nav_path; ]]]"
+          service: >
+            [[[
+              if(entity.entity_id.startsWith("scene.")){
+                return "scene.turn_on"
+              }
+              else if(entity.entity_id.startsWith("media_player.")){
+                return "media_player.media_play_pause"
+              }
+              else if(entity.entity_id.startsWith("input_select.")){
+                return "input_select.select_option"
+              } else {
+                return "homeassistant.toggle"
+              }
+            ]]]
+          service_data: |
+            [[[
+              var obj;
+              if( entity.entity_id.startsWith("input_select.") )
+                obj = { entity_id: entity.entity_id, option: variables.state };
+              else
+                obj = { entity_id: entity.entity_id };
+              return obj;
+            ]]]
+        styles:
+          grid:
+            - grid-template-areas: "n"
+          name:
+            - justify-self: "center"
+            - font-weight: "bold"
+            - font-size: "9.5px"
+            - padding-bottom: "7px"
+            - overflow: "[[[return (entity.state !== 'on' && entity.state !== 'playing' && entity.state != variables?.state) ? 'visible' : 'hidden']]]"
+          card:
+            - box-shadow: "none"
+            - padding: "0px 5px 5px 5px"
+            - margin-top: "-5px"
+            - border-radius: "50px"
+            - overflow: "[[[return (entity.state !== 'on' && entity.state !== 'playing' && entity.state != variables?.state) ? 'visible' : 'hidden']]]"
