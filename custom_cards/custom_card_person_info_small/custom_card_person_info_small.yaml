@@ -1,0 +1,148 @@
+---
+card_person_info_small:
+  template:
+    - "icon_info_bg"
+    - "ulm_translation_engine"
+  variables:
+    ulm_card_person_use_entity_picture: true
+    ulm_card_person_zone1: ""
+    ulm_card_person_zone2: ""
+    ulm_card_person_icon: "mdi:face-man"
+    ulm_address: ""
+    ulm_address_locality: ""
+    ulm_card_person_driving_entity: ""
+    ulm_card_person_battery_entity: ""
+    ulm_card_person_battery_state_entity: ""
+    ulm_card_battery_battery_level_danger: 15
+    ulm_card_battery_battery_level_warning: 30
+    ulm_card_battery_color_battery_level_danger: "var(--google-red)"
+    ulm_card_battery_color_battery_level_warning: "var(--google-yellow)"
+    ulm_card_battery_color_battery_level_ok: "var(--google-green)"
+  triggers_update: "all"
+  tap_action:
+    action: "more-info"
+    entity: "[[[ return variables.ulm_card_person_entity; ]]]"
+  hold_action:
+    action: "more-info"
+    entity: "[[[ return variables.ulm_card_person_battery_entity; ]]]"
+  show_label: true
+  show_name: true
+  label: >
+    [[[
+      if (variables.ulm_address){
+        return states[variables.ulm_address].state;
+      } else if (variables.ulm_address_locality){
+        return states[variables.ulm_address_locality].attributes.Locality;
+      }
+      else if (states[variables.ulm_card_person_driving_entity]?.state === "on") {
+        let state = states[variables.ulm_card_person_entity].state;
+        return `Driving - ${variables.ulm_translation_state}`;
+      } else {
+        let state = states[variables.ulm_card_person_entity].state;
+        return hass.resources[hass["language"]]["component.person.entity_component._.state." + state] ? hass.resources[hass["language"]]["component.person.entity_component._.state." + state] : state;
+      }
+    ]]]
+  name: "[[[ return states[variables.ulm_card_person_entity].attributes.friendly_name ]]]"
+  entity: "[[[ return variables.ulm_card_person_entity; ]]]"
+  icon: "[[[ return variables.ulm_card_person_icon; ]]]"
+  show_entity_picture: "[[[ return variables.ulm_card_person_use_entity_picture ]]]"
+  entity_picture:
+    "[[[ return variables.ulm_card_person_use_entity_picture != false ? states[variables.ulm_card_person_entity].attributes.entity_picture\
+    \ : null ]]]"
+  styles:
+    grid:
+      - grid-template-areas: "'i battery' 'n n' 'l l'"
+    icon:
+      - color: "rgba(var(--color-theme),0.9)"
+      - width: "42px"
+      - place-self: "start"
+    name:
+      - place-self: "center"
+      - margin-left: 0
+      - margin-top: "6%"
+    label:
+      - place-self: "center"
+      - margin-left: 0
+      - text-transform: "capitalize"
+    custom_fields:
+      notification:
+        - position: "absolute"
+        - top: "7%"
+        - left: "38px"
+        - height: "16px"
+        - width: "16px"
+        - border: "2px solid var(--card-background-color)"
+        - border-radius: "50%"
+        - font-size: "12px"
+        - line-height: "14px"
+        - background-color: >
+            [[[
+              if (states[variables.ulm_card_person_entity].state == 'home') {
+                return "rgba(var(--color-blue),1)";
+              } else {
+                return "rgba(var(--color-yellow),1)";
+              }
+            ]]]
+      battery:
+        - width: "30px"
+        - height: "30px"
+        - place-self: "end"
+        - align-self: "center"
+        - background-color: "rgba(var(--primary-background-color), 0.5)"
+        - border: "2px solid var(--card-background-color)"
+        - border-radius: "50%"
+
+  custom_fields:
+    notification: >
+      [[[
+        let height = "11px";
+        let width = "11px";
+        if (states[variables.ulm_card_person_entity].state !== 'home') {
+          if (states[variables.ulm_card_person_entity].state === states[variables.ulm_card_person_zone1]?.attributes?.friendly_name) {
+            var icon = states[variables.ulm_card_person_zone1].attributes.icon !== null ? states[variables.ulm_card_person_zone1].attributes.icon : 'mdi:help-circle'
+            return `<ha-icon icon="' + icon + '" style="height: ${height}; width: ${width}; color: var(--primary-background-color);"></ha-icon>`;
+          } else if (states[variables.ulm_card_person_entity].state === states[variables.ulm_card_person_zone2]?.attributes?.friendly_name) {
+            var icon = states[variables.ulm_card_person_zone2].attributes.icon !== null ? states[variables.ulm_card_person_zone2].attributes.icon : 'mdi:help-circle'
+            return `<ha-icon icon="' + icon + '" style="height: ${height}; width: ${width}; color: var(--primary-background-color);"></ha-icon>`;
+          } else {
+            return `<ha-icon icon="mdi:home-minus" style="height: ${height}; width: ${width}; color: var(--primary-background-color);"></ha-icon>`;
+          }
+        } else {
+          return `<ha-icon icon="mdi:home-variant" style="height: ${height}; width: ${width}; color: var(--primary-background-color);"></ha-icon>`;
+        }
+      ]]]
+    battery: >
+      [[[
+        if (states[variables.ulm_card_person_battery_entity]?.state) {
+          let battery_level = states[variables.ulm_card_person_battery_entity]?.state;
+          battery_level = Number(battery_level);
+          let charging = states[variables.ulm_card_person_battery_state_entity]?.state.toLowerCase() === "charging";
+
+          var infix = charging ? "-charging" : ""
+          let icon = "mdi:help-circle-outline";
+          if (battery_level == 100) {
+            icon = "mdi:battery";
+          } else if (battery_level < 10) {
+            icon = "mdi:battery" + infix + "-outline";
+          } else if (battery_level == "unknown" || battery_level == "unavailable") {
+            icon = "mdi:battery-off";
+          } else {
+            icon = "mdi:battery" + infix + "-" + Math.floor(battery_level / 10) * 10;
+          }
+
+          let color = variables.ulm_card_battery_color_battery_level_ok;
+          if (battery_level !== "unavailable") {
+            if (battery_level <= variables.ulm_card_battery_battery_level_danger) {
+              color = variables.ulm_card_battery_color_battery_level_danger;
+            } else if (battery_level <= variables.ulm_card_battery_battery_level_warning) {
+              color = variables.ulm_card_battery_color_battery_level_warning;
+            } else {
+              color = variables.ulm_card_battery_color_battery_level_ok;
+            }
+          }
+
+          return `
+            <ha-icon icon="${icon}" style="height: 27px; width: 27px; color: ${color};"></ha-icon>
+          `;
+        }
+      ]]]
