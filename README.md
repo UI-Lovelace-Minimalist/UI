@@ -12,8 +12,8 @@
 > 
 > If you're passionate about this project and would like to take over its development and community management, we’d love to hear from you!
 > 
-> Join us on Discord to discuss further: [Thread Message](https://discord.com/channels/923363055444832296/928986459975876668/1314292139139534979)
-> Or reach out on GitHub Discussions: [GitHub discussion](https://github.com/UI-Lovelace-Minimalist/UI/discussions/1560)
+> - Join us on Discord to discuss further: [Thread Message](https://discord.com/channels/923363055444832296/928986459975876668/1314292139139534979)
+> - Or reach out on GitHub Discussions: [GitHub discussion](https://github.com/UI-Lovelace-Minimalist/UI/discussions/1560)
 > 
 > Thank you for considering helping keep this project alive and thriving! 🙌
 
