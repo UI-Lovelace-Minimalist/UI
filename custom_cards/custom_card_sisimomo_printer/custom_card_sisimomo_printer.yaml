@@ -55,19 +55,16 @@ custom_card_sisimomo_printer:
           s.color = strColor;
           return s.color !== '';
         }
-
         let toner_info_available = true;
         if (variables.cartridges !== undefined ? Array.isArray(variables.cartridges) && variables.cartridges.length > 0 : false) {
           let errorArray = [];
           variables.cartridges.forEach(cartridge => {
             let index = variables.cartridges.indexOf(cartridge);
             let valid_cartridge_types = ['unicolor', 'tricolor']
-
             // Confirm that the label is provided.
             if (cartridge.label === undefined) {
               errorArray.push(`cartridges.[${index}].label: You must provide a value.`);
             }
-
             // Confirm that a valid cartridge type is provided, if not default to 'unicolor'
             // for backwards compatibility with older configuration files
             if (cartridge.type === undefined) {
@@ -75,7 +72,6 @@ custom_card_sisimomo_printer:
             } else if (!valid_cartridge_types.includes(cartridge.type)) {
                 errorArray.push(`cartridges.[${index}].type: You must provide a valid cartridge type`);
             }
-
             // Confirm that the color is provided and is valid color css.
             if (cartridge.color !== undefined) {
               if (cartridge.type === 'unicolor') {
@@ -95,7 +91,6 @@ custom_card_sisimomo_printer:
             } else {
               errorArray.push(`cartridges.[${index}].color: You must provide a value.`);
             }
-
             // Confirm that the entity_id is provided, is a valid entity_id, a integer and a value between 0 and 100 inclusively.
             if (cartridge.entity_id === undefined) {
               errorArray.push(`cartridges.[${index}].entity_id: You must provide a value.`);
@@ -117,7 +112,6 @@ custom_card_sisimomo_printer:
               </ul>
             </div>`;
           }
-
           if (toner_info_available) {
             return '<div class="wrapper">' +
               variables.cartridges.map(cartridge => {
@@ -140,7 +134,6 @@ custom_card_sisimomo_printer:
                     width: ${states[cartridge.entity_id].state}%;
                   `;
                 }
-
                 // Removes unnecessary whitespace from inline CSS
                 cartridge.bar_style = cartridge.bar_style.replace(/\s{2,}/g, '')
                 return `
@@ -160,7 +153,6 @@ custom_card_sisimomo_printer:
             `;
           }
         } else {
-
         }
       ]]]
   card_mod:
@@ -192,7 +184,6 @@ custom_card_sisimomo_printer:
         filter: opacity(40%);
         font-size: medium;
       }
-  
       /* Error CSS */
       div#cartridges .error-container {
         text-align: left;
