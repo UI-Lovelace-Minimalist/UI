@@ -5,6 +5,18 @@
 ![hacs installs](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Flauwbier.nl%2Fhacs%2Fui_lovelace_minimalist)
 ![Downloads](https://img.shields.io/github/downloads/UI-Lovelace-Minimalist/UI/total)
 
+> [!IMPORTANT]
+> Looking for New Maintainers!
+> 
+> This project is in need of new maintainers! The current maintainers are no longer actively working on it, and without fresh leadership, we may be forced to shut down the project and its associated Discord server.
+> 
+> If you're passionate about this project and would like to take over its development and community management, we’d love to hear from you!
+> 
+> Join us on Discord to discuss further: [Thread Message](https://discord.com/channels/923363055444832296/928986459975876668/1314292139139534979)
+> Or reach out on GitHub Discussions: [GitHub discussion](https://github.com/UI-Lovelace-Minimalist/UI/discussions/1560)
+> 
+> Thank you for considering helping keep this project alive and thriving! 🙌
+
 It's kind of hard to explain what this is, so let's call it a "theme" (in quotation marks). But one thing is for sure, it is very nice! Taking the exceptional work of tben as a basis, this repository is aimed to ease installation and maintenance of his wonderful work. You can use this interpretation of a SmartHomeUI more or less like a theme in HomeAssistant.
 
 <img src="https://raw.githubusercontent.com/UI-Lovelace-Minimalist/UI/main/docs/assets/img/example_home.png" width="200"> <img src="https://raw.githubusercontent.com/UI-Lovelace-Minimalist/UI/main/docs/assets/img/example_temperature.png" width="200"> <img src="https://raw.githubusercontent.com/UI-Lovelace-Minimalist/UI/main/docs/assets/img/example_consumption.png" width="200"> <img src="https://raw.githubusercontent.com/UI-Lovelace-Minimalist/UI/main/docs/assets/img/example_localisation.png" width="200">
