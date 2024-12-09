@@ -14,8 +14,9 @@ This is a `custom-card` to display a plant entity. Shows state of the plant and 
 
 ## Credits
 
-Author: schumijo - 2021
-Version: 1.1.0
+- Author: schumijo - 2021
+- Update 2.0.0 : Ashino - 2024
+- Version: 2.0.0
 
 ## Changelog
 
@@ -28,6 +29,11 @@ Initial release
 Fix language files for beta5
 Updated README
 </details>
+<details>
+<summary>2.0.0</summary>
+Add support to lovelace-flower-card from Olen (advanced forked version)
+Updated README
+</details>
 
 ## Usage
 
@@ -38,6 +44,10 @@ Updated README
     ulm_card_flower_entity: plant.bonsai_ficus
     ulm_card_flower_name: Bonsai Ficus
     ulm_card_flower_species: "ficus retusa"
+    ulm_card_flower_show_bars:
+        - temperature
+        - humidity
+        - moisture
 ```
 
 #### Variables
@@ -67,11 +77,30 @@ Updated README
 <td>yes</td>
 <td>The species of your plant</td>
 </tr>
+<tr>
+<td>ulm_card_flower_show_bars</td>
+<td>
+- temperature
+<br>
+- moisture
+<br>
+- humidity
+</td>
+<td>no</td>
+<td>The bar you want to display. Any of :
+<li>illuminance</li>
+<li>humidity</li>
+<li>moisture</li>
+<li>conductivity</li>
+<li>temperature</li>
+<li>dli</li>
+</td>
+</tr>
 </table>
 
 ## Requirements
 
-Need [lovelace-flower-card](https://github.com/thomasloven/lovelace-flower-card)
+Need [lovelace-flower-card](https://github.com/Olen/lovelace-flower-card)
 
 ## Template code
 
