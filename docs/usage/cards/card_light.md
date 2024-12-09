@@ -51,7 +51,7 @@ To use `popup_light` you need to set the variable `ulm_card_light_enable_popup` 
 | ulm_card_light_enable_popup_tap       | `false`         | :material-close: | Enable `popup_light` on simple icon tap                |                                               |
 | ulm_card_light_color_palette          |                 | :material-close: | Add `select` entity to control color palette               |                                               |
 | ulm_card_light_enable_buttons          | `false`               | :material-close: | Enable Preset Brightness Buttons               |
-| ulm_card_light_brightness_low/med/high          |                 | :material-close: | Override the Brightness defaults for Buttons - Percentages             |
+| ulm_card_light_brightness_low/medium/high          |                 | :material-close: | Override the Brightness defaults for Buttons - Percentages             |
 
 ## Usage
 
