@@ -18,6 +18,7 @@ from aiogithubapi import (
     GitHubRatelimitException,
 )
 from homeassistant.components.frontend import add_extra_js_url, async_remove_panel
+from homeassistant.components.http import StaticPathConfig
 from homeassistant.components.lovelace import _register_panel
 from homeassistant.components.lovelace.dashboard import LovelaceYAML
 from homeassistant.config_entries import ConfigEntry, ConfigEntryState
@@ -363,10 +364,14 @@ class UlmBase:
                     )
 
             # Register
-            self.hass.http.register_static_path(
-                "/ui_lovelace_minimalist/cards",
-                self.hass.config.path(f"{self.integration_dir}/cards"),
-                True,
+            await self.hass.http.async_register_static_paths(
+                [
+                    StaticPathConfig(
+                        "/ui_lovelace_minimalist/cards",
+                        self.hass.config.path(f"{self.integration_dir}/cards"),
+                        True,
+                    )
+                ]
             )
 
         except Exception as exception:
