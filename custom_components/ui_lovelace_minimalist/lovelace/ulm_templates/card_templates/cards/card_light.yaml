@@ -272,11 +272,11 @@ card_light:
         thumbVerticalPadding: "0px"
         thumbWidth: "12px"
         card_mod:
-        style: |
-          ha-card {
-            border-radius: 14px;
-            box-shadow: none;
-          }
+          style: |
+            ha-card {
+              border-radius: 14px;
+              box-shadow: none;
+            }
     item3:
       card:
         type: "custom:button-card"

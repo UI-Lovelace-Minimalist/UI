@@ -623,11 +623,11 @@ card_cover:
         thumbVerticalPadding: "0px"
         thumbWidth: "0px"
         card_mod:
-        style: |
-          ha-card {
-            border-radius: 14px;
-            box-shadow: none;
-          }
+          style: |
+            ha-card {
+              border-radius: 14px;
+              box-shadow: none;
+            }
     item4:
       card:
         type: "custom:button-card"
