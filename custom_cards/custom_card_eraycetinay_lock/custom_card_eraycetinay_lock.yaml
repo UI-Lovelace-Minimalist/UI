@@ -1,0 +1,115 @@
+---
+custom_card_eraycetinay_lock:
+  template:
+    - "icon_info_bg"
+    - "ulm_translation_engine"
+    - "custom_card_eraycetinay_lock_language_variables"
+  variables:
+    ulm_custom_card_eraycetinay_lock_battery_warning: 20
+    ulm_custom_card_eraycetinay_lock_battery_warning_low: 5
+  tap_action:
+    action: |
+      [[[
+        return variables.ulm_custom_card_eraycetinay_lock_tap_control ? "call-service" : "more-info";
+      ]]]
+    # only related with call-service action
+    service: |
+      [[[
+        if(variables.ulm_custom_card_eraycetinay_lock_tap_control){
+          if(variables.ulm_custom_card_eraycetinay_lock_open){
+            return "lock.open";
+          } else {
+            if (entity.state == "locked"){
+                return "lock.unlock";
+            } else if (entity.state == "unlocked"){
+              return "lock.lock";
+            }
+          }
+        }
+      ]]]
+    # only related with call-service action
+    service_data:
+      entity_id: |
+        [[[ return entity.entity_id; ]]]
+  show_label: true
+  show_name: true
+  triggers_update:
+    - "[[[ return entity.entity_id; ]]]"
+  label: "[[[ return variables.ulm_translation_state ]]]"
+  state:
+    - operator: "template"
+      value: |
+        [[[ return entity.state == ("unlocked" || "open" || "opened"); ]]]
+      styles:
+        icon:
+          - color: "rgba(var(--color-yellow),1)"
+        img_cell:
+          - background-color: "rgba(var(--color-yellow), 0.2)"
+    - operator: "template"
+      value: |
+        [[[ return entity.state == "locked" || "closed"; ]]]
+      styles:
+        icon:
+          - color: "rgba(var(--color-green),1)"
+        img_cell:
+          - background-color: "rgba(var(--color-green), 0.2)"
+  styles:
+    icon:
+      - color: "rgba(var(--color-theme),0.2)"
+    img_cell:
+      - background-color: "rgba(var(--color-theme),0.05)"
+      - border-radius: "50%"
+      - place-self: "center"
+      - width: "42px"
+      - height: "42px"
+    grid:
+      - position: "relative"
+    custom_fields:
+      notification_locked_and_opened:
+        - border-radius: "50%"
+        - position: "absolute"
+        - left: "28px"
+        - top: "-6px"
+        - height: "16px"
+        - width: "16px"
+        - border: "2px solid var(--card-background-color)"
+        - font-size: "12px"
+        - line-height: "14px"
+        - background-color: "[[[ return 'rgba(var(--color-red),1)'; ]]]"
+      notification_battery:
+        - border-radius: "50%"
+        - position: "absolute"
+        - left: "-6px"
+        - top: "-6px"
+        - height: "16px"
+        - width: "16px"
+        - border: "2px solid var(--card-background-color)"
+        - font-size: "12px"
+        - line-height: "14px"
+        - background-color: |
+            [[[
+              if (variables.ulm_custom_card_eraycetinay_lock_battery_level !== undefined) {
+                if (states[variables.ulm_custom_card_eraycetinay_lock_battery_level].state <= variables.ulm_custom_card_eraycetinay_lock_battery_warning_low) {
+                  return "rgba(var(--color-red),1)";
+                } else if (states[variables.ulm_custom_card_eraycetinay_lock_battery_level].state <= variables.ulm_custom_card_eraycetinay_lock_battery_warning) {
+                  return "rgba(var(--color-yellow),1)";
+                }
+              }
+            ]]]
+  custom_fields:
+    notification_locked_and_opened: >
+      [[[
+          if (variables.ulm_custom_card_eraycetinay_lock_door_open !== undefined && (entity.state === "locked" && states[variables.ulm_custom_card_eraycetinay_lock_door_open].state === "on")) {
+            return `<span title="${variables.ulm_custom_card_eraycetinay_lock_locked_and_opened}"><ha-icon icon="mdi:door-open" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon></span>`;
+          }
+      ]]]
+    notification_battery: >
+      [[[
+          if (variables.ulm_custom_card_eraycetinay_lock_battery_level !== undefined) {
+            if (variables.ulm_custom_card_eraycetinay_lock_battery_warning >= states[variables.ulm_custom_card_eraycetinay_lock_battery_level].state) {
+              return `<span title="${variables.ulm_custom_card_eraycetinay_lock_battery_is_at} ${states[variables.ulm_custom_card_eraycetinay_lock_battery_level].state}%">
+                        <ha-icon icon="mdi:battery-low" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>
+                      </span>`;
+            }
+          }
+      ]]]
