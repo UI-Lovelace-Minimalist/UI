@@ -7,12 +7,17 @@ chip_power_consumption:
   triggers_update:
     - "[[[ return variables.ulm_chip_electric_price ]]]"
     - "[[[ return variables.ulm_chip_electric_consumption ]]]"
+  variables:
+    ulm_chip_electric_currency_symbol_first: false
   label: |
     [[[
-      var amount = variables.ulm_chip_electric_price != "" ? true : false
-      if (amount){
-        return "⚡ " +  states[variables.ulm_chip_electric_price].state + variables.ulm_translation_currency;
+      var amount = variables.ulm_chip_electric_price != "" ? true : false;
+      var symbol_before = variables.ulm_chip_electric_currency_symbol_first === true;
+      
+      if (amount) {
+        var price = states[variables.ulm_chip_electric_price].state + variables.ulm_translation_currency;
+        return "⚡ " + (symbol_before ? variables.ulm_translation_currency + states[variables.ulm_chip_electric_price].state : states[variables.ulm_chip_electric_price].state + variables.ulm_translation_currency);
       } else {
-        return "⚡ " +  helpers.localize(states[variables.ulm_chip_electric_consumption]);
+        return "⚡ " + helpers.localize(states[variables.ulm_chip_electric_consumption]);
       }
     ]]]
