@@ -392,15 +392,22 @@ card_scenes_pill_welcome:
             ]]]
           target: |
             [[[
+              var obj;
+              if(typeof(entity) !== 'undefined' && entity !== undefined){
+                if( entity?.entity_id.startsWith("input_select.") )
+                  obj = { entity_id: entity?.entity_id };
+                return obj;
+              }
+            ]]]
+          data: |
+            [[[
               if (variables.service_data){
                 return variables.service_data
               }
               var obj;
               if(typeof(entity) !== 'undefined' && entity !== undefined){
                 if( entity?.entity_id.startsWith("input_select.") )
-                  obj = { entity_id: entity?.entity_id, option: variables.state };
-                else
-                  obj = { entity_id: entity?.entity_id };
+                  obj = { option: variables.state };
                 return obj;
               }
             ]]]
