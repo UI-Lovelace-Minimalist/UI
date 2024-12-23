@@ -1,0 +1,17 @@
+---
+ulm_language_variables:
+  variables:
+    ulm_currency: "$"
+    ulm_updates_available: "更新可用！"
+    ulm_no_updates_available: "无可用更新"
+    ulm_ophaling: "垃圾收集！"
+    ulm_geen_ophaling: "从未收集"
+    ulm_volgende_ophaling: "下一次收集"
+    ulm_morning: "早上好"
+    ulm_afternoon: "下午好"
+    ulm_evening: "晚上好"
+    ulm_hello: "你好"
+    ulm_volume: "音量"
+    ulm_popups_color: "颜色"
+    ulm_radar: "雷达"
+    ulm_popup_total: "总计"
