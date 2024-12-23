@@ -85,10 +85,11 @@ custom_card_mpse_thermostat:
               template: "widget_icon"
               icon: "mdi:arrow-down"
               tap_action:
-                action: "call-service"
-                service: "climate.set_temperature"
-                service_data:
+                action: "perform-action"
+                perform_action: "climate.set_temperature"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   temperature: "[[[ return entity.attributes.temperature - entity.attributes.target_temp_step ]]]"
           item2:
             card:
@@ -106,8 +107,9 @@ custom_card_mpse_thermostat:
               template: "widget_icon"
               icon: "mdi:arrow-up"
               tap_action:
-                action: "call-service"
-                service: "climate.set_temperature"
-                service_data:
+                action: "perform-action"
+                perform_action: "climate.set_temperature"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   temperature: "[[[ return entity.attributes.temperature + entity.attributes.target_temp_step ]]]"
