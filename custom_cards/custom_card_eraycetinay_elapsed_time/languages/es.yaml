@@ -1,11 +1,11 @@
 ---
 ulm_custom_card_eraycetinay_elapsed_time_language_variables:
   variables:
-    custom_card_eraycetinay_elapsed_time_day: "día"
-    custom_card_eraycetinay_elapsed_time_days: "días"
-    custom_card_eraycetinay_elapsed_time_hour: "hora"
-    custom_card_eraycetinay_elapsed_time_hours: "horas"
-    custom_card_eraycetinay_elapsed_time_minute: "minuto"
-    custom_card_eraycetinay_elapsed_time_minutes: "minutos"
-    custom_card_eraycetinay_elapsed_time_ago: "atrás"
-    custom_card_eraycetinay_elapsed_time_justnow: "justo ahora"
+    ulm_custom_card_eraycetinay_elapsed_time_day: "día"
+    ulm_custom_card_eraycetinay_elapsed_time_days: "días"
+    ulm_custom_card_eraycetinay_elapsed_time_hour: "hora"
+    ulm_custom_card_eraycetinay_elapsed_time_hours: "horas"
+    ulm_custom_card_eraycetinay_elapsed_time_minute: "minuto"
+    ulm_custom_card_eraycetinay_elapsed_time_minutes: "minutos"
+    ulm_custom_card_eraycetinay_elapsed_time_ago: "atrás"
+    ulm_custom_card_eraycetinay_elapsed_time_justnow: "justo ahora"

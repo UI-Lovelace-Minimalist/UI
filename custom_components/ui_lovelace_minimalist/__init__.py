@@ -119,7 +119,9 @@ async def async_setup(hass: HomeAssistant, config: dict):
 async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> bool:
     """Set up this integration using UI."""
 
-    config_entry.add_update_listener(config_entry_update_listener)
+    config_entry.async_on_unload(
+        config_entry.add_update_listener(config_entry_update_listener)
+    )
     return await async_initialize_integration(hass=hass, config_entry=config_entry)
 
 

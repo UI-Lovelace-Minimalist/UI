@@ -23,15 +23,15 @@ custom_card_eraycetinay_elapsed_time:
 
       let text = '';
       if(entity.attributes.has_date) {
-        text += days > 0 ? days + ' ' + (days > 1 ? variables.custom_card_eraycetinay_elapsed_time_days : variables.custom_card_eraycetinay_elapsed_time_day) +' ' : '';
+        text += days > 0 ? days + ' ' + (days > 1 ? variables.ulm_custom_card_eraycetinay_elapsed_time_days : variables.ulm_custom_card_eraycetinay_elapsed_time_day) +' ' : '';
       }
       if(entity.attributes.has_time) {
-        text += hours > 0 ? hours + ' ' + (hours > 1 ? variables.custom_card_eraycetinay_elapsed_time_hours : variables.custom_card_eraycetinay_elapsed_time_hour) +' ' : '';
+        text += hours > 0 ? hours + ' ' + (hours > 1 ? variables.ulm_custom_card_eraycetinay_elapsed_time_hours : variables.ulm_custom_card_eraycetinay_elapsed_time_hour) +' ' : '';
       }
       if(entity.attributes.has_time && !entity.attributes.has_date) {
-        text += minutes > 0 ? minutes + ' ' + (minutes > 1 ? variables.custom_card_eraycetinay_elapsed_time_minutes : variables.custom_card_eraycetinay_elapsed_time_minute) +' ' : '';
+        text += minutes > 0 ? minutes + ' ' + (minutes > 1 ? variables.ulm_custom_card_eraycetinay_elapsed_time_minutes : variables.ulm_custom_card_eraycetinay_elapsed_time_minute) +' ' : '';
       }
 
-      text = text.length ? text += variables.custom_card_eraycetinay_elapsed_time_ago : variables.custom_card_eraycetinay_elapsed_time_justnow;
+      text = text.length ? text += variables.ulm_custom_card_eraycetinay_elapsed_time_ago : variables.ulm_custom_card_eraycetinay_elapsed_time_justnow;
       return text;
     ]]]
