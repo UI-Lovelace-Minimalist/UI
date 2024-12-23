@@ -565,10 +565,11 @@ custom_card_haven_washer:
               type: "custom:button-card"
               template: "widget_icon"
               tap_action:
-                action: "call-service"
-                service: "input_datetime.set_datetime"
-                service_data:
+                action: "perform-action"
+                perform_action: "input_datetime.set_datetime"
+                target:
                   entity_id: "[[[ return variables.ulm_custom_card_washer_delayed_starttime; ]]]"
+                data:
                   time: >
                     [[[
                       if (!!variables.ulm_custom_card_washer_delayed_starttime
@@ -597,10 +598,11 @@ custom_card_haven_washer:
               type: "custom:button-card"
               template: "custom_card_haven_washer_delayed_text"
               tap_action:
-                action: "call-service"
-                service: "input_datetime.set_datetime"
-                service_data:
+                action: "perform-action"
+                perform_action: "input_datetime.set_datetime"
+                target:
                   entity_id: "[[[ return variables.ulm_custom_card_washer_delayed_starttime; ]]]"
+                data:
                   time: >
                     [[[
                       if (!!variables.ulm_custom_card_washer_delayed_starttime
@@ -624,10 +626,11 @@ custom_card_haven_washer:
                       }
                     ]]]
               hold_action:
-                action: "call-service"
-                service: "input_datetime.set_datetime"
-                service_data:
+                action: "perform-action"
+                perform_action: "input_datetime.set_datetime"
+                target:
                   entity_id: "[[[ variables.ulm_custom_card_washer_delayed_starttime ]]]"
+                data:
                   time: >
                     [[[
                       if (!!variables.ulm_custom_card_washer_delayed_starttime
@@ -656,10 +659,11 @@ custom_card_haven_washer:
               type: "custom:button-card"
               template: "widget_icon"
               tap_action:
-                action: "call-service"
-                service: "input_datetime.set_datetime"
-                service_data:
+                action: "perform-action"
+                perform_action: "input_datetime.set_datetime"
+                target:
                   entity_id: "[[[ return variables.ulm_custom_card_washer_delayed_starttime ]]]"
+                data:
                   time: >
                     [[[
                       if (!!variables.ulm_custom_card_washer_delayed_starttime

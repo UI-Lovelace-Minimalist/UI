@@ -405,9 +405,9 @@ card_esh_welcome_topbar:
         type: "custom:button-card"
         template: "chips"
         tap_action:
-          action: "call-service"
-          service: "input_boolean.toggle"
-          service_data:
+          action: "perform-action"
+          perform_action: "input_boolean.toggle"
+          target:
             entity_id: "[[[ return variables.ulm_card_esh_welcome_collapse ]]]"
         show_icon: true
         icon: "mdi:chevron-up"

@@ -57,8 +57,8 @@ card_scenes:
           color_icon: "[[[ return variables.entity_1.icon_color ]]]"
           color_bg: "[[[ return variables.entity_1.bg_color ]]]"
         tap_action:
-          action: "call-service"
-          service: |
+          action: "perform-action"
+          perform_action: |
             [[[
               let domain = variables.entity_1.entity_id.substr(0, variables.entity_1.entity_id.indexOf("."));
               if (domain == "automation") {
@@ -67,7 +67,7 @@ card_scenes:
                 return "homeassistant.turn_on"
               }
             ]]]
-          service_data:
+          target:
             entity_id: "[[[ return variables.entity_1.entity_id ]]]"
     item2:
       card:
@@ -80,8 +80,8 @@ card_scenes:
           color_icon: "[[[ return variables.entity_2.icon_color ]]]"
           color_bg: "[[[ return variables.entity_2.bg_color ]]]"
         tap_action:
-          action: "call-service"
-          service: |
+          action: "perform-action"
+          perform_action: |
             [[[
               let domain = variables.entity_2.entity_id.substr(0, variables.entity_2.entity_id.indexOf("."));
               if (domain == "automation") {
@@ -90,7 +90,7 @@ card_scenes:
                 return "homeassistant.turn_on"
               }
             ]]]
-          service_data:
+          target:
             entity_id: "[[[ return variables.entity_2.entity_id ]]]"
     item3:
       card:
@@ -103,8 +103,8 @@ card_scenes:
           color_icon: "[[[ return variables.entity_3.icon_color ]]]"
           color_bg: "[[[ return variables.entity_3.bg_color ]]]"
         tap_action:
-          action: "call-service"
-          service: |
+          action: "perform-action"
+          perform_action: |
             [[[
               let domain = variables.entity_3.entity_id.substr(0, variables.entity_3.entity_id.indexOf("."));
               if (domain == "automation") {
@@ -113,7 +113,7 @@ card_scenes:
                 return "homeassistant.turn_on"
               }
             ]]]
-          service_data:
+          target:
             entity_id: "[[[ return variables.entity_3.entity_id ]]]"
     item4:
       card:
@@ -126,8 +126,8 @@ card_scenes:
           color_icon: "[[[ return variables.entity_4.icon_color ]]]"
           color_bg: "[[[ return variables.entity_4.bg_color ]]]"
         tap_action:
-          action: "call-service"
-          service: |
+          action: "perform-action"
+          perform_action: |
             [[[
               let domain = variables.entity_4.entity_id.substr(0, variables.entity_4.entity_id.indexOf("."));
               if (domain == "automation") {
@@ -136,7 +136,7 @@ card_scenes:
                 return "homeassistant.turn_on"
               }
             ]]]
-          service_data:
+          target:
             entity_id: "[[[ return variables.entity_4.entity_id ]]]"
     item5:
       card:
@@ -149,8 +149,8 @@ card_scenes:
           color_icon: "[[[ return variables.entity_5.icon_color ]]]"
           color_bg: "[[[ return variables.entity_5.bg_color ]]]"
         tap_action:
-          action: "call-service"
-          service: |
+          action: "perform-action"
+          perform_action: |
             [[[
               let domain = variables.entity_5.entity_id.substr(0, variables.entity_5.entity_id.indexOf("."));
               if (domain == "automation") {
@@ -159,7 +159,7 @@ card_scenes:
                 return "homeassistant.turn_on"
               }
             ]]]
-          service_data:
+          target:
             entity_id: "[[[ return variables.entity_5.entity_id ]]]"
 
 card_scenes_pill:
