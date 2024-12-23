@@ -80,8 +80,9 @@ extended_card:
     item2:
       card:
         type: "custom:button-card"
-        style: |
-          ha-card {
-            box-shadow: none;
-            border-radius: var(--border-radius);
-          }
+        card_mod:
+          style: |
+            ha-card {
+              box-shadow: none;
+              border-radius: var(--border-radius);
+            }

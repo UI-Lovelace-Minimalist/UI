@@ -26,8 +26,9 @@ vertical_buttons_custom_state:
         card:
           - background-color: "[[[ return `rgba(var(--color-background-${variables.color}), var(--opacity-bg))`; ]]]"
   tap_action:
-    action: "call-service"
-    service: "input_select.select_option"
-    service_data:
+    action: "perform-action"
+    perform_action: "input_select.select_option"
+    target:
       entity_id: "[[[ return entity.entity_id ]]]"
+    data:
       option: "[[[ return variables.state ]]]"
