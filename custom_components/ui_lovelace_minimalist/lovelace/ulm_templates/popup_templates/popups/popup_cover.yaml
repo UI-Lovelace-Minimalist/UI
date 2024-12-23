@@ -122,9 +122,9 @@ popup_cover:
                           }
                       ]]]
               tap_action:
-                action: "call-service"
-                service: "cover.close_cover"
-                service_data:
+                action: "perform-action"
+                perform_action: "cover.close_cover"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
           item2:
             card:
@@ -135,9 +135,9 @@ popup_cover:
                 - "popup_button"
                 - "popup_button_cover_stop"
               tap_action:
-                action: "call-service"
-                service: "cover.stop_cover"
-                service_data:
+                action: "perform-action"
+                perform_action: "cover.stop_cover"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
           item3:
             card:
@@ -164,9 +164,9 @@ popup_cover:
                           }
                       ]]]
               tap_action:
-                action: "call-service"
-                service: "cover.open_cover"
-                service_data:
+                action: "perform-action"
+                perform_action: "cover.open_cover"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
     footer:
       card:
