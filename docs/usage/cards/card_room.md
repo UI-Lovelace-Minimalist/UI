@@ -28,6 +28,7 @@ The card has support for up to 4 subicons at the right side of the card. These c
 | Variable                               | Default         | Required         | Notes          | Requirement |
 |----------------------------------------|-----------------|------------------|----------------|-------------|
 | entity_id                              |                 | :material-close: | The entity_id of the status icon | |
+| icon                                   |                 | :material-close: | Icon to display. Defaults to an icon associated with the entity | |
 | templates                              |                 | :material-close: | List of the additional button card templates to apply to this icon | |
 | tap_action                             |                 | :material-close: | tap_action for the icon (see button card documentation for options) |  |
 | hold_action                            |                 | :material-close: | tap_action for the icon (see button card documentation for options) |  |
@@ -64,6 +65,7 @@ If you want to tweak this card a little bit more, below are some examples. The f
       label_use_brightness: true
       entity_1:
         entity_id: light.bathroom
+        icon: mdi:ceiling-light
         templates:
           - yellow_on
         tap_action:
