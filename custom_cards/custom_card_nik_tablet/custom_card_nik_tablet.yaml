@@ -100,9 +100,9 @@ custom_card_nik_tablet:
               entity: "[[[ return variables.ulm_custom_card_nik_tablet_restart ]]]"
               icon: "mdi:restart-alert"
               tap_action:
-                action: "call-service"
-                service: "button.press"
-                service_data:
+                action: "perform-action"
+                perform_action: "button.press"
+                target:
                   entity_id: "[[[ return variables.ulm_custom_card_nik_tablet_restart ]]]"
           item2:
             card:
@@ -121,9 +121,9 @@ custom_card_nik_tablet:
               entity: "[[[ return variables.ulm_custom_card_nik_tablet_reload ]]]"
               icon: "mdi:reload"
               tap_action:
-                action: "call-service"
-                service: "button.press"
-                service_data:
+                action: "perform-action"
+                perform_action: "button.press"
+                target:
                   entity_id: "[[[ return variables.ulm_custom_card_nik_tablet_reload ]]]"
     item4:
       card:

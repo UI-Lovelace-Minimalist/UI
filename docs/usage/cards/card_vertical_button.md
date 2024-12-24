@@ -9,7 +9,7 @@ hide:
 
 ![example-image](../../assets/img/ulm_cards/card_example.png){ width="500" }
 
-Card `card_vertical_button` can be used in different ways. The primary usage is to switch between scenes or toggle a scene on/off. The secondary use is to toggle a switch or light. It's intended to be used with helper entities, either [input_select](https://www.home-assistant.io/integrations/input_select/) or [input_booelan](https://www.home-assistant.io/integrations/input_boolean/).
+Card `card_vertical_button` can be used in different ways. The primary usage is to switch between scenes or toggle a scene on/off. The secondary use is to toggle a switch or light. It's intended to be used with helper entities, either [input_select](https://www.home-assistant.io/integrations/input_select/) or [input_boolean](https://www.home-assistant.io/integrations/input_boolean/).
 
 You connect the card to either an input_select (toggle between scenes) or input_boolean (toggle one scene) and the button will change the state of these entities. The final step is to create an automation that triggers on the state change and then runs the actions you want, apply a scene or interact with other entities.
 
