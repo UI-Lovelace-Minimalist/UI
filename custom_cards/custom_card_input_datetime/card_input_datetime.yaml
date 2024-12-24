@@ -37,10 +37,11 @@ card_input_datetime:
               type: "custom:button-card"
               template: "widget_icon"
               tap_action:
-                action: "call-service"
-                service: "input_datetime.set_datetime"
-                service_data:
+                action: "perform-action"
+                perform_action: "input_datetime.set_datetime"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   time: >
                     [[[
                       var timestamp = entity.attributes.timestamp
@@ -68,10 +69,11 @@ card_input_datetime:
               template: "widget_text"
               entity: "[[[ return entity.entity_id ]]]"
               tap_action:
-                action: "call-service"
-                service: "input_datetime.set_datetime"
-                service_data:
+                action: "perform-action"
+                perform_action: "input_datetime.set_datetime"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   time: >
                     [[[
                       var timestamp = entity.attributes.timestamp
@@ -93,10 +95,11 @@ card_input_datetime:
                       return formattedTime;
                     ]]]
               hold_action:
-                action: "call-service"
-                service: "input_datetime.set_datetime"
-                service_data:
+                action: "perform-action"
+                perform_action: "input_datetime.set_datetime"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   time: >
                     [[[
                       var timestamp = entity.attributes.timestamp
@@ -123,10 +126,11 @@ card_input_datetime:
               type: "custom:button-card"
               template: "widget_icon"
               tap_action:
-                action: "call-service"
-                service: "input_datetime.set_datetime"
-                service_data:
+                action: "perform-action"
+                perform_action: "input_datetime.set_datetime"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   time: >
                     [[[
                       var timestamp = entity.attributes.timestamp
@@ -155,7 +159,7 @@ widget_text:
   show_icon: false
   show_label: true
   show_name: false
-  label: "[[[ return variables.ulm_translation_state_unit ]]]"
+  label: "[[[ return variables.ulm_translation_state ]]]"
   styles:
     grid:
       - grid-template-areas: "'l'"

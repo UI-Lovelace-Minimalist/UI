@@ -22,6 +22,7 @@ This is a card based on simple-weather-card to show your weather.
 | ulm_card_weather_primary_info | `extrema`   |                  | customize primary info. Set to `false` to disable. See [simple-weather-card](https://github.com/kalkih/simple-weather-card) for more information |
 | ulm_card_weather_secondary_info | `precipitation`   |          | customize secondary info. Set to `false` to disable. See [simple-weather-card](https://github.com/kalkih/simple-weather-card) for more information |
 | ulm_card_weather_backdrop | `false`         |                  | add backdrop. See [simple-weather-card](https://github.com/kalkih/simple-weather-card) for more information |
+| ulm_card_weather_custom | | | customize weather data. See [simple-weather-card](https://github.com/kalkih/simple-weather-card#custom-option-array) |
 
 ## Usage
 
@@ -36,6 +37,8 @@ This is a card based on simple-weather-card to show your weather.
       - precipitation_probability
     ulm_card_weather_backdrop:
       fade: true
+    ulm_card_weather_custom:
+      - temp: sensor.temperature
 ```
 
 ??? note "Template Code"

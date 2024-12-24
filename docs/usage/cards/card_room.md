@@ -16,14 +16,8 @@ The card has support for up to 4 subicons at the right side of the card. These c
 
 | Variable                               | Default         | Required         | Notes          | Requirement |
 |----------------------------------------|-----------------|------------------|----------------|-------------|
-| label_use_temperature                  | `true`          | :material-close:
-| Define whether the label should show the current room temperature
-| The temperature should be provide by either a `temperature` or `current_temperature` attribute or by the entity state
-|
-| label_use_brightness                   | `false`         | :material-close:
-| Define whether the label should show the current room brightness of the lights
-| requires `label_use_temperature` to be false
-|
+| label_use_temperature                  | `true`          | :material-close: | Define whether the label should show the current room temperature</br>The temperature should be provide by either a `temperature` or `current_temperature` attribute or by the entity state |
+| label_use_brightness                   | `false`         | :material-close: | Define whether the label should show the current room brightness of the lights</br>Requires `label_use_temperature` to be false |
 | entity_1                               |                 | :material-close: | a `room_entity` object (see below) |  |
 | entity_2                               |                 | :material-close: | a `room_entity` object (see below) |  |
 | entity_3                               |                 | :material-close: | a `room_entity` object (see below) |  |
@@ -47,14 +41,8 @@ If you want to tweak this card a little bit more, below are some examples. The f
 |----------------------------------------|-----------------|------------------|----------------|-------------|
 | entity                                 |                 | :material-close: | The entity_id for the large card | |
 | icon                                   |                 | :material-close: | Icon to display. Defaults to the entity icon | |
-| tap_action                             |                 | :material-close:
-|  Define the type of action on click, if undefined, toggle will be used.
-| see [Action](https://github.com/custom-cards/button-card#Action)
-|
-| hold_action                            |                 | :material-close:
-|  Define the type of action on hold, if undefined, nothing happens
-| see [Action](https://github.com/custom-cards/button-card#Action)
-|
+| tap_action                             |                 | :material-close: | Define the type of action on click, if undefined, toggle will be used.</br>See [Action](https://github.com/custom-cards/button-card#Action)| |
+| hold_action                            |                 | :material-close: | Define the type of action on hold, if undefined, nothing happens</br> See [Action](https://github.com/custom-cards/button-card#Action)| |
 | label                                  |                 | :material-close: | Change the label text | |
 | title                                  |                 | :material-close: | Change the title text | |
 

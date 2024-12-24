@@ -33,36 +33,25 @@ minimalist-mobile-tapbar:
         width: 97%;
       }
     .: |
-      @media (orientation: portrait) {
-        a.menu-link[target="_blank"], ha-button-menu, ha-menu-button, [main-title] {
-          display: none !important;
-        }
-        app-toolbar {
-          padding-right: 0px;
-          padding-left: 0px;
-        }
-      }
-      ha-app-layout{
+      div#view{
         transform: initial;
         padding: 0 !important;
         margin: 0 !important;
         width: 100%;
-        height: 100% !important;
+        padding-bottom: var(--header-height) !important;
       }
-      app-header {
-        top: auto;
-        bottom: 0;
+      .header {
+        top: auto !important;
+        bottom: 0px !important;
         box-shadow: var(--footer-shadow);
-        position: fixed;
         height: var(--header-height) !important;
       }
-      app-toolbar {
+      .toolbar {
         height: var(--header-base-height) !important;
         padding-bottom: env(safe-area-inset-bottom) !important;
       }
       #view {
-        margin-top: calc(-1 * var(--header-height)) !important;
-        padding-bottom: var(--header-height);
+        padding-top: calc(-1 * var(--header-height)) !important;
       }
       ha-tabs {
         --paper-tabs-selection-bar-color: var(--header-tab-indicator-color);

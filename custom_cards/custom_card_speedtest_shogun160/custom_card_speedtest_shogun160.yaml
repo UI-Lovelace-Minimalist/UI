@@ -1,0 +1,393 @@
+---
+custom_card_speedtest_shogun160:
+  template: "list_3_items"
+  triggers_update: "all"
+  show_name: false
+  show_label: false
+  variables:
+    ulm_custom_card_speedtest_download_speed_color: "var(--google-yellow)"
+    ulm_custom_card_speedtest_download_speed_max: 100
+    ulm_custom_card_speedtest_upload_speed_color: "var(--google-blue)"
+    ulm_custom_card_speedtest_upload_speed_max: 40
+    ulm_custom_card_speedtest_ping_color: "var(--google-green)"
+    ulm_custom_card_speedtest_ping_max: 85
+    ulm_custom_card_speedtest_round: false
+  tap_action:
+    action: "perform-action"
+    perform_action: "homeassistant.update_entity"
+    target:
+      entity_id:
+        - "[[[ return variables.ulm_custom_card_speedtest_download_speed_entity]]]"
+        - "[[[ return variables.ulm_custom_card_speedtest_upload_speed_entity]]]"
+        - "[[[ return variables.ulm_custom_card_speedtest_ping_entity]]]"
+  styles:
+    card:
+      - box-shadow: "var(--box-shadow)"
+      - border-radius: "var(--border-radius)"
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        template: "list_2_items_1_row"
+        styles:
+          card:
+            - box-shadow: "none"
+            - border-radius: "var(--border-radius) var(--border-radius) 0px 0px"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:apexcharts-card"
+              chart_type: "radialBar"
+              series:
+                - entity: "[[[ return variables.ulm_custom_card_speedtest_download_speed_entity]]]"
+                  color: "[[[ return variables.ulm_custom_card_speedtest_download_speed_color ]]]"
+                  max: "[[[ return variables.ulm_custom_card_speedtest_download_speed_max ]]]"
+                  show:
+                    legend_value: false
+              apex_config:
+                plotOptions:
+                  radialBar:
+                    offsetY: 0
+                    startAngle: -108
+                    endAngle: 108
+                    hollow:
+                      size: "85%"
+                    dataLabels:
+                      name:
+                        show: false
+                      value:
+                        show: false
+                    track:
+                      strokeWidth: "75%"
+                      margin: 0
+                fill:
+                  type: "gradient"
+                  gradient:
+                    shade: "light"
+                    type: "horizontal"
+                    shadeIntensity: 0.3
+                    inverseColors: false
+                    opacityFrom: 1
+                    opacityTo: 1
+                    stops:
+                      - 0
+                      - 50
+                      - 55
+                      - 90
+                legend:
+                  show: false
+                chart:
+                  height: 150
+              card_mod:
+                style: |
+                  ha-card {
+                    box-shadow: none;
+                    background: none;
+                  }
+          item2:
+            card:
+              type: "custom:button-card"
+              tap_action:
+                action: "none"
+              show_last_changed: false
+              show_label: true
+              show_name: true
+              show_icon: true
+              label: |
+                [[[
+                    var state1 = "";
+                    if (states[variables.ulm_custom_card_speedtest_download_speed_entity].state){
+                        if (variables.ulm_custom_card_speedtest_round == true){
+                        var state1 = Math.round(Number(states[variables.ulm_custom_card_speedtest_download_speed_entity].state));
+                        }
+                        else {var state1 = states[variables.ulm_custom_card_speedtest_download_speed_entity].state;
+                        }
+                        if (states[variables.ulm_custom_card_speedtest_download_speed_entity].attributes.unit_of_measurement){
+                          state1 += " " +  states[variables.ulm_custom_card_speedtest_download_speed_entity].attributes.unit_of_measurement;
+                        }
+                    }
+                    return state1;
+                ]]]
+              name: "Download"
+              icon: "mdi:download"
+              styles:
+                icon:
+                  - color: "[[[ return variables.ulm_custom_card_speedtest_download_speed_color ]]]"
+                  - width: "24px"
+                label:
+                  - justify-self: "center"
+                  - align-self: "start"
+                  - font-weight: "bold"
+                  - font-size: "14px"
+                name:
+                  - margin-top: "5px"
+                  - justify-self: "center"
+                  - font-weight: "bolder"
+                  - font-size: "12px"
+                  - filter: "opacity(40%)"
+                img_cell:
+                  - place-self: "center"
+                  - width: "34px"
+                  - height: "34px"
+                grid:
+                  - grid-template-areas: "'i' 'l' 'n'"
+              size: "20px"
+              card_mod:
+                style: |
+                  ha-card {
+                    box-shadow: none;
+                    background: none;
+                  }
+    item2:
+      card:
+        type: "custom:button-card"
+        template: "list_2_items_1_row"
+        styles:
+          card:
+            - box-shadow: "none"
+            - border-radius: "var(--border-radius) var(--border-radius) 0px 0px"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:apexcharts-card"
+              chart_type: "radialBar"
+              series:
+                - entity: "[[[ return variables.ulm_custom_card_speedtest_upload_speed_entity]]]"
+                  color: "[[[ return variables.ulm_custom_card_speedtest_upload_speed_color ]]]"
+                  max: "[[[ return variables.ulm_custom_card_speedtest_upload_speed_max ]]]"
+                  show:
+                    legend_value: false
+              apex_config:
+                plotOptions:
+                  radialBar:
+                    offsetY: 0
+                    startAngle: -108
+                    endAngle: 108
+                    hollow:
+                      size: "85%"
+                    dataLabels:
+                      name:
+                        show: false
+                      value:
+                        show: false
+                    track:
+                      strokeWidth: "75%"
+                      margin: 0
+                fill:
+                  type: "gradient"
+                  gradient:
+                    shade: "light"
+                    type: "horizontal"
+                    shadeIntensity: 0.3
+                    inverseColors: false
+                    opacityFrom: 1
+                    opacityTo: 1
+                    stops:
+                      - 0
+                      - 50
+                      - 55
+                      - 90
+                legend:
+                  show: false
+                chart:
+                  height: 150
+              card_mod:
+                style: |
+                  ha-card {
+                    box-shadow: none;
+                    background: none;
+                  }
+          item2:
+            card:
+              type: "custom:button-card"
+              tap_action:
+                action: "none"
+              show_last_changed: false
+              show_label: true
+              show_name: true
+              show_icon: true
+              label: |
+                [[[
+                    var state1 = "";
+                    if (states[variables.ulm_custom_card_speedtest_upload_speed_entity].state){
+                        if (variables.ulm_custom_card_speedtest_round == true){
+                        var state1 = Math.round(Number(states[variables.ulm_custom_card_speedtest_upload_speed_entity].state));
+                        }
+                        else {var state1 = states[variables.ulm_custom_card_speedtest_upload_speed_entity].state;
+                        }
+                        if (states[variables.ulm_custom_card_speedtest_upload_speed_entity].attributes.unit_of_measurement){
+                          state1 += " " +  states[variables.ulm_custom_card_speedtest_upload_speed_entity].attributes.unit_of_measurement;
+                        }
+                    }
+                    return state1;
+                ]]]
+              name: "Upload"
+              icon: "mdi:upload"
+              styles:
+                icon:
+                  - color: "[[[ return variables.ulm_custom_card_speedtest_upload_speed_color ]]]"
+                  - width: "24px"
+                label:
+                  - justify-self: "center"
+                  - align-self: "start"
+                  - font-weight: "bold"
+                  - font-size: "14px"
+                name:
+                  - margin-top: "5px"
+                  - justify-self: "center"
+                  - font-weight: "bolder"
+                  - font-size: "12px"
+                  - filter: "opacity(40%)"
+                img_cell:
+                  - place-self: "center"
+                  - width: "34px"
+                  - height: "34px"
+                grid:
+                  - grid-template-areas: "'i' 'l' 'n'"
+              size: "20px"
+              card_mod:
+                style: |
+                  ha-card {
+                    box-shadow: none;
+                    background: none;
+                  }
+    item3:
+      card:
+        type: "custom:button-card"
+        template: "list_2_items_1_row"
+        styles:
+          card:
+            - box-shadow: "none"
+            - border-radius: "var(--border-radius) var(--border-radius) 0px 0px"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:apexcharts-card"
+              chart_type: "radialBar"
+              series:
+                - entity: "[[[ return variables.ulm_custom_card_speedtest_ping_entity]]]"
+                  color: "[[[ return variables.ulm_custom_card_speedtest_ping_color ]]]"
+                  max: "[[[ return variables.ulm_custom_card_speedtest_ping_max ]]]"
+                  show:
+                    legend_value: false
+              apex_config:
+                plotOptions:
+                  radialBar:
+                    offsetY: 0
+                    startAngle: -108
+                    endAngle: 108
+                    hollow:
+                      size: "85%"
+                    dataLabels:
+                      name:
+                        show: false
+                      value:
+                        show: false
+                    track:
+                      strokeWidth: "75%"
+                      margin: 0
+                fill:
+                  type: "gradient"
+                  gradient:
+                    shade: "light"
+                    type: "horizontal"
+                    shadeIntensity: 0.3
+                    inverseColors: false
+                    opacityFrom: 1
+                    opacityTo: 1
+                    stops:
+                      - 0
+                      - 50
+                      - 55
+                      - 90
+                legend:
+                  show: false
+                chart:
+                  height: 150
+              card_mod:
+                style: |
+                  ha-card {
+                    box-shadow: none;
+                    background: none;
+                  }
+          item2:
+            card:
+              type: "custom:button-card"
+              tap_action:
+                action: "none"
+              show_last_changed: false
+              show_label: true
+              show_name: true
+              show_icon: true
+              label: |
+                [[[
+                    var state1 = "";
+                    if (states[variables.ulm_custom_card_speedtest_ping_entity].state){
+                        var state1 = states[variables.ulm_custom_card_speedtest_ping_entity].state;
+                        if (states[variables.ulm_custom_card_speedtest_ping_entity].attributes.unit_of_measurement){
+                          state1 += " " +  states[variables.ulm_custom_card_speedtest_ping_entity].attributes.unit_of_measurement;
+                        }
+                    }
+                    return state1;
+                ]]]
+              name: "Ping"
+              icon: "mdi:wan"
+              styles:
+                icon:
+                  - color: "[[[ return variables.ulm_custom_card_speedtest_ping_color ]]]"
+                  - width: "24px"
+                label:
+                  - justify-self: "center"
+                  - align-self: "start"
+                  - font-weight: "bold"
+                  - font-size: "14px"
+                name:
+                  - margin-top: "5px"
+                  - justify-self: "center"
+                  - font-weight: "bolder"
+                  - font-size: "12px"
+                  - filter: "opacity(40%)"
+                img_cell:
+                  - place-self: "center"
+                  - width: "34px"
+                  - height: "34px"
+                grid:
+                  - grid-template-areas: "'i' 'l' 'n'"
+              size: "20px"
+              card_mod:
+                style: |
+                  ha-card {
+                    box-shadow: none;
+                    background: none;
+                  }
+
+### List 2 Items 1 Row ###
+list_2_items_1_row:
+  styles:
+    grid:
+      - grid-template-areas: "'item1' 'item2'"
+      - grid-template-columns: "1fr"
+      - grid-template-rows: "min-content min-content"
+      - grid: "relative"
+    card:
+      - padding: "0px"
+      - height: "100px"
+    img_cell:
+      - border-radius: "0%"
+      - background-color: "transparent"
+    custom_fields:
+      item1:
+        - position: "absolute"
+        - top: "-2%"
+        - place-self: "center"
+      item2:
+        - position: "absolute"
+        - top: "15%"
+        - place-self: "center"
+        - width: "115%"
+  card_mod:
+    style: |
+      ha-card {
+        box-shadow: none;
+        background: none;
+      }

@@ -17,10 +17,6 @@ minimalist-ios-tapbar:
   ha-card-border-width: "0px"
 
   card-mod-theme: "minimalist-ios-tapbar"
-  card-mod-root: |
-    app-toolbar {
-      display: none;
-    }
   header-height: "78px"
   card-mod-view-yaml: |
     "*:first-child$": |
@@ -35,38 +31,34 @@ minimalist-ios-tapbar:
       #tabsContent {
         width: 97%;
       }
+      paper-icon-button {
+        display: none;
+      }
     .: |
       @media (orientation: portrait) {
         a.menu-link[target="_blank"], ha-button-menu, ha-menu-button, [main-title] {
           display: none !important;
         }
-        app-toolbar {
-          padding-right: 0px;
-          padding-left: 0px;
-        }
-      }
-      ha-app-layout{
+      div#view{
         transform: initial;
         padding: 0 !important;
         margin: 0 !important;
         width: 100%;
-        height: 100% !important;
+        padding-bottom: var(--header-height) !important;
       }
-      app-header {
-        top: auto;
-        bottom: 0;
+      .header {
+        top: auto !important;
+        bottom: 0px !important;
         box-shadow: var(--footer-shadow);
-        position: fixed;
         height: var(--header-height) !important;
       }
-      app-toolbar {
+      .toolbar {
         height: var(--header-height) !important;
         padding: 10px 0px !important;
         background: var( --ha-card-background, var(--card-background-color) );
       }
       #view {
-        margin-top: calc(-1 * var(--header-height)) !important;
-        padding-bottom: var(--header-height) !important;
+        padding-top: calc(-1 * var(--header-height)) !important;
       }
       ha-tabs {
         --paper-tabs-selection-bar-color: var(--header-tab-indicator-color) !important;

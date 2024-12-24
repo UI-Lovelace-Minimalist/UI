@@ -13,7 +13,7 @@ custom_card_person_chip:
   label: >
     [[[
       let state = states[variables.ulm_custom_card_person_chip_entity].state;
-      return hass.resources[hass["language"]]["component.person" + ".state._." + state] || state;
+      return hass.resources[hass["language"]]["component.person.entity_component._.state." + state] || state;
     ]]]
   show_entity_picture: true
   entity_picture: "[[[ return states[variables.ulm_custom_card_person_chip_entity].attributes.entity_picture ]]]"

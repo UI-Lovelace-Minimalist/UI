@@ -3,7 +3,9 @@ title: Prepare & Download
 hide:
   - toc
 ---
+
 <!-- markdownlint-disable MD046 -->
+
 Before get started on anything, make sure you have created a backup of your home assistant configuration.
 
 > In case you experience problems during installation please reach join the [Discord Server](https://discord.gg/TPXg9b7GfR).
@@ -15,7 +17,7 @@ You should have a HomeAssistant (HA) instance running, preferably with [HACS](ht
 You have access to your `config` folder of HA. Doesn’t matter which way this is, but you need to be able to upload and change files in your config. If you’re running `HA-OS` or a `supervised install` of HA, we highly recommend the [Samba AddOn](https://www.home-assistant.io/common-tasks/supervised/#installing-and-using-the-samba-add-on) (see the AddOn page for instructions) and for editing the File editor AddOn or a good editor like [Notepad++](https://notepad-plus-plus.org/) or [SublimeText](https://www.sublimetext.com/) for your OS.
 
 !!! danger "Breaking Changes"
-    This integration is still under heavy development and might cause breaking changes
+This integration is still under heavy development and might cause breaking changes
 
 ## HACS Download
 
@@ -44,18 +46,28 @@ If you can't or don't like to use HACS, you still have the possibility to use th
 
 In order to function correctly, the UI Lovelace Mininmalist "Theme" requires some additional integrations and lovelace resources. While we can install most of these for you during the installation via HACS, you will also have to install and configuring them manually in advance for a manual installation.
 
-| Required Integrations and lovelace resources                            |
-|-------------------------------------------------------------------------|
-| [`browser-mod`](https://github.com/thomasloven/hass-browser_mod)        |
-| [`button-card`](https://github.com/custom-cards/button-card)            |
-| [`lovelace-card-mod`](https://github.com/thomasloven/lovelace-card-mod) |
-| [`mini-graph-card`](https://github.com/kalkih/mini-graph-card)          |
-| [`mini-media-player`](https://github.com/kalkih/mini-media-player)      |
-| [`my-cards-slider-card`](https://github.com/AnthonMS/my-cards)          |
-| [`light-entity-card`](https://github.com/ljmerza/light-entity-card)     |
-| [`lovelace-auto-entities`](https://github.com/thomasloven/lovelace-auto-entities)|
+#### Required Integration
 
-You can install most of them also via HACS or manually.
+- [browser_mod](https://github.com/thomasloven/hass-browser_mod) by Thomas Lovén
+
+#### Required Lovelace Resources
+
+- [button-card](https://github.com/custom-cards/button-card) by RomRider
+- [card-mod](https://github.com/thomasloven/lovelace-card-mod) by Thomas Lovén
+- [mini-graph-card](https://github.com/kalkih/mini-graph-card) by Karl Kihlström
+- [Mini Media Player](https://github.com/kalkih/mini-media-player) by Karl Kihlström
+- [My Cards Bundle](https://github.com/AnthonMS/my-cards) by AnthonMS\*\*
+- [Light Entity Card](https://github.com/ljmerza/light-entity-card) by Leonardo Merza
+- [auto-entities](https://github.com/thomasloven/lovelace-auto-entities) by Thomas Lovén
+- [simple-weather-card](https://github.com/kalkih/simple-weather-card) by Karl Kihlström
+- [weather-radar-card](https://github.com/Makin-Things/weather-radar-card) by Makin-Things
+- [lovelace-layout-card](https://github.com/thomasloven/lovelace-layout-card) by Thomas Lovén
+- [lovelace-state-swtch](https://github.com/thomasloven/lovelace-state-switch) by Thomas Lovén
+
+You can install these via HACS or manually.
+
+Some resources (as marked above with \*\*) might not be available in HACS by default.
+To find and install these using HACS, first add them as [custom repositories](https://hacs.xyz/docs/faq/custom_repositories/).
 
 ### Download Release File
 

@@ -2,7 +2,7 @@
 custom_card_paddy_dwd_pollen:
   template:
     - "card_generic_swap"
-    - "custom_card_paddy_dwd_pollen_language_variables"
+    - "ulm_custom_card_paddy_dwd_pollen_language_variables"
   variables:
     ulm_card_generic_swap_name: "[[[ return variables.ulm_custom_card_paddy_dwd_pollen_name; ]]]"
     ulm_card_generic_swap_icon: "[[[ return variables.ulm_custom_card_paddy_dwd_pollen_icon; ]]]"
@@ -17,27 +17,6 @@ custom_card_paddy_dwd_pollen:
             card:
               type: "custom:button-card"
               entity: "[[[ return entity.entity_id ]]]"
-          item2:
-            card:
-              type: "custom:button-card"
-              entity: "[[[ return entity.entity_id ]]]"
-              label: >
-                [[[
-                  if (entity.state == "6"){
-                    return variables.custom_card_paddy_dwd_pollen_6;
-                  } else if (entity.state == "5"){
-                    return variables.custom_card_paddy_dwd_pollen_5;
-                  } else if (entity.state == "4"){
-                    return variables.custom_card_paddy_dwd_pollen_4;
-                  } else if (entity.state == "3"){
-                    return variables.custom_card_paddy_dwd_pollen_3;
-                  } else if (entity.state == "2"){
-                    return variables.custom_card_paddy_dwd_pollen_2;
-                  } else if (entity.state == "1"){
-                    return variables.custom_card_paddy_dwd_pollen_1;
-                  }
-                  return variables.custom_card_paddy_dwd_pollen_none;
-                ]]]
               state:
                 - value: "6"
                   styles:
@@ -67,3 +46,24 @@ custom_card_paddy_dwd_pollen:
                   styles:
                     icon:
                       - color: "rgba(var(--color-theme),0.2)"
+          item2:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              label: >
+                [[[
+                  if (entity.state == "6"){
+                    return variables.ulm_custom_card_paddy_dwd_pollen_6;
+                  } else if (entity.state == "5"){
+                    return variables.ulm_custom_card_paddy_dwd_pollen_5;
+                  } else if (entity.state == "4"){
+                    return variables.ulm_custom_card_paddy_dwd_pollen_4;
+                  } else if (entity.state == "3"){
+                    return variables.ulm_custom_card_paddy_dwd_pollen_3;
+                  } else if (entity.state == "2"){
+                    return variables.ulm_custom_card_paddy_dwd_pollen_2;
+                  } else if (entity.state == "1"){
+                    return variables.ulm_custom_card_paddy_dwd_pollen_1;
+                  }
+                  return variables.ulm_custom_card_paddy_dwd_pollen_none;
+                ]]]

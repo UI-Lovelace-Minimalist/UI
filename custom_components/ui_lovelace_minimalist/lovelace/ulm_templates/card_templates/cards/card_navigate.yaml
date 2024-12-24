@@ -3,15 +3,20 @@
 card_navigate:
   template:
     - "icon_only"
-    - "blue_no_state"
   tap_action:
     action: "navigate"
     navigation_path: "[[[ return variables.ulm_card_navigate_path; ]]]"
+  variables:
+    ulm_card_navigate_color: "var(--color-blue)"
   label: "[[[ return variables.ulm_card_navigate_title; ]]]"
   icon: "[[[ return variables.ulm_card_navigate_icon; ]]]"
   styles:
     icon:
-      - color: "rgba(var(--color-blue),0.7)"
+      - color: >
+          [[[
+            let color = variables.ulm_card_navigate_color;
+            return "rgba(" + color + ",0.7)"
+          ]]]
     label:
       - align-self: "center"
       - font-size: "14px"

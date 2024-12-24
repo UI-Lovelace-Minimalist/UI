@@ -44,6 +44,7 @@ This card merges the following one :
 | ulm_card_thermostat_enable_popup                | `false`           | :material-close: | Enable `popup_thermostat` | |
 | ulm_card_thermostat_fan_entity                  | `null`            | :material-close: | `fan` entity for climate if separate entity | |
 | ulm_card_thermostat_minimum_temp_spread         | `1`               | :material-close: | Minimum temperature spread between low and high temperature when in `heat_cool` mode | |
+| ulm_card_thermostat_temp_step                   | `false`           | :material-close: | Set the step size for increasing and decreasing temperature | |
 
 ## Usage
 

@@ -30,11 +30,9 @@ custom_card_irmajavi_speedtest:
         show_name: true
         show_icon: true
         label: >-
-          [[[ return variables.ulm_custom_card_irmajavi_speedtest_router_model
-          ]]]
+          [[[ return variables.ulm_custom_card_irmajavi_speedtest_router_model ]]]
         name: >-
-          [[[ return variables.ulm_custom_card_irmajavi_speedtest_router_name
-          ]]]
+          [[[ return variables.ulm_custom_card_irmajavi_speedtest_router_name ]]]
         icon: "mdi:wifi"
         styles:
           icon:
@@ -72,9 +70,9 @@ custom_card_irmajavi_speedtest:
       card:
         type: "custom:button-card"
         tap_action:
-          action: "call-service"
-          service: "homeassistant.update_entity"
-          service_data:
+          action: "perform-action"
+          perform_action: "homeassistant.update_entity"
+          target:
             entity_id:
               - "[[[ return variables.ulm_custom_card_irmajavi_speedtest_download_speed_entity]]]"
               - "[[[ return variables.ulm_custom_card_irmajavi_speedtest_upload_speed_entity]]]"
@@ -146,15 +144,13 @@ custom_card_irmajavi_speedtest:
           item1:
             card:
               type: "custom:button-card"
-              tap_action:
-                action: "more-info"
               color: "var(--google-blue)"
               show_label: true
               show_icon: false
               name: "[[[ return variables.ulm_custom_card_irmajavi_speedtest_download ]]]"
               entity: >-
                 [[[ return
-                    variables.ulm_custom_card_irmajavi_speedtest_download_speed_entity;
+                variables.ulm_custom_card_irmajavi_speedtest_download_speed_entity;
                 ]]]
               label: |
                 [[[
@@ -209,10 +205,10 @@ custom_card_irmajavi_speedtest:
                 [[[
                     var state1 = "";
                     if (states[variables.ulm_custom_card_irmajavi_speedtest_upload_speed_entity].state){
-                        var state1 = states[variables.ulm_custom_card_irmajavi_speedtest_upload_speed_entity].state;
-                        if (states[variables.ulm_custom_card_irmajavi_speedtest_upload_speed_entity].attributes.unit_of_measurement){
-                          state1 += states[variables.ulm_custom_card_irmajavi_speedtest_upload_speed_entity].attributes.unit_of_measurement;
-                        }
+                      var state1 = states[variables.ulm_custom_card_irmajavi_speedtest_upload_speed_entity].state;
+                      if (states[variables.ulm_custom_card_irmajavi_speedtest_upload_speed_entity].attributes.unit_of_measurement){
+                        state1 += states[variables.ulm_custom_card_irmajavi_speedtest_upload_speed_entity].attributes.unit_of_measurement;
+                      }
                     }
                     return state1;
                 ]]]

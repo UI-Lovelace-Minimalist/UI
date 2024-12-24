@@ -1,0 +1,17 @@
+---
+ulm_language_variables:
+  variables:
+    ulm_currency: "₪"
+    ulm_updates_available: "יש עדכונים"
+    ulm_no_updates_available: "אין עדכונים"
+    ulm_ophaling: "יש איסוף אשפה!"
+    ulm_geen_ophaling: "אין איסוף אשפה"
+    ulm_volgende_ophaling: "איסופי אשפה קרובים"
+    ulm_morning: "בוקר טוב"
+    ulm_afternoon: "צהריים טובים"
+    ulm_evening: "ערב טוב"
+    ulm_hello: "שלום"
+    ulm_volume: "ווליום"
+    ulm_popups_color: "צבע"
+    ulm_radar: "רדאר"
+    ulm_popup_total: "סך הכל"

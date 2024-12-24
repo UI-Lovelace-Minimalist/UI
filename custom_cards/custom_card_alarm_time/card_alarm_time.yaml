@@ -1,0 +1,303 @@
+---
+### Card Alarm ###
+card_alarm_time:
+  triggers_update: "all"
+  template:
+    - "icon_more_info_new"
+  variables:
+    ulm_card_alarm_time_name: "[[[ return entity.attributes.friendly_name ]]]"
+    ulm_card_alarm_time_icon: "[[[ return entity.attributes.icon ]]]"
+    ulm_card_alarm_time_horizontal: false
+    ulm_card_alarm_time_collapse: false
+    ulm_card_alarm_time_color: "blue"
+    ulm_card_alarm_time_force_background_color: false
+    ulm_card_alarm_time_step: 15
+  show_icon: false
+  show_name: false
+  show_label: false
+  state:
+    - value: "on"
+      styles:
+        card:
+          - background-color: >
+              [[[
+                if (variables.ulm_card_alarm_time_force_background_color || hass.themes.darkMode) {
+                  var color = variables.ulm_card_alarm_time_color;
+                  return 'rgba(var(--color-' + color + '),var(--opacity-bg))';
+                }
+              ]]]
+  styles:
+    grid:
+      - grid-template-areas: >
+          [[[
+              if (entity.state != "on" && variables.ulm_card_alarm_time_collapse) {
+                  return "\"item1\"";
+              }
+              if (variables.ulm_card_alarm_time_horizontal) {
+                  return "\"item1 item2\"";
+              }
+              return "\"item1\" \"item2\"";
+          ]]]
+      - grid-template-columns: >
+          [[[
+              if (variables.ulm_card_alarm_time_horizontal) {
+                  return "1fr 1fr";
+              }
+              return "1fr";
+          ]]]
+      - grid-template-rows: >
+          [[[
+              if (variables.ulm_card_alarm_time_horizontal || (entity.state != "on" && variables.ulm_card_alarm_time_collapse)) {
+                  return "1fr";
+              }
+              return "min-content min-content";
+          ]]]
+      - row-gap: "12px"
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
+    custom_fields:
+      item2:
+        - display: >
+            [[[
+              if (entity.state != "off") {
+                  return "block";
+              }
+              return "none";
+            ]]]
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              icon: "[[[ return variables.ulm_card_alarm_time_icon ]]]"
+              styles:
+                icon:
+                  - color: >
+                      [[[
+                        var color = variables.ulm_card_alarm_time_color;
+                        if (typeof entity !== "undefined") {
+                          if (entity.state != "off") {
+                              return 'rgba(var(--color-' + color + '),1)';
+                          }
+                        }
+                        return 'rgba(var(--color-theme),0.2)';
+                      ]]]
+                img_cell:
+                  - background-color: >
+                      [[[
+                        var color = variables.ulm_card_alarm_time_color;
+                        if (typeof entity !== "undefined") {
+                          if (entity.state != "off") {
+                              return 'rgba(var(--color-' + color + '),0.2)';
+                          }
+                        }
+                        return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+          item2:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              name: "[[[ return variables.ulm_card_alarm_time_name ]]]"
+              label: >
+                [[[
+                  if (entity.state == "on") {
+                    return "On";
+                  } else if (entity.state == "off") {
+                    return "Off";
+                  }
+                ]]]
+              state:
+                - value: "on"
+                  styles:
+                    name:
+                      - color: >
+                          [[[
+                            if (variables.ulm_card_alarm_time_force_background_color) {
+                              return 'rgb(250,250,250)';
+                            }
+                          ]]]
+                    label:
+                      - color: >
+                          [[[
+                            if (variables.ulm_card_alarm_time_force_background_color) {
+                              return 'rgb(250,250,250)';
+                            }
+                          ]]]
+    item2:
+      card:
+        type: "custom:button-card"
+        template: "list_3_items"
+        styles:
+          card:
+            - background: "none"
+          grid:
+            - grid-template-areas: >
+                [[[
+                    if (variables.ulm_card_alarm_time_horizontal) {
+                      return "'item2'";
+                    } else {
+                      return "'item1 item2 item3'";
+                    }
+                ]]]
+            - grid-template-columns: >
+                [[[
+                    if (variables.ulm_card_alarm_time_horizontal) {
+                      return "1fr";
+                    } else {
+                      return "1fr 1fr 1fr";
+                    }
+                ]]]
+          custom_fields:
+            item1:
+              - display: >
+                  [[[
+                    if (variables.ulm_card_alarm_time_horizontal) {
+                        return "none";
+                    }
+                    return "block";
+                  ]]]
+            item3:
+              - display: >
+                  [[[
+                    if (variables.ulm_card_alarm_time_horizontal) {
+                        return "none";
+                    }
+                    return "block";
+                  ]]]
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              tap_action:
+                action: "perform-action"
+                perform_action: "input_datetime.set_datetime"
+                target:
+                  entity_id: "[[[ return variables.ulm_card_alarm_time_datetime ]]]"
+                data:
+                  time: >
+                    [[[
+                      var timestamp = states[variables.ulm_card_alarm_time_datetime].attributes.timestamp;
+                      let time_adjust = (60 + variables.ulm_card_alarm_time_step) * 60;
+                      let new_timestamp = timestamp - time_adjust;
+                      var date = new Date(new_timestamp * 1000);
+                      var hours = date.getHours();
+                      var minutes = "0" + date.getMinutes();
+                      var seconds = "0" + date.getSeconds();
+                      var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+                      return formattedTime;
+                    ]]]
+              icon: "mdi:minus"
+              styles:
+                card:
+                  - background-color: >
+                      [[[
+                        if (!hass.themes.darkMode && variables.ulm_card_alarm_time_force_background_color) {
+                          if (entity.state != "off") {
+                            return 'rgba(250,250,250,0.8)';
+                          }
+                        }
+                        return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+                icon:
+                  - color: >
+                      [[[
+                        if (!hass.themes.darkMode && variables.ulm_card_alarm_time_force_background_color) {
+                          if (entity.state != "off") {
+                            var color_set = variables.ulm_card_alarm_time_color;
+                            var color = 'rgba(var(--color-' + color_set + '),1)';
+                            return color;
+                          }
+                        }
+                        return 'rgba(var(--color-theme),0.9)';
+                      ]]]
+
+          item2:
+            card:
+              type: "custom:button-card"
+              template:
+                - "widget_icon"
+              entity: "[[[ return variables.ulm_card_alarm_time_datetime ]]]"
+              tap_action:
+                action: "more-info"
+              show_icon: false
+              show_label: true
+              label: "[[[ return states[variables.ulm_card_alarm_time_datetime].state ]]]"
+              styles:
+                grid:
+                  - grid-template-areas: "'l'"
+                card:
+                  - background-color: >
+                      [[[
+                        if (!hass.themes.darkMode && variables.ulm_card_alarm_time_force_background_color) {
+                          if (entity.state != "off") {
+                            return 'rgba(250,250,250,0.8)';
+                          }
+                        }
+                        return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+                icon:
+                  - color: >
+                      [[[
+                        if (!hass.themes.darkMode && variables.ulm_card_alarm_time_force_background_color) {
+                          if (entity.state != "off") {
+                            var color_set = variables.ulm_card_alarm_time_color;
+                            var color = 'rgba(var(--color-' + color_set + '),1)';
+                            return color;
+                          }
+                        }
+                        return 'rgba(var(--color-theme),0.9)';
+                      ]]]
+
+          item3:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              tap_action:
+                action: "perform-action"
+                perform_action: "input_datetime.set_datetime"
+                target:
+                  entity_id: "[[[ return variables.ulm_card_alarm_time_datetime ]]]"
+                data:
+                  time: >
+                    [[[
+                      var timestamp = states[variables.ulm_card_alarm_time_datetime].attributes.timestamp;
+                      let time_adjust = (60 - variables.ulm_card_alarm_time_step) * 60;
+                      let new_timestamp = timestamp - time_adjust;
+                      var date = new Date(new_timestamp * 1000);
+                      var hours = date.getHours();
+                      var minutes = "0" + date.getMinutes();
+                      var seconds = "0" + date.getSeconds();
+                      var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+                      return formattedTime;
+                    ]]]
+              icon: "mdi:plus"
+              styles:
+                card:
+                  - background-color: >
+                      [[[
+                        if (!hass.themes.darkMode && variables.ulm_card_alarm_time_force_background_color) {
+                          if (entity.state != "off") {
+                            return 'rgba(250,250,250,0.8)';
+                          }
+                        }
+                        return 'rgba(var(--color-theme),0.05)';
+                      ]]]
+                icon:
+                  - color: >
+                      [[[
+                        if (!hass.themes.darkMode && variables.ulm_card_alarm_time_force_background_color) {
+                          if (entity.state != "off") {
+                            var color_set = variables.ulm_card_alarm_time_color;
+                            var color = 'rgba(var(--color-' + color_set + '),1)';
+                            return color;
+                          }
+                        }
+                        return 'rgba(var(--color-theme),0.9)';
+                      ]]]

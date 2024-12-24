@@ -13,11 +13,14 @@ minimalist-mobile:
   ha-dialog-border-radius: "10px"
   # fix added border-lines in 2022.11
   ha-card-border-width: "0px"
-
   card-mod-theme: "minimalist-mobile"
   card-mod-root: |
-    app-toolbar {
+    .header {
       display: none;
+    }
+    #view {
+      padding: 0 !important;
+      height: 100vh !important;
     }
   card-mod-view-yaml: |
     "*:first-child$": |

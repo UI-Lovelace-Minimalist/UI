@@ -33,7 +33,7 @@ If you want to alight cards to the center, right. Or only 1 card on the right it
     ![chip_right](../../assets/img/layout/chip_right.png){ align=right width=40% }
 
     ```yaml
-    # Card in the Center
+    # Card on the Right
     - type: horizontal-stack
       cards:
         - type: "custom:button-card"
@@ -49,7 +49,7 @@ If you want to alight cards to the center, right. Or only 1 card on the right it
     ![chip_left_right](../../assets/img/layout/chip_left_right.png){ align=right width=40% }
 
     ```yaml
-    # Card in the Center
+    # Card on the Right and Left
     - type: horizontal-stack
       cards:
         - type: custom:button-card

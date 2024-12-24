@@ -13,7 +13,10 @@ card_graph:
     ulm_card_graph_type: "fill"
     ulm_card_graph_points: "0.5"
     ulm_card_graph_group_by: "interval"
-  triggers_update: "all"
+    ulm_card_graph_line_width: 5
+    ulm_card_graph_icon_color: ""
+  triggers_update:
+    - "[[[ return variables.ulm_card_graph_entity2 ]]]"
   custom_fields:
     item1:
       card:
@@ -23,7 +26,33 @@ card_graph:
         variables:
           ulm_card_generic_icon: "[[[ return variables.ulm_card_graph_icon; ]]]"
           ulm_card_generic_name: "[[[ return variables.ulm_card_graph_name; ]]]"
-
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              custom_fields:
+                item1:
+                  card:
+                    type: "custom:button-card"
+                    styles:
+                      icon:
+                        - color: >
+                            [[[
+                              var color = variables.ulm_card_graph_icon_color;
+                              if (variables.ulm_card_graph_icon_color){
+                                return 'rgba(var(--color-' + color + '),1)';
+                              }
+                              return 'rgba(var(--color-theme),0.2)';
+                            ]]]
+                      img_cell:
+                        - background-color: >
+                            [[[
+                              var color = variables.ulm_card_graph_icon_color;
+                              if (variables.ulm_card_graph_icon_color){
+                                return 'rgba(var(--color-' + color + '),0.2)';
+                              }
+                              return 'rgba(var(--color-theme),0.05)';
+                            ]]]
     item2:
       card:
         type: "custom:mini-graph-card"
@@ -53,6 +82,7 @@ card_graph:
         hours_to_show: "[[[ return variables.ulm_card_graph_hours; ]]]"
         points_per_hour: "[[[ return variables.ulm_card_graph_points; ]]]"
         group_by: "[[[ return variables.ulm_card_graph_group_by; ]]]"
+        line_width: "[[[ return variables.ulm_card_graph_line_width; ]]]"
         style: |
           ha-card {
             box-shadow: none;

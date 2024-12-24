@@ -25,6 +25,8 @@ This is a card to control your Robot-vacuum. It has support for all vacuums whic
 |`ulm_card_vacuum_room_icon`|   | :material-close: | Add custom icon to the room script |
 |`ulm_card_vacuum_camera`|   | :material-close: | Add a camera entity to the card to show the vacuum map |
 |`ulm_card_vacuum_camera_toggle`|   | :material-close: | Only show the camera entity while cleaning |
+| ulm_card_vacuum_color            | state based       | :material-close: | Set Custom Color                   |             |
+| ulm_card_vacuum_force_background_color           | `false`         | :material-close: | Set `ulm_card_vacuum_color` as background color in active state `                  |             |
 
 ## Usage
 

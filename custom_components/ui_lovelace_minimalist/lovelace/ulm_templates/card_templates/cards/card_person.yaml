@@ -8,31 +8,32 @@ card_person:
     ulm_card_person_use_entity_picture: false
     ulm_card_person_icon: "mdi:face-man"
     ulm_address: ""
-  triggers_update: "all"
+  triggers_update:
+    - "[[[ return variables.ulm_card_person_entity ]]]"
+    - "[[[ return variables.ulm_card_person_eta ]]]"
+    - "[[[ return variables.ulm_address ]]]"
   tap_action:
     action: "more-info"
-    entity: "[[[ return variables.ulm_card_person_entity; ]]]"
   show_label: true
   show_name: true
   label: >
     [[[
+      let translation = helpers.localize(entity)
       var eta = ""
-      if (variables.ulm_card_person_eta && states[variables.ulm_card_person_entity].state != 'home'){
-        eta = " | " + states[variables.ulm_card_person_eta].state + " "+states[variables.ulm_card_person_eta].attributes.unit_of_measurement;
+      if (variables.ulm_card_person_eta && entity.state != 'home'){
+        eta = " | " + helpers.localize(states[variables.ulm_card_person_eta]);
       }
       if (variables.ulm_address){
-        return states[variables.ulm_address].state + eta
+        return helpers.localize(states[variables.ulm_address]) + eta;
       }
-      let state = states[variables.ulm_card_person_entity].state;
-      let option = ["home", "not_home", "unavailable", "unknown"]
-      return (option.includes(state)) ? variables.ulm_translation_state + eta : state + eta
+      return translation + eta
     ]]]
-  name: "[[[ return states[variables.ulm_card_person_entity].attributes.friendly_name ]]]"
+  name: "[[[ return entity.attributes.friendly_name ]]]"
   entity: "[[[ return variables.ulm_card_person_entity; ]]]"
   icon: "[[[ return variables.ulm_card_person_icon; ]]]"
   show_entity_picture: "[[[ return variables.ulm_card_person_use_entity_picture ]]]"
   entity_picture:
-    "[[[ return variables.ulm_card_person_use_entity_picture ? states[variables.ulm_card_person_entity].attributes.entity_picture\
+    "[[[ return variables.ulm_card_person_use_entity_picture ? entity.attributes.entity_picture\
     \ : null ]]]"
   styles:
     icon:
@@ -58,7 +59,7 @@ card_person:
         - line-height: "14px"
         - background-color: >
             [[[
-              return (states[variables.ulm_card_person_entity].state !== 'home') ? "rgba(var(--color-green),1)" : "rgba(var(--color-blue),1)";
+              return (entity.state !== 'home') ? "rgba(var(--color-green),1)" : "rgba(var(--color-blue),1)";
             ]]]
       info:
         - position: "absolute"
@@ -69,12 +70,12 @@ card_person:
   custom_fields:
     notification: >
       [[[
-        if (states[variables.ulm_card_person_entity].state == 'home') {
+        if (entity.state == 'home') {
             return '<ha-icon icon="mdi:home-variant" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
         } else {
             for (let st in states) {
                 if (st.startsWith("zone.")) {
-                    if (states[st]?.attributes?.persons?.includes(variables.ulm_card_person_entity) && !states[st]?.attributes?.passive) {
+                    if (states[st]?.attributes?.persons?.includes(entity.state) && !states[st]?.attributes?.passive) {
                         var icon = states[st].attributes.icon !== null ? states[st].attributes.icon : 'mdi:help-circle';
                         return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
                     }

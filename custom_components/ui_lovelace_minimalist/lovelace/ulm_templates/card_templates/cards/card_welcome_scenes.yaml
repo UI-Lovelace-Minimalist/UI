@@ -243,7 +243,7 @@ card_scenes_pill_welcome:
     - operator: "template"
       value: >
         [[[
-          return (entity.state !== 'on' && entity.state !== 'playing' && entity.state != variables?.state)
+          return (entity?.state !== 'on' && entity?.state !== 'playing' && entity?.state != variables?.state)
         ]]]
       styles:
         card:
@@ -283,33 +283,39 @@ card_scenes_pill_welcome:
             [[[
               if(variables?.nav_path){
                 return "navigate"
-              } else {
-                return "call-service"
               }
+              return "perform-action"
             ]]]
-          service: >
+          perform_action: >
             [[[
-              if(entity.entity_id.startsWith("scene.")){
+              if(entity?.entity_id.startsWith("scene.")){
                 return "scene.turn_on"
               }
-              else if(entity.entity_id.startsWith("media_player.")){
+              if(entity?.entity_id.startsWith("media_player.")){
                 return "media_player.media_play_pause"
               }
-              else if(entity.entity_id.startsWith("input_select.")){
+              if(entity?.entity_id.startsWith("input_select.")){
                 return "input_select.select_option"
-              } else {
-                return "homeassistant.toggle"
               }
+              if(entity?.entity_id.startsWith("script.")){
+                return entity.entity_id
+              }
+              return "homeassistant.toggle"
             ]]]
           navigation_path: "[[[ return variables?.nav_path; ]]]"
-          service_data: |
+          target: |
             [[[
+              if (variables.service_data){
+                return variables.service_data
+              }
               var obj;
-              if( entity.entity_id.startsWith("input_select.") )
-                obj = { entity_id: entity.entity_id, option: variables.state };
-              else
-                obj = { entity_id: entity.entity_id };
-              return obj;
+              if(typeof(entity) !== 'undefined' && entity !== undefined){
+                if( entity?.entity_id.startsWith("input_select.") )
+                  obj = { entity_id: entity?.entity_id, option: variables.state };
+                else
+                  obj = { entity_id: entity?.entity_id };
+                return obj;
+              }
             ]]]
         styles:
           grid:
@@ -341,7 +347,7 @@ card_scenes_pill_welcome:
           - operator: "template"
             value: >
               [[[
-                return (entity.state !== 'on' && entity.state !== 'playing' && entity.state != variables?.state)
+                return (entity?.state !== 'on' && entity?.state !== 'playing' && entity?.state != variables?.state)
               ]]]
             styles:
               card:
@@ -364,33 +370,46 @@ card_scenes_pill_welcome:
             [[[
               if(variables?.nav_path){
                 return "navigate"
-              } else {
-                return "call-service"
               }
+              return "perform-action"
             ]]]
           navigation_path: "[[[ return variables?.nav_path; ]]]"
-          service: >
+          perform_action: >
             [[[
-              if(entity.entity_id.startsWith("scene.")){
+              if(entity?.entity_id.startsWith("scene.")){
                 return "scene.turn_on"
               }
-              else if(entity.entity_id.startsWith("media_player.")){
+              if(entity?.entity_id.startsWith("media_player.")){
                 return "media_player.media_play_pause"
               }
-              else if(entity.entity_id.startsWith("input_select.")){
+              if(entity?.entity_id.startsWith("input_select.")){
                 return "input_select.select_option"
-              } else {
-                return "homeassistant.toggle"
               }
+              if(entity?.entity_id.startsWith("script.")){
+                return entity.entity_id
+              }
+              return "homeassistant.toggle"
             ]]]
-          service_data: |
+          target: |
             [[[
               var obj;
-              if( entity.entity_id.startsWith("input_select.") )
-                obj = { entity_id: entity.entity_id, option: variables.state };
-              else
-                obj = { entity_id: entity.entity_id };
-              return obj;
+              if(typeof(entity) !== 'undefined' && entity !== undefined){
+                if( entity?.entity_id.startsWith("input_select.") )
+                  obj = { entity_id: entity?.entity_id };
+                return obj;
+              }
+            ]]]
+          data: |
+            [[[
+              if (variables.service_data){
+                return variables.service_data
+              }
+              var obj;
+              if(typeof(entity) !== 'undefined' && entity !== undefined){
+                if( entity?.entity_id.startsWith("input_select.") )
+                  obj = { option: variables.state };
+                return obj;
+              }
             ]]]
         styles:
           grid:
@@ -400,13 +419,13 @@ card_scenes_pill_welcome:
             - font-weight: "bold"
             - font-size: "9.5px"
             - padding-bottom: "7px"
-            - overflow: "[[[return (entity.state !== 'on' && entity.state !== 'playing' && entity.state != variables?.state) ? 'visible' : 'hidden']]]"
+            - overflow: "[[[return (entity?.state !== 'on' && entity?.state !== 'playing' && entity?.state != variables?.state) ? 'visible' : 'hidden']]]"
           card:
             - box-shadow: "none"
             - padding: "0px 5px 5px 5px"
             - margin-top: "-5px"
             - border-radius: "50px"
-            - overflow: "[[[return (entity.state !== 'on' && entity.state !== 'playing' && entity.state != variables?.state) ? 'visible' : 'hidden']]]"
+            - overflow: "[[[return (entity?.state !== 'on' && entity?.state !== 'playing' && entity?.state != variables?.state) ? 'visible' : 'hidden']]]"
 card_topbar_welcome:
   show_icon: false
   show_name: false
@@ -432,15 +451,6 @@ card_topbar_welcome:
         styles:
           grid:
             - grid-template-areas: "'i'"
-          card:
-            - box-shadow: >
-                [[[
-                  if (hass.themes.darkMode){
-                    return "0px 2px 4px 0px rgba(0,0,0,0.80)";
-                  } else {
-                    return "var(--box-shadow)";
-                  }
-                ]]]
         state:
           - value: "on"
             icon: "mdi:chevron-down"
@@ -448,9 +458,9 @@ card_topbar_welcome:
               icon:
                 - color: "rgb(var(--color-theme))"
         tap_action:
-          action: "call-service"
-          service: "input_boolean.toggle"
-          service_data:
+          action: "perform-action"
+          perform_action: "input_boolean.toggle"
+          target:
             entity_id: "[[[ return variables.ulm_card_welcome_scenes_collapse ]]]"
     item2:
       card:
@@ -463,14 +473,6 @@ card_topbar_welcome:
         styles:
           card:
             - width: "100px"
-            - box-shadow: >
-                [[[
-                  if (hass.themes.darkMode){
-                    return "0px 2px 4px 0px rgba(0,0,0,0.80)";
-                  } else {
-                    return "var(--box-shadow)";
-                  }
-                ]]]
     item3:
       card:
         type: "custom:button-card"
@@ -483,14 +485,6 @@ card_topbar_welcome:
         styles:
           card:
             - align-self: "end"
-            - box-shadow: >
-                [[[
-                  if (hass.themes.darkMode){
-                    return "0px 2px 4px 0px rgba(0,0,0,0.80)";
-                  } else {
-                    return "var(--box-shadow)";
-                  }
-                ]]]
 # auto-entities
 card_scenes_welcome_auto:
   show_icon: false
