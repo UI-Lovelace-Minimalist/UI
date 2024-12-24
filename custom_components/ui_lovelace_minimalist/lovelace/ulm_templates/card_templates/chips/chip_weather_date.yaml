@@ -7,7 +7,8 @@ chip_weather_date:
       [[[
         return hass["language"];
       ]]]
-  triggers_update: "all"
+  triggers_update:
+    - "[[[ return variables.ulm_weather ]]]"
   tap_action:
     action: "more-info"
   label: |

@@ -20,3 +20,4 @@ chip_icon_label:
     label:
       - font-size: "12px"
       - margin-left: "0px"
+      - margin-top: "0px"

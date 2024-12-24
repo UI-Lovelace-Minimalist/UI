@@ -40,10 +40,14 @@ custom_card_camera:
         show_icon: "[[[ return variables.ulm_custom_card_camera_title; ]]]"
         name: "[[[ return variables.ulm_custom_card_camera_name; ]]]"
         label: "[[[ return variables.ulm_custom_card_camera_label; ]]]"
+        tap_action:
+          action: "more-info"
+          entity: "[[[ return entity.entity_id ]]]"
         styles:
           card:
             - box-shadow: "none"
             - padding: "0"
+            - --mdc-ripple-press-opacity: 0
           name:
             - align-self: "end"
             - justify-self: "start"
@@ -70,5 +74,6 @@ custom_card_camera:
         entity: "[[[ return entity.entity_id ]]]"
         show_name: false
         show_state: false
+        aspect_ratio: "[[[ return variables.ulm_custom_card_camera_aspect_ratio; ]]]"
   tap_action:
     action: "more-info"

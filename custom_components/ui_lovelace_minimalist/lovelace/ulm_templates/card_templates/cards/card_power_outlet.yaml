@@ -23,7 +23,8 @@ card_power_outlet:
                   return 'rgba(var(--color-' + color + '),var(--opacity-bg))';
                 }
               ]]]
-  triggers_update: "all"
+  triggers_update:
+    - "[[[ return variables.ulm_card_power_outlet_consumption_sensor ]]]"
   custom_fields:
     item1:
       card:

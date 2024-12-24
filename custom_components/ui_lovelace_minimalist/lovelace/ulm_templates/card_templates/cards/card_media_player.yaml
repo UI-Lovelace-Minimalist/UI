@@ -11,7 +11,7 @@ card_media_player:
     ulm_card_media_player_enable_controls: false
     ulm_card_media_player_enable_volume_slider: false
     ulm_card_media_player_enable_volume_buttons: false
-    ulm_card_media_player_enable_volume_adjust: false
+    ulm_card_media_player_enable_volume_adjust: 0
     ulm_card_media_player_collapsible: false
     ulm_card_media_player_player_controls_entity: "[[[ return entity.entity_id ]]]"
     ulm_card_media_player_enable_popup: false
@@ -19,7 +19,6 @@ card_media_player:
     ulm_card_media_player_power_button: false
     ulm_card_media_player_force_background_color: false
     ulm_card_media_player_color: "blue"
-  triggers_update: "all"
   show_icon: false
   show_name: false
   show_label: false
@@ -372,9 +371,9 @@ card_media_player:
                       template: "popup_media_player_infos"
                       entity: "[[[ return entity.entity_id ]]]"
               tap_action:
-                action: "call-service"
-                service: "media_player.media_previous_track"
-                service_data:
+                action: "perform-action"
+                perform_action: "media_player.media_previous_track"
+                target:
                   entity_id: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
               icon: "mdi:skip-previous"
               entity: "[[[ return entity.entity_id ]]]"
@@ -433,9 +432,9 @@ card_media_player:
                       template: "popup_media_player_infos"
                       entity: "[[[ return entity.entity_id; ]]]"
               tap_action:
-                action: "call-service"
-                service: "[[[ return (entity.attributes?.media_duration > 0) ? 'media_player.media_play_pause' : entity.state =='playing' ? 'media_player.media_stop' : 'media_player.media_play']]]"
-                service_data:
+                action: "perform-action"
+                perform_action: "[[[ return (entity.attributes?.media_duration > 0) ? 'media_player.media_play_pause' : entity.state =='playing' ? 'media_player.media_stop' : 'media_player.media_play']]]"
+                target:
                   entity_id: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
               icon: "[[[ return (entity.attributes?.media_duration > 0) ? 'mdi:pause' : 'mdi:stop' ]]]"
               state:
@@ -503,9 +502,9 @@ card_media_player:
                       template: "popup_media_player_infos"
                       entity: "[[[ return entity.entity_id; ]]]"
               tap_action:
-                action: "call-service"
-                service: "media_player.media_next_track"
-                service_data:
+                action: "perform-action"
+                perform_action: "media_player.media_next_track"
+                target:
                   entity_id: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
               icon: "mdi:skip-next"
               styles:
@@ -664,12 +663,12 @@ card_media_player:
         thumbVerticalPadding: "0px"
         thumbWidth: "0px"
         card_mod:
-        style: |
-          ha-card {
-            border-radius: 14px;
-            background-color: transparent;
-            box-shadow: none;
-          }
+          style: |
+            ha-card {
+              border-radius: 14px;
+              background-color: transparent;
+              box-shadow: none;
+            }
     item4:
       card:
         type: "custom:button-card"
@@ -701,10 +700,11 @@ card_media_player:
                       template: "popup_media_player_infos"
                       entity: "[[[ return entity.entity_id; ]]]"
               tap_action:
-                action: "call-service"
-                service: "media_player.volume_mute"
-                service_data:
+                action: "perform-action"
+                perform_action: "media_player.volume_mute"
+                target:
                   entity_id: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
+                data:
                   is_volume_muted: "[[[ return (states[entity.entity_id].attributes.is_volume_muted) ? false : true; ]]]"
               icon: "mdi:volume-mute"
               styles:
@@ -762,15 +762,16 @@ card_media_player:
                       template: "popup_media_player_infos"
                       entity: "[[[ return entity.entity_id; ]]]"
               tap_action:
-                action: "call-service"
-                service: "media_player.volume_set"
-                service_data:
+                action: "perform-action"
+                perform_action: "media_player.volume_set"
+                target:
                   entity_id: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
+                data:
                   volume_level: |
                     [[[
                       var volume = states[entity.entity_id].attributes.volume_level;
-                      if (variables.ulm_card_media_player_enable_volume_adjust) {
-                          volume = states[entity.entity_id].attributes.volume_level + ulm_card_media_player_enable_volume_adjust;
+                      if (variables.ulm_card_media_player_enable_volume_adjust != 0) {
+                          volume = states[entity.entity_id].attributes.volume_level - variables.ulm_card_media_player_enable_volume_adjust;
                       } else {
                           if (states[entity.entity_id].attributes.device_class === "tv") {
                               volume = states[entity.entity_id].attributes.volume_level - 0.01;
@@ -842,15 +843,16 @@ card_media_player:
                       template: "popup_media_player_infos"
                       entity: "[[[ return entity.entity_id; ]]]"
               tap_action:
-                action: "call-service"
-                service: "media_player.volume_set"
-                service_data:
+                action: "perform-action"
+                perform_action: "media_player.volume_set"
+                target:
                   entity_id: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
+                data:
                   volume_level: |
                     [[[
                       var volume = states[entity.entity_id].attributes.volume_level;
-                      if (variables.ulm_card_media_player_enable_volume_adjust) {
-                          volume = states[entity.entity_id].attributes.volume_level + ulm_card_media_player_enable_volume_adjust;
+                      if (variables.ulm_card_media_player_enable_volume_adjust != 0) {
+                          volume = states[entity.entity_id].attributes.volume_level + variables.ulm_card_media_player_enable_volume_adjust;
                       } else {
                           if (states[entity.entity_id].attributes.device_class === "tv") {
                               volume = states[entity.entity_id].attributes.volume_level + 0.01;

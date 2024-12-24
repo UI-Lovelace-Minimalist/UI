@@ -32,14 +32,14 @@ custom_card_nik_clock:
     action: >
       [[[
           if (variables.ulm_custom_card_nik_clock_switch_enable){
-            return 'call-service'
+            return 'perform-action'
           }
           else{
             return 'none'
           }
       ]]]
-    service: "input_boolean.toggle"
-    service_data:
+    perform_action: "input_boolean.toggle"
+    target:
       entity_id: "[[[ return variables.ulm_custom_card_nik_clock_switch ]]]"
   styles:
     card:

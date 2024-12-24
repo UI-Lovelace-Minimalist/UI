@@ -9,7 +9,7 @@ card_media_player_chromecast:
     - "icon_info"
     - "blue_not_unavailable"
     - "ulm_translation_engine"
-  label: "[[[ return variables.ulm_translation_state_unit ]]]"
+  label: "[[[ return variables.ulm_translation_state ]]]"
 card_media_player_chromecast_with_controls:
   variables:
     ulm_card_media_player_with_controls_name: "No name set"
@@ -49,9 +49,9 @@ card_media_player_chromecast_with_controls:
               type: "custom:button-card"
               template: "widget_icon"
               tap_action:
-                action: "call-service"
-                service: "media_player.toggle"
-                service_data:
+                action: "perform-action"
+                perform_action: "media_player.toggle"
+                target:
                   entity_id: "[[[ return variables.ulm_card_media_player_with_controls_entity ]]]"
               icon: "mdi:power"
           item2:
@@ -60,9 +60,9 @@ card_media_player_chromecast_with_controls:
               template: "widget_icon"
               entity: "[[[ return variables.ulm_card_media_player_with_controls_entity ]]]"
               tap_action:
-                action: "call-service"
-                service: "media_player.media_play_pause"
-                service_data:
+                action: "perform-action"
+                perform_action: "media_player.media_play_pause"
+                target:
                   entity_id: "[[[ return variables.ulm_card_media_player_with_controls_entity ]]]"
               icon: "mdi:pause"
               state:
@@ -75,9 +75,9 @@ card_media_player_chromecast_with_controls:
               type: "custom:button-card"
               template: "widget_icon"
               tap_action:
-                action: "call-service"
-                service: "media_player.toggle"
-                service_data:
+                action: "perform-action"
+                perform_action: "media_player.toggle"
+                target:
                   entity_id: "[[[ return variables.ulm_card_media_player_with_controls_entity ]]]"
               icon: "mdi:video-input-hdmi"
 

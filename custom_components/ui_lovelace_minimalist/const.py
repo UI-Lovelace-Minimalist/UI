@@ -24,9 +24,11 @@ LANGUAGES = {
     "German": "de",
     "English (GB)": "en",
     "Spanish": "es",
+    "Català": "ca",
     "French": "fr",
     "Italian": "it",
     "Dutch": "nl",
+    "Hebrew": "he",
     "Norwegian": "no",
     "Polish": "pl",
     "Portuguese": "pt",
@@ -36,6 +38,7 @@ LANGUAGES = {
     "Swedish": "sv",
     "Turkish": "tr",
     "Russian": "ru",
+    "中文（简体）": "zh-CN",
 }
 
 CONF_LANGUAGE = "language"
@@ -45,9 +48,11 @@ CONF_LANGUAGES = [
     "German",
     "English (GB)",
     "Spanish",
+    "Català",
     "French",
     "Italian",
     "Dutch",
+    "Hebrew",
     "Norwegian",
     "Polish",
     "Portuguese",
@@ -57,6 +62,7 @@ CONF_LANGUAGES = [
     "Swedish",
     "Turkish",
     "Russian",
+    "中文（简体）",
 ]
 CONF_SIDEPANEL_ENABLED = "sidepanel_enabled"
 CONF_SIDEPANEL_TITLE = "sidepanel_title"

@@ -38,16 +38,18 @@ card_input_number:
               type: "custom:button-card"
               template: "widget_icon"
               tap_action:
-                action: "call-service"
-                service: |
-                      [[[
-                        if( entity.entity_id.startsWith("input_number.") )
-                          return "input_number.decrement";
-                        if( entity.entity_id.startsWith("counter.") )
-                          return "counter.decrement";
-                        return "";
-                      ]]]
-                service_data:
+                action: "perform-action"
+                perform_action: |
+                  [[[
+                    if( entity.entity_id.startsWith("input_number.") )
+                      return "input_number.decrement";
+                    else if( entity.entity_id.startsWith("counter.") )
+                      return "counter.decrement";
+                    else if( entity.entity_id.startsWith("select.") )
+                      return "select.select_previous";
+                    return "";
+                  ]]]
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
               icon: "mdi:arrow-down"
           item2:
@@ -56,25 +58,27 @@ card_input_number:
               template: "widget_text"
               entity: "[[[ return entity.entity_id ]]]"
               tap_action:
-                action: "call-service"
-                service: "cover.stop_cover"
-                service_data:
+                action: "perform-action"
+                perform_action: "cover.stop_cover"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
           item3:
             card:
               type: "custom:button-card"
               template: "widget_icon"
               tap_action:
-                action: "call-service"
-                service: |
-                      [[[
-                        if( entity.entity_id.startsWith("input_number.") )
-                          return "input_number.increment";
-                        if( entity.entity_id.startsWith("counter.") )
-                          return "counter.increment";
-                        return "";
-                      ]]]
-                service_data:
+                action: "perform-action"
+                perform_action: |
+                  [[[
+                    if( entity.entity_id.startsWith("input_number.") )
+                      return "input_number.increment";
+                    else if( entity.entity_id.startsWith("counter.") )
+                      return "counter.increment";
+                    else if( entity.entity_id.startsWith("select.") )
+                      return "select.select_next";
+                    return "";
+                  ]]]
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
               icon: "mdi:arrow-up"
 
@@ -91,7 +95,7 @@ widget_text:
   show_icon: false
   show_label: true
   show_name: false
-  label: "[[[ return variables.ulm_translation_state_unit ]]]"
+  label: "[[[ return variables.ulm_translation_state ]]]"
   styles:
     grid:
       - grid-template-areas: "'l'"
