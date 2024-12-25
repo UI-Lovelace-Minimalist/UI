@@ -21,9 +21,9 @@ popup_chip_controls:
         entity: "[[[ return entity.entity_id; ]]]"
         icon: "mdi:skip-previous"
         tap_action:
-          action: "call-service"
-          service: "media_player.media_previous_track"
-          service_data:
+          action: "perform-action"
+          perform_action: "media_player.media_previous_track"
+          target:
             entity_id: "[[[ return entity.entity_id; ]]]"
         styles:
           icon:
@@ -45,9 +45,9 @@ popup_chip_controls:
           - value: "playing"
             icon: "mdi:pause"
         tap_action:
-          action: "call-service"
-          service: "media_player.media_play_pause"
-          service_data:
+          action: "perform-action"
+          perform_action: "media_player.media_play_pause"
+          target:
             entity_id: "[[[ return entity.entity_id; ]]]"
     item3:
       card:
@@ -56,9 +56,9 @@ popup_chip_controls:
         entity: "[[[ return entity.entity_id; ]]]"
         icon: "mdi:skip-next"
         tap_action:
-          action: "call-service"
-          service: "media_player.media_next_track"
-          service_data:
+          action: "perform-action"
+          perform_action: "media_player.media_next_track"
+          target:
             entity_id: "[[[ return entity.entity_id; ]]]"
         styles:
           icon:
