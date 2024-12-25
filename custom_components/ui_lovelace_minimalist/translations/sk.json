@@ -24,7 +24,7 @@
             "reauth_successful": "Opätovná autentifikácia bola úspešná."
         },
         "progress": {
-            "wait_for_device": "1. Otvoriť {url} \n2.Vložte nasledujúci kľúč na autorizáciu ULM: \n```\n{code}\n```\n"
+            "wait_for_device": "1. Otvoriť {url}\n2.Vložte nasledujúci kľúč na autorizáciu ULM:\n\n```{code}```"
         }
     },
     "options": {
@@ -59,9 +59,11 @@
     },
     "services": {
         "reload": {
+            "name": "Reload",
             "description": "Znovu načítajte konfiguráciu dashboardu pre používateľské rozhranie Lovelace Minimalist."
         },
         "installed": {
+            "name": "Installed",
             "description": "Zmeňte nainštalovaný kľúč v globálnej konfigurácii pre používateľské rozhranie Lovelace Minimalist."
         }
     }
