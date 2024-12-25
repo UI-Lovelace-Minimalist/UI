@@ -21,6 +21,7 @@ card_vacuum:
         var state = entity.state.toLowerCase();
         var colors = {
           "cleaning": "blue",
+          "mowing": "blue",
           "paused": "green",
           "mopping": "yellow",
           "returning": "purple",
@@ -52,7 +53,7 @@ card_vacuum:
             let map = "'item1' 'map' 'item2'"
             if(variables.ulm_card_vacuum_camera != ""){
               if(variables.ulm_card_vacuum_camera_toggle){
-                if(entity.state.toLowerCase() === 'cleaning' || entity.state.toLowerCase() === 'mopping'){
+                if(entity.state.toLowerCase() === 'cleaning' || entity.state.toLowerCase() === 'mopping' || entity.state.toLowerCase() === 'mowing'){
                   return map;
                 }
               } else {
@@ -67,7 +68,7 @@ card_vacuum:
             let map = "repeat(3, min-content)"
             if(variables.ulm_card_vacuum_camera != ""){
               if(variables.ulm_card_vacuum_camera_toggle){
-                if(entity.state.toLowerCase() === 'cleaning' || entity.state.toLowerCase() === 'mopping'){
+                if(entity.state.toLowerCase() === 'cleaning' || entity.state.toLowerCase() === 'mopping' || entity.state.toLowerCase() === 'mowing'){
                   return map;
                 }
               } else {
@@ -94,7 +95,7 @@ card_vacuum:
               let map = "block"
               if(variables.ulm_card_vacuum_camera != ""){
                 if(variables.ulm_card_vacuum_camera_toggle){
-                  if(entity.state.toLowerCase() === 'cleaning' || entity.state.toLowerCase() === 'mopping'){
+                  if(entity.state.toLowerCase() === 'cleaning' || entity.state.toLowerCase() === 'mopping' || entity.state.toLowerCase() === 'mowing'){
                     return map;
                   }
                 } else {
@@ -249,7 +250,7 @@ card_vacuum:
                       ]]]
               state:
                 - operator: "template"
-                  value: "[[[ return ['cleaning','mopping'].includes(entity.state.toLowerCase()) ]]]"
+                  value: "[[[ return ['cleaning','mopping','mowing'].includes(entity.state.toLowerCase()) ]]]"
                   icon: "mdi:stop"
                   tap_action:
                     action: "perform-action"
@@ -260,7 +261,7 @@ card_vacuum:
                 action: "perform-action"
                 perform_action: >
                   [[[
-                    return ['cleaning','mopping'].includes(entity.state.toLowerCase()) ? "vacuum.stop" : "vacuum.start";
+                    return ['cleaning','mopping','mowing'].includes(entity.state.toLowerCase()) ? "vacuum.stop" : "vacuum.start";
                   ]]]
                 target:
                   entity_id: "[[[ return entity.entity_id ]]]"
