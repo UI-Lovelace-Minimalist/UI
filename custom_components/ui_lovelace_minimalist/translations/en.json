@@ -59,9 +59,11 @@
     },
     "services": {
         "reload": {
+            "name": "Reload",
             "description": "Reload dashboard configuration for UI Lovelace Minimalist."
         },
         "installed": {
+            "name": "Installed",
             "description": "Change the installed key in global config for UI Lovelace Minimalist."
         }
     }
