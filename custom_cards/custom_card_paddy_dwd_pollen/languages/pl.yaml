@@ -1,10 +1,10 @@
 ---
-custom_card_paddy_dwd_pollen_language_variables:
+ulm_custom_card_paddy_dwd_pollen_language_variables:
   variables:
-    custom_card_paddy_dwd_pollen_6: "bardzo wysokie"
-    custom_card_paddy_dwd_pollen_5: "wysokie"
-    custom_card_paddy_dwd_pollen_4: "średnie"
-    custom_card_paddy_dwd_pollen_3: "umiarkowane"
-    custom_card_paddy_dwd_pollen_2: "słabe"
-    custom_card_paddy_dwd_pollen_1: "bardzo słabe"
-    custom_card_paddy_dwd_pollen_none: "brak"
+    ulm_custom_card_paddy_dwd_pollen_6: "bardzo wysokie"
+    ulm_custom_card_paddy_dwd_pollen_5: "wysokie"
+    ulm_custom_card_paddy_dwd_pollen_4: "średnie"
+    ulm_custom_card_paddy_dwd_pollen_3: "umiarkowane"
+    ulm_custom_card_paddy_dwd_pollen_2: "słabe"
+    ulm_custom_card_paddy_dwd_pollen_1: "bardzo słabe"
+    ulm_custom_card_paddy_dwd_pollen_none: "brak"
