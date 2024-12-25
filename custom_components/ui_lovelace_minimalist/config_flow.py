@@ -7,7 +7,9 @@ from typing import Any
 
 from aiogithubapi import GitHubDeviceAPI, GitHubException
 from aiogithubapi.common.const import OAUTH_USER_LOGIN
+from awesomeversion import AwesomeVersion
 from homeassistant import config_entries
+from homeassistant.const import __version__ as HAVERSION
 from homeassistant.core import callback
 from homeassistant.helpers import aiohttp_client
 import homeassistant.helpers.config_validation as cv
@@ -50,6 +52,10 @@ from .const import (  # CONF_COMMUNITY_CARDS_ALL,
 from .enums import ConfigurationType
 
 _LOGGER: logging.Logger = logging.getLogger(__name__)
+
+# Version threshold for config_entry setting in options flow
+# See: https://github.com/home-assistant/core/pull/129562
+HA_OPTIONS_FLOW_VERSION_THRESHOLD = "2024.11.99"
 
 
 async def ulm_config_option_schema(options: dict = {}) -> dict:
@@ -242,7 +248,10 @@ class UlmOptionFlowHandler(config_entries.OptionsFlow):
 
     def __init__(self, config_entry: config_entries.ConfigEntry) -> None:
         """Initialize."""
-        self.config_entry = config_entry
+        self.options = dict(config_entry.options)
+        # See: https://github.com/home-assistant/core/pull/129562
+        if AwesomeVersion(HAVERSION) < HA_OPTIONS_FLOW_VERSION_THRESHOLD:
+            self.config_entry = config_entry
 
     async def async_step_init(self, _user_input=None):
         """Manage the options."""
