@@ -19,7 +19,7 @@
 
 It's kind of hard to explain what this is, so let's call it a "theme" (in quotation marks). But one thing is for sure, it is very nice! Taking the exceptional work of tben as a basis, this repository is aimed to ease installation and maintenance of his wonderful work. You can use this interpretation of a SmartHomeUI more or less like a theme in HomeAssistant.
 
-<img src="https://raw.githubusercontent.com/UI-Lovelace-Minimalist/UI/main/docs/assets/img/example_home.png" width="200"> <img src="https://raw.githubusercontent.com/UI-Lovelace-Minimalist/UI/main/docs/assets/img/example_temperature.png" width="200"> <img src="https://raw.githubusercontent.com/UI-Lovelace-Minimalist/UI/main/docs/assets/img/example_consumption.png" width="200"> <img src="https://raw.githubusercontent.com/UI-Lovelace-Minimalist/UI/main/docs/assets/img/example_localisation.png" width="200">
+<img src="https://raw.githubusercontent.com/UI-Lovelace-Minimalist/UI/main/docs/assets/img/example_home.png" width="200" alt="example-image1" > <img src="https://raw.githubusercontent.com/UI-Lovelace-Minimalist/UI/main/docs/assets/img/example_temperature.png" width="200" alt="example-image2" > <img src="https://raw.githubusercontent.com/UI-Lovelace-Minimalist/UI/main/docs/assets/img/example_consumption.png" width="200" alt="example-image3" > <img src="https://raw.githubusercontent.com/UI-Lovelace-Minimalist/UI/main/docs/assets/img/example_localisation.png" width="200" alt="example-image4" >
 
 ## Wiki for documentation
 
@@ -28,6 +28,7 @@ Take a look here: [https://ui-lovelace-minimalist.github.io/UI/](https://ui-love
 
 Table of content from the WIKI
 <br>
+
 <table>
 <tr>
 <th style="width: 33%;">Setup</th>
@@ -103,5 +104,5 @@ The same goes for our `custom_cards`. As the number grows, the list would be to 
 
 ### Contributions
 
->This is a living project and all input is very welcome! If you configured and designed  a card, that you would like to share, please feel free to do so! We are happy to include your contribution so others can use it as well!
-This project uses pre-commit for consistent and clean code. If possible, please make sure that you also use pre-commit for local development before creating a pull request.
+> This is a living project and all input is very welcome! If you configured and designed a card, that you would like to share, please feel free to do so! We are happy to include your contribution so others can use it as well!
+> This project uses pre-commit for consistent and clean code. If possible, please make sure that you also use pre-commit for local development before creating a pull request.

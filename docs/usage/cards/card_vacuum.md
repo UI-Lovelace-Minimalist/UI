@@ -3,6 +3,7 @@ title: Vacuum Card
 hide:
   - toc
 ---
+
 <!-- markdownlint-disable MD046 -->
 
 ## Description
@@ -15,18 +16,18 @@ This is a card to control your Robot-vacuum. It has support for all vacuums whic
 
 ## Variables
 
-| Variable | Default | Required         | Notes             |
-|----------|---------|------------------|-------------------|
-| entity   |  `vacuum.*` | :material-check: |                   |
-|`ulm_card_vacuum_name`|  | :material-close: | Add a custom name |
-|`ulm_card_vacuum_icon`|   | :material-close: | Add a custom MDI icon |
-|`ulm_card_vacuum_label`|  | :material-close: | Add a custom label |
-|`ulm_card_vacuum_room`|   | :material-close: | Add a script to clean a specific room |
-|`ulm_card_vacuum_room_icon`|   | :material-close: | Add custom icon to the room script |
-|`ulm_card_vacuum_camera`|   | :material-close: | Add a camera entity to the card to show the vacuum map |
-|`ulm_card_vacuum_camera_toggle`|   | :material-close: | Only show the camera entity while cleaning |
-| ulm_card_vacuum_color            | state based       | :material-close: | Set Custom Color                   |             |
-| ulm_card_vacuum_force_background_color           | `false`         | :material-close: | Set `ulm_card_vacuum_color` as background color in active state `                  |             |
+| Variable                               | Default     | Required         | Notes                                                             |
+| -------------------------------------- | ----------- | ---------------- | ----------------------------------------------------------------- |
+| entity                                 | `vacuum.*`  | :material-check: |                                                                   |
+| `ulm_card_vacuum_name`                 |             | :material-close: | Add a custom name                                                 |
+| `ulm_card_vacuum_icon`                 |             | :material-close: | Add a custom MDI icon                                             |
+| `ulm_card_vacuum_label`                |             | :material-close: | Add a custom label                                                |
+| `ulm_card_vacuum_room`                 |             | :material-close: | Add a script to clean a specific room                             |
+| `ulm_card_vacuum_room_icon`            |             | :material-close: | Add custom icon to the room script                                |
+| `ulm_card_vacuum_camera`               |             | :material-close: | Add a camera entity to the card to show the vacuum map            |
+| `ulm_card_vacuum_camera_toggle`        |             | :material-close: | Only show the camera entity while cleaning                        |
+| ulm_card_vacuum_color                  | state based | :material-close: | Set Custom Color                                                  |
+| ulm_card_vacuum_force_background_color | `false`     | :material-close: | Set `ulm_card_vacuum_color` as background color in active state ` |
 
 ## Usage
 

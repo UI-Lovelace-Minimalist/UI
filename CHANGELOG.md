@@ -17,7 +17,7 @@
 - #156 Fix custom_card_saxel blue style card @saxel
 - #153 Fix battery_card icon color when state is unavailable @saxel
 - #146 fix Card "card_media_player_with_controls"
-  (missing  variable "ulm_card_media_player_with_controls_entity") @vncnt-dev
+  (missing variable "ulm_card_media_player_with_controls_entity") @vncnt-dev
 - #183 Light Slider unavailable color @schumijo
 - #182 Update chips_icon_label to use base chips template @schumijo
 
@@ -47,7 +47,7 @@
 - Use new slider from AnthonMS for popup card by @bavo in <https://github.com/UI-Lovelace-Minimalist/UI/pull/162>
 - Hotfix popup card by @schumijo in <https://github.com/UI-Lovelace-Minimalist/UI/pull/164>
 
-**Full Changelog**: <https://github.com/UI-Lovelace-Minimalist/UI/compare/v1.0.0-beta.10...v1.0.0-beta.10-hotfix>
+### **Full Changelog**: <https://github.com/UI-Lovelace-Minimalist/UI/compare/v1.0.0-beta.10...v1.0.0-beta.10-hotfix>
 
 ## Version 1.0.0-beta.10
 
@@ -64,7 +64,7 @@
 
 - Specific readme for popups is available [here](https://github.com/UI-Lovelace-Minimalist/UI/blob/main/ups.md)
 
-**Full Changelog**: <https://github.com/UI-Lovelace-Minimalist/UI/compare/v1.0.0-beta.9...v1.0.0-beta.10>
+### **Full Changelog**: <https://github.com/UI-Lovelace-Minimalist/UI/compare/v1.0.0-beta.9...v1.0.0-beta.10>
 
 #### ❤️ Special thanks to @bavo for his help on creating these popups
 
@@ -75,7 +75,7 @@
 ### 🚀 Features
 
 - #121 Custom-card "Device Tracker (Online or Offline ?) @vncnt-dev
-- #111 Thermostat card  @httpedo13
+- #111 Thermostat card @httpedo13
 - #117 Custom printer card with toner status @mp-se
 - #127 Custom Input Number Card @sildehoop
 - #133 Added wifi signal card @mp-se
@@ -109,7 +109,7 @@
 ### 🚀 Features
 
 - More-info function light card and Custom auto-color light cards @basbruss (#80)
-- improved "card\_battery" card  @vncnt-dev (#89)
+- improved "card_battery" card @vncnt-dev (#89)
 
 ### 🔧 Code enhancements
 
@@ -118,7 +118,7 @@
 - Add rounding and german translation to schumijo car card @CM000n (#85)
 - Rework thermostat card to new templates @schumijo (#84)
 - Introduce padding with card-mod-view-yaml @CM000n (#92)
-- Make guest counter optional on chip\_presence\_detection @CM000n (#99)
+- Make guest counter optional on chip_presence_detection @CM000n (#99)
 - Fix guest presence counter @checkerschaf (#103)
 
 ### 🐛 Bug Fixes
@@ -144,11 +144,11 @@ If any of you have used this before, you should take a look at @saxel's pull req
 
 ### 🔧 Code enhancements
 
-- Add some list\_items templates @schumijo (#31)
-- Add custom card custom\_card\_saxel\_fan @saxel (#34)
+- Add some list_items templates @schumijo (#31)
+- Add custom card custom_card_saxel_fan @saxel (#34)
 - NL support and Typofix @basbruss (#37)
 - Add custom single icon chip card @CM000n (#38)
-- Add custom card custom\_card\_schumijo\_car @schumijo (#39)
+- Add custom card custom_card_schumijo_car @schumijo (#39)
 - Round temperature when the temperature has decimal points @bavo (#46)
 - Add Alarm Chip to available templates @tombo12354 (#50)
 - Create SE.yaml @EmilZackrisson (#53)
@@ -158,7 +158,7 @@ If any of you have used this before, you should take a look at @saxel's pull req
 
 ### 🐛 Bug Fixes
 
-- Fix card\_media\_player\_with\_controls variables access. @matrixx567 (#62)
+- Fix card_media_player_with_controls variables access. @matrixx567 (#62)
 
 ## Version 1.0.0-beta.6
 
@@ -261,7 +261,7 @@ If any of you have used this before, you should take a look at @saxel's pull req
 ### Changed
 
 Actually this version is a major re-write of the previous versions. As the new naming conventions are set, you may need to update your previous code to reflect these changes.
-This is necessary to ease future updates and get some structure in place, eg. for `custom_cards`. For most of the old definitions there are *legacy templates* in place.
+This is necessary to ease future updates and get some structure in place, eg. for `custom_cards`. For most of the old definitions there are _legacy templates_ in place.
 
 ## Notes
 
