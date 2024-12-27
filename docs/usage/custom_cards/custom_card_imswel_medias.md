@@ -29,6 +29,7 @@ Initial release
 ## Requirements
 
 This card needs the following to function correctly:
+
 | Component                                                                                 | Required                           |
 | ----------------------------------------------------------------------------------------- | ---------------------------------- |
 |[Plex Recently Added](https://github.com/NemesisRE/sensor.plex_recently_added)             | Yes for **`Media Library Card`**   |
@@ -40,6 +41,7 @@ This card needs the following to function correctly:
 **Media Library Card** for [Plex Recently Added](https://github.com/NemesisRE/sensor.plex_recently_added) :
 
 ![example-image-plex](../../assets/img/custom_card_imswel_medias/medias_library_plex.png)<br>
+
 | Variable                              | Default | Required | Notes                                                                   |
 | -----------------------------         | ------- | -------- | ----------------------------------------------------------------------- |
 | ulm_custom_card_imswel_medias_index   |    1    | Yes      | The index of the item in your **Plex library**  to show.                |
@@ -58,6 +60,7 @@ This card needs the following to function correctly:
 
 ![example-image-radarr](../../assets/img/custom_card_imswel_medias/medias_upcoming_radarr.png)
 ![example-image-sonarr](../../assets/img/custom_card_imswel_medias/medias_upcoming_sonarr.png)<br>
+
 | Variable                              | Default | Required | Notes                                                                                                    |
 | -----------------------------         | ------- | -------- | -------------------------------------------------------------------------------------------------------- |
 | ulm_custom_card_imswel_medias_index   | 1       | Yes      | The index of the item in your **Radarr/Sonarr library** to show.                                         |

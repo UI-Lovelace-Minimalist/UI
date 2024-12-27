@@ -13,9 +13,9 @@ custom_card_speedtest_shogun160:
     ulm_custom_card_speedtest_ping_max: 85
     ulm_custom_card_speedtest_round: false
   tap_action:
-    action: "call-service"
-    service: "homeassistant.update_entity"
-    service_data:
+    action: "perform-action"
+    perform_action: "homeassistant.update_entity"
+    target:
       entity_id:
         - "[[[ return variables.ulm_custom_card_speedtest_download_speed_entity]]]"
         - "[[[ return variables.ulm_custom_card_speedtest_upload_speed_entity]]]"

@@ -58,9 +58,9 @@ card_media_player_sonos_with_controls:
               type: "custom:button-card"
               template: "widget_icon"
               tap_action:
-                action: "call-service"
-                service: "media_player.volume_down"
-                service_data:
+                action: "perform-action"
+                perform_action: "media_player.volume_down"
+                target:
                   entity_id: "[[[ return variables.ulm_card_media_player_with_controls_entity ]]]"
               icon: "mdi:volume-minus"
           item2:
@@ -69,9 +69,9 @@ card_media_player_sonos_with_controls:
               template: "widget_icon"
               entity: "[[[ return variables.ulm_card_media_player_with_controls_entity ]]]"
               tap_action:
-                action: "call-service"
-                service: "media_player.media_play_pause"
-                service_data:
+                action: "perform-action"
+                perform_action: "media_player.media_play_pause"
+                target:
                   entity_id: "[[[ return variables.ulm_card_media_player_with_controls_entity ]]]"
               icon: "mdi:pause"
               state:
@@ -84,9 +84,9 @@ card_media_player_sonos_with_controls:
               type: "custom:button-card"
               template: "widget_icon"
               tap_action:
-                action: "call-service"
-                service: "media_player.volume_up"
-                service_data:
+                action: "perform-action"
+                perform_action: "media_player.volume_up"
+                target:
                   entity_id: "[[[ return variables.ulm_card_media_player_with_controls_entity ]]]"
               icon: "mdi:volume-plus"
 

@@ -24,7 +24,7 @@
             "reauth_successful": "Ponovna avtentikacija je bila uspešna."
         },
         "progress": {
-            "wait_for_device": "1. Odpri {url} \n2.Za avtorizacijo prilepite naslednji ključ ULM: \n```\n{code}\n```\n"
+            "wait_for_device": "1. Odpri {url}\n2.Za avtorizacijo prilepite naslednji ključ ULM:\n\n```{code}```"
         }
     },
     "options": {
@@ -55,6 +55,16 @@
             "github_cards": "Pri pridobivanju kartic iz GitHub je šlo nekaj narobe.",
             "ack": "Vse izjave morate potrditi.",
             "gh_token": "Žeton Github ni nastavljen. Znova namestite to integracijo, da opravite postopek namestitve. (Nobena konfiguracija po meri ne bo izgubljena)"
+        }
+    },
+    "services": {
+        "reload": {
+            "name": "Reload",
+            "description": "Reload dashboard configuration for UI Lovelace Minimalist."
+        },
+        "installed": {
+            "name": "Installed",
+            "description": "Change the installed key in global config for UI Lovelace Minimalist."
         }
     }
 }

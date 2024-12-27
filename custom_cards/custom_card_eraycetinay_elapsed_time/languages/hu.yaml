@@ -1,0 +1,11 @@
+---
+ulm_custom_card_eraycetinay_elapsed_time_language_variables:
+  variables:
+    ulm_custom_card_eraycetinay_elapsed_time_day: "nappal"
+    ulm_custom_card_eraycetinay_elapsed_time_days: "nappal"
+    ulm_custom_card_eraycetinay_elapsed_time_hour: "órával"
+    ulm_custom_card_eraycetinay_elapsed_time_hours: "órával"
+    ulm_custom_card_eraycetinay_elapsed_time_minute: "perccel"
+    ulm_custom_card_eraycetinay_elapsed_time_minutes: "perccel"
+    ulm_custom_card_eraycetinay_elapsed_time_ago: "ezelőtt"
+    ulm_custom_card_eraycetinay_elapsed_time_justnow: "éppen most"

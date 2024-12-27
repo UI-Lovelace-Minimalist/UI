@@ -44,26 +44,27 @@ custom_card_bar_card:
           name: "off"
         min: "[[[ return variables.ulm_custom_card_bar_card_min ]]]"
         max: "[[[ return variables.ulm_custom_card_bar_card_max ]]]"
-        style: |-
-          bar-card-currentbar {
-            border-radius: 0px !important;
-            right: 0;
-          }
-          bar-card-backgroundbar {
-            border-radius: 0px !important;
-            right: 0;
-          }
-          #states {
-            padding: 0;
-            height: 35px;
-          }
-          bar-card-background {
-            height: 35px !important;
-          }
-          bar-card-indicator {
-            left: 10px;
-          }
-          bar-card-value {
-            font-weight: bold;
-            font-size: 12px;
-          }
+        card_mod:
+          style: |-
+            bar-card-currentbar {
+              border-radius: 0px !important;
+              right: 0;
+            }
+            bar-card-backgroundbar {
+              border-radius: 0px !important;
+              right: 0;
+            }
+            #states {
+              padding: 0;
+              height: 35px;
+            }
+            bar-card-background {
+              height: 35px !important;
+            }
+            bar-card-indicator {
+              left: 10px;
+            }
+            bar-card-value {
+              font-weight: bold;
+              font-size: 12px;
+            }

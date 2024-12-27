@@ -112,9 +112,9 @@ custom_card_nik_door:
               icon: "mdi:lock-open-variant"
               entity: "[[[ return entity.entity_id ]]]"
               tap_action:
-                action: "call-service"
-                service: "lock.open"
-                service_data:
+                action: "perform-action"
+                perform_action: "lock.open"
+                target:
                   entity_id: "[[[ return variables.ulm_custom_card_entity_1_lock ]]]"
               state:
                 - value: "Open"
@@ -136,9 +136,9 @@ custom_card_nik_door:
               icon: "mdi:lock"
               entity: "[[[ return entity.entity_id ]]]"
               tap_action:
-                action: "call-service"
-                service: "lock.lock"
-                service_data:
+                action: "perform-action"
+                perform_action: "lock.lock"
+                target:
                   entity_id: "[[[ return variables.ulm_custom_card_entity_1_lock ]]]"
               state:
                 - value: "Closed & Locked"

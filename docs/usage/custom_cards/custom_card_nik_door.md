@@ -8,7 +8,7 @@ hide:
 
 # Custom-card "Minimal Door Lock"
 
-This is a `custom-card` that shows the currenct state of your Lock and allows you to open and close it showing the state with a Minimal Design.
+This is a `custom-card` that shows the current state of your Lock and allows you to open and close it showing the state with a Minimal Design.
 
 ![Screenshot](../../assets/img/custom_card_nik_door.png)
 
@@ -36,7 +36,6 @@ To have the Minimalist cards and custom cards installed
 ## Usage
 
 ```yaml
-
 - type: "custom:button-card"
   template: "custom_card_nik_door"
   entity: "sensor.nuki_blindato_door_security_state"

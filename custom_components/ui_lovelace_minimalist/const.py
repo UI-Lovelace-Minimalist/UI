@@ -1,4 +1,5 @@
 """Constants for UI Lovelace Minimalist."""
+
 from typing import TypeVar
 
 # Base component constants
@@ -19,50 +20,49 @@ GITHUB_REPO = "UI-Lovelace-Minimalist/UI"
 COMMUNITY_CARDS_FOLDER = "custom_cards"
 
 LANGUAGES = {
-    "Català": "ca",
     "Czech": "cs",
     "Danish": "da",
-    "Dutch": "nl",
-    "English (GB)": "en",
-    "French": "fr",
     "German": "de",
-    "Hebrew": "he",
+    "English (GB)": "en",
+    "Spanish": "es",
+    "Català": "ca",
+    "French": "fr",
     "Italian": "it",
+    "Dutch": "nl",
+    "Hebrew": "he",
     "Norwegian": "no",
     "Polish": "pl",
-    "Portuguese (Brazil)": "pt-BR",
     "Portuguese": "pt",
-    "Russian": "ru",
-    "Slovak": "sk",
+    "Portuguese (Brazil)": "pt-BR",
     "Slovenian": "sl",
-    "Spanish": "es",
+    "Slovak": "sk",
     "Swedish": "sv",
     "Turkish": "tr",
-    "Ukrainian": "uk",
+    "Russian": "ru",
     "中文（简体）": "zh-CN",
 }
 
 CONF_LANGUAGE = "language"
 CONF_LANGUAGES = [
-    "Català",
     "Czech",
     "Danish",
-    "Dutch",
-    "English (GB)",
-    "French",
     "German",
-    "Hebrew",
+    "English (GB)",
+    "Spanish",
+    "Català",
+    "French",
     "Italian",
+    "Dutch",
+    "Hebrew",
     "Norwegian",
     "Polish",
-    "Portuguese (Brazil)",
     "Portuguese",
-    "Russian",
+    "Portuguese (Brazil)",
     "Slovenian",
-    "Spanish",
+    "Slovak",
     "Swedish",
     "Turkish",
-    "Ukrainian",
+    "Russian",
     "中文（简体）",
 ]
 CONF_SIDEPANEL_ENABLED = "sidepanel_enabled"
