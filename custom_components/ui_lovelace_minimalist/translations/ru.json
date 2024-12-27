@@ -24,7 +24,7 @@
             "reauth_successful": "Повторная аутентификация прошла успешно."
         },
         "progress": {
-            "wait_for_device": "1. Откройте ссылку {url} \n2.Вставьте следующий ключ для авторизации ULM: \n```\n{code}\n```\n"
+            "wait_for_device": "1. Откройте ссылку {url}\n2.Вставьте следующий ключ для авторизации ULM:\n\n```{code}```"
         }
     },
     "options": {
@@ -55,6 +55,16 @@
             "github_cards": "Что-то пошло не так при загрузке карточек с github.",
             "ack": "Вы должны подтвердить все пункты.",
             "gh_token": "Токен Github не установлен. Пожалуйста, переустановите эту интеграцию, чтобы пройти процедуру установки. (Никакая пользовательская конфигурация не будет потеряна)"
+        }
+    },
+    "services": {
+        "reload": {
+            "name": "Reload",
+            "description": "Reload dashboard configuration for UI Lovelace Minimalist."
+        },
+        "installed": {
+            "name": "Installed",
+            "description": "Change the installed key in global config for UI Lovelace Minimalist."
         }
     }
 }

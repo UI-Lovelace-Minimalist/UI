@@ -13,6 +13,7 @@ card_media_player:
     ulm_card_media_player_enable_volume_buttons: false
     ulm_card_media_player_enable_volume_adjust: 0
     ulm_card_media_player_collapsible: false
+    ulm_card_media_player_idle_off: false
     ulm_card_media_player_player_controls_entity: "[[[ return entity.entity_id ]]]"
     ulm_card_media_player_enable_popup: false
     ulm_card_media_player_more_info: false
@@ -72,7 +73,7 @@ card_media_player:
             if (!variables.ulm_card_media_player_collapsible) {
                 return "12px";
               } else {
-                return (entity.state === "off" || entity.state === "standby") ? "0px" : "12px";
+                return (entity.state === "off" || entity.state === "standby" || (variables.ulm_card_media_player_idle_off && entity.state=== "idle")) ? "0px" : "12px";
               }
           ]]]
     card:
@@ -96,7 +97,7 @@ card_media_player:
             [[[
               if(variables.ulm_card_media_player_enable_controls) {
                 if(variables.ulm_card_media_player_collapsible){
-                return (entity.state === "off" || entity.state === "standby") ? "none" : "block";
+                return (entity.state === "off" || entity.state === "standby" || (variables.ulm_card_media_player_idle_off && entity.state=== "idle")) ? "none" : "block";
                 }
                 return "block";
               }
@@ -117,7 +118,7 @@ card_media_player:
             [[[
               if(variables.ulm_card_media_player_enable_volume_slider) {
                 if(variables.ulm_card_media_player_collapsible){
-                return (entity.state === "off" || entity.state === "standby") ? "none" : "block";
+                return (entity.state === "off" || entity.state === "standby" || (variables.ulm_card_media_player_idle_off && entity.state=== "idle")) ? "none" : "block";
                 }
                 return "block";
               }
@@ -128,7 +129,7 @@ card_media_player:
             [[[
               if(variables.ulm_card_media_player_enable_volume_buttons) {
                 if(variables.ulm_card_media_player_collapsible){
-                return (entity.state === "off" || entity.state === "standby") ? "none" : "block";
+                return (entity.state === "off" || entity.state === "standby" || (variables.ulm_card_media_player_idle_off && entity.state=== "idle")) ? "none" : "block";
                 }
                 return "block";
               }
@@ -286,7 +287,8 @@ card_media_player:
                   name: |
                     [[[
                       let name = variables.ulm_card_media_player_name || states[entity.entity_id].attributes.friendly_name;
-                      if(states[entity.entity_id].attributes.media_title){
+                      let isIdle = variables.ulm_card_media_player_idle_off && (entity.state === "idle");
+                      if(states[entity.entity_id].attributes.media_title && !isIdle){
                           name = states[entity.entity_id].attributes.media_title;
                       }
                       return name;
@@ -294,14 +296,18 @@ card_media_player:
                   label: |
                     [[[
                       let label = variables.ulm_translation_on;
-                      if (variables.ulm_card_media_player_more_info && states[entity.entity_id].attributes.media_artist
-                          && states[entity.entity_id].attributes.media_album_name) {
-                          label = states[entity.entity_id].attributes.media_artist + " • " + states[entity.entity_id].attributes.media_album_name;
-                      } else if(states[entity.entity_id].attributes.media_album_name) {
-                          label = states[entity.entity_id].attributes.media_album_name;
-                      } else if (states[entity.entity_id].attributes.media_artist) {
-                          label = states[entity.entity_id].attributes.media_artist
+                      let isIdle = variables.ulm_card_media_player_idle_off && (entity.state === "idle");
+                      if (!isIdle) {
+                        if (variables.ulm_card_media_player_more_info && states[entity.entity_id].attributes.media_artist
+                            && states[entity.entity_id].attributes.media_album_name ) {
+                            label = states[entity.entity_id].attributes.media_artist + " • " + states[entity.entity_id].attributes.media_album_name;
+                        } else if(states[entity.entity_id].attributes.media_album_name) {
+                            label = states[entity.entity_id].attributes.media_album_name;
+                        } else if (states[entity.entity_id].attributes.media_artist) {
+                            label = states[entity.entity_id].attributes.media_artist
+                        }
                       }
+
                       return label;
                     ]]]
               styles:
@@ -371,9 +377,9 @@ card_media_player:
                       template: "popup_media_player_infos"
                       entity: "[[[ return entity.entity_id ]]]"
               tap_action:
-                action: "call-service"
-                service: "media_player.media_previous_track"
-                service_data:
+                action: "perform-action"
+                perform_action: "media_player.media_previous_track"
+                target:
                   entity_id: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
               icon: "mdi:skip-previous"
               entity: "[[[ return entity.entity_id ]]]"
@@ -432,9 +438,9 @@ card_media_player:
                       template: "popup_media_player_infos"
                       entity: "[[[ return entity.entity_id; ]]]"
               tap_action:
-                action: "call-service"
-                service: "[[[ return (entity.attributes?.media_duration > 0) ? 'media_player.media_play_pause' : entity.state =='playing' ? 'media_player.media_stop' : 'media_player.media_play']]]"
-                service_data:
+                action: "perform-action"
+                perform_action: "[[[ return (entity.attributes?.media_duration > 0) ? 'media_player.media_play_pause' : entity.state =='playing' ? 'media_player.media_stop' : 'media_player.media_play']]]"
+                target:
                   entity_id: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
               icon: "[[[ return (entity.attributes?.media_duration > 0) ? 'mdi:pause' : 'mdi:stop' ]]]"
               state:
@@ -502,9 +508,9 @@ card_media_player:
                       template: "popup_media_player_infos"
                       entity: "[[[ return entity.entity_id; ]]]"
               tap_action:
-                action: "call-service"
-                service: "media_player.media_next_track"
-                service_data:
+                action: "perform-action"
+                perform_action: "media_player.media_next_track"
+                target:
                   entity_id: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
               icon: "mdi:skip-next"
               styles:
@@ -700,10 +706,11 @@ card_media_player:
                       template: "popup_media_player_infos"
                       entity: "[[[ return entity.entity_id; ]]]"
               tap_action:
-                action: "call-service"
-                service: "media_player.volume_mute"
-                service_data:
+                action: "perform-action"
+                perform_action: "media_player.volume_mute"
+                target:
                   entity_id: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
+                data:
                   is_volume_muted: "[[[ return (states[entity.entity_id].attributes.is_volume_muted) ? false : true; ]]]"
               icon: "mdi:volume-mute"
               styles:
@@ -761,10 +768,11 @@ card_media_player:
                       template: "popup_media_player_infos"
                       entity: "[[[ return entity.entity_id; ]]]"
               tap_action:
-                action: "call-service"
-                service: "media_player.volume_set"
-                service_data:
+                action: "perform-action"
+                perform_action: "media_player.volume_set"
+                target:
                   entity_id: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
+                data:
                   volume_level: |
                     [[[
                       var volume = states[entity.entity_id].attributes.volume_level;
@@ -841,10 +849,11 @@ card_media_player:
                       template: "popup_media_player_infos"
                       entity: "[[[ return entity.entity_id; ]]]"
               tap_action:
-                action: "call-service"
-                service: "media_player.volume_set"
-                service_data:
+                action: "perform-action"
+                perform_action: "media_player.volume_set"
+                target:
                   entity_id: "[[[ return variables.ulm_card_media_player_player_controls_entity ]]]"
+                data:
                   volume_level: |
                     [[[
                       var volume = states[entity.entity_id].attributes.volume_level;

@@ -32,17 +32,18 @@ card_weather:
         secondary_info: "[[[ return variables.ulm_card_weather_secondary_info ]]]"
         backdrop: "[[[ return variables.ulm_card_weather_backdrop ]]]"
         custom: "[[[ return variables?.ulm_card_weather_custom ]]]"
-        style: |
-          ha-card {
-            border-radius: 14px;
-            box-shadow: none;
-          }
-          ha-card.type-custom-simple-weather-card {
-            padding: 24px;
-          }
-          ha-card[bg].type-custom-simple-weather-card{
-            color: white;
-          }
-          ha-card.type-custom-simple-weather-card .weather__info {
-            text-align: left
-          }
+        card_mod:
+          style: |
+            ha-card {
+              border-radius: 14px;
+              box-shadow: none;
+            }
+            ha-card.type-custom-simple-weather-card {
+              padding: 24px;
+            }
+            ha-card[bg].type-custom-simple-weather-card{
+              color: white;
+            }
+            ha-card.type-custom-simple-weather-card .weather__info {
+              text-align: left
+            }

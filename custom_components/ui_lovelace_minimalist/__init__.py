@@ -11,12 +11,15 @@ from homeassistant.config_entries import SOURCE_IMPORT, ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.loader import async_get_integration
+import voluptuous as vol
 
 from .base import UlmBase
 from .const import DOMAIN, NAME
 from .enums import ConfigurationType, UlmDisabledReason
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
+
+CONFIG_SCHEMA = vol.Schema({DOMAIN: vol.Schema({})}, extra=vol.ALLOW_EXTRA)
 
 
 async def async_initialize_integration(
@@ -119,7 +122,9 @@ async def async_setup(hass: HomeAssistant, config: dict):
 async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> bool:
     """Set up this integration using UI."""
 
-    config_entry.add_update_listener(config_entry_update_listener)
+    config_entry.async_on_unload(
+        config_entry.add_update_listener(config_entry_update_listener)
+    )
     return await async_initialize_integration(hass=hass, config_entry=config_entry)
 
 
