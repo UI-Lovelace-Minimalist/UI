@@ -24,7 +24,7 @@
             "reauth_successful": "La reautenticación se ha realizado con éxito."
         },
         "progress": {
-            "wait_for_device": "1. Abre {url} \n2.Pega la siguiente clave para autorizar a ULM: \n```\n{code}\n```\n"
+            "wait_for_device": "1. Abre {url}\n2.Pega la siguiente clave para autorizar a ULM:\n\n```{code}```"
         }
     },
     "options": {
@@ -55,6 +55,16 @@
             "github_cards": "Algo ha ido mal al obtener las tarjetas de Github.",
             "ack": "Debes aceptar todas las declaraciones.",
             "gh_token": "El token de Github no está configurado. Por favor, vuelve a instalar esta integración para pasar por el procedimiento de configuración. (No se perderá ninguna configuración personalizada)"
+        }
+    },
+    "services": {
+        "reload": {
+            "name": "Reload",
+            "description": "Reload dashboard configuration for UI Lovelace Minimalist."
+        },
+        "installed": {
+            "name": "Installed",
+            "description": "Change the installed key in global config for UI Lovelace Minimalist."
         }
     }
 }

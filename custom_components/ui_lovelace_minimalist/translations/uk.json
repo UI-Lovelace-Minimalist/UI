@@ -24,7 +24,7 @@
             "reauth_successful": "Повторна автентифікація пройшла успішно."
         },
         "progress": {
-            "wait_for_device": "1. Відкрите {url} \n2.Вставте цей ключ для авторизації ULM: \n```\n{code}\n```\n"
+            "wait_for_device": "1. Відкрите {url}\n2.Вставте цей ключ для авторизації ULM:\n\n```{code}```"
         }
     },
     "options": {
@@ -59,9 +59,11 @@
     },
     "services": {
         "reload": {
+            "name": "Reload",
             "description": "Перезавантажте конфігурацію Інформаційної панелі для UI Lovelace Minimalist."
         },
         "installed": {
+            "name": "Installed",
             "description": "Змініть встановлений ключ у глобальних налаштуваннях для UI Lovelace Minimalist."
         }
     }

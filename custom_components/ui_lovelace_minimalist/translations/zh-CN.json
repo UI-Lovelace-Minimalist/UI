@@ -24,7 +24,7 @@
             "reauth_successful": "重新验证成功。"
         },
         "progress": {
-            "wait_for_device": "1. 访问 {url} \n2. 粘贴以下密钥以授权本集成: \n```\n{code}\n```\n"
+            "wait_for_device": "1. 访问 {url}\n2. 粘贴以下密钥以授权本集成:\n\n```{code}```"
         }
     },
     "options": {
@@ -59,9 +59,11 @@
     },
     "services": {
         "reload": {
+            "name": "Reload",
             "description": "为 UI Lovelace Minimalist 重载仪表盘配置。"
         },
         "installed": {
+            "name": "Installed",
             "description": "为 UI Lovelace Minimalist 更改全局配置中的已安装密钥."
         }
     }

@@ -24,7 +24,7 @@
             "reauth_successful": "אימות מחדש הצליח"
         },
         "progress": {
-            "wait_for_device": "1. פתח {url} \n2.הדבק המפתח על מנת לאשרר את ULM: \n```\n{code}\n```\n"
+            "wait_for_device": "1. פתח {url}\n2.הדבק המפתח על מנת לאשרר את ULM:\n\n```{code}```"
         }
     },
     "options": {
@@ -59,9 +59,11 @@
     },
     "services": {
         "reload": {
+            "name": "Reload",
             "description": "טען קנפוג הדאשבורד מחדש עבור יו.איי. לאבלייס מינימליסט"
         },
         "installed": {
+            "name": "Installed",
             "description": "החלף את המפתח המותקן בקנפוג הגלובלי עבור יו.איי. לאבלייס מינימליסט"
         }
     }

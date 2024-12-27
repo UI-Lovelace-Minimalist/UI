@@ -24,7 +24,7 @@
             "reauth_successful": "Reauthentication was successful."
         },
         "progress": {
-            "wait_for_device": "1. Open {url} \n2.Paste the following key to authorize ULM: \n```\n{code}\n```\n"
+            "wait_for_device": "1. Open {url}\n2.Paste the following key to authorize ULM:\n\n```{code}```"
         }
     },
     "options": {
@@ -59,9 +59,11 @@
     },
     "services": {
         "reload": {
+            "name": "Reload",
             "description": "Genindlæs dashboard-konfiguration til UI Lovelace Minimalist."
         },
         "installed": {
+            "name": "Installed",
             "description": "Skift den installerede nøgle i global konfiguration for UI Lovelace Minimalist."
         }
     }

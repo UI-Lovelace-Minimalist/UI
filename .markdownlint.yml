@@ -6,7 +6,7 @@ default: true
 MD001: false
 
 MD024:
-  allow_different_nesting: true
+  siblings_only: true
 
 MD025: false
 
@@ -48,7 +48,7 @@ no-emphasis-as-heading: false
 first-line-h1: false
 
 code-block-style:
-  style: ["fenced"]
+  style: "fenced"
 
 proper-names:
   names: []
