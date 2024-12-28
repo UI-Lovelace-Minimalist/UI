@@ -24,7 +24,7 @@
             "reauth_successful": "Die erneute Authentifizierung war erfolgreich."
         },
         "progress": {
-            "wait_for_device": "1. Öffne {url} \n2.Fügen Sie den folgenden Schlüssel ein, um ULM zu autorisieren: \n```\n{code}\n```\n"
+            "wait_for_device": "1. Öffne {url}\n2.Fügen Sie den folgenden Schlüssel ein, um ULM zu autorisieren:\n\n```{code}```"
         }
     },
     "options": {
@@ -60,9 +60,11 @@
     },
     "services": {
         "reload": {
+            "name": "Reload",
             "description": "Neuladen der Dashboardkonfiguration für UI Lovelace Minimalist"
         },
         "installed": {
+            "name": "Installed",
             "description": "Änderung des installierten Schlüssels in der globalen Konfiguration für UI Lovelace Minimalist."
         }
     }

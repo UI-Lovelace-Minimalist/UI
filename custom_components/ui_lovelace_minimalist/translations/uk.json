@@ -1,0 +1,70 @@
+{
+    "title": "UI Lovelace Minimalist",
+    "config": {
+        "step": {
+            "user": {
+                "title": "Налаштування UI Lovelace Minimalist",
+                "description": "",
+                "data": {
+                    "community_cards_enabled": "Увімкнути можливість налаштування карток спільноти цією інтеграцією. Необхідна авторизація GitHub!"
+                }
+            },
+            "device": {
+                "title": "Очікування активації пристрою"
+            },
+            "reauth_confirm": {
+                "title": "Потрібна повторна автентифікація",
+                "description": "Вам необхідно повтороно автентифікуватись з GitHub."
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "Допускається лише одна конфігурація UI Lovelace Minimalist.",
+            "not_setup": "UI Lovelace Minimalist не встановлено.",
+            "github": "Не вдалось автентифікуватись з GitHub, спробуйте ще раз пізніше.",
+            "reauth_successful": "Повторна автентифікація пройшла успішно."
+        },
+        "progress": {
+            "wait_for_device": "1. Відкрите {url}\n2.Вставте цей ключ для авторизації ULM:\n\n```{code}```"
+        }
+    },
+    "options": {
+        "step": {
+            "user": {
+                "title": "Налаштування UI Lovelace Minimalist",
+                "description": "",
+                "data": {
+                    "language": "Мова",
+                    "sidepanel_enabled": "Увімкнути створення Інформаційної панелі в бічній панелі.",
+                    "sidepanel_icon": "Іконка в бічній панелі",
+                    "sidepanel_title": "Назва в бічній панелі",
+                    "adaptive_ui_enabled": "Увімкнути адаптивну Інформаційну панель зі спливаючим розділеним вікном",
+                    "adaptive_ui_title": "Назва адаптивної Інформаційної панелі",
+                    "adaptive_ui_icon": "Іконка адаптивної Інформаційної панелі",
+                    "theme": "Тема",
+                    "include_other_cards": "Включити ресурси, необхідні для користувацьких карток.",
+                    "community_cards_enabled": "Увімкнути можливість налаштування карток спільноти цією інтеграцією. Необхідна авторизація GitHub!",
+                    "community_cards": "Оберіть картки спільноти, які бажаєте увімкнути."
+                }
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "Допускається лише одна конфігурація UI Lovelace Minimalist.",
+            "not_setup": "UI Lovelace Minimalist не встановлено."
+        },
+        "error": {
+            "github_cards": "Щось пішло не так при завантаженні карток з GitHub.",
+            "ack": "Ви повинні підтвердити всі пункти.",
+            "gh_token": "Токен Github не встановлено. Будь ласка, переінсталюйте цю інтеграцію, щоб пройти процедуру налаштування. (Жодні налаштування не будуть втрачені)"
+        }
+    },
+    "services": {
+        "reload": {
+            "name": "Reload",
+            "description": "Перезавантажте конфігурацію Інформаційної панелі для UI Lovelace Minimalist."
+        },
+        "installed": {
+            "name": "Installed",
+            "description": "Змініть встановлений ключ у глобальних налаштуваннях для UI Lovelace Minimalist."
+        }
+    }
+}

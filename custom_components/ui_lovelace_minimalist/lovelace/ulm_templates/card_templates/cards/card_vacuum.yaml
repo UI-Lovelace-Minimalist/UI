@@ -21,6 +21,7 @@ card_vacuum:
         var state = entity.state.toLowerCase();
         var colors = {
           "cleaning": "blue",
+          "mowing": "blue",
           "paused": "green",
           "mopping": "yellow",
           "returning": "purple",
@@ -52,7 +53,7 @@ card_vacuum:
             let map = "'item1' 'map' 'item2'"
             if(variables.ulm_card_vacuum_camera != ""){
               if(variables.ulm_card_vacuum_camera_toggle){
-                if(entity.state.toLowerCase() === 'cleaning' || entity.state.toLowerCase() === 'mopping'){
+                if(entity.state.toLowerCase() === 'cleaning' || entity.state.toLowerCase() === 'mopping' || entity.state.toLowerCase() === 'mowing'){
                   return map;
                 }
               } else {
@@ -67,7 +68,7 @@ card_vacuum:
             let map = "repeat(3, min-content)"
             if(variables.ulm_card_vacuum_camera != ""){
               if(variables.ulm_card_vacuum_camera_toggle){
-                if(entity.state.toLowerCase() === 'cleaning' || entity.state.toLowerCase() === 'mopping'){
+                if(entity.state.toLowerCase() === 'cleaning' || entity.state.toLowerCase() === 'mopping' || entity.state.toLowerCase() === 'mowing'){
                   return map;
                 }
               } else {
@@ -94,7 +95,7 @@ card_vacuum:
               let map = "block"
               if(variables.ulm_card_vacuum_camera != ""){
                 if(variables.ulm_card_vacuum_camera_toggle){
-                  if(entity.state.toLowerCase() === 'cleaning' || entity.state.toLowerCase() === 'mopping'){
+                  if(entity.state.toLowerCase() === 'cleaning' || entity.state.toLowerCase() === 'mopping' || entity.state.toLowerCase() === 'mowing'){
                     return map;
                   }
                 } else {
@@ -249,20 +250,20 @@ card_vacuum:
                       ]]]
               state:
                 - operator: "template"
-                  value: "[[[ return ['cleaning','mopping'].includes(entity.state.toLowerCase()) ]]]"
+                  value: "[[[ return ['cleaning','mopping','mowing'].includes(entity.state.toLowerCase()) ]]]"
                   icon: "mdi:stop"
                   tap_action:
-                    action: "call-service"
-                    service: "vacuum.stop"
-                    service_data:
+                    action: "perform-action"
+                    perform_action: "vacuum.stop"
+                    target:
                       entity_id: "[[[ return entity.entity_id ]]]"
               tap_action:
-                action: "call-service"
-                service: >
+                action: "perform-action"
+                perform_action: >
                   [[[
-                    return ['cleaning','mopping'].includes(entity.state.toLowerCase()) ? "vacuum.stop" : "vacuum.start";
+                    return ['cleaning','mopping','mowing'].includes(entity.state.toLowerCase()) ? "vacuum.stop" : "vacuum.start";
                   ]]]
-                service_data:
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
           item2:
             card:
@@ -297,9 +298,9 @@ card_vacuum:
                           return 'rgba(var(--color-theme),0.9)';
                       ]]]
               tap_action:
-                action: "call-service"
-                service: "vacuum.return_to_base"
-                service_data:
+                action: "perform-action"
+                perform_action: "vacuum.return_to_base"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
           item3:
             card:
@@ -334,9 +335,9 @@ card_vacuum:
                           return 'rgba(var(--color-theme),0.9)';
                       ]]]
               tap_action:
-                action: "call-service"
-                service: "vacuum.locate"
-                service_data:
+                action: "perform-action"
+                perform_action: "vacuum.locate"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
           item4:
             card:
@@ -371,7 +372,7 @@ card_vacuum:
                           return 'rgba(var(--color-theme),0.9)';
                       ]]]
               tap_action:
-                action: "call-service"
-                service: "script.turn_on"
-                service_data:
+                action: "perform-action"
+                perform_action: "script.turn_on"
+                target:
                   entity_id: "[[[ return variables.ulm_card_vacuum_room ]]]"

@@ -222,9 +222,11 @@ card_thermostat:
               entity: "[[[ return entity.entity_id ]]]"
               icon: "mdi:minus"
               tap_action:
-                action: "call-service"
-                service: "climate.set_temperature"
-                service_data:
+                action: "perform-action"
+                perform_action: "climate.set_temperature"
+                target:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   target_temp_low: |
                     [[[
                       if (entity.attributes.target_temp_low == null) {
@@ -256,7 +258,6 @@ card_thermostat:
                         return (parseFloat(states[entity.entity_id].attributes.temperature) - step)
                       }
                     ]]]
-                  entity_id: "[[[ return entity.entity_id ]]]"
               state:
                 - operator: "template"
                   value: >
@@ -292,9 +293,11 @@ card_thermostat:
               entity: "[[[ return entity.entity_id ]]]"
               icon: "mdi:plus"
               tap_action:
-                action: "call-service"
-                service: "climate.set_temperature"
-                service_data:
+                action: "perform-action"
+                perform_action: "climate.set_temperature"
+                target:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   target_temp_low: |
                     [[[
                       if (entity.attributes.target_temp_low == null) {
@@ -323,7 +326,6 @@ card_thermostat:
                         return (parseFloat(states[entity.entity_id].attributes.temperature) + step)
                       }
                     ]]]
-                  entity_id: "[[[ return entity.entity_id ]]]"
               state:
                 - operator: "template"
                   value: >
@@ -348,9 +350,11 @@ card_thermostat:
               entity: "[[[ return entity.entity_id ]]]"
               icon: "mdi:minus"
               tap_action:
-                action: "call-service"
-                service: "climate.set_temperature"
-                service_data:
+                action: "perform-action"
+                perform_action: "climate.set_temperature"
+                target:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   target_temp_low: |
                     [[[
                       const unit = hass.config.unit_system.temperature
@@ -358,7 +362,6 @@ card_thermostat:
                       return (parseFloat(entity.attributes.target_temp_low) - step)
                     ]]]
                   target_temp_high: "[[[ return entity.attributes.target_temp_high ]]]"
-                  entity_id: "[[[ return entity.entity_id ]]]"
               state:
                 - operator: "template"
                   value: >
@@ -394,9 +397,11 @@ card_thermostat:
               entity: "[[[ return entity.entity_id ]]]"
               icon: "mdi:plus"
               tap_action:
-                action: "call-service"
-                service: "climate.set_temperature"
-                service_data:
+                action: "perform-action"
+                perform_action: "climate.set_temperature"
+                target:
+                  entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   target_temp_low: |
                     [[[
                       const unit = hass.config.unit_system.temperature
@@ -410,7 +415,6 @@ card_thermostat:
                       const new_temp = (parseFloat(entity.attributes.target_temp_low) + step)
                       return (new_temp + variables.ulm_card_thermostat_minimum_temp_spread > entity.attributes.target_temp_high ? new_temp + variables.ulm_card_thermostat_minimum_temp_spread : entity.attributes.target_temp_high)
                     ]]]
-                  entity_id: "[[[ return entity.entity_id ]]]"
               state:
                 - operator: "template"
                   value: >
@@ -554,10 +558,11 @@ card_thermostat:
               template: "widget_icon"
               icon: "mdi:autorenew"
               tap_action:
-                action: "call-service"
-                service: "climate.set_hvac_mode"
-                service_data:
+                action: "perform-action"
+                perform_action: "climate.set_hvac_mode"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   hvac_mode: "auto"
               state:
                 - operator: "template"
@@ -584,10 +589,11 @@ card_thermostat:
               template: "widget_icon"
               icon: "mdi:fire"
               tap_action:
-                action: "call-service"
-                service: "climate.set_hvac_mode"
-                service_data:
+                action: "perform-action"
+                perform_action: "climate.set_hvac_mode"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   hvac_mode: "heat"
               state:
                 - operator: "template"
@@ -614,10 +620,11 @@ card_thermostat:
               template: "widget_icon"
               icon: "mdi:snowflake"
               tap_action:
-                action: "call-service"
-                service: "climate.set_hvac_mode"
-                service_data:
+                action: "perform-action"
+                perform_action: "climate.set_hvac_mode"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   hvac_mode: "cool"
               state:
                 - operator: "template"
@@ -644,10 +651,11 @@ card_thermostat:
               template: "widget_icon"
               icon: "mdi:water"
               tap_action:
-                action: "call-service"
-                service: "climate.set_hvac_mode"
-                service_data:
+                action: "perform-action"
+                perform_action: "climate.set_hvac_mode"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   hvac_mode: "dry"
               state:
                 - operator: "template"
@@ -674,10 +682,11 @@ card_thermostat:
               template: "widget_icon"
               icon: "mdi:sun-snowflake"
               tap_action:
-                action: "call-service"
-                service: "climate.set_hvac_mode"
-                service_data:
+                action: "perform-action"
+                perform_action: "climate.set_hvac_mode"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   hvac_mode: "heat_cool"
               state:
                 - operator: "template"
@@ -704,10 +713,11 @@ card_thermostat:
               template: "widget_icon"
               icon: "mdi:fan"
               tap_action:
-                action: "call-service"
-                service: "climate.set_hvac_mode"
-                service_data:
+                action: "perform-action"
+                perform_action: "climate.set_hvac_mode"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data:
                   hvac_mode: "fan_only"
               state:
                 - operator: "template"
@@ -734,9 +744,9 @@ card_thermostat:
               template: "widget_icon"
               icon: "mdi:fan"
               tap_action:
-                action: "call-service"
-                service: "fan.toggle"
-                service_data:
+                action: "perform-action"
+                perform_action: "fan.toggle"
+                target:
                   entity_id: "[[[ return variables.ulm_card_thermostat_fan_entity !== null ? states[variables.ulm_card_thermostat_fan_entity].entity_id : null ]]]"
               state:
                 - operator: "template"

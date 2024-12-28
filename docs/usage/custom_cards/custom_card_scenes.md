@@ -3,6 +3,7 @@ title: Scenes Card Custom-card
 hide:
   - toc
 ---
+
 <!-- markdownlint-disable MD046 -->
 
 # Custom-card "Scenes Card"
@@ -21,76 +22,76 @@ Version: 1.2.0
  <details style="color: red">
    <summary>1.2.0</summary>
 
- ```yaml
- #OLD
+```yaml
+#OLD
 - type: "custom:button-card"
-  template:
-    - card_scenes
-  variables:
-    entity_1: "scene.YOUR_SCENE"
-    entity_2: "scene.YOUR_SCENE"
-    entity_3: "scene.YOUR_SCENE"
-    entity_4: "scene.YOUR_SCENE"
-    entity_5: "scene.YOUR_SCENE"
-    name_1: "YOUR_NAME"
-    name_2: "YOUR_NAME"
-    name_3: "YOUR_NAME"
-    name_4: "YOUR_NAME"
-    name_5: "YOUR_NAME"
-    icon_1: "mdi:YOUR_ICON"
-    icon_2: "mdi:YOUR_ICON"
-    icon_3: "mdi:YOUR_ICON"
-    icon_4: "mdi:YOUR_ICON"
-    icon_5: "mdi:YOUR_ICON"
-    color_icon_1: "yellow"
-    color_icon_2: "blue"
-    color_icon_3: "purple"
-    color_icon_4: "green"
-    color_icon_5: "red"
-    color_bg_1: "yellow"
-    color_bg_2: "blue"
-    color_bg_3: "purple"
-    color_bg_4: "green"
-    color_bg_5: "red"
- ```
+ template:
+   - card_scenes
+ variables:
+   entity_1: "scene.YOUR_SCENE"
+   entity_2: "scene.YOUR_SCENE"
+   entity_3: "scene.YOUR_SCENE"
+   entity_4: "scene.YOUR_SCENE"
+   entity_5: "scene.YOUR_SCENE"
+   name_1: "YOUR_NAME"
+   name_2: "YOUR_NAME"
+   name_3: "YOUR_NAME"
+   name_4: "YOUR_NAME"
+   name_5: "YOUR_NAME"
+   icon_1: "mdi:YOUR_ICON"
+   icon_2: "mdi:YOUR_ICON"
+   icon_3: "mdi:YOUR_ICON"
+   icon_4: "mdi:YOUR_ICON"
+   icon_5: "mdi:YOUR_ICON"
+   icon_color_1: "yellow"
+   icon_color_2: "blue"
+   icon_color_3: "purple"
+   icon_color_4: "green"
+   icon_color_5: "red"
+   bg_color_1: "yellow"
+   bg_color_2: "blue"
+   bg_color_3: "purple"
+   bg_color_4: "green"
+   bg_color_5: "red"
+```
 
- ```yaml
- #NEW
+```yaml
+#NEW
 - type: "custom:button-card"
-  template:
-    - card_scenes
-  variables:
-    entity_1:
-      entity_id: "scene.YOUR_SCENE"
-      icon: "mdi:YOUR_ICON"
-      icon_color: "yellow"
-      name: "YOUR_NAME"
-      bg_color: "yellow"
-    entity_2:
-      entity_id: "scene.YOUR_SCENE"
-      icon: "mdi:YOUR_ICON"
-      icon_color: "blue"
-      name: "YOUR_NAME"
-      bg_color: "blue"
-    entity_3:
-      entity_id: "scene.YOUR_SCENE"
-      icon: "mdi:YOUR_ICON"
-      icon_color: "purple"
-      name: "YOUR_NAME"
-      bg_color: "purple"
-    entity_4:
-      entity_id: "scene.YOUR_SCENE"
-      icon: "mdi:YOUR_ICON"
-      icon_color: "green"
-      name: "YOUR_NAME"
-      bg_color: "green"
-    entity_5:
-      entity_id: "scene.YOUR_SCENE"
-      icon: "mdi:YOUR_ICON"
-      icon_color: "red"
-      name: "YOUR_NAME"
-      bg_color: "red"
- ```
+ template:
+   - card_scenes
+ variables:
+   entity_1:
+     entity_id: "scene.YOUR_SCENE"
+     icon: "mdi:YOUR_ICON"
+     icon_color: "yellow"
+     name: "YOUR_NAME"
+     bg_color: "yellow"
+   entity_2:
+     entity_id: "scene.YOUR_SCENE"
+     icon: "mdi:YOUR_ICON"
+     icon_color: "blue"
+     name: "YOUR_NAME"
+     bg_color: "blue"
+   entity_3:
+     entity_id: "scene.YOUR_SCENE"
+     icon: "mdi:YOUR_ICON"
+     icon_color: "purple"
+     name: "YOUR_NAME"
+     bg_color: "purple"
+   entity_4:
+     entity_id: "scene.YOUR_SCENE"
+     icon: "mdi:YOUR_ICON"
+     icon_color: "green"
+     name: "YOUR_NAME"
+     bg_color: "green"
+   entity_5:
+     entity_id: "scene.YOUR_SCENE"
+     icon: "mdi:YOUR_ICON"
+     icon_color: "red"
+     name: "YOUR_NAME"
+     bg_color: "red"
+```
 
  </details>
 

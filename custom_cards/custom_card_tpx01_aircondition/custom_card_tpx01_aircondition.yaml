@@ -78,10 +78,11 @@ custom_card_tpx01_aircondition_with_buttons:
                     type: "custom:button-card"
                     template: "widget_icon"
                     tap_action:
-                      action: "call-service"
-                      service: "climate.set_hvac_mode"
-                      service_data:
+                      action: "perform-action"
+                      perform_action: "climate.set_hvac_mode"
+                      target:
                         entity_id: "[[[ return variables.entity ]]]"
+                      data:
                         hvac_mode: "cool"
                     icon: "mdi:power"
                 - type: "conditional"
@@ -92,10 +93,11 @@ custom_card_tpx01_aircondition_with_buttons:
                     type: "custom:button-card"
                     template: "widget_icon"
                     tap_action:
-                      action: "call-service"
-                      service: "climate.set_hvac_mode"
-                      service_data:
+                      action: "perform-action"
+                      perform_action: "climate.set_hvac_mode"
+                      target:
                         entity_id: "[[[ return variables.entity ]]]"
+                      data:
                         hvac_mode: "off"
                     icon: "mdi:power-off"
     item2:
@@ -108,9 +110,9 @@ custom_card_tpx01_aircondition_with_buttons:
               type: "custom:button-card"
               template: "widget_icon"
               tap_action:
-                action: "call-service"
-                service: "script.decrease_climate_temperature"
-                service_data:
+                action: "perform-action"
+                perform_action: "script.decrease_climate_temperature"
+                target:
                   entity_id: "[[[ return variables.entity ]]]"
               icon: "mdi:minus"
           item2:
@@ -126,9 +128,9 @@ custom_card_tpx01_aircondition_with_buttons:
               type: "custom:button-card"
               template: "widget_icon"
               tap_action:
-                action: "call-service"
-                service: "script.increment_climate_temperature"
-                service_data:
+                action: "perform-action"
+                perform_action: "script.increment_climate_temperature"
+                target:
                   entity_id: "[[[ return variables.entity ]]]"
               icon: "mdi:plus"
 

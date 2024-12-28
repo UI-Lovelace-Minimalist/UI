@@ -24,7 +24,7 @@
             "reauth_successful": "La réauthentification a réussi."
         },
         "progress": {
-            "wait_for_device": "1. Ouvrir {url} \n2.Collez la clé suivante pour autoriser ULM: \n```\n{code}\n```\n"
+            "wait_for_device": "1. Ouvrir {url}\n2.Collez la clé suivante pour autoriser ULM:\n\n```{code}```"
         }
     },
     "options": {
@@ -55,6 +55,16 @@
             "github_cards": "Une erreur s'est produite lors de la récupération des cartes de Github.",
             "ack": "Vous devez confirmer toutes les déclarations.",
             "gh_token": "Jeton Github non défini. Veuillez réinstaller cette intégration pour recommencer la procédure d'installation. (Aucune configuration personnalisée ne sera perdue)"
+        }
+    },
+    "services": {
+        "reload": {
+            "name": "Reload",
+            "description": "Reload dashboard configuration for UI Lovelace Minimalist."
+        },
+        "installed": {
+            "name": "Installed",
+            "description": "Change the installed key in global config for UI Lovelace Minimalist."
         }
     }
 }
