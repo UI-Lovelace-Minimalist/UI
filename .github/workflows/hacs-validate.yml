@@ -2,7 +2,7 @@
 name: "HACS validate"
 
 on:
-  push:
+  pull_request:
     branches: ["main"]
   schedule:
     - cron: "0 0 * * *"
