@@ -192,7 +192,7 @@ custom_card_mpse_printer:
               display: flex;
               color: grey;
             }
-              bar-card-background{
+            bar-card-background{
               margin: 4px 0 4px 0 !important;
               text-align: initial;
             }
