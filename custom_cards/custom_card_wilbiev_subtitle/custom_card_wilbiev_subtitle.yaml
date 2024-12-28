@@ -1,0 +1,48 @@
+---
+### Card SubTitle ###
+custom_card_wilbiev_subtitle:
+  variables:
+    ulm_custom_card_wilbiev_title_name: "Subtitle"
+  tap_action:
+    action: "none"
+  show_icon: false
+  show_label: false
+  show_name: false
+  styles:
+    card:
+      - height: "auto"
+      - padding: "0px !important;"
+    grid:
+      - grid-template-areas: "'item1'"
+      - grid-template-columns: "1fr"
+      - grid-template-rows: "min-content"
+  card_mod:
+    style: |
+      ha-card {
+        background-color: #E8E9EB !important;
+      }
+  custom_fields:
+    item1:
+      card:
+        type: "entities"
+        card_mod:
+          style: |
+            ha-card {
+              background-color: #E8E9EB !important;
+            }
+        entities:
+          - type: "custom:text-divider-row"
+            text: |
+              [[[ return variables.ulm_custom_card_wilbiev_subtitle_name ]]]
+            card_mod:
+              style: |
+                :host {
+                  --text-divider-font-size: 24px;
+                  --text-divider-color: black
+                }
+                .text-divider span {
+                  background-color: #E8E9EB !important;
+                }
+          - type: "divider"
+            style:
+              background-color: "rgb(210,210,210)"
