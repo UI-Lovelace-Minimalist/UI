@@ -1,0 +1,87 @@
+---
+### Card Title ###
+custom_card_wilbiev_title:
+  variables:
+    ulm_custom_card_wilbiev_title_name: "Title"
+    ulm_custom_card_wilbiev_title_nav: ""
+  tap_action:
+    action: "navigate"
+    navigation_path: "[[[ return variables.ulm_custom_card_wilbiev_title_nav; ]]]"
+  show_icon: false
+  show_label: false
+  show_name: false
+  styles:
+    grid:
+      - grid-template-areas: >
+          [[[
+            return "'" + [(variables.ulm_custom_card_wilbiev_title_nav ? 'item2' : 'item1'),
+                        (variables.ulm_custom_card_wilbiev_title_nav ? 'item1' : '')].join(' ') + "'";
+          ]]]
+      - grid-template-columns: |
+          [[[
+            return [(variables.ulm_custom_card_wilbiev_title_nav ? 'min-content 1fr' : '1fr')].join(' ');
+          ]]]
+      - grid-template-rows: "min-content"
+    card:
+      - height: "auto"
+      - padding: "5px !important;"
+    custom_fields:
+      item2:
+        - display: >
+            [[[
+              if(variables.ulm_custom_card_wilbiev_title_nav == ""){
+                return "none";
+              } else {
+                return "block";
+              }
+            ]]]
+  card_mod:
+    style: |
+      ha-card {
+        border: 2px black outset !important;
+        background-color: lightgray !important;
+      }
+  custom_fields:
+    item1:
+      card:
+        type: "entities"
+        card_mod:
+          style: |
+            ha-card {
+              --primary-text-color: black;
+              background-color: lightgray !important;
+              box-shadow: none;
+            }
+        entities:
+          - type: "custom:text-divider-row"
+            text: |
+              [[[ return variables.ulm_custom_card_wilbiev_title_name ]]]
+            card_mod:
+              style: |
+                :host {
+                  --text-divider-color: black;
+                  --text-divider-font-size: 36px;
+                  --text-divider-line-size: 3px;
+                  --text-divider-margin: 0px;
+                }
+                .text-divider span {
+                  background-color: lightgray !important;
+                }
+    item2:
+      card:
+        type: "custom:mushroom-chips-card"
+        chips:
+          - type: "action"
+            tap_action:
+              action: "navigate"
+              navigation_path: "[[[ return variables.ulm_custom_card_wilbiev_title_nav; ]]]"
+            icon: "mdi:arrow-left"
+            card_mod:
+              style: |
+                ha-card {
+                  --primary-text-color: black;
+                  --chip-background: #E8E9EB;
+                  --chip-height: 48px;
+                  --chip-border-radius: 50%;
+                  --chip-icon-size: 24px;
+                }
