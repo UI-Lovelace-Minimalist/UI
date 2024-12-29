@@ -55,11 +55,11 @@ This card needs the following to function correctly:
 - type: "custom:button-card"
   template: "custom_card_wilbiev_subtitle"
   variables:
-    ulm_custom_card_wilbiev_title_name: "Lights"
+    ulm_custom_card_wilbiev_subtitle_name: "Lights"
 ```
 
 ??? note "Template Code"
 
-    ```yaml title="custom_card_bar_card.yaml"
-    --8<-- "custom_cards/custom_card_wilbiev_title/custom_card_wilbiev_subtitle.yaml"
+    ```yaml title="custom_card_wilbiev_subtitle.yaml"
+    --8<-- "custom_cards/custom_card_wilbiev_subtitle/custom_card_wilbiev_subtitle.yaml"
     ```
