@@ -68,6 +68,6 @@ This card needs the following to function correctly:
 
 ??? note "Template Code"
 
-    ```yaml title="custom_card_bar_card.yaml"
+    ```yaml title="custom_card_wilbiev_title.yaml"
     --8<-- "custom_cards/custom_card_wilbiev_title/custom_card_wilbiev_title.yaml"
     ```
