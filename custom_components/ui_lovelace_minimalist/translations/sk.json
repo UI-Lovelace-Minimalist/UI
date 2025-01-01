@@ -20,7 +20,7 @@
         "abort": {
             "single_instance_allowed": "Je dovolená iba jediná konfigurácia UI Lovelace Minimalist.",
             "not_setup": "UI Lovelace Minimalist nie je nastavená.",
-            "github": "Could not authenticate with GitHub, try again later.",
+            "github": "Nepodarilo sa overiť pomocou GitHub, skúste to znova neskôr.",
             "reauth_successful": "Opätovná autentifikácia bola úspešná."
         },
         "progress": {
@@ -59,11 +59,11 @@
     },
     "services": {
         "reload": {
-            "name": "Reload",
+            "name": "Znovu načítať",
             "description": "Znovu načítajte konfiguráciu dashboardu pre používateľské rozhranie Lovelace Minimalist."
         },
         "installed": {
-            "name": "Installed",
+            "name": "Nainštalované",
             "description": "Zmeňte nainštalovaný kľúč v globálnej konfigurácii pre používateľské rozhranie Lovelace Minimalist."
         }
     }
