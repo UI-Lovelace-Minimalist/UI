@@ -33,10 +33,31 @@ ulm_translation_engine:
           let domain = entity.entity_id.substr(0, entity.entity_id.indexOf("."));
           let mode =  hass.resources[lang]["state_attributes." + domain + ".hvac_action." + action];
           if(variables.ulm_show_last_changed){
-            return helpers.relativeTime(entity.last_changed, true)
+            let dt = new Intl.RelativeTimeFormat(lang, { style: "long" });
+            let delta = (Date.parse(entity.last_changed) - Date.now()) / 1000
+            let days = 0
+            if (delta > 1000)
+              days = parseInt(delta / (60 * 60 * 24));
+            let hours = parseInt(Math.round(delta / (60 * 60)) % 24);
+            let hours_unrounded = parseInt((delta / (60 * 60)) % 24);
+            let minutes = parseInt(Math.round(delta / 60) % 60);
+            let minutes_unrounded = parseInt((delta / 60) % 60);
+            let seconds = parseInt(Math.round(delta) % 60);
+            if (days != 0)
+              return dt.format(days,"days");
+            else if (hours_unrounded != 0)
+              return dt.format(hours,"hours");
+            else if (minutes_unrounded != 0)
+              return dt.format(minutes,"minutes");
+            return dt.format(seconds,"seconds");
           }
-          if(device_class == 'timestamp'){
-            return helpers.relativeTime(entity.state, true)
+          if(device_class == ('timestamp' || 'date')){
+            let dt = new Intl.DateTimeFormat(lang, {
+              dateStyle: "long",
+              timeStyle: "short"
+            });
+            let formatted_date = dt.format(Date.parse(entity.state))
+            return formatted_date;
           }
           if(entity.entity_id.startsWith("climate.")){
             return helpers.localize(entity, entity.attributes.current_temperature) + ' • ' +
