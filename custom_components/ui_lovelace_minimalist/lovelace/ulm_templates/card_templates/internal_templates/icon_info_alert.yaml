@@ -28,7 +28,7 @@ icon_info_alert:
         img_cell:
           - background-color: "[[[ return `rgba(var(--color-${variables.ulm_icon_info_alert_color}), 0.2)`; ]]]"
         card:
-          - background-color: "[[[ return `rgba(var(--color-background-${variables.ulm_icon_info_alert_color}-text), var(--opacity-bg))`; ]]]"
+          - background-color: "[[[ return `rgba(var(--color-background-${variables.ulm_icon_info_alert_color}), var(--opacity-bg))`; ]]]"
         custom_fields:
           notification:
             - border-radius: "50%"
