@@ -93,7 +93,7 @@ custom_card_mpse_printer:
             bar-card-backgroundbar{
               display: none;
             }
-              bar-card-name{
+            bar-card-name{
               width: 2rem;
               margin-right: 40px !important;
             }
