@@ -10,6 +10,7 @@ card_generic_swap:
     ulm_outlet_power_enable_popup: false
     ulm_card_generic_swap_color: "blue"
     ulm_card_generic_swap_force_background_color: false
+  triggers_update: "all"
   state:
     - operator: "template"
       value: "[[[ return variables.ulm_active_state ]]]"
