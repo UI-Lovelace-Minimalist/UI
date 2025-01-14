@@ -59,7 +59,7 @@ ulm_actions_card:
         ]]]
     data: >
       [[[
-        if (variables.ulm_card_tap_action == 'adaptive'){
+        if (variables.ulm_card_tap_action == 'adaptive')
           return {'option': variables.ulm_input_select_option };
         else if (variables.ulm_card_tap_service_data !== undefined)
           return variables.ulm_card_tap_service_data;
