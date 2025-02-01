@@ -33,13 +33,6 @@ minimalist-mobile-tapbar:
         width: 97%;
       }
     .: |
-      div#view{
-        transform: initial;
-        padding: 0 !important;
-        margin: 0 !important;
-        width: 100%;
-        padding-bottom: var(--header-height) !important;
-      }
       .header {
         top: auto !important;
         bottom: 0px !important;
@@ -51,7 +44,12 @@ minimalist-mobile-tapbar:
         padding-bottom: env(safe-area-inset-bottom) !important;
       }
       #view {
+        transform: initial;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100%;
         padding-top: calc(-1 * var(--header-height)) !important;
+        padding-bottom: var(--header-height) !important;
       }
       ha-tabs {
         --paper-tabs-selection-bar-color: var(--header-tab-indicator-color);
