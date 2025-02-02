@@ -17,6 +17,7 @@ This `chip` shows you the electric consumption from a sensor. Configurable to sh
 |----------|---------|------------------|-------------------|
 | ulm_chip_electric_consumption     |         | :material-check: | Variable / Entry Example Required ulm_chip_electric_consumption sensor.my_electric_power_consumption true. This is your consumed energy. This is the sensor, that shows how many *kWh*s are consumed.   |
 |ulm_chip_electric_price|  | :material-check: | This is the price for your consumed energy, if you have such a sensor. This should be a sensor that shows a price in your defined currency. If this variable is not set, the chip shows only the *kWh*s! If this variable is set the chip shows the price for the consumed energy! |
+ulm_chip_electric_currency_symbol_first | false | :material-close: | Determines whether the currency symbol (€, $, £ etc) is shown before the price for the energy consumed. For example, when set to true the chip shows €0.19. |
 
 ## Usage
 
