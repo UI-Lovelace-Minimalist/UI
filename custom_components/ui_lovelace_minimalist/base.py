@@ -406,28 +406,28 @@ class UlmBase:
             "require_admin": False,
         }
         # Optoinal override can be done with config_flow?
-        # if not dashboard_url in hass.data["lovelace"]["dashboards"]:
+        # if not dashboard_url in hass.data["lovelace"].dashboards:
         try:
             if self.configuration.sidepanel_enabled:
-                self.hass.data["lovelace"]["dashboards"][dashboard_url] = LovelaceYAML(
+                self.hass.data["lovelace"].dashboards[dashboard_url] = LovelaceYAML(
                     self.hass, dashboard_url, dashboard_config
                 )
 
                 _register_panel(
                     self.hass, dashboard_url, "yaml", dashboard_config, True
                 )
-            elif dashboard_url in self.hass.data["lovelace"]["dashboards"]:
+            elif dashboard_url in self.hass.data["lovelace"].dashboards:
                 async_remove_panel(self.hass, "ui-lovelace-minimalist")
 
             if self.configuration.adaptive_ui_enabled:
-                self.hass.data["lovelace"]["dashboards"][adv_dashboard_url] = (
-                    LovelaceYAML(self.hass, adv_dashboard_url, adv_dashboard_config)
+                self.hass.data["lovelace"].dashboards[adv_dashboard_url] = LovelaceYAML(
+                    self.hass, adv_dashboard_url, adv_dashboard_config
                 )
 
                 _register_panel(
                     self.hass, adv_dashboard_url, "yaml", adv_dashboard_config, True
                 )
-            elif adv_dashboard_url in self.hass.data["lovelace"]["dashboards"]:
+            elif adv_dashboard_url in self.hass.data["lovelace"].dashboards:
                 async_remove_panel(self.hass, "adaptive-dash")
 
         except Exception as exception:
