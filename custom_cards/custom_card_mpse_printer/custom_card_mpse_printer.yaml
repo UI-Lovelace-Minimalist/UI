@@ -41,36 +41,37 @@ custom_card_mpse_printer:
         color: "black"
         entities:
           - entity: "[[[ return variables.ulm_card_printer_black_name ]]]"
-        style: |
-          bar-card-currentbar{
-            border: 0.01rem solid rgba(var(--color-theme),.4);
-          }
-          bar-card-backgroundbar{
-            display: none;
-          }
-          bar-card-name{
-            width: 2rem;
-            margin-right: 40px !important;
-          }
-          bar-card-value{
-            width: 2rem;
-            margin-left: 40px !important;
-            justify-content: center;
-            display: flex;
-            color: grey;
-          }
-          bar-card-background{
-            margin: 4px 0 4px 0 !important;
-            text-align: initial;
-          }
-          ha-card{
-            --bar-card-border-radius: 5px;
-            border-radius: 0px;
-            box-shadow: none;
-          }
-          #states{
-            padding: 0 16px;
-          }
+        card_mod:
+          style: |
+            bar-card-currentbar{
+              border: 0.01rem solid rgba(var(--color-theme),.4);
+            }
+            bar-card-backgroundbar{
+              display: none;
+            }
+            bar-card-name{
+              width: 2rem;
+              margin-right: 40px !important;
+            }
+            bar-card-value{
+              width: 2rem;
+              margin-left: 40px !important;
+              justify-content: center;
+              display: flex;
+              color: grey;
+            }
+            bar-card-background{
+              margin: 4px 0 4px 0 !important;
+              text-align: initial;
+            }
+            ha-card{
+              --bar-card-border-radius: 5px;
+              border-radius: 0px;
+              box-shadow: none;
+            }
+            #states{
+              padding: 0 16px;
+            }
     item3:
       card:
         type: "custom:bar-card"
@@ -84,36 +85,37 @@ custom_card_mpse_printer:
         color: "rgb(250,255,0)"
         entities:
           - entity: "[[[ return variables.ulm_card_printer_yellow_name ]]]"
-        style: |
-          bar-card-currentbar{
-            border: 0.01rem solid rgba(var(--color-theme),.4);
-          }
-          bar-card-backgroundbar{
-            display: none;
-          }
+        card_mod:
+          style: |
+            bar-card-currentbar{
+              border: 0.01rem solid rgba(var(--color-theme),.4);
+            }
+            bar-card-backgroundbar{
+              display: none;
+            }
             bar-card-name{
-            width: 2rem;
-            margin-right: 40px !important;
-          }
-          bar-card-value{
-            width: 2rem;
-            margin-left: 40px !important;
-            justify-content: center;
-            display: flex;
-            color: grey;
-          }
-          bar-card-background{
-            margin: 4px 0 4px 0 !important;
-            text-align: initial;
-          }
-          ha-card{
-            --bar-card-border-radius: 5px;
-            border-radius: 0px;
-            box-shadow: none;
-          }
-          #states{
-            padding: 0 16px;
-          }
+              width: 2rem;
+              margin-right: 40px !important;
+            }
+            bar-card-value{
+              width: 2rem;
+              margin-left: 40px !important;
+              justify-content: center;
+              display: flex;
+              color: grey;
+            }
+            bar-card-background{
+              margin: 4px 0 4px 0 !important;
+              text-align: initial;
+            }
+            ha-card{
+              --bar-card-border-radius: 5px;
+              border-radius: 0px;
+              box-shadow: none;
+            }
+            #states{
+              padding: 0 16px;
+            }
     item4:
       card:
         type: "custom:bar-card"
@@ -127,36 +129,37 @@ custom_card_mpse_printer:
         color: "rgb(248,0,255)"
         entities:
           - entity: "[[[ return variables.ulm_card_printer_magenta_name ]]]"
-        style: |
-          bar-card-currentbar{
-            border: 0.01rem solid rgba(var(--color-theme),.4);
-          }
-          bar-card-backgroundbar{
-            display: none;
-          }
-          bar-card-name{
-            width: 2rem;
-            margin-right: 40px !important;
-          }
-          bar-card-value{
-            width: 2rem;
-            margin-left: 40px !important;
-            justify-content: center;
-            display: flex;
-            color: grey;
-          }
-          bar-card-background{
-            margin: 4px 0 4px 0 !important;
-            text-align: initial;
-          }
-          ha-card{
-            --bar-card-border-radius: 5px;
-            border-radius: 0px;
-            box-shadow: none;
-          }
-          #states{
-            padding: 0 16px;
-          }
+        card_mod:
+          style: |
+            bar-card-currentbar{
+              border: 0.01rem solid rgba(var(--color-theme),.4);
+            }
+            bar-card-backgroundbar{
+              display: none;
+            }
+            bar-card-name{
+              width: 2rem;
+              margin-right: 40px !important;
+            }
+            bar-card-value{
+              width: 2rem;
+              margin-left: 40px !important;
+              justify-content: center;
+              display: flex;
+              color: grey;
+            }
+            bar-card-background{
+              margin: 4px 0 4px 0 !important;
+              text-align: initial;
+            }
+            ha-card{
+              --bar-card-border-radius: 5px;
+              border-radius: 0px;
+              box-shadow: none;
+            }
+            #states{
+              padding: 0 16px;
+            }
     item5:
       card:
         type: "custom:bar-card"
@@ -170,36 +173,37 @@ custom_card_mpse_printer:
         color: "rgb(0,255,255)"
         entities:
           - entity: "[[[ return variables.ulm_card_printer_cyan_name ]]]"
-        style: |
-          bar-card-currentbar{
-            border: 0.01rem solid rgba(var(--color-theme),.4);
-          }
-          bar-card-backgroundbar{
-            display: none;
-          }
-          bar-card-name{
-            width: 2rem;
-            margin-right: 40px !important;
-          }
-          bar-card-value{
-            width: 2rem;
-            margin-left: 40px !important;
-            justify-content: center;
-            display: flex;
-            color: grey;
-          }
-            bar-card-background{
-            margin: 4px 0 4px 0 !important;
-            text-align: initial;
-          }
-          ha-card{
-            --bar-card-border-radius: 5px;
-            border-radius: 0px;
-            box-shadow: none;
-          }
-          #states{
-            padding: 0 16px 16px 16px;
-          }
+        card_mod:
+          style: |
+            bar-card-currentbar{
+              border: 0.01rem solid rgba(var(--color-theme),.4);
+            }
+            bar-card-backgroundbar{
+              display: none;
+            }
+            bar-card-name{
+              width: 2rem;
+              margin-right: 40px !important;
+            }
+            bar-card-value{
+              width: 2rem;
+              margin-left: 40px !important;
+              justify-content: center;
+              display: flex;
+              color: grey;
+            }
+              bar-card-background{
+              margin: 4px 0 4px 0 !important;
+              text-align: initial;
+            }
+            ha-card{
+              --bar-card-border-radius: 5px;
+              border-radius: 0px;
+              box-shadow: none;
+            }
+            #states{
+              padding: 0 16px 16px 16px;
+            }
 custom_card_mpse_printer_blue:
   state:
     - styles:

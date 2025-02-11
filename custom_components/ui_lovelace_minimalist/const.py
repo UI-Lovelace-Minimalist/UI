@@ -1,4 +1,5 @@
 """Constants for UI Lovelace Minimalist."""
+
 from typing import TypeVar
 
 # Base component constants

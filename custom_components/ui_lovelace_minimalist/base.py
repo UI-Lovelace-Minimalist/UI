@@ -2,13 +2,14 @@
 
 from __future__ import annotations
 
+from collections.abc import Awaitable
 from dataclasses import asdict, dataclass, field
 from functools import partial
 import logging
 import os
 import pathlib
 import shutil
-from typing import Any, Awaitable, Callable
+from typing import Any, Callable
 
 from aiogithubapi import (
     GitHubAPI,
@@ -419,9 +420,9 @@ class UlmBase:
                 async_remove_panel(self.hass, "ui-lovelace-minimalist")
 
             if self.configuration.adaptive_ui_enabled:
-                self.hass.data["lovelace"]["dashboards"][
-                    adv_dashboard_url
-                ] = LovelaceYAML(self.hass, adv_dashboard_url, adv_dashboard_config)
+                self.hass.data["lovelace"]["dashboards"][adv_dashboard_url] = (
+                    LovelaceYAML(self.hass, adv_dashboard_url, adv_dashboard_config)
+                )
 
                 _register_panel(
                     self.hass, adv_dashboard_url, "yaml", adv_dashboard_config, True

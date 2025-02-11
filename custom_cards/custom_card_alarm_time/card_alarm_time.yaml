@@ -176,10 +176,11 @@ card_alarm_time:
               type: "custom:button-card"
               template: "widget_icon"
               tap_action:
-                action: "call-service"
-                service: "input_datetime.set_datetime"
-                service_data:
+                action: "perform-action"
+                perform_action: "input_datetime.set_datetime"
+                target:
                   entity_id: "[[[ return variables.ulm_card_alarm_time_datetime ]]]"
+                data:
                   time: >
                     [[[
                       var timestamp = states[variables.ulm_card_alarm_time_datetime].attributes.timestamp;
@@ -259,10 +260,11 @@ card_alarm_time:
               type: "custom:button-card"
               template: "widget_icon"
               tap_action:
-                action: "call-service"
-                service: "input_datetime.set_datetime"
-                service_data:
+                action: "perform-action"
+                perform_action: "input_datetime.set_datetime"
+                target:
                   entity_id: "[[[ return variables.ulm_card_alarm_time_datetime ]]]"
+                data:
                   time: >
                     [[[
                       var timestamp = states[variables.ulm_card_alarm_time_datetime].attributes.timestamp;

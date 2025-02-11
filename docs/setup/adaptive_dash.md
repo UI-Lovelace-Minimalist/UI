@@ -3,7 +3,9 @@ title: Adaptive Dashboard
 hide:
   - toc
 ---
+
 <!-- markdownlint-disable MD046 -->
+
 ![Minimalist_adaptive_dashboard](../assets/img/setup/minimalist_adaptive_dash.gif)
 
 ## Add Adaptive Dashboard
@@ -16,11 +18,11 @@ This dashboard automatically changes based on the device/screen size your are us
 This dashboard make extensive use of `state-switch` and `layout-card`. These are available through HACS or as manual install from Github.
 
 !!! warning "Warning"
-    For now the `state-switch` works only with version `v1.9.3` or below!
+For now the `state-switch` works only with version `v1.9.3` or below!
 
-| Additional lovelace resources                                             |
-| ----------------------------------------------------------------------- |
-| [`layout-card`](https://github.com/thomasloven/lovelace-layout-card)            |
+| Additional lovelace resources                                          |
+| ---------------------------------------------------------------------- |
+| [`layout-card`](https://github.com/thomasloven/lovelace-layout-card)   |
 | [`state-switch`](https://github.com/thomasloven/lovelace-state-switch) |
 
 You need also configure an `input_select` with options for each popup_card and view you have configured. This `input_select` controls the cards showing on the right-side of the screen when in fullscreen mode.
@@ -62,16 +64,16 @@ We have also added a folder with all the needed files to customizing your new da
 ```yaml
 config
 └── ui_lovelace_minimalist
-    ├── custom_cards
-    └── dashboard
-        └── ui-lovelace.yaml
-        └── adaptive-dash
-            └── adaptive-ui.yaml
-            └── popup
-                └── popup.yaml
-            └── views
-                └── livingroom.yaml
-                └── main.yaml
+├── custom_cards
+└── dashboard
+└── ui-lovelace.yaml
+└── adaptive-dash
+└── adaptive-ui.yaml
+└── popup
+└── popup.yaml
+└── views
+└── livingroom.yaml
+└── main.yaml
 ```
 
 ## Customizing
@@ -140,11 +142,11 @@ First you need to add the `input_select` you have created to the file.
     entity: input_select.minimalist_ui # put your input_select here
     ```
 
-We preconfigured multiple popups for different types of devices. In `popup.yaml` you only have to complete the information in the variables part. The `light 1`, `mediaplayer 1`, `livingroom` parts in the code refer to the options you have configuered in your `input_select`. Make sure they are spelled the same. ([see documentation on `state-switch`](https://github.com/thomasloven/lovelace-state-switch))
+We preconfigured multiple popups for different types of devices. In `popup.yaml` you only have to complete the information in the variables part. The `light 1`, `mediaplayer 1`, `livingroom` parts in the code refer to the options you have configured in your `input_select`. Make sure they are spelled the same. ([see documentation on `state-switch`](https://github.com/thomasloven/lovelace-state-switch))
 
 !!! warning "Warning"
-    Only uncomment the options you have configured!
-    Else it could result in multiple errors in the dev-console of your browser.
+Only uncomment the options you have configured!
+Else it could result in multiple errors in the dev-console of your browser.
 
 Follow this part to add a card to an option of your `input_select`:
 To add a light popup to your first light card you just have to add the corresponding entity:

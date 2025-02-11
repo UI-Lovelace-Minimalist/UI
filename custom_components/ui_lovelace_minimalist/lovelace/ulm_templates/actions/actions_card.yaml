@@ -16,10 +16,10 @@ ulm_actions_card:
           action = 'popup'
         }
         if (action == 'adaptive'){
-          action = 'call-service'
+          action = 'perform-action'
         }
         if (domain == "media_player" && action == 'toggle'){
-          action = 'call-service';
+          action = 'perform-action';
         }
         if (action == 'popup' && (variables.ulm_custom_popup != null )){
           let popup_config = variables.ulm_custom_popup;
@@ -36,34 +36,34 @@ ulm_actions_card:
       ]]]
     navigation_path: "[[[ return variables.ulm_card_tap_action == 'navigate' ? variables.ulm_card_tap_navigate_path : '/0' ]]]"
     haptic: "[[[ return variables.ulm_card_tap_haptic != null ? variables.ulm_card_tap_haptic : 'none' ]]]"
-    service: >
+    perform_action: >
       [[[
-        var action = variables.ulm_card_tap_action;
-
-        if (action == 'adaptive'){
+        if (variables.ulm_card_tap_action == 'adaptive')
           return 'input_select.select_option';
-        }
-        if((entity != null) && entity.entity_id.startsWith("media_player.")){
+        else if (variables.ulm_card_tap_service !== undefined)
+          return variables.ulm_card_tap_service;
+        else if ((entity != null) && entity.entity_id.startsWith("media_player."))
           return 'media_player.media_play_pause';
-        }
-        return variables.ulm_card_tap_service;
+        return "";
       ]]]
-    service_data: >
+    target:
+      entity_id: >
+        [[[
+          if (variables.ulm_card_tap_action == 'adaptive')
+            return variables.ulm_input_select;
+          else if (variables.ulm_card_tap_target !== undefined)
+            return variables.ulm_card_tap_target;
+          else if ((entity != null) && entity.entity_id.startsWith("media_player."))
+            return entity.entity_id;
+          return "";
+        ]]]
+    data: >
       [[[
-        var action = variables.ulm_card_tap_action;
-
-        if (action == 'adaptive'){
-          return {
-            'option': variables.ulm_input_select_option,
-            'entity_id': variables.ulm_input_select
-          };
-        }
-        if((entity != null) && entity.entity_id.startsWith("media_player.")){
-          return {
-            'entity_id': entity.entity_id
-          };
-        }
-        return variables.ulm_card_tap_service_data;
+        if (variables.ulm_card_tap_action == 'adaptive')
+          return {'option': variables.ulm_input_select_option };
+        else if (variables.ulm_card_tap_service_data !== undefined)
+          return variables.ulm_card_tap_service_data;
+        return "";
       ]]]
     browser_mod:
       service: "browser_mod.popup"
@@ -129,10 +129,10 @@ ulm_actions_card:
           action = 'popup'
         }
         if (action == 'adaptive'){
-          action = 'call-service'
+          action = 'perform-action'
         }
         if (domain == "media_player" && action == 'toggle'){
-          action = 'call-service';
+          action = 'perform-action';
         }
         if (action == 'popup' && (variables.ulm_custom_popup != null )){
           let popup_config = variables.ulm_custom_popup;
@@ -149,34 +149,34 @@ ulm_actions_card:
       ]]]
     navigation_path: "[[[ return variables.ulm_card_hold_action == 'navigate' ? variables.ulm_card_hold_navigate_path : '/0' ]]]"
     haptic: "[[[ return variables.ulm_card_hold_haptic != null ? variables.ulm_card_hold_haptic : 'none' ]]]"
-    service: >
+    perform_action: >
       [[[
-        var action = variables.ulm_card_hold_action;
-
-        if (action == 'adaptive'){
+        if (variables.ulm_card_hold_action == 'adaptive')
           return 'input_select.select_option';
-        }
-        if((entity != null) && entity.entity_id.startsWith("media_player.")){
+        else if (variables.ulm_card_hold_service !== undefined)
+          return variables.ulm_card_hold_service;
+        else if ((entity != null) && entity.entity_id.startsWith("media_player."))
           return 'media_player.media_play_pause';
-        }
-        return variables.ulm_card_hold_service;
+        return "";
       ]]]
-    service_data: >
+    target:
+      entity_id: >
+        [[[
+          if (variables.ulm_card_hold_action == 'adaptive')
+            return variables.ulm_input_select;
+          else if (variables.ulm_card_hold_target !== undefined)
+            return variables.ulm_card_hold_target;
+          else if ((entity != null) && entity.entity_id.startsWith("media_player."))
+            return entity.entity_id;
+          return "";
+        ]]]
+    data: >
       [[[
-        var action = variables.ulm_card_hold_action;
-
-        if (action == 'adaptive'){
-          return {
-            'option': variables.ulm_input_select_option,
-            'entity_id': variables.ulm_input_select
-          };
-        }
-        if((entity != null) && entity.entity_id.startsWith("media_player.")){
-          return {
-            'entity_id': entity.entity_id
-          };
-        }
-        return variables.ulm_card_hold_service_data;
+        if (variables.ulm_card_hold_action == 'adaptive')
+          return { 'option': variables.ulm_input_select_option };
+        else if (variables.ulm_card_hold_service_data !== undefined)
+          return variables.ulm_card_hold_service_data;
+        return "";
       ]]]
     browser_mod:
       service: "browser_mod.popup"
@@ -242,10 +242,10 @@ ulm_actions_card:
           action = 'popup'
         }
         if (action == 'adaptive'){
-          action = 'call-service'
+          action = 'perform-action'
         }
         if (domain == "media_player" && action == 'toggle'){
-          action = 'call-service';
+          action = 'perform-action';
         }
         if (action == 'popup' && (variables.ulm_custom_popup != null )){
           let popup_config = variables.ulm_custom_popup;
@@ -262,34 +262,34 @@ ulm_actions_card:
       ]]]
     navigation_path: "[[[ return variables.ulm_card_double_tap_action == 'navigate' ? variables.ulm_card_double_tap_navigate_path : '/0' ]]]"
     haptic: "[[[ return variables.ulm_card_double_tap_haptic != null ? variables.ulm_card_double_tap_haptic : 'none' ]]]"
-    service: >
+    perform_action: >
       [[[
-        var action = variables.ulm_card_double_tap_action;
-
-        if (action == 'adaptive'){
+        if (variables.ulm_card_double_tap_action == 'adaptive')
           return 'input_select.select_option';
-        }
-        if((entity != null) && entity.entity_id.startsWith("media_player.")){
+        else if (variables.ulm_card_double_tap_service !== undefined)
+          return variables.ulm_card_double_tap_service;
+        else if ((entity != null) && entity.entity_id.startsWith("media_player."))
           return 'media_player.media_play_pause';
-        }
-        return variables.ulm_card_double_tap_service;
+        return "";
       ]]]
-    service_data: >
+    target:
+      entity_id: >
+        [[[
+          if (variables.ulm_card_double_tap_action == 'adaptive')
+            return variables.ulm_input_select;
+          else if (variables.ulm_card_double_tap_target !== undefined)
+            return variables.ulm_card_double_tap_target;
+          else if ((entity != null) && entity.entity_id.startsWith("media_player."))
+            return entity.entity_id;
+          return "";
+        ]]]
+    data: >
       [[[
-        var action = variables.ulm_card_double_tap_action;
-
-        if (action == 'adaptive'){
-          return {
-            'option': variables.ulm_input_select_option,
-            'entity_id': variables.ulm_input_select
-          };
-        }
-        if((entity != null) && entity.entity_id.startsWith("media_player.")){
-          return {
-            'entity_id': entity.entity_id
-          };
-        }
-        return variables.ulm_card_double_tap_service_data;
+        if (variables.ulm_card_double_tap_action == 'adaptive')
+          return { 'option': variables.ulm_input_select_option };
+        else if (variables.ulm_card_double_tap_service_data !== undefined)
+          return variables.ulm_card_double_tap_service_data;
+        return "";
       ]]]
     browser_mod:
       service: "browser_mod.popup"

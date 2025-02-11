@@ -99,16 +99,17 @@ custom_card_heat_pump:
               template: "widget_icon"
               icon: "mdi:arrow-down"
               tap_action:
-                action: "call-service"
-                service: "climate.set_temperature"
-                service_data:
-                  entity_id: "[[[ return entity.entity_id ]]]"
-                  temperature: "[[[ return entity.attributes.temperature - entity.attributes.target_temp_step ]]]"
+                action: "perform-action"
+                perform_action: "climate.set_temperature"
+                target:
+                  entity_id: "[[[ return entity.entity_id; ]]]"
+                data:
+                  temperature: "[[[ return (entity.attributes.temperature - entity.attributes.target_temp_step); ]]]"
           item2:
             card:
               type: "custom:button-card"
-              entity: "[[[ return entity.entity_id ]]]"
-              name: "[[[ return entity.attributes.temperature + '°C' ]]]"
+              entity: "[[[ return entity.entity_id; ]]]"
+              name: "[[[ return (entity.attributes.temperature + '°C'); ]]]"
               styles:
                 card:
                   - box-shadow: "none"
@@ -120,11 +121,12 @@ custom_card_heat_pump:
               template: "widget_icon"
               icon: "mdi:arrow-up"
               tap_action:
-                action: "call-service"
-                service: "climate.set_temperature"
-                service_data:
-                  entity_id: "[[[ return entity.entity_id ]]]"
-                  temperature: "[[[ return entity.attributes.temperature + entity.attributes.target_temp_step ]]]"
+                action: "perform-action"
+                perform_action: "climate.set_temperature"
+                target:
+                  entity_id: "[[[ return entity.entity_id; ]]]"
+                data:
+                  temperature: "[[[ return (entity.attributes.temperature + entity.attributes.target_temp_step); ]]]"
     item3:
       card:
         type: "horizontal-stack"
@@ -133,19 +135,21 @@ custom_card_heat_pump:
             template: "widget_icon_juve"
             icon: "mdi:power"
             tap_action:
-              action: "call-service"
-              service: "climate.set_hvac_mode"
-              service_data:
-                entity_id: "[[[ return entity.entity_id ]]]"
+              action: "perform-action"
+              perform_action: "climate.set_hvac_mode"
+              target:
+                entity_id: "[[[ return entity.entity_id; ]]]"
+              data:
                 hvac_mode: "off"
           - type: "custom:button-card"
             template: "widget_icon_juve"
             icon: "mdi:fire"
             tap_action:
-              action: "call-service"
-              service: "climate.set_hvac_mode"
-              service_data:
-                entity_id: "[[[ return entity.entity_id ]]]"
+              action: "perform-action"
+              perform_action: "climate.set_hvac_mode"
+              target:
+                entity_id: "[[[ return entity.entity_id; ]]]"
+              data:
                 hvac_mode: "heat"
             styles:
               icon:
@@ -170,10 +174,11 @@ custom_card_heat_pump:
             template: "widget_icon_juve"
             icon: "mdi:snowflake"
             tap_action:
-              action: "call-service"
-              service: "climate.set_hvac_mode"
-              service_data:
-                entity_id: "[[[ return entity.entity_id ]]]"
+              action: "perform-action"
+              perform_action: "climate.set_hvac_mode"
+              target:
+                entity_id: "[[[ return entity.entity_id; ]]]"
+              data:
                 hvac_mode: "cool"
             styles:
               icon:
@@ -198,10 +203,11 @@ custom_card_heat_pump:
             template: "widget_icon_juve"
             icon: "mdi:sync"
             tap_action:
-              action: "call-service"
-              service: "climate.set_hvac_mode"
-              service_data:
-                entity_id: "[[[ return entity.entity_id ]]]"
+              action: "perform-action"
+              perform_action: "climate.set_hvac_mode"
+              target:
+                entity_id: "[[[ return entity.entity_id; ]]]"
+              data:
                 hvac_mode: "heat_cool"
             styles:
               icon:
@@ -226,10 +232,11 @@ custom_card_heat_pump:
             template: "widget_icon_juve"
             icon: "mdi:water"
             tap_action:
-              action: "call-service"
-              service: "climate.set_hvac_mode"
-              service_data:
-                entity_id: "[[[ return entity.entity_id ]]]"
+              action: "perform-action"
+              perform_action: "climate.set_hvac_mode"
+              target:
+                entity_id: "[[[ return entity.entity_id; ]]]"
+              data:
                 hvac_mode: "dry"
             styles:
               icon:
@@ -254,10 +261,11 @@ custom_card_heat_pump:
             template: "widget_icon_juve"
             icon: "mdi:fan"
             tap_action:
-              action: "call-service"
-              service: "climate.set_hvac_mode"
-              service_data:
-                entity_id: "[[[ return entity.entity_id ]]]"
+              action: "perform-action"
+              perform_action: "climate.set_hvac_mode"
+              target:
+                entity_id: "[[[ return entity.entity_id; ]]]"
+              data:
                 hvac_mode: "fan_only"
             styles:
               icon:

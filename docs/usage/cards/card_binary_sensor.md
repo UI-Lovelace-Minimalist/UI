@@ -3,6 +3,7 @@ title: Binary Sensor Card
 hide:
   - toc
 ---
+
 <!-- markdownlint-disable MD046 -->
 
 ## Description
@@ -13,14 +14,14 @@ The `binary-sensor-card` is to show the state (on/off, open/close, etc.) of a bi
 
 ## Variables
 
-| Variable | Default | Required         | Notes             |
-|----------|---------|------------------|-------------------|
-| entity     |         | :material-check: |                   |
-| ulm_card_binary_sensor_show_last_changed |   | :material-close: | `true` or `false` |
-| ulm_card_binary_sensor_name |   | :material-close: | Set custom Name |
-| ulm_card_binary_sensor_icon |   | :material-close: | Set custom Icon |
-| ulm_card_binary_sensor_color            | `blue`         | :material-close: | Set Custom Color                   |             |
-| ulm_card_binary_sensor_force_background_color           | `false`         | :material-close: | Set `ulm_card_binary_sensor_color` as background color in active state `                  |             |
+| Variable                                      | Default | Required         | Notes                                                                    |
+| --------------------------------------------- | ------- | ---------------- | ------------------------------------------------------------------------ |
+| entity                                        |         | :material-check: |                                                                          |
+| ulm_card_binary_sensor_show_last_changed      |         | :material-close: | `true` or `false`                                                        |
+| ulm_card_binary_sensor_name                   |         | :material-close: | Set custom Name                                                          |
+| ulm_card_binary_sensor_icon                   |         | :material-close: | Set custom Icon                                                          |
+| ulm_card_binary_sensor_color                  | `blue`  | :material-close: | Set Custom Color                                                         |
+| ulm_card_binary_sensor_force_background_color | `false` | :material-close: | Set `ulm_card_binary_sensor_color` as background color in active state ` |
 
 !!! Warning "⚠️ Breaking Change `v1.0.1`"
 
@@ -41,7 +42,7 @@ The `binary-sensor-card` is to show the state (on/off, open/close, etc.) of a bi
 ## Usage
 
 ```yaml
-- type: 'custom:button-card'
+- type: "custom:button-card"
   template: card_binary_sensor
   variables:
     ulm_card_binary_sensor_alert: true
