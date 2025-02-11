@@ -1,10 +1,10 @@
 ---
-custom_card_paddy_dwd_pollen_language_variables:
+ulm_custom_card_paddy_dwd_pollen_language_variables:
   variables:
-    custom_card_paddy_dwd_pollen_6: "alto"
-    custom_card_paddy_dwd_pollen_5: "medio a alto"
-    custom_card_paddy_dwd_pollen_4: "medio"
-    custom_card_paddy_dwd_pollen_3: "bajo a medio"
-    custom_card_paddy_dwd_pollen_2: "bajo"
-    custom_card_paddy_dwd_pollen_1: "ninguno a bajo"
-    custom_card_paddy_dwd_pollen_none: "ninguno"
+    ulm_custom_card_paddy_dwd_pollen_6: "alto"
+    ulm_custom_card_paddy_dwd_pollen_5: "medio a alto"
+    ulm_custom_card_paddy_dwd_pollen_4: "medio"
+    ulm_custom_card_paddy_dwd_pollen_3: "bajo a medio"
+    ulm_custom_card_paddy_dwd_pollen_2: "bajo"
+    ulm_custom_card_paddy_dwd_pollen_1: "ninguno a bajo"
+    ulm_custom_card_paddy_dwd_pollen_none: "ninguno"

@@ -1,6 +1,8 @@
 ---
 ### Icon Alert ###
 icon_alert:
+  variables:
+    ulm_icon_alert_color: "blue"
   color: "var(--google-grey)"
   show_icon: true
   show_label: false
@@ -17,15 +19,15 @@ icon_alert:
         ]]]
       styles:
         icon:
-          - color: "rgba(var(--color-blue),1)"
+          - color: "[[[ return `rgba(var(--color-${variables.ulm_icon_alert_color}), 1)`; ]]]"
         label:
-          - color: "rgba(var(--color-blue-text),1)"
+          - color: "[[[ return `rgba(var(--color-${variables.ulm_icon_alert_color}-text), 1)`; ]]]"
         name:
-          - color: "rgba(var(--color-blue-text),1)"
+          - color: "[[[ return `rgba(var(--color-${variables.ulm_icon_alert_color}-text), 1)`; ]]]"
         img_cell:
-          - background-color: "rgba(var(--color-blue), 0.2)"
+          - background-color: "[[[ return `rgba(var(--color-${variables.ulm_icon_alert_color}), 0.2)`; ]]]"
         card:
-          - background-color: "rgba(var(--color-background-blue), var(--opacity-bg))"
+          - background-color: "[[[ return `rgba(var(--color-background-${variables.ulm_icon_alert_color}), var(--opacity-bg))`; ]]]"
         custom_fields:
           notification:
             - border-radius: "50%"

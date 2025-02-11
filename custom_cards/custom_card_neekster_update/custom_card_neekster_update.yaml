@@ -131,9 +131,9 @@ card_neekster_update:
               hold_action:
                 action: "more-info"
               tap_action:
-                action: "call-service"
-                service: "update.install"
-                service_data:
+                action: "perform-action"
+                perform_action: "update.install"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
               icon: "mdi:package-down"
           item2:
@@ -142,13 +142,13 @@ card_neekster_update:
               template: "widget_icon"
               entity: "[[[ return entity.entity_id ]]]"
               hold_action:
-                action: "call-service"
-                service: "update.clear_skipped"
-                service_data:
+                action: "cperform-action"
+                perform_action: "update.clear_skipped"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
               tap_action:
-                action: "call-service"
-                service: "update.skip"
-                service_data:
+                action: "perform-action"
+                perform_action: "update.skip"
+                target:
                   entity_id: "[[[ return entity.entity_id ]]]"
               icon: "mdi:cancel"

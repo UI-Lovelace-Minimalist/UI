@@ -24,7 +24,7 @@
             "reauth_successful": "Återautentiseringen lyckades."
         },
         "progress": {
-            "wait_for_device": "1. Öppna {url} \n2.Klistra in följande nyckel för att auktorisera ULM: \n```\n{code}\n```\n"
+            "wait_for_device": "1. Öppna {url}\n2.Klistra in följande nyckel för att auktorisera ULM:\n\n```{code}```"
         }
     },
     "options": {
@@ -55,6 +55,16 @@
             "github_cards": "Något gick fel vid hämtning av kort från GitHub.",
             "ack": "Du måste bekräfta alla uttalande.",
             "gh_token": "Github Token inte inställt. Installera om denna integration för att gå igenom installationsproceduren. (Ingen anpassad konfiguration kommer att gå förlorad)"
+        }
+    },
+    "services": {
+        "reload": {
+            "name": "Reload",
+            "description": "Reload dashboard configuration for UI Lovelace Minimalist."
+        },
+        "installed": {
+            "name": "Installed",
+            "description": "Change the installed key in global config for UI Lovelace Minimalist."
         }
     }
 }

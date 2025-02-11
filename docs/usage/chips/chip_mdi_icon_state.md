@@ -3,6 +3,7 @@ title: Mdi:icon State Chip
 hide:
   - toc
 ---
+
 <!-- markdownlint-disable MD046 -->
 
 ## Description
@@ -13,12 +14,12 @@ This `chip` displays an icon using [mdi](https://materialdesignicons.com/) and `
 
 ## Variables
 
-| Variable | Default | Required         | Notes             |
-|----------|---------|------------------|-------------------|
-|ulm_chip_mdi_icon_state_entity     |         | :material-check: | `entity` to link |                  |
-|ulm_chip_mdi_icon_state_icon       |         | :material-close: | mdi:icon to display  |
-|ulm_chip_mdi_icon_state_icon_color | `primary-text-color` | :material-close: | Allow to change `icon` color |
-|ulm_chip_mdi_icon_state_label_color | `primary-text-color` | :material-close: | Allow to change `label` color |
+| Variable                            | Default              | Required         | Notes                         |
+| ----------------------------------- | -------------------- | ---------------- | ----------------------------- |
+| ulm_chip_mdi_icon_state_entity      |                      | :material-check: | `entity` to link              |
+| ulm_chip_mdi_icon_state_icon        |                      | :material-close: | mdi:icon to display           |
+| ulm_chip_mdi_icon_state_icon_color  | `primary-text-color` | :material-close: | Allow to change `icon` color  |
+| ulm_chip_mdi_icon_state_label_color | `primary-text-color` | :material-close: | Allow to change `label` color |
 
 ## Usage
 

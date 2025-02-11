@@ -59,8 +59,8 @@ card_vertical_button:
         card:
           - background-color: "[[[ return `rgba(var(--color-background-${variables.ulm_card_vertical_button_color}), var(--opacity-bg))`; ]]]"
   tap_action:
-    action: "call-service"
-    service: |
+    action: "perform-action"
+    perform_action: |
       [[[
         if( entity.entity_id.startsWith("input_select.") )
           return "input_select.select_option";
@@ -82,15 +82,19 @@ card_vertical_button:
           return "script.toggle";
         if( entity.entity_id.startsWith("button.") )
           return "button.press";
+        if( entity.entity_id.startsWith("lock.") )
+          if(entity.state == "locked")
+            return "lock.unlock";
+          else
+            return "lock.lock";
         // If we need to support other entities we can add these options here.
         return "";
       ]]]
-    service_data: |
-      [[[
-        var obj;
-        if( entity.entity_id.startsWith("input_select.") )
-          obj = { entity_id: entity.entity_id, option: variables.ulm_card_vertical_button_state };
-        else
-          obj = { entity_id: entity.entity_id };
-        return obj;
-      ]]]
+    target:
+      entity_id: "[[[ return entity.entity_id; ]]]"
+    data:
+      option: |
+        [[[
+          if( entity.entity_id.startsWith("input_select.") )
+            return variables.ulm_card_vertical_button_state;
+        ]]]

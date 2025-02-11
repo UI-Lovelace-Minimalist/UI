@@ -16,8 +16,9 @@ popup_media_player_row:
         name:
           - color: "rgba(var(--color-blue),1)"
   tap_action:
-    action: "call-service"
-    service: "media_player.select_source"
-    service_data:
+    action: "perform-action"
+    perform_action: "media_player.select_source"
+    target:
       entity_id: "[[[ return entity.entity_id; ]]]"
+    data:
       source: "[[[ return entity.attributes.source_list[variables.ulm_popup_media_entity_idx]; ]]]"

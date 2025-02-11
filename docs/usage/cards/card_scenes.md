@@ -3,6 +3,7 @@ title: Scenes Card
 hide:
   - toc
 ---
+
 <!-- markdownlint-disable MD046 -->
 
 ## Description
@@ -13,32 +14,32 @@ This card is part of the Welcome Scenes card and can be used separately to only 
 
 ## Variables
 
-| Variable | Default | Required         | Notes             |
-|----------|---------|------------------|-------------------|
-| entity_1  | auto-entities | :material-close:  | Can be any common type of entity <br> if no entity is specified defaults to auto-entities |
-| entity_2  | auto-entities | :material-close:  | Can be any common type of entity <br> if no entity is specified defaults to auto-entities|
-| entity_3  | auto-entities | :material-close:  | Can be any common type of entity <br> if no entity is specified defaults to auto-entities|
-| entity_4  | auto-entities | :material-close:  | Can be any common type of entity <br> if no entity is specified defaults to auto-entities|
-| entity_5  | auto-entities | :material-close:  | Can be any common type of entity <br> if no entity is specified defaults to auto-entities|
-| entity_6  | none          | :material-close:  | Can be any common type of entity |
-| entity_7  | none          | :material-close:  | Can be any common type of entity |
+| Variable | Default       | Required         | Notes                                                                                     |
+| -------- | ------------- | ---------------- | ----------------------------------------------------------------------------------------- |
+| entity_1 | auto-entities | :material-close: | Can be any common type of entity <br> if no entity is specified defaults to auto-entities |
+| entity_2 | auto-entities | :material-close: | Can be any common type of entity <br> if no entity is specified defaults to auto-entities |
+| entity_3 | auto-entities | :material-close: | Can be any common type of entity <br> if no entity is specified defaults to auto-entities |
+| entity_4 | auto-entities | :material-close: | Can be any common type of entity <br> if no entity is specified defaults to auto-entities |
+| entity_5 | auto-entities | :material-close: | Can be any common type of entity <br> if no entity is specified defaults to auto-entities |
+| entity_6 | none          | :material-close: | Can be any common type of entity                                                          |
+| entity_7 | none          | :material-close: | Can be any common type of entity                                                          |
 
 ## Entity Variables
 
-| Variable | Default | Required         | Notes             |
-|----------|---------|------------------|-------------------|
-| _entity_id  |     | :material-close: | Support almost all types of entities <br> Scenes do always show as off |
-| _icon |    | :material-close: | The icon to show |
-| _name  |      | :material-close: | The name to show|
-| _color  |  Random    | :material-close: | Color of the icon <br> Can choose between: `blue`, `red`, `green`, `yellow`, `pink`, `purple` <br> If not specified, it will take a random color  |
-| _state  | `on` or `playing`    | :material-close: | Define `input_select` state or give manual state for pill to be full |
-| _nav_path |     | :material-close:  | Navigate to another view <br> *Overrides other types of actions*
+| Variable    | Default           | Required         | Notes                                                                                                                                            |
+| ----------- | ----------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| \_entity_id |                   | :material-close: | Support almost all types of entities <br> Scenes do always show as off                                                                           |
+| \_icon      |                   | :material-close: | The icon to show                                                                                                                                 |
+| \_name      |                   | :material-close: | The name to show                                                                                                                                 |
+| \_color     | Random            | :material-close: | Color of the icon <br> Can choose between: `blue`, `red`, `green`, `yellow`, `pink`, `purple` <br> If not specified, it will take a random color |
+| \_state     | `on` or `playing` | :material-close: | Define `input_select` state or give manual state for pill to be full                                                                             |
+| \_nav_path  |                   | :material-close: | Navigate to another view <br> _Overrides other types of actions_                                                                                 |
 
 ## Usage
 
 !!! note ""
-    You can set 1 to 7 entities to show 1 to 7 pills dynamically <br>
-    If set none it uses `auto-entities` with max 5 pills
+You can set 1 to 7 entities to show 1 to 7 pills dynamically <br>
+If set none it uses `auto-entities` with max 5 pills
 
 ```yaml
 - type: "custom:button-card"

@@ -6,25 +6,25 @@
                 "title": "UI Lovelace Minimalist Instellingen",
                 "description": "",
                 "data": {
-                    "community_cards_enabled": "Enable the ability to configure community cards with this integrations, Does require github authentication!"
+                    "community_cards_enabled": "Schakel de mogelijkheid in om community cards te configureren met deze integratie. Hiervoor is GitHub-authenticatie vereist!"
                 }
             },
             "device": {
-                "title": "Waiting for device activation"
+                "title": "Wachten op activering van het apparaat"
             },
             "reauth_confirm": {
-                "title": "Reauthentication needed",
-                "description": "You need to reauthenticate with GitHub."
+                "title": "Herauthenticatie nodig",
+                "description": "Je moet opnieuw authenticeren bij GitHub."
             }
         },
         "abort": {
-            "single_instance_allowed": "Enkel een installatie van UI Lovelace Minimalist is toegestaan.",
+            "single_instance_allowed": "Slechts één configuratie van UI Lovelace Minimalist is toegestaan.",
             "not_setup": "UI Lovelace Minimalist is niet juist ingesteld.",
-            "github": "Could not authenticate with GitHub, try again later.",
-            "reauth_successful": "Reauthentication was successful."
+            "github": "Kon niet authenticeren met GitHub, probeer het later opnieuw.",
+            "reauth_successful": "Herauthenticatie was succesvol."
         },
         "progress": {
-            "wait_for_device": "1. Open {url} \n2.Paste the following key to authorize ULM: \n```\n{code}\n```\n"
+            "wait_for_device": "1. Open {url}\n2.Plak de volgende sleutel om ULM te autoriseren:\n\n```{code}```"
         }
     },
     "options": {
@@ -34,35 +34,37 @@
                 "description": "",
                 "data": {
                     "language": "Taal",
-                    "sidepanel_enabled": "Een Dashboard aan de zijbalk toevoegen",
-                    "sidepanel_icon": "Dashboard icon",
+                    "sidepanel_enabled": "Het dashboard aan de zijbalk toevoegen",
+                    "sidepanel_icon": "Dashboard icoon",
                     "sidepanel_title": "Dashboard titel",
-                    "adaptive_ui_enabled": "Een adaptive Dashboard aan de zijbalk toevoegen",
-                    "adaptive_ui_title": "adaptive dashboard titel",
-                    "adaptive_ui_icon": "adaptive dashboard icon",
+                    "adaptive_ui_enabled": "Het adaptief dashboard met popup splitview aan de zijbalk toevoegen",
+                    "adaptive_ui_title": "Adaptief dashboard titel",
+                    "adaptive_ui_icon": "Adaptief dashboard icoon",
                     "theme": "Thema",
-                    "include_other_cards": "'Frontend' repositories toevoegen die nodig zijn",
-                    "community_cards_enabled": "Enable the ability to configure community cards with this integrations, Does require github authentication!",
-                    "community_cards": "Select Community Cards you want to enable."
+                    "include_other_cards": "Voeg benodigde Home Assistant Community Store (HACS) repositories toe.",
+                    "community_cards_enabled": "Schakel de mogelijkheid in om community cards te configureren met deze integratie. Hiervoor is GitHub-authenticatie vereist!",
+                    "community_cards": "Selecteer Community Cards die je wilt gebruiken."
                 }
             }
         },
         "abort": {
-            "single_instance_allowed": "Enkel een installatie van UI Lovelace Minimalist is toegestaan.",
+            "single_instance_allowed": "Slechts één configuratie van UI Lovelace Minimalist is toegestaan.",
             "not_setup": "UI Lovelace Minimalist is niet juist ingesteld."
         },
         "error": {
-            "github_cards": "Something went wrong when fetching cards from Github.",
-            "ack": "You need to acknowledge all statements.",
-            "gh_token": "Github Token not set. Please re-install this integration to go throught the setup procedure. (No custom configuration will be lost)"
+            "github_cards": "Er ging iets mis bij het ophalen van kaarten uit GitHub.",
+            "ack": "Je moet alle meldingen bevestigen.",
+            "gh_token": "Github Token niet ingesteld. Installeer deze integratie opnieuw om de installatieprocedure te doorlopen. (De aangepaste configuratie gaat niet verloren)"
         }
     },
     "services": {
         "reload": {
-            "description": "Herlaad dashboardconfiguratie voor UI Lovelace Minimalist."
+            "name": "Reload",
+            "description": "Herlaad de dashboardconfiguratie voor UI Lovelace Minimalist."
         },
         "installed": {
-            "description": "Wijzig de geïnstalleerde sleutel in globale configuratie voor UI Lovelace Minimalist."
+            "name": "Installed",
+            "description": "Wijzig de geïnstalleerde sleutel in global config voor UI Lovelace Minimalist."
         }
     }
 }

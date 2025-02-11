@@ -3,7 +3,9 @@ title: Custom actions
 hide:
   - toc
 ---
+
 <!-- markdownlint-disable MD046 -->
+
 ## Customize tap, double-tap and hold actions
 
 This 'theme' do offer support for customizing actions. Tap, double-tap and hold on different parts (card, icon and name) of the cards could be changed. To achieve this customization follow the instructions on this page.
@@ -25,19 +27,18 @@ ulm_custom_actions:
     ulm_name_tap_action: "more-info"
     ulm_name_hold_action: "toggle"
     ulm_name_double_tap_action: "popup"
-
 ```
 
 Possible values for each variables are :
 
-| Value      | Description                                                                                                                     |
-|------------|---------------------------------------------------------------------------------------------------------------------------------|
-| none       | No action                                                                                                                       |
-| toggle     | Toggle an entity if available (for binary_sensor and sensor entity, `none` action is used)                                      |
-| more-info  | Display more-info window                                                                                                        |
-| popup      | Display UI LOVELACE MINIMALIST popup if available and enabled on card (if not `more-info` action is used)                       |
-| adaptive   | Switch UI LOVELACE MINIMALIST popup on adaptive dashboard<br> if current dashboard is adaptive (if not `popup` action is used)  |
-| navigate   | Navigate to an other UI LOVELACE MINIMALIST view. Need additional variable (see below)                                         |
+| Value     | Description                                                                                                                    |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| none      | No action                                                                                                                      |
+| toggle    | Toggle an entity if available (for binary_sensor and sensor entity, `none` action is used)                                     |
+| more-info | Display more-info window                                                                                                       |
+| popup     | Display UI LOVELACE MINIMALIST popup if available and enabled on card (if not `more-info` action is used)                      |
+| adaptive  | Switch UI LOVELACE MINIMALIST popup on adaptive dashboard<br> if current dashboard is adaptive (if not `popup` action is used) |
+| navigate  | Navigate to an other UI LOVELACE MINIMALIST view. Need additional variable (see below)                                         |
 
 ## Haptic feedback
 
@@ -60,8 +61,7 @@ ulm_custom_actions:
     ulm_name_double_tap_haptic: "none"
 ```
 
-Possible values for each variables (according to the underlying [button card](
-https://github.com/custom-cards/button-card)) are :
+Possible values for each variables (according to the underlying [button card](https://github.com/custom-cards/button-card)) are :
 
 - `none`
 - `success`
@@ -98,7 +98,6 @@ To define the path of `navigate` action, add one of the following depending on y
   variables:
     ulm_name_hold_action: "navigate"
     ulm_name_hold_navigate_path: "/adaptive-dash/Livingroom"
-
 ```
 
 ## Call service action
@@ -130,7 +129,6 @@ tap action.
     ulm_name_tap_service: "light.toggle"
     ulm_name_tap_service_data:
       entity_id: light.light_livingroom_2
-
 ```
 
 ## Overwrite custom actions
@@ -145,7 +143,6 @@ For example, this code will overwrite the tap action on card with `more-info` ac
   variables:
     ulm_card_tap_action: "more-info"
     ulm_card_tap_haptic: "success"
-
 ```
 
 ## Custom Popups
@@ -164,7 +161,7 @@ within the `ulm_custom_popup`. This `entity` variable is optional. It is also po
 custom popup it the `entity` variable within the `ulm_custom_popup is set to`none`.
 
 ```yaml
-- type: 'custom:button-card'
+- type: "custom:button-card"
   template: card_power_outlet
   entity: switch.power_outlet_livingroom
   variables:
@@ -178,7 +175,6 @@ custom popup it the `entity` variable within the `ulm_custom_popup is set to`non
         ulm_popup_power_outlet_sensor2: sensor.power_outlet_livingroom_consumption
         ulm_popup_power_outlet_graph_sensor: sensor.power_outlet_livingroom
         ulm_popup_power_outlet_entity: switch.power_outlet_livingroom
-
 ```
 
 The available popup templates `popup_media_player_infos`, `popup_light_brightness`, `popup_thermostat_temperature`
@@ -318,7 +314,6 @@ custom_card:
           ulm_name_double_tap_service: "[[[ return variables.ulm_name_double_tap_service; ]]]"
           ulm_name_double_tap_service_data: "[[[ return variables.ulm_name_double_tap_service_data]]]"
           ulm_custom_popup: "[[[ return variables.ulm_custom_popup; ]]]"
-
 ```
 
 !!! tip "For developes who have already implemented the custom actions on their card"
@@ -354,10 +349,9 @@ The following code won't work on custom popup cards:
 
 ```yaml
 popup_weather_forecast:
-...
-  variables:
-    ulm_weather_popup_surpress_first_forecast: false
-...
+---
+variables:
+  ulm_weather_popup_surpress_first_forecast: false
 ```
 
 Instead of using the variables section of the card the variables must be checked within a JavaScript template. The following
@@ -376,4 +370,4 @@ element: >
   ]]]
 ```
 
-The code checks if the variable is available before reading from the variabl and if the variable isn't available it will set a default value.
+The code checks if the variable is available before reading from the variable and if the variable isn't available it will set a default value.

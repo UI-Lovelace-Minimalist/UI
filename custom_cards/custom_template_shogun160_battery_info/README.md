@@ -27,9 +27,9 @@ This is an template to add the battery level to every ui minimalist card
 
 ## Variables
 
-| Variable                                     | Default | Required | Notes                                                                    |
-| -------------------------------------------- | ------- | -------- | ------------------------------------------------------------------------ |
-| ulm_battery_entity                           |         | No       | The entity to represent the battery_level
+| Variable           | Default | Required | Notes                                     |
+| ------------------ | ------- | -------- | ----------------------------------------- |
+| ulm_battery_entity |         | No       | The entity to represent the battery_level |
 
 ## Usage with battery or battery_level attribute from entity
 
