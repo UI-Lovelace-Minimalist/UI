@@ -11,12 +11,15 @@ from homeassistant.config_entries import SOURCE_IMPORT, ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.loader import async_get_integration
+import voluptuous as vol
 
 from .base import UlmBase
 from .const import DOMAIN, NAME
 from .enums import ConfigurationType, UlmDisabledReason
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
+
+CONFIG_SCHEMA = vol.Schema({DOMAIN: vol.Schema({})}, extra=vol.ALLOW_EXTRA)
 
 
 async def async_initialize_integration(

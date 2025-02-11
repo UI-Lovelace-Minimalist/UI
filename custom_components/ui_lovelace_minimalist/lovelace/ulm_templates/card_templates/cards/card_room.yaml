@@ -209,14 +209,14 @@ widget_icon_room:
     navigation_path: "[[[ return variables.tap_action.navigation_path; ]]]"
     url_path: "[[[ return variables.tap_action.url_path; ]]]"
     perform_action: "[[[ return variables.tap_action.service; ]]]"
-    target: "[[[ return variables.tap_action.service_data; ]]]"
+    data: "[[[ return variables.tap_action.service_data; ]]]"
   hold_action:
     action: "[[[ return variables?.hold_action?.action ? variables.hold_action.action : 'none'; ]]]"
     entity: "[[[ return variables.hold_action.entity; ]]]"
     navigation_path: "[[[ return variables.hold_action.navigation_path; ]]]"
     url_path: "[[[ return variables.hold_action.url_path; ]]]"
     perform_action: "[[[ return variables.hold_action.service; ]]]"
-    target: "[[[ return variables.hold_action.service_data; ]]]"
+    data: "[[[ return variables.hold_action.service_data; ]]]"
   size: "15px"
   color: "var(--google-grey)"
   show_icon: true

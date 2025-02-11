@@ -3,6 +3,7 @@ title: Custom Camera Card
 hide:
   - toc
 ---
+
 <!-- markdownlint-disable MD046 -->
 
 # Custom-card "Camera"
@@ -21,7 +22,7 @@ Version: 1.0.0
 
 <details>
 <summary>1.0.1</summary>
-Added variable to passthough aspect ratio to the picture entity card. Fix minor issues with title.
+Added variable to passthrough aspect ratio to the picture entity card. Fix minor issues with title.
 </details>
 <details>
 <summary>1.0.0</summary>
@@ -39,7 +40,7 @@ Initial release.
     ulm_custom_card_camera_title: true
     ulm_custom_card_camera_name: "name"
     ulm_custom_card_camera_label: "label"
-    ulm_custom_card_camera_aspect_ratio: '16:9'
+    ulm_custom_card_camera_aspect_ratio: "16:9"
 ```
 
 ## Variables

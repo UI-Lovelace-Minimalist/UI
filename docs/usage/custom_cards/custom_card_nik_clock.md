@@ -3,11 +3,12 @@ title: Tablet Clock Card
 hide:
   - toc
 ---
+
 <!-- markdownlint-disable MD046 -->
 
 # Custom-card "Tablet clock Card"
 
-This is a `custom-card` that shows the currenct time and Date. This is designed for a tablet or big monitor.
+This is a `custom-card` that shows the current time and Date. This is designed for a tablet or big monitor.
 
 ![Screenshot](../../assets/img/custom_card_nik_clock.png)
 

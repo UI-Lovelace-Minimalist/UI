@@ -102,14 +102,14 @@ custom_card_heat_pump:
                 action: "perform-action"
                 perform_action: "climate.set_temperature"
                 target:
-                  entity_id: "[[[ return entity.entity_id ]]]"
+                  entity_id: "[[[ return entity.entity_id; ]]]"
                 data:
-                  temperature: "[[[ return entity.attributes.temperature - entity.attributes.target_temp_step ]]]"
+                  temperature: "[[[ return (entity.attributes.temperature - entity.attributes.target_temp_step); ]]]"
           item2:
             card:
               type: "custom:button-card"
-              entity: "[[[ return entity.entity_id ]]]"
-              name: "[[[ return entity.attributes.temperature + '°C' ]]]"
+              entity: "[[[ return entity.entity_id; ]]]"
+              name: "[[[ return (entity.attributes.temperature + '°C'); ]]]"
               styles:
                 card:
                   - box-shadow: "none"
@@ -124,9 +124,9 @@ custom_card_heat_pump:
                 action: "perform-action"
                 perform_action: "climate.set_temperature"
                 target:
-                  entity_id: "[[[ return entity.entity_id ]]]"
+                  entity_id: "[[[ return entity.entity_id; ]]]"
                 data:
-                  temperature: "[[[ return entity.attributes.temperature + entity.attributes.target_temp_step ]]]"
+                  temperature: "[[[ return (entity.attributes.temperature + entity.attributes.target_temp_step); ]]]"
     item3:
       card:
         type: "horizontal-stack"
@@ -138,7 +138,7 @@ custom_card_heat_pump:
               action: "perform-action"
               perform_action: "climate.set_hvac_mode"
               target:
-                entity_id: "[[[ return entity.entity_id ]]]"
+                entity_id: "[[[ return entity.entity_id; ]]]"
               data:
                 hvac_mode: "off"
           - type: "custom:button-card"
@@ -148,7 +148,7 @@ custom_card_heat_pump:
               action: "perform-action"
               perform_action: "climate.set_hvac_mode"
               target:
-                entity_id: "[[[ return entity.entity_id ]]]"
+                entity_id: "[[[ return entity.entity_id; ]]]"
               data:
                 hvac_mode: "heat"
             styles:
@@ -177,7 +177,7 @@ custom_card_heat_pump:
               action: "perform-action"
               perform_action: "climate.set_hvac_mode"
               target:
-                entity_id: "[[[ return entity.entity_id ]]]"
+                entity_id: "[[[ return entity.entity_id; ]]]"
               data:
                 hvac_mode: "cool"
             styles:
@@ -206,7 +206,7 @@ custom_card_heat_pump:
               action: "perform-action"
               perform_action: "climate.set_hvac_mode"
               target:
-                entity_id: "[[[ return entity.entity_id ]]]"
+                entity_id: "[[[ return entity.entity_id; ]]]"
               data:
                 hvac_mode: "heat_cool"
             styles:
@@ -235,7 +235,7 @@ custom_card_heat_pump:
               action: "perform-action"
               perform_action: "climate.set_hvac_mode"
               target:
-                entity_id: "[[[ return entity.entity_id ]]]"
+                entity_id: "[[[ return entity.entity_id; ]]]"
               data:
                 hvac_mode: "dry"
             styles:
@@ -264,7 +264,7 @@ custom_card_heat_pump:
               action: "perform-action"
               perform_action: "climate.set_hvac_mode"
               target:
-                entity_id: "[[[ return entity.entity_id ]]]"
+                entity_id: "[[[ return entity.entity_id; ]]]"
               data:
                 hvac_mode: "fan_only"
             styles:

@@ -305,16 +305,18 @@ card_scenes_pill_welcome:
           navigation_path: "[[[ return variables?.nav_path; ]]]"
           target: |
             [[[
+              if(typeof(entity) !== 'undefined' && entity !== undefined){
+                return { entity_id: entity?.entity_id };
+              }
+            ]]]
+          data: |
+            [[[
               if (variables.service_data){
                 return variables.service_data
               }
-              var obj;
               if(typeof(entity) !== 'undefined' && entity !== undefined){
                 if( entity?.entity_id.startsWith("input_select.") )
-                  obj = { entity_id: entity?.entity_id, option: variables.state };
-                else
-                  obj = { entity_id: entity?.entity_id };
-                return obj;
+                  return { option: variables.state };
               }
             ]]]
         styles:
@@ -392,11 +394,8 @@ card_scenes_pill_welcome:
             ]]]
           target: |
             [[[
-              var obj;
               if(typeof(entity) !== 'undefined' && entity !== undefined){
-                if( entity?.entity_id.startsWith("input_select.") )
-                  obj = { entity_id: entity?.entity_id };
-                return obj;
+                return { entity_id: entity?.entity_id };
               }
             ]]]
           data: |
@@ -404,11 +403,9 @@ card_scenes_pill_welcome:
               if (variables.service_data){
                 return variables.service_data
               }
-              var obj;
               if(typeof(entity) !== 'undefined' && entity !== undefined){
                 if( entity?.entity_id.startsWith("input_select.") )
-                  obj = { option: variables.state };
-                return obj;
+                  return { option: variables.state };
               }
             ]]]
         styles:

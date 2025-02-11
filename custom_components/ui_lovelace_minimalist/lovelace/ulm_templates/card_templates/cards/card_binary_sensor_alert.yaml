@@ -12,6 +12,7 @@ card_binary_sensor_alert:
     ulm_outlet_power_enable_popup: false
     ulm_card_binary_sensor_alert_color: "blue"
     ulm_card_binary_sensor_alert_force_background_color: false
+    ulm_icon_alert_color: "[[[ return variables.ulm_card_binary_sensor_alert_color ]]]"
   state:
     - operator: "template"
       value: "[[[ return variables.ulm_active_state ]]]"
