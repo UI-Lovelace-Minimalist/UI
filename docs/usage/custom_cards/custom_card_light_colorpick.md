@@ -3,6 +3,7 @@ title: Colorpicker Light Card Custom-card
 hide:
   - toc
 ---
+
 <!-- markdownlint-disable MD046 -->
 
 # Custom-card "Colorpicker Light Card"
@@ -26,6 +27,7 @@ Initial release
 ## Requirements
 
 This card needs the following to function correctly:
+
 <table>
 <tr>
 <th>Component / card</th>
@@ -51,8 +53,8 @@ This card needs the following to function correctly:
   template: card_light_colorpick
   entity: light.your_light
   variables:
-    ulm_card_light_slider_horizontal_colors_name: Ceiling light
-    ulm_card_light_slider_horizontal_colors_transition: 1
+    ulm_card_light_colorpick_name: Ceiling light
+    ulm_card_light_colorpick_transition: 1
 ```
 
 ## Variables
@@ -67,14 +69,14 @@ This card needs the following to function correctly:
 </tr>
 <tr>
 <td>all</td>
-<td>ulm_card_light_slider_horizontal_colors_name</td>
+<td>ulm_card_light_colorpick_name</td>
 <td>Light</td>
 <td>no</td>
 <td>This is the name the card shows</td>
 </tr>
 <tr>
 <td>all</td>
-<td>ulm_card_light_slider_horizontal_colors_transition</td>
+<td>ulm_card_light_colorpick_transition</td>
 <td>1</td>
 <td>no</td>
 <td>This is the color change transition in seconds</td>
