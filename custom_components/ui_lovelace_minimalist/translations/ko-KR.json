@@ -1,0 +1,70 @@
+{
+    "title": "UI Lovelace Minimalist",
+    "config": {
+        "step": {
+            "user": {
+                "title": "UI Lovelace Minimalist 설정",
+                "description": "",
+                "data": {
+                    "community_cards_enabled": "이 통합 구성요소로 커뮤니티 카드를 구성할 수 있도록 활성화합니다. GitHub 인증이 필요합니다!"
+                }
+            },
+            "device": {
+                "title": "기기 활성화 대기 중"
+            },
+            "reauth_confirm": {
+                "title": "재인증 필요",
+                "description": "GitHub에 재인증이 필요합니다."
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "UI Lovelace Minimalist는 한 번만 구성할 수 있습니다.",
+            "not_setup": "UI Lovelace Minimalist가 설정되지 않았습니다.",
+            "github": "GitHub 인증에 실패했습니다. 나중에 다시 시도하세요.",
+            "reauth_successful": "재인증에 성공했습니다."
+        },
+        "progress": {
+            "wait_for_device": "1. {url}을(를) 열어주세요\n2. ULM 인증을 위해 다음 키를 붙여넣으세요:\n\n```{code}```"
+        }
+    },
+    "options": {
+        "step": {
+            "user": {
+                "title": "UI Lovelace Minimalist 설정",
+                "description": "",
+                "data": {
+                    "language": "언어",
+                    "sidepanel_enabled": "사이드 패널에 대시보드 항목 생성 활성화",
+                    "sidepanel_icon": "사이드 패널 아이콘",
+                    "sidepanel_title": "사이드 패널 제목",
+                    "adaptive_ui_enabled": "팝업 분할 보기가 있는 적응형 대시보드 활성화",
+                    "adaptive_ui_title": "적응형 패널 제목",
+                    "adaptive_ui_icon": "적응형 패널 아이콘",
+                    "theme": "테마",
+                    "include_other_cards": "의존하는 사용자 정의 카드 리소스 포함",
+                    "community_cards_enabled": "이 통합 구성요소로 커뮤니티 카드를 구성할 수 있도록 활성화합니다. GitHub 인증이 필요합니다!",
+                    "community_cards": "활성화하려는 커뮤니티 카드를 선택하세요."
+                }
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "UI Lovelace Minimalist는 한 번만 구성할 수 있습니다.",
+            "not_setup": "UI Lovelace Minimalist가 설정되지 않았습니다."
+        },
+        "error": {
+            "github_cards": "GitHub에서 카드를 가져오는 동안 오류가 발생했습니다.",
+            "ack": "모든 항목을 확인해야 합니다.",
+            "gh_token": "GitHub 토큰이 설정되지 않았습니다. 설정 절차를 진행하려면 이 통합 구성요소를 다시 설치하세요. (사용자 정의 구성은 손실되지 않습니다)"
+        }
+    },
+    "services": {
+        "reload": {
+            "name": "새로고침",
+            "description": "UI Lovelace Minimalist 대시보드 구성을 다시 로드합니다."
+        },
+        "installed": {
+            "name": "설치됨",
+            "description": "UI Lovelace Minimalist의 전역 구성에서 설치된 키를 변경합니다."
+        }
+    }
+}

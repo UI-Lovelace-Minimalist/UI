@@ -1,0 +1,17 @@
+---
+ulm_language_variables:
+  variables:
+    ulm_currency: "₩"
+    ulm_updates_available: "업데이트 가능!"
+    ulm_no_updates_available: "사용 가능한 업데이트 없음"
+    ulm_ophaling: "쓰레기 수거일!"
+    ulm_geen_ophaling: "수거 일정 없음"
+    ulm_volgende_ophaling: "다음 수거 일정"
+    ulm_morning: "좋은 아침입니다"
+    ulm_afternoon: "안녕하세요, 좋은 오후입니다"
+    ulm_evening: "안녕하세요, 좋은 저녁 보내세요"
+    ulm_hello: "안녕하세요"
+    ulm_volume: "볼륨"
+    ulm_popups_color: "색상"
+    ulm_radar: "레이더"
+    ulm_popup_total: "총계"
