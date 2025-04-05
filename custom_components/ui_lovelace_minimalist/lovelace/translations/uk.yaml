@@ -1,0 +1,14 @@
+---
+ulm_language_variables:
+  variables:
+    ulm_currency: "UAH"
+    ulm_updates_available: "Доступні оновлення!"
+    ulm_no_updates_available: "Немає доступних оновлень"
+    ulm_morning: "Доброго ранку"
+    ulm_afternoon: "Добрий день"
+    ulm_evening: "Добрий вечір"
+    ulm_hello: "Привіт"
+    ulm_volume: "Гучність"
+    ulm_popups_color: "Колір"
+    ulm_radar: "Радар"
+    ulm_popup_total: "Усього"
