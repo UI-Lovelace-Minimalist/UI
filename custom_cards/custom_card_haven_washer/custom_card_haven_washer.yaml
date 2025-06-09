@@ -9,6 +9,7 @@ custom_card_haven_washer:
     ulm_custom_card_washer_machine_state:
     ulm_custom_card_washer_machine_stop_state: "stop"
     ulm_custom_card_washer_job_state:
+    ulm_custom_card_washer_job_progress:
     ulm_custom_card_washer_label_idle: "idle"
     ulm_custom_card_washer_label_configuring: "configure"
     ulm_custom_card_washer_label_running: "run"
@@ -53,13 +54,17 @@ custom_card_haven_washer:
               rows.push("\'row2\'");
             }
 
-            if (!!variables.ulm_custom_card_washer_remote_control) {
+            if (!!variables.ulm_custom_card_washer_job_progress) {
               rows.push("\'row3\'");
+            }
+
+            if (!!variables.ulm_custom_card_washer_remote_control) {
+              rows.push("\'row4\'");
             }
 
             if (!!variables.ulm_custom_card_washer_delayed_start
               && !!variables.ulm_custom_card_washer_delayed_starttime) {
-              rows.push("\'row4\'");
+              rows.push("\'row5\'");
             }
 
             return rows.join(" ");
@@ -83,6 +88,14 @@ custom_card_haven_washer:
       row3:
         - display: >
             [[[
+              return (!!variables.ulm_custom_card_washer_job_progress
+                && !!variables.ulm_custom_card_washer_power
+                && !!states[variables.ulm_custom_card_washer_power]?.state
+                && states[variables.ulm_custom_card_washer_power].state === "on") ? "block" : "none";
+            ]]]
+      row4:
+        - display: >
+            [[[
               return (!!variables.ulm_custom_card_washer_power
                 && !!states[variables.ulm_custom_card_washer_power]?.state
                 && states[variables.ulm_custom_card_washer_power].state === "on"
@@ -90,7 +103,7 @@ custom_card_haven_washer:
                 && !!states[variables.ulm_custom_card_washer_remote_control]?.state
                 && states[variables.ulm_custom_card_washer_remote_control].state === "true") ? "block" : "none";
             ]]]
-      row4:
+      row5:
         - display: >
             [[[
               return (!!variables.ulm_custom_card_washer_power
@@ -409,6 +422,49 @@ custom_card_haven_washer:
     row3:
       card:
         type: "custom:button-card"
+        styles:
+          grid:
+            - grid-template-areas: "'progress'"
+            - grid-template-columns: "1fr"
+            - grid-template-rows: "min-content"
+          card:
+            - padding: "0px"
+            - box-shadow: "none"
+        custom_fields:
+          progress:
+            card:
+              card_mod:
+                style: |-
+                  bar-card-currentbar {
+                    left: 0px;
+                    --bar-card-color: rgba(var(--color-blue),0.2);
+                  }
+                  bar-card-backgroundbar {
+                    left: 0px;
+                    --bar-card-color: rgba(var(--color-theme),0.2);
+                  }
+                  bar-card-value {
+                    font-weight: bold;
+                    font-size: 14px;
+                    margin: 8px;
+                  }
+                  bar-card-card {
+                    padding-top: 8px;
+                  }
+                  #progress .card-content {
+                    padding: 0px;
+                  }
+              type: "custom:bar-card"
+              entity_row: true
+              height: 42
+              positions:
+                icon: "off"
+                indicator: "off"
+                name: "off"
+              entity: "[[[ return variables.ulm_custom_card_washer_job_progress ]]]"
+    row4:
+      card:
+        type: "custom:button-card"
         template: >
           [[[
             return !!variables.ulm_custom_card_washer_delayed_start
@@ -551,7 +607,7 @@ custom_card_haven_washer:
                     icon:
                       - color: "rgba(var(--color-theme),0.2)"
               entity: "[[[ return variables.ulm_custom_card_washer_delayed_start; ]]]"
-    row4:
+    row5:
       card:
         type: "custom:button-card"
         template: "list_3_items"
@@ -565,16 +621,15 @@ custom_card_haven_washer:
               type: "custom:button-card"
               template: "widget_icon"
               tap_action:
-                action: "perform-action"
-                perform_action: "input_datetime.set_datetime"
-                target:
+                action: "call-service"
+                service: "input_datetime.set_datetime"
+                service_data:
                   entity_id: "[[[ return variables.ulm_custom_card_washer_delayed_starttime; ]]]"
-                data:
                   time: >
                     [[[
                       if (!!variables.ulm_custom_card_washer_delayed_starttime
                         && !!states[variables.ulm_custom_card_washer_delayed_starttime]?.attributes) {
-                        var timestamp = states[variables.ulm_custom_card_washer_delayed_starttime].attributes.timestamp
+                        var timestamp = states[variables.ulm_custom_card_washer_delayed_starttime].attributes.timestamp;
 
                         let unix_timestamp = timestamp - 4500;
                         // Create a new JavaScript Date object based on the timestamp
@@ -598,16 +653,15 @@ custom_card_haven_washer:
               type: "custom:button-card"
               template: "custom_card_haven_washer_delayed_text"
               tap_action:
-                action: "perform-action"
-                perform_action: "input_datetime.set_datetime"
-                target:
+                action: "call-service"
+                service: "input_datetime.set_datetime"
+                service_data:
                   entity_id: "[[[ return variables.ulm_custom_card_washer_delayed_starttime; ]]]"
-                data:
                   time: >
                     [[[
                       if (!!variables.ulm_custom_card_washer_delayed_starttime
                         && !!states[variables.ulm_custom_card_washer_delayed_starttime]?.attributes) {
-                        var timestamp = states[variables.ulm_custom_card_washer_delayed_starttime].attributes.timestamp
+                        var timestamp = states[variables.ulm_custom_card_washer_delayed_starttime].attributes.timestamp;
 
                         let unix_timestamp = timestamp - 3540;
                         // Create a new JavaScript Date object based on the timestamp
@@ -626,16 +680,15 @@ custom_card_haven_washer:
                       }
                     ]]]
               hold_action:
-                action: "perform-action"
-                perform_action: "input_datetime.set_datetime"
-                target:
-                  entity_id: "[[[ variables.ulm_custom_card_washer_delayed_starttime ]]]"
-                data:
+                action: "call-service"
+                service: "input_datetime.set_datetime"
+                service_data:
+                  entity_id: "[[[ return variables.ulm_custom_card_washer_delayed_starttime; ]]]"
                   time: >
                     [[[
                       if (!!variables.ulm_custom_card_washer_delayed_starttime
                         && !!states[variables.ulm_custom_card_washer_delayed_starttime]?.attributes) {
-                        var timestamp = states[variables.ulm_custom_card_washer_delayed_starttime].attributes.timestamp
+                        var timestamp = states[variables.ulm_custom_card_washer_delayed_starttime].attributes.timestamp;
 
                         let unix_timestamp = timestamp - 3660;
                         // Create a new JavaScript Date object based on the timestamp
@@ -659,11 +712,10 @@ custom_card_haven_washer:
               type: "custom:button-card"
               template: "widget_icon"
               tap_action:
-                action: "perform-action"
-                perform_action: "input_datetime.set_datetime"
-                target:
+                action: "call-service"
+                service: "input_datetime.set_datetime"
+                service_data:
                   entity_id: "[[[ return variables.ulm_custom_card_washer_delayed_starttime ]]]"
-                data:
                   time: >
                     [[[
                       if (!!variables.ulm_custom_card_washer_delayed_starttime
@@ -731,3 +783,4 @@ custom_card_haven_washer_delayed_text:
       - height: "42px"
   size: "20px"
   color: "var(--google-grey)"
+
