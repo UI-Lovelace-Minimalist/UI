@@ -77,8 +77,7 @@ This is an alternative room card to the standard one that is more rectangular th
 | ulm_card_esh_room_light_icon_off             |         | No       | Customize the light OFF icon                                             |
 | ulm_card_light_enable_popup                  | `false` | No       | Enable `popup_light`                                                     |
 | ulm_card_thermostat_enable_popup             | `false` | No       | Enable `popup_thermostat`                                                |
-| ulm_card_dynamic_color                       | `false` | No       | Enables dynamic background color (requires    `ulm_custom_card_esh_room_light_entity`)       |
-
+| ulm_card_dynamic_color                       | `false` | No       | Enables dynamic background color (requires `ulm_custom_card_esh_room_light_entity`)|
 
 ## Usage
 
