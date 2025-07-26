@@ -13,8 +13,7 @@ hide:
 
 ## Credits
 
-Author: JStaegerino - 2025 
-
+Author: JStaegerino - 2025
 Version 1.0.0
 
 ## Changelog
