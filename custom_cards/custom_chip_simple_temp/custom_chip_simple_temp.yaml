@@ -1,0 +1,26 @@
+---
+custom_chip_simple_temp:
+  template:
+    - "chips"
+  entity: "[[[ return entity.state]]]"
+  variables:
+    ulm_language: >
+      [[[
+        return hass["language"];
+      ]]]
+  triggers_update: "all"
+  tap_action:
+    action: "more-info"
+  label: |
+    [[[
+      function convertTemperature(temp) {
+        if (parseFloat(temp) == temp && Math.floor(temp) != temp) {
+            return parseFloat(temp).toFixed(1);
+        }
+        return temp;
+      }
+      var outside_temp = entity.state;
+      var label =  convertTemperature(outside_temp) + "°";
+      label = label
+      return label;
+    ]]]
