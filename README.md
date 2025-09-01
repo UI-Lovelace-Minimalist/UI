@@ -4,6 +4,7 @@
 ![Version](https://img.shields.io/github/v/release/UI-Lovelace-Minimalist/UI)
 ![hacs installs](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Flauwbier.nl%2Fhacs%2Fui_lovelace_minimalist)
 ![Downloads](https://img.shields.io/github/downloads/UI-Lovelace-Minimalist/UI/total)
+[![Visualise&nbsp;Repo](https://img.shields.io/badge/Visualise%20Repo-blue?style=flat)](https://repomapr.com/ui-lovelace-minimalist/ui)
 
 > [!IMPORTANT]
 > Looking for New Maintainers!
