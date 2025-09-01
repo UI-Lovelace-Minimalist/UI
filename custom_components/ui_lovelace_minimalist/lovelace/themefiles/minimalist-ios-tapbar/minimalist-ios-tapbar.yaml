@@ -27,7 +27,7 @@ minimalist-ios-tapbar:
       }
   # Move navbar
   card-mod-root-yaml: |
-    ha-tabs$: |
+    sl-tab-group$: |
       #tabsContent {
         width: 97%;
       }
@@ -47,8 +47,8 @@ minimalist-ios-tapbar:
       }
       .toolbar {
         height: var(--header-height) !important;
-        padding: 10px 0px !important;
         background: var( --ha-card-background, var(--card-background-color) );
+        padding: 0px 12px !important;
       }
       #view {
         transform: initial;
@@ -58,25 +58,29 @@ minimalist-ios-tapbar:
         padding-top: calc(-1 * var(--header-height)) !important;
         padding-bottom: var(--header-height) !important;
       }
-      ha-tabs {
-        --paper-tabs-selection-bar-color: var(--header-tab-indicator-color) !important;
+      sl-tab-group {
         --mdc-icon-size: 26px;
-        display: flex;
         justify-content: space-between;
-        padding: 10px;
-        margin-top:15px;
-        height:var(--header-height) !important;
+        height: auto !important;
+        align-self: unset !important;
       }
-      paper-tab[aria-selected=true] {
+
+      sl-tab-group::part(active-tab-indicator) { display: none !important; }
+
+      sl-tab[aria-selected=true] {
         color: var(--header-active-tab-color);
         background-color: var(--header-active-tab-bg-color);
       }
-      paper-tab {
+      sl-tab {
         color: var(--header-all-tabs-color);
         border-radius: 25px;
-        height:50px;
-        padding: 0 20px;
+        height: 50px !important;
       }
+      sl-tab.icon::part(base) {
+        padding-top: 10px !important;
+        padding-bottom: 0 !important;
+      }
+      
   # Color themes
   modes:
     light:
