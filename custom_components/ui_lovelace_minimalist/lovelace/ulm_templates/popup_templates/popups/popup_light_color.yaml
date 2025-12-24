@@ -12,7 +12,7 @@ popup_light_color:
       content2:
         - display: "none"
       content3:
-        - display: "block"
+        - display: "block !important"
         - align-self: "center"
   extra_styles: |
     @media (max-width: 800px) {
