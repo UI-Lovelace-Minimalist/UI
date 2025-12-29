@@ -4,31 +4,65 @@
     {
       "label": "Run Home Assistant on port 9123",
       "type": "shell",
-      "command": "container start",
+      "command": "${command:python.interpreterPath} -m homeassistant -c ./config --debug",
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
       "problemMatcher": []
     },
     {
-      "label": "Run Home Assistant configuration against /config",
+      "label": "Run Pre-commit",
       "type": "shell",
-      "command": "container check",
-      "problemMatcher": []
-    },
-    {
-      "label": "Upgrade Home Assistant to latest dev",
-      "type": "shell",
-      "command": "container install",
-      "problemMatcher": []
-    },
-    {
-      "label": "Install a specific version of Home Assistant",
-      "type": "shell",
-      "command": "container set-version",
+      "command": "${command:python.interpreterPath} -m pre_commit run --all-files",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
       "problemMatcher": []
     },
     {
       "label": "Serve Documentation on port 8000",
       "type": "shell",
-      "command": "mkdocs -v serve -a 0.0.0.0:8000",
+      "command": "${command:python.interpreterPath} -m mkdocs -v serve -a 0.0.0.0:8000",
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Install Requirements",
+      "type": "shell",
+      "command": "uv pip install -r requirements.txt",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Install all Test Requirements",
+      "type": "shell",
+      "command": "uv pip install -r requirements.txt -r requirements_test.txt",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
       "problemMatcher": []
     }
   ]
