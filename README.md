@@ -1,123 +1,109 @@
-# Integration Blueprint
+# UI-Lovelace-Minimalist
 
-This is a blueprint for creating a Home Assistant custom integration. It includes the patterns and features you'll want when building an integration, so you can focus on your specific device or service instead of boilerplate.
+[![Discord](https://badgen.net/discord/online-members/TPXg9b7GfR)](https://discord.gg/TPXg9b7GfR)
+![Version](https://img.shields.io/github/v/release/UI-Lovelace-Minimalist/UI)
+![hacs installs](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Flauwbier.nl%2Fhacs%2Fui_lovelace_minimalist)
+![Downloads](https://img.shields.io/github/downloads/UI-Lovelace-Minimalist/UI/total)
+[![Visualise&nbsp;Repo](https://img.shields.io/badge/Visualise%20Repo-blue?style=flat)](https://repomapr.com/ui-lovelace-minimalist/ui)
 
-HAVE FUN! 😎
+> [!IMPORTANT]
+> Looking for New Maintainers!
+>
+> This project is in need of new maintainers! The current maintainers are no longer actively working on it, and without fresh leadership, we may be forced to shut down the project and its associated Discord server.
+>
+> If you're passionate about this project and would like to take over its development and community management, we’d love to hear from you!
+>
+> - Join us on Discord to discuss further: [Thread Message](https://discord.com/channels/923363055444832296/928986459975876668/1314292139139534979)
+> - Or reach out on GitHub Discussions: [GitHub discussion](https://github.com/UI-Lovelace-Minimalist/UI/discussions/1560)
+>
+> Thank you for considering helping keep this project alive and thriving! 🙌
 
-## Why?
+It's kind of hard to explain what this is, so let's call it a "theme" (in quotation marks). But one thing is for sure, it is very nice! Taking the exceptional work of tben as a basis, this repository is aimed to ease installation and maintenance of his wonderful work. You can use this interpretation of a SmartHomeUI more or less like a theme in HomeAssistant.
 
-By having custom integrations follow a common structure and include common features, it's easier for developers to help each other and for users to use them. This blueprint includes modern Home Assistant patterns so you don't have to figure them out yourself.
+<img src="https://raw.githubusercontent.com/UI-Lovelace-Minimalist/UI/main/docs/assets/img/example_home.png" width="200" alt="example-image1" > <img src="https://raw.githubusercontent.com/UI-Lovelace-Minimalist/UI/main/docs/assets/img/example_temperature.png" width="200" alt="example-image2" > <img src="https://raw.githubusercontent.com/UI-Lovelace-Minimalist/UI/main/docs/assets/img/example_consumption.png" width="200" alt="example-image3" > <img src="https://raw.githubusercontent.com/UI-Lovelace-Minimalist/UI/main/docs/assets/img/example_localisation.png" width="200" alt="example-image4" >
 
-If you think something is missing that would help other developers, please open a PR to add it.
+## Wiki for documentation
 
-## What's included?
+We have setup an extensive Wiki for our documentation. It is more comfortable for you to read and for us to handle, than this file and gives our documentation the right framework to grow.
+Take a look here: [https://ui-lovelace-minimalist.github.io/UI/](https://ui-lovelace-minimalist.github.io/UI/)
 
-This blueprint demonstrates:
+Table of content from the WIKI
+<br>
 
-- Config flow for user setup with validation
-- Reconfiguration support to update credentials
-- Translation keys for proper internationalization
-- Diagnostics support for troubleshooting
-- DataUpdateCoordinator pattern for efficient API polling
-- Multiple entity types (sensor, binary sensor, switch)
-- Async API client with proper error handling
-- Modern development tooling (Ruff, pre-commit, dev container)
+<table>
+<tr>
+<th style="width: 33%;">Setup</th>
+<th style="width: 33%;">Usage</th>
+<th style="width: 33%;">Development</th>
+</tr>
+<tr>
+  <td style="vertical-align: top;">
+    <p>We have provided different guides to help you install and update this "theme"</p>
+  </td>
+  <td style="vertical-align: top;">
+    <p>These usage guides give you a deeper knowledge about this "theme"</p>
+  </td>
+  <td style="vertical-align: top;">
+    <p>This is our developer corner</p>
+  </td>
+<tr>
+<td style="vertical-align: top;">
+  <p>
+    <a href="https://ui-lovelace-minimalist.github.io/UI/setup/download/">&raquo;&nbsp;Download</a><br>
+    <a href="https://ui-lovelace-minimalist.github.io/UI/setup/installation/">&raquo;&nbsp;Installation</a><br>
+    <a href="https://ui-lovelace-minimalist.github.io/UI/setup/configuration/">&raquo;&nbsp;Configuration</a><br>
+  </p>
+</td>
+<td style="vertical-align: top;">
+  <p>
+    <a href="https://ui-lovelace-minimalist.github.io/UI/usage/cards/card_battery/">&raquo;&nbsp;Cards</a><br>
+    <a href="https://ui-lovelace-minimalist.github.io/UI/usage/chips/chip_alarm/">&raquo;&nbsp;Chips</a><br>
+    <a href="https//ui-lovelace-minimalist.github.io/UI/usage/popups/popup_light/">&raquo;&nbsp;Popups</a><br>
+    <a href="https://ui-lovelace-minimalist.github.io/UI/usage/custom_cards/custom_card_bar_card/">&raquo;&nbsp;Custom-Cards</a><br>
+  </p>
+</td>
+<td style="vertical-align: top;">
+  <p>
+    <a href="https://ui-lovelace-minimalist.github.io/UI/development/card_style_guide/">&raquo;&nbsp;Card Style Guide</a><br>
+    <a href="https://ui-lovelace-minimalist.github.io/UI/development/docs_style_guide/">&raquo;&nbsp;Docs Style Guide</a><br>
+    <a href="https://ui-lovelace-minimalist.github.io/UI/development/custom_cards/">&raquo;&nbsp;Custom-Cards</a><br>
+  </p>
+</td>
+</tr>
+</table>
 
-## Quick start
+## Installation and update
 
-1. Create a new repository using this template (click "Use this template" in GitHub)
-2. Open your new repository in Visual Studio Code devcontainer (preferably with the "`Dev Containers: Clone Repository in Named Container Volume...`" option)
-3. Rename all instances of `integration_blueprint` to `custom_components/<your_integration_domain>`
-4. Rename all instances of `Integration Blueprint` to `<Your Integration Name>`
-5. Run `scripts/develop` to start Home Assistant and test your integration
+We can offer you in-depth instructions for installation, as well as for future updates or from a previous version. Check our WIKI for more info:
 
-## Development scripts
+- [Download](https://ui-lovelace-minimalist.github.io/UI/setup/download/)
+- [Installation](https://ui-lovelace-minimalist.github.io/UI/setup/installation/)
+- [Configuration](https://ui-lovelace-minimalist.github.io/UI/setup/configuration/)
 
-This repository uses the [Scripts to Rule Them All](https://github.com/github/scripts-to-rule-them-all) pattern:
+## List of templates
 
-- `scripts/bootstrap` - One-time setup after cloning (installs dependencies and pre-commit hooks)
-- `scripts/setup` - Set up the project for the first time after cloning
-- `scripts/update` - Re-initialize dependencies after pulling new changes
-- `scripts/lint` - Run linting and auto-format code
-- `scripts/lint-check` - Check linting without making changes (for CI)
-- `scripts/develop` - Start Home Assistant in development mode
-- `scripts/help` - Display available scripts and their descriptions
+The actual version of this "theme" has 20 different cards, seven chips and other templates bundled into the download. We're sorry, but the list wouldn't fit into this readme. [Please see this page, where you can find an extensive list of templates with code examples, screenshots and explanation](https://ui-lovelace-minimalist.github.io/UI/usage/cards/card_battery/).
 
-All scripts use the modern [uv](https://github.com/astral-sh/uv) package manager for faster dependency management.
+## Custom cards
 
-## What's in the blueprint?
+The same goes for our `custom_cards`. As the number grows, the list would be to big for this readme, so we provide you with an overview page with pictures, code examples and additional information. [Find the list here](https://ui-lovelace-minimalist.github.io/UI/usage/custom_cards/custom_card_bar_card/).
 
-This repository contains multiple files to help you get started:
+### Credits & Contributors
 
-File | Purpose | Documentation
--- | -- | --
-`.devcontainer.json` | Development container configuration for VS Code | [Documentation](https://code.visualstudio.com/docs/remote/containers)
-`.pre-commit-config.yaml` | Pre-commit hooks for automatic code quality checks | [Documentation](https://pre-commit.com/)
-`pyproject.toml` | Python project configuration with Ruff settings | [Documentation](https://packaging.python.org/en/latest/guides/writing-pyproject-toml/)
-`requirements.txt` | Python packages for development | [Documentation](https://pip.pypa.io/en/stable/user_guide/#requirements-files)
-`scripts/*` | Development scripts following Scripts to Rule Them All pattern | [Documentation](https://github.com/github/scripts-to-rule-them-all)
-`.github/ISSUE_TEMPLATE/*.yml` | Templates for issue tracking | [Documentation](https://help.github.com/en/github/building-a-strong-community/configuring-issue-templates-for-your-repository)
-`CONTRIBUTING.md` | Contribution guidelines | [Documentation](https://help.github.com/en/github/building-a-strong-community/setting-guidelines-for-repository-contributors)
-`LICENSE` | Project license | [Documentation](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/licensing-a-repository)
-`README.md` | This file | [Documentation](https://help.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax)
+- This design was made by [tben](https://community.home-assistant.io/u/tben/summary)
+- A lot of inspiration is taken from [7ahang’s work](https://www.behance.net/gallery/88433905/Redesign-Smart-Home) found on Behance.
+- Contributions from others in the HomeAssistant forum thread, you can find it here.
+- The technical part is realised mostly by taking advantage of the great work RomRaider did with his [button-card](https://github.com/custom-cards/button-card).
+- Code refactor, cleanup and maintenance by [schumijo](https://github.com/schumijo) and [paddy0174](https://github.com/Paddy0174) & [CM000n](https://github.com/CM000n).
+- [dwainscheeren](https://github.com/dwainscheeren) for his inspiration to deliver themes via HACS.
+- Wiki by [paddy0174](https://github.com/Paddy0174).
+- Special thanks to clemalex and [schumijo](https://github.com/schumijo)for contributing their cards to the main repository.
+- [stokkie90](https://github.com/stokkie90) for implementing most of the HACS functionalities.
+- And of course [all the others](https://github.com/UI-Lovelace-Minimalist/UI/graphs/contributors) who cannot be named here due to space limitations.
 
-## Features explained
+❤️ Thank you so much for helping to keep this UI awesome
 
-### Config flow
+### Contributions
 
-The [config_flow.py](custom_components/integration_blueprint/config_flow.py) file handles user setup. Users can add the integration through the UI, enter credentials, and the config flow validates them before creating a config entry.
-
-The config flow also supports reconfiguration, so users can update their credentials without removing and re-adding the integration.
-
-### Translation keys
-
-All user-facing strings use translation keys instead of hardcoded text. This makes it easy to support multiple languages. See [translations/en.json](custom_components/integration_blueprint/translations/en.json) for the structure.
-
-### DataUpdateCoordinator
-
-The [coordinator.py](custom_components/integration_blueprint/coordinator.py) file uses DataUpdateCoordinator to fetch data efficiently. Instead of each entity polling the API separately, the coordinator fetches data once and shares it with all entities. This reduces API calls and handles errors consistently.
-
-### Diagnostics
-
-The [diagnostics.py](custom_components/integration_blueprint/diagnostics.py) file provides debug information that users can download from the UI. This helps with troubleshooting without exposing sensitive data.
-
-### Entity platforms
-
-The blueprint includes three entity types to demonstrate different patterns:
-
-- [sensor.py](custom_components/integration_blueprint/sensor.py) - Shows how to create a sensor with string values
-- [binary_sensor.py](custom_components/integration_blueprint/binary_sensor.py) - Shows a binary sensor with device class
-- [switch.py](custom_components/integration_blueprint/switch.py) - Shows a controllable entity that interacts with the API
-
-### API client
-
-The [api.py](custom_components/integration_blueprint/api.py) file provides an async API client with:
-
-- Modern asyncio timeout handling (using `asyncio.timeout` instead of deprecated `async_timeout`)
-- Proper error handling with custom exceptions
-- Authentication support
-
-### Pre-commit hooks
-
-The repository uses [pre-commit](https://pre-commit.com/) to automatically check and format code before commits. The hooks run Ruff for fast linting and formatting. They're installed automatically when you run `scripts/bootstrap`.
-
-### Development container
-
-The [.devcontainer.json](.devcontainer.json) file configures a VS Code development container with Python 3.13, all required extensions, and proper settings. This gives you a working development environment without manual setup.
-
-## Next steps
-
-These are some next steps you may want to look into:
-
-- Add tests to your integration, [`pytest-homeassistant-custom-component`](https://github.com/MatthewFlamm/pytest-homeassistant-custom-component) can help you get started
-- Add brand images (logo/icon) to https://github.com/home-assistant/brands
-- Create your first release
-- Share your integration on the [Home Assistant Forum](https://community.home-assistant.io/)
-- Submit your integration to [HACS](https://hacs.xyz/docs/publish/start)
-
-## Resources
-
-- [Home Assistant developer documentation](https://developers.home-assistant.io/)
-- [Creating a custom integration](https://developers.home-assistant.io/docs/creating_component_index)
-- [Config flow documentation](https://developers.home-assistant.io/docs/config_entries_config_flow_handler)
-- [DataUpdateCoordinator documentation](https://developers.home-assistant.io/docs/integration_fetching_data)
+> This is a living project and all input is very welcome! If you configured and designed a card, that you would like to share, please feel free to do so! We are happy to include your contribution so others can use it as well!
+> This project uses pre-commit for consistent and clean code. If possible, please make sure that you also use pre-commit for local development before creating a pull request.
