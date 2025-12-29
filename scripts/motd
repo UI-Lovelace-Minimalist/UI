@@ -1,0 +1,24 @@
+#!/bin/sh
+sudo
+# script/motd: Display Message of the Day for development environment
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+REPO_NAME=$(basename "$(git rev-parse --show-toplevel 2>/dev/null)" 2>/dev/null || basename "$(pwd)")
+
+echo ""
+echo "🎉 Welcome to the $REPO_NAME development environment!"
+echo ""
+echo "📂 Project: $(pwd)"
+echo "🌿 Git branch: $(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo 'Not a git repo')"
+echo "🐍 Python: $(python3 --version 2>/dev/null || echo 'Not available')"
+echo ""
+
+scripts/help
+
+echo ""
+echo "💡 Tip: Run 'scripts/develop' to start Home Assistant with your custom integration."
+echo "    Access it at http://localhost:9123"
+echo ""

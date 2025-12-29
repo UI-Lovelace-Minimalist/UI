@@ -1,4 +1,39 @@
+# artifacts
+__pycache__
+.pytest*
+*.egg-info
+*/build/*
+*/dist/*
+.venv
 
+
+# misc
+.coverage
+.vscode
+coverage.xml
+.ruff_cache
+uv.lock
+
+
+# Home Assistant configuration
+config/*
+!config/configuration.yaml
+
+# Home Assistant database and logs
+*.db
+*.db-shm
+*.db-wal
+*.log
+home-assistant.log*
+home-assistant_v2.db*
+
+# Temporary files
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# UI Lovelace Minimalist
 custom_components/*
 /ui_lovelace-minimalist
 ui_lovelace_minimalist/
@@ -8,11 +43,3 @@ ui_lovelace_minimalist/
 !custom_components/__init__.py
 custom_components/ui_lovelace_minimalist/__pycache__
 custom_components/ui_lovelace_minimalist/.installed
-
-.DS_Store
-__pycache__
-pythonenv*
-.python-version
-.coverage
-venv
-.venv

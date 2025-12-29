@@ -1,0 +1,7 @@
+colorlog==6.10.1
+
+mkdocs-awesome-pages-plugin
+mkdocs-material
+pip>=21.3.1
+pre-commit==4.3.0
+ruff==0.14.6
