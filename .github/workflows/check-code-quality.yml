@@ -7,19 +7,28 @@ on:
 
 jobs:
   pre-commit:
-    name: "Check Code Quality"
+    name: "Lint & Quality"
     runs-on: "ubuntu-latest"
+
     steps:
-      - name: "⤵️ Check out code from GitHub"
+      - name: "⤵️ Checkout code"
         uses: "actions/checkout@v4"
-      - name: "⚙️ Set up Python"
-        uses: "actions/setup-python@v4"
+
+      - name: "⚙️ Set up Python 3.13"
+        uses: "actions/setup-python@v5"  # Upgraded to v5
         with:
-          python-version: 3.11
+          python-version: "3.13"
+          cache: "pip"  # Enables automatic pip caching
+
       - name: "⚙️ Set up Ruby"
         uses: "ruby/setup-ruby@v1"
         with:
-          ruby-version: 2.7
+          ruby-version: "3.3"  # Upgraded from 2.7 (EOL)
           bundler-cache: true
-      - name: "\U0001F680 Run pre-commit"
-        uses: "pre-commit/action@v3.0.0"
+
+      - name: "🚀 Run pre-commit"
+        uses: "pre-commit/action@v3.0.1"  # Upgraded to v3.0.1
+        with:
+          # This ensures pre-commit doesn't have to re-download
+          # hooks every single time the action runs
+          extra_args: "--all-files"
