@@ -2,14 +2,13 @@
 
 from __future__ import annotations
 
-from collections.abc import Awaitable
 from dataclasses import asdict, dataclass, field
 from functools import partial
 import logging
 import os
 import pathlib
 import shutil
-from typing import Any, Callable
+from typing import TYPE_CHECKING, Any
 
 from aiogithubapi import (
     GitHubAPI,
@@ -23,8 +22,12 @@ from homeassistant.components.http import StaticPathConfig
 from homeassistant.components.lovelace import _register_panel
 from homeassistant.components.lovelace.dashboard import LovelaceYAML
 from homeassistant.config_entries import ConfigEntry, ConfigEntryState
-from homeassistant.core import HomeAssistant
-from homeassistant.loader import Integration
+
+if TYPE_CHECKING:
+    from collections.abc import Awaitable, Callable
+
+    from homeassistant.core import HomeAssistant
+    from homeassistant.loader import Integration
 
 from .const import (
     COMMUNITY_CARDS_FOLDER,
@@ -81,7 +84,7 @@ class UlmConfiguration:
     community_cards_enabled = bool = DEFAULT_COMMUNITY_CARDS_ENABLED
     community_cards: list = field(default_factory=list)
     all_community_cards: list = field(default_factory=list)
-    token: str = None
+    token: str = ""
 
     def to_dict(self) -> dict:
         """Return Dict."""
@@ -96,8 +99,8 @@ class UlmConfiguration:
         if not isinstance(data, dict):
             raise Exception("Configuration is not valid.")
 
-        for key in data:
-            self.__setattr__(key, data[key])
+        for key, value in data.items():
+            self.__setattr__(key, value)
 
 
 class UlmBase:
@@ -128,7 +131,6 @@ class UlmBase:
 
     def disable_ulm(self, reason: UlmDisabledReason) -> None:
         """Disable Ulm."""
-
         if self.system.disabled_reason == reason:
             return
 
@@ -148,10 +150,9 @@ class UlmBase:
 
     async def async_save_file(self, file_path: str, content: Any) -> bool:
         """Save a file."""
+        self.log.debug("Saving file: %s", file_path)
 
-        self.log.debug("Saving file: %s" % file_path)
-
-        def _write_file():
+        def _write_file() -> None:
             os.makedirs(os.path.dirname(file_path), exist_ok=True)
             with open(
                 file_path,
@@ -165,15 +166,15 @@ class UlmBase:
             await self.hass.async_add_executor_job(_write_file)
         except (
             BaseException
-        ) as error:  # lgtm [py/catch-base-exception] pylint: disable=broad-except
-            self.log.error(f"Could not write data to {file_path} - {error}")
+        ):  # lgtm [py/catch-base-exception] pylint: disable=broad-except
+            self.log.exception("Could not write data to %s", file_path)
             return False
 
         return os.path.exists(file_path)
 
     async def async_github_get_file(self, filename: str) -> list:
         """Get the content of a file."""
-        self.log.debug("Fetching github file: %s" % filename)
+        self.log.debug("Fetching github file: %s", filename)
         response = await self.async_github_api_method(
             method=self.githubapi.repos.contents.get,
             repository=GITHUB_REPO,
@@ -185,7 +186,7 @@ class UlmBase:
 
     async def async_github_get_tree(self, path: str) -> list:
         """Get teh content of a directory."""
-        self.log.debug("Fetching github tree: %s" % path)
+        self.log.debug("Fetching github tree: %s", path)
         response = await self.async_github_api_method(
             method=self.githubapi.repos.contents.get, repository=GITHUB_REPO, path=path
         )
@@ -225,14 +226,13 @@ class UlmBase:
 
     def list_dirs(self) -> list:
         """Create directory list."""
-
         self.log.debug("Create directory list")
 
-        dir_list = []
-        for entry in os.scandir(self.community_cards_dir):
-            if entry.is_dir():
-                dir_list.append(entry.path)
-        return dir_list
+        return [
+            entry.path
+            for entry in os.scandir(self.community_cards_dir)
+            if entry.is_dir()
+        ]
 
     async def fetch_cards(self) -> None:
         """Fetch list of cards."""
@@ -242,7 +242,7 @@ class UlmBase:
             path=COMMUNITY_CARDS_FOLDER,
         )
         if response is None:
-            return []
+            return
         self.configuration.all_community_cards = [
             c.name for c in response.data if c.type == "dir"
         ]
@@ -270,14 +270,16 @@ class UlmBase:
                 # Delete unselected folders
                 if card_dir not in self.configuration.community_cards:
                     self.log.debug(
-                        f"Deleting community card folder {card_dir}, not selected anymore."
+                        "Deleting community card folder %s, not selected anymore.",
+                        card_dir,
                     )
                     self.hass.async_add_executor_job(
                         partial(shutil.rmtree, e, ignore_errors=True)
                     )
                 if card_dir not in self.configuration.all_community_cards:
                     self.log.debug(
-                        f"Deleting community card folder {card_dir}, that is not existing anymore on Github."
+                        "Deleting community card folder %s, that is not existing anymore on Github.",
+                        card_dir,
                     )
                     self.hass.async_add_executor_job(
                         partial(shutil.rmtree, e, ignore_errors=True)
@@ -311,17 +313,16 @@ class UlmBase:
                             )
                             for lang in language_files:
                                 lang_file_path = f"{self.community_cards_dir}/{card}/languages/{lang.name}"
-                                if pathlib.Path(lang.name).stem == language:
-                                    if (
-                                        not os.path.exists(lang_file_path)
-                                        or os.path.getsize(lang_file_path) != lang.size
-                                    ):
-                                        await self.async_save_file(
-                                            file_path=lang_file_path,
-                                            content=await self.async_github_get_file(
-                                                filename=lang.path
-                                            ),
-                                        )
+                                if pathlib.Path(lang.name).stem == language and (
+                                    not os.path.exists(lang_file_path)
+                                    or os.path.getsize(lang_file_path) != lang.size
+                                ):
+                                    await self.async_save_file(
+                                        file_path=lang_file_path,
+                                        content=await self.async_github_get_file(
+                                            filename=lang.path
+                                        ),
+                                    )
 
     async def configure_plugins(self) -> bool:
         """Configure the Plugins ULM depends on."""
@@ -351,11 +352,15 @@ class UlmBase:
                 if not self.configuration.include_other_cards:
                     if not os.path.exists(self.hass.config.path(f"www/community/{p}")):
                         self.log.error(
-                            f'HACS Frontend repo "{p}" is not installed, See Integration Configuration.'
+                            'HACS Frontend repo "%s" is not installed, '
+                            "See Integration Configuration.",
+                            p,
                         )
                 elif os.path.exists(self.hass.config.path(f"www/community/{p}")):
                     _LOGGER.error(
-                        f'HACS Frontend repo "{p}" is already installed, Remove it or disable include custom cards'
+                        'HACS Frontend repo "%s" is already installed, '
+                        "Remove it or disable include custom cards.",
+                        p,
                     )
 
             if self.configuration.include_other_cards:
@@ -477,7 +482,7 @@ class UlmBase:
                     f"{self.templates_dir}/default.yaml",
                 )
                 # Copy example dashboard file over to user config dir if not exists
-                if self.configuration.sidepanel_enabled:
+                if self.configuration.sidepanel_enabled and self.hass is not None:
                     if not os.path.exists(
                         self.hass.config.path(f"{DOMAIN}/dashboard/ui-lovelace.yaml")
                     ):
@@ -489,7 +494,7 @@ class UlmBase:
                             ),
                         )
                 # Copy adaptive dashboard if not exists and is selected as option
-                if self.configuration.adaptive_ui_enabled:
+                if self.configuration.adaptive_ui_enabled and self.hass is not None:
                     if not os.path.exists(
                         self.hass.config.path(f"{DOMAIN}/dashboard/adaptive-dash")
                     ):

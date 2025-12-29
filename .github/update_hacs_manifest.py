@@ -1,27 +1,44 @@
-"""Update the manifest file."""
+"""Update the manifest file with a new version string."""
+
+import argparse
 import json
-import os
-import sys
+from pathlib import Path
+
+# Use a constant for the path to keep the logic clean
+MANIFEST_PATH = Path("custom_components/ui_lovelace_minimalist/manifest.json")
 
 
-def update_manifest():
-    """Update the manifest file."""
-    version = "0.0.0"
-    for index, value in enumerate(sys.argv):
-        if value in ["--version", "-V"]:
-            version = sys.argv[index + 1]
+def update_manifest() -> None:
+    """Update the manifest file version."""
+    # 1. Better Argument Parsing
+    parser = argparse.ArgumentParser(description="Update manifest version.")
+    parser.add_argument("-V", "--version", help="New version string", required=True)
+    args = parser.parse_args()
 
-    with open(
-        f"{os.getcwd()}/custom_components/ui_lovelace_minimalist/manifest.json"
-    ) as manifestfile:
-        manifest = json.load(manifestfile)
+    # 2. Check if file exists before opening
+    if not MANIFEST_PATH.exists():
+        print(f"Error: Manifest file not found at {MANIFEST_PATH}")
+        return
 
-    manifest["version"] = version
+    # 3. Read and Update
+    try:
+        # Using .read_text() and .write_text() from pathlib is cleaner
+        manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
 
-    with open(
-        f"{os.getcwd()}/custom_components/ui_lovelace_minimalist/manifest.json", "w"
-    ) as manifestfile:
-        manifestfile.write(json.dumps(manifest, indent=4, sort_keys=True))
+        manifest["version"] = args.version
+
+        # 4. Atomic-like write with consistent formatting
+        with MANIFEST_PATH.open("w", encoding="utf-8") as f:
+            json.dump(manifest, f, indent=4, sort_keys=True)
+            f.write("\n")  # Ensure trailing newline for POSIX compliance
+
+        print(f"Successfully updated manifest to version {args.version}")
+
+    except json.JSONDecodeError:
+        print(f"Error: {MANIFEST_PATH} is not a valid JSON file.")
+    except Exception as err:
+        print(f"An unexpected error occurred: {err}")
 
 
-update_manifest()
+if __name__ == "__main__":
+    update_manifest()
