@@ -184,7 +184,7 @@ template:
           {% if int(rem_h) > 0.9 %} {{ rem_h }} hour(s) and {{ rem_m }} minute(s)  {% else %} {{ rem_m }} minute(s) {% endif %}
 ```
 
-## Additional: Control the washing machine of dryer remotely
+## Additional: Control the washing machine or dryer remotely
 
 Starting, pausing or stopping the washer or dryer is currently not supported by the Samsung SmartThings integration.
 To use the start, pause, and stop buttons, you can create command line switches, which can initiate the corresponding action.
