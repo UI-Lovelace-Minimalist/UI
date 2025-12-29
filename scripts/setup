@@ -1,0 +1,72 @@
+#!/bin/sh
+
+# script/setup: Set up project for first-time use after cloning
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+sudo chmod +x scripts/*
+
+# 1. Setup Home Assistant environment
+scripts/bootstrap
+
+
+# 2. Set environment variables
+# Use absolute path to the workspace
+WORKSPACE_DIR=$(pwd)
+CONFIG_DIR="${WORKSPACE_DIR}/config"
+
+if [ ! -d "$CONFIG_DIR" ]; then
+    echo "Creating config directory..."
+    mkdir -p "$CONFIG_DIR"
+    hass --config "$CONFIG_DIR" --script ensure_config
+fi
+
+# 3. Install NodeJS (for frontend card development if needed)
+echo "Installing NodeJS..."
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo bash -
+sudo apt-get install -y nodejs
+
+# 4. Install Dependency Components
+# We use a temporary directory for downloading
+mkdir -p /tmp/ha_setup
+
+## Browser mod
+echo "Installing Custom Component: Browser Mod"
+cd /tmp/ha_setup
+wget -q https://github.com/thomasloven/hass-browser_mod/archive/refs/tags/v2.6.4.tar.gz -O browser_mod.tar.gz
+tar -xzf browser_mod.tar.gz
+rm -rf "$WORKSPACE_DIR/custom_components/browser_mod"
+# The folder inside the tar is hass-browser_mod-2.6.4
+mv hass-browser_mod*/custom_components/browser_mod "$WORKSPACE_DIR/custom_components/"
+
+## Virtual
+echo "Installing Custom Component: Virtual"
+cd /tmp/ha_setup
+wget -q https://github.com/twrecked/hass-virtual/archive/refs/tags/v0.9.3.tar.gz -O virtual.tar.gz
+tar -xzf virtual.tar.gz
+rm -rf "$WORKSPACE_DIR/custom_components/virtual"
+# The folder inside the tar is hass-virtual-0.9.3
+mv hass-virtual*/custom_components/virtual "$WORKSPACE_DIR/custom_components/"
+
+# 5. Cleanup tmp and return to workspace
+rm -rf /tmp/ha_setup
+cd "$WORKSPACE_DIR"
+
+# 6. Create symlink to custom_components directory
+
+if test -d "$WORKSPACE_DIR/custom_components"; then
+  echo "Symlink the custom component directory"
+
+  if test -d "$CONFIG_DIR/custom_components"; then
+    rm -rf "$CONFIG_DIR/custom_components"
+  fi
+
+  ln -sf "$WORKSPACE_DIR/custom_components" "$CONFIG_DIR/custom_components" || echo "Could not copy the custom_component" exit 1
+fi
+
+# 7. Set the path to custom_components
+export PYTHONPATH="${PYTHONPATH}:${WORKSPACE_DIR}/custom_components"
+
+echo "==> Project is now ready to go!"
