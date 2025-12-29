@@ -1,19 +1,32 @@
 ---
-name: "Manage labels"
+name: "Manage Labels"
 
 on:
   push:
-    # Should only run on "main" since labels on "dev" sometimes not usabele for base branch
     branches: ["main"]
+    paths:
+      - ".github/labels.yml"  # Only run when the label definitions change
+  workflow_dispatch:  # Allows you to manually trigger a sync if needed
 
 jobs:
   labeler:
-    name: "Labeler"
+    name: "Sync Labels"
     runs-on: "ubuntu-latest"
+    permissions:
+      contents: "read"
+      issues: "write"  # Required to manage labels
+      pull-requests: "write"  # Required if you use labels on PRs
+
     steps:
-      - name: "⤵️ Check out code from GitHub"
+      - name: "⤵️ Checkout code"
         uses: "actions/checkout@v4"
-      - name: "\U0001F680 Run Labeler"
-        uses: "crazy-max/ghaction-github-labeler@v4"
+
+      - name: "🚀 Run Labeler"
+        uses: "crazy-max/ghaction-github-labeler@v5"  # Upgraded to v5
         with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          # skip-delete: false ensures labels not in your config are removed
+          # from the repo, keeping it clean.
           skip-delete: false
+          # YAML file containing your label definitions
+          yaml-file: ".github/labels.yml"

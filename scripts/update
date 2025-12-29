@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# script/update: Update project after a fresh pull
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+scripts/bootstrap
+
+echo "==> Update completed!"

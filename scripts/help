@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+# script/help: Display information about available scripts.
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+REPO_NAME=$(basename "$(git rev-parse --show-toplevel 2>/dev/null)" 2>/dev/null || basename "$(pwd)")
+
+printf "\033[1m%s\033[36m %s\033[32m %s\033[0m \n\n" "Development environment for" "$REPO_NAME" ""
+
+echo "Available scripts:"
+echo ""
+
+find scripts -type f -perm -111 -print0 | sort -z | while IFS= read -r -d '' script; do
+  script_name=$(basename "$script")
+  description=$(awk -v prefix="# script/$script_name:" '
+    BEGIN {desc=""}
+    $0 ~ prefix {
+      line = $0
+      sub(prefix, "", line)
+      sub(/^# */, "", line)
+      desc = desc (desc ? " " : "") line
+      next
+    }
+    desc != "" {exit}
+    END {print desc}
+  ' "$script")
+  if [ -z "$description" ]; then
+    description="No description available"
+  fi
+  if [ ${#description} -gt 60 ]; then
+    description=$(echo "$description" | cut -c1-57)...
+  fi
+  printf " \033[36m %-25s\033[0m %s\n" "scripts/$script_name" "$description"
+done
+
+echo ""
