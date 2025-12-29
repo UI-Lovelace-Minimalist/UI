@@ -1,0 +1,70 @@
+#!/bin/sh
+
+# script/bootstrap: Install/update all dependencies required to run the project
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+echo "==> Checking for uv..."
+if ! command -v uv >/dev/null 2>&1; then
+  echo "UV not found, installing..."
+  pipx install uv
+fi
+
+echo "==> Checking for Python virtual environment..."
+if [ ! -d "$HOME/.venv" ]; then
+  echo "Creating virtual environment..."
+  uv venv "$HOME/.venv"       # must be created inside container to allow using hardlinks during package installation
+fi
+ln -sf "$HOME/.venv/" .venv  # symlink for IDEs
+
+# shellcheck source=/dev/null
+. "$HOME/.venv/bin/activate"
+
+if [ -f "$HOME/.bashrc" ]; then
+  if ! grep -q "source $HOME/.venv/bin/activate" "$HOME/.bashrc" 2>/dev/null; then
+    echo "==> Updating Bash configuration to source Python virtual environment..."
+    echo "source $HOME/.venv/bin/activate" >> "$HOME/.bashrc"
+  fi
+fi
+
+if [ -f "$HOME/.zshrc" ]; then
+  if ! grep -q "source $HOME/.venv/bin/activate" "$HOME/.zshrc" 2>/dev/null; then
+    echo "==> Updating Zsh configuration to source Python virtual environment..."
+    echo "source $HOME/.venv/bin/activate" >> "$HOME/.zshrc"
+  fi
+fi
+
+echo "==> Installing dependencies..."
+uv pip install --requirement requirements.txt
+
+HA_VERSION="${HA_VERSION:-$(grep '"homeassistant"' hacs.json | head -1 | sed 's/.*"homeassistant"\s*:\s*"\([^"]*\)".*/\1/')}"
+
+if [ -z "$HA_VERSION" ]; then
+  echo "Error: HA_VERSION not set and could not be determined from hacs.json" >&2
+  exit 1
+fi
+HA_CORE_BASE_URL="https://raw.githubusercontent.com/home-assistant/core/${HA_VERSION}"
+
+echo "==> Installing Home Assistant ${HA_VERSION}..."
+uv pip install "homeassistant==${HA_VERSION}"
+
+echo "==> Installing Home Assistant integration dependencies (requirements_all.txt)..."
+mkdir -p /tmp/homeassistant
+curl -fsSL "${HA_CORE_BASE_URL}/homeassistant/package_constraints.txt" -o /tmp/homeassistant/package_constraints.txt  # constraints for requirements files
+curl -fsSL "${HA_CORE_BASE_URL}/requirements.txt" -o /tmp/requirements.txt  # required by requirements_all.txt
+curl -fsSL "${HA_CORE_BASE_URL}/requirements_all.txt" -o /tmp/requirements_all.txt
+uv pip install --requirement "/tmp/requirements_all.txt"
+
+echo "==> Installing Home Assistant test dependencies..."
+curl -fsSL "${HA_CORE_BASE_URL}/requirements_test_pre_commit.txt" -o /tmp/requirements_test_pre_commit.txt  # required by requirements_test.txt
+curl -fsSL "${HA_CORE_BASE_URL}/requirements_test.txt" -o /tmp/requirements_test.txt
+uv pip install --requirement "/tmp/requirements_test.txt"
+
+rm -rf /tmp/requirements*.txt /tmp/homeassistant/
+
+echo "==> Installing pre-commit hooks..."
+pre-commit install
+
+echo "==> Bootstrap completed!"

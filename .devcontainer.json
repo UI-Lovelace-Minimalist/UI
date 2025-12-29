@@ -1,0 +1,77 @@
+{
+    "name": "Home Assistant Custom Integration Development",
+    "image": "mcr.microsoft.com/devcontainers/python:3.13",
+    "postCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} && sudo chmod +x scripts/setup && scripts/setup",
+    "postStartCommand": "scripts/motd",
+    "containerEnv": {
+        "PYTHONASYNCIODEBUG": "1",
+        "PYTHONUNBUFFERED": "1",
+        "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "appPort": [
+        "9123:8123",
+        "8000:8000"
+    ],
+    "runArgs": [
+        "-e",
+        "GIT_EDITOR=code --wait",
+        "--security-opt",
+        "label=disable"
+    ],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "charliermarsh.ruff",
+                "github.vscode-pull-request-github",
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "ryanluker.vscode-coverage-gutters",
+                "esbenp.prettier-vscode",
+                "GitHub.vscode-pull-request-github",
+                "GitHub.copilot"
+            ],
+            "settings": {
+                "files.eol": "\n",
+                "editor.tabSize": 4,
+                "editor.formatOnPaste": true,
+                "editor.formatOnSave": true,
+                "editor.formatOnType": false,
+                "files.trimTrailingWhitespace": true,
+                "python.analysis.typeCheckingMode": "basic",
+                "python.analysis.autoImportCompletions": true,
+                "python.analysis.diagnosticMode": "workspace",
+                "python.analysis.diagnosticSeverityOverrides": {
+                    "reportUnusedImport": "none",
+                    "reportUnusedVariable": "none",
+                    "reportUnusedCoroutine": "none",
+                    "reportMissingTypeStubs": "none"
+                },
+                "python.analysis.include": [
+                    "custom_components/integration_blueprint"
+                ],
+                "python.analysis.exclude": [
+                    "**/.venv/**",
+                    "**/venv/**",
+                    "**/__pycache__/**",
+                    "**/.git/**",
+                    "**/.github/**",
+                    "**/docs/**",
+                    "**/node_modules/**"
+                ],
+                "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+                "python.analysis.extraPaths": [
+                    "${workspaceFolder}/.venv/lib/python3.13/site-packages"
+                ],
+                "[python]": {
+                    "editor.defaultFormatter": "charliermarsh.ruff"
+                }
+            }
+        }
+    },
+    "remoteUser": "vscode",
+    "features": {
+        "ghcr.io/devcontainers-extra/features/apt-packages:1": {
+            "packages": "ffmpeg,libturbojpeg0,libpcap-dev"
+        }
+    }
+}
