@@ -3,15 +3,17 @@
 from __future__ import annotations
 
 import logging
-from typing import Any
+from typing import TYPE_CHECKING, Any, cast
 
-from aiogithubapi import AIOGitHubAPIException, GitHubAPI
+from aiogithubapi import AIOGitHubAPIException, GitHubAPI, GitHubClientKwarg
 from homeassistant.components.frontend import async_remove_panel
 from homeassistant.config_entries import SOURCE_IMPORT, ConfigEntry
-from homeassistant.core import HomeAssistant
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.loader import async_get_integration
 import voluptuous as vol
+
+if TYPE_CHECKING:
+    from homeassistant.core import HomeAssistant
 
 from .base import UlmBase
 from .const import DOMAIN, NAME
@@ -73,12 +75,11 @@ async def async_initialize_integration(
     ulm.githubapi = GitHubAPI(
         token=ulm.configuration.token,
         session=clientsession,
-        **{"client_name": "ULM"},
+        **cast(dict[GitHubClientKwarg, Any], {"client_name": "ULM"}),
     )
 
-    async def async_startup():
+    async def async_startup() -> bool:
         """ULM Startup tasks."""
-
         if (
             ulm.configuration.community_cards_enabled
             and ulm.configuration.token is None
@@ -92,10 +93,10 @@ async def async_initialize_integration(
             await ulm.fetch_cards()
             await ulm.configure_community_cards()
 
-        ResponseConfigure = await ulm.configure_ulm()
-        ResponsePlugins = await ulm.configure_plugins()
-        ResponseDashboard = await ulm.configure_dashboard()
-        if not ResponseConfigure or not ResponsePlugins or not ResponseDashboard:
+        response_configure = await ulm.configure_ulm()
+        response_plugins = await ulm.configure_plugins()
+        response_dashboard = await ulm.configure_dashboard()
+        if not response_configure or not response_plugins or not response_dashboard:
             return False
 
         ulm.enable_ulm()
@@ -114,25 +115,24 @@ async def async_initialize_integration(
     return True
 
 
-async def async_setup(hass: HomeAssistant, config: dict):
+async def async_setup(hass: HomeAssistant, config: dict) -> bool:
     """Set up this integration using UI."""
     return await async_initialize_integration(hass=hass, config=config)
 
 
 async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> bool:
     """Set up this integration using UI."""
-
     config_entry.async_on_unload(
         config_entry.add_update_listener(config_entry_update_listener)
     )
     return await async_initialize_integration(hass=hass, config_entry=config_entry)
 
 
-async def async_remove_entry(hass: HomeAssistant, config_entry: ConfigEntry):
+async def async_remove_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> None:
     """Remove Integration."""
-    _LOGGER.debug(f"{NAME} is now uninstalled")
+    _LOGGER.debug("%s is now uninstalled", NAME)
 
-    # TODO cleanup:
+    # TODO: cleanup
     #  - themes
     #  - blueprints
     async_remove_panel(hass, "ui-lovelace-minimalist")
@@ -154,7 +154,7 @@ async def config_entry_update_listener(
     await hass.config_entries.async_reload(config_entry.entry_id)
 
 
-async def async_unload_entry(hass: HomeAssistant, config_entry: ConfigEntry):
+async def async_unload_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> bool:
     """Unload Integration."""
     _LOGGER.debug("Unload the config entry")
 
