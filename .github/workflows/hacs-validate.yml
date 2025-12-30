@@ -40,3 +40,4 @@ jobs:
         with:
           category: "integration"
           ignore: "hacs brands"
+          github_token: "${{ secrets.GITHUB_TOKEN }}"
