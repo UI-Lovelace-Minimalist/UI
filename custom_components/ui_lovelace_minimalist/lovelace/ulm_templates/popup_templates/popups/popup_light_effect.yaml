@@ -102,6 +102,7 @@ popup_light_effect:
         display: none;
       }
       #content4 {
+        display: block !important;
         height: 52vh !important;
       }
       #content5 {
