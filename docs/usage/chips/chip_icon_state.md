@@ -13,10 +13,10 @@ This `chip` displays an icon and a label, where the label can be any `state` of 
 
 ## Variables
 
-| Variable | Default | Required         | Notes             |
-|----------|---------|------------------|-------------------|
-| ulm_chip_icon_state_icon     |         | :material-check: | This is the icon to show. See See icons to read more about the used unicode `emojis`.  |
-|ulm_chip_icon_state_entity|  | :material-check: | Enable background |
+| Variable                   | Default | Required         | Notes                                                                                 |
+|----------------------------|---------|------------------|---------------------------------------------------------------------------------------|
+| ulm_chip_icon_state_icon   |         | :material-check: | This is the icon to show. See See icons to read more about the used unicode `emojis`. |
+| ulm_chip_icon_state_entity |         | :material-check: | Enable background                                                                     |
 
 ## Usage
 

@@ -23,18 +23,18 @@ This is a custom card to display download, upload and ping speed by using apexch
 
 ## Variables
 
-| Variable                                        | Default                | Required | Notes                                               |
-| ----------------------------------------------- | ---------------------- | -------- | --------------------------------------------------- |
-| ulm_custom_card_speedtest_download_speed_entity |                        | Yes      | The entity to represent the download speed          |
-| ulm_custom_card_speedtest_download_speed_color  | `var(--google-yellow)` | No       | Color for download graph                            |
-| ulm_custom_card_speedtest_download_speed_max    | `100`                  | No       | Maximal value for download speed to build the graph |
-| ulm_custom_card_speedtest_upload_speed_entity   |                        | Yes      | The entity to represent the upload speed            |
-| ulm_custom_card_speedtest_upload_speed_color    | `var(--google-blue)`   | No       | Color for upload graph                              |
-| ulm_custom_card_speedtest_upload_speed_max      | `40`                   | No       | Maximal value for upload speed to build the graph   |
-| ulm_custom_card_speedtest_ping_entity           |                        | Yes      | The entity to represent the ping speed              |
-| ulm_custom_card_speedtest_ping_color            | `var(--google-green)`  | No       | Color for ping graph                                |
-| ulm_custom_card_speedtest_ping_max              | `85`                   | No       | Maximal value for ping speed to build the graph     |
-| ulm_custom_card_speedtest_round                 | `false`                | No       | Weather to use rounded values or not                |
+| Variable                                        | Default                | Required         | Notes                                               |
+| ----------------------------------------------- | ---------------------- | ---------------- | --------------------------------------------------- |
+| ulm_custom_card_speedtest_download_speed_entity |                        | :material-check: | The entity to represent the download speed          |
+| ulm_custom_card_speedtest_download_speed_color  | `var(--google-yellow)` | :material-close: | Color for download graph                            |
+| ulm_custom_card_speedtest_download_speed_max    | `100`                  | :material-close: | Maximal value for download speed to build the graph |
+| ulm_custom_card_speedtest_upload_speed_entity   |                        | :material-check: | The entity to represent the upload speed            |
+| ulm_custom_card_speedtest_upload_speed_color    | `var(--google-blue)`   | :material-close: | Color for upload graph                              |
+| ulm_custom_card_speedtest_upload_speed_max      | `40`                   | :material-close: | Maximal value for upload speed to build the graph   |
+| ulm_custom_card_speedtest_ping_entity           |                        | :material-check: | The entity to represent the ping speed              |
+| ulm_custom_card_speedtest_ping_color            | `var(--google-green)`  | :material-close: | Color for ping graph                                |
+| ulm_custom_card_speedtest_ping_max              | `85`                   | :material-close: | Maximal value for ping speed to build the graph     |
+| ulm_custom_card_speedtest_round                 | `false`                | :material-close: | Weather to use rounded values or not                |
 
 ## Usage
 

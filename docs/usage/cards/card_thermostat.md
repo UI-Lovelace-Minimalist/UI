@@ -30,21 +30,21 @@ This card merges the following one :
 
 ## Variables
 
-| Variable/Entity                                 | Default           | Required         | Notes          | Requirement |
-|-------------------------------------------------|-------------------|------------------|----------------|-------------|
-| entity                                          |                   | :material-check: | Your HA entity |             |
-| ulm_card_thermostat_name                        | `friendly_name`   | :material-close: | Customize name |             |
-| ulm_card_thermostat_icon                        | `mdi:thermometer` | :material-close: | Customize icon |             |
-| ulm_card_thermostat_enable_collapse             | `false`           | :material-close: | Collapse controls when off | Need `ulm_card_thermostat_enable_controls: true` |
-| ulm_card_thermostat_enable_controls             | `false`           | :material-close: | Enable temperature control | |
-| ulm_card_thermostat_enable_hvac_modes           | `false`           | :material-close: | Enable HVAC modes control | |
-| ulm_card_thermostat_enable_background_color     | `false`           | :material-close: | Enable background color when cooling or heating | |
-| ulm_card_thermostat_enable_display_temperature  | `false`           | :material-close: | Display  current temperature on top right | |
-| ulm_card_thermostat_enable_horizontal           | `false`           | :material-close: | Enable horizontal card| Need `ulm_card_thermostat_enable_controls: true` |
-| ulm_card_thermostat_enable_popup                | `false`           | :material-close: | Enable `popup_thermostat` | |
-| ulm_card_thermostat_fan_entity                  | `null`            | :material-close: | `fan` entity for climate if separate entity | |
-| ulm_card_thermostat_minimum_temp_spread         | `1`               | :material-close: | Minimum temperature spread between low and high temperature when in `heat_cool` mode | |
-| ulm_card_thermostat_temp_step                   | `false`           | :material-close: | Set the step size for increasing and decreasing temperature | |
+| Variable/Entity                                 | Default           | Required         | Notes                                                                                | Requirement                                      |
+|-------------------------------------------------|-------------------|------------------|--------------------------------------------------------------------------------------|--------------------------------------------------|
+| entity                                          |                   | :material-check: | Your HA entity                                                                       |                                                  |
+| ulm_card_thermostat_name                        | `friendly_name`   | :material-close: | Customize name                                                                       |                                                  |
+| ulm_card_thermostat_icon                        | `mdi:thermometer` | :material-close: | Customize icon                                                                       |                                                  |
+| ulm_card_thermostat_enable_collapse             | `false`           | :material-close: | Collapse controls when off                                                           | Need `ulm_card_thermostat_enable_controls: true` |
+| ulm_card_thermostat_enable_controls             | `false`           | :material-close: | Enable temperature control                                                           |                                                  |
+| ulm_card_thermostat_enable_hvac_modes           | `false`           | :material-close: | Enable HVAC modes control                                                            |                                                  |
+| ulm_card_thermostat_enable_background_color     | `false`           | :material-close: | Enable background color when cooling or heating                                      |                                                  |
+| ulm_card_thermostat_enable_display_temperature  | `false`           | :material-close: | Display  current temperature on top right                                            |                                                  |
+| ulm_card_thermostat_enable_horizontal           | `false`           | :material-close: | Enable horizontal card                                                               | card_thermostat_enable_controls: true`           |
+| ulm_card_thermostat_enable_popup                | `false`           | :material-close: | Enable `popup_thermostat`  Need `ulm_                                                |                                                  |
+| ulm_card_thermostat_fan_entity                  | `null`            | :material-close: | `fan` entity for climate if separate entity                                          |                                                  |
+| ulm_card_thermostat_minimum_temp_spread         | `1`               | :material-close: | Minimum temperature spread between low and high temperature when in `heat_cool` mode |                                                  |
+| ulm_card_thermostat_temp_step                   | `false`           | :material-close: | Set the step size for increasing and decreasing temperature                          |                                                  |
 
 ## Usage
 
