@@ -5,6 +5,7 @@ hide:
 ---
 
 <!-- markdownlint-disable MD046 -->
+<!-- markdownlint-disable MD060 -->
 
 # Custom Card Ristou Person
 
