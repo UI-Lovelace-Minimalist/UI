@@ -13,10 +13,10 @@ This `chip` shows you the actual presence in your home. Shows residents and gues
 
 ## Variables
 
-| Variable | Default | Required         | Notes             |
-|----------|---------|------------------|-------------------|
-| ulm_chip_presence_counter_residents     |         | :material-check: |  This is the sensor that shows your residents counter.   |
-|ulm_chip_presence_counter_guests|   | :material-check: | This is the sensor that shows your guests counter.|
+| Variable                            | Default | Required         | Notes                                                 |
+|-------------------------------------|---------|------------------|-------------------------------------------------------|
+| ulm_chip_presence_counter_residents |         | :material-check: | This is the sensor that shows your residents counter. |
+| ulm_chip_presence_counter_guests    |         | :material-check: | This is the sensor that shows your guests counter.    |
 
 ## Usage
 

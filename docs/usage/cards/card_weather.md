@@ -15,14 +15,14 @@ This is a card based on simple-weather-card to show your weather.
 
 ## Variables
 
-| Variable                  | Default         | Required         | Notes                                                                                                       |
-| ------------------------- | --------------- | ---------------- | ----------------------------------------------------------------------------------------------------------- |
-| entity                    |                 | :material-check: | your weather entity                                                                                         |
-| ulm_card_weather_name     | `friendly_name` |                  | customize display name                                                                                      |
-| ulm_card_weather_primary_info | `extrema`   |                  | customize primary info. Set to `false` to disable. See [simple-weather-card](https://github.com/kalkih/simple-weather-card) for more information |
-| ulm_card_weather_secondary_info | `precipitation`   |          | customize secondary info. Set to `false` to disable. See [simple-weather-card](https://github.com/kalkih/simple-weather-card) for more information |
-| ulm_card_weather_backdrop | `false`         |                  | add backdrop. See [simple-weather-card](https://github.com/kalkih/simple-weather-card) for more information |
-| ulm_card_weather_custom | | | customize weather data. See [simple-weather-card](https://github.com/kalkih/simple-weather-card#custom-option-array) |
+| Variable                        | Default         | Required         | Notes                                                                                                                                              |
+| ------------------------------- | --------------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| entity                          |                 | :material-check: | your weather entity                                                                                                                                |
+| ulm_card_weather_name           | `friendly_name` |                  | customize display name                                                                                                                             |
+| ulm_card_weather_primary_info   | `extrema`       |                  | customize primary info. Set to `false` to disable. See [simple-weather-card](https://github.com/kalkih/simple-weather-card) for more information   |
+| ulm_card_weather_secondary_info | `precipitation` |                  | customize secondary info. Set to `false` to disable. See [simple-weather-card](https://github.com/kalkih/simple-weather-card) for more information |
+| ulm_card_weather_backdrop       | `false`         |                  | add backdrop. See [simple-weather-card](https://github.com/kalkih/simple-weather-card) for more information                                        |
+| ulm_card_weather_custom         |                 |                  | customize weather data. See [simple-weather-card](https://github.com/kalkih/simple-weather-card#custom-option-array)                               |
 
 ## Usage
 
