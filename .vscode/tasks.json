@@ -4,7 +4,29 @@
     {
       "label": "Run Home Assistant on port 9123",
       "type": "shell",
-      "command": "${command:python.interpreterPath} -m homeassistant -c ./config --debug",
+      "command": "scripts/develop",
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Upgrade Home Assistant Development Environment",
+      "type": "shell",
+      "command": "scripts/update",
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Update mandatory lovelace cards",
+      "type": "shell",
+      "command": "scripts/update-cards",
       "group": "test",
       "presentation": {
         "reveal": "always",
@@ -38,23 +60,15 @@
       "problemMatcher": []
     },
     {
-      "label": "Install Requirements",
+      "label": "Lint with ruff",
       "type": "shell",
-      "command": "uv pip install -r requirements.txt",
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
-      "presentation": {
-        "reveal": "always",
-        "panel": "new"
-      },
+      "command": "scripts/lint",
       "problemMatcher": []
     },
     {
-      "label": "Install all Test Requirements",
+      "label": "Install Requirements",
       "type": "shell",
-      "command": "uv pip install -r requirements.txt -r requirements_test.txt",
+      "command": "uv pip install -r requirements.txt",
       "group": {
         "kind": "build",
         "isDefault": true

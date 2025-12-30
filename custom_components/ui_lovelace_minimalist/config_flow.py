@@ -71,7 +71,6 @@ HA_OPTIONS_FLOW_VERSION_THRESHOLD = "2024.11.99"
 
 async def ulm_config_option_schema(options: dict[str, Any]) -> dict:
     """Return a schema for ULM configuration options."""
-
     # Also update base.py UlmConfiguration
     return {
         vol.Optional(
@@ -150,8 +149,7 @@ class UlmFlowHandler(ConfigFlow, domain=DOMAIN):
         if user_input is not None:
             if user_input["community_cards_enabled"]:
                 return await self.async_step_device(user_input)
-            else:
-                return self.async_create_entry(title="", data=user_input)
+            return self.async_create_entry(title="", data=user_input)
 
         # Initial form
         return await self._show_config_form(user_input)
@@ -185,7 +183,7 @@ class UlmFlowHandler(ConfigFlow, domain=DOMAIN):
                     client_id=CLIENT_ID,
                     session=aiohttp_client.async_get_clientsession(self.hass),
                     **cast(
-                        dict[GitHubClientKwarg, Any],
+                        "dict[GitHubClientKwarg, Any]",
                         {"client_name": f"ULM/{integration.version}"},
                     ),
                 )
@@ -198,11 +196,11 @@ class UlmFlowHandler(ConfigFlow, domain=DOMAIN):
                     progress_action="wait_for_device",
                     description_placeholders={
                         "url": OAUTH_USER_LOGIN,
-                        "code": cast(str, self._login_device.user_code),
+                        "code": cast("str", self._login_device.user_code),
                     },
                 )
             except GitHubException as exception:
-                self.log.error(exception)
+                self.log.exception(exception)
                 return self.async_abort(reason="github")
 
         return self.async_show_progress_done(next_step_id="device_done")
