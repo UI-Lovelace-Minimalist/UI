@@ -219,33 +219,33 @@ switch:
 ### Main parameters
 
 | Variable                                  | Example                                                         | Required | Explanation                                                                                     |
-| ----------------------------------------- | --------------------------------------------------------------- | -------- | --------------------------------------------------- |
-| ulm_custom_card_washer_power              | switch.washingmachine_switch                                    | yes      | Is the washing machine or dryer turned on?                                                 |
+| ----------------------------------------- | --------------------------------------------------------------- | -------- | ----------------------------------------------------------------------------------------------- |
+| ulm_custom_card_washer_power              | switch.washingmachine_switch                                    | yes      | Is the washing machine or dryer turned on?                                                      |
 | ulm_custom_card_washer_remote_control     | sensor.washingmachine_remote_control                            | no       | Can we control the washing machine or dryer remotely                                            |
-| ulm_custom_card_washer_machine_state      | sensor.washingmachine_machine_state                             | no       | What is the current state of washing machine or dryer: none, run or pause                        |
+| ulm_custom_card_washer_machine_state      | sensor.washingmachine_machine_state                             | no       | What is the current state of washing machine or dryer: none, run or pause                       |
 | ulm_custom_card_washer_machine_stop_state | "stop"                                                          | no       | What is the value for the stop stage of the ulm_custom_card_washer_machine_state                |
-| ulm_custom_card_washer_job_state          | sensor.washingmachine_job_state                                 | no       | What is the current step in the program, weightSensing, wash, rinse, spin or drying          |
+| ulm_custom_card_washer_job_state          | sensor.washingmachine_job_state                                 | no       | What is the current step in the program, weightSensing, wash, rinse, spin or drying             |
 | ulm_custom_card_washer_job_progress       | sensor.dishwasher_program_progress                              | no       | What is the current progress in the program in %                                                |
-| ulm_custom_card_washer_job_states         | List of maximum 5 states (name and icon) to show as job states  | no       | Define the job states of the washing machine of dryer (or any other machine that you wanna use)  |
-| ulm_custom_card_washer_delayed_start      | input_boolean.washingmachine_latest_start                       | no       | Turn on the ability to start the washing machine of dryer at a specific time                 |
-| ulm_custom_card_washer_delayed_starttime  | input_datetime.washingmachine_latest_starttime                  | no       | What time should the washing machine or dryer start                                               |
+| ulm_custom_card_washer_job_states         | List of maximum 5 states (name and icon) to show as job states  | no       | Define the job states of the washing machine of dryer (or any other machine that you wanna use) |
+| ulm_custom_card_washer_delayed_start      | input_boolean.washingmachine_latest_start                       | no       | Turn on the ability to start the washing machine of dryer at a specific time                    |
+| ulm_custom_card_washer_delayed_starttime  | input_datetime.washingmachine_latest_starttime                  | no       | What time should the washing machine or dryer start                                             |
 | ulm_custom_card_washer_label_idle         | Any text, for example the number of runs                        | no       | What label to show when the washing machine or dryer is idle                                    |
 | ulm_custom_card_washer_label_running      | Any text, for example the remaining time of the current program | no       | What label to show when the washing machine or dryer is running                                 |
 | ulm_custom_card_washer_label_configuring  | Any text, for example, the end result of all the settings       | no       | What label to show when the washing machine or dryer is being configured                        |
-| ulm_custom_card_washer_start_action       | A collection of setting to change a value or start an action    | no       | This contains all the parameters to start the washing machine or dryer (See the next table)       |
-| ulm_custom_card_washer_pause_action       | A collection of setting to change a value or start an action    | no       | This contains all the parameters to pause the washing machine or dryer (See the next table)       |
-| ulm_custom_card_washer_stop_action        | A collection of setting to change a value or start an action    | no       | This contains all the parameters to stop the washing machine or dryer (See the next table)       |
+| ulm_custom_card_washer_start_action       | A collection of setting to change a value or start an action    | no       | This contains all the parameters to start the washing machine or dryer (See the next table)     |
+| ulm_custom_card_washer_pause_action       | A collection of setting to change a value or start an action    | no       | This contains all the parameters to pause the washing machine or dryer (See the next table)     |
+| ulm_custom_card_washer_stop_action        | A collection of setting to change a value or start an action    | no       | This contains all the parameters to stop the washing machine or dryer (See the next table)      |
 
 ### Parameters specific for the start, pause and stop of the washing machine of dryer
 
-| Variable        | Example                                | Required | Explanation                                                                                         |
-| --------------- | -------------------------------------- | -------- | --------------------------------------------------------------------------------------------------- |
-| action          | none                                   | no       | Action to perform (more-info, toggle, call-service, navigate, url, none) Default: none              |
-| entity          | entity_id                              | no       | Entity id to call the action on                                                                     |
-| navigation_path | The navigation path for the call       | no       | Path to navigate to (e.g., /lovelace/0/) when action defined as navigate                            |
-| url_path        | The url path for the call              | no       | Path to navigate to (e.g., https://www.home-assistant.io) when action defined as url                |
-| service         | The service to call the action on      | no       | Service to call (e.g., media_player.media_play_pause) when action defined as call-service           |
-| service_data    | The service_data to call the action on | no       | Service data to include (e.g., entity_id: media_player.bedroom) when action defined as call-service |
+| Variable        | Example                                | Required         | Explanation                                                                                         |
+| --------------- | -------------------------------------- | ---------------- | --------------------------------------------------------------------------------------------------- |
+| action          | none                                   | :material-close: | Action to perform (more-info, toggle, call-service, navigate, url, none) Default: none              |
+| entity          | entity_id                              | :material-close: | Entity id to call the action on                                                                     |
+| navigation_path | The navigation path for the call       | :material-close: | Path to navigate to (e.g., /lovelace/0/) when action defined as navigate                            |
+| url_path        | The url path for the call              | :material-close: | Path to navigate to (e.g., https://www.home-assistant.io) when action defined as url                |
+| service         | The service to call the action on      | :material-close: | Service to call (e.g., media_player.media_play_pause) when action defined as call-service           |
+| service_data    | The service_data to call the action on | :material-close: | Service data to include (e.g., entity_id: media_player.bedroom) when action defined as call-service |
 
 ??? note "Template Code"
 

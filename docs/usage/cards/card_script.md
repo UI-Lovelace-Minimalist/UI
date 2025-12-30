@@ -13,13 +13,13 @@ This card starts/runs a script. You can configure icon and text.
 
 ## Variables
 
-| Variable | Default | Required         | Notes             |
-|----------|---------|------------------|-------------------|
-| ulm_card_script_title     |         | :material-check: | Name to show for the script. |
-|ulm_card_script_icon|   | :material-check: | Icon to show for the script. |
-|tap_action_action|   | :material-check: | Only call-service is allowed here. |
-|tap_action_service|   | :material-check: | Let the script run by turning it on. |
-|tap_action_service_data|   | :material-check: | This is the service_data needed by your script. That can be an entity_id and/or some variables. |
+| Variable                | Default | Required         | Notes                                                                                           |
+|-------------------------|---------|------------------|-------------------------------------------------------------------------------------------------|
+| ulm_card_script_title   |         | :material-check: | Name to show for the script.                                                                    |
+| _card_script_icon       |         | :material-check: | Icon to show for the script.                                                                    |
+| tap_action_action       |         | :material-check: | Only call-service is allowed here.                                                              |
+| tap_action_service      |         | :material-check: | Let the script run by turning it on.                                                            |
+| tap_action_service_data |         | :material-check: | This is the service_data needed by your script. That can be an entity_id and/or some variables. |
 
 ## Usage
 

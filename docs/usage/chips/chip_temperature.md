@@ -13,11 +13,11 @@ This `chip` is to display a weather icon together with the outside and inside te
 
 ## Variables
 
-| Variable | Default | Required         | Notes             |
-|----------|---------|------------------|-------------------|
-| ulm_chip_temperature_outside     |         | :material-check: | This is the sensor that provides your outside temperature. If you want to use eg. a temperature value from your weather provider, you'd need to setup a template sensor first. The state of this sensor should represent a numeric value (°C or °F doesn't matter).  |
-|ulm_chip_temperature_inside|   | :material-close: | This is the sensor that provides your inside temperature. The state of this sensor should represent a numeric value (°C or °F doesn't matter). |
-|ulm_chip_temperature_weather|   | :material-check: | This is the sensor for your weather entity for showing current weather conditions|
+| Variable                     | Default | Required         | Notes                                                                                                                                                                                                                                                               |
+|------------------------------|---------|------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ulm_chip_temperature_outside |         | :material-check: | This is the sensor that provides your outside temperature. If you want to use eg. a temperature value from your weather provider, you'd need to setup a template sensor first. The state of this sensor should represent a numeric value (°C or °F doesn't matter). |
+| ulm_chip_temperature_inside  |         | :material-close: | This is the sensor that provides your inside temperature. The state of this sensor should represent a numeric value (°C or °F doesn't matter).                                                                                                                      |
+| ulm_chip_temperature_weather |         | :material-check: | This is the sensor for your weather entity for showing current weather conditions.                                                                                                                                                                                  |
 
 ## Usage
 

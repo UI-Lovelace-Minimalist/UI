@@ -13,10 +13,10 @@ This `chip` displays an icon using [mdi](https://materialdesignicons.com/).
 
 ## Variables
 
-| Variable | Default | Required         | Notes             |
-|----------|---------|------------------|-------------------|
-|ulm_chip_mdi_icon_only_entity      |         | :material-check: | `entity` to link     |
-|ulm_chip_mdi_icon_only_icon        |         | :material-check: | mdi:icon to display  |
+| Variable                          | Default              | Required         | Notes                        |
+|-----------------------------------|----------------------|------------------|------------------------------|
+|ulm_chip_mdi_icon_only_entity      |                      | :material-check: | `entity` to link             |
+|ulm_chip_mdi_icon_only_icon        |                      | :material-check: | mdi:icon to display          |
 |ulm_chip_mdi_icon_only_icon_color  | `primary-text-color` | :material-close: | Allow to change `icon` color |
 
 ## Usage

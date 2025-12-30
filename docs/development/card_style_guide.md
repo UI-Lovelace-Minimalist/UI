@@ -53,12 +53,12 @@ In the list above #5 enhances the normal `cards` with a "second line", that is u
 
 #### Color Scheme
 
-| Type | Color | Hex | RGB |
-|------|:-----:|-----|-----|
-| 💡 Light <br/> ⚡ Electricity | <svg width="16" height="16"><circle cx="8" cy="8" r="8" stroke-width="0" fill="#FF9101" /></svg> | #FF9101 | rgb(255,145,1) |
-| 🔥 Heating | <svg width="16" height="16"><circle cx="8" cy="8" r="8" stroke-width="0" fill="#F54436" /></svg> | #F54436 | rgb(245,6,54) |
-| ☑️ on/off <br/> 🏠 Home | <svg width="16" height="16"><circle cx="8" cy="8" r="8" stroke-width="0" fill="#3D5AFE" /></svg> | #3D5AFE | rgb(61,90,254) |
-| 🌳 Exterior | <svg width="16" height="16"><circle cx="8" cy="8" r="8" stroke-width="0" fill="#01C852" /></svg> | #01C852 | rgb(1,200,82) |
+| Type                           | Color                                                                                            | Hex     | RGB            |
+|--------------------------------|:------------------------------------------------------------------------------------------------:|---------|----------------|
+| 💡 Light <br/> ⚡ Electricity  | <svg width="16" height="16"><circle cx="8" cy="8" r="8" stroke-width="0" fill="#FF9101" /></svg> | #FF9101 | rgb(255,145,1) |
+| 🔥 Heating                     | <svg width="16" height="16"><circle cx="8" cy="8" r="8" stroke-width="0" fill="#F54436" /></svg> | #F54436 | rgb(245,6,54)  |
+| ☑️ on/off <br/> 🏠 Home        | <svg width="16" height="16"><circle cx="8" cy="8" r="8" stroke-width="0" fill="#3D5AFE" /></svg> | #3D5AFE | rgb(61,90,254) |
+| 🌳 Exterior                    | <svg width="16" height="16"><circle cx="8" cy="8" r="8" stroke-width="0" fill="#01C852" /></svg> | #01C852 | rgb(1,200,82)  |
 
 #### Icons
 
