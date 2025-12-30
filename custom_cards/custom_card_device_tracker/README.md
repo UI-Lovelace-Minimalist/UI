@@ -14,14 +14,14 @@ It allow to display the state of two tracker for this device
 
 ## Variables
 
-| Variable | Default | Required         | Notes             |
-|----------|---------|------------------|-------------------|
-| entity     |         | :material-check: | The device entity or group |
-| ulm_custom_card_device_tracker_icon |       | :material-close: | `icon` to display |
-| ulm_custom_card_device_tracker_tracker_1_entity     |         | :material-close: | Set the first tracker `entity`. |
-| ulm_custom_card_device_tracker_tracker_1_type     |         | :material-close: | Set the type of the first tracker, for the notification icon |
-| ulm_custom_card_device_tracker_tracker_2_entity     |         | :material-close: | Set the second tracker `entity`. |
-| ulm_custom_card_device_tracker_tracker_2_type     |         | :material-close: | Set the type of the second tracker, for the notification icon |
+| Variable                                        | Default | Required         | Notes                                                         |
+|-------------------------------------------------|---------|------------------|---------------------------------------------------------------|
+| entity                                          |         | :material-check: | The device entity or group                                    |
+| ulm_custom_card_device_tracker_icon             |         | :material-close: | `icon` to display                                             |
+| ulm_custom_card_device_tracker_tracker_1_entity |         | :material-close: | Set the first tracker `entity`.                               |
+| ulm_custom_card_device_tracker_tracker_1_type   |         | :material-close: | Set the type of the first tracker, for the notification icon  |
+| ulm_custom_card_device_tracker_tracker_2_entity |         | :material-close: | Set the second tracker `entity`.                              |
+| ulm_custom_card_device_tracker_tracker_2_type   |         | :material-close: | Set the type of the second tracker, for the notification icon |
 
 ## Usage
 
