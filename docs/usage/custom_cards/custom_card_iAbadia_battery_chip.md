@@ -42,12 +42,12 @@ variables:
 
 ## Variables
 
-| Variable                                       | Example              | Required | Explanation                                           |
-| ---------------------------------------------- | -------------------- | -------- | ----------------------------------------------------- |
-|  ulm_custom_card_iAbadia_battery_chip_entity   | `sensor.temperature` | ✓        | Battery entity                                        |
-|  ulm_custom_card_iAbadia_battery_chip_icon     | `mdi:thermometer`    | ✘        | Icon to be displayed. Will default to mdi:battery     |
-|  ulm_custom_card_iAbadia_battery_chip_warning  | `20`                 | ✘        | Battery level below which to color as warning (yellow) |
-|  ulm_custom_card_iAbadia_battery_chip_danger   | `10`                 | ✘        | Battery level below which to color as danger (red)     |
+| Variable                                       | Example              | Required         | Explanation                                            |
+| ---------------------------------------------- | -------------------- | ---------------- | ------------------------------------------------------ |
+|  ulm_custom_card_iAbadia_battery_chip_entity   | `sensor.temperature` | :material-check: | Battery entity                                         |
+|  ulm_custom_card_iAbadia_battery_chip_icon     | `mdi:thermometer`    | :material-close: | Icon to be displayed. Will default to mdi:battery      |
+|  ulm_custom_card_iAbadia_battery_chip_warning  | `20`                 | :material-close: | Battery level below which to color as warning (yellow) |
+|  ulm_custom_card_iAbadia_battery_chip_danger   | `10`                 | :material-close: | Battery level below which to color as danger (red)     |
 
 ## Template Code
 
