@@ -13,12 +13,12 @@ The `card_navigate` is for navigating inside your HA dashboard(s).
 
 ## Variables
 
-| Variable | Default | Required         | Notes             |
-|----------|---------|------------------|-------------------|
-| ulm_card_navigate_path     |         | :material-check: | The path to your lovelace dashboard |
-| ulm_card_navigate_title |   | :material-check: | Title to show for the link |
-| ulm_card_navigate_icon |   | :material-check: | Icon to show |
-| ulm_card_navigate_color |  Blue | No | Color of Icon |
+| Variable                | Default | Required         | Notes                               |
+|-------------------------|---------|------------------|-------------------------------------|
+| ulm_card_navigate_path  |         | :material-check: | The path to your lovelace dashboard |
+| ulm_card_navigate_title |         | :material-check: | Title to show for the link          |
+| ulm_card_navigate_icon  |         | :material-check: | Icon to show                        |
+| ulm_card_navigate_color | Blue    | :material-close: | Color of Icon                       |
 
 ## Usage
 

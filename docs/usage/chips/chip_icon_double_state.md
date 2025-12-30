@@ -13,12 +13,12 @@ This `chip` displays can display an icon and value of two entities.
 
 ## Variables
 
-| Variable | Default | Required         | Notes             |
-|----------|---------|------------------|-------------------|
-|ulm_chip_icon_double_state_icon    |     | :material-check: | This is the icon to show. See icons to read more about the used unicode `emojis`. |
-|ulm_chip_icon_double_state_entity_1|     | :material-check: | This is the `entity` to display in first position |
-|ulm_chip_icon_double_state_entity_2|     | :material-check: | This is the `entity` to display in second position |
-|ulm_chip_navigate_path|     | :material-check: | The `path` to your view |
+| Variable                            | Default | Required         | Notes                                                                             |
+|-------------------------------------|---------|------------------|-----------------------------------------------------------------------------------|
+| ulm_chip_icon_double_state_icon     |         | :material-check: | This is the icon to show. See icons to read more about the used unicode `emojis`. |
+| ulm_chip_icon_double_state_entity_1 |         | :material-check: | This is the `entity` to display in first position.                                |
+| ulm_chip_icon_double_state_entity_2 |         | :material-check: | This is the `entity` to display in second position.                               |
+| ulm_chip_navigate_path              |         | :material-check: | The `path` to your view.                                                          |
 
 ## Usage
 

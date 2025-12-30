@@ -63,21 +63,21 @@ This is an alternative room card to the standard one that is more rectangular th
 
 ## Variables
 
-| Variable                                     | Default | Required | Notes                                                                    |
-| -------------------------------------------- | ------- | -------- | ------------------------------------------------------------------------ |
-| entity                                       |         | No       | The entity to represent on the room icon                                 |
-| Name                                         |         | Yes      | Name of the room to display                                              |
-| icon                                         |         | No       | The icon to show                                                         |
-| tap_action                                   |         | No       | The action to perform when tapping                                       |
-| label                                        |         | No       | The label to display information, this can be a template or static text  |
-| ulm_custom_card_esh_room_light_entity        |         | No       | The entity to use for the light button                                   |
-| ulm_custom_card_esh_room_climate_entity      |         | No       | The entity to use for the climate button                                 |
-| ulm_custom_card_esh_room_cover_entity        |         | No       | The entity to use for the cover button                                   |
-| ulm_card_esh_room_light_icon_on              |         | No       | Customize the light ON icon                                              |
-| ulm_card_esh_room_light_icon_off             |         | No       | Customize the light OFF icon                                             |
-| ulm_card_light_enable_popup                  | `false` | No       | Enable `popup_light`                                                     |
-| ulm_card_thermostat_enable_popup             | `false` | No       | Enable `popup_thermostat`                                                |
-| ulm_card_dynamic_color                       | `false` | No       | Enables dynamic background color (requires `ulm_custom_card_esh_room_light_entity`)|
+| Variable                                     | Default | Required         | Notes                                                                              |
+| -------------------------------------------- | ------- | ---------------- | ---------------------------------------------------------------------------------- |
+| entity                                       |         | :material-close: | The entity to represent on the room icon                                           |
+| Name                                         |         | :material-check: | Name of the room to display                                                        |
+| icon                                         |         | :material-close: | The icon to show                                                                   |
+| tap_action                                   |         | :material-close: | The action to perform when tapping                                                 |
+| label                                        |         | :material-close: | The label to display information, this can be a template or static text            |
+| ulm_custom_card_esh_room_light_entity        |         | :material-close: | The entity to use for the light button                                             |
+| ulm_custom_card_esh_room_climate_entity      |         | :material-close: | The entity to use for the climate button                                           |
+| ulm_custom_card_esh_room_cover_entity        |         | :material-close: | The entity to use for the cover button                                             |
+| ulm_card_esh_room_light_icon_on              |         | :material-close: | Customize the light ON icon                                                        |
+| ulm_card_esh_room_light_icon_off             |         | :material-close: | Customize the light OFF icon                                                       |
+| ulm_card_light_enable_popup                  | `false` | :material-close: | Enable `popup_light`                                                               |
+| ulm_card_thermostat_enable_popup             | `false` | :material-close: | Enable `popup_thermostat`                                                          |
+| ulm_card_dynamic_color                       | `false` | :material-close: | Enables dynamic background color (requires `ulm_custom_card_esh_room_light_entity`)|
 
 ## Usage
 
