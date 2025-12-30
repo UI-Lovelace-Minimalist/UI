@@ -381,7 +381,7 @@ class UlmBase:
             )
 
         except Exception as exception:
-            self.log.error(exception)
+            self.log.exception(exception)
             self.disable_ulm(UlmDisabledReason.LOAD_ULM)
             return False
 
