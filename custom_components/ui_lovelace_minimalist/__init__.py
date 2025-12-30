@@ -75,7 +75,7 @@ async def async_initialize_integration(
     ulm.githubapi = GitHubAPI(
         token=ulm.configuration.token,
         session=clientsession,
-        **cast(dict[GitHubClientKwarg, Any], {"client_name": "ULM"}),
+        **cast("dict[GitHubClientKwarg, Any]", {"client_name": "ULM"}),
     )
 
     async def async_startup() -> bool:
