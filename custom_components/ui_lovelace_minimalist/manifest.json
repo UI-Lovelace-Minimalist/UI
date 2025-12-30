@@ -8,5 +8,5 @@
   "iot_class": "calculated",
   "issue_tracker": "https://github.com/UI-Lovelace-Minimalist/UI/issues",
   "requirements": ["aiofiles>=0.8.0", "aiogithubapi>=22.2.4"],
-  "version": "v1.4.1"
+  "version": "1.4.1"
 }
