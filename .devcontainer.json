@@ -47,7 +47,7 @@
                     "reportMissingTypeStubs": "none"
                 },
                 "python.analysis.include": [
-                    "custom_components/integration_blueprint"
+                    "custom_components/ui_lovelace_minimalist"
                 ],
                 "python.analysis.exclude": [
                     "**/.venv/**",
