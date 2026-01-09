@@ -172,7 +172,7 @@ class UlmBase:
 
         return os.path.exists(file_path)
 
-    async def async_github_get_file(self, filename: str) -> list:
+    async def async_github_get_file(self, filename: str) -> str:
         """Get the content of a file."""
         self.log.debug("Fetching github file: %s", filename)
         response = await self.async_github_api_method(
@@ -181,17 +181,19 @@ class UlmBase:
             path=filename,
         )
         if response is None:
-            return []
+            return ""
+
         return decode_content(response.data.content)
 
     async def async_github_get_tree(self, path: str) -> list:
-        """Get teh content of a directory."""
+        """Get the content of a directory."""
         self.log.debug("Fetching github tree: %s", path)
         response = await self.async_github_api_method(
             method=self.githubapi.repos.contents.get, repository=GITHUB_REPO, path=path
         )
         if response is None:
             return []
+
         return response.data
 
     async def async_github_api_method(
@@ -241,11 +243,11 @@ class UlmBase:
             repository=GITHUB_REPO,
             path=COMMUNITY_CARDS_FOLDER,
         )
-        if response is None:
-            return
-        self.configuration.all_community_cards = [
-            c.name for c in response.data if c.type == "dir"
-        ]
+        if response and hasattr(response, "data"):
+            if isinstance(response.data, list) and response.data:
+                self.configuration.all_community_cards = [
+                    c.name for c in response.data if c.type == "dir"
+                ]
 
     async def configure_community_cards(self) -> None:
         """Configure selected community cards."""
