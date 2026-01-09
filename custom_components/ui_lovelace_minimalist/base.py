@@ -243,11 +243,11 @@ class UlmBase:
             repository=GITHUB_REPO,
             path=COMMUNITY_CARDS_FOLDER,
         )
-        if response and hasattr(response, "data"):
-            if isinstance(response.data, list) and response.data:
-                self.configuration.all_community_cards = [
-                    c.name for c in response.data if c.type == "dir"
-                ]
+        if response is None:
+            return
+        self.configuration.all_community_cards = [
+            c.name for c in response.data if c.type == "dir"
+        ]
 
     async def configure_community_cards(self) -> None:
         """Configure selected community cards."""
