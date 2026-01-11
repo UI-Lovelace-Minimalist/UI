@@ -29,8 +29,8 @@ from homeassistant.loader import async_get_integration
 import voluptuous as vol
 
 from .base import UlmBase
-from .const import (  # CONF_COMMUNITY_CARDS_ALL,
-    CLIENT_ID,
+from .const import (
+    CLIENT_ID,  # CONF_COMMUNITY_CARDS_ALL,
     CONF_COMMUNITY_CARDS,
     CONF_COMMUNITY_CARDS_ENABLED,
     CONF_INCLUDE_OTHER_CARDS,
@@ -199,8 +199,8 @@ class UlmFlowHandler(ConfigFlow, domain=DOMAIN):
                         "code": cast("str", self._login_device.user_code),
                     },
                 )
-            except GitHubException as exception:
-                self.log.exception(exception)
+            except GitHubException:
+                self.log.exception("GitHub device registration not successful")
                 return self.async_abort(reason="github")
 
         return self.async_show_progress_done(next_step_id="device_done")

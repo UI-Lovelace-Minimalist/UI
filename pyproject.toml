@@ -19,7 +19,10 @@ exclude = [".venv", ".git", ".tox", "docs", "venv", "bin", "lib", "deps", "build
 runtime-typing = false
 
 [tool.pylint.CODE_STYLE]
-max-line-length-suggestions = 72
+max-line-length-suggestions = 88
+
+[tool.pylint.format]
+max-line-length = 88
 
 [tool.ruff.lint]
 select = [
@@ -145,6 +148,12 @@ ignore = [
   "PLW2901", # Outer {outer_kind} variable {name} overwritten by inner {inner_kind} target
   "PT011",   # pytest.raises({exception}) is too broad, set the `match` parameter or use a more specific exception
   "PT018",   # Assertion should be broken down into multiple parts
+  "PTH103",  # `os.makedirs()` should be replaced by `Path.mkdir(parents=True)`
+  "PTH110",  # `os.path.exists()` should be replaced by `Path.exists()`
+  "PTH119",  # `os.path.basename()` should be replaced by `Path.name`
+  "PTH120",  # `os.path.dirname()` should be replaced by `Path.parent`
+  "PTH123",  # `open()` should be replaced by `Path.open()`
+  "PTH202",  # `os.path.getsize` should be replaced by `Path.stat().st_size`
   "RUF001",  # String contains ambiguous unicode character.
   "RUF002",  # Docstring contains ambiguous unicode character.
   "RUF003",  # Comment contains ambiguous unicode character.
@@ -196,7 +205,10 @@ known-first-party = ["custom_components.ui_lovelace_minimalist"]
 split-on-trailing-comma = false
 
 [tool.ruff.lint.per-file-ignores]
-
+# Ignore INP001 (Add an `__init__.py` to this directory)
+".github/*.py" = ["INP001"]
+"scripts/*.py" = ["INP001"]
+"custom_components/ui_lovelace_minimalist/utils/*.py" = ["INP001"]
 # Allow for main entry & scripts to write to stdout
 "scripts/*" = ["T20"]
 
