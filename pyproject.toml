@@ -1,6 +1,6 @@
 [project]
 name = "ui_lovelace_minimalist"
-version = "3.1.4"
+version = "1.4.4"
 description = "A custom component for Home Assistant"
 readme = "README.md"
 requires-python = ">=3.13"
