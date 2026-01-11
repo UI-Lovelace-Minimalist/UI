@@ -1,17 +1,28 @@
 [project]
-name = "UI Lovelace Minimalist"
-version = "1.4.2"
+name = "ui_lovelace_minimalist"
+version = "1.4.4"
+description = "A custom component for Home Assistant"
+readme = "README.md"
 requires-python = ">=3.13"
+dependencies = [
+  "mkdocs-awesome-pages-plugin==2.10.1",
+  "mkdocs-material==9.7.1",
+]
 
 [tool.ruff]
-# Based on https://github.com/home-assistant/core/blob/dev/pyproject.toml
 required-version = ">=0.13.0"
+line-length = 88
+target-version = "py313"
+exclude = [".venv", ".git", ".tox", "docs", "venv", "bin", "lib", "deps", "build"]
 
 [tool.pylint.TYPING]
 runtime-typing = false
 
 [tool.pylint.CODE_STYLE]
-max-line-length-suggestions = 72
+max-line-length-suggestions = 88
+
+[tool.pylint.format]
+max-line-length = 88
 
 [tool.ruff.lint]
 select = [
@@ -137,6 +148,12 @@ ignore = [
   "PLW2901", # Outer {outer_kind} variable {name} overwritten by inner {inner_kind} target
   "PT011",   # pytest.raises({exception}) is too broad, set the `match` parameter or use a more specific exception
   "PT018",   # Assertion should be broken down into multiple parts
+  "PTH103",  # `os.makedirs()` should be replaced by `Path.mkdir(parents=True)`
+  "PTH110",  # `os.path.exists()` should be replaced by `Path.exists()`
+  "PTH119",  # `os.path.basename()` should be replaced by `Path.name`
+  "PTH120",  # `os.path.dirname()` should be replaced by `Path.parent`
+  "PTH123",  # `open()` should be replaced by `Path.open()`
+  "PTH202",  # `os.path.getsize` should be replaced by `Path.stat().st_size`
   "RUF001",  # String contains ambiguous unicode character.
   "RUF002",  # Docstring contains ambiguous unicode character.
   "RUF003",  # Comment contains ambiguous unicode character.
@@ -182,13 +199,16 @@ fixture-parentheses = false
 mark-parentheses = false
 
 [tool.ruff.lint.isort]
-force-sort-within-sections = true
-known-first-party = ["homeassistant"]
 combine-as-imports = true
+force-sort-within-sections = true
+known-first-party = ["custom_components.ui_lovelace_minimalist"]
 split-on-trailing-comma = false
 
 [tool.ruff.lint.per-file-ignores]
-
+# Ignore INP001 (Add an `__init__.py` to this directory)
+".github/*.py" = ["INP001"]
+"scripts/*.py" = ["INP001"]
+"custom_components/ui_lovelace_minimalist/utils/*.py" = ["INP001"]
 # Allow for main entry & scripts to write to stdout
 "scripts/*" = ["T20"]
 
@@ -201,3 +221,15 @@ max-complexity = 25
 [tool.ruff.lint.pydocstyle]
 convention = "google"
 property-decorators = ["propcache.api.cached_property"]
+
+[tool.pytest.ini_options]
+addopts = "-qq --cov=custom_components.ui_lovelace_minimalist"
+console_output_style = "count"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = false
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 100

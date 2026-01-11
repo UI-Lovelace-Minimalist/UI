@@ -19,3 +19,11 @@ logger:
       - "Could not find go2rtc docker binary"
     homeassistant.setup:
       - ".*go2rtc.*"
+
+# Example of a template sensor
+template:
+  - sensor:
+      - name: "Current Date and Time"
+        unique_id: "current_date_time_sensor"
+        state: "{{ now().strftime('%Y-%m-%d %H:%M:%S') }}"
+        icon: "mdi:calendar-clock"

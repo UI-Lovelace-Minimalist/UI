@@ -18,6 +18,7 @@ uv.lock
 # Home Assistant configuration
 config/*
 !config/configuration.yaml
+!config/virtual.yaml
 
 # Home Assistant database and logs
 *.db
