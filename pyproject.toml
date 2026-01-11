@@ -1,11 +1,19 @@
 [project]
-name = "UI Lovelace Minimalist"
-version = "1.4.2"
-requires-python = ">=3.13"
+name = "ui_lovelace_minimalist"
+version = "3.1.4"
+description = "A custom component for Home Assistant"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  mkdocs-awesome-pages-plugin
+  mkdocs-material
+]
 
 [tool.ruff]
-# Based on https://github.com/home-assistant/core/blob/dev/pyproject.toml
 required-version = ">=0.13.0"
+line-length = 88
+target-version = "py313"
+exclude = [".venv", ".git", ".tox", "docs", "venv", "bin", "lib", "deps", "build"]
 
 [tool.pylint.TYPING]
 runtime-typing = false
@@ -182,9 +190,9 @@ fixture-parentheses = false
 mark-parentheses = false
 
 [tool.ruff.lint.isort]
-force-sort-within-sections = true
-known-first-party = ["homeassistant"]
 combine-as-imports = true
+force-sort-within-sections = true
+known-first-party = ["custom_components.ui_lovelace_minimalist"]
 split-on-trailing-comma = false
 
 [tool.ruff.lint.per-file-ignores]
@@ -201,3 +209,15 @@ max-complexity = 25
 [tool.ruff.lint.pydocstyle]
 convention = "google"
 property-decorators = ["propcache.api.cached_property"]
+
+[tool.pytest.ini_options]
+addopts = "-qq --cov=custom_components.ui_lovelace_minimalist"
+console_output_style = "count"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = false
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 100
