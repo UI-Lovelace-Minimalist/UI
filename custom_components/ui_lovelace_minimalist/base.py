@@ -50,6 +50,14 @@ from .utils.decode import decode_content
 _LOGGER: logging.Logger = logging.getLogger(__name__)
 
 
+class MinimalistException(Exception):
+    """Base exception for UI Lovelace Minimalist."""
+
+
+class InvalidConfigurationError(MinimalistException):
+    """Raised when the configuration is not a dictionary."""
+
+
 @dataclass
 class UlmSystem:
     """ULM System info."""
@@ -97,7 +105,7 @@ class UlmConfiguration:
     def update_from_dict(self, data: dict) -> None:
         """Set attributes from dicts."""
         if not isinstance(data, dict):
-            raise Exception("Configuration is not valid.")
+            raise InvalidConfigurationError("Configuration is not valid.")
 
         for key, value in data.items():
             self.__setattr__(key, value)
@@ -213,17 +221,15 @@ class UlmBase:
             _exception = exception
         except GitHubRatelimitException as exception:
             _exception = exception
-        except GitHubNotModifiedException as exception:
-            raise exception
+        except GitHubNotModifiedException:
+            raise
         except GitHubException as exception:
             _exception = exception
-        except (
-            BaseException
-        ) as exception:  # lgtm [py/catch-base-exception] pylint: disable=broad-except
+        except MinimalistException as exception:
             _exception = exception
 
         if raise_exception and _exception is not None:
-            raise Exception(_exception)
+            raise MinimalistException(_exception)
         return None
 
     def list_dirs(self) -> list:
@@ -382,8 +388,10 @@ class UlmBase:
                 ]
             )
 
-        except Exception as exception:
-            self.log.exception(exception)
+        except MinimalistException:
+            self.log.exception(
+                "An error occurred when installing the HACS Frontend repos."
+            )
             self.disable_ulm(UlmDisabledReason.LOAD_ULM)
             return False
 
@@ -437,7 +445,7 @@ class UlmBase:
             elif adv_dashboard_url in self.hass.data["lovelace"].dashboards:
                 async_remove_panel(self.hass, "adaptive-dash")
 
-        except Exception as exception:
+        except MinimalistException as exception:
             self.log.error(exception)
             self.disable_ulm(UlmDisabledReason.LOAD_ULM)
             return False
@@ -571,8 +579,8 @@ class UlmBase:
             # Register servcie ui_lovelace_minimalist.reload
             self.hass.services.async_register(DOMAIN, "reload", handle_reload)
 
-        except Exception as exception:
-            self.log.error(exception)
+        except MinimalistException:
+            self.log.error("Unable to reload UI Lovelace Minimalist Configuration")
             self.disable_ulm(UlmDisabledReason.LOAD_ULM)
             return False
 
