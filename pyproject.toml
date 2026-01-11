@@ -5,8 +5,8 @@ description = "A custom component for Home Assistant"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-  mkdocs-awesome-pages-plugin
-  mkdocs-material
+  "mkdocs-awesome-pages-plugin==2.10.1",
+  "mkdocs-material==9.7.1",
 ]
 
 [tool.ruff]
