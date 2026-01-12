@@ -2,6 +2,6 @@
 
 import logging
 
-from ..const import PACKAGE_NAME
+PACKAGE_NAME = "custom_components.ui_lovelace_minimlist"
 
 LOGGER: logging.Logger = logging.getLogger(PACKAGE_NAME)
