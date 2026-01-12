@@ -25,7 +25,7 @@ jobs:
         uses: "actions/checkout@v4"
 
       - name: "⚙️ Initialize CodeQL"
-        uses: "github/codeql-action/init@v3"  # Upgraded to v3
+        uses: "github/codeql-action/init@v4"  # Upgraded to v3
         with:
           languages: "${{ matrix.language }}"
           # 'security-extended' adds more depth than the default suite
@@ -37,7 +37,7 @@ jobs:
       #   uses: "github/codeql-action/autobuild@v3"
 
       - name: "🔍 Perform CodeQL Analysis"
-        uses: "github/codeql-action/analyze@v3"
+        uses: "github/codeql-action/analyze@v4"
         with:
           category: "/language:${{ matrix.language }}"
 # For most projects, this workflow file will not need changing; you simply need
