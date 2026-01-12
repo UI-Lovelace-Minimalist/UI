@@ -4,7 +4,9 @@ hide:
   - toc
   - navigation
 ---
+
 <!-- markdownlint-disable MD046 -->
+
 # Welcome to the UI-Lovelace-Minimalist wiki
 
 !!! danger "Under construction!"
@@ -47,4 +49,5 @@ This is a living project and all input is very welcome! If you configured and de
 - Wiki by [paddy0174](https://github.com/Paddy0174).
 - Special thanks to clemalex and [schumijo](https://github.com/schumijo)for contributing their cards to the main repository.
 - [stokkie90](https://github.com/stokkie90) for implementing most of the HACS functionalities.
+- [wilbiev](https://github.com/wilbiev) for maintaining the code and all improvements.
 - And of course [all the others](https://github.com/UI-Lovelace-Minimalist/UI/graphs/contributors) who cannot be named here due to space limitations. 😉 Thank you for your contribution ❤️

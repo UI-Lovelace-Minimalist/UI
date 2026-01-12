@@ -9,20 +9,18 @@ dependencies = [
   "mkdocs-material==9.7.1",
 ]
 
+[project.urls]
+"Source Code" = "https://github.com/UI-Lovelace-Minimalist/UI"
+"Bug Reports" = "https://github.com/UI-Lovelace-Minimalist/UI/issues"
+"Wiki" = "https://ui-lovelace-minimalist.github.io/UI/"
+"Discord" = "https://discord.gg/TPXg9b7GfR"
+"Forum" = "https://github.com/UI-Lovelace-Minimalist/UI/discussions"
+
 [tool.ruff]
 required-version = ">=0.13.0"
 line-length = 88
 target-version = "py313"
 exclude = [".venv", ".git", ".tox", "docs", "venv", "bin", "lib", "deps", "build"]
-
-[tool.pylint.TYPING]
-runtime-typing = false
-
-[tool.pylint.CODE_STYLE]
-max-line-length-suggestions = 88
-
-[tool.pylint.format]
-max-line-length = 88
 
 [tool.ruff.lint]
 select = [
@@ -193,6 +191,15 @@ ignore = [
 
   "FURB116",
 ]
+
+[tool.pylint.TYPING]
+runtime-typing = false
+
+[tool.pylint.CODE_STYLE]
+max-line-length-suggestions = 88
+
+[tool.pylint.format]
+max-line-length = 88
 
 [tool.ruff.lint.flake8-pytest-style]
 fixture-parentheses = false
