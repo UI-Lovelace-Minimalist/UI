@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - name: "⤵️ Checkout code"
-        uses: "actions/checkout@v4"
+        uses: "actions/checkout@v6"
 
       - name: "🚀 Run Labeler"
         uses: "crazy-max/ghaction-github-labeler@v5"  # Upgraded to v5
