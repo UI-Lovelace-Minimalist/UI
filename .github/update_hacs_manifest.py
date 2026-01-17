@@ -2,17 +2,10 @@
 
 import argparse
 import json
-import logging
 from pathlib import Path
-
-_LOGGER = logging.getLogger(__name__)
 
 # Use a constant for the path to keep the logic clean
 MANIFEST_PATH = Path("custom_components/ui_lovelace_minimalist/manifest.json")
-
-
-class MinimalistException(Exception):
-    """Base exception for UI Lovelace Minimalist."""
 
 
 def update_manifest() -> None:
@@ -24,7 +17,7 @@ def update_manifest() -> None:
 
     # 2. Check if file exists before opening
     if not MANIFEST_PATH.exists():
-        _LOGGER.debug("Error: Manifest file not found at %s", MANIFEST_PATH)
+        print(f"Error: Manifest file not found at {MANIFEST_PATH}")  # noqa: T201
         return
 
     # 3. Read and Update
@@ -39,12 +32,12 @@ def update_manifest() -> None:
             json.dump(manifest, f, indent=4, sort_keys=True)
             f.write("\n")  # Ensure trailing newline for POSIX compliance
 
-        _LOGGER.debug("Successfully updated manifest to version %s", args.version)
+        print(f"Successfully updated manifest to version {args.version}")  # noqa: T201
 
     except json.JSONDecodeError:
-        _LOGGER.debug("Error: %s is not a valid JSON file.", MANIFEST_PATH)
-    except MinimalistException:
-        _LOGGER.debug("An unexpected error occurred.")
+        print(f"Error: {MANIFEST_PATH} is not a valid JSON file.")  # noqa: T201
+    except Exception as err:  # noqa: BLE001
+        print(f"An unexpected error occurred: {err}")  # noqa: T201
 
 
 if __name__ == "__main__":
