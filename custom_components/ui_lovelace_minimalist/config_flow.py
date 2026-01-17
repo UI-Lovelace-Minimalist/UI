@@ -237,7 +237,6 @@ class UlmFlowHandler(ConfigFlow, domain=DOMAIN):
             self.hass.config_entries.async_update_entry(
                 existing_entry, data={"token": self.activation.access_token}
             )
-            await self.hass.config_entries.async_reload(existing_entry.entry_id)
             return self.async_abort(reason="reauth_successful")
 
         return self.async_create_entry(
