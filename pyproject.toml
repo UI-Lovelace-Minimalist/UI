@@ -146,12 +146,6 @@ ignore = [
   "PLW2901", # Outer {outer_kind} variable {name} overwritten by inner {inner_kind} target
   "PT011",   # pytest.raises({exception}) is too broad, set the `match` parameter or use a more specific exception
   "PT018",   # Assertion should be broken down into multiple parts
-  "PTH103",  # `os.makedirs()` should be replaced by `Path.mkdir(parents=True)`
-  "PTH110",  # `os.path.exists()` should be replaced by `Path.exists()`
-  "PTH119",  # `os.path.basename()` should be replaced by `Path.name`
-  "PTH120",  # `os.path.dirname()` should be replaced by `Path.parent`
-  "PTH123",  # `open()` should be replaced by `Path.open()`
-  "PTH202",  # `os.path.getsize` should be replaced by `Path.stat().st_size`
   "RUF001",  # String contains ambiguous unicode character.
   "RUF002",  # Docstring contains ambiguous unicode character.
   "RUF003",  # Comment contains ambiguous unicode character.

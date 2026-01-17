@@ -2,17 +2,17 @@
 
 from __future__ import annotations
 
+import asyncio
 from dataclasses import asdict, dataclass, field
-from functools import partial
 import logging
-import os
-import pathlib
+from pathlib import Path
 import shutil
 from typing import TYPE_CHECKING, Any
 
 from aiogithubapi import (
     GitHubAPI,
     GitHubAuthenticationException,
+    GitHubContentsModel,
     GitHubException,
     GitHubNotModifiedException,
     GitHubRatelimitException,
@@ -123,19 +123,19 @@ class UlmBase:
     version: str | None = None
 
     @property
-    def integration_dir(self) -> pathlib.Path:
+    def integration_dir(self) -> Path:
         """Return the ULM integration dir."""
         return self.integration.file_path
 
     @property
-    def templates_dir(self) -> pathlib.Path:
+    def templates_dir(self) -> Path:
         """Return the Button Cards Template dir."""
-        return pathlib.Path(f"{self.integration_dir}/__ui_minimalist__/ulm_templates")
+        return Path(f"{self.integration_dir}/__ui_minimalist__/ulm_templates")
 
     @property
-    def community_cards_dir(self) -> pathlib.Path:
+    def community_cards_dir(self) -> Path:
         """Return the Comminty cards dir inside Template dir."""
-        return pathlib.Path(f"{self.templates_dir}/community_cards")
+        return Path(f"{self.templates_dir}/community_cards")
 
     def disable_ulm(self, reason: UlmDisabledReason) -> None:
         """Disable Ulm."""
@@ -160,25 +160,21 @@ class UlmBase:
         """Save a file."""
         self.log.debug("Saving file: %s", file_path)
 
-        def _write_file() -> None:
-            os.makedirs(os.path.dirname(file_path), exist_ok=True)
-            with open(
-                file_path,
-                mode="w" if isinstance(content, str) else "wb",
-                encoding="utf-8" if isinstance(content, str) else None,
-                errors="ignore" if isinstance(content, str) else None,
-            ) as file_handler:
-                file_handler.write(content)
+        def _write_file() -> bool:
+            path = Path(file_path)
+            try:
+                path.parent.mkdir(parents=True, exist_ok=True)
+                if isinstance(content, str):
+                    path.write_text(content, encoding="utf-8", errors="ignore")
+                else:
+                    path.write_bytes(content)
+                return path.exists()
 
-        try:
-            await self.hass.async_add_executor_job(_write_file)
-        except (
-            BaseException
-        ):  # lgtm [py/catch-base-exception] pylint: disable=broad-except
-            self.log.exception("Could not write data to %s", file_path)
-            return False
+            except OSError:
+                self.log.exception("Could not write data to %s", file_path)
+                return False
 
-        return os.path.exists(file_path)
+        return await self.hass.async_add_executor_job(_write_file)
 
     async def async_github_get_file(self, filename: str) -> str:
         """Get the content of a file."""
@@ -188,21 +184,21 @@ class UlmBase:
             repository=GITHUB_REPO,
             path=filename,
         )
-        if response is None:
-            return ""
+        if response and hasattr(response, "data"):
+            if isinstance(response.data, GitHubContentsModel) and response.data.content:
+                return decode_content(response.data.content)
+        return ""
 
-        return decode_content(response.data.content)
-
-    async def async_github_get_tree(self, path: str) -> list:
+    async def async_github_get_tree(self, path: str) -> list[GitHubContentsModel]:
         """Get the content of a directory."""
         self.log.debug("Fetching github tree: %s", path)
         response = await self.async_github_api_method(
             method=self.githubapi.repos.contents.get, repository=GITHUB_REPO, path=path
         )
-        if response is None:
-            return []
-
-        return response.data
+        if response and hasattr(response, "data"):
+            if isinstance(response.data, list) and response.data:
+                return response.data
+        return []
 
     async def async_github_api_method(
         self,
@@ -232,15 +228,14 @@ class UlmBase:
             raise MinimalistException(_exception)
         return None
 
-    def list_dirs(self) -> list:
-        """Create directory list."""
-        self.log.debug("Create directory list")
+    def list_dirs(self) -> list[Path]:
+        """Return a list of directory Path objects."""
+        self.log.debug("Listing directories in %s", self.community_cards_dir)
 
-        return [
-            entry.path
-            for entry in os.scandir(self.community_cards_dir)
-            if entry.is_dir()
-        ]
+        if not self.community_cards_dir.is_dir():
+            return []
+
+        return [path for path in self.community_cards_dir.iterdir() if path.is_dir()]
 
     async def fetch_cards(self) -> None:
         """Fetch list of cards."""
@@ -249,50 +244,69 @@ class UlmBase:
             repository=GITHUB_REPO,
             path=COMMUNITY_CARDS_FOLDER,
         )
-        if response is None:
-            return
-        self.configuration.all_community_cards = [
-            c.name for c in response.data if c.type == "dir"
-        ]
+        if response and hasattr(response, "data"):
+            if isinstance(response.data, list) and response.data:
+                self.configuration.all_community_cards = [
+                    c.name for c in response.data if c.type == "dir"
+                ]
+
+    async def download_and_save(self, github_path, local_path):
+        """Download and save selected community cards."""
+        content = await self.async_github_get_file(filename=github_path)
+        await self.async_save_file(file_path=str(local_path), content=content)
 
     async def configure_community_cards(self) -> None:
         """Configure selected community cards."""
         self.log.info("Configuring selected community cards")
 
-        language = LANGUAGES[self.configuration.language]
-        os.makedirs(self.community_cards_dir, exist_ok=True)
-
+        # Handle full cleanup if disabled or no cards selected
         if (
             not self.configuration.community_cards_enabled
             or self.configuration.community_cards == []
         ):
-            self.hass.async_add_executor_job(
-                partial(
-                    shutil.rmtree, f"{self.community_cards_dir}/", ignore_errors=True
+            if self.community_cards_dir.exists():
+                await self.hass.async_add_executor_job(
+                    shutil.rmtree, str(self.community_cards_dir), True
                 )
-            )
-        elif self.configuration.community_cards_enabled:
-            existing_cards = await self.hass.async_add_executor_job(self.list_dirs)
-            for e in existing_cards:
-                card_dir = os.path.basename(e)
-                # Delete unselected folders
-                if card_dir not in self.configuration.community_cards:
-                    self.log.debug(
-                        "Deleting community card folder %s, not selected anymore.",
-                        card_dir,
-                    )
-                    self.hass.async_add_executor_job(
-                        partial(shutil.rmtree, e, ignore_errors=True)
-                    )
-                if card_dir not in self.configuration.all_community_cards:
-                    self.log.debug(
-                        "Deleting community card folder %s, that is not existing anymore on Github.",
-                        card_dir,
-                    )
-                    self.hass.async_add_executor_job(
-                        partial(shutil.rmtree, e, ignore_errors=True)
-                    )
+            return
 
+        # Ensure base directory exists for next steps
+        self.community_cards_dir.mkdir(parents=True, exist_ok=True)
+        language = LANGUAGES[self.configuration.language]
+
+        # Identify folders to delete (Unselected or missing from GitHub)
+        existing_dirs = await self.hass.async_add_executor_job(self.list_dirs)
+        all_github_cards = self.configuration.all_community_cards
+
+        delete_tasks = []
+        for path_str in existing_dirs:
+            path = Path(path_str)
+            card_name = path.name
+
+            if card_name not in self.configuration.community_cards:
+                self.log.debug(
+                    "Deleting community card folder %s, not selected anymore.",
+                    card_name,
+                )
+                delete_tasks.append(path)
+            elif card_name not in all_github_cards:
+                self.log.debug(
+                    "Deleting community card folder %s, that is not existing anymore on Github.",
+                    card_name,
+                )
+                delete_tasks.append(path)
+
+        # Batch delete unneeded folders to minimize executor overhead
+        if delete_tasks:
+
+            def _batch_delete(paths):
+                for p in paths:
+                    shutil.rmtree(str(p), ignore_errors=True)
+
+            await self.hass.async_add_executor_job(_batch_delete, delete_tasks)
+
+        # Download selected cards
+        if self.configuration.community_cards_enabled:
             for card in self.configuration.community_cards:
                 if card not in self.configuration.all_community_cards:
                     self.configuration.community_cards.remove(card)
@@ -300,37 +314,47 @@ class UlmBase:
                     card_files = await self.async_github_get_tree(
                         path=f"{COMMUNITY_CARDS_FOLDER}/{card}"
                     )
+                    download_tasks = []
                     for f in card_files:
                         if f.type == "file":
-                            card_file_path = (
-                                f"{self.community_cards_dir}/{card}/{f.name}"
-                            )
+                            target_path: Path = self.community_cards_dir / card / f.name
+
+                            # Pathlib check for existence and size
                             if (
-                                not os.path.exists(card_file_path)
-                                or os.path.getsize(card_file_path) != f.size
+                                not target_path.exists()
+                                or target_path.stat().st_size != f.size
                             ):
-                                await self.async_save_file(
-                                    file_path=card_file_path,
-                                    content=await self.async_github_get_file(
-                                        filename=f.path
-                                    ),
+                                download_tasks.append(
+                                    self.download_and_save(f.path, target_path)
                                 )
+
                         elif f.type == "dir" and f.name == "languages":
                             language_files = await self.async_github_get_tree(
                                 path=f.path
                             )
+
                             for lang in language_files:
-                                lang_file_path = f"{self.community_cards_dir}/{card}/languages/{lang.name}"
-                                if pathlib.Path(lang.name).stem == language and (
-                                    not os.path.exists(lang_file_path)
-                                    or os.path.getsize(lang_file_path) != lang.size
-                                ):
-                                    await self.async_save_file(
-                                        file_path=lang_file_path,
-                                        content=await self.async_github_get_file(
-                                            filename=lang.path
-                                        ),
+                                # Only download if the stem matches the target language
+                                if Path(lang.name).stem == language:
+                                    target_path: Path = (
+                                        self.community_cards_dir
+                                        / card
+                                        / "languages"
+                                        / lang.name
                                     )
+                                    if (
+                                        not target_path.exists()
+                                        or target_path.stat().st_size != lang.size
+                                    ):
+                                        download_tasks.append(
+                                            self.download_and_save(
+                                                lang.path, target_path
+                                            )
+                                        )
+
+                    # Execute all downloads concurrently
+                    if download_tasks:
+                        await asyncio.gather(*download_tasks)
 
     async def configure_plugins(self) -> bool:
         """Configure the Plugins ULM depends on."""
@@ -338,10 +362,11 @@ class UlmBase:
         self.log.info("Setup ULM Plugins")
 
         try:
-            if not os.path.exists(
+            browser_mod_path = Path(
                 self.hass.config.path("custom_components/browser_mod")
-            ):
-                self.log.error('HACS Integration repo "browser mod" is not installed!')
+            )
+            if not browser_mod_path.exists():
+                self.log.error('HACS Integration repo "Browser Mod" is not installed.')
 
             depenceny_resource_paths = [
                 "button-card",
@@ -357,15 +382,16 @@ class UlmBase:
                 "weather-radar-card",
             ]
             for p in depenceny_resource_paths:
+                frontend_repo_path = Path(self.hass.config.path(f"www/community/{p}"))
                 if not self.configuration.include_other_cards:
-                    if not os.path.exists(self.hass.config.path(f"www/community/{p}")):
+                    if not frontend_repo_path.exists():
                         self.log.error(
                             'HACS Frontend repo "%s" is not installed, '
                             "See Integration Configuration.",
                             p,
                         )
-                elif os.path.exists(self.hass.config.path(f"www/community/{p}")):
-                    _LOGGER.error(
+                elif frontend_repo_path.exists():
+                    self.log.error(
                         'HACS Frontend repo "%s" is already installed, '
                         "Remove it or disable include custom cards.",
                         p,
@@ -388,10 +414,8 @@ class UlmBase:
                 ]
             )
 
-        except MinimalistException:
-            self.log.exception(
-                "An error occurred when installing the HACS Frontend repos."
-            )
+        except MinimalistException as exception:
+            self.log.error(exception)
             self.disable_ulm(UlmDisabledReason.LOAD_ULM)
             return False
 
@@ -456,157 +480,132 @@ class UlmBase:
         """Configure initial dashboard & cards directory."""
         self.log.info("Setup ULM Configuration")
 
-        try:
-            # Cleanup
-            self.hass.async_add_executor_job(
-                partial(
-                    shutil.rmtree,
-                    self.hass.config.path(f"{DOMAIN}/configs"),
-                    ignore_errors=True,
-                )
-            )
-            self.hass.async_add_executor_job(
-                partial(
-                    shutil.rmtree,
-                    self.hass.config.path(f"{DOMAIN}/addons"),
-                    ignore_errors=True,
-                )
-            )
-            # Create config dir
-            os.makedirs(self.hass.config.path(f"{DOMAIN}/dashboard"), exist_ok=True)
-            os.makedirs(self.hass.config.path(f"{DOMAIN}/custom_cards"), exist_ok=True)
-            os.makedirs(
-                self.hass.config.path(f"{DOMAIN}/custom_actions"), exist_ok=True
-            )
+        # Define Path objects
+        base_dir = Path(self.hass.config.path(DOMAIN))
+        integration_lovelace = Path(self.integration_dir) / "lovelace"
+        dashboard_file = base_dir / "dashboard" / "ui-lovelace.yaml"
+        adaptive_dir = base_dir / "dashboard" / "adaptive-dash"
+        actions_file = base_dir / "custom_actions" / "custom_actions.yaml"
 
-            if os.path.exists(self.hass.config.path(f"{DOMAIN}/dashboard")):
-                os.makedirs(self.templates_dir, exist_ok=True)
+        def _sync_file_operations():
+            """Grouped synchronous I/O to run in one executor job."""
+            # Cleanup legacy folders
+            for folder in ["configs", "addons"]:
+                shutil.rmtree(base_dir / folder, ignore_errors=True)
+
+            # Create necessary directories
+            for folder in ["dashboard", "custom_cards", "custom_actions"]:
+                (base_dir / folder).mkdir(parents=True, exist_ok=True)
+
+            # Proceed if dashboard dir exists (it should, we just created it)
+            if (base_dir / "dashboard").exists():
+                self.templates_dir.mkdir(parents=True, exist_ok=True)
 
                 # Translations
                 language = LANGUAGES[self.configuration.language]
 
                 # Copy default language file over to config dir
-                self.hass.async_add_executor_job(
-                    shutil.copy2,
-                    f"{self.integration_dir}/lovelace/translations/default.yaml",
-                    f"{self.templates_dir}/default.yaml",
-                )
-                # Copy example dashboard file over to user config dir if not exists
-                if self.configuration.sidepanel_enabled and self.hass is not None:
-                    if not os.path.exists(
-                        self.hass.config.path(f"{DOMAIN}/dashboard/ui-lovelace.yaml")
-                    ):
-                        self.hass.async_add_executor_job(
-                            shutil.copy2,
-                            f"{self.integration_dir}/lovelace/ui-lovelace.yaml",
-                            self.hass.config.path(
-                                f"{DOMAIN}/dashboard/ui-lovelace.yaml"
-                            ),
-                        )
-                # Copy adaptive dashboard if not exists and is selected as option
-                if self.configuration.adaptive_ui_enabled and self.hass is not None:
-                    if not os.path.exists(
-                        self.hass.config.path(f"{DOMAIN}/dashboard/adaptive-dash")
-                    ):
-                        self.hass.async_add_executor_job(
-                            shutil.copytree,
-                            f"{self.integration_dir}/lovelace/adaptive-dash",
-                            self.hass.config.path(f"{DOMAIN}/dashboard/adaptive-dash"),
-                        )
-                # Copy example custom actions file over to user config dir if not exists
-                if not os.path.exists(
-                    self.hass.config.path(
-                        f"{DOMAIN}/custom_actions/custom_actions.yaml"
-                    ),
-                ):
-                    self.hass.async_add_executor_job(
-                        shutil.copy2,
-                        f"{self.integration_dir}/lovelace/custom_actions.yaml",
-                        self.hass.config.path(
-                            f"{DOMAIN}/custom_actions/custom_actions.yaml"
-                        ),
-                    )
-                # Copy chosen language file over to config dir
-                self.hass.async_add_executor_job(
-                    shutil.copy2,
-                    f"{self.integration_dir}/lovelace/translations/{language}.yaml",
-                    f"{self.templates_dir}/language.yaml",
-                )
-                # Copy over cards from integration
-                self.hass.async_add_executor_job(
-                    partial(
-                        shutil.copytree,
-                        f"{self.integration_dir}/lovelace/ulm_templates",
-                        f"{self.templates_dir}",
-                        dirs_exist_ok=True,
-                    ),
-                )
-                # Copy over manually installed custom_cards from user
-                self.hass.async_add_executor_job(
-                    partial(
-                        shutil.copytree,
-                        self.hass.config.path(f"{DOMAIN}/custom_cards"),
-                        f"{self.templates_dir}/custom_cards",
-                        dirs_exist_ok=True,
-                    ),
-                )
-                # Copy over manually installed custom_actions from user
-                self.hass.async_add_executor_job(
-                    partial(
-                        shutil.copytree,
-                        self.hass.config.path(f"{DOMAIN}/custom_actions"),
-                        f"{self.templates_dir}/custom_actions",
-                        dirs_exist_ok=True,
-                    ),
-                )
-                # Copy over themes to defined themes folder
-                self.hass.async_add_executor_job(
-                    partial(
-                        shutil.copytree,
-                        f"{self.integration_dir}/lovelace/themefiles",
-                        self.hass.config.path(f"{self.configuration.theme_path}/"),
-                        dirs_exist_ok=True,
-                    ),
+                shutil.copy2(
+                    integration_lovelace / "translations" / "default.yaml",
+                    self.templates_dir / "default.yaml",
                 )
 
+                # Copy chosen language file over to config dir
+                shutil.copy2(
+                    integration_lovelace / "translations" / f"{language}.yaml",
+                    self.templates_dir / "language.yaml",
+                )
+
+                # Copy example dashboard file over to user config dir if not exists
+                if self.configuration.sidepanel_enabled and not dashboard_file.exists():
+                    shutil.copy2(
+                        integration_lovelace / "ui-lovelace.yaml", dashboard_file
+                    )
+
+                if self.configuration.adaptive_ui_enabled and not adaptive_dir.exists():
+                    shutil.copytree(
+                        integration_lovelace / "adaptive-dash", adaptive_dir
+                    )
+
+                # Copy example custom actions file over to user config dir if not exists
+                if not actions_file.exists():
+                    shutil.copy2(
+                        integration_lovelace / "custom_actions.yaml", actions_file
+                    )
+
+                # Copy over cards from integration
+                shutil.copytree(
+                    integration_lovelace / "ulm_templates",
+                    self.templates_dir,
+                    dirs_exist_ok=True,
+                )
+
+                # Copy over manually installed custom_cards from user
+                shutil.copytree(
+                    base_dir / "custom_cards",
+                    self.templates_dir / "custom_cards",
+                    dirs_exist_ok=True,
+                )
+
+                # Copy over manually installed custom_actions from user
+                shutil.copytree(
+                    base_dir / "custom_actions",
+                    self.templates_dir / "custom_actions",
+                    dirs_exist_ok=True,
+                )
+
+                # Copy over themes to defined themes folder
+                theme_target = Path(
+                    self.hass.config.path(self.configuration.theme_path)
+                )
+                shutil.copytree(
+                    integration_lovelace / "themefiles",
+                    theme_target,
+                    dirs_exist_ok=True,
+                )
+
+        try:
+            # Run all disk I/O in a single block
+            await self.hass.async_add_executor_job(_sync_file_operations)
+
+            # UI Reload and Service Registration
             self.hass.bus.async_fire("ui_lovelace_minimalist_reload")
 
             async def handle_reload(call):
-                _LOGGER.debug("Reload UI Lovelace Minimalist Configuration")
-
-                self.reload_configuration()
+                self.log.debug("Reload UI Lovelace Minimalist Configuration")
+                await self.reload_configuration()
 
             # Register servcie ui_lovelace_minimalist.reload
             self.hass.services.async_register(DOMAIN, "reload", handle_reload)
 
-        except MinimalistException:
-            self.log.error("Unable to reload UI Lovelace Minimalist Configuration")
+        except MinimalistException as exception:
+            self.log.error(exception)
             self.disable_ulm(UlmDisabledReason.LOAD_ULM)
             return False
 
         return True
 
-    def reload_configuration(self):
+    async def reload_configuration(self):
         """Reload Configuration."""
-        self.log.info("Reload ULM Configuration")
-        if os.path.exists(self.hass.config.path(f"{DOMAIN}/custom_cards")):
+        self.log.info("Reloading ULM Configuration")
+
+        # Define Path objects
+        base_path = Path(self.hass.config.path(DOMAIN))
+
+        def _sync_custom_folders():
+            """Internal helper to group I/O operations."""
+
             # Copy over manually installed custom_cards from user
-            self.hass.async_add_executor_job(
-                partial(
-                    shutil.copytree,
-                    self.hass.config.path(f"{DOMAIN}/custom_cards"),
-                    f"{self.templates_dir}/custom_cards",
-                    dirs_exist_ok=True,
-                ),
-            )
-        if os.path.exists(self.hass.config.path(f"{DOMAIN}/custom_actions")):
-            # Copy over manually installed custom_actions from user
-            self.hass.async_add_executor_job(
-                partial(
-                    shutil.copytree,
-                    self.hass.config.path(f"{DOMAIN}/custom_actions"),
-                    f"{self.templates_dir}/custom_actions",
-                    dirs_exist_ok=True,
-                ),
-            )
+            folders = ["custom_cards", "custom_actions"]
+            for folder in folders:
+                source = base_path / folder
+                if source.exists():
+                    shutil.copytree(
+                        source, self.templates_dir / folder, dirs_exist_ok=True
+                    )
+
+        # Run all I/O in one executor thread
+        await self.hass.async_add_executor_job(_sync_custom_folders)
+
+        # Notify the system
         self.hass.bus.async_fire("ui_lovelace_minimalist_reload")
