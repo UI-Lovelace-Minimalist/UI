@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import logging
+from pathlib import Path
+import shutil
 from typing import TYPE_CHECKING, Any, cast
 
 from aiogithubapi import AIOGitHubAPIException, GitHubAPI, GitHubClientKwarg
@@ -132,17 +134,69 @@ async def async_remove_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> 
     """Remove Integration."""
     _LOGGER.debug("%s is now uninstalled", NAME)
 
-    # TODO: cleanup
-    #  - themes
-    #  - blueprints
+    # Remove the Frontend Panels
     async_remove_panel(hass, "ui-lovelace-minimalist")
 
+    dashboard_url = "ui-lovelace-minimalist"
+    is_registered = dashboard_url in hass.data.get("frontend_panels", {})
+    sidepanel_enabled = config_entry.options.get("sidepanel_enabled", False)
 
-async def async_reload_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> None:
-    """Reload Integration."""
-    _LOGGER.debug("Reload the config entry")
+    # Check config entry options and if sidepanel is enabled
+    if is_registered or sidepanel_enabled:
+        _LOGGER.debug("Removing Minimalist dashboard panel: %s", dashboard_url)
 
-    await async_setup_entry(hass, config_entry)
+        # Remove minimalist panel from the sidebar
+        async_remove_panel(hass, dashboard_url)
+
+        # Clean up the Lovelace YAML object if it exists in memory
+        if (
+            "lovelace" in hass.data
+            and dashboard_url in hass.data["lovelace"].dashboards
+        ):
+            hass.data["lovelace"].dashboards.pop(dashboard_url)
+
+    adaptive_url = "adaptive-dash"
+    is_registered = adaptive_url in hass.data.get("frontend_panels", {})
+    adaptive_enabled = config_entry.options.get("adaptive_ui_enabled", False)
+
+    # Check config entry options and if sidepanel is enabled
+    if is_registered or adaptive_enabled:
+        _LOGGER.debug("Removing Minimalist adaptive panel: %s", adaptive_url)
+
+        # Remove adaptive panel from the sidebar
+        async_remove_panel(hass, adaptive_url)
+
+        # Clean up the Lovelace YAML object if it exists in memory
+        if "lovelace" in hass.data and adaptive_url in hass.data["lovelace"].dashboards:
+            hass.data["lovelace"].dashboards.pop(adaptive_url)
+
+    # Identify theme and blueprint paths for cleanup
+    theme_path = config_entry.options.get("theme_path", "themes")
+
+    paths_to_remove = [
+        Path(hass.config.path(theme_path)) / "minimalist-desktop",
+        Path(hass.config.path(theme_path)) / "minimalist-mobile",
+        Path(hass.config.path(theme_path)) / "minimalist-ios-tapbar",
+        Path(hass.config.path(theme_path)) / "minimalist-mobile-tapbar",
+        Path(
+            hass.config.path(
+                "custom_components/ui_lovelace_minimalist/__ui_minimalist__"
+            )
+        ),
+    ]
+
+    def _cleanup_files(paths: list[Path]):
+        """Sync cleanup task for the executor."""
+
+        for path in paths:
+            if path.exists():
+                if path.is_dir():
+                    shutil.rmtree(path, ignore_errors=True)
+                else:
+                    path.unlink(missing_ok=True)
+
+    # Run cleanup in executor
+    await hass.async_add_executor_job(_cleanup_files, paths_to_remove)
 
 
 async def config_entry_update_listener(
@@ -158,4 +212,4 @@ async def async_unload_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> 
     """Unload Integration."""
     _LOGGER.debug("Unload the config entry")
 
-    return await async_initialize_integration(hass=hass, config_entry=config_entry)
+    return True
