@@ -134,8 +134,41 @@ async def async_remove_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> 
     """Remove Integration."""
     _LOGGER.debug("%s is now uninstalled", NAME)
 
-    # Remove the Frontend Panel
+    # Remove the Frontend Panels
     async_remove_panel(hass, "ui-lovelace-minimalist")
+
+    dashboard_url = "ui-lovelace-minimalist"
+    is_registered = dashboard_url in hass.data.get("frontend_panels", {})
+    sidepanel_enabled = config_entry.options.get("sidepanel_enabled", False)
+
+    # Check config entry options and if sidepanel is enabled
+    if is_registered or sidepanel_enabled:
+        _LOGGER.debug("Removing Minimalist dashboard panel: %s", dashboard_url)
+
+        # Remove minimalist panel from the sidebar
+        async_remove_panel(hass, dashboard_url)
+
+        # Clean up the Lovelace YAML object if it exists in memory
+        if (
+            "lovelace" in hass.data
+            and dashboard_url in hass.data["lovelace"].dashboards
+        ):
+            hass.data["lovelace"].dashboards.pop(dashboard_url)
+
+    adaptive_url = "adaptive-dash"
+    is_registered = adaptive_url in hass.data.get("frontend_panels", {})
+    adaptive_enabled = config_entry.options.get("adaptive_ui_enabled", False)
+
+    # Check config entry options and if sidepanel is enabled
+    if is_registered or adaptive_enabled:
+        _LOGGER.debug("Removing Minimalist adaptive panel: %s", adaptive_url)
+
+        # Remove adaptive panel from the sidebar
+        async_remove_panel(hass, adaptive_url)
+
+        # Clean up the Lovelace YAML object if it exists in memory
+        if "lovelace" in hass.data and adaptive_url in hass.data["lovelace"].dashboards:
+            hass.data["lovelace"].dashboards.pop(adaptive_url)
 
     # Identify theme and blueprint paths for cleanup
     theme_path = config_entry.options.get("theme_path", "themes")
