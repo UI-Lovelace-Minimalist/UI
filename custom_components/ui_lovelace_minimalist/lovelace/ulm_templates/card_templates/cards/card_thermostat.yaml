@@ -222,42 +222,32 @@ card_thermostat:
               entity: "[[[ return entity.entity_id ]]]"
               icon: "mdi:minus"
               tap_action:
-                action: "perform-action"
-                perform_action: "climate.set_temperature"
+                action: "call-service"
+                service: "climate.set_temperature"
                 target:
                   entity_id: "[[[ return entity.entity_id ]]]"
-                data:
-                  target_temp_low: |
-                    [[[
-                      if (entity.attributes.target_temp_low == null) {
-                        return 0;
-                      } else {
-                        const unit = hass.config.unit_system.temperature
-                        const step = variables.ulm_card_thermostat_temp_step || entity.attributes.target_temp_step || (unit == '°F' ? 1.0 : 0.5)
-                        const new_temp =  (parseFloat(entity.attributes.target_temp_high) - step)
-                        return (new_temp - variables.ulm_card_thermostat_minimum_temp_spread < entity.attributes.target_temp_low ? new_temp - variables.ulm_card_thermostat_minimum_temp_spread : entity.attributes.target_temp_low);
-                      }
-                    ]]]
-                  target_temp_high: |
-                    [[[
-                      if (entity.attributes.target_temp_low == null) {
-                        return 0;
-                      } else {
-                        const unit = hass.config.unit_system.temperature
-                        const step = variables.ulm_card_thermostat_temp_step || entity.attributes.target_temp_step || (unit == '°F' ? 1.0 : 0.5)
-                        return (parseFloat(entity.attributes.target_temp_high) - step)
-                      }
-                    ]]]
-                  temperature: |
-                    [[[
-                      if (entity.attributes.temperature == null) {
-                        return 0;
-                      } else {
-                        const unit = hass.config.unit_system.temperature
-                        const step = variables.ulm_card_thermostat_temp_step || entity.attributes.target_temp_step || (unit == '°F' ? 1.0 : 0.5)
-                        return (parseFloat(states[entity.entity_id].attributes.temperature) - step)
-                      }
-                    ]]]
+                data: >
+                  [[[
+                    const unit = hass.config.unit_system.temperature;
+                    const step = variables.ulm_card_thermostat_temp_step || entity.attributes.target_temp_step || (unit == '°F' ? 1.0 : 0.5);
+
+                    // Check if entity supports dual-setpoint (target_temp_low/high)
+                    if (entity.attributes.target_temp_low != null && entity.attributes.target_temp_high != null) {
+                      const new_temp = (parseFloat(entity.attributes.target_temp_high) - step);
+                      return {
+                        target_temp_low: (new_temp - variables.ulm_card_thermostat_minimum_temp_spread < entity.attributes.target_temp_low ? new_temp - variables.ulm_card_thermostat_minimum_temp_spread : entity.attributes.target_temp_low),
+                        target_temp_high: new_temp
+                      };
+                    }
+                    // Otherwise use single-setpoint (temperature)
+                    else if (entity.attributes.temperature != null) {
+                      return {
+                        temperature: Math.max(parseFloat(entity.attributes.temperature) - step, 0)
+                      };
+                    }
+                    // Fallback
+                    return {};
+                  ]]]
               state:
                 - operator: "template"
                   value: >
@@ -293,39 +283,31 @@ card_thermostat:
               entity: "[[[ return entity.entity_id ]]]"
               icon: "mdi:plus"
               tap_action:
-                action: "perform-action"
-                perform_action: "climate.set_temperature"
+                action: "call-service"
+                service: "climate.set_temperature"
                 target:
                   entity_id: "[[[ return entity.entity_id ]]]"
-                data:
-                  target_temp_low: |
-                    [[[
-                      if (entity.attributes.target_temp_low == null) {
-                        return 0;
-                      } else {
-                        return entity.attributes.target_temp_low;
-                      }
-                    ]]]
-                  target_temp_high: |
-                    [[[
-                      if (entity.attributes.target_temp_high == null) {
-                        return 0;
-                      } else {
-                        const unit = hass.config.unit_system.temperature
-                        const step = variables.ulm_card_thermostat_temp_step || entity.attributes.target_temp_step || (unit == '°F' ? 1.0 : 0.5)
-                        return (parseFloat(entity.attributes.target_temp_high) + step)
-                      }
-                    ]]]
-                  temperature: |
-                    [[[
-                      if (entity.attributes.temperature == null) {
-                        return 0;
-                      } else {
-                        const unit = hass.config.unit_system.temperature
-                        const step = variables.ulm_card_thermostat_temp_step || entity.attributes.target_temp_step || (unit == '°F' ? 1.0 : 0.5)
-                        return (parseFloat(states[entity.entity_id].attributes.temperature) + step)
-                      }
-                    ]]]
+                data: >
+                  [[[
+                    const unit = hass.config.unit_system.temperature;
+                    const step = variables.ulm_card_thermostat_temp_step || entity.attributes.target_temp_step || (unit == '°F' ? 1.0 : 0.5);
+
+                    // Check if entity supports dual-setpoint (target_temp_low/high)
+                    if (entity.attributes.target_temp_low != null && entity.attributes.target_temp_high != null) {
+                      return {
+                        target_temp_low: entity.attributes.target_temp_low,
+                        target_temp_high: (parseFloat(entity.attributes.target_temp_high) + step)
+                      };
+                    }
+                    // Otherwise use single-setpoint (temperature)
+                    else if (entity.attributes.temperature != null) {
+                      return {
+                        temperature: parseFloat(entity.attributes.temperature) + step
+                      };
+                    }
+                    // Fallback
+                    return {};
+                  ]]]
               state:
                 - operator: "template"
                   value: >
@@ -350,18 +332,31 @@ card_thermostat:
               entity: "[[[ return entity.entity_id ]]]"
               icon: "mdi:minus"
               tap_action:
-                action: "perform-action"
-                perform_action: "climate.set_temperature"
+                action: "call-service"
+                service: "climate.set_temperature"
                 target:
                   entity_id: "[[[ return entity.entity_id ]]]"
-                data:
-                  target_temp_low: |
-                    [[[
-                      const unit = hass.config.unit_system.temperature
-                      const step = variables.ulm_card_thermostat_temp_step || entity.attributes.target_temp_step || (unit == '°F' ? 1.0 : 0.5)
-                      return (parseFloat(entity.attributes.target_temp_low) - step)
-                    ]]]
-                  target_temp_high: "[[[ return entity.attributes.target_temp_high ]]]"
+                data: >
+                  [[[
+                    const unit = hass.config.unit_system.temperature;
+                    const step = variables.ulm_card_thermostat_temp_step || entity.attributes.target_temp_step || (unit == '°F' ? 1.0 : 0.5);
+
+                    // Check if entity supports dual-setpoint (target_temp_low/high)
+                    if (entity.attributes.target_temp_low != null && entity.attributes.target_temp_high != null) {
+                      return {
+                        target_temp_low: parseFloat(entity.attributes.target_temp_low) - step,
+                        target_temp_high: entity.attributes.target_temp_high
+                      };
+                    }
+                    // Otherwise use single-setpoint (temperature)
+                    else if (entity.attributes.temperature != null) {
+                      return {
+                        temperature: Math.max(parseFloat(entity.attributes.temperature) - step, 0)
+                      };
+                    }
+                    // Fallback
+                    return {};
+                  ]]]
               state:
                 - operator: "template"
                   value: >
@@ -397,24 +392,32 @@ card_thermostat:
               entity: "[[[ return entity.entity_id ]]]"
               icon: "mdi:plus"
               tap_action:
-                action: "perform-action"
-                perform_action: "climate.set_temperature"
+                action: "call-service"
+                service: "climate.set_temperature"
                 target:
                   entity_id: "[[[ return entity.entity_id ]]]"
-                data:
-                  target_temp_low: |
-                    [[[
-                      const unit = hass.config.unit_system.temperature
-                      const step = variables.ulm_card_thermostat_temp_step || entity.attributes.target_temp_step || (unit == '°F' ? 1.0 : 0.5)
-                      return (parseFloat(entity.attributes.target_temp_low) + step)
-                    ]]]
-                  target_temp_high: |
-                    [[[
-                      const unit = hass.config.unit_system.temperature
-                      const step = variables.ulm_card_thermostat_temp_step || entity.attributes.target_temp_step || (unit == '°F' ? 1.0 : 0.5)
-                      const new_temp = (parseFloat(entity.attributes.target_temp_low) + step)
-                      return (new_temp + variables.ulm_card_thermostat_minimum_temp_spread > entity.attributes.target_temp_high ? new_temp + variables.ulm_card_thermostat_minimum_temp_spread : entity.attributes.target_temp_high)
-                    ]]]
+                data: >
+                  [[[
+                    const unit = hass.config.unit_system.temperature;
+                    const step = variables.ulm_card_thermostat_temp_step || entity.attributes.target_temp_step || (unit == '°F' ? 1.0 : 0.5);
+
+                    // Check if entity supports dual-setpoint (target_temp_low/high)
+                    if (entity.attributes.target_temp_low != null && entity.attributes.target_temp_high != null) {
+                      const new_temp = (parseFloat(entity.attributes.target_temp_low) + step);
+                      return {
+                        target_temp_low: new_temp,
+                        target_temp_high: (new_temp + variables.ulm_card_thermostat_minimum_temp_spread > entity.attributes.target_temp_high ? new_temp + variables.ulm_card_thermostat_minimum_temp_spread : entity.attributes.target_temp_high)
+                      };
+                    }
+                    // Otherwise use single-setpoint (temperature)
+                    else if (entity.attributes.temperature != null) {
+                      return {
+                        temperature: parseFloat(entity.attributes.temperature) + step
+                      };
+                    }
+                    // Fallback
+                    return {};
+                  ]]]
               state:
                 - operator: "template"
                   value: >
