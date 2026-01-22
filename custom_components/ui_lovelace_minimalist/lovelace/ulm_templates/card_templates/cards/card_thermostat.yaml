@@ -222,8 +222,8 @@ card_thermostat:
               entity: "[[[ return entity.entity_id ]]]"
               icon: "mdi:minus"
               tap_action:
-                action: "call-service"
-                service: "climate.set_temperature"
+                action: "perform-action"
+                perform_action: "climate.set_temperature"
                 target:
                   entity_id: "[[[ return entity.entity_id ]]]"
                 data: >
@@ -283,8 +283,8 @@ card_thermostat:
               entity: "[[[ return entity.entity_id ]]]"
               icon: "mdi:plus"
               tap_action:
-                action: "call-service"
-                service: "climate.set_temperature"
+                action: "perform-action"
+                perform_action: "climate.set_temperature"
                 target:
                   entity_id: "[[[ return entity.entity_id ]]]"
                 data: >
@@ -332,8 +332,8 @@ card_thermostat:
               entity: "[[[ return entity.entity_id ]]]"
               icon: "mdi:minus"
               tap_action:
-                action: "call-service"
-                service: "climate.set_temperature"
+                action: "perform-action"
+                perform_action: "climate.set_temperature"
                 target:
                   entity_id: "[[[ return entity.entity_id ]]]"
                 data: >
@@ -392,8 +392,8 @@ card_thermostat:
               entity: "[[[ return entity.entity_id ]]]"
               icon: "mdi:plus"
               tap_action:
-                action: "call-service"
-                service: "climate.set_temperature"
+                action: "perform-action"
+                perform_action: "climate.set_temperature"
                 target:
                   entity_id: "[[[ return entity.entity_id ]]]"
                 data: >

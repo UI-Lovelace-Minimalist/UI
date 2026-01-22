@@ -105,7 +105,7 @@ class UlmConfiguration:
     def update_from_dict(self, data: dict) -> None:
         """Set attributes from dicts."""
         if not isinstance(data, dict):
-            raise InvalidConfigurationError("Configuration is not valid.")
+            raise InvalidConfigurationError("Configuration is not valid")
 
         for key, value in data.items():
             self.__setattr__(key, value)
@@ -285,13 +285,13 @@ class UlmBase:
 
             if card_name not in self.configuration.community_cards:
                 self.log.debug(
-                    "Deleting community card folder %s, not selected anymore.",
+                    "Deleting community card folder %s, not selected anymore",
                     card_name,
                 )
                 delete_tasks.append(path)
             elif card_name not in all_github_cards:
                 self.log.debug(
-                    "Deleting community card folder %s, that is not existing anymore on Github.",
+                    "Deleting community card folder %s, that is not existing anymore on Github",
                     card_name,
                 )
                 delete_tasks.append(path)
@@ -366,7 +366,7 @@ class UlmBase:
                 self.hass.config.path("custom_components/browser_mod")
             )
             if not browser_mod_path.exists():
-                self.log.error('HACS Integration repo "Browser Mod" is not installed.')
+                self.log.error('HACS Integration repo "Browser Mod" is not installed')
 
             depenceny_resource_paths = [
                 "button-card",
@@ -387,13 +387,13 @@ class UlmBase:
                     if not frontend_repo_path.exists():
                         self.log.error(
                             'HACS Frontend repo "%s" is not installed, '
-                            "See Integration Configuration.",
+                            "See Integration Configuration",
                             p,
                         )
                 elif frontend_repo_path.exists():
                     self.log.error(
                         'HACS Frontend repo "%s" is already installed, '
-                        "Remove it or disable include custom cards.",
+                        "Remove it or disable include custom cards",
                         p,
                     )
 
