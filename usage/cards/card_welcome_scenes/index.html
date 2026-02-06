@@ -1,0 +1,5712 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://ui-lovelace-minimalist.github.io/UI/usage/cards/card_welcome_scenes/">
+      
+      
+        <link rel="prev" href="../card_weather_ulm/">
+      
+      
+        <link rel="next" href="../../chips/chip_alarm/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/logos/favicon/favicon-32x32.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Welcome Scenes Card - UI Lovelace Minimalist</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#description" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="UI Lovelace Minimalist" class="md-header__button md-logo" aria-label="UI Lovelace Minimalist" data-md-component="logo">
+      
+  <img src="../../../assets/logos/website_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            UI Lovelace Minimalist
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Welcome Scenes Card
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/UI-Lovelace-Minimalist/UI" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    UI-Lovelace-Minimalist/UI
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../setup/download/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Setup
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../card_battery/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Usage
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../development/card_style_guide/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Development
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../troubleshooting/troubleshooting/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Troubleshooting/FAQ
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="UI Lovelace Minimalist" class="md-nav__button md-logo" aria-label="UI Lovelace Minimalist" data-md-component="logo">
+      
+  <img src="../../../assets/logos/website_logo.png" alt="logo">
+
+    </a>
+    UI Lovelace Minimalist
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/UI-Lovelace-Minimalist/UI" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    UI-Lovelace-Minimalist/UI
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Setup
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/download/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Download
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/customizing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Customizing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/custom_cards/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom cards
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/adaptive_dash/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Adaptive Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/custom_actions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Actions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usage
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Usage
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cards
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cards
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../card_battery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Battery Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../card_binary_sensor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Binary Sensor Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../card_binary_sensor_alert/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Binary Sensor Alert Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../card_cover/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cover Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../card_fan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fan Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../card_generic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generic Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../card_generic_swap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generic Swap Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../card_graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../card_input_boolean/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Input_boolean Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../card_light/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Light Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../card_media_player/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Media_player Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../card_navigate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Navigate Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../card_person/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Person Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../card_power_outlet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Power Outlet Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../card_room/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Room Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../card_scenes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scenes Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../card_script/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Script Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../card_thermostat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thermostat Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../card_title/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Title Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../card_vacuum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vacuum Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../card_vertical_button/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vertical Button Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../card_weather/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Weather Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../card_weather_ulm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Weather Card ULM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome Scenes Card
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome Scenes Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Description
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entity-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entity Variables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirement-collapse-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requirement Collapse Function
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chips
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chips
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chips/chip_alarm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Alarm Chip
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chips/chip_back/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Back Chip
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chips/chip_icon_double_state/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Icon Double State Chip
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chips/chip_icon_label/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Icon Label Chip
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chips/chip_icon_only/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Icon Only Chip
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chips/chip_icon_state/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Icon State Chip
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chips/chip_mdi_icon_only/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mdi:icon Only Chip
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chips/chip_mdi_icon_state/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mdi:icon State Chip
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chips/chip_navigate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Navigate Chip
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chips/chip_power_consumption/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Power Consumption Chip
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chips/chip_presence_detection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Presence Detection Chip
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chips/chip_temperature/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Temperature Chip
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Popups
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Popups
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../popups/popup_cover/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cover Popup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../popups/popup_light/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Light Popup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../popups/popup_media_player/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Media_player Popup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../popups/popup_power_outlet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Power Outlet Popup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../popups/popup_thermostat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thermostat Popup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../popups/popup_vacuum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vacuum Popup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../popups/popup_weather/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Weather Popup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom cards
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Custom cards
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_afvalophaling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Afvalophaling Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_alarm_time/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Alarm Time Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_apexcharts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apexcharts Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_bar_card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bar Card Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_camera/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Camera Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_chromecast/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mediaplayer Chromecast Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_damix48_power_details/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Power Details Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_device_tracker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Device Tracker Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_drealine_roomview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Drealine RoomView - Custom Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_eraycetinay_elapsed_time/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Elapsed Time Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_eraycetinay_lock/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lock Card Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_esh_room/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Card Room
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_esh_welcome/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Card Welcome Navigation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_haven_washer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Washer/Dryer/Dishwasher Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_heat_pump/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Heat Pump Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_homeassistant_updates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homeassistant Updates Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_httpedo13_sun/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sun Card Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_httpedo13_thermostat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thermostat Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_iAbadia_battery_chip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    iAbadia's Battery Chip Custom Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_imswel_medias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Card Media
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_imswel_person/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Person Card Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_input_datetime/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Input Datetime Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_input_number/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Input Number Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_irmajavi_entities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entities Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_irmajavi_speedtest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Speedtest Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_irmajavi_weather/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Weather Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_light_colorpick/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Colorpicker Light Card Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_media_player_sonos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mediaplayer Sonos Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_more_power_outlet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    More Power Outlet Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_mpse_gauge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gauge Card Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_mpse_printer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Printer Card Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_mpse_thermostat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thermostat mpse Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_mpse_wifisignal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wifi Signal Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_nas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NAS Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_neekster_update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Card Update
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_nik_clock/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tablet Clock Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_nik_door/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Minimal Door Lock Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_nik_nas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nas Summary Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_nik_tablet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tablet Custom Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_paddy_dwd_pollen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DWD Pollen Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_paddy_waste_collection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Waste Collection Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_paddy_welcome/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_person_chip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Person Chip Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_person_info/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Person Info Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_person_info_small/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Person Info Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_playstation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PS4 Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_qubino/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qubino Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_ristou_person/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Card Ristou Person
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_saxel_fan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fan Card Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_scenes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scenes Card Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_schumijo_car/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Car Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_schumijo_flower/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flower Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_sisimomo_printer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Printer Card Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_tpx01_aircondition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AirCondition Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_vncntdev_device_tracer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Device Tracker Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_water_heater/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Water Heater Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_wilbiev_subtitle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subtitle Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_wilbiev_title/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Title Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_wsly_pollen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tomorrow.io Pollen card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_card_yagrasdemonde_lights_count/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Counter Lights/Covers Card Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_chip_group_counter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Chip Group Counter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_chip_moon/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom-Chip "Moon"
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_chip_myenedis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    My Enedis Chip Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_chip_simple_temp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom-Chip "Simple Temp"
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_chip_tesla_temperature/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom-chip Tesla Temperature
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_chip_update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom-chip "Update"
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_chip_vlape_garage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Garage Chip Custom-card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom_cards/custom_template_shogun160_battery_info/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Template Battery Info
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../layout/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Layout
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Layout
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/card_style_guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Card Style Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/docs_style_guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docs Style Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/custom_cards/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom-Cards
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting/FAQ
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Troubleshooting/FAQ
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../troubleshooting/troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Description
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entity-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entity Variables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirement-collapse-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requirement Collapse Function
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+  
+  
+
+
+  <h1>Welcome Scenes Card</h1>
+
+<!-- markdownlint-disable MD046 -->
+
+<h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
+<p><img alt="example-image" src="../../../assets/img/ulm_cards/card_welcome_scenes.png" width="500" /></p>
+<p>This is a card which shows the basic needs for your dashboard. This card can generate itself automatically. It is also included in the preview-dashboard which comes with a fresh installation of UI-Minimalist.</p>
+<h2 id="variables">Variables<a class="headerlink" href="#variables" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Required</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ulm_card_welcome_scenes_collapse</td>
+<td></td>
+<td><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></span></td>
+<td>Enables the collapse function. <br> requires an <code>input_boolean</code> to track the state</td>
+</tr>
+<tr>
+<td>ulm_weather</td>
+<td></td>
+<td><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 7 9 19l-5.5-5.5 1.41-1.41L9 16.17 19.59 5.59z"/></svg></span></td>
+<td>This is your weather provider. <br> Example: <code>weather.your_provider</code></td>
+</tr>
+<tr>
+<td>ulm_language</td>
+<td>Language of your system</td>
+<td><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></span></td>
+<td>You can set a different format with the <a href="https://www.techonthenet.com/js/language_tags.php">BCP-47 language tags</a> <br> Example: <code>"en-US"</code> or just <code>"en"</code></td>
+</tr>
+<tr>
+<td>entity_1</td>
+<td>auto-entities</td>
+<td><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></span></td>
+<td>Can be any common type of entity <br> if no entity is specified defaults to auto-entities</td>
+</tr>
+<tr>
+<td>entity_2</td>
+<td>auto-entities</td>
+<td><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></span></td>
+<td>Can be any common type of entity <br> if no entity is specified defaults to auto-entities</td>
+</tr>
+<tr>
+<td>entity_3</td>
+<td>auto-entities</td>
+<td><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></span></td>
+<td>Can be any common type of entity <br> if no entity is specified defaults to auto-entities</td>
+</tr>
+<tr>
+<td>entity_4</td>
+<td>auto-entities</td>
+<td><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></span></td>
+<td>Can be any common type of entity <br> if no entity is specified defaults to auto-entities</td>
+</tr>
+<tr>
+<td>entity_5</td>
+<td>auto-entities</td>
+<td><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></span></td>
+<td>Can be any common type of entity <br> if no entity is specified defaults to auto-entities</td>
+</tr>
+<tr>
+<td>entity_6</td>
+<td>none</td>
+<td><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></span></td>
+<td>Can be any common type of entity</td>
+</tr>
+<tr>
+<td>entity_7</td>
+<td>none</td>
+<td><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></span></td>
+<td>Can be any common type of entity</td>
+</tr>
+</tbody>
+</table>
+<h2 id="entity-variables">Entity Variables<a class="headerlink" href="#entity-variables" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Required</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>_entity_id</td>
+<td></td>
+<td><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></span></td>
+<td>Support almost all types of entities <br> Scenes do always show as off</td>
+</tr>
+<tr>
+<td>_icon</td>
+<td></td>
+<td><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></span></td>
+<td>The icon to show</td>
+</tr>
+<tr>
+<td>_name</td>
+<td></td>
+<td><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></span></td>
+<td>The name to show</td>
+</tr>
+<tr>
+<td>_color</td>
+<td>Random</td>
+<td><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></span></td>
+<td>Color of the icon <br> Can choose between: <code>blue</code>, <code>red</code>, <code>green</code>, <code>yellow</code>, <code>pink</code>, <code>purple</code> <br> If not specified, it will take a random color</td>
+</tr>
+<tr>
+<td>_state</td>
+<td><code>on</code> or <code>playing</code></td>
+<td><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></span></td>
+<td>Define <code>input_select</code> state or give manual state for pill to be full</td>
+</tr>
+<tr>
+<td>_nav_path</td>
+<td></td>
+<td><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></span></td>
+<td>Navigate to another view <br> <em>Overrides other types of actions</em></td>
+</tr>
+<tr>
+<td>_service_data</td>
+<td></td>
+<td><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></span></td>
+<td>Data to be passed through to data_service. Useful for running scripts with custom fields/parameters</td>
+</tr>
+</tbody>
+</table>
+<h2 id="requirement-collapse-function">Requirement Collapse Function<a class="headerlink" href="#requirement-collapse-function" title="Permanent link">&para;</a></h2>
+<div class="admonition note"></div>
+<p>This feature is fully optional. It requires some more manual configuration!
+You need to create a <code>input_boolean</code> in HA to track the state. See <a href="https://www.home-assistant.io/integrations/input_boolean/">Docs</a>.
+Furthermore, you need to add the <code>input_boolean</code> to the variable <code>ulm_card_welcome_scenes_collapse</code> <strong>and</strong> to either the <code>entity</code> or <code>triggers_update</code> to make sure it directly refreshes the state.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+</div>
+<p>Do not use <code>triggers_update: "all"</code>! This will lead to unwanted behavior with the random colors generator.</p>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<div class="admonition note"></div>
+<p>You can set 1 to 7 entities to show 1 to 7 pills dynamically <br>
+If set none it uses <code>auto-entities</code> with max 5 pills</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;custom:button-card&quot;</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;card_welcome_scenes&quot;</span>
+<span class="w">  </span><span class="c1">#triggers_update: input_boolean.&lt;Your_boolean&gt;</span>
+<span class="w">  </span><span class="c1">#entity: input_boolean.&lt;Your_boolean&gt;</span>
+<span class="w">  </span><span class="nt">variables</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ulm_card_welcome_scenes_collapse</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">input_boolean.&lt;Your_boolean&gt;</span><span class="w"> </span><span class="c1">#OPTIONAl --&gt; uncomment also entity or triggers_update</span>
+<span class="w">    </span><span class="nt">ulm_weather</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;weather.YOUR_WEATHERPROVIDER&quot;</span>
+<span class="w">    </span><span class="nt">entity_1</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;YOUR_ENTITY&gt;&quot;</span>
+<span class="w">      </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mdi:YOUR_ICON&quot;</span><span class="w"> </span><span class="c1">#OPTIONAL</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;YOUR_NAME&quot;</span><span class="w"> </span><span class="c1">#OPTIONAL</span>
+<span class="w">      </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;blue&quot;</span>
+<span class="w">    </span><span class="nt">entity_2</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;YOUR_ENTITY&gt;&quot;</span>
+<span class="w">      </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mdi:YOUR_ICON&quot;</span><span class="w"> </span><span class="c1">#OPTIONAL</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;YOUR_NAME&quot;</span><span class="w"> </span><span class="c1">#OPTIONAL</span>
+<span class="w">      </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;red&quot;</span>
+<span class="w">    </span><span class="nt">entity_3</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;YOUR_ENTITY&gt;&quot;</span>
+<span class="w">      </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mdi:YOUR_ICON&quot;</span><span class="w"> </span><span class="c1">#OPTIONAL</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;YOUR_NAME&quot;</span><span class="w"> </span><span class="c1">#OPTIONAL</span>
+<span class="w">      </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;green&quot;</span>
+<span class="w">    </span><span class="nt">entity_4</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;YOUR_ENTITY&gt;&quot;</span>
+<span class="w">      </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mdi:YOUR_ICON&quot;</span><span class="w"> </span><span class="c1">#OPTIONAL</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;YOUR_NAME&quot;</span><span class="w"> </span><span class="c1">#OPTIONAL</span>
+<span class="w">      </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;purple&quot;</span>
+<span class="w">    </span><span class="nt">entity_5</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;YOUR_ENTITY&gt;&quot;</span>
+<span class="w">      </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mdi:YOUR_ICON&quot;</span><span class="w"> </span><span class="c1">#OPTIONAL</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;YOUR_NAME&quot;</span><span class="w"> </span><span class="c1">#OPTIONAL</span>
+<span class="w">      </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;yellow&quot;</span>
+<span class="w">    </span><span class="nt">entity_6</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;YOUR_ENTITY&gt;&quot;</span>
+<span class="w">      </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mdi:YOUR_ICON&quot;</span><span class="w"> </span><span class="c1">#OPTIONAL</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;YOUR_NAME&quot;</span><span class="w"> </span><span class="c1">#OPTIONAL</span>
+<span class="w">      </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;pink&quot;</span>
+<span class="w">    </span><span class="nt">entity_7</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;YOUR_ENTITY&gt;&quot;</span>
+<span class="w">      </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mdi:YOUR_ICON&quot;</span><span class="w"> </span><span class="c1">#OPTIONAL</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;YOUR_NAME&quot;</span><span class="w"> </span><span class="c1">#OPTIONAL</span>
+<span class="w">      </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;yellow&quot;</span>
+</code></pre></div>
+<details class="note">
+<summary>Auto-entities</summary>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;custom:button-card&quot;</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;card_welcome_scenes&quot;</span>
+<span class="w">  </span><span class="c1">#triggers_update: input_boolean.&lt;Your_boolean&gt;</span>
+<span class="w">  </span><span class="c1">#entity: input_boolean.&lt;Your_boolean&gt;</span>
+<span class="w">  </span><span class="nt">variables</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ulm_card_welcome_scenes_collapse</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">input_boolean.&lt;Your_boolean&gt;</span><span class="w"> </span><span class="c1">#OPTIONAl --&gt; uncomment also entity or triggers_update</span>
+<span class="w">    </span><span class="nt">ulm_weather</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;weather.YOUR_WEATHERPROVIDER&quot;</span>
+</code></pre></div>
+</details>
+<details class="note">
+<summary>Random Colors</summary>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;custom:button-card&quot;</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;card_welcome_scenes&quot;</span>
+<span class="w">  </span><span class="c1">#triggers_update: input_boolean.&lt;Your_boolean&gt;</span>
+<span class="w">  </span><span class="c1">#entity: input_boolean.&lt;Your_boolean&gt;</span>
+<span class="w">  </span><span class="nt">variables</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ulm_card_welcome_scenes_collapse</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">input_boolean.&lt;Your_boolean&gt;</span><span class="w"> </span><span class="c1">#OPTIONAl --&gt; uncomment also entity or triggers_update</span>
+<span class="w">    </span><span class="nt">ulm_weather</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;weather.YOUR_WEATHERPROVIDER&quot;</span>
+<span class="w">    </span><span class="nt">entity_1</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;YOUR_ENTITY&gt;&quot;</span>
+<span class="w">      </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mdi:YOUR_ICON&quot;</span><span class="w"> </span><span class="c1">#OPTIONAL</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;YOUR_NAME&quot;</span><span class="w"> </span><span class="c1">#OPTIONAL</span>
+<span class="w">    </span><span class="nt">entity_2</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;YOUR_ENTITY&gt;&quot;</span>
+<span class="w">      </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mdi:YOUR_ICON&quot;</span><span class="w"> </span><span class="c1">#OPTIONAL</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;YOUR_NAME&quot;</span><span class="w"> </span><span class="c1">#OPTIONAL</span>
+<span class="w">    </span><span class="nt">entity_3</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;YOUR_ENTITY&gt;&quot;</span>
+<span class="w">      </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mdi:YOUR_ICON&quot;</span><span class="w"> </span><span class="c1">#OPTIONAL</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;YOUR_NAME&quot;</span><span class="w"> </span><span class="c1">#OPTIONAL</span>
+<span class="w">    </span><span class="nt">entity_4</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;YOUR_ENTITY&gt;&quot;</span>
+<span class="w">      </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mdi:YOUR_ICON&quot;</span><span class="w"> </span><span class="c1">#OPTIONAL</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;YOUR_NAME&quot;</span><span class="w"> </span><span class="c1">#OPTIONAL</span>
+<span class="w">    </span><span class="nt">entity_5</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;YOUR_ENTITY&gt;&quot;</span>
+<span class="w">      </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mdi:YOUR_ICON&quot;</span><span class="w"> </span><span class="c1">#OPTIONAL</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;YOUR_NAME&quot;</span><span class="w"> </span><span class="c1">#OPTIONAL</span>
+<span class="w">    </span><span class="nt">entity_6</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;YOUR_ENTITY&gt;&quot;</span>
+<span class="w">      </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mdi:YOUR_ICON&quot;</span><span class="w"> </span><span class="c1">#OPTIONAL</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;YOUR_NAME&quot;</span><span class="w"> </span><span class="c1">#OPTIONAL</span>
+<span class="w">    </span><span class="nt">entity_7</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;YOUR_ENTITY&gt;&quot;</span>
+<span class="w">      </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mdi:YOUR_ICON&quot;</span><span class="w"> </span><span class="c1">#OPTIONAL</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;YOUR_NAME&quot;</span><span class="w"> </span><span class="c1">#OPTIONAL</span>
+</code></pre></div>
+</details>
+<details class="note">
+<summary>Template Code</summary>
+<div class="highlight"><span class="filename">card_welcome_scenes.yaml</span><pre><span></span><code><span class="nn">---</span>
+<span class="nt">card_welcome_scenes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">variables</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ulm_weather</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[[</span><span class="nv"> </span><span class="s">return</span><span class="nv"> </span><span class="s">variables.ulm_weather]]]&quot;</span>
+<span class="w">    </span><span class="nt">ulm_language</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[[</span><span class="nv"> </span><span class="s">return</span><span class="nv"> </span><span class="s">hass[&#39;language&#39;];</span><span class="nv"> </span><span class="s">]]]&quot;</span>
+<span class="w">    </span><span class="nt">entity_1</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">        </span><span class="no">[[[</span>
+<span class="w">          </span><span class="no">var colors = [&#39;yellow&#39;, &#39;blue&#39;, &#39;red&#39;, &#39;purple&#39;,&#39;green&#39;, &#39;pink&#39;];</span>
+<span class="w">          </span><span class="no">var color = colors[Math.floor(Math.random() * colors.length)];</span>
+<span class="w">          </span><span class="no">return color;</span>
+<span class="w">        </span><span class="no">]]]</span>
+<span class="w">    </span><span class="nt">entity_2</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">        </span><span class="no">[[[</span>
+<span class="w">          </span><span class="no">var colors = [&#39;yellow&#39;, &#39;blue&#39;, &#39;red&#39;, &#39;purple&#39;,&#39;green&#39;, &#39;pink&#39;];</span>
+<span class="w">          </span><span class="no">var color = colors[Math.floor(Math.random() * colors.length)];</span>
+<span class="w">          </span><span class="no">return color;</span>
+<span class="w">        </span><span class="no">]]]</span>
+<span class="w">    </span><span class="nt">entity_3</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">        </span><span class="no">[[[</span>
+<span class="w">          </span><span class="no">var colors = [&#39;yellow&#39;, &#39;blue&#39;, &#39;red&#39;, &#39;purple&#39;,&#39;green&#39;, &#39;pink&#39;];</span>
+<span class="w">          </span><span class="no">var color = colors[Math.floor(Math.random() * colors.length)];</span>
+<span class="w">          </span><span class="no">return color;</span>
+<span class="w">        </span><span class="no">]]]</span>
+<span class="w">    </span><span class="nt">entity_4</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">        </span><span class="no">[[[</span>
+<span class="w">          </span><span class="no">var colors = [&#39;yellow&#39;, &#39;blue&#39;, &#39;red&#39;, &#39;purple&#39;,&#39;green&#39;, &#39;pink&#39;];</span>
+<span class="w">          </span><span class="no">var color = colors[Math.floor(Math.random() * colors.length)];</span>
+<span class="w">          </span><span class="no">return color;</span>
+<span class="w">        </span><span class="no">]]]</span>
+<span class="w">    </span><span class="nt">entity_5</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">        </span><span class="no">[[[</span>
+<span class="w">          </span><span class="no">var colors = [&#39;yellow&#39;, &#39;blue&#39;, &#39;red&#39;, &#39;purple&#39;,&#39;green&#39;, &#39;pink&#39;];</span>
+<span class="w">          </span><span class="no">var color = colors[Math.floor(Math.random() * colors.length)];</span>
+<span class="w">          </span><span class="no">return color;</span>
+<span class="w">        </span><span class="no">]]]</span>
+<span class="w">    </span><span class="nt">entity_6</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">        </span><span class="no">[[[</span>
+<span class="w">          </span><span class="no">var colors = [&#39;yellow&#39;, &#39;blue&#39;, &#39;red&#39;, &#39;purple&#39;,&#39;green&#39;, &#39;pink&#39;];</span>
+<span class="w">          </span><span class="no">var color = colors[Math.floor(Math.random() * colors.length)];</span>
+<span class="w">          </span><span class="no">return color;</span>
+<span class="w">        </span><span class="no">]]]</span>
+<span class="w">    </span><span class="nt">entity_7</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">        </span><span class="no">[[[</span>
+<span class="w">          </span><span class="no">var colors = [&#39;yellow&#39;, &#39;blue&#39;, &#39;red&#39;, &#39;purple&#39;,&#39;green&#39;, &#39;pink&#39;];</span>
+<span class="w">          </span><span class="no">var color = colors[Math.floor(Math.random() * colors.length)];</span>
+<span class="w">          </span><span class="no">return color;</span>
+<span class="w">        </span><span class="no">]]]</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;ulm_language_variables&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;ulm_translation_engine&quot;</span>
+<span class="w">  </span><span class="nt">show_icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">show_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">show_label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">styles</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">grid</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">grid-template-areas</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">          </span><span class="no">[[[</span>
+<span class="w">            </span><span class="no">if(variables.ulm_card_welcome_scenes_collapse &amp;&amp; states[variables.ulm_card_welcome_scenes_collapse].state == &#39;on&#39;){</span>
+<span class="w">              </span><span class="no">return &quot;\&#39;item1\&#39; \&#39;item2\&#39; &quot;;</span>
+<span class="w">            </span><span class="no">} else {</span>
+<span class="w">              </span><span class="no">return &quot;\&#39;item1\&#39; \&#39;item2\&#39; \&#39;item3\&#39; \&#39;item4\&#39;&quot;;</span>
+<span class="w">            </span><span class="no">}</span>
+<span class="w">          </span><span class="no">]]]</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1fr&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">grid-template-rows</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;min-content</span><span class="nv"> </span><span class="s">min-content&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">row-gap</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0px&quot;</span>
+<span class="w">    </span><span class="nt">card</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">border-radius</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;var(--border-radius)&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">box-shadow</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;var(--box-shadow)&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">padding</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10px&quot;</span>
+<span class="w">    </span><span class="nt">custom_fields</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">item3</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">display</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">            </span><span class="no">[[[</span>
+<span class="w">              </span><span class="no">if(variables.ulm_card_welcome_scenes_collapse &amp;&amp; states[variables.ulm_card_welcome_scenes_collapse].state == &#39;on&#39;){</span>
+<span class="w">                </span><span class="no">return &quot;none&quot;;</span>
+<span class="w">              </span><span class="no">} else {</span>
+<span class="w">                </span><span class="no">return &quot;block&quot;;</span>
+<span class="w">              </span><span class="no">}</span>
+<span class="w">            </span><span class="no">]]]</span>
+<span class="w">      </span><span class="nt">item4</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">display</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">            </span><span class="no">[[[</span>
+<span class="w">              </span><span class="no">if(variables.ulm_card_welcome_scenes_collapse &amp;&amp; states[variables.ulm_card_welcome_scenes_collapse].state == &#39;on&#39;){</span>
+<span class="w">                </span><span class="no">return &quot;none&quot;;</span>
+<span class="w">              </span><span class="no">} else {</span>
+<span class="w">                </span><span class="no">return &quot;block&quot;;</span>
+<span class="w">              </span><span class="no">}</span>
+<span class="w">            </span><span class="no">]]]</span>
+<span class="w">  </span><span class="nt">custom_fields</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">item1</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">card</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;custom:button-card&quot;</span>
+<span class="w">        </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;card_topbar_welcome&quot;</span>
+<span class="w">        </span><span class="nt">variables</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">ulm_card_welcome_scenes_collapse</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[[</span><span class="nv"> </span><span class="s">return</span><span class="nv"> </span><span class="s">variables.ulm_card_welcome_scenes_collapse</span><span class="nv"> </span><span class="s">]]]&quot;</span>
+<span class="w">          </span><span class="nt">ulm_weather</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[[</span><span class="nv"> </span><span class="s">return</span><span class="nv"> </span><span class="s">variables.ulm_weather]]]&quot;</span>
+<span class="w">          </span><span class="nt">ulm_language</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[[</span><span class="nv"> </span><span class="s">return</span><span class="nv"> </span><span class="s">variables.ulm_language</span><span class="nv"> </span><span class="s">]]]&quot;</span>
+<span class="w">        </span><span class="nt">styles</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">card</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">border-radius</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;none&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">box-shadow</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;none&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">padding</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;4px&quot;</span>
+<span class="w">    </span><span class="nt">item2</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">card</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;custom:button-card&quot;</span>
+<span class="w">        </span><span class="nt">show_icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">        </span><span class="nt">show_label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">        </span><span class="nt">show_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">show_entity_picture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">[[[</span>
+<span class="w">            </span><span class="no">var today = new Date();</span>
+<span class="w">            </span><span class="no">var time = today.getHours()</span>
+<span class="w">            </span><span class="no">let welcome = &#39;&#39;;</span>
+<span class="w">            </span><span class="no">if (time &gt;= &#39;18&#39;){</span>
+<span class="w">              </span><span class="no">welcome = variables.ulm_evening;</span>
+<span class="w">            </span><span class="no">} else if (time &gt;= &#39;12&#39;){</span>
+<span class="w">              </span><span class="no">welcome = variables.ulm_afternoon;</span>
+<span class="w">            </span><span class="no">} else if (time &gt;= &#39;5&#39;){</span>
+<span class="w">              </span><span class="no">welcome = variables.ulm_morning;</span>
+<span class="w">            </span><span class="no">} else {</span>
+<span class="w">              </span><span class="no">welcome = variables.ulm_hello;</span>
+<span class="w">            </span><span class="no">}</span>
+<span class="w">            </span><span class="no">return welcome + &#39;, &#39; + &#39;   &lt;br&gt;&#39; + user.name + &#39;!&#39;;</span>
+<span class="w">          </span><span class="no">]]]</span>
+<span class="w">        </span><span class="nt">styles</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">align-self</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;start&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">justify-self</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;start&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">font-weight</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bold&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">font-size</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;24px&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">margin-left</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;16px&quot;</span>
+<span class="w">          </span><span class="nt">grid</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">grid-template-areas</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&#39;i</span><span class="nv"> </span><span class="s">n&#39;</span><span class="nv"> </span><span class="s">&#39;i</span><span class="nv"> </span><span class="s">l&#39;&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;min-content</span><span class="nv"> </span><span class="s">auto&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">grid-template-rows</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;min-content</span><span class="nv"> </span><span class="s">min-content&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">text-align</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;start&quot;</span>
+<span class="w">          </span><span class="nt">card</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">box-shadow</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;none&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">padding-bottom</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;8px&quot;</span>
+<span class="w">    </span><span class="nt">item3</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">card</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;custom:button-card&quot;</span>
+<span class="w">        </span><span class="nt">show_icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">show_label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">show_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">show_entity_picture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[[</span><span class="nv"> </span><span class="s">return</span><span class="nv"> </span><span class="s">variables.ulm_translation_scenes</span><span class="nv"> </span><span class="s">]]]&quot;</span>
+<span class="w">        </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mdi:dots-vertical&quot;</span>
+<span class="w">        </span><span class="nt">styles</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">icon</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">height</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;20px&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filter</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;opacity(50%)&quot;</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">align-self</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;start&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">justify-self</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;start&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">font-weight</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bold&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">font-size</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;18px&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">margin-left</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;16px&quot;</span>
+<span class="w">          </span><span class="nt">grid</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">grid-template-areas</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&#39;n</span><span class="nv"> </span><span class="s">i&#39;&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;6fr</span><span class="nv"> </span><span class="s">1fr&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">grid-template-rows</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;min-content</span><span class="nv"> </span><span class="s">min-content&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">text-align</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;start&quot;</span>
+<span class="w">          </span><span class="nt">card</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">box-shadow</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;none&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">padding-bottom</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0px&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">bottom</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10px&quot;</span>
+<span class="w">    </span><span class="nt">item4</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">card</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;custom:button-card&quot;</span>
+<span class="w">        </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">          </span><span class="no">[[[</span>
+<span class="w">            </span><span class="no">if(variables?.entity_1?.entity_id != &quot;&quot;){</span>
+<span class="w">              </span><span class="no">return &#39;card_scenes_welcome&#39;</span>
+<span class="w">            </span><span class="no">} else {</span>
+<span class="w">              </span><span class="no">return &#39;card_scenes_welcome_auto&#39;</span>
+<span class="w">            </span><span class="no">}</span>
+<span class="w">          </span><span class="no">]]]</span>
+<span class="w">        </span><span class="nt">styles</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">card</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">border-radius</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;none&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">box-shadow</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;none&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">padding</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;4px&quot;</span>
+<span class="w">        </span><span class="nt">variables</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">entity_1</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[[</span><span class="nv"> </span><span class="s">return</span><span class="nv"> </span><span class="s">variables.entity_1]]]&quot;</span>
+<span class="w">          </span><span class="nt">entity_2</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[[</span><span class="nv"> </span><span class="s">return</span><span class="nv"> </span><span class="s">variables.entity_2]]]&quot;</span>
+<span class="w">          </span><span class="nt">entity_3</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[[</span><span class="nv"> </span><span class="s">return</span><span class="nv"> </span><span class="s">variables.entity_3]]]&quot;</span>
+<span class="w">          </span><span class="nt">entity_4</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[[</span><span class="nv"> </span><span class="s">return</span><span class="nv"> </span><span class="s">variables.entity_4]]]&quot;</span>
+<span class="w">          </span><span class="nt">entity_5</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[[</span><span class="nv"> </span><span class="s">return</span><span class="nv"> </span><span class="s">variables.entity_5]]]&quot;</span>
+<span class="w">          </span><span class="nt">entity_6</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[[</span><span class="nv"> </span><span class="s">return</span><span class="nv"> </span><span class="s">variables.entity_6]]]&quot;</span>
+<span class="w">          </span><span class="nt">entity_7</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[[</span><span class="nv"> </span><span class="s">return</span><span class="nv"> </span><span class="s">variables.entity_7]]]&quot;</span>
+<span class="nt">card_title_welcome</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">tap_action</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;none&quot;</span>
+<span class="w">  </span><span class="nt">show_icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">show_label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">show_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">styles</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">card</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">background-color</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;rgba(0,0,0,0)&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">box-shadow</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;none&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">height</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;auto&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">width</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;auto&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">margin-top</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;-10px&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">margin-left</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;16px&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">margin-bottom</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;-15px&quot;</span>
+<span class="w">    </span><span class="nt">grid</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">grid-template-areas</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&#39;n&#39;</span><span class="nv"> </span><span class="s">&#39;l&#39;&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1fr&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">grid-template-rows</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;min-content</span><span class="nv"> </span><span class="s">min-content&quot;</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">justify-self</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;start&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">font-weight</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bold&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">font-size</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;20px&quot;</span>
+<span class="w">    </span><span class="nt">label</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">justify-self</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;start&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">font-weight</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bold&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">font-size</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1rem&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">opacity</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.4&quot;</span>
+
+<span class="c1"># pill</span>
+<span class="nt">card_scenes_pill_welcome</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">show_icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">show_label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">show_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">state</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;template&quot;</span>
+<span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">        </span><span class="no">[[[</span>
+<span class="w">          </span><span class="no">return (entity?.state !== &#39;on&#39; &amp;&amp; entity?.state !== &#39;playing&#39; &amp;&amp; entity?.state != variables?.state)</span>
+<span class="w">        </span><span class="no">]]]</span>
+<span class="w">      </span><span class="nt">styles</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">card</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">overflow</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;visible&quot;</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">box-shadow</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;none&quot;</span>
+<span class="w">  </span><span class="nt">styles</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">grid</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">grid-template-areas</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&#39;item1&#39;</span><span class="nv"> </span><span class="s">&#39;item2&#39;&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;min-content&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">grid-template-rows</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1fr</span><span class="nv"> </span><span class="s">1fr&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">row-gap</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;12px&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">justify-items</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;center&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">column-gap</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;auto&quot;</span>
+<span class="w">    </span><span class="nt">card</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">border-radius</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;50px&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">place-self</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;center&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">width</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;52px&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">height</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;84px&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">box-shadow</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">          </span><span class="no">[[[</span>
+<span class="w">            </span><span class="no">if (hass.themes.darkMode){</span>
+<span class="w">              </span><span class="no">return &quot;0px 2px 4px 0px rgba(0,0,0,0.80)&quot;;</span>
+<span class="w">            </span><span class="no">} else {</span>
+<span class="w">              </span><span class="no">return &quot;var(--box-shadow)&quot;;</span>
+<span class="w">            </span><span class="no">}</span>
+<span class="w">          </span><span class="no">]]]</span>
+<span class="w">  </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;var(--google-grey)&quot;</span>
+<span class="w">  </span><span class="nt">custom_fields</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">item1</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">card</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;custom:button-card&quot;</span>
+<span class="w">        </span><span class="nt">show_icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">show_label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">        </span><span class="nt">show_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">        </span><span class="nt">tap_action</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">            </span><span class="no">[[[</span>
+<span class="w">              </span><span class="no">if(variables?.nav_path){</span>
+<span class="w">                </span><span class="no">return &quot;navigate&quot;</span>
+<span class="w">              </span><span class="no">}</span>
+<span class="w">              </span><span class="no">return &quot;perform-action&quot;</span>
+<span class="w">            </span><span class="no">]]]</span>
+<span class="w">          </span><span class="nt">perform_action</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">            </span><span class="no">[[[</span>
+<span class="w">              </span><span class="no">if(entity?.entity_id.startsWith(&quot;scene.&quot;)){</span>
+<span class="w">                </span><span class="no">return &quot;scene.turn_on&quot;</span>
+<span class="w">              </span><span class="no">}</span>
+<span class="w">              </span><span class="no">if(entity?.entity_id.startsWith(&quot;media_player.&quot;)){</span>
+<span class="w">                </span><span class="no">return &quot;media_player.media_play_pause&quot;</span>
+<span class="w">              </span><span class="no">}</span>
+<span class="w">              </span><span class="no">if(entity?.entity_id.startsWith(&quot;input_select.&quot;)){</span>
+<span class="w">                </span><span class="no">return &quot;input_select.select_option&quot;</span>
+<span class="w">              </span><span class="no">}</span>
+<span class="w">              </span><span class="no">if(entity?.entity_id.startsWith(&quot;script.&quot;)){</span>
+<span class="w">                </span><span class="no">return entity.entity_id</span>
+<span class="w">              </span><span class="no">}</span>
+<span class="w">              </span><span class="no">return &quot;homeassistant.toggle&quot;</span>
+<span class="w">            </span><span class="no">]]]</span>
+<span class="w">          </span><span class="nt">navigation_path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[[</span><span class="nv"> </span><span class="s">return</span><span class="nv"> </span><span class="s">variables?.nav_path;</span><span class="nv"> </span><span class="s">]]]&quot;</span>
+<span class="w">          </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">            </span><span class="no">[[[</span>
+<span class="w">              </span><span class="no">if(typeof(entity) !== &#39;undefined&#39; &amp;&amp; entity !== undefined){</span>
+<span class="w">                </span><span class="no">return { entity_id: entity?.entity_id };</span>
+<span class="w">              </span><span class="no">}</span>
+<span class="w">            </span><span class="no">]]]</span>
+<span class="w">          </span><span class="nt">data</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">            </span><span class="no">[[[</span>
+<span class="w">              </span><span class="no">if (variables.service_data){</span>
+<span class="w">                </span><span class="no">return variables.service_data</span>
+<span class="w">              </span><span class="no">}</span>
+<span class="w">              </span><span class="no">if(typeof(entity) !== &#39;undefined&#39; &amp;&amp; entity !== undefined){</span>
+<span class="w">                </span><span class="no">if( entity?.entity_id.startsWith(&quot;input_select.&quot;) )</span>
+<span class="w">                  </span><span class="no">return { option: variables.state };</span>
+<span class="w">              </span><span class="no">}</span>
+<span class="w">            </span><span class="no">]]]</span>
+<span class="w">        </span><span class="nt">styles</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">grid</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">grid-template-areas</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;i&quot;</span>
+<span class="w">          </span><span class="nt">icon</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">                </span><span class="no">[[[</span>
+<span class="w">                  </span><span class="no">var color = variables?.color</span>
+<span class="w">                  </span><span class="no">if(hass.themes.darkMode){var color = &quot;#FAFAFA&quot;;}</span>
+<span class="w">                  </span><span class="no">return `rgba(var(--color-${color}), 1)`;</span>
+<span class="w">                </span><span class="no">]]]</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">width</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;20px&quot;</span>
+<span class="w">          </span><span class="nt">img_cell</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">background-color</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">                </span><span class="no">[[[</span>
+<span class="w">                  </span><span class="no">var color = variables?.color</span>
+<span class="w">                  </span><span class="no">var opacity = &#39;0.20&#39;</span>
+<span class="w">                  </span><span class="no">if(hass.themes.darkMode){var opacity = &#39;1&#39;}</span>
+<span class="w">                  </span><span class="no">return `rgba(var(--color-${color}), ${opacity})`;</span>
+<span class="w">                </span><span class="no">]]]</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">border-radius</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;50%&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">width</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;42px&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">height</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;42px&quot;</span>
+<span class="w">          </span><span class="nt">card</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">box-shadow</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;none&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">border-radius</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;50px&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">padding</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;5px&quot;</span>
+<span class="w">        </span><span class="nt">state</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;template&quot;</span>
+<span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">              </span><span class="no">[[[</span>
+<span class="w">                </span><span class="no">return (entity?.state !== &#39;on&#39; &amp;&amp; entity?.state !== &#39;playing&#39; &amp;&amp; entity?.state != variables?.state)</span>
+<span class="w">              </span><span class="no">]]]</span>
+<span class="w">            </span><span class="nt">styles</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">card</span><span class="p">:</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">overflow</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;visible&quot;</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">box-shadow</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">                    </span><span class="no">[[[</span>
+<span class="w">                      </span><span class="no">if (hass.themes.darkMode){</span>
+<span class="w">                        </span><span class="no">return &quot;0px 2px 4px 0px rgba(0,0,0,0.80)&quot;;</span>
+<span class="w">                      </span><span class="no">} else {</span>
+<span class="w">                        </span><span class="no">return &quot;var(--box-shadow)&quot;;</span>
+<span class="w">                      </span><span class="no">}</span>
+<span class="w">                    </span><span class="no">]]]</span>
+<span class="w">    </span><span class="nt">item2</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">card</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;custom:button-card&quot;</span>
+<span class="w">        </span><span class="nt">show_icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">        </span><span class="nt">show_label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">        </span><span class="nt">tap_action</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">            </span><span class="no">[[[</span>
+<span class="w">              </span><span class="no">if(variables?.nav_path){</span>
+<span class="w">                </span><span class="no">return &quot;navigate&quot;</span>
+<span class="w">              </span><span class="no">}</span>
+<span class="w">              </span><span class="no">return &quot;perform-action&quot;</span>
+<span class="w">            </span><span class="no">]]]</span>
+<span class="w">          </span><span class="nt">navigation_path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[[</span><span class="nv"> </span><span class="s">return</span><span class="nv"> </span><span class="s">variables?.nav_path;</span><span class="nv"> </span><span class="s">]]]&quot;</span>
+<span class="w">          </span><span class="nt">perform_action</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">            </span><span class="no">[[[</span>
+<span class="w">              </span><span class="no">if(entity?.entity_id.startsWith(&quot;scene.&quot;)){</span>
+<span class="w">                </span><span class="no">return &quot;scene.turn_on&quot;</span>
+<span class="w">              </span><span class="no">}</span>
+<span class="w">              </span><span class="no">if(entity?.entity_id.startsWith(&quot;media_player.&quot;)){</span>
+<span class="w">                </span><span class="no">return &quot;media_player.media_play_pause&quot;</span>
+<span class="w">              </span><span class="no">}</span>
+<span class="w">              </span><span class="no">if(entity?.entity_id.startsWith(&quot;input_select.&quot;)){</span>
+<span class="w">                </span><span class="no">return &quot;input_select.select_option&quot;</span>
+<span class="w">              </span><span class="no">}</span>
+<span class="w">              </span><span class="no">if(entity?.entity_id.startsWith(&quot;script.&quot;)){</span>
+<span class="w">                </span><span class="no">return entity.entity_id</span>
+<span class="w">              </span><span class="no">}</span>
+<span class="w">              </span><span class="no">return &quot;homeassistant.toggle&quot;</span>
+<span class="w">            </span><span class="no">]]]</span>
+<span class="w">          </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">            </span><span class="no">[[[</span>
+<span class="w">              </span><span class="no">if(typeof(entity) !== &#39;undefined&#39; &amp;&amp; entity !== undefined){</span>
+<span class="w">                </span><span class="no">return { entity_id: entity?.entity_id };</span>
+<span class="w">              </span><span class="no">}</span>
+<span class="w">            </span><span class="no">]]]</span>
+<span class="w">          </span><span class="nt">data</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">            </span><span class="no">[[[</span>
+<span class="w">              </span><span class="no">if (variables.service_data){</span>
+<span class="w">                </span><span class="no">return variables.service_data</span>
+<span class="w">              </span><span class="no">}</span>
+<span class="w">              </span><span class="no">if(typeof(entity) !== &#39;undefined&#39; &amp;&amp; entity !== undefined){</span>
+<span class="w">                </span><span class="no">if( entity?.entity_id.startsWith(&quot;input_select.&quot;) )</span>
+<span class="w">                  </span><span class="no">return { option: variables.state };</span>
+<span class="w">              </span><span class="no">}</span>
+<span class="w">            </span><span class="no">]]]</span>
+<span class="w">        </span><span class="nt">styles</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">grid</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">grid-template-areas</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;n&quot;</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">justify-self</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;center&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">font-weight</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bold&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">font-size</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;9.5px&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">padding-bottom</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;7px&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">overflow</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[[return</span><span class="nv"> </span><span class="s">(entity?.state</span><span class="nv"> </span><span class="s">!==</span><span class="nv"> </span><span class="s">&#39;on&#39;</span><span class="nv"> </span><span class="s">&amp;&amp;</span><span class="nv"> </span><span class="s">entity?.state</span><span class="nv"> </span><span class="s">!==</span><span class="nv"> </span><span class="s">&#39;playing&#39;</span><span class="nv"> </span><span class="s">&amp;&amp;</span><span class="nv"> </span><span class="s">entity?.state</span><span class="nv"> </span><span class="s">!=</span><span class="nv"> </span><span class="s">variables?.state)</span><span class="nv"> </span><span class="s">?</span><span class="nv"> </span><span class="s">&#39;visible&#39;</span><span class="nv"> </span><span class="s">:</span><span class="nv"> </span><span class="s">&#39;hidden&#39;]]]&quot;</span>
+<span class="w">          </span><span class="nt">card</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">box-shadow</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;none&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">padding</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0px</span><span class="nv"> </span><span class="s">5px</span><span class="nv"> </span><span class="s">5px</span><span class="nv"> </span><span class="s">5px&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">margin-top</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;-5px&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">border-radius</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;50px&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">overflow</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[[return</span><span class="nv"> </span><span class="s">(entity?.state</span><span class="nv"> </span><span class="s">!==</span><span class="nv"> </span><span class="s">&#39;on&#39;</span><span class="nv"> </span><span class="s">&amp;&amp;</span><span class="nv"> </span><span class="s">entity?.state</span><span class="nv"> </span><span class="s">!==</span><span class="nv"> </span><span class="s">&#39;playing&#39;</span><span class="nv"> </span><span class="s">&amp;&amp;</span><span class="nv"> </span><span class="s">entity?.state</span><span class="nv"> </span><span class="s">!=</span><span class="nv"> </span><span class="s">variables?.state)</span><span class="nv"> </span><span class="s">?</span><span class="nv"> </span><span class="s">&#39;visible&#39;</span><span class="nv"> </span><span class="s">:</span><span class="nv"> </span><span class="s">&#39;hidden&#39;]]]&quot;</span>
+<span class="nt">card_topbar_welcome</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">show_icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">show_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">show_label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">styles</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">grid</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">grid-template-areas</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;item1</span><span class="nv"> </span><span class="s">item2</span><span class="nv"> </span><span class="s">item3&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">justify-content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;space-between&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">display</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;flex&quot;</span>
+<span class="w">    </span><span class="nt">card</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">border-radius</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;none&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">box-shadow</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;none&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">padding</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;12px&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">background</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;none&quot;</span>
+<span class="w">  </span><span class="nt">custom_fields</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">item1</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">card</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;custom:button-card&quot;</span>
+<span class="w">        </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;chips&quot;</span>
+<span class="w">        </span><span class="nt">entity</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[[</span><span class="nv"> </span><span class="s">return</span><span class="nv"> </span><span class="s">variables.ulm_card_welcome_scenes_collapse</span><span class="nv"> </span><span class="s">]]]&quot;</span>
+<span class="w">        </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mdi:chevron-up&quot;</span>
+<span class="w">        </span><span class="nt">show_icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">styles</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">grid</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">grid-template-areas</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&#39;i&#39;&quot;</span>
+<span class="w">        </span><span class="nt">state</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;on&quot;</span>
+<span class="w">            </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mdi:chevron-down&quot;</span>
+<span class="w">            </span><span class="nt">styles</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">icon</span><span class="p">:</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;rgb(var(--color-theme))&quot;</span>
+<span class="w">        </span><span class="nt">tap_action</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;perform-action&quot;</span>
+<span class="w">          </span><span class="nt">perform_action</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;input_boolean.toggle&quot;</span>
+<span class="w">          </span><span class="nt">target</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[[</span><span class="nv"> </span><span class="s">return</span><span class="nv"> </span><span class="s">variables.ulm_card_welcome_scenes_collapse</span><span class="nv"> </span><span class="s">]]]&quot;</span>
+<span class="w">    </span><span class="nt">item2</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">card</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;custom:button-card&quot;</span>
+<span class="w">        </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;chip_weather_date&quot;</span>
+<span class="w">        </span><span class="nt">entity</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[[</span><span class="nv"> </span><span class="s">return</span><span class="nv"> </span><span class="s">variables.ulm_weather]]]&quot;</span>
+<span class="w">        </span><span class="nt">variables</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">ulm_weather</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[[</span><span class="nv"> </span><span class="s">return</span><span class="nv"> </span><span class="s">variables.ulm_weather</span><span class="nv"> </span><span class="s">]]]&quot;</span>
+<span class="w">          </span><span class="nt">ulm_language</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[[</span><span class="nv"> </span><span class="s">return</span><span class="nv"> </span><span class="s">variables.ulm_language</span><span class="nv"> </span><span class="s">]]]&quot;</span>
+<span class="w">        </span><span class="nt">styles</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">card</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">width</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;100px&quot;</span>
+<span class="w">    </span><span class="nt">item3</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">card</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;custom:button-card&quot;</span>
+<span class="w">        </span><span class="nt">tap_action</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;navigate&quot;</span>
+<span class="w">          </span><span class="nt">navigation_path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/config/dashboard&quot;</span>
+<span class="w">        </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;chip_mdi_icon_only&quot;</span>
+<span class="w">        </span><span class="nt">variables</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">ulm_chip_mdi_icon_only_icon</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mdi:cog-outline&quot;</span>
+<span class="w">        </span><span class="nt">styles</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">card</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">align-self</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;end&quot;</span>
+<span class="c1"># auto-entities</span>
+<span class="nt">card_scenes_welcome_auto</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">show_icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">show_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">show_label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">variables</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">colors</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">      </span><span class="no">[[[</span>
+<span class="w">        </span><span class="no">var colors = [&#39;yellow&#39;, &#39;blue&#39;, &#39;red&#39;, &#39;purple&#39;,&#39;green&#39;, &#39;pink&#39;];</span>
+<span class="w">        </span><span class="no">var color = colors[Math.floor(Math.random() * colors.length)];</span>
+<span class="w">        </span><span class="no">return color;</span>
+<span class="w">      </span><span class="no">]]]</span>
+<span class="w">  </span><span class="nt">styles</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">grid</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">grid-template-areas</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;item1&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">display</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;flex&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">justify-content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;center&quot;</span>
+<span class="w">    </span><span class="nt">card</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">border-radius</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;var(--border-radius)&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">box-shadow</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;var(--box-shadow)&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">padding</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;12px&quot;</span>
+<span class="w">  </span><span class="nt">custom_fields</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">item1</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">card</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;custom:auto-entities&quot;</span>
+<span class="w">        </span><span class="nt">card</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;grid&quot;</span>
+<span class="w">          </span><span class="nt">columns</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="w">          </span><span class="nt">square</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">        </span><span class="nt">card_param</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;cards&quot;</span>
+<span class="w">        </span><span class="nt">sort</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="w">        </span><span class="nt">filter</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">include</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;light&quot;</span>
+<span class="w">              </span><span class="nt">options</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;custom:button-card&quot;</span>
+<span class="w">                </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;card_scenes_pill_welcome&quot;</span>
+<span class="w">                </span><span class="nt">custom_fields</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">item1</span><span class="p">:</span>
+<span class="w">                    </span><span class="nt">card</span><span class="p">:</span>
+<span class="w">                      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;custom:button-card&quot;</span>
+<span class="w">                      </span><span class="nt">entity</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;this.entity_id&quot;</span>
+<span class="w">                      </span><span class="nt">styles</span><span class="p">:</span>
+<span class="w">                        </span><span class="nt">icon</span><span class="p">:</span>
+<span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">                              </span><span class="no">[[[</span>
+<span class="w">                                </span><span class="no">var color = variables.colors</span>
+<span class="w">                                </span><span class="no">if(hass.themes.darkMode){var color = &quot;#FAFAFA&quot;;}</span>
+<span class="w">                                </span><span class="no">return `rgba(var(--color-${color}), 1)`;</span>
+<span class="w">                              </span><span class="no">]]]</span>
+<span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">width</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;20px&quot;</span>
+<span class="w">                        </span><span class="nt">img_cell</span><span class="p">:</span>
+<span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">background-color</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">                              </span><span class="no">[[[</span>
+<span class="w">                                </span><span class="no">var color = variables.colors</span>
+<span class="w">                                </span><span class="no">var opacity = &#39;0.20&#39;</span>
+<span class="w">                                </span><span class="no">if(hass.themes.darkMode){var opacity = &#39;1&#39;}</span>
+<span class="w">                                </span><span class="no">return `rgba(var(--color-${color}), ${opacity})`;</span>
+<span class="w">                              </span><span class="no">]]]</span>
+<span class="w">                  </span><span class="nt">item2</span><span class="p">:</span>
+<span class="w">                    </span><span class="nt">card</span><span class="p">:</span>
+<span class="w">                      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;custom:button-card&quot;</span>
+<span class="w">                      </span><span class="nt">entity</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;this.entity_id&quot;</span>
+</code></pre></div>
+</details>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+
+<!-- Application footer -->
+<footer class="md-footer">
+  <!-- Further information -->
+  <div class="md-footer-meta md-typeset" style="background-color: hsla(212, 33%, 32%, 1);">
+    <div class="md-footer-meta__inner md-grid" style="background-color: hsla(212, 33%, 32%, 1);">
+
+      <!-- Copyright and theme information -->
+      <div class="md-footer-copyright">
+        
+        <div style="color: white;">
+          Made with
+          <a
+                  href="https://squidfunk.github.io/mkdocs-material/"
+                  target="_blank" rel="noopener"
+                  style="color: white;"
+          >
+            Material for MkDocs
+          </a>
+        </div>
+      </div>
+
+      <!-- Social links -->
+      
+<div class="md-social">
+  
+</div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "navigation.tabs", "navigation.indexes", "search.suggest", "search.highlight", "search.share", "content.code.annotate", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
