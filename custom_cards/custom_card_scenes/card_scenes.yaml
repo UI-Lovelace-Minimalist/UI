@@ -59,13 +59,14 @@ card_scenes:
         tap_action:
           action: "perform-action"
           perform_action: |
-            [[[
-              let domain = variables.entity_1.entity_id.substr(0, variables.entity_1.entity_id.indexOf("."));
-              if (domain == "automation") {
-                return "automation.trigger"
-              } else {
-                return "homeassistant.turn_on"
-              }
+            [[[ 
+              const eid = variables.entity_1?.entity_id;
+              if (!eid) return null;
+
+              const domain = eid.split('.')[0];
+              return domain === 'automation'
+                ? 'automation.trigger'
+                : 'homeassistant.turn_on';
             ]]]
           target:
             entity_id: "[[[ return variables.entity_1.entity_id ]]]"
@@ -82,13 +83,14 @@ card_scenes:
         tap_action:
           action: "perform-action"
           perform_action: |
-            [[[
-              let domain = variables.entity_2.entity_id.substr(0, variables.entity_2.entity_id.indexOf("."));
-              if (domain == "automation") {
-                return "automation.trigger"
-              } else {
-                return "homeassistant.turn_on"
-              }
+            [[[ 
+              const eid = variables.entity_2?.entity_id;
+              if (!eid) return null;
+
+              const domain = eid.split('.')[0];
+              return domain === 'automation'
+                ? 'automation.trigger'
+                : 'homeassistant.turn_on';
             ]]]
           target:
             entity_id: "[[[ return variables.entity_2.entity_id ]]]"
@@ -105,13 +107,14 @@ card_scenes:
         tap_action:
           action: "perform-action"
           perform_action: |
-            [[[
-              let domain = variables.entity_3.entity_id.substr(0, variables.entity_3.entity_id.indexOf("."));
-              if (domain == "automation") {
-                return "automation.trigger"
-              } else {
-                return "homeassistant.turn_on"
-              }
+            [[[ 
+              const eid = variables.entity_3?.entity_id;
+              if (!eid) return null;
+
+              const domain = eid.split('.')[0];
+              return domain === 'automation'
+                ? 'automation.trigger'
+                : 'homeassistant.turn_on';
             ]]]
           target:
             entity_id: "[[[ return variables.entity_3.entity_id ]]]"
@@ -128,13 +131,14 @@ card_scenes:
         tap_action:
           action: "perform-action"
           perform_action: |
-            [[[
-              let domain = variables.entity_4.entity_id.substr(0, variables.entity_4.entity_id.indexOf("."));
-              if (domain == "automation") {
-                return "automation.trigger"
-              } else {
-                return "homeassistant.turn_on"
-              }
+            [[[ 
+              const eid = variables.entity_4?.entity_id;
+              if (!eid) return null;
+
+              const domain = eid.split('.')[0];
+              return domain === 'automation'
+                ? 'automation.trigger'
+                : 'homeassistant.turn_on';
             ]]]
           target:
             entity_id: "[[[ return variables.entity_4.entity_id ]]]"
@@ -151,13 +155,14 @@ card_scenes:
         tap_action:
           action: "perform-action"
           perform_action: |
-            [[[
-              let domain = variables.entity_5.entity_id.substr(0, variables.entity_5.entity_id.indexOf("."));
-              if (domain == "automation") {
-                return "automation.trigger"
-              } else {
-                return "homeassistant.turn_on"
-              }
+            [[[ 
+              const eid = variables.entity_5?.entity_id;
+              if (!eid) return null;
+
+              const domain = eid.split('.')[0];
+              return domain === 'automation'
+                ? 'automation.trigger'
+                : 'homeassistant.turn_on';
             ]]]
           target:
             entity_id: "[[[ return variables.entity_5.entity_id ]]]"
