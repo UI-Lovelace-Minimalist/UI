@@ -40,6 +40,7 @@ LANGUAGES = {
     "Slovenian": "sl",
     "Swedish": "sv",
     "Turkish": "tr",
+    "Ukrainian": "uk",
     "中文（简体）": "zh-CN",
 }
 
@@ -65,6 +66,7 @@ CONF_LANGUAGES = [
     "Slovenian",
     "Swedish",
     "Turkish",
+    "Ukrainian",
     "中文（简体）",
 ]
 CONF_SIDEPANEL_ENABLED = "sidepanel_enabled"

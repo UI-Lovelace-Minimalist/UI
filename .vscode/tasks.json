@@ -4,31 +4,79 @@
     {
       "label": "Run Home Assistant on port 9123",
       "type": "shell",
-      "command": "container start",
+      "command": "scripts/develop",
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
       "problemMatcher": []
     },
     {
-      "label": "Run Home Assistant configuration against /config",
+      "label": "Upgrade Home Assistant Development Environment",
       "type": "shell",
-      "command": "container check",
+      "command": "scripts/update",
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
       "problemMatcher": []
     },
     {
-      "label": "Upgrade Home Assistant to latest dev",
+      "label": "Update mandatory lovelace cards",
       "type": "shell",
-      "command": "container install",
+      "command": "scripts/update-cards",
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
       "problemMatcher": []
     },
     {
-      "label": "Install a specific version of Home Assistant",
+      "label": "Run Pre-commit",
       "type": "shell",
-      "command": "container set-version",
+      "command": "${command:python.interpreterPath} -m pre_commit run --all-files",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
       "problemMatcher": []
     },
     {
       "label": "Serve Documentation on port 8000",
       "type": "shell",
-      "command": "mkdocs -v serve -a 0.0.0.0:8000",
+      "command": "${command:python.interpreterPath} -m mkdocs -v serve -a 0.0.0.0:8000",
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Lint with ruff",
+      "type": "shell",
+      "command": "scripts/lint",
+      "problemMatcher": []
+    },
+    {
+      "label": "Install Requirements",
+      "type": "shell",
+      "command": "uv pip install -r requirements.txt",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
       "problemMatcher": []
     }
   ]

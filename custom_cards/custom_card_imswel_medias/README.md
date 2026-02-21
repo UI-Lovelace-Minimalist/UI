@@ -42,9 +42,9 @@ This card needs the following to function correctly:
 
 ![example-image-plex](../../docs/assets/img/custom_card_imswel_medias/medias_library_plex.png)<br>
 
-| Variable                              | Default | Required | Notes                                                                   |
-| -----------------------------         | ------- | -------- | ----------------------------------------------------------------------- |
-| ulm_custom_card_imswel_medias_index   |    1    | Yes      | The index of the item in your **Plex library**  to show.                |
+| Variable                              | Default | Required         | Notes                                                                   |
+| -----------------------------         | ------- | ---------------- | ----------------------------------------------------------------------- |
+| ulm_custom_card_imswel_medias_index   |    1    | :material-check: | The index of the item in your **Plex library**  to show.                |
 
 ```yaml
 - type: custom:button-card
@@ -61,10 +61,10 @@ This card needs the following to function correctly:
 ![example-image-radarr](../../docs/assets/img/custom_card_imswel_medias/medias_upcoming_radarr.png)
 ![example-image-sonarr](../../docs/assets/img/custom_card_imswel_medias/medias_upcoming_sonarr.png)<br>
 
-| Variable                              | Default | Required | Notes                                                                                                    |
-| -----------------------------         | ------- | -------- | -------------------------------------------------------------------------------------------------------- |
-| ulm_custom_card_imswel_medias_index   | 1       | Yes      | The index of the item in your **Radarr/Sonarr library** to show.                                         |
-| ulm_custom_card_imswel_medias_platform| radarr  | Yes      | The platform to choose depending on the selected entity. <br> Can be: **`radarr`** or **`sonarr`**. <br> |
+| Variable                              | Default | Required         | Notes                                                                                                    |
+| -----------------------------         | ------- | ---------------- | -------------------------------------------------------------------------------------------------------- |
+| ulm_custom_card_imswel_medias_index   | 1       | :material-check: | The index of the item in your **Radarr/Sonarr library** to show.                                         |
+| ulm_custom_card_imswel_medias_platform| radarr  | :material-check: | The platform to choose depending on the selected entity. <br> Can be: **`radarr`** or **`sonarr`**. <br> |
 
 ```yaml
 - type: custom:button-card

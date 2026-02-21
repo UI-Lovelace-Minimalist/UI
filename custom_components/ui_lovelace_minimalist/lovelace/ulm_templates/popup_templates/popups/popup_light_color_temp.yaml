@@ -10,7 +10,7 @@ popup_light_color_temp:
       content1:
         - display: "none"
       content2:
-        - display: "block"
+        - display: "block !important"
         - align-self: "center"
       content3:
         - display: "none"

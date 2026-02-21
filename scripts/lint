@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# script/lint: Run linting tools and apply formatting
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+echo "==> Running linting tools..."
+
+echo "==> Running Ruff format..."
+uv run ruff format .
+
+echo "==> Running Ruff check..."
+uv run ruff check . --fix
+
+echo "==> Linting completed!"

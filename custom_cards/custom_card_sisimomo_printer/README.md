@@ -7,7 +7,7 @@ hide:
 
 # Custom-card "Printer"
 
-![Image title](../../docs/assets/img/custom_card_sisimomo_printer.png){ width="650" }
+![Image title](../../assets/img/custom_card_sisimomo_printer.png){ width="650" }
 
 This is the `custom_card_sisimomo_printer`, used to show the state of a printer including, if wanted, ink sensors.
 The card has support any number of ink sensors under the state of the printer. These can be configured using custom colors and labels.
@@ -46,25 +46,25 @@ Contributors:
 
 ## Card options
 
-| Options      | Required         | Description    |
-|--------------|------------------|----------------|
+| Options      | Required         | Description                      |
+|--------------|------------------|----------------------------------|
 | entity       | :material-check: | The entity_id for the large card |
 
 ## Variables
 
-| Variable                               | Required         | Description    |
-|----------------------------------------|------------------|----------------|
+| Variable                               | Required         | Description                                                                                                      |
+|----------------------------------------|------------------|------------------------------------------------------------------------------------------------------------------|
 | printer_name                           | :material-close: | The chosen display name of the printer. <br> If not provided, will use the friendly name of the provided entity. |
-| cartridges                             | :material-close: | A list of  `Cartridge entity` objects. (See below) |
+| cartridges                             | :material-close: | A list of  `Cartridge entity` objects. (See below)                                                               |
 
 ## Cartridge entity
 
-|  Variable  | Required         | Description    | Requirement |
-|------------|------------------|----------------|-------------|
-| label      | :material-check: | The label for the ink sensor. For better aesthetic, keep this string short eg: "BK", "Y", "M", "C", "PB" |  |
-| entity_id  | :material-check: | The entity_id of the ink sensor | Must be a value between 0-100 (percentage). |
-| type       | :material-close: | The type of cartridge associated with the ink sensor | Must be either 'unicolor' or 'tricolor'. <br> If not provided, 'unicolor' is assumed for backwards compatibility. |
-| color      | :material-check: | The color of the ink bar | For unicolor cartridges, must be a single [CSS Legal Color Value](https://www.w3schools.com/cssref/css_colors_legal.asp). For tricolor cartridges, 3 colours are required. (See usage for more info) |
+|  Variable  | Required         | Description                                                                                              | Requirement                                                                                                                                                                                          |
+|------------|------------------|----------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| label      | :material-check: | The label for the ink sensor. For better aesthetic, keep this string short eg: "BK", "Y", "M", "C", "PB" |                                                                                                                                                                                                      |
+| entity_id  | :material-check: | The entity_id of the ink sensor                                                                          | Must be a value between 0-100 (percentage).                                                                                                                                                          |
+| type       | :material-close: | The type of cartridge associated with the ink sensor                                                     | Must be either 'unicolor' or 'tricolor'. <br> If not provided, 'unicolor' is assumed for backwards compatibility.                                                                                    |
+| color      | :material-check: | The color of the ink bar                                                                                 | For unicolor cartridges, must be a single [CSS Legal Color Value](https://www.w3schools.com/cssref/css_colors_legal.asp). For tricolor cartridges, 3 colours are required. (See usage for more info) |
 
 ## Usage
 

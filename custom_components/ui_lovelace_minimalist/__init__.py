@@ -3,15 +3,19 @@
 from __future__ import annotations
 
 import logging
-from typing import Any
+from pathlib import Path
+import shutil
+from typing import TYPE_CHECKING, Any, cast
 
-from aiogithubapi import AIOGitHubAPIException, GitHubAPI
+from aiogithubapi import AIOGitHubAPIException, GitHubAPI, GitHubClientKwarg
 from homeassistant.components.frontend import async_remove_panel
 from homeassistant.config_entries import SOURCE_IMPORT, ConfigEntry
-from homeassistant.core import HomeAssistant
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.loader import async_get_integration
 import voluptuous as vol
+
+if TYPE_CHECKING:
+    from homeassistant.core import HomeAssistant
 
 from .base import UlmBase
 from .const import DOMAIN, NAME
@@ -73,12 +77,11 @@ async def async_initialize_integration(
     ulm.githubapi = GitHubAPI(
         token=ulm.configuration.token,
         session=clientsession,
-        **{"client_name": "ULM"},
+        **cast("dict[GitHubClientKwarg, Any]", {"client_name": "ULM"}),
     )
 
-    async def async_startup():
+    async def async_startup() -> bool:
         """ULM Startup tasks."""
-
         if (
             ulm.configuration.community_cards_enabled
             and ulm.configuration.token is None
@@ -92,10 +95,10 @@ async def async_initialize_integration(
             await ulm.fetch_cards()
             await ulm.configure_community_cards()
 
-        ResponseConfigure = await ulm.configure_ulm()
-        ResponsePlugins = await ulm.configure_plugins()
-        ResponseDashboard = await ulm.configure_dashboard()
-        if not ResponseConfigure or not ResponsePlugins or not ResponseDashboard:
+        response_configure = await ulm.configure_ulm()
+        response_plugins = await ulm.configure_plugins()
+        response_dashboard = await ulm.configure_dashboard()
+        if not response_configure or not response_plugins or not response_dashboard:
             return False
 
         ulm.enable_ulm()
@@ -114,35 +117,86 @@ async def async_initialize_integration(
     return True
 
 
-async def async_setup(hass: HomeAssistant, config: dict):
+async def async_setup(hass: HomeAssistant, config: dict) -> bool:
     """Set up this integration using UI."""
     return await async_initialize_integration(hass=hass, config=config)
 
 
 async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> bool:
     """Set up this integration using UI."""
-
     config_entry.async_on_unload(
         config_entry.add_update_listener(config_entry_update_listener)
     )
     return await async_initialize_integration(hass=hass, config_entry=config_entry)
 
 
-async def async_remove_entry(hass: HomeAssistant, config_entry: ConfigEntry):
+async def async_remove_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> None:
     """Remove Integration."""
-    _LOGGER.debug(f"{NAME} is now uninstalled")
+    _LOGGER.debug("%s is now uninstalled", NAME)
 
-    # TODO cleanup:
-    #  - themes
-    #  - blueprints
+    # Remove the Frontend Panels
     async_remove_panel(hass, "ui-lovelace-minimalist")
 
+    dashboard_url = "ui-lovelace-minimalist"
+    is_registered = dashboard_url in hass.data.get("frontend_panels", {})
+    sidepanel_enabled = config_entry.options.get("sidepanel_enabled", False)
 
-async def async_reload_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> None:
-    """Reload Integration."""
-    _LOGGER.debug("Reload the config entry")
+    # Check config entry options and if sidepanel is enabled
+    if is_registered or sidepanel_enabled:
+        _LOGGER.debug("Removing Minimalist dashboard panel: %s", dashboard_url)
 
-    await async_setup_entry(hass, config_entry)
+        # Remove minimalist panel from the sidebar
+        async_remove_panel(hass, dashboard_url)
+
+        # Clean up the Lovelace YAML object if it exists in memory
+        if (
+            "lovelace" in hass.data
+            and dashboard_url in hass.data["lovelace"].dashboards
+        ):
+            hass.data["lovelace"].dashboards.pop(dashboard_url)
+
+    adaptive_url = "adaptive-dash"
+    is_registered = adaptive_url in hass.data.get("frontend_panels", {})
+    adaptive_enabled = config_entry.options.get("adaptive_ui_enabled", False)
+
+    # Check config entry options and if sidepanel is enabled
+    if is_registered or adaptive_enabled:
+        _LOGGER.debug("Removing Minimalist adaptive panel: %s", adaptive_url)
+
+        # Remove adaptive panel from the sidebar
+        async_remove_panel(hass, adaptive_url)
+
+        # Clean up the Lovelace YAML object if it exists in memory
+        if "lovelace" in hass.data and adaptive_url in hass.data["lovelace"].dashboards:
+            hass.data["lovelace"].dashboards.pop(adaptive_url)
+
+    # Identify theme and blueprint paths for cleanup
+    theme_path = config_entry.options.get("theme_path", "themes")
+
+    paths_to_remove = [
+        Path(hass.config.path(theme_path)) / "minimalist-desktop",
+        Path(hass.config.path(theme_path)) / "minimalist-mobile",
+        Path(hass.config.path(theme_path)) / "minimalist-ios-tapbar",
+        Path(hass.config.path(theme_path)) / "minimalist-mobile-tapbar",
+        Path(
+            hass.config.path(
+                "custom_components/ui_lovelace_minimalist/__ui_minimalist__"
+            )
+        ),
+    ]
+
+    def _cleanup_files(paths: list[Path]):
+        """Sync cleanup task for the executor."""
+
+        for path in paths:
+            if path.exists():
+                if path.is_dir():
+                    shutil.rmtree(path, ignore_errors=True)
+                else:
+                    path.unlink(missing_ok=True)
+
+    # Run cleanup in executor
+    await hass.async_add_executor_job(_cleanup_files, paths_to_remove)
 
 
 async def config_entry_update_listener(
@@ -154,8 +208,8 @@ async def config_entry_update_listener(
     await hass.config_entries.async_reload(config_entry.entry_id)
 
 
-async def async_unload_entry(hass: HomeAssistant, config_entry: ConfigEntry):
+async def async_unload_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> bool:
     """Unload Integration."""
     _LOGGER.debug("Unload the config entry")
 
-    return await async_initialize_integration(hass=hass, config_entry=config_entry)
+    return True

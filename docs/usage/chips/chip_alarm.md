@@ -13,9 +13,9 @@ Alarm `chip` that displays alarm armed and disarmed state with colored icon.
 
 ## Variables
 
-| Variable | Default | Required         | Notes             |
-|----------|---------|------------------|-------------------|
-| entity   |         | :material-check: | entity of your alarm_control_panel   |
+| Variable | Default | Required         | Notes                              |
+|----------|---------|------------------|------------------------------------|
+| entity   |         | :material-check: | entity of your alarm_control_panel |
 
 ## Usage
 

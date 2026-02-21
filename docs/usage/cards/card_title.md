@@ -13,10 +13,10 @@ Titles (and optionally subtitles) are used to separate different areas in your d
 
 ## Variables
 
-| Variable | Default | Required         | Notes             |
-|----------|---------|------------------|-------------------|
+| Variable | Default | Required         | Notes                                                       |
+|----------|---------|------------------|-------------------------------------------------------------|
 | name     |         | :material-check: | This is a main title (either title or subtitle is required) |
-|label|   | :material-check: | This is a subtitle (either title or subtitle is required) |
+| label    |         | :material-check: | This is a subtitle (either title or subtitle is required)   |
 
 ## Usage
 

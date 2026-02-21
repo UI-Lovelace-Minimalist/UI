@@ -13,15 +13,15 @@ The `card_person` shows if a person is `home` or `not_home`. If you have setup o
 
 ## Variables
 
-| Variable | Default | Required         | Notes             |
-|----------|---------|------------------|-------------------|
-| entity     |         | :material-check: | The person entity |
-| ulm_card_person_entity     |         | :material-check: | The person entity |
-| ulm_card_person_use_entity_picture |       | :material-close: | If you set this to true, the card shows the entity picture from your user, otherwise (set to false) shows the icon. Default is false. |
-| ulm_card_person_icon | mdi:face-man | :material-close: | Sets the icon to display if entity picture not shown. |
-| ulm_card_person_battery     |         | :material-close: | Battery sensor shown in the upper right corner |
-| ulm_card_person_eta     |         | :material-close: | Sensor with ETA info from integrations like: [Waze](https://www.home-assistant.io/integrations/waze_travel_time/), [Google](https://www.home-assistant.io/integrations/google_travel_time/) and [HERE](https://www.home-assistant.io/integrations/here_travel_time/) |
-| ulm_address     |         | :material-close: | Show an address as label, add an entity with a geo location |
+| Variable                            | Default      | Required         | Notes                                                                                                                                                                                                                                                                |
+|-------------------------------------|--------------|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| entity                              |              | :material-check: | The person entity                                                                                                                                                                                                                                                    |
+| ulm_card_person_entity              |              | :material-check: | The person entity                                                                                                                                                                                                                                                    |
+| ulm_card_person_use_entity_picture  |              | :material-close: | If you set this to true, the card shows the entity picture from your user, otherwise (set to false) shows the icon. Default is false.                                                                                                                                |
+| ulm_card_person_icon                | mdi:face-man | :material-close: | Sets the icon to display if entity picture not shown.                                                                                                                                                                                                                |
+| ulm_card_person_battery             |              | :material-close: | Battery sensor shown in the upper right corner                                                                                                                                                                                                                       |
+| ulm_card_person_eta                 |              | :material-close: | Sensor with ETA info from integrations like: [Waze](https://www.home-assistant.io/integrations/waze_travel_time/), [Google](https://www.home-assistant.io/integrations/google_travel_time/) and [HERE](https://www.home-assistant.io/integrations/here_travel_time/) |
+| ulm_address                         |              | :material-close: | Show an address as label, add an entity with a geo location                                                                                                                                                                                                          |
 
 ## Usage
 

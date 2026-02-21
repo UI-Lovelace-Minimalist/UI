@@ -13,10 +13,10 @@ This `chip` shows you the electric consumption from a sensor. Configurable to sh
 
 ## Variables
 
-| Variable | Default | Required         | Notes             |
-|----------|---------|------------------|-------------------|
-| ulm_chip_electric_consumption     |         | :material-check: | Variable / Entry Example Required ulm_chip_electric_consumption sensor.my_electric_power_consumption true. This is your consumed energy. This is the sensor, that shows how many *kWh*s are consumed.   |
-|ulm_chip_electric_price|  | :material-check: | This is the price for your consumed energy, if you have such a sensor. This should be a sensor that shows a price in your defined currency. If this variable is not set, the chip shows only the *kWh*s! If this variable is set the chip shows the price for the consumed energy! |
+| Variable                      | Default | Required         | Notes                                                                                                                                                                                                                                                                              |
+|-------------------------------|---------|------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ulm_chip_electric_consumption |         | :material-check: | Variable / Entry Example Required ulm_chip_electric_consumption sensor.my_electric_power_consumption true. This is your consumed energy. This is the sensor, that shows how many *kWh*s are consumed.                                                                              |
+|ulm_chip_electric_price        |         | :material-check: | This is the price for your consumed energy, if you have such a sensor. This should be a sensor that shows a price in your defined currency. If this variable is not set, the chip shows only the *kWh*s! If this variable is set the chip shows the price for the consumed energy! |
 
 ## Usage
 

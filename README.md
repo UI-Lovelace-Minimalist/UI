@@ -4,6 +4,7 @@
 ![Version](https://img.shields.io/github/v/release/UI-Lovelace-Minimalist/UI)
 ![hacs installs](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Flauwbier.nl%2Fhacs%2Fui_lovelace_minimalist)
 ![Downloads](https://img.shields.io/github/downloads/UI-Lovelace-Minimalist/UI/total)
+[![Visualise&nbsp;Repo](https://img.shields.io/badge/Visualise%20Repo-blue?style=flat)](https://repomapr.com/ui-lovelace-minimalist/ui)
 
 > [!IMPORTANT]
 > Looking for New Maintainers!
@@ -98,6 +99,7 @@ The same goes for our `custom_cards`. As the number grows, the list would be to 
 - Wiki by [paddy0174](https://github.com/Paddy0174).
 - Special thanks to clemalex and [schumijo](https://github.com/schumijo)for contributing their cards to the main repository.
 - [stokkie90](https://github.com/stokkie90) for implementing most of the HACS functionalities.
+- [wilbiev](https://github.com/wilbiev) for maintaining the code and all improvements.
 - And of course [all the others](https://github.com/UI-Lovelace-Minimalist/UI/graphs/contributors) who cannot be named here due to space limitations.
 
 ❤️ Thank you so much for helping to keep this UI awesome

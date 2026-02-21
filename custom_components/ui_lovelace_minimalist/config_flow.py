@@ -3,12 +3,23 @@
 from __future__ import annotations
 
 import logging
-from typing import Any
+from typing import Any, cast
 
-from aiogithubapi import GitHubDeviceAPI, GitHubException
+from aiogithubapi import (
+    GitHubClientKwarg,
+    GitHubDeviceAPI,
+    GitHubException,
+    GitHubLoginDeviceModel,
+    GitHubLoginOauthModel,
+)
 from aiogithubapi.common.const import OAUTH_USER_LOGIN
 from awesomeversion import AwesomeVersion
-from homeassistant import config_entries
+from homeassistant.config_entries import (
+    ConfigEntry,
+    ConfigFlow,
+    ConfigFlowResult,
+    OptionsFlow,
+)
 from homeassistant.const import __version__ as HAVERSION
 from homeassistant.core import callback
 from homeassistant.helpers import aiohttp_client
@@ -18,8 +29,8 @@ from homeassistant.loader import async_get_integration
 import voluptuous as vol
 
 from .base import UlmBase
-from .const import (  # CONF_COMMUNITY_CARDS_ALL,
-    CLIENT_ID,
+from .const import (
+    CLIENT_ID,  # CONF_COMMUNITY_CARDS_ALL,
     CONF_COMMUNITY_CARDS,
     CONF_COMMUNITY_CARDS_ENABLED,
     CONF_INCLUDE_OTHER_CARDS,
@@ -58,9 +69,8 @@ _LOGGER: logging.Logger = logging.getLogger(__name__)
 HA_OPTIONS_FLOW_VERSION_THRESHOLD = "2024.11.99"
 
 
-async def ulm_config_option_schema(options: dict = {}) -> dict:
+async def ulm_config_option_schema(options: dict[str, Any]) -> dict:
     """Return a schema for ULM configuration options."""
-
     # Also update base.py UlmConfiguration
     return {
         vol.Optional(
@@ -112,7 +122,7 @@ async def ulm_config_option_schema(options: dict = {}) -> dict:
     }
 
 
-class UlmFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
+class UlmFlowHandler(ConfigFlow, domain=DOMAIN):
     """Config flow for UI Lovelace Minimalist."""
 
     VERSION = 1
@@ -120,16 +130,17 @@ class UlmFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
     def __init__(self) -> None:
         """Initialize."""
         self._errors = {}
-        self.device = None
-        self.activation = None
+        self.device: GitHubDeviceAPI | None = None
+        self.activation: GitHubLoginOauthModel | None = None
         self.log = _LOGGER
         self._progress_task = None
-        self._login_device = None
+        self._login_device: GitHubLoginDeviceModel | None = None
         self._reauth = False
 
-    async def async_step_user(self, user_input: dict[str, Any] | None = None):
+    async def async_step_user(
+        self, user_input: dict[str, Any] | None = None
+    ) -> ConfigFlowResult:
         """Handle a flow initialized by the user."""
-
         if self._async_current_entries():
             return self.async_abort(reason="single_instance_allowed")
         if self.hass.data.get(DOMAIN):
@@ -138,17 +149,22 @@ class UlmFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         if user_input is not None:
             if user_input["community_cards_enabled"]:
                 return await self.async_step_device(user_input)
-            else:
-                return self.async_create_entry(title="", data=user_input)
+            return self.async_create_entry(title="", data=user_input)
 
         # Initial form
         return await self._show_config_form(user_input)
 
-    async def async_step_device(self, _user_input):
+    async def async_step_device(
+        self, _user_input: dict[str, Any] | None = None
+    ) -> ConfigFlowResult:
         """Handle device steps."""
 
-        async def _wait_for_activation(_=None):
-            if self._login_device is None or self._login_device.expires_in is None:
+        async def _wait_for_activation(_=None) -> None:
+            if (
+                self._login_device is None
+                or self._login_device.expires_in is None
+                or self._login_device.device_code is None
+            ):
                 async_call_later(self.hass, 1, _wait_for_activation)
                 return
 
@@ -166,7 +182,10 @@ class UlmFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
                 self.device = GitHubDeviceAPI(
                     client_id=CLIENT_ID,
                     session=aiohttp_client.async_get_clientsession(self.hass),
-                    **{"client_name": f"ULM/{integration.version}"},
+                    **cast(
+                        "dict[GitHubClientKwarg, Any]",
+                        {"client_name": f"ULM/{integration.version}"},
+                    ),
                 )
             async_call_later(self.hass, 1, _wait_for_activation)
             try:
@@ -177,18 +196,19 @@ class UlmFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
                     progress_action="wait_for_device",
                     description_placeholders={
                         "url": OAUTH_USER_LOGIN,
-                        "code": self._login_device.user_code,
+                        "code": cast("str", self._login_device.user_code),
                     },
                 )
-            except GitHubException as exception:
-                self.log.error(exception)
+            except GitHubException:
+                self.log.exception("GitHub device registration not successful")
                 return self.async_abort(reason="github")
 
         return self.async_show_progress_done(next_step_id="device_done")
 
-    async def _show_config_form(self, user_input):
+    async def _show_config_form(
+        self, user_input: dict[str, Any] | None = None
+    ) -> ConfigFlowResult:
         """Show the configuration form to edit options."""
-
         if not user_input:
             user_input = {}
 
@@ -206,7 +226,9 @@ class UlmFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
             step_id="user", data_schema=vol.Schema(schema), errors=self._errors
         )
 
-    async def async_step_device_done(self, _user_input):
+    async def async_step_device_done(
+        self, _user_input: dict[str, Any] | None = None
+    ) -> ConfigFlowResult:
         """Handle device steps."""
         if self._reauth:
             existing_entry = self.hass.config_entries.async_get_entry(
@@ -215,18 +237,21 @@ class UlmFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
             self.hass.config_entries.async_update_entry(
                 existing_entry, data={"token": self.activation.access_token}
             )
-            await self.hass.config_entries.async_reload(existing_entry.entry_id)
             return self.async_abort(reason="reauth_successful")
 
         return self.async_create_entry(
             title=NAME, data={"token": self.activation.access_token}
         )
 
-    async def async_step_reauth(self, user_input=None):
+    async def async_step_reauth(
+        self, user_input: dict[str, Any] | None = None
+    ) -> ConfigFlowResult:
         """Perform reauth upon an API authentication error."""
         return await self.async_step_reauth_confirm()
 
-    async def async_step_reauth_confirm(self, user_input=None):
+    async def async_step_reauth_confirm(
+        self, user_input: dict[str, Any] | None = None
+    ) -> ConfigFlowResult:
         """Dialog that informs the user that reauth is required."""
         if user_input is None:
             return self.async_show_form(
@@ -243,27 +268,31 @@ class UlmFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         return UlmOptionFlowHandler(config_entry)
 
 
-class UlmOptionFlowHandler(config_entries.OptionsFlow):
+class UlmOptionFlowHandler(OptionsFlow):
     """ULM config flow option handler (Edit Flow)."""
 
-    def __init__(self, config_entry: config_entries.ConfigEntry) -> None:
+    def __init__(self, config_entry: ConfigEntry) -> None:
         """Initialize."""
         self.options = dict(config_entry.options)
         # See: https://github.com/home-assistant/core/pull/129562
         if AwesomeVersion(HAVERSION) < HA_OPTIONS_FLOW_VERSION_THRESHOLD:
             self.config_entry = config_entry
 
-    async def async_step_init(self, _user_input=None):
+    async def async_step_init(
+        self, _user_input: dict[str, Any] | None = None
+    ) -> ConfigFlowResult:
         """Manage the options."""
         return await self.async_step_user()
 
-    async def async_step_user(self, user_input=None):
+    async def async_step_user(
+        self, user_input: dict[str, Any] | None = None
+    ) -> ConfigFlowResult:
         """Handle a flow initilized by the user."""
         ulm: UlmBase = self.hass.data.get(DOMAIN)
         errors: dict[str, str] = {}
 
         if user_input is not None:
-            if CONF_COMMUNITY_CARDS in user_input and user_input[CONF_COMMUNITY_CARDS]:
+            if user_input.get(CONF_COMMUNITY_CARDS):
                 for card in user_input[CONF_COMMUNITY_CARDS]:
                     if card not in ulm.configuration.all_community_cards:
                         user_input[CONF_COMMUNITY_CARDS].remove(card)
@@ -279,18 +308,16 @@ class UlmOptionFlowHandler(config_entries.OptionsFlow):
 
         if ulm.configuration.community_cards_enabled:
             await ulm.fetch_cards()
-            schema.update(
-                {
-                    vol.Optional(
-                        CONF_COMMUNITY_CARDS,
-                        default=list(
-                            ulm.configuration.to_dict().get(
-                                CONF_COMMUNITY_CARDS, DEFAULT_COMMUNITY_CARDS
-                            )
-                        ),
-                    ): cv.multi_select(ulm.configuration.all_community_cards)
-                }
-            )
+            schema |= {
+                vol.Optional(
+                    CONF_COMMUNITY_CARDS,
+                    default=list(
+                        ulm.configuration.to_dict().get(
+                            CONF_COMMUNITY_CARDS, DEFAULT_COMMUNITY_CARDS
+                        )
+                    ),
+                ): cv.multi_select(ulm.configuration.all_community_cards)
+            }
 
         return self.async_show_form(
             step_id="user", data_schema=vol.Schema(schema), errors=errors

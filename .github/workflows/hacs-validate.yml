@@ -1,5 +1,5 @@
 ---
-name: "HACS validate"
+name: "HACS Validate"
 
 on:
   pull_request:
@@ -7,24 +7,37 @@ on:
   schedule:
     - cron: "0 0 * * *"
 
+# Prevents multiple runs on the same PR from wasting resources
+concurrency:
+  group: "${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}"
+  cancel-in-progress: true
+
 jobs:
   validate-hassfest:
-    name: "Hassfest validation"
+    name: "Hassfest Validation"
     runs-on: "ubuntu-latest"
     steps:
-      - name: "checkout"
-        uses: "actions/checkout@v4"
-      - name: "validation"
+      - name: "⤵️ Checkout code"
+        uses: "actions/checkout@v6"
+
+      - name: "🔍 Run Hassfest"
         uses: "home-assistant/actions/hassfest@master"
 
   validate-hacs:
-    name: "HACS validation"
+    name: "HACS Validation"
     runs-on: "ubuntu-latest"
     steps:
-      - name: "checkout"
-        uses: "actions/checkout@v4"
-      - name: "validation"
+      - name: "⤵️ Checkout code"
+        uses: "actions/checkout@v6"
+
+      - name: "⚙️ Setup Python"
+        uses: "actions/setup-python@v6"
+        with:
+          python-version: "3.13"
+
+      - name: "🔍 Run HACS Action"
         uses: "hacs/action@main"
         with:
           category: "integration"
           ignore: "hacs brands"
+          github_token: "${{ secrets.GITHUB_TOKEN }}"

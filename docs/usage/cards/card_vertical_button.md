@@ -17,10 +17,10 @@ The variable `ulm_card_vertical_button_state` needs to be used together with inp
 
 ## Variables
 
-| Variable | Default | Required         | Notes             |
-|----------|---------|------------------|-------------------|
-| ulm_card_vertical_button_state     | on | :material-check: | Compare the entity state value with this value, ex: the button will be on if the entity.state == state (only required with input_select) |
-| ulm_card_vertical_button_color | blue | :material-close: | color for the when the button is on. The color names are defined in the theme. The following colors are supported: blue, green, yellow, pink, red, purple |
+| Variable                       | Default | Required         | Notes                                                                                                                                                     |
+|--------------------------------|---------|------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ulm_card_vertical_button_state | on      | :material-check: | Compare the entity state value with this value, ex: the button will be on if the entity.state == state (only required with input_select)                  |
+| ulm_card_vertical_button_color | blue    | :material-close: | color for the when the button is on. The color names are defined in the theme. The following colors are supported: blue, green, yellow, pink, red, purple |
 
 ## Usage
 

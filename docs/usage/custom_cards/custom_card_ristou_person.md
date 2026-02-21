@@ -5,11 +5,12 @@ hide:
 ---
 
 <!-- markdownlint-disable MD046 -->
+<!-- markdownlint-disable MD060 -->
 
 # Custom Card Ristou Person
 
-| Light | Dark |
-|---------|----|
+| Light                                                                                         | Dark                                                                                        |
+|-----------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
 | ![light](../../assets/img/custom_card_ristou_person/custom_card_ristou_person_light.png) | ![dark](../../assets/img/custom_card_ristou_person/custom_card_ristou_person_dark.png) |
 
 ## Credits
@@ -44,18 +45,18 @@ In addition, this card can display a map (either static or using built in map) i
 
 As the main icon of this card you can choose the following set up
 
-| Variables | UI |
-|---------|----|
-| ulm_custom_card_ristou_use_badge: `true` <br> ulm_custom_card_ristou_use_entity_picture: `false` | ![face_icon_badge](../../assets/img/custom_card_ristou_person/custom_card_ristou_person_face_icon_badge.png) |
-| ulm_custom_card_ristou_use_badge: `true` <br> ulm_custom_card_ristou_use_entity_picture: `true` | ![picture_badge](../../assets/img/custom_card_ristou_person/custom_card_ristou_person_picture_badge.png) |
-| ulm_custom_card_ristou_use_badge: `false` <br> ulm_custom_card_ristou_use_entity_picture: `false` | ![icon_only](../../assets/img/custom_card_ristou_person/custom_card_ristou_person_icon_only.png) |
+| Variables                                                                                         | UI                                                                                                                |
+|---------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|
+| ulm_custom_card_ristou_use_badge: `true` <br> ulm_custom_card_ristou_use_entity_picture: `false`  | ![face_icon_badge](../../assets/img/custom_card_ristou_person/custom_card_ristou_person_face_icon_badge.png) |
+| ulm_custom_card_ristou_use_badge: `true` <br> ulm_custom_card_ristou_use_entity_picture: `true`   | ![picture_badge](../../assets/img/custom_card_ristou_person/custom_card_ristou_person_picture_badge.png)     |
+| ulm_custom_card_ristou_use_badge: `false` <br> ulm_custom_card_ristou_use_entity_picture: `false` | ![icon_only](../../assets/img/custom_card_ristou_person/custom_card_ristou_person_icon_only.png)             |
 
 ## map style
 
-| Variables | UI |
-|---------|----|
-|ulm_custom_card_ristou_camera_entity_light != "" and <br> ulm_custom_card_ristou_camera_entity_dark != "" | ![camera](../../assets/img/custom_card_ristou_person/custom_card_ristou_person_camera.png)|
-| ulm_custom_card_ristou_map_enable: `true` | ![map](../../assets/img/custom_card_ristou_person/custom_card_ristou_person_map.png) |
+| Variables                                                                                                                                                  | UI                                                                                              |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------|
+| ulm_custom_card_ristou_camera_entity_light != "" and <br> ulm_custom_card_ristou_camera_entity_dark != ""                                                  | ![camera](../../assets/img/custom_card_ristou_person/custom_card_ristou_person_camera.png) |
+| ulm_custom_card_ristou_map_enable: `true`                                                                                                                  | ![map](../../assets/img/custom_card_ristou_person/custom_card_ristou_person_map.png)       |
 | ulm_custom_card_ristou_camera_entity_light = "" and <br>ulm_custom_card_ristou_camera_entity_dark = "" and <br>ulm_custom_card_ristou_map_enable = `false` | ![no_map](../../assets/img/custom_card_ristou_person/custom_card_ristou_person_no_map.png) |
 
 ## About Static maps
@@ -94,19 +95,19 @@ In my case I used developer tool to find out exact width of the card (which is 4
 
 ## Variables
 
-| Variable | Default | Required         | Notes             |
-|----------|---------|------------------|-------------------|
-| entity     |  | ✔️ | person entity |
-| ulm_custom_card_ristou_use_entity_picture     | false | ❌ | If you set this to true, the card shows the entity picture from your user, otherwise (set to false) shows the icon. Default is false. |
-| ulm_custom_card_ristou_use_badge     | true | ❌ | Show a notification badge on the icon. if set to false and not sing entity picture, then icon will be dynamically displayed to (Home, Away, Known place, or CAR) |
-| ulm_custom_card_ristou_map_enable     |false| ❌ | Display built in map as a second row |
-| ulm_custom_card_ristou_map_aspect_ratio     |16:5| ❌ | Display built in map as a second row |
-| ulm_custom_card_ristou_map_hours_to_show     |24| ❌ | Display built in map as a second row |
-| ulm_custom_card_ristou_map_default_zoom     |9| ❌ | Display built in map as a second row |
-| ulm_custom_card_ristou_camera_entity_light     |         | ❌ | Camera entity picture in light mode |
-| ulm_custom_card_ristou_camera_entity_dark     |         | ❌ | Camera entity picture in dark mode |
-| ulm_custom_card_ristou_zones     |         | ❌ | Used to display known zone on badge, icon, label or map |
-| ulm_custom_card_ristou_find_device_script     |         | ❌ | Show a button to find your device |
+| Variable                                      | Default | Required         | Notes                                                                                                                                                            |
+|-----------------------------------------------|---------|------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| entity                                        |         | :material-check: | person entity                                                                                                                                                    |
+| ulm_custom_card_ristou_use_entity_picture     | false   | :material-close: | If you set this to true, the card shows the entity picture from your user, otherwise (set to false) shows the icon. Default is false.                            |
+| ulm_custom_card_ristou_use_badge              | true    | :material-close: | Show a notification badge on the icon. if set to false and not sing entity picture, then icon will be dynamically displayed to (Home, Away, Known place, or CAR) |
+| ulm_custom_card_ristou_map_enable             | false   | :material-close: | Display built in map as a second row                                                                                                                             |
+| ulm_custom_card_ristou_map_aspect_ratio       | 16:5    | :material-close: | Display built in map as a second row                                                                                                                             |
+| ulm_custom_card_ristou_map_hours_to_show      | 24      | :material-close: | Display built in map as a second row                                                                                                                             |
+| ulm_custom_card_ristou_map_default_zoom       | 9       | :material-close: | Display built in map as a second row                                                                                                                             |
+| ulm_custom_card_ristou_camera_entity_light    |         | :material-close: | Camera entity picture in light mode                                                                                                                              |
+| ulm_custom_card_ristou_camera_entity_dark     |         | :material-close: | Camera entity picture in dark mode                                                                                                                               |
+| ulm_custom_card_ristou_zones                  |         | :material-close: | Used to display known zone on badge, icon, label or map                                                                                                          |
+| ulm_custom_card_ristou_find_device_script     |         | :material-close: | Show a button to find your device                                                                                                                                |
 
 ## Usage
 

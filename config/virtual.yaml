@@ -1,0 +1,23 @@
+---
+version: 1
+devices:
+  Living Room Light:
+    - platform: "light"
+      name: "Livingroom"
+      support_color: true
+      support_color_temp: true
+      support_white_value: true
+  Living Room Multi Sensor:
+    - platform: "sensor"
+      name: "Livingroom Temperature"
+      class: "temperature"
+      initial_value: 20
+      initial_availability: true
+    - platform: "sensor"
+      name: "Livingroom Humidity"
+      class: "humidity"
+      initial_value: 50
+      initial_availability: true
+  Test Device_Tracker:
+    - platform: "device_tracker"
+      initial_value: "home"

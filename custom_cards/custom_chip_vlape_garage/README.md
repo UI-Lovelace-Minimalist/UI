@@ -41,7 +41,7 @@ Initial release
 
 | Variable                | Default | Required         | Notes                      |
 | ----------------------- | ------- | ---------------- | -------------------------- |
-| entity                  |         | Yes | Garage door entity       |
+| entity                  |         | :material-check: | Garage door entity         |
 
 ## Template code
 

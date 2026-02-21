@@ -28,12 +28,12 @@ This custom cards works with any entity in the update domain and gives options f
 
 ## Variables
 
-| Variable           | Default | Required | Notes                                                                       |
-| ------------------ | ------- | -------- |---------------------------------------------------------------------------- |
-| enable_controls    | false   | No       | Enable two-button controls for update and skip                              |
-| collapsible        | false   | No       | Auto-collapse controls when no update is available/update has been skipped  |
-| horizontal         | false   | No       | Display card horizontally                                                   |
-| narrow_buttons     | false   | No       | Allow more space for text in horizontal configuration                       |
+| Variable           | Default | Required         | Notes                                                                       |
+| ------------------ | ------- | ---------------- |---------------------------------------------------------------------------- |
+| enable_controls    | false   | :material-close: | Enable two-button controls for update and skip                              |
+| collapsible        | false   | :material-close: | Auto-collapse controls when no update is available/update has been skipped  |
+| horizontal         | false   | :material-close: | Display card horizontally                                                   |
+| narrow_buttons     | false   | :material-close: | Allow more space for text in horizontal configuration                       |
 
 ## Usage
 

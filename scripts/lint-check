@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# script/lint-check: Check linting without making changes.
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+echo "==> Checking code format..."
+uv run ruff format . --check
+
+echo "==> Checking code with Ruff..."
+uv run ruff check .
+
+echo "==> Linting check completed!"

@@ -27,7 +27,7 @@ This popup is displayed using ``hold_action`` and it is compatible with the foll
 
 | Variable/Entity                       | Default         | Required         | Notes                                                  | Requirement                                   |
 | ------------------------------------- | --------------- | ---------------- | ------------------------------------------------------ | --------------------------------------------- |
-| ulm_card_light_color_palette          |                 | :material-close: | Add `select` entity to control color palette               |                                               |
+| ulm_card_light_color_palette          |                 | :material-close: | Add `select` entity to control color palette           |                                               |
 
 To enable this popup, add the variable ``ulm_card_light_enable_popup`` and set to ``true``.
 

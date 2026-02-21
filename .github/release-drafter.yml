@@ -36,6 +36,8 @@ template: |
 
   $CHANGES
 
+  **Full Changelog**: https://github.com/UI-Lovelace-Minimalist/UI/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION
+
   ## ❤️ Thank you so much for helping out to keep this UI awesome
   $CONTRIBUTORS
 

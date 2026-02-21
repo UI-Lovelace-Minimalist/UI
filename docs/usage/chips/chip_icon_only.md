@@ -13,9 +13,9 @@ This `chip` displays just an icon.
 
 ## Variables
 
-| Variable | Default | Required         | Notes             |
-|----------|---------|------------------|-------------------|
-| ulm_chip_icon_only     |         | :material-close: | This is the icon to show. See icons to read more about the used unicode `emojis`.  |
+| Variable           | Default | Required         | Notes                                                                             |
+|--------------------|---------|------------------|-----------------------------------------------------------------------------------|
+| ulm_chip_icon_only |         | :material-close: | This is the icon to show. See icons to read more about the used unicode `emojis`. |
 
 ## Usage
 
