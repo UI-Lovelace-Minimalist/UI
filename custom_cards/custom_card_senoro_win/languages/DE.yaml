@@ -1,0 +1,10 @@
+---
+### Custom Card Senoro Win - German Language Variables ###
+ulm_custom_card_senoro_win_language_variables:
+  variables:
+    ulm_custom_card_senoro_win_open: "Offen"
+    ulm_custom_card_senoro_win_tilted: "Gekippt"
+    ulm_custom_card_senoro_win_closed: "Geschlossen"
+    ulm_custom_card_senoro_win_locked: "Verschlossen"
+    ulm_custom_card_senoro_win_manipulated: "Manipuliert"
+    ulm_custom_card_senoro_win_battery_is_at: "Batterie ist an"
