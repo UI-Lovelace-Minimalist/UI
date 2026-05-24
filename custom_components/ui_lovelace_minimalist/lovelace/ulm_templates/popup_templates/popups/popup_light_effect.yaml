@@ -167,7 +167,7 @@ popup_light_effect:
                 - "popup_button"
                 - "popup_button_selected"
               icon: "mdi:auto-fix"
-              name: "[[[ return hass.resources[hass['language']]['ui.card.light.effect']; ]]]"
+              name: "[[[ return hass.localize('ui.card.light.effect') || 'Effect'; ]]]"
           item2:
             card:
               icon: "mdi:palette"
@@ -217,7 +217,7 @@ popup_light_effect:
           - "icon_info"
         entity: "[[[ return entity.entity_id; ]]]"
         icon: "mdi:auto-fix"
-        name: "[[[ return hass.resources[hass['language']]['ui.card.light.effect']; ]]]"
+        name: "[[[ return hass.localize('ui.card.light.effect') || 'Effect'; ]]]"
         label: "[[[ return variables.ulm_popup_total + ': ' + entity?.attributes?.effect_list?.length ]]]"
         styles:
           card:
