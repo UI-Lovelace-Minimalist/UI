@@ -14,12 +14,14 @@ This is a `custom-card` to display a percentage value as a bar.
 
 ## Credits
 
-Author: rphlwnk - 2021
-Version: 1.0.0
+Author: rphlwnk - 2021 Version: 1.0.0
+Update: JStaegerino - 2026 Version 2.0.0
 
 ## Changelog
 
 <details>
+<summary>2.0.0</summary>
+rebase code and make it work
 <summary>1.0.0</summary>
 Initial release.
 </details>
@@ -43,8 +45,8 @@ This card needs the following to function correctly:
 ```yaml
 - type: "custom:button-card"
   template: custom_card_bar_card
+  entity: sensor.memory_use_percent
   variables:
-    ulm_custom_card_bar_card_entity: sensor.memory_use_percent
     ulm_custom_card_bar_card_name: Memory Usage
     ulm_custom_card_bar_card_value: true
     ulm_custom_card_bar_card_indicator: true
@@ -55,79 +57,25 @@ This card needs the following to function correctly:
 
 ## Variables
 
-<table>
-<tr>
-<th>Variable</th>
-<th>Example</th>
-<th>Required</th>
-<th>Default</th>
-<th>Explanation</th>
-</tr>
-<tr>
-<td>ulm_custom_card_bar_card_entity</td>
-<td>sensor.memory_use_percent</td>
-<td>yes</td>
-<td></td>
-<td>The entity with the desired value</td>
-</tr>
-<tr>
-<td>ulm_custom_card_bar_card_name</td>
-<td>"Memory Consumption"</td>
-<td>no</td>
-<td>Sensor Name</td>
-<td>Overwrites the sensor name</td>
-</tr>
-<tr>
-<td>ulm_custom_card_bar_card_icon</td>
-<td>"mdi:icon"</td>
-<td>no</td>
-<td>Sensor Icon</td>
-<td>Overwrites the sensor icon</td>
-</tr>
-<tr>
-<td>ulm_custom_card_bar_card_value</td>
-<td>true / false</td>
-<td>no</td>
-<td>false</td>
-<td>If true, shows the value in the bar</td>
-</tr>
-<tr>
-<td>ulm_custom_card_bar_card_indicator</td>
-<td>true / false</td>
-<td>no</td>
-<td>false</td>
-<td>If true, shows if the value has changed up or down</td>
-</tr>
-<tr>
-<td>ulm_custom_card_bar_card_color</td>
-<td>"var(--google-green)"</td>
-<td>no</td>
-<td>"var(--google-blue)"</td>
-<td>Change the color of the bar</td>
-</tr>
-<tr>
-<td>ulm_custom_card_bar_card_min</td>
-<td>10</td>
-<td>no</td>
-<td>0</td>
-<td>Change the minimum value of the bar</td>
-</tr>
-<tr>
-<td>ulm_custom_card_bar_card_max</td>
-<td>20</td>
-<td>no</td>
-<td>100</td>
-<td>Change the maximum value of the bar</td>
-</tr>
-</table>
+| Variable                            | Default | Required         | Notes                                |
+| ----------------------------------- | ------- | ---------------- | ------------------------------------ |
+| entity                              |         | :material-check: | Your entity-id for the bar           |
+| ulm_custom_card_bar_card_name       |         | :material-close: | Overwrites the sensor name           |
+| ulm_custom_card_bar_card_min        | 0       | :material-close: | Change the minimum value of the bar  |
+| ulm_custom_card_bar_card_max        | 100     | :material-close: | Change the maximum value of the bar  |
+| ulm_custom_card_bar_card_value      | false   | :material-close: | If true, shows the value in the bar  |
+| ulm_custom_card_bar_card_color      | blue    | :material-close: | Change the color of the bar          |
+| ulm_custom_card_bar_card_icon       |         | :material-close: | Overwrites the sensor icon           |
+| ulm_custom_card_bar_card_icon_color |         | :material-close: | Overwrites the sensor icon color     |
+| ulm_custom_card_bar_card_show_icon  | true    | :material-close: | If false, hides icon and title       |
 
 ## Example
 
 ```yaml
 - type: "custom:button-card"
   template: custom_card_bar_card
+  entity: sensor.memory_use_percent
   variables:
-    ulm_custom_card_bar_card_entity: sensor.memory_use_percent
     ulm_custom_card_bar_card_name: Memory Usage
 ```
 

@@ -34,7 +34,7 @@ views:
                       ulm_weather: "this.entity_id"
           - type: "custom:button-card"
             template: "card_title"
-            name: "[[[ hass.resources[hass['language']]['ui.panel.lovelace.editor.card.light.name'] ]]]"
+            name: "[[[ return hass.localize('ui.panel.lovelace.editor.card.light.name') || 'Light'; ]]]"
             label: "This is the Minimalist-light-card"
           - type: "custom:auto-entities"
             card:
@@ -76,7 +76,7 @@ views:
                       - ulm_card_binary_sensor_alert: true
           - type: "custom:button-card"
             template: "card_title"
-            name: "[[[ hass.resources[hass['language']]['ui.panel.lovelace.editor.card.sensor.name'] ]]]"
+            name: "[[[ return hass.localize('ui.panel.lovelace.editor.card.sensor.name') || 'Sensor'; ]]]"
             label: "This is the Minimalist-sensor-card"
           - type: "custom:auto-entities"
             card:
@@ -94,7 +94,7 @@ views:
                     template: "card_generic"
           - type: "custom:button-card"
             template: "card_title"
-            name: "[[[ hass.resources[hass['language']]['ui.dialogs.entity_registry.editor.device_classes.binary_sensor.battery'] ]]]"
+            name: "[[[ return hass.localize('ui.dialogs.entity_registry.editor.device_classes.binary_sensor.battery') || 'Battery'; ]]]"
             label: "This is the Minimalist-battery-card"
           - type: "custom:auto-entities"
             card:
