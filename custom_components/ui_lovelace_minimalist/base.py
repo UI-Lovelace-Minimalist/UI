@@ -125,6 +125,9 @@ class UlmBase:
     @property
     def integration_dir(self) -> Path:
         """Return the ULM integration dir."""
+        if not self.integration:
+            raise RuntimeError("Integration not available")
+
         return self.integration.file_path
 
     @property
@@ -144,15 +147,21 @@ class UlmBase:
 
         self.system.disabled_reason = reason
         if reason == UlmDisabledReason.INVALID_TOKEN:
-            self.configuration.config_entry.state = ConfigEntryState.SETUP_ERROR
-            self.configuration.config_entry.reason = "Authentiation Failed"
-            self.hass.add_job(
-                self.configuration.config_entry.async_start_reauth, self.hass
+            entry: ConfigEntry[Any] | None = getattr(
+                self.configuration, "config_entry", None
             )
+            if not entry:
+                self.log.warning("Config entry not available to set reauth state")
+                return
+
+            entry.state = ConfigEntryState.SETUP_ERROR
+            entry.reason = "Authentication Failed"
+            if hasattr(entry, "async_start_reauth") and self.hass:
+                self.hass.add_job(entry.async_start_reauth, self.hass)
 
     def enable_ulm(self) -> None:
         """Enable Ulm."""
-        if self.system.disabled_reason is not None:
+        if self.system.disabled_reason:
             self.system.disabled_reason = None
             self.log.info("ULM is enabled")
 
@@ -174,15 +183,23 @@ class UlmBase:
                 self.log.exception("Could not write data to %s", file_path)
                 return False
 
-        return await self.hass.async_add_executor_job(_write_file)
+        if self.hass:
+            return await self.hass.async_add_executor_job(_write_file)
+        return False
 
     async def async_github_get_file(self, filename: str) -> str:
         """Get the content of a file."""
         self.log.debug("Fetching github file: %s", filename)
+        if not self.githubapi:
+            self.log.error("GitHub API client not available")
+            return ""
+
+        github = self.githubapi
         response = await self.async_github_api_method(
-            method=self.githubapi.repos.contents.get,
-            repository=GITHUB_REPO,
-            path=filename,
+            method=lambda: github.repos.contents.get(
+                repository=GITHUB_REPO,
+                path=filename,
+            ),
         )
         if response and hasattr(response, "data"):
             if isinstance(response.data, GitHubContentsModel) and response.data.content:
@@ -192,8 +209,16 @@ class UlmBase:
     async def async_github_get_tree(self, path: str) -> list[GitHubContentsModel]:
         """Get the content of a directory."""
         self.log.debug("Fetching github tree: %s", path)
+        if not self.githubapi:
+            self.log.error("GitHub API client not available")
+            return []
+
+        github = self.githubapi
         response = await self.async_github_api_method(
-            method=self.githubapi.repos.contents.get, repository=GITHUB_REPO, path=path
+            method=lambda: github.repos.contents.get(
+                repository=GITHUB_REPO,
+                path=path,
+            ),
         )
         if response and hasattr(response, "data"):
             if isinstance(response.data, list) and response.data:
@@ -224,7 +249,7 @@ class UlmBase:
         except MinimalistException as exception:
             _exception = exception
 
-        if raise_exception and _exception is not None:
+        if raise_exception and _exception:
             raise MinimalistException(_exception)
         return None
 
@@ -239,10 +264,16 @@ class UlmBase:
 
     async def fetch_cards(self) -> None:
         """Fetch list of cards."""
+        if not self.githubapi:
+            self.log.error("GitHub API client not available")
+            return
+
+        github = self.githubapi
         response = await self.async_github_api_method(
-            method=self.githubapi.repos.contents.get,
-            repository=GITHUB_REPO,
-            path=COMMUNITY_CARDS_FOLDER,
+            method=lambda: github.repos.contents.get(
+                repository=GITHUB_REPO,
+                path=COMMUNITY_CARDS_FOLDER,
+            ),
         )
         if response and hasattr(response, "data"):
             if isinstance(response.data, list) and response.data:
@@ -258,6 +289,10 @@ class UlmBase:
     async def configure_community_cards(self) -> None:
         """Configure selected community cards."""
         self.log.info("Configuring selected community cards")
+
+        if not self.hass:
+            self.log.error("Home Assistant instance not available")
+            return
 
         # Handle full cleanup if disabled or no cards selected
         if (
@@ -329,28 +364,29 @@ class UlmBase:
                                 )
 
                         elif f.type == "dir" and f.name == "languages":
-                            language_files = await self.async_github_get_tree(
-                                path=f.path
-                            )
+                            if f.path:
+                                language_files = await self.async_github_get_tree(
+                                    path=f.path
+                                )
 
-                            for lang in language_files:
-                                # Only download if the stem matches the target language
-                                if Path(lang.name).stem == language:
-                                    target_path: Path = (
-                                        self.community_cards_dir
-                                        / card
-                                        / "languages"
-                                        / lang.name
-                                    )
-                                    if (
-                                        not target_path.exists()
-                                        or target_path.stat().st_size != lang.size
-                                    ):
-                                        download_tasks.append(
-                                            self.download_and_save(
-                                                lang.path, target_path
-                                            )
+                                for lang in language_files:
+                                    # Only download if the stem matches the target language
+                                    if lang.name and Path(lang.name).stem == language:
+                                        target_path: Path = (
+                                            self.community_cards_dir
+                                            / card
+                                            / "languages"
+                                            / lang.name
                                         )
+                                        if (
+                                            not target_path.exists()
+                                            or target_path.stat().st_size != lang.size
+                                        ):
+                                            download_tasks.append(
+                                                self.download_and_save(
+                                                    lang.path, target_path
+                                                )
+                                            )
 
                     # Execute all downloads concurrently
                     if download_tasks:
@@ -362,6 +398,10 @@ class UlmBase:
         self.log.info("Setup ULM Plugins")
 
         try:
+            if not self.hass or not hasattr(self.hass, "config"):
+                self.log.error("Home Assistant instance or config is not available")
+                return False
+
             browser_mod_path = Path(
                 self.hass.config.path("custom_components/browser_mod")
             )
@@ -425,6 +465,10 @@ class UlmBase:
         """Configure the ULM Dashboards."""
         self.log.info("Setup ULM Dashboard")
 
+        if not self.hass:
+            self.log.error("Home Assistant instance not available")
+            return False
+
         dashboard_url = "ui-lovelace-minimalist"
         dashboard_config = {
             "mode": "yaml",
@@ -480,6 +524,10 @@ class UlmBase:
         """Configure initial dashboard & cards directory."""
         self.log.info("Setup ULM Configuration")
 
+        if not self.hass:
+            self.log.error("Home Assistant instance not available")
+            return False
+
         # Define Path objects
         base_dir = Path(self.hass.config.path(DOMAIN))
         integration_lovelace = Path(self.integration_dir) / "lovelace"
@@ -489,6 +537,11 @@ class UlmBase:
 
         def _sync_file_operations():
             """Grouped synchronous I/O to run in one executor job."""
+
+            if not self.hass:
+                self.log.error("Home Assistant instance not available")
+                return
+
             # Cleanup legacy folders
             for folder in ["configs", "addons"]:
                 shutil.rmtree(base_dir / folder, ignore_errors=True)
@@ -588,6 +641,10 @@ class UlmBase:
     async def reload_configuration(self):
         """Reload Configuration."""
         self.log.info("Reloading ULM Configuration")
+
+        if not self.hass:
+            self.log.error("Home Assistant instance not available")
+            return
 
         # Define Path objects
         base_path = Path(self.hass.config.path(DOMAIN))
