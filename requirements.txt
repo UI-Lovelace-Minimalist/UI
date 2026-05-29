@@ -3,4 +3,4 @@ mkdocs-awesome-pages-plugin>=2.10.1
 mkdocs-material>=9.7.1
 pip>=26.1.1
 pre-commit==4.6.0
-ruff==0.15.14
+ruff==0.15.15
