@@ -1,0 +1,37 @@
+:root {
+    --md-primary-fg-color:              hsla(212, 33%, 32%, 1);
+    --md-primary-fg-color--light:       hsla(212, 33%, 32%, 1);
+    --md-primary-fg-color--dark:        hsla(212, 33%, 32%, 1);
+    --md-accent-fg-color:               hsla(183, 56%, 52%, 1);
+    --md-accent-fg-color--transparent:  hsla(183, 56%, 52%, 0.1);
+}
+
+span.title {
+    font-weight: bold;
+}
+
+span.em {
+    font-weight: bold;
+}
+
+.separator {
+    border-bottom: 1px solid #e3e8ee;
+}
+
+a.field {
+    font-weight: 600;
+    /* color: #3c4257; */
+    font-size: .8rem;
+}
+
+span.parent-field {
+    font-weight: 600;
+    color:#a3acb9;
+    font-size: .85em;
+}
+
+span.type {
+    color: #8792a2;
+    font-size: .7rem;
+    margin-right: 4px;
+}
