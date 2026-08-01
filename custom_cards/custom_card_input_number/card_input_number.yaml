@@ -47,6 +47,8 @@ card_input_number:
                       return "counter.decrement";
                     else if( entity.entity_id.startsWith("select.") )
                       return "select.select_previous";
+                    else if( entity.entity_id.startsWith("input_select.") )
+                      return "input_select.select_previous";
                     return "";
                   ]]]
                 target:
@@ -76,6 +78,8 @@ card_input_number:
                       return "counter.increment";
                     else if( entity.entity_id.startsWith("select.") )
                       return "select.select_next";
+                    else if( entity.entity_id.startsWith("input_select.") )
+                      return "input_select.select_next";
                     return "";
                   ]]]
                 target:
