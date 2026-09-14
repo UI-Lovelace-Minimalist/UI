@@ -79,6 +79,7 @@ CONF_THEME = "theme"
 CONF_THEME_PATH = "theme_path"
 CONF_THEME_OPTIONS = [
     "minimalist-mobile",
+    "minimalist-ios-mobile",
     "minimalist-desktop",
     "minimalist-mobile-tapbar",
     "HA selected theme",

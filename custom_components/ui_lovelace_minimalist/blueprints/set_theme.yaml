@@ -13,6 +13,7 @@ blueprint:
           options:
             - "minimalist-desktop"
             - "minimalist-mobile"
+            - "minimalist-ios-mobile"
             - "minimalist-mobile-tapbar"
 
     mode:
