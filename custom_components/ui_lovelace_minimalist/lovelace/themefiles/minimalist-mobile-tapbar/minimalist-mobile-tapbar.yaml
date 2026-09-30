@@ -27,19 +27,148 @@ minimalist-mobile-tapbar:
       }
 
   # Move navbar
+
+  # HA 2026/card-mod patches the new top app bar as a separate element type.
+  card-mod-top-app-bar-fixed-yaml: |
+    .: |
+      :host, ha-top-app-bar-fixed, app-header, .header {
+        position: fixed !important;
+        top: auto !important;
+        bottom: 0px !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        z-index: 10 !important;
+        box-shadow: var(--footer-shadow);
+        height: var(--header-height) !important;
+        transform: none !important;
+      }
+      app-toolbar, .toolbar {
+        height: var(--header-base-height) !important;
+        padding-bottom: env(safe-area-inset-bottom) !important;
+      }
+
+  # Plain card-mod root is required by newer HA/card-mod combinations. The
+  # legacy card-mod-root-yaml block below is kept for compatibility.
+  card-mod-root: |
+    .header {
+      position: fixed !important;
+      top: auto !important;
+      bottom: 0px !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100% !important;
+      z-index: 10 !important;
+      box-shadow: var(--footer-shadow);
+      height: var(--header-height) !important;
+      transform: none !important;
+    }
+    .toolbar {
+      height: var(--header-base-height) !important;
+      padding-bottom: env(safe-area-inset-bottom) !important;
+    }
+    #view {
+      padding-top: 0 !important;
+      padding-bottom: var(--header-height) !important;
+    }
+    ha-tab-group {
+      display: flex !important;
+      justify-content: space-evenly !important;
+      width: 97% !important;
+    }
+    ha-tab-group-tab,
+    ha-tab,
+    paper-tab,
+    sl-tab {
+      flex: 1 1 auto !important;
+      min-width: unset !important;
+      justify-content: center !important;
+    }
   card-mod-root-yaml: |
     ha-tabs$: |
       #tabsContent {
         width: 97%;
       }
-    .: |
-      .header {
+    sl-tab-group$: |
+      #tabsContainer, #tabsContent {
+        width: 97%;
+      }
+      ::part(active-tab-indicator) {
+        display: none !important;
+      }
+
+    # Home Assistant 2026+ nests Lovelace header inside shadow roots. Keep the
+    # classic root-level rules above, and also target the known nested hosts.
+    home-assistant-main$: |
+      app-drawer-layout partial-panel-resolver ha-panel-lovelace hui-root app-header,
+      app-drawer-layout partial-panel-resolver ha-panel-lovelace hui-root .header {
+        position: fixed !important;
         top: auto !important;
         bottom: 0px !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        z-index: 10 !important;
         box-shadow: var(--footer-shadow);
         height: var(--header-height) !important;
+        transform: none !important;
       }
+      app-drawer-layout partial-panel-resolver ha-panel-lovelace hui-root #view {
+        padding-bottom: var(--header-height) !important;
+      }
+    ha-panel-lovelace$: |
+      hui-root app-header,
+      hui-root .header {
+        position: fixed !important;
+        top: auto !important;
+        bottom: 0px !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        z-index: 10 !important;
+        box-shadow: var(--footer-shadow);
+        height: var(--header-height) !important;
+        transform: none !important;
+      }
+      hui-root #view {
+        padding-bottom: var(--header-height) !important;
+      }
+    hui-root$: |
+      app-header,
+      .header {
+        position: fixed !important;
+        top: auto !important;
+        bottom: 0px !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        z-index: 10 !important;
+        box-shadow: var(--footer-shadow);
+        height: var(--header-height) !important;
+        transform: none !important;
+      }
+      app-toolbar,
       .toolbar {
+        height: var(--header-base-height) !important;
+        padding-bottom: env(safe-area-inset-bottom) !important;
+      }
+      #view {
+        padding-bottom: var(--header-height) !important;
+      }
+    .: |
+      app-header, .header {
+        position: fixed !important;
+        top: auto !important;
+        bottom: 0px !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        z-index: 10 !important;
+        box-shadow: var(--footer-shadow);
+        height: var(--header-height) !important;
+        transform: none !important;
+      }
+      app-toolbar, .toolbar {
         height: var(--header-base-height) !important;
         padding-bottom: env(safe-area-inset-bottom) !important;
       }
@@ -51,26 +180,34 @@ minimalist-mobile-tapbar:
         padding-top: calc(-1 * var(--header-height)) !important;
         padding-bottom: var(--header-height) !important;
       }
-      ha-tabs {
+      ha-tabs, sl-tab-group {
         --paper-tabs-selection-bar-color: var(--header-tab-indicator-color);
         --mdc-icon-size: 26px;
         display: flex;
         justify-content: space-between;
         padding: 0 10px;
-        height:50px !important;
+        height: 50px !important;
+        align-self: unset !important;
       }
-      paper-tab[aria-selected=true] {
+      sl-tab-group::part(active-tab-indicator) {
+        display: none !important;
+      }
+      paper-tab[aria-selected=true], sl-tab[aria-selected=true] {
         color: var(--header-active-tab-color);
         background-color: var(--header-active-tab-bg-color);
       }
-      paper-tab {
+      paper-tab, sl-tab {
         color: var(--header-all-tabs-color);
         border-radius: 25px;
-        height:50px;
+        height: 50px !important;
         /*width: calc(100% / 4);
         padding: 0;*/
         padding-left: 20px;
         padding-right: 20px;
+      }
+      sl-tab.icon::part(base) {
+        padding-top: 10px !important;
+        padding-bottom: 0 !important;
       }
 
   # Color themes

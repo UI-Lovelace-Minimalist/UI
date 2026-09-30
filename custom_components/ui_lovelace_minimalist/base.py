@@ -414,6 +414,15 @@ class UlmBase:
                 ]
             )
 
+            # Home Assistant 2026+ renders the Lovelace header/tab bar inside
+            # hui-root shadow DOM and card-mod theme root styles may not be
+            # applied there. Load a tiny compatibility module globally; it
+            # activates only for the minimalist-mobile-tapbar theme.
+            add_extra_js_url(
+                self.hass,
+                "/ui_lovelace_minimalist/cards/hermes-mobile-tapbar-fix/hermes-mobile-tapbar-fix.js",
+            )
+
         except MinimalistException as exception:
             self.log.error(exception)
             self.disable_ulm(UlmDisabledReason.LOAD_ULM)
