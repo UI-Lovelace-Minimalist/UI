@@ -31,6 +31,13 @@ minimalist-ios-tapbar:
       #tabsContent {
         width: 97%;
       }
+    sl-tab-group$: |
+      #tabsContainer, #tabsContent {
+        width: 97%;
+      }
+      ::part(active-tab-indicator) {
+        display: none !important;
+      }
       paper-icon-button {
         display: none;
       }
@@ -58,24 +65,32 @@ minimalist-ios-tapbar:
         padding-top: calc(-1 * var(--header-height)) !important;
         padding-bottom: var(--header-height) !important;
       }
-      ha-tabs {
+      ha-tabs, sl-tab-group {
         --paper-tabs-selection-bar-color: var(--header-tab-indicator-color) !important;
         --mdc-icon-size: 26px;
         display: flex;
         justify-content: space-between;
         padding: 10px;
-        margin-top:15px;
-        height:var(--header-height) !important;
+        margin-top: 15px;
+        height: var(--header-height) !important;
+        align-self: unset !important;
       }
-      paper-tab[aria-selected=true] {
+      sl-tab-group::part(active-tab-indicator) {
+        display: none !important;
+      }
+      paper-tab[aria-selected=true], sl-tab[aria-selected=true] {
         color: var(--header-active-tab-color);
         background-color: var(--header-active-tab-bg-color);
       }
-      paper-tab {
+      paper-tab, sl-tab {
         color: var(--header-all-tabs-color);
         border-radius: 25px;
-        height:50px;
+        height: 50px !important;
         padding: 0 20px;
+      }
+      sl-tab.icon::part(base) {
+        padding-top: 10px !important;
+        padding-bottom: 0 !important;
       }
   # Color themes
   modes:
