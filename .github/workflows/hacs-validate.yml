@@ -40,4 +40,5 @@ jobs:
         with:
           category: "integration"
           ignore: "hacs brands"
+          repository: "${{ github.repository }}"
           github_token: "${{ secrets.GITHUB_TOKEN }}"
