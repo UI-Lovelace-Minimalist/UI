@@ -267,10 +267,10 @@ card_cover:
                 [[[
                   var position = states[entity.entity_id]?.attributes?.current_position;
                   var invert = {
-                    "closed": hass.resources[hass['language']]['component.cover.state._.open'],
-                    "closing": hass.resources[hass['language']]['component.cover.state._.opening'],
-                    "open": hass.resources[hass['language']]['component.cover.state._.closed'],
-                    "opening": hass.resources[hass['language']]['component.cover.state._.closing']
+                    "closed": hass.localize('component.cover.entity_component._.state.open') || 'Open',
+                    "closing": hass.localize('component.cover.entity_component._.state.opening') || 'Opening',
+                    "open": hass.localize('component.cover.entity_component._.state.closed') || 'Closed',
+                    "opening": hass.localize('component.cover.entity_component._.state.closing') || 'Closing'
                   };
 
                   if ((variables.ulm_card_invert_percent || variables.ulm_card_cover_invert_percent) && typeof entity !== "undefined") {

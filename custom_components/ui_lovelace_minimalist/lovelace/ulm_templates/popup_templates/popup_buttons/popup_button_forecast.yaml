@@ -1,4 +1,4 @@
 ---
 popup_button_forecast:
   template: "ulm_translation_engine"
-  name: "[[[ return hass.resources[hass['language']]['ui.card.weather.forecast']; ]]]"
+  name: "[[[ return hass.localize('ui.card.weather.forecast') || 'Forecast'; ]]]"

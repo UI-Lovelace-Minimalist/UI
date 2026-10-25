@@ -176,6 +176,7 @@ async def async_remove_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> 
     paths_to_remove = [
         Path(hass.config.path(theme_path)) / "minimalist-desktop",
         Path(hass.config.path(theme_path)) / "minimalist-mobile",
+        Path(hass.config.path(theme_path)) / "minimalist-ios-mobile",
         Path(hass.config.path(theme_path)) / "minimalist-ios-tapbar",
         Path(hass.config.path(theme_path)) / "minimalist-mobile-tapbar",
         Path(

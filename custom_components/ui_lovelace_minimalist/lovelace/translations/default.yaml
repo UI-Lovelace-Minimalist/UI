@@ -1,17 +1,17 @@
 ---
 ulm_translation_engine:
   variables:
-    ulm_translation_back: "[[[ return hass.resources[hass['language']]['ui.common.back']; ]]]"
-    ulm_translation_brightness: "[[[ return hass.resources[hass['language']]['ui.card.light.brightness']; ]]]"
-    ulm_translation_color_temperature: "[[[ return hass.resources[hass['language']]['ui.card.light.color_temperature']; ]]]"
-    ulm_translation_status: "[[[ return hass.resources[hass['language']]['ui.dialogs.more_info_control.vacuum.status']; ]]]"
-    ulm_translation_scenes: "[[[ return hass.resources[hass['language']]['ui.dialogs.quick-bar.commands.reload.scene']; ]]]"
-    ulm_translation_source: "[[[ return hass.resources[hass['language']]['ui.card.media_player.source']; ]]]"
-    ulm_translation_history: "[[[ return hass.resources[hass['language']]['ui.dialogs.more_info_control.history']; ]]]"
-    ulm_translation_close_cover: "[[[ return hass.resources[hass['language']]['ui.dialogs.more_info_control.cover.close_cover']; ]]]"
-    ulm_translation_stop_cover: "[[[ return hass.resources[hass['language']]['ui.dialogs.more_info_control.cover.stop_cover']; ]]]"
-    ulm_translation_open_cover: "[[[ return hass.resources[hass['language']]['ui.dialogs.more_info_control.cover.open_cover']; ]]]"
-    ulm_translation_more_options: "[[[ return hass.resources[hass['language']]['ui.panel.lovelace.editor.edit_card.options']; ]]]"
+    ulm_translation_back: "[[[ return hass.localize('ui.common.back') || 'Back'; ]]]"
+    ulm_translation_brightness: "[[[ return hass.localize('ui.card.light.brightness') || 'Brightness'; ]]]"
+    ulm_translation_color_temperature: "[[[ return hass.localize('ui.card.light.color_temperature') || 'Color temperature'; ]]]"
+    ulm_translation_status: "[[[ return hass.localize('ui.dialogs.more_info_control.vacuum.status') || 'Status'; ]]]"
+    ulm_translation_scenes: "[[[ return hass.localize('ui.dialogs.quick-bar.commands.reload.scene') || 'Scenes'; ]]]"
+    ulm_translation_source: "[[[ return hass.localize('ui.card.media_player.source') || 'Source'; ]]]"
+    ulm_translation_history: "[[[ return hass.localize('ui.dialogs.more_info_control.history') || 'History'; ]]]"
+    ulm_translation_close_cover: "[[[ return hass.localize('ui.card.cover.close_cover') || 'Close'; ]]]"
+    ulm_translation_stop_cover: "[[[ return hass.localize('ui.card.cover.stop_cover') || 'Stop'; ]]]"
+    ulm_translation_open_cover: "[[[ return hass.localize('ui.card.cover.open_cover') || 'Open'; ]]]"
+    ulm_translation_more_options: "[[[ return hass.localize('ui.panel.lovelace.editor.edit_card.options') || 'Options'; ]]]"
     ulm_active_state: >
       [[[
         if (typeof(entity) !== 'undefined' && entity !== undefined){
@@ -22,8 +22,8 @@ ulm_translation_engine:
           return (!not_active.includes(entity.state) && !containsNumbers(entity.state))
         }
       ]]]
-    ulm_translation_off: "[[[ return hass.resources[hass['language']]['state.default.off']; ]]]"
-    ulm_translation_on: "[[[ return hass.resources[hass['language']]['state.default.on']; ]]]"
+    ulm_translation_off: "[[[ return hass.localize('component.switch.entity_component._.state.off') || 'Off'; ]]]"
+    ulm_translation_on: "[[[ return hass.localize('component.switch.entity_component._.state.on') || 'On'; ]]]"
     ulm_translation_state: >
       [[[
         if (typeof(entity) !== 'undefined' && entity !== undefined){
@@ -31,7 +31,7 @@ ulm_translation_engine:
           let lang = hass["language"];
           let action = entity.attributes.hvac_action;
           let domain = entity.entity_id.substr(0, entity.entity_id.indexOf("."));
-          let mode =  hass.resources[lang]["state_attributes." + domain + ".hvac_action." + action];
+          let mode = hass.localize("component.climate.entity_component._.state_attributes.hvac_action.state." + action);
           if(variables.ulm_show_last_changed){
             let dt = new Intl.RelativeTimeFormat(lang, { style: "long" });
             let delta = (Date.parse(entity.last_changed) - Date.now()) / 1000
@@ -73,18 +73,18 @@ ulm_translation_engine:
           let def = ["unknown", "unavailable"];
           let lang = hass["language"];
           if (state === "on"){
-            var translation = hass.resources[lang]["state.default.off"];
+            var translation = hass.localize("component.switch.entity_component._.state.off");
           } else if (state === "off"){
-            var translation = hass.resources[lang]["state.default.on"];
+            var translation = hass.localize("component.switch.entity_component._.state.on");
           }
           if (def.includes(state)) {
-            var translation = hass.resources[lang]["state.default." + state ];
+            var translation = hass.localize("state.default." + state);
           }
           return translation ? translation : state;
         }
       ]]]
-    ulm_translation_statistics: "[[[ return hass.resources[hass['language']]['ui.components.statistic-picker.statistic']; ]]]"
-    ulm_translation_unavailable: "[[[ return hass.resources[hass['language']]['state.default.unavailable']; ]]]"
+    ulm_translation_statistics: "[[[ return hass.localize('ui.components.statistic-picker.statistic') || 'Statistics'; ]]]"
+    ulm_translation_unavailable: "[[[ return hass.localize('state.default.unavailable') || 'Unavailable'; ]]]"
     ulm_translation_currency: >
       [[[
         var hasscurrency = hass.config["currency"];
