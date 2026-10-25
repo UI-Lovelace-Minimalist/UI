@@ -353,12 +353,18 @@ class UlmBase:
                     for f in card_files:
                         if f.type == "file":
                             target_path: Path = self.community_cards_dir / card / f.name
-
+                            exists_community_card = (
+                                await self.hass.async_add_executor_job(
+                                    target_path.exists
+                                )
+                            )
+                            stats = (
+                                await self.hass.async_add_executor_job(target_path.stat)
+                                if exists_community_card
+                                else None
+                            )
                             # Pathlib check for existence and size
-                            if (
-                                not target_path.exists()
-                                or target_path.stat().st_size != f.size
-                            ):
+                            if stats is None or stats.st_size != f.size:
                                 download_tasks.append(
                                     self.download_and_save(f.path, target_path)
                                 )
@@ -378,10 +384,19 @@ class UlmBase:
                                             / "languages"
                                             / lang.name
                                         )
-                                        if (
-                                            not target_path.exists()
-                                            or target_path.stat().st_size != lang.size
-                                        ):
+                                        exists_language = (
+                                            await self.hass.async_add_executor_job(
+                                                target_path.exists
+                                            )
+                                        )
+                                        stats = (
+                                            await self.hass.async_add_executor_job(
+                                                target_path.stat
+                                            )
+                                            if exists_language
+                                            else None
+                                        )
+                                        if stats is None or stats.st_size != lang.size:
                                             download_tasks.append(
                                                 self.download_and_save(
                                                     lang.path, target_path
@@ -405,7 +420,7 @@ class UlmBase:
             browser_mod_path = Path(
                 self.hass.config.path("custom_components/browser_mod")
             )
-            if not browser_mod_path.exists():
+            if not await self.hass.async_add_executor_job(browser_mod_path.exists):
                 self.log.error('HACS Integration repo "Browser Mod" is not installed')
 
             depenceny_resource_paths = [
@@ -423,14 +438,17 @@ class UlmBase:
             ]
             for p in depenceny_resource_paths:
                 frontend_repo_path = Path(self.hass.config.path(f"www/community/{p}"))
+                frontend_repo_exists = await self.hass.async_add_executor_job(
+                    frontend_repo_path.exists
+                )
                 if not self.configuration.include_other_cards:
-                    if not frontend_repo_path.exists():
+                    if not frontend_repo_exists:
                         self.log.error(
                             'HACS Frontend repo "%s" is not installed, '
                             "See Integration Configuration",
                             p,
                         )
-                elif frontend_repo_path.exists():
+                elif frontend_repo_exists:
                     self.log.error(
                         'HACS Frontend repo "%s" is already installed, '
                         "Remove it or disable include custom cards",
