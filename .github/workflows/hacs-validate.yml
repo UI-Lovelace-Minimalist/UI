@@ -33,11 +33,12 @@ jobs:
       - name: "⚙️ Setup Python"
         uses: "actions/setup-python@v7"
         with:
-          python-version: "3.13"
+          python-version: "3.14"
 
       - name: "🔍 Run HACS Action"
         uses: "hacs/action@main"
         with:
           category: "integration"
           ignore: "hacs brands"
+          repository: "${{ github.repository }}"
           github_token: "${{ secrets.GITHUB_TOKEN }}"
