@@ -14,20 +14,21 @@ jobs:
       - name: "⤵️ Checkout code"
         uses: "actions/checkout@v7"
 
-      - name: "⚙️ Set up Python 3.13"
-        uses: "actions/setup-python@v7"  # Upgraded to v5
+      - name: "⚙️ Set up Python 3.14"
+        uses: "actions/setup-python@v7"
         with:
-          python-version: "3.13"
-          cache: "pip"  # Enables automatic pip caching
+          python-version: "3.14"
+          # Enables automatic pip caching
+          cache: "pip"
 
       - name: "⚙️ Set up Ruby"
         uses: "ruby/setup-ruby@v1"
         with:
-          ruby-version: "3.3"  # Upgraded from 2.7 (EOL)
+          ruby-version: "3.3"
           bundler-cache: true
 
       - name: "🚀 Run pre-commit"
-        uses: "pre-commit/action@v3.0.1"  # Upgraded to v3.0.1
+        uses: "pre-commit/action@v3.0.1"
         with:
           # This ensures pre-commit doesn't have to re-download
           # hooks every single time the action runs
