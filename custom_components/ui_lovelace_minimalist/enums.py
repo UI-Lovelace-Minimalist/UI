@@ -1,17 +1,17 @@
 """Helper constants."""
 
 # pylint: disable=missing-class-docstring
-from enum import Enum
+from enum import StrEnum
 
 
-class ConfigurationType(str, Enum):
+class ConfigurationType(StrEnum):
     """What typ of config is used."""
 
     YAML = "yaml"
     CONFIG_ENTRY = "config_entry"
 
 
-class UlmDisabledReason(str, Enum):
+class UlmDisabledReason(StrEnum):
     """Reasons to disable ULM."""
 
     RATE_LIMIT = "rate_limit"

@@ -40,8 +40,8 @@ repos:
               .pre-commit-config.yaml
           )$
 
-  - repo: https://github.com/markdownlint/markdownlint
-    rev: v0.18.1
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.50.0
     hooks:
       - id: markdownlint
 
