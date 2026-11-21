@@ -34,7 +34,7 @@ custom_card_vncntdev_device_tracker:
                     if (!variables.custom_card_vncntdev_device_tracker_status_as_name) {
                       return variables.custom_card_vncntdev_device_tracker_name !== null?
                       variables.custom_card_vncntdev_device_tracker_name:
-                      entity.attributes.friendly_name;
+                      hass.entities[entity.entity_id].name;
                     } else {
                       return (entity.state == "not_home" || entity.state == "off") ? "Offline" : "Online";
                     }
@@ -44,7 +44,7 @@ custom_card_vncntdev_device_tracker:
                     if (variables.custom_card_vncntdev_device_tracker_status_as_name) {
                       return variables.custom_card_vncntdev_device_tracker_name !== null?
                       variables.custom_card_vncntdev_device_tracker_name:
-                      entity.attributes.friendly_name;
+                      hass.entities[entity.entity_id].name;
                     } else {
                       return (entity.state == "not_home" || entity.state == "off") ? "Offline" : "Online";
                     }

@@ -5,7 +5,7 @@ card_alarm_time:
   template:
     - "icon_more_info_new"
   variables:
-    ulm_card_alarm_time_name: "[[[ return entity.attributes.friendly_name ]]]"
+    ulm_card_alarm_time_name: "[[[ return hass.entities[entity.entity_id].name ]]]"
     ulm_card_alarm_time_icon: "[[[ return entity.attributes.icon ]]]"
     ulm_card_alarm_time_horizontal: false
     ulm_card_alarm_time_collapse: false

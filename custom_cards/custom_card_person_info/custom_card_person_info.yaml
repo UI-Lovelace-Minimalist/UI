@@ -36,7 +36,7 @@ card_person_info:
         return hass.localize("component.person.entity_component._.state." + state) || state;
       }
     ]]]
-  name: "[[[ return states[variables.ulm_card_person_entity].attributes.friendly_name ]]]"
+  name: "[[[ return hass.entities[variables.ulm_card_person_entity].name ]]]"
   entity: "[[[ return variables.ulm_card_person_entity; ]]]"
   icon: "mdi:face-man"
   show_entity_picture: "[[[ return variables.ulm_card_person_use_entity_picture ]]]"
@@ -122,10 +122,10 @@ card_person_info:
           var icon = 'mdi:car'
           return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
         } else if (states[variables.ulm_card_person_entity].state !== 'home') {
-          if (states[variables.ulm_card_person_entity].state === states[variables.ulm_card_person_zone1]?.attributes?.friendly_name) {
+          if (states[variables.ulm_card_person_entity].state === hass.entities[variables.ulm_card_person_zone1]?.name) {
             var icon = states[variables.ulm_card_person_zone1].attributes.icon !== null ? states[variables.ulm_card_person_zone1].attributes.icon : 'mdi:help-circle'
             return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
-          } else if (states[variables.ulm_card_person_entity].state === states[variables.ulm_card_person_zone2]?.attributes?.friendly_name) {
+          } else if (states[variables.ulm_card_person_entity].state === hass.entities[variables.ulm_card_person_zone2]?.name) {
             var icon = states[variables.ulm_card_person_zone2].attributes.icon !== null ? states[variables.ulm_card_person_zone2].attributes.icon : 'mdi:help-circle'
             return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
           } else {

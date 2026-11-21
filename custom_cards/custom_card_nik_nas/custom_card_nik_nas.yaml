@@ -6,7 +6,7 @@ custom_card_nik_nas:
     entity_1:
       entity_id:
       icon: "[[[ return entity.attributes.icon ]]]"
-      name: "[[[ return entity.attributes.friendly_name ]]]"
+      name: "[[[ return hass.entities[entity.entity_id].name ]]]"
       color: >
         [[[
           var colors = ["yellow", "blue", "red", "green"];
@@ -16,7 +16,7 @@ custom_card_nik_nas:
     entity_2:
       entity_id:
       icon: "[[[ return entity.attributes.icon  ]]]"
-      name: "[[[ return entity.attributes.friendly_name ]]]"
+      name: "[[[ return hass.entities[entity.entity_id].name ]]]"
       color: >
         [[[
           var colors = ["yellow", "blue", "red", "green"];
@@ -26,7 +26,7 @@ custom_card_nik_nas:
     entity_3:
       entity_id:
       icon: "[[[ return entity.attributes.icon  ]]]"
-      name: "[[[ return entity.attributes.friendly_name ]]]"
+      name: "[[[ return hass.entities[entity.entity_id].name ]]]"
       color: >
         [[[
           var colors = ["yellow", "blue", "red","green"];
@@ -36,7 +36,7 @@ custom_card_nik_nas:
     entity_4:
       entity_id:
       icon: "[[[ return entity.attributes.icon  ]]]"
-      name: "[[[ return entity.attributes.friendly_name ]]]"
+      name: "[[[ return hass.entities[entity.entity_id].name ]]]"
       color: >
         [[[
           var colors = ["yellow", "blue", "red","green"];
