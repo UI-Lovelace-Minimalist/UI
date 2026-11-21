@@ -3,7 +3,7 @@ card_light_colorpick:
   template:
     - "ulm_translation_engine"
   variables:
-    ulm_card_light_colorpick_name: "[[[ return entity.attributes.friendly_name ]]]"
+    ulm_card_light_colorpick_name: "[[[ return hass.entities[entity.entity_id].name ]]]"
     ulm_card_light_colorpick_transition: 1
   show_icon: false
   show_name: false

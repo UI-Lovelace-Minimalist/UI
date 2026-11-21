@@ -4,7 +4,7 @@ custom_card_sisimomo_printer:
     - "ulm_translation_engine"
     - "ulm_language_variables"
   variables:
-    printer_name: "[[[ entity.attributes.friendly_name; ]]]"
+    printer_name: "[[[ hass.entities[entity.entity_id].name ]]]"
     ulm_idle: "idle"
   show_icon: false
   show_label: false

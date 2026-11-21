@@ -24,8 +24,8 @@ card_ps4:
           - background-color: "rgba(var(--color-theme),0.05)"
     - operator: "template"
       value: "[[[ return entity.state !='unknown' ]]]"
-      name: "[[[ return entity.attributes.media_title; ]]]"
-      label: "[[[ return entity.attributes.friendly_name; ]]]"
+      name: "[[[ return entity.attributes.media_title ]]]"
+      label: "[[[ return hass.entities[entity.entity_id].name ]]]"
       styles:
         label:
           - color: "white"
