@@ -1,7 +1,7 @@
 ---
 card_input_number:
   variables:
-    ulm_card_input_number_name: "[[[ return entity.attributes.friendly_name ]]]"
+    ulm_card_input_number_name: "[[[ return hass.entities[entity.entity_id].name ]]]"
   triggers_update: "all"
   show_icon: false
   show_label: false

@@ -84,7 +84,7 @@ custom_card_nik_door:
                 ]]]
           lock: >
             [[[
-              if (states[variables.ulm_custom_card_entity_1_lock_battery].state == 100){
+                if (states[variables.ulm_custom_card_entity_1_lock_battery].state == 100){
                 return '<ha-icon icon="mdi:battery" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
 
               } if (states[variables.ulm_custom_card_entity_1_lock_battery].state >= 80){
@@ -95,9 +95,15 @@ custom_card_nik_door:
 
               } if (states[variables.ulm_custom_card_entity_1_lock_battery].state >= 50){
                 return '<ha-icon icon="mdi:battery-50" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
-              }
-                if (states[variables.ulm_custom_card_entity_1_lock_battery].state <= 40){
+
+              } if (states[variables.ulm_custom_card_entity_1_lock_battery].state >= 40){
+                return '<ha-icon icon="mdi:battery-40" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+
+              } if (states[variables.ulm_custom_card_entity_1_lock_battery].state >= 20){
                 return '<ha-icon icon="mdi:battery-20" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
+
+              } if (states[variables.ulm_custom_card_entity_1_lock_battery].state < 20){
+                return '<ha-icon icon="mdi:battery-outline" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
               }
             ]]]
     item2:

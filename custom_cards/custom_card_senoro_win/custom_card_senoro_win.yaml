@@ -22,7 +22,7 @@ custom_card_senoro_win:
       if (variables.ulm_custom_card_senoro_win_name) {
         return variables.ulm_custom_card_senoro_win_name;
       }
-      return entity.attributes.friendly_name;
+      return hass.entities[entity.entity_id].name;
     ]]]
   icon: >
     [[[

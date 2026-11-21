@@ -36,7 +36,7 @@ custom_card_imswel_person:
         return state;
       }
     ]]]
-  name: "[[[ return states[variables.ulm_card_imswel_person_entity].attributes.friendly_name ]]]"
+  name: "[[[ return hass.entities[variables.ulm_card_imswel_person_entity].name ]]]"
   entity: "[[[ return variables.ulm_card_imswel_person_entity; ]]]"
   styles:
     icon:
@@ -85,7 +85,7 @@ custom_card_imswel_person:
             return '<ha-icon icon="mdi:home-variant" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
           } else{
             for (const item of zones){
-              if (person_location == states[item]?.attributes?.friendly_name){
+              if (person_location == hass.entities[item]?.name){
                 var icon = (states[item].attributes.icon !== null) ? states[item].attributes.icon : 'mdi:help-circle';
                 return '<ha-icon icon="' + icon + '" style="width: 10px; height: 10px; color: var(--primary-background-color);"></ha-icon>';
               } else if (person_location == 'not_home'){
@@ -102,7 +102,7 @@ custom_popup_imswel_person:
     browser_mod:
       service: "browser_mod.popup"
       data:
-        title: "[[[ return states[variables.ulm_card_imswel_person_entity].attributes.friendly_name ]]]"
+        title: "[[[ return hass.entities[variables.ulm_card_imswel_person_entity].name ]]]"
         size: >
           [[[
             const mediaQuery = window.matchMedia("(max-width: 800px)")
