@@ -37,6 +37,7 @@ This card has backward compatibility with older template except custom name. It 
 | ulm_card_cover_slider_max             | `100`           | :material-close: | Set Maximum Slider Value                                         |                                                                                     |
 | ulm_card_cover_color                  | `blue`          | :material-close: | Set Custom Color                                                 |                                                                                     |
 | ulm_card_cover_force_background_color | `false`         | :material-close: | Set `ulm_card_cover_color` as background color in active state ` |                                                                                     |
+| ulm_card_cover_speed                  |                 | :material-close: | Set the cover movement speed, e.g. `slow`                        | Passed to the open and close actions when set                                       |
 
 ## Usage
 

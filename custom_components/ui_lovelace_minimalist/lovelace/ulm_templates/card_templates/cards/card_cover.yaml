@@ -8,6 +8,7 @@ card_cover:
     ulm_card_cover_name: "[[[ return entity.attributes.friendly_name ]]]"
     ulm_card_cover_icon: false
     ulm_card_cover_color: "blue"
+    ulm_card_cover_speed: null
     ulm_card_invert_percent: false
     ulm_card_cover_invert_percent: false
     ulm_card_cover_display_left_right: false
@@ -395,6 +396,12 @@ card_cover:
                 perform_action: "cover.close_cover"
                 target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data: >
+                  [[[
+                    return variables.ulm_card_cover_speed
+                      ? { speed: variables.ulm_card_cover_speed }
+                      : {};
+                  ]]]
               icon: >
                 [[[
                   if (variables.ulm_card_cover_display_left_right) {
@@ -510,6 +517,12 @@ card_cover:
                 perform_action: "cover.open_cover"
                 target:
                   entity_id: "[[[ return entity.entity_id ]]]"
+                data: >
+                  [[[
+                    return variables.ulm_card_cover_speed
+                      ? { speed: variables.ulm_card_cover_speed }
+                      : {};
+                  ]]]
               icon: >-
                 [[[
                   if (variables.ulm_card_cover_display_left_right) {
