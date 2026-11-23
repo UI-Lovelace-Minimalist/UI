@@ -112,6 +112,12 @@ Integration from HACS: "custom:apexcharts-card" from RomRider
 <td>no</td>
 <td>Maximum value of the sensor. Default will be 100</td>
 </tr>
+<tr>
+<td>transform</td>
+<td>`return x * 100;`</td>
+<td>no</td>
+<td>A custom JS function to run on your data before render. See Apex docs for more details</td>
+</tr>
 </table>
 
 ??? note "Template Code"
